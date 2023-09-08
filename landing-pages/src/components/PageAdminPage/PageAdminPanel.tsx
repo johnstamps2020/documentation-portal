@@ -1,18 +1,14 @@
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import { useEffect, useState } from 'react';
-import PageList from './PageList';
-import { usePages } from '../../hooks/useApi';
-import { Page } from 'server/dist/model/entity/Page';
-import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
 import Pagination from '@mui/material/Pagination';
-import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { useEffect, useState } from 'react';
+import { Page } from 'server/dist/model/entity/Page';
+import { usePages } from '../../hooks/useApi';
+import PageList from './PageList';
+import PageAdminFilters, { Filters } from './PageAdminFilters';
 
-const emptyFilters = {
+const emptyFilters: Filters = {
   path: '',
   title: '',
   component: '',
@@ -24,7 +20,7 @@ const emptyFilters = {
 };
 
 export default function PageAdminPanel() {
-  const [filters, setFilters] = useState(emptyFilters);
+  const [filters, setFilters] = useState<Filters>(emptyFilters);
   const { pages, isLoading, isError } = usePages();
   const [filteredPages, setFilteredPages] = useState<Page[]>([]);
   const [page, setPage] = useState(1);
@@ -70,14 +66,6 @@ export default function PageAdminPanel() {
     setPage(value);
   }
 
-  function handleChange(field: string, value: string | boolean) {
-    setFilters({
-      ...filters,
-      [field]: value,
-    });
-    setPage(1);
-  }
-
   function sortPages(pages: Page[]) {
     return pages.sort((a, b) => {
       const aTitle = a.title.toLowerCase();
@@ -94,46 +82,13 @@ export default function PageAdminPanel() {
 
   return (
     <Stack>
-      <Button
-        size="small"
-        variant="text"
-        sx={{ width: 'fit-content', marginBottom: '16px' }}
-        onClick={() => setFilters(emptyFilters)}
-      >
-        Clear filters
-      </Button>
-      <Stack direction="row" spacing={1} flexWrap="wrap">
-        <TextField
-          label="Path"
-          value={filters.path}
-          onChange={(event) => handleChange('path', event.target.value)}
-        />
-        <TextField
-          label="Title"
-          value={filters.title}
-          onChange={(event) => handleChange('title', event.target.value)}
-        />
-        <FormGroup row>
-          {['internal', 'public', 'earlyAccess', 'isInProduction'].map(
-            (key) => (
-              <FormControlLabel
-                key={key}
-                control={
-                  <Checkbox
-                    value={key}
-                    checked={filters[key as keyof typeof filters] as boolean}
-                    onChange={(event) =>
-                      handleChange(key, event.target.checked)
-                    }
-                    inputProps={{ 'aria-label': 'controlled' }}
-                  />
-                }
-                label={key}
-              />
-            )
-          )}
-        </FormGroup>
-      </Stack>
+      <PageAdminFilters
+        filters={filters}
+        setFilters={setFilters}
+        page={page}
+        setPage={setPage}
+        emptyFilters={emptyFilters}
+      />
       <Divider variant="middle" sx={{ margin: '20px' }}>
         <Chip
           label={`Showing results: ${filteredPages.length}/${pages.length}`}
