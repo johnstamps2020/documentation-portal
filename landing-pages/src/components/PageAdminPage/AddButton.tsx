@@ -31,8 +31,8 @@ export default function AddButton() {
         <AddIcon sx={{ mr: 1 }} />
         Add page
       </Fab>
-      <Dialog open={isOpen}>
-        <PagePropsController fullEditMode />
+      <Dialog open={isOpen} onClose={handleCloseEditor}>
+        <PagePropsController title="New page properties" fullEditMode />
         <DialogActions>
           <Button onClick={handleCloseEditor}>Close</Button>
         </DialogActions>

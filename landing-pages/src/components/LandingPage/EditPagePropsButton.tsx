@@ -57,7 +57,7 @@ export default function EditPagePropsButton({
         Edit page
       </Fab>
       <Dialog open={isOpen}>
-        <PagePropsController pagePath={pagePath} />
+        <PagePropsController pagePath={pagePath} title="Page properties" />
         <DialogActions>
           <Button onClick={handleCloseEditor}>Close</Button>
         </DialogActions>

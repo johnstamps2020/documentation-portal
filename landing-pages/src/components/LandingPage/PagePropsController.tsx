@@ -13,7 +13,9 @@ import { usePageData } from '../../hooks/usePageData';
 import { Page } from 'server/dist/model/entity/Page';
 import Snackbar from '@mui/material/Snackbar';
 import CircularProgress from '@mui/material/CircularProgress';
-import Chip from '@mui/material/Chip';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
+import Box from '@mui/material/Box';
 
 type NewPage = Omit<Page, 'uuid'>;
 
@@ -30,6 +32,7 @@ export const emptyPage: NewPage = {
 type PagePropsControllerProps = {
   pagePath?: string;
   fullEditMode?: boolean;
+  title: string;
 };
 
 type EditMessage = {
@@ -58,6 +61,7 @@ async function sendRequest(url: string, { arg }: { arg: NewPage }) {
 export default function PagePropsController({
   pagePath,
   fullEditMode = false,
+  title,
 }: PagePropsControllerProps) {
   const { pageData, isError, isLoading } = usePageData(pagePath);
   const { trigger, isMutating } = useSWRMutation(
@@ -195,44 +199,66 @@ export default function PagePropsController({
       }}
     >
       <Typography sx={{ fontSize: 18, fontWeight: 800 }} variant="h2">
-        {fullEditMode ? 'Page properties' : pagePath}{' '}
-        {!pageData && <Chip label="new" color="success" />}
+        {title}
       </Typography>
-      {fullEditMode && (
-        <TextField
-          required
-          error={pageAlreadyExists}
-          helperText={pageAlreadyExists && 'Page with this path already exists'}
-          disabled={isMutating}
-          label="Path"
-          value={tmpPageData.path}
-          onChange={(event) => handleChange('path', event.target.value)}
-          onBlur={pageExists}
-        />
-      )}
+      <TextField
+        required
+        error={pageAlreadyExists || !fullEditMode}
+        helperText={
+          (pageAlreadyExists && 'Page with this path already exists') ||
+          (!fullEditMode && (
+            <span>
+              You can edit this field only in the{' '}
+              <Link component={RouterLink} to="/admin-panel/page">
+                Admin Panel
+              </Link>
+            </span>
+          ))
+        }
+        disabled={isMutating || !fullEditMode}
+        label="Path"
+        value={tmpPageData.path}
+        onChange={(event) => handleChange('path', event.target.value)}
+        onBlur={pageExists}
+        fullWidth
+      />
       <TextField
         required
         disabled={isMutating}
         label="Title"
         onChange={(event) => handleChange('title', event.target.value)}
         value={tmpPageData.title}
+        fullWidth
       />
-      <FormGroup row>
-        {['internal', 'public', 'earlyAccess', 'isInProduction'].map((key) => (
-          <FormControlLabel
-            disabled={isMutating}
-            key={key}
-            control={
-              <Switch
-                value={key}
-                checked={tmpPageData[key as keyof typeof pageData] as boolean}
-                onChange={(event) => handleChange(key, event.target.checked)}
-                inputProps={{ 'aria-label': 'controlled' }}
+      <FormGroup>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+          }}
+        >
+          {['internal', 'public', 'earlyAccess', 'isInProduction'].map(
+            (key) => (
+              <FormControlLabel
+                disabled={isMutating}
+                key={key}
+                control={
+                  <Switch
+                    value={key}
+                    checked={
+                      tmpPageData[key as keyof typeof pageData] as boolean
+                    }
+                    onChange={(event) =>
+                      handleChange(key, event.target.checked)
+                    }
+                    inputProps={{ 'aria-label': 'controlled' }}
+                  />
+                }
+                label={key}
               />
-            }
-            label={key}
-          />
-        ))}
+            )
+          )}
+        </Box>
       </FormGroup>
       <Stack direction="row" spacing={1}>
         <ButtonGroup disabled={!dataChanged}>
