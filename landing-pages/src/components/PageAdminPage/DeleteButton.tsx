@@ -7,6 +7,10 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert, { AlertColor } from '@mui/material/Alert';
+import DialogContent from '@mui/material/DialogContent';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 
 type DeleteMessage = {
   text: string;
@@ -26,6 +30,7 @@ type DeleteButtonProps = {
 };
 export default function DeleteButton({ pagePath }: DeleteButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [deletePath, setDeletePath] = useState('');
   const [deleteResultMessage, setDeleteResultMessage] =
     useState<DeleteMessage>(emptyDeleteMessage);
 
@@ -79,14 +84,31 @@ export default function DeleteButton({ pagePath }: DeleteButtonProps) {
       >
         <DeleteIcon color="error" />
       </IconButton>
-      <Dialog open={isOpen}>
-        <DialogTitle>Are you sure you want to delete this page?</DialogTitle>
+      <Dialog open={isOpen} onClose={handleCloseConfirmationMessage}>
+        <DialogTitle>Delete page</DialogTitle>
+        <DialogContent>
+          <Stack gap={2}>
+            <Typography>
+              Type in <strong>{pagePath}</strong> in the field below and click
+              DELETE.
+            </Typography>
+            <TextField
+              value={deletePath}
+              onChange={(event) => setDeletePath(event.target.value)}
+              fullWidth
+            />
+          </Stack>
+        </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseConfirmationMessage} color="primary">
-            No
+          <Button
+            onClick={handleDelete}
+            disabled={deletePath !== pagePath}
+            color="error"
+          >
+            Delete
           </Button>
-          <Button onClick={handleDelete} color="error">
-            Yes
+          <Button onClick={handleCloseConfirmationMessage} color="primary">
+            Cancel
           </Button>
         </DialogActions>
       </Dialog>
