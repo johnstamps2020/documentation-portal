@@ -1,10 +1,11 @@
 import AddIcon from '@mui/icons-material/Add';
-import PagePropsController from '../LandingPage/PagePropsController';
+import PageSettingsForm from './PageSettingsForm';
 import Dialog from '@mui/material/Dialog';
 import { useState } from 'react';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
+import PageSettingsDialog from './PageSettingsDialog';
 
 export default function AddButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,12 +32,11 @@ export default function AddButton() {
         <AddIcon sx={{ mr: 1 }} />
         Add page
       </Fab>
-      <Dialog open={isOpen} onClose={handleCloseEditor}>
-        <PagePropsController title="New page properties" fullEditMode />
-        <DialogActions>
-          <Button onClick={handleCloseEditor}>Close</Button>
-        </DialogActions>
-      </Dialog>
+      <PageSettingsDialog
+        title="New page settings"
+        isOpen={isOpen}
+        onClose={handleCloseEditor}
+      />
     </>
   );
 }

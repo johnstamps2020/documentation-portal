@@ -29,9 +29,8 @@ export const emptyPage: NewPage = {
   isInProduction: false,
 };
 
-type PagePropsControllerProps = {
+type PageSettingsFormProps = {
   pagePath?: string;
-  fullEditMode?: boolean;
   title: string;
 };
 
@@ -58,11 +57,10 @@ async function sendRequest(url: string, { arg }: { arg: NewPage }) {
   });
 }
 
-export default function PagePropsController({
+export default function PageSettingsForm({
   pagePath,
-  fullEditMode = false,
   title,
-}: PagePropsControllerProps) {
+}: PageSettingsFormProps) {
   const { pageData, isError, isLoading } = usePageData(pagePath);
   const { trigger, isMutating } = useSWRMutation(
     '/admin/entity/Page',
@@ -203,19 +201,9 @@ export default function PagePropsController({
       </Typography>
       <TextField
         required
-        error={pageAlreadyExists || !fullEditMode}
-        helperText={
-          (pageAlreadyExists && 'Page with this path already exists') ||
-          (!fullEditMode && (
-            <span>
-              You can edit this field only in the{' '}
-              <Link component={RouterLink} to="/admin-panel/page">
-                Admin Panel
-              </Link>
-            </span>
-          ))
-        }
-        disabled={isMutating || !fullEditMode}
+        error={pageAlreadyExists}
+        helperText={pageAlreadyExists && 'Page with this path already exists'}
+        disabled={isMutating}
         label="Path"
         value={tmpPageData.path}
         onChange={(event) => handleChange('path', event.target.value)}

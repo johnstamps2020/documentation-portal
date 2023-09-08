@@ -15,8 +15,23 @@ type PageCardProps = {
 
 export default function PageCard({ title, path }: PageCardProps) {
   return (
-    <Card sx={{ padding: 1, height: '100%' }}>
-      <CardContent>
+    <Card
+      sx={{
+        padding: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '100%',
+      }}
+    >
+      <CardContent
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: '100%',
+        }}
+      >
         <Typography variant="h2">{title}</Typography>
         <Link
           to={`/${path}`}
