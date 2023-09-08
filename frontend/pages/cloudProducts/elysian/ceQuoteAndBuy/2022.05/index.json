@@ -25,16 +25,6 @@
       ]
     },
     {
-      "label": "Configuration",
-      "class": "subject configuration",
-      "items": [
-        {
-          "label": "Digital Code Generation Guide",
-          "id": "dx202205dcg"
-        }
-      ]
-    },
-    {
       "label": "Features and functionality",
       "class": "subject featuresAndFunctionality",
       "items": [

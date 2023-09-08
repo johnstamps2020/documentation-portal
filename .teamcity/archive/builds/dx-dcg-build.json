@@ -1,0 +1,14 @@
+{
+  "$schema": "../../config/config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "Digital-apd-MgSvcs.ditaval",
+      "root": "DigitalCodeGenerationGuide.ditamap",
+      "srcId": "dx202310src",
+      "docId": "dx202310dcg",
+      "indexRedirect": true,
+      "disabled": true
+    }
+  ]
+}

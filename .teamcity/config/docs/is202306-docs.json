@@ -895,25 +895,6 @@
       "earlyAccess": false
     },
     {
-      "id": "is202306fnoltemplate",
-      "title": "Personal Auto FNOL Template",
-      "url": "cloud/is/202306/fnoltemplate",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter", "PolicyCenter"],
-        "version": ["2023.06"],
-        "release": ["Hakuba"],
-        "subject": ["Features and functionality"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "is202306apisandbox",
       "title": "API Sandbox",
       "url": "cloud/202306/apisandbox",

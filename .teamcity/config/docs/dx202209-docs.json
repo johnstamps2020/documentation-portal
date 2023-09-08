@@ -667,25 +667,6 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202209dcg",
-      "title": "Digital Code Generation Guide",
-      "url": "cloud/dx/dcg/202209/guide",
-      "metadata": {
-        "product": ["CustomerEngage Quote and Buy", "ProducerEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Flaine"],
-        "subject": ["Configuration"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "dxjsdocs202209",
       "title": "Digital Frontend API Documentation",
       "url": "dx/js-docs/202209",

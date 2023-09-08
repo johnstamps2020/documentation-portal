@@ -445,15 +445,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "PersonalAutoFNOLTemplate.ditamap",
-      "srcId": "is202306src",
-      "docId": "is202306fnoltemplate",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "OverviewCloudIntegration.ditamap",
       "srcId": "is202306src",
       "docId": "is202306integoverview",

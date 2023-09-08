@@ -59,44 +59,6 @@
       "earlyAccess": false
     },
     {
-      "id": "submissionintakeconfig",
-      "title": "Submission Intake Configuration",
-      "url": "cloud/subintakeconfig",
-      "metadata": {
-        "product": ["Submission Intake", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02", "2023.06"],
-        "release": ["Flaine", "Garmisch", "Hakuba"],
-        "subject": ["Configuration"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "submissionintakeconfiglxd",
-      "title": "Submission Intake Configuration LXD",
-      "url": "cloud/subintakeconfiglxd",
-      "metadata": {
-        "product": ["Submission Intake", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Flaine"],
-        "subject": ["Configuration"],
-        "language": "en"
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "worksetmgr",
       "title": "Workset Manager",
       "url": "cloud/worksetmgr",

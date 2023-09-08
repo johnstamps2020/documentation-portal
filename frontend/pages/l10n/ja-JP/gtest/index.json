@@ -5,6 +5,16 @@
   "class": "threeCards version ja-JP l10n",
   "items": [
     {
+      "label": "2023.06",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {          
+          "label": "Testing Framework リリースノート",
+          "id": "testingframeworksjarnhakuba"
+        }
+      ]
+    },
+    {
       "label": "2022.05",
       "class": "categoryCard cardShadow",
       "items": [

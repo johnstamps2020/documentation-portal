@@ -11,7 +11,11 @@
         {
           "label": "Guidewire Cloud Home ヘルプ",
           "id": "gchjaJPhelprelease"
-        }
+        },
+        {
+          "label": "Guidewire Cloud Platform リリースノート",
+          "id": "gwcpjareleasenotes"
+        }        
       ]
     },
     {

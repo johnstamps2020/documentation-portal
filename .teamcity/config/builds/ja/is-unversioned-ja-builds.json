@@ -18,6 +18,16 @@
       "docId": "gwglossaryjaJP",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ISUpgradeCompatibility.ditamap",
+      "srcId": "isupgradecompatibilityjasrc",
+      "docId": "isupgradecompatibilityja",
+      "indexRedirect": true,
+      "disabled": false
     }
+
   ]
 }
