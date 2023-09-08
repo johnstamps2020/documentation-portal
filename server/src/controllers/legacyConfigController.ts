@@ -350,36 +350,6 @@ function getBackgroundComponent(pagePath: string) {
   return background;
 }
 
-function getCompletePageComponent(
-  legacyPageConfig: LegacyPageConfig,
-  dbPageConfig: Page
-): string | null {
-  const categoryLayout2Paths = [
-    'cloudProducts/flaine',
-    'cloudProducts/garmisch',
-    'cloudProducts/hakuba',
-  ];
-  const legacyPageConfigTemplate = legacyPageConfig.template;
-  if (legacyPageConfigTemplate === 'redirect') {
-    const redirectLink = legacyPageConfig
-      .items!.find((i) => i.label === '_redirect')!
-      .link!.replace(/^\/+/, '');
-    return `${legacyPageConfigTemplate} ${redirectLink}`;
-  }
-  const pageComponent = categoryLayout2Paths.includes(dbPageConfig.path)
-    ? 'pageCategory2'
-    : null;
-  const bgComponent = getBackgroundComponent(dbPageConfig.path);
-  if (bgComponent) {
-    if (pageComponent) {
-      return `${bgComponent} ${pageComponent}`;
-    }
-    return bgComponent;
-  }
-
-  return pageComponent;
-}
-
 function getRelativePagePath(absPagePath: string): string {
   return absPagePath.split('pages/')[1] || '/';
 }
@@ -533,7 +503,6 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
 
         dbPageConfig.path = legacyPageRelativePath;
         dbPageConfig.title = page.title;
-        dbPageConfig.component = getCompletePageComponent(page, dbPageConfig);
         dbPageConfig.isInProduction = !!localLandingPagesConfigProd.find(
           (pc) => getRelativePagePath(pc.path) === legacyPageRelativePath
         );

@@ -20,7 +20,6 @@ type NewPage = Omit<Page, 'uuid'>;
 export const emptyPage: NewPage = {
   path: '',
   title: '',
-  component: '',
   searchFilters: {},
   internal: true,
   public: false,
@@ -217,12 +216,6 @@ export default function PagePropsController({
         label="Title"
         onChange={(event) => handleChange('title', event.target.value)}
         value={tmpPageData.title}
-      />
-      <TextField
-        disabled={isMutating}
-        label="Component"
-        onChange={(event) => handleChange('component', event.target.value)}
-        value={tmpPageData.component}
       />
       <FormGroup row>
         {['internal', 'public', 'earlyAccess', 'isInProduction'].map((key) => (

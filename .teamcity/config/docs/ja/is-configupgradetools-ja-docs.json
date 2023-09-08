@@ -19,6 +19,26 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "isconfigupgradetoolsja460",
+      "title": "InsuranceSuite Configuration Upgrade Tools ja",
+      "displayTitle": "InsuranceSuite Configuration Upgrade Tools ガイド",
+      "url": "ja/isconfigupgradetools/460",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["4.6.0"],
+        "release": ["Hakuba"],
+        "language": "ja"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
+
   ]
 }

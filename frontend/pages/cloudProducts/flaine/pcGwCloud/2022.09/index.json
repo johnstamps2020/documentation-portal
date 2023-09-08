@@ -140,7 +140,7 @@
         },
         {
           "label": "Submission Intake Configuration",
-          "id": "submissionintakeconfig"
+          "link": "/cloud/subintake/?contextid=submissionIntakeConfiguration"
         },
         {
           "label": "US Standards-based Template Framework",

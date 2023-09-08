@@ -667,25 +667,6 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202302dcg",
-      "title": "Digital Code Generation Guide",
-      "url": "cloud/dx/dcg/202302/guide",
-      "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Configuration"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "dxjsdocs202302",
       "title": "Digital Frontend API Documentation",
       "url": "dx/js-docs/202302",

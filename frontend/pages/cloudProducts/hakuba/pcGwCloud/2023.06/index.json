@@ -57,6 +57,10 @@
           "id": "ispc202306update"
         },
         {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools500"
+        },
+        {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
           "id": "isupgradecompatibility"
         }
@@ -140,7 +144,7 @@
         },
         {
           "label": "Submission Intake Configuration",
-          "id": "submissionintakeconfig"
+          "link": "/cloud/subintake/?contextid=submissionIntakeConfiguration"
         },
         {
           "label": "US Standards-based Template Framework",

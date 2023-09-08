@@ -1,4 +1,24 @@
 {
   "$schema": "../../config/config-schema.json",
-  "docs": []
+  "docs": [
+    {
+      "id": "dx202310dcg",
+      "title": "Digital Code Generation Guide",
+      "url": "cloud/dx/dcg/202310/guide",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
 }
