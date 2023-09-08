@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import { useLocation } from 'react-router-dom';
+import { NotificationProvider } from './NotificationContext';
 
 export const mainHeight = `calc(100vh - ${headerHeight})`;
 
@@ -15,7 +16,7 @@ export default function Layout() {
   document.title = `${title} | Guidewire Documentation`;
 
   return (
-    <div>
+    <NotificationProvider>
       <Header {...headerOptions} />
       <main style={{ backgroundColor }}>
         <Box
@@ -33,6 +34,6 @@ export default function Layout() {
         </Box>
       </main>
       <Footer path={path} />
-    </div>
+    </NotificationProvider>
   );
 }

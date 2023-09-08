@@ -1,15 +1,14 @@
-import Alert, { AlertColor } from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
-import Snackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import { Page } from 'server/dist/model/entity/Page';
 import useSWRMutation from 'swr/mutation';
@@ -32,18 +31,6 @@ type PageSettingsFormProps = {
   title: string;
 };
 
-type EditMessage = {
-  text: string;
-  severity: AlertColor;
-  isOpen: boolean;
-};
-
-const emptyEditMessage: EditMessage = {
-  text: '',
-  severity: 'info',
-  isOpen: false,
-};
-
 async function sendRequest(url: string, { arg }: { arg: NewPage }) {
   return await fetch(url, {
     method: 'PUT',
@@ -59,6 +46,7 @@ export default function PageSettingsForm({
   pagePath,
   title,
 }: PageSettingsFormProps) {
+  const { showMessage } = useNotification();
   const { pageData, isError, isLoading } = usePageData(pagePath);
   const { trigger, isMutating } = useSWRMutation(
     '/admin/entity/Page',
@@ -68,8 +56,6 @@ export default function PageSettingsForm({
   const [canSubmitData, setCanSubmitData] = useState(false);
   const [dataChanged, setDataChanged] = useState(false);
   const [pageAlreadyExists, setPageAlreadyExists] = useState<boolean>();
-  const [editResultMessage, setEditResultMessage] =
-    useState<EditMessage>(emptyEditMessage);
 
   useEffect(() => {
     pagePath && pageData && setTmpPageData(pageData);
@@ -119,10 +105,6 @@ export default function PageSettingsForm({
     return <CircularProgress />;
   }
 
-  function handleCloseEditResultMessage() {
-    setEditResultMessage(emptyEditMessage);
-  }
-
   function handleChange(field: string, value: string | boolean) {
     setTmpPageData({
       ...tmpPageData,
@@ -169,27 +151,16 @@ export default function PageSettingsForm({
       }
 
       const response = await trigger(tmpPageData);
+
       if (response?.ok) {
-        setEditResultMessage({
-          text: 'Page updated successfully',
-          severity: 'success',
-          isOpen: true,
-        });
+        showMessage('Page updated successfully', 'success');
         setDataChanged(false);
       } else if (response) {
         const jsonError = await response.json();
-        setEditResultMessage({
-          text: `Page not updated: ${jsonError.message}`,
-          severity: 'error',
-          isOpen: true,
-        });
+        throw new Error(jsonError.message);
       }
     } catch (err) {
-      setEditResultMessage({
-        text: `Page not updated: ${err}`,
-        severity: 'error',
-        isOpen: true,
-      });
+      showMessage(`Page not updated: ${err}`, 'error');
     }
   }
 
@@ -272,20 +243,6 @@ export default function PageSettingsForm({
           </Button>
         </ButtonGroup>
       </Stack>
-      <Snackbar
-        open={editResultMessage.isOpen}
-        onClose={handleCloseEditResultMessage}
-        autoHideDuration={6000}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      >
-        <Alert
-          onClose={handleCloseEditResultMessage}
-          sx={{ width: '100%' }}
-          severity={editResultMessage.severity}
-        >
-          {editResultMessage.text}
-        </Alert>
-      </Snackbar>
     </Stack>
   );
 }

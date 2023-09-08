@@ -1,38 +1,23 @@
 import DeleteIcon from '@mui/icons-material/Delete';
-import Alert, { AlertColor } from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
-import Snackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { useNotification } from 'components/Layout/NotificationContext';
 import { useState } from 'react';
 
-type DeleteMessage = {
-  text: string;
-  severity: AlertColor;
-  isOpen: boolean;
-};
-
-const emptyDeleteMessage: DeleteMessage = {
-  text: '',
-  severity: 'info',
-  isOpen: false,
-};
-
-// TODO: Change confirmation for a text field where you need to type in a value
 type DeleteButtonProps = {
   pagePath: string;
 };
 export default function DeleteButton({ pagePath }: DeleteButtonProps) {
+  const { showMessage } = useNotification();
   const [isOpen, setIsOpen] = useState(false);
   const [deletePath, setDeletePath] = useState('');
-  const [deleteResultMessage, setDeleteResultMessage] =
-    useState<DeleteMessage>(emptyDeleteMessage);
 
   function handleOpenConfirmationMessage() {
     setIsOpen(true);
@@ -40,10 +25,6 @@ export default function DeleteButton({ pagePath }: DeleteButtonProps) {
 
   function handleCloseConfirmationMessage() {
     setIsOpen(false);
-  }
-
-  function handleCloseDeleteResultMessage() {
-    setDeleteResultMessage(emptyDeleteMessage);
   }
 
   async function handleDelete() {
@@ -59,18 +40,10 @@ export default function DeleteButton({ pagePath }: DeleteButtonProps) {
     });
 
     if (response.ok) {
-      setDeleteResultMessage({
-        text: 'Page deleted successfully',
-        severity: 'success',
-        isOpen: true,
-      });
+      showMessage('Page deleted successfully', 'success');
     } else {
       const jsonError = await response.json();
-      setDeleteResultMessage({
-        text: `Page not deleted: ${jsonError.message}`,
-        severity: 'error',
-        isOpen: true,
-      });
+      showMessage(`Page not deleted: ${jsonError.message}`, 'error');
     }
     setIsOpen(false);
   }
@@ -112,20 +85,6 @@ export default function DeleteButton({ pagePath }: DeleteButtonProps) {
           </Button>
         </DialogActions>
       </Dialog>
-      <Snackbar
-        open={deleteResultMessage.isOpen}
-        onClose={handleCloseDeleteResultMessage}
-        autoHideDuration={6000}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      >
-        <Alert
-          onClose={handleCloseDeleteResultMessage}
-          sx={{ width: '100%' }}
-          severity={deleteResultMessage.severity}
-        >
-          {deleteResultMessage.text}
-        </Alert>
-      </Snackbar>
     </>
   );
 }
