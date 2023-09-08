@@ -1,7 +1,7 @@
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { useState } from 'react';
-import PageSettingsDialog from './PageSettingsDialog';
+import PageSettingsDialog from '../../PageSettingsDialog';
 
 export default function AddButton() {
   const [isOpen, setIsOpen] = useState(false);

@@ -23,7 +23,7 @@ const emptyFilters = {
   isInProduction: false,
 };
 
-export default function FilterPanel() {
+export default function PageAdminPanel() {
   const [filters, setFilters] = useState(emptyFilters);
   const { pages, isLoading, isError } = usePages();
   const [filteredPages, setFilteredPages] = useState<Page[]>([]);

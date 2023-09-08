@@ -1,9 +1,9 @@
-import FilterPanel from 'components/PageAdminPage/FilterPanel';
+import PageAdminPanel from 'components/PageAdminPage/PageAdminPanel';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import AdminAccess from 'components/AdminPage/AdminAccess';
-import AddButton from 'components/PageAdminPage/AddButton';
+import AddButton from 'components/PageAdminPage/PageCard/Buttons/AddButton';
 import { useLayoutContext } from 'LayoutContext';
 import { useEffect } from 'react';
 
@@ -21,7 +21,7 @@ export default function PageAdminPage() {
           <Typography variant="h1" sx={{ color: 'black' }}>
             {title}
           </Typography>
-          <FilterPanel />
+          <PageAdminPanel />
         </Stack>
       </Container>
     </AdminAccess>

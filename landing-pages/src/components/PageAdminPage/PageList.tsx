@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Unstable_Grid2';
 import { Page } from 'server/dist/model/entity/Page';
-import PageCard from './PageCard';
+import PageCard from './PageCard/PageCard';
 
 type PageListProps = {
   pages: Page[];

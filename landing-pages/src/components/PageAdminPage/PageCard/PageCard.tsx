@@ -2,11 +2,11 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import EditButton from './EditButton';
-import DeleteButton from './DeleteButton';
+import EditButton from './Buttons/EditButton';
+import DeleteButton from './Buttons/DeleteButton';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-import DuplicateButton from './DuplicateButton';
+import DuplicateButton from './Buttons/DuplicateButton';
 
 type PageCardProps = {
   title: string;
