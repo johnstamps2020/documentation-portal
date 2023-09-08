@@ -101,14 +101,14 @@ enum class GwConfigParams(val paramValue: String) {
     DB_DUMP_ZIP_PACKAGE_NAME("docportalconfig.zip"),
 
     // TODO: Change croissant to docportal before switch to main
-    DOC_PORTAL_APP_NAME("docportal"),
+    DOC_PORTAL_APP_NAME("croissant"),
     DOC_PORTAL_FRONTEND_APP_NAME("docportal-frontend"),
     DOC_PORTAL_DIR("server"),
     DOC_PORTAL_FRONTEND_DIR("landing-pages"),
     DOC_PORTAL_KUBE_DEPLOYMENT_FILE("${DOC_PORTAL_DIR.paramValue}/kube/deployment.yml"),
 
     // TODO: Change the paths to the gateway config files before switch to main
-    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config.yml"),
+    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config-croissant.yml"),
     DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config-croissant.yml"),
     DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE("${DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/deployment.yml"),
     S3_KUBE_DEPLOYMENT_FILE("aws/s3/kube/service-gateway-config.yml")
@@ -167,7 +167,7 @@ enum class GwAtmosLabels(val labelValue: String) {
 
 // TODO: Remove croissant from the image tag before switch to main
 enum class GwDockerImageTags(val tagValue: String) {
-    DOC_PORTAL("latest"), DOC_PORTAL_FRONTEND("latest")
+    DOC_PORTAL("latest-croissant"), DOC_PORTAL_FRONTEND("latest")
 }
 
 enum class GwTriggerPaths(val pathValue: String) {
@@ -317,7 +317,7 @@ object Helpers {
         ) {
             "https://croissant.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
         } else {
-            "https://docs.${deployEnv}.ccs.guidewire.net"
+            "https://croissant.${deployEnv}.ccs.guidewire.net"
         }
     }
 
