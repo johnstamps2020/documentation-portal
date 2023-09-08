@@ -77,7 +77,7 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
         sx={{
           display: 'grid',
           gridTemplateColumns: { md: 'repeat(3, 1fr)', sm: '1fr' },
-          gap: 6,
+          gap: 1,
           px: 2,
         }}
       >
