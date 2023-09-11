@@ -110,10 +110,14 @@ export default function PageSettingsForm({
   }
 
   function handleChange(field: string, value: string | boolean) {
-    setTmpPageData({
-      ...tmpPageData,
+    setTmpPageData((currentTmpPageData) => ({
+      ...currentTmpPageData,
       [field]: value,
-    });
+    }));
+
+    if (field === 'path') {
+      setPageAlreadyExists(false);
+    }
   }
 
   function handleResetForm() {
