@@ -44,10 +44,11 @@ async function sendRequest(url: string, { arg }: { arg: NewPage }) {
 }
 
 export default function PageSettingsForm({
-  pagePath,
+  pagePath: pagePathFromProps,
   disabled,
   initialPageData,
 }: PageSettingsFormProps) {
+  const [pagePath, setPagePath] = useState(pagePathFromProps);
   const { showMessage } = useNotification();
   const { pageData, isError, isLoading } = usePageData(pagePath);
   const { trigger, isMutating } = useSWRMutation(
@@ -158,6 +159,7 @@ export default function PageSettingsForm({
 
       if (response?.ok) {
         showMessage('Page updated successfully', 'success');
+        setPagePath(tmpPageData.path);
         setDataChanged(false);
       } else if (response) {
         const jsonError = await response.json();
