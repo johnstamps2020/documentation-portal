@@ -28,7 +28,7 @@ export default function EditButton({ pagePath }: EditButtonProps) {
         <EditIcon color="primary" />
       </IconButton>
       <PageSettingsDialog
-        title="Edit page settings"
+        title="Update page settings"
         onClose={handleCloseEditor}
         isOpen={isOpen}
       >
