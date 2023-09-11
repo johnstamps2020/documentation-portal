@@ -24,6 +24,7 @@ export default function DeleteButton({ pagePath }: DeleteButtonProps) {
   }
 
   function handleCloseConfirmationMessage() {
+    setDeletePath('');
     setIsOpen(false);
   }
 
