@@ -1,17 +1,16 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { Doc } from 'server/dist/model/entity/Doc';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import DocForm from 'components/DocForm/DocForm';
-import { Release } from 'server/dist/model/entity/Release';
-import { Subject } from 'server/dist/model/entity/Subject';
 import Modal from '@mui/material/Modal';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import { Language } from 'server/dist/model/entity/Language';
 import { useLayoutContext } from 'LayoutContext';
+import DocForm from 'components/DocForm/DocForm';
+import { useNotification } from 'components/Layout/NotificationContext';
+import React, { useEffect, useState } from 'react';
+import { Doc } from 'server/dist/model/entity/Doc';
+import { Language } from 'server/dist/model/entity/Language';
+import { Release } from 'server/dist/model/entity/Release';
+import { Subject } from 'server/dist/model/entity/Subject';
 
 const emptyDoc: Doc = {
   uuid: '',
@@ -32,16 +31,11 @@ const emptyDoc: Doc = {
 };
 
 export default function DocAdminPage() {
+  const { showMessage } = useNotification();
   const { setTitle } = useLayoutContext();
   const [docData, setDocData] = useState<Doc[]>();
   const [memorizedDoc, memorizeDoc] = useState<Doc>(emptyDoc);
   const [showForm, setShowForm] = useState(false);
-  const [snack, setSnack] = useState({
-    message: '',
-    color: '',
-    open: false,
-  });
-  const SnackbarContext = createContext({});
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -61,11 +55,6 @@ export default function DocAdminPage() {
   }, [setTitle]);
 
   const deleteDoc = async (id: string) => {
-    setSnack({
-      message: '',
-      color: '',
-      open: false,
-    });
     const data = {
       id: id,
     };
@@ -78,27 +67,17 @@ export default function DocAdminPage() {
       body: JSON.stringify(data),
     });
     if (response.ok) {
-      setSnack({
-        message: 'Successfully deleted document.',
-        color: 'green',
-        open: true,
-      });
+      showMessage('Successfully deleted document.', 'success');
       await getDocData();
     } else {
-      setSnack({
-        message: 'Oops, something went wrong while deleting document.',
-        color: 'red',
-        open: true,
-      });
+      showMessage(
+        'Oops, something went wrong while deleting document.',
+        'error'
+      );
     }
   };
 
   const updateDoc = async (doc: Doc) => {
-    setSnack({
-      message: '',
-      color: '',
-      open: false,
-    });
     //updating document
     if (doc && docData && docData.find((document) => document.id === doc.id)) {
       const data = {
@@ -128,18 +107,13 @@ export default function DocAdminPage() {
       const result = await response.json();
       console.log('result is: ', JSON.stringify(result, null, 4));
       if (response.ok) {
-        setSnack({
-          message: 'Successfully updated document.',
-          color: 'green',
-          open: true,
-        });
+        showMessage('Successfully updated document.', 'success');
         await getDocData();
       } else {
-        setSnack({
-          message: 'Oops, something went wrong while updating document.',
-          color: 'red',
-          open: true,
-        });
+        showMessage(
+          'Oops, something went wrong while updating document.',
+          'error'
+        );
       }
     }
     //creating new document
@@ -170,18 +144,13 @@ export default function DocAdminPage() {
       const result = await response.json();
       console.log('result is: ', JSON.stringify(result, null, 4));
       if (response.ok) {
-        setSnack({
-          message: 'Successfully added new document.',
-          color: 'green',
-          open: true,
-        });
+        showMessage('Successfully added new document.', 'success');
         await getDocData();
       } else {
-        setSnack({
-          message: 'Oops, something went wrong while adding new document.',
-          color: 'red',
-          open: true,
-        });
+        showMessage(
+          'Oops, something went wrong while adding new document.',
+          'error'
+        );
       }
     }
   };
@@ -299,14 +268,6 @@ export default function DocAdminPage() {
             />
           </>
         </Modal>
-        <SnackbarContext.Provider value={{ snack }}>
-          <Snackbar
-            open={snack.open}
-            onClose={() => setSnack({ message: '', color: '', open: false })}
-          >
-            <Alert>{snack.message}</Alert>
-          </Snackbar>
-        </SnackbarContext.Provider>
       </div>
     </>
   );
