@@ -1,5 +1,6 @@
 import { Column, Entity, Unique } from 'typeorm';
 import { GwEntity } from './GwEntity';
+import { SearchFilters } from '../../types/config';
 
 @Entity()
 @Unique(['path'])
@@ -11,5 +12,5 @@ export class Page extends GwEntity {
   title: string;
 
   @Column({ type: 'jsonb', nullable: true })
-  searchFilters: { [key: string]: string[] } | null;
+  searchFilters: SearchFilters | null;
 }

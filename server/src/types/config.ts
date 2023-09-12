@@ -13,3 +13,7 @@ export type PageItemsResponse = {
   pages: Page[];
   externalLinks: ExternalLink[];
 };
+
+export type SearchFilters = {
+  [key: string]: string[];
+};
