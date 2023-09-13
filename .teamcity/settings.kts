@@ -415,6 +415,7 @@ object Helpers {
         val appBaseUrl = getTargetUrl(deployEnv)
         val docS3Url = getS3BucketUrl(deployEnv)
         val portal2S3Url = getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)
+        // TODO: Remove the condition for the ENABLE_AUTH parameter when testing is done.
         val commonEnvVars = """
             export APP_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
@@ -424,7 +425,12 @@ object Helpers {
             export FRONTEND_URL="http://docportal-frontend.doctools:6006"
             export DOC_S3_URL="$docS3Url"
             export PORTAL2_S3_URL="$portal2S3Url"
-            export ENABLE_AUTH="yes"
+            export ENABLE_AUTH="${
+            when (deployEnv) {
+                GwDeployEnvs.PROD.envName -> "no"
+                else -> "yes"
+            }
+        }"
             export DD_SERVICE_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export OKTA_AUDIENCE="${GwConfigParams.OKTA_AUDIENCE.paramValue}"
             export OKTA_ADMIN_GROUPS="${GwConfigParams.OKTA_ADMIN_GROUPS.paramValue}"
@@ -453,22 +459,14 @@ object Helpers {
                 export LIMITS_MEMORY="4G"
                 export LIMITS_CPU="2"
             """.trimIndent()
-            // TODO: The condition for the DEPLOY_ENV variable is needed for testing.
-            //  We need to simulate prod on staging to check the content.
-            //  Remove it when testing is done.
+
             else -> """
                 $commonEnvVars
                 export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.imageUrl}"
                 export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
                 export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
-                export DEPLOY_ENV="${
-                when (deployEnv) {
-                    GwDeployEnvs.STAGING.envName -> GwDeployEnvs.OMEGA2_ANDROMEDA.envName
-                    GwDeployEnvs.DEV.envName -> deployEnv
-                    else -> ""
-                }
-            }"
+                export DEPLOY_ENV="$deployEnv"
                 export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
                 export OKTA_ISSUER_APAC="issuerNotConfigured"
                 export OKTA_ISSUER_EMEA="issuerNotConfigured"
