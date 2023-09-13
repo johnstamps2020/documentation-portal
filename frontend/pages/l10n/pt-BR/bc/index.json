@@ -5,6 +5,16 @@
   "class": "threeCards version pt-BR l10n",
   "items": [
     {
+      "label": "2023.02",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia do aplicativo",
+          "id": "isbc202302ptapp"
+        }
+      ]
+    },
+    {
       "label": "2021.11",
       "class": "categoryCard cardShadow",
       "items": [
