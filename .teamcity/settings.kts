@@ -415,6 +415,7 @@ object Helpers {
         val appBaseUrl = getTargetUrl(deployEnv)
         val docS3Url = getS3BucketUrl(deployEnv)
         val portal2S3Url = getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)
+        // TODO: Remove the condition for the ENABLE_AUTH parameter when testing is done.
         val commonEnvVars = """
             export APP_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
@@ -424,7 +425,12 @@ object Helpers {
             export FRONTEND_URL="http://docportal-frontend.doctools:6006"
             export DOC_S3_URL="$docS3Url"
             export PORTAL2_S3_URL="$portal2S3Url"
-            export ENABLE_AUTH="yes"
+            export ENABLE_AUTH="${
+            when (deployEnv) {
+                GwDeployEnvs.PROD.envName -> "no"
+                else -> "yes"
+            }
+        }"
             export DD_SERVICE_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export OKTA_AUDIENCE="${GwConfigParams.OKTA_AUDIENCE.paramValue}"
             export OKTA_ADMIN_GROUPS="${GwConfigParams.OKTA_ADMIN_GROUPS.paramValue}"
