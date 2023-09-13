@@ -6,8 +6,10 @@ import path from 'path';
 import { Readable } from 'stream';
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
+// TODO: Hardcoding the bucket name to staging to simulate prod on staging.
+//  Revert this change after testing is done
 const bucketParams = {
-  Bucket: `tenant-doctools-${process.env.DEPLOY_ENV}-builds`,
+  Bucket: `tenant-doctools-staging-builds`,
 };
 
 export async function getConfigFile(
