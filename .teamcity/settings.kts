@@ -453,14 +453,22 @@ object Helpers {
                 export LIMITS_MEMORY="4G"
                 export LIMITS_CPU="2"
             """.trimIndent()
-
+            // TODO: The condition for the DEPLOY_ENV variable is needed for testing.
+            //  We need to simulate prod on staging to check the content.
+            //  Remove it when testing is done.
             else -> """
                 $commonEnvVars
                 export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.imageUrl}"
                 export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
                 export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
-                export DEPLOY_ENV="$deployEnv"
+                export DEPLOY_ENV="${
+                when (deployEnv) {
+                    GwDeployEnvs.STAGING.envName -> GwDeployEnvs.OMEGA2_ANDROMEDA.envName
+                    GwDeployEnvs.DEV.envName -> deployEnv
+                    else -> ""
+                }
+            }"
                 export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
                 export OKTA_ISSUER_APAC="issuerNotConfigured"
                 export OKTA_ISSUER_EMEA="issuerNotConfigured"
