@@ -6,6 +6,13 @@
       "title": "IS 2021.11.2 pt-BR",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/pt-BR/2021.11.2"
+    },
+    {
+      "id": "is202302ptsrc",
+      "title": "IS 2023.02.0 pt",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/pt/2023.02.0"
     }
+
   ]
 }
