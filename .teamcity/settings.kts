@@ -4201,6 +4201,7 @@ object Admin {
             val deployContentStorageBuildType = BuildType {
                 name = "Deploy content storage to $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+                maxRunningBuilds = 1
 
                 vcs {
                     root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -4609,6 +4610,7 @@ object Admin {
             val deployDatabaseBuildType = BuildType {
                 name = "Deploy database to $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+                maxRunningBuilds = 1
 
                 vcs {
                     root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -5013,6 +5015,7 @@ object Admin {
                 description = "Deploys db, server and React landing pages to $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
                 type = BuildTypeSettings.Type.COMPOSITE
+                maxRunningBuilds = 1
 
                 dependencies {
                     snapshotDependencies.forEach {
@@ -5129,6 +5132,7 @@ object Admin {
             val deployReactLandingPagesBuildType = BuildType {
                 name = "Deploy React landing pages to $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+                maxRunningBuilds = 1
 
                 vcs {
                     root(
@@ -5317,6 +5321,7 @@ object Admin {
             return BuildType {
                 name = "Deploy HTML5 dependencies to $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+                maxRunningBuilds = 1
 
                 vcs {
                     root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -5534,6 +5539,7 @@ object Admin {
             val deployServerBuildType = BuildType {
                 name = "Deploy server to $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+                maxRunningBuilds = 1
 
                 vcs {
                     root(GwVcsRoots.DocumentationPortalGitVcsRoot)
