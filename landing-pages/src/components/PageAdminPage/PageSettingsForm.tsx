@@ -13,13 +13,15 @@ import { useEffect, useState } from 'react';
 import { Page } from 'server/dist/model/entity/Page';
 import useSWRMutation from 'swr/mutation';
 import { usePageData } from '../../hooks/usePageData';
+import { SearchFilters } from 'server/dist/types/config';
 
-type NewPage = Omit<Page, 'uuid'>;
+type NewPage = Omit<Page, 'uuid'> & { stringifiedSearchFilters?: string };
 
 export const emptyPage: NewPage = {
   path: '',
   title: '',
   searchFilters: {},
+  stringifiedSearchFilters: '{}',
   internal: true,
   public: false,
   earlyAccess: true,
@@ -43,6 +45,19 @@ async function sendRequest(url: string, { arg }: { arg: NewPage }) {
   });
 }
 
+function generateTmpPageData(pageData: NewPage | undefined) {
+  return pageData
+    ? {
+        ...pageData,
+        stringifiedSearchFilters: JSON.stringify(
+          pageData.searchFilters,
+          null,
+          4
+        ),
+      }
+    : emptyPage;
+}
+
 export default function PageSettingsForm({
   pagePath: pagePathFromProps,
   disabled,
@@ -55,22 +70,34 @@ export default function PageSettingsForm({
     '/admin/entity/Page',
     sendRequest
   );
-
-  const [tmpPageData, setTmpPageData] = useState(initialPageData || emptyPage);
+  const [tmpPageData, setTmpPageData] = useState(
+    generateTmpPageData(initialPageData)
+  );
+  const [editingDisabled, setEditingDisabled] = useState(
+    disabled ? disabled : false
+  );
   const [canSubmitData, setCanSubmitData] = useState(false);
   const [dataChanged, setDataChanged] = useState(false);
   const [pageAlreadyExists, setPageAlreadyExists] = useState<boolean>();
+  const [jsonIsInvalid, setJsonIsInvalid] = useState<boolean>();
 
   useEffect(() => {
-    pagePath && pageData && setTmpPageData(pageData);
+    pagePath && pageData && setTmpPageData(generateTmpPageData(pageData));
   }, [pageData, pagePath]);
 
   useEffect(() => {
+    if (disabled || isMutating) {
+      return setEditingDisabled(true);
+    }
+
+    setEditingDisabled(false);
+  }, [disabled, isMutating]);
+
+  useEffect(() => {
+    const dataForComparison = initialPageData || pageData;
     if (
-      (!pagePath &&
-        (JSON.stringify(tmpPageData) === JSON.stringify(emptyPage) ||
-          JSON.stringify(tmpPageData) === JSON.stringify(initialPageData))) ||
-      JSON.stringify(tmpPageData) === JSON.stringify(pageData)
+      JSON.stringify(tmpPageData) ===
+      JSON.stringify(generateTmpPageData(dataForComparison))
     ) {
       setDataChanged(false);
     } else {
@@ -82,6 +109,7 @@ export default function PageSettingsForm({
     if (
       isMutating ||
       pageAlreadyExists ||
+      jsonIsInvalid ||
       !tmpPageData.path ||
       !tmpPageData.title
     ) {
@@ -89,7 +117,7 @@ export default function PageSettingsForm({
     } else {
       setCanSubmitData(true);
     }
-  }, [pageData, tmpPageData, pageAlreadyExists, isMutating]);
+  }, [pageData, tmpPageData, pageAlreadyExists, jsonIsInvalid, isMutating]);
 
   if (isError && isError.status !== 307) {
     return (
@@ -122,8 +150,42 @@ export default function PageSettingsForm({
   }
 
   function handleResetForm() {
-    setTmpPageData(pageData || initialPageData || emptyPage);
+    const resetToData = pageData || initialPageData;
+    setTmpPageData(generateTmpPageData(resetToData));
     setPageAlreadyExists(false);
+    setJsonIsInvalid(false);
+  }
+
+  function convertValuesOfSearchFiltersToArray(searchFiltersJson: {}): SearchFilters {
+    return Object.entries(searchFiltersJson).reduce((acc, [key, value]) => {
+      if (Array.isArray(value)) {
+        acc[key] = value;
+      } else {
+        acc[key] = Array.of(value) as string[];
+      }
+      return acc;
+    }, {} as SearchFilters);
+  }
+
+  function handleValidateAndPrettify() {
+    try {
+      const { stringifiedSearchFilters } = tmpPageData;
+      if (!stringifiedSearchFilters) {
+        return;
+      }
+      const parsedJson = JSON.parse(stringifiedSearchFilters);
+      const normalizedJson = convertValuesOfSearchFiltersToArray(parsedJson);
+      setTmpPageData({
+        ...tmpPageData,
+        stringifiedSearchFilters: JSON.stringify(normalizedJson, null, 4),
+      });
+      showMessage('Looking good, feeling good 🤩', 'success');
+      setJsonIsInvalid(false);
+    } catch (err) {
+      setJsonIsInvalid(true);
+      showMessage((err as Error).message, 'error');
+      return;
+    }
   }
 
   async function checkIfPageExists(): Promise<boolean> {
@@ -137,14 +199,9 @@ export default function PageSettingsForm({
 
     const jsonData = await response.json();
 
-    if (
-      jsonData.path === tmpPageData.path &&
-      pageData?.path !== tmpPageData.path
-    ) {
-      return true;
-    }
-
-    return false;
+    return (
+      jsonData.path === tmpPageData.path && pageData?.path !== tmpPageData.path
+    );
   }
 
   async function handleSave() {
@@ -154,11 +211,31 @@ export default function PageSettingsForm({
         setPageAlreadyExists(true);
         return;
       }
-
-      const response = await trigger(tmpPageData);
+      let dataToSave = tmpPageData;
+      if (tmpPageData.stringifiedSearchFilters) {
+        const parsedSearchFilters = JSON.parse(
+          tmpPageData.stringifiedSearchFilters
+        );
+        const normalizedSearchFilters =
+          convertValuesOfSearchFiltersToArray(parsedSearchFilters);
+        setTmpPageData({
+          ...tmpPageData,
+          stringifiedSearchFilters: JSON.stringify(
+            normalizedSearchFilters,
+            null,
+            4
+          ),
+        });
+        dataToSave = {
+          ...tmpPageData,
+          searchFilters: normalizedSearchFilters,
+        };
+      }
+      delete tmpPageData.stringifiedSearchFilters;
+      const response = await trigger(dataToSave);
 
       if (response?.ok) {
-        showMessage('Page updated successfully', 'success');
+        showMessage('Page saved successfully', 'success');
         setPagePath(tmpPageData.path);
         setDataChanged(false);
       } else if (response) {
@@ -166,7 +243,7 @@ export default function PageSettingsForm({
         throw new Error(jsonError.message);
       }
     } catch (err) {
-      showMessage(`Page not updated: ${err}`, 'error');
+      showMessage(`Page not saved: ${err}`, 'error');
     }
   }
 
@@ -183,7 +260,7 @@ export default function PageSettingsForm({
         required
         error={pageAlreadyExists}
         helperText={pageAlreadyExists && 'Page with this path already exists'}
-        disabled={disabled || isMutating}
+        disabled={editingDisabled}
         label="Path"
         value={tmpPageData.path}
         onChange={(event) => handleChange('path', event.target.value)}
@@ -191,7 +268,7 @@ export default function PageSettingsForm({
       />
       <TextField
         required
-        disabled={disabled || isMutating}
+        disabled={editingDisabled}
         label="Title"
         onChange={(event) => handleChange('title', event.target.value)}
         value={tmpPageData.title}
@@ -207,7 +284,7 @@ export default function PageSettingsForm({
           {['internal', 'public', 'earlyAccess', 'isInProduction'].map(
             (key) => (
               <FormControlLabel
-                disabled={disabled || isMutating}
+                disabled={editingDisabled}
                 key={key}
                 control={
                   <Switch
@@ -227,6 +304,34 @@ export default function PageSettingsForm({
           )}
         </Box>
       </FormGroup>
+      <Stack spacing={1} sx={{ width: '100%' }}>
+        <Typography variant="h3">Search filters</Typography>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={handleValidateAndPrettify}
+          disabled={editingDisabled}
+        >
+          Validate and Prettify
+        </Button>
+        <TextField
+          disabled={editingDisabled}
+          onChange={(event) =>
+            handleChange('stringifiedSearchFilters', event.target.value)
+          }
+          error={jsonIsInvalid}
+          helperText="If a filter value is a string, it is automatically converted to an array when you validate or save."
+          value={tmpPageData.stringifiedSearchFilters}
+          multiline
+          fullWidth
+          minRows={10}
+          maxRows={10}
+          sx={{
+            backgroundColor: '#ffffff',
+            maxWidth: '400px',
+          }}
+        />
+      </Stack>
       <Stack direction="row" spacing={1}>
         <ButtonGroup disabled={disabled || !dataChanged}>
           <Button
