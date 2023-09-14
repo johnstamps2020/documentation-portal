@@ -1,16 +1,40 @@
-import Typography from '@mui/material/Typography';
+import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
-import bookOpenIcon from 'images/twoColumn/book-open-solid.svg';
-import codeIcon from 'images/twoColumn/code-solid.svg';
-import cogsIcon from 'images/twoColumn/cogs-solid.svg';
-import ObjectGroupIcon from 'images/twoColumn/object-group-regular.svg';
-import puzzlePieceIcon from 'images/twoColumn/puzzle-piece-solid.svg';
-import usersCogIcon from 'images/twoColumn/users-cog-solid.svg';
-import wrenchIcon from 'images/twoColumn/wrench-solid.svg';
+import Typography from '@mui/material/Typography';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import glossary from 'images/twoColumn/book-open-solid.svg';
+import development from 'images/twoColumn/code-solid.svg';
+import configuration from 'images/twoColumn/cogs-solid.svg';
+import features from 'images/twoColumn/object-group-regular.svg';
+import integration from 'images/twoColumn/puzzle-piece-solid.svg';
+import administration from 'images/twoColumn/users-cog-solid.svg';
+import installation from 'images/twoColumn/wrench-solid.svg';
+import releaseNotes from 'images/twoColumn/file-alt-regular.svg';
+import bestPractices from 'images/twoColumn/lightbulb-regular.svg';
+import aboutThisDocumentation from 'images/twoColumn/book-solid.svg';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import SectionItem from './SectionItem';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
-import Skeleton from '@mui/material/Skeleton';
+
+const icons = [
+  { regex: /glossary/, src: glossary },
+  { regex: /development/, src: development },
+  { regex: /configuration/, src: configuration },
+  { regex: /features/, src: features },
+  { regex: /integration/, src: integration },
+  { regex: /administration/, src: administration },
+  { regex: /installation/, src: installation },
+  { regex: /release notes/, src: releaseNotes },
+  { regex: /best practices/, src: bestPractices },
+  { regex: /about/, src: aboutThisDocumentation },
+];
+
+function getIcon(label: string) {
+  const matchingIcon = icons.find((icon) =>
+    icon.regex.test(label.toLocaleLowerCase())
+  );
+
+  return matchingIcon?.src || releaseNotes;
+}
 
 export type SectionProps = {
   label: string;
@@ -37,16 +61,7 @@ export default function Section({ label, items }: SectionProps) {
     );
   }
 
-  const iconArray = [
-    bookOpenIcon,
-    codeIcon,
-    cogsIcon,
-    ObjectGroupIcon,
-    puzzlePieceIcon,
-    usersCogIcon,
-    wrenchIcon,
-  ];
-  const randomIcon = iconArray[Math.floor(Math.random() * iconArray.length)];
+  const icon = getIcon(label);
 
   return (
     <Stack
@@ -59,7 +74,7 @@ export default function Section({ label, items }: SectionProps) {
     >
       <Stack direction="row" spacing={2} alignItems="center">
         <img
-          src={randomIcon}
+          src={icon}
           alt="Section icon"
           style={{
             width: '20px',
