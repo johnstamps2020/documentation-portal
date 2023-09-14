@@ -16,22 +16,9 @@ import { winstonLogger } from '../controllers/loggerController';
 const router = Router();
 
 router.get('/breadcrumbs', async function (req, res, next) {
-  try {
-    const pagePathname = req.query.pagePathname as string;
-    if (!pagePathname) {
-      return res
-        .status(500)
-        .send('Provide a pagePathname query parameter to get a breadcrumb');
-    }
-
-    const rootBreadcrumb = await getRootBreadcrumb(pagePathname.toString());
-    return res.send(rootBreadcrumb);
-  } catch (err) {
-    winstonLogger.error(
-      `[SAFE CONFIG] Problem sending breadcrumbs: ${JSON.stringify(err)}`
-    );
-    next(err);
-  }
+  const { pagePathname } = req.query;
+  const { status, body } = await getRootBreadcrumb(pagePathname as string, res);
+  return res.status(status).json(body);
 });
 
 router.get('/versionSelectors', async function (req, res) {

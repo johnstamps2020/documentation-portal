@@ -784,51 +784,79 @@ export async function getVersionSelector(
   }
 }
 
-export async function getRootBreadcrumb(pagePathname: string) {
-  const emptyRootPage = {
-    rootPage: {},
+export async function getRootBreadcrumb(
+  pagePathname: string,
+  res: Response
+): Promise<ApiResponse> {
+  const emptyRootPageResponse = {
+    status: 200,
+    body: {
+      rootPage: {},
+    },
   };
   try {
+    if (!pagePathname) {
+      return {
+        status: 400,
+        body: {
+          message:
+            'Invalid request. Provide the "pagePathname" query parameter to get the root breadcrumb.',
+        },
+      };
+    }
     const response = await fetch(
       `${process.env.APP_BASE_URL}/root-breadcrumbs.json`
     );
     if (!response.ok) {
-      return emptyRootPage;
+      return emptyRootPageResponse;
     }
     const breadcrumbsJson = await response.json();
     const docEntity = await getDocByUrl(pagePathname);
     if (!docEntity) {
-      return emptyRootPage;
+      return emptyRootPageResponse;
     }
     const matchingBreadcrumb = breadcrumbsJson.find(
       (b: { docId: string; rootPages: string[] }) => b.docId === docEntity.id
     );
     if (matchingBreadcrumb.rootPages.length !== 1) {
-      return emptyRootPage;
+      return emptyRootPageResponse;
     }
-    const rootPagePath = matchingBreadcrumb.rootPages[0];
-    const rootPageEntity = await findEntity(
+    const matchingRootPage = matchingBreadcrumb.rootPages[0];
+    const findEntityResult = await findEntity(
       Page.name,
       {
-        path: rootPagePath,
+        path: matchingRootPage.replace(/^\//g, ''),
       },
       false
     );
-    if (!rootPageEntity) {
-      return emptyRootPage;
+
+    if (!findEntityResult) {
+      return emptyRootPageResponse;
     }
-    return {
-      rootPage: {
-        path: matchingBreadcrumb.rootPages[0],
-        label: rootPageEntity.title,
-      },
-    };
+    const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
+      res,
+      findEntityResult.public,
+      findEntityResult.internal,
+      findEntityResult.isInProduction
+    );
+    if (isUserAllowedToAccessResourceResult.status === 200) {
+      return {
+        status: 200,
+        body: {
+          rootPage: {
+            path: matchingRootPage,
+            label: findEntityResult.title,
+          },
+        },
+      };
+    }
+    return emptyRootPageResponse;
   } catch (err) {
     winstonLogger.error(
       `Problem getting root breadcrumb for page: "${pagePathname}":
           ERROR: ${JSON.stringify(err)}`
     );
-    return emptyRootPage;
+    return emptyRootPageResponse;
   }
 }
 
