@@ -46,13 +46,14 @@ export default function ProductFamilyLayout({
       container
       flexDirection="column"
       margin="auto"
-      padding="0 20px 64px 20px"
+      py={5}
+      px={1}
       gap={5}
       alignContent="center"
     >
       <EditPagePropsButton pagePath={pageData.path} />
       <Grid>
-        <Stack spacing={1} direction="column" width="100%">
+        <Stack gap={1} direction="column" width="100%">
           {isRelease && (
             <SelfManagedLink
               pagePath={pageData.path}

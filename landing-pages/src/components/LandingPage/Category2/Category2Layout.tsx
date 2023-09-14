@@ -67,7 +67,7 @@ export default function Category2Layout({
         <Grid {...rowContainerProps}>
           <Grid sx={leftSizing}>
             <EditPagePropsButton pagePath={pageData.path} />
-            <Stack spacing={1} direction="column" width="100%">
+            <Stack gap={1} direction="column" width="100%">
               <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
                 <Breadcrumbs />
               </Container>
