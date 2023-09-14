@@ -399,7 +399,8 @@ export async function putConfigsInDatabase(req: Request): Promise<ApiResponse> {
 }
 
 async function createExternalLinkEntities(
-  pageItems: LegacyItem[]
+  pageItems: LegacyItem[],
+  dbPageConfig: Page
 ): Promise<ApiResponse> {
   try {
     const dbExternalLinkConfigsToSave: ExternalLink[] = [];
@@ -418,17 +419,25 @@ async function createExternalLinkEntities(
               dbExternalLinkConfig.url = externalLink;
               dbExternalLinkConfig.label = innerItem.label;
               dbExternalLinkConfig.public = false;
-              dbExternalLinkConfig.isInProduction = false;
-              dbExternalLinkConfig.earlyAccess = false;
               dbExternalLinkConfig.internal = false;
+              dbExternalLinkConfig.earlyAccess = dbPageConfig.earlyAccess;
+              dbExternalLinkConfig.isInProduction = dbPageConfig.isInProduction;
 
-              const dbExternalLinkConfigToSave = await addUuidIfEntityExists(
+              const findLinkEntityResult = await findEntity(
                 ExternalLink.name,
                 { url: dbExternalLinkConfig.url },
-                dbExternalLinkConfig
+                false
               );
+              if (findLinkEntityResult) {
+                dbExternalLinkConfig.uuid = findLinkEntityResult.uuid;
+                dbExternalLinkConfig.isInProduction =
+                  findLinkEntityResult.isInProduction ||
+                  dbPageConfig.isInProduction;
+                dbExternalLinkConfig.earlyAccess =
+                  findLinkEntityResult.earlyAccess || dbPageConfig.earlyAccess;
+              }
               dbExternalLinkConfigsToSave.push(
-                dbExternalLinkConfigToSave as ExternalLink
+                dbExternalLinkConfig as ExternalLink
               );
             }
           }
@@ -510,7 +519,7 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
         dbPageConfig.public = page.public;
         dbPageConfig.earlyAccess = false;
         dbPageConfig.searchFilters = page.search_filters || null;
-        await createExternalLinkEntities(page.items);
+        await createExternalLinkEntities(page.items, dbPageConfig);
         const dbPageConfigToSave = await addUuidIfEntityExists(
           Page.name,
           { path: dbPageConfig.path },
