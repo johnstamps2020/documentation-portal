@@ -805,7 +805,7 @@ export async function getRootBreadcrumb(
       };
     }
     const response = await fetch(
-      `${process.env.APP_BASE_URL}/root-breadcrumbs.json`
+      `${process.env.FRONTEND_URL}/root-breadcrumbs.json`
     );
     if (!response.ok) {
       return emptyRootPageResponse;
