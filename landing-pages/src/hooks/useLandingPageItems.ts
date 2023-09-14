@@ -128,14 +128,22 @@ export function useLandingPageItems(items: LandingPageItemProps[]) {
     }
   );
 
-  data?.sort((a, b) => {
-    const aLabel: string = a.label || a.title || '';
-    const bLabel: string = b.label || b.title || '';
-    return aLabel.localeCompare(bLabel);
-  });
+  const landingPageItems = items
+    .map((inputItem) => {
+      const matchingOutputItem = data?.find((outputItem) => {
+        return (
+          (outputItem.label &&
+            inputItem.label &&
+            outputItem.label === inputItem.label) ||
+          (outputItem.title && outputItem.title === inputItem.label)
+        );
+      });
+      return matchingOutputItem;
+    })
+    .filter(Boolean) as LandingPageItemData[];
 
   return {
-    landingPageItems: data,
+    landingPageItems,
     isLoading,
     isError: error,
   };
