@@ -99,7 +99,7 @@ enum class GwConfigParams(val paramValue: String) {
     DB_CLIENT_POD_NAME("postgresql-client-shell-teamcity"),
     DB_CLIENT_IMAGE_NAME("alpine"),
     DB_DUMP_ZIP_PACKAGE_NAME("docportalconfig.zip"),
-    ROOT_BREADCRUMBS_JSON_FILE("scripts/out/root-breadcrumbs.json"),
+    ROOT_BREADCRUMBS_JSON_FILE("root-breadcrumbs.json"),
 
     // TODO: Change croissant to docportal before switch to main
     DOC_PORTAL_APP_NAME("croissant"),
@@ -5257,7 +5257,7 @@ object Admin {
                 cleanCheckout = true
             }
 
-            artifactRules = GwConfigParams.ROOT_BREADCRUMBS_JSON_FILE.paramValue
+            artifactRules = "scripts/out/${ GwConfigParams.ROOT_BREADCRUMBS_JSON_FILE.paramValue }"
 
             steps {
                 nodeJS {
