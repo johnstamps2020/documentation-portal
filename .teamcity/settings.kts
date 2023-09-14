@@ -5069,7 +5069,7 @@ object Admin {
                 listOf(
                     Pair(
                         GenerateRootBreadcrumbsFileBuildType,
-                        "${GwConfigParams.ROOT_BREADCRUMBS_JSON_FILE.paramValue} => ${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/public/${GwConfigParams.ROOT_BREADCRUMBS_JSON_FILE.paramValue}"
+                        "${GwConfigParams.ROOT_BREADCRUMBS_JSON_FILE.paramValue} => ${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/public"
                     )
                 )
             )
@@ -5257,7 +5257,7 @@ object Admin {
                 cleanCheckout = true
             }
 
-            artifactRules = "scripts/out/${GwConfigParams.ROOT_BREADCRUMBS_JSON_FILE.paramValue}"
+            artifactRules = "scripts/out/${ GwConfigParams.ROOT_BREADCRUMBS_JSON_FILE.paramValue }"
 
             steps {
                 nodeJS {
