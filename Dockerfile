@@ -14,6 +14,7 @@ COPY yarn.lock yarn.lock
 COPY server server
 COPY landing-pages landing-pages
 COPY shims shims
+COPY scripts scripts
 
 RUN yarn
 RUN yarn build
