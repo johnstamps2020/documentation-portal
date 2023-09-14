@@ -21,7 +21,7 @@ export default function FourOhFourPage() {
       <Typography variant="h1" sx={{ color: 'black', textAlign: 'center' }}>
         404: page not found
       </Typography>
-      <Stack spacing={2}>
+      <Stack spacing={2} sx={{ maxWidth: '100%' }}>
         {notFoundParam && (
           <>
             <Typography>Sorry we couldn't find:</Typography>
@@ -30,7 +30,6 @@ export default function FourOhFourPage() {
                 padding: '0.5rem',
                 border: '1px solid gray',
                 borderRadius: '4px',
-                maxWidth: '100%',
                 overflowX: 'scroll',
                 fontSize: { xs: '.75rem', sm: '1rem' },
               }}
