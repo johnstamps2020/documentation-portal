@@ -128,19 +128,22 @@ export function useLandingPageItems(items: LandingPageItemProps[]) {
     }
   );
 
-  const landingPageItems = items
-    .map((inputItem) => {
-      const matchingOutputItem = data?.find((outputItem) => {
-        return (
-          (outputItem.label &&
-            inputItem.label &&
-            outputItem.label === inputItem.label) ||
-          (outputItem.title && outputItem.title === inputItem.label)
-        );
-      });
-      return matchingOutputItem;
-    })
-    .filter(Boolean) as LandingPageItemData[];
+  const landingPageItems = data
+    ? (items
+        .map((inputItem) => {
+          const matchingOutputItem = data?.find((outputItem) => {
+            return (
+              (outputItem.label &&
+                inputItem.label &&
+                outputItem.label === inputItem.label) ||
+              (outputItem.title && outputItem.title === inputItem.label)
+            );
+          });
+
+          return matchingOutputItem;
+        })
+        .filter(Boolean) as LandingPageItemData[])
+    : undefined;
 
   return {
     landingPageItems,
