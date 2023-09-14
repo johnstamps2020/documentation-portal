@@ -49,7 +49,7 @@ export default function EditPagePropsButton({
         title="Open page editor"
         onClick={handleOpenEditor}
         size="medium"
-        sx={{ width: 'fit-content', margin: '8px' }}
+        sx={{ width: 'fit-content' }}
       >
         <EditIcon sx={{ mr: 1 }} />
         Edit page

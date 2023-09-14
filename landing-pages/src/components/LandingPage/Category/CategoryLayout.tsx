@@ -48,13 +48,14 @@ export default function CategoryLayout({
       container
       flexDirection="column"
       margin="auto"
-      padding="0 20px 64px 20px"
+      py={5}
+      px={1}
       gap={5}
       alignContent="center"
     >
       <EditPagePropsButton pagePath={pageData.path} />
       <Grid gap="2rem">
-        <Stack spacing={1} direction="column" width="100%">
+        <Stack gap={1} direction="column" width="100%">
           {(isRelease || pageData.path === 'selfManagedProducts') && (
             <SelfManagedLink
               pagePath={pageData.path}

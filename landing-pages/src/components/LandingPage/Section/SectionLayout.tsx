@@ -34,7 +34,8 @@ export default function SectionLayout({
       container
       flexDirection="column"
       margin="auto"
-      padding="0 20px 64px 20px"
+      py={5}
+      px={1}
       gap={5}
       alignContent="center"
       sx={{
@@ -44,7 +45,7 @@ export default function SectionLayout({
     >
       <EditPagePropsButton pagePath={pageData.path} />
       <Grid xs={12} lg={8}>
-        <Stack spacing={1} direction="column" width="100%">
+        <Stack gap={1} direction="column" width="100%">
           <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
           </Container>

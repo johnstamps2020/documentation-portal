@@ -128,6 +128,12 @@ export function useLandingPageItems(items: LandingPageItemProps[]) {
     }
   );
 
+  data?.sort((a, b) => {
+    const aLabel: string = a.label || a.title || '';
+    const bLabel: string = b.label || b.title || '';
+    return aLabel.localeCompare(bLabel);
+  });
+
   return {
     landingPageItems: data,
     isLoading,
