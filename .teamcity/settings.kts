@@ -99,6 +99,7 @@ enum class GwConfigParams(val paramValue: String) {
     DB_CLIENT_POD_NAME("postgresql-client-shell-teamcity"),
     DB_CLIENT_IMAGE_NAME("alpine"),
     DB_DUMP_ZIP_PACKAGE_NAME("docportalconfig.zip"),
+    ROOT_BREADCRUMBS_JSON_FILE("scripts/out/root-breadcrumbs.json"),
 
     // TODO: Change croissant to docportal before switch to main
     DOC_PORTAL_APP_NAME("croissant"),
@@ -3678,6 +3679,7 @@ object Admin {
         devDockerImageUrl: String,
         dockerfilePath: String,
         snapshotDependencies: List<BuildType>,
+        artifactDependencies: List<Pair<BuildType, String>>? = null,
     ): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         return BuildType {
@@ -3728,6 +3730,18 @@ object Admin {
                 snapshotDependencies.forEach {
                     snapshot(it) {
                         onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+                artifactDependencies?.forEach {
+                    dependency(it.first) {
+                        snapshot {
+                            onDependencyFailure = FailureAction.FAIL_TO_START
+                        }
+
+                        artifacts {
+                            cleanDestination = true
+                            artifactRules = it.second
+                        }
                     }
                 }
             }
@@ -5051,7 +5065,13 @@ object Admin {
                 GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
                 GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
                 "%teamcity.build.checkoutDir%",
-                listOf(runCheckmarxScan, TestReactLandingPagesBuildType)
+                listOf(runCheckmarxScan, TestReactLandingPagesBuildType),
+                listOf(
+                    Pair(
+                        GenerateRootBreadcrumbsFileBuildType,
+                        "${GwConfigParams.ROOT_BREADCRUMBS_JSON_FILE.paramValue} => ${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/public"
+                    )
+                )
             )
         private val publishDockerImageToProdEcrBuildType = createPublishDockerImageToProdEcrBuildType(
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -5119,6 +5139,7 @@ object Admin {
                 buildType(testKubernetesConfigFilesDev)
                 buildType(testKubernetesConfigFilesStaging)
                 buildType(testKubernetesConfigFilesProd)
+                buildType(GenerateRootBreadcrumbsFileBuildType)
                 buildType(buildAndPublishDockerImageToDevEcrBuildType)
                 buildType(publishDockerImageToProdEcrBuildType)
             }
@@ -5142,25 +5163,6 @@ object Admin {
                 }
 
                 steps {
-                    nodeJS {
-                        name = "Generate the root breadcrumbs file from React components"
-                        id = Helpers.createIdStringFromName(this.name)
-                        shellScript = """
-                        yarn --cwd scripts
-                        yarn --cwd scripts get-root-breadcrumbs
-                    """.trimIndent()
-                        dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
-                    }
-                    script {
-                        name = "Copy the root breadcrumbs file to landing pages"
-                        id = Helpers.createIdStringFromName(this.name)
-                        scriptContent = """
-                        #!/bin/bash 
-                        set -xe
-                        
-                        cp %teamcity.build.checkoutDir%/scripts/out/root-breadcrumbs.json %teamcity.build.checkoutDir%/${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/public
-                    """.trimIndent()
-                    }
                     script {
                         name = "Deploy to Kubernetes"
                         id = Helpers.createIdStringFromName(this.name)
@@ -5244,6 +5246,36 @@ object Admin {
             return deployReactLandingPagesBuildType
         }
 
+        private object GenerateRootBreadcrumbsFileBuildType : BuildType({
+            name = "Generate the root breadcrumbs file"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(
+                    GwVcsRoots.DocumentationPortalGitVcsRoot
+                )
+                cleanCheckout = true
+            }
+
+            artifactRules = GwConfigParams.ROOT_BREADCRUMBS_JSON_FILE.paramValue
+
+            steps {
+                nodeJS {
+                    name = "Generate the root breadcrumbs file from React components"
+                    id = Helpers.createIdStringFromName(this.name)
+                    shellScript = """
+                        yarn --cwd scripts
+                        yarn --cwd scripts get-root-breadcrumbs
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+        })
+
         private object TestReactLandingPagesBuildType : BuildType({
             name = "Test React landing pages"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
@@ -5268,6 +5300,7 @@ object Admin {
             }
 
             features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
             }
