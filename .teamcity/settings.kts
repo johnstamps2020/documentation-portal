@@ -5249,6 +5249,7 @@ object Admin {
             }
 
             features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
             }
