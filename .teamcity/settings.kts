@@ -5142,32 +5142,13 @@ object Admin {
                 }
 
                 steps {
-                    nodeJS {
-                        name = "Generate the root breadcrumbs file from React components"
-                        id = Helpers.createIdStringFromName(this.name)
-                        shellScript = """
-                        yarn --cwd scripts
-                        yarn --cwd scripts get-root-breadcrumbs
-                    """.trimIndent()
-                        dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
-                    }
-                    script {
-                        name = "Copy the root breadcrumbs file to landing pages"
-                        id = Helpers.createIdStringFromName(this.name)
-                        scriptContent = """
-                        #!/bin/bash 
-                        set -xe
-                        
-                        cp %teamcity.build.checkoutDir%/scripts/out/root-breadcrumbs.json %teamcity.build.checkoutDir%/${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/public
-                    """.trimIndent()
-                    }
                     script {
                         name = "Deploy to Kubernetes"
                         id = Helpers.createIdStringFromName(this.name)
                         scriptContent = """
                         #!/bin/bash 
                         set -eux
-                                
+                        
                         # Set AWS credentials
                         $awsEnvVars
                         
