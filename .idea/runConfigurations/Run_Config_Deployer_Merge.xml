@@ -23,11 +23,6 @@
         <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
       </ENTRIES>
     </EXTENSION>
-    <EXTENSION ID="software.aws.toolkits.jetbrains.core.execution.PythonAwsConnectionExtension">
-      <option name="credential" />
-      <option name="region" />
-      <option name="useCurrentConnection" value="false" />
-    </EXTENSION>
     <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../doctools-apps/apps/config_deployer/config_deployer/main.py" />
     <option name="PARAMETERS" value="merge $PROJECT_DIR$/../documentation-portal/.teamcity/config/docs" />
     <option name="SHOW_COMMAND_LINE" value="false" />
