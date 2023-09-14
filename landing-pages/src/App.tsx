@@ -62,9 +62,6 @@ const router = createBrowserRouter([
         element: <PolicyCenterPrototype />,
       },
       {
-        path: '/root-breadcrumbs.json',
-      },
-      {
         path: '',
         element: <LandingPage />,
         children: [
