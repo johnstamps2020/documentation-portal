@@ -10,7 +10,10 @@ const landingPagesSourceDir = resolve(
   __dirname,
   '../../../landing-pages/src/pages/landing'
 );
-const targetFile = resolve(__dirname, '../../out/root-breadcrumbs.json');
+const targetFile = resolve(
+  __dirname,
+  '../../../landing-pages/public/root-breadcrumbs.json'
+);
 const allFiles = getAllFilesRecursively(landingPagesSourceDir);
 
 function getFilePath(absoluteFilePath: string): string {
