@@ -1,20 +1,20 @@
-import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
-import Category2Card, { Category2CardProps } from './Category2Card';
-import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Category2Sidebar from './Category2Sidebar';
-import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
-import WhatsNew, { WhatsNewProps } from 'components/LandingPage/WhatsNew';
-import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
-import { usePageData } from 'hooks/usePageData';
-import EditPagePropsButton from '../EditPagePropsButton';
-import NotLoggedInInfo from 'components/NotLoggedInInfo';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
+import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
 import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
+import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
+import WhatsNew, { WhatsNewProps } from 'components/LandingPage/WhatsNew';
+import NotLoggedInInfo from 'components/NotLoggedInInfo';
+import { usePageData } from 'hooks/usePageData';
+import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
+import EditPagePropsButton from '../EditPagePropsButton';
+import Category2Card, { Category2CardProps } from './Category2Card';
+import Category2Sidebar from './Category2Sidebar';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
   cards: Category2CardProps[];
@@ -80,7 +80,13 @@ export default function Category2Layout({
               />
             )}
           </Grid>
-          <Grid>
+          <Grid
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-end',
+            }}
+          >
             <Typography
               variant="h1"
               sx={{ ...variableColor, fontWeight: 600, fontSize: '2em' }}

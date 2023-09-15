@@ -49,7 +49,7 @@ export default function Breadcrumbs() {
       );
 
       if (linkBackgroundColor.isDark()) {
-        setLinkColor('white');
+        setLinkColor('#a2e4fc');
       }
     }
   }, [breadcrumbs]);

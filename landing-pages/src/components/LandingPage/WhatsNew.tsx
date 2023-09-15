@@ -64,6 +64,7 @@ export default function WhatsNew({
             fontSize: '1.25rem',
             fontWeight: 600,
             paddingBottom: '0.5rem',
+            lineHeight: 'normal',
           }}
         >
           What's new in {label}
@@ -74,6 +75,7 @@ export default function WhatsNew({
             fontSize: '0.875rem',
             fontWeight: 600,
             textAlign: 'center',
+            lineHeight: 'normal',
           }}
         >
           {label} introduces the following key features and capabilities:
@@ -93,7 +95,11 @@ export default function WhatsNew({
             {content.map((feature) => {
               return (
                 <li
-                  style={{ marginBottom: '0.5rem', fontSize: '0.875rem' }}
+                  style={{
+                    marginBottom: '4.08px',
+                    fontSize: '0.875rem',
+                    lineHeight: 'normal',
+                  }}
                   key={feature}
                 >
                   {feature}
