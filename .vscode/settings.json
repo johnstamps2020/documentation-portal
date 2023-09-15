@@ -75,6 +75,7 @@
     "sourcezipbuild",
     "startable",
     "superbook",
+    "tinycolor",
     "topicref",
     "typeorm",
     "whatsnew",
@@ -90,7 +91,7 @@
     ".vscode-insiders"
   ],
   "cSpell.ignoreRegExpList": [
-    "(docId|pagePath): [\"'][a-zA-Z0-9]+[\"']",
+    "(docId|pagePath|url): [\"'][^\"']+[\"']",
     "\"(id|docId|srcId)\": \"[a-zA-Z0-9]+\"",
     "\"(url|root|filter|targetFolder|gitUrl|zipFilename)\": \"[^\"]+\""
   ]

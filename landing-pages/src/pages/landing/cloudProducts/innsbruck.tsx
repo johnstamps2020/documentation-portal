@@ -23,12 +23,12 @@ const pageConfig: CategoryLayoutProps = {
       label: 'Platform',
       items: [
         {
-          label: 'Cloud Home',
-          docId: 'gchhelprelease',
-        },
-        {
           label: 'Cloud Platform',
           docId: 'guidewirecloudconsolerootinsurerdev',
+        },
+        {
+          label: 'Cloud Home',
+          docId: 'gchhelprelease',
         },
         {
           label: 'Data Platform',
