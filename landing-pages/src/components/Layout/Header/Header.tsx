@@ -8,7 +8,7 @@ import Logo from './Logo/Logo';
 import TranslatedPages from './TranslatedPages';
 import UserProfile from './UserProfile';
 
-export const headerHeight = '68px';
+export const headerHeight = '64px';
 
 export type HeaderOptions = {
   searchFilters?: { [key: string]: string[] };
