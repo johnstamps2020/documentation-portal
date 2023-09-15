@@ -202,16 +202,24 @@ export function isHtmlRequest(url: string) {
   return /(^(?!.*\.\D+$).*$|\.htm.*$)/.test(url);
 }
 
-export async function htmlPageExists(url: string) {
+export async function s3BucketUrlExists(url: string) {
   try {
-    const fullUrl = process.env.DOC_S3_URL + url;
+    const s3BucketUrl = url.startsWith('/portal')
+      ? process.env.PORTAL2_S3_URL
+      : process.env.DOC_S3_URL;
+    const contentTypes = ['text/html', 'application/pdf'];
+    const fullUrl = s3BucketUrl + url;
     const response = await fetch(fullUrl, { method: 'HEAD' });
     return (
       response.status === 200 &&
-      response.headers.get('content-type')?.includes('text/html')
+      contentTypes.some((contentType) =>
+        response.headers.get('content-type')?.includes(contentType)
+      )
     );
   } catch (err) {
-    winstonLogger.error(`Error checking if HTML page exists at ${url}: ${err}`);
+    winstonLogger.error(
+      `Error checking if S3 bucket URL exists at ${url}: ${err}`
+    );
     return false;
   }
 }
@@ -292,7 +300,7 @@ export async function getLatestVersionUrl(
   targetUrlSegments[wildcardIndex] =
     urlWithHighestVersionSegments[wildcardIndex];
   const targetUrl = targetUrlSegments.join('/');
-  const targetUrlExists = await htmlPageExists(`/${targetUrl}`);
+  const targetUrlExists = await s3BucketUrlExists(`/${targetUrl}`);
   return targetUrlExists ? targetUrl : urlWithHighestVersionSegments.join('/');
 }
 
@@ -345,7 +353,7 @@ export async function getRedirectUrl(
       }
     }
     if (requestedPath.includes('/latest')) {
-      const pathExists = await htmlPageExists(requestedPath);
+      const pathExists = await s3BucketUrlExists(requestedPath);
       if (!pathExists) {
         const latestVersionUrl = await getLatestVersionUrl(res, normalizedPath);
         if (latestVersionUrl) {
