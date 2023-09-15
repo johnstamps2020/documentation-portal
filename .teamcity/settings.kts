@@ -3683,6 +3683,7 @@ object Admin {
         return BuildType {
             name = "Build and publish Docker Image to DEV ECR"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${devDockerImageUrl}"))
+            maxRunningBuilds = 1
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -3745,6 +3746,7 @@ object Admin {
         return BuildType {
             name = "Publish Docker Image to PROD ECR"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${devDockerImageUrl}"))
+            maxRunningBuilds = 1
 
             steps {
                 script {
@@ -4692,6 +4694,7 @@ object Admin {
         private object DumpDbDataFromStaging : BuildType({
             name = "Dump database data from staging"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+            maxRunningBuilds = 1
 
             artifactRules = GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue
 
@@ -4775,6 +4778,7 @@ object Admin {
             val syncDbDataBuildType = BuildType {
                 name = "Restore database data on $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+                maxRunningBuilds = 1
 
                 vcs {
                     root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -4886,6 +4890,7 @@ object Admin {
 
             name = "Upload legacy configs to ${GwDeployEnvs.STAGING.envName} database"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+            maxRunningBuilds = 1
 
             vcs {
                 root(
