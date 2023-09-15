@@ -1,6 +1,6 @@
-import { useSearchData } from 'hooks/useApi';
-import { StyledHeading1 } from './StyledSearchComponents';
 import Skeleton from '@mui/material/Skeleton';
+import Typography from '@mui/material/Typography';
+import { useSearchData } from 'hooks/useApi';
 
 export default function SearchResultSectionHeading() {
   const { searchData, isLoading } = useSearchData();
@@ -19,10 +19,18 @@ export default function SearchResultSectionHeading() {
   }
 
   return (
-    <StyledHeading1>
+    <Typography
+      sx={{
+        fontSize: { xs: 26, sm: 32 },
+        textAlign: 'left',
+        color: 'black',
+        fontWeight: 600,
+        lineHeight: 'normal',
+      }}
+    >
       {searchData.totalNumOfResults.toLocaleString()}{' '}
       {searchData.totalNumOfCollapsedResults === 1 ? 'result' : 'results'} for "
       {searchData.searchPhrase}"
-    </StyledHeading1>
+    </Typography>
   );
 }

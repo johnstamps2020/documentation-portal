@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import InternalTooltip from './InternalTooltip';
 import VideoIcon from './VideoIcon';
 
-type LandingPageLinkProps = {
+export type LandingPageLinkProps = {
   landingPageItem: LandingPageItemData;
   sx?: LinkProps['sx'];
 };

@@ -1,11 +1,11 @@
-import Stack from '@mui/material/Stack';
-import Category2Item from './Category2Item';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
-import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import SidebarSkeleton from '../SidebarSkeleton';
+import Category2Item from './Category2Item';
 
 export default function Category2Sidebar({ label, items }: SidebarProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
@@ -35,10 +35,7 @@ export default function Category2Sidebar({ label, items }: SidebarProps) {
         {label}
       </Typography>
       <Divider />
-      <Stack
-        spacing={1}
-        sx={{ spacing: 1, fontSize: '0.875rem', color: 'black' }}
-      >
+      <Stack gap={2} py={2}>
         {landingPageItems.map((sidebarItem) => (
           <Category2Item {...sidebarItem} key={sidebarItem.label} />
         ))}

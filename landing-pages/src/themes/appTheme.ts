@@ -78,6 +78,7 @@ export const appTheme = createTheme({
       defaultProps: {
         underline: 'none',
         sx: {
+          display: 'inline-block',
           color: 'hsl(196, 100%, 31%)',
           width: 'fit-content',
         },

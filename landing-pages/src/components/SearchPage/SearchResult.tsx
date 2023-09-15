@@ -24,7 +24,7 @@ export default function SearchResult(searchResult: ServerSearchResult) {
   const highlightedTermsUrlParam = `hl=${searchResult.uniqueHighlightTerms}`;
 
   return (
-    <Stack sx={{ paddingBottom: '16px' }}>
+    <Stack sx={{ paddingBottom: '24px' }}>
       <StyledLink href={`${searchResult.href}?${highlightedTermsUrlParam}`}>
         <StyledHeading2
           dangerouslySetInnerHTML={{ __html: searchResult.title }}
@@ -55,9 +55,10 @@ export default function SearchResult(searchResult: ServerSearchResult) {
         paragraph
         dangerouslySetInnerHTML={{ __html: searchResult.body }}
         sx={{
-          padding: '1rem 0',
+          paddingBottom: '10px',
           lineHeight: '24px',
           textAlign: 'left',
+          my: 0,
         }}
       />
       {searchResult.innerHits.length > 0 && (

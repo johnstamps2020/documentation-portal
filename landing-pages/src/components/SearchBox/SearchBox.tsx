@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { useLayoutContext } from 'LayoutContext';
 
 type SearchBoxProps = {
-  showBigSize?: boolean;
+  big?: boolean;
 };
 
 const commonProps = {
@@ -32,12 +32,12 @@ const regularSizeProps = {
   ...commonProps,
   height: '30px',
   width: '100%',
-  maxWidth: '400px',
+  maxWidth: '360px',
   marginTop: '25px',
   marginBottom: '25px',
 };
 
-export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
+export default function SearchBox({ big = true }: SearchBoxProps) {
   const { placeholder } = useLocaleParams();
   const { searchData } = useSearchData();
   const { isMobile } = useMobile();
@@ -60,10 +60,10 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
     }
   }, [searchData, searchData?.searchPhrase, setTitle]);
 
-  const showBigSearchBox = isMobile ? false : showBigSize;
+  const showBigSearchBox = isMobile ? false : big;
 
   const searchFilters: { [key: string]: string[] } = {};
-  if (showBigSize && searchData) {
+  if (big && searchData) {
     searchData.filters.forEach((f) => {
       const checkedValues = f.values.filter((v) => v.checked);
 
@@ -75,7 +75,7 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
     });
   }
 
-  if (!showBigSize && headerOptions.searchFilters) {
+  if (!big && headerOptions.searchFilters) {
     Object.keys(headerOptions.searchFilters).forEach((k) => {
       searchFilters[k] = headerOptions.searchFilters![k];
     });

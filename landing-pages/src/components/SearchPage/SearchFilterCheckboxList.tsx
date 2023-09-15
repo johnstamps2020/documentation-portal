@@ -1,19 +1,17 @@
+import { Button } from '@mui/material';
+import FormGroup from '@mui/material/FormGroup';
+import { useEffect, useState } from 'react';
 import { ServerSearchFilterValue } from 'server/dist/types/serverSearch';
 import SearchFilterCheckbox from './SearchFilterCheckbox';
-import { useEffect, useState } from 'react';
-import FormGroup from '@mui/material/FormGroup';
-import { Button } from '@mui/material';
 
 type SearchFilterCheckboxProps = {
   filterName: string;
   values: ServerSearchFilterValue[];
-  sortAlphabetically: boolean;
 };
 
 export default function SearchFilterCheckboxList({
   filterName,
   values,
-  sortAlphabetically,
 }: SearchFilterCheckboxProps) {
   const sliceLimit = 5;
   const [aboveTheLineValues, setAboveTheLineValues] = useState<
@@ -21,17 +19,17 @@ export default function SearchFilterCheckboxList({
   >([]);
   const [expanded, setExpanded] = useState<boolean>(false);
 
-  // sort by checked first, then by doc_count/alphabetically
+  // sort by checked first, then by alphabetically
+  // if it's "version", reverse the order
   values.sort((a, b) => {
     if (a.checked && !b.checked) {
       return -1;
     } else if (!a.checked && b.checked) {
       return 1;
     } else {
-      if (sortAlphabetically) {
-        return a.label.localeCompare(b.label);
-      }
-      return b.doc_count - a.doc_count;
+      return (
+        a.label.localeCompare(b.label) * (filterName === 'version' ? -1 : 1)
+      );
     }
   });
 
@@ -53,7 +51,7 @@ export default function SearchFilterCheckboxList({
     setAboveTheLineValues(
       slice.filter((value) => value.doc_count > 0 || value.checked)
     );
-  }, [values, expanded, sortAlphabetically]);
+  }, [values, expanded]);
 
   function toggleExpanded() {
     setExpanded(!expanded);

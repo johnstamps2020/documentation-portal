@@ -1,14 +1,14 @@
-import Logo from './Logo/Logo';
+import Stack from '@mui/material/Stack';
+import { useTheme } from '@mui/material/styles';
 import SearchBox from 'components/SearchBox/SearchBox';
+import InternalBadge from '../../LandingPage/InternalBadge';
 import ExternalSites from './ExternalSites';
 import Glossary from './Glossary';
+import Logo from './Logo/Logo';
 import TranslatedPages from './TranslatedPages';
 import UserProfile from './UserProfile';
-import Stack from '@mui/material/Stack';
-import InternalBadge from '../../LandingPage/InternalBadge';
-import { useTheme } from '@mui/material/styles';
 
-export const headerHeight = '80px';
+export const headerHeight = '68px';
 
 export type HeaderOptions = {
   searchFilters?: { [key: string]: string[] };
@@ -34,13 +34,13 @@ export default function Header(headerOptions: HeaderOptions) {
       }}
     >
       <Logo />
-      {!headerOptions?.hideSearchBox && <SearchBox showBigSize={false} />}
+      {!headerOptions?.hideSearchBox && <SearchBox big={false} />}
       <Stack
         direction="row"
-        justifyContent={{ xs: 'center', sm: 'right' }}
-        width={{ sm: '100%', md: '400px' }}
-        spacing={2}
         alignItems="center"
+        justifyContent="flex-end"
+        width={{ sm: '100%', md: '400px' }}
+        gap="24px"
       >
         <InternalBadge />
         <ExternalSites />
