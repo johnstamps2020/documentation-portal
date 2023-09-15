@@ -1,16 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
-import {
-  findEntity,
-  getDocByUrl,
-  getExternalLinkByUrl,
-} from './configController';
+import { getDocByUrl, getExternalLinkByUrl } from './configController';
 import {
   isUserAllowedToAccessResource,
   openRequestedUrl,
   redirectToLoginPage,
 } from './authController';
-import { s3BucketUrlExists, isHtmlRequest } from './redirectController';
-import { ExternalLink } from '../model/entity/ExternalLink';
+import { isHtmlRequest, s3BucketUrlExists } from './redirectController';
 import { Doc } from '../model/entity/Doc';
 
 const fetch = require('node-fetch-retry');
