@@ -122,7 +122,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20211xcommonconfigdraft',
         },
         {
-          label: 'Provisioning Portal',
+          label: 'Provisioning Portal Draft',
           docId: 'in20211xprovportaldraft',
         },
         {
@@ -139,7 +139,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'ininstallassistdraft',
         },
         {
-          label: 'Developer Setup',
+          label: 'Developer Setup Draft',
           docId: 'indevguidejava11draft',
         },
         {

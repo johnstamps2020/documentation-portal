@@ -78,7 +78,7 @@ const pageConfig: SectionLayoutProps = {
       label: 'Development',
       items: [
         {
-          label: 'Developer Setup',
+          label: 'Developer Setup Draft',
           docId: 'indevguidejava11draft',
         },
         {
