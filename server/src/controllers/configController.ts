@@ -140,7 +140,7 @@ export async function getDocUrlByMetadata(
 }
 
 /*
-The function looks for many entities in the db because sometimes the first match is not correct.
+The function looks for many Doc entities in the db because sometimes the first match is not correct.
 For example, we have these two URLs:
 - 'jutro/platform/hakuba'
 - 'jutro/platform/hakuba2'
@@ -148,7 +148,7 @@ We want to open 'jutro/platform/hakuba2'. If we look just for the first match, t
 Instead, we look for all matches and select the longest URL.
 */
 export async function getDocByUrl(url: string): Promise<Doc | null> {
-  const urlToCheck = url.replace(/^\//g, '');
+  const urlWithoutPrecedingSlash = url.replace(/^\//g, '');
   const matchingDocs = await AppDataSource.getRepository(Doc)
     .createQueryBuilder('doc')
     .useIndex('docUrl-idx')
@@ -159,9 +159,31 @@ export async function getDocByUrl(url: string): Promise<Doc | null> {
       'doc.internal',
       'doc.isInProduction',
     ])
-    .where(":urlToCheck LIKE concat(doc.url, '%')", { urlToCheck: urlToCheck })
+    .where(":urlToCheck LIKE concat(doc.url, '%')", {
+      urlToCheck: urlWithoutPrecedingSlash,
+    })
     .getMany();
   return matchingDocs.sort((a, b) => b.url.length - a.url.length)[0];
+}
+
+export async function getExternalLinkByUrl(
+  url: string
+): Promise<ExternalLink | null> {
+  const urlWithoutTrailingSlash = url.replace(/\/$/g, '');
+  const matchingExternalLinks = await AppDataSource.getRepository(ExternalLink)
+    .createQueryBuilder('externalLink')
+    .useIndex('externalLinkUrls-idx')
+    .select([
+      'externalLink.url',
+      'externalLink.public',
+      'externalLink.internal',
+      'externalLink.isInProduction',
+    ])
+    .where(":urlToCheck LIKE concat(externalLink.url, '%')", {
+      urlToCheck: urlWithoutTrailingSlash,
+    })
+    .getMany();
+  return matchingExternalLinks.sort((a, b) => b.url.length - a.url.length)[0];
 }
 
 function getRelationOptionsForEntity(
