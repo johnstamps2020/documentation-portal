@@ -15,6 +15,7 @@
     "react-router-dom": "6.4.2",
     "react-scripts": "5.0.1",
     "server": "workspace:*",
+    "tinycolor2": "^1.6.0",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -26,7 +27,8 @@
     "@types/lodash": "^4.14.190",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0"
+    "@types/react-dom": "^18.0.0",
+    "@types/tinycolor2": "^1.4.4"
   },
   "scripts": {
     "start": "BROWSER=none PORT=6006 DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",

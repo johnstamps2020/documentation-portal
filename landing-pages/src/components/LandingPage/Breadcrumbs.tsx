@@ -1,11 +1,58 @@
-import Stack from '@mui/material/Stack';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
 import { useBreadcrumbs } from 'hooks/useApi';
+import { useEffect, useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import tinycolor from 'tinycolor2';
+
+const breadcrumbLinkClassName = 'breadcrumbLink';
+
+function getInheritedBackgroundColor(element: HTMLElement): string {
+  const { backgroundColor, background } = window.getComputedStyle(element);
+
+  if (
+    hasNonDefaultBackground(backgroundColor) ||
+    hasNonDefaultBackground(background)
+  ) {
+    return backgroundColor;
+  }
+
+  // if we've reached the top parent element without getting an explicit color, return default
+  if (!element.parentElement) {
+    return 'transparent';
+  }
+
+  // otherwise, recurse and try again on parent element
+  return getInheritedBackgroundColor(element.parentElement);
+}
+
+function hasNonDefaultBackground(backgroundProp: string): boolean {
+  return (
+    !backgroundProp.includes('transparent') &&
+    !backgroundProp.startsWith('rgba(0, 0, 0, 0)')
+  );
+}
 
 export default function Breadcrumbs() {
   const { breadcrumbs, isError, isLoading } = useBreadcrumbs();
+  const [linkColor, setLinkColor] = useState('default');
+
+  useEffect(() => {
+    const breadcrumbLinkElement = document.querySelector(
+      `.${breadcrumbLinkClassName}`
+    );
+
+    if (breadcrumbLinkElement) {
+      const linkBackgroundColor = tinycolor(
+        getInheritedBackgroundColor(breadcrumbLinkElement as HTMLElement)
+      );
+
+      if (linkBackgroundColor.isDark()) {
+        setLinkColor('white');
+      }
+    }
+  }, [breadcrumbs]);
 
   if (isError || isLoading || !breadcrumbs) {
     return null;
@@ -15,7 +62,15 @@ export default function Breadcrumbs() {
     <Stack direction="row" divider={<ChevronRightIcon />} spacing={1}>
       {breadcrumbs &&
         breadcrumbs.map(({ path, label, id }) => (
-          <Link component={RouterLink} to={`/${path}`} key={id}>
+          <Link
+            component={RouterLink}
+            to={`/${path}`}
+            key={id}
+            className={breadcrumbLinkClassName}
+            sx={{
+              color: linkColor,
+            }}
+          >
             {label}
           </Link>
         ))}
