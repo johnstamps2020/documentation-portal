@@ -204,8 +204,11 @@ export function isHtmlRequest(url: string) {
 
 export async function s3BucketUrlExists(url: string) {
   try {
+    const s3BucketUrl = url.startsWith('/portal')
+      ? process.env.PORTAL2_S3_URL
+      : process.env.DOC_S3_URL;
     const contentTypes = ['text/html', 'application/pdf'];
-    const fullUrl = process.env.DOC_S3_URL + url;
+    const fullUrl = s3BucketUrl + url;
     const response = await fetch(fullUrl, { method: 'HEAD' });
     return (
       response.status === 200 &&
