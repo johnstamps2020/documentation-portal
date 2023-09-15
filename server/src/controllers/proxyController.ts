@@ -94,7 +94,7 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
       req,
       res,
       {
-        target: req.path.startsWith('/portal')
+        target: requestedPath.startsWith('/portal')
           ? process.env.PORTAL2_S3_URL
           : process.env.DOC_S3_URL,
         changeOrigin: true,
