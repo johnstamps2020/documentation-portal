@@ -151,8 +151,7 @@ export function useLandingPageItems(items: LandingPageItemProps[]) {
   }
 
   return {
-    landingPageItems:
-      landingPageItems.length > 0 ? landingPageItems : undefined,
+    landingPageItems,
     isLoading,
     isError: error,
   };
