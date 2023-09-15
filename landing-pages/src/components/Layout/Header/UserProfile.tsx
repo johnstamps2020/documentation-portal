@@ -103,7 +103,11 @@ export default function UserProfile() {
   return (
     <div>
       <HeaderIconButton id="profile" onClick={handleClick}>
-        <HeaderAvatar alt="User Avatar" src={iconAvatar} />
+        <HeaderAvatar
+          alt="User Avatar"
+          src={iconAvatar}
+          sx={{ width: '31px', height: '32px' }}
+        />
       </HeaderIconButton>
       <HeaderMenu
         anchorEl={anchorElement}
