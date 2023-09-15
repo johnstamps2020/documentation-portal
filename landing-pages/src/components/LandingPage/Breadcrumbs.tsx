@@ -8,6 +8,13 @@ import tinycolor from 'tinycolor2';
 
 const breadcrumbLinkClassName = 'breadcrumbLink';
 
+function hasNonDefaultBackground(backgroundProp: string): boolean {
+  return (
+    !backgroundProp.includes('transparent') &&
+    !backgroundProp.startsWith('rgba(0, 0, 0, 0)')
+  );
+}
+
 function getInheritedBackgroundColor(element: HTMLElement): string {
   const { backgroundColor, background } = window.getComputedStyle(element);
 
@@ -25,13 +32,6 @@ function getInheritedBackgroundColor(element: HTMLElement): string {
 
   // otherwise, recurse and try again on parent element
   return getInheritedBackgroundColor(element.parentElement);
-}
-
-function hasNonDefaultBackground(backgroundProp: string): boolean {
-  return (
-    !backgroundProp.includes('transparent') &&
-    !backgroundProp.startsWith('rgba(0, 0, 0, 0)')
-  );
 }
 
 export default function Breadcrumbs() {
