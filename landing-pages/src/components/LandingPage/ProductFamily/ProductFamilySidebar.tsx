@@ -8,11 +8,15 @@ import SidebarSkeleton from '../SidebarSkeleton';
 export default function ProductFamilySidebar({ label, items }: SidebarProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isError || (landingPageItems && landingPageItems.length === 0)) {
+  if (
+    isError ||
+    (landingPageItems && landingPageItems.length === 0) ||
+    !landingPageItems
+  ) {
     return null;
   }
 
-  if (isLoading || !landingPageItems) {
+  if (isLoading) {
     return <SidebarSkeleton />;
   }
 

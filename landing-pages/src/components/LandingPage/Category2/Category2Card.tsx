@@ -14,11 +14,15 @@ export type Category2CardProps = {
 export default function Category2Card({ label, items }: Category2CardProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isError || (landingPageItems && landingPageItems.length === 0)) {
+  if (
+    isError ||
+    (landingPageItems && landingPageItems.length === 0) ||
+    !landingPageItems
+  ) {
     return null;
   }
 
-  if (isLoading || !landingPageItems) {
+  if (isLoading) {
     return (
       <Skeleton
         variant="rectangular"
@@ -41,7 +45,7 @@ export default function Category2Card({ label, items }: Category2CardProps) {
         {label}
       </Typography>
       <Divider />
-      <Stack gap={2} py={2} sx={{  }}>
+      <Stack gap={2} py={2} sx={{}}>
         {landingPageItems?.map((categoryItem) => (
           <Category2Item
             {...categoryItem}

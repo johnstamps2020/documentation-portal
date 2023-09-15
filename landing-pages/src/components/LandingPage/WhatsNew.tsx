@@ -21,11 +21,11 @@ export default function WhatsNew({
 }: WhatsNewProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
 
-  if (isError) {
+  if (isError || !landingPageItems) {
     return null;
   }
 
-  if (isLoading || !landingPageItems) {
+  if (isLoading) {
     return (
       <Skeleton
         variant="rectangular"
