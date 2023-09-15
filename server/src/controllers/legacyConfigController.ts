@@ -500,7 +500,22 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
       `${localLandingPagesConfigDir}/prod/pages`
     );
     const dbPageConfigsToSave: Page[] = [];
-    for (const page of localLandingPagesConfigStaging) {
+    // Pages must be loaded from all page configs for staging and prod because some pages exist only on one environment
+    const uniqueLocalLandingPagesConfig: LegacyPageConfig[] = [];
+    [...localLandingPagesConfigStaging, ...localLandingPagesConfigProd].forEach(
+      (pageConfig) => {
+        if (
+          !uniqueLocalLandingPagesConfig.find(
+            (uniquePageConfig) =>
+              getRelativePagePath(uniquePageConfig.path) ===
+              getRelativePagePath(pageConfig.path)
+          )
+        ) {
+          uniqueLocalLandingPagesConfig.push(pageConfig);
+        }
+      }
+    );
+    for (const page of uniqueLocalLandingPagesConfig) {
       const legacyPageRelativePath = getRelativePagePath(page.path);
       if (
         !dbPageConfigsToSave.find(
