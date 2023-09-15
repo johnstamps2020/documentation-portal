@@ -65,7 +65,7 @@ export default function CategoryLayout({
           <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
           </Container>
-          <Typography variant="h1" sx={variableColor}>
+          <Typography variant="h1" sx={{ ...variableColor, fontSize: '32px' }}>
             {pageData.title}
           </Typography>
           {description}

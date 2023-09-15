@@ -128,25 +128,31 @@ export function useLandingPageItems(items: LandingPageItemProps[]) {
     }
   );
 
-  const landingPageItems = data
-    ? (items
-        .map((inputItem) => {
-          const matchingOutputItem = data?.find((outputItem) => {
-            return (
-              (outputItem.label &&
-                inputItem.label &&
-                outputItem.label === inputItem.label) ||
-              (outputItem.title && outputItem.title === inputItem.label)
-            );
-          });
+  const landingPageItems: LandingPageItemData[] = [];
 
-          return matchingOutputItem;
-        })
-        .filter(Boolean) as LandingPageItemData[])
-    : undefined;
+  if (data) {
+    items.forEach((inputItem) => {
+      const matchingOutputItem = data?.find((outputItem) => {
+        return (
+          (outputItem.label &&
+            inputItem.label &&
+            outputItem.label === inputItem.label) ||
+          (outputItem.title && outputItem.title === inputItem.label)
+        );
+      });
+
+      if (
+        matchingOutputItem &&
+        !landingPageItems.includes(matchingOutputItem)
+      ) {
+        landingPageItems.push(matchingOutputItem);
+      }
+    });
+  }
 
   return {
-    landingPageItems,
+    landingPageItems:
+      landingPageItems.length > 0 ? landingPageItems : undefined,
     isLoading,
     isError: error,
   };
