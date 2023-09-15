@@ -73,7 +73,7 @@ export default function CategoryCard({
         </Typography>
       )}
 
-      <Stack spacing={1} sx={{ fontSize: '0.875rem', color: 'black' }}>
+      <Stack sx={{ fontSize: '0.875rem', color: 'black', gap: 1 }}>
         {landingPageItems?.map((categoryItem, idx) => (
           <LandingPageItem {...categoryItem} key={idx} />
         ))}
