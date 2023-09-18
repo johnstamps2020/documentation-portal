@@ -6,6 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import { headerHeight, headerStyles } from '../Header';
 import Logo from '../Logo/Logo';
+import UserProfile from '../UserProfile';
 
 type HeaderMobileProps = {
   menuContents: React.ReactNode;
@@ -28,13 +29,16 @@ export default function HeaderMobile({ menuContents }: HeaderMobileProps) {
       direction="row"
       height={{ xs: 'auto', sm: headerHeight }}
       alignItems="center"
-      spacing={1}
+      justifyContent="space-between"
       sx={{ ...headerStyles, zIndex: theme.zIndex.drawer + 1 }}
     >
-      <IconButton aria-label="Show menu" onClick={toggleMenu}>
-        <MenuIcon sx={{ color: 'white', fontSize: '40px' }} />
-      </IconButton>
-      <Logo />
+      <Stack direction="row" alignItems="center">
+        <IconButton aria-label="Show menu" onClick={toggleMenu}>
+          <MenuIcon sx={{ color: 'white', fontSize: '40px' }} />
+        </IconButton>
+        <Logo />
+      </Stack>
+      <UserProfile />
       <Drawer anchor="left" open={menuOpen} onClose={handleClose}>
         <Stack
           sx={{

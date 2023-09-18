@@ -2,6 +2,7 @@ import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
 import { headerHeight, headerStyles } from '../Header';
 import Logo from '../Logo/Logo';
+import UserProfile from '../UserProfile';
 
 type HeaderDesktopProps = {
   centerItems: React.ReactNode;
@@ -36,6 +37,7 @@ export default function HeaderDesktop({
         gap="24px"
       >
         {rightItems}
+        <UserProfile />
       </Stack>
     </Stack>
   );

@@ -1,14 +1,13 @@
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import SearchBox from 'components/SearchBox/SearchBox';
-import { CSSProperties, Fragment } from 'react';
+import { CSSProperties } from 'react';
 import InternalBadge from '../../LandingPage/InternalBadge';
 import HeaderDesktop from './Desktop/HeaderDesktop';
 import ExternalSites from './ExternalSites';
 import Glossary from './Glossary';
 import HeaderMobile from './Mobile/HeaderMobile';
 import TranslatedPages from './TranslatedPages';
-import UserProfile from './UserProfile';
 
 export const headerHeight = '64px';
 
@@ -38,7 +37,6 @@ function MenuItems() {
       <ExternalSites />
       <Glossary />
       <TranslatedPages />
-      <UserProfile />
     </>
   );
 }
