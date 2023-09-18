@@ -406,41 +406,40 @@ async function createExternalLinkEntities(
     const dbExternalLinkConfigsToSave: ExternalLink[] = [];
     for (const pageItem of pageItems) {
       if (pageItem.items) {
-        for (const innerItem of pageItem.items) {
-          const externalLink = innerItem.link;
-          if (externalLink) {
-            if (
-              !dbExternalLinkConfigsToSave.find(
-                (dbExternalLinkConfigToSave) =>
-                  dbExternalLinkConfigToSave.url === externalLink
-              )
-            ) {
-              const dbExternalLinkConfig = new ExternalLink();
-              dbExternalLinkConfig.url = externalLink;
-              dbExternalLinkConfig.label = innerItem.label;
-              dbExternalLinkConfig.public = false;
-              dbExternalLinkConfig.internal = false;
-              dbExternalLinkConfig.earlyAccess = dbPageConfig.earlyAccess;
-              dbExternalLinkConfig.isInProduction = dbPageConfig.isInProduction;
+        await createExternalLinkEntities(pageItem.items, dbPageConfig);
+      }
+      const externalLink = pageItem.link;
+      if (externalLink) {
+        if (
+          !dbExternalLinkConfigsToSave.find(
+            (dbExternalLinkConfigToSave) =>
+              dbExternalLinkConfigToSave.url === externalLink
+          )
+        ) {
+          const dbExternalLinkConfig = new ExternalLink();
+          dbExternalLinkConfig.url = externalLink;
+          dbExternalLinkConfig.label = pageItem.label;
+          dbExternalLinkConfig.public = false;
+          dbExternalLinkConfig.internal = false;
+          dbExternalLinkConfig.earlyAccess = dbPageConfig.earlyAccess;
+          dbExternalLinkConfig.isInProduction = dbPageConfig.isInProduction;
 
-              const findLinkEntityResult = await findEntity(
-                ExternalLink.name,
-                { url: dbExternalLinkConfig.url },
-                false
-              );
-              if (findLinkEntityResult) {
-                dbExternalLinkConfig.uuid = findLinkEntityResult.uuid;
-                dbExternalLinkConfig.isInProduction =
-                  findLinkEntityResult.isInProduction ||
-                  dbPageConfig.isInProduction;
-                dbExternalLinkConfig.earlyAccess =
-                  findLinkEntityResult.earlyAccess || dbPageConfig.earlyAccess;
-              }
-              dbExternalLinkConfigsToSave.push(
-                dbExternalLinkConfig as ExternalLink
-              );
-            }
+          const findLinkEntityResult = await findEntity(
+            ExternalLink.name,
+            { url: dbExternalLinkConfig.url },
+            false
+          );
+          if (findLinkEntityResult) {
+            dbExternalLinkConfig.uuid = findLinkEntityResult.uuid;
+            dbExternalLinkConfig.isInProduction =
+              findLinkEntityResult.isInProduction ||
+              dbPageConfig.isInProduction;
+            dbExternalLinkConfig.earlyAccess =
+              findLinkEntityResult.earlyAccess || dbPageConfig.earlyAccess;
           }
+          dbExternalLinkConfigsToSave.push(
+            dbExternalLinkConfig as ExternalLink
+          );
         }
       }
     }
