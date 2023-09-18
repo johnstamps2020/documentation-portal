@@ -1,12 +1,13 @@
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
-import ButtonWithTooltip from './ButtonWithTooltip';
+import LoginButtonWithTooltip from './LoginButtonWithTooltip';
 import GwEmployeeButton from './GwEmployeeButton';
 import LoginInProgress from './LoginInProgress';
 import Typography from '@mui/material/Typography';
 import { ButtonProps } from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import LoginButton from './LoginButton';
 
 const loginButtons = [
   {
@@ -53,7 +54,7 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
       <Stack spacing={2}>
         <LoginInProgress loginIsInProgress={loginInProgress} />
         {loginButtons.map((loginButtonProps) => (
-          <ButtonWithTooltip
+          <LoginButtonWithTooltip
             loginButtonProps={loginButtonProps}
             placement="left"
             key={loginButtonProps.label}
@@ -81,9 +82,9 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
           px: 2,
         }}
       >
-        {loginButtons.map(({ href, label, tooltipText }) => (
+        {loginButtons.map((loginButtonProps) => (
           <Paper
-            key={label}
+            key={loginButtonProps.label}
             elevation={2}
             sx={{
               display: 'flex',
@@ -99,15 +100,16 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
               component="h2"
               sx={{ fontSize: '1.125rem', fontWeight: 600 }}
             >
-              {label}
+              {loginButtonProps.label}
             </Typography>
-            <Typography>{tooltipText}</Typography>
-            <ButtonWithTooltip
-              loginButtonProps={{ href, tooltipText, label: 'Continue' }}
-              placement="bottom"
+            <Typography>{loginButtonProps.tooltipText}</Typography>
+            <LoginButton
+              loginButtonProps={{
+                href: loginButtonProps.href,
+                label: 'Continue',
+              }}
+              key={loginButtonProps.label}
               redirectTo={redirectTo}
-              tooltipStyle={{ fontSize: '16px' }}
-              buttonStyle={cardButtonStyle}
               onClick={() => setLoginInProgress(true)}
             />
           </Paper>
