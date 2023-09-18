@@ -2,8 +2,9 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import ExternalSitesDesktop from './Desktop/ExternalSitesDesktop';
 import ExternalSitesMobile from './Mobile/ExternalSitesMobile';
+import { HeaderMenuLinkProps } from '../StyledLayoutComponents';
 
-export const externalSites = [
+export const externalSites: HeaderMenuLinkProps[] = [
   {
     children: 'Customer Community',
     href: 'https://community.guidewire.com/s/login',
@@ -24,7 +25,12 @@ export const externalSites = [
     children: 'Guidewire Website',
     href: 'https://www.guidewire.com',
   },
-];
+].map((link) => ({
+  ...link,
+  disableReactRouter: true,
+  target: '_blank',
+  rel: 'noopener noreferrer',
+}));
 
 export default function ExternalSites() {
   const theme = useTheme();

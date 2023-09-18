@@ -6,6 +6,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import { styled } from '@mui/material/styles';
 import Typography, { TypographyProps } from '@mui/material/Typography';
+import { forwardRef } from 'react';
 
 export const HeaderAvatar = styled(Avatar)<AvatarProps>(() => ({
   height: '25px',
@@ -51,13 +52,16 @@ export type HeaderMenuLinkProps = LinkProps & {
   disableReactRouter?: boolean;
 };
 
-export function HeaderMenuLink({
-  children,
-  sx,
-  href,
-  disableReactRouter,
-  ...otherProps
-}: HeaderMenuLinkProps) {
+export const HeaderMenuLink = forwardRef(function HeaderMenuLink(
+  {
+    children,
+    sx,
+    href,
+    disableReactRouter,
+    ...otherProps
+  }: HeaderMenuLinkProps,
+  ref: React.Ref<HTMLAnchorElement> | undefined
+) {
   const mergedStyles = {
     ...sx,
     textDecoration: 'none',
@@ -70,18 +74,24 @@ export function HeaderMenuLink({
 
   if (disableReactRouter || href?.startsWith('http') || !href) {
     return (
-      <Link href={href} sx={mergedStyles} {...otherProps}>
+      <Link href={href} sx={mergedStyles} {...otherProps} ref={ref}>
         {children}
       </Link>
     );
   }
 
   return (
-    <Link sx={mergedStyles} component={RouterLink} to={href} {...otherProps}>
+    <Link
+      sx={mergedStyles}
+      component={RouterLink}
+      to={href}
+      {...otherProps}
+      ref={ref}
+    >
       {children}
     </Link>
   );
-}
+});
 
 export const HeaderMenuDivider = styled(Divider)<DividerProps>(() => ({
   border: '1px solid',

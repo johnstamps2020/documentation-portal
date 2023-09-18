@@ -62,10 +62,8 @@ export default function Header(headerOptions: HeaderOptions) {
 
   return (
     <HeaderDesktop
-      centerItems={
-        <>{!headerOptions?.hideSearchBox && <SearchBox big={false} />}</>
-      }
-      rightItems={<MenuItems />}
+      centerItems={!headerOptions?.hideSearchBox && <SearchBox big={false} />}
+      rightItems={[<MenuItems />]}
     />
   );
 }

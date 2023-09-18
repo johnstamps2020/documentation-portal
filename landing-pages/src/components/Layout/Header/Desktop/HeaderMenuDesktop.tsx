@@ -8,12 +8,14 @@ import {
   HeaderMenuLink,
   HeaderMenuLinkProps,
   HeaderMenuTitle,
+  HeaderMenuSubtitle,
 } from 'components/Layout/StyledLayoutComponents';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 type HeaderMenuDesktopProps = {
   title: string;
   hideTitle?: boolean;
+  subtitle?: string;
   id: string;
   iconSrc: string;
   items: HeaderMenuLinkProps[];
@@ -22,6 +24,7 @@ type HeaderMenuDesktopProps = {
 export default function HeaderMenuDesktop({
   title,
   hideTitle,
+  subtitle,
   id,
   iconSrc,
   items,
@@ -46,8 +49,11 @@ export default function HeaderMenuDesktop({
         <HeaderMenuTitle key="menu-title">
           {headerAndTooltipText}
         </HeaderMenuTitle>,
+        subtitle ? (
+          <HeaderMenuSubtitle key="subtitle">{subtitle}</HeaderMenuSubtitle>
+        ) : null,
         <HeaderMenuDivider key="menu-divider" />,
-      ];
+      ].filter(Boolean);
 
   return (
     <Box>
@@ -63,10 +69,14 @@ export default function HeaderMenuDesktop({
       >
         {headerItems}
         {items.map(({ href, children, ...otherProps }) => (
-          <MenuItem key={href}>
-            <HeaderMenuLink href={href} {...otherProps} disableReactRouter>
-              {children}
-            </HeaderMenuLink>
+          <MenuItem
+            key={href}
+            component={HeaderMenuLink}
+            href={href}
+            sx={{ color: 'hsl(196, 100%, 31%)' }}
+            {...otherProps}
+          >
+            {children}
           </MenuItem>
         ))}
       </HeaderMenu>

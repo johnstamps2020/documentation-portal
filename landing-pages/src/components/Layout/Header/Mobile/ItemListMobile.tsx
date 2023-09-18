@@ -17,12 +17,7 @@ export default function ItemListMobile({ title, items }: ItemListMobileProps) {
         {title}
       </Typography>
       {items.map(({ href, children, ...otherProps }) => (
-        <HeaderMenuLink
-          href={href}
-          {...otherProps}
-          disableReactRouter
-          key={href}
-        >
+        <HeaderMenuLink href={href} {...otherProps} key={href}>
           {children}
         </HeaderMenuLink>
       ))}

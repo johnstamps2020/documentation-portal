@@ -631,7 +631,8 @@ function capitalizeFirstLetter(word: string) {
 function getComponentName(targetFile: string) {
   const fileName = parse(targetFile)
     .name.replaceAll('.', '')
-    .replaceAll('-', '');
+    .replaceAll('-', '')
+    .replaceAll(' ', '');
   if (fileName.match(/^\d/)) {
     return `LandingPage${fileName}`;
   }

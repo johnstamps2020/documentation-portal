@@ -1,5 +1,5 @@
 import iconGlossary from 'images/icon-glossary.svg';
-import React from 'react';
+import { glossaryLink } from '../Glossary';
 import HeaderMenuDesktop from './HeaderMenuDesktop';
 
 export default function GlossaryDesktop() {
@@ -10,10 +10,7 @@ export default function GlossaryDesktop() {
       iconSrc={iconGlossary}
       id="glossary"
       items={[
-        {
-          href: '/glossary',
-          children: 'Guidewire Glossary',
-        },
+        glossaryLink
       ]}
     />
   );
