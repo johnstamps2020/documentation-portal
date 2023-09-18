@@ -1,7 +1,7 @@
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import SearchBox from 'components/SearchBox/SearchBox';
-import { CSSProperties } from 'react';
+import { CSSProperties, Fragment } from 'react';
 import InternalBadge from '../../LandingPage/InternalBadge';
 import HeaderDesktop from './Desktop/HeaderDesktop';
 import ExternalSites from './ExternalSites';
@@ -63,7 +63,7 @@ export default function Header(headerOptions: HeaderOptions) {
   return (
     <HeaderDesktop
       centerItems={!headerOptions?.hideSearchBox && <SearchBox big={false} />}
-      rightItems={[<MenuItems />]}
+      rightItems={<MenuItems />}
     />
   );
 }

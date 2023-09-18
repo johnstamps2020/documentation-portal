@@ -7,10 +7,10 @@ import {
   HeaderMenuDivider,
   HeaderMenuLink,
   HeaderMenuLinkProps,
-  HeaderMenuTitle,
   HeaderMenuSubtitle,
+  HeaderMenuTitle,
 } from 'components/Layout/StyledLayoutComponents';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 type HeaderMenuDesktopProps = {
   title: string;
