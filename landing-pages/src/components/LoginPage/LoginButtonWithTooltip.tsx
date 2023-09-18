@@ -1,6 +1,6 @@
-import { Tooltip, Typography, Button } from '@mui/material';
+import { Button, Tooltip, Typography } from '@mui/material';
 
-type ButtonWithTooltipProps = {
+type LoginButtonWithTooltipProps = {
   loginButtonProps: {
     label: string;
     href: string;
@@ -13,14 +13,14 @@ type ButtonWithTooltipProps = {
   onClick?: () => void;
 };
 
-export default function ButtonWithTooltip({
+export default function LoginButtonWithTooltip({
   loginButtonProps,
   placement,
   redirectTo,
   tooltipStyle,
   buttonStyle,
   onClick,
-}: ButtonWithTooltipProps) {
+}: LoginButtonWithTooltipProps) {
   return (
     <Tooltip
       key={loginButtonProps.label}
