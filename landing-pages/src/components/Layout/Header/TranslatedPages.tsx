@@ -1,63 +1,26 @@
-import { MenuItem } from '@mui/material';
-import React from 'react';
-import iconTranslatedDocs from 'images/icon-translatedDocs.svg';
-import {
-  HeaderAvatar,
-  HeaderIconButton,
-  HeaderMenu,
-  HeaderMenuDivider,
-  HeaderMenuLink,
-  HeaderMenuTitle,
-} from 'components/Layout/StyledLayoutComponents';
-import HeaderTooltip from './HeaderTooltip';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import TranslatedPagesDesktop from './Desktop/TranslatedPagesDesktop';
+import TranslatedPagesMobile from './Mobile/TranslatedPagesMobile';
+
+export const translatedPages = [
+  { children: 'Deutsch', href: '/l10n/de-DE' },
+  { children: 'Español (España)', href: '/l10n/es-ES' },
+  { children: 'Español', href: '/l10n/es-419' },
+  { children: 'Français', href: '/l10n/fr-FR' },
+  { children: 'Italiano', href: '/l10n/it-IT' },
+  { children: '日本語', href: '/l10n/ja-JP' },
+  { children: 'Nederlands', href: '/l10n/nl-NL' },
+  { children: 'Português', href: '/l10n/pt-BR' },
+];
 
 export default function TranslatedPages() {
-  const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
-    null
-  );
+  const theme = useTheme();
+  const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const pages = [
-    { label: 'Deutsch', url: '/l10n/de-DE' },
-    { label: 'Español (España)', url: '/l10n/es-ES' },
-    { label: 'Español', url: '/l10n/es-419' },
-    { label: 'Français', url: '/l10n/fr-FR' },
-    { label: 'Italiano', url: '/l10n/it-IT' },
-    { label: '日本語', url: '/l10n/ja-JP' },
-    { label: 'Nederlands', url: '/l10n/nl-NL' },
-    { label: 'Português', url: '/l10n/pt-BR' },
-  ];
+  if (smallScreen) {
+    return <TranslatedPagesMobile />;
+  }
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElement(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorElement(null);
-  };
-
-  const headerAndTooltipText = 'Translated documentation';
-
-  return (
-    <div>
-      <HeaderIconButton id="translated-documents" onClick={handleClick}>
-        <HeaderAvatar alt="Translated Documents" src={iconTranslatedDocs} />
-      </HeaderIconButton>
-      <HeaderMenu
-        anchorEl={anchorElement}
-        id="translated-docs-menu"
-        open={Boolean(anchorElement)}
-        onClose={handleClose}
-        onClick={handleClose}
-      >
-        <HeaderMenuTitle>{headerAndTooltipText}</HeaderMenuTitle>
-        <HeaderMenuDivider />
-        {pages.map((p) => (
-          <HeaderTooltip title={headerAndTooltipText} key={p.label}>
-            <MenuItem>
-              <HeaderMenuLink href={p.url}>{p.label}</HeaderMenuLink>
-            </MenuItem>
-          </HeaderTooltip>
-        ))}
-      </HeaderMenu>
-    </div>
-  );
+  return <TranslatedPagesDesktop />;
 }

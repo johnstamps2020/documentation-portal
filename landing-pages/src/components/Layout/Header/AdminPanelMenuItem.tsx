@@ -3,7 +3,7 @@ import { HeaderMenuLink } from 'components/Layout/StyledLayoutComponents';
 import { useEnvInfo, useUserInfo } from '../../../hooks/useApi';
 import { prodDeployEnv } from '../../../vars';
 
-export default function AdminPanelOption() {
+export default function AdminPanelMenuItem() {
   const {
     userInfo,
     isLoading: isUserInfoLoading,

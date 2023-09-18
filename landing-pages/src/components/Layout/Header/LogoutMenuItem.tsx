@@ -1,7 +1,7 @@
 import MenuItem from '@mui/material/MenuItem';
 import { HeaderMenuLink } from 'components/Layout/StyledLayoutComponents';
 
-export default function LogoutOption() {
+export default function LogoutMenuItem() {
   const redirectTo = `/gw-logout?redirectTo=${window.location.href.replace(
     window.location.origin,
     ''

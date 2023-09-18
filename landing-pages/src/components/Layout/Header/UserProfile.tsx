@@ -15,8 +15,8 @@ import { useUserInfo } from 'hooks/useApi';
 import Drawer from '@mui/material/Drawer';
 import LoginOptions from 'components/LoginPage/LoginOptions';
 import Stack from '@mui/material/Stack';
-import LogoutOption from './LogoutOption';
-import AdminPanelOption from './AdminPanelOption';
+import LogoutMenuItem from './LogoutMenuItem';
+import AdminPanelMenuItem from './AdminPanelMenuItem';
 import HeaderTooltip from './HeaderTooltip';
 
 type LoginButtonProps = {
@@ -93,10 +93,10 @@ export default function UserProfile() {
     <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>,
     <HeaderMenuDivider />,
     <div>
-      <LogoutOption />
+      <LogoutMenuItem />
     </div>,
     <div>
-      <AdminPanelOption />
+      <AdminPanelMenuItem />
     </div>,
   ];
 

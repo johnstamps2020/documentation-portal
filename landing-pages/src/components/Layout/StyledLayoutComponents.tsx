@@ -47,7 +47,7 @@ export const HeaderMenu = (props: MenuProps) => (
   />
 );
 
-type HeaderMenuLinkProps = LinkProps & {
+export type HeaderMenuLinkProps = LinkProps & {
   disableReactRouter?: boolean;
 };
 
@@ -56,6 +56,7 @@ export function HeaderMenuLink({
   sx,
   href,
   disableReactRouter,
+  ...otherProps
 }: HeaderMenuLinkProps) {
   const mergedStyles = {
     ...sx,
@@ -69,14 +70,14 @@ export function HeaderMenuLink({
 
   if (disableReactRouter || href?.startsWith('http') || !href) {
     return (
-      <Link href={href} sx={mergedStyles}>
+      <Link href={href} sx={mergedStyles} {...otherProps}>
         {children}
       </Link>
     );
   }
 
   return (
-    <Link sx={mergedStyles} component={RouterLink} to={href}>
+    <Link sx={mergedStyles} component={RouterLink} to={href} {...otherProps}>
       {children}
     </Link>
   );
