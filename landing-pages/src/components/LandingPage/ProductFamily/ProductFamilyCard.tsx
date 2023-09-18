@@ -11,11 +11,11 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
   };
   const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
 
-  if (isError || landingPageItems?.length === 0) {
+  if (isError || landingPageItems?.length === 0 || !landingPageItems) {
     return null;
   }
 
-  if (isLoading || !landingPageItems) {
+  if (isLoading) {
     return (
       <Skeleton
         variant="rectangular"

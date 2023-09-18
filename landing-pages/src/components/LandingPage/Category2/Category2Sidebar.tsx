@@ -10,11 +10,15 @@ import Category2Item from './Category2Item';
 export default function Category2Sidebar({ label, items }: SidebarProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isError || (landingPageItems && landingPageItems.length === 0)) {
+  if (
+    isError ||
+    (landingPageItems && landingPageItems.length === 0) ||
+    !landingPageItems
+  ) {
     return null;
   }
 
-  if (isLoading || !landingPageItems) {
+  if (isLoading) {
     return <SidebarSkeleton />;
   }
 

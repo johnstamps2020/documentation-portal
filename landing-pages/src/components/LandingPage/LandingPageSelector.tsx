@@ -81,11 +81,11 @@ export default function LandingPageSelector({
     };
   }, []);
 
-  if (isError) {
+  if (isError || !landingPageItems) {
     return null;
   }
 
-  if (isLoading || !landingPageItems) {
+  if (isLoading) {
     return (
       <Skeleton variant="rectangular" sx={{ width: '300px', height: '55px' }} />
     );

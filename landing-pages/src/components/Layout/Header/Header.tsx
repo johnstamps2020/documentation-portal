@@ -8,7 +8,7 @@ import Logo from './Logo/Logo';
 import TranslatedPages from './TranslatedPages';
 import UserProfile from './UserProfile';
 
-export const headerHeight = '68px';
+export const headerHeight = '64px';
 
 export type HeaderOptions = {
   searchFilters?: { [key: string]: string[] };
@@ -29,7 +29,7 @@ export default function Header(headerOptions: HeaderOptions) {
         position: 'relative', // for zIndex to work
         width: '100%',
         backgroundColor: 'hsl(216, 42%, 13%)',
-        padding: '6px 20px 6px 6px',
+        padding: '16px',
         zIndex: theme.zIndex.drawer + 1,
       }}
     >
