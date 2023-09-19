@@ -12,11 +12,17 @@ type HeaderAvatarProps = AvatarProps & {
   iconSize?: number;
 };
 
-export const HeaderAvatar = styled(Avatar)<HeaderAvatarProps>(
-  (props: HeaderAvatarProps) => ({
-    height: props.iconSize || 25,
-    width: props.iconSize || 25,
-  })
+export const HeaderAvatar = ({
+  iconSize,
+  ...otherProps
+}: HeaderAvatarProps) => (
+  <Avatar
+    sx={{
+      width: iconSize || 25,
+      height: iconSize || 25,
+    }}
+    {...otherProps}
+  />
 );
 
 export const HeaderMenuTitle = styled(Typography)<TypographyProps>(() => ({
