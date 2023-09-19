@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack';
 import { mainHeight } from 'components/Layout/Layout';
 import Container from '@mui/material/Container';
 import { useLayoutContext } from 'LayoutContext';
+import { useEffect } from 'react';
 
 type ServerMessagePageProps = {
   informationToDisplay: JSX.Element | JSX.Element[];
@@ -17,7 +18,10 @@ export default function ServerMessagePage({
   title,
 }: ServerMessagePageProps) {
   const { setTitle } = useLayoutContext();
-  setTitle(title);
+
+  useEffect(() => {
+    setTitle(title);
+  }, [title, setTitle]);
 
   return (
     <Grid
