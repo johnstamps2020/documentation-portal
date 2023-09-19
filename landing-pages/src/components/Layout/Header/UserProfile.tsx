@@ -8,6 +8,7 @@ import iconAvatar from 'images/icon-avatar.svg';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import HeaderMenuDesktop from './Desktop/HeaderMenuDesktop';
+import { useAdminLinks } from 'hooks/useAdminLinks';
 
 type LoginButtonProps = {
   drawerOpen: boolean;
@@ -52,6 +53,7 @@ function LoginButton({ drawerOpen, setDrawerOpen }: LoginButtonProps) {
 
 export default function UserProfile() {
   const { userInfo, isError, isLoading } = useUserInfo();
+  const { adminLinks } = useAdminLinks();
   const [loginDrawer, setLoginDrawer] = React.useState<boolean>(false);
 
   if (isError || isLoading || !userInfo) {
@@ -80,10 +82,7 @@ export default function UserProfile() {
           children: 'Log out',
           disableReactRouter: true,
         },
-        {
-          href: '/admin-panel',
-          children: 'Admin panel',
-        },
+        ...adminLinks,
       ]}
     />
   );
