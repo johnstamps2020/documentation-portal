@@ -601,7 +601,8 @@ function getClassMap(flailConfig: FlailConfig, targetFile: string): ClassMap {
     isRelease &&
     (level1Class.match('garmisch') ||
       level1Class.match('flaine') ||
-      level1Class.match('hakuba'))
+      level1Class.match('hakuba') ||
+      level1Class.match('innsbruck'))
   ) {
     return category2;
   }

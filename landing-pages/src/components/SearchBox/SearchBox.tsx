@@ -33,8 +33,6 @@ const regularSizeProps = {
   height: '30px',
   width: '100%',
   maxWidth: '360px',
-  marginTop: '25px',
-  marginBottom: '25px',
 };
 
 export default function SearchBox({ big = true }: SearchBoxProps) {

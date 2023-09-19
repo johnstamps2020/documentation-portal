@@ -39,12 +39,12 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Cloud Home",
-          "id": "gchhelprelease"
-        },
-        {
           "label": "Cloud Platform",
           "id": "guidewirecloudconsolerootinsurerdev"
+        },
+        {
+          "label": "Cloud Home",
+          "id": "gchhelprelease"
         },
         {
           "label": "Data Platform",
@@ -151,6 +151,8 @@
     "platform": [
       "Cloud"
     ],
-    "language": ["en"]
+    "language": [
+      "en"
+    ]
   }
 }

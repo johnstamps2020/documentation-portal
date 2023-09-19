@@ -6,11 +6,24 @@ import { Link as RouterLink } from 'react-router-dom';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import { styled } from '@mui/material/styles';
 import Typography, { TypographyProps } from '@mui/material/Typography';
+import { forwardRef } from 'react';
 
-export const HeaderAvatar = styled(Avatar)<AvatarProps>(() => ({
-  height: '25px',
-  width: '25px',
-}));
+type HeaderAvatarProps = AvatarProps & {
+  iconSize?: number;
+};
+
+export const HeaderAvatar = ({
+  iconSize,
+  ...otherProps
+}: HeaderAvatarProps) => (
+  <Avatar
+    sx={{
+      width: iconSize || 25,
+      height: iconSize || 25,
+    }}
+    {...otherProps}
+  />
+);
 
 export const HeaderMenuTitle = styled(Typography)<TypographyProps>(() => ({
   fontSize: 16,
@@ -47,16 +60,20 @@ export const HeaderMenu = (props: MenuProps) => (
   />
 );
 
-type HeaderMenuLinkProps = LinkProps & {
+export type HeaderMenuLinkProps = LinkProps & {
   disableReactRouter?: boolean;
 };
 
-export function HeaderMenuLink({
-  children,
-  sx,
-  href,
-  disableReactRouter,
-}: HeaderMenuLinkProps) {
+export const HeaderMenuLink = forwardRef(function HeaderMenuLink(
+  {
+    children,
+    sx,
+    href,
+    disableReactRouter,
+    ...otherProps
+  }: HeaderMenuLinkProps,
+  ref: React.Ref<HTMLAnchorElement> | undefined
+) {
   const mergedStyles = {
     ...sx,
     textDecoration: 'none',
@@ -69,18 +86,24 @@ export function HeaderMenuLink({
 
   if (disableReactRouter || href?.startsWith('http') || !href) {
     return (
-      <Link href={href} sx={mergedStyles}>
+      <Link href={href} sx={mergedStyles} {...otherProps} ref={ref}>
         {children}
       </Link>
     );
   }
 
   return (
-    <Link sx={mergedStyles} component={RouterLink} to={href}>
+    <Link
+      sx={mergedStyles}
+      component={RouterLink}
+      to={href}
+      {...otherProps}
+      ref={ref}
+    >
       {children}
     </Link>
   );
-}
+});
 
 export const HeaderMenuDivider = styled(Divider)<DividerProps>(() => ({
   border: '1px solid',

@@ -80,8 +80,12 @@ export function usePageData(pagePath?: string) {
   const reactRouterParams = useParams();
   const currentPagePath = reactRouterParams['*'] || '/';
   const targetPagePath = pagePath || currentPagePath;
+  const targetPagePathWithoutTrailingSlash = targetPagePath.replace(
+    /(.)\/$/,
+    '$1'
+  );
   const { data, error, isLoading } = useSWR<Page, PageError>(
-    targetPagePath,
+    targetPagePathWithoutTrailingSlash,
     pageGetter,
     {
       revalidateOnFocus: false,

@@ -24,7 +24,7 @@
       </ENTRIES>
     </EXTENSION>
     <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../doctools-apps/apps/config_deployer/config_deployer/main.py" />
-    <option name="PARAMETERS" value="merge $PROJECT_DIR$/../documentation-portal/.teamcity/config/docs" />
+    <option name="PARAMETERS" value="merge $PROJECT_DIR$/.teamcity/config/docs" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
     <option name="MODULE_MODE" value="false" />

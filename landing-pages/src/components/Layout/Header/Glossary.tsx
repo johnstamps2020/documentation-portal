@@ -1,46 +1,22 @@
-import { MenuItem } from '@mui/material';
-import React from 'react';
-import iconGlossary from 'images/icon-glossary.svg';
-import {
-  HeaderAvatar,
-  HeaderIconButton,
-  HeaderMenu,
-  HeaderMenuLink,
-} from 'components/Layout/StyledLayoutComponents';
-import HeaderTooltip from './HeaderTooltip';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import GlossaryDesktop from './Desktop/GlossaryDesktop';
+import GlossaryMobile from './Mobile/GlossaryMobile';
+import { HeaderMenuLinkProps } from '../StyledLayoutComponents';
+
+export const glossaryLink: HeaderMenuLinkProps = {
+  children: 'Glossary',
+  href: '/glossary',
+  disableReactRouter: true,
+};
 
 export default function Glossary() {
-  const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
-    null
-  );
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElement(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorElement(null);
-  };
-  const headerAndTooltipText = 'Guidewire Glossary';
+  const theme = useTheme();
+  const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  return (
-    <div>
-      <HeaderIconButton id="glossary" onClick={handleClick}>
-        <HeaderAvatar alt="Glossary" src={iconGlossary} />
-      </HeaderIconButton>
-      <HeaderMenu
-        anchorEl={anchorElement}
-        id="glossary-menu"
-        open={Boolean(anchorElement)}
-        onClose={handleClose}
-        onClick={handleClose}
-      >
-        <HeaderTooltip title={headerAndTooltipText}>
-          <MenuItem>
-            <HeaderMenuLink href="/glossary" disableReactRouter>
-              {headerAndTooltipText}
-            </HeaderMenuLink>
-          </MenuItem>
-        </HeaderTooltip>
-      </HeaderMenu>
-    </div>
-  );
+  if (smallScreen) {
+    return <GlossaryMobile />;
+  }
+
+  return <GlossaryDesktop />;
 }

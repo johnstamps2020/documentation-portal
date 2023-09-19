@@ -1,23 +1,13 @@
 import Button from '@mui/material/Button';
-import React from 'react';
-import iconAvatar from 'images/icon-avatar.svg';
-import {
-  HeaderAvatar,
-  HeaderIconButton,
-  HeaderMenu,
-  HeaderMenuDivider,
-  HeaderMenuSubtitle,
-  HeaderMenuTitle,
-} from 'components/Layout/StyledLayoutComponents';
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
-import { useUserInfo } from 'hooks/useApi';
 import Drawer from '@mui/material/Drawer';
-import LoginOptions from 'components/LoginPage/LoginOptions';
+import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import LogoutOption from './LogoutOption';
-import AdminPanelOption from './AdminPanelOption';
-import HeaderTooltip from './HeaderTooltip';
+import LoginOptions from 'components/LoginPage/LoginOptions';
+import { useUserInfo } from 'hooks/useApi';
+import iconAvatar from 'images/icon-avatar.svg';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import HeaderMenuDesktop from './Desktop/HeaderMenuDesktop';
 
 type LoginButtonProps = {
   drawerOpen: boolean;
@@ -38,14 +28,13 @@ function LoginButton({ drawerOpen, setDrawerOpen }: LoginButtonProps) {
     };
   }
 
-  const anchor = 'right';
   return (
     <>
       <Button onClick={toggleLoginDrawer(true)} variant="contained">
         Log in
       </Button>
       <Drawer
-        anchor={anchor}
+        anchor="right"
         open={drawerOpen}
         onClose={toggleLoginDrawer(false)}
         PaperProps={{ sx: { justifyContent: 'center' } }}
@@ -63,23 +52,11 @@ function LoginButton({ drawerOpen, setDrawerOpen }: LoginButtonProps) {
 
 export default function UserProfile() {
   const { userInfo, isError, isLoading } = useUserInfo();
-
-  const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
-    null
-  );
   const [loginDrawer, setLoginDrawer] = React.useState<boolean>(false);
 
   if (isError || isLoading || !userInfo) {
     return null;
   }
-
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElement(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorElement(null);
-  };
 
   if (!userInfo?.isLoggedIn) {
     return (
@@ -87,41 +64,27 @@ export default function UserProfile() {
     );
   }
 
-  const tooltipText = 'User information';
-  const tooltipItems = [
-    <HeaderMenuTitle>{userInfo.name}</HeaderMenuTitle>,
-    <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>,
-    <HeaderMenuDivider />,
-    <div>
-      <LogoutOption />
-    </div>,
-    <div>
-      <AdminPanelOption />
-    </div>,
-  ];
-
   return (
-    <div>
-      <HeaderIconButton id="profile" onClick={handleClick}>
-        <HeaderAvatar
-          alt="User Avatar"
-          src={iconAvatar}
-          sx={{ width: '31px', height: '32px' }}
-        />
-      </HeaderIconButton>
-      <HeaderMenu
-        anchorEl={anchorElement}
-        id="profile-menu"
-        open={Boolean(anchorElement)}
-        onClose={handleClose}
-        onClick={handleClose}
-      >
-        {tooltipItems.map((item, index) => (
-          <HeaderTooltip key={index} title={tooltipText}>
-            {item}
-          </HeaderTooltip>
-        ))}
-      </HeaderMenu>
-    </div>
+    <HeaderMenuDesktop
+      title={userInfo.name}
+      subtitle={userInfo.preferred_username}
+      iconSrc={iconAvatar}
+      iconSize={32}
+      id="profile-menu"
+      items={[
+        {
+          href: `/gw-logout?redirectTo=${window.location.href.replace(
+            window.location.origin,
+            ''
+          )}`,
+          children: 'Log out',
+          disableReactRouter: true,
+        },
+        {
+          href: '/admin-panel',
+          children: 'Admin panel',
+        },
+      ]}
+    />
   );
 }
