@@ -116,11 +116,14 @@ export default function WhatsNew({
               margin: '10px auto 10px auto',
               padding: '4px',
             }}
+            LinkComponent={() => (
+              <LandingPageLink
+                landingPageItem={landingPageItems[0]}
+                sx={{ color: 'white' }}
+              />
+            )}
           >
-            <LandingPageLink
-              landingPageItem={landingPageItems[0]}
-              sx={{ color: 'white' }}
-            />
+            {landingPageItems[0].label}
           </Button>
         )}
       </Stack>
