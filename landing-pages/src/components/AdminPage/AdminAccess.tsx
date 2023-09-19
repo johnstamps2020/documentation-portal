@@ -11,9 +11,9 @@ export default function AdminAccess({ pagePath, children }: AdminAccessProps) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userInfo && userInfo.isLoggedIn === false) {
+    if (userInfo && !userInfo.isLoggedIn) {
       navigate(`/gw-login?redirectTo=${pagePath}`);
-    } else if (userInfo && userInfo.isAdmin === false) {
+    } else if (userInfo && !userInfo.isAdmin) {
       navigate(`/forbidden?unauthorized=${pagePath}`);
     }
   }, [navigate, userInfo, userInfo?.isLoggedIn, userInfo?.isAdmin, pagePath]);
