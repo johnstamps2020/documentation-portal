@@ -69,6 +69,7 @@ export default function UserProfile() {
       title={userInfo.name}
       subtitle={userInfo.preferred_username}
       iconSrc={iconAvatar}
+      iconSize={32}
       id="profile-menu"
       items={[
         {

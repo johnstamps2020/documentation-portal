@@ -12,7 +12,12 @@ export default function Logo() {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    <Link component={RouterLink} to="/" aria-label="Return to the home page">
+    <Link
+      component={RouterLink}
+      to="/"
+      aria-label="Return to the home page"
+      sx={{ display: 'contents' }}
+    >
       {isLargeScreen ? (
         <LogoLarge style={{ height: '32px', width: '292.67px' }} />
       ) : (

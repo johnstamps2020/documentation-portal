@@ -18,6 +18,7 @@ type HeaderMenuDesktopProps = {
   subtitle?: string;
   id: string;
   iconSrc: string;
+  iconSize?: number;
   items: HeaderMenuLinkProps[];
 };
 
@@ -27,6 +28,7 @@ export default function HeaderMenuDesktop({
   subtitle,
   id,
   iconSrc,
+  iconSize,
   items,
 }: HeaderMenuDesktopProps) {
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
@@ -58,7 +60,7 @@ export default function HeaderMenuDesktop({
   return (
     <Box>
       <HeaderIconButton id={id} onClick={handleClick}>
-        <HeaderAvatar alt={title} src={iconSrc} />
+        <HeaderAvatar alt={title} src={iconSrc} iconSize={iconSize} />
       </HeaderIconButton>
       <HeaderMenu
         anchorEl={anchorElement}

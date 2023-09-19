@@ -1,7 +1,7 @@
+import { StackProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import SearchBox from 'components/SearchBox/SearchBox';
-import { CSSProperties } from 'react';
 import InternalBadge from '../../LandingPage/InternalBadge';
 import HeaderDesktop from './Desktop/HeaderDesktop';
 import ExternalSites from './ExternalSites';
@@ -9,20 +9,12 @@ import Glossary from './Glossary';
 import HeaderMobile from './Mobile/HeaderMobile';
 import TranslatedPages from './TranslatedPages';
 
-export const headerHeight = '64px';
+export const headerHeight = '68px';
 
-type HeaderStyles = {
-  position: CSSProperties['position'];
-  width: CSSProperties['width'];
-  backgroundColor: CSSProperties['backgroundColor'];
-  padding: CSSProperties['padding'];
-};
-
-export const headerStyles: HeaderStyles = {
+export const headerStyles: StackProps['sx'] = {
   position: 'relative', // for zIndex to work
-  width: '100%',
   backgroundColor: 'hsl(216, 42%, 13%)',
-  padding: '16px',
+  px: '16px',
 };
 
 export type HeaderOptions = {

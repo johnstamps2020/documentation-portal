@@ -8,10 +8,16 @@ import { styled } from '@mui/material/styles';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import { forwardRef } from 'react';
 
-export const HeaderAvatar = styled(Avatar)<AvatarProps>(() => ({
-  height: '25px',
-  width: '25px',
-}));
+type HeaderAvatarProps = AvatarProps & {
+  iconSize?: number;
+};
+
+export const HeaderAvatar = styled(Avatar)<HeaderAvatarProps>(
+  (props: HeaderAvatarProps) => ({
+    height: props.iconSize || 25,
+    width: props.iconSize || 25,
+  })
+);
 
 export const HeaderMenuTitle = styled(Typography)<TypographyProps>(() => ({
   fontSize: 16,

@@ -3,6 +3,7 @@ import { useTheme } from '@mui/material/styles';
 import { headerHeight, headerStyles } from '../Header';
 import Logo from '../Logo/Logo';
 import UserProfile from '../UserProfile';
+import Box from '@mui/material/Box';
 
 type HeaderDesktopProps = {
   centerItems: React.ReactNode;
@@ -16,29 +17,27 @@ export default function HeaderDesktop({
   const theme = useTheme();
 
   return (
-    <Stack
-      direction="row"
-      height={headerHeight}
-      alignItems="center"
-      justifyContent="space-between"
-      spacing={2}
+    <Box
       sx={{
         ...headerStyles,
+        height: headerHeight,
         zIndex: theme.zIndex.drawer + 1,
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        alignItems: 'center',
       }}
     >
       <Logo />
-      {centerItems}
+      <Box>{centerItems}</Box>
       <Stack
         direction="row"
         alignItems="center"
         justifyContent="flex-end"
-        width={{ sm: '100%', md: '400px' }}
         gap="24px"
       >
         {rightItems}
         <UserProfile />
       </Stack>
-    </Stack>
+    </Box>
   );
 }
