@@ -22,13 +22,12 @@ import java.util.*
 
 version = "2022.04"
 project {
-//    TODO: Uncomment builds when the pipeline is ready to merge
     GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
     }
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
     vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
-//    subProject(User.rootProject)
+    subProject(User.rootProject)
     subProject(Admin.rootProject)
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
@@ -100,16 +99,14 @@ enum class GwConfigParams(val paramValue: String) {
     DB_CLIENT_IMAGE_NAME("alpine"),
     DB_DUMP_ZIP_PACKAGE_NAME("docportalconfig.zip"),
 
-    // TODO: Change croissant to docportal before switch to main
-    DOC_PORTAL_APP_NAME("croissant"),
+    DOC_PORTAL_APP_NAME("docportal"),
     DOC_PORTAL_FRONTEND_APP_NAME("docportal-frontend"),
     DOC_PORTAL_DIR("server"),
     DOC_PORTAL_FRONTEND_DIR("landing-pages"),
     DOC_PORTAL_KUBE_DEPLOYMENT_FILE("${DOC_PORTAL_DIR.paramValue}/kube/deployment.yml"),
 
-    // TODO: Change the paths to the gateway config files before switch to main
-    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config-croissant.yml"),
-    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config-croissant.yml"),
+    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config.yml"),
+    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config-prod.yml"),
     DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE("${DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/deployment.yml"),
     S3_KUBE_DEPLOYMENT_FILE("aws/s3/kube/service-gateway-config.yml")
 }
@@ -134,15 +131,10 @@ enum class GwDockerImages(val imageUrl: String) {
     RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"), FLAIL_SSG_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/flail-ssg:latest"
     ),
-    LION_PKG_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/lion-pkg-builder:latest"), LION_PAGE_BUILDER_LATEST(
-        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/lion-page-builder:latest"
-    ),
-    UPGRADE_DIFFS_PAGE_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/upgradediffs-page-builder:latest"), SITEMAP_GENERATOR_LATEST(
+    LION_PKG_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/lion-pkg-builder:latest"), SITEMAP_GENERATOR_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/sitemap-generator:latest"
     ),
-    DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-validator:latest"), PYTHON_3_9_SLIM_BUSTER(
-        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/python:3.9-slim-buster"
-    ),
+    DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-validator:latest"),
     NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"), NODE_16_16_0("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:16.16.0"), NODE_18_14_0(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:18.14.0"
     ),
@@ -165,9 +157,8 @@ enum class GwAtmosLabels(val labelValue: String) {
     POD_NAME("doctools"), DEPT_CODE("284"),
 }
 
-// TODO: Remove croissant from the image tag before switch to main
 enum class GwDockerImageTags(val tagValue: String) {
-    DOC_PORTAL("latest-croissant"), DOC_PORTAL_FRONTEND("latest")
+    DOC_PORTAL("latest"), DOC_PORTAL_FRONTEND("latest")
 }
 
 enum class GwTriggerPaths(val pathValue: String) {
@@ -309,15 +300,14 @@ object Helpers {
         """.trimIndent()
     }
 
-    // TODO: Change URLs to doc site URLs before switch to main
     fun getTargetUrl(deployEnv: String): String {
         return if (arrayOf(
                 GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName
             ).contains(deployEnv)
         ) {
-            "https://croissant.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
+            "https://docs.guidewire.com"
         } else {
-            "https://croissant.${deployEnv}.ccs.guidewire.net"
+            "https://docs.${deployEnv}.ccs.guidewire.net"
         }
     }
 
@@ -379,7 +369,6 @@ object Helpers {
         return Pair(partnersLoginUrl, customersLoginUrl)
     }
 
-    // TODO: Adjust requested values for CPU and memory when Kubecost starts being useful again
     fun setReactLandingPagesDeployEnvVars(deployEnv: String, tagVersion: String): String {
         val commonEnvVars = """
             export APP_NAME="${GwConfigParams.DOC_PORTAL_FRONTEND_APP_NAME.paramValue}"
@@ -415,7 +404,6 @@ object Helpers {
         val appBaseUrl = getTargetUrl(deployEnv)
         val docS3Url = getS3BucketUrl(deployEnv)
         val portal2S3Url = getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)
-        // TODO: Remove the condition for the ENABLE_AUTH parameter when testing is done.
         val commonEnvVars = """
             export APP_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
@@ -425,12 +413,7 @@ object Helpers {
             export FRONTEND_URL="http://docportal-frontend.doctools:6006"
             export DOC_S3_URL="$docS3Url"
             export PORTAL2_S3_URL="$portal2S3Url"
-            export ENABLE_AUTH="${
-            when (deployEnv) {
-                GwDeployEnvs.PROD.envName -> "no"
-                else -> "yes"
-            }
-        }"
+            export ENABLE_AUTH="yes"
             export DD_SERVICE_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export OKTA_AUDIENCE="${GwConfigParams.OKTA_AUDIENCE.paramValue}"
             export OKTA_ADMIN_GROUPS="${GwConfigParams.OKTA_ADMIN_GROUPS.paramValue}"
@@ -704,34 +687,6 @@ object GwBuildSteps {
         }
     }
 
-    object MergeDocsConfigFilesStep : ScriptBuildStep({
-        name = "Merge docs config files"
-        id = Helpers.createIdStringFromName(this.name)
-        scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
-            """.trimIndent()
-        dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
-        dockerImagePlatform = ImagePlatform.Linux
-    })
-
-    fun createGenerateDocsConfigFilesForEnvStep(deployEnv: String): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Generate config file for $deployEnv"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                config_deployer deploy "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}" --deploy-env $deployEnv
-            """.trimIndent()
-            dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
     fun createRunFlailSsgStep(
         pagesDir: String,
         outputDir: String,
@@ -754,58 +709,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.FLAIL_SSG_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createRefreshConfigBuildStep(deployEnv: String): ScriptBuildStep {
-        val url = Helpers.getTargetUrl(deployEnv)
-        return ScriptBuildStep {
-            name = "Refresh config for $deployEnv"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                curl $url/safeConfig/refreshConfig
-            """.trimIndent()
-        }
-    }
-
-    fun createRunLionPageBuilderStep(locDocsSrc: String, locDocsOut: String): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Run the lion page builder"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export LOC_DOCS_SRC="$locDocsSrc"
-                export LOC_DOCS_OUT="$locDocsOut"
-                
-                lion_page_builder
-            """.trimIndent()
-            dockerImage = GwDockerImages.LION_PAGE_BUILDER_LATEST.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createCopyLocalizedPdfsToS3BucketStep(deployEnv: String, locDocsSrc: String): ScriptBuildStep {
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        return ScriptBuildStep {
-            name = "Copy localized PDFs to the S3 bucket"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                        
-                $awsEnvVars
-                        
-                aws s3 sync "$locDocsSrc" s3://tenant-doctools-${atmosDeployEnv}-builds/l10n --exclude ".git/*" --delete
-            """.trimIndent()
-            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -833,54 +736,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.LION_PKG_BUILDER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createRunUpgradeDiffsPageBuilderStep(
-        deployEnv: String,
-        upgradeDiffsDocsSrc: String,
-        upgradeDiffsDocsOut: String,
-    ): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Run the upgrade diffs page builder"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export UPGRADEDIFFS_DOCS_SRC="$upgradeDiffsDocsSrc"
-                export UPGRADEDIFFS_DOCS_OUT="$upgradeDiffsDocsOut"
-                export DEPLOY_ENV="$deployEnv"
-                
-                upgradediffs_page_builder
-            """.trimIndent()
-            dockerImage = GwDockerImages.UPGRADE_DIFFS_PAGE_BUILDER_LATEST.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createCopyUpgradeDiffsToS3BucketStep(deployEnv: String, upgradeDiffsDocsSrc: String): ScriptBuildStep {
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        var awsS3SyncCommand =
-            "aws s3 sync \"${upgradeDiffsDocsSrc}\" s3://tenant-doctools-${atmosDeployEnv}-builds/upgradediffs --delete"
-        if (arrayOf(GwDeployEnvs.STAGING.envName, GwDeployEnvs.PROD.envName).contains(deployEnv)) {
-            awsS3SyncCommand += " --exclude \"*/*-rc/*\""
-        }
-        return ScriptBuildStep {
-            name = "Copy upgrade diffs to the S3 bucket"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                        
-                $awsEnvVars
-                        
-                $awsS3SyncCommand
-            """.trimIndent()
-            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -1847,22 +1702,9 @@ object GwBuildFeatures {
 }
 
 object GwVcsRoots {
-    // TODO: Switch this repo to the main branch before switch to main
     val DocumentationPortalGitVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString(Helpers.md5("Documentation Portal git repo")),
         "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
-        "feature/typeorm",
-    )
-
-    val LocalizedPdfsGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString(Helpers.md5("Localized PDFs git repo")),
-        "ssh://git@stash.guidewire.com/docsources/localization-pdfs.git",
-        "main"
-    )
-
-    val UpgradeDiffsGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString(Helpers.md5("Upgrade diffs git repo")),
-        "ssh://git@stash.guidewire.com/docsources/upgradediffs.git",
         "main",
     )
 
@@ -3186,7 +3028,7 @@ object User {
             val regex = "ssh://git@stash.guidewire.com/(.+)/(.+).git".toRegex()
             val matchList = regex.find(gitUrl)?.groupValues
             val projectKey = matchList!![1]
-            val repoKey = matchList!![2]
+            val repoKey = matchList[2]
             val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
 
             val uploadStepOuputPath = when (gwBuildType) {
@@ -3588,8 +3430,7 @@ object Admin {
             subProject(DocPortal.rootProject)
             subProject(Frontend.rootProject)
             subProject(Server.rootProject)
-//            subProject(Content.rootProject)
-//            subProject(Apps.rootProject)
+            subProject(Content.rootProject)
         }
     }
 
@@ -3912,112 +3753,6 @@ object Admin {
             }
         }
 
-    }
-
-    object Apps {
-        val rootProject = createRootProjectForApps()
-
-        private fun createRootProjectForApps(): Project {
-            return Project {
-                name = "Apps"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                subProject(FlailSSGProject)
-            }
-        }
-
-        // TODO: Remove this project after switch to main
-        object FlailSSGProject : Project({
-            name = "Flail SSG"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            buildType(PublishFlailSSGDockerImageBuildType)
-            buildType(TestFlailSSGBuildType)
-
-        })
-
-        object PublishFlailSSGDockerImageBuildType : BuildType({
-            val appDir = "frontend/flail_ssg"
-            name = "Publish Docker image for Flail SSG"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Publish Docker image to Artifactory"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                    #!/bin/bash                        
-                    set -xe
-                    
-                    cd $appDir
-                    ./publish_docker.sh latest       
-                """.trimIndent()
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            dependencies {
-                snapshot(TestFlailSSGBuildType) {
-                    reuseBuilds = ReuseBuilds.SUCCESSFUL
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(appDir)))
-            }
-        })
-
-        object TestFlailSSGBuildType : BuildType({
-            name = "Test Flail SSG"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            params {
-                text(
-                    "env.DOCS_CONFIG_FILE",
-                    "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}",
-                    display = ParameterDisplay.HIDDEN
-                )
-            }
-
-            steps {
-                step(GwBuildSteps.MergeDocsConfigFilesStep)
-                script {
-                    name = "Run tests"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                    #!/bin/bash
-                    set -xe
-
-                    cd frontend/flail_ssg
-                    ./run_tests.sh
-                """.trimIndent()
-                    dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-            }
-
-            triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf("frontend")))
-            }
-        })
     }
 
     object Content {
@@ -5076,8 +4811,8 @@ object Admin {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 subProject(createReactLandingPagesProject())
-//                subProject(createNpmPackagesProject())
-//                subProject(createHtml5DependenciesProject())
+                subProject(createNpmPackagesProject())
+                subProject(createHtml5DependenciesProject())
             }
         }
 
