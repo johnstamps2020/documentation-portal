@@ -1,11 +1,12 @@
-import CategoryLayout, {
-  CategoryLayoutProps,
-} from 'components/LandingPage/Category/CategoryLayout';
+import Category2Layout, {
+  Category2LayoutProps,
+} from 'components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import flaineBadge from 'images/badge-flaine.svg';
 
-const pageConfig: CategoryLayoutProps = {
+const pageConfig: Category2LayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
     backgroundImage: `url(${gradientBackgroundImage})`,
@@ -17,18 +18,17 @@ const pageConfig: CategoryLayoutProps = {
     labelColor: 'white',
   },
   isRelease: true,
-
   cards: [
     {
       label: 'Platform',
       items: [
         {
-          label: 'Cloud Platform',
-          docId: 'guidewirecloudconsolerootinsurerdev',
-        },
-        {
           label: 'Cloud Home',
           docId: 'gchhelprelease',
+        },
+        {
+          label: 'Cloud Platform',
+          docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
           label: 'Data Platform',
@@ -129,7 +129,22 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
   ],
-
+  whatsNew: {
+    label: 'Flaine',
+    badge: flaineBadge,
+    item: { label: 'Learn more', docId: 'whatsnewflaine' },
+    content: [
+      'Advanced Product Designer app (APD)',
+      'Submission Intake for InsuranceSuite',
+      'App Events for event-based integration',
+      'Community-powered machine learning',
+      'Automated updates to latest release',
+      'Cloud API enhancements',
+      'Early access to Jutro Digital Platform',
+      'Expanded Guidewire GO content',
+      'Advanced monitoring and observability',
+    ],
+  },
   sidebar: {
     label: 'Implementation Resources',
     items: [
@@ -158,5 +173,5 @@ const pageConfig: CategoryLayoutProps = {
 };
 
 export default function Innsbruck() {
-  return <CategoryLayout {...pageConfig} />;
+  return <Category2Layout {...pageConfig} />;
 }
