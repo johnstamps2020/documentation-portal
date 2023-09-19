@@ -503,6 +503,9 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
     const uniqueLocalLandingPagesConfig: LegacyPageConfig[] = [];
     [...localLandingPagesConfigStaging, ...localLandingPagesConfigProd].forEach(
       (pageConfig) => {
+        if (pageConfig.title === 'Automated redirect') {
+          return;
+        }
         if (
           !uniqueLocalLandingPagesConfig.find(
             (uniquePageConfig) =>
@@ -514,6 +517,7 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
         }
       }
     );
+
     for (const page of uniqueLocalLandingPagesConfig) {
       const legacyPageRelativePath = getRelativePagePath(page.path);
       if (
