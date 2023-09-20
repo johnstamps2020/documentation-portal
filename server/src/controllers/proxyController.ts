@@ -61,9 +61,9 @@ async function getResourceStatusFromDatabase(
     requestedEntity instanceof Doc
       ? `/${requestedEntity.url}`
       : requestedEntity.url;
-  const requestedEntityUrlExists = await s3BucketUrlExists(
-    requestedEntityFullUrl
-  );
+  const requestedEntityUrlExists =
+    (await s3BucketUrlExists(requestedPath)) ||
+    (await s3BucketUrlExists(requestedEntityFullUrl));
 
   if (!requestedEntityUrlExists) {
     return [100, undefined];
