@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
-import { getDocByUrl, getExternalLinkByUrl } from './configController';
+import { Doc } from '../model/entity/Doc';
 import {
   isUserAllowedToAccessResource,
   openRequestedUrl,
   redirectToLoginPage,
 } from './authController';
+import { getDocByUrl, getExternalLinkByUrl } from './configController';
 import { isHtmlRequest, s3BucketUrlExists } from './redirectController';
-import { Doc } from '../model/entity/Doc';
 
 const fetch = require('node-fetch-retry');
 
@@ -43,6 +43,74 @@ export async function sitemapProxy(
   );
 }
 
+type ResourceStatusWithRedirectLink = [number, string | undefined];
+
+async function getResourceStatusFromDatabase(
+  requestedPath: string,
+  res: Response
+): Promise<ResourceStatusWithRedirectLink> {
+  const requestedEntity =
+    (await getExternalLinkByUrl(requestedPath)) ||
+    (await getDocByUrl(requestedPath));
+
+  if (!requestedEntity) {
+    return [100, undefined];
+  }
+
+  const requestedEntityFullUrl =
+    requestedEntity instanceof Doc
+      ? `/${requestedEntity.url}`
+      : requestedEntity.url;
+  const requestedEntityUrlExists = await s3BucketUrlExists(
+    requestedEntityFullUrl
+  );
+
+  if (!requestedEntityUrlExists) {
+    return [100, undefined];
+  }
+
+  if (isHtmlRequest(requestedPath)) {
+    const requestedPathExists = await s3BucketUrlExists(requestedPath);
+    if (!requestedPathExists) {
+      return [307, requestedEntityFullUrl];
+    }
+  }
+
+  return [
+    isUserAllowedToAccessResource(
+      res,
+      requestedEntity.public,
+      requestedEntity.internal,
+      requestedEntity.isInProduction
+    ).status,
+    undefined,
+  ];
+}
+
+function isPrPreviewLink(requestedPath: string): boolean {
+  const pathSegments = requestedPath.split('/');
+  return (
+    pathSegments.includes('preview') &&
+    pathSegments.includes('pull-requests') &&
+    pathSegments.includes('from') &&
+    pathSegments.includes('refs')
+  );
+}
+
+async function getResourceStatus(
+  requestedPath: string,
+  res: Response
+): Promise<ResourceStatusWithRedirectLink> {
+  if (isPrPreviewLink(requestedPath)) {
+    return [
+      isUserAllowedToAccessResource(res, false, true, false).status,
+      undefined,
+    ];
+  }
+
+  return getResourceStatusFromDatabase(requestedPath, res);
+}
+
 /*
  The s3 proxy controller tries to find an external link first because external links are more specific than docs.
  If the function tries to find a doc by the requested URL first,
@@ -52,57 +120,43 @@ export async function sitemapProxy(
  */
 export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   const requestedPath: string = req.path;
-  const requestedEntity =
-    (await getExternalLinkByUrl(requestedPath)) ||
-    (await getDocByUrl(requestedPath));
-  if (requestedEntity) {
-    const requestedEntityFullUrl =
-      requestedEntity instanceof Doc
-        ? `/${requestedEntity.url}`
-        : requestedEntity.url;
-    const requestedEntityUrlExists = await s3BucketUrlExists(
-      requestedEntityFullUrl
-    );
-    if (!requestedEntityUrlExists) {
-      return next();
-    }
-    const resourceStatus = isUserAllowedToAccessResource(
-      res,
-      requestedEntity.public,
-      requestedEntity.internal,
-      requestedEntity.isInProduction
-    ).status;
-    if (resourceStatus === 401) {
-      return redirectToLoginPage(req, res);
-    }
-    if (resourceStatus == 403) {
-      return res.redirect(
-        `${internalRoute}${req.url ? `?restricted=${req.originalUrl}` : ''}`
-      );
-    }
 
-    if (isHtmlRequest(requestedPath)) {
-      const requestedPathExists = await s3BucketUrlExists(requestedPath);
-      if (!requestedPathExists) {
-        return res.redirect(requestedEntityFullUrl);
-      }
-    }
+  const [resourceStatus, redirectPath] = await getResourceStatus(
+    requestedPath,
+    res
+  );
 
-    openRequestedUrl(req, res);
-    proxy.on('proxyRes', setProxyResCacheControlHeader);
-    return proxy.web(
-      req,
-      res,
-      {
-        target: requestedPath.startsWith('/portal')
-          ? process.env.PORTAL2_S3_URL
-          : process.env.DOC_S3_URL,
-        changeOrigin: true,
-      },
-      next
+  if (resourceStatus === 100) {
+    return next();
+  }
+
+  if (resourceStatus === 401) {
+    return redirectToLoginPage(req, res);
+  }
+
+  if (resourceStatus == 403) {
+    return res.redirect(
+      `${internalRoute}${req.url ? `?restricted=${req.originalUrl}` : ''}`
     );
   }
-  return next();
+
+  if (resourceStatus === 307 && redirectPath) {
+    return res.redirect(redirectPath);
+  }
+
+  openRequestedUrl(req, res);
+  proxy.on('proxyRes', setProxyResCacheControlHeader);
+  return proxy.web(
+    req,
+    res,
+    {
+      target: requestedPath.startsWith('/portal')
+        ? process.env.PORTAL2_S3_URL
+        : process.env.DOC_S3_URL,
+      changeOrigin: true,
+    },
+    next
+  );
 }
 
 export function html5Proxy(req: Request, res: Response, next: NextFunction) {
