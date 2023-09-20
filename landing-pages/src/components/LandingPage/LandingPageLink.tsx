@@ -1,6 +1,7 @@
+import Button, { ButtonProps } from '@mui/material/Button';
+import Link, { LinkProps } from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import { LandingPageItemData } from 'hooks/useLandingPageItems';
-import Link, { LinkProps } from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import InternalTooltip from './InternalTooltip';
 import VideoIcon from './VideoIcon';
@@ -16,6 +17,35 @@ function resolveUrl(srcUrl: string | undefined) {
   }
   const isAbsoluteUrl = srcUrl.startsWith('http') || srcUrl.startsWith('/');
   return isAbsoluteUrl ? srcUrl : `/${srcUrl}`;
+}
+
+type LandingPageButtonProps = LandingPageLinkProps & {
+  variant?: ButtonProps['variant'];
+};
+
+export function LandingPageButton({
+  landingPageItem,
+  sx,
+  variant = 'contained',
+}: LandingPageButtonProps) {
+  if (landingPageItem?.path) {
+    return (
+      <Button
+        LinkComponent={RouterLink}
+        href={`/${landingPageItem.path}`}
+        variant={variant}
+        sx={sx}
+      >
+        {landingPageItem.label}
+      </Button>
+    );
+  }
+
+  return (
+    <Button href={resolveUrl(landingPageItem?.url)} variant={variant} sx={sx}>
+      {landingPageItem?.label}
+    </Button>
+  );
 }
 
 export default function LandingPageLink({
