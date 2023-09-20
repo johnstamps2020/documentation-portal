@@ -286,7 +286,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${APP_NAME}
+  name: ${APP_NAME}-service
   namespace: ${POD_NAME}
   labels:
     app: ${APP_NAME}
