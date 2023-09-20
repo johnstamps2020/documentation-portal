@@ -2,6 +2,23 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "l10npdfss3folder",
+      "title": "L10N pdfs S3 folder",
+      "url": "l10n/pdfs",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "livepredictlatest",
       "title": "Predict",
       "url": "cloud/predict/latest",
