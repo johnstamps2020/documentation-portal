@@ -72,7 +72,7 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
   }
 
   return (
-    <Stack gap={6}>
+    <Stack gap={2}>
       <LoginInProgress loginIsInProgress={loginInProgress} />
       <Box
         sx={{
@@ -93,7 +93,7 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
               padding: '2rem 1rem',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 6,
+              gap: 2,
             }}
           >
             <Typography
