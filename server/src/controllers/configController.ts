@@ -647,9 +647,12 @@ function getUniqueReleases(allReleases: Release[] | null): string[] {
 function getLabel(docConfig: Doc, releaseInLabel: boolean): string {
   const docReleases = getUniqueReleases(docConfig.releases);
   const docVersions = getUniqueVersions(docConfig.platformProductVersions);
-  return releaseInLabel
-    ? `${docReleases[0]} (${docVersions[0]})`
-    : docVersions.join(',');
+
+  if (releaseInLabel && docReleases[0]) {
+    return `${docReleases[0]} (${docVersions[0]})`;
+  }
+
+  return docVersions.join(',');
 }
 
 function sortVersions(
