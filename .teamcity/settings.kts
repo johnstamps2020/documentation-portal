@@ -410,7 +410,7 @@ object Helpers {
             export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
             export TAG_VERSION="$tagVersion"
             export APP_BASE_URL="$appBaseUrl"
-            export FRONTEND_URL="http://docportal-frontend.doctools:6006"
+            export FRONTEND_URL="http://${GwConfigParams.DOC_PORTAL_FRONTEND_APP_NAME.paramValue}-service.doctools:6006"
             export DOC_S3_URL="$docS3Url"
             export PORTAL2_S3_URL="$portal2S3Url"
             export ENABLE_AUTH="yes"
