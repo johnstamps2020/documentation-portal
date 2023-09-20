@@ -199,7 +199,7 @@ app.use('/sitemap*', sitemapProxy);
 // HTML5 scripts, local or S3
 const isDevMode = runningInDevMode();
 if (isDevMode) {
-  app.use(express.static(join(__dirname, '../static/html5'), options));
+  app.use(express.static(join(__dirname, '../../html5/static/html5'), options));
 } else {
   app.use('/scripts', html5Proxy);
 }
