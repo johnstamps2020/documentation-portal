@@ -82,6 +82,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  # If you change the service name, you have to update the frontend URL env variable
+  # in the function for generating server deployment variables in settings.kts.
   name: ${APP_NAME}-service
   namespace: ${POD_NAME}
   labels:
