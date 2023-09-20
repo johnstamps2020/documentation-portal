@@ -15,15 +15,17 @@ export default function LoginPage() {
   }, [setBackgroundColor, setHeaderOptions, setTitle]);
 
   return (
-    <Stack alignItems="center" justifyContent="center">
+    <Stack alignItems="center" justifyContent="center" gap={1}>
       <Box
         sx={{
           background: 'linear-gradient(to right, #324c76, #719fe8)',
           width: '100%',
           display: 'flex',
           flexWrap: { xs: 'wrap', sm: 'nowrap' },
-          py: '1rem',
           justifyContent: 'space-evenly',
+          gap: 2,
+          py: { xs: 3, sm: 1 },
+          px: { xs: 3, sm: 2 },
           alignItems: 'center',
         }}
       >
@@ -39,22 +41,27 @@ export default function LoginPage() {
         >
           Welcome to Guidewire documentation
         </Typography>
-        <img
-          src="/images/login-hero.svg"
-          alt=""
-          style={{
-            width: '350px',
-            height: '350px',
-            maxWidth: '100%',
-            padding: '0 2rem',
+        <Box
+          sx={{
+            display: { xs: 'none', sm: 'block' },
           }}
-        />
+        >
+          <img
+            src="/images/login-hero.svg"
+            alt=""
+            style={{
+              height: '100%',
+              maxWidth: '100%',
+              padding: '0 2rem',
+            }}
+          />
+        </Box>
       </Box>
       <Stack
         alignItems="center"
         justifyContent="center"
-        gap={4}
-        sx={{ py: '2rem', width: '100%', textAlign: 'center' }}
+        gap={1}
+        sx={{ py: '1rem', width: '100%', textAlign: 'center' }}
       >
         <Typography
           sx={{

@@ -6,6 +6,7 @@ export const allSelectors = {
     { label: 'Flaine', pagePath: 'apiReferences/flaine' },
     { label: 'Garmisch', pagePath: 'apiReferences/garmisch' },
     { label: 'Hakuba', pagePath: 'apiReferences/hakuba' },
+    { label: 'Innsbruck', pagePath: 'apiReferences/innsbruck' },
   ],
   s344cd6ac814e55dd2f6e1bddf2c969db: [
     {
