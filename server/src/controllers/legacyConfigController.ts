@@ -372,7 +372,7 @@ async function addUuidIfEntityExists(
 
 export async function putConfigsInDatabase(req: Request): Promise<ApiResponse> {
   const { configType } = req.params;
-  const allowedConfigTypes = ['doc', 'source', 'page', 'build'];
+  const allowedConfigTypes = ['doc', 'source', 'build'];
   if (!allowedConfigTypes.includes(configType)) {
     return {
       status: 400,
@@ -387,8 +387,6 @@ export async function putConfigsInDatabase(req: Request): Promise<ApiResponse> {
     return await putDocConfigsInDatabase();
   } else if (configType === 'source') {
     return await putSourceConfigsInDatabase();
-  } else if (configType === 'page') {
-    return await putPageConfigsInDatabase();
   } else if (configType === 'build') {
     return await putBuildConfigsInDatabase();
   }
@@ -455,110 +453,6 @@ async function createExternalLinkEntities(
       status: 500,
       body: {
         message: `Cannot save ExternalLink entities to the database: ${err}`,
-      },
-    };
-  }
-}
-
-// TODO: Remove this function after the initial load to the database
-async function putPageConfigsInDatabase(): Promise<ApiResponse> {
-  try {
-    const isDevMode = runningInDevMode();
-    let localLandingPagesConfigDir: string;
-    const failedFetchesFromS3 = [];
-    if (isDevMode) {
-      localLandingPagesConfigDir = resolve(`${__dirname}/../../../frontend`);
-    } else {
-      localLandingPagesConfigDir = resolve(`${__dirname}/../legacyConfig`);
-      const getLegacyLandingPagesObjectsResult = await listItems(
-        'legacy-landing-pages'
-      );
-      const legacyLandingPages =
-        getLegacyLandingPagesObjectsResult.Contents?.map((i) => i.Key);
-      if (legacyLandingPages) {
-        for (const legacyLandingPage of legacyLandingPages) {
-          const targetLocalDir = legacyLandingPage!
-            .replace('legacy-landing-pages', localLandingPagesConfigDir)
-            .replace('/index.json', '');
-          const getLegacyLandingPageConfigResult = await getConfigFile(
-            targetLocalDir,
-            'index.json',
-            legacyLandingPage!
-          );
-          if (getLegacyLandingPageConfigResult !== 'success') {
-            failedFetchesFromS3.push(legacyLandingPage);
-          }
-        }
-      }
-    }
-
-    const localLandingPagesConfigStaging = readLocalPageConfigs(
-      `${localLandingPagesConfigDir}/staging/pages`
-    );
-    const localLandingPagesConfigProd = readLocalPageConfigs(
-      `${localLandingPagesConfigDir}/prod/pages`
-    );
-    const dbPageConfigsToSave: Page[] = [];
-    // Pages must be loaded from all page configs for staging and prod because some pages exist only on one environment
-    const uniqueLocalLandingPagesConfig: LegacyPageConfig[] = [];
-    [...localLandingPagesConfigStaging, ...localLandingPagesConfigProd].forEach(
-      (pageConfig) => {
-        if (pageConfig.title === 'Automated redirect') {
-          return;
-        }
-        if (
-          !uniqueLocalLandingPagesConfig.find(
-            (uniquePageConfig) =>
-              getRelativePagePath(uniquePageConfig.path) ===
-              getRelativePagePath(pageConfig.path)
-          )
-        ) {
-          uniqueLocalLandingPagesConfig.push(pageConfig);
-        }
-      }
-    );
-
-    for (const page of uniqueLocalLandingPagesConfig) {
-      const legacyPageRelativePath = getRelativePagePath(page.path);
-      if (
-        !dbPageConfigsToSave.find(
-          (dbPageConfigToSave) =>
-            dbPageConfigToSave.path === legacyPageRelativePath
-        )
-      ) {
-        const dbPageConfig = new Page();
-
-        dbPageConfig.path = legacyPageRelativePath;
-        dbPageConfig.title = page.title;
-        dbPageConfig.isInProduction = !!localLandingPagesConfigProd.find(
-          (pc) => getRelativePagePath(pc.path) === legacyPageRelativePath
-        );
-        dbPageConfig.internal = page.internal;
-        dbPageConfig.public = page.public;
-        dbPageConfig.earlyAccess = false;
-        dbPageConfig.searchFilters = page.search_filters || null;
-        await createExternalLinkEntities(page.items, dbPageConfig);
-        const dbPageConfigToSave = await addUuidIfEntityExists(
-          Page.name,
-          { path: dbPageConfig.path },
-          dbPageConfig
-        );
-        dbPageConfigsToSave.push(dbPageConfigToSave as Page);
-      }
-    }
-    const dbPageConfigsSaveResult = await saveEntities(dbPageConfigsToSave);
-    return {
-      status: 200,
-      body: {
-        successfullySavedToDb: dbPageConfigsSaveResult,
-        failedToFetchFromS3: failedFetchesFromS3,
-      },
-    };
-  } catch (err) {
-    return {
-      status: 500,
-      body: {
-        message: `Cannot save Page entities to the database: ${err}`,
       },
     };
   }
