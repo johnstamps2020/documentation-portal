@@ -56,7 +56,12 @@ export default function UserProfile() {
   const { adminLinks } = useAdminLinks();
   const [loginDrawer, setLoginDrawer] = React.useState<boolean>(false);
 
-  if (isError || isLoading || !userInfo) {
+  if (
+    isError ||
+    isLoading ||
+    !userInfo ||
+    window.location.pathname.startsWith('/gw-login')
+  ) {
     return null;
   }
 

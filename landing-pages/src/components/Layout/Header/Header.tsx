@@ -2,12 +2,9 @@ import { StackProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import SearchBox from 'components/SearchBox/SearchBox';
-import InternalBadge from '../../LandingPage/InternalBadge';
 import HeaderDesktop from './Desktop/HeaderDesktop';
-import ExternalSites from './ExternalSites';
-import Glossary from './Glossary';
 import HeaderMobile from './Mobile/HeaderMobile';
-import TranslatedPages from './TranslatedPages';
+import HeaderMenuItems from './HeaderMenuItems';
 
 export const headerHeight = '68px';
 
@@ -22,17 +19,6 @@ export type HeaderOptions = {
   hideSearchBox?: boolean;
 };
 
-function MenuItems() {
-  return (
-    <>
-      <InternalBadge />
-      <ExternalSites />
-      <Glossary />
-      <TranslatedPages />
-    </>
-  );
-}
-
 export default function Header(headerOptions: HeaderOptions) {
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -43,7 +29,7 @@ export default function Header(headerOptions: HeaderOptions) {
         menuContents={
           <>
             {!headerOptions?.hideSearchBox && <SearchBox big={false} />}
-            <MenuItems />
+            <HeaderMenuItems />
           </>
         }
       />
@@ -53,7 +39,7 @@ export default function Header(headerOptions: HeaderOptions) {
   return (
     <HeaderDesktop
       centerItems={!headerOptions?.hideSearchBox && <SearchBox big={false} />}
-      rightItems={<MenuItems />}
+      rightItems={<HeaderMenuItems />}
     />
   );
 }
