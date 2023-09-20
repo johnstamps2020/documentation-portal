@@ -128,10 +128,10 @@ enum class GwDockerImages(val imageUrl: String) {
     INDEX_CLEANER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/index-cleaner:latest"), BUILD_MANAGER_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/build-manager:latest"
     ),
-    RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"), FLAIL_SSG_LATEST(
-        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/flail-ssg:latest"
+    RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"), LION_PKG_BUILDER_LATEST(
+        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/lion-pkg-builder:latest"
     ),
-    LION_PKG_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/lion-pkg-builder:latest"), SITEMAP_GENERATOR_LATEST(
+    SITEMAP_GENERATOR_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/sitemap-generator:latest"
     ),
     DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-validator:latest"),
@@ -648,18 +648,16 @@ object GwBuildSteps {
         }
     }
 
-    fun createUploadLegacyConfigsAndPagesToS3BucketStep(deployEnv: String): ScriptBuildStep {
+    fun createUploadLegacyConfigsToS3BucketStep(deployEnv: String): ScriptBuildStep {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         val localRootDir = "%teamcity.build.checkoutDir%"
         val legacyConfigsPublishPath = "legacy-config"
         val localLegacyConfigsPublishPath = "${localRootDir}/$legacyConfigsPublishPath"
-        val localLegacyPagesPublishPath = "${localRootDir}/output"
         val s3BucketUrl = "s3://tenant-doctools-${atmosDeployEnv}-builds"
         val s3LegacyConfigsPublishPath = "${s3BucketUrl}/${legacyConfigsPublishPath}"
-        val s3LegacyPagesPublishPath = "${s3BucketUrl}/legacy-landing-pages"
         return ScriptBuildStep {
-            name = "Upload legacy configs and legacy pages to the S3 bucket"
+            name = "Upload legacy configs to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
@@ -673,42 +671,12 @@ object GwBuildSteps {
                 mv "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/sources.json"
                 mv "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/builds.json"
                 
-                rm -rf 
-                
                 # Copy merged legacy configs to the S3 bucket
                 aws s3 sync "$localLegacyConfigsPublishPath" "$s3LegacyConfigsPublishPath" --delete
-                
-                # Copy merged legacy pages to the S3 bucket
-                aws s3 sync "$localLegacyPagesPublishPath" "$s3LegacyPagesPublishPath" --delete --exclude "**/breadcrumbs.json" --exclude "**/versionSelectors.json"
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-        }
-    }
-
-    fun createRunFlailSsgStep(
-        pagesDir: String,
-        outputDir: String,
-        deployEnv: String,
-    ): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Run Flail SSG (${deployEnv})"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export PAGES_DIR="$pagesDir"
-                export OUTPUT_DIR="$outputDir"
-                export DOCS_CONFIG_FILE="${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}"
-                export DEPLOY_ENV="$deployEnv"
-                export SEND_BOUNCER_HOME="no"
-                                
-                flail_ssg
-            """.trimIndent()
-            dockerImage = GwDockerImages.FLAIL_SSG_LATEST.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
 
@@ -4620,9 +4588,6 @@ object Admin {
 
         // Legacy configs are uploaded only to the db on staging. Dev db and prod db sync data from staging.
         object UploadLegacyConfigsToDbBuildType : BuildType({
-            val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
-            val outputDir = "%teamcity.build.checkoutDir%/output"
-
             name = "Upload legacy configs to ${GwDeployEnvs.STAGING.envName} database"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
             maxRunningBuilds = 1
@@ -4637,21 +4602,7 @@ object Admin {
             artifactRules = "response*.json => /"
             steps {
                 step(GwBuildSteps.MergeAllLegacyConfigsStep)
-                step(
-                    GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir,
-                        "${outputDir}/staging/pages",
-                        GwDeployEnvs.STAGING.envName
-                    )
-                )
-                step(
-                    GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir,
-                        "${outputDir}/prod/pages",
-                        GwDeployEnvs.PROD.envName
-                    )
-                )
-                step(GwBuildSteps.createUploadLegacyConfigsAndPagesToS3BucketStep(GwDeployEnvs.STAGING.envName))
+                step(GwBuildSteps.createUploadLegacyConfigsToS3BucketStep(GwDeployEnvs.STAGING.envName))
                 nodeJS {
                     name = "Call doc portal endpoints to trigger upload"
                     id = Helpers.createIdStringFromName(this.name)

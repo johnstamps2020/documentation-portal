@@ -1,7 +1,0 @@
-{
-  "$schema": "/frontend/page-schema.json",
-  "title": "Assess",
-  "template": "page",
-  "class": "threeCards",
-  "items": []
-}
