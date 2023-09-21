@@ -1,10 +1,10 @@
-import { RedirectResponse } from '../types/apiResponse';
-import { winstonLogger } from './loggerController';
-import { Doc } from '../model/entity/Doc';
-import { AppDataSource } from '../model/connection';
-import { isUserAllowedToAccessResource } from './authController';
 import { Response } from 'express';
+import { AppDataSource } from '../model/connection';
+import { Doc } from '../model/entity/Doc';
+import { RedirectResponse } from '../types/apiResponse';
+import { isUserAllowedToAccessResource } from './authController';
 import { getEnvInfo } from './envController';
+import { winstonLogger } from './loggerController';
 
 const fetch = require('node-fetch-retry');
 
@@ -202,20 +202,15 @@ export function isHtmlRequest(url: string) {
   return /(^(?!.*\.\D+$).*$|\.htm.*$)/.test(url);
 }
 
-export async function s3BucketUrlExists(url: string) {
+export async function s3BucketUrlExists(url: string): Promise<boolean> {
   try {
     const s3BucketUrl = url.startsWith('/portal')
       ? process.env.PORTAL2_S3_URL
       : process.env.DOC_S3_URL;
-    const contentTypes = ['text/html', 'application/pdf'];
     const fullUrl = s3BucketUrl + url;
     const response = await fetch(fullUrl, { method: 'HEAD' });
-    return (
-      response.status === 200 &&
-      contentTypes.some((contentType) =>
-        response.headers.get('content-type')?.includes(contentType)
-      )
-    );
+
+    return response.ok || response.redirected;
   } catch (err) {
     winstonLogger.error(
       `Error checking if S3 bucket URL exists at ${url}: ${err}`
