@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import { getRedirectUrl } from '../controllers/redirectController';
-import { RedirectResponse } from '../types/apiResponse';
 
 export async function redirect(
   req: Request,
