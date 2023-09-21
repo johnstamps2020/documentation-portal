@@ -18,7 +18,17 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.02',
+      label: '2023.06 (Hakuba)',
+      items: [
+        {
+          label: 'リリースノート',
+          docId: 'dx202306jasrerelnotes',
+          videoIcon: false,
+        },
+      ],
+    },
+    {
+      label: '2023.02 (Garmisch)',
       items: [
         {
           label: 'リリースノート',
@@ -28,7 +38,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2022.05',
+      label: '2022.05 (Elysian)',
       items: [
         {
           label: 'インストールガイド',

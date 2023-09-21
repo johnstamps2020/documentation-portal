@@ -18,7 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.06',
+      label: '2023.06 (Hakuba)',
       items: [
         {
           label: 'Guidewire Cloud Home ヘルプ',
@@ -31,7 +31,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2022.09',
+      label: '2022.09 (Flaine)',
       items: [
         {
           label: 'リリースノート',
@@ -47,6 +47,10 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Guidewire Cloud Platform の操作',
           url: '/l10n/pdfs/ja-JP/cp/2022.09/CloudPlatform_ja-JP.pdf',
           videoIcon: false,
+        },
+        {
+          label: 'Integration Gateway',
+          docId: 'integgatewaydevlatestjaJP',
         },
       ],
     },

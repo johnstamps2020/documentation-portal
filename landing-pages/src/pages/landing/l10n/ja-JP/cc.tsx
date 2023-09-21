@@ -18,7 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '',
+      label: 'Gosu リファレンスガイド',
       items: [
         {
           label: 'Gosu リファレンスガイド',
@@ -27,11 +27,26 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '',
+      label: 'Integration Gateway',
       items: [
         {
           label: 'Integration Gateway',
           docId: 'integgatewaydevlatestjaJP',
+        },
+      ],
+    },
+    {
+      label: '2023.06 (Hakuba)',
+      items: [
+        {
+          label: 'リリースノート',
+          docId: 'iscc202306jareleasenotes',
+          videoIcon: false,
+        },
+        {
+          label: 'アップデート',
+          docId: 'iscc202306jaupdate',
+          videoIcon: false,
         },
       ],
     },
@@ -57,7 +72,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2022.09 Flaine',
+      label: '2022.09 (Flaine)',
       items: [
         {
           label: 'プラグイン、ビルド済み連携、SOAP API',
@@ -99,7 +114,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2022.05 Elysian',
+      label: '2022.05 (Elysian)',
       items: [
         {
           label: 'コンフィギュレーションガイド',
@@ -140,7 +155,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2021.04 Cortina',
+      label: '2021.04 (Cortina)',
       items: [
         {
           label: 'テストガイド',
@@ -155,7 +170,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2020.11 Banff',
+      label: '2020.11 (Banff)',
       items: [
         {
           label: 'コンフィギュレーションガイド',
@@ -170,7 +185,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2020.05 Aspen',
+      label: '2020.05 (Aspen)',
       items: [
         {
           label: 'アプリケーションガイド',
