@@ -15,12 +15,8 @@ export default function HeaderMenuItems() {
     <>
       <InternalBadge />
       <ExternalSites />
-      {userInfo.isLoggedIn && (
-        <>
-          <Glossary />
-          <TranslatedPages />
-        </>
-      )}
+      <TranslatedPages />
+      {userInfo.isLoggedIn && <Glossary />}
     </>
   );
 }
