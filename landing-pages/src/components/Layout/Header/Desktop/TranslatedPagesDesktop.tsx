@@ -1,14 +1,16 @@
 import iconTranslatedDocs from 'images/icon-translatedDocs.svg';
-import { translatedPages } from '../TranslatedPages';
+import { TranslatedPagesProps } from '../TranslatedPages';
 import HeaderMenuDesktop from './HeaderMenuDesktop';
 
-export default function TranslatedPagesDesktop() {
+export default function TranslatedPagesDesktop({
+  items,
+}: TranslatedPagesProps) {
   return (
     <HeaderMenuDesktop
       title="Translated documentation"
       iconSrc={iconTranslatedDocs}
       id="translated-documents"
-      items={translatedPages}
+      items={items}
     />
   );
 }

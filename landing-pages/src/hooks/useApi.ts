@@ -6,8 +6,22 @@ import { EnvInfo } from 'server/dist/types/env';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { SearchData, ServerSearchError } from 'server/dist/types/serverSearch';
 import { Page } from 'server/dist/model/entity/Page';
+import { TranslatedPage } from '../components/Layout/Header/TranslatedPages';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
+
+const translatedPagesGetter = async (
+  pages: TranslatedPage[]
+): Promise<TranslatedPage[]> => {
+  const availablePages: TranslatedPage[] = [];
+  for (const page of pages) {
+    const response = await fetch(`/safeConfig/entity/Page?path=${page.path}`);
+    if (response.ok) {
+      availablePages.push(page);
+    }
+  }
+  return availablePages;
+};
 
 type BreadcrumbItem = {
   label: string;
@@ -81,6 +95,20 @@ export function usePages() {
       keepPreviousData: true,
       refreshInterval: 1000,
     }
+  );
+
+  return {
+    pages: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useTranslatedPages(items: TranslatedPage[]) {
+  const { data, error, isLoading } = useSWR<TranslatedPage[]>(
+    items,
+    translatedPagesGetter,
+    { revalidateOnFocus: false }
   );
 
   return {
