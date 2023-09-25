@@ -9,9 +9,7 @@ export default function GlossaryDesktop() {
       hideTitle
       iconSrc={iconGlossary}
       id="glossary"
-      items={[
-        glossaryLink
-      ]}
+      items={[glossaryLink]}
     />
   );
 }

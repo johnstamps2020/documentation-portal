@@ -6,10 +6,7 @@ type HeaderTooltipProps = {
   children: React.ReactElement<any>;
 };
 
-export default function HeaderTooltip({
-  title,
-  children,
-}: HeaderTooltipProps) {
+export default function HeaderTooltip({ title, children }: HeaderTooltipProps) {
   return (
     <Tooltip title={title} placement="bottom-end" enterDelay={500}>
       {children}

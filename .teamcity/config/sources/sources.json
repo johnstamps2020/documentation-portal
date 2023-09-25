@@ -192,6 +192,12 @@
       "title": "Cloud Ticket Templates",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-ticket-templates.git",
       "branch": "main"
+    },
+    {
+      "id": "upgradediffssrc",
+      "title": "Upgrade Diff Reports",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/upgradediffs.git",
+      "branch": "main"
     }
   ]
 }
