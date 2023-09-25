@@ -44,9 +44,9 @@
       "earlyAccess": false
     },
     {
-      "id": "livepredictpost7x",
-      "title": "Predict Post-7x",
-      "url": "cloud/predict/post7x",
+      "id": "livepredictupgrade",
+      "title": "Predict Upgrade",
+      "url": "cloud/predict/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Predict"],

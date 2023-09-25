@@ -108,8 +108,8 @@ const pageConfig: Category2LayoutProps = {
           docId: 'livepredictlatest',
         },
         {
-          label: 'Predict (Post-7x)',
-          docId: 'livepredictpost7x',
+          label: 'Predict Upgrade',
+          docId: 'livepredictupgrade',
         },
         {
           label: 'Cyence Cyber',
