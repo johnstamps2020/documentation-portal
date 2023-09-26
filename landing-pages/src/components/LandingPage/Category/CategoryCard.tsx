@@ -32,15 +32,18 @@ export default function CategoryCard({
 
   if (
     (isError && isErrorSections) ||
+    (!landingPageSectionsItems && !landingPageItems) ||
     landingPageItems?.length === 0 ||
     landingPageSectionsItems?.length === 0 ||
-    (items === undefined && sections === undefined) ||
-    !landingPageItems
+    (items === undefined && sections === undefined)
   ) {
     return null;
   }
 
-  if ((isLoading && isLoadingSections) || !landingPageItems) {
+  if (
+    (isLoading && isLoadingSections) ||
+    (!landingPageItems && !landingPageSectionsItems)
+  ) {
     return (
       <Skeleton
         variant="rectangular"
