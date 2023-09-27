@@ -69,6 +69,7 @@ router.get('/docMetadata/:docId', async function (req, res) {
 
   const mappedConfig = {
     docTitle: body.docTitle,
+    docDisplayTitle: body.docDisplayTitle,
     docInternal: body.docInternal,
     docEarlyAccess: body.docEarlyAccess,
     platform: splitLegacyValueByCommaAndReturnUnique(body.docPlatforms),
