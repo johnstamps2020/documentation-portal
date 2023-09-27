@@ -24,7 +24,21 @@ const pageConfig: CategoryLayoutProps = {
     labelColor: 'white',
   },
 
-  cards: [],
+  cards: [
+    {
+      label: 'InsuranceNow',
+      items: [
+        {
+          label: 'API Reference',
+          docId: 'in20233apiref',
+        },
+        {
+          label: 'Portal Development Guide',
+          docId: 'in20233portaldev',
+        },
+      ],
+    },
+  ],
 };
 
 export default function Hakuba() {

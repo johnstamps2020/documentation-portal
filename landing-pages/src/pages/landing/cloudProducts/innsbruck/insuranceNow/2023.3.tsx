@@ -22,13 +22,150 @@ const pageConfig: SectionLayoutProps = {
           url: 'https://www.brainshark.com/1/player/guidewire?pi=zHjz8nvg0ziJoAz0&r3f1=&fb=0',
           videoIcon: true,
         },
+        {
+          label: 'Studio Release Notes',
+          docId: 'in20233studiorn',
+        },
+        {
+          label: 'Consumer Service Portal Release Notes',
+          docId: 'incsp20233rn',
+        },
+        {
+          label: 'AppReader Release Notes',
+          docId: 'appreaderrn400',
+        },
+      ],
+    },
+    {
+      label: 'Features and functionality',
+      items: [
+        {
+          label: 'Application Guide',
+          docId: 'in20233app',
+        },
+        {
+          label: 'Consumer Sales Portal Features',
+          docId: 'in20233csalesp',
+        },
+        {
+          label: 'Consumer Service Portal Features',
+          docId: 'in20233cservicep',
+        },
+        {
+          label: 'Excel Designed Rating',
+          docId: 'inexcelrating30',
+        },
+      ],
+    },
+    {
+      label: 'Integration',
+      items: [
+        {
+          label: 'AppReader Integration',
+          docId: 'in20233appreaderinteg',
+        },
+        {
+          label: 'Business Intelligence Integration',
+          docId: 'in20233xbiintegdraft',
+        },
+        {
+          label: 'API Reference',
+          docId: 'in20233apiref',
+        },
+      ],
+    },
+    {
+      label: 'Development',
+      items: [
+        {
+          label: 'API Modernization',
+          docId: 'inapimodernization',
+        },
+        {
+          label: 'Custom API Development',
+          docId: 'inapidevelopment',
+        },
+        {
+          label: 'Developer Setup Draft',
+          docId: 'indevguidejava11draft',
+        },
+        {
+          label: 'Developer Setup',
+          docId: 'indevguidejava11ext',
+        },
+        {
+          label: 'GWCP Operations for InsuranceNow',
+          docId: 'ingwcpops',
+        },
+        {
+          label: 'Portal Development',
+          docId: 'in20233portaldev',
+        },
+      ],
+    },
+    {
+      label: 'Configuration',
+      items: [
+        {
+          label: 'Core Configuration',
+          docId: 'in20233config',
+        },
+        {
+          label: 'Studio Configuration',
+          docId: 'in20233studio',
+        },
+        {
+          label: 'Billing Configuration Reference',
+          docId: 'in20233billref',
+        },
+        {
+          label: 'Claims Configuration Reference',
+          docId: 'in20233claimsconfig',
+        },
+        {
+          label: 'Underwriting Configuration Reference',
+          docId: 'in20233uwconfig',
+        },
+        {
+          label: 'Product Attribute Reference',
+          docId: 'in20233prodattref',
+        },
+        {
+          label: 'Consumer Sales Portal Configuration',
+          docId: 'in20233xcsalespconfigdraft',
+        },
+        {
+          label: 'Consumer Service Portal Configuration',
+          docId: 'in20233xcservicepconfigdraft',
+        },
+        {
+          label: 'Provisioning Portal',
+          docId: 'in20233provportal',
+        },
+        {
+          label: 'Provisioning Portal Internal',
+          docId: 'in20233provportalinternal',
+        },
+      ],
+    },
+    {
+      label: 'Installation',
+      items: [
+        {
+          label: 'Install Assist',
+          docId: 'ininstallassistdraft',
+        },
+        {
+          label: 'Upgrade Tools',
+          docId: 'inupgradetoolsdraft',
+        },
       ],
     },
   ],
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Hakuba (2023.2)',
-    items: allSelectors.s3d4a4aa793fe835d0387d5969693de6d,
+    selectedItemLabel: 'Innsbruck (2023.3)',
+    items: allSelectors.s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1,
     labelColor: 'black',
   },
 };

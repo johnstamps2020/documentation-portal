@@ -118,6 +118,10 @@ export const allSelectors = {
       label: 'Hakuba (2023.2)',
       pagePath: 'cloudProducts/hakuba/insuranceNow/2023.2',
     },
+    {
+      label: 'Innsbruck (2023.3)',
+      pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
+    },
   ],
   s1793805ac84baf801d4eb31b00ab1ddf: [
     {
@@ -223,36 +227,6 @@ export const allSelectors = {
     {
       label: 'InfoCenter for Guidewire Cloud 2023.06',
       pagePath: 'cloudProducts/hakuba/icGwCloud/2023.06',
-    },
-  ],
-  s3d4a4aa793fe835d0387d5969693de6d: [
-    {
-      label: 'Cortina (2021.1)',
-      pagePath: 'cloudProducts/cortina/insuranceNow/2021.1',
-    },
-    {
-      label: 'Dobson (2021.2)',
-      pagePath: 'cloudProducts/dobson/insuranceNow/2021.2',
-    },
-    {
-      label: 'Elysian (2022.1)',
-      pagePath: 'cloudProducts/elysian/insuranceNow/2022.1',
-    },
-    {
-      label: 'Flaine (2022.2)',
-      pagePath: 'cloudProducts/flaine/insuranceNow/2022.2',
-    },
-    {
-      label: 'Garmisch (2023.1)',
-      pagePath: 'cloudProducts/garmisch/insuranceNow/2023.1',
-    },
-    {
-      label: 'Hakuba (2023.2)',
-      pagePath: 'cloudProducts/hakuba/insuranceNow/2023.2',
-    },
-    {
-      label: 'Hakuba (2023.2)',
-      pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
     },
   ],
   scf866456342474178729593fa394b976: [
