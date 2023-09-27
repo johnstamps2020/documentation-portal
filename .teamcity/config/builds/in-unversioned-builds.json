@@ -22,6 +22,15 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "INowServicePortalReleaseNotes20233Innsbruck.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp20233rn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowServicePortalReleaseNotes20232Hakuba.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20232rn",

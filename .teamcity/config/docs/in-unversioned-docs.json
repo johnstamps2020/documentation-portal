@@ -40,6 +40,25 @@
       "earlyAccess": false
     },
     {
+      "id": "incsp20233rn",
+      "title": "Consumer Service Portal 2023.3 Release Notes",
+      "url": "cloud/in/csp20233rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.3"],
+        "subject": ["Release notes"],
+        "release": ["Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "incsp20232rn",
       "title": "Consumer Service Portal 2023.2 Release Notes",
       "url": "cloud/in/csp20232rn",
