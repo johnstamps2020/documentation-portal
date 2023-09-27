@@ -410,6 +410,10 @@ export const allSelectors = {
       label: 'Garmisch (2023.02) の新機能',
       pagePath: 'l10n/ja-JP/202302garmischwhatsnew',
     },
+    {
+      label: 'Hakuba (2023.06) の新機能',
+      pagePath: 'l10n/ja-JP/202306hakubawhatsnew',
+    },
     { label: 'Guidewire Identity Federation Hub', pagePath: 'l10n/ja-JP/gwid' },
     { label: 'Guidewire Testing', pagePath: 'l10n/ja-JP/gtest' },
     { label: 'Guidewire for Salesforce', pagePath: 'l10n/ja-JP/gwsf' },

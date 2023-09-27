@@ -1,0 +1,65 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202306jaceclaimsrelnotes",
+      "title": "CustomerEngage Account Management for ClaimCenter Release Notes ja",
+      "displayTitle": "CustomerEngage Account Management for ClaimCenter リリースノート",
+      "url": "ja/cloud/dx/ce-claims/202306/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
+        "language": "ja"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202306jasrerelnotes",
+      "title": "ServiceRepEngage Release Notes ja",
+      "title": "ServiceRepEngage リリースノート",
+      "url": "ja/cloud/dx/sre/202306/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
+        "language": "ja"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202306javerelnotes",
+      "title": "VendorEngage Release Notes ja",
+      "displayTitle": "VendorEngage リリースノート",
+      "url": "ja/cloud/dx/ve/202306/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
+        "language": "ja"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

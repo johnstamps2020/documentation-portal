@@ -1,0 +1,24 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "whatsnewjahakuba",
+      "url": "ja/cloud/hakuba/whatsnew",
+      "title": "What's new in Hakuba ja",
+      "displayTitle": "Hakuba の新機能",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Ski release overview"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "language": "ja"
+      },
+      "environments": ["staging", "prod"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202306jasrc",
+      "docId": "iscc202306jareleasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/2023.06",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2023.06",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2023.06",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2023.06",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "UpdateGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "is202306jasrc",
+      "docId": "iscc202306jaupdate",
+      "disabled": false
+    }
+  ]
+}

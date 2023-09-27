@@ -2,6 +2,12 @@
   "$schema": "../../config-schema.json",
   "sources": [
     {
+      "id": "is202306jasrc",
+      "title": "IS 2023.06.0 ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/ja/2023.06.0"
+    },
+    {
       "id": "is202209jaJPsrc",
       "title": "IS 2022.09 ja-JP",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",

@@ -18,7 +18,17 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2022.05',
+      label: '2023.06 (Hakuba)',
+      items: [
+        {
+          label: 'リリースノート',
+          docId: 'dx202306javerelnotes',
+          videoIcon: false,
+        },
+      ],
+    },
+    {
+      label: '2022.05 (Elysian)',
       items: [
         {
           label: 'インストールガイド',
