@@ -768,6 +768,10 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
+                ${Helpers.setAwsEnvVars(deployEnv)}
+                export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+                export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
+                
                 export CONFIG_FILE="$configFile"
                 export DOC_ID="$docId"
                 export DOC_S3_URL="$docS3Url"
