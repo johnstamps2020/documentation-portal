@@ -4597,10 +4597,6 @@ object Admin {
                         }
                     }
                 }
-
-                triggers {
-                    trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.TEAMCITY_CONFIG.pathValue)))
-                }
             }
 
             /*
@@ -4621,6 +4617,7 @@ object Admin {
 
             when (deployEnv) {
                 GwDeployEnvs.DEV.envName -> {
+                    syncDbDataBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.TEAMCITY_CONFIG.pathValue)))
                     syncDbDataBuildType.triggers.finishBuildTrigger {
                         buildType = DocPortal.deployDocPortalDev.id.toString()
                         successfulOnly = true
