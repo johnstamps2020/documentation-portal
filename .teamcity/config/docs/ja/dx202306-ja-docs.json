@@ -24,7 +24,7 @@
     {
       "id": "dx202306jasrerelnotes",
       "title": "ServiceRepEngage Release Notes ja",
-      "title": "ServiceRepEngage リリースノート",
+      "displayTitle": "ServiceRepEngage リリースノート",
       "url": "ja/cloud/dx/sre/202306/relnotes",
       "metadata": {
         "product": ["Digital Reference Applications"],
