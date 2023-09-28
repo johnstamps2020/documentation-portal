@@ -52,7 +52,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'ispc202310app',
         },
         {
-          label: 'Cloud Rating Management',
+          label: 'Cloud Rating Management (Early Access)',
           docId: 'ispc202310cloudratingmgmt',
         },
         {
