@@ -44,6 +44,18 @@ const pageConfig: Category2LayoutProps = {
       label: 'Applications',
       items: [
         {
+          label: 'PolicyCenter',
+          pagePath: 'cloudProducts/innsbruck/pcGwCloud/2023.10',
+        },
+        {
+          label: 'ClaimCenter',
+          pagePath: 'cloudProducts/innsbruck/ccGwCloud/2023.10',
+        },
+        {
+          label: 'BillingCenter',
+          pagePath: 'cloudProducts/innsbruck/bcGwCloud/2023.10',
+        },
+        {
           label: 'InsuranceNow',
           pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
         },

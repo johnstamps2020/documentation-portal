@@ -33,6 +33,10 @@ export const allSelectors = {
       label: 'Hakuba (2023.06)',
       pagePath: 'cloudProducts/hakuba/bcGwCloud/2023.06',
     },
+    {
+      label: 'Innsbruck (2023.10)',
+      pagePath: 'cloudProducts/innsbruck/bcGwCloud/2023.10',
+    },
   ],
   sb1572a4ac17ba705fdfb0f9ebe00d8e1: [
     {
@@ -72,6 +76,10 @@ export const allSelectors = {
     {
       label: 'Hakuba (2023.06)',
       pagePath: 'cloudProducts/hakuba/ccGwCloud/2023.06',
+    },
+    {
+      label: 'Innsbruck (2023.10)',
+      pagePath: 'cloudProducts/innsbruck/ccGwCloud/2023.10',
     },
   ],
   sb8b6bf6e1344485406813caca67c4038: [
@@ -147,6 +155,10 @@ export const allSelectors = {
     {
       label: 'Hakuba (2023.06)',
       pagePath: 'cloudProducts/hakuba/pcGwCloud/2023.06',
+    },
+    {
+      label: 'Innsbruck (2023.10)',
+      pagePath: 'cloudProducts/innsbruck/pcGwCloud/2023.10',
     },
   ],
   se7d12fdd8fa65284de1403b37a585252: [
