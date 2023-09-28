@@ -1869,7 +1869,7 @@
         "subject": ["Best practices"],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
