@@ -50,7 +50,10 @@ const languageLabels = [
 ];
 
 export function getCheckboxLabel(filterLabel: string) {
-  return languageLabels.find((lang) => lang.key === filterLabel)?.label || filterLabel;
+  return (
+    languageLabels.find((lang) => lang.key === filterLabel)?.label ||
+    filterLabel
+  );
 }
 
 export default function SearchFilterCheckbox({

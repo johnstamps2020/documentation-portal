@@ -36,6 +36,6 @@ export default function ExactMatchHint() {
       </Typography>
     );
   }
-  
+
   return <div style={{ height: '24px' }}></div>;
 }

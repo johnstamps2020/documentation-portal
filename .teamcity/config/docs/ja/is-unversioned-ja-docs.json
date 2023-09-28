@@ -55,13 +55,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": [
-          "latest"
-        ],
+        "version": ["latest"],
         "subject": ["Installation"],
-        "release": [
-          "Hakuba"
-        ],
+        "release": ["Hakuba"],
         "language": "ja"
       },
       "environments": ["staging", "prod"],
@@ -71,6 +67,5 @@
       "internal": false,
       "earlyAccess": false
     }
-
   ]
 }

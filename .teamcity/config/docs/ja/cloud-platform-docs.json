@@ -10,9 +10,7 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": [
-          "Hakuba"
-        ],
+        "release": ["Hakuba"],
         "language": "ja"
       },
       "environments": ["staging", "prod"],
