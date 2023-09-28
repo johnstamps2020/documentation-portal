@@ -1,0 +1,57 @@
+# HeroCentered
+
+The `HeroCentered` component is a simple component that centers its children
+vertically and horizontally. It is useful for creating hero sections.
+
+import HeroCentered from '@theme/HeroCentered';
+import ArrowLink from '@theme/ArrowLink';
+
+<HeroCentered additionalStyles={{ my: '3rem' }}>
+  <div>
+    <p style={{ marginBottom: 0 }}>Jutro DS</p>
+    <h1>A curated gallery of Digital Experiences</h1>
+  </div>
+  <p>
+    Find inspiration for your projects in our carefully curated gallery,
+    featuring examples of the powerful Jutro Design System, showcasing
+    versatility and pushing the boundaries of creativity.
+  </p>
+  <ArrowLink href="https://jutro.guidewire.com">
+    Learn more about Jutro DS
+  </ArrowLink>
+</HeroCentered>
+
+```jsx
+import HeroCentered from '@theme/HeroCentered';
+import Link from '@docusaurus/Link';
+
+<HeroCentered additionalStyles={{ my: '3rem' }}>
+  <div>
+    <p style={{ marginBottom: 0 }}>Jutro DS</p>
+    <h1>A curated gallery of Digital Experiences</h1>
+  </div>
+  <p>
+    Find inspiration for your projects in our carefully curated gallery,
+    featuring examples of the powerful Jutro Design System, showcasing
+    versatility and pushing the boundaries of creativity.
+  </p>
+  <Link>Learn more about Jutro DS →</Link>
+</HeroCentered>;
+```
+
+import HeroWarning from '@site/docs/_hero-warning.mdx';
+
+<HeroWarning />
+
+`HeroCentered` renders two divs. The external one is a flex container that
+centers its children vertically and horizontally. The internal one is a flex
+container that stacks its children vertically.
+
+`HeroCentered` accepts a `additionalStyles` prop that can be used to add
+additional styles to inner div. The prop is a MUI `sx` prop, so it accepts
+complex MUI styles. In the example above, we used `my: '3rem'` which adds
+vertical margin, or "margin on the Y-axis".
+
+- [Learn more about the `sx` prop](https://mui.com/system/getting-started/the-sx-prop/).
+- [Read the Box component description](https://mui.com/system/react-box/).
+- [Check the API for the Box component](https://mui.com/system/api/box/).

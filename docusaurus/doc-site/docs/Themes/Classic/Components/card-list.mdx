@@ -1,0 +1,133 @@
+---
+hide_table_of_contents: true
+---
+
+# CardList
+
+Displays a list of cards. If you add tags to the cards, users will be able to
+filter the list.
+
+Pass a list using the `items` prop. Each element in the list is a
+[card](./card.mdx) with the additional `tags` property.
+
+```js
+import accountManagerImage from '@site/static/img/account-manager.png';
+import CardList from '@theme/CardList';
+
+const cards = [
+  {
+    title: 'Account Manager',
+    imagePath: accountManagerImage,
+    tags: ['Demo', 'Personal', 'Policyholder'],
+    actionLink: {
+      label: 'See project',
+      href: '/docs/projects/account-manager', // absolute path from your baseUrl
+    },
+  },
+  // ...etc.
+];
+
+<CardList items={cards} />;
+```
+
+import CardList from '@theme/CardList';
+import accountManagerImage from '@site/static/img/account-manager.png';
+import aiFlowsImage from '@site/static/img/ai-flows.png';
+import claimsFnolImage from '@site/static/img/claims-fnol.png';
+import farmInsuranceImage from '@site/static/img/farm-insurance.png';
+import hoPolicyholderQnBImage from '@site/static/img/ho-policyholder-qnb.png';
+import paPolicyholderQnBImage from '@site/static/img/pa-policyholder-qnb.png';
+const cards = [
+  {
+    title: 'Account Manager',
+    tags: ['Demo', 'Personal', 'Policyholder'],
+    imagePath: accountManagerImage,
+    actionLink: {
+      label: 'See project',
+      href: '/docs/Themes/Classic/Components/card',
+    },
+  },
+  {
+    title: 'Farm Insurance',
+    imagePath: farmInsuranceImage,
+    tags: ['Demo', 'Commercial', 'QnB'],
+    actionLink: {
+      label: 'See project',
+      href: '/docs/Themes/Classic/Components/collapsible',
+    },
+  },
+  {
+    title: 'PA  Policyholder QnB',
+    imagePath: paPolicyholderQnBImage,
+    tags: ['Demo', 'Personal', 'QnB'],
+    actionLink: {
+      label: 'See project',
+      href: '/docs/Themes/Classic/Components/hero-centered',
+    },
+  },
+  {
+    title: 'HO  Policyholder QnB',
+    imagePath: hoPolicyholderQnBImage,
+    tags: ['Demo', 'Personal', 'AI'],
+    actionLink: {
+      label: 'See project',
+      href: '#',
+    },
+  },
+  {
+    title: 'AI Flows',
+    imagePath: aiFlowsImage,
+    tags: ['Demo', 'Agent', 'Claims'],
+    actionLink: {
+      label: 'See project',
+      href: '#',
+    },
+  },
+  {
+    title: 'Claims FNOL',
+    imagePath: claimsFnolImage,
+    tags: ['Demo', 'Personal', 'Claims'],
+    actionLink: {
+      label: 'See project',
+      href: '#',
+    },
+  },
+  {
+    title: 'Claims Adjustment',
+    imagePath: claimsFnolImage,
+    tags: ['Demo', 'Agent', 'Claims'],
+    actionLink: {
+      label: 'See project',
+      href: '#',
+    },
+  },
+  {
+    title: 'Check Policy Status',
+    imagePath: claimsFnolImage,
+    tags: ['Demo', 'Personal', 'Policyholder'],
+    actionLink: {
+      label: 'See project',
+      href: '#',
+    },
+  },
+];
+
+<div
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '2rem',
+    backgroundColor: '#f5f5f5',
+    margin: '2rem 0',
+  }}
+>
+  <CardList items={cards} />
+</div>
+
+## Behavior
+
+- If the items have tags, a row of buttons appears at the top, one button per
+  unique tag.
+- The user can filter the list by clicking a button.
+- The user can clear the filter by clicking the button again or clicking "All"

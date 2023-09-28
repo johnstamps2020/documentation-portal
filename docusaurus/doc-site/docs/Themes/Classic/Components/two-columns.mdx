@@ -1,0 +1,100 @@
+# TwoColumns
+
+TwoColumns is a simple two column layout component. It takes two children, one
+for the left column and one for the right column. Columns become rows on mobile.
+
+import TwoColumns from '@theme/TwoColumns';
+import ArrowLink from '@theme/ArrowLink';
+
+<TwoColumns>
+
+![Jess portrait](/img/jess.png)
+
+<div>
+
+### Jess
+
+<small>PolicyHolder</small>
+
+I like having the freedom to find the coverage that suits me without having to
+interact with anyone...
+
+<ArrowLink href="/img/jess.png" download>
+  Detailed persona file
+</ArrowLink>
+
+</div>
+
+</TwoColumns>
+
+```txt
+import TwoColumns from '@theme/TwoColumns';
+import ArrowLink from '@theme/ArrowLink';
+
+<TwoColumns>
+
+![Jess portrait](/img/jess.png)
+
+<div>
+
+## Jess
+
+<small>PolicyHolder</small>
+
+I like having the freedom to find the coverage that suits me without having to
+interact with anyone...
+
+<ArrowLink href="/img/jess.png" download>
+  Detailed persona file
+</ArrowLink>
+
+</div>
+
+</TwoColumns>
+```
+
+## User flows
+
+import policyChangeImage from '@site/static/img/make-a-policy-change.png';
+
+<TwoColumns>
+
+<div>
+
+#### Make a policy change
+
+1. Jess logs into Guidewire CustomerEngage™ Account Management.
+1. She selects a policy from her dashboard.
+1. She views her policy details.
+1. She clicks Edit policy.
+1. She selects Add a driver.
+1. She advances through the add a driver pattern.
+
+</div>
+
+<img src={policyChangeImage} alt="Policy change mockup" width="600px" />
+
+</TwoColumns>
+
+```txt
+import policyChangeImage from '@site/static/img/make-a-policy-change.png';
+
+<TwoColumns>
+
+<div>
+
+#### Make a policy change
+
+1. Jess logs into Guidewire CustomerEngage™ Account Management.
+1. She selects a policy from her dashboard.
+1. She views her policy details.
+1. She clicks Edit policy.
+1. She selects Add a driver.
+1. She advances through the add a driver pattern.
+
+</div>
+
+<img src={policyChangeImage} alt="Policy change mockup" width="600px" />
+
+</TwoColumns>
+```
