@@ -1,12 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
-import { Doc } from '../model/entity/Doc';
 import {
   isUserAllowedToAccessResource,
   openRequestedUrl,
   redirectToLoginPage,
 } from './authController';
 import { getDocByUrl, getExternalLinkByUrl } from './configController';
-import { isHtmlRequest, s3BucketUrlExists } from './redirectController';
+import {
+  addPrecedingSlashToPath,
+  s3BucketUrlExists,
+} from './redirectController';
 
 const fetch = require('node-fetch-retry');
 
@@ -57,23 +59,17 @@ async function getResourceStatusFromDatabase(
     return [100, undefined];
   }
 
-  const requestedEntityFullUrl =
-    requestedEntity instanceof Doc
-      ? `/${requestedEntity.url}`
-      : requestedEntity.url;
-  const requestedEntityUrlExists =
-    (await s3BucketUrlExists(requestedPath)) ||
-    (await s3BucketUrlExists(requestedEntityFullUrl));
-
-  if (!requestedEntityUrlExists) {
-    return [100, undefined];
-  }
-
-  if (isHtmlRequest(requestedPath)) {
-    const requestedPathExists = await s3BucketUrlExists(requestedPath);
-    if (!requestedPathExists) {
-      return [307, requestedEntityFullUrl];
+  const requestedEntityUrl = requestedEntity.url;
+  const requestedPathExists = await s3BucketUrlExists(requestedPath);
+  if (!requestedPathExists) {
+    const requestedEntityUrlExists = await s3BucketUrlExists(
+      requestedEntityUrl
+    );
+    if (!requestedEntityUrlExists) {
+      return [100, undefined];
     }
+    const redirectUrl = addPrecedingSlashToPath(requestedEntityUrl);
+    return [307, redirectUrl];
   }
 
   return [

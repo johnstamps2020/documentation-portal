@@ -202,18 +202,23 @@ export function isHtmlRequest(url: string) {
   return /(^(?!.*\.\D+$).*$|\.htm.*$)/.test(url);
 }
 
+export function addPrecedingSlashToPath(path: string) {
+  return path.startsWith('/') ? path : `/${path}`;
+}
+
 export async function s3BucketUrlExists(url: string): Promise<boolean> {
+  const urlToCheck = addPrecedingSlashToPath(url);
   try {
-    const s3BucketUrl = url.startsWith('/portal')
+    const s3BucketUrl = urlToCheck.startsWith('/portal')
       ? process.env.PORTAL2_S3_URL
       : process.env.DOC_S3_URL;
-    const fullUrl = s3BucketUrl + url;
+    const fullUrl = s3BucketUrl + urlToCheck;
     const response = await fetch(fullUrl, { method: 'HEAD' });
 
     return response.ok || response.redirected;
   } catch (err) {
     winstonLogger.error(
-      `Error checking if S3 bucket URL exists at ${url}: ${err}`
+      `Error checking if S3 bucket URL exists at ${urlToCheck}: ${err}`
     );
     return false;
   }
@@ -295,7 +300,7 @@ export async function getLatestVersionUrl(
   targetUrlSegments[wildcardIndex] =
     urlWithHighestVersionSegments[wildcardIndex];
   const targetUrl = targetUrlSegments.join('/');
-  const targetUrlExists = await s3BucketUrlExists(`/${targetUrl}`);
+  const targetUrlExists = await s3BucketUrlExists(targetUrl);
   return targetUrlExists ? targetUrl : urlWithHighestVersionSegments.join('/');
 }
 
