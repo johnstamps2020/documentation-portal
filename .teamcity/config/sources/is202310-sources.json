@@ -1,0 +1,35 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "cloudisapd202310src",
+      "title": "IS 2023.10 Advanced Product Designer for PolicyCenter",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/pc/2023.10"
+    },
+    {
+      "id": "is202310src",
+      "title": "IS 2023.10.0",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/2023.10.0"
+    },
+    {
+      "id": "srcpcapirefinnsbruck",
+      "title": "PC API ref preview 2023.10",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
+      "branch": "release/innsbruck"
+    },
+    {
+      "id": "srcccapirefinnsbruck",
+      "title": "CC API ref preview 2023.10",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
+      "branch": "release/innsbruck"
+    },
+    {
+      "id": "srcbcapirefinnsbruck",
+      "title": "BC API ref preview 2023.10",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/bc-api-ref.git",
+      "branch": "release/innsbruck"
+    }
+  ]
+}
