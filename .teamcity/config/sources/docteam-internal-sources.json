@@ -23,7 +23,7 @@
       "id": "docusaurusgwdocslatestsrc",
       "title": "Docusaurus Guidewire",
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
-      "branch": "master"
+      "branch": "main"
     },
     {
       "id": "learninginditasrc",
