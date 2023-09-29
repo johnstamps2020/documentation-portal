@@ -17,6 +17,10 @@ const pageConfig: SectionLayoutProps = {
           label: 'Release Notes',
           docId: 'iscc202310releasenotes',
         },
+        {
+          label: 'Studio Release Notes',
+          docId: 'isstudiolatestrn',
+        },
       ],
     },
     {

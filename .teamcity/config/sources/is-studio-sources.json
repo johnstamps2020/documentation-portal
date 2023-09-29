@@ -1,0 +1,11 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "isstudiolatestsrc",
+      "title": "InsuranceSuite Studio",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-studio.git",
+      "branch": "main"
+    }
+  ]
+}

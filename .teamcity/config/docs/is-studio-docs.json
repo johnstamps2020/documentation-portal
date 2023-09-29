@@ -1,0 +1,30 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isstudiolatestrn",
+      "title": "Studio Release Notes",
+      "url": "studio/latest/releasenotes",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": [
+          "2023.06",
+          "2023.10"
+        ],
+        "subject": ["Installation"],
+        "release": [
+          "Hakuba",
+          "Innsbruck"
+        ],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
