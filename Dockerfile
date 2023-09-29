@@ -19,7 +19,7 @@ COPY scripts scripts
 RUN yarn
 RUN yarn build
 
-FROM artifactory.guidewire.com/hub-docker-remote/nginx:1-alpine
+FROM artifactory.guidewire.com/hub-docker-remote/nginx:1.25.2-alpine
 
 COPY --from=app-builder /usr/app/landing-pages/build /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
