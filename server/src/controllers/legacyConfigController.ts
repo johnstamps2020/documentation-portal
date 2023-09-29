@@ -11,21 +11,17 @@ import {
   LegacyBuildsConfigFile,
   LegacyDocConfig,
   LegacyDocsConfigFile,
-  LegacyItem,
-  LegacyPageConfig,
   LegacySourceConfig,
   LegacySourcesConfigFile,
   PlatformProductVersionCombination,
 } from '../types/legacyConfig';
 import { lstatSync, readdirSync, readFileSync } from 'fs';
-import { Page } from '../model/entity/Page';
-import { getConfigFile, listItems } from './s3Controller';
+import { getConfigFile } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
 import { Subject } from '../model/entity/Subject';
 import { Request } from 'express';
 import { ApiResponse } from '../types/apiResponse';
 import { FindOptionsWhere, ObjectLiteral } from 'typeorm';
-import { ExternalLink } from '../model/entity/ExternalLink';
 import { Product } from '../model/entity/Product';
 import { Platform } from '../model/entity/Platform';
 import { Version } from '../model/entity/Version';
@@ -307,53 +303,6 @@ export function readLocalSourceConfigs(dirPath: string): LegacySourceConfig[] {
   }
 }
 
-export function readLocalPageConfigs(dirPath: string): LegacyPageConfig[] {
-  try {
-    const localConfig: LegacyPageConfig[] = [];
-    const itemsInDir = readdirSync(dirPath);
-    for (const item of itemsInDir) {
-      const itemPath = join(dirPath, item);
-      if (lstatSync(itemPath).isDirectory()) {
-        localConfig.push(...readLocalPageConfigs(itemPath));
-      } else {
-        const config = readFileSync(itemPath, 'utf-8');
-        const json: LegacyPageConfig = JSON.parse(config);
-        json.path = dirPath;
-        localConfig.push(json);
-      }
-    }
-    return localConfig;
-  } catch (funcErr) {
-    throw new Error(
-      `Cannot read local config file from path: ${dirPath}: ${funcErr}`
-    );
-  }
-}
-
-function getBackgroundComponent(pagePath: string) {
-  const backgroundPathMapping = {
-    'cloudProducts/aspen': 'aspenBackground',
-    'cloudProducts/banff': 'banffBackground',
-    'cloudProducts/cortina': 'cortinaBackground',
-    'cloudProducts/dobson': 'dobsonBackground',
-    'cloudProducts/elysian': 'elysianBackground',
-    'cloudProducts/flaine': 'flaineBackground',
-    'cloudProducts/garmisch': 'garmischBackground',
-    'cloudProducts/hakuba': 'hakubaBackground',
-  };
-  let background = null;
-  Object.entries(backgroundPathMapping).forEach(([k, v]) => {
-    if (k === pagePath) {
-      background = v;
-    }
-  });
-  return background;
-}
-
-function getRelativePagePath(absPagePath: string): string {
-  return absPagePath.split('pages/')[1] || '/';
-}
-
 async function addUuidIfEntityExists(
   entityName: string,
   where: FindOptionsWhere<ObjectLiteral>,
@@ -394,68 +343,6 @@ export async function putConfigsInDatabase(req: Request): Promise<ApiResponse> {
     status: 500,
     body: { message: 'Operation failed: cannot put configs in the database' },
   };
-}
-
-async function createExternalLinkEntities(
-  pageItems: LegacyItem[],
-  dbPageConfig: Page
-): Promise<ApiResponse> {
-  try {
-    const dbExternalLinkConfigsToSave: ExternalLink[] = [];
-    for (const pageItem of pageItems) {
-      if (pageItem.items) {
-        await createExternalLinkEntities(pageItem.items, dbPageConfig);
-      }
-      const externalLink = pageItem.link;
-      if (externalLink) {
-        if (
-          !dbExternalLinkConfigsToSave.find(
-            (dbExternalLinkConfigToSave) =>
-              dbExternalLinkConfigToSave.url === externalLink
-          )
-        ) {
-          const dbExternalLinkConfig = new ExternalLink();
-          dbExternalLinkConfig.url = externalLink;
-          dbExternalLinkConfig.label = pageItem.label;
-          dbExternalLinkConfig.public = false;
-          dbExternalLinkConfig.internal = false;
-          dbExternalLinkConfig.earlyAccess = dbPageConfig.earlyAccess;
-          dbExternalLinkConfig.isInProduction = dbPageConfig.isInProduction;
-
-          const findLinkEntityResult = await findEntity(
-            ExternalLink.name,
-            { url: dbExternalLinkConfig.url },
-            false
-          );
-          if (findLinkEntityResult) {
-            dbExternalLinkConfig.uuid = findLinkEntityResult.uuid;
-            dbExternalLinkConfig.isInProduction =
-              findLinkEntityResult.isInProduction ||
-              dbPageConfig.isInProduction;
-            dbExternalLinkConfig.earlyAccess =
-              findLinkEntityResult.earlyAccess || dbPageConfig.earlyAccess;
-          }
-          dbExternalLinkConfigsToSave.push(
-            dbExternalLinkConfig as ExternalLink
-          );
-        }
-      }
-    }
-    const dbExternalLinkConfigsSaveResult = await saveEntities(
-      dbExternalLinkConfigsToSave
-    );
-    return {
-      status: 200,
-      body: dbExternalLinkConfigsSaveResult,
-    };
-  } catch (err) {
-    return {
-      status: 500,
-      body: {
-        message: `Cannot save ExternalLink entities to the database: ${err}`,
-      },
-    };
-  }
 }
 
 async function putSourceConfigsInDatabase(): Promise<ApiResponse> {
