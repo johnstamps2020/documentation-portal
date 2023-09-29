@@ -840,6 +840,9 @@ export async function getRootBreadcrumb(
     const matchingBreadcrumb = breadcrumbsJson.find(
       (b: { docId: string; rootPages: string[] }) => b.docId === docEntity.id
     );
+    if (!matchingBreadcrumb) {
+      return emptyRootPageResponse;
+    }
     if (matchingBreadcrumb.rootPages.length !== 1) {
       return emptyRootPageResponse;
     }
@@ -876,7 +879,7 @@ export async function getRootBreadcrumb(
   } catch (err) {
     winstonLogger.error(
       `Problem getting root breadcrumb for page: "${pagePathname}":
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${err}`
     );
     return emptyRootPageResponse;
   }
