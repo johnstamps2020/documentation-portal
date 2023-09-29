@@ -21,6 +21,10 @@ const pageConfig: SectionLayoutProps = {
           label: 'AppReader Release Notes',
           docId: 'appreaderrn400',
         },
+        {
+          label: 'Studio Release Notes',
+          docId: 'isstudiolatestrn',
+        },
       ],
     },
     {

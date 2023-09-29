@@ -1,0 +1,14 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IS-Studio-ReleaseNotes.ditamap",
+      "srcId": "isstudiolatestsrc",
+      "docId": "isstudiolatestrn",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}
