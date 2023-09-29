@@ -2,6 +2,24 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "analyticsmanager",
+      "title": "Analytics Manager",
+      "url": "amst/latest/analyticsmanager",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "amstcccounterfraud",
       "title": "AMST CC Counter Fraud",
       "url": "amst/latest/cccounterfraud",
