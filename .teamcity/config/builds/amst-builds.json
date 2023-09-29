@@ -3,6 +3,15 @@
   "builds": [
     {
       "buildType": "dita",
+      "root": "AnalyticsManager.ditamap",
+      "filter": "GW-Generic-Release.ditaval",
+      "srcId": "amstsrc",
+      "docId": "analyticsmanager",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
       "root": "cc_counter_fraud.ditamap",
       "filter": "AMST-cc_counter_fraud.ditaval",
       "srcId": "amstsrc",

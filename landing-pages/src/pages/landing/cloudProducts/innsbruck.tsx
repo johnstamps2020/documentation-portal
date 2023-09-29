@@ -77,6 +77,10 @@ const pageConfig: Category2LayoutProps = {
       label: 'Analytics',
       items: [
         {
+          label: 'Analytics Manager',
+          docId: 'analyticsmanager',
+        },
+        {
           label: 'Explore',
           pagePath: 'cloudProducts/explore/latest',
         },
