@@ -24,6 +24,11 @@ async function findBestMatchingTopic(searchQuery, targetDocVersion) {
 export async function addVersionSelector() {
   try {
     const matchingVersionSelector = window.matchingVersionSelector;
+
+    if (!matchingVersionSelector) {
+      return null;
+    }
+    
     if (Object.keys(matchingVersionSelector).length > 0) {
       const allVersions = matchingVersionSelector.allVersions;
       const select = document.createElement('select');

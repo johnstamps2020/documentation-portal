@@ -45,9 +45,9 @@ export async function setMetadata() {
     .querySelector('[name="gw-doc-id"]')
     ?.getAttribute('content');
   if (docId) {
-    const response = await fetch(`/safeConfig/docMetadata/${docId}`);
-    if (response.ok) {
-      try {
+    try {
+      const response = await fetch(`/safeConfig/docMetadata/${docId}`);
+      if (response.ok) {
         const valueSeparator = ',';
         const docInfo = await response.json();
         if (!docInfo.error) {
@@ -76,13 +76,20 @@ export async function setMetadata() {
           window.docInternal = docInfo.docInternal;
           window.docEarlyAccess = docInfo.docEarlyAccess;
         }
-      } catch (err) {
-        console.error(err);
       }
+    } catch (err) {
+      console.error(err);
     }
   }
 
   const userResponse = await fetch('/userInformation');
+  if (!userResponse.ok) {
+    window.userInformation = {
+      isLoggedIn: false,
+    };
+    return;
+  }
+
   const userInformation = await userResponse.json();
   window.userInformation = userInformation;
   sendUserId(userInformation);

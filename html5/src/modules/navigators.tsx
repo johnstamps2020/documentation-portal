@@ -281,14 +281,14 @@ function addNavigationLinks() {
       sessionStorage.setItem('tocExpandedItems', expandedUls.join(','));
     }
   });
-  document.querySelector('#navbarRight').appendChild(navigationLinks);
+  document.querySelector('#navbarRight')?.appendChild(navigationLinks);
 }
 
 function addVerticalDivider() {
   const verticalDivider = document.createElement('div');
   verticalDivider.classList.add('verticalDivider');
 
-  document.querySelector('#navbarRight').appendChild(verticalDivider);
+  document.querySelector('#navbarRight')?.appendChild(verticalDivider);
 }
 
 function addPrintButton() {
@@ -303,7 +303,7 @@ function addPrintButton() {
     window.print();
   });
 
-  document.querySelector('#navbarRight').appendChild(printButton);
+  document.querySelector('#navbarRight')?.appendChild(printButton);
 }
 
 function addShareButton() {
@@ -321,7 +321,7 @@ function addShareButton() {
     `mailto:?subject=${title}&body=Check out Guidewire documentation page ${window.location}.`
   );
 
-  document.querySelector('#navbarRight').appendChild(shareButton);
+  document.querySelector('#navbarRight')?.appendChild(shareButton);
 }
 
 function addScrollToTop() {
