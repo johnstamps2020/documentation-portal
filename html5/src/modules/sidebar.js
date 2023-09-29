@@ -117,6 +117,10 @@ async function addTocListener() {
     ? document.querySelector('nav[role="toc"]')
     : document.querySelector('nav.toc');
 
+  if (!toc) {
+    return;
+  }
+
   if (sessionStorage.getItem('tocPos')) {
     sessionStorage.removeItem('tocPos');
   }
@@ -170,6 +174,11 @@ async function trimHrefAnchors() {
   const toc = document.querySelector('nav[role="toc"]')
     ? document.querySelector('nav[role="toc"]')
     : document.querySelector('nav.toc');
+
+  if (!toc) {
+    return;
+  }
+
   const tocLinks = toc.getElementsByTagName('a');
   for (let i = 0; i < tocLinks.length; i++) {
     const href = tocLinks.item(i).getAttribute('href');
