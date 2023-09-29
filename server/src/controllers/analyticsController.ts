@@ -55,9 +55,3 @@ function getFileContents(filePath: string) {
 export function getPendoInitializeScript() {
   return getFileContents(join(__dirname, 'utils', 'pendoInitializeScript.js'));
 }
-
-export function getFullStoryIdentifyScript() {
-  return getFileContents(
-    join(__dirname, 'utils', 'fullStoryIdentifyScript.js')
-  );
-}

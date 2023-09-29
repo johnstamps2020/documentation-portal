@@ -8,7 +8,6 @@ import {
   pendoInstallScript,
   tagManagerBody,
   getPendoInitializeScript,
-  getFullStoryIdentifyScript,
 } from '../controllers/analyticsController';
 
 function appendToSelectedItem(node: any, str: string) {
@@ -31,14 +30,11 @@ function appendToSelectedItem(node: any, str: string) {
 }
 
 const pendoInitializeScript = getPendoInitializeScript();
-const fullStoryIdentifyScript = getFullStoryIdentifyScript();
 const bodyScriptsForAnalytics = `
       <!-- Pendo initialize -->
       <script>${pendoInitializeScript}</script>
       <!-- Google tag manager no-script -->
-      <noscript>${tagManagerBody}</noscript>
-      <!-- FullStory identify -->
-      <script>${fullStoryIdentifyScript}</script>`;
+      <noscript>${tagManagerBody}</noscript>`;
 
 const responseSelectors = [
   {
