@@ -38,6 +38,11 @@ router.get('/entity/:repo', async function (req, res) {
   return res.status(status).json(body);
 });
 
+router.get('/entity/:repo/relations', async function (req, res) {
+  const { status, body } = await getEntity(req, res, true);
+  return res.status(status).json(body);
+});
+
 //FIXME: For entities with a one-word name, a request in a browser is not case-sensitive
 //  For entities with a name that has two or more words, a request in a browser is case-sensitive
 router.get('/entity/:repo/all', async function (req, res) {

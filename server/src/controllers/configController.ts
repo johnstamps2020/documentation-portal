@@ -334,7 +334,8 @@ export async function getBreadcrumbs(
 
 export async function getEntity(
   req: Request,
-  res: Response
+  res: Response,
+  loadRelations: boolean = false
 ): Promise<ApiResponse> {
   const { repo } = req.params;
   const options: FindOptionsWhere<any> = req.query;
@@ -347,7 +348,9 @@ export async function getEntity(
     };
   }
   try {
-    const findEntityResult = await findEntity(repo, options, false);
+    const findEntityResult = loadRelations
+      ? await findEntity(repo, options, true)
+      : await findEntity(repo, options, false);
     if (!findEntityResult) {
       return {
         status: 404,
