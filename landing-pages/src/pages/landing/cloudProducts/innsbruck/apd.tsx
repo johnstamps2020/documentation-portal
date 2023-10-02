@@ -2,11 +2,18 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
     backgroundColor: `hsl(0, 0%, 98%)`,
+  },
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Innsbruck (2023.10)',
+    items: allSelectors.apdapp,
+    labelColor: 'black',
   },
   sections: [
     {

@@ -1,12 +1,18 @@
 export const allSelectors = {
+  apdapp: [
+    { label: 'Flaine (2022.09)', pagePath: 'cloudProducts/flaine/apd' },
+    { label: 'Garmisch (2023.02)', pagePath: 'cloudProducts/garmisch/apd' },
+    { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba/apd' },
+    { label: 'Innsbruck (2023.10)', pagePath: 'cloudProducts/innsbruck/apd' },
+  ],
   s0f196c0b55cf55f2cdd1e05b1bf5e94e: [
-    { label: 'Cortina', pagePath: 'apiReferences/cortina' },
-    { label: 'Dobson', pagePath: 'apiReferences/dobson' },
-    { label: 'Elysian', pagePath: 'apiReferences/elysian' },
-    { label: 'Flaine', pagePath: 'apiReferences/flaine' },
-    { label: 'Garmisch', pagePath: 'apiReferences/garmisch' },
-    { label: 'Hakuba', pagePath: 'apiReferences/hakuba' },
-    { label: 'Innsbruck', pagePath: 'apiReferences/innsbruck' },
+    { label: 'Cortina (2021.04)', pagePath: 'apiReferences/cortina' },
+    { label: 'Dobson (2021.11)', pagePath: 'apiReferences/dobson' },
+    { label: 'Elysian (2022.05)', pagePath: 'apiReferences/elysian' },
+    { label: 'Flaine (2022.09)', pagePath: 'apiReferences/flaine' },
+    { label: 'Garmisch (2023.02)', pagePath: 'apiReferences/garmisch' },
+    { label: 'Hakuba (2023.06)', pagePath: 'apiReferences/hakuba' },
+    { label: 'Innsbruck (2023.10)', pagePath: 'apiReferences/innsbruck' },
   ],
   s344cd6ac814e55dd2f6e1bddf2c969db: [
     {
@@ -93,13 +99,13 @@ export const allSelectors = {
     },
   ],
   sb372c5e3c1cec5d40289c85a78eaef30: [
-    { label: 'Cortina', pagePath: 'cloudProducts/cortina' },
-    { label: 'Dobson', pagePath: 'cloudProducts/dobson' },
-    { label: 'Elysian', pagePath: 'cloudProducts/elysian' },
-    { label: 'Flaine', pagePath: 'cloudProducts/flaine' },
-    { label: 'Garmisch', pagePath: 'cloudProducts/garmisch' },
-    { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
-    { label: 'Innsbruck', pagePath: 'cloudProducts/innsbruck' },
+    { label: 'Cortina (2021.04)', pagePath: 'cloudProducts/cortina' },
+    { label: 'Dobson (2021.11)', pagePath: 'cloudProducts/dobson' },
+    { label: 'Elysian (2022.05)', pagePath: 'cloudProducts/elysian' },
+    { label: 'Flaine (2022.09)', pagePath: 'cloudProducts/flaine' },
+    { label: 'Garmisch (2023.02)', pagePath: 'cloudProducts/garmisch' },
+    { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba' },
+    { label: 'Innsbruck(2023.10)', pagePath: 'cloudProducts/innsbruck' },
   ],
   s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {

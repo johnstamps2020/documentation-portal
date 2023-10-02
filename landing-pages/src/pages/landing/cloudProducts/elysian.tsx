@@ -16,7 +16,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Elysian',
+    selectedItemLabel: 'Elysian (2022.05)',
     items: allSelectors.sb372c5e3c1cec5d40289c85a78eaef30,
     labelColor: 'white',
   },

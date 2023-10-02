@@ -13,7 +13,7 @@ const pageConfig: Category2LayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Innsbruck',
+    selectedItemLabel: 'Innsbruck (2023.10)',
     items: allSelectors.sb372c5e3c1cec5d40289c85a78eaef30,
     labelColor: 'white',
   },
@@ -118,6 +118,14 @@ const pageConfig: Category2LayoutProps = {
     {
       label: 'Developer Resources',
       items: [
+        {
+          label: 'Advanced Product Designer App',
+          pagePath: 'cloudProducts/innsbruck/apd',
+        },
+        {
+          label: 'API References',
+          pagePath: 'apiReferences/innsbruck',
+        },
         {
           label: 'Integration Gateway',
           docId: 'integgatewaydevnext',
