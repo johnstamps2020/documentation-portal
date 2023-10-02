@@ -1,10 +1,10 @@
-import { addHashLinks } from './hashLink';
-import { highlightTextFromUrl, addHighlightToggle } from './highlight';
-import { addPdfLink } from './pdflink';
+import { translate } from '@theme/Translate';
 import React, { useEffect, useState } from 'react';
 import { render } from 'react-dom';
 import '../stylesheets/modules/minitoc.css';
-import { translate } from '@theme/Translate';
+import { addHashLinks } from './hashLink';
+import { addHighlightToggle, highlightTextFromUrl } from './highlight';
+import { addPdfLink } from './pdflink';
 
 async function getLanguageBreadcrumb() {
   if (!window.docLanguage || window.docLanguage === 'en') {
@@ -306,24 +306,6 @@ function addPrintButton() {
   document.querySelector('#navbarRight')?.appendChild(printButton);
 }
 
-function addShareButton() {
-  const shareButton = document.createElement('a');
-  shareButton.classList.add('navbarButton');
-  shareButton.classList.add('shareButton');
-  shareButton.setAttribute('data-sharer', 'email');
-  const title = document.querySelector('title').textContent;
-  const label = 'Share this page';
-  shareButton.setAttribute('title', label);
-  shareButton.setAttribute('aria-label', label);
-
-  shareButton.setAttribute(
-    'href',
-    `mailto:?subject=${title}&body=Check out Guidewire documentation page ${window.location}.`
-  );
-
-  document.querySelector('#navbarRight')?.appendChild(shareButton);
-}
-
 function addScrollToTop() {
   const scrollToTopButton = document.createElement('button');
   scrollToTopButton.setAttribute('type', 'button');
@@ -425,7 +407,6 @@ function addNavbar() {
   addNavigationLinks();
   addVerticalDivider();
   addPdfLink();
-  addShareButton();
   addPrintButton();
   addHighlightToggle();
   addScrollToTop();
