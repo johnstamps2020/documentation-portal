@@ -1,0 +1,81 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipjinnsbruckrn",
+      "title": "Release Notes",
+      "url": "ipj/innsbruck/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjinnsbruckconfig",
+      "title": "Configuration",
+      "url": "ipj/innsbruck/config",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Development"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjinnsbruckapp",
+      "title": "Application Guide",
+      "url": "ipj/innsbruck/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjinnsbruckinstall",
+      "title": "Installation Guide",
+      "url": "ipj/innsbruck/install",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }
+  ]
+}
