@@ -19,9 +19,9 @@
       "displayOnLandingPages": false
     },
     {
-      "id": "devconnectvendor",
-      "title": "DevConnect Vendor",
-      "url": "devconnect/vendor",
+      "id": "devconnectpartner",
+      "title": "DevConnect Partner",
+      "url": "devconnect/partner",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DevConnect"],

@@ -10,8 +10,8 @@
     },
     {
       "buildType": "yarn",
-      "docId": "devconnectvendor",
-      "srcId": "devconnectvendorsrc",
+      "docId": "devconnectpartner",
+      "srcId": "devconnectpartnersrc",
       "disabled": false,
       "workingDir": "output"
     }

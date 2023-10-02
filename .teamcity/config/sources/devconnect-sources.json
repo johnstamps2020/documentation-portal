@@ -8,7 +8,7 @@
       "branch": "master"
     },
     {
-      "id": "devconnectvendorsrc",
+      "id": "devconnectpartnersrc",
       "title": "DevConnect Vendor",
       "gitUrl": "ssh://git@stash.guidewire.com/dct/dc-vendor-documentation.git",
       "branch": "master"
