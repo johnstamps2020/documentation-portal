@@ -6,14 +6,14 @@
       "docId": "devconnectinsurer",
       "srcId": "devconnectinsurersrc",
       "disabled": false,
-      "workingDir": "output/build"
+      "workingDir": "output"
     },
     {
       "buildType": "yarn",
       "docId": "devconnectvendor",
       "srcId": "devconnectvendorsrc",
       "disabled": false,
-      "workingDir": "output/build"
+      "workingDir": "output"
     }
   ]
 }
