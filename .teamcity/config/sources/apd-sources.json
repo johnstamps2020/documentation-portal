@@ -9,21 +9,27 @@
     },
     {
       "id": "apdappflainesrc",
-      "title": "Advanced Product Designer - Feature Preview",
+      "title": "Advanced Product Designer App Flaine",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
       "branch": "release/app/flaine"
     },
     {
       "id": "apdappgarmischsrc",
-      "title": "Advanced Product Designer - Feature Preview",
+      "title": "Advanced Product Designer App Garmisch",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
       "branch": "release/app/garmisch"
     },
     {
       "id": "apdapphakubasrc",
-      "title": "Advanced Product Designer - Feature Preview",
+      "title": "Advanced Product Designer App Hakuba",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
       "branch": "release/app/hakuba"
+    },
+    {
+      "id": "apdappinnsbrucksrc",
+      "title": "Advanced Product Designer App Innsbruck",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/app/innsbruck"
     }
   ]
 }

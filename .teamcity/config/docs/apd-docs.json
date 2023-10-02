@@ -189,6 +189,82 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "apdclaimsinnsbruck",
+      "title": "Advanced Product Designer for Claims Guide",
+      "url": "cloud/apdclaims/innsbruck",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.10"],
+        "subject": ["Configuration"],
+        "release": ["Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "apdappinnsbruck",
+      "title": "Advanced Product Designer",
+      "url": "cloud/apd/innsbruck/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "apdappinternalinnsbruck",
+      "title": "Advanced Product Designer - Internal",
+      "url": "cloud/apd/innsbruck/app-internal",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "apdapprninnsbruck",
+      "title": "Advanced Product Designer Release Notes",
+      "url": "cloud/apd/innsbruck/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
