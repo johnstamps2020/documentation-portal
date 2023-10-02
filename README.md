@@ -12,6 +12,9 @@ You need the following tools:
   `.nvmrc` files for automatic version switching.
 - Node.js 16.18.0 for running the server (install through nvm)
 - Node.js 18.15.0 for loading configs into the database (install through nvm)
+- `pg_restore` - it's a command line tool for working with Postgres dumps. It's
+  included in the Postgres installation. If you use macOS, you can install it
+  through Homebrew: `brew install libpq`.
 
 ## Step 2: Make sure Docker Desktop can mount directories from this project
 
@@ -71,6 +74,9 @@ AWS_REGION=us-west-2
 
 ## Step 4: Start the services
 
+Info: After you complete this step, don't be surprised that landing pages don't
+work. You need to import a database dump first!
+
 ### Docker compose
 
 If you use VS Code, run the **Compose local dev environment** task. If you use
@@ -82,25 +88,21 @@ use the terminal, run this command in the root folder of the project:
 
 1. Make sure you have the Docker plugin installed and that you are connected to
    the Docker Hub registry.
-2. Run the **Server DEV** debug. This automatically creates a Docker container
+1. Run the **Server DEV** debug. This automatically creates a Docker container
    for Postgres (docportal DB) and then launches the server in dev mode.
-3. Wait for the server to fully start and then run the **Upload Legacy Configs**
-   to DB" debug. This may take a while.
-4. Run the **Landing Pages DEV** debug. This launches the frontend in dev mode.
-5. Open http://localhost:8081 in your browser.
+1. Run the **Landing Pages DEV** debug. This launches the frontend in dev mode.
+1. Open http://localhost:8081 in your browser.
 
 ### IntelliJ IDEA
 
 1. Make sure the Docker plugin is running.
-2. Run the **Start docportal DB** configuration. This creates a Docker container
+1. Run the **Start docportal DB** configuration. This creates a Docker container
    for Postgres.
-3. Wait for the docportal DB to fully start and then run the **Server DEV**
+1. Wait for the docportal DB to fully start and then run the **Server DEV**
    configuration. This launches the server in dev mode.
-4. Wait for the server to fully start and then run the **Upload legacy configs
-   to DB** configuration. This may take a while.
-5. Run the **Landing pages DEV** configuration. This launches the frontend in
+1. Run the **Landing pages DEV** configuration. This launches the frontend in
    dev mode.
-6. Open http://localhost:8081 in your browser.
+1. Open http://localhost:8081 in your browser.
 
 ### Terminal (macOS)
 
@@ -109,13 +111,24 @@ use the terminal, run this command in the root folder of the project:
    cd server
    ./start_docportal_db_container.sh
    ```
-2. Open a new terminal window and start the server by running `yarn server-dev`.
-3. Open a new terminal window, export environment variables and load configs
-   into the database by running:
-   ```
-   set -a && source server/.env
-   cd ci
-   node uploadLegacyConfigsToDb.mjs
-   ```
-4. Open a new terminal window and start the frontend by running
+1. Open a new terminal window and start the server by running `yarn server-dev`.
+1. Open a new terminal window and start the frontend by running
    `yarn landing-pages-dev`.
+
+## Step 5: Import a database dump
+
+1. From Teamcity, download the latest database dump from the
+   [Dump database data from staging](https://gwre-devexp-ci-production-devci.gwre-devops.net/buildConfiguration/DocumentationTools_DocPortal_1678b85abfaa4085ab3305d599569c26#all-projects)
+   build. It's in the **Artifacts** tab.
+1. Unzip the dump. On macOS, if you simply double-click the downloaded ZIP file,
+   it will be extracted into a folder named `docportalconfig`.
+1. Open a terminal window and navigate to the folder which contains the recently
+   unzipped `docportalconfig` folder.
+1. Make sure the docportal DB is running.
+1. Run the following command:
+
+   ```bash
+   pg_restore --clean --if-exists -d postgres -h localhost -U postgres -W docportalconfig
+   ```
+
+1. When prompted for password, enter `testtesttest`.
