@@ -65,6 +65,27 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
+      label: 'Japan',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'ipjinnsbruckrn',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'ipjinnsbruckapp',
+        },
+        {
+          label: 'Configuration',
+          docId: 'ipjinnsbruckconfig',
+        },
+        {
+          label: 'Installation',
+          docId: 'ipjinnsbruckinstall',
+        },
+      ],
+    },
+    {
       label: 'US Standards-based Template Framework',
       items: [
         {

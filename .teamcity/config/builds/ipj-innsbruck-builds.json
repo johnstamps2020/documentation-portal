@@ -1,0 +1,41 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJReleaseNotes.ditamap",
+      "srcId": "ipjinnsbrucksrc",
+      "docId": "ipjinnsbruckrn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJConfigurationGuide.ditamap",
+      "srcId": "ipjinnsbrucksrc",
+      "docId": "ipjinnsbruckconfig",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJApplicationGuide.ditamap",
+      "srcId": "ipjinnsbrucksrc",
+      "docId": "ipjinnsbruckapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJInstallationGuide.ditamap",
+      "srcId": "ipjinnsbrucksrc",
+      "docId": "ipjinnsbruckinstall",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

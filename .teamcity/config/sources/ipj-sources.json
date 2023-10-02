@@ -18,6 +18,12 @@
       "title": "InsuranceSuite Package for Japan Hakuba",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipj.git",
       "branch": "release/hakuba"
+    },
+    {
+      "id": "ipjinnsbrucksrc",
+      "title": "InsuranceSuite Package for Japan Innsbruck",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipj.git",
+      "branch": "release/innsbruck"
     }
   ]
 }
