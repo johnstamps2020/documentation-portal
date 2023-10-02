@@ -759,8 +759,25 @@ object GwBuildSteps {
         val docS3Url = Helpers.getS3BucketUrl(deployEnv)
         val appBaseUrl = Helpers.getTargetUrl(deployEnv)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
-        val reportBrokenLinks = if (deployEnv == GwDeployEnvs.PROD.envName) "no" else "yes"
-        val reportShortTopics = if (deployEnv == GwDeployEnvs.PROD.envName) "no" else "yes"
+        val reportBrokenLinks: String
+        val reportShortTopics: String
+        val oktaIssuer: String
+        val oktaScopes: String
+        when (deployEnv) {
+            GwDeployEnvs.PROD.envName -> {
+                reportBrokenLinks = "no"
+                reportShortTopics = "no"
+                oktaIssuer = GwConfigParams.OKTA_ISSUER_PROD.paramValue
+                oktaScopes = GwConfigParams.OKTA_SCOPES_PROD.paramValue
+            }
+
+            else -> {
+                reportBrokenLinks = "yes"
+                reportShortTopics = "yes"
+                oktaIssuer = GwConfigParams.OKTA_ISSUER.paramValue
+                oktaScopes = GwConfigParams.OKTA_SCOPES.paramValue
+            }
+        }
         return ScriptBuildStep {
             name = "Run the doc crawler"
             id = Helpers.createIdStringFromName(this.name)
@@ -769,8 +786,8 @@ object GwBuildSteps {
                 set -xe
                 
                 ${Helpers.setAwsEnvVars(deployEnv)}
-                export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
-                export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
+                export OKTA_ISSUER="$oktaIssuer"
+                export OKTA_SCOPES="$oktaScopes"
                 
                 export CONFIG_FILE="$configFile"
                 export DOC_ID="$docId"
