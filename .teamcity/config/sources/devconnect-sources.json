@@ -1,0 +1,17 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "devconnectinsurersrc",
+      "title": "DevConnect Insurer",
+      "gitUrl": "ssh://git@stash.guidewire.com/dct/dc-insurer-documentation.git",
+      "branch": "master"
+    },
+    {
+      "id": "devconnectvendorsrc",
+      "title": "DevConnect Vendor",
+      "gitUrl": "ssh://git@stash.guidewire.com/dct/dc-vendor-documentation.git",
+      "branch": "master"
+    }
+  ]
+}
