@@ -19,6 +19,31 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: 'Australia',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'ipainnsbruckrn',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'ipainnsbruckapp',
+        },
+        {
+          label: 'Configuration',
+          docId: 'ipainnsbruckconfig',
+        },
+        {
+          label: 'Installation',
+          docId: 'ipainnsbruckinstall',
+        },
+        {
+          label: 'Upgrade',
+          docId: 'ipainnsbruckupgrade',
+        },
+      ],
+    },
+    {
       label: 'London Market',
       items: [
         {

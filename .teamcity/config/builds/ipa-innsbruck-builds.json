@@ -1,0 +1,50 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAReleaseNotes.ditamap",
+      "srcId": "ipainnsbrucksrc",
+      "docId": "ipainnsbruckrn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAConfigurationGuide.ditamap",
+      "srcId": "ipainnsbrucksrc",
+      "docId": "ipainnsbruckconfig",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAApplicationGuide.ditamap",
+      "srcId": "ipainnsbrucksrc",
+      "docId": "ipainnsbruckapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAUpgradeGuide.ditamap",
+      "srcId": "ipainnsbrucksrc",
+      "docId": "ipainnsbruckupgrade",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAInstallGuide.ditamap",
+      "srcId": "ipainnsbrucksrc",
+      "docId": "ipainnsbruckinstall",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}
