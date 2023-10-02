@@ -19,12 +19,93 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Innsbruck',
+    selectedItemLabel: 'Innsbruck (2023.10)',
     items: allSelectors.s0f196c0b55cf55f2cdd1e05b1bf5e94e,
     labelColor: 'white',
   },
 
   cards: [
+    {
+      label: 'BillingCenter',
+      items: [
+        {
+          label: 'Cloud API Reference',
+          docId: 'bcapirefinnsbruck',
+        },
+        {
+          label: 'Cloud API Consumer Guide',
+          docId: 'isbc202310apibf',
+        },
+        {
+          label: 'Cloud API Developer Guide',
+          docId: 'isbc202310apica',
+        },
+      ],
+    },
+    {
+      label: 'ClaimCenter',
+      items: [
+        {
+          label: 'Cloud API Reference',
+          docId: 'ccapirefinnsbruck',
+        },
+        {
+          label: 'Cloud API Consumer Guide',
+          docId: 'iscc202310apibf',
+        },
+        {
+          label: 'Cloud API Developer Guide',
+          docId: 'iscc202310apica',
+        },
+      ],
+    },
+    {
+      label: 'PolicyCenter',
+      items: [
+        {
+          label: 'Cloud API Reference',
+          docId: 'pcapirefinnsbruck',
+        },
+        {
+          label: 'Cloud API Consumer Guide',
+          docId: 'ispc202310apibf',
+        },
+        {
+          label: 'Cloud API Developer Guide',
+          docId: 'ispc202310apica',
+        },
+      ],
+    },
+    {
+      label: 'APD API Reference',
+      items: [
+        {
+          label: 'API Reference',
+          docId: 'apdmaindoc',
+        },
+      ],
+    },
+    {
+      label: 'Cloud Console',
+      items: [
+        {
+          label: 'CI/CD Manager API',
+          docId: 'cicdmanagerapiref',
+        },
+        {
+          label: 'IS Deployments API',
+          docId: 'cloudconsoleapi',
+        },
+        {
+          label: 'Repository Settings API',
+          docId: 'repositorysettingsapi',
+        },
+        {
+          label: 'Runtime Properties API',
+          docId: 'runtimepropertiesapi',
+        },
+      ],
+    },
     {
       label: 'InsuranceNow',
       items: [
@@ -35,6 +116,15 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Portal Development Guide',
           docId: 'in20233portaldev',
+        },
+      ],
+    },
+    {
+      label: 'Integration Framework',
+      items: [
+        {
+          label: 'Webhooks API Reference',
+          docId: 'webhooksapinext',
         },
       ],
     },
