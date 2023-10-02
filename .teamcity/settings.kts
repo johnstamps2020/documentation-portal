@@ -790,34 +790,6 @@ object GwBuildSteps {
         }
     }
 
-    fun createGetConfigFileStep(deployEnv: String, configFile: String): ScriptBuildStep {
-
-        val configFileUrl = Helpers.getConfigFileUrl(deployEnv)
-
-        return ScriptBuildStep {
-            name = "Get config file"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export CONFIG_FILE="$configFile"
-                export TMP_CONFIG_FILE="%teamcity.build.workingDir%/tmp_config.json"
-                export CONFIG_FILE_URL="$configFileUrl"
-                
-                curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
-                
-                if [[ "$deployEnv" == "${GwDeployEnvs.PROD.envName}" ]]; then
-                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > ${'$'}CONFIG_FILE                 
-                elif [[ "$deployEnv" == "${GwDeployEnvs.PORTAL2.envName}" ]]; then
-                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > ${'$'}CONFIG_FILE
-                else
-                    cat ${'$'}TMP_CONFIG_FILE > ${'$'}CONFIG_FILE
-                fi
-            """.trimIndent()
-        }
-    }
-
     fun createGetDocumentDetailsStep(
         workingDir: String,
         buildBranch: String,
@@ -2412,9 +2384,6 @@ object User {
                     %teamcity.build.workingDir%/*.log => build_logs
                 """.trimIndent()
                     val configFile = "%teamcity.build.workingDir%/config.json"
-                    val configFileStep = GwBuildSteps.createGetConfigFileStep(deployEnv, configFile)
-                    steps.step(configFileStep)
-                    steps.stepsOrder.add(configFileStep.id.toString())
                     val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deployEnv, docId, configFile)
                     steps.step(crawlDocStep)
                     steps.stepsOrder.add(crawlDocStep.id.toString())
@@ -3753,7 +3722,6 @@ object Admin {
                 subProject(createUpdateSearchIndexProject())
                 subProject(createCleanUpSearchIndexProject())
                 subProject(createGenerateSitemapProject())
-                subProject(createDeployServerConfigProject())
                 subProject(createDeployContentStorageProject())
                 buildType(UploadPdfsForEscrowBuildType)
                 buildType(SyncDocsFromStagingToDev)
@@ -3874,59 +3842,7 @@ object Admin {
                 }
 
                 steps {
-                    step(GwBuildSteps.createGetConfigFileStep(deployEnv, configFile))
                     step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%DOC_ID%", configFile))
-                }
-
-                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
-
-        // TODO: Remove this project after the doc crawler is modified to get the doc config from the database
-        private fun createDeployServerConfigProject(): Project {
-            return Project {
-                name = "[LEGACY] Deploy server config"
-                id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-                arrayOf(
-                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-                ).forEach {
-                    buildType(createDeployServerConfigBuildType(it.envName))
-                }
-            }
-        }
-
-        private fun createDeployServerConfigBuildType(deployEnv: String): BuildType {
-            return BuildType {
-                name = "Deploy server config to $deployEnv"
-                id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-                vcs {
-                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                    cleanCheckout = true
-                }
-                steps {
-                    script {
-                        name = "Generate config file for $deployEnv"
-                        id = Helpers.createIdStringFromName(this.name)
-                        scriptContent = """
-                            #!/bin/bash
-                            set -e
-                            
-                            config_deployer deploy "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}" --deploy-env $deployEnv
-                        """.trimIndent()
-                        dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
-                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    }
-                    step(
-                        GwBuildSteps.createUploadContentToS3BucketStep(
-                            deployEnv, GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue, "portal-config"
-                        )
-                    )
-                }
-
-                triggers {
-                    trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.TEAMCITY_CONFIG.pathValue)))
                 }
 
                 features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
