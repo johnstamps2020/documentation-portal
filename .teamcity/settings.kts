@@ -783,11 +783,6 @@ object GwBuildSteps {
                 export REPORT_BROKEN_LINKS="$reportBrokenLinks"
                 export REPORT_SHORT_TOPICS="$reportShortTopics"
                 
-                cat > scrapy.cfg <<- EOM
-                [settings]
-                default = doc_crawler.settings
-                EOM
-
                 doc_crawler
             """.trimIndent()
             dockerImage = GwDockerImages.DOC_CRAWLER_LATEST.imageUrl
