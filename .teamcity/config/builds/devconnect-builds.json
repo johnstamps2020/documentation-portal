@@ -5,13 +5,15 @@
       "buildType": "yarn",
       "docId": "devconnectinsurer",
       "srcId": "devconnectinsurersrc",
-      "disabled": false
+      "disabled": false,
+      "workingDir": "output/build"
     },
     {
       "buildType": "yarn",
       "docId": "devconnectvendor",
       "srcId": "devconnectvendorsrc",
-      "disabled": false
+      "disabled": false,
+      "workingDir": "output/build"
     }
   ]
 }
