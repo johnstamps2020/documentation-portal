@@ -26,8 +26,8 @@ const pageConfig: SectionLayoutProps = {
           docId: 'apdappinnsbruck',
         },
         {
-          label: 'APD App Guide',
-          docId: 'apdappinternalinnsbruck (Internal version)',
+          label: 'APD App Guide (Internal)',
+          docId: 'apdappinternalinnsbruck',
         },
       ],
     },
