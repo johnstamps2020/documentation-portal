@@ -30,6 +30,12 @@
       "title": "InsuranceSuite Package for Australia for Guidewire Cloud Hakuba",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
       "branch": "release/hakuba"
+    },
+    {
+      "id": "ipainnsbrucksrc",
+      "title": "InsuranceSuite Package for Australia for Guidewire Cloud Innsbruck",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
+      "branch": "release/innsbruck"
     }
   ]
 }

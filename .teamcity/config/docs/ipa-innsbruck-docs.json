@@ -1,0 +1,100 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipainnsbruckrn",
+      "title": "Release Notes",
+      "url": "cloud/ipa/innsbruck/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "subject": ["Release notes"],
+        "release": ["Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipainnsbruckconfig",
+      "title": "Configuration",
+      "url": "cloud/ipa/innsbruck/config",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "subject": ["Development"],
+        "release": ["Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipainnsbruckapp",
+      "title": "Application Guide",
+      "url": "cloud/ipa/innsbruck/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "subject": ["Features and functionality"],
+        "release": ["Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipainnsbruckupgrade",
+      "title": "Upgrade Guide",
+      "url": "cloud/ipa/innsbruck/upgrade",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "subject": ["Installation"],
+        "release": ["Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipainnsbruckinstall",
+      "title": "Installation Guide",
+      "url": "cloud/ipa/innsbruck/install",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "subject": ["Installation"],
+        "release": ["Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }
+  ]
+}
