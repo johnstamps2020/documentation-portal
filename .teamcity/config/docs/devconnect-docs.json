@@ -1,0 +1,39 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "devconnectinsurer",
+      "title": "DevConnect Insurer",
+      "url": "devconnect/insurer",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DevConnect"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "internal": false,
+      "earlyAccess": false,
+      "indexForSearch": false,
+      "public": false,
+      "displayOnLandingPages": false
+    },
+    {
+      "id": "devconnectvendor",
+      "title": "DevConnect Vendor",
+      "url": "devconnect/vendor",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DevConnect"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "internal": false,
+      "earlyAccess": false,
+      "indexForSearch": false,
+      "public": false,
+      "displayOnLandingPages": false
+    }
+  ]
+}
