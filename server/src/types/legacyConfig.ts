@@ -56,7 +56,6 @@ type Metadata = {
 export type LegacyDocConfig = {
   id: string;
   title: string;
-  displayTitle?: string;
   url: string;
   body?: string;
   metadata: Metadata;
