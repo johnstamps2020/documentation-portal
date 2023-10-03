@@ -64,3 +64,10 @@ th {
 .stentry > *:last-child {
   margin-bottom: 0;
 }
+
+/* DOCS-4717 - nowrap is added to Improvements and Fixes
+   table ID column entries by release notes generator */
+td.entry.nowrap,
+td.stentry.nowrap {
+  white-space: nowrap;
+}
