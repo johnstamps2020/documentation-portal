@@ -17,6 +17,7 @@ import { DitaBuild } from './entity/DitaBuild';
 import { YarnBuild } from './entity/YarnBuild';
 import { JustCopyBuild } from './entity/JustCopyBuild';
 import { SourceZipBuild } from './entity/SourceZipBuild';
+import { AddDisplayTitleToDocEntity } from './migration/AddDisplayTitleToDocEntity';
 
 const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();
@@ -52,7 +53,7 @@ export const AppDataSource = new DataSource({
     Version,
     YarnBuild,
   ],
-  migrations: ['migration/*.js'],
+  migrations: [AddDisplayTitleToDocEntity],
   synchronize: isDevMode,
   cache: {
     duration: 3000, // 3 seconds
