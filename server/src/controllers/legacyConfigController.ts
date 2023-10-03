@@ -100,11 +100,6 @@ async function getLegacyDocConfigs(): Promise<LegacyDocConfig[]> {
         ),
       },
     };
-    const docDisplayTitle = doc.displayTitle;
-    if (docDisplayTitle) {
-      legacyDoc.displayTitle = docDisplayTitle;
-    }
-
     const docBody = doc.body;
     if (docBody) {
       legacyDoc.body = docBody;
@@ -795,7 +790,6 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
         dbDoc.id = docId;
         dbDoc.url = doc.url;
         dbDoc.title = doc.title;
-        dbDoc.displayTitle = doc.displayTitle || null;
         dbDoc.public = doc.public;
         dbDoc.internal = doc.internal;
         dbDoc.earlyAccess = doc.earlyAccess;

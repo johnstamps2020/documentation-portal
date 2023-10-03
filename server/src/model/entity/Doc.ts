@@ -23,9 +23,6 @@ export class Doc extends GwEntity {
   @Column({ type: 'varchar' })
   title: string;
 
-  @Column({ type: 'varchar', nullable: true })
-  displayTitle: string | null;
-
   @Column({ type: 'varchar' })
   @Index('docUrls-idx')
   url: string;
