@@ -21,6 +21,10 @@ const links: AdminLink[] = [
     path: '/admin-panel/page',
     title: 'Manage pages',
   },
+  {
+    path: '/admin-panel/external-link',
+    title: 'Manage external links',
+  },
 ];
 
 export default function AdminPage() {

@@ -7,6 +7,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { SearchData, ServerSearchError } from 'server/dist/types/serverSearch';
 import { Page } from 'server/dist/model/entity/Page';
 import { TranslatedPage } from '../components/Layout/Header/TranslatedPages';
+import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 
@@ -113,6 +114,23 @@ export function useTranslatedPages(items: TranslatedPage[]) {
 
   return {
     pages: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useExternalLinks() {
+  const { data, error, isLoading } = useSWR<ExternalLink[], ServerSearchError>(
+    '/safeConfig/entity/ExternalLink/all',
+    getter,
+    {
+      keepPreviousData: true,
+      refreshInterval: 1000,
+    }
+  );
+
+  return {
+    externalLinks: data,
     isLoading,
     isError: error,
   };

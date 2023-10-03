@@ -15,6 +15,7 @@ import AdminPage from 'pages/AdminPage/AdminPage';
 import PolicyCenterPrototype from 'pages/Prototypes/PolicyCenterPrototype';
 import { LayoutContextProvider } from 'LayoutContext';
 import Layout from 'components/Layout/Layout';
+import ExternalLinkAdminPage from 'pages/ExternalLinkAdminPage/ExternalLinkAdminPage';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: 'admin-panel/page',
         element: <PageAdminPage />,
+      },
+      {
+        path: 'admin-panel/external-link',
+        element: <ExternalLinkAdminPage />,
       },
       {
         path: 'search-results',
