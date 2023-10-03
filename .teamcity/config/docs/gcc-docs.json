@@ -116,7 +116,7 @@
     },
     {
       "id": "guidewirecloudconsolerootinsurerdev",
-      "title": "Cloud Console Guide",
+      "title": "Cloud Platform",
       "url": "cloud/gcc-guide/insurer-developer/latest",
       "metadata": {
         "platform": ["Cloud"],
