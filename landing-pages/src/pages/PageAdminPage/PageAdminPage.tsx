@@ -1,9 +1,9 @@
-import PageAdminPanel from 'components/PageAdminPage/PageAdminPanel';
+import PageAdminPanel from 'components/EntitiesAdminPage/PageAdminPage/PageAdminPanel';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import AdminAccess from 'components/AdminPage/AdminAccess';
-import AddButton from 'components/PageAdminPage/PageCard/Buttons/AddButton';
+import AddButton from 'components/EntitiesAdminPage/PageAdminPage/PageCard/Buttons/AddButton';
 import { useLayoutContext } from 'LayoutContext';
 import { useEffect } from 'react';
 

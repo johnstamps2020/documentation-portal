@@ -12,7 +12,7 @@ import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import { Page } from 'server/dist/model/entity/Page';
 import useSWRMutation from 'swr/mutation';
-import { usePageData } from '../../hooks/usePageData';
+import { usePageData } from '../../../hooks/usePageData';
 import { SearchFilters } from 'server/dist/types/config';
 
 type NewPage = Omit<Page, 'uuid'> & { stringifiedSearchFilters?: string };

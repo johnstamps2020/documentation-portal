@@ -1,10 +1,13 @@
-import AddIcon from '@mui/icons-material/Add';
-import Fab from '@mui/material/Fab';
-import PageSettingsForm from 'components/PageAdminPage/PageSettingsForm';
+import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
+import PageSettingsForm from 'components/EntitiesAdminPage/PageAdminPage/PageSettingsForm';
 import { useState } from 'react';
 import PageSettingsDialog from '../../PageSettingsDialog';
 
-export default function AddButton() {
+type EditButtonProps = {
+  pagePath: string;
+};
+export default function EditButton({ pagePath }: EditButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleOpenEditor() {
@@ -17,24 +20,19 @@ export default function AddButton() {
 
   return (
     <>
-      <Fab
-        variant="extended"
-        color="success"
+      <IconButton
         aria-label="edit"
         title="Open page editor"
         onClick={handleOpenEditor}
-        size="medium"
-        sx={{ width: 'fit-content', margin: '8px' }}
       >
-        <AddIcon sx={{ mr: 1 }} />
-        Add page
-      </Fab>
+        <EditIcon color="primary" />
+      </IconButton>
       <PageSettingsDialog
-        title="Create a new page"
-        isOpen={isOpen}
+        title="Update page settings"
         onClose={handleCloseEditor}
+        isOpen={isOpen}
       >
-        <PageSettingsForm />
+        <PageSettingsForm pagePath={pagePath} />
       </PageSettingsDialog>
     </>
   );
