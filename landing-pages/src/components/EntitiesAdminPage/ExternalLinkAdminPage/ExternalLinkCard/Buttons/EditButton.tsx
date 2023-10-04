@@ -1,13 +1,14 @@
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
-import PageSettingsForm from 'components/PageAdminPage/PageSettingsForm';
 import { useState } from 'react';
-import PageSettingsDialog from '../../PageSettingsDialog';
+import ExternalLinkSettingsDialog from '../../ExternalLinkSettingsDialog';
+import ExternalLinkSettingsForm from '../../ExternalLinkSettingsForm';
 
 type EditButtonProps = {
-  pagePath: string;
+  externalLinkUrl: string;
 };
-export default function EditButton({ pagePath }: EditButtonProps) {
+
+export default function EditButton({ externalLinkUrl }: EditButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleOpenEditor() {
@@ -22,18 +23,18 @@ export default function EditButton({ pagePath }: EditButtonProps) {
     <>
       <IconButton
         aria-label="edit"
-        title="Open page editor"
+        title="Open external link editor"
         onClick={handleOpenEditor}
       >
         <EditIcon color="primary" />
       </IconButton>
-      <PageSettingsDialog
-        title="Update page settings"
+      <ExternalLinkSettingsDialog
+        label="Update external link settings"
         onClose={handleCloseEditor}
         isOpen={isOpen}
       >
-        <PageSettingsForm pagePath={pagePath} />
-      </PageSettingsDialog>
+        <ExternalLinkSettingsForm url={externalLinkUrl} />
+      </ExternalLinkSettingsDialog>
     </>
   );
 }

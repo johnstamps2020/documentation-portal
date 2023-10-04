@@ -3,14 +3,14 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import PageSettingsDialog from 'components/PageAdminPage/PageSettingsDialog';
-import PageSettingsForm from 'components/PageAdminPage/PageSettingsForm';
-import { usePageData } from 'hooks/usePageData';
+import { useExternalLinkData } from 'hooks/useExternalLinkData';
 import { useState } from 'react';
-import { Page } from 'server/dist/model/entity/Page';
+import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
+import ExternalLinkSettingsDialog from '../../ExternalLinkSettingsDialog';
+import ExternalLinkSettingsForm from '../../ExternalLinkSettingsForm';
 
 type DuplicateButtonProps = {
-  pagePath: string;
+  externalLinkUrl: string;
 };
 
 function FormHeading({ children }: { children: React.ReactNode }) {
@@ -28,8 +28,8 @@ function FormHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function DuplicateButton({ pagePath }: DuplicateButtonProps) {
-  const { isError, isLoading, pageData } = usePageData(pagePath);
+export default function DuplicateButton({ externalLinkUrl }: DuplicateButtonProps) {
+  const { isError, isLoading, externalLinkData } = useExternalLinkData(externalLinkUrl);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,12 +41,12 @@ export default function DuplicateButton({ pagePath }: DuplicateButtonProps) {
     setIsOpen(true);
   }
 
-  if (isError || isLoading || !pageData) {
+  if (isError || isLoading || !externalLinkData) {
     return null;
   }
 
-  function getPageDataWithoutUuid(pageData: Page) {
-    const { uuid, ...rest } = pageData;
+  function getExternalLinkDataWithoutUuid(externalLinkData: ExternalLink) {
+    const { uuid, ...rest } = externalLinkData;
     return rest;
   }
 
@@ -54,15 +54,15 @@ export default function DuplicateButton({ pagePath }: DuplicateButtonProps) {
     <>
       <IconButton
         aria-label="edit"
-        title="Duplicate page"
+        title="Duplicate external link"
         onClick={handleOpenDialog}
       >
         <ContentCopyIcon color="primary" />
       </IconButton>
-      <PageSettingsDialog
+      <ExternalLinkSettingsDialog
         isOpen={isOpen}
         onClose={handleCloseDialog}
-        title="Duplicate page"
+        label="Duplicate external link"
       >
         <Box
           sx={{
@@ -72,20 +72,20 @@ export default function DuplicateButton({ pagePath }: DuplicateButtonProps) {
           }}
         >
           <Stack gap={2}>
-            <FormHeading>Source page</FormHeading>
-            <PageSettingsForm
-              initialPageData={getPageDataWithoutUuid(pageData)}
+            <FormHeading>Source external link</FormHeading>
+            <ExternalLinkSettingsForm
+              initialExternalLinkData={getExternalLinkDataWithoutUuid(externalLinkData)}
               disabled
             />
           </Stack>
           <Stack gap={2}>
-            <FormHeading>New page</FormHeading>
-            <PageSettingsForm
-              initialPageData={getPageDataWithoutUuid(pageData)}
+            <FormHeading>New external link</FormHeading>
+            <ExternalLinkSettingsForm
+              initialExternalLinkData={getExternalLinkDataWithoutUuid(externalLinkData)}
             />
           </Stack>
         </Box>
-      </PageSettingsDialog>
+      </ExternalLinkSettingsDialog>
     </>
   );
 }

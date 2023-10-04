@@ -1,16 +1,16 @@
-import PageAdminPanel from 'components/EntitiesAdminPage/PageAdminPage/PageAdminPanel';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import AdminAccess from 'components/AdminPage/AdminAccess';
-import AddButton from 'components/EntitiesAdminPage/PageAdminPage/PageCard/Buttons/AddButton';
 import { useLayoutContext } from 'LayoutContext';
 import { useEffect } from 'react';
+import ExternalLinkAdminPanel from 'components/EntitiesAdminPage/ExternalLinkAdminPage/ExternalLinkAdminPanel';
+import AddButton from 'components/EntitiesAdminPage/ExternalLinkAdminPage/ExternalLinkCard/Buttons/AddButton';
 
-export default function PageAdminPage() {
+export default function ExternalLinkAdminPage() {
   const { title, setTitle, setHeaderOptions } = useLayoutContext();
   useEffect(() => {
-    setTitle('Manage pages');
+    setTitle('Manage external links');
   }, [setHeaderOptions, setTitle]);
 
   return (
@@ -21,7 +21,7 @@ export default function PageAdminPage() {
           <Typography variant="h1" sx={{ color: 'black' }}>
             {title}
           </Typography>
-          <PageAdminPanel />
+          <ExternalLinkAdminPanel />
         </Stack>
       </Container>
     </AdminAccess>

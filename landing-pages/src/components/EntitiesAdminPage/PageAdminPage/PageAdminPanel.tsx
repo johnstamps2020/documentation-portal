@@ -4,7 +4,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useEffect, useState } from 'react';
 import { Page } from 'server/dist/model/entity/Page';
-import { usePages } from '../../hooks/useApi';
+import { usePages } from '../../../hooks/useApi';
 import PageAdminFilters, { Filters } from './PageAdminFilters';
 import PageList from './PageList';
 
