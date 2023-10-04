@@ -1,11 +1,8 @@
-import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import EditButton from './Buttons/EditButton';
+import EditButton from 'components/AdminPage/EditButton';
+import EntityCard from 'components/AdminPage/EntityCard';
+import EntityLink from 'components/AdminPage/EntityLink';
+import PageSettingsForm from '../PageSettingsForm';
 import DeleteButton from './Buttons/DeleteButton';
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
 import DuplicateButton from './Buttons/DuplicateButton';
 
 type PageCardProps = {
@@ -15,40 +12,20 @@ type PageCardProps = {
 
 export default function PageCard({ title, path }: PageCardProps) {
   return (
-    <Card
-      sx={{
-        padding: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: '100%',
-      }}
-    >
-      <CardContent
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          height: '100%',
-        }}
-      >
-        <Typography variant="h2">{title}</Typography>
-        <Link
-          to={`/${path}`}
-          target="_blank"
-          component={RouterLink}
-          sx={{ textDecoration: 'underline' }}
-        >
-          <Typography variant="subtitle1" component="div">
-            {path}
-          </Typography>
-        </Link>
-      </CardContent>
-      <CardActions>
-        <EditButton pagePath={path} />
-        <DuplicateButton pagePath={path} />
-        <DeleteButton pagePath={path} />
-      </CardActions>
-    </Card>
+    <EntityCard
+      title={title}
+      cardContents={<EntityLink url={`/${path}`} label={path} />}
+      cardButtons={
+        <>
+          <EditButton
+            buttonLabel="Open page editor"
+            dialogTitle="Update page settings"
+            formComponent={<PageSettingsForm pagePath={path} />}
+          />
+          <DuplicateButton pagePath={path} />
+          <DeleteButton pagePath={path} />
+        </>
+      }
+    />
   );
 }

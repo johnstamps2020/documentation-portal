@@ -2,6 +2,7 @@
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "module": "Node16",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "paths": {

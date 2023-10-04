@@ -1,11 +1,12 @@
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import AdminAccess from 'components/AdminPage/AdminAccess';
+import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
-import { useEffect } from 'react';
+import AddButton from 'components/AdminPage/AddButton';
+import AdminAccess from 'components/AdminPage/AdminAccess';
 import ExternalLinkAdminPanel from 'components/EntitiesAdminPage/ExternalLinkAdminPage/ExternalLinkAdminPanel';
-import AddButton from 'components/EntitiesAdminPage/ExternalLinkAdminPage/ExternalLinkCard/Buttons/AddButton';
+import ExternalLinkSettingsForm from 'components/EntitiesAdminPage/ExternalLinkAdminPage/ExternalLinkSettingsForm';
+import { useEffect } from 'react';
 
 export default function ExternalLinkAdminPage() {
   const { title, setTitle, setHeaderOptions } = useLayoutContext();
@@ -16,7 +17,11 @@ export default function ExternalLinkAdminPage() {
   return (
     <AdminAccess pagePath={window.location.pathname}>
       <Container>
-        <AddButton />
+        <AddButton
+          buttonLabel="Add external link"
+          dialogTitle="Create a new external link"
+          formComponent={<ExternalLinkSettingsForm />}
+        />
         <Stack spacing={2}>
           <Typography variant="h1" sx={{ color: 'black' }}>
             {title}

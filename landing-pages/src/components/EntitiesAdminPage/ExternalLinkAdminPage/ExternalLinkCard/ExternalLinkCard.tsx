@@ -1,11 +1,8 @@
-import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import EditButton from './Buttons/EditButton';
+import EditButton from 'components/AdminPage/EditButton';
+import EntityCard from 'components/AdminPage/EntityCard';
+import EntityLink from 'components/AdminPage/EntityLink';
+import ExternalLinkSettingsForm from '../ExternalLinkSettingsForm';
 import DeleteButton from './Buttons/DeleteButton';
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
 import DuplicateButton from './Buttons/DuplicateButton';
 
 type ExternalLinkCardProps = {
@@ -18,40 +15,20 @@ export default function ExternalLinkCard({
   url,
 }: ExternalLinkCardProps) {
   return (
-    <Card
-      sx={{
-        padding: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: '100%',
-      }}
-    >
-      <CardContent
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          height: '100%',
-        }}
-      >
-        <Typography variant="h2">{label}</Typography>
-        <Link
-          to={`${url}`}
-          target="_blank"
-          component={RouterLink}
-          sx={{ textDecoration: 'underline' }}
-        >
-          <Typography variant="subtitle1" component="div">
-            {url}
-          </Typography>
-        </Link>
-      </CardContent>
-      <CardActions>
-        <EditButton externalLinkUrl={url} />
-        <DuplicateButton externalLinkUrl={url} />
-        <DeleteButton externalLinkUrl={url} />
-      </CardActions>
-    </Card>
+    <EntityCard
+      title={label}
+      cardContents={<EntityLink url={url} label={url} />}
+      cardButtons={
+        <>
+          <EditButton
+            buttonLabel="Open external link editor"
+            dialogTitle="Update external link settings"
+            formComponent={<ExternalLinkSettingsForm url={url} />}
+          />
+          <DuplicateButton externalLinkUrl={url} />
+          <DeleteButton externalLinkUrl={url} />
+        </>
+      }
+    />
   );
 }

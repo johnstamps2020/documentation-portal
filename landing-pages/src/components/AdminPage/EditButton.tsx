@@ -1,13 +1,19 @@
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
-import PageSettingsForm from 'components/EntitiesAdminPage/PageAdminPage/PageSettingsForm';
 import { useState } from 'react';
-import PageSettingsDialog from '../../PageSettingsDialog';
+import AdminDialog from './AdminDialog';
 
 type EditButtonProps = {
-  pagePath: string;
+  formComponent: JSX.Element;
+  buttonLabel: string;
+  dialogTitle: string;
 };
-export default function EditButton({ pagePath }: EditButtonProps) {
+
+export default function EditButton({
+  formComponent,
+  buttonLabel,
+  dialogTitle,
+}: EditButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleOpenEditor() {
@@ -22,18 +28,18 @@ export default function EditButton({ pagePath }: EditButtonProps) {
     <>
       <IconButton
         aria-label="edit"
-        title="Open page editor"
+        title={buttonLabel}
         onClick={handleOpenEditor}
       >
         <EditIcon color="primary" />
       </IconButton>
-      <PageSettingsDialog
-        title="Update page settings"
+      <AdminDialog
+        label={dialogTitle}
         onClose={handleCloseEditor}
         isOpen={isOpen}
       >
-        <PageSettingsForm pagePath={pagePath} />
-      </PageSettingsDialog>
+        {formComponent}
+      </AdminDialog>
     </>
   );
 }
