@@ -5,6 +5,13 @@ export const allSelectors = {
     { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba/apd' },
     { label: 'Innsbruck (2023.10)', pagePath: 'cloudProducts/innsbruck/apd' },
   ],
+  testingFramework: [
+    { label: 'Elysian (2022.05)', pagePath: 'testingFramework/elysian' },
+    { label: 'Flaine (2022.09)', pagePath: 'testingFramework/flaine' },
+    { label: 'Garmisch (2023.02)', pagePath: 'testingFramework/garmisch' },
+    { label: 'Hakuba (2023.06)', pagePath: 'testingFramework/hakuba' },
+    { label: 'Innsbruck (2023.10)', pagePath: 'testingFramework/innsbruck' },
+  ],
   s0f196c0b55cf55f2cdd1e05b1bf5e94e: [
     { label: 'Cortina (2021.04)', pagePath: 'apiReferences/cortina' },
     { label: 'Dobson (2021.11)', pagePath: 'apiReferences/dobson' },

@@ -2,11 +2,18 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
     backgroundColor: `hsl(0, 0%, 98%)`,
+  },
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Hakuba (2023.06)',
+    items: allSelectors.testingFramework,
+    labelColor: 'black',
   },
   sections: [
     {
