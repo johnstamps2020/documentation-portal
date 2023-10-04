@@ -922,7 +922,7 @@
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
-        "subject": ["Development"],
+        "subject": ["Development", "Testing"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -941,7 +941,7 @@
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
-        "subject": ["Development"],
+        "subject": ["Development", "Testing"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -960,7 +960,7 @@
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
-        "subject": ["Release notes"],
+        "subject": ["Release notes", "Testing"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
