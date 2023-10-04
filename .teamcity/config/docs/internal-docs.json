@@ -7,7 +7,7 @@
       "url": "internal/keti/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Internal Docs"],
+        "product": ["Keti", "Internal Docs"],
         "version": ["latest"],
         "language": "en"
       },
