@@ -112,7 +112,7 @@ export const allSelectors = {
     { label: 'Flaine (2022.09)', pagePath: 'cloudProducts/flaine' },
     { label: 'Garmisch (2023.02)', pagePath: 'cloudProducts/garmisch' },
     { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba' },
-    { label: 'Innsbruck(2023.10)', pagePath: 'cloudProducts/innsbruck' },
+    { label: 'Innsbruck (2023.10)', pagePath: 'cloudProducts/innsbruck' },
   ],
   s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {
