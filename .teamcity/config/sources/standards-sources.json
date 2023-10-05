@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "standards202310src",
+      "title": "Standards 2023.10",
+      "branch": "2023.10",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
       "id": "standards202308src",
       "title": "Standards 2023.08",
       "branch": "2023.08",
