@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2023.02',
+      items: [
+        {
+          label: 'Anwendungshandbuch',
+          docId: 'ispc202302appdeDE',
+        },
+      ],
+    },
+    {
       label: '2022.05',
       items: [
         {
