@@ -1,0 +1,65 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc202302deDEapp",
+      "title": "Application Guide de",
+      "displayTitle": "Anwendungshandbuch",
+      "url": "de/cloud/bc/202302/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "language": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202302deDEapp",
+      "title": "Application Guide de",
+      "displayTitle": "Anwendungshandbuch",
+      "url": "de/cloud/cc/202302/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "language": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202302deDEapp",
+      "title": "Application Guide de",
+      "displayTitle": "Anwendungshandbuch",
+      "url": "de/cloud/pc/202302/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "language": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
