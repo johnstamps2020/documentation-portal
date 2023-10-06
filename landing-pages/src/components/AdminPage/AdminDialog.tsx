@@ -4,22 +4,22 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-type PageSettingsDialogProps = {
-  title: string;
+type DialogProps = {
+  label: string;
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
 };
 
-export default function PageSettingsDialog({
-  title,
+export default function AdminDialog({
+  label,
   isOpen,
   onClose,
   children,
-}: PageSettingsDialogProps): JSX.Element {
+}: DialogProps): JSX.Element {
   return (
     <Dialog open={isOpen} onClose={onClose}>
-      <DialogTitle>{title}</DialogTitle>
+      <DialogTitle>{label}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Close</Button>

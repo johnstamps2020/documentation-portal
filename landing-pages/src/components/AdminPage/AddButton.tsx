@@ -1,10 +1,19 @@
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
-import ExternalLinkSettingsForm from '../../ExternalLinkSettingsForm';
 import { useState } from 'react';
-import ExternalLinkSettingsDialog from '../../ExternalLinkSettingsDialog';
+import AdminDialog from './AdminDialog';
 
-export default function AddButton() {
+type AddButtonProps = {
+  formComponent: JSX.Element;
+  buttonLabel: string;
+  dialogTitle: string;
+};
+
+export default function AddButton({
+  formComponent,
+  dialogTitle,
+  buttonLabel,
+}: AddButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleOpenEditor() {
@@ -24,18 +33,18 @@ export default function AddButton() {
         title="Open page editor"
         onClick={handleOpenEditor}
         size="medium"
-        sx={{ width: 'fit-content', margin: '8px' }}
+        sx={{ width: 'fit-content', margin: '8px', display: 'flex', gap: 1 }}
       >
-        <AddIcon sx={{ mr: 1 }} />
-        Add external link
+        <AddIcon />
+        {buttonLabel}
       </Fab>
-      <ExternalLinkSettingsDialog
-        label="Create new external link"
+      <AdminDialog
+        label={dialogTitle}
         isOpen={isOpen}
         onClose={handleCloseEditor}
       >
-        <ExternalLinkSettingsForm />
-      </ExternalLinkSettingsDialog>
+        {formComponent}
+      </AdminDialog>
     </>
   );
 }

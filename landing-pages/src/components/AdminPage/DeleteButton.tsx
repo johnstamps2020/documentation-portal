@@ -8,45 +8,35 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { useNotification } from 'components/Layout/NotificationContext';
 import { useState } from 'react';
 
-type DeleteButtonProps = {
-  externalLinkUrl: string;
+export type DeleteButtonProps = {
+  buttonLabel: string;
+  dialogTitle: JSX.Element;
+  onDelete: () => void;
+  valueToMatch: string;
 };
 
-export default function DeleteButton({ externalLinkUrl }: DeleteButtonProps) {
-  const { showMessage } = useNotification();
+export default function DeleteButton({
+  buttonLabel,
+  dialogTitle,
+  onDelete,
+  valueToMatch,
+}: DeleteButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [deleteUrl, setDeleteUrl] = useState('');
+  const [securityPhrase, setSecurityPhrase] = useState('');
 
   function handleOpenConfirmationMessage() {
     setIsOpen(true);
   }
 
   function handleCloseConfirmationMessage() {
-    setDeleteUrl('');
+    setSecurityPhrase('');
     setIsOpen(false);
   }
 
-  async function handleDelete() {
-    const response = await fetch(`/admin/entity/ExternalLink`, {
-      method: 'DELETE',
-      body: JSON.stringify({
-        externalLinkUrl: externalLinkUrl,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    });
-
-    if (response.ok) {
-      showMessage('External link deleted successfully', 'success');
-    } else {
-      const jsonError = await response.json();
-      showMessage(`External link not deleted: ${jsonError.message}`, 'error');
-    }
+  function handleDelete() {
+    onDelete();
     setIsOpen(false);
   }
 
@@ -54,24 +44,22 @@ export default function DeleteButton({ externalLinkUrl }: DeleteButtonProps) {
     <>
       <IconButton
         aria-label="delete"
-        title="Delete external link"
+        title={buttonLabel}
         onClick={handleOpenConfirmationMessage}
       >
         <DeleteIcon color="error" />
       </IconButton>
       <Dialog open={isOpen} onClose={handleCloseConfirmationMessage}>
-        <DialogTitle>
-          Delete external link <strong>{externalLinkUrl}</strong>
-        </DialogTitle>
+        <DialogTitle>{dialogTitle}</DialogTitle>
         <DialogContent>
           <Stack gap={2}>
             <Typography>
-              Type in <strong>{externalLinkUrl}</strong> in the field below and click
-              DELETE.
+              Type in <strong>{valueToMatch}</strong> in the field below and
+              click DELETE.
             </Typography>
             <TextField
-              value={deleteUrl}
-              onChange={(event) => setDeleteUrl(event.target.value)}
+              value={securityPhrase}
+              onChange={(event) => setSecurityPhrase(event.target.value)}
               fullWidth
             />
           </Stack>
@@ -79,7 +67,7 @@ export default function DeleteButton({ externalLinkUrl }: DeleteButtonProps) {
         <DialogActions>
           <Button
             onClick={handleDelete}
-            disabled={deleteUrl !== externalLinkUrl}
+            disabled={securityPhrase !== valueToMatch}
             color="error"
           >
             Delete

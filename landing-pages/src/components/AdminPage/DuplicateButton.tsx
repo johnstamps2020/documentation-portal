@@ -3,14 +3,16 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import PageSettingsDialog from 'components/EntitiesAdminPage/PageAdminPage/PageSettingsDialog';
-import PageSettingsForm from 'components/EntitiesAdminPage/PageAdminPage/PageSettingsForm';
-import { usePageData } from 'hooks/usePageData';
 import { useState } from 'react';
-import { Page } from 'server/dist/model/entity/Page';
+import AdminDialog from './AdminDialog';
 
-type DuplicateButtonProps = {
-  pagePath: string;
+export type DuplicateButtonProps = {
+  leftFormTitle: string;
+  leftFormComponent: JSX.Element;
+  rightFormTitle: string;
+  rightFormComponent: JSX.Element;
+  buttonLabel: string;
+  dialogTitle: string;
 };
 
 function FormHeading({ children }: { children: React.ReactNode }) {
@@ -28,9 +30,14 @@ function FormHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function DuplicateButton({ pagePath }: DuplicateButtonProps) {
-  const { isError, isLoading, pageData } = usePageData(pagePath);
-
+export default function DuplicateButton({
+  leftFormComponent,
+  leftFormTitle,
+  rightFormComponent,
+  rightFormTitle,
+  buttonLabel,
+  dialogTitle,
+}: DuplicateButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleCloseDialog() {
@@ -41,28 +48,19 @@ export default function DuplicateButton({ pagePath }: DuplicateButtonProps) {
     setIsOpen(true);
   }
 
-  if (isError || isLoading || !pageData) {
-    return null;
-  }
-
-  function getPageDataWithoutUuid(pageData: Page) {
-    const { uuid, ...rest } = pageData;
-    return rest;
-  }
-
   return (
     <>
       <IconButton
         aria-label="edit"
-        title="Duplicate page"
+        title={buttonLabel}
         onClick={handleOpenDialog}
       >
         <ContentCopyIcon color="primary" />
       </IconButton>
-      <PageSettingsDialog
+      <AdminDialog
         isOpen={isOpen}
         onClose={handleCloseDialog}
-        title="Duplicate page"
+        label={dialogTitle}
       >
         <Box
           sx={{
@@ -72,20 +70,15 @@ export default function DuplicateButton({ pagePath }: DuplicateButtonProps) {
           }}
         >
           <Stack gap={2}>
-            <FormHeading>Source page</FormHeading>
-            <PageSettingsForm
-              initialPageData={getPageDataWithoutUuid(pageData)}
-              disabled
-            />
+            <FormHeading>{leftFormTitle}</FormHeading>
+            {leftFormComponent}
           </Stack>
           <Stack gap={2}>
-            <FormHeading>New page</FormHeading>
-            <PageSettingsForm
-              initialPageData={getPageDataWithoutUuid(pageData)}
-            />
+            <FormHeading>{rightFormTitle}</FormHeading>
+            {rightFormComponent}
           </Stack>
         </Box>
-      </PageSettingsDialog>
+      </AdminDialog>
     </>
   );
 }
