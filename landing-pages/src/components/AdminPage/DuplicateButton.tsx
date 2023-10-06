@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import AdminDialog from './AdminDialog';
 
-type DuplicateButtonProps = {
+export type DuplicateButtonProps = {
   leftFormTitle: string;
   leftFormComponent: JSX.Element;
   rightFormTitle: string;

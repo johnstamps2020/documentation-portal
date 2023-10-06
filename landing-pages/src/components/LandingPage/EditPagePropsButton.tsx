@@ -1,6 +1,6 @@
 import EditIcon from '@mui/icons-material/Edit';
 import Fab from '@mui/material/Fab';
-import PageSettingsDialog from 'components/EntitiesAdminPage/PageAdminPage/PageSettingsDialog';
+import AdminDialog from 'components/AdminPage/AdminDialog';
 import PageSettingsForm from 'components/EntitiesAdminPage/PageAdminPage/PageSettingsForm';
 import { useState } from 'react';
 import { useEnvInfo, useUserInfo } from '../../hooks/useApi';
@@ -54,13 +54,13 @@ export default function EditPagePropsButton({
         <EditIcon sx={{ mr: 1 }} />
         Edit page
       </Fab>
-      <PageSettingsDialog
-        title="Update page settings"
+      <AdminDialog
+        label="Update page settings"
         isOpen={isOpen}
         onClose={handleCloseEditor}
       >
         <PageSettingsForm pagePath={pagePath} />
-      </PageSettingsDialog>
+      </AdminDialog>
     </>
   );
 }

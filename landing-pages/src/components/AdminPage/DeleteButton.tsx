@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 
-type DeleteButtonProps = {
+export type DeleteButtonProps = {
   buttonLabel: string;
   dialogTitle: JSX.Element;
   onDelete: () => void;
