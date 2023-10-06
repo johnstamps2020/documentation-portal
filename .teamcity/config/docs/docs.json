@@ -603,6 +603,36 @@
       "earlyAccess": false,
       "internal": false,
       "public": false
+    },
+    {
+      "id": "supportmatrices",
+      "title": "Support Matrices",
+      "url": "support-matrices",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "DataHub",
+          "InfoCenter"
+        ],
+        "version": [
+          "latest"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "earlyAccess": false,
+      "internal": false,
+      "public": false
     }
   ]
 }

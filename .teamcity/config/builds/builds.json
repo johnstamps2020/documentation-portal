@@ -1000,6 +1000,12 @@
       "docId": "upgradediffs",
       "nodeImageVersion": "18.12.1",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "supportmatricessrc",
+      "docId": "supportmatrices",
+      "disabled": false
     }
   ]
 }
