@@ -199,5 +199,11 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/upgradediffs.git",
       "branch": "main"
     }
+    {
+      "id": "supportmatricessrc",
+      "title": "Support Matrices",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/support-matrices.git",
+      "branch": "main"
+    }
   ]
 }
