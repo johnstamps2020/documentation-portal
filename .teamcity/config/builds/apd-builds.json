@@ -100,10 +100,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release-Internal.ditaval",
+      "filter": "GW-Generic-Release-Authenticated.ditaval",
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "apdappinnsbrucksrc",
-      "docId": "apdappinternalinnsbruck",
+      "docId": "apdappauthenticatedinnsbruck",
       "indexRedirect": true,
       "disabled": false
     },
