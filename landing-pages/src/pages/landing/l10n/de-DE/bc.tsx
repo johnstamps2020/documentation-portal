@@ -22,7 +22,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          docId: 'isbc202302appdeDE',
+          docId: 'isbc202302deDEapp',
         },
       ],
     },
