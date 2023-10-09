@@ -229,9 +229,9 @@
       "earlyAccess": false
     },
     {
-      "id": "apdappinternalinnsbruck",
-      "title": "Advanced Product Designer - Internal",
-      "url": "cloud/apd/innsbruck/app-internal",
+      "id": "apdappauthenticatedinnsbruck",
+      "title": "Advanced Product Designer - Authenticated",
+      "url": "cloud/apd/innsbruck/app-authenticated",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
