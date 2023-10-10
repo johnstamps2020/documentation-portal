@@ -13,7 +13,7 @@ const pageConfig: Category2LayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Innsbruck (2023.10)',
+    selectedItemLabel: 'Innsbruck',
     items: allSelectors.sb372c5e3c1cec5d40289c85a78eaef30,
     labelColor: 'white',
   },

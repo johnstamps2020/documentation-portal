@@ -19,7 +19,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Garmisch (2023.02)',
+    selectedItemLabel: 'Garmisch',
     items: allSelectors.s0f196c0b55cf55f2cdd1e05b1bf5e94e,
     labelColor: 'white',
   },
