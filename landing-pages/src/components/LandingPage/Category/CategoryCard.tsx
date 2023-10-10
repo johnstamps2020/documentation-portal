@@ -6,6 +6,8 @@ import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import CategorySection, { CategorySectionProps } from './CategorySection';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import Skeleton from '@mui/material/Skeleton';
+import { arrangeItems } from 'helpers/landingPageHelpers';
+import LandingPageItemRenderer from '../LandingPageItemRenderer';
 
 export type CategoryCardProps = {
   label: string;
@@ -30,58 +32,62 @@ export default function CategoryCard({
     isLoading: isLoadingSections,
   } = useLandingPageItems(itemsInSections);
 
-  if (
-    (isError && isErrorSections) ||
-    (!landingPageSectionsItems && !landingPageItems) ||
-    landingPageItems?.length === 0 ||
-    landingPageSectionsItems?.length === 0 ||
-    (items === undefined && sections === undefined)
-  ) {
+  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
+  const arrangedLandingPageSectionsItems = arrangeItems(
+    itemsInSections,
+    landingPageSectionsItems
+  );
+
+  if (items === undefined && sections === undefined) {
     return null;
   }
 
-  if (
-    (isLoading && isLoadingSections) ||
-    (!landingPageItems && !landingPageSectionsItems)
-  ) {
-    return (
-      <Skeleton
-        variant="rectangular"
-        sx={{
-          width: { sm: '300px', xs: '100%' },
-          height: '450px',
-        }}
-      />
-    );
-  }
-
   return (
-    <Paper
-      sx={{
-        width: {
-          sm: '300px',
-          xs: '100%',
-        },
-        padding: '24px',
-      }}
-    >
-      {label !== '' && (
-        <Typography
-          variant="h2"
-          sx={{ fontSize: '1.25rem', fontWeight: '600' }}
+    <LandingPageItemRenderer
+      landingPageItems={arrangedLandingPageItems}
+      landingPageSectionsItems={arrangedLandingPageSectionsItems}
+      isLoading={isLoading}
+      isLoadingSections={isLoadingSections}
+      isError={isError}
+      isErrorSections={isErrorSections}
+      skeleton={
+        <Skeleton
+          variant="rectangular"
+          sx={{
+            width: { sm: '300px', xs: '100%' },
+            height: '450px',
+          }}
+        />
+      }
+      item={
+        <Paper
+          sx={{
+            width: {
+              sm: '300px',
+              xs: '100%',
+            },
+            padding: '24px',
+          }}
         >
-          {label}
-        </Typography>
-      )}
+          {label !== '' && (
+            <Typography
+              variant="h2"
+              sx={{ fontSize: '1.25rem', fontWeight: '600' }}
+            >
+              {label}
+            </Typography>
+          )}
 
-      <Stack sx={{ fontSize: '0.875rem', color: 'black', gap: 1 }}>
-        {landingPageItems?.map((categoryItem, idx) => (
-          <LandingPageItem {...categoryItem} key={idx} />
-        ))}
-        {sections?.map((section, idx) => (
-          <CategorySection {...section} key={idx} />
-        ))}
-      </Stack>
-    </Paper>
+          <Stack sx={{ fontSize: '0.875rem', color: 'black', gap: 1 }}>
+            {landingPageItems?.map((categoryItem, idx) => (
+              <LandingPageItem {...categoryItem} key={idx} />
+            ))}
+            {sections?.map((section, idx) => (
+              <CategorySection {...section} key={idx} />
+            ))}
+          </Stack>
+        </Paper>
+      }
+    />
   );
 }
