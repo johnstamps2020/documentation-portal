@@ -24,6 +24,14 @@
       "workingDir": "website",
       "nodeImageVersion": "18.0.0",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "binrepo",
+      "srcId": "binreposrc",
+      "workingDir": "website",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     }
   ]
 }
