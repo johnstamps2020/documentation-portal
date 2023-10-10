@@ -52,6 +52,7 @@ export const AppDataSource = new DataSource({
     Version,
     YarnBuild,
   ],
+  migrations: ['model/migration/*.js'],
   synchronize: isDevMode,
   cache: {
     duration: 3000, // 3 seconds

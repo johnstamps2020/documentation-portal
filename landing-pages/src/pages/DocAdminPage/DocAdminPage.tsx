@@ -16,6 +16,7 @@ const emptyDoc: Doc = {
   uuid: '',
   id: '',
   title: '',
+  displayTitle: '',
   url: '',
   body: '',
   platformProductVersions: [],
@@ -83,6 +84,7 @@ export default function DocAdminPage() {
       const data = {
         id: doc.id,
         title: doc.title,
+        displayTitle: doc.displayTitle,
         url: doc.url,
         displayOnLandingPages: doc.displayOnLandingPages,
         indexForSearch: doc.indexForSearch,
@@ -121,6 +123,7 @@ export default function DocAdminPage() {
       const data = {
         id: doc.id,
         title: doc.title,
+        displayTitle: doc.displayTitle,
         url: doc.url,
         displayOnLandingPages: doc.displayOnLandingPages,
         indexForSearch: doc.indexForSearch,
@@ -187,6 +190,7 @@ export default function DocAdminPage() {
                 }}
               >
                 <div>{doc.title}</div>
+                <div>Display title: {doc.displayTitle}</div>
                 <div>ID: {doc.id}</div>
                 <div>URL: {doc.url}</div>
                 <div>

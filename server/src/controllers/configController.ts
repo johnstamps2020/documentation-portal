@@ -546,6 +546,7 @@ export async function getDocumentMetadataById(
           status: 200,
           body: {
             docTitle: wrapInQuotes(docInfo.title),
+            docDisplayTitle: wrapInQuotes(docInfo.displayTitle),
             docInternal: docInfo.internal,
             docEarlyAccess: docInfo.earlyAccess,
             docProducts: wrapInQuotes(
