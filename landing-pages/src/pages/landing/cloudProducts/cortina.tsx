@@ -16,7 +16,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Cortina (2021.04)',
+    selectedItemLabel: 'Cortina',
     items: allSelectors.sb372c5e3c1cec5d40289c85a78eaef30,
     labelColor: 'white',
   },
