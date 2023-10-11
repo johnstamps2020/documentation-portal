@@ -11,7 +11,7 @@ const pageConfig: SectionLayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Elysian (2022.05)',
+    selectedItemLabel: 'Innsbruck (2023.10)',
     items: allSelectors.testingFrameworkSelector,
     labelColor: 'black',
   },
@@ -22,11 +22,20 @@ const pageConfig: SectionLayoutProps = {
         {
           label:
             'Guidewire Testing Framework Supported Software Components (Support Matrix)',
-          docId: 'testingframeworksmatrixelysian',
+          docId: 'testingframeworksmatrixinnsbruck',
         },
         {
           label: 'Guidewire Testing Framework Release Notes',
-          docId: 'testingframeworksrnelysian',
+          docId: 'testingframeworksrninnsbruck',
+        },
+      ],
+    },
+    {
+      label: 'Overview',
+      items: [
+        {
+          label: 'Overview of GT: Framework',
+          docId: 'testing202310overview',
         },
       ],
     },
@@ -35,7 +44,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Guidewire Testing Framework Installation',
-          docId: 'testingframeworksinstallelysian',
+          docId: 'testingframeworksinstallinnsbruck',
         },
       ],
     },
@@ -44,7 +53,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'InsuranceSuite Unit Testing',
-          docId: 'is202205testing',
+          docId: 'is202310testing',
         },
       ],
     },
@@ -52,12 +61,8 @@ const pageConfig: SectionLayoutProps = {
       label: 'Test Process Capabilities',
       items: [
         {
-          label: 'Test Data Management',
-          docId: 'testingframeworksdataelysian',
-        },
-        {
           label: 'Test Management',
-          docId: 'testingframeworksmgmtelysian',
+          docId: 'testingframeworksmgmtinnsbruck',
         },
       ],
     },
@@ -66,17 +71,25 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'API Testing',
-          docId: 'testingframeworksapielysian',
+          docId: 'testingframeworksapiinnsbruck',
         },
         {
-          label: 'UI Testing',
-          docId: 'testingframeworksuielysian',
+          label: 'Load and Performance Testing',
+          docId: 'testingframeworksloadinnsbruck',
+        },
+        {
+          label: 'User Interface Testing',
+          docId: 'testingframeworksuiinnsbruck',
+        },
+        {
+          label: 'User Interface Accessibility Testing',
+          docId: 'is202310access',
         },
       ],
     },
   ],
 };
 
-export default function Elysian() {
+export default function Innsbruck() {
   return <SectionLayout {...pageConfig} />;
 }

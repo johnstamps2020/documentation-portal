@@ -143,6 +143,10 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/innsbruck/jutroDigitalPlatform',
         },
         {
+          label: 'Guidewire Testing',
+          pagePath: 'testingFramework/innsbruck',
+        },
+        {
           label: 'Lifecycle Manager',
           docId: 'lifecyclemgr',
         },
