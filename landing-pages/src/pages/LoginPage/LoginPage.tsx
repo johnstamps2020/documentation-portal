@@ -44,8 +44,8 @@ export default function LoginPage() {
         <Box
           sx={{
             display: { xs: 'none', sm: 'block' },
-            maxHeight: '373px',
-            maxWidth: '555px',
+            height: '373px',
+            width: '555px',
           }}
         >
           <img
