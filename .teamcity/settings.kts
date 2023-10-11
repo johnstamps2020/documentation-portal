@@ -789,7 +789,6 @@ object GwBuildSteps {
                 export OKTA_ISSUER="$oktaIssuer"
                 export OKTA_SCOPES="$oktaScopes"
                 
-                export CONFIG_FILE="$configFile"
                 export DOC_ID="$docId"
                 export DOC_S3_URL="$docS3Url"
                 export ELASTICSEARCH_URLS="$elasticsearchUrls"
