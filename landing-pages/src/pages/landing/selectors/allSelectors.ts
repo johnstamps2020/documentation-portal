@@ -5,7 +5,7 @@ export const allSelectors = {
     { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba/apd' },
     { label: 'Innsbruck (2023.10)', pagePath: 'cloudProducts/innsbruck/apd' },
   ],
-  testingFramework: [
+  testingFrameworkSelector: [
     { label: 'Elysian (2022.05)', pagePath: 'testingFramework/elysian' },
     { label: 'Flaine (2022.09)', pagePath: 'testingFramework/flaine' },
     { label: 'Garmisch (2023.02)', pagePath: 'testingFramework/garmisch' },

@@ -1,0 +1,95 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-API.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "testingframeworksapiinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-UI.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "testingframeworksuiinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Load.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "testingframeworksloadinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Management.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "testingframeworksmgmtinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Matrix.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "testingframeworksmatrixinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Guidewire_Test_Automation202310_ReleaseNotes.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "testingframeworksrninnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Framework-Installation.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "testingframeworksinstallinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ISUnitTesting.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "is202310testing",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Accessibility.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "is202310access",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Overview.ditamap",
+      "srcId": "testingframeworks202310src",
+      "docId": "testing202310overview",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

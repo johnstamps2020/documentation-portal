@@ -12,7 +12,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Hakuba (2023.06)',
-    items: allSelectors.testingFramework,
+    items: allSelectors.testingFrameworkSelector,
     labelColor: 'black',
   },
   sections: [
