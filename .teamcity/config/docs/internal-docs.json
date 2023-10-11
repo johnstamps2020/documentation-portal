@@ -51,6 +51,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    }, 
+    {
+      "id": "binrepo",
+      "title": "Binary Repository",
+      "url": "internal/binrepo/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }

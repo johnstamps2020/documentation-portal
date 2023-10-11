@@ -18,6 +18,12 @@
       "title": "Guidewire Cloud Home",
       "gitUrl": "ssh://git@stash.guidewire.com/appl/applauncher-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "binreposrc",
+      "title": "Binary Repository",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/binrepo-docs.git",
+      "branch": "main"
     }
   ]
 }
