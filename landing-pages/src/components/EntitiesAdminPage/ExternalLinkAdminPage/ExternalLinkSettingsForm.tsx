@@ -26,7 +26,7 @@ export const emptyExternalLink: NewExternalLink = {
 };
 
 type ExternalLinkSettingsFormProps = {
-  url?: string;
+  primaryKey?: string;
   disabled?: boolean;
   initialExternalLinkData?: NewExternalLink;
 };
@@ -49,7 +49,7 @@ function generateTmpExternalLinkData(
 }
 
 export default function ExternalLinkSettingsForm({
-  url: urlFromProps,
+  primaryKey: urlFromProps,
   disabled,
   initialExternalLinkData,
 }: ExternalLinkSettingsFormProps) {

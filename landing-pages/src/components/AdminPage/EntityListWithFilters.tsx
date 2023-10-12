@@ -148,27 +148,15 @@ export default function EntityListWithFilters({
               title={label}
               cardContents={<EntityLink url={url} label={url} />}
               cardButtons={
-                entityName === 'page' ? (
-                  <>
-                    <EditButton
-                      buttonLabel={`Open ${entityName} editor`}
-                      dialogTitle={`Update ${entityName} settings`}
-                      formComponent={<FormComponent pagePath={url} />}
-                    />
-                    <DuplicateButton pagePath={url} />
-                    <DeleteButton pagePath={url} />
-                  </>
-                ) : (
-                  <>
-                    <EditButton
-                      buttonLabel={`Open ${entityName} editor`}
-                      dialogTitle={`Update ${entityName} settings`}
-                      formComponent={<FormComponent url={url} />}
-                    />
-                    <DuplicateButton externalLinkUrl={url} />
-                    <DeleteButton externalLinkUrl={url} />
-                  </>
-                )
+                <>
+                  <EditButton
+                    buttonLabel={`Open ${entityName} editor`}
+                    dialogTitle={`Update ${entityName} settings`}
+                    formComponent={<FormComponent primaryKey={url} />}
+                  />
+                  <DuplicateButton primaryKey={url} />
+                  <DeleteButton primaryKey={url} />
+                </>
               }
             />
           ))}

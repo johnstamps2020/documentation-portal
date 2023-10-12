@@ -4,14 +4,14 @@ import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
 import ExternalLinkSettingsForm from './ExternalLinkSettingsForm';
 
 type DuplicateButtonProps = {
-  externalLinkUrl: string;
+  primaryKey: string;
 };
 
 export default function DuplicateButton({
-  externalLinkUrl,
+  primaryKey,
 }: DuplicateButtonProps) {
   const { isError, isLoading, externalLinkData } =
-    useExternalLinkData(externalLinkUrl);
+    useExternalLinkData(primaryKey);
 
   if (isError || isLoading || !externalLinkData) {
     return null;
