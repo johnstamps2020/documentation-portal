@@ -32,6 +32,14 @@
       "workingDir": "website",
       "nodeImageVersion": "18.0.0",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "nebula",
+      "srcId": "nebulasrc",
+      "workingDir": "website",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     }
   ]
 }
