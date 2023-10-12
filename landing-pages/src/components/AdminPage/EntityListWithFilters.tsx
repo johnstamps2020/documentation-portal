@@ -144,6 +144,7 @@ export default function EntityListWithFilters({
           .slice(resultsOffset, resultsOffset + resultsPerPage)
           .map(({ label, url }) => (
             <EntityCard
+              key={`${label}_${url}`}
               title={label}
               cardContents={<EntityLink url={url} label={url} />}
               cardButtons={
@@ -151,10 +152,10 @@ export default function EntityListWithFilters({
                   <EditButton
                     buttonLabel={`Open ${entityName} editor`}
                     dialogTitle={`Update ${entityName} settings`}
-                    formComponent={<FormComponent url={url} />}
+                    formComponent={<FormComponent primaryKey={url} />}
                   />
-                  <DuplicateButton externalLinkUrl={url} />
-                  <DeleteButton externalLinkUrl={url} />
+                  <DuplicateButton primaryKey={url} />
+                  <DeleteButton primaryKey={url} />
                 </>
               }
             />

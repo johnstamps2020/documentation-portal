@@ -2,17 +2,17 @@ import AdminDeleteButton from 'components/AdminPage/DeleteButton';
 import { useNotification } from 'components/Layout/NotificationContext';
 
 type DeleteButtonProps = {
-  externalLinkUrl: string;
+  primaryKey: string;
 };
 
-export default function DeleteButton({ externalLinkUrl }: DeleteButtonProps) {
+export default function DeleteButton({ primaryKey }: DeleteButtonProps) {
   const { showMessage } = useNotification();
 
   async function handleDelete() {
     const response = await fetch(`/admin/entity/ExternalLink`, {
       method: 'DELETE',
       body: JSON.stringify({
-        url: externalLinkUrl,
+        url: primaryKey,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -33,11 +33,11 @@ export default function DeleteButton({ externalLinkUrl }: DeleteButtonProps) {
       buttonLabel="Delete external link"
       dialogTitle={
         <>
-          Delete external link <strong>{externalLinkUrl}</strong>
+          Delete external link <strong>{primaryKey}</strong>
         </>
       }
       onDelete={handleDelete}
-      valueToMatch={externalLinkUrl}
+      valueToMatch={primaryKey}
     />
   );
 }

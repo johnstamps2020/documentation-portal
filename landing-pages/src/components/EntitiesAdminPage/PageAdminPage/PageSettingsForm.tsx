@@ -29,7 +29,7 @@ export const emptyPage: NewPage = {
 };
 
 type PageSettingsFormProps = {
-  pagePath?: string;
+  primaryKey?: string;
   disabled?: boolean;
   initialPageData?: NewPage;
 };
@@ -59,7 +59,7 @@ function generateTmpPageData(pageData: NewPage | undefined) {
 }
 
 export default function PageSettingsForm({
-  pagePath: pagePathFromProps,
+  primaryKey: pagePathFromProps,
   disabled,
   initialPageData,
 }: PageSettingsFormProps) {

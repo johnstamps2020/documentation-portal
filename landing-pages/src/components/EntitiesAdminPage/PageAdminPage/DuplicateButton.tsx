@@ -4,11 +4,11 @@ import { usePageData } from 'hooks/usePageData';
 import { Page } from 'server/dist/model/entity/Page';
 
 type DuplicateButtonProps = {
-  pagePath: string;
+  primaryKey: string;
 };
 
-export default function DuplicateButton({ pagePath }: DuplicateButtonProps) {
-  const { isError, isLoading, pageData } = usePageData(pagePath);
+export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
+  const { isError, isLoading, pageData } = usePageData(primaryKey);
 
   if (isError || isLoading || !pageData) {
     return null;

@@ -2,16 +2,16 @@ import AdminDeleteButton from 'components/AdminPage/DeleteButton';
 import { useNotification } from 'components/Layout/NotificationContext';
 
 type DeleteButtonProps = {
-  pagePath: string;
+  primaryKey: string;
 };
-export default function DeleteButton({ pagePath }: DeleteButtonProps) {
+export default function DeleteButton({ primaryKey }: DeleteButtonProps) {
   const { showMessage } = useNotification();
 
   async function handleDelete() {
     const response = await fetch(`/admin/entity/Page`, {
       method: 'DELETE',
       body: JSON.stringify({
-        path: pagePath,
+        path: primaryKey,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -32,11 +32,11 @@ export default function DeleteButton({ pagePath }: DeleteButtonProps) {
       buttonLabel="Delete page"
       dialogTitle={
         <>
-          Delete page <strong>{pagePath}</strong>
+          Delete page <strong>{primaryKey}</strong>
         </>
       }
       onDelete={handleDelete}
-      valueToMatch={pagePath}
+      valueToMatch={primaryKey}
     />
   );
 }

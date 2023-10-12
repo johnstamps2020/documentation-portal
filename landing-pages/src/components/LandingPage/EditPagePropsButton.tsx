@@ -59,7 +59,7 @@ export default function EditPagePropsButton({
         isOpen={isOpen}
         onClose={handleCloseEditor}
       >
-        <PageSettingsForm pagePath={pagePath} />
+        <PageSettingsForm primaryKey={pagePath} />
       </AdminDialog>
     </>
   );
