@@ -10,7 +10,7 @@ type EntityLinkProps = {
 export default function EntityLink({ url, label }: EntityLinkProps) {
   return (
     <Link
-      to={url}
+      to={`/${url}`}
       target="_blank"
       component={RouterLink}
       sx={{ textDecoration: 'underline' }}
