@@ -43,7 +43,11 @@ function getUserName(user: ReqUser) {
 }
 
 function isAdminAccessToken(accessToken: JwtPayload) {
-  return accessToken.scp.includes('NODE_Hawaii_Docs_Web.admin');
+  const adminScopes = [
+    'NODE_Hawaii_Docs_Web.admin',
+    'Documentation_portal.admin',
+  ];
+  return adminScopes.some((s) => accessToken.scp.includes(s));
 }
 
 const unknownUserInfo: UserInfo = {
@@ -69,10 +73,17 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
     if (!user) {
       if (isLoggedIn) {
         const accessToken = req.accessToken as JwtPayload;
+        const adminAccessToken = isAdminAccessToken(accessToken);
         return {
           ...unknownUserInfo,
           isLoggedIn: isLoggedIn,
-          isAdmin: isAdminAccessToken(accessToken),
+          /* 
+          Only GW apps have access to the doc portal through JWT, but we don't know who logs into these apps
+          and if they are GW employees.
+          Therefore, only apps with admin access are treated as GW employees to limit access to internal resources.
+          */
+          hasGuidewireEmail: adminAccessToken,
+          isAdmin: adminAccessToken,
         };
       }
       return unknownUserInfo;
