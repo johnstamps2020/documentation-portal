@@ -49,7 +49,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "Guidewire_Test_Automation202310_ReleaseNotes.ditamap",
+      "root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
       "srcId": "testingframeworks202310src",
       "docId": "testingframeworksrninnsbruck",
       "indexRedirect": true,
