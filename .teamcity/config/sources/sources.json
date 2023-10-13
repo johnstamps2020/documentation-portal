@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "securitysrc",
+      "title": "Security",
+      "gitUrl": "ssh://git@stash.guidewire.com/~msayewich/docs.guidewire.com--security.git",
+      "branch": "main"
+    },
+    {
       "id": "isupgradeguide1020src",
       "title": "InsuranceSuite Upgrade Guide 10.2.0",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",

@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
+      "buildType": "yarn",
+      "srcId": "securitysrc",
+      "docId": "security",
+      "disabled": false
+    },
+    {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
       "filter": "GW-Generic-Cloud-Release.ditaval",
