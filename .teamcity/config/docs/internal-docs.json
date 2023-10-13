@@ -85,6 +85,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "atlas",
+      "title": "Atlas",
+      "url": "internal/atlas/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "Atlas"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
