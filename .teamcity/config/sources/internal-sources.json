@@ -30,6 +30,12 @@
       "title": "Nebula Atmos Persistence",
       "gitUrl": "ssh://git@stash.guidewire.com/ccs/nebula-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "atlassrc",
+      "title": "Atlas",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/atlas-docs.git",
+      "branch": "main"
     }
   ]
 }

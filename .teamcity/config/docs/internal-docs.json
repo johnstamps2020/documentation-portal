@@ -58,7 +58,7 @@
       "url": "internal/binrepo/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Internal Docs"],
+        "product": ["Internal Docs", "BinRepo"],
         "version": ["latest"],
         "language": "en"
       },
@@ -76,6 +76,23 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Internal Docs", "Nebula"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "atlas",
+      "title": "Atlas",
+      "url": "internal/atlas/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "Atlas"],
         "version": ["latest"],
         "language": "en"
       },
