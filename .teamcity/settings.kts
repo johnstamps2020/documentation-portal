@@ -768,9 +768,7 @@ object GwBuildSteps {
                 reportBrokenLinks = "no"
                 reportShortTopics = "no"
                 oktaIssuer = GwConfigParams.OKTA_ISSUER_PROD.paramValue
-                //TODO: When the Documentation_portal.admin scope is added to the doc portal app in Keti prod,
-                // add it here to enable access to internal docs on prod.
-                oktaScopes = GwConfigParams.OKTA_SCOPES_PROD.paramValue
+                oktaScopes = "${GwConfigParams.OKTA_SCOPES_PROD.paramValue} Documentation_portal.admin"
             }
 
             else -> {

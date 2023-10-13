@@ -111,7 +111,7 @@ function getTokenFromRequestHeader(req: Request) {
   } catch (err) {
     winstonLogger.error(
       `Problem getting token from request header 
-              ERROR: ${JSON.stringify(err)}`
+              ERROR: ${err}`
     );
     return null;
   }
@@ -162,7 +162,7 @@ function createOktaJwtVerifier(
   } catch (err) {
     winstonLogger.error(
       `Problem creating OKTA JWT verifier 
-              ERROR: ${JSON.stringify(err)}`
+              ERROR: ${err}`
     );
     return null;
   }
@@ -179,7 +179,7 @@ async function checkTokenInOkta(
     );
     return jwt;
   } catch (err) {
-    winstonLogger.error(`${err}: ${JSON.stringify(err)}`);
+    winstonLogger.error(`${err}: ${err}`);
     return null;
   }
 }
@@ -209,7 +209,7 @@ async function verifyToken(req: Request) {
       return null;
     }
   } catch (err) {
-    winstonLogger.error(JSON.stringify(err));
+    winstonLogger.error(err);
     return null;
   }
 }
@@ -221,7 +221,7 @@ export async function isLoggedInOrHasValidToken(req: Request) {
       : false;
     return requestIsAuthenticated || !!(await verifyToken(req));
   } catch (err) {
-    winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${JSON.stringify(err)}`);
+    winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${err}`);
     return false;
   }
 }
@@ -246,7 +246,7 @@ export function redirectToLoginPage(req: Request, res: Response) {
   } catch (err) {
     winstonLogger.error(
       `Problem redirecting to login page 
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${err}`
     );
   }
 }
