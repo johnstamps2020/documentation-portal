@@ -58,7 +58,7 @@
       "url": "internal/binrepo/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Internal Docs"],
+        "product": ["Internal Docs", "BinRepo"],
         "version": ["latest"],
         "language": "en"
       },
