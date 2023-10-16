@@ -8,7 +8,7 @@
       "srcId": "cloudisapd202205src",
       "docId": "ispc202205apd",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -38,7 +38,7 @@
       "indexRedirect": true,
       "srcId": "isupgradeguide202205src",
       "docId": "isbc202205upgrade",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -47,7 +47,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205app",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -56,7 +56,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205admin",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -65,7 +65,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205config",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -74,7 +74,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205dataarchiving",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -83,7 +83,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205global",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -92,7 +92,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205rules",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -101,7 +101,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205integ",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -110,7 +110,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205apibf",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -119,7 +119,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205restapifw",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -128,7 +128,7 @@
       "srcId": "is202205src",
       "docId": "isbc202205devsetup",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -158,7 +158,7 @@
       "indexRedirect": true,
       "srcId": "isupgradeguide202205src",
       "docId": "iscc202205upgrade",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -167,7 +167,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205app",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -176,7 +176,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205admin",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -185,7 +185,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205config",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -194,7 +194,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205dataarchiving",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -203,7 +203,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205global",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -212,7 +212,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205rules",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -221,7 +221,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205integ",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -230,7 +230,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205apibf",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -239,7 +239,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205apica",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -248,7 +248,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205apicm",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -257,7 +257,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205restapifw",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -266,7 +266,7 @@
       "srcId": "is202205src",
       "docId": "iscc202205devsetup",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -296,7 +296,7 @@
       "indexRedirect": true,
       "srcId": "isupgradeguide202205src",
       "docId": "ispc202205upgrade",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -305,7 +305,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205app",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -314,7 +314,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205admin",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -323,7 +323,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205config",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -332,7 +332,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205dataarchiving",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -341,7 +341,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205global",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -350,7 +350,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205rules",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -359,7 +359,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205pd",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -368,7 +368,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205pm",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -377,7 +377,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205integ",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -386,7 +386,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205apibf",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -395,7 +395,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205apica",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -404,7 +404,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205apicm",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -413,7 +413,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205restapifw",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -422,7 +422,7 @@
       "srcId": "is202205src",
       "docId": "ispc202205devsetup",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -431,7 +431,7 @@
       "srcId": "is202205src",
       "docId": "is202205contact",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -440,25 +440,25 @@
       "srcId": "is202205src",
       "docId": "is202205integoverview",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
       "docId": "ccapirefelysian",
       "srcId": "srcccapirefelysian",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
       "docId": "pcapirefelysian",
       "srcId": "srcpcapirefelysian",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
       "docId": "bcapirefelysian",
       "srcId": "srcbcapirefelysian",
-      "disabled": false
+      "disabled": true
     }
   ]
 }

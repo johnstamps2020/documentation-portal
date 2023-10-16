@@ -5,13 +5,13 @@
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
-      "srcId": "dhic1050",
-      "docId": "dh1050rn",
+      "srcId": "dm2023101011src",
+      "docId": "dh10110rn",
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Cortina-10.5/DataHub/releaseDiffFiles/onPrem",
-          "targetFolder": "extras/releaseDiffFiles/onPrem",
+          "sourceFolder": "Innsbruck-10.11/DataHub",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ],
@@ -21,83 +21,83 @@
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "product.ditamap",
-      "srcId": "dhic1050",
-      "docId": "dh1050product",
+      "srcId": "dm2023101011src",
+      "docId": "dh10110product",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "install.ditamap",
-      "srcId": "dhic1050",
-      "docId": "dh1050install",
+      "srcId": "dm2023101011src",
+      "docId": "dh10110install",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "upgrade.ditamap",
-      "srcId": "dhic1050",
-      "docId": "dh1050upgrade",
+      "srcId": "dm2023101011src",
+      "docId": "dh10110upgrade",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "config.ditamap",
-      "srcId": "dhic1050",
-      "docId": "dh1050config",
+      "srcId": "dm2023101011src",
+      "docId": "dh10110config",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "dataspec.ditamap",
-      "srcId": "dhic1050",
-      "docId": "dh1050dataspec",
+      "srcId": "dm2023101011src",
+      "docId": "dh10110dataspec",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "admin.ditamap",
-      "srcId": "dhic1050",
-      "docId": "dh1050admin",
+      "srcId": "dm2023101011src",
+      "docId": "dh10110admin",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
-      "srcId": "dhic1050",
-      "docId": "dh1050devref",
+      "srcId": "dm2023101011src",
+      "docId": "dh10110devref",
       "indexRedirect": true,
       "resources": [
         {
           "srcId": "dhicextrassrc",
-          "sourceFolder": "Cortina-10.5/DataHub/autoGenFiles/onPrem",
+          "sourceFolder": "Innsbruck-10.11/DataHub/autoGenFiles/onPrem",
           "targetFolder": "extras/autoGenFiles/onPrem"
         }
       ],
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050rn",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110rn",
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Cortina-10.5/InfoCenter/releaseDiffFiles/onPrem",
-          "targetFolder": "extras/releaseDiffFiles/onPrem",
+          "sourceFolder": "Innsbruck-10.11/InfoCenter",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ],
@@ -107,89 +107,89 @@
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "product.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050product",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110product",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "install.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050install",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110install",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "upgrade.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050upgrade",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110upgrade",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "config.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050config",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110config",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "dataspec.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050dataspec",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110dataspec",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "admin.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050admin",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110admin",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "bi-applications.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050biapp",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110biapp",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "reports.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050reports",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110reports",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
-      "srcId": "dhic1050",
-      "docId": "ic1050devref",
+      "srcId": "dm2023101011src",
+      "docId": "ic10110devref",
       "indexRedirect": true,
       "resources": [
         {
           "srcId": "dhicextrassrc",
-          "sourceFolder": "Cortina-10.5/InfoCenter/autoGenFiles/onPrem",
+          "sourceFolder": "Innsbruck-10.11/InfoCenter/autoGenFiles/onPrem",
           "targetFolder": "extras/autoGenFiles/onPrem"
         }
       ],
-      "disabled": true
+      "disabled": false
     }
   ]
 }
