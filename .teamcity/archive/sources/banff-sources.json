@@ -2,12 +2,6 @@
   "$schema": "../../config/config-schema.json",
   "sources": [
     {
-      "id": "in20202src",
-      "title": "InsuranceNow 2020.2",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "release/2020.2BANFF"
-    },
-    {
       "id": "isupgradeguide202011src",
       "title": "InsuranceSuite Upgrade Guide 2020.11",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",

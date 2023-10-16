@@ -3,6 +3,31 @@
   "builds": [
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowStudioReleaseNotes20202Banff.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20202studiorn",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowCoreReleaseNotes20202Banff.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20202rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ],
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ApplicationGuide20202x.ditamap",
       "srcId": "in20202src",
