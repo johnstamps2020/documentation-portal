@@ -1,0 +1,195 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "dhrn202310",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Innsbruck-10.11/DataHub/releaseDiffFiles/cloud",
+          "targetFolder": "extras/releaseDiffFiles/cloud",
+          "srcId": "dhicextrassrc"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "dhproduct202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "dhinstall202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "dhupgrade202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "dhconfig202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "dhdataspec202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "dhadmin202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "dhdevref202310",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Innsbruck-10.11/DataHub/autoGenFiles/cloud",
+          "targetFolder": "extras/autoGenFiles/cloud"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icrn202310",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Innsbruck-10.11/InfoCenter/releaseDiffFiles/cloud",
+          "targetFolder": "extras/releaseDiffFiles/cloud",
+          "srcId": "dhicextrassrc"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icproduct202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icinstall202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icupgrade202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icconfig202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icdataspec202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icadmin202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icbiapp202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icreports202310",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm2023101011src",
+      "docId": "icdevref202310",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Innsbruck-10.11/InfoCenter/autoGenFiles/cloud",
+          "targetFolder": "extras/autoGenFiles/cloud"
+        }
+      ],
+      "disabled": false
+    }
+  ]
+}

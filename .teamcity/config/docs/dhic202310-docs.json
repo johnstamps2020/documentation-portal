@@ -1,0 +1,347 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dhrn202310",
+      "title": "Release Notes",
+      "url": "cloud/dh/202310/releasenotes",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhproduct202310",
+      "title": "Product Guide",
+      "url": "cloud/dh/202310/product",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhinstall202310",
+      "title": "Installation Guide",
+      "url": "cloud/dh/202310/install",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhupgrade202310",
+      "title": "Upgrade Guide",
+      "url": "cloud/dh/202310/upgrade",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhconfig202310",
+      "title": "Configuration Guide",
+      "url": "cloud/dh/202310/config",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhdataspec202310",
+      "title": "Data Specifications Guide",
+      "url": "cloud/dh/202310/dataspec",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhadmin202310",
+      "title": "Administration Guide",
+      "url": "cloud/dh/202310/admin",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Administration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhdevref202310",
+      "title": "Developer Reference",
+      "url": "cloud/dh/202310/devref",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Development"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icrn202310",
+      "title": "Release Notes",
+      "url": "cloud/ic/202310/releasenotes",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icproduct202310",
+      "title": "Product Guide",
+      "url": "cloud/ic/202310/product",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icinstall202310",
+      "title": "Installation Guide",
+      "url": "cloud/ic/202310/install",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icupgrade202310",
+      "title": "Upgrade Guide",
+      "url": "cloud/ic/202310/upgrade",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icconfig202310",
+      "title": "Configuration Guide",
+      "url": "cloud/ic/202310/config",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icdataspec202310",
+      "title": "Data Specifications Guide",
+      "url": "cloud/ic/202310/dataspec",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icadmin202310",
+      "title": "Administration Guide",
+      "url": "cloud/ic/202310/admin",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Administration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icbiapp202310",
+      "title": "BI Applications Guide",
+      "url": "cloud/ic/202310/biapp",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icreports202310",
+      "title": "Reports Guide",
+      "url": "cloud/ic/202310/reports",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icdevref202310",
+      "title": "Developer Reference",
+      "url": "cloud/ic/202310/devref",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Development"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

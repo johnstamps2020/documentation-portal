@@ -77,6 +77,14 @@ const pageConfig: Category2LayoutProps = {
       label: 'Analytics',
       items: [
         {
+          label: 'DataHub',
+          pagePath: 'cloudProducts/innsbruck/dhGwCloud/2023.10',
+        },
+        {
+          label: 'InfoCenter',
+          pagePath: 'cloudProducts/innsbruck/icGwCloud/2023.10',
+        },
+        {
           label: 'Analytics Manager',
           docId: 'analyticsmanager',
         },

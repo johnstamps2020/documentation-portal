@@ -262,6 +262,16 @@ export const allSelectors = {
       pagePath: 'cloudProducts/hakuba/icGwCloud/2023.06',
     },
   ],
+  dhic202310: [
+    {
+      label: 'DataHub for Guidewire Cloud 2023.10',
+      pagePath: 'cloudProducts/innsbruck/dhGwCloud/2023.10',
+    },
+    {
+      label: 'InfoCenter for Guidewire Cloud 2023.10',
+      pagePath: 'cloudProducts/innsbruck/icGwCloud/2023.10',
+    },
+  ],
   scf866456342474178729593fa394b976: [
     { label: '3.6', pagePath: 'globalContent/ipg/3.6' },
     { label: '3.7', pagePath: 'globalContent/ipg/3.7' },
@@ -696,7 +706,6 @@ export const allSelectors = {
   sed0f6b3f0c92246ce605b08874712f8d: [
     { label: '10.0.0', docId: 'dh1000' },
     { label: '10.1.0', docId: 'dh1010' },
-    { label: '10.10.0', pagePath: 'selfManagedProducts/dh/10.10.0' },
     { label: '10.2.0', docId: 'dh1020' },
     { label: '10.3.0', docId: 'dh1030' },
     { label: '10.4.0', docId: 'dh1040' },
@@ -705,6 +714,8 @@ export const allSelectors = {
     { label: '10.7.0', pagePath: 'selfManagedProducts/dh/10.7.0' },
     { label: '10.8.0', pagePath: 'selfManagedProducts/dh/10.8.0' },
     { label: '10.9.0', pagePath: 'selfManagedProducts/dh/10.9.0' },
+    { label: '10.10.0', pagePath: 'selfManagedProducts/dh/10.10.0' },
+    { label: '10.11.0', pagePath: 'selfManagedProducts/dh/10.11.0' },
     { label: '8.1.0', docId: 'dh810' },
     { label: '8.1.1', docId: 'dh811' },
     { label: '8.2.0', docId: 'dh820' },
@@ -717,7 +728,6 @@ export const allSelectors = {
   sb35d4e892240f17b86dfe15d52370102: [
     { label: '10.0.0', docId: 'ic1000' },
     { label: '10.1.0', docId: 'ic1010' },
-    { label: '10.10.0', pagePath: 'selfManagedProducts/ic/10.10.0' },
     { label: '10.2.0', docId: 'ic1020' },
     { label: '10.3.0', docId: 'ic1030' },
     { label: '10.4.0', docId: 'ic1040' },
@@ -726,6 +736,8 @@ export const allSelectors = {
     { label: '10.7.0', pagePath: 'selfManagedProducts/ic/10.7.0' },
     { label: '10.8.0', pagePath: 'selfManagedProducts/ic/10.8.0' },
     { label: '10.9.0', pagePath: 'selfManagedProducts/ic/10.9.0' },
+    { label: '10.10.0', pagePath: 'selfManagedProducts/ic/10.10.0' },
+    { label: '10.11.0', pagePath: 'selfManagedProducts/ic/10.11.0' },
     { label: '8.1.0', docId: 'ic810' },
     { label: '8.1.1', docId: 'ic811' },
     { label: '8.2.0', docId: 'ic820' },
