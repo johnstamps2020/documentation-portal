@@ -148,6 +148,15 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "ExcelDesignedRating23.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inexcelrating23",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowStudioReleaseNotes20232Hakuba.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20232studiorn",
