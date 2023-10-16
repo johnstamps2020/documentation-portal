@@ -4,7 +4,7 @@
     {
       "id": "securitysrc",
       "title": "Security",
-      "gitUrl": "ssh://git@stash.guidewire.com/~msayewich/docs.guidewire.com--security.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/security.git",
       "branch": "main"
     },
     {
