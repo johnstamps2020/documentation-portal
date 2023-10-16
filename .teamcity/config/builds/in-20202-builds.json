@@ -8,7 +8,7 @@
       "srcId": "inunversionedsrc",
       "docId": "in20202studiorn",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -33,7 +33,7 @@
       "srcId": "in20202src",
       "docId": "in20202xappdraft",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -42,7 +42,7 @@
       "srcId": "in20202src",
       "docId": "in20202biinteg",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -51,7 +51,7 @@
       "srcId": "in20202src",
       "docId": "in20202xclaimsconfigdraft",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -60,7 +60,7 @@
       "srcId": "in20202src",
       "docId": "in20202xcservicepconfigdraft",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -69,7 +69,7 @@
       "srcId": "in20202src",
       "docId": "in20202xprovportaldraft",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -78,7 +78,7 @@
       "srcId": "in20202src",
       "docId": "in20202xuwconfigdraft",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -87,7 +87,7 @@
       "srcId": "in20202src",
       "docId": "in20202bi",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -96,7 +96,7 @@
       "srcId": "in20202src",
       "docId": "in20202csalesp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -105,7 +105,7 @@
       "srcId": "in20202src",
       "docId": "in20202cservicep",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -114,7 +114,7 @@
       "srcId": "in20202src",
       "docId": "in20202pa",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -123,7 +123,7 @@
       "srcId": "in20202src",
       "docId": "in20202appreaderinteg",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -132,7 +132,7 @@
       "srcId": "in20202src",
       "docId": "in20202config",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -141,7 +141,7 @@
       "srcId": "in20202src",
       "docId": "in20202studio",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -150,7 +150,7 @@
       "srcId": "in20202src",
       "docId": "in20202portaldev",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -159,7 +159,7 @@
       "srcId": "in20202src",
       "docId": "in20202prodattref",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }
