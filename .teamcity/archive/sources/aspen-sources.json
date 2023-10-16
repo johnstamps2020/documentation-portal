@@ -2,12 +2,6 @@
   "$schema": "../../config/config-schema.json",
   "sources": [
     {
-      "id": "in20201src",
-      "title": "InsuranceNow 2020.1",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "release/2020.1ASPEN"
-    },
-    {
       "id": "cloudis202005src",
       "title": "InsuranceSuite 2020.05",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
