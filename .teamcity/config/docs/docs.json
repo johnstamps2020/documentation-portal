@@ -1,6 +1,27 @@
 {
   "$schema": "../config-schema.json",
   "docs": [
+    {"id": "security",
+      "title": "Security",
+      "url": "security",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": ["Internal Docs"],
+        "version": [
+          "latest"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false},
     {
       "id": "l10npdfss3folder",
       "title": "L10N pdfs S3 folder",
