@@ -4,7 +4,7 @@ import Category2Layout, {
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
-import flaineBadge from 'images/badge-flaine.svg';
+import hakubaBadge from 'images/badge-hakuba.svg';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
@@ -166,19 +166,11 @@ const pageConfig: Category2LayoutProps = {
     },
   ],
   whatsNew: {
-    label: 'Flaine',
-    badge: flaineBadge,
-    item: { label: 'Learn more', docId: 'whatsnewflaine' },
+    label: 'Innsbruck',
+    badge: hakubaBadge,
+    item: { label: 'Learn more', docId: 'whatsnewhakuba' },
     content: [
-      'Advanced Product Designer app (APD)',
-      'Submission Intake for InsuranceSuite',
-      'App Events for event-based integration',
-      'Community-powered machine learning',
-      'Automated updates to latest release',
-      'Cloud API enhancements',
-      'Early access to Jutro Digital Platform',
-      'Expanded Guidewire GO content',
-      'Advanced monitoring and observability',
+      'Coming soon',
     ],
   },
   sidebar: {
