@@ -116,6 +116,14 @@ export const allSelectors = {
   ],
   s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {
+      label: 'Aspen (2020.1)',
+      pagePath: 'cloudProducts/aspen/insuranceNow/2020.1',
+    },
+    {
+      label: 'Banff (2020.2)',
+      pagePath: 'cloudProducts/banff/insuranceNow/2020.2',
+    },
+    {
       label: 'Cortina (2021.1)',
       pagePath: 'cloudProducts/cortina/insuranceNow/2021.1',
     },
