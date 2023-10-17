@@ -1,0 +1,315 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1130",
+      "docId": "dxceam1130",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1130",
+      "docId": "dxceclaims1130",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1130",
+      "docId": "dxceqb1130",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1130",
+      "docId": "dxpe1130",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1130",
+      "docId": "dxpeclaims1130",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1130",
+      "docId": "dxsre1130",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1130",
+      "docId": "dxve1130",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1120",
+      "docId": "dxceam1120onpremstaging",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1120",
+      "docId": "dxceqb1120onpremstaging",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1120",
+      "docId": "dxpe1120onpremstaging",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1120",
+      "docId": "dxsre1120onpremstaging",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxdiapp331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxdiinstall331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "gw-for-sf-developer-admin-guide.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxdiadmin331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "Digital-Salesforce-ReleaseNotes.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxdirelnotes331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxedapp331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxedinstall331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "Digital-Salesforce-ReleaseNotes.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxedrelnotes331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxvodapp331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxvodinstall331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "gw-for-sf-developer-admin-guide.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxvodadmin331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "Digital-Salesforce-ReleaseNotes.ditamap",
+      "srcId": "dxgwsf331",
+      "docId": "dxvodrelnotes331",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxdiapp330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxdiinstall330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "gw-for-sf-developer-admin-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxdiadmin330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "Digital-Salesforce-ReleaseNotes.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxdirelnotes330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxedapp330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxedinstall330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "Digital-Salesforce-ReleaseNotes.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxedrelnotes330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxvodapp330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxvodinstall330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "gw-for-sf-developer-admin-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxvodadmin330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "Digital-Salesforce-ReleaseNotes.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxvodrelnotes330",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxgwsf320",
+      "docId": "dxdionprem320",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxgwsf320",
+      "docId": "dxedonprem320",
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxgwsf320",
+      "docId": "dxvodonprem320",
+      "disabled": true
+    }
+  ]
+}
