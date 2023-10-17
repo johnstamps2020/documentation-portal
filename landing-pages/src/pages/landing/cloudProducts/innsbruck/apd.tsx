@@ -29,12 +29,12 @@ const pageConfig: SectionLayoutProps = {
       label: 'Features and functionality',
       items: [
         {
-          label: 'APD App Guide (Public)',
-          docId: 'apdappinnsbruck',
+          label: 'Creating Products',
+          docId: 'apdcreatingproductsinnsbruck',
         },
         {
-          label: 'APD App Guide (Authenticated users only)',
-          docId: 'apdappauthenticatedinnsbruck',
+          label: 'Finalizing Products',
+          docId: 'apdfinalizingproductsinnsbruck',
         },
       ],
     },

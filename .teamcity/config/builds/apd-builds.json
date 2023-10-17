@@ -92,18 +92,18 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "AdvancedProductDesigner.ditamap",
+      "root": "CreatingProducts.ditamap",
       "srcId": "apdappinnsbrucksrc",
-      "docId": "apdappinnsbruck",
+      "docId": "apdcreatingproductsinnsbruck",
       "indexRedirect": true,
       "disabled": false
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release-Authenticated.ditaval",
-      "root": "AdvancedProductDesigner.ditamap",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "FinalizingProducts.ditamap",
       "srcId": "apdappinnsbrucksrc",
-      "docId": "apdappauthenticatedinnsbruck",
+      "docId": "apdfinalizingproductsinnsbruck",
       "indexRedirect": true,
       "disabled": false
     },
