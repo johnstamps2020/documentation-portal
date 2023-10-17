@@ -210,9 +210,9 @@
       "earlyAccess": true
     },
     {
-      "id": "apdappinnsbruck",
-      "title": "Advanced Product Designer",
-      "url": "cloud/apd/innsbruck/app",
+      "id": "apdcreatingproductsinnsbruck",
+      "title": "Creating Products",
+      "url": "cloud/apd/innsbruck/create",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
@@ -224,14 +224,14 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false,
+      "public": true,
       "internal": false,
       "earlyAccess": false
     },
     {
-      "id": "apdappauthenticatedinnsbruck",
-      "title": "Advanced Product Designer - Authenticated",
-      "url": "cloud/apd/innsbruck/app-authenticated",
+      "id": "apdfinalizingproductsinnsbruck",
+      "title": "Finalizing Products",
+      "url": "cloud/apd/innsbruck/finalize",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
