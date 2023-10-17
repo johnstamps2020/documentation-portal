@@ -1,3 +1,9 @@
+window.dataLayer = window.dataLayer || [];
+
+function gtag() {
+  dataLayer.push(arguments);
+}
+
 function scramble(phrase) {
   let hash = 0,
     i,
@@ -37,7 +43,7 @@ function getUserData(userInfo) {
       : 'Anonymous User';
     const domain = email.split('@')[1];
 
-    return { email, name, role, domain };
+    return { email, name, role, domain, isEmployee };
   }
 
   return {
@@ -45,14 +51,17 @@ function getUserData(userInfo) {
     name: 'User Not Logged In',
     role: 'Not Logged In',
     domain: 'Not Logged In',
+    isEmployee: false,
   };
 }
 
-async function initializePendo() {
+async function initializeAnalytics() {
   const response = await fetch('/userInformation');
   if (response.ok) {
     const userInfo = await response.json();
-    const { email, name, role, domain } = getUserData(userInfo);
+    const { email, name, role, domain, isEmployee } = getUserData(userInfo);
+
+    // Pendo
     pendo.initialize({
       visitor: {
         id: email,
@@ -65,7 +74,15 @@ async function initializePendo() {
         id: domain,
       },
     });
+
+    // Google Analytics
+    gtag('js', new Date());
+
+    gtag('config', 'G-QRTVTBY678');
+    gtag('set', 'user_properties', {
+      is_employee: isEmployee,
+    });
   }
 }
 
-initializePendo();
+initializeAnalytics();
