@@ -7,7 +7,7 @@ import {
   tagManagerHeadScript,
   pendoInstallScript,
   tagManagerBody,
-  getPendoInitializeScript,
+  getAnalyticsInitializeScript,
 } from '../controllers/analyticsController';
 
 function appendToSelectedItem(node: any, str: string) {
@@ -29,12 +29,12 @@ function appendToSelectedItem(node: any, str: string) {
   }
 }
 
-const pendoInitializeScript = getPendoInitializeScript();
-const bodyScriptsForAnalytics = `
-      <!-- Pendo initialize -->
-      <script>${pendoInitializeScript}</script>
-      <!-- Google tag manager no-script -->
-      <noscript>${tagManagerBody}</noscript>`;
+const analyticsInitializeScript = getAnalyticsInitializeScript();
+const bodyScriptsForAnalytics = `<!-- Google tag manager no-script -->
+      <noscript>${tagManagerBody}</noscript>
+      <!-- Analytics initialize -->
+      <script>${analyticsInitializeScript}</script>
+`;
 
 const responseSelectors = [
   {

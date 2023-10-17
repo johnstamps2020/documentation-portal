@@ -1,12 +1,3 @@
-window.dataLayer = window.dataLayer || [];
-
-function gtag() {
-  dataLayer.push(arguments);
-}
-
-gtag('js', new Date());
-gtag('config', 'G-QRTVTBY678');
-
 const docProductElement = document.querySelector("meta[name = 'gw-product']");
 let docProduct = docProductElement
   ? docProductElement.content.replace(/ for Guidewire Cloud/g, '')
@@ -538,6 +529,7 @@ async function toggleFeedbackForm(formId) {
   const feedbackType = formId.includes('negative') ? 'negative' : 'positive';
   const response = await fetch('/userInformation');
   const { preferred_username } = await response.json();
+
   gtag('event', 'user_feedback', {
     feedback_type: feedbackType,
     product_name: docProduct,
