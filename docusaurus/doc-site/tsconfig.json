@@ -4,6 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "resolveJsonModule": true,
-    "types": ["@doctools/gw-theme-classic"]
+    "types": ["@doctools/gw-theme-classic"],
+    "module": "Node16",
   }
 }
