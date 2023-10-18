@@ -21,8 +21,8 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.06',
       items: [
         {
-          label: 'Guía de la aplicación',
-          docId: 'dx202306es419ceamapp',
+          label: 'Notas de la versión',
+          docId: 'dx202306es419ceamrelnotes',
         },
       ],
     },

@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2023.06',
+      items: [
+        {
+          label: 'Versionshinweise',
+          docId: 'dx202306deDEceamrelnotes',
+        },
+      ],
+    },
+    {
       label: '2023.02',
       items: [
         {

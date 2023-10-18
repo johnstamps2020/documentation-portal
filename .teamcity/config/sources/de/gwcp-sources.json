@@ -1,0 +1,11 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "gwcpdeDEreleasenotessrc",
+      "title": "Cloud Platform Release Notes de",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
+      "branch": "release/de-DE/hakuba"
+    }
+  ]
+}

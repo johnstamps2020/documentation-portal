@@ -10,34 +10,25 @@ const pageConfig: CategoryLayoutProps = {
     backgroundColor: `hsl(0, 0%, 98%)`,
   },
   selector: {
-    label: 'Seleccionar producto',
-    selectedItemLabel: 'CustomerEngage Account Management for ClaimCenter',
-    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
+    label: 'Produkt auswählen',
+    selectedItemLabel: 'VendorEngage',
+    items: allSelectors.sabc928e21c4c1dfb2a841b6b2331c9db,
     labelColor: 'white',
   },
 
   cards: [
     {
-      label: '2023.06',
+      label: '2023.06 (Hakuba)',
       items: [
         {
-          label: 'Notas de la versión',
-          docId: 'dx202306es419ceclaimsrelnotes',
-        },
-      ],
-    },
-    {
-      label: '2022.05',
-      items: [
-        {
-          label: 'Guía de la aplicación',
-          docId: 'dx202205es419ceclaimsapp',
+          label: 'Guidewire Cloud Platform - Versionshinweise',
+          docId: 'gwcpdeDEreleasenotes',
         },
       ],
     },
   ],
 };
 
-export default function Ceclaims() {
+export default function Cp() {
   return <CategoryLayout {...pageConfig} />;
 }
