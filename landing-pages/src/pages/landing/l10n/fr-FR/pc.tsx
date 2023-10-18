@@ -11,12 +11,25 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Choisissez un produit',
-    selectedItemLabel: 'PolicyCenter',
+    selectedItemLabel: 'CustomerEngage Account Management',
     items: allSelectors.sef23284b869fc03ddd79bc1738f4ad7d,
     labelColor: 'white',
   },
 
   cards: [
+    {
+      label: '2023.06',
+      items: [
+        {
+          label: 'Notes sur la version',
+          docId: 'ispc202306frFRreleasenotes',
+        },
+        {
+          label: 'Guide de mise à niveau',
+          docId: 'ispc202306frFRupdate',
+        },
+      ],
+    },
     {
       label: '2023.02',
       items: [
