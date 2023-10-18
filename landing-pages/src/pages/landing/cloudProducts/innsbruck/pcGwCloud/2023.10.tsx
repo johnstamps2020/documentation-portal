@@ -214,7 +214,7 @@ const pageConfig: SectionLayoutProps = {
   ],
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Innsbruck (2023.06)',
+    selectedItemLabel: 'Innsbruck (2023.10)',
     items: allSelectors.s1793805ac84baf801d4eb31b00ab1ddf,
     labelColor: 'black',
   },
