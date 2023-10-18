@@ -66,64 +66,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "jutro8130",
-      "title": "Jutro Design System and UI Framework",
-      "url": "jutro/documentation/8.13.0",
-      "metadata": {
-        "product": [
-          "Jutro Design System"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "8.13.0"
-        ],
-        "subject": [
-          "Best practices"
-        ],
-        "language": "en"
-      },
-      "environments": [
-        "staging",
-        "prod"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
-      "id": "storybook8130",
-      "title": "Jutro Storybook",
-      "url": "jutro/storybook/8.13.0",
-      "metadata": {
-        "product": [
-          "Jutro Design System"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "8.13.0"
-        ],
-        "subject": [
-          "Development"
-        ],
-        "language": "en"
-      },
-      "environments": [
-        "staging",
-        "prod"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
     }
+    
   ]
 }
