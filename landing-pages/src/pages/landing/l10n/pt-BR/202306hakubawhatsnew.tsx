@@ -10,34 +10,26 @@ const pageConfig: CategoryLayoutProps = {
     backgroundColor: `hsl(0, 0%, 98%)`,
   },
   selector: {
-    label: 'Seleccionar producto',
-    selectedItemLabel: 'ProducerEngage for ClaimCenter',
-    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
+    label: 'Selecione o produto',
+    selectedItemLabel: 'Novidades na Hakuba',
+    items: allSelectors.s04aae4cce94a63b38358bb52ee3acace,
     labelColor: 'white',
   },
 
   cards: [
     {
-      label: '2023.06',
+      label: 'Novidades na Hakuba',
       items: [
         {
-          label: 'Guía de la aplicación',
-          docId: 'dx202306es419peclaimsapp',
-        },
-      ],
-    },
-    {
-      label: '2022.05',
-      items: [
-        {
-          label: 'Guía de la aplicación',
-          docId: 'dx202205es419peclaimsapp',
+          label: 'Novidades na Hakuba',
+          docId: 'whatsnewptBRhakuba',
+          videoIcon: false,
         },
       ],
     },
   ],
 };
 
-export default function Peclaims() {
+export default function LandingPage202306hakubawhatsnew() {
   return <CategoryLayout {...pageConfig} />;
 }

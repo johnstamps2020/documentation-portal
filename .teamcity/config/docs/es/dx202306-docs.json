@@ -1,0 +1,145 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202306es419ceamapp",
+      "title": "CustomerEngage Account Management Application Guide es",
+      "displayTitle": "Guía de la aplicación",
+      "url": "es/cloud/dx/ce-am/202306/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202306es419ceclaimsapp",
+      "title": "CustomerEngage Account Management for ClaimCenter Application Guide es",
+      "displayTitle": "Guía de la aplicación",
+      "url": "es/cloud/dx/ce-claims/202306/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202306es419ceqbapp",
+      "title": "CustomerEngage Quote and Buy Application Guide es",
+      "displayTitle": "Guía de la aplicación",
+      "url": "es/cloud/dx/ce-qb/202306/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202306es419peapp",
+      "title": "ProducerEngage Application Guide es",
+      "displayTitle": "Guía de la aplicación",
+      "url": "es/cloud/dx/pe/202306/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202306es419peclaimsapp",
+      "title": "ProducerEngage for ClaimCenter Application Guide es",
+      "displayTitle": "Guía de la aplicación",
+      "url": "es/cloud/dx/pe-claims/202306/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202306es419sreapp",
+      "title": "ServiceRepEngage Application Guide es",
+      "displayTitle": "Guía de la aplicación",
+      "url": "es/cloud/dx/sre/202306/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202306es419veapp",
+      "title": "VendorEngage Application Guide es",
+      "displayTitle": "Guía de la aplicación",
+      "url": "es/cloud/dx/ve/202306/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

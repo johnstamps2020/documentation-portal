@@ -1,0 +1,11 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "dx202306ptBRsrc",
+      "title": "Digital 2023.06 pt-BR",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
+      "branch": "release/pt-BR/2023.06"
+    }
+  ]
+}
