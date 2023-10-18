@@ -143,8 +143,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": false,
       "indexForSearch": false,
@@ -172,8 +171,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": false,
       "indexForSearch": false,
