@@ -5,6 +5,7 @@ export function useQueryParameters() {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
 
+  //TODO: Add logic step for appending the platform filter for version and release filters
   function modifyFilterValue(
     filterName: string,
     filterValue: string,

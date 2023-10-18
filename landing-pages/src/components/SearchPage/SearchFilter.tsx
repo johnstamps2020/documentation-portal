@@ -36,8 +36,9 @@ export default function SearchFilter({
         aria-controls="search-filter-panel-content"
         id="search-filter-panel-header"
       >
-        {serverSearchFilter.name.replace('_', ' ')} (
-        {serverSearchFilter.values.filter((v) => v.checked).length}/
+        {serverSearchFilter.label ||
+          serverSearchFilter.name.replaceAll('_', ' ')}{' '}
+        ({serverSearchFilter.values.filter((v) => v.checked).length}/
         {serverSearchFilter.values.length})
       </StyledAccordionSummary>
       <StyledAccordionDetails>

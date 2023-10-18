@@ -38,7 +38,13 @@ export type ServerSearchFilterValue = {
 
 export type ServerSearchFilter = {
   name: string;
+  label?: string;
   values: ServerSearchFilterValue[];
+};
+
+export type NestedServerSearchFilter = {
+  label: string;
+  searchFilters: ServerSearchFilter[];
 };
 
 export type ServerSearchError = {

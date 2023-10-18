@@ -4,21 +4,25 @@ const { winstonLogger } = require('./loggerController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
 
-async function getFieldMappings() {
+// Every keyword field in Elasticsearch is included in the filter list
+async function getKeywordFields() {
   const mappingResults = await elasticClient.indices.getMapping({
     index: searchIndexName,
   });
-  return mappingResults.body[searchIndexName].mappings.properties;
+  const mappings = mappingResults.body[searchIndexName].mappings.properties;
+  return Object.keys(mappings).filter(
+    (key) => mappings[key].type === 'keyword'
+  );
 }
 
 // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
 // values that contain commas are wrapped in quotes by the getDocumentMetadataById function in configController.js
 // Therefore, filter values must be parsed here taking quotes into account.
-function getFiltersFromUrl(fieldMappings, queryParams) {
+function getFiltersFromUrl(filterFields, queryParams) {
   try {
     let filtersFromUrl = {};
     for (const param in queryParams) {
-      if (fieldMappings[param] && fieldMappings[param].type === 'keyword') {
+      if (filterFields.includes(param)) {
         const paramValues = decodeURI(queryParams[param]);
         const matches = paramValues.matchAll(/"(.+?)"/g);
         let quotedParamValues = [];
@@ -38,7 +42,7 @@ function getFiltersFromUrl(fieldMappings, queryParams) {
   } catch (err) {
     winstonLogger.error(
       `Problem getting filters from URL
-          FIELD MAPPINGS: ${fieldMappings}
+          FILTER FIELDS: ${filterFields}
           QUERY PARAMS: ${queryParams}
           ERROR: ${JSON.stringify(err)}`
     );
@@ -84,62 +88,73 @@ async function getAllowedFilterValues(fieldName, query) {
   }
 }
 
-async function getFilters(query, fieldMappings, urlFilters) {
+async function getFilters(query, filterFields, urlFilters) {
   try {
     let filterNamesAndValues = [];
-    for (const field in fieldMappings) {
-      if (fieldMappings[field].type === 'keyword') {
-        const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
-        let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
-          ? [...queryWithFiltersFromUrl.bool.filter]
-          : [];
-        for (const [key, value] of Object.entries(urlFilters)) {
-          if (key !== field) {
-            queryFilters.push({
-              terms: {
-                [key]: value,
-              },
-            });
-          }
+    for (const field of filterFields) {
+      const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
+      let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
+        ? [...queryWithFiltersFromUrl.bool.filter]
+        : [];
+      for (const [key, value] of Object.entries(urlFilters)) {
+        if (key !== field) {
+          queryFilters.push({
+            terms: {
+              [key]: value,
+            },
+          });
         }
-        queryWithFiltersFromUrl.bool.filter = queryFilters;
-        const allowedFilterValues = await getAllowedFilterValues(
-          field,
-          queryWithFiltersFromUrl
-        );
-
-        const urlFilterValues = urlFilters.hasOwnProperty(field)
-          ? urlFilters[field]
-          : [];
-        const allFilterValues = Array.from(
-          new Set([
-            ...allowedFilterValues?.map((v) => v.label),
-            ...urlFilterValues,
-          ])
-        );
-        const filterValuesObjects = allFilterValues?.map((value) => {
-          return {
-            label: value,
-            doc_count:
-              allowedFilterValues.find((v) => v.label === value)?.doc_count ||
-              0,
-            checked: !!urlFilterValues.find((v) => v === value),
-          };
-        });
-        filterNamesAndValues.push({
-          name: field,
-          values: filterValuesObjects,
+      }
+      if (field === 'version') {
+        queryFilters.push({
+          term: {
+            platform: 'Self-managed',
+          },
         });
       }
+      if (field === 'release') {
+        queryFilters.push({
+          term: {
+            platform: 'Cloud',
+          },
+        });
+      }
+      queryWithFiltersFromUrl.bool.filter = queryFilters;
+      const allowedFilterValues = await getAllowedFilterValues(
+        field,
+        queryWithFiltersFromUrl
+      );
+
+      const urlFilterValues = urlFilters.hasOwnProperty(field)
+        ? urlFilters[field]
+        : [];
+      const allFilterValues = Array.from(
+        new Set([
+          ...allowedFilterValues?.map((v) => v.label),
+          ...urlFilterValues,
+        ])
+      );
+      const filterValuesObjects = allFilterValues?.map((value) => {
+        return {
+          label: value,
+          doc_count:
+            allowedFilterValues.find((v) => v.label === value)?.doc_count || 0,
+          checked: !!urlFilterValues.find((v) => v === value),
+        };
+      });
+      filterNamesAndValues.push({
+        name: field,
+        values: filterValuesObjects,
+      });
     }
 
     return filterNamesAndValues;
   } catch (err) {
     winstonLogger.error(
       `Problem getting filters for 
-          query: ${JSON.stringify(query)},    
-          fieldMappings: ${JSON.stringify(fieldMappings)},  
-          urlFilters: ${JSON.stringify(urlFilters)},
+          QUERY: ${JSON.stringify(query)},    
+          FILTER FIELDS: ${filterFields},  
+          URL FILTERS: ${JSON.stringify(urlFilters)},
           ERROR: ${JSON.stringify(err)}`
     );
   }
@@ -283,6 +298,106 @@ function sortObjectsFromNewestToOldest(objectsList) {
   }
 }
 
+async function prepareResultsToDisplay(searchResults, filterFields) {
+  return searchResults.hits.map((result) => {
+    const docScore = result._score;
+    const innerHits = result.inner_hits.same_title.hits.hits;
+    const innerHitsMatchingDocScore = innerHits.filter(
+      (h) => h._score === docScore
+    );
+
+    let mainResult =
+      innerHitsMatchingDocScore.length > 0
+        ? sortObjectsFromNewestToOldest(innerHitsMatchingDocScore)[0]
+        : result;
+
+    const innerHitsWithoutMainResult = innerHits.filter(
+      (h) => h._id !== mainResult._id
+    );
+
+    const doc = mainResult._source;
+    const highlight = mainResult.highlight;
+    // TODO: Move this part to landing pages. It seems like a duplicate of available filters. Currently, the tags
+    //  show more info than filters
+    let docTags = [];
+    for (const field of filterFields) {
+      if (doc[field]) {
+        docTags.push(doc[field]);
+      }
+    }
+
+    const highlightTitleKey = Object.getOwnPropertyNames(highlight).filter(
+      (k) => k.startsWith('title') && !k.startsWith('title.raw')
+    )[0];
+
+    const highlightBodyKey = Object.getOwnPropertyNames(highlight).filter((k) =>
+      k.startsWith('body')
+    )[0];
+    const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
+
+    //The "number_of_fragments" parameter is set to "0' for the title field.
+    //So no fragments are produced, instead the whole content of the field is returned
+    // as the first element of the array, and matches are highlighted.
+    const titleText = highlightTitleKey
+      ? highlight[highlightTitleKey][0]
+      : doc.title;
+    const bodyText = highlightBodyKey
+      ? highlight[highlightBodyKey].join(' [...] ')
+      : bodyBlurb;
+    const regExp = new RegExp(
+      '<span class="searchResultHighlight.*?">(.*?)</span>',
+      'g'
+    );
+    const allText = titleText + bodyText;
+    const regExpResults = Array.from(allText.matchAll(regExp));
+    const uniqueHighlightTerms = Array.from(
+      new Set(regExpResults.map((r) => r[1].toLowerCase()))
+    )
+      .sort(function (a, b) {
+        return b.length - a.length;
+      })
+      .join(',');
+
+    const sortedInnerHits = sortObjectsFromNewestToOldest(
+      innerHitsWithoutMainResult
+    );
+
+    let innerHitsToDisplay = [];
+    for (const innerHit of sortedInnerHits) {
+      const hitLabel = innerHit._source.title;
+      const hitHref = innerHit._source.href;
+      const hitPlatform = innerHit._source.platform;
+      const hitProduct = innerHit._source.product;
+      const hitVersion = innerHit._source.version;
+      innerHitsToDisplay.push({
+        label: hitLabel,
+        href: hitHref,
+        tags: [...hitProduct, ...hitPlatform, ...hitVersion],
+      });
+    }
+
+    let hitsWithUniqueUrls = [];
+    for (const hit of innerHitsToDisplay) {
+      if (!hitsWithUniqueUrls.find((h) => h.href === hit.href)) {
+        hitsWithUniqueUrls.push(hit);
+      }
+    }
+
+    return {
+      href: doc.href,
+      score: docScore,
+      title: sanitizeTagNames(titleText),
+      titlePlain: sanitizeTagNames(doc.title),
+      version: doc.version.join(', '),
+      body: sanitizeTagNames(bodyText),
+      bodyPlain: sanitizeTagNames(bodyBlurb),
+      docTags: docTags,
+      innerHits: hitsWithUniqueUrls,
+      uniqueHighlightTerms: uniqueHighlightTerms,
+    };
+  });
+}
+
 async function searchController(req, res, next) {
   try {
     const urlQueryParameters = req.query;
@@ -295,8 +410,8 @@ async function searchController(req, res, next) {
     const userInfo = res.locals.userInfo;
     const requestIsAuthenticated = userInfo.isLoggedIn;
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
-    const mappings = await getFieldMappings();
-    const filtersFromUrl = getFiltersFromUrl(mappings, urlQueryParameters);
+    const keywordFields = await getKeywordFields();
+    const filtersFromUrl = getFiltersFromUrl(keywordFields, urlQueryParameters);
 
     const queryBody = {
       bool: {
@@ -329,22 +444,7 @@ async function searchController(req, res, next) {
       ];
     }
 
-    const displayOrder = [
-      'product',
-      'version',
-      'subject',
-      'platform',
-      'language',
-    ];
-
-    const filters = await getFilters(queryBody, mappings, filtersFromUrl);
-
-    const arrangedFilters = [];
-    for (const key of displayOrder) {
-      if (filters?.some((f) => f.name === key)) {
-        arrangedFilters.push(filters.find((f) => f.name === key));
-      }
-    }
+    const filters = await getFilters(queryBody, keywordFields, filtersFromUrl);
 
     const results = await runSearch(
       queryBody,
@@ -353,101 +453,10 @@ async function searchController(req, res, next) {
       filtersFromUrl
     );
 
-    const resultsToDisplay = results.hits.map((result) => {
-      const docScore = result._score;
-      const innerHits = result.inner_hits.same_title.hits.hits;
-      const innerHitsMatchingDocScore = innerHits.filter(
-        (h) => h._score === docScore
-      );
-
-      let mainResult =
-        innerHitsMatchingDocScore.length > 0
-          ? sortObjectsFromNewestToOldest(innerHitsMatchingDocScore)[0]
-          : result;
-
-      const innerHitsWithoutMainResult = innerHits.filter(
-        (h) => h._id !== mainResult._id
-      );
-
-      const doc = mainResult._source;
-      const highlight = mainResult.highlight;
-      let docTags = [];
-      for (const key of displayOrder) {
-        if (doc[key]) {
-          docTags.push(doc[key]);
-        }
-      }
-
-      const highlightTitleKey = Object.getOwnPropertyNames(highlight).filter(
-        (k) => k.startsWith('title') && !k.startsWith('title.raw')
-      )[0];
-
-      const highlightBodyKey = Object.getOwnPropertyNames(highlight).filter(
-        (k) => k.startsWith('body')
-      )[0];
-      const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
-
-      //The "number_of_fragments" parameter is set to "0' for the title field.
-      //So no fragments are produced, instead the whole content of the field is returned
-      // as the first element of the array, and matches are highlighted.
-      const titleText = highlightTitleKey
-        ? highlight[highlightTitleKey][0]
-        : doc.title;
-      const bodyText = highlightBodyKey
-        ? highlight[highlightBodyKey].join(' [...] ')
-        : bodyBlurb;
-      const regExp = new RegExp(
-        '<span class="searchResultHighlight.*?">(.*?)</span>',
-        'g'
-      );
-      const allText = titleText + bodyText;
-      const regExpResults = Array.from(allText.matchAll(regExp));
-      const uniqueHighlightTerms = Array.from(
-        new Set(regExpResults.map((r) => r[1].toLowerCase()))
-      )
-        .sort(function (a, b) {
-          return b.length - a.length;
-        })
-        .join(',');
-
-      const sortedInnerHits = sortObjectsFromNewestToOldest(
-        innerHitsWithoutMainResult
-      );
-
-      let innerHitsToDisplay = [];
-      for (const innerHit of sortedInnerHits) {
-        const hitLabel = innerHit._source.title;
-        const hitHref = innerHit._source.href;
-        const hitPlatform = innerHit._source.platform;
-        const hitProduct = innerHit._source.product;
-        const hitVersion = innerHit._source.version;
-        innerHitsToDisplay.push({
-          label: hitLabel,
-          href: hitHref,
-          tags: [...hitProduct, ...hitPlatform, ...hitVersion],
-        });
-      }
-
-      let hitsWithUniqueUrls = [];
-      for (const hit of innerHitsToDisplay) {
-        if (!hitsWithUniqueUrls.find((h) => h.href === hit.href)) {
-          hitsWithUniqueUrls.push(hit);
-        }
-      }
-
-      return {
-        href: doc.href,
-        score: docScore,
-        title: sanitizeTagNames(titleText),
-        titlePlain: sanitizeTagNames(doc.title),
-        version: doc.version.join(', '),
-        body: sanitizeTagNames(bodyText),
-        bodyPlain: sanitizeTagNames(bodyBlurb),
-        docTags: docTags,
-        innerHits: hitsWithUniqueUrls,
-        uniqueHighlightTerms: uniqueHighlightTerms,
-      };
-    });
+    const resultsToDisplay = await prepareResultsToDisplay(
+      results,
+      keywordFields
+    );
 
     const retrievedTags = [];
 
@@ -479,7 +488,7 @@ async function searchController(req, res, next) {
             : 10000) / resultsPerPage
         ),
         resultsPerPage: resultsPerPage,
-        filters: arrangedFilters,
+        filters: filters,
         filtersFromUrl: filtersFromUrl,
         requestIsAuthenticated: requestIsAuthenticated,
       };
