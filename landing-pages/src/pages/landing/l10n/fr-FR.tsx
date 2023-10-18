@@ -18,12 +18,20 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Nouveautés de Hakuba',
+      pagePath: 'l10n/fr-FR/202306hakubawhatsnew',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/fr-FR/bc',
     },
     {
       label: 'ClaimCenter',
       pagePath: 'l10n/fr-FR/cc',
+    },
+    {
+      label: 'Cloud Platform',
+      pagePath: 'l10n/fr-FR/cp',
     },
     {
       label: 'CustomerEngage Account Management',

@@ -1,0 +1,125 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc202306es419releasenotes",
+      "title": "Release Notes es",
+      "displayTitle": "Notas de la versión",
+      "url": "es/cloud/bc/202306/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306es419update",
+      "title": "Update es",
+      "displayTitle": "Guía de renovación",
+      "url": "es/cloud/bc/202306/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Installation"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306es419releasenotes",
+      "title": "Release Notes es",
+      "displayTitle": "Notas de la versión",
+      "url": "es/cloud/cc/202306/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306es419update",
+      "title": "Update es",
+      "displayTitle": "Guía de renovación",
+      "url": "es/cloud/cc/202306/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Installation"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306es419releasenotes",
+      "title": "Release Notes es",
+      "displayTitle": "Notas de la versión",
+      "url": "es/cloud/pc/202306/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306es419update",
+      "title": "Update es",
+      "displayTitle": "Guía de renovación",
+      "url": "es/cloud/pc/202306/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Installation"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

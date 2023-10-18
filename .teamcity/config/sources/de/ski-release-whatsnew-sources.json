@@ -1,0 +1,11 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "whatsnewdeDEhakubasrc",
+      "title": "Ski Release What's New - Hakuba de",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
+      "branch": "release/de-DE/hakuba"
+    }
+  ]
+}

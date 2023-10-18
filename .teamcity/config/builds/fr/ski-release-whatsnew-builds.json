@@ -1,0 +1,14 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "whatsnew.ditamap",
+      "srcId": "whatsnewfrFRhakubasrc",
+      "docId": "whatsnewfrFRhakuba",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}
