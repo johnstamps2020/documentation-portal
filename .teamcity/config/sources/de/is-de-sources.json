@@ -3,7 +3,7 @@
   "sources": [
     {
       "id": "is202306deDEsrc",
-      "title": "IS 2023.06.0 es-419",
+      "title": "IS 2023.06.0 de-DE",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/de-DE/2023.06.0"
     },

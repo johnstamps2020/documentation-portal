@@ -29,15 +29,6 @@ const pageConfig: CategoryLayoutProps = {
     {
       label: '2023.02',
       items: [
-    {
-      label: '2023.06',
-      items: [
-        {
-          label: 'Versionshinweise',
-          docId: 'dx202306deDEceamrelnotes',
-        },
-      ],
-    },
         {
           label: 'Anwendungshandbuch',
           url: '/l10n/pdfs/de-DE/ve/2023.02/VendorEngage_AppGuide.pdf',

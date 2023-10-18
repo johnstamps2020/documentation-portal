@@ -11,7 +11,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Choisissez un produit',
-    selectedItemLabel: 'CustomerEngage Account Management',
+    selectedItemLabel: 'PolicyCenter',
     items: allSelectors.sef23284b869fc03ddd79bc1738f4ad7d,
     labelColor: 'white',
   },

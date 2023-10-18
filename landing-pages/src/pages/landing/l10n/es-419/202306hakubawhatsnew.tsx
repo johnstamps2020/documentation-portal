@@ -11,7 +11,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Seleccionar producto',
-    selectedItemLabel: 'Cloud Platform',
+    selectedItemLabel: 'Novedades de Hakuba',
     items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
     labelColor: 'white',
   },
