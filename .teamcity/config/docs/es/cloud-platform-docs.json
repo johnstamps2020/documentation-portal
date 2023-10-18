@@ -1,0 +1,24 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "gwcpes419releasenotes",
+      "title": "Cloud Platform Release Notes es",
+      "displayTitle": "Notas de la version de la Plataforma de Guidewire Cloud",
+      "url": "es/cloud/gwcprelnotes/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Hakuba"],
+        "language": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

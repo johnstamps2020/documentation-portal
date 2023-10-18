@@ -1,0 +1,11 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "whatsnewes419hakubasrc",
+      "title": "Ski Release What's New - Hakuba pest",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
+      "branch": "release/es-419/hakuba"
+    }
+  ]
+}
