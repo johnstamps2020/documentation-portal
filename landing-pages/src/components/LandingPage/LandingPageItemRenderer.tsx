@@ -1,7 +1,7 @@
 import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import { PageError } from 'hooks/usePageData';
 
-type LandingPageItemRendererProps = {
+export type LandingPageItemRendererProps = {
   skeleton: React.ReactNode;
   item: React.ReactNode;
   landingPageItems: LandingPageItemData[] | undefined;

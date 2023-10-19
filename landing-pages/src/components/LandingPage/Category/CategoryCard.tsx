@@ -42,6 +42,44 @@ export default function CategoryCard({
     return null;
   }
 
+  const categoryCardItem = (
+    <Paper
+      sx={{
+        width: {
+          sm: '300px',
+          xs: '100%',
+        },
+        padding: '24px',
+      }}
+    >
+      {label !== '' && (
+        <Typography
+          variant="h2"
+          sx={{ fontSize: '1.25rem', fontWeight: '600' }}
+        >
+          {label}
+        </Typography>
+      )}
+      <Stack sx={{ fontSize: '0.875rem', color: 'black', gap: 1 }}>
+        {landingPageItems?.map((categoryItem, idx) => (
+          <LandingPageItem {...categoryItem} key={idx} />
+        ))}
+        {sections?.map((section, idx) => (
+          <CategorySection {...section} key={idx} />
+        ))}
+      </Stack>
+    </Paper>
+  );
+
+  const categoryCardSkeleton = (
+    <Skeleton
+      variant="rectangular"
+      sx={{
+        width: { sm: '300px', xs: '100%' },
+        height: '450px',
+      }}
+    />
+  );
   return (
     <LandingPageItemRenderer
       landingPageItems={arrangedLandingPageItems}
@@ -50,44 +88,8 @@ export default function CategoryCard({
       isLoadingSections={isLoadingSections}
       isError={isError}
       isErrorSections={isErrorSections}
-      skeleton={
-        <Skeleton
-          variant="rectangular"
-          sx={{
-            width: { sm: '300px', xs: '100%' },
-            height: '450px',
-          }}
-        />
-      }
-      item={
-        <Paper
-          sx={{
-            width: {
-              sm: '300px',
-              xs: '100%',
-            },
-            padding: '24px',
-          }}
-        >
-          {label !== '' && (
-            <Typography
-              variant="h2"
-              sx={{ fontSize: '1.25rem', fontWeight: '600' }}
-            >
-              {label}
-            </Typography>
-          )}
-
-          <Stack sx={{ fontSize: '0.875rem', color: 'black', gap: 1 }}>
-            {landingPageItems?.map((categoryItem, idx) => (
-              <LandingPageItem {...categoryItem} key={idx} />
-            ))}
-            {sections?.map((section, idx) => (
-              <CategorySection {...section} key={idx} />
-            ))}
-          </Stack>
-        </Paper>
-      }
+      skeleton={categoryCardSkeleton}
+      item={categoryCardItem}
     />
   );
 }
