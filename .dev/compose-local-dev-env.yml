@@ -3,7 +3,7 @@ services:
   server:
     networks:
       - docportal_network
-    image: artifactory.guidewire.com/hub-docker-remote/node:16.16.0
+    image: artifactory.guidewire.com/hub-docker-remote/node:18.18.2
     container_name: server
     restart: always
     environment:
@@ -20,7 +20,7 @@ services:
   landing-pages:
     networks:
       - docportal_network
-    image: artifactory.guidewire.com/hub-docker-remote/node:16.16.0
+    image: artifactory.guidewire.com/hub-docker-remote/node:18.18.2
     container_name: landing-pages
     restart: always
     environment:
@@ -35,7 +35,7 @@ services:
   db:
     networks:
       - docportal_network
-    image: artifactory.guidewire.com/hub-docker-remote/postgres:14.1-alpine
+    image: artifactory.guidewire.com/hub-docker-remote/postgres:13.9-alpine
     container_name: db
     restart: always
     environment:
