@@ -15,7 +15,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging", 
+        "prod"
       ],
       "displayOnLandingPages": false,
       "indexForSearch": false,
