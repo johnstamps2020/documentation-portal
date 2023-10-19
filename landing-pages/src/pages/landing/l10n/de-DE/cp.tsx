@@ -11,7 +11,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Produkt auswählen',
-    selectedItemLabel: 'VendorEngage',
+    selectedItemLabel: 'Cloud Platform',
     items: allSelectors.sabc928e21c4c1dfb2a841b6b2331c9db,
     labelColor: 'white',
   },
