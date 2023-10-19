@@ -280,6 +280,7 @@ export const allSelectors = {
   sabc928e21c4c1dfb2a841b6b2331c9db: [
     { label: 'BillingCenter', pagePath: 'l10n/de-DE/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/de-DE/cc' },
+    { label: 'Cloud Platform', pagePath: 'l10n/de-DE/cp' },
     {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/de-DE/ce-am',
@@ -300,6 +301,7 @@ export const allSelectors = {
     },
     { label: 'ServiceRepEngage', pagePath: 'l10n/de-DE/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/de-DE/ve' },
+    { label: 'Was ist neu in Hakuba', pagePath: 'l10n/de-DE/ve' },
   ],
   sfa48f3b641ce1ec0fe00a60fefbb4192: [
     { label: 'Deutsch', pagePath: 'l10n/de-DE' },
@@ -315,6 +317,7 @@ export const allSelectors = {
     { label: 'BillingCenter', pagePath: 'l10n/es-419/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/es-419/cc' },
     { label: 'Cloud Data Access', pagePath: 'l10n/es-419/cda' },
+    { label: 'Cloud Platform', pagePath: 'l10n/es-419/cp' },
     {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/es-419/ce-am',
@@ -329,6 +332,7 @@ export const allSelectors = {
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/es-419/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/es-419/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/es-419/cm' },
+    { label: 'Novedades de Hakuba', pagePath: 'l10n/es-419/202306hakubawhatsnew' },
     { label: 'PolicyCenter', pagePath: 'l10n/es-419/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/es-419/pe' },
     {
@@ -363,6 +367,7 @@ export const allSelectors = {
   sef23284b869fc03ddd79bc1738f4ad7d: [
     { label: 'BillingCenter', pagePath: 'l10n/fr-FR/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/fr-FR/cc' },
+    { label: 'Cloud Platform', pagePath: 'l10n/fr-FR/cp' },
     {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/fr-FR/ce-am',
@@ -375,6 +380,7 @@ export const allSelectors = {
     { label: 'DataHub', pagePath: 'l10n/fr-FR/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/fr-FR/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
+    { label: 'Nouveautés de Hakuba', pagePath: 'l10n/fr-FR/202306hakubawhatsnew' },
     { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/fr-FR/pe' },
     {
@@ -448,9 +454,14 @@ export const allSelectors = {
     { label: 'BillingCenter', pagePath: 'l10n/pt-BR/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/pt-BR/cc' },
     { label: 'Cloud Data Access', pagePath: 'l10n/pt-BR/cda' },
+    { label: 'Cloud Platform', pagePath: 'l10n/pt-BR/cp' },
     {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/pt-BR/ce-am',
+    },
+    {
+      label: 'CustomerEngage for ClaimCenter',
+      pagePath: 'l10n/pt-BR/ce-claims',
     },
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/pt-BR/ce-qb' },
     { label: 'DataHub', pagePath: 'l10n/pt-BR/dh' },
@@ -458,8 +469,10 @@ export const allSelectors = {
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/pt-BR/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/pt-BR/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/pt-BR/cm' },
+    { label: 'Novidades na Hakuba', pagePath: 'l10n/pt-BR/202306whatsnewhakuba' },
     { label: 'PolicyCenter', pagePath: 'l10n/pt-BR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/pt-BR/pe' },
+    { label: 'ProducerEngage for ClaimCenter', pagePath: 'l10n/pt-BR/pe-claims' },
     { label: 'ServiceRepEngage', pagePath: 'l10n/pt-BR/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/pt-BR/ve' },
   ],
