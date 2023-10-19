@@ -18,6 +18,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Novidades na Hakuba',
+      pagePath: 'l10n/pt-BR/202306hakubawhatsnew',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/pt-BR/bc',
     },
@@ -30,8 +34,16 @@ const pageConfig: ProductFamilyLayoutProps = {
       docId: 'clouddataaccessguideptBR',
     },
     {
+      label: 'Cloud Platform',
+      pagePath: 'l10n/pt-BR/cp',
+    },
+    {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/pt-BR/ce-am',
+    },
+    {
+      label: 'CustomerEngage Account Management for ClaimCenter',
+      pagePath: 'l10n/pt-BR/ce-claims',
     },
     {
       label: 'CustomerEngage Quote and Buy',
@@ -64,6 +76,10 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'ProducerEngage',
       pagePath: 'l10n/pt-BR/pe',
+    },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/pt-BR/pe-claims',
     },
     {
       label: 'ServiceRepEngage',

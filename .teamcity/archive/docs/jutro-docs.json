@@ -68,6 +68,62 @@
       "earlyAccess": false
     },
     {
+      "id": "jutro8120",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/8.12.0",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "8.12.0"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook8120",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/8.12.0",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "8.12.0"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutro8130",
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/8.13.0",
@@ -87,11 +143,10 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -116,11 +171,10 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
       "public": false,
       "internal": true,
       "earlyAccess": false

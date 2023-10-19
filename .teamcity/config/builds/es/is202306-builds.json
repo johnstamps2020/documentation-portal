@@ -1,0 +1,59 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202306es419src",
+      "docId": "isbc202306es419releasenotes",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "UpdateGuide.ditamap",
+      "srcId": "is202306es419src",
+      "docId": "isbc202306es419update",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202306es419src",
+      "docId": "iscc202306es419releasenotes",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "UpdateGuide.ditamap",
+      "srcId": "is202306es419src",
+      "docId": "iscc202306es419update",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202306es419src",
+      "docId": "ispc202306es419releasenotes",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "UpdateGuide.ditamap",
+      "srcId": "is202306es419src",
+      "docId": "ispc202306es419update",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}
