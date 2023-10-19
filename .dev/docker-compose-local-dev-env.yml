@@ -43,7 +43,7 @@ services:
       POSTGRES_PASSWORD: testtesttest
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - ./volumes/db:/var/lib/postgresql/data
+      - db_volume:/var/lib/postgresql/data
     ports:
       - "5432:5432"
   search:
@@ -63,10 +63,13 @@ services:
         soft: 65536
         hard: 65536
     volumes:
-      - ./volumes/search:/usr/share/elasticsearch/data
+      - search_volume:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
 networks:
   docportal_network:
     driver: bridge
+volumes:
+  db_volume:
+  search_volume:
