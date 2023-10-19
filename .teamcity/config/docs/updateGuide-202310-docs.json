@@ -1,0 +1,81 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc202310update",
+      "title": "Update",
+      "url": "cloud/bc/202310/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202310update",
+      "title": "Update",
+      "url": "cloud/cc/202310/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202310update",
+      "title": "Update",
+      "url": "cloud/pc/202310/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ee202310update",
+      "title": "Update",
+      "url": "cloud/ee/202310/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Digital Reference Applications"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

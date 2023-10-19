@@ -19,6 +19,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: 'Update',
+      items: [
+        {
+          label: 'Update Guide',
+          docId: 'ee202310update',
+        },
+      ],
+    },
+    {
       label: 'Jutro Design System (Next)',
       items: [
         {
