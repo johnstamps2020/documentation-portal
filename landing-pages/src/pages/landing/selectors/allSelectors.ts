@@ -301,7 +301,7 @@ export const allSelectors = {
     },
     { label: 'ServiceRepEngage', pagePath: 'l10n/de-DE/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/de-DE/ve' },
-    { label: 'Was ist neu in Hakuba', pagePath: 'l10n/de-DE/ve' },
+    { label: 'Was ist neu in Hakuba', pagePath: 'l10n/de-DE/202306hakubawhatsnew' },
   ],
   sfa48f3b641ce1ec0fe00a60fefbb4192: [
     { label: 'Deutsch', pagePath: 'l10n/de-DE' },
@@ -469,7 +469,7 @@ export const allSelectors = {
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/pt-BR/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/pt-BR/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/pt-BR/cm' },
-    { label: 'Novidades na Hakuba', pagePath: 'l10n/pt-BR/202306whatsnewhakuba' },
+    { label: 'Novidades na Hakuba', pagePath: 'l10n/pt-BR/202306hakubawhatsnew' },
     { label: 'PolicyCenter', pagePath: 'l10n/pt-BR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/pt-BR/pe' },
     { label: 'ProducerEngage for ClaimCenter', pagePath: 'l10n/pt-BR/pe-claims' },
