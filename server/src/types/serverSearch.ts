@@ -11,23 +11,33 @@ export type SearchData = {
   requestIsAuthenticated: boolean;
 };
 
-export type ServerSearchResult = {
+export type SearchResultSource = {
+  product: string[];
+  internal: boolean;
+  release: string[] | null;
+  subject: string[] | null;
+  doc_title: string;
+  doc_display_title: string | null;
+  language: string;
+  title: string;
+  body: string;
+  doc_id: string;
+  version: string[];
+  platform: string[];
+  public: boolean;
   href: string;
+  id: string;
+  indexed_date: string;
+}
+
+export type ServerSearchResult = SearchResultSource & {
   score: number;
   title: string;
   titlePlain: string;
-  version: string;
   body: string;
   bodyPlain: string;
-  docTags: [][] | string[];
-  innerHits: [];
-  uniqueHighlightTerms: [];
-};
-
-export type ServerSearchInnerHit = {
-  label: string;
-  href: string;
-  tags: string[];
+  innerHits: SearchResultSource[];
+  uniqueHighlightTerms: string;
 };
 
 export type ServerSearchFilterValue = {
@@ -40,11 +50,6 @@ export type ServerSearchFilter = {
   name: string;
   label?: string;
   values: ServerSearchFilterValue[];
-};
-
-export type NestedServerSearchFilter = {
-  label: string;
-  searchFilters: ServerSearchFilter[];
 };
 
 export type ServerSearchError = {

@@ -298,7 +298,7 @@ function sortObjectsFromNewestToOldest(objectsList) {
   }
 }
 
-async function prepareResultsToDisplay(searchResults, filterFields) {
+async function prepareResultsToDisplay(searchResults) {
   return searchResults.hits.map((result) => {
     const docScore = result._score;
     const innerHits = result.inner_hits.same_title.hits.hits;
@@ -306,6 +306,8 @@ async function prepareResultsToDisplay(searchResults, filterFields) {
       (h) => h._score === docScore
     );
 
+    // If there are multiple inner hits with the same score as the main result,
+    // we want to display the inner hit with the newest version number.
     let mainResult =
       innerHitsMatchingDocScore.length > 0
         ? sortObjectsFromNewestToOldest(innerHitsMatchingDocScore)[0]
@@ -317,14 +319,6 @@ async function prepareResultsToDisplay(searchResults, filterFields) {
 
     const doc = mainResult._source;
     const highlight = mainResult.highlight;
-    // TODO: Move this part to landing pages. It seems like a duplicate of available filters. Currently, the tags
-    //  show more info than filters
-    let docTags = [];
-    for (const field of filterFields) {
-      if (doc[field]) {
-        docTags.push(doc[field]);
-      }
-    }
 
     const highlightTitleKey = Object.getOwnPropertyNames(highlight).filter(
       (k) => k.startsWith('title') && !k.startsWith('title.raw')
@@ -362,21 +356,11 @@ async function prepareResultsToDisplay(searchResults, filterFields) {
       innerHitsWithoutMainResult
     );
 
-    let innerHitsToDisplay = [];
-    for (const innerHit of sortedInnerHits) {
-      const hitLabel = innerHit._source.title;
-      const hitHref = innerHit._source.href;
-      const hitPlatform = innerHit._source.platform;
-      const hitProduct = innerHit._source.product;
-      const hitVersion = innerHit._source.version;
-      innerHitsToDisplay.push({
-        label: hitLabel,
-        href: hitHref,
-        tags: [...hitProduct, ...hitPlatform, ...hitVersion],
-      });
-    }
+    const innerHitsToDisplay = sortedInnerHits.map(
+      (innerHit) => innerHit._source
+    );
 
-    let hitsWithUniqueUrls = [];
+    const hitsWithUniqueUrls = [];
     for (const hit of innerHitsToDisplay) {
       if (!hitsWithUniqueUrls.find((h) => h.href === hit.href)) {
         hitsWithUniqueUrls.push(hit);
@@ -384,14 +368,12 @@ async function prepareResultsToDisplay(searchResults, filterFields) {
     }
 
     return {
-      href: doc.href,
+      ...doc,
       score: docScore,
       title: sanitizeTagNames(titleText),
       titlePlain: sanitizeTagNames(doc.title),
-      version: doc.version.join(', '),
       body: sanitizeTagNames(bodyText),
       bodyPlain: sanitizeTagNames(bodyBlurb),
-      docTags: docTags,
       innerHits: hitsWithUniqueUrls,
       uniqueHighlightTerms: uniqueHighlightTerms,
     };
@@ -457,16 +439,6 @@ async function searchController(req, res, next) {
       results,
       keywordFields
     );
-
-    const retrievedTags = [];
-
-    resultsToDisplay.forEach((result) => {
-      result.docTags.forEach((tag) => {
-        if (!retrievedTags.includes(tag)) {
-          retrievedTags.push(tag);
-        }
-      });
-    });
 
     if (req.query.rawJSON === 'true') {
       return {
