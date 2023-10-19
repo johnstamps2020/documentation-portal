@@ -28,11 +28,12 @@
             </DockerPortBindingImpl>
           </list>
         </option>
+        <option name="commandLineOptions" value="" />
         <option name="volumeBindings">
           <list>
             <DockerVolumeBindingImpl>
               <option name="containerPath" value="/var/lib/postgresql/data" />
-              <option name="hostPath" value="$PROJECT_DIR$/.dev/volumes/db" />
+              <option name="hostPath" value="dev_db_volume" />
             </DockerVolumeBindingImpl>
           </list>
         </option>
