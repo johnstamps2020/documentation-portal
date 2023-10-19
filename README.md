@@ -82,7 +82,7 @@ work. You need to import a database dump first!
 If you use VS Code, run the **Compose local dev environment** task. If you use
 IntelliJ IDEA, run the **Compose local dev environment** configuration. If you
 use the terminal, run this command in the root folder of the project:
-`docker compose -f .dev/compose-local-dev-env.yml up --build --detach`.
+`docker compose -f .dev/docker-compose-local-dev-env.yml up --build --detach`.
 
 ### VS Code
 
