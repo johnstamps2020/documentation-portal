@@ -2,7 +2,7 @@
   <configuration default="false" name="Start docportal DB" type="docker-deploy" factoryName="docker-image" server-name="Docker">
     <deployment type="docker-image">
       <settings>
-        <option name="imageTag" value="artifactory.guidewire.com/hub-docker-remote/postgres:14.1-alpine" />
+        <option name="imageTag" value="artifactory.guidewire.com/hub-docker-remote/postgres:13.9-alpine" />
         <option name="containerName" value="docportal-db" />
         <option name="envVars">
           <list>
@@ -28,7 +28,6 @@
             </DockerPortBindingImpl>
           </list>
         </option>
-        <option name="commandLineOptions" value="" />
         <option name="volumeBindings">
           <list>
             <DockerVolumeBindingImpl>
