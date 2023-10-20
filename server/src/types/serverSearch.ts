@@ -28,7 +28,7 @@ export type SearchResultSource = {
   href: string;
   id: string;
   indexed_date: string;
-}
+};
 
 export type ServerSearchResult = SearchResultSource & {
   score: number;
@@ -48,7 +48,6 @@ export type ServerSearchFilterValue = {
 
 export type ServerSearchFilter = {
   name: string;
-  label?: string;
   values: ServerSearchFilterValue[];
 };
 

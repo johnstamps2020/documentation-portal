@@ -301,6 +301,7 @@ function sortObjectsFromNewestToOldest(objectsList) {
 async function prepareResultsToDisplay(searchResults) {
   return searchResults.hits.map((result) => {
     const docScore = result._score;
+    let mainResult = result;
     const innerHits = result.inner_hits.same_title.hits.hits;
     const innerHitsMatchingDocScore = innerHits.filter(
       (h) => h._score === docScore
@@ -308,10 +309,9 @@ async function prepareResultsToDisplay(searchResults) {
 
     // If there are multiple inner hits with the same score as the main result,
     // we want to display the inner hit with the newest version number.
-    let mainResult =
-      innerHitsMatchingDocScore.length > 0
-        ? sortObjectsFromNewestToOldest(innerHitsMatchingDocScore)[0]
-        : result;
+    if (innerHitsMatchingDocScore.length > 0) {
+      mainResult = sortObjectsFromNewestToOldest(innerHitsMatchingDocScore)[0];
+    }
 
     const innerHitsWithoutMainResult = innerHits.filter(
       (h) => h._id !== mainResult._id
@@ -329,8 +329,8 @@ async function prepareResultsToDisplay(searchResults) {
     )[0];
     const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
 
-    //The "number_of_fragments" parameter is set to "0' for the title field.
-    //So no fragments are produced, instead the whole content of the field is returned
+    // The "number_of_fragments" parameter is set to "0' for the title field.
+    // So no fragments are produced, instead the whole content of the field is returned
     // as the first element of the array, and matches are highlighted.
     const titleText = highlightTitleKey
       ? highlight[highlightTitleKey][0]

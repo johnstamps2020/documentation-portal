@@ -1,31 +1,30 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
-import { ServerSearchFilter } from 'server/dist/types/serverSearch';
-import SearchFilterCheckboxList from './SearchFilterCheckboxList';
 import {
   StyledAccordion,
   StyledAccordionDetails,
   StyledAccordionSummary,
 } from './StyledSearchComponents';
 
-type SearchFilterProps = {
+type SearchFilterGroupProps = {
   label: string;
-  serverSearchFilter: ServerSearchFilter;
+  name: string;
   expanded: boolean;
   onChange: (filterName: string, filterIsExpanded: boolean) => void;
+  children: React.ReactNode;
 };
 
-export default function SearchFilter({
+export default function SearchFilterGroup({
   label,
-  serverSearchFilter,
   expanded,
   onChange,
-}: SearchFilterProps) {
+  children,
+}: SearchFilterGroupProps) {
   function handleAccordionExpandCollapse(
     event: React.SyntheticEvent,
     isExpanded: boolean
   ) {
-    onChange(serverSearchFilter.name, isExpanded);
+    onChange(label, isExpanded);
   }
 
   return (
@@ -38,16 +37,9 @@ export default function SearchFilter({
         aria-controls="search-filter-panel-content"
         id="search-filter-panel-header"
       >
-        {label || serverSearchFilter.name.replaceAll('_', ' ')} (
-        {serverSearchFilter.values.filter((v) => v.checked).length}/
-        {serverSearchFilter.values.length})
+        {label}
       </StyledAccordionSummary>
-      <StyledAccordionDetails>
-        <SearchFilterCheckboxList
-          filterName={serverSearchFilter.name}
-          values={serverSearchFilter.values}
-        />
-      </StyledAccordionDetails>
+      <StyledAccordionDetails>{children}</StyledAccordionDetails>
     </StyledAccordion>
   );
 }
