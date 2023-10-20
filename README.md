@@ -27,13 +27,18 @@ You need the following tools:
 
 Create a `server/.env` file with the following variables:
 
-> IMPORTANT: Private keys and other sensitive data are not listed below, so you
-> need to get them from Password Vault or AWS Secrets Manager.
-
-> IMPORTANT: If you use docker compose for running the local dev environment,
-> you need to set different values for the following variables:
-> CONFIG_DB_HOST=db, FRONTEND_URL=http://landing-pages:6006,
-> ELASTIC_SEARCH_URL=http://search:9200
+> IMPORTANT:
+>
+> - Private keys and other sensitive data are not listed below, so you need to
+>   get them from Password Vault or AWS Secrets Manager.
+> - By default, Node.js 18 resolves `localhost` to the IPv6 address (`::1`), so
+>   you may need to change the value of the `FRONTEND_URL` variable to
+>   `http://127.0.0.1:6006`
+> - If you use docker compose for running the local dev environment, you need to
+>   set different values for the following variables:
+>   - `CONFIG_DB_HOST=db`
+>   - `FRONTEND_URL=http://landing-pages:6006`
+>   - `ELASTIC_SEARCH_URL=http://search:9200`
 
 ```
 OKTA_CLIENT_ID=
