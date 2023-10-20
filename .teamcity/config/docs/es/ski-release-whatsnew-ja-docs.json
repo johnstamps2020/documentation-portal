@@ -13,7 +13,7 @@
         "release": ["Hakuba"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
