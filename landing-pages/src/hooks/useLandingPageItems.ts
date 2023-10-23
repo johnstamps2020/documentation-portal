@@ -120,38 +120,16 @@ const landingPageItemGetter = async (
 };
 
 export function useLandingPageItems(items: LandingPageItemProps[]) {
-  const { data, error, isLoading } = useSWR<LandingPageItemData[], PageError>(
-    items,
-    landingPageItemGetter,
-    {
-      revalidateOnFocus: false,
-    }
-  );
-
-  const landingPageItems: LandingPageItemData[] = [];
-
-  if (data) {
-    items.forEach((inputItem) => {
-      const matchingOutputItem = data?.find((outputItem) => {
-        return (
-          (outputItem.label &&
-            inputItem.label &&
-            outputItem.label === inputItem.label) ||
-          (outputItem.title && outputItem.title === inputItem.label)
-        );
-      });
-
-      if (
-        matchingOutputItem &&
-        !landingPageItems.includes(matchingOutputItem)
-      ) {
-        landingPageItems.push(matchingOutputItem);
-      }
-    });
-  }
+  const {
+    data: landingPageItems,
+    error,
+    isLoading,
+  } = useSWR<LandingPageItemData[], PageError>(items, landingPageItemGetter, {
+    revalidateOnFocus: false,
+  });
 
   return {
-    landingPageItems: landingPageItems.length > 0 ? landingPageItems : null,
+    landingPageItems,
     isLoading,
     isError: error,
   };
