@@ -81,14 +81,14 @@ export default function LandingPageSelector({
     };
   }, []);
 
-  if (isError || !landingPageItems) {
-    return null;
-  }
-
-  if (isLoading) {
+  if (isLoading || (isLoading && !landingPageItems)) {
     return (
       <Skeleton variant="rectangular" sx={{ width: '300px', height: '55px' }} />
     );
+  }
+
+  if (isError || !landingPageItems) {
+    return null;
   }
 
   const pageSelectorItems: PageSelectorItem[] = landingPageItems
