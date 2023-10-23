@@ -13,15 +13,19 @@ export default function SearchFilterCheckboxList({
 }: SearchFilterCheckboxProps) {
   // sort by checked first, then by alphabetically
   // if it's "version", reverse the order
+
   values.sort((a, b) => {
     if (a.checked && !b.checked) {
       return -1;
     } else if (!a.checked && b.checked) {
       return 1;
     } else {
-      return (
-        a.label.localeCompare(b.label) * (filterName === 'version' ? -1 : 1)
-      );
+      return ['version', 'release'].includes(filterName)
+        ? b.label.localeCompare(a.label, undefined, {
+            numeric: true,
+            sensitivity: 'base',
+          })
+        : a.label.localeCompare(b.label);
     }
   });
 
