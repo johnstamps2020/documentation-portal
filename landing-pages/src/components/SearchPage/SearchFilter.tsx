@@ -8,13 +8,15 @@ import {
   StyledAccordionSummary,
 } from './StyledSearchComponents';
 
-type SearchFilterProps = {
+export type SearchFilterProps = {
+  label: string;
   serverSearchFilter: ServerSearchFilter;
   expanded: boolean;
   onChange: (filterName: string, filterIsExpanded: boolean) => void;
 };
 
 export default function SearchFilter({
+  label,
   serverSearchFilter,
   expanded,
   onChange,
@@ -36,7 +38,7 @@ export default function SearchFilter({
         aria-controls="search-filter-panel-content"
         id="search-filter-panel-header"
       >
-        {serverSearchFilter.name.replace('_', ' ')} (
+        {label} (
         {serverSearchFilter.values.filter((v) => v.checked).length}/
         {serverSearchFilter.values.length})
       </StyledAccordionSummary>
