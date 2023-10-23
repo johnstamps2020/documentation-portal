@@ -4,7 +4,10 @@ import LandingPageItem from './CategoryItem';
 import LandingPageItemRenderer, {
   LandingPageItemRendererProps,
 } from '../LandingPageItemRenderer';
-import { Paper, Typography, Skeleton, Stack } from '@mui/material';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
 
 const bikeLandingPageItemData: LandingPageItemData[] = [
   {
