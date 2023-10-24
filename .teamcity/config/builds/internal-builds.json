@@ -48,6 +48,14 @@
       "workingDir": "service/website",
       "nodeImageVersion": "18.0.0",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "helios",
+      "srcId": "heliossrc",
+      "workingDir": "service/website",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     }
   ]
 }
