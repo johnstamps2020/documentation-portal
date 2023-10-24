@@ -12,11 +12,20 @@ export default function HiddenSearchInputs() {
     return null;
   }
 
-  const { platform, product, version } = searchMeta;
+  const { platform, product, version, release } = searchMeta;
+  const isCloudDoc = platform.includes('Cloud');
+  const isSelfManagedDoc = platform.includes('Self-managed');
+  const hiddenInputs = { platform, product };
+  if (isCloudDoc) {
+    hiddenInputs['release'] = release;
+  }
+  if (isSelfManagedDoc) {
+    hiddenInputs['version'] = version;
+  }
 
   return (
     <>
-      {Object.entries({ platform, product, version })
+      {Object.entries(hiddenInputs)
         ?.map(([key, value]) => {
           if (Array.isArray(value) && value.length > 0) {
             return (

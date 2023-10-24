@@ -35,12 +35,18 @@ const uiFilters: UIFilter[] = [
   { name: 'language', label: 'Language' },
 ];
 
-function updateListOfFilterStatuses(filters: UIFilter[], value: boolean): SearchFilterExpandStatus[] {
+function updateListOfFilterStatuses(
+  filters: UIFilter[],
+  value: boolean
+): SearchFilterExpandStatus[] {
   const filterStatusList: SearchFilterExpandStatus[] = [];
 
-  filters.forEach(filter => {
+  filters.forEach((filter) => {
     if (filter.filters) {
-      const subFilterStatusList = updateListOfFilterStatuses(filter.filters, value);
+      const subFilterStatusList = updateListOfFilterStatuses(
+        filter.filters,
+        value
+      );
       filterStatusList.push(...subFilterStatusList);
     }
 
@@ -48,7 +54,7 @@ function updateListOfFilterStatuses(filters: UIFilter[], value: boolean): Search
       filterName: filter.name,
       filterIsExpanded: value,
     });
-  })
+  });
   return filterStatusList;
 }
 
@@ -136,31 +142,38 @@ export default function SearchFilterPanel() {
         <ClearFilterButton label="Clear filters" grouped={true} />
       </ButtonGroup>
       {uiFilters && !isLoading && searchData ? (
-        uiFilters.map((uf) =>
-          uf.filters ? (
-            <SearchFilterGroup
-              key={uf.name}
-              label={uf.label}
-              name={uf.name}
-              expanded={getPanelStatus(uf.name)}
-              onChange={handleChange}
-              items={uf.filters}
-              searchData={searchData}
-              onExpandCollapse={getPanelStatus}
-            />
-          ) : (
-            <SearchFilter
-              key={uf.name}
-              label={uf.label}
-              // @ts-ignore
-              serverSearchFilter={searchData.filters.find(
-                (f) => f.name === uf.name
-              )}
-              expanded={getPanelStatus(uf.name)}
-              onChange={handleChange}
-            />
-          )
-        )
+        uiFilters.map((uf) => {
+          const subFilters = uf.filters;
+          if (subFilters) {
+            return (
+              <SearchFilterGroup
+                key={uf.name}
+                label={uf.label}
+                name={uf.name}
+                expanded={getPanelStatus(uf.name)}
+                onChange={handleChange}
+                items={subFilters}
+                searchData={searchData}
+                onExpandCollapse={getPanelStatus}
+              />
+            );
+          }
+          const serverSearchFilter = searchData.filters.find(
+            (f) => f.name === uf.name
+          );
+          if (serverSearchFilter) {
+            return (
+              <SearchFilter
+                key={uf.name}
+                label={uf.label}
+                serverSearchFilter={serverSearchFilter}
+                expanded={getPanelStatus(uf.name)}
+                onChange={handleChange}
+              />
+            );
+          }
+          return null;
+        })
       ) : (
         <FilterItemsSkeleton />
       )}

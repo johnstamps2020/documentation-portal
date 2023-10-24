@@ -51,7 +51,7 @@ function VersionSelector() {
   function handleChange(event: SelectChangeEvent) {
     const url =
       window.location.hostname === 'localhost'
-        ? `https://docs.int.ccs.guidewire.net`
+        ? `https://docs.staging.ccs.guidewire.net`
         : `https://${window.location.hostname}`;
     const targetUrl = `${url}/${event.target.value}`;
     window.location.href = targetUrl;

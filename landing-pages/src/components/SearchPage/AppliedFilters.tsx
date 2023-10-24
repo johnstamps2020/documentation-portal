@@ -25,7 +25,14 @@ export default function AppliedFilters() {
           }
           return null;
         })
-        .filter(Boolean) as ServerSearchFilter[];
+        .filter(Boolean)
+        .filter((f) => f?.name !== 'platform') as ServerSearchFilter[];
+        // FIXME: Temporary fix. We need to have a single source of truth
+        // about the list of filters to display and use that single list 
+        // in all places.
+        //  - Create a context for expand/collapse status
+        //  - Use the searchData hook in all filter components
+        //  - pass down only the label etc. to the filter components
 
       if (currentlyChecked.length > 0) {
         setCheckedFilters(currentlyChecked);
