@@ -20,6 +20,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Support Matrix',
           url: '/support-matrices/data-management/data-management-2023.06-hakuba-support-matrix.pdf',
+          videoIcon: false,
         },
       ],
     },
