@@ -139,11 +139,11 @@ const pageConfig: SectionLayoutProps = {
           docId: 'ininstallassistdraft',
         },
         {
-          label: 'Developer Setup Draft',
+          label: 'Developer Setup - Internal',
           docId: 'indevguidejava11draft',
         },
         {
-          label: 'Developers Setup',
+          label: 'Developer Setup',
           docId: 'indevguidejava11ext',
         },
         {
