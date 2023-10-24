@@ -17,6 +17,10 @@ const pageConfig: SectionLayoutProps = {
           label: 'Release Notes',
           docId: 'dhrn202302',
         },
+        {
+          label: 'Support Matrix',
+          url: '/support-matrices/data-management/data-management-2023.02-garmisch-support-matrix.pdf',
+        },
       ],
     },
     {
