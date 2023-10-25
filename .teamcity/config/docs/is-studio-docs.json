@@ -9,17 +9,15 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": [
-          "2023.06",
-          "2023.10"
+          "2023.06"
         ],
         "subject": ["Installation"],
         "release": [
-          "Hakuba",
-          "Innsbruck"
+          "Hakuba"
         ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
