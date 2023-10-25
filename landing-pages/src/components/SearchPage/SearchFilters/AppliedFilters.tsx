@@ -4,9 +4,10 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { useSearchData } from 'hooks/useApi';
-import AppliedFiltersSkeleton from './AppliedFiltersSkeleton';
+import AppliedFiltersSkeleton from '../AppliedFiltersSkeleton';
 import { useEffect, useState } from 'react';
 import AppliedFilterControl from './AppliedFilterControl';
+import { uiFilters } from './SearchFilterPanel';
 
 export default function AppliedFilters() {
   const { searchData, isLoading, isError } = useSearchData();
@@ -16,6 +17,17 @@ export default function AppliedFilters() {
     if (searchData) {
       const currentlyChecked = searchData.filters
         .map((f) => {
+          // This guarding clause checks if the filter is listed in uiFilters
+          // or as one of the sub-filters of an existing uiFilter
+          if (
+            !uiFilters.some(
+              (uiFilter) =>
+                uiFilter.name === f.name ||
+                uiFilter.filters?.some((subFilter) => subFilter.name === f.name)
+            )
+          ) {
+            return null;
+          }
           const checkedValues = f.values.filter((v) => v.checked);
           if (checkedValues.length > 0) {
             return {
@@ -23,16 +35,10 @@ export default function AppliedFilters() {
               values: checkedValues,
             };
           }
+
           return null;
         })
-        .filter(Boolean)
-        .filter((f) => f?.name !== 'platform') as ServerSearchFilter[];
-        // FIXME: Temporary fix. We need to have a single source of truth
-        // about the list of filters to display and use that single list 
-        // in all places.
-        //  - Create a context for expand/collapse status
-        //  - Use the searchData hook in all filter components
-        //  - pass down only the label etc. to the filter components
+        .filter(Boolean) as ServerSearchFilter[];
 
       if (currentlyChecked.length > 0) {
         setCheckedFilters(currentlyChecked);

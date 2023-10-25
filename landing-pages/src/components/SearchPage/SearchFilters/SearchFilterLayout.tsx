@@ -1,6 +1,6 @@
 import Drawer from '@mui/material/Drawer';
 import { useMobile } from 'hooks/useMobile';
-import { useSearchLayoutContext } from './SearchLayoutContext';
+import { useSearchLayoutContext } from '../SearchLayoutContext';
 import SearchFilterPanel from './SearchFilterPanel';
 
 export default function SearchFilterLayout() {
