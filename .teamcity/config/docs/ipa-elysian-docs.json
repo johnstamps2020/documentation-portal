@@ -6,7 +6,11 @@
       "title": "Release Notes",
       "url": "cloud/ipa/elysian/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Release notes"],
@@ -25,7 +29,11 @@
       "title": "Configuration",
       "url": "cloud/ipa/elysian/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Development"],
@@ -44,7 +52,11 @@
       "title": "Application Guide",
       "url": "cloud/ipa/elysian/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Features and functionality"],

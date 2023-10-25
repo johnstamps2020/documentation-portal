@@ -326,7 +326,12 @@
           "Cloud"
         ],
         "product": [
-          "Glossary"
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "DataHub",
+          "InfoCenter",
+          "Digital Reference Applications"
         ],
         "version": [
           "latest"
@@ -477,6 +482,15 @@
           "Cloud",
           "Self-managed"
         ],
+        "release": [
+          "Innsbruck",
+          "Hakuba",
+          "Garmisch",
+          "Flaine",
+          "Elysian",
+          "Dobson",
+          "Cortina"
+        ],
         "product": [
           "Internal Docs"
         ],
@@ -604,6 +618,14 @@
       "metadata": {
         "platform": [
           "Cloud"
+        ],
+        "release": [
+          "Hakuba",
+          "Garmisch",
+          "Flaine",
+          "Elysian",
+          "Dobson",
+          "Cortina"
         ],
         "product": [
           "BillingCenter",

@@ -6,7 +6,12 @@
       "title": "PolicyCenter for London Market Application Guide",
       "url": "london/3.2/pcapp",
       "metadata": {
-        "product": ["London Market"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
+        "release": ["Dobson"],
         "platform": ["Cloud"],
         "version": ["3.2"],
         "subject": ["Features and functionality"],
@@ -24,7 +29,12 @@
       "title": "London Market Release Notes",
       "url": "london/3.2/releasenotes",
       "metadata": {
-        "product": ["London Market"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
+        "release": ["Dobson"],
         "platform": ["Cloud"],
         "version": ["3.2"],
         "subject": ["Release notes"],

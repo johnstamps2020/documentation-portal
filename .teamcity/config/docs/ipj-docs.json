@@ -6,7 +6,11 @@
       "title": "Release Notes",
       "url": "ipj/flaine/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud", "Self-managed"],
         "version": ["0.1"],
         "release": ["Flaine"],
@@ -25,7 +29,11 @@
       "title": "Configuration",
       "url": "ipj/flaine/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud", "Self-managed"],
         "version": ["0.1"],
         "release": ["Flaine"],
@@ -44,7 +52,11 @@
       "title": "Application Guide",
       "url": "ipj/flaine/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud", "Self-managed"],
         "version": ["0.1"],
         "release": ["Flaine"],
@@ -63,7 +75,11 @@
       "title": "Release Notes",
       "url": "ipj/garmisch/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -82,7 +98,11 @@
       "title": "Configuration",
       "url": "ipj/garmisch/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -101,7 +121,11 @@
       "title": "Application Guide",
       "url": "ipj/garmisch/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -120,7 +144,11 @@
       "title": "Installation Guide",
       "url": "ipj/garmisch/install",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
