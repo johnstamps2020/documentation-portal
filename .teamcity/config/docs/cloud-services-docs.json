@@ -80,11 +80,11 @@
     {
       "id": "lifecyclemgr",
       "title": "Lifecycle Manager",
-      "url": "cloud/lifecyclemgr/2.0",
+      "url": "cloud/lifecyclemgr/latest",
       "metadata": {
         "product": ["Lifecycle Manager"],
         "platform": ["Cloud"],
-        "version": ["2.0"],
+        "version": ["latest"],
         "release": ["Innsbruck"],
         "subject": ["Configuration"],
         "language": "en"
