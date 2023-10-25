@@ -6,7 +6,11 @@
       "title": "Implementation",
       "url": "self-managed/ipg/38/impl",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Features and functionality"],
@@ -24,7 +28,11 @@
       "title": "Application Guide",
       "url": "self-managed/ipg/38/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Features and functionality"],
@@ -42,7 +50,11 @@
       "title": "Installation",
       "url": "self-managed/ipg/38/install",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Installation"],
@@ -60,7 +72,11 @@
       "title": "Release Notes",
       "url": "self-managed/ipg/38/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Release notes"],
@@ -78,7 +94,11 @@
       "title": "Release Notes (German)",
       "url": "de/self-managed/ipg/38/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Release notes"],
@@ -96,7 +116,11 @@
       "title": "Glossary",
       "url": "self-managed/ipg/38/glossary",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Glossary"],
@@ -114,7 +138,11 @@
       "title": "Application Guide (German)",
       "url": "de/self-managed/ipg/38/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Features and functionality"],

@@ -6,7 +6,11 @@
       "title": "Release Notes",
       "url": "ipj/hakuba/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
@@ -25,7 +29,11 @@
       "title": "Configuration",
       "url": "ipj/hakuba/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
@@ -44,7 +52,11 @@
       "title": "Application Guide",
       "url": "ipj/hakuba/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
@@ -63,7 +75,11 @@
       "title": "Installation Guide",
       "url": "ipj/hakuba/install",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "release": ["Hakuba"],

@@ -6,7 +6,11 @@
       "title": "Release Notes",
       "url": "cloud/ipa/hakuba/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "subject": ["Release notes"],
@@ -25,7 +29,11 @@
       "title": "Configuration",
       "url": "cloud/ipa/hakuba/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "subject": ["Development"],
@@ -44,7 +52,11 @@
       "title": "Application Guide",
       "url": "cloud/ipa/hakuba/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "subject": ["Features and functionality"],
@@ -63,7 +75,11 @@
       "title": "Upgrade Guide",
       "url": "cloud/ipa/hakuba/upgrade",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "subject": ["Installation"],
@@ -82,7 +98,11 @@
       "title": "Installation Guide",
       "url": "cloud/ipa/hakuba/install",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "subject": ["Installation"],

@@ -6,7 +6,11 @@
       "title": "Release Notes",
       "url": "cloud/ipa/flaine/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "subject": ["Release notes"],
@@ -25,7 +29,11 @@
       "title": "Configuration",
       "url": "cloud/ipa/flaine/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "subject": ["Development"],
@@ -44,7 +52,11 @@
       "title": "Application Guide",
       "url": "cloud/ipa/flaine/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "subject": ["Features and functionality"],

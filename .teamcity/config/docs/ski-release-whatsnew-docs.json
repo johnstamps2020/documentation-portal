@@ -7,8 +7,14 @@
       "url": "cloud/hakuba/whatsnew",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Ski release overview"],
-        "version": ["2023.06"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"],
+        "version": ["2023.06", "2023.2"],
         "release": ["Hakuba"],
         "language": "en"
       },
@@ -25,8 +31,14 @@
       "url": "cloud/garmisch/whatsnew",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Ski release overview"],
-        "version": ["2023.02"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"],
+        "version": ["2023.02", "2023.1"],
         "release": ["Garmisch"],
         "language": "en"
       },
@@ -43,8 +55,14 @@
       "url": "cloud/flaine/whatsnew",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Ski release overview"],
-        "version": ["2022.09"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"],
+        "version": ["2022.09", "2022.2"],
         "release": ["Flaine"],
         "language": "en"
       },

@@ -8,8 +8,14 @@
       "displayTitle": "Novidades na Hakuba",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Ski release overview"],
-        "version": ["2023.06"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"],
+        "version": ["2023.06", "2023.2"],
         "release": ["Hakuba"],
         "language": "pt"
       },

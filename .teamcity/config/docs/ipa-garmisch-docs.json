@@ -6,7 +6,11 @@
       "title": "Release Notes",
       "url": "cloud/ipa/garmisch/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Release notes"],
@@ -25,7 +29,11 @@
       "title": "Configuration",
       "url": "cloud/ipa/garmisch/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Development"],
@@ -44,7 +52,11 @@
       "title": "Application Guide",
       "url": "cloud/ipa/garmisch/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Features and functionality"],
@@ -63,7 +75,11 @@
       "title": "Upgrade Guide",
       "url": "cloud/ipa/garmisch/upgrade",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Installation"],
@@ -82,7 +98,11 @@
       "title": "Installation Guide",
       "url": "cloud/ipa/garmisch/install",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Installation"],
