@@ -43,6 +43,22 @@ in Teamcity.
 baseUrl: process.env["BASE_URL"] || "/",
 ```
 
+## Light theme
+
+For now `gw-theme-classic` does not support dark theme. If you use dark
+theme on your computer, add:
+
+```js title="docusaurus.config.js"
+themeConfig: {
+  colorMode: {
+    defaultMode: 'light',
+    disableSwitch: false,
+    respectPrefersColorScheme: false
+  },
+  ...
+}
+```
+
 ## Navbar and logo
 
 The navbar (top bar) is set so that it matches Guidewire styles and contains the
@@ -54,3 +70,7 @@ following:
 - A search box that uses site metadata to apply filters to your searches
 - A log in/out button that checks user identity using the API available on
   docs.guidewire.com.
+
+```
+
+```
