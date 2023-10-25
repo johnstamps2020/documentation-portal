@@ -1,4 +1,5 @@
 import Button, { ButtonProps } from '@mui/material/Button';
+import { oktaIdpUrlParam } from 'server/dist/types/auth';
 
 type GwEmployeeButtonProps = {
   label?: string;
@@ -17,7 +18,7 @@ export default function GwEmployeeButton({
     <Button
       variant="outlined"
       color="primary"
-      href={`/authorization-code?idp=okta&redirectTo=${redirectTo}`}
+      href={`/authorization-code?idp=${oktaIdpUrlParam}&redirectTo=${redirectTo}`}
       sx={buttonStyle}
       onClick={onClick}
     >
