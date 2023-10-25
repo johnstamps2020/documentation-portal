@@ -122,7 +122,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20211xcommonconfigdraft',
         },
         {
-          label: 'Provisioning Portal Draft',
+          label: 'Provisioning Portal - Internal',
           docId: 'in20211xprovportaldraft',
         },
         {
