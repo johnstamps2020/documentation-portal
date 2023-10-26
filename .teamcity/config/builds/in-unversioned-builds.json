@@ -304,6 +304,15 @@
       "docId": "ingwcpops",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConfiguringINowasanIdP.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "ininowasidp",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
