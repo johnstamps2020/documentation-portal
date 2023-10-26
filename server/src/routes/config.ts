@@ -11,7 +11,6 @@ import {
   getVersionSelector,
   splitLegacyValueByCommaAndReturnUnique,
 } from '../controllers/configController';
-import { winstonLogger } from '../controllers/loggerController';
 
 const router = Router();
 

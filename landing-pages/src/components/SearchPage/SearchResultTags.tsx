@@ -13,6 +13,7 @@ export default function SearchResultTags(searchResult: ServerSearchResult) {
     searchResult.version,
     searchResult.subject,
     searchResult.language,
+    searchResult.doc_display_title || searchResult.doc_title,
   ]
     .flat()
     .filter(Boolean);
