@@ -334,11 +334,58 @@ function sortObjectsFromNewestToOldest(objectsList) {
   }
 }
 
+function getHighestVersionNumber(versions) {
+  if (!versions || versions.length === 0) {
+    return null;
+  }
+
+  if (versions.length === 1) {
+    return versions[0];
+  }
+
+  versions.sort(function (a, b) {
+    return a.localeCompare(b);
+  });
+
+  return versions[0];
+}
+
+function getUniqueResultsSortedByVersion(resultList) {
+  const uniqueResults = [];
+  for (const result of resultList) {
+    if (!uniqueResults.find((r) => r._source.href === result._source.href)) {
+      uniqueResults.push(result);
+    }
+  }
+
+  uniqueResults.sort(function (a, b) {
+    const releaseA = getHighestVersionNumber(a._source.release);
+    const releaseB = getHighestVersionNumber(b._source.release);
+    if (releaseA && releaseB) {
+      return releaseA.localeCompare(releaseB);
+    }
+
+    const versionA = getHighestVersionNumber(a._source.version);
+    const versionB = getHighestVersionNumber(b._source.version);
+    return versionA.localeCompare(versionB);
+  });
+
+  return sortObjectsFromNewestToOldest(uniqueResults);
+}
+
 async function prepareResultsToDisplay(searchResults) {
   return searchResults.hits.map((result) => {
     const docScore = result._score;
     let mainResult = result;
     const innerHits = result.inner_hits.same_title.hits.hits;
+
+    // if there are inner hits, we grab the one with the latest version number
+    // and use it as the main result
+    const allResultsSorted = getUniqueResultsSortedByVersion([
+      mainResult,
+      ...innerHits,
+    ]);
+
     const innerHitsMatchingDocScore = innerHits.filter(
       (h) => h._score === docScore
     );
@@ -349,11 +396,7 @@ async function prepareResultsToDisplay(searchResults) {
       mainResult = sortObjectsFromNewestToOldest(innerHitsMatchingDocScore)[0];
     }
 
-    const innerHitsWithoutMainResult = innerHits.filter(
-      (h) => h._id !== mainResult._id
-    );
-
-    const doc = mainResult._source;
+    const [doc, ...otherResults] = allResultsSorted.map((r) => r._source);
     const highlight = mainResult.highlight;
 
     const highlightTitleKey = Object.getOwnPropertyNames(highlight).filter(
@@ -388,21 +431,6 @@ async function prepareResultsToDisplay(searchResults) {
       })
       .join(',');
 
-    const sortedInnerHits = sortObjectsFromNewestToOldest(
-      innerHitsWithoutMainResult
-    );
-
-    const innerHitsToDisplay = sortedInnerHits.map(
-      (innerHit) => innerHit._source
-    );
-
-    const hitsWithUniqueUrls = [];
-    for (const hit of innerHitsToDisplay) {
-      if (!hitsWithUniqueUrls.find((h) => h.href === hit.href)) {
-        hitsWithUniqueUrls.push(hit);
-      }
-    }
-
     return {
       ...doc,
       score: docScore,
@@ -410,7 +438,7 @@ async function prepareResultsToDisplay(searchResults) {
       titlePlain: sanitizeTagNames(doc.title),
       body: sanitizeTagNames(bodyText),
       bodyPlain: sanitizeTagNames(bodyBlurb),
-      innerHits: hitsWithUniqueUrls,
+      innerHits: otherResults,
       uniqueHighlightTerms: uniqueHighlightTerms,
     };
   });
