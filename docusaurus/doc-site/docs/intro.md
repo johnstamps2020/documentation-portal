@@ -60,14 +60,14 @@ import { RightWrong, Right, Wrong } from "@theme/RightWrong";
 <RightWrong>
 <Right>
 
-```js
+```js title="docusaurus.config.js"
 trailingSlash: true,
 ```
 
 </Right>
 <Wrong>
 
-```js
+```js title="docusaurus.config.js"
 trailingSlash: false,
 ```
 
