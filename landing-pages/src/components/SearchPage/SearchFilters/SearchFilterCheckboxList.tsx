@@ -1,19 +1,28 @@
 import FormGroup from '@mui/material/FormGroup';
-import { ServerSearchFilterValue } from 'server/dist/types/serverSearch';
 import SearchFilterCheckbox from './SearchFilterCheckbox';
+import { useSearchData } from 'hooks/useApi';
 
 type SearchFilterCheckboxProps = {
   filterName: string;
-  values: ServerSearchFilterValue[];
 };
 
 export default function SearchFilterCheckboxList({
   filterName,
-  values,
 }: SearchFilterCheckboxProps) {
+  const { searchData, isError, isLoading } = useSearchData();
+
+  if (!searchData || isLoading || isError) {
+    return null;
+  }
+
+  const values = searchData.filters.find((f) => f.name === filterName)?.values;
+
+  if (!values) {
+    return null;
+  }
+
   // sort by checked first, then by alphabetically
   // if it's "version", reverse the order
-
   values.sort((a, b) => {
     if (a.checked && !b.checked) {
       return -1;
