@@ -573,6 +573,7 @@ async function createVersionEntities(legacyDocConfig: LegacyDocConfig[]) {
 
 async function createReleaseEntities(legacyDocConfig: LegacyDocConfig[]) {
   const dbDocReleasesToSave: Release[] = [];
+  const nonProdReleases = ['Innsbruck'];
   for (const doc of legacyDocConfig) {
     const legacyDocReleases = doc.metadata.release;
     if (legacyDocReleases && legacyDocReleases.length > 0) {
@@ -584,6 +585,8 @@ async function createReleaseEntities(legacyDocConfig: LegacyDocConfig[]) {
         ) {
           const dbDocRelease = new Release();
           dbDocRelease.name = legacyDocRelease;
+          dbDocRelease.isInProduction =
+            !nonProdReleases.includes(legacyDocRelease);
           const dbDocReleaseToSave = await addUuidIfEntityExists(
             Release.name,
             { name: dbDocRelease.name },
