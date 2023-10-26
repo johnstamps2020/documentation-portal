@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
 const { winstonLogger } = require('./loggerController');
+const { getAllEntities } = require('./configController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
 
@@ -158,6 +159,41 @@ async function getFilters(query, filterFields, urlFilters) {
           ERROR: ${JSON.stringify(err)}`
     );
   }
+}
+
+// TODO: This function is a temporary solution. We need to align the data model in Elasticsearch
+//  with the database data model to be able to filter out values in a more flexible way.
+async function validateFilterValuesAgainstDb(req, res, searchFilters) {
+  const validatedFilters = [];
+  const filterFieldsToBeValidated = ['version', 'release'];
+  for (const searchFilter of searchFilters) {
+    if (filterFieldsToBeValidated.includes(searchFilter.name)) {
+      const reqWithParams = {
+        ...req,
+        params: {
+          repo: searchFilter.name,
+        },
+      };
+      const response = await getAllEntities(reqWithParams, res);
+      if (response.status === 200) {
+        const filterValuesFromDb = response.body.map((v) =>
+          v.name.toLowerCase()
+        );
+        const updatedFilter = {
+          name: searchFilter.name,
+          values: searchFilter.values.filter((v) =>
+            filterValuesFromDb.includes(v.label.toLowerCase())
+          ),
+        };
+        validatedFilters.push(updatedFilter);
+      } else {
+        validatedFilters.push(searchFilter);
+      }
+    } else {
+      validatedFilters.push(searchFilter);
+    }
+  }
+  return validatedFilters;
 }
 
 async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
@@ -428,6 +464,12 @@ async function searchController(req, res, next) {
 
     const filters = await getFilters(queryBody, keywordFields, filtersFromUrl);
 
+    const filtersValidatedAgainstDb = await validateFilterValuesAgainstDb(
+      req,
+      res,
+      filters
+    );
+
     const results = await runSearch(
       queryBody,
       startIndex,
@@ -460,7 +502,7 @@ async function searchController(req, res, next) {
             : 10000) / resultsPerPage
         ),
         resultsPerPage: resultsPerPage,
-        filters: filters,
+        filters: filtersValidatedAgainstDb,
         filtersFromUrl: filtersFromUrl,
         requestIsAuthenticated: requestIsAuthenticated,
       };
