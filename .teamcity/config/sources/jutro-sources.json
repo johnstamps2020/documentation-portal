@@ -392,6 +392,12 @@
       "branch": "release/8.13.2"
     },
     {
+      "id": "srcjutro8133",
+      "title": "Jutro Design System 8.13.3",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.13.3"
+    },
+    {
       "id": "srcjutro1000",
       "title": "Jutro Design System 10.0.0",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
