@@ -3441,7 +3441,7 @@ object Admin {
                 goals = "teamcity-configs:generate"
                 pomLocation = ".teamcity/pom.xml"
                 workingDir = ""
-                runnerArgs = "-Xe"
+                runnerArgs = "-X"
             }
         }
 
