@@ -3,16 +3,39 @@ import { Link as RouterLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import LoginOptions from 'components/LoginPage/LoginOptions';
 import { useLayoutContext } from 'LayoutContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function LoginPage() {
   const { setTitle, setHeaderOptions, setBackgroundColor } = useLayoutContext();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    document.fonts.load('12px Source Sans Pro').then(() => setMounted(true));
+  }, []);
+
   useEffect(() => {
     setTitle('Guidewire Documentation | Log in');
     setBackgroundColor('hsl(0, 0%, 98%)');
   }, [setBackgroundColor, setHeaderOptions, setTitle]);
+
+  if (mounted === false) {
+    return (
+      <Box
+        justifyContent="center"
+        sx={{
+          width: '100%',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Stack alignItems="center" justifyContent="center" gap={1}>
