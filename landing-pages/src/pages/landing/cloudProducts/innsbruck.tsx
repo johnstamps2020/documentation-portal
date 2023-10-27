@@ -148,7 +148,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Jutro Digital Platform (Early Access)',
-          pagePath: 'cloudProducts/innsbruck/jutroDigitalPlatform',
+          pagePath: 'jutro1000',
         },
         {
           label: 'Guidewire Testing',
@@ -169,9 +169,7 @@ const pageConfig: Category2LayoutProps = {
     label: 'Innsbruck',
     badge: hakubaBadge,
     item: { label: 'Learn more', docId: 'whatsnewhakuba' },
-    content: [
-      'Coming soon',
-    ],
+    content: ['Coming soon'],
   },
   sidebar: {
     label: 'Implementation Resources',
