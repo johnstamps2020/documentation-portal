@@ -28,15 +28,15 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: 'Jutro Design System (Next)',
+      label: 'Jutro Design System 8.13.2',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutronext',
+          docId: 'jutro8132',
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybooknext',
+          docId: 'storybook8132',
         },
       ],
     },
