@@ -11,11 +11,6 @@ To apply the patch, change the buildType with id = '01b8e38373d76b3ef067615e0d2a
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("01b8e38373d76b3ef067615e0d2af554")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Upload content to the S3 bucket"
