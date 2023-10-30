@@ -673,13 +673,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": [
-          "CustomerEngage Account Management",
-          "CustomerEngage Account Management for ClaimCenter",
-          "CustomerEngage Quote and Buy",
-          "ProducerEngage",
-          "ProducerEngage for ClaimCenter",
-          "ServiceRepEngage",
-          "VendorEngage"
+          "Digital Reference Applications"
         ],
         "version": ["2021.11"],
         "release": ["Dobson"],
