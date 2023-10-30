@@ -6,7 +6,7 @@
       "title": "CustomerEngage Account Management",
       "url": "self-managed/dx/ce-am/1130",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.3.0"],
         "language": "en"
@@ -23,7 +23,7 @@
       "title": "CustomerEngage Account Management for ClaimCenter",
       "url": "self-managed/dx/ce-claims/1130",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.3.0"],
         "language": "en"
@@ -40,7 +40,7 @@
       "title": "CustomerEngage Quote and Buy",
       "url": "self-managed/dx/ce-qb/1130",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.3.0"],
         "language": "en"
@@ -57,7 +57,7 @@
       "title": "ProducerEngage",
       "url": "self-managed/dx/pe/1130",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.3.0"],
         "language": "en"
@@ -74,7 +74,7 @@
       "title": "ProducerEngage for ClaimCenter",
       "url": "self-managed/dx/pe-claims/1130",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.3.0"],
         "language": "en"
@@ -91,7 +91,7 @@
       "title": "ServiceRepEngage",
       "url": "self-managed/dx/sre/1130",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.3.0"],
         "language": "en"
@@ -108,7 +108,7 @@
       "title": "VendorEngage",
       "url": "self-managed/dx/ve/1130",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.3.0"],
         "language": "en"

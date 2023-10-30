@@ -3,11 +3,11 @@
   "docs": [
     {
       "id": "dx202205jaJPceclaimsinstall",
-      "title": "Installation Guide ja",
-      "displayTitle": "インストールガイド",
+      "title": "CustomerEngage Account Management for ClaimCenter Installation Guide ja",
+      "displayTitle": "CustomerEngage Account Management for ClaimCenter インストールガイド",
       "url": "ja/cloud/dx/ce-claims/202205/install",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -23,11 +23,11 @@
     },
     {
       "id": "dx202205jaJPceclaimsapp",
-      "title": "Application Guide ja",
-      "displayTitle": "アプリケーションガイド",
+      "title": "CustomerEngage Account Management for ClaimCenter Application Guide ja",
+      "displayTitle": "CustomerEngage Account Management for ClaimCenter アプリケーションガイド",
       "url": "ja/cloud/dx/ce-claims/202205/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -43,11 +43,11 @@
     },
     {
       "id": "dx202205jaJPceclaimsdev",
-      "title": "Development Guide ja",
-      "displayTitle": "開発者ガイド",
+      "title": "CustomerEngage Account Management for ClaimCenter Development Guide ja",
+      "displayTitle": "CustomerEngage Account Management for ClaimCenter 開発者ガイド",
       "url": "ja/cloud/dx/ce-claims/202205/dev",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -63,11 +63,11 @@
     },
     {
       "id": "dx202205jaJPsreinstall",
-      "title": "Installation Guide ja",
-      "displayTitle": "インストールガイド",
+      "title": "ServiceRepEngage Installation Guide ja",
+      "displayTitle": "ServiceRepEngage インストールガイド",
       "url": "ja/cloud/dx/sre/202205/install",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -83,11 +83,11 @@
     },
     {
       "id": "dx202205jaJPsreapp",
-      "title": "Application Guide ja",
-      "displayTitle": "アプリケーションガイド",
+      "title": "ServiceRepEngage Application Guide ja",
+      "displayTitle": "ServiceRepEngage アプリケーションガイド",
       "url": "ja/cloud/dx/sre/202205/app",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -103,11 +103,11 @@
     },
     {
       "id": "dx202205jaJPsredev",
-      "title": "Development Guide ja",
-      "displayTitle": "開発者ガイド",
+      "title": "ServiceRepEngage Development Guide ja",
+      "displayTitle": "ServiceRepEngage 開発者ガイド",
       "url": "ja/cloud/dx/sre/202205/dev",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -123,11 +123,11 @@
     },
     {
       "id": "dx202205jaJPveinstall",
-      "title": "Installation Guide ja",
-      "displayTitle": "インストールガイド",
+      "title": "VendorEngage Installation Guide ja",
+      "displayTitle": "VendorEngage インストールガイド",
       "url": "ja/cloud/dx/ve/202205/install",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -143,11 +143,11 @@
     },
     {
       "id": "dx202205jaJPveapp",
-      "title": "Application Guide ja",
-      "displayTitle": "アプリケーションガイド",
+      "title": "VendorEngage Application Guide ja",
+      "displayTitle": "VendorEngage アプリケーションガイド",
       "url": "ja/cloud/dx/ve/202205/app",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -163,11 +163,11 @@
     },
     {
       "id": "dx202205jaJPvedev",
-      "title": "Development Guide ja",
-      "displayTitle": "開発者ガイド",
+      "title": "VendorEngage Development Guide ja",
+      "displayTitle": "VendorEngage 開発者ガイド",
       "url": "ja/cloud/dx/ve/202205/dev",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],

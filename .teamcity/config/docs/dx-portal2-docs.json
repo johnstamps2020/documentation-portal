@@ -7,7 +7,7 @@
       "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_AccountManagement1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "version": ["10.0.0"],
         "language": "en"
       },
@@ -24,7 +24,7 @@
       "url": "portal/secure/doc/digital/8.1.0/CustomerEngage_AccountManagement810_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.1.0"],
         "language": "en"
       },
@@ -41,7 +41,7 @@
       "url": "portal/secure/doc/digital/8.0.0/CustomerEngage_AccountManagement800_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.0.0"],
         "language": "en"
       },
@@ -58,7 +58,7 @@
       "url": "portal/secure/doc/digital/7.1.0/CustomerEngage_AccountManagement710_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.1.0"],
         "language": "en"
       },
@@ -75,7 +75,7 @@
       "url": "portal/secure/doc/digital/7.0.0/CustomerEngage_AccountManagement700_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.0.0"],
         "language": "en"
       },
@@ -92,7 +92,7 @@
       "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_QuoteAndBuy1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "version": ["10.0.0"],
         "language": "en"
       },
@@ -109,7 +109,7 @@
       "url": "portal/secure/doc/digital/8.1.0/CustomerEngage_QuoteAndBuy810_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.1.0"],
         "language": "en"
       },
@@ -126,7 +126,7 @@
       "url": "portal/secure/doc/digital/8.0.0/CustomerEngage_QuoteAndBuy800_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.0.0"],
         "language": "en"
       },
@@ -143,7 +143,7 @@
       "url": "portal/secure/doc/digital/7.1.0/CustomerEngage_QuoteAndBuy710_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.1.0"],
         "language": "en"
       },
@@ -160,7 +160,7 @@
       "url": "portal/secure/doc/digital/7.0.0/CustomerEngage_QuoteAndBuy700_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.0.0"],
         "language": "en"
       },
@@ -177,7 +177,7 @@
       "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ProducerEngage1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["10.0.0"],
         "language": "en"
       },
@@ -194,7 +194,7 @@
       "url": "portal/secure/doc/digital/8.1.0/ProducerEngage810_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.1.0"],
         "language": "en"
       },
@@ -211,7 +211,7 @@
       "url": "portal/secure/doc/digital/8.0.0/ProducerEngage800_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.0.0"],
         "language": "en"
       },
@@ -228,7 +228,7 @@
       "url": "portal/secure/doc/digital/7.1.0/ProducerEngage710_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.1.0"],
         "language": "en"
       },
@@ -245,7 +245,7 @@
       "url": "portal/secure/doc/digital/7.0.0/ProducerEngage700_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.0.0"],
         "language": "en"
       },
@@ -262,7 +262,7 @@
       "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ServiceRepEngage1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["10.0.0"],
         "language": "en"
       },
@@ -279,7 +279,7 @@
       "url": "portal/secure/doc/digital/8.1.0/ServiceRepEngage810_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.1.0"],
         "language": "en"
       },
@@ -296,7 +296,7 @@
       "url": "portal/secure/doc/digital/8.0.0/ServiceRepEngage800_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.0.0"],
         "language": "en"
       },
@@ -313,7 +313,7 @@
       "url": "portal/secure/doc/digital/7.1.0/ServiceRepEngage710_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.1.0"],
         "language": "en"
       },
@@ -330,7 +330,7 @@
       "url": "portal/secure/doc/digital/7.0.0/ServiceRepEngage700_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.0.0"],
         "language": "en"
       },
@@ -347,7 +347,7 @@
       "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/VendorEngage1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["10.0.0"],
         "language": "en"
       },
@@ -364,7 +364,7 @@
       "url": "portal/secure/doc/digital/8.1.0/VendorEngage810_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.1.0"],
         "language": "en"
       },
@@ -381,7 +381,7 @@
       "url": "portal/secure/doc/digital/8.0.0/VendorEngage800_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["8.0.0"],
         "language": "en"
       },
@@ -398,7 +398,7 @@
       "url": "portal/secure/doc/digital/7.1.0/VendorEngage710_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.1.0"],
         "language": "en"
       },
@@ -415,7 +415,7 @@
       "url": "portal/secure/doc/digital/7.0.0/VendorEngage700_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["7.0.0"],
         "language": "en"
       },

@@ -3,10 +3,10 @@
   "docs": [
     {
       "id": "dx1141ceamadmin",
-      "title": "Administration and Security Guide",
+      "title": "CustomerEngage Account Management Administration and Security Guide",
       "url": "cloud/dx/ce-am/1141/admin",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Administration"],
@@ -21,10 +21,10 @@
     },
     {
       "id": "dx1141ceamapp",
-      "title": "Application Guide",
+      "title": "CustomerEngage Account Management Application Guide",
       "url": "cloud/dx/ce-am/1141/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Features and functionality"],
@@ -39,10 +39,10 @@
     },
     {
       "id": "dx1141ceaminstall",
-      "title": "Installation Guide",
+      "title": "CustomerEngage Account Management Installation Guide",
       "url": "cloud/dx/ce-am/1141/install",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Installation"],
@@ -57,10 +57,10 @@
     },
     {
       "id": "dx1141ceamdev",
-      "title": "Development Guide",
+      "title": "CustomerEngage Account Management Development Guide",
       "url": "cloud/dx/ce-am/1141/dev",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -75,10 +75,10 @@
     },
     {
       "id": "dx1141ceamrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "CustomerEngage Account Management Digital Services Reference Guides",
       "url": "cloud/dx/ce-am/1141/ref",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -93,10 +93,10 @@
     },
     {
       "id": "dx1141ceamrelnotes",
-      "title": "Release Notes",
+      "title": "CustomerEngage Account Management Release Notes",
       "url": "cloud/dx/ce-am/1141/relnotes",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Release notes"],
@@ -111,10 +111,10 @@
     },
     {
       "id": "dx1141ceclaimsadmin",
-      "title": "Administration and Security Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Administration and Security Guide",
       "url": "cloud/dx/ce-claims/1141/admin",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Administration"],
@@ -129,10 +129,10 @@
     },
     {
       "id": "dx1141ceclaimsapp",
-      "title": "Application Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Application Guide",
       "url": "cloud/dx/ce-claims/1141/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Features and functionality"],
@@ -147,10 +147,10 @@
     },
     {
       "id": "dx1141ceclaimsinstall",
-      "title": "Installation Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Installation Guide",
       "url": "cloud/dx/ce-claims/1141/install",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Installation"],
@@ -165,10 +165,10 @@
     },
     {
       "id": "dx1141ceclaimsdev",
-      "title": "Development Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Development Guide",
       "url": "cloud/dx/ce-claims/1141/dev",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -183,10 +183,10 @@
     },
     {
       "id": "dx1141ceclaimsrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "CustomerEngage Account Management for ClaimCenter Digital Services Reference Guides",
       "url": "cloud/dx/ce-claims/1141/ref",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -201,10 +201,10 @@
     },
     {
       "id": "dx1141ceclaimsrelnotes",
-      "title": "Release Notes",
+      "title": "CustomerEngage Account Management for ClaimCenter Release Notes",
       "url": "cloud/dx/ce-claims/1141/relnotes",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Release notes"],
@@ -219,10 +219,10 @@
     },
     {
       "id": "dx1141ceqbadmin",
-      "title": "Administration and Security Guide",
+      "title": "CustomerEngage Quote and Buy Administration and Security Guide",
       "url": "cloud/dx/ce-qb/1141/admin",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Administration"],
@@ -237,10 +237,10 @@
     },
     {
       "id": "dx1141ceqbapp",
-      "title": "Application Guide",
+      "title": "CustomerEngage Quote and Buy Application Guide",
       "url": "cloud/dx/ce-qb/1141/app",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Features and functionality"],
@@ -255,10 +255,10 @@
     },
     {
       "id": "dx1141ceqbinstall",
-      "title": "Installation Guide",
+      "title": "CustomerEngage Quote and Buy Installation Guide",
       "url": "cloud/dx/ce-qb/1141/install",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Installation"],
@@ -273,10 +273,10 @@
     },
     {
       "id": "dx1141ceqbdev",
-      "title": "Development Guide",
+      "title": "CustomerEngage Quote and Buy Development Guide",
       "url": "cloud/dx/ce-qb/1141/dev",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -291,10 +291,10 @@
     },
     {
       "id": "dx1141ceqbrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "CustomerEngage Quote and Buy Digital Services Reference Guides",
       "url": "cloud/dx/ce-qb/1141/ref",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -309,10 +309,10 @@
     },
     {
       "id": "dx1141ceqbrelnotes",
-      "title": "Release Notes",
+      "title": "CustomerEngage Quote and Buy Release Notes",
       "url": "cloud/dx/ce-qb/1141/relnotes",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Release notes"],
@@ -327,10 +327,10 @@
     },
     {
       "id": "dx1141peadmin",
-      "title": "Administration and Security Guide",
+      "title": "ProducerEngage Administration and Security Guide",
       "url": "cloud/dx/pe/1141/admin",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Administration"],
@@ -345,10 +345,10 @@
     },
     {
       "id": "dx1141peapp",
-      "title": "Application Guide",
+      "title": "ProducerEngage Application Guide",
       "url": "cloud/dx/pe/1141/app",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Features and functionality"],
@@ -363,10 +363,10 @@
     },
     {
       "id": "dx1141peinstall",
-      "title": "Installation Guide",
+      "title": "ProducerEngage Installation Guide",
       "url": "cloud/dx/pe/1141/install",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Installation"],
@@ -381,10 +381,10 @@
     },
     {
       "id": "dx1141pedev",
-      "title": "Development Guide",
+      "title": "ProducerEngage Development Guide",
       "url": "cloud/dx/pe/1141/dev",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -399,10 +399,10 @@
     },
     {
       "id": "dx1141perefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "ProducerEngage Digital Services Reference Guides",
       "url": "cloud/dx/pe/1141/ref",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -417,10 +417,10 @@
     },
     {
       "id": "dx1141perelnotes",
-      "title": "Release Notes",
+      "title": "ProducerEngage Release Notes",
       "url": "cloud/dx/pe/1141/relnotes",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Release notes"],
@@ -435,10 +435,10 @@
     },
     {
       "id": "dx1141peclaimsadmin",
-      "title": "Administration and Security Guide",
+      "title": "ProducerEngage for ClaimCenter Administration and Security Guide",
       "url": "cloud/dx/pe-claims/1141/admin",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Administration"],
@@ -453,10 +453,10 @@
     },
     {
       "id": "dx1141peclaimsapp",
-      "title": "Application Guide",
+      "title": "ProducerEngage for ClaimCenter Application Guide",
       "url": "cloud/dx/pe-claims/1141/app",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Features and functionality"],
@@ -471,10 +471,10 @@
     },
     {
       "id": "dx1141peclaimsinstall",
-      "title": "Installation Guide",
+      "title": "ProducerEngage for ClaimCenter Installation Guide",
       "url": "cloud/dx/pe-claims/1141/install",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Installation"],
@@ -489,10 +489,10 @@
     },
     {
       "id": "dx1141peclaimsdev",
-      "title": "Development Guide",
+      "title": "ProducerEngage for ClaimCenter Development Guide",
       "url": "cloud/dx/pe-claims/1141/dev",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -507,10 +507,10 @@
     },
     {
       "id": "dx1141peclaimsrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "ProducerEngage for ClaimCenter Digital Services Reference Guides",
       "url": "cloud/dx/pe-claims/1141/ref",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -525,10 +525,10 @@
     },
     {
       "id": "dx1141peclaimsrelnotes",
-      "title": "Release Notes",
+      "title": "ProducerEngage for ClaimCenter Release Notes",
       "url": "cloud/dx/pe-claims/1141/relnotes",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Release notes"],
@@ -543,10 +543,10 @@
     },
     {
       "id": "dx1141sreadmin",
-      "title": "Administration and Security Guide",
+      "title": "ServiceRepEngage Administration and Security Guide",
       "url": "cloud/dx/sre/1141/admin",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Administration"],
@@ -561,10 +561,10 @@
     },
     {
       "id": "dx1141sreapp",
-      "title": "Application Guide",
+      "title": "ServiceRepEngage Application Guide",
       "url": "cloud/dx/sre/1141/app",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Features and functionality"],
@@ -579,10 +579,10 @@
     },
     {
       "id": "dx1141sreinstall",
-      "title": "Installation Guide",
+      "title": "ServiceRepEngage Installation Guide",
       "url": "cloud/dx/sre/1141/install",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Installation"],
@@ -597,10 +597,10 @@
     },
     {
       "id": "dx1141sredev",
-      "title": "Development Guide",
+      "title": "ServiceRepEngage Development Guide",
       "url": "cloud/dx/sre/1141/dev",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -615,10 +615,10 @@
     },
     {
       "id": "dx1141srerefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "ServiceRepEngage Digital Services Reference Guides",
       "url": "cloud/dx/sre/1141/ref",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -633,10 +633,10 @@
     },
     {
       "id": "dx1141srerelnotes",
-      "title": "Release Notes",
+      "title": "ServiceRepEngage Release Notes",
       "url": "cloud/dx/sre/1141/relnotes",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Release notes"],
@@ -651,10 +651,10 @@
     },
     {
       "id": "dx1141veadmin",
-      "title": "Administration and Security Guide",
+      "title": "VendorEngage Administration and Security Guide",
       "url": "cloud/dx/ve/1141/admin",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Administration"],
@@ -669,10 +669,10 @@
     },
     {
       "id": "dx1141veapp",
-      "title": "Application Guide",
+      "title": "VendorEngage Application Guide",
       "url": "cloud/dx/ve/1141/app",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Features and functionality"],
@@ -687,10 +687,10 @@
     },
     {
       "id": "dx1141veinstall",
-      "title": "Installation Guide",
+      "title": "VendorEngage Installation Guide",
       "url": "cloud/dx/ve/1141/install",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Installation"],
@@ -705,10 +705,10 @@
     },
     {
       "id": "dx1141vedev",
-      "title": "Development Guide",
+      "title": "VendorEngage Development Guide",
       "url": "cloud/dx/ve/1141/dev",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -723,10 +723,10 @@
     },
     {
       "id": "dx1141verefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "VendorEngage Digital Services Reference Guides",
       "url": "cloud/dx/ve/1141/ref",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Development"],
@@ -741,10 +741,10 @@
     },
     {
       "id": "dx1141verelnotes",
-      "title": "Release Notes",
+      "title": "VendorEngage Release Notes",
       "url": "cloud/dx/ve/1141/relnotes",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Release notes"],
@@ -763,13 +763,7 @@
       "url": "cloud/dx/log4jrelnotes",
       "metadata": {
         "product": [
-          "CustomerEngage Account Management",
-          "CustomerEngage Account Management for ClaimCenter",
-          "CustomerEngage Quote and Buy",
-          "ProducerEngage",
-          "ProducerEngage for ClaimCenter",
-          "ServiceRepEngage",
-          "VendorEngage"
+          "Digital Reference Applications"
         ],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],

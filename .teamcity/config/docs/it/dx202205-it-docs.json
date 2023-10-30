@@ -3,11 +3,11 @@
   "docs": [
     {
       "id": "dx202205itITceamapp",
-      "title": "Application Guide it",
-      "displayTitle": "Guida all'applicazione",
+      "title": "CustomerEngage Account Management Application Guide it",
+      "displayTitle": "CustomerEngage Account Management Guida all'applicazione",
       "url": "it/cloud/dx/ce-am/202205/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -23,11 +23,11 @@
     },
     {
       "id": "dx202205itITceaminstall",
-      "title": "Installation Guide it",
-      "displayTitle": "Guida all'installazione",
+      "title": "CustomerEngage Account Management Installation Guide it",
+      "displayTitle": "CustomerEngage Account Management Guida all'installazione",
       "url": "it/cloud/dx/ce-am/202205/install",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -43,11 +43,11 @@
     },
     {
       "id": "dx202205itITceclaimsapp",
-      "title": "Application Guide it",
-      "displayTitle": "Guida all'applicazione",
+      "title": "CustomerEngage Account Management for ClaimCenterApplication Guide it",
+      "displayTitle": "CustomerEngage Account Management for ClaimCenter Guida all'applicazione",
       "url": "it/cloud/dx/ce-claims/202205/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -63,11 +63,11 @@
     },
     {
       "id": "dx202205itITceclaimsinstall",
-      "title": "Installation Guide it",
-      "displayTitle": "Guida all'installazione",
+      "title": "CustomerEngage Account Management for ClaimCenter Installation Guide it",
+      "displayTitle": "CustomerEngage Account Management for ClaimCenter Guida all'installazione",
       "url": "it/cloud/dx/ce-claims/202205/install",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -83,11 +83,11 @@
     },
     {
       "id": "dx202205itITceqbapp",
-      "title": "Application Guide it",
-      "displayTitle": "Guida all'applicazione",
+      "title": "CustomerEngage Quote and Buy Application Guide it",
+      "displayTitle": "CustomerEngage Quote and Buy Guida all'applicazione",
       "url": "it/cloud/dx/ce-qb/202205/app",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -103,11 +103,11 @@
     },
     {
       "id": "dx202205itITceqbinstall",
-      "title": "Installation Guide it",
-      "displayTitle": "Guida all'installazione",
+      "title": "CustomerEngage Quote and Buy Installation Guide it",
+      "displayTitle": "CustomerEngage Quote and Buy Guida all'installazione",
       "url": "it/cloud/dx/ce-qb/202205/install",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -123,11 +123,11 @@
     },
     {
       "id": "dx202205itITpeapp",
-      "title": "Application Guide it",
-      "displayTitle": "Guida all'applicazione",
+      "title": "ProducerEngage Application Guide it",
+      "displayTitle": "ProducerEngage Guida all'applicazione",
       "url": "it/cloud/dx/pe/202205/app",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -143,11 +143,11 @@
     },
     {
       "id": "dx202205itITpeinstall",
-      "title": "Installation Guide it",
-      "displayTitle": "Guida all'installazione",
+      "title": "ProducerEngage Installation Guide it",
+      "displayTitle": "ProducerEngage Guida all'installazione",
       "url": "it/cloud/dx/pe/202205/install",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -163,11 +163,11 @@
     },
     {
       "id": "dx202205itITpeclaimsapp",
-      "title": "Application Guide it",
-      "displayTitle": "Guida all'applicazione",
+      "title": "ProducerEngage for ClaimCenter Application Guide it",
+      "displayTitle": "ProducerEngage for ClaimCenter Guida all'applicazione",
       "url": "it/cloud/dx/pe-claims/202205/app",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -183,11 +183,11 @@
     },
     {
       "id": "dx202205itITpeclaimsinstall",
-      "title": "Installation Guide it",
-      "displayTitle": "Guida all'installazione",
+      "title": "ProducerEngage for ClaimCenter Installation Guide it",
+      "displayTitle": "ProducerEngage for ClaimCenter Guida all'installazione",
       "url": "it/cloud/dx/pe-claims/202205/install",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -203,11 +203,11 @@
     },
     {
       "id": "dx202205itITsreapp",
-      "title": "Application Guide it",
-      "displayTitle": "Guida all'applicazione",
+      "title": "ServiceRepEngage Application Guide it",
+      "displayTitle": "ServiceRepEngage Guida all'applicazione",
       "url": "it/cloud/dx/sre/202205/app",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -223,11 +223,11 @@
     },
     {
       "id": "dx202205itITsreinstall",
-      "title": "Installation Guide it",
-      "displayTitle": "Guida all'installazione",
+      "title": "ServiceRepEngage Installation Guide it",
+      "displayTitle": "ServiceRepEngage Guida all'installazione",
       "url": "it/cloud/dx/sre/202205/install",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -243,11 +243,11 @@
     },
     {
       "id": "dx202205itITveapp",
-      "title": "Application Guide it",
-      "displayTitle": "Guida all'applicazione",
+      "title": "VendorEngage Application Guide it",
+      "displayTitle": "VendorEngage Guida all'applicazione",
       "url": "it/cloud/dx/ve/202205/app",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -263,11 +263,11 @@
     },
     {
       "id": "dx202205itITveinstall",
-      "title": "Installation Guide it",
-      "displayTitle": "Guida all'installazione",
+      "title": "VendorEngage Installation Guide it",
+      "displayTitle": "VendorEngage Guida all'installazione",
       "url": "it/cloud/dx/ve/202205/install",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
