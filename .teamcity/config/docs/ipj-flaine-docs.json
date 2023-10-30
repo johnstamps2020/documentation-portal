@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipjflainern",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Japan Release Notes",
       "url": "ipj/flaine/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipjflaineconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Japan Configuration",
       "url": "ipj/flaine/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipjflaineapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Japan Application Guide",
       "url": "ipj/flaine/app",
       "metadata": {
         "product": [
@@ -72,7 +72,7 @@
     },
     {
       "id": "ipjgarmischrn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Japan Release Notes",
       "url": "ipj/garmisch/releasenotes",
       "metadata": {
         "product": [
@@ -95,7 +95,7 @@
     },
     {
       "id": "ipjgarmischconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Japan Configuration",
       "url": "ipj/garmisch/config",
       "metadata": {
         "product": [
@@ -118,7 +118,7 @@
     },
     {
       "id": "ipjgarmischapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Japan Application Guide",
       "url": "ipj/garmisch/app",
       "metadata": {
         "product": [
@@ -141,7 +141,7 @@
     },
     {
       "id": "ipjgarmischinstall",
-      "title": "Installation Guide",
+      "title": "InsuranceSuite Package for Japan Installation Guide",
       "url": "ipj/garmisch/install",
       "metadata": {
         "product": [

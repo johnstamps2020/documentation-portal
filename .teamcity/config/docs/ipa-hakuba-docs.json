@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipahakubarn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Australia Release Notes",
       "url": "cloud/ipa/hakuba/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipahakubaconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Australia Configuration",
       "url": "cloud/ipa/hakuba/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipahakubaapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Australia Application Guide",
       "url": "cloud/ipa/hakuba/app",
       "metadata": {
         "product": [
@@ -72,7 +72,7 @@
     },
     {
       "id": "ipahakubaupgrade",
-      "title": "Upgrade Guide",
+      "title": "InsuranceSuite Package for Australia Upgrade Guide",
       "url": "cloud/ipa/hakuba/upgrade",
       "metadata": {
         "product": [
@@ -95,7 +95,7 @@
     },
     {
       "id": "ipahakubainstall",
-      "title": "Installation Guide",
+      "title": "InsuranceSuite Package for Australia Installation Guide",
       "url": "cloud/ipa/hakuba/install",
       "metadata": {
         "product": [

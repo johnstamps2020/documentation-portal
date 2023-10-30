@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipjhakubarn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Japan Release Notes",
       "url": "ipj/hakuba/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipjhakubaconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Japan Configuration",
       "url": "ipj/hakuba/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipjhakubaapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Japan Application Guide",
       "url": "ipj/hakuba/app",
       "metadata": {
         "product": [
@@ -72,7 +72,7 @@
     },
     {
       "id": "ipjhakubainstall",
-      "title": "Installation Guide",
+      "title": "InsuranceSuite Package for Japan Installation Guide",
       "url": "ipj/hakuba/install",
       "metadata": {
         "product": [

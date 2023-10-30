@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipaflainern",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Australia Release Notes",
       "url": "cloud/ipa/flaine/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipaflaineconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Australia Configuration",
       "url": "cloud/ipa/flaine/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipaflaineapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Australia Application Guide",
       "url": "cloud/ipa/flaine/app",
       "metadata": {
         "product": [

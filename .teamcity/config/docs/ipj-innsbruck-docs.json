@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipjinnsbruckrn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Japan Release Notes",
       "url": "ipj/innsbruck/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipjinnsbruckconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Japan Configuration",
       "url": "ipj/innsbruck/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipjinnsbruckapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Japan Application Guide",
       "url": "ipj/innsbruck/app",
       "metadata": {
         "product": [
@@ -72,7 +72,7 @@
     },
     {
       "id": "ipjinnsbruckinstall",
-      "title": "Installation Guide",
+      "title": "InsuranceSuite Package for Japan Installation Guide",
       "url": "ipj/innsbruck/install",
       "metadata": {
         "product": [
