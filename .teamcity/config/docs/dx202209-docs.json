@@ -3,10 +3,10 @@
   "docs": [
     {
       "id": "dx202209ceamapp",
-      "title": "Application Guide",
+      "title": "CustomerEngage Account Management Application Guide",
       "url": "cloud/dx/ce-am/202209/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -22,10 +22,10 @@
     },
     {
       "id": "dx202209ceaminstall",
-      "title": "Installation Guide",
+      "title": "CustomerEngage Account Management Installation Guide",
       "url": "cloud/dx/ce-am/202209/install",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -41,10 +41,10 @@
     },
     {
       "id": "dx202209ceamdev",
-      "title": "Development Guide",
+      "title": "CustomerEngage Account Management Development Guide",
       "url": "cloud/dx/ce-am/202209/dev",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -60,10 +60,10 @@
     },
     {
       "id": "dx202209ceamrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "CustomerEngage Account Management Digital Services Reference Guides",
       "url": "cloud/dx/ce-am/202209/ref",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -79,10 +79,10 @@
     },
     {
       "id": "dx202209ceamrelnotes",
-      "title": "Release Notes",
+      "title": "CustomerEngage Account Management Release Notes",
       "url": "cloud/dx/ce-am/202209/relnotes",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -98,10 +98,10 @@
     },
     {
       "id": "dx202209ceclaimsapp",
-      "title": "Application Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Application Guide",
       "url": "cloud/dx/ce-claims/202209/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -117,10 +117,10 @@
     },
     {
       "id": "dx202209ceclaimsinstall",
-      "title": "Installation Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Installation Guide",
       "url": "cloud/dx/ce-claims/202209/install",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -136,10 +136,10 @@
     },
     {
       "id": "dx202209ceclaimsdev",
-      "title": "Development Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Development Guide",
       "url": "cloud/dx/ce-claims/202209/dev",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -155,10 +155,10 @@
     },
     {
       "id": "dx202209ceclaimsrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "CustomerEngage Account Management for ClaimCenter Digital Services Reference Guides",
       "url": "cloud/dx/ce-claims/202209/ref",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -174,10 +174,10 @@
     },
     {
       "id": "dx202209ceclaimsrelnotes",
-      "title": "Release Notes",
+      "title": "CustomerEngage Account Management for ClaimCenter Release Notes",
       "url": "cloud/dx/ce-claims/202209/relnotes",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -193,10 +193,10 @@
     },
     {
       "id": "dx202209ceqbapp",
-      "title": "Application Guide",
+      "title": "CustomerEngage Quote and Buy Application Guide",
       "url": "cloud/dx/ce-qb/202209/app",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -212,10 +212,10 @@
     },
     {
       "id": "dx202209ceqbinstall",
-      "title": "Installation Guide",
+      "title": "CustomerEngage Quote and Buy Installation Guide",
       "url": "cloud/dx/ce-qb/202209/install",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -231,10 +231,10 @@
     },
     {
       "id": "dx202209ceqbdev",
-      "title": "Development Guide",
+      "title": "CustomerEngage Quote and Buy Development Guide",
       "url": "cloud/dx/ce-qb/202209/dev",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -250,10 +250,10 @@
     },
     {
       "id": "dx202209ceqbrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "CustomerEngage Quote and Buy Digital Services Reference Guides",
       "url": "cloud/dx/ce-qb/202209/ref",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -269,10 +269,10 @@
     },
     {
       "id": "dx202209ceqbrelnotes",
-      "title": "Release Notes",
+      "title": "CustomerEngage Quote and Buy Release Notes",
       "url": "cloud/dx/ce-qb/202209/relnotes",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -288,10 +288,10 @@
     },
     {
       "id": "dx202209peapp",
-      "title": "Application Guide",
+      "title": "ProducerEngage Application Guide",
       "url": "cloud/dx/pe/202209/app",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -307,10 +307,10 @@
     },
     {
       "id": "dx202209peinstall",
-      "title": "Installation Guide",
+      "title": "ProducerEngage Installation Guide",
       "url": "cloud/dx/pe/202209/install",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -326,10 +326,10 @@
     },
     {
       "id": "dx202209pedev",
-      "title": "Development Guide",
+      "title": "ProducerEngage Development Guide",
       "url": "cloud/dx/pe/202209/dev",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -345,10 +345,10 @@
     },
     {
       "id": "dx202209perefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "ProducerEngage Digital Services Reference Guides",
       "url": "cloud/dx/pe/202209/ref",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -364,10 +364,10 @@
     },
     {
       "id": "dx202209perelnotes",
-      "title": "Release Notes",
+      "title": "ProducerEngage Release Notes",
       "url": "cloud/dx/pe/202209/relnotes",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -383,10 +383,10 @@
     },
     {
       "id": "dx202209peclaimsapp",
-      "title": "Application Guide",
+      "title": "ProducerEngage for ClaimCenter Application Guide",
       "url": "cloud/dx/pe-claims/202209/app",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -402,10 +402,10 @@
     },
     {
       "id": "dx202209peclaimsinstall",
-      "title": "Installation Guide",
+      "title": "ProducerEngage for ClaimCenter Installation Guide",
       "url": "cloud/dx/pe-claims/202209/install",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -421,10 +421,10 @@
     },
     {
       "id": "dx202209peclaimsdev",
-      "title": "Development Guide",
+      "title": "ProducerEngage for ClaimCenter Development Guide",
       "url": "cloud/dx/pe-claims/202209/dev",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -440,10 +440,10 @@
     },
     {
       "id": "dx202209peclaimsrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "ProducerEngage for ClaimCenter Digital Services Reference Guides",
       "url": "cloud/dx/pe-claims/202209/ref",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -459,10 +459,10 @@
     },
     {
       "id": "dx202209peclaimsrelnotes",
-      "title": "Release Notes",
+      "title": "ProducerEngage for ClaimCenter Release Notes",
       "url": "cloud/dx/pe-claims/202209/relnotes",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -478,10 +478,10 @@
     },
     {
       "id": "dx202209sreapp",
-      "title": "Application Guide",
+      "title": "ServiceRepEngage Application Guide",
       "url": "cloud/dx/sre/202209/app",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -497,10 +497,10 @@
     },
     {
       "id": "dx202209sreinstall",
-      "title": "Installation Guide",
+      "title": "ServiceRepEngage Installation Guide",
       "url": "cloud/dx/sre/202209/install",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -516,10 +516,10 @@
     },
     {
       "id": "dx202209sredev",
-      "title": "Development Guide",
+      "title": "ServiceRepEngage Development Guide",
       "url": "cloud/dx/sre/202209/dev",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -535,10 +535,10 @@
     },
     {
       "id": "dx202209srerefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "ServiceRepEngage Digital Services Reference Guides",
       "url": "cloud/dx/sre/202209/ref",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -554,10 +554,10 @@
     },
     {
       "id": "dx202209srerelnotes",
-      "title": "Release Notes",
+      "title": "ServiceRepEngage Release Notes",
       "url": "cloud/dx/sre/202209/relnotes",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -573,10 +573,10 @@
     },
     {
       "id": "dx202209veapp",
-      "title": "Application Guide",
+      "title": "VendorEngage Application Guide",
       "url": "cloud/dx/ve/202209/app",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -592,10 +592,10 @@
     },
     {
       "id": "dx202209veinstall",
-      "title": "Installation Guide",
+      "title": "VendorEngage Installation Guide",
       "url": "cloud/dx/ve/202209/install",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -611,10 +611,10 @@
     },
     {
       "id": "dx202209vedev",
-      "title": "Development Guide",
+      "title": "VendorEngage Development Guide",
       "url": "cloud/dx/ve/202209/dev",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -630,10 +630,10 @@
     },
     {
       "id": "dx202209verefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "VendorEngage Digital Services Reference Guides",
       "url": "cloud/dx/ve/202209/ref",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -649,10 +649,10 @@
     },
     {
       "id": "dx202209verelnotes",
-      "title": "Release Notes",
+      "title": "VendorEngage Release Notes",
       "url": "cloud/dx/ve/202209/relnotes",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -673,13 +673,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": [
-          "CustomerEngage Account Management",
-          "CustomerEngage Account Management for ClaimCenter",
-          "CustomerEngage Quote and Buy",
-          "ProducerEngage",
-          "ProducerEngage for ClaimCenter",
-          "ServiceRepEngage",
-          "VendorEngage"
+          "Digital Reference Applications"
         ],
         "version": ["2022.09"],
         "release": ["Flaine"],

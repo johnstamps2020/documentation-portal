@@ -6,7 +6,7 @@
       "title": "CustomerEngage Account Management",
       "url": "self-managed/dx/ce-am/1120",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.2.0"],
         "language": "en"
@@ -23,7 +23,7 @@
       "title": "CustomerEngage Quote and Buy",
       "url": "self-managed/dx/ce-qb/1120",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.2.0"],
         "language": "en"
@@ -40,7 +40,7 @@
       "title": "ProducerEngage",
       "url": "self-managed/dx/pe/1120",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.2.0"],
         "language": "en"
@@ -57,7 +57,7 @@
       "title": "ServiceRepEngage",
       "url": "self-managed/dx/sre/1120",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.2.0"],
         "language": "en"
