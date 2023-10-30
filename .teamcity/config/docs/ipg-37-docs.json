@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "midipgimpl37",
-      "title": "Implementation",
+      "title": "InsuranceSuite Package for Germany Implementation",
       "url": "self-managed/ipg/37/impl",
       "metadata": {
         "product": [
@@ -25,7 +25,7 @@
     },
     {
       "id": "midipgapp37",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Germany Application Guide",
       "url": "self-managed/ipg/37/app",
       "metadata": {
         "product": [
@@ -47,7 +47,7 @@
     },
     {
       "id": "midipginstall37",
-      "title": "Installation",
+      "title": "InsuranceSuite Package for Germany Installation",
       "url": "self-managed/ipg/37/install",
       "metadata": {
         "product": [
@@ -69,7 +69,7 @@
     },
     {
       "id": "midipgrnen37",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Germany Release Notes",
       "url": "self-managed/ipg/37/releasenotes",
       "metadata": {
         "product": [
@@ -91,7 +91,7 @@
     },
     {
       "id": "midipgrnde37",
-      "title": "Release Notes (German)",
+      "title": "InsuranceSuite Package for Germany Release Notes (German)",
       "url": "de/self-managed/ipg/37/releasenotes",
       "metadata": {
         "product": [
@@ -113,7 +113,7 @@
     },
     {
       "id": "midipgglossary37",
-      "title": "Glossary",
+      "title": "InsuranceSuite Package for Germany Glossary",
       "url": "self-managed/ipg/37/glossary",
       "metadata": {
         "product": [
@@ -135,7 +135,7 @@
     },
     {
       "id": "midipgappde37",
-      "title": "Application Guide (German)",
+      "title": "InsuranceSuite Package for Germany Application Guide (German)",
       "url": "de/self-managed/ipg/37/app",
       "metadata": {
         "product": [

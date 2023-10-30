@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipacloud10rn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Australia Release Notes",
       "url": "cloud/ipa/1.0/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipacloud10config",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Australia Configuration",
       "url": "cloud/ipa/1.0/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipacloud10apmp",
-      "title": "Australian Personal Motor Policy",
+      "title": "InsuranceSuite Package for Australia Australian Personal Motor Policy",
       "url": "cloud/ipa/1.0/apmp",
       "metadata": {
         "product": [
@@ -72,7 +72,7 @@
     },
     {
       "id": "ipacloud10apmc",
-      "title": "Australian Personal Motor Claims",
+      "title": "InsuranceSuite Package for Australia Australian Personal Motor Claims",
       "url": "cloud/ipa/1.0/apmc",
       "metadata": {
         "product": [
@@ -95,7 +95,7 @@
     },
     {
       "id": "ipacloud10gstc",
-      "title": "GST for Claims",
+      "title": "InsuranceSuite Package for Australia GST for Claims",
       "url": "cloud/ipa/1.0/gstc",
       "metadata": {
         "product": [
@@ -118,7 +118,7 @@
     },
     {
       "id": "ipacloud10al",
-      "title": "Address Lookup",
+      "title": "InsuranceSuite Package for Australia Address Lookup",
       "url": "cloud/ipa/1.0/al",
       "metadata": {
         "product": [
@@ -141,7 +141,7 @@
     },
     {
       "id": "ipacloud10vl",
-      "title": "Vehicle Lookup",
+      "title": "InsuranceSuite Package for Australia Vehicle Lookup",
       "url": "cloud/ipa/1.0/vl",
       "metadata": {
         "product": [

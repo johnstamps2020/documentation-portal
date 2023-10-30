@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipukflainern",
-      "title": "Release Notes",
+      "title": "OIC Integration Release Notes",
       "url": "ipuk/flaine/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipukflaineconfig",
-      "title": "Configuration",
+      "title": "OIC Integration Configuration",
       "url": "ipuk/flaine/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipukflaineapp",
-      "title": "Application Guide",
+      "title": "OIC Integration Application Guide",
       "url": "ipuk/flaine/app",
       "metadata": {
         "product": [

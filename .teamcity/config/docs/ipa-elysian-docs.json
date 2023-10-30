@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipacloudelysianrn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Australia Release Notes",
       "url": "cloud/ipa/elysian/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipacloudelysianconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Australia Configuration",
       "url": "cloud/ipa/elysian/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipacloudelysianapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Australia Application Guide",
       "url": "cloud/ipa/elysian/app",
       "metadata": {
         "product": [

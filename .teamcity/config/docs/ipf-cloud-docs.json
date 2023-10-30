@@ -3,10 +3,10 @@
   "docs": [
     {
       "id": "midipfelysianoverview",
-      "title": "Overview",
+      "title": "ClaimCenter Package for France Overview",
       "url": "cloud/ipf/elysian/overview",
       "metadata": {
-        "product": ["ClaimCenter Package for France"],
+        "product": ["Global Content", "ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -22,10 +22,10 @@
     },
     {
       "id": "midipfelysianadjuster",
-      "title": "Adjuster Guide",
+      "title": "ClaimCenter Package for France Adjuster Guide",
       "url": "cloud/ipf/elysian/adjuster",
       "metadata": {
-        "product": ["ClaimCenter Package for France"],
+        "product": ["Global Content", "ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -41,10 +41,10 @@
     },
     {
       "id": "midipfelysianadmin",
-      "title": "Administration Guide",
+      "title": "ClaimCenter Package for France Administration Guide",
       "url": "cloud/ipf/elysian/admin",
       "metadata": {
-        "product": ["ClaimCenter Package for France"],
+        "product": ["Global Content", "ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -60,10 +60,10 @@
     },
     {
       "id": "midipfelysianrn",
-      "title": "Release Notes",
+      "title": "ClaimCenter Package for France Release Notes",
       "url": "cloud/ipf/elysian/releasenotes",
       "metadata": {
-        "product": ["ClaimCenter Package for France"],
+        "product": ["Global Content", "ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],

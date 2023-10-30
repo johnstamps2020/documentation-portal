@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipagarmischrn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Australia Release Notes",
       "url": "cloud/ipa/garmisch/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipagarmischconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Australia Configuration",
       "url": "cloud/ipa/garmisch/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipagarmischapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Australia Application Guide",
       "url": "cloud/ipa/garmisch/app",
       "metadata": {
         "product": [
@@ -72,7 +72,7 @@
     },
     {
       "id": "ipagarmischupgrade",
-      "title": "Upgrade Guide",
+      "title": "InsuranceSuite Package for Australia Upgrade Guide",
       "url": "cloud/ipa/garmisch/upgrade",
       "metadata": {
         "product": [
@@ -95,7 +95,7 @@
     },
     {
       "id": "ipagarmischinstall",
-      "title": "Installation Guide",
+      "title": "InsuranceSuite Package for Australia Installation Guide",
       "url": "cloud/ipa/garmisch/install",
       "metadata": {
         "product": [

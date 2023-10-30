@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "ipainnsbruckrn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Australia Release Notes",
       "url": "cloud/ipa/innsbruck/releasenotes",
       "metadata": {
         "product": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "ipainnsbruckconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Australia Configuration",
       "url": "cloud/ipa/innsbruck/config",
       "metadata": {
         "product": [
@@ -49,7 +49,7 @@
     },
     {
       "id": "ipainnsbruckapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Australia Application Guide",
       "url": "cloud/ipa/innsbruck/app",
       "metadata": {
         "product": [
@@ -72,7 +72,7 @@
     },
     {
       "id": "ipainnsbruckupgrade",
-      "title": "Upgrade Guide",
+      "title": "InsuranceSuite Package for Australia Upgrade Guide",
       "url": "cloud/ipa/innsbruck/upgrade",
       "metadata": {
         "product": [
@@ -95,7 +95,7 @@
     },
     {
       "id": "ipainnsbruckinstall",
-      "title": "Installation Guide",
+      "title": "InsuranceSuite Package for Australia Installation Guide",
       "url": "cloud/ipa/innsbruck/install",
       "metadata": {
         "product": [
