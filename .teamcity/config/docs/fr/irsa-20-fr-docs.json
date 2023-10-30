@@ -7,7 +7,7 @@
       "displayTitle": "Guide du gestionnaire",
       "url": "fr/self-managed/ipf/2.0/adjuster",
       "metadata": {
-        "product": ["ClaimCenter Package for France"],
+        "product": ["Global Content"],
         "platform": ["Self-managed"],
         "version": ["2.0"],
         "subject": ["Features and functionality"],
@@ -26,7 +26,7 @@
       "displayTitle": "Notes sur la version",
       "url": "fr/self-managed/ipf/2.0/releasenotes",
       "metadata": {
-        "product": ["ClaimCenter Package for France"],
+        "product": ["Global Content"],
         "platform": ["Self-managed"],
         "version": ["2.0"],
         "subject": ["Release notes"],
