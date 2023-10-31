@@ -254,15 +254,6 @@
       "disabled": false
     },
     {
-      "buildType": "dita",
-      "filter": "Digital-apd-MgSvcs.ditaval",
-      "root": "DigitalCodeGenerationGuide.ditamap",
-      "srcId": "dx202104src",
-      "docId": "dx202104dcg",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
       "buildType": "yarn",
       "srcId": "dxjsdocs202104src",
       "docId": "dxjsdocs202104",
