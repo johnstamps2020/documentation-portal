@@ -7,7 +7,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxceam1130",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +15,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxceclaims1130",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +23,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxceqb1130",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +31,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxpe1130",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +39,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxpeclaims1130",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +47,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxsre1130",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +55,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxve1130",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +63,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
       "docId": "dxceam1120onpremstaging",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +71,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
       "docId": "dxceqb1120onpremstaging",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -79,7 +79,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
       "docId": "dxpe1120onpremstaging",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -87,7 +87,7 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
       "docId": "dxsre1120onpremstaging",
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
