@@ -55,6 +55,10 @@ const pageConfig: SectionLayoutProps = {
           label: 'Excel Designed Rating',
           docId: 'inexcelrating30',
         },
+        {
+          label: 'Data Service',
+          docId: 'indataservice',
+        },
       ],
     },
     {
