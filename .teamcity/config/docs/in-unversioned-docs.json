@@ -648,6 +648,25 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "indataservice",
+      "title": "Data Service",
+      "url": "cloud/in/data-service",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.3"],
+        "subject": ["Features and functionality"],
+        "release": ["Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
