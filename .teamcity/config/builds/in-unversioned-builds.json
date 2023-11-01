@@ -313,6 +313,15 @@
       "docId": "ininowasidp",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "dataservice.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "indataservice",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
