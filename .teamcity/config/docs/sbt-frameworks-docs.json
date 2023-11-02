@@ -7,7 +7,7 @@
       "url": "sbtfw/latest/customization",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
-        "product": ["Standards-based Template Framework"],
+        "product": ["Global Content", "PolicyCenter"],
         "version": ["latest"],
         "release": ["Flaine", "Garmisch", "Hakuba"],
         "language": "en"
@@ -25,7 +25,7 @@
       "url": "sbtfw/latest/guide",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
-        "product": ["Standards-based Template Framework"],
+        "product": ["Global Content", "PolicyCenter"],
         "version": ["latest"],
         "release": ["Flaine", "Garmisch", "Hakuba"],
         "language": "en"
