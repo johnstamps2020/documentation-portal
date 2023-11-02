@@ -36,8 +36,24 @@
       "url": "ja/glossary",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "DataHub",
+          "InfoCenter",
+          "Digital Reference Applications"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
         "version": ["latest"],
+        "subject": ["Glossary"],
         "language": "ja"
       },
       "environments": ["staging", "prod"],

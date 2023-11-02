@@ -323,7 +323,7 @@
       "url": "glossary",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud", "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -344,6 +344,7 @@
           "Garmisch",
           "Hakuba"
         ],
+        "subject": ["Glossary"],
         "language": "en"
       },
       "environments": [
