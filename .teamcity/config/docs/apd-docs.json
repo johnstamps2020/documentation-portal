@@ -211,7 +211,7 @@
     },
     {
       "id": "apdcreatingproductsinnsbruck",
-      "title": "Creating Products",
+      "title": "Creating Products with APD App",
       "url": "cloud/apd/innsbruck/create",
       "metadata": {
         "platform": ["Cloud"],
@@ -230,7 +230,7 @@
     },
     {
       "id": "apdfinalizingproductsinnsbruck",
-      "title": "Finalizing Products",
+      "title": "Integrating Products with PolicyCenter",
       "url": "cloud/apd/innsbruck/finalize",
       "metadata": {
         "platform": ["Cloud"],
