@@ -29,11 +29,11 @@ const pageConfig: SectionLayoutProps = {
       label: 'Features and functionality',
       items: [
         {
-          label: 'Creating Products',
+          label: 'Creating Products with APD App',
           docId: 'apdcreatingproductsinnsbruck',
         },
         {
-          label: 'Finalizing Products',
+          label: 'Integrating Products with PolicyCenter',
           docId: 'apdfinalizingproductsinnsbruck',
         },
       ],
