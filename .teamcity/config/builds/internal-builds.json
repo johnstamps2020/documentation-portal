@@ -61,7 +61,7 @@
       "buildType": "yarn",
       "docId": "mithril",
       "srcId": "mithrilsrc",
-      "nodeImageVersion": "18.0.0",
+      "nodeImageVersion": "18.12.0",
       "disabled": false
     }
   ]
