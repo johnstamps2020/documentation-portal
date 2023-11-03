@@ -56,6 +56,13 @@
       "workingDir": "service/website",
       "nodeImageVersion": "18.0.0",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "mithril",
+      "srcId": "mithrilsrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     }
   ]
 }
