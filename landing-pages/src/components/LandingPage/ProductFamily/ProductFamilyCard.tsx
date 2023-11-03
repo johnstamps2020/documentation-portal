@@ -13,37 +13,42 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
   };
   const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
   const arrangedLandingPageItems = arrangeItems([item], landingPageItems);
+  const productFamilyItem = (
+    <Paper
+      sx={{
+        height: '100px',
+        width: { xs: '100%', sm: '300px' },
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+      }}
+    >
+      {arrangedLandingPageItems && (
+        <LandingPageLink
+          landingPageItem={arrangedLandingPageItems[0]}
+          sx={sx}
+        />
+      )}
+    </Paper>
+  );
+  const productFamilySkeleton = (
+    <Skeleton
+      variant="rectangular"
+      sx={{
+        width: { sm: '300px', xs: '100%' },
+        height: '100px',
+      }}
+    />
+  );
   return (
     <LandingPageItemRenderer
       landingPageItems={arrangedLandingPageItems}
       isLoading={isLoading}
       isError={isError}
-      skeleton={
-        <Skeleton
-          variant="rectangular"
-          sx={{
-            width: { sm: '300px', xs: '100%' },
-            height: '100px',
-          }}
-        />
-      }
-      item={
-        <Paper
-          sx={{
-            height: '100px',
-            width: { xs: '100%', sm: '300px' },
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textAlign: 'center',
-          }}
-        >
-          {landingPageItems && (
-            <LandingPageLink landingPageItem={landingPageItems[0]} sx={sx} />
-          )}
-        </Paper>
-      }
+      skeleton={productFamilySkeleton}
+      item={productFamilyItem}
     />
   );
 }
