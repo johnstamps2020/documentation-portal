@@ -15,47 +15,44 @@ export type Category2CardProps = {
 };
 export default function Category2Card({ label, items }: Category2CardProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
-
   const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
-
+  const category2CardItem = (
+    <Paper
+      sx={{
+        width: { sm: '288px', xs: '100%' },
+        padding: '24px',
+      }}
+    >
+      <Typography variant="h2" sx={{ fontSize: '1.25rem', fontWeight: '600' }}>
+        {label}
+      </Typography>
+      <Divider />
+      <Stack gap={2} py={2} sx={{}}>
+        {arrangedLandingPageItems?.map((categoryItem) => (
+          <Category2Item
+            {...categoryItem}
+            key={`${categoryItem.label}_${categoryItem.internal}`}
+          />
+        ))}
+      </Stack>
+    </Paper>
+  );
+  const category2CardSkeleton = (
+    <Skeleton
+      variant="rectangular"
+      sx={{
+        width: { sm: '288px', xs: '100%' },
+        height: '300px',
+      }}
+    />
+  );
   return (
     <LandingPageItemRenderer
       landingPageItems={arrangedLandingPageItems}
       isError={isError}
       isLoading={isLoading}
-      skeleton={
-        <Skeleton
-          variant="rectangular"
-          sx={{
-            width: { sm: '288px', xs: '100%' },
-            height: '300px',
-          }}
-        />
-      }
-      item={
-        <Paper
-          sx={{
-            width: { sm: '288px', xs: '100%' },
-            padding: '24px',
-          }}
-        >
-          <Typography
-            variant="h2"
-            sx={{ fontSize: '1.25rem', fontWeight: '600' }}
-          >
-            {label}
-          </Typography>
-          <Divider />
-          <Stack gap={2} py={2} sx={{}}>
-            {landingPageItems?.map((categoryItem) => (
-              <Category2Item
-                {...categoryItem}
-                key={`${categoryItem.label}_${categoryItem.internal}`}
-              />
-            ))}
-          </Stack>
-        </Paper>
-      }
+      skeleton={category2CardSkeleton}
+      item={category2CardItem}
     />
   );
 }
