@@ -119,6 +119,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "mithril",
+      "title": "Mithril",
+      "url": "internal/mithril/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }

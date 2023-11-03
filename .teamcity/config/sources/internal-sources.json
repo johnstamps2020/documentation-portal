@@ -42,6 +42,12 @@
       "title": "Helios",
       "gitUrl": "ssh://git@stash.guidewire.com/ccs/helios-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "mithrilsrc",
+      "title": "Mithril",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/mithril-docs.git",
+      "branch": "main"
     }
   ]
 }
