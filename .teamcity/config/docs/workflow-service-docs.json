@@ -22,7 +22,7 @@
     },
     {
       "id": "workflowconsole",
-      "title": "Workflow Console",
+      "title": "Workflow Admin Console",
       "url": "cloud/workflow-service/workflow-console",
       "metadata": {
         "platform": ["Cloud"],
