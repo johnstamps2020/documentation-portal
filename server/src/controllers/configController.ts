@@ -348,9 +348,7 @@ export async function getEntity(
     };
   }
   try {
-    const findEntityResult = loadRelations
-      ? await findEntity(repo, options, true)
-      : await findEntity(repo, options, false);
+    const findEntityResult = await findEntity(repo, options, loadRelations);
     if (!findEntityResult) {
       return {
         status: 404,
@@ -384,11 +382,12 @@ export async function getEntity(
 
 export async function getAllEntities(
   req: Request,
-  res: Response
+  res: Response,
+  loadRelations: boolean = false
 ): Promise<ApiResponse> {
   try {
     const { repo } = req.params;
-    const findAllEntitiesResult = await findAllEntities(repo, false);
+    const findAllEntitiesResult = await findAllEntities(repo, loadRelations);
     if (!findAllEntitiesResult) {
       return {
         status: 404,

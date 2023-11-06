@@ -49,6 +49,11 @@ router.get('/entity/:repo/all', async function (req, res) {
   return res.status(status).json(body);
 });
 
+router.get('/entity/:repo/all/relations', async function (req, res) {
+  const { status, body } = await getAllEntities(req, res, true);
+  return res.status(status).json(body);
+});
+
 router.get('/entity/doc/metadata', async function (req, res) {
   const { id } = req.query;
   const { status, body } = await getDocumentMetadataById(id as string, res);
