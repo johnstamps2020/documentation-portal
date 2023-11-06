@@ -17,7 +17,7 @@
           "InfoCenter"],
         "version": ["2023.06", "2023.2"],
         "release": ["Hakuba"],
-        "subject": ["Features and functionality"],
+        "subject": ["Release notes"],
         "language": "pt"
       },
       "environments": ["staging", "prod"],

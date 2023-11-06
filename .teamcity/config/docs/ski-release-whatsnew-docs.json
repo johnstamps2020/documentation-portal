@@ -16,7 +16,7 @@
           "InfoCenter"],
         "version": ["2023.06", "2023.2"],
         "release": ["Hakuba"],
-        "subject": ["Features and functionality"],
+        "subject": ["Release notes"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -41,7 +41,7 @@
           "InfoCenter"],
         "version": ["2023.02", "2023.1"],
         "release": ["Garmisch"],
-        "subject": ["Features and functionality"],
+        "subject": ["Release notes"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -66,7 +66,7 @@
           "InfoCenter"],
         "version": ["2022.09", "2022.2"],
         "release": ["Flaine"],
-        "subject": ["Features and functionality"],
+        "subject": ["Release notes"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
