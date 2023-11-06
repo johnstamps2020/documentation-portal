@@ -67,7 +67,7 @@
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -219,7 +219,7 @@
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

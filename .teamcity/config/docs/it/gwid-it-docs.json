@@ -18,6 +18,7 @@
           "Garmisch",
           "Hakuba"
         ],
+        "subject": ["Administration", "Configuration"],
         "language": "it"
       },
       "environments": ["staging", "prod"],

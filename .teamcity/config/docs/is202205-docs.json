@@ -67,7 +67,7 @@
         "product": ["BillingCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -314,7 +314,7 @@
         "product": ["ClaimCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -599,7 +599,7 @@
         "product": ["PolicyCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

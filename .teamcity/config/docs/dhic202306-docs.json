@@ -67,7 +67,7 @@
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -219,7 +219,7 @@
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

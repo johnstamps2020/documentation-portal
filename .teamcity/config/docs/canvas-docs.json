@@ -17,6 +17,7 @@
           "Garmisch",
           "Hakuba"
         ],
+        "subject": ["Features and functionality"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

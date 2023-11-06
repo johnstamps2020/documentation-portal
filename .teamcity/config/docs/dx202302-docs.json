@@ -675,6 +675,7 @@
         "product": ["Digital Reference Applications"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
+        "subject": ["Development", "Integration"],
         "language": "en"
       },
       "displayOnLandingPages": false,

@@ -593,7 +593,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "release": [
           "Cortina",
           "Dobson",

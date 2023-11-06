@@ -67,7 +67,7 @@
         "platform": ["Cloud"],
         "version": ["2023.10"],
         "release": ["Innsbruck"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -219,7 +219,7 @@
         "platform": ["Cloud"],
         "version": ["2023.10"],
         "release": ["Innsbruck"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging"],
