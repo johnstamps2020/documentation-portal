@@ -63,7 +63,7 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["prod", "staging"],
@@ -207,7 +207,7 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["prod", "staging"],

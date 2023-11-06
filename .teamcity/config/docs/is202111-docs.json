@@ -124,7 +124,7 @@
         "product": ["BillingCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -390,7 +390,7 @@
         "product": ["ClaimCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -694,7 +694,7 @@
         "product": ["PolicyCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

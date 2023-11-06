@@ -2,10 +2,10 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
-      "id": "whatsnewes419hakuba",
-      "url": "es/cloud/hakuba/whatsnew",
-      "title": "What's new in Hakuba es",
-      "displayTitle": "Novedades de Hakuba",
+      "id": "whatsnewdeDEhakuba",
+      "url": "de/cloud/hakuba/whatsnew",
+      "title": "What's new in Hakuba de",
+      "displayTitle": "Was ist neu in Hakuba",
       "metadata": {
         "platform": ["Cloud"],
         "product": [
@@ -17,7 +17,8 @@
           "InfoCenter"],
         "version": ["2023.06", "2023.2"],
         "release": ["Hakuba"],
-        "language": "es"
+        "subject": ["Features and functionality"],
+        "language": "de"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,

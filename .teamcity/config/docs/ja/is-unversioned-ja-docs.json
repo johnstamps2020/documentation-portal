@@ -72,7 +72,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["latest"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "release": ["Hakuba"],
         "language": "ja"
       },

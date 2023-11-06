@@ -11,6 +11,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": ["Hakuba"],
+        "subject": ["Release notes"],
         "language": "es"
       },
       "environments": ["staging", "prod"],

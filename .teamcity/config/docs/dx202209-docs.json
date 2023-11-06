@@ -677,6 +677,7 @@
         ],
         "version": ["2022.09"],
         "release": ["Flaine"],
+        "subject": ["Development", "Integration"],
         "language": "en"
       },
       "displayOnLandingPages": false,

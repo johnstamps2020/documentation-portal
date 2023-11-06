@@ -10,6 +10,7 @@
         "product": ["Data Platform"],
         "version": ["latest"],
         "release": ["Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "subject": ["Features and functionality", "Release notes"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

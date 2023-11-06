@@ -67,7 +67,7 @@
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -219,7 +219,7 @@
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

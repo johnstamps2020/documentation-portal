@@ -17,6 +17,7 @@
           "Garmisch",
           "Hakuba"
         ],
+        "subject": ["Administration", "Configuration"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -42,6 +43,7 @@
           "Garmisch",
           "Hakuba"
         ],
+        "subject": ["Integration"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -67,6 +69,7 @@
           "Garmisch",
           "Hakuba"
         ],
+        "subject": ["Release notes"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

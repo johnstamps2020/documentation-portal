@@ -636,6 +636,7 @@
         "version": [
           "latest"
         ],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": [
