@@ -10,6 +10,7 @@
         "product": ["Advanced Product Designer"],
         "version": ["2022.09", "2023.02", "2023.06"],
         "release": ["Flaine", "Garmisch", "Hakuba"],
+        "subject": ["Development", "Integration"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
