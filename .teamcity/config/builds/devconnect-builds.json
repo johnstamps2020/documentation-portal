@@ -1,0 +1,19 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "yarn",
+      "docId": "devconnectinsurer",
+      "srcId": "devconnectinsurersrc",
+      "disabled": false,
+      "workingDir": "output"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "devconnectpartner",
+      "srcId": "devconnectpartnersrc",
+      "disabled": false,
+      "workingDir": "output"
+    }
+  ]
+}
