@@ -135,8 +135,6 @@ spec:
           env:
             - name: REFRESH_IMAGE
               value: 'BUILD_TIME'
-            - name: OKTA_IDP
-              value: ${OKTA_IDP}
             - name: OKTA_CLIENT_ID
               valueFrom:
                 secretKeyRef:
