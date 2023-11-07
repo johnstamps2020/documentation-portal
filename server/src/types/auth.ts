@@ -7,18 +7,14 @@ export type OktaInstance = {
   url: string;
   clientId: string;
   clientSecret: string;
-  corpOktaIdp: string;
 };
 
 export type OktaStrategy = {
   region: OktaRegion;
   oidcStrategy: OidcStrategy;
-  corpOktaIdp: string;
 };
 
 export type OidcStrategy = {
   name: string;
   instance: Strategy<StrategyOptions>;
 };
-
-export const oktaIdpUrlParam = 'okta';

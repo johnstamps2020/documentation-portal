@@ -43,7 +43,6 @@ Create a `server/.env` file with the following variables:
 ```
 OKTA_CLIENT_ID=
 OKTA_CLIENT_SECRET=
-OKTA_IDP=
 OKTA_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
 OKTA_SCOPES="NODE_Hawaii_Docs_Web.read"
 OKTA_AUDIENCE=Guidewire

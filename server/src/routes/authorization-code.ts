@@ -9,7 +9,7 @@ import {
   saveRedirectUrlToSession,
 } from '../controllers/authController';
 import fetch from 'node-fetch';
-import { oktaIdpUrlParam, OktaInstance, OktaStrategy } from '../types/auth';
+import { OktaInstance, OktaStrategy } from '../types/auth';
 
 const router = Router();
 
@@ -18,14 +18,12 @@ const oktaInstanceAmer: OktaInstance = {
   url: process.env.OKTA_ISSUER!,
   clientId: process.env.OKTA_CLIENT_ID!,
   clientSecret: process.env.OKTA_CLIENT_SECRET!,
-  corpOktaIdp: process.env.OKTA_IDP!,
 };
 const oktaIntanceApac: OktaInstance = {
   region: 'apac',
   url: process.env.OKTA_ISSUER_APAC!,
   clientId: process.env.OKTA_CLIENT_ID_APAC!,
   clientSecret: process.env.OKTA_CLIENT_SECRET_APAC!,
-  corpOktaIdp: process.env.OKTA_IDP_APAC!,
 };
 
 const oktaInstanceEmea: OktaInstance = {
@@ -33,7 +31,6 @@ const oktaInstanceEmea: OktaInstance = {
   url: process.env.OKTA_ISSUER_EMEA!,
   clientId: process.env.OKTA_CLIENT_ID_EMEA!,
   clientSecret: process.env.OKTA_CLIENT_SECRET_EMEA!,
-  corpOktaIdp: process.env.OKTA_IDP_EMEA!,
 };
 
 function isAdminUser(userGroups: string[]) {
@@ -94,7 +91,6 @@ async function createOktaStrategies() {
           name: `oidcStrategy${oktaInstance.region.toUpperCase()}`,
           instance: oidcStrategy,
         },
-        corpOktaIdp: oktaInstance.corpOktaIdp,
       });
     }
   }
@@ -125,18 +121,6 @@ createOktaStrategies()
     router.get(
       '/',
       function (req, res, next) {
-        const { idp } = req.query;
-        for (const oktaStrategy of oktaStrategies) {
-          // @ts-ignore
-          delete oktaStrategy.oidcStrategy.instance._params.idp;
-        }
-        if (idp === oktaIdpUrlParam) {
-          for (const oktaStrategy of oktaStrategies) {
-            // @ts-ignore
-            oktaStrategy.oidcStrategy.instance._params.idp =
-              oktaStrategy.corpOktaIdp;
-          }
-        }
         saveRedirectUrlToSession(req);
         next();
       },
