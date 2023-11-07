@@ -1,10 +1,11 @@
 import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
-import gradientBackgroundImage from 'images/background-gradient.svg';
 import dobsonBackgroundImage from 'images/background-dobson.svg';
+import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
@@ -197,31 +198,7 @@ const pageConfig: CategoryLayoutProps = {
     },
   ],
 
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'API References',
-        pagePath: 'apiReferences',
-      },
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-    ],
-  },
+  sidebar: implementationResourcesSidebar,
 };
 
 export default function Dobson() {

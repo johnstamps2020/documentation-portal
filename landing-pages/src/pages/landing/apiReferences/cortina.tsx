@@ -5,6 +5,7 @@ import cortinaBackgroundImage from 'images/background-cortina.svg';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {
@@ -35,31 +36,7 @@ const pageConfig: ProductFamilyLayoutProps = {
       docId: 'pc202104apiref',
     },
   ],
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-      {
-        label: 'Internal docs',
-        docId: 'internaldocslatest',
-      },
-    ],
-  },
+  sidebar: implementationResourcesSidebar,
 };
 
 export default function Cortina() {

@@ -1,11 +1,12 @@
 import Category2Layout, {
   Category2LayoutProps,
 } from 'components/LandingPage/Category2/Category2Layout';
-import gradientBackgroundImage from 'images/background-gradient.svg';
 import garmischBackgroundImage from 'images/background-garmisch.png';
+import gradientBackgroundImage from 'images/background-gradient.svg';
 import garmischBadge from 'images/badge-garmisch.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
@@ -173,31 +174,7 @@ const pageConfig: Category2LayoutProps = {
       'New analytics model for Predict',
     ],
   },
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-      {
-        label: 'Internal docs',
-        docId: 'internaldocslatest',
-      },
-    ],
-  },
+  sidebar: implementationResourcesSidebar,
 };
 
 export default function Garmisch() {
