@@ -23,6 +23,7 @@ function belongsToGuidewire(email: string) {
 }
 
 export type ReqUser = {
+  sub: string;
   name: string;
   email: string;
   locale: string;
@@ -55,6 +56,7 @@ const unknownUserInfo: UserInfo = {
   name: 'Unknown',
   email: 'Unknown',
   preferred_username: 'Unknown',
+  id: 'Unknown',
   hasGuidewireEmail: false,
   locale: 'en-US',
   isAdmin: false,
@@ -77,11 +79,9 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
         return {
           ...unknownUserInfo,
           isLoggedIn: isLoggedIn,
-          /* 
-          Only GW apps have access to the doc portal through JWT, but we don't know who logs into these apps
-          and if they are GW employees.
-          Therefore, only apps with admin access are treated as GW employees to limit access to internal resources.
-          */
+          // Only GW apps have access to the doc portal through JWT, but we don't know who logs into these apps
+          // and if they are GW employees.
+          // Therefore, only apps with admin access are treated as GW employees to limit access to internal resources.
           hasGuidewireEmail: adminAccessToken,
           isAdmin: adminAccessToken,
         };
@@ -95,6 +95,7 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
       name: getUserName(user),
       email: email,
       preferred_username: email,
+      id: user.sub,
       hasGuidewireEmail: belongsToGuidewire(email),
       locale: user.locale,
       isAdmin: user.isAdmin,
