@@ -187,8 +187,28 @@ const pageConfig: CategoryLayoutProps = {
         },
       ],
     },
+    {
+      label: 'Developer Resources',
+      items: [
+        {
+          label: 'API References',
+          pagePath: 'apiReferences/elysian',
+        },
+        {
+          label: 'Integration Gateway',
+          docId: 'integgatewaydevlatest',
+        },
+        {
+          label: 'REST API Client',
+          docId: 'isrestapiclientguide',
+        },
+        {
+          label: 'Guidewire Testing',
+          pagePath: 'testingFramework/elysian',
+        },
+      ],
+    },
   ],
-
   sidebar: implementationResourcesSidebar,
 };
 
