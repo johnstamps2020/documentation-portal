@@ -6,23 +6,13 @@ import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import SidebarSkeleton from '../SidebarSkeleton';
 import Category2Item from './Category2Item';
+import { arrangeItems } from 'helpers/landingPageHelpers';
+import LandingPageItemRenderer from '../LandingPageItemRenderer';
 
 export default function Category2Sidebar({ label, items }: SidebarProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
-
-  if (
-    isError ||
-    (landingPageItems && landingPageItems.length === 0) ||
-    !landingPageItems
-  ) {
-    return null;
-  }
-
-  if (isLoading) {
-    return <SidebarSkeleton />;
-  }
-
-  return (
+  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
+  const category2SidebarItem = (
     <Paper
       sx={{
         height: 'fit-content',
@@ -40,10 +30,20 @@ export default function Category2Sidebar({ label, items }: SidebarProps) {
       </Typography>
       <Divider />
       <Stack gap={2} py={2}>
-        {landingPageItems.map((sidebarItem) => (
+        {arrangedLandingPageItems.map((sidebarItem) => (
           <Category2Item {...sidebarItem} key={sidebarItem.label} />
         ))}
       </Stack>
     </Paper>
+  );
+
+  return (
+    <LandingPageItemRenderer
+      item={category2SidebarItem}
+      skeleton={<SidebarSkeleton />}
+      landingPageItems={arrangedLandingPageItems}
+      isLoading={isLoading}
+      isError={isError}
+    />
   );
 }
