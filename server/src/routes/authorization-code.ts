@@ -9,8 +9,29 @@ import {
   saveRedirectUrlToSession,
 } from '../controllers/authController';
 import fetch from 'node-fetch';
+import { OktaInstance, OktaStrategy } from '../types/auth';
 
 const router = Router();
+
+const oktaInstanceAmer: OktaInstance = {
+  region: 'amer',
+  url: process.env.OKTA_ISSUER!,
+  clientId: process.env.OKTA_CLIENT_ID!,
+  clientSecret: process.env.OKTA_CLIENT_SECRET!,
+};
+const oktaIntanceApac: OktaInstance = {
+  region: 'apac',
+  url: process.env.OKTA_ISSUER_APAC!,
+  clientId: process.env.OKTA_CLIENT_ID_APAC!,
+  clientSecret: process.env.OKTA_CLIENT_SECRET_APAC!,
+};
+
+const oktaInstanceEmea: OktaInstance = {
+  region: 'emea',
+  url: process.env.OKTA_ISSUER_EMEA!,
+  clientId: process.env.OKTA_CLIENT_ID_EMEA!,
+  clientSecret: process.env.OKTA_CLIENT_SECRET_EMEA!,
+};
 
 function isAdminUser(userGroups: string[]) {
   const adminGroups = process.env.OKTA_ADMIN_GROUPS?.split(',') || [];
@@ -20,67 +41,90 @@ function isAdminUser(userGroups: string[]) {
   );
 }
 
-fetch(`${process.env.OKTA_ISSUER!}/.well-known/openid-configuration`)
-  .then((r) => r.json())
-  .then((oktaIssuerDetails) => {
-    const oktaIssuer = new Issuer(oktaIssuerDetails);
+async function createOktaStrategies() {
+  const oktaScopes = 'openid profile email';
+  const oktaRedirectUris = [
+    `${process.env.APP_BASE_URL!}/authorization-code/callback`,
+  ];
+
+  const oktaInstances: OktaInstance[] =
+    process.env.DEPLOY_ENV === 'omega2-andromeda'
+      ? [oktaInstanceAmer, oktaIntanceApac, oktaInstanceEmea]
+      : [oktaInstanceAmer];
+
+  const oktaStrategies: OktaStrategy[] = [];
+  for (const oktaInstance of oktaInstances) {
+    const response = await fetch(
+      `${oktaInstance.url}/.well-known/openid-configuration`
+    );
+    if (response.ok) {
+      const oktaIssuerDetails = await response.json();
+      const oktaIssuer = new Issuer(oktaIssuerDetails);
+      const oktaClient = new oktaIssuer.Client({
+        client_id: oktaInstance.clientId,
+        client_secret: oktaInstance.clientSecret,
+        redirect_uris: oktaRedirectUris,
+      });
+      const oidcStrategy = new Strategy(
+        {
+          client: oktaClient,
+          params: {
+            scope: oktaScopes,
+          },
+        },
+        function (
+          tokenSet: TokenSet,
+          profile: UserinfoResponse,
+          done: (err: any, user?: UserinfoResponse) => void
+        ) {
+          profile.isAdmin = isAdminUser(profile.groups as string[]);
+          // Keeping info about groups in the user profile increases the size of the session cookie significantly.
+          // For some users, it was not possible to set the session cookie because it exceeded the maximum size
+          // allowed by the browser (4096 bytes).
+          delete profile.groups;
+          return done(null, profile);
+        }
+      );
+      oktaStrategies.push({
+        region: oktaInstance.region,
+        oidcStrategy: {
+          name: `oidcStrategy${oktaInstance.region.toUpperCase()}`,
+          instance: oidcStrategy,
+        },
+      });
+    }
+  }
+  return oktaStrategies;
+}
+
+createOktaStrategies()
+  .then((oktaStrategies) => {
     router.use(cookieParser());
     router.use(bodyParser.urlencoded({ extended: false }));
     router.use(bodyParser.json());
 
-    const oktaClient = new oktaIssuer.Client({
-      client_id: process.env.OKTA_CLIENT_ID!,
-      client_secret: process.env.OKTA_CLIENT_SECRET,
-      redirect_uris: [
-        `${process.env.APP_BASE_URL}/authorization-code/callback`,
-      ],
-    });
-
-    const oidcStrategy = new Strategy(
-      {
-        client: oktaClient,
-        params: {
-          scope: 'openid profile email',
-        },
-      },
-      function (
-        tokenSet: TokenSet,
-        profile: UserinfoResponse,
-        done: (err: any, user?: UserinfoResponse) => void
-      ) {
-        profile.isAdmin = isAdminUser(profile.groups as string[]);
-        /*
-        Keeping info about groups in the user profile increases the size of the session cookie significantly.
-        For some users, it was not possible to set the session cookie because it exceeded the maximum size
-        allowed by the browser (4096 bytes).
-        */
-        delete profile.groups;
-        return done(null, profile);
-      }
-    );
     passport.serializeUser(function (user, done) {
       done(null, user);
     });
     passport.deserializeUser(function (user: UserinfoResponse, done) {
       done(null, user);
     });
-    passport.use('oidcStrategy', oidcStrategy);
+    const oidcStrategyNames = [];
+    for (const oktaStrategy of oktaStrategies) {
+      const oidcStrategyName = oktaStrategy.oidcStrategy.name;
+      passport.use(oidcStrategyName, oktaStrategy.oidcStrategy.instance);
+      oidcStrategyNames.push(oidcStrategyName);
+    }
     router.use(passport.initialize());
     router.use(passport.session());
 
     router.get(
       '/',
       function (req, res, next) {
-        // @ts-ignore
-        delete oidcStrategy._params.idp;
-        if (req.query.idp === 'okta') {
-          // @ts-ignore
-          oidcStrategy._params.idp = process.env.OKTA_IDP;
-        }
         saveRedirectUrlToSession(req);
         next();
       },
-      passport.authenticate('oidcStrategy')
+      passport.authenticate(oidcStrategyNames)
     );
 
     router.use(
@@ -88,14 +132,14 @@ fetch(`${process.env.OKTA_ISSUER!}/.well-known/openid-configuration`)
       function (req, res, next) {
         next();
       },
-      passport.authenticate('oidcStrategy'),
+      passport.authenticate(oidcStrategyNames),
       function (req, res) {
         res.redirect(resolveRequestedUrl(req));
       }
     );
   })
   .catch((err) => {
-    winstonLogger.error(`Error in Issuer.discover: ${err}`);
+    winstonLogger.error(`Authentication error: ${err}`);
   });
 
 module.exports = router;

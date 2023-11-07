@@ -78,8 +78,6 @@ enum class GwConfigParams(val paramValue: String) {
     AWS_ROLE("arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"),
     AWS_ROLE_PROD("arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"),
     ARTIFACTORY_HOST("artifactory.guidewire.com"),
-    OKTA_IDP("0oamwriqo1E1dOdd70h7"),
-    OKTA_IDP_PROD("0oa25tk18zhGOqMfj357"),
     OKTA_ISSUER("https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"),
     OKTA_ISSUER_PROD("https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"),
     OKTA_ISSUER_APAC("https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"),
@@ -433,7 +431,6 @@ object Helpers {
                 export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER_PROD.paramValue}"
                 export OKTA_ISSUER_APAC="${GwConfigParams.OKTA_ISSUER_APAC.paramValue}"
                 export OKTA_ISSUER_EMEA="${GwConfigParams.OKTA_ISSUER_EMEA.paramValue}"
-                export OKTA_IDP="${GwConfigParams.OKTA_IDP_PROD.paramValue}"
                 export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES_PROD.paramValue}"
                 export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
                 export CONFIG_DB_HOST="${GwConfigParams.CONFIG_DB_HOST_PROD.paramValue}" 
@@ -453,7 +450,6 @@ object Helpers {
                 export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
                 export OKTA_ISSUER_APAC="issuerNotConfigured"
                 export OKTA_ISSUER_EMEA="issuerNotConfigured"
-                export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
                 export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
                 export ELASTIC_SEARCH_URL="http://docsearch-${deployEnv}.doctools:9200"
                 export CONFIG_DB_HOST="${
@@ -5135,7 +5131,6 @@ object Admin {
                     set -e
                     export OKTA_CLIENT_ID=mock
                     export OKTA_CLIENT_SECRET=mock
-                    export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
                     export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
                     export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
                     export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"

@@ -17,7 +17,7 @@ export default function GwEmployeeButton({
     <Button
       variant="outlined"
       color="primary"
-      href={`/authorization-code?idp=okta&redirectTo=${redirectTo}`}
+      href={`/authorization-code?redirectTo=${redirectTo}`}
       sx={buttonStyle}
       onClick={onClick}
     >
