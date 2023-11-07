@@ -34,10 +34,6 @@ const pageConfig: SectionLayoutProps = {
           label: 'Installation',
           docId: 'isbc202104install',
         },
-        {
-          label: 'Upgrade',
-          docId: 'isbc202104upgrade',
-        },
       ],
     },
     {

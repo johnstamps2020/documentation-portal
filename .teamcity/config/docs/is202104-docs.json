@@ -53,7 +53,7 @@
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -281,7 +281,7 @@
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -585,7 +585,7 @@
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
