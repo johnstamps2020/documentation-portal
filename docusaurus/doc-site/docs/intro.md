@@ -17,6 +17,10 @@ a Guidewire theme. You can still use the Redoc plugin.
 
 [Follow the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
 
+Please consider using `yarn` as preferred project manager. Installation command
+can be found in Alternative installation commands section
+[here](https://docusaurus.io/docs/installation#scaffold-project-website).
+
 ## Upgrade to Yarn 3
 
 Use Yarn 3 in builds for docs.guidewire.com. If this is your first time
@@ -26,12 +30,16 @@ upgrading Yarn, you may want to read
 Here are the highlights of the process:
 
 1. Install Yarn 3.
+
    ```bash
-   yarn set version berry
+   yarn set version 3.6.4
    ```
-   This adds the `.yarn` folder to your repo.
-1. Add the recommended files to `.gitignore`:
-   ```git
+
+   This adds the `.yarn` folder and `.yarnrc.yml` file to your repo.
+
+2. Add the recommended files to `.gitignore`:
+
+   ```git title=".gitignore"
    .pnp.*
    .yarn/*
    !.yarn/patches
@@ -40,8 +48,11 @@ Here are the highlights of the process:
    !.yarn/sdks
    !.yarn/versions
    ```
-1. In your `.yarnrc.yml`, after `yarnPath: .yarn/releases/yarn-3.X.X.cjs`, add:
-   ```yaml
+
+3. In your `.yarnrc.yml` file, after `yarnPath: .yarn/releases/yarn-3.X.X.cjs`,
+   add:
+
+   ```js yaml title=".yarnrc.yml"
    nodeLinker: node-modules
    npmAlwaysAuth: true
    npmAuthToken: ${NPM_AUTH_TOKEN}
@@ -49,9 +60,10 @@ Here are the highlights of the process:
      doctools:
        npmRegistryServer: https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
    ```
-1. If you have a `yarn.lock` generated with a previous version of Yarn, **delete
+
+4. If you have a `yarn.lock` generated with a previous version of Yarn, **delete
    it**.
-1. Run `yarn` to install dependencies and update `yarn.lock`.
+5. Run `yarn` to install dependencies and update `yarn.lock`.
 
 ## trailingSlash
 
