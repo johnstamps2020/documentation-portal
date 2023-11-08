@@ -157,6 +157,15 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "INowStudioReleaseNotes20233Innsbruck.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20233studiorn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowStudioReleaseNotes20232Hakuba.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20232studiorn",
