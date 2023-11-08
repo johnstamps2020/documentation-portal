@@ -18,7 +18,7 @@ a Guidewire theme. You can still use the Redoc plugin.
 [Follow the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
 
 Please consider using `yarn` as preferred project manager. The installation command
-can be found in Alternative installation commands section
+can be found in the "Alternative installation commands" section
 [here](https://docusaurus.io/docs/installation#scaffold-project-website).
 
 ## Upgrade to Yarn 3
