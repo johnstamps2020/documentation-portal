@@ -656,12 +656,12 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.3"],
+        "version": ["2023.2"],
         "subject": ["Features and functionality"],
-        "release": ["Innsbruck"],
+        "release": ["Hakuba","Innsbruck"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging","prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
