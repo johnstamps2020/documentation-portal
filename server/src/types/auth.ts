@@ -11,10 +11,5 @@ export type OktaInstance = {
 
 export type OktaStrategy = {
   region: OktaRegion;
-  oidcStrategy: OidcStrategy;
-};
-
-export type OidcStrategy = {
-  name: string;
-  instance: Strategy<StrategyOptions>;
+  oidcStrategy: Strategy<StrategyOptions>;
 };
