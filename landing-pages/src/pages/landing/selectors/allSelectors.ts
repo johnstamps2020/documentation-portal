@@ -301,7 +301,10 @@ export const allSelectors = {
     },
     { label: 'ServiceRepEngage', pagePath: 'l10n/de-DE/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/de-DE/ve' },
-    { label: 'Was ist neu in Hakuba', pagePath: 'l10n/de-DE/202306hakubawhatsnew' },
+    {
+      label: 'Was ist neu in Hakuba',
+      pagePath: 'l10n/de-DE/202306hakubawhatsnew',
+    },
   ],
   sfa48f3b641ce1ec0fe00a60fefbb4192: [
     { label: 'Deutsch', pagePath: 'l10n/de-DE' },
@@ -332,7 +335,10 @@ export const allSelectors = {
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/es-419/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/es-419/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/es-419/cm' },
-    { label: 'Novedades de Hakuba', pagePath: 'l10n/es-419/202306hakubawhatsnew' },
+    {
+      label: 'Novedades de Hakuba',
+      pagePath: 'l10n/es-419/202306hakubawhatsnew',
+    },
     { label: 'PolicyCenter', pagePath: 'l10n/es-419/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/es-419/pe' },
     {
@@ -380,7 +386,10 @@ export const allSelectors = {
     { label: 'DataHub', pagePath: 'l10n/fr-FR/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/fr-FR/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
-    { label: 'Nouveautés de Hakuba', pagePath: 'l10n/fr-FR/202306hakubawhatsnew' },
+    {
+      label: 'Nouveautés de Hakuba',
+      pagePath: 'l10n/fr-FR/202306hakubawhatsnew',
+    },
     { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/fr-FR/pe' },
     {
@@ -469,10 +478,16 @@ export const allSelectors = {
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/pt-BR/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/pt-BR/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/pt-BR/cm' },
-    { label: 'Novidades na Hakuba', pagePath: 'l10n/pt-BR/202306hakubawhatsnew' },
+    {
+      label: 'Novidades na Hakuba',
+      pagePath: 'l10n/pt-BR/202306hakubawhatsnew',
+    },
     { label: 'PolicyCenter', pagePath: 'l10n/pt-BR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/pt-BR/pe' },
-    { label: 'ProducerEngage for ClaimCenter', pagePath: 'l10n/pt-BR/pe-claims' },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/pt-BR/pe-claims',
+    },
     { label: 'ServiceRepEngage', pagePath: 'l10n/pt-BR/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/pt-BR/ve' },
   ],
@@ -493,6 +508,7 @@ export const allSelectors = {
     { label: '10.2.0', docId: 'bc1020' },
     { label: '10.2.1', pagePath: 'selfManagedProducts/bc/10.2.1' },
     { label: '10.2.2', pagePath: 'selfManagedProducts/bc/10.2.2' },
+    { label: '10.2.3', pagePath: 'selfManagedProducts/bc/10.2.3' },
     {
       label: '8.0.0',
       docId: 'httpsportalguidewirecomportalsecuredocbcillingenterdocammzblnv',
@@ -578,6 +594,7 @@ export const allSelectors = {
     { label: '10.2.0', docId: 'cc1020' },
     { label: '10.2.1', pagePath: 'selfManagedProducts/cc/10.2.1' },
     { label: '10.2.2', pagePath: 'selfManagedProducts/cc/10.2.2' },
+    { label: '10.2.3', pagePath: 'selfManagedProducts/cc/10.2.3' },
     {
       label: '8.0.0',
       docId: 'httpsportalguidewirecomportalsecuredoccclaimenterdocuwuokkoq',
@@ -778,6 +795,7 @@ export const allSelectors = {
     { label: '10.2.0', docId: 'pc1020' },
     { label: '10.2.1', pagePath: 'selfManagedProducts/pc/10.2.1' },
     { label: '10.2.2', pagePath: 'selfManagedProducts/pc/10.2.2' },
+    { label: '10.2.3', pagePath: 'selfManagedProducts/pc/10.2.3' },
     {
       label: '8.0.0',
       docId: 'httpsportalguidewirecomportalsecuredocpcolicyenterdocjninxbqx',
