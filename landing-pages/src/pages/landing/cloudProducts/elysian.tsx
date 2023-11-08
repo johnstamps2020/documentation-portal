@@ -1,10 +1,11 @@
 import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
-import gradientBackgroundImage from 'images/background-gradient.svg';
 import elysianBackgroundImage from 'images/background-elysian.png';
+import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
@@ -186,37 +187,29 @@ const pageConfig: CategoryLayoutProps = {
         },
       ],
     },
+    {
+      label: 'Developer Resources',
+      items: [
+        {
+          label: 'API References',
+          pagePath: 'apiReferences/elysian',
+        },
+        {
+          label: 'Integration Gateway',
+          docId: 'integgatewaydevlatest',
+        },
+        {
+          label: 'REST API Client',
+          docId: 'isrestapiclientguide',
+        },
+        {
+          label: 'Guidewire Testing',
+          pagePath: 'testingFramework/elysian',
+        },
+      ],
+    },
   ],
-
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Guidewire Testing',
-        pagePath: 'testingFramework/elysian',
-      },
-      {
-        label: 'API References',
-        pagePath: 'apiReferences',
-      },
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-    ],
-  },
+  sidebar: implementationResourcesSidebar,
 };
 
 export default function Elysian() {

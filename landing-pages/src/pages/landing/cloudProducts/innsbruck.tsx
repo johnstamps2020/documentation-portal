@@ -5,6 +5,7 @@ import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
 import hakubaBadge from 'images/badge-hakuba.svg';
+import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
@@ -171,31 +172,7 @@ const pageConfig: Category2LayoutProps = {
     item: { label: 'Learn more', docId: 'whatsnewhakuba' },
     content: ['Coming soon'],
   },
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-      {
-        label: 'Internal docs',
-        docId: 'internaldocslatest',
-      },
-    ],
-  },
+  sidebar: implementationResourcesSidebar,
 };
 
 export default function Innsbruck() {
