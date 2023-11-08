@@ -508,6 +508,7 @@ export const allSelectors = {
     { label: '10.2.0', docId: 'bc1020' },
     { label: '10.2.1', pagePath: 'selfManagedProducts/bc/10.2.1' },
     { label: '10.2.2', pagePath: 'selfManagedProducts/bc/10.2.2' },
+    { label: '10.2.3', pagePath: 'selfManagedProducts/bc/10.2.3' },
     {
       label: '8.0.0',
       docId: 'httpsportalguidewirecomportalsecuredocbcillingenterdocammzblnv',
@@ -593,6 +594,7 @@ export const allSelectors = {
     { label: '10.2.0', docId: 'cc1020' },
     { label: '10.2.1', pagePath: 'selfManagedProducts/cc/10.2.1' },
     { label: '10.2.2', pagePath: 'selfManagedProducts/cc/10.2.2' },
+    { label: '10.2.3', pagePath: 'selfManagedProducts/cc/10.2.3' },
     {
       label: '8.0.0',
       docId: 'httpsportalguidewirecomportalsecuredoccclaimenterdocuwuokkoq',
@@ -793,6 +795,7 @@ export const allSelectors = {
     { label: '10.2.0', docId: 'pc1020' },
     { label: '10.2.1', pagePath: 'selfManagedProducts/pc/10.2.1' },
     { label: '10.2.2', pagePath: 'selfManagedProducts/pc/10.2.2' },
+    { label: '10.2.3', pagePath: 'selfManagedProducts/pc/10.2.3' },
     {
       label: '8.0.0',
       docId: 'httpsportalguidewirecomportalsecuredocpcolicyenterdocjninxbqx',
