@@ -2,15 +2,21 @@ import Category2Layout, {
   Category2LayoutProps,
 } from 'components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
+import innsbruckBackgroundImage from 'images/background-innsbruck.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
-import hakubaBadge from 'images/badge-hakuba.svg';
+import innsbruckBadge from 'images/badge-innsbruck.svg';
 import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundImage: `url(${gradientBackgroundImage})`,
+    backgroundImage: {
+      xs: `url(${gradientBackgroundImage})`,
+      sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
+  url(${innsbruckBackgroundImage}), 
+  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+    },
   },
   selector: {
     label: 'Select cloud release',
@@ -168,7 +174,7 @@ const pageConfig: Category2LayoutProps = {
   ],
   whatsNew: {
     label: 'Innsbruck',
-    badge: hakubaBadge,
+    badge: innsbruckBadge,
     item: { label: 'Learn more', docId: 'whatsnewhakuba' },
     content: ['Coming soon'],
   },
