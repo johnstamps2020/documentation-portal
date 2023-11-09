@@ -1,6 +1,8 @@
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
+import innsbruckBadge from 'images/badge-innsbruck.svg';
+import hakubaBadge from 'images/badge-hakuba.svg';
 import garmischBadge from 'images/badge-garmisch.svg';
 import flaineBadge from 'images/badge-flaine.svg';
 import elysianBadge from 'images/badge-elysian.svg';
@@ -20,7 +22,13 @@ export default function Footer({ path }: FooterProps) {
   const theme = useTheme();
   const releaseInfo = { label: '', badge: '' };
 
-  if (path?.includes('garmisch')) {
+  if (path?.includes('innsbruck')) {
+    releaseInfo.label = 'Innsbruck Release';
+    releaseInfo.badge = innsbruckBadge;
+  } else if (path?.includes('hakuba')) {
+    releaseInfo.label = 'Hakuba Release';
+    releaseInfo.badge = hakubaBadge;
+  } else if (path?.includes('garmisch')) {
     releaseInfo.label = 'Garmisch Release';
     releaseInfo.badge = garmischBadge;
   } else if (path?.includes('flaine')) {
