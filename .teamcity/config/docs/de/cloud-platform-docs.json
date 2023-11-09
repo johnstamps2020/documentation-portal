@@ -4,17 +4,29 @@
     {
       "id": "gwcpdeDEreleasenotes",
       "title": "Cloud Platform Release Notes de",
-      "displayTitle": "Cloud Platform - Versionshinweise",
+      "displayTitle": "Versionshinweise",
       "url": "de/cloud/gwcprelnotes/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "release": ["Hakuba"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "de"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

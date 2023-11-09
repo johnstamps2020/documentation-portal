@@ -1,0 +1,145 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202310frFRceamrelnotes",
+      "title": "CustomerEngage Account Management Release Notes fr",
+      "displayTitle": "Notes sur la version",
+      "url": "fr/cloud/dx/ce-am/202310/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "fr"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202310frFRceclaimsrelnotes",
+      "title": "CustomerEngage Account Management for ClaimCenter Release Notes fr",
+      "displayTitle": "Notes sur la version",
+      "url": "fr/cloud/dx/ce-claims/202310/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "fr"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202310frFRceqbrelnotes",
+      "title": "CustomerEngage Quote and Buy Release Notes fr",
+      "displayTitle": "Notes sur la version",
+      "url": "fr/cloud/dx/ce-qb/202310/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "fr"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202310frFRperelnotes",
+      "title": "ProducerEngage Release Notes fr",
+      "displayTitle": "Notes sur la version",
+      "url": "fr/cloud/dx/pe/202310/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "fr"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202310frFRpeclaimsrelnotes",
+      "title": "ProducerEngage for ClaimCenter Release Notes fr",
+      "displayTitle": "Notes sur la version",
+      "url": "fr/cloud/dx/pe-claims/202310/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "fr"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202310frFRsrerelnotes",
+      "title": "ServiceRepEngage Release Notes fr",
+      "displayTitle": "Notes sur la version",
+      "url": "fr/cloud/dx/sre/202310/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "fr"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202310frFRverelnotes",
+      "title": "VendorEngage Release Notes fr",
+      "displayTitle": "Notes sur la version",
+      "url": "fr/cloud/dx/ve/202310/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "fr"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

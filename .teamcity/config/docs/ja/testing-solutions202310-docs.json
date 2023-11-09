@@ -2,14 +2,14 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
-      "id": "gwcpjaJpreleasenotes",
-      "title": "Cloud Platform Release Notes ja",
-      "displayTitle": "リリースノート",
-      "url": "ja/cloud/gwcprelnotes/latest",
+      "id": "testingframeworksjaJprninnsbruck",
+      "title": "Guidewire Testing Framework Release Notes ja",
+      "displayTitle": "Testing Framework リリースノート",
+      "url": "ja/cloud/testing/202306/releasenotes",
       "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
+        "version": ["2023.10"],
         "release": ["Innsbruck"],
         "subject": ["Release notes"],
         "language": "ja"
@@ -23,4 +23,3 @@
     }
   ]
 }
-
