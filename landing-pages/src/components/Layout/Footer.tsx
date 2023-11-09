@@ -86,7 +86,7 @@ export default function Footer({ path }: FooterProps) {
         {releaseInfo.badge && (
           <img
             src={releaseInfo.badge}
-            alt="elysian-badge-logo"
+            alt="ski-release-badge-logo"
             style={{
               height: '20px',
               display: 'block',
