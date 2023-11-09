@@ -33,6 +33,18 @@ const pageConfig: CategoryLayoutProps = {
           videoIcon: true,
         },
         {
+          label: 'PolicyCenter 10.2.3',
+          pagePath: 'selfManagedProducts/pc/10.2.3',
+        },
+        {
+          label: 'ClaimCenter 10.2.3',
+          pagePath: 'selfManagedProducts/cc/10.2.3',
+        },
+        {
+          label: 'BillingCenter 10.2.3',
+          pagePath: 'selfManagedProducts/bc/10.2.3',
+        },
+        {
           label: 'PolicyCenter',
           pagePath: 'selfManagedProducts/pc/10.2.2',
         },
