@@ -4,11 +4,11 @@
     {
       "id": "fnoltemplatemain",
       "title": "Personal Auto FNOL Template",
-      "url": "cloud/is/202306/fnoltemplate",
+      "url": "cloud/is/fnoltemplate",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter", "PolicyCenter"],
-        "version": ["2023.06"],
+        "version": ["latest"],
         "release": ["Hakuba"],
         "subject": ["Features and functionality"],
         "language": "en"
