@@ -10,8 +10,7 @@ You need the following tools:
 - Docker Desktop
 - [nvm](https://github.com/nvm-sh/nvm) for managing Node.js versions. We use
   `.nvmrc` files for automatic version switching.
-- Node.js 16.18.0 for running the server (install through nvm)
-- Node.js 18.15.0 for loading configs into the database (install through nvm)
+- Node.js 18.18.2 for running the server and loading configs into the database (install through nvm)
 - `pg_restore` - it's a command line tool for working with Postgres dumps. It's
   included in the Postgres installation. If you use macOS, you can install it
   through Homebrew: `brew install libpq`.
