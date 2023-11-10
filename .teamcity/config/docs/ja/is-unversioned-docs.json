@@ -1,0 +1,37 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isjaJpupgradecompatibility",
+      "title": "InsuranceSuite Configuration Upgrade Tools Compatibility ja",
+      "displayTitle": "コンフィギュレーションアップグレードツールの互換性",
+      "url": "ja/isconfigupgradetools-compatibility",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceSuite Configuration Upgrade Tools"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Upgrade"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "language": "ja"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

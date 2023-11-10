@@ -7,8 +7,15 @@
       "displayTitle": "Gosu リファレンスガイド",
       "url": "ja/is/gosu",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
         "version": [
           "10.2.1",
           "10.2.2",
@@ -19,10 +26,15 @@
           "2023.02",
           "2023.06"
         ],
-        "subject": ["Development"],
+        "subject": [
+          "Development"
+        ],
         "language": "ja"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -35,7 +47,10 @@
       "displayTitle": "用語集",
       "url": "ja/glossary",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -52,11 +67,18 @@
           "Garmisch",
           "Hakuba"
         ],
-        "version": ["latest"],
-        "subject": ["Glossary"],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Glossary"
+        ],
         "language": "ja"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -64,19 +86,31 @@
       "earlyAccess": false
     },
     {
-      "id": "isupgradecompatibilityja",
+      "id": "isjaJpupgradecompatibility",
       "title": "InsuranceSuite Configuration Upgrade Tools Compatibility ja",
       "displayTitle": "コンフィギュレーションアップグレードツールの互換性",
       "url": "ja/isconfigupgradetools-compatibility",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": ["latest"],
-        "subject": ["Upgrade"],
-        "release": ["Hakuba"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceSuite Configuration Upgrade Tools"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Upgrade"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
         "language": "ja"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
