@@ -20,6 +20,24 @@
       "earlyAccess": false
     },
     {
+      "id": "standards202311",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202311",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2023.11"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "standards202310",
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202310",
