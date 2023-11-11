@@ -1,12 +1,12 @@
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import LoginOptions from 'components/LoginPage/LoginOptions';
 import { useLayoutContext } from 'LayoutContext';
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
+import LoginPageCards from '../../components/LoginPage/LoginPageCards';
 
 export default function LoginPage() {
   const { setTitle, setHeaderOptions, setBackgroundColor } = useLayoutContext();
@@ -21,7 +21,7 @@ export default function LoginPage() {
     setBackgroundColor('hsl(0, 0%, 98%)');
   }, [setBackgroundColor, setHeaderOptions, setTitle]);
 
-  if (mounted === false) {
+  if (!mounted) {
     return (
       <Box
         justifyContent="center"
@@ -121,7 +121,7 @@ export default function LoginPage() {
             maxWidth: '1062px',
           }}
         >
-          <LoginOptions />
+          <LoginPageCards />
         </Box>
       </Stack>
     </Stack>
