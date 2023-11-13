@@ -1,4 +1,5 @@
 import { mainHeight } from 'components/Layout/Layout';
+import React from 'react';
 
 export const baseBackgroundProps = {
   backgroundAttachment: 'fixed',
@@ -29,6 +30,7 @@ export type LandingPageItemProps = {
   pagePath?: string;
   url?: string;
   videoIcon?: boolean;
+  description?: React.ReactNode;
 };
 
 export type SidebarProps = {

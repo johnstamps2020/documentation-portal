@@ -1,13 +1,13 @@
-import { LinkSectionProps } from './ApplicationTabs';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
 import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Unstable_Grid2';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 
-interface TabPanelProps {
+export interface TabPanelProps {
   index: number;
   value: number;
-  items: LinkSectionProps[];
+  items: LandingPageItemProps[];
 }
 
 export default function ApplicationLinkList(props: TabPanelProps): JSX.Element {
@@ -34,7 +34,7 @@ export default function ApplicationLinkList(props: TabPanelProps): JSX.Element {
                   fontWeight: 600,
                 }}
               >
-                <Link>{item.title}</Link>
+                <Link>{item.label}</Link>
               </Typography>
               <Typography variant="body1" component="p">
                 {item.description}

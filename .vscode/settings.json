@@ -84,6 +84,7 @@
     "platformproductversion",
     "PLXG",
     "Português",
+    "preupdate",
     "redoc",
     "reindex",
     "reindexing",
@@ -94,6 +95,7 @@
     "testtesttest",
     "tinycolor",
     "topicref",
+    "typelists",
     "typeorm",
     "whatsnew",
     "yarnbuild"
