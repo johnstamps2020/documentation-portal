@@ -99,7 +99,7 @@ it defaults to `true`.
 - [See set up instructions for the theme](./Themes/Classic/set-up-theme.mdx).
 - [See set up instructions for the plugin](./Plugins/Redoc/set-up-plugin.mdx).
 
-## Setup access to the @doctools scope in Artifactory (first time only)
+## Set up access to the @doctools scope in Artifactory (first time only)
 
 import Artifactory from './\_set-up-artifactory.md';
 
