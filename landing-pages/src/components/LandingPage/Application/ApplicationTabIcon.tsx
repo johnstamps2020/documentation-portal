@@ -13,25 +13,31 @@ export type ApplicationTabIconProps = {
     | 'administer';
 };
 
-function IconImageComponent({ src }: { src: string }) {
-  return <img src={src} alt="" />;
+function getIconImage(icon: ApplicationTabIconProps['icon']) {
+  switch (icon) {
+    case 'get-started':
+      return getStarted;
+    case 'learn-about':
+      return learnAbout;
+    case 'configure':
+      return configure;
+    case 'integrate':
+      return integrate;
+    case 'administer':
+      return administer;
+    default:
+      return null;
+  }
 }
 
 export default function ApplicationTabIcon({
   icon,
 }: ApplicationTabIconProps): JSX.Element | null {
-  switch (icon) {
-    case 'get-started':
-      return <IconImageComponent src={getStarted} />;
-    case 'learn-about':
-      return <IconImageComponent src={learnAbout} />;
-    case 'configure':
-      return <IconImageComponent src={configure} />;
-    case 'integrate':
-      return <IconImageComponent src={integrate} />;
-    case 'administer':
-      return <IconImageComponent src={administer} />;
-    default:
-      return null;
+  const iconImage = getIconImage(icon);
+
+  if (!iconImage) {
+    return null;
   }
+
+  return <img src={iconImage} alt="" />;
 }
