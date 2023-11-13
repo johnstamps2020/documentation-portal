@@ -103,6 +103,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Claims Intake (Early Access)',
+          docId: 'fnoltemplatemain',
           description: (
             <>
               Create a digital FNOL self-service flow for a first-party personal
