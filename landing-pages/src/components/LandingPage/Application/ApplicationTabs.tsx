@@ -114,6 +114,9 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
                   minHeight: '47px',
                   fontSize: '24px',
                   fontWeight: 600,
+                  '& img': {
+                    filter: 'invert(100%)',
+                  },
                 },
               }}
             />

@@ -3,6 +3,11 @@ import ApplicationLayout, {
 } from 'components/LandingPage/Application/ApplicationLayout';
 
 const pageConfig: ApplicationLayoutProps = {
+  title: 'PolicyCenter for Guidewire Cloud 2023.10',
+  buttonProps: {
+    label: 'Release notes',
+    docId: 'ispc202310releasenotes',
+  },
   tabs: [
     {
       icon: 'get-started',

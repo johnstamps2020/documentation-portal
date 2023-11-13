@@ -7,15 +7,53 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { ReactComponent as HeroImage } from './application-hero-image.svg';
 import { useLayoutContext } from 'LayoutContext';
 import { useEffect } from 'react';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import LandingPageItemRenderer from 'components/LandingPage/LandingPageItemRenderer';
+import Skeleton from '@mui/material/Skeleton';
+import LandingPageLink from '../LandingPageLink';
+import { arrangeItems } from 'helpers/landingPageHelpers';
 
-export default function ApplicationHero() {
+export type ApplicationHeroProps = {
+  buttonProps: LandingPageItemProps;
+  title: string;
+};
+
+export default function ApplicationHero({
+  buttonProps,
+  title,
+}: ApplicationHeroProps) {
   const { setTitle } = useLayoutContext();
+  const { isError, isLoading, landingPageItems } = useLandingPageItems([
+    buttonProps,
+  ]);
+  const arrangedItems = arrangeItems([buttonProps], landingPageItems);
 
-  const title = 'Guidewire InsuranceSuite PolicyCenter';
+  const linkButton = (
+    <LandingPageLink
+      landingPageItem={arrangedItems[0]}
+      sx={{
+        display: 'flex',
+        width: 'fit-content',
+        backgroundColor: 'white',
+        color: 'primary.main',
+        borderRadius: 2.5,
+        textTransform: 'none',
+        fontWeight: 600,
+        fontSize: 14,
+        px: 3.5,
+        py: 0.5,
+        ':hover': {
+          color: 'white',
+          backgroundColor: 'primary.dark',
+        },
+      }}
+    />
+  );
 
   useEffect(() => {
     setTitle(title);
-  }, [setTitle]);
+  }, [setTitle, title]);
 
   return (
     <Box
@@ -40,24 +78,13 @@ export default function ApplicationHero() {
                 {title}
               </Typography>
               <Box>
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: 'white',
-                    color: 'primary.main',
-                    borderRadius: 2.5,
-                    textTransform: 'none',
-                    fontWeight: 600,
-                    fontSize: 14,
-                    px: 3.5,
-                    py: 0.5,
-                    ':hover': {
-                      color: 'white',
-                    },
-                  }}
-                >
-                  Release notes
-                </Button>
+                <LandingPageItemRenderer
+                  isError={isError}
+                  isLoading={isLoading}
+                  landingPageItems={landingPageItems}
+                  skeleton={<Skeleton />}
+                  item={linkButton}
+                />
               </Box>
             </Stack>
           </Grid>
