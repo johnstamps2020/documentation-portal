@@ -64,6 +64,12 @@ on your machine.
    it**.
 6. Run `yarn` to install dependencies and update `yarn.lock`.
 
+## Set up access to the @doctools scope in Artifactory (first time only)
+
+import Artifactory from './\_set-up-artifactory.md';
+
+<Artifactory/>
+
 ## Create a new Docusaurus site
 
 Run this command to create a Docusaurus site:
@@ -111,12 +117,6 @@ it defaults to `true`.
 
 - [See set up instructions for the theme](./Themes/Classic/set-up-theme.mdx).
 - [See set up instructions for the plugin](./Plugins/Redoc/set-up-plugin.mdx).
-
-## Set up access to the @doctools scope in Artifactory (first time only)
-
-import Artifactory from './\_set-up-artifactory.md';
-
-<Artifactory/>
 
 ## Extend your build pipeline
 
