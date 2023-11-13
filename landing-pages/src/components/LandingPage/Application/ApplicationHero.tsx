@@ -1,18 +1,17 @@
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
-import { ReactComponent as HeroImage } from './application-hero-image.svg';
 import { useLayoutContext } from 'LayoutContext';
-import { useEffect } from 'react';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import LandingPageItemRenderer from 'components/LandingPage/LandingPageItemRenderer';
-import Skeleton from '@mui/material/Skeleton';
-import LandingPageLink from '../LandingPageLink';
 import { arrangeItems } from 'helpers/landingPageHelpers';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { useEffect } from 'react';
+import LandingPageLink from '../LandingPageLink';
+import { ReactComponent as HeroImage } from './application-hero-image.svg';
 
 export type ApplicationHeroProps = {
   buttonProps: LandingPageItemProps;

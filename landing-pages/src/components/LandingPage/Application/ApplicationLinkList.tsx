@@ -2,11 +2,11 @@ import Container from '@mui/material/Container';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
+import LandingPageItemRenderer from 'components/LandingPage/LandingPageItemRenderer';
+import LandingPageLink from 'components/LandingPage/LandingPageLink';
 import { arrangeItems } from 'helpers/landingPageHelpers';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import LandingPageItemRenderer from 'components/LandingPage/LandingPageItemRenderer';
-import LandingPageLink from 'components/LandingPage/LandingPageLink';
 
 export interface TabPanelProps {
   index: number;
