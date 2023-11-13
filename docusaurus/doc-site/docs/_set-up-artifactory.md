@@ -1,4 +1,3 @@
-```md
 You need an environment variable called `NPM_AUTH_TOKEN`.
 
 To get the token:
@@ -11,4 +10,3 @@ To get the token:
 4. Set the token as the value of an environment variable called
    `NPM_AUTH_TOKEN`.
 5. Restart your terminal, if necessary.
-```

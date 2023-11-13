@@ -13,14 +13,6 @@ import Benefits from '@site/docs/\_benefits.md'
 Not convinced? Look at [deploying to Atmos](./deploy-to-atmos.md) without using
 a Guidewire theme. You can still use the Redoc plugin.
 
-## Create a new Docusaurus site
-
-[Follow the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
-
-Please consider using `yarn` as preferred project manager. The installation command
-can be found in the "Alternative installation commands" section
-[here](https://docusaurus.io/docs/installation#scaffold-project-website).
-
 ## Upgrade to Yarn 3
 
 Use Yarn 3 in builds for docs.guidewire.com. If this is your first time
@@ -65,7 +57,18 @@ Here are the highlights of the process:
    it**.
 5. Run `yarn` to install dependencies and update `yarn.lock`.
 
-## trailingSlash
+
+## Create a new Docusaurus site
+
+[Follow the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
+
+Please consider using `yarn` as the preferred project manager. The installation command
+can be found in the "Alternative installation commands" section
+[here](https://docusaurus.io/docs/installation#scaffold-project-website).
+
+## Configure your project
+
+### trailingSlash
 
 import { RightWrong, Right, Wrong } from "@theme/RightWrong";
 
@@ -91,18 +94,18 @@ hosting. Leave `trailingSlash` undefined, or set it to `true`. If
 `trailingSlash` is not defined in your settings, there is no need to add it, as
 it defaults to `true`.
 
+### Add Guidewire theme/plugin
+
+- [See set up instructions for the theme](./Themes/Classic/set-up-theme.mdx).
+- [See set up instructions for the plugin](./Plugins/Redoc/set-up-plugin.mdx).
+
 ## Setup access to the @doctools scope in Artifactory (first time only)
 
 import Artifactory from './\_set-up-artifactory.md';
 
 <Artifactory/>
 
-## Add Guidewire theme/plugin
-
-- [See set up instructions for the theme](./Themes/Classic/set-up-theme.mdx).
-- [See set up instructions for the plugin](./Plugins/Redoc/set-up-plugin.mdx).
-
-## Complex builds
+## Extend your build pipeline
 
 Deployments to docs.guidewire.com run the following commands:
 
@@ -127,7 +130,7 @@ these approaches:
   them into your documentation repo. You control when each build is run, for
   example on release, or on various triggers from different repos.
 
-## Configure deployment
+## Request deployment builds
 
 Get in touch with The Doctools team and they can provide assistance.
 
