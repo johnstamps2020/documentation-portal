@@ -23,16 +23,12 @@ can install it from [Node.js official website](https://nodejs.org/en/download/).
 
 ### Yarn 3
 
-Use Yarn 3 in builds for docs.guidewire.com. If this is your first time
-upgrading Yarn, you may want to read
-[the official article about Yarn migration](https://yarnpkg.com/getting-started/migration).
-If this is your first time using `yarn`, you need to install it first. More
-information and installation command can be found
-[here](https://classic.yarnpkg.com/lang/en/docs/install).
+Builds for docs.guidewire.com use Yarn 3. Follow the steps below to set up Yarn
+on your machine.
 
-If you have Yarn installed, those are the next steps of the process:
-
-1. Install Yarn 3.
+1. If you don't have Yarn, install it by following instructions in the
+   [official documentation](https://classic.yarnpkg.com/lang/en/docs/install).
+2. Set Yarn to version 3.
 
    ```bash
    yarn set version 3.6.4
@@ -40,7 +36,7 @@ If you have Yarn installed, those are the next steps of the process:
 
    This adds the `.yarn` folder and `.yarnrc.yml` file to your repo.
 
-2. Add the recommended files to `.gitignore`:
+3. Add the recommended files to `.gitignore`:
 
    ```git title=".gitignore"
    .pnp.*
@@ -52,7 +48,7 @@ If you have Yarn installed, those are the next steps of the process:
    !.yarn/versions
    ```
 
-3. In your `.yarnrc.yml` file, after `yarnPath: .yarn/releases/yarn-3.X.X.cjs`,
+4. In your `.yarnrc.yml` file, after `yarnPath: .yarn/releases/yarn-3.X.X.cjs`,
    add:
 
    ```js yaml title=".yarnrc.yml"
@@ -64,9 +60,9 @@ If you have Yarn installed, those are the next steps of the process:
        npmRegistryServer: https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
    ```
 
-4. If you have a `yarn.lock` generated with a previous version of Yarn, **delete
+5. If you have a `yarn.lock` generated with a previous version of Yarn, **delete
    it**.
-5. Run `yarn` to install dependencies and update `yarn.lock`.
+6. Run `yarn` to install dependencies and update `yarn.lock`.
 
 ## Create a new Docusaurus site
 
