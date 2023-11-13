@@ -13,13 +13,24 @@ import Benefits from '@site/docs/\_benefits.md'
 Not convinced? Look at [deploying to Atmos](./deploy-to-atmos.md) without using
 a Guidewire theme. You can still use the Redoc plugin.
 
-## Upgrade to Yarn 3
+## Install required tools
+
+### Node.js
+
+Node.js version 18.0 or above is required. Your current version of Node.js can
+be checked by running `node -v`. If this is your first time using Node.js, you
+can install it from [Node.js official website](https://nodejs.org/en/download/).
+
+### Yarn 3
 
 Use Yarn 3 in builds for docs.guidewire.com. If this is your first time
 upgrading Yarn, you may want to read
 [the official article about Yarn migration](https://yarnpkg.com/getting-started/migration).
+If this is your first time using `yarn`, you need to install it first. More
+information and installation command can be found
+[here](https://classic.yarnpkg.com/lang/en/docs/install).
 
-Here are the highlights of the process:
+If you have Yarn installed, those are the next steps of the process:
 
 1. Install Yarn 3.
 
@@ -57,14 +68,20 @@ Here are the highlights of the process:
    it**.
 5. Run `yarn` to install dependencies and update `yarn.lock`.
 
-
 ## Create a new Docusaurus site
 
-[Follow the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
+Run this command to create a Docusaurus site:
 
-Please consider using `yarn` as the preferred project manager. The installation command
-can be found in the "Alternative installation commands" section
-[here](https://docusaurus.io/docs/installation#scaffold-project-website).
+```bash
+yarn create docusaurus
+```
+
+If you want to read more about creating Docusaurus sites, look at
+[the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
+
+> :warning: Default package manager suggested by Docusaurus is `npx`. Do not run
+> commands in `npx` or `npm` since it can cause problems later on. Stick to the
+> `yarn` command provided above.
 
 ## Configure your project
 

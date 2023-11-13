@@ -1,4 +1,6 @@
-You need an environment variable called `NPM_AUTH_TOKEN`.
+You need an environment variable called `NPM_AUTH_TOKEN` to start server
+locally. If you do not plan to run your site locally (which we do not recommend)
+you can skip this step.
 
 To get the token:
 
