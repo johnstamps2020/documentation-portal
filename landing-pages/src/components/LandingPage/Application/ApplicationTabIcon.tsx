@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import administer from './icons/administer.svg';
 import configure from './icons/configure.svg';
 import getStarted from './icons/get-started.svg';
@@ -15,11 +14,7 @@ export type ApplicationTabIconProps = {
 };
 
 function IconImageComponent({ src }: { src: string }) {
-  return (
-    <Box>
-      <img src={src} alt="" />
-    </Box>
-  );
+  return <img src={src} alt="" />;
 }
 
 export default function ApplicationTabIcon({
