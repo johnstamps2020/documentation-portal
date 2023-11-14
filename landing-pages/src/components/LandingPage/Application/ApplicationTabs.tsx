@@ -35,7 +35,7 @@ type ApplicationTabsProps = { tabs: ApplicationTabItemProps[] };
 export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
   const [value, setValue] = useState(0);
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
