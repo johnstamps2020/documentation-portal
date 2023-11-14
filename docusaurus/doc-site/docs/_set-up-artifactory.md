@@ -1,14 +1,16 @@
-```md
-You need an environment variable called `NPM_AUTH_TOKEN`.
+To work on your documentation project locally, you need an environment variable
+called `NPM_AUTH_TOKEN` that contains an identity token for accessing
+Artifactory. Documentation builds in TeamCity use a token generated for the
+Artifactory service account that is maintained by the ContentOps team.
 
-To get the token:
+To configure the environment variable on your machine:
 
-1. From your Okta home, log into Artifactory.
-1. In the top right-hand corner, click your username and select **Edit
+1. From your [Okta home](https://guidewire.okta.com/app/UserHome), log into
+   Artifactory.
+2. In the top right-hand corner, click your username and select **Edit
    profile**.
-1. Either copy an existing token, or click **Generate and identity token** and
+3. Either copy an existing token, or click **Generate an identity token** and
    copy that.
-1. Set the token as the value of an environment variable called
-   `NPM_AUTH_TOKEN`.
-1. Restart your terminal, if necessary.
-```
+4. Set the value of the NPM_AUTH_TOKEN environment variable to the token that
+   you copied from Artifactory.
+5. If necessary, restart your terminal.
