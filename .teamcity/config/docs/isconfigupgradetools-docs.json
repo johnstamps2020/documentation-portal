@@ -9,7 +9,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["5.0.0"],
-        "release": ["Hakuba", "Innsbruck"],
+        "release": ["Hakuba"],
         "subject": ["Upgrade"],
         "language": "en"
       },
@@ -28,7 +28,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.7.0"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
         "subject": ["Upgrade"],
         "language": "en"
       },
@@ -66,7 +66,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.5.0"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
         "subject": ["Upgrade"],
         "language": "en"
       },
@@ -85,7 +85,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.4.0"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
         "subject": ["Upgrade"],
         "language": "en"
       },
@@ -104,7 +104,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.3.0"],
-        "release": ["Cortina", "Dobson", "Elysian"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
         "subject": ["Upgrade"],
         "language": "en"
       },
@@ -180,7 +180,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.3.0"],
-        "release": ["Cortina", "Dobson"],
+        "release": ["Cortina"],
         "subject": ["Upgrade"],
         "language": "en"
       },
