@@ -1,225 +1,513 @@
-import SectionLayout, {
-  SectionLayoutProps,
-} from 'components/LandingPage/Section/SectionLayout';
-import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
-import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import ApplicationLayout, {
+  ApplicationLayoutProps,
+} from 'components/LandingPage/Application/ApplicationLayout';
 
-const pageConfig: SectionLayoutProps = {
-  backgroundProps: {
-    ...baseBackgroundProps,
-    backgroundColor: `hsl(0, 0%, 98%)`,
+const pageConfig: ApplicationLayoutProps = {
+  title: 'PolicyCenter for Guidewire Cloud 2023.10',
+  buttonProps: {
+    label: 'Release notes',
+    docId: 'ispc202310releasenotes',
   },
-  sections: [
+  tabs: [
     {
-      label: 'Release Notes',
+      icon: 'get-started',
+      title: 'Get started',
       items: [
         {
-          label: 'Release Notes',
+          label: 'PolicyCenter Release Notes',
           docId: 'ispc202310releasenotes',
+          description: (
+            <>Learn about changes in this release of PolicyCenter.</>
+          ),
         },
         {
-          label: 'AppReader Release Notes',
-          docId: 'appreaderrn400',
-        },
-        {
-          label: 'Studio Release Notes',
-          docId: 'isstudiolatestrn',
-        },
-      ],
-    },
-    {
-      label: 'Installation',
-      items: [
-        {
-          label: 'Developer Setup',
-          docId: 'ispc202310devsetup',
-        },
-        {
-          label: 'Update',
+          label: 'Update guide',
           docId: 'ispc202310update',
+          description: (
+            <>
+              Update your configuration and database from a previous cloud
+              version to the current version.
+            </>
+          ),
         },
         {
-          label: 'InsuranceSuite Configuration Upgrade Tools',
+          label: 'Developer setup',
+          docId: 'ispc202310devsetup',
+          description: <>Set up your local development environment.</>,
+        },
+        {
+          label: 'Upgrade tools',
           docId: 'isconfigupgradetools500',
+          description: (
+            <>
+              Learn about the Guidewire InsuranceSuite configuration upgrade
+              tools.
+            </>
+          ),
         },
         {
-          label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
+          label: 'Upgrade tools compatibility',
           docId: 'isupgradecompatibility',
+          description: (
+            <>
+              Lists the versions of the configuration upgrade tools appropriate
+              for each release of PolicyCenter.
+            </>
+          ),
         },
       ],
     },
     {
-      label: 'Features and functionality',
+      icon: 'learn-about',
+      title: 'Learn about',
       items: [
         {
-          label: 'Application Guide',
+          label: 'PolicyCenter Application',
           docId: 'ispc202310app',
-        },
-        {
-          label: 'Cloud Rating Management (Early Access)',
-          docId: 'ispc202310cloudratingmgmt',
-        },
-        {
-          label: 'Contact Management',
-          docId: 'is202310contact',
-        },
-        {
-          label: 'Submission Intake',
-          docId: 'submissionintake',
-        },
-      ],
-    },
-    {
-      label: 'Administration',
-      items: [
-        {
-          label: 'Administration',
-          docId: 'ispc202310admin',
-        },
-        {
-          label: 'Data Archiving',
-          docId: 'ispc202310dataarchiving',
-        },
-        {
-          label: 'Observability',
-          docId: 'observability',
-        },
-      ],
-    },
-    {
-      label: 'Configuration',
-      items: [
-        {
-          label: 'Advanced Product Designer in PolicyCenter',
-          docId: 'ispc202310apd',
-        },
-        {
-          label: 'Configuration',
-          docId: 'ispc202310config',
-        },
-        {
-          label: 'Globalization',
-          docId: 'ispc202310global',
-        },
-        {
-          label: 'Gosu Rules',
-          docId: 'ispc202310rules',
-        },
-        {
-          label: 'Guidewire Rules (Early Access)',
-          docId: 'gwrules',
-        },
-        {
-          label: 'Guidewire Rules Type Manager (Early Access)',
-          docId: 'gwrulestypemgr',
+          description: (
+            <>
+              Introduces PolicyCenter, and describes features from a business
+              perspective.
+            </>
+          ),
         },
         {
           label: 'Product Designer',
           docId: 'ispc202310pd',
+          description: (
+            <>
+              Use Product Designer to configure Line of Business insurance
+              products.
+            </>
+          ),
         },
         {
-          label: 'Product Model',
-          docId: 'ispc202310pm',
+          label: 'Advanced Product Designer',
+          docId: 'ispc202310apd',
+          description: <>Design, simulate, and deploy insurance products.</>,
         },
         {
-          label: 'Submission Intake Configuration',
-          url: '/cloud/subintake/?contextid=submissionIntakeConfiguration',
-          videoIcon: false,
+          label: 'Policy rates',
+          url: '/cloud/pc/202310/app/app/pc/topics/c_df1082048.html',
+          description: (
+            <>
+              Learn how PolicyCenter generates quotes for policy transactions,
+              such as submissions.
+            </>
+          ),
         },
         {
-          label: 'US Standards-based Template Framework',
-          pagePath: 'globalContent/sbt',
+          label: 'Submission Intake',
+          docId: 'submissionintake',
+          description: <>Streamline submission creation in PolicyCenter.</>,
+        },
+        {
+          label: 'Claims Intake (Early Access)',
+          docId: 'fnoltemplatemain',
+          description: (
+            <>
+              Create a digital FNOL self-service flow for a first-party personal
+              auto damage claim.
+            </>
+          ),
+        },
+        {
+          label: 'Guidewire Rules (Early Access)',
+          docId: 'gwrules',
+          description: (
+            <>
+              Create and manage business rules that trigger when specific
+              business conditions occur.
+            </>
+          ),
+        },
+        {
+          label: 'Contact Management',
+          docId: 'is202310contact',
+          description: (
+            <>
+              Describes how to configure Guidewire InsuranceSuite applications
+              to integrate with ContactManager, and how to manage client and
+              vendor contacts in a single system of record.
+            </>
+          ),
         },
       ],
     },
     {
-      label: 'Integration',
+      icon: 'configure',
+      title: 'Configure',
       items: [
         {
-          label: 'Overview of Cloud Integration',
+          label: 'Getting started with configuration',
+          docId: 'ispc202310config',
+          description: (
+            <>
+              A technical overview of InsuranceSuite configuration features and
+              documentation.
+            </>
+          ),
+        },
+
+        {
+          label: 'Gosu rules',
+          docId: 'ispc202310rules',
+          description: (
+            <>
+              Configure the Gosu rules that control basic functionality, such as
+              validation, preupdate actions, and assignment.
+            </>
+          ),
+        },
+
+        {
+          label: 'Product model configuration',
+          docId: 'ispc202310pm',
+          description: <>Describes the PolicyCenter product model.</>,
+        },
+
+        {
+          label: 'Globalizing PolicyCenter',
+          docId: 'ispc202310global',
+          description: (
+            <>Configure PolicyCenter functionality related to localization.</>
+          ),
+        },
+
+        {
+          label: 'Configuration parameter reference',
+          description: (
+            <>A reference of the application configuration parameters.</>
+          ),
+          url: '/cloud/pc/202310/config/config/topics/c_au6600343.html',
+        },
+        {
+          label: 'Data model configuration',
+          description: (
+            <>
+              Create and extend PolicyCenter data model entities and typelists.
+            </>
+          ),
+          url: '/cloud/pc/202310/config/config/topics/p-datamodel.html',
+        },
+
+        {
+          label: 'Configuration plugins',
+          description: (
+            <>
+              Manage PolicyCenter predefined plugins to configure standard
+              operations, such as policy number generation and quote purging.
+            </>
+          ),
+          url: '/cloud/pc/202310/integration/integration/topics/c_part-plugins.html',
+        },
+
+        {
+          label: 'Workflow configuration',
+          description: (
+            <>
+              Configure PolicyCenter workflows for management of complex
+              business processes such as submissions and renewals.
+            </>
+          ),
+          url: '/cloud/pc/202310/config/config/topics/p-workflow.html',
+        },
+
+        {
+          label: 'PolicyCenter functionality configuration',
+          description: (
+            <>
+              Configure PolicyCenter features (such as rating, quoting, and data
+              destruction) to meet your business needs.
+            </>
+          ),
+          url: '/cloud/pc/202310/config/config/pc/topics/p-PolicyCenter.html',
+        },
+
+        {
+          label: 'Gosu reference',
+          docId: 'gosureflatest',
+          description: <>A reference for the Gosu programming language. </>,
+        },
+        {
+          label: 'User interface configuration',
+          description: <>Configure the PolicyCenter user interface.</>,
+          url: '/cloud/pc/202310/config/config/topics/p-ui-config.html',
+        },
+
+        {
+          label: 'Search configuration',
+          description: <>Configure search in PolicyCenter.</>,
+          url: '/cloud/pc/202310/config/config/topics/database-search/c_all-fe3275213.html',
+        },
+
+        {
+          label: 'Email configuration',
+          description: (
+            <>Configure PolicyCenter functionality related to sending email.</>
+          ),
+          url: '/cloud/pc/202310/config/config/topics/c_mx2909421.html',
+        },
+
+        {
+          label: 'Jobs configuration',
+          description: (
+            <>Configure functionality related to PolicyCenter jobs.</>
+          ),
+          url: '/cloud/pc/202310/config/config/pc/topics/p-PolicyCenter_jobs.html',
+        },
+      ],
+    },
+    {
+      icon: 'integrate',
+      title: 'Integrate',
+      items: [
+        {
+          label: 'Overview of cloud integration',
           docId: 'is202310integoverview',
+          description: (
+            <>
+              A technical overview of InsuranceSuite cloud integration features
+              and documentation.
+            </>
+          ),
         },
         {
-          label: 'Cloud Integration Basics Course',
-          docId: 'cloudintegrationbasics',
-        },
-        {
-          label: 'App Events',
-          docId: 'appeventsdev',
-        },
-        {
-          label: 'PolicyCenter Cloud API Consumer Guide',
-          docId: 'ispc202310apibf',
-        },
-        {
-          label: 'PolicyCenter Cloud API Developer Guide',
+          label: 'Cloud API Developer Guide',
           docId: 'ispc202310apica',
+          description: (
+            <>
+              Configure inbound endpoint behavior, create new endpoints, and
+              implement authentication in Cloud API.
+            </>
+          ),
         },
         {
-          label: 'PolicyCenter Cloud API Reference',
-          docId: 'pcapirefinnsbruck',
+          label: 'File-based integration',
+          description: (
+            <>
+              Configure filed-based integration for both inbound and outbound
+              integration points.
+            </>
+          ),
+          url: '/cloud/pc/202310/integration/integration/topics/c_part-datatransfer.html',
         },
         {
-          label: 'ContactManager Cloud API Consumer Guide',
-          docId: 'ispc202310apicm',
-        },
-        {
-          label: 'Integration Data Manager',
-          docId: 'ispc202310integdatamgr',
-        },
-        {
-          label: 'Integration Gateway',
-          docId: 'integgatewaydevlatest',
-        },
-        {
-          label: 'Plugins, Prebuilt Integrations, and SOAP APIs',
-          docId: 'ispc202310integ',
-        },
-        {
-          label: 'REST API Framework',
-          docId: 'ispc202310restapifw',
+          label: 'Messaging',
+          description: (
+            <>
+              Use Guidewire messaging to send outbound messages asynchronously
+              in response to specific PolicyCenter business events (such as
+              account creation), and manage responses.
+            </>
+          ),
+          url: '/cloud/pc/202310/integration/integration/topics/c_part-messaging.html',
         },
         {
           label: 'REST API Client',
           docId: 'isrestapiclientguide',
+          description: (
+            <>
+              Use REST API Client to make outbound HTTP calls to internal or
+              third-party REST services.
+            </>
+          ),
         },
         {
-          label: 'Webhooks API Reference',
-          docId: 'webhooksapinext',
+          label: 'Startable plugins',
+          description: (
+            <>
+              Configure startable plugins that listen for and process inbound
+              asynchronous messages from third-party applications.
+            </>
+          ),
+          url: '/cloud/pc/202310/integration/integration/topics/c_ns2380296.html',
+        },
+        {
+          label: 'Application events',
+          docId: 'appeventsdev',
+          description: (
+            <>
+              Use application events to send outbound messages asynchronously in
+              response to specific PolicyCenter business events (such as account
+              creation), and manage responses.
+            </>
+          ),
+        },
+        {
+          label: 'Cloud API reference',
+          docId: 'pcapirefinnsbruck',
+          description: <>The API definitions for Cloud API for PolicyCenter.</>,
+        },
+        {
+          label: 'REST API Framework',
+          docId: 'ispc202310restapifw',
+          description: (
+            <>
+              Create custom inbound RESTful APIs for business requirements that
+              are not addressed in Cloud API.
+            </>
+          ),
+        },
+        {
+          label: 'SOAP APIs',
+          docId: 'ispc202310integ',
+          description: (
+            <>
+              Use the base configuration SOAP APIs that PolicyCenter publishes,
+              publish custom SOAP APIs, and consume third-party SOAP APIs.
+            </>
+          ),
+        },
+        {
+          label: 'Cloud API Consumer Guide',
+          docId: 'ispc202310apibf',
+          description: (
+            <>
+              Use Cloud API to make inbound calls from third-party applications
+              that create, edit, and retrieve data from PolicyCenter.
+            </>
+          ),
+        },
+        {
+          label: 'Cloud API for ContactManager',
+          docId: 'ispc202310apicm',
+          description: (
+            <>
+              Use Cloud API to make inbound calls from third-party applications
+              that create, edit, and retrieve data from ContactManager.
+            </>
+          ),
+        },
+        {
+          label: 'Integration Gateway',
+          docId: 'integgatewaydevlatest',
+          description: (
+            <>
+              Use Integration Gateway to facilitate the process of creating new
+              integration projects, developing the project implementation
+              locally, and deploying projects to the Guidewire Cloud Platform
+              (GWCP).
+            </>
+          ),
+        },
+        {
+          label: 'Pre-built integrations',
+          description: (
+            <>
+              Implement pre-built functionality for PolicyCenter integration
+              points, including rating integration, reinsurance, and forms
+              inference.
+            </>
+          ),
+          url: '/cloud/pc/202310/integration/integration/pc/topics/c_part-policy-integrations.html',
         },
       ],
     },
     {
-      label: 'Development',
+      icon: 'administer',
+      title: 'Administer',
       items: [
         {
-          label: 'API Sandbox',
-          docId: 'is202310apisandbox',
+          label: 'Administration overview',
+          docId: 'ispc202310admin',
+          description: (
+            <>
+              Manage security, backups, logging, user data, and more for a
+              PolicyCenter system.
+            </>
+          ),
         },
+
         {
-          label: 'Gosu Reference',
-          docId: 'gosureflatest',
+          label: 'Cloud Console',
+          docId: 'guidewirecloudconsolerootinsurerdev',
+          description: (
+            <>Access and manage your Guidewire Cloud applications.</>
+          ),
         },
-      ],
-    },
-    {
-      label: 'Glossary',
-      items: [
+
         {
-          label: 'Glossary',
-          docId: 'gwglossary',
+          label: 'Authentication',
+          docId: 'guidewireidentityfederationhub',
+          description: (
+            <>Authenticate and verify user access to Guidewire resources.</>
+          ),
+        },
+
+        {
+          label: 'Security',
+          description: (
+            <>
+              Encrypt communications between security systems. Manage custom
+              permissions.
+            </>
+          ),
+          url: '/cloud/pc/202310/admin/admin/topics/p_security.html',
+        },
+
+        {
+          label: 'Network connectivity',
+          docId: 'cloudplatformrelease',
+          description: (
+            <>
+              Manage data transmission between your self-managed infrastructure
+              and Guidewire Cloud.
+            </>
+          ),
+        },
+
+        {
+          label: 'Data masking',
+          docId: 'datamasking',
+          description: (
+            <>
+              Keep sensitive data secure. Access data for testing and debugging
+              applications.
+            </>
+          ),
+        },
+
+        {
+          label: 'Database administration',
+          description: <>Manage and maintain your Guidewire databases.</>,
+          url: '/cloud/pc/202310/admin/admin/topics/p_data.html',
+        },
+
+        {
+          label: 'Server administration',
+          description: (
+            <>
+              Start and stop the application server, specify server modes and
+              run levels, and manage server memory.
+            </>
+          ),
+          url: '/cloud/pc/202310/admin/admin/topics/p_server.html',
+        },
+
+        {
+          label: 'Business rules',
+          description: (
+            <>Create, edit, and manage underwriting issues in PolicyCenter.</>
+          ),
+          url: '/cloud/pc/202310/admin/admin/topics/p_bizrules.html',
+        },
+
+        {
+          label: 'Observability',
+          docId: 'observability',
+          description: (
+            <>
+              Observe system activity and logs. Diagnose performance issues for
+              resolution.
+            </>
+          ),
         },
       ],
     },
   ],
-  selector: {
-    label: 'Select cloud release',
-    selectedItemLabel: 'Innsbruck (2023.10)',
-    items: allSelectors.s1793805ac84baf801d4eb31b00ab1ddf,
-    labelColor: 'black',
-  },
 };
 
 export default function LandingPage202310() {
-  return <SectionLayout {...pageConfig} />;
+  return <ApplicationLayout {...pageConfig} />;
 }

@@ -1,14 +1,14 @@
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { useState } from 'react';
+import ApplicationLinkList, { TabPanelProps } from './ApplicationLinkList';
 import ApplicationTabIcon, {
   ApplicationTabIconProps,
 } from './ApplicationTabIcon';
-import ApplicationLinkList from './ApplicationLinkList';
 import indicator from './indicator.svg';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 export const tabsWidth = 1428;
 
@@ -27,7 +27,7 @@ export type LinkSectionProps = {
 
 export type ApplicationTabItemProps = {
   title: string;
-  items: LinkSectionProps[];
+  items: TabPanelProps['items'];
 } & ApplicationTabIconProps;
 
 type ApplicationTabsProps = { tabs: ApplicationTabItemProps[] };
@@ -35,7 +35,7 @@ type ApplicationTabsProps = { tabs: ApplicationTabItemProps[] };
 export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
   const [value, setValue] = useState(0);
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -114,6 +114,9 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
                   minHeight: '47px',
                   fontSize: '24px',
                   fontWeight: 600,
+                  '& img': {
+                    filter: 'invert(100%)',
+                  },
                 },
               }}
             />

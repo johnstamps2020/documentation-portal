@@ -1,21 +1,58 @@
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
-import { ReactComponent as HeroImage } from './application-hero-image.svg';
 import { useLayoutContext } from 'LayoutContext';
+import LandingPageItemRenderer from 'components/LandingPage/LandingPageItemRenderer';
+import { arrangeItems } from 'helpers/landingPageHelpers';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import { useEffect } from 'react';
+import LandingPageLink from '../LandingPageLink';
+import { ReactComponent as HeroImage } from './application-hero-image.svg';
 
-export default function ApplicationHero() {
+export type ApplicationHeroProps = {
+  buttonProps: LandingPageItemProps;
+  title: string;
+};
+
+export default function ApplicationHero({
+  buttonProps,
+  title,
+}: ApplicationHeroProps) {
   const { setTitle } = useLayoutContext();
+  const { isError, isLoading, landingPageItems } = useLandingPageItems([
+    buttonProps,
+  ]);
+  const arrangedItems = arrangeItems([buttonProps], landingPageItems);
 
-  const title = 'Guidewire InsuranceSuite PolicyCenter';
+  const linkButton = (
+    <LandingPageLink
+      landingPageItem={arrangedItems[0]}
+      sx={{
+        display: 'flex',
+        width: 'fit-content',
+        backgroundColor: 'white',
+        color: 'primary.main',
+        borderRadius: 2.5,
+        textTransform: 'none',
+        fontWeight: 600,
+        fontSize: 14,
+        px: 3.5,
+        py: 0.5,
+        ':hover': {
+          color: 'white',
+          backgroundColor: 'primary.dark',
+        },
+      }}
+    />
+  );
 
   useEffect(() => {
     setTitle(title);
-  }, [setTitle]);
+  }, [setTitle, title]);
 
   return (
     <Box
@@ -40,24 +77,13 @@ export default function ApplicationHero() {
                 {title}
               </Typography>
               <Box>
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: 'white',
-                    color: 'primary.main',
-                    borderRadius: 2.5,
-                    textTransform: 'none',
-                    fontWeight: 600,
-                    fontSize: 14,
-                    px: 3.5,
-                    py: 0.5,
-                    ':hover': {
-                      color: 'white',
-                    },
-                  }}
-                >
-                  Release notes
-                </Button>
+                <LandingPageItemRenderer
+                  isError={isError}
+                  isLoading={isLoading}
+                  landingPageItems={landingPageItems}
+                  skeleton={<Skeleton />}
+                  item={linkButton}
+                />
               </Box>
             </Stack>
           </Grid>
