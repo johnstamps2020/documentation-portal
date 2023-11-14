@@ -145,7 +145,6 @@ these approaches:
 
 ## Request deployment builds
 
-Get in touch with The Doctools team and they can provide assistance.
-
-- [#ask-docs](https://guidewire.slack.com/archives/C2LUW57BL) on Slack
-- email [doctools@guidewire.com](mailto:doctools@guidewire.com)
+Contact the ContentOps team for assistance:
+- Slack: [#ask-docs](https://guidewire.slack.com/archives/C2LUW57BL)
+- Email: [doctools@guidewire.com](mailto:doctools@guidewire.com)
