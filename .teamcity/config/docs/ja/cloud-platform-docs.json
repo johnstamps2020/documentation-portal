@@ -2,19 +2,31 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
-      "id": "gwcpjaJpreleasenotes",
+      "id": "gwcpjaJPreleasenotes",
       "title": "Cloud Platform Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/gwcprelnotes/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -23,4 +35,3 @@
     }
   ]
 }
-

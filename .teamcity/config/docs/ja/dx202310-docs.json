@@ -2,19 +2,31 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
-      "id": "dx202310jaJpceamrelnotes",
+      "id": "dx202310jaJPceamrelnotes",
       "title": "CustomerEngage Account Management Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/dx/ce-am/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -22,19 +34,31 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202310jaJpceclaimsrelnotes",
+      "id": "dx202310jaJPceclaimsrelnotes",
       "title": "CustomerEngage Account Management for ClaimCenter Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/dx/ce-claims/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,19 +66,31 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202310jaJpceqbrelnotes",
+      "id": "dx202310jaJPceqbrelnotes",
       "title": "CustomerEngage Quote and Buy Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/dx/ce-qb/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -62,19 +98,31 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202310jaJpperelnotes",
+      "id": "dx202310jaJPperelnotes",
       "title": "ProducerEngage Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/dx/pe/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,19 +130,31 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202310jaJppeclaimsrelnotes",
+      "id": "dx202310jaJPpeclaimsrelnotes",
       "title": "ProducerEngage for ClaimCenter Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/dx/pe-claims/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -102,19 +162,31 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202310jaJpsrerelnotes",
+      "id": "dx202310jaJPsrerelnotes",
       "title": "ServiceRepEngage Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/dx/sre/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -122,19 +194,31 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202310jaJpverelnotes",
+      "id": "dx202310jaJPverelnotes",
       "title": "VendorEngage Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/dx/ve/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

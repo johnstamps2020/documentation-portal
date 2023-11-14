@@ -40,11 +40,11 @@ label: '2023.10 (Innsbruck)',
 items: [
 {
 label: '[TBD]ClaimCenter Release Notes', 
-docId: 'iscc202310jaJpreleasenotes', 
+docId: 'iscc202310jaJPreleasenotes', 
 }, 
 {
 label: '[TBD]ClaimCenter Update', 
-docId: 'iscc202310jaJpupdate', 
+docId: 'iscc202310jaJPupdate', 
 }, 
 ],
 },

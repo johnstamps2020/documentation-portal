@@ -22,11 +22,11 @@ label: '2023.10 (Innsbruck)',
 items: [
 {
 label: '[TBD]Cloud Home Help', 
-docId: 'gchjaJphelprelease', 
+docId: 'gchjaJPhelprelease', 
 }, 
 {
 label: '[TBD]Cloud Platform Release Notes	', 
-docId: 'gwcpjaJpreleasenotes', 
+docId: 'gwcpjaJPreleasenotes', 
 }, 
 ],
 },

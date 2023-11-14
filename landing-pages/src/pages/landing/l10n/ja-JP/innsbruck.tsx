@@ -22,7 +22,7 @@ label: '[TBD]What\'s new in Innsbruck',
 items: [
 {
 label: '[TBD]What\'s New in Innsbruck', 
-docId: 'whatsnewjaJpinnsbruck', 
+docId: 'whatsnewjaJPinnsbruck', 
 }, 
 ],
 },

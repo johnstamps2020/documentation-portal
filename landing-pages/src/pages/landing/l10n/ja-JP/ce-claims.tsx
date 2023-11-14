@@ -22,7 +22,7 @@ label: '2023.10 (Innsbruck)',
 items: [
 {
 label: '[TBD]CustomerEngage Account Management for ClaimCenter Release Notes', 
-docId: 'dx202310jaJpceclaimsrelnotes', 
+docId: 'dx202310jaJPceclaimsrelnotes', 
 }, 
 ],
 },

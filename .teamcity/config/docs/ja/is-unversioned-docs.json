@@ -2,7 +2,7 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
-      "id": "isjaJpupgradecompatibility",
+      "id": "isjaJPupgradecompatibility",
       "title": "InsuranceSuite Configuration Upgrade Tools Compatibility ja",
       "displayTitle": "コンフィギュレーションアップグレードツールの互換性",
       "url": "ja/isconfigupgradetools-compatibility",

@@ -22,7 +22,7 @@ label: '2023.10 (Innsbruck)',
 items: [
 {
 label: '[TBD]Guidewire Testing Framework Release Notes', 
-docId: 'testingframeworksjaJpinnsbruck', 
+docId: 'testingframeworksjaJPinnsbruck', 
 }, 
 ],
 },

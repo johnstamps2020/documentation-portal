@@ -22,7 +22,7 @@ label: '2023.10 (Innsbruck)',
 items: [
 {
 label: '[TBD]VE Release Notes', 
-docId: 'dx202310jaJpverelnotes', 
+docId: 'dx202310jaJPverelnotes', 
 }, 
 ],
 },

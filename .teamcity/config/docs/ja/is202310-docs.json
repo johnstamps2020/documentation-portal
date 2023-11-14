@@ -2,19 +2,31 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
-      "id": "isbc202310jaJpreleasenotes",
+      "id": "isbc202310jaJPreleasenotes",
       "title": "Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/bc/202310/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -22,19 +34,31 @@
       "earlyAccess": false
     },
     {
-      "id": "isbc202310jaJpupdate",
+      "id": "isbc202310jaJPupdate",
       "title": "Update ja",
       "displayTitle": "アップデート",
       "url": "ja/cloud/bc/202310/update",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Installation"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Installation"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,19 +66,31 @@
       "earlyAccess": false
     },
     {
-      "id": "iscc202310jaJpreleasenotes",
+      "id": "iscc202310jaJPreleasenotes",
       "title": "Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/cc/202310/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -62,19 +98,31 @@
       "earlyAccess": false
     },
     {
-      "id": "iscc202310jaJpupdate",
+      "id": "iscc202310jaJPupdate",
       "title": "Update ja",
       "displayTitle": "アップデート",
       "url": "ja/cloud/cc/202310/update",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Installation"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Installation"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,19 +130,31 @@
       "earlyAccess": false
     },
     {
-      "id": "ispc202310jaJpreleasenotes",
+      "id": "ispc202310jaJPreleasenotes",
       "title": "Release Notes ja",
       "displayTitle": "リリースノート",
       "url": "ja/cloud/pc/202310/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -102,19 +162,31 @@
       "earlyAccess": false
     },
     {
-      "id": "ispc202310jaJpupdate",
+      "id": "ispc202310jaJPupdate",
       "title": "Update ja",
       "displayTitle": "アップデート",
       "url": "ja/cloud/pc/202310/update",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Installation"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Installation"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

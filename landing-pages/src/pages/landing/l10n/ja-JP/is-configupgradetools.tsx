@@ -22,11 +22,11 @@ label: '2023.10 (Innsbruck)',
 items: [
 {
 label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
-docId: 'isconfigupgradetoolsjaJp500', 
+docId: 'isconfigupgradetoolsjaJP500', 
 }, 
 {
 label: '[TBD]IS Configuration Upgrade Tools Compatibility', 
-docId: 'isupgradecompatibilityjaJp', 
+docId: 'isupgradecompatibilityjaJP', 
 }, 
 ],
 },
