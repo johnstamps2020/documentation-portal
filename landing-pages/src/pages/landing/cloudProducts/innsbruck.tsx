@@ -175,7 +175,7 @@ const pageConfig: Category2LayoutProps = {
   whatsNew: {
     label: 'Innsbruck',
     badge: innsbruckBadge,
-    item: { label: 'Learn more', docId: 'whatsnewhakuba' },
+    item: { label: 'Learn more', docId: 'whatsnewinnsbruck' },
     content: ['Coming soon'],
   },
   sidebar: implementationResourcesSidebar,
