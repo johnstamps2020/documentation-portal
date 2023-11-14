@@ -2,6 +2,31 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "whatsnewinnsbruck",
+      "title": "What's new in Innsbruck",
+      "url": "cloud/innsbruck/whatsnew",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"],
+        "version": ["2023.10", "2023.3"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
       "id": "whatsnewhakuba",
       "title": "What's new in Hakuba",
       "url": "cloud/hakuba/whatsnew",
