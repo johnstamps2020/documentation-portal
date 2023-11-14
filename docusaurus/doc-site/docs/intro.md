@@ -27,7 +27,7 @@ Builds for docs.guidewire.com use Yarn 3. Follow the steps below to set up Yarn
 on your machine.
 
 1. If you don't have Yarn, install it by following instructions in the
-   [official documentation](https://classic.yarnpkg.com/lang/en/docs/install).
+   [official documentation](https://yarnpkg.com/getting-started/install).
 2. Set Yarn to version 3.
 
    ```bash
