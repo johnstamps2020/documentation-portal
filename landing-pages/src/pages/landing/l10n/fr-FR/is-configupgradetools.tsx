@@ -11,34 +11,26 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Choisissez un produit',
-    selectedItemLabel: 'Cloud Platform',
+    selectedItemLabel: '[TBD]InsuranceSuite Configuration Upgrade Tools',
     items: allSelectors.sef23284b869fc03ddd79bc1738f4ad7d,
     labelColor: 'white',
   },
 
   cards: [
-    {
+{
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]Cloud Platform Release Notes	', 
-docId: 'gwcpfrFRreleasenotes', 
+label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
+docId: 'isconfigupgradetoolsfrFR500', 
 }, 
 ],
 },
 {
-      label: '2023.06 (Hakuba)',
-      items: [
-        {
-          label: 'Notes de version de la plate-forme Guidewire Cloud',
-          docId: 'gwcpfrFRreleasenotes',
-        },
-      ],
-    },
   ],
 };
 
-export default function Cp() {
+export default function Isconfigupgradetools() {
   return <CategoryLayout {...pageConfig} />;
 }
 

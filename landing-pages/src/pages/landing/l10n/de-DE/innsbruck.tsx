@@ -10,35 +10,26 @@ const pageConfig: CategoryLayoutProps = {
     backgroundColor: `hsl(0, 0%, 98%)`,
   },
   selector: {
-    label: 'Choisissez un produit',
-    selectedItemLabel: 'Cloud Platform',
-    items: allSelectors.sef23284b869fc03ddd79bc1738f4ad7d,
+    label: 'Produkt auswählen',
+    selectedItemLabel: 'Was ist neu in Innsbruck',
+    items: allSelectors.sabc928e21c4c1dfb2a841b6b2331c9db,
     labelColor: 'white',
   },
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: '[TBD]Cloud Platform Release Notes	', 
-docId: 'gwcpfrFRreleasenotes', 
-}, 
-],
-},
-{
-      label: '2023.06 (Hakuba)',
+      label: '[TBD]What\'s new in Innsbruck',
       items: [
         {
-          label: 'Notes de version de la plate-forme Guidewire Cloud',
-          docId: 'gwcpfrFRreleasenotes',
+          label: '[TBD]What\'s New in Innsbruck',
+          docId: 'whatsnewdeDEinnsbruck',
         },
       ],
     },
   ],
 };
 
-export default function Cp() {
+export default function LandingPageinnsbruck() {
   return <CategoryLayout {...pageConfig} />;
 }
 

@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]BillingCenter Release Notes', 
+docId: 'isbc202310deDEreleasenotes', 
+}, 
+{
+label: '[TBD]BillingCenter Update', 
+docId: 'isbc202310deDEupdate', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -162,3 +175,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Bc() {
   return <CategoryLayout {...pageConfig} />;
 }
+

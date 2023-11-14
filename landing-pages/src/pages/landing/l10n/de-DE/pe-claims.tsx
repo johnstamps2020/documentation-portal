@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]ProducerEngage for ClaimCenter Release Notes', 
+docId: 'dx202310deDEpeclaimsrelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -81,3 +90,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Peclaims() {
   return <CategoryLayout {...pageConfig} />;
 }
+

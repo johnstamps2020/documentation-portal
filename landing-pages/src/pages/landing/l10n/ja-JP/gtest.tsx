@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]Guidewire Testing Framework Release Notes', 
+docId: 'testingframeworksjaJpinnsbruck', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -57,3 +66,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Gtest() {
   return <CategoryLayout {...pageConfig} />;
 }
+
