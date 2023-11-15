@@ -157,7 +157,7 @@ const pageConfig: ApplicationLayoutProps = {
               operations.
             </>
           ),
-          url: '/cloud/cc/202310/integration/integration/topics/c_part-plugins.html',
+          url: '/cloud/cc/202310/integration/?contextid=c_part-plugins',
         },
         {
           label: 'Workflow configuration',
@@ -167,14 +167,14 @@ const pageConfig: ApplicationLayoutProps = {
               processes.
             </>
           ),
-          url: '/cloud/cc/202310/config/config/topics/p-workflow.html',
+          url: '/cloud/cc/202310/config/?contextid=p-workflow',
         },
         {
           label: 'ClaimCenter functionality configuration',
           description: (
             <>Configure ClaimCenter features to meet your business needs.</>
           ),
-          url: '/cloud/cc/202310/config/?contextid=c_xg1012431',
+          url: '/cloud/cc/202310/config/?contextid=p-ClaimCenter',
         },
         {
           label: 'Gosu reference',
@@ -184,12 +184,12 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'User interface configuration',
           description: <>Configure the ClaimCenter user interface.</>,
-          url: '/cloud/cc/202310/config/config/topics/p-ui-config.html',
+          url: '/cloud/cc/202310/config/?contextid=p-ui-config',
         },
         {
           label: 'Search configuration',
           description: <>Configure search in ClaimCenter.</>,
-          url: '/cloud/cc/202310/config/config/topics/database-search/c_all-fe3275213.html',
+          url: '/cloud/cc/202310/config/?contextid=c_all-fe3275213',
         },
         {
           label: 'Email configuration',
@@ -233,7 +233,7 @@ const pageConfig: ApplicationLayoutProps = {
               integration points.
             </>
           ),
-          url: '/cloud/cc/202310/integration/integration/topics/c_part-datatransfer.html',
+          url: '/cloud/cc/202310/integration/?contextid=c_part-datatransfer',
         },
         {
           label: 'Messaging',
@@ -244,7 +244,7 @@ const pageConfig: ApplicationLayoutProps = {
               responses.
             </>
           ),
-          url: '/cloud/cc/202310/integration/integration/topics/c_part-messaging.html',
+          url: '/cloud/cc/202310/integration/?contextid=c_part-messaging',
         },
         {
           label: 'REST API Client',
@@ -264,7 +264,7 @@ const pageConfig: ApplicationLayoutProps = {
               asynchronous messages from third-party applications.
             </>
           ),
-          url: '/cloud/cc/202310/integration/integration/topics/c_ns2380296.html',
+          url: '/cloud/cc/202310/integration/?contextid=c_ns2380296',
         },
         {
           label: 'Application events',
@@ -339,7 +339,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>Integrate with external systems to track claims on policies.</>
           ),
-          url: '/cloud/cc/202310/integration/integration/topics/c_part-claim-integrations.html',
+          url: '/cloud/cc/202310/integration/?contextid=c_part-claim-integrations',
         },
       ],
     },
@@ -382,7 +382,7 @@ const pageConfig: ApplicationLayoutProps = {
               permissions.
             </>
           ),
-          url: '/cloud/cc/202310/admin/admin/topics/p_security.html',
+          url: '/cloud/cc/202310/admin/?contextid=p_security',
         },
 
         {
@@ -410,7 +410,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Database administration',
           description: <>Manage and maintain your Guidewire databases.</>,
-          url: '/cloud/cc/202310/admin/admin/topics/p_data.html',
+          url: '/cloud/cc/202310/admin/?contextid=p_data',
         },
 
         {
@@ -421,13 +421,13 @@ const pageConfig: ApplicationLayoutProps = {
               run levels, and manage server memory.
             </>
           ),
-          url: '/cloud/cc/202310/admin/admin/topics/p_server.html',
+          url: '/cloud/cc/202310/admin/?contextid=p_server',
         },
 
         {
           label: 'Business rules',
           description: <>Create, edit, and manage activities in ClaimCenter.</>,
-          url: '/cloud/cc/202310/admin/admin/topics/p_bizrules.html',
+          url: '/cloud/cc/202310/admin/?contextid=p_bizrules',
         },
 
         {
