@@ -838,9 +838,9 @@
       "earlyAccess": false
     },
     {
-      "id": "ispc202310cloudratingmgmt",
-      "title": "Cloud Rating Management",
-      "url": "cloud/202310/cloudratingmgmt",
+      "id": "ispc202310ratingapp",
+      "title": "Rating App",
+      "url": "cloud/pc/202310/ratingapp",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
