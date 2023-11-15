@@ -463,9 +463,9 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "CloudRatingMgmt.ditamap",
+      "root": "RatingApp.ditamap",
       "srcId": "is202310src",
-      "docId": "ispc202310cloudratingmgmt",
+      "docId": "ispc202310ratingapp",
       "indexRedirect": true,
       "disabled": false
     },
