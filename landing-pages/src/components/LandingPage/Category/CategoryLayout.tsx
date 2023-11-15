@@ -69,7 +69,9 @@ export default function CategoryLayout({
             {pageData.title}
           </Typography>
           {description}
-          <NotLoggedInInfo styles={variableColor} />
+          <NotLoggedInInfo
+            styles={{ color: variableColor, borderColor: '#B2B5BD' }}
+          />
           {selector && <LandingPageSelector {...selector} />}
         </Stack>
         {pageData.path.includes('cloudProducts/elysian') && (

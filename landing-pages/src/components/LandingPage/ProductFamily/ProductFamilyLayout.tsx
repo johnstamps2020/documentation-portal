@@ -66,7 +66,9 @@ export default function ProductFamilyLayout({
           <Typography variant="h1" sx={variableColor}>
             {pageData.title}
           </Typography>
-          <NotLoggedInInfo styles={variableColor} />
+          <NotLoggedInInfo
+            styles={{ color: variableColor, borderColor: '#B2B5BD' }}
+          />
           {selector && <LandingPageSelector {...selector} />}{' '}
         </Stack>
       </Grid>
