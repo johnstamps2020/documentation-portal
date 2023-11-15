@@ -116,7 +116,6 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-
         {
           label: 'Gosu rules',
           docId: 'iscc202310rules',
@@ -139,7 +138,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>A reference of the application configuration parameters.</>
           ),
-          url: '/cloud/cc/202310/config/config/topics/c_au6600343.html',
+          url: '/cloud/cc/202310/config/?contextid=c_au6600343',
         },
         {
           label: 'Data model configuration',
@@ -148,9 +147,8 @@ const pageConfig: ApplicationLayoutProps = {
               Create and extend ClaimCenter data model entities and typelists.
             </>
           ),
-          url: '/cloud/cc/202310/config/config/topics/p-datamodel.html',
+          url: '/cloud/cc/202310/config/?contextid=c_pdatamodel',
         },
-
         {
           label: 'Configuration plugins',
           description: (
@@ -161,7 +159,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
           url: '/cloud/cc/202310/integration/integration/topics/c_part-plugins.html',
         },
-
         {
           label: 'Workflow configuration',
           description: (
@@ -172,7 +169,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
           url: '/cloud/cc/202310/config/config/topics/p-workflow.html',
         },
-
         {
           label: 'ClaimCenter functionality configuration',
           description: (
@@ -180,25 +176,21 @@ const pageConfig: ApplicationLayoutProps = {
           ),
           url: '/cloud/cc/202310/config/?contextid=c_xg1012431',
         },
-
         {
           label: 'Gosu reference',
           docId: 'gosureflatest',
           description: <>A reference for the Gosu programming language. </>,
         },
-
         {
           label: 'User interface configuration',
           description: <>Configure the ClaimCenter user interface.</>,
           url: '/cloud/cc/202310/config/config/topics/p-ui-config.html',
         },
-
         {
           label: 'Search configuration',
           description: <>Configure search in ClaimCenter.</>,
           url: '/cloud/cc/202310/config/config/topics/database-search/c_all-fe3275213.html',
         },
-
         {
           label: 'Email configuration',
           description: (
@@ -222,6 +214,7 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
+
         {
           label: 'Cloud API Developer Guide',
           docId: 'iscc202310apica',
