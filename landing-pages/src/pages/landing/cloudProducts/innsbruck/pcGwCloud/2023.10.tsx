@@ -88,7 +88,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Policy rates',
-          url: '/cloud/pc/202310/app/app/pc/topics/c_df1082048.html',
+          url: '/cloud/pc/202310/app/?contextid=c_df1082048',
           description: (
             <>
               Learn how PolicyCenter generates quotes for policy transactions,
@@ -179,7 +179,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>A reference of the application configuration parameters.</>
           ),
-          url: '/cloud/pc/202310/config/config/topics/c_au6600343.html',
+          url: '/cloud/pc/202310/config/?contextid=c_au6600343',
         },
         {
           label: 'Data model configuration',
@@ -188,7 +188,7 @@ const pageConfig: ApplicationLayoutProps = {
               Create and extend PolicyCenter data model entities and typelists.
             </>
           ),
-          url: '/cloud/pc/202310/config/config/topics/p-datamodel.html',
+          url: '/cloud/pc/202310/config/?contextid=c_pdatamodel',
         },
 
         {
@@ -199,7 +199,7 @@ const pageConfig: ApplicationLayoutProps = {
               operations, such as policy number generation and quote purging.
             </>
           ),
-          url: '/cloud/pc/202310/integration/integration/topics/c_part-plugins.html',
+          url: '/cloud/pc/202310/integration/?contextid=c_part-plugins',
         },
 
         {
@@ -210,7 +210,7 @@ const pageConfig: ApplicationLayoutProps = {
               business processes such as submissions and renewals.
             </>
           ),
-          url: '/cloud/pc/202310/config/config/topics/p-workflow.html',
+          url: '/cloud/pc/202310/config/?contextid=p-workflow',
         },
 
         {
@@ -221,7 +221,7 @@ const pageConfig: ApplicationLayoutProps = {
               destruction) to meet your business needs.
             </>
           ),
-          url: '/cloud/pc/202310/config/config/pc/topics/p-PolicyCenter.html',
+          url: '/cloud/pc/202310/config/?contextid=p-PolicyCenter',
         },
 
         {
@@ -232,13 +232,13 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'User interface configuration',
           description: <>Configure the PolicyCenter user interface.</>,
-          url: '/cloud/pc/202310/config/config/topics/p-ui-config.html',
+          url: '/cloud/pc/202310/config/?contextid=p-ui-config',
         },
 
         {
           label: 'Search configuration',
           description: <>Configure search in PolicyCenter.</>,
-          url: '/cloud/pc/202310/config/config/topics/database-search/c_all-fe3275213.html',
+          url: '/cloud/pc/202310/config/?contextid=c_all-fe3275213',
         },
 
         {
@@ -246,7 +246,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>Configure PolicyCenter functionality related to sending email.</>
           ),
-          url: '/cloud/pc/202310/config/config/topics/c_mx2909421.html',
+          url: '/cloud/pc/202310/config/?contextid=c_mx2909421',
         },
 
         {
@@ -254,7 +254,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>Configure functionality related to PolicyCenter jobs.</>
           ),
-          url: '/cloud/pc/202310/config/config/pc/topics/p-PolicyCenter_jobs.html',
+          url: '/cloud/pc/202310/config/?contextid=p-PolicyCenter_jobs',
         },
       ],
     },
@@ -290,7 +290,7 @@ const pageConfig: ApplicationLayoutProps = {
               integration points.
             </>
           ),
-          url: '/cloud/pc/202310/integration/integration/topics/c_part-datatransfer.html',
+          url: '/cloud/pc/202310/integration/?contextid=c_part-datatransfer',
         },
         {
           label: 'Messaging',
@@ -301,7 +301,7 @@ const pageConfig: ApplicationLayoutProps = {
               account creation), and manage responses.
             </>
           ),
-          url: '/cloud/pc/202310/integration/integration/topics/c_part-messaging.html',
+          url: '/cloud/pc/202310/integration/?contextid=c_part-messaging',
         },
         {
           label: 'REST API Client',
@@ -321,7 +321,7 @@ const pageConfig: ApplicationLayoutProps = {
               asynchronous messages from third-party applications.
             </>
           ),
-          url: '/cloud/pc/202310/integration/integration/topics/c_ns2380296.html',
+          url: '/cloud/pc/202310/integration/?contextid=c_ns2380296',
         },
         {
           label: 'Application events',
@@ -400,7 +400,7 @@ const pageConfig: ApplicationLayoutProps = {
               inference.
             </>
           ),
-          url: '/cloud/pc/202310/integration/integration/pc/topics/c_part-policy-integrations.html',
+          url: '/cloud/pc/202310/integration/?contextid=c_part-policy-integrations',
         },
       ],
     },
@@ -443,7 +443,7 @@ const pageConfig: ApplicationLayoutProps = {
               permissions.
             </>
           ),
-          url: '/cloud/pc/202310/admin/admin/topics/p_security.html',
+          url: '/cloud/pc/202310/admin/?contextid=p_security',
         },
 
         {
@@ -471,7 +471,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Database administration',
           description: <>Manage and maintain your Guidewire databases.</>,
-          url: '/cloud/pc/202310/admin/admin/topics/p_data.html',
+          url: '/cloud/pc/202310/admin/?contextid=p_data',
         },
 
         {
@@ -482,7 +482,7 @@ const pageConfig: ApplicationLayoutProps = {
               run levels, and manage server memory.
             </>
           ),
-          url: '/cloud/pc/202310/admin/admin/topics/p_server.html',
+          url: '/cloud/pc/202310/admin/?contextid=p_server',
         },
 
         {
@@ -490,7 +490,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>Create, edit, and manage underwriting issues in PolicyCenter.</>
           ),
-          url: '/cloud/pc/202310/admin/admin/topics/p_bizrules.html',
+          url: '/cloud/pc/202310/admin/?contextid=p_bizrules',
         },
 
         {
