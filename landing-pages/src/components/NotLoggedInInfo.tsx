@@ -32,7 +32,7 @@ export default function NotLoggedInInfo({ styles }: NotLoggedInInfoProps) {
         You are viewing limited content. To access all documentation, please{' '}
         <Link
           component={RouterLink}
-          to="/gw-login"
+          to={`/gw-login?redirectTo=${window.location.pathname}`}
           sx={{
             ...styles,
             textDecoration: 'underline',
