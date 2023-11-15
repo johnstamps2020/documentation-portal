@@ -29,21 +29,21 @@
   },
   "dependencies": {
     "@brightcove/react-player-loader": "^1.4.2",
-    "@docusaurus/core": "2.3.1",
-    "@docusaurus/preset-classic": "2.3.1",
+    "@docusaurus/core": "3.0.0",
+    "@docusaurus/preset-classic": "3.0.0",
     "@docusaurus/theme-translations": "^2.3.0",
+    "@docusaurus/tsconfig": "3.0.0",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@fontsource/source-sans-pro": "^4.5.11",
     "@mui/icons-material": "5.11.0",
     "@mui/material": "5.11.8",
-    "@tsconfig/docusaurus": "^1.0.6",
     "@types/lodash": "^4.14.190",
     "lodash": "^4.17.21",
     "mark.js": "^8.11.1"
   },
   "peerDependencies": {
-    "react": "^16.8.4 || ^17.0.0",
-    "react-dom": "^16.8.4 || ^17.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
