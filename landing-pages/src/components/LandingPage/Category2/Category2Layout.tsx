@@ -102,9 +102,10 @@ export default function Category2Layout({
             </Typography>
             <NotLoggedInInfo
               styles={{
-                ...variableColor,
-                fontSize: '14px',
-                fontWeight: 600,
+                color: variableColor,
+                borderColor: '#B2B5BD',
+                fontSize: '18px',
+                fontWeight: 400,
               }}
             />
           </Grid>

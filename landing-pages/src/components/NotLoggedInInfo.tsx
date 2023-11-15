@@ -1,13 +1,11 @@
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
+import Box, { BoxProps } from '@mui/material/Box';
+import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { useUserInfo } from 'hooks/useApi';
-import { SxProps, Theme } from '@mui/material';
-import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 
 type NotLoggedInInfoProps = {
-  styles?: SxProps<Theme>;
+  styles?: BoxProps['sx'];
 };
 
 export default function NotLoggedInInfo({ styles }: NotLoggedInInfoProps) {
@@ -18,27 +16,32 @@ export default function NotLoggedInInfo({ styles }: NotLoggedInInfoProps) {
   }
 
   return (
-    <Stack direction="row" gap="8px">
-      <Typography sx={{ ...styles }}>Note:</Typography>
-      <Box>
-        <Typography sx={{ ...styles }}>
-          You are viewing limited content.
-        </Typography>
-        <Typography sx={{ ...styles }}>
-          To access all the documentation, please{' '}
-          <Link
-            component={RouterLink}
-            to="/gw-login"
-            sx={{
-              ...styles,
-              textDecoration: 'underline',
-            }}
-          >
-            log in
-          </Link>
-          .
-        </Typography>
-      </Box>
-    </Stack>
+    <Box
+      sx={{
+        borderWidth: '0.5px',
+        borderStyle: 'solid',
+        borderColor: 'divider',
+        borderRadius: '4px',
+        px: '32px',
+        py: '10px',
+        width: 'fit-content',
+        ...styles,
+      }}
+    >
+      <Typography>
+        You are viewing limited content. To access all documentation, please{' '}
+        <Link
+          component={RouterLink}
+          to="/gw-login"
+          sx={{
+            ...styles,
+            textDecoration: 'underline',
+          }}
+        >
+          LOG IN
+        </Link>
+        .
+      </Typography>
+    </Box>
   );
 }
