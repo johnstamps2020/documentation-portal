@@ -19,6 +19,11 @@ const pageConfig: ApplicationLayoutProps = {
           description: <>Learn about changes in this release of ClaimCenter.</>,
         },
         {
+          label: 'Studio Release Notes',
+          docId: 'isstudiolatestrn',
+          description: <>Learn about changes to Guidewire Studio.</>,
+        },
+        {
           label: 'Update guide',
           docId: 'iscc202310update',
           description: (
@@ -214,7 +219,6 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-
         {
           label: 'Cloud API Developer Guide',
           docId: 'iscc202310apica',

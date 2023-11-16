@@ -21,6 +21,21 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'AppReader Release Notes',
+          docId: 'appreaderrn400',
+          description: (
+            <>
+              Learn about changes to the AppReader microservice, which performs
+              optical character recognition of PDF documents.
+            </>
+          ),
+        },
+        {
+          label: 'Studio Release Notes',
+          docId: 'isstudiolatestrn',
+          description: <>Learn about changes to Guidewire Studio.</>,
+        },
+        {
           label: 'Update guide',
           docId: 'ispc202310update',
           description: (
