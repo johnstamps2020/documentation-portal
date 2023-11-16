@@ -129,7 +129,7 @@ changeBuildType(RelativeId("3f156a5fa07248606269f838c651b63f")) {
                                     export GW_PLATFORM="Cloud"
                                     export GW_VERSION="latest"
                                     export TARGET_URL="https://docs.staging.ccs.guidewire.net"
-                                    export BASE_URL="/docusaurusgwdocslatest/"
+                                    export BASE_URL="/docusaurus/guidewire/latest/"
                                     
                                     
                                     cd "%teamcity.build.checkoutDir%"
