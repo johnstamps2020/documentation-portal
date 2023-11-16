@@ -5,7 +5,6 @@
       "docId": "apdmaindoc",
       "srcId": "apdapiintsrc",
       "buildType": "yarn",
-      "nodeImageVersion": "16.17.0",
       "disabled": false
     },
     {
