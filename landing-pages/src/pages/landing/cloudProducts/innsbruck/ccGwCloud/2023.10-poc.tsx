@@ -226,6 +226,16 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Integration Data Manager',
+          docId: 'iscc202310integdatamgr',
+          description: (
+            <>
+              Store third-party data for use with InsuranceSuite, view this
+              data, and use it in business logic.
+            </>
+          ),
+        },
+        {
           label: 'File-based integration',
           description: (
             <>
@@ -341,6 +351,16 @@ const pageConfig: ApplicationLayoutProps = {
           ),
           url: '/cloud/cc/202310/integration/?contextid=c_part-claim-integrations',
         },
+        {
+          label: 'API Sandbox',
+          docId: 'is202310apisandbox',
+          description: (
+            <>
+              Create a non-production development environment where you can
+              explore a limited range of InsuranceSuite features.
+            </>
+          ),
+        },
       ],
     },
     {
@@ -357,7 +377,6 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-
         {
           label: 'Cloud Console',
           docId: 'guidewirecloudconsolerootinsurerdev',
@@ -365,7 +384,6 @@ const pageConfig: ApplicationLayoutProps = {
             <>Access and manage your Guidewire Cloud applications.</>
           ),
         },
-
         {
           label: 'Authentication',
           docId: 'guidewireidentityfederationhub',
@@ -373,7 +391,6 @@ const pageConfig: ApplicationLayoutProps = {
             <>Authenticate and verify user access to Guidewire resources.</>
           ),
         },
-
         {
           label: 'Security',
           description: (
@@ -384,7 +401,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
           url: '/cloud/cc/202310/admin/?contextid=p_security',
         },
-
         {
           label: 'Network connectivity',
           docId: 'cloudplatformrelease',
@@ -395,7 +411,16 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-
+        {
+          label: 'Data Archiving',
+          docId: 'iscc202310dataarchiving',
+          description: (
+            <>
+              Move the data associated with a claim from the active ClaimCenter
+              database to a document storage area.
+            </>
+          ),
+        },
         {
           label: 'Data masking',
           docId: 'datamasking',
@@ -406,13 +431,11 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-
         {
           label: 'Database administration',
           description: <>Manage and maintain your Guidewire databases.</>,
           url: '/cloud/cc/202310/admin/?contextid=p_data',
         },
-
         {
           label: 'Server administration',
           description: (
@@ -423,13 +446,11 @@ const pageConfig: ApplicationLayoutProps = {
           ),
           url: '/cloud/cc/202310/admin/?contextid=p_server',
         },
-
         {
           label: 'Business rules',
           description: <>Create, edit, and manage activities in ClaimCenter.</>,
           url: '/cloud/cc/202310/admin/?contextid=p_bizrules',
         },
-
         {
           label: 'Observability',
           docId: 'observability',
