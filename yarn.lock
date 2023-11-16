@@ -2962,7 +2962,7 @@ __metadata:
     "@babel/preset-env": ^7.16.0
     "@babel/preset-react": ^7.18.6
     "@babel/preset-typescript": ^7.21.0
-    "@docusaurus/types": ^2.3.1
+    "@docusaurus/types": 3.0.0
     "@fontsource/source-sans-pro": ^4.5.11
     cross-env: ^7.0.3
     lodash: ^4.17.21
@@ -2984,11 +2984,11 @@ __metadata:
     "@babel/preset-typescript": ^7.18.6
     "@brightcove/react-player-loader": ^1.4.2
     "@docusaurus/core": 3.0.0
-    "@docusaurus/module-type-aliases": ^2.3.1
+    "@docusaurus/module-type-aliases": 3.0.0
     "@docusaurus/preset-classic": 3.0.0
-    "@docusaurus/theme-translations": ^2.3.0
+    "@docusaurus/theme-translations": 3.0.0
     "@docusaurus/tsconfig": 3.0.0
-    "@docusaurus/types": 2.3.1
+    "@docusaurus/types": 3.0.0
     "@emotion/react": ^11.10.0
     "@emotion/styled": ^11.10.0
     "@fontsource/source-sans-pro": ^4.5.11
@@ -2999,7 +2999,7 @@ __metadata:
     lodash: ^4.17.21
     mark.js: ^8.11.1
     rimraf: ^4.1.2
-    typescript: ^4.8.4
+    typescript: ~5.2.2
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -3164,25 +3164,6 @@ __metadata:
     react: "*"
     react-dom: "*"
   checksum: 4f7811b69eff1201783133681382880c9ccd6766e91d876e607551c314d8bcf0adf21e3c8014e36684681e084394193f9ee5f3aa369e033fca3fab1594f003a5
-  languageName: node
-  linkType: hard
-
-"@docusaurus/module-type-aliases@npm:^2.3.1":
-  version: 2.4.3
-  resolution: "@docusaurus/module-type-aliases@npm:2.4.3"
-  dependencies:
-    "@docusaurus/react-loadable": 5.5.2
-    "@docusaurus/types": 2.4.3
-    "@types/history": ^4.7.11
-    "@types/react": "*"
-    "@types/react-router-config": "*"
-    "@types/react-router-dom": "*"
-    react-helmet-async: "*"
-    react-loadable: "npm:@docusaurus/react-loadable@5.5.2"
-  peerDependencies:
-    react: "*"
-    react-dom: "*"
-  checksum: 22ce1a6a20acc35cdd2ec57e55f29e65dbe0fb3a46aaa8c033ec78bf04cd3087f0523c816c744ed311095512dd686c83e0a8619cc1a2a937c27cd54527739c38
   languageName: node
   linkType: hard
 
@@ -3497,58 +3478,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/theme-translations@npm:^2.3.0":
-  version: 2.4.3
-  resolution: "@docusaurus/theme-translations@npm:2.4.3"
-  dependencies:
-    fs-extra: ^10.1.0
-    tslib: ^2.4.0
-  checksum: 8424583a130b0d32b6adf578dc5daeefaad199019c8a6a23fbd67577209be64923cde59d423ea9d41d6e7cfc2318e7fa6a17a665e8ae1c871ce0880525f9b8fd
-  languageName: node
-  linkType: hard
-
 "@docusaurus/tsconfig@npm:3.0.0":
   version: 3.0.0
   resolution: "@docusaurus/tsconfig@npm:3.0.0"
   checksum: 06a9b33b438c482057a1e4f1654cc350dd1a838a81510e7564f7b1eab6615c63465d39859592a89394e7070d8d523421a80dee6ffb625bb71c158c3c9f4c8098
-  languageName: node
-  linkType: hard
-
-"@docusaurus/types@npm:2.3.1":
-  version: 2.3.1
-  resolution: "@docusaurus/types@npm:2.3.1"
-  dependencies:
-    "@types/history": ^4.7.11
-    "@types/react": "*"
-    commander: ^5.1.0
-    joi: ^17.6.0
-    react-helmet-async: ^1.3.0
-    utility-types: ^3.10.0
-    webpack: ^5.73.0
-    webpack-merge: ^5.8.0
-  peerDependencies:
-    react: ^16.8.4 || ^17.0.0
-    react-dom: ^16.8.4 || ^17.0.0
-  checksum: 91e52f37b97964112aa0d50ee4a6f534d7da941443af5ddc96418817c6ce532a98c73e67045ac703b582c7ed703ebb360205eec30da7f738c0105f2b3ae1a246
-  languageName: node
-  linkType: hard
-
-"@docusaurus/types@npm:2.4.3, @docusaurus/types@npm:^2.3.1":
-  version: 2.4.3
-  resolution: "@docusaurus/types@npm:2.4.3"
-  dependencies:
-    "@types/history": ^4.7.11
-    "@types/react": "*"
-    commander: ^5.1.0
-    joi: ^17.6.0
-    react-helmet-async: ^1.3.0
-    utility-types: ^3.10.0
-    webpack: ^5.73.0
-    webpack-merge: ^5.8.0
-  peerDependencies:
-    react: ^16.8.4 || ^17.0.0
-    react-dom: ^16.8.4 || ^17.0.0
-  checksum: c123c45630e885b588f808baa06a97f8408a3381906f65cb92ae75732aedfca6ab2cada94f969c08e043b885b95298616440326259b789010e0986cbcd7a960b
   languageName: node
   linkType: hard
 
@@ -12643,7 +12576,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^10.0.0, fs-extra@npm:^10.1.0":
+"fs-extra@npm:^10.0.0":
   version: 10.1.0
   resolution: "fs-extra@npm:10.1.0"
   dependencies:
@@ -15705,7 +15638,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joi@npm:^17.11.0, joi@npm:^17.6.0, joi@npm:^17.9.2":
+"joi@npm:^17.11.0, joi@npm:^17.9.2":
   version: 17.11.0
   resolution: "joi@npm:17.11.0"
   dependencies:
@@ -23385,7 +23318,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.5.0, tslib@npm:^2.6.0":
+"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.5.0, tslib@npm:^2.6.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
@@ -23616,7 +23549,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.4.2, typescript@npm:^4.8.3, typescript@npm:^4.8.4, typescript@npm:^4.9.3, typescript@npm:^4.9.5":
+"typescript@npm:^4.4.2, typescript@npm:^4.8.3, typescript@npm:^4.9.3, typescript@npm:^4.9.5":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -23636,7 +23569,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.4.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.8.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.8.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.9.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.4.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.8.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.9.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
@@ -24507,7 +24440,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-merge@npm:^5.7.3, webpack-merge@npm:^5.8.0, webpack-merge@npm:^5.9.0":
+"webpack-merge@npm:^5.7.3, webpack-merge@npm:^5.9.0":
   version: 5.10.0
   resolution: "webpack-merge@npm:5.10.0"
   dependencies:
@@ -24545,7 +24478,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5, webpack@npm:^5.64.4, webpack@npm:^5.73.0, webpack@npm:^5.76.0, webpack@npm:^5.88.1":
+"webpack@npm:^5, webpack@npm:^5.64.4, webpack@npm:^5.76.0, webpack@npm:^5.88.1":
   version: 5.89.0
   resolution: "webpack@npm:5.89.0"
   dependencies:
