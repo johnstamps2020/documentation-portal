@@ -349,7 +349,7 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Claim and Policy integrations',
+          label: 'Claim and policy integrations',
           description: (
             <>Integrate with external systems to track claims on policies.</>
           ),

@@ -343,7 +343,7 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Importing billing and account data',
+          label: 'Billing and account integrations',
           description: (
             <>
               Integrate with external systems to import billing and account
