@@ -213,18 +213,42 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
       queryWithFiltersFromUrl.bool.filter = queryFilters;
     }
 
+    // - Title - number_of_fragments is set to 0 for this field
+    //      so that instead of fragments, the entire field content is returned with highlights.
+    // - Body - number_of_fragments is set to 5, highlighted fragments are as long as the body excerpt that is shown for a doc in results.
+    //      Fragments are ordered by score.
+    //      The value of the fragment size (150) is a compromise between showing a meaningful chunk of text and good performance.
+    //      The value of 300 is too high because it considerably deteriorates performance.
+    //      It seemed like a good idea to set the fragment size parameter to 0
+    //      (no sentence splitting for sentences longer than the fragment size) but then it turned out that chunks
+    //      of text from the body are sometimes not separated properly.
+    //      For example, the content of a table is not separated from the section that follows it.
+    //      Because of that, in the search result, the entire table content is provided in the excerpt
+    //      because Elasticsearch treats the table content and the following section as one sentence.
+    // - max_analyzed_offset - this value determines how many characters are analyzed for highlighting.
+    //      By default, Elasticsearch has a limit of 1000000 configured on the index.
+    //      If this limit is exceeded, an error is thrown. To prevent the error, max_analyzed_offset must be set to a lower value on the query.
+    //      We set to it 999999. When Elasticsearch reaches this limit, it just stops analyzing characters above the limit and doesn’t throw an error.
+    //      This parameter is valid only for the title field.
+    //      The body field uses the postings list (that is, "index_options" is set to "offsets" in the field mapping)
     const highlightParameters = {
-      fragment_size: 0,
       fields: [
         {
           'title*': {
             number_of_fragments: 0,
           },
         },
-        { 'body*': {} },
+        {
+          'body*': {
+            number_of_fragments: 5,
+            order: 'score',
+            fragment_size: 150,
+          },
+        },
       ],
       pre_tags: ['<span class="searchResultHighlight highlighted">'],
       post_tags: ['</span>'],
+      max_analyzed_offset: 999999,
     };
 
     const searchResultsCount = await elasticClient.search({
@@ -257,7 +281,7 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
           field: 'title.raw',
           inner_hits: {
             name: 'same_title',
-            size: 1000,
+            size: 100,
             highlight: highlightParameters,
           },
           max_concurrent_group_searches: 4,
@@ -398,30 +422,33 @@ async function prepareResultsToDisplay(searchResults) {
 
     const [doc, ...otherResults] = allResultsSorted.map((r) => r._source);
     const highlight = mainResult.highlight;
+    const docTitle = doc.title;
+    const docBody = doc.body || '';
+    const docBodyFragment = docBody.substring(0, 300);
 
-    const highlightTitleKey = Object.getOwnPropertyNames(highlight).filter(
+    const highlightTitleKey = Object.getOwnPropertyNames(highlight).find(
       (k) => k.startsWith('title') && !k.startsWith('title.raw')
-    )[0];
+    );
 
-    const highlightBodyKey = Object.getOwnPropertyNames(highlight).filter((k) =>
+    const highlightBodyKey = Object.getOwnPropertyNames(highlight).find((k) =>
       k.startsWith('body')
-    )[0];
-    const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
+    );
 
     // The "number_of_fragments" parameter is set to "0' for the title field.
     // So no fragments are produced, instead the whole content of the field is returned
     // as the first element of the array, and matches are highlighted.
     const titleText = highlightTitleKey
       ? highlight[highlightTitleKey][0]
-      : doc.title;
+      : docTitle;
+    // If there are highlights in the body, join all fragments to get a complete list of highlighted terms
     const bodyText = highlightBodyKey
-      ? highlight[highlightBodyKey].join(' [...] ')
-      : bodyBlurb;
+      ? highlight[highlightBodyKey].join(' ')
+      : docBodyFragment;
+    const allText = titleText + bodyText;
     const regExp = new RegExp(
       '<span class="searchResultHighlight.*?">(.*?)</span>',
       'g'
     );
-    const allText = titleText + bodyText;
     const regExpResults = Array.from(allText.matchAll(regExp));
     const uniqueHighlightTerms = Array.from(
       new Set(regExpResults.map((r) => r[1].toLowerCase()))
@@ -431,13 +458,18 @@ async function prepareResultsToDisplay(searchResults) {
       })
       .join(',');
 
+    // Get the highlighted body fragment with the highest score to display it on the search results page
+    const bodyExcerpt = highlightBodyKey
+      ? highlight[highlightBodyKey][0]
+      : docBodyFragment;
+
     return {
       ...doc,
       score: docScore,
       title: sanitizeTagNames(titleText),
-      titlePlain: sanitizeTagNames(doc.title),
-      body: sanitizeTagNames(bodyText),
-      bodyPlain: sanitizeTagNames(bodyBlurb),
+      titlePlain: sanitizeTagNames(docTitle),
+      body: sanitizeTagNames(bodyExcerpt + '...'),
+      bodyPlain: sanitizeTagNames(docBodyFragment + '...'),
       innerHits: otherResults,
       uniqueHighlightTerms: uniqueHighlightTerms,
     };
