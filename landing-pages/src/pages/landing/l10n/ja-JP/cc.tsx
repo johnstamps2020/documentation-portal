@@ -56,17 +56,17 @@ const pageConfig: CategoryLayoutProps = {
         {
           label:
             'ClaimCenter Package for Japan for Guidewire Cloud リリースノート',
-          url: '/l10n/pdfs/ja-JP/cc/2023.02-IPJ Japan Package/IPJReleaseNotes.pdf',
+          docId: 'iscc202302ipjreleasenotesjaJP',
           videoIcon: false,
         },
         {
           label: 'アプリケーションガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2023.02-IPJ Japan Package/IPJApplicationGuide.pdf',
+          docId: 'iscc202302ipjappjaJP',
           videoIcon: false,
         },
         {
           label: 'コンフィギュレーションガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2023.02-IPJ Japan Package/IPJConfigurationGuide.pdf',
+          docId: 'iscc202302ipjconfigjaJP',
           videoIcon: false,
         },
       ],
