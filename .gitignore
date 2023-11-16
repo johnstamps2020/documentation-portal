@@ -149,6 +149,3 @@ venv/
 !.yarn/versions
 
 node_modules
-
-# local
-.vscode/
