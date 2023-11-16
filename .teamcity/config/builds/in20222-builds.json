@@ -131,7 +131,6 @@
       "buildType": "yarn",
       "docId": "in20222apiref",
       "srcId": "srcin20222apiref",
-      "nodeImageVersion": "16.18.0",
       "disabled": false
     },
     {

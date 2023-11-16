@@ -1271,7 +1271,7 @@ object GwBuildSteps {
         exitCodeEnvVarName: String = "",
     ): ScriptBuildStep {
         val nodeImage = when (nodeImageVersion) {
-            null -> "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:17.6.0"
+            null -> "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:20.9.0"
             else -> "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:${nodeImageVersion}"
         }
         val scriptBuildCommand = buildCommand ?: "build"

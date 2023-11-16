@@ -6,7 +6,6 @@
       "docId": "cloudintegrationbasics",
       "srcId": "cloudintegrationbasicssrc",
       "workingDir": "website",
-      "nodeImageVersion": "18.16.0",
       "disabled": false
     }
   ]

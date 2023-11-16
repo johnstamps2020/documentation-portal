@@ -473,21 +473,18 @@
       "buildType": "yarn",
       "docId": "ccapirefinnsbruck",
       "srcId": "srcccapirefinnsbruck",
-      "nodeImageVersion": "16.16.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "pcapirefinnsbruck",
       "srcId": "srcpcapirefinnsbruck",
-      "nodeImageVersion": "16.16.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "bcapirefinnsbruck",
       "srcId": "srcbcapirefinnsbruck",
-      "nodeImageVersion": "16.16.0",
       "disabled": false
     }
   ]

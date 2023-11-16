@@ -473,21 +473,18 @@
       "buildType": "yarn",
       "docId": "ccapirefhakuba",
       "srcId": "srcccapirefhakuba",
-      "nodeImageVersion": "16.16.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "pcapirefhakuba",
       "srcId": "srcpcapirefhakuba",
-      "nodeImageVersion": "16.16.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "bcapirefhakuba",
       "srcId": "srcbcapirefhakuba",
-      "nodeImageVersion": "16.16.0",
       "disabled": false
     }
   ]

@@ -32,7 +32,6 @@
       "buildType": "yarn",
       "srcId": "docusaurusgwdocslatestsrc",
       "docId": "docusaurusgwdocslatest",
-      "nodeImageVersion": "18.0.0",
       "yarnBuildCustomCommand": "build:doc-site",
       "outputPath": "docusaurus/doc-site/build",
       "disabled": false
