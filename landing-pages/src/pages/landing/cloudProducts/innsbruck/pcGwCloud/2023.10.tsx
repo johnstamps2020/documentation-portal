@@ -270,7 +270,7 @@ const pageConfig: ApplicationLayoutProps = {
           url: '/cloud/pc/202310/config/?contextid=p-PolicyCenter_jobs',
         },
         {
-          label: 'Rating App',
+          label: 'Rating App (Early Access)',
           docId: 'ispc202310ratingapp',
           description: (
             <>
