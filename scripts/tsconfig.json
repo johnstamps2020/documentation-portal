@@ -4,11 +4,13 @@
     "transpileOnly": true,
     "files": true,
     "compilerOptions": {
-      "jsx": "react"
+      "jsx": "react",
+      "moduleResolution": "NodeNext"
     }
   },
   "compilerOptions": {
-    "jsx": "react"
+    "jsx": "react",
+    "moduleResolution": "NodeNext"
     // typescript options here
   }
 }
