@@ -7,6 +7,7 @@
   "devDependencies": {
     "@types/node": "^18.14.6",
     "landing-pages": "workspace:*",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }
