@@ -6,7 +6,7 @@
   "author": "Doc Tools <doctools@guidewire.com>",
   "license": "UNLICENSED",
   "private": true,
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.0.2",
   "workspaces": [
     "server",
     "landing-pages",
