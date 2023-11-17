@@ -21,7 +21,12 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Studio Release Notes',
           docId: 'isstudiolatestrn',
-          description: <>Learn about changes to Guidewire Studio.</>,
+          description: (
+            <>
+              Learn about changes to Guidewire Studio, the administration tool
+              for creating and managing InsuranceSuite resources.
+            </>
+          ),
         },
         {
           label: 'Update guide',
@@ -75,7 +80,7 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Claims Intake (Early Access)',
+          label: 'Claims Intake: Personal Auto FNOL Template (Early Access)',
           docId: 'fnoltemplatemain',
           description: (
             <>
@@ -89,8 +94,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'gwrules',
           description: (
             <>
-              Create and manage business rules that trigger when specific
-              business conditions occur.
+              Enable business analysts to create and manage segmentation rules
+              that trigger when specific business conditions occur.
             </>
           ),
         },
@@ -159,7 +164,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>
               Manage ClaimCenter predefined plugins to configure standard
-              operations.
+              operations, such as generating a new claim number.
             </>
           ),
           url: '/cloud/cc/202310/integration/?contextid=c_part-plugins',
@@ -177,9 +182,19 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'ClaimCenter functionality configuration',
           description: (
-            <>Configure ClaimCenter features to meet your business needs.</>
+            <>
+              Configure ClaimCenter features (such as lines of business,
+              services, and deductibles) to meet your business needs.
+            </>
           ),
           url: '/cloud/cc/202310/config/?contextid=p-ClaimCenter',
+        },
+        {
+          label: 'Define activity patterns',
+          description: (
+            <>Configure activity patterns for ClaimCenter activities</>
+          ),
+          url: '/cloud/cc/202310/config/?contextid=c_eg2072244',
         },
         {
           label: 'Gosu reference',
@@ -202,6 +217,16 @@ const pageConfig: ApplicationLayoutProps = {
             <>Configure ClaimCenter functionality related to sending email.</>
           ),
           url: '/cloud/cc/202310/config/?contextid=c_mx2909421',
+        },
+        {
+          label: 'Financials configuration',
+          description: (
+            <>
+              Configure ClaimCenter financials functionality, such as reserves,
+              payments, checks, and transactions.
+            </>
+          ),
+          url: '/cloud/cc/202310/config/?contextid=c_xn1012431',
         },
       ],
     },
@@ -253,9 +278,9 @@ const pageConfig: ApplicationLayoutProps = {
           label: 'Messaging',
           description: (
             <>
-              Use Guidewire messaging to send outbound messages asynchronously
-              in response to specific ClaimCenter business events and manage
-              responses.
+              Use traditional Guidewire messaging to configure Gosu rules that
+              send outbound messages asynchronously in response to specific
+              ClaimCenter business events and manage responses.
             </>
           ),
           url: '/cloud/cc/202310/integration/?contextid=c_part-messaging',
@@ -285,9 +310,9 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'appeventsdev',
           description: (
             <>
-              Use application events to send outbound messages asynchronously in
-              response to specific ClaimCenter business events and manage
-              responses.
+              Use application events to send outbound messages asynchronously,
+              without the need for Gosu code, in response to specific
+              ClaimCenter business events and manage responses.
             </>
           ),
         },
@@ -351,7 +376,10 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Claim and policy integrations',
           description: (
-            <>Integrate with external systems to track claims on policies.</>
+            <>
+              Integrate with external systems, such as a policy administration
+              system, to track claims on policies.
+            </>
           ),
           url: '/cloud/cc/202310/integration/?contextid=c_part-claim-integrations',
         },
@@ -452,7 +480,9 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Business rules',
-          description: <>Create, edit, and manage activities in ClaimCenter.</>,
+          description: (
+            <>Create, edit, and manage underwriting issues in ClaimCenter.</>
+          ),
           url: '/cloud/cc/202310/admin/?contextid=p_bizrules',
         },
         {

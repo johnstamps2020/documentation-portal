@@ -23,7 +23,12 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Studio Release Notes',
           docId: 'isstudiolatestrn',
-          description: <>Learn about changes to Guidewire Studio.</>,
+          description: (
+            <>
+              Learn about changes to Guidewire Studio, the administration tool
+              for creating and managing InsuranceSuite resources.
+            </>
+          ),
         },
         {
           label: 'Update guide',
