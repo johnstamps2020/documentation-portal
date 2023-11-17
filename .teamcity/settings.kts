@@ -133,8 +133,9 @@ enum class GwDockerImages(val imageUrl: String) {
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/sitemap-generator:latest"
     ),
     DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-validator:latest"),
-    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"), NODE_16_16_0("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:16.16.0"), NODE_18_14_0(
-        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:18.14.0"
+    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"),
+    NODE_18_18_2(
+        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:18.18.2"
     ),
     GENERIC_14_14_0_YARN_CHROME(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/jutro-docker-dev/generic:14.14.0-yarn-chrome"
@@ -640,7 +641,7 @@ object GwBuildSteps {
                 npm publish
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:16.16.0"
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
         }
     }
 
@@ -1209,7 +1210,7 @@ object GwBuildSteps {
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
-            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:16.16.0"
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
         }
@@ -1230,7 +1231,7 @@ object GwBuildSteps {
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
-            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:16.16.0"
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
         }
@@ -3399,7 +3400,7 @@ object Admin {
                 shellScript = """
                     yarn && yarn audit:all
                 """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             }
         }
 
@@ -4065,7 +4066,7 @@ object Admin {
                     
                     node ci/reindexFromStagingToDev.mjs
                     """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
             }
 
@@ -4596,7 +4597,7 @@ object Admin {
                         yarn
                         node uploadLegacyConfigsToDb.mjs
                         """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
             }
 
@@ -4912,7 +4913,7 @@ object Admin {
                     CI=true yarn test:landing-pages
                     yarn build
                 """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
             }
 
@@ -5159,7 +5160,7 @@ object Admin {
                     yarn
                     yarn test:server
                 """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
             }
 
