@@ -16,11 +16,12 @@ function EarlyAccessWarning() {
 
 export async function addEarlyAccessMark() {
   if (window.docEarlyAccess) {
-    const { render } = await import('react-dom');
+    const { createRoot } = await import('react-dom/client');
     const warningContainer = document.createElement('div');
     const article = document.querySelector('article');
     article.prepend(warningContainer);
     React.createElement('div');
-    render(<EarlyAccessWarning />, warningContainer);
+    const root = createRoot(warningContainer);
+    root.render(<EarlyAccessWarning />);
   }
 }
