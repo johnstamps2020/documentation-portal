@@ -332,33 +332,11 @@ function sanitizeTagNames(textToSanitize) {
   return sanitizedText5;
 }
 
-function sortObjectsFromNewestToOldest(objectsList) {
-  try {
-    return objectsList
-      .sort(function (a, b) {
-        const verNum = (versions) =>
-          versions[0]
-            .split('.')
-            .map((n) => +n + 100000)
-            .join('.');
-        const verNumA = verNum(a._source.version);
-        const verNumB = verNum(b._source.version);
-        let comparison = 0;
-        if (verNumA > verNumB) {
-          comparison = 1;
-        } else if (verNumA < verNumB) {
-          comparison = -1;
-        }
-        return comparison;
-      })
-      .reverse();
-  } catch (err) {
-    winstonLogger.error(`Problem sorting objects from newest to oldest
-      objectList: ${JSON.stringify(objectsList)}`);
-  }
+function getHighestScore(scores) {
+  return Math.max(...scores);
 }
 
-function getHighestVersionNumber(versions) {
+function getHighestVersion(versions, numeric = false) {
   if (!versions || versions.length === 0) {
     return null;
   }
@@ -367,11 +345,20 @@ function getHighestVersionNumber(versions) {
     return versions[0];
   }
 
-  versions.sort(function (a, b) {
-    return a.localeCompare(b);
-  });
+  if (numeric) {
+    versions.sort(function (a, b) {
+      return a.localeCompare(b, undefined, {
+        numeric: true,
+        sensitivity: 'base',
+      });
+    });
+  } else {
+    versions.sort(function (a, b) {
+      return a.localeCompare(b);
+    });
+  }
 
-  return versions[0];
+  return versions.reverse()[0];
 }
 
 function getUniqueResultsSortedByVersion(resultList) {
@@ -381,69 +368,63 @@ function getUniqueResultsSortedByVersion(resultList) {
       uniqueResults.push(result);
     }
   }
+  uniqueResults
+    .sort(function (a, b) {
+      const highestScore = getHighestScore([a._score, b._score]);
+      const releaseA = getHighestVersion(a._source.release);
+      const releaseB = getHighestVersion(b._source.release);
+      if (releaseA && releaseB) {
+        if (releaseA === releaseB) {
+          return highestScore;
+        }
+        return releaseA.localeCompare(releaseB);
+      }
+      const verNumA = getHighestVersion(a._source.version, true);
+      const verNumB = getHighestVersion(b._source.version, true);
+      if (verNumA === verNumB) {
+        return highestScore;
+      }
+      return verNumA.localeCompare(verNumB, undefined, {
+        numeric: true,
+        sensitivity: 'base',
+      });
+    })
+    .reverse();
 
-  uniqueResults.sort(function (a, b) {
-    const releaseA = getHighestVersionNumber(a._source.release);
-    const releaseB = getHighestVersionNumber(b._source.release);
-    if (releaseA && releaseB) {
-      return releaseA.localeCompare(releaseB);
-    }
-
-    const versionA = getHighestVersionNumber(a._source.version);
-    const versionB = getHighestVersionNumber(b._source.version);
-    return versionA.localeCompare(versionB);
-  });
-
-  return sortObjectsFromNewestToOldest(uniqueResults);
+  return uniqueResults;
 }
 
 async function prepareResultsToDisplay(searchResults) {
   return searchResults.hits.map((result) => {
-    const docScore = result._score;
-    let mainResult = result;
     const innerHits = result.inner_hits.same_title.hits.hits;
+    const allHits = [result, ...innerHits];
+    const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
+    const [topHit, ...otherHits] = allHitsSortedFromLatest;
+    const mainResult = topHit._source;
+    const mainResultScore = topHit._score;
+    const mainResultHighlight = topHit.highlight;
+    const mainResultTitle = mainResult.title;
+    const mainResultBody = mainResult.body || '';
+    const mainResultBodyFragment = mainResultBody.substring(0, 300);
 
-    // if there are inner hits, we grab the one with the latest version number
-    // and use it as the main result
-    const allResultsSorted = getUniqueResultsSortedByVersion([
-      mainResult,
-      ...innerHits,
-    ]);
+    const highlightTitleKey = Object.getOwnPropertyNames(
+      mainResultHighlight
+    ).find((k) => k.startsWith('title') && !k.startsWith('title.raw'));
 
-    const innerHitsMatchingDocScore = innerHits.filter(
-      (h) => h._score === docScore
-    );
-
-    // If there are multiple inner hits with the same score as the main result,
-    // we want to display the inner hit with the newest version number.
-    if (innerHitsMatchingDocScore.length > 0) {
-      mainResult = sortObjectsFromNewestToOldest(innerHitsMatchingDocScore)[0];
-    }
-
-    const [doc, ...otherResults] = allResultsSorted.map((r) => r._source);
-    const highlight = mainResult.highlight;
-    const docTitle = doc.title;
-    const docBody = doc.body || '';
-    const docBodyFragment = docBody.substring(0, 300);
-
-    const highlightTitleKey = Object.getOwnPropertyNames(highlight).find(
-      (k) => k.startsWith('title') && !k.startsWith('title.raw')
-    );
-
-    const highlightBodyKey = Object.getOwnPropertyNames(highlight).find((k) =>
-      k.startsWith('body')
-    );
+    const highlightBodyKey = Object.getOwnPropertyNames(
+      mainResultHighlight
+    ).find((k) => k.startsWith('body'));
 
     // The "number_of_fragments" parameter is set to "0' for the title field.
     // So no fragments are produced, instead the whole content of the field is returned
     // as the first element of the array, and matches are highlighted.
     const titleText = highlightTitleKey
-      ? highlight[highlightTitleKey][0]
-      : docTitle;
+      ? mainResultHighlight[highlightTitleKey][0]
+      : mainResultTitle;
     // If there are highlights in the body, join all fragments to get a complete list of highlighted terms
     const bodyText = highlightBodyKey
-      ? highlight[highlightBodyKey].join(' ')
-      : docBodyFragment;
+      ? mainResultHighlight[highlightBodyKey].join(' ')
+      : mainResultBodyFragment;
     const allText = titleText + bodyText;
     const regExp = new RegExp(
       '<span class="searchResultHighlight.*?">(.*?)</span>',
@@ -460,17 +441,17 @@ async function prepareResultsToDisplay(searchResults) {
 
     // Get the highlighted body fragment with the highest score to display it on the search results page
     const bodyExcerpt = highlightBodyKey
-      ? highlight[highlightBodyKey][0]
-      : docBodyFragment;
+      ? mainResultHighlight[highlightBodyKey][0]
+      : mainResultBodyFragment;
 
     return {
-      ...doc,
-      score: docScore,
+      ...mainResult,
+      score: mainResultScore,
       title: sanitizeTagNames(titleText),
-      titlePlain: sanitizeTagNames(docTitle),
+      titlePlain: sanitizeTagNames(mainResultTitle),
       body: sanitizeTagNames(bodyExcerpt + '...'),
-      bodyPlain: sanitizeTagNames(docBodyFragment + '...'),
-      innerHits: otherResults,
+      bodyPlain: sanitizeTagNames(mainResultBodyFragment + '...'),
+      innerHits: otherHits.map((r) => r._source),
       uniqueHighlightTerms: uniqueHighlightTerms,
     };
   });
