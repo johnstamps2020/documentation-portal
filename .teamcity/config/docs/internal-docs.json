@@ -121,6 +121,23 @@
       "earlyAccess": false
     },
     {
+      "id": "heliosclient",
+      "title": "Helios Client",
+      "url": "internal/heliosclient/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "Helios"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "mithril",
       "title": "Mithril",
       "url": "internal/mithril/latest",
