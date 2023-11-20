@@ -6,6 +6,12 @@
       "title": "Cloud Integration Basics",
       "gitUrl": "ssh://git@stash.guidewire.com/ed/cloud-integration-basics-course.git",
       "branch": "main"
+    },
+    {
+      "id": "billinginapdsrc",
+      "title": "Billing in Advanced Product Designer",
+      "gitUrl": "ssh://git@stash.guidewire.com/de/billing-props-in-apd.git",
+      "branch": "master"
     }
   ]
 }
