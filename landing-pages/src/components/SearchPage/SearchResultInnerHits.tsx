@@ -35,6 +35,7 @@ export default function SearchResultInnerHits(
               href={`${h.href}?${highlightedTermsUrlParam}`}
             >
               {[
+                h.doc_display_title || h.doc_title,
                 h.product,
                 h.release && h.release.length > 0 ? h.release : h.version,
               ]
