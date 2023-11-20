@@ -18,13 +18,6 @@ export default function NotLoggedInInfo({ styles }: NotLoggedInInfoProps) {
   return (
     <Box
       sx={{
-        borderWidth: '0.5px',
-        borderStyle: 'solid',
-        borderColor: 'divider',
-        borderRadius: '4px',
-        px: '32px',
-        py: '10px',
-        width: 'fit-content',
         ...styles,
       }}
     >

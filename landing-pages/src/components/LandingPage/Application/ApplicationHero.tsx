@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useLayoutContext } from 'LayoutContext';
 import LandingPageItemRenderer from 'components/LandingPage/LandingPageItemRenderer';
+import NotLoggedInInfo from 'components/NotLoggedInInfo';
 import { arrangeItems } from 'helpers/landingPageHelpers';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
@@ -66,7 +67,7 @@ export default function ApplicationHero({
     >
       <Container>
         <Grid container justifyContent="space-between">
-          <Grid sx={{ maxWidth: '466px' }}>
+          <Grid>
             <Stack
               gap={3}
               justifyContent="space-between"
@@ -85,6 +86,7 @@ export default function ApplicationHero({
                   item={linkButton}
                 />
               </Box>
+              <NotLoggedInInfo styles={{ color: 'white' }} />
             </Stack>
           </Grid>
           <Grid alignSelf="flex-end">
