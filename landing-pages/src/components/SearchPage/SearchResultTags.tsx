@@ -9,13 +9,13 @@ export default function SearchResultTags(searchResult: ServerSearchResult) {
     margin: '0 4px 6px 0',
   }));
   const searchResultTags = [
+    searchResult.doc_display_title || searchResult.doc_title,
     searchResult.product,
     searchResult.release && searchResult.release.length > 0
       ? searchResult.release
       : searchResult.version,
     searchResult.subject,
     searchResult.language,
-    searchResult.doc_display_title || searchResult.doc_title,
   ]
     .flat()
     .filter(Boolean);
