@@ -34,7 +34,13 @@ export default function SearchResultInnerHits(
               key={`${h.title}${index}`}
               href={`${h.href}?${highlightedTermsUrlParam}`}
             >
-              {[h.product, h.version].flat().filter(Boolean).join(', ')}
+              {[
+                h.product,
+                h.release && h.release.length > 0 ? h.release : h.version,
+              ]
+                .flat()
+                .filter(Boolean)
+                .join(', ')}
             </StyledLink>
           ))}
         </Stack>

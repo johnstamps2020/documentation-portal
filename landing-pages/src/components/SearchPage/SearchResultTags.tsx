@@ -10,7 +10,9 @@ export default function SearchResultTags(searchResult: ServerSearchResult) {
   }));
   const searchResultTags = [
     searchResult.product,
-    searchResult.version,
+    searchResult.release && searchResult.release.length > 0
+      ? searchResult.release
+      : searchResult.version,
     searchResult.subject,
     searchResult.language,
     searchResult.doc_display_title || searchResult.doc_title,
