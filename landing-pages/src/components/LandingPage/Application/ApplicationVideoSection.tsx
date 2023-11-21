@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import ApplicationDivider from './ApplicationDivider';
+import ApplicationNarrowTwoColumnLayout from './ApplicationNarrowTwoColumnLayout';
 
 function VideoPlaceholder() {
   return (
@@ -46,28 +47,10 @@ export default function ApplicationVideoSection({
   videoId,
 }: ApplicationVideoSectionProps) {
   return (
-    <Container>
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', sm: '1fr', md: '1fr 1fr' },
-          gap: '16px',
-          my: '75px',
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-          }}
-        >
-          <Box
-            sx={{
-              maxWidth: '547px',
-              width: '100%',
-            }}
-          >
+    <Container id="video-section">
+      <ApplicationNarrowTwoColumnLayout
+        left={
+          <>
             <Typography
               variant="h2"
               sx={{
@@ -81,18 +64,19 @@ export default function ApplicationVideoSection({
             <Typography component="div" sx={{ fontSize: '14px' }}>
               {description}
             </Typography>
+          </>
+        }
+        right={
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+            }}
+          >
+            {videoId ? <div>{videoId}</div> : <VideoPlaceholder />}
           </Box>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          {videoId ? <div>{videoId}</div> : <VideoPlaceholder />}
-        </Box>
-      </Box>
+        }
+      />
       <ApplicationDivider />
     </Container>
   );
