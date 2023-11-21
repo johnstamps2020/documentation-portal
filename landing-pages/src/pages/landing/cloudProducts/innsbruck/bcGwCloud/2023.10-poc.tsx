@@ -357,6 +357,13 @@ const pageConfig: ApplicationLayoutProps = {
           ),
           url: '/cloud/bc/202310/integration/?contextid=c_ph1012431',
         },
+        {
+          label: 'Cloud Integration Basics Course',
+          description: (
+            <>A self-paced course covering the basics of Cloud Integration</>
+          ),
+          docId: 'cloudintegrationbasics',
+        },
       ],
     },
     {

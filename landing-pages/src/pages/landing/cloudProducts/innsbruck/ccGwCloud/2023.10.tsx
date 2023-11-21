@@ -393,6 +393,13 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
+        {
+          label: 'Cloud Integration Basics Course',
+          description: (
+            <>A self-paced course covering the basics of Cloud Integration</>
+          ),
+          docId: 'cloudintegrationbasics',
+        },
       ],
     },
     {
