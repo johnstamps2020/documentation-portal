@@ -18,6 +18,24 @@
       "public": true,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "billinginapd",
+      "title": "Billing in Advanced Product Designer",
+      "url": "education/apd-billing-props/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.10"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

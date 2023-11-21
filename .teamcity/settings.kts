@@ -1279,6 +1279,10 @@ object GwBuildSteps {
         val logFile = "yarn_build.log"
         val buildCommandBlock = if (validationMode) {
             """
+                export BASE_URL="/${publishPath}/"
+                if [[ "%teamcity.build.branch.is_default%" == "true" ]]; then
+                    BASE_URL="/"
+                fi
                 export EXIT_CODE=0
                 yarn $scriptBuildCommand &> "${workingDir}/${logFile}" || EXIT_CODE=${'$'}?
                 
@@ -1293,6 +1297,7 @@ object GwBuildSteps {
                 """.trimIndent()
         } else {
             """
+                export BASE_URL="/${publishPath}/"
                 export EXIT_CODE=0
                 yarn $scriptBuildCommand || EXIT_CODE=${'$'}?
                 exit ${'$'}EXIT_CODE
@@ -1317,7 +1322,6 @@ object GwBuildSteps {
                     export GW_PLATFORM="$gwPlatforms"
                     export GW_VERSION="$gwVersions"
                     export TARGET_URL="$targetUrl"
-                    export BASE_URL="/${publishPath}/"
                     $customEnvExportVars
                     
                     cd "$workingDir"

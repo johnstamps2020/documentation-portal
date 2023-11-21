@@ -6500,13 +6500,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^27.0.1, @types/jest@npm:^27.5.1":
-  version: 27.5.2
-  resolution: "@types/jest@npm:27.5.2"
+"@types/jest@npm:^29.5.9":
+  version: 29.5.9
+  resolution: "@types/jest@npm:29.5.9"
   dependencies:
-    jest-matcher-utils: "npm:^27.0.0"
-    pretty-format: "npm:^27.0.0"
-  checksum: 8608696fbdea81bc9a600d1c5aeb290063357eaa55c0174e7db15087c4f483113b35f8b4c4ae364d2632cfed15a4dd674786254826b946c896de5612c8cb1a26
+    expect: "npm:^29.0.0"
+    pretty-format: "npm:^29.0.0"
+  checksum: 99a9a38efc5ebc2e683f3cb79abfbf984695a8d9796fa7ef319eb9fe23fe76dadc0da7f089c0525be9436379b546fd31eaaf547c3af8dfbc7c54bd6007d4d9ff
   languageName: node
   linkType: hard
 
@@ -11558,7 +11558,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect@npm:^29.7.0":
+"expect@npm:^29.0.0, expect@npm:^29.7.0":
   version: 29.7.0
   resolution: "expect@npm:29.7.0"
   dependencies:
@@ -14515,7 +14515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-matcher-utils@npm:^27.0.0, jest-matcher-utils@npm:^27.5.1":
+"jest-matcher-utils@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-matcher-utils@npm:27.5.1"
   dependencies:
@@ -15532,7 +15532,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.1.4"
     "@testing-library/react": "npm:^14.1.0"
     "@testing-library/user-event": "npm:^14.5.1"
-    "@types/jest": "npm:^27.0.1"
+    "@types/jest": "npm:^29.5.9"
     "@types/lodash": "npm:^4.14.190"
     "@types/node": "npm:^16.7.13"
     "@types/react": "npm:^18.0.0"
@@ -19286,7 +19286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^27.0.0, pretty-format@npm:^27.0.2, pretty-format@npm:^27.5.1":
+"pretty-format@npm:^27.0.2, pretty-format@npm:^27.5.1":
   version: 27.5.1
   resolution: "pretty-format@npm:27.5.1"
   dependencies:
@@ -19309,7 +19309,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^29.7.0":
+"pretty-format@npm:^29.0.0, pretty-format@npm:^29.7.0":
   version: 29.7.0
   resolution: "pretty-format@npm:29.7.0"
   dependencies:
@@ -21073,7 +21073,7 @@ __metadata:
     "@types/express": "npm:^4.17.14"
     "@types/express-fileupload": "npm:^1.4.1"
     "@types/harmon": "npm:^1.4.1"
-    "@types/jest": "npm:^27.5.1"
+    "@types/jest": "npm:^29.5.9"
     "@types/jsdom": "npm:^20.0.0"
     "@types/jsonwebtoken": "npm:^8.5.9"
     "@types/node": "npm:^18.11.18"
