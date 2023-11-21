@@ -82,16 +82,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Claims Intake (Early Access)',
-          docId: 'fnoltemplatemain',
-          description: (
-            <>
-              Create a digital FNOL self-service flow for a first-party personal
-              auto damage claim.
-            </>
-          ),
-        },
-        {
           label: 'Guidewire Rules (Early Access)',
           docId: 'gwrules',
           description: (
@@ -166,7 +156,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>
               Manage BillingCenter predefined plugins to configure standard
-              operations.
+              integration operations.
             </>
           ),
           url: '/cloud/bc/202310/integration/?contextid=c_part-plugins',
@@ -201,7 +191,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Search configuration',
           description: <>Configure search in BillingCenter.</>,
-          url: '/cloud/bc/202310/config/?contextid=c_all-fe3275213',
+          url: '/cloud/bc/202310/config/?contextid=c_ff3710248',
         },
         {
           label: 'Email configuration',
@@ -209,6 +199,16 @@ const pageConfig: ApplicationLayoutProps = {
             <>Configure BillingCenter functionality related to sending email.</>
           ),
           url: '/cloud/bc/202310/config/?contextid=c_mx2909421',
+        },
+        {
+          label: 'Define activity patterns',
+          description: (
+            <>
+              Manage BillingCenter predefined plugins to configure standard
+              integration operations.
+            </>
+          ),
+          url: '/cloud/bc/202310/config/?contextid=c_eg2072244',
         },
       ],
     },
