@@ -129,12 +129,10 @@ changeBuildType(RelativeId("3f156a5fa07248606269f838c651b63f")) {
                                     export GW_PLATFORM="Cloud"
                                     export GW_VERSION="latest"
                                     export TARGET_URL="https://docs.staging.ccs.guidewire.net"
-                                    export BASE_URL="/preview/docusaurusgwdocslatestsrc/%teamcity.build.vcs.branch.DocumentationTools_DocPortal_5cd662ab7722a0b41831ff1440db2e06%/docusaurusgwdocslatest/"
+                                    export BASE_URL="/"
                                     
                                     
                                     cd "%teamcity.build.checkoutDir%"
-                                    ls -la
-                                    rm -rf node_modules
                                     yarn install
                                     export EXIT_CODE=0
                 yarn build:doc-site &> "%teamcity.build.checkoutDir%/yarn_build.log" || EXIT_CODE=${'$'}?
