@@ -1,5 +1,5 @@
 import ApplicationLayout, {
-    ApplicationLayoutProps,
+  ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
 
 const pageConfig: ApplicationLayoutProps = {
@@ -21,6 +21,79 @@ const pageConfig: ApplicationLayoutProps = {
       </p>
     ),
   },
+  cards: [
+    {
+      cardTitle: 'Get started',
+      items: [
+        {
+          label: 'Learn about Advanced Product Designer App (APD)',
+          url: '/cloud/apd/innsbruck/create/topics/c_intro.html',
+        },
+        {
+          label: 'Request to enable APD',
+          url: '',
+        },
+        {
+          label: 'Select a workset',
+          url: '',
+        },
+        {
+          label: 'Add Guidewire markers',
+          url: '',
+        },
+        {
+          label: 'Glossary',
+          url: '',
+        },
+      ],
+    },
+    {
+      cardTitle: 'Build insurance products',
+      items: [
+        {
+          label: 'Conceptualize products',
+          url: '',
+        },
+        {
+          label: 'Localize products',
+          url: '',
+        },
+        {
+          label: 'Create multi-line products',
+          url: '',
+        },
+        {
+          label: 'Visualize products',
+          url: '',
+        },
+        {
+          label: 'Finalize products',
+          url: '',
+        },
+      ],
+    },
+    {
+      cardTitle: 'Additional references',
+      items: [
+        {
+          label: 'Vary insurance products over time',
+          url: '',
+        },
+        {
+          label: 'Create customer segments',
+          url: '',
+        },
+        {
+          label: 'Frequently asked questions',
+          url: '',
+        },
+        {
+          label: 'Adoption guide',
+          url: '',
+        },
+      ],
+    },
+  ],
 };
 
 export default function CreateHome() {

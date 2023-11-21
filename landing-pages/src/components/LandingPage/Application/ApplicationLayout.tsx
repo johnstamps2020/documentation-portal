@@ -1,4 +1,6 @@
 import Stack from '@mui/material/Stack';
+import { ApplicationCardProps } from './ApplicationCard';
+import ApplicationCardSection from './ApplicationCardSection';
 import ApplicationHero, { ApplicationHeroProps } from './ApplicationHero';
 import ApplicationTabs, { ApplicationTabItemProps } from './ApplicationTabs';
 import ApplicationVideoSection, {
@@ -8,10 +10,12 @@ import ApplicationVideoSection, {
 export type ApplicationLayoutProps = ApplicationHeroProps & {
   tabs?: ApplicationTabItemProps[];
   videoSectionProps?: ApplicationVideoSectionProps;
+  cards?: ApplicationCardProps[];
 };
 
 export default function ApplicationLayout({
   tabs,
+  cards,
   buttonProps,
   title,
   videoSectionProps,
@@ -21,6 +25,7 @@ export default function ApplicationLayout({
       <ApplicationHero buttonProps={buttonProps} title={title} />
       {videoSectionProps && <ApplicationVideoSection {...videoSectionProps} />}
       {tabs && <ApplicationTabs tabs={tabs} />}
+      {cards && <ApplicationCardSection items={cards} />}
     </Stack>
   );
 }

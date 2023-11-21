@@ -98,6 +98,7 @@
     "typelists",
     "typeorm",
     "whatsnew",
+    "workset",
     "yarnbuild"
   ],
   "cSpell.ignorePaths": [
