@@ -133,6 +133,7 @@ changeBuildType(RelativeId("3f156a5fa07248606269f838c651b63f")) {
                                     
                                     
                                     cd "%teamcity.build.checkoutDir%"
+                                    ls -la
                                     rm -rf node_modules
                                     yarn install
                                     export EXIT_CODE=0
