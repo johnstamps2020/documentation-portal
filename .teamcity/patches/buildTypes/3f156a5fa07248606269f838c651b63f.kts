@@ -122,6 +122,7 @@ changeBuildType(RelativeId("3f156a5fa07248606269f838c651b63f")) {
             clearConditions()
             scriptContent = """
                 #!/bin/bash
+                set -eux
                                     
                                     export DEPLOY_ENV="staging"
                                     export GW_DOC_ID="docusaurusgwdocslatest"
