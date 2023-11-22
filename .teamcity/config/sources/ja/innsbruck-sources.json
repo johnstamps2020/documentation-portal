@@ -5,49 +5,49 @@
       "id": "dx202310jaJPsrc",
       "title": "Digital 2023.10 ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
-      "branch": "build/ja-JP/2023.10"
+      "branch": "release/ja-JP/2023.10"
     },
     {
       "id": "gchhelpjaJPsrc",
       "title": "Guidewire Cloud Home Help ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gch-help.git",
-      "branch": "build/ja-JP/innsbruck"
+      "branch": "release/ja-JP/innsbruck"
     },
     {
       "id": "gwcpreleasenotesjaJPsrc",
       "title": "Cloud Platform Release Notes ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "build/ja-JP/innsbruck"
+      "branch": "release/ja-JP/innsbruck"
     },
     {
       "id": "is202310jaJPsrc",
       "title": "IS 2023.10.0 ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "build/ja-JP/2023.10.0"
+      "branch": "release/ja-JP/2023.10.0"
     },
     {
       "id": "isconfigupgradetools500jaJPsrc",
       "title": "InsuranceSuite Configuration Upgrade Tools 5.0.0 ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
-      "branch": "build/ja-JP/5.0.0"
+      "branch": "release/ja-JP/5.0.0"
     },
     {
       "id": "isunversionedjaJPsrc",
       "title": "InsuranceSuite Upgrade Compatibility ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/is-upgrade-compatibility.git",
-      "branch": "build/ja-JP/innsbruck"
+      "branch": "release/ja-JP/innsbruck"
     },
     {
       "id": "testingframeworks202310jaJPsrc",
       "title": "Testing Solutions 2023.10 ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
-      "branch": "build/ja-JP/2023.10"
+      "branch": "release/ja-JP/2023.10"
     },
     {
       "id": "whatsnewinnsbruckjaJPsrc",
       "title": "Ski Release What's New - Innsbruck ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
-      "branch": "build/ja-JP/innsbruck"
+      "branch": "release/ja-JP/innsbruck"
     }
   ]
 }

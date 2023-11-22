@@ -5,31 +5,31 @@
       "id": "dx202310frFRsrc",
       "title": "Digital 2023.10 fr",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
-      "branch": "build/fr-FR/2023.10"
+      "branch": "release/fr-FR/2023.10"
     },
     {
       "id": "gwcpreleasenotesfrFRsrc",
       "title": "Cloud Platform Release Notes fr",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "build/fr-FR/innsbruck"
+      "branch": "release/fr-FR/innsbruck"
     },
     {
       "id": "is202310frFRsrc",
       "title": "IS 2023.10.0 fr",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "build/fr-FR/2023.10.0"
+      "branch": "release/fr-FR/2023.10.0"
     },
     {
       "id": "isconfigupgradetools500frFRsrc",
       "title": "InsuranceSuite Configuration Upgrade Tools 5.0.0 fr",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
-      "branch": "build/fr-FR/5.0.0"
+      "branch": "release/fr-FR/5.0.0"
     },
     {
       "id": "whatsnewinnsbruckfrFRsrc",
       "title": "Ski Release What's New - Innsbruck fr",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
-      "branch": "build/fr-FR/innsbruck"
+      "branch": "release/fr-FR/innsbruck"
     }
   ]
 }
