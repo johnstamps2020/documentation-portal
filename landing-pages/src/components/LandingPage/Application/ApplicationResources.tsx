@@ -12,6 +12,7 @@ import LandingPageItemRenderer from '../LandingPageItemRenderer';
 import LandingPageLink from '../LandingPageLink';
 import { narrowWidth } from './ApplicationNarrowTwoColumnLayout';
 import LaunchIcon from '@mui/icons-material/Launch';
+import ApplicationDivider from './ApplicationDivider';
 
 function chunkArray(array: any[], chunkSize: number): any[] {
   var results = [];
@@ -59,10 +60,8 @@ export default function ApplicationResources({
           {title}
         </Typography>
       </Box>
-      <Container>
-        <Box
-          sx={{ width: '100%', borderBottom: '1px solid white', my: '8px' }}
-        />
+      <Container sx={{ py: '8px' }}>
+        <ApplicationDivider color="white" />
       </Container>
       <Box
         sx={{

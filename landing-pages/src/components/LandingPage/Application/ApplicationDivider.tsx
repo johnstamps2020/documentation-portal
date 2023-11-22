@@ -1,11 +1,16 @@
 import Box from '@mui/material/Box';
 
-export default function ApplicationDivider() {
+type ApplicationDividerProps = {
+  color?: string;
+};
+
+export default function ApplicationDivider({ color }: ApplicationDividerProps) {
   return (
     <Box
       sx={{
-        borderBottom: '1px solid #7D91AC',
-        width: '90%',
+        borderBottom: `1px solid ${color || '#7D91AC'}`,
+        width: '100%',
+        mx: 'auto',
       }}
     />
   );
