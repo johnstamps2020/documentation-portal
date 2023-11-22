@@ -10,6 +10,7 @@ import {
   StyledLink,
 } from './StyledSearchComponents';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { createSearchResultTags } from './SearchResultTags';
 
 export default function SearchResultInnerHits(
   searchResult: ServerSearchResult
@@ -34,14 +35,7 @@ export default function SearchResultInnerHits(
               key={`${h.title}${index}`}
               href={`${h.href}?${highlightedTermsUrlParam}`}
             >
-              {[
-                h.doc_display_title || h.doc_title,
-                h.product,
-                h.release && h.release.length > 0 ? h.release : h.version,
-              ]
-                .flat()
-                .filter(Boolean)
-                .join(', ')}
+              {createSearchResultTags(h).join(', ')}
             </StyledLink>
           ))}
         </Stack>

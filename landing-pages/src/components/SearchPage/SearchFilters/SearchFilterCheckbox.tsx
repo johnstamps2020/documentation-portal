@@ -4,50 +4,12 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Chip from '@mui/material/Chip';
 import { ServerSearchFilterValue } from 'server/dist/types/serverSearch';
 import { useQueryParameters } from 'hooks/useQueryParameters';
+import { languageLabels } from '../../../vars';
 
 type SearchFilterCheckboxProps = {
   name: string;
   value: ServerSearchFilterValue;
 };
-
-const languageLabels = [
-  {
-    key: 'de',
-    label: 'Deutsch',
-  },
-  {
-    key: 'en',
-    label: 'English',
-  },
-  {
-    key: 'es',
-    label: 'Español',
-  },
-  {
-    key: 'es-ES',
-    label: 'Español (España)',
-  },
-  {
-    key: 'fr',
-    label: 'Francais',
-  },
-  {
-    key: 'it',
-    label: 'Italiano',
-  },
-  {
-    key: 'ja',
-    label: '日本語',
-  },
-  {
-    key: 'nl',
-    label: 'Nederlands',
-  },
-  {
-    key: 'pt',
-    label: 'Português',
-  },
-];
 
 export function getCheckboxLabel(filterLabel: string) {
   return (
