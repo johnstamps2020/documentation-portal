@@ -1,5 +1,5 @@
-import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
@@ -124,32 +124,34 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
   ],
-  resources: [
-    {
-      label: 'Creating products with APD',
-      docId: 'apdcreatingproductsinnsbruck',
-      pathInDoc: 'topics/c_landing-page.html',
-    },
-    {
-      label: 'Integrating products with PolicyCenter',
-      docId: 'apdfinalizingproductsinnsbruck',
-      pathInDoc: 'topics/c_finalizing-products-landing-page.html',
-    },
-    {
-      label: 'API reference',
-      docId: 'apdmaindoc',
-    },
-    apdInnsbruckReleaseNotes,
-    {
-      label: 'Guidewire Education',
-      pagePath:
-        'https://education.guidewire.com/lmt/lmtlogin.prHome?site=guidewire',
-    },
-    {
-      label: 'Guidewire Marketplace',
-      pagePath: 'https://marketplace.guidewire.com/',
-    },
-  ],
+  resources: {
+    title: 'Resources',
+    items: [
+      {
+        label: 'Creating products with APD',
+        docId: 'apdcreatingproductsinnsbruck',
+        pathInDoc: 'topics/c_landing-page.html',
+      },
+      {
+        label: 'Integrating products with PolicyCenter',
+        docId: 'apdfinalizingproductsinnsbruck',
+        pathInDoc: 'topics/c_finalizing-products-landing-page.html',
+      },
+      {
+        label: 'API reference',
+        docId: 'apdmaindoc',
+      },
+      apdInnsbruckReleaseNotes,
+      {
+        label: 'Guidewire Education',
+        url: 'https://education.guidewire.com/lmt/lmtlogin.prHome?site=guidewire',
+      },
+      {
+        label: 'Guidewire Marketplace',
+        url: 'https://marketplace.guidewire.com/',
+      },
+    ],
+  },
   featureSections: [
     {
       left: (

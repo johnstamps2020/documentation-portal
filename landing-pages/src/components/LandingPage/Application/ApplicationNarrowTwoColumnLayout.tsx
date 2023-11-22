@@ -5,6 +5,8 @@ export type ApplicationNarrowTwoColumnLayoutProps = {
   right: React.ReactNode | React.ReactNode[];
 };
 
+export const narrowWidth = '996px';
+
 export default function ApplicationNarrowTwoColumnLayout({
   left,
   right,
@@ -13,7 +15,7 @@ export default function ApplicationNarrowTwoColumnLayout({
     <Box
       sx={{
         width: '100%',
-        maxWidth: '1096px',
+        maxWidth: narrowWidth,
         mx: 'auto',
         my: '75px',
         display: 'flex',

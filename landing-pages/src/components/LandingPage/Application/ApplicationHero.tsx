@@ -65,6 +65,7 @@ export default function ApplicationHero({
         backgroundColor: 'primary.main',
         color: 'white',
       }}
+      id="application-hero"
     >
       <Container>
         <Box

@@ -5,7 +5,7 @@ export default function ApplicationDivider() {
     <Box
       sx={{
         borderBottom: '1px solid #7D91AC',
-        width: '100%',
+        width: '90%',
       }}
     />
   );

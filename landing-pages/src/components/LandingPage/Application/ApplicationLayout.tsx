@@ -1,22 +1,24 @@
 import Stack from '@mui/material/Stack';
 import { ApplicationCardProps } from './ApplicationCard';
 import ApplicationCardSection from './ApplicationCardSection';
+import ApplicationFeatureSection, {
+  ApplicationFeatureSectionProps,
+} from './ApplicationFeatureSection';
 import ApplicationHero, { ApplicationHeroProps } from './ApplicationHero';
+import ApplicationResources, {
+  ApplicationResourcesProps,
+} from './ApplicationResources';
 import ApplicationTabs, { ApplicationTabItemProps } from './ApplicationTabs';
 import ApplicationVideoSection, {
   ApplicationVideoSectionProps,
 } from './ApplicationVideoSection';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import ApplicationFeatureSection, {
-  ApplicationFeatureSectionProps,
-} from './ApplicationFeatureSection';
 
 export type ApplicationLayoutProps = ApplicationHeroProps & {
   tabs?: ApplicationTabItemProps[];
   videoSectionProps?: ApplicationVideoSectionProps;
   cards?: ApplicationCardProps[];
-  resources?: LandingPageItemProps[];
   featureSections?: ApplicationFeatureSectionProps[];
+  resources?: ApplicationResourcesProps;
 };
 
 export default function ApplicationLayout({
@@ -27,9 +29,10 @@ export default function ApplicationLayout({
   title,
   videoSectionProps,
   featureSections,
+  resources,
 }: ApplicationLayoutProps) {
   return (
-    <Stack gap="35px" sx={{ mb: 10 }}>
+    <Stack gap="35px">
       <ApplicationHero
         buttonProps={buttonProps}
         title={title}
@@ -42,6 +45,7 @@ export default function ApplicationLayout({
         featureSections.map((featureSection, idx) => (
           <ApplicationFeatureSection key={idx} {...featureSection} />
         ))}
+      {resources && <ApplicationResources {...resources} />}
     </Stack>
   );
 }
