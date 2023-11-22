@@ -5,11 +5,8 @@ import Typography from '@mui/material/Typography';
 import { useEnvInfo } from 'hooks/useApi';
 import React, { Fragment } from 'react';
 import LoginButton from './LoginButton';
-import {
-  gwEmployeeLoginOption,
-  loginOptions,
-  loginOptionsProd,
-} from './loginOptionConfigs';
+import { loginOptions, loginOptionsProd } from './loginOptionConfigs';
+import GwEmployeeLoginText from './GwEmployeeLoginText';
 
 export default function LoginButtonsInDrawer() {
   const {
@@ -48,7 +45,7 @@ export default function LoginButtonsInDrawer() {
           ))}
         </Fragment>
       ))}
-      <LoginButton {...gwEmployeeLoginOption.buttons[0]} />
+      <GwEmployeeLoginText />
     </Stack>
   );
 }
