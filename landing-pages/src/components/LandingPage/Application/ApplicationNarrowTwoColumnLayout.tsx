@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 
-type ApplicationNarrowTwoColumnLayoutProps = {
+export type ApplicationNarrowTwoColumnLayoutProps = {
   left: React.ReactNode | React.ReactNode[];
   right: React.ReactNode | React.ReactNode[];
 };
@@ -26,6 +26,7 @@ export default function ApplicationNarrowTwoColumnLayout({
       <Box
         sx={{
           flex: 1,
+          height: '100%',
         }}
       >
         {left}
@@ -33,6 +34,7 @@ export default function ApplicationNarrowTwoColumnLayout({
       <Box
         sx={{
           flex: 1,
+          height: '100%',
         }}
       >
         {right}

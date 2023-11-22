@@ -7,12 +7,16 @@ import ApplicationVideoSection, {
   ApplicationVideoSectionProps,
 } from './ApplicationVideoSection';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import ApplicationFeatureSection, {
+  ApplicationFeatureSectionProps,
+} from './ApplicationFeatureSection';
 
 export type ApplicationLayoutProps = ApplicationHeroProps & {
   tabs?: ApplicationTabItemProps[];
   videoSectionProps?: ApplicationVideoSectionProps;
   cards?: ApplicationCardProps[];
   resources?: LandingPageItemProps[];
+  featureSections?: ApplicationFeatureSectionProps[];
 };
 
 export default function ApplicationLayout({
@@ -22,6 +26,7 @@ export default function ApplicationLayout({
   heroDescription,
   title,
   videoSectionProps,
+  featureSections,
 }: ApplicationLayoutProps) {
   return (
     <Stack gap="35px" sx={{ mb: 10 }}>
@@ -33,6 +38,10 @@ export default function ApplicationLayout({
       {videoSectionProps && <ApplicationVideoSection {...videoSectionProps} />}
       {tabs && <ApplicationTabs tabs={tabs} />}
       {cards && <ApplicationCardSection items={cards} />}
+      {featureSections &&
+        featureSections.map((featureSection, idx) => (
+          <ApplicationFeatureSection key={idx} {...featureSection} />
+        ))}
     </Stack>
   );
 }

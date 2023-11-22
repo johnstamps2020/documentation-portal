@@ -1,7 +1,10 @@
+import { Typography } from '@mui/material';
+import Box from '@mui/material/Box';
 import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import workflowImage from './img/conceptualize-visualize-finalize.png';
 
 const apdInnsbruckReleaseNotes: LandingPageItemProps = {
   label: 'Release notes',
@@ -145,6 +148,45 @@ const pageConfig: ApplicationLayoutProps = {
     {
       label: 'Guidewire Marketplace',
       pagePath: 'https://marketplace.guidewire.com/',
+    },
+  ],
+  featureSections: [
+    {
+      left: (
+        <Box>
+          <Typography
+            variant="h2"
+            sx={{
+              fontSize: '24px',
+              fontWeight: 600,
+              lineHeight: '30px',
+            }}
+          >
+            Build and Deploy Insurance Products
+          </Typography>
+          <Box sx={{ fontSize: '14px', lineHeight: '150%' }}>
+            <p>With Advanced Product Designer, you can:</p>
+            <ul>
+              <li>
+                <strong>Conceptualize</strong>: Define an insurance product,
+                including coverages, exclusions, conditions, risk details, and
+                other attributes
+              </li>
+              <li>
+                <strong>Visualize</strong>: View and test the product
+              </li>
+              <li>
+                <strong>Finalize</strong>: Generate and deploy the product
+              </li>
+            </ul>
+          </Box>
+        </Box>
+      ),
+      right: (
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <img alt="" src={workflowImage} />
+        </Box>
+      ),
     },
   ],
 };
