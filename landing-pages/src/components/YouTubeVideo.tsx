@@ -5,8 +5,8 @@ type YouTubeVideoProps = {
 export default function YouTubeVideo({ srcUrl }: YouTubeVideoProps) {
   return (
     <iframe
-      width="560"
-      height="315"
+      width="351"
+      height="207"
       src={srcUrl}
       title="YouTube video player"
       frameBorder="0"
