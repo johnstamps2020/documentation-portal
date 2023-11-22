@@ -2,13 +2,13 @@ import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import LoginOptions from 'components/LoginPage/LoginOptions';
 import { useUserInfo } from 'hooks/useApi';
 import iconAvatar from 'images/icon-avatar.svg';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import HeaderMenuDesktop from './Desktop/HeaderMenuDesktop';
 import { useAdminLinks } from 'hooks/useAdminLinks';
+import LoginButtonsInDrawer from '../../LoginPage/LoginButtonsInDrawer';
 
 type LoginButtonProps = {
   drawerOpen: boolean;
@@ -38,10 +38,16 @@ function LoginButton({ drawerOpen, setDrawerOpen }: LoginButtonProps) {
         anchor="right"
         open={drawerOpen}
         onClose={toggleLoginDrawer(false)}
-        PaperProps={{ sx: { justifyContent: 'center' } }}
+        PaperProps={{
+          sx: {
+            justifyContent: 'center',
+            textAlign: 'center',
+            maxWidth: '300px',
+          },
+        }}
       >
         <Stack alignItems="center" spacing={4} margin="16px">
-          <LoginOptions inDrawer={true} />
+          <LoginButtonsInDrawer />
           <Link component={RouterLink} to="/gw-login">
             Go to the login page
           </Link>

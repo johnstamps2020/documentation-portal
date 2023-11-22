@@ -1,30 +1,45 @@
-import { Button } from '@mui/material';
-
-type LoginButtonProps = {
-  loginButtonProps: {
-    label: string;
-    href: string;
-  };
-  redirectTo: string;
-  buttonStyle?: {};
-  onClick?: () => void;
-};
+import Button from '@mui/material/Button';
+import { useState } from 'react';
+import { LoginButtonConfig } from './loginOptionConfigs';
+import LoginInProgress from './LoginInProgress';
 
 export default function LoginButton({
-  loginButtonProps,
-  redirectTo,
-  buttonStyle,
-  onClick,
-}: LoginButtonProps) {
+  href,
+  label,
+  region,
+  sx,
+  variant,
+  color,
+}: LoginButtonConfig) {
+  const [loginInProgress, setLoginInProgress] = useState(false);
+
+  const query = new URLSearchParams(window.location.search);
+  const isLoginPage = window.location.pathname.endsWith('/gw-login');
+  const redirectTo =
+    query.get('redirectTo') ||
+    (isLoginPage && '/') ||
+    window.location.href.replace(window.location.origin, '');
+
+  function handleClick() {
+    setLoginInProgress(true);
+  }
+
+  const computedHref = `${href}?redirectTo=${redirectTo}${
+    region ? `&region=${region}` : ''
+  }`;
+
   return (
-    <Button
-      href={`${loginButtonProps.href}?redirectTo=${redirectTo}`}
-      variant="contained"
-      color="primary"
-      sx={buttonStyle}
-      onClick={onClick}
-    >
-      {loginButtonProps.label}
-    </Button>
+    <>
+      <LoginInProgress loginIsInProgress={loginInProgress} />
+      <Button
+        href={computedHref}
+        variant={variant || 'contained'}
+        color={color || 'primary'}
+        sx={sx}
+        onClick={handleClick}
+      >
+        {label || 'Continue'}
+      </Button>
+    </>
   );
 }
