@@ -18,8 +18,8 @@ export default function ApplicationCardSection({
           gap: { xs: '8px', sm: '8px', md: '16px' },
         }}
       >
-        {items.map((item) => (
-          <ApplicationCard {...item} />
+        {items.map((item, idx) => (
+          <ApplicationCard {...item} key={idx} />
         ))}
       </Box>
       <ApplicationDivider />

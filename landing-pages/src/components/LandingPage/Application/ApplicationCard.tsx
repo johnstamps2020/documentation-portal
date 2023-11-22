@@ -45,14 +45,18 @@ export default function ApplicationCard({
           my: '6px',
         }}
       />
-      {arrangedItems.map((item) => (
+      {arrangedItems.map((item, idx) => (
         <LandingPageItemRenderer
+          key={idx}
           isError={isError}
           isLoading={isLoading}
           landingPageItems={landingPageItems}
           skeleton={<Skeleton />}
           item={
-            <LandingPageLink landingPageItem={item} sx={{ fontSize: '14px', fontWeight: 600, lineHeight: '21px' }} />
+            <LandingPageLink
+              landingPageItem={item}
+              sx={{ fontSize: '14px', fontWeight: 600, lineHeight: '21px' }}
+            />
           }
         />
       ))}
