@@ -1,13 +1,16 @@
 import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+
+const apdInnsbruckReleaseNotes: LandingPageItemProps = {
+  label: 'Release notes',
+  docId: 'apdapprninnsbruck',
+};
 
 const pageConfig: ApplicationLayoutProps = {
   title: 'Advanced Product Designer',
-  buttonProps: {
-    label: 'Release notes',
-    docId: 'apdapprninnsbruck',
-  },
+  buttonProps: apdInnsbruckReleaseNotes,
   videoSectionProps: {
     title: 'Advanced Product Designer',
     description: (
@@ -27,23 +30,28 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'Learn about Advanced Product Designer App (APD)',
-          url: '/cloud/apd/innsbruck/create/topics/c_intro.html',
+          docId: 'apdcreatingproductsinnsbruck',
+          pathInDoc: 'topics/c_intro.html',
         },
         {
           label: 'Request to enable APD',
-          url: '',
+          docId: 'apdfinalizingproductsinnsbruck',
+          pathInDoc: 'topics/c_request-enable-apd-app.html',
         },
         {
           label: 'Select a workset',
-          url: '',
+          docId: 'apdfinalizingproductsinnsbruck',
+          pathInDoc: 'topics/c_select-workset.html',
         },
         {
           label: 'Add Guidewire markers',
-          url: '',
+          docId: 'apdcreatingproductsinnsbruck',
+          pathInDoc: 'working-with-xmind.html',
         },
         {
           label: 'Glossary',
-          url: '',
+          docId: 'apdcreatingproductsinnsbruck',
+          pathInDoc: 'topics/c_glossary.html',
         },
       ],
     },
@@ -52,23 +60,28 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'Conceptualize products',
-          url: '',
+          docId: 'apdcreatingproductsinnsbruck',
+          pathInDoc: 'topics/c_visualize.html',
         },
         {
           label: 'Localize products',
-          url: '',
+          docId: 'apdcreatingproductsinnsbruck',
+          pathInDoc: 'view-localize-product.html',
         },
         {
           label: 'Create multi-line products',
-          url: '',
+          docId: 'apdcreatingproductsinnsbruck',
+          pathInDoc: 'multilineproducts.html',
         },
         {
           label: 'Visualize products',
-          url: '',
+          docId: 'apdfinalizingproductsinnsbruck',
+          pathInDoc: 'topics/c_apd_visualize.html',
         },
         {
           label: 'Finalize products',
-          url: '',
+          docId: 'apdfinalizingproductsinnsbruck',
+          pathInDoc: 'topics/t_finalizing.html',
         },
       ],
     },
@@ -76,22 +89,53 @@ const pageConfig: ApplicationLayoutProps = {
       cardTitle: 'Additional references',
       items: [
         {
-          label: 'Vary insurance products over time',
-          url: '',
+          label: 'Vary insurance products over-time',
+          docId: 'apdcreatingproductsinnsbruck',
+          pathInDoc: 'topics/c_editions.html',
         },
         {
           label: 'Create customer segments',
-          url: '',
+          docId: 'apdcreatingproductsinnsbruck',
+          pathInDoc: 'product-seg.html',
         },
         {
-          label: 'Frequently asked questions',
-          url: '',
+          label: 'Frequently Asked Questions',
+          docId: 'cdsdocss3folder',
+          pathInDoc:
+            'FAQ_AdvancedProductDesignerForGuidewireImplementations.pdf',
         },
         {
-          label: 'Adoption guide',
-          url: '',
+          label: 'Product Adoption',
+          docId: 'cdsdocss3folder',
+          pathInDoc: 'Guidebook_AdvancedProductDesigner.pdf',
         },
       ],
+    },
+  ],
+  resources: [
+    {
+      label: 'Creating products with APD',
+      docId: 'apdcreatingproductsinnsbruck',
+      pathInDoc: 'topics/c_landing-page.html',
+    },
+    {
+      label: 'Integrating products with PolicyCenter',
+      docId: 'apdfinalizingproductsinnsbruck',
+      pathInDoc: 'topics/c_finalizing-products-landing-page.html',
+    },
+    {
+      label: 'API reference',
+      docId: 'apdmaindoc',
+    },
+    apdInnsbruckReleaseNotes,
+    {
+      label: 'Guidewire Education',
+      pagePath:
+        'https://education.guidewire.com/lmt/lmtlogin.prHome?site=guidewire',
+    },
+    {
+      label: 'Guidewire Marketplace',
+      pagePath: 'https://marketplace.guidewire.com/',
     },
   ],
 };

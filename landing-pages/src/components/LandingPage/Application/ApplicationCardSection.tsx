@@ -15,7 +15,7 @@ export default function ApplicationCardSection({
           display: 'flex',
           my: { xs: '40px', sm: '40px', md: '75px' },
           flexDirection: { xs: 'column', sm: 'column', md: 'row' },
-          gap: { xs: '8px', sm: '8px', md: '105px' },
+          gap: { xs: '8px', sm: '8px', md: '16px' },
         }}
       >
         {items.map((item) => (

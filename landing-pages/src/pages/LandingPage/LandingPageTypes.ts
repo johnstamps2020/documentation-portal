@@ -27,6 +27,7 @@ export type LandingPageLayoutProps = {
 export type LandingPageItemProps = {
   label?: string;
   docId?: string;
+  pathInDoc?: string;
   pagePath?: string;
   url?: string;
   videoIcon?: boolean;

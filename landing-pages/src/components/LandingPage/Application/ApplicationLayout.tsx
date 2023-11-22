@@ -6,11 +6,13 @@ import ApplicationTabs, { ApplicationTabItemProps } from './ApplicationTabs';
 import ApplicationVideoSection, {
   ApplicationVideoSectionProps,
 } from './ApplicationVideoSection';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 
 export type ApplicationLayoutProps = ApplicationHeroProps & {
   tabs?: ApplicationTabItemProps[];
   videoSectionProps?: ApplicationVideoSectionProps;
   cards?: ApplicationCardProps[];
+  resources?: LandingPageItemProps[];
 };
 
 export default function ApplicationLayout({

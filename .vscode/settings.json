@@ -78,6 +78,7 @@
     "justcopybuild",
     "libpq",
     "mbox",
+    "multilineproducts",
     "Nederlands",
     "OIDC",
     "pendo",
@@ -99,6 +100,7 @@
     "typeorm",
     "whatsnew",
     "workset",
+    "xmind",
     "yarnbuild"
   ],
   "cSpell.ignorePaths": [

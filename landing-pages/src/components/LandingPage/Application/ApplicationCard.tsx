@@ -51,7 +51,9 @@ export default function ApplicationCard({
           isLoading={isLoading}
           landingPageItems={landingPageItems}
           skeleton={<Skeleton />}
-          item={<LandingPageLink landingPageItem={item} />}
+          item={
+            <LandingPageLink landingPageItem={item} sx={{ fontSize: '14px', fontWeight: 600, lineHeight: '21px' }} />
+          }
         />
       ))}
     </Card>

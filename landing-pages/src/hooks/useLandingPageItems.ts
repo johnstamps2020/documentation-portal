@@ -42,16 +42,21 @@ function mapDbItemsOntoPageItems(
   const result: LandingPageItemData[] = [];
 
   dbResponse.docs.forEach((doc: Doc) => {
-    const matchingPageItem = pageItems.find(
+    const matchingPageItems = pageItems.filter(
       (pageItem) => pageItem.docId === doc.id
     );
 
-    if (matchingPageItem) {
-      result.push({
-        ...doc,
-        label: matchingPageItem.label || doc.title,
-        videoIcon: matchingPageItem.videoIcon,
-      });
+    if (matchingPageItems.length > 0) {
+      result.push(
+        ...matchingPageItems.map((pageItem) => ({
+          ...doc,
+          label: pageItem.label || doc.title,
+          url: pageItem.pathInDoc
+            ? doc.url + '/' + pageItem.pathInDoc
+            : doc.url,
+          videoIcon: pageItem.videoIcon,
+        }))
+      );
     }
   });
 
