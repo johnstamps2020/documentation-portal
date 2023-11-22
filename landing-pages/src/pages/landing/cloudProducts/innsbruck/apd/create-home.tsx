@@ -11,6 +11,13 @@ const apdInnsbruckReleaseNotes: LandingPageItemProps = {
 const pageConfig: ApplicationLayoutProps = {
   title: 'Advanced Product Designer',
   buttonProps: apdInnsbruckReleaseNotes,
+  heroDescription: (
+    <>
+      Advanced Product Designer (APD) accelerates product design to enable
+      insurers to quickly launch new product lines and adapt to changing market
+      demands.
+    </>
+  ),
   videoSectionProps: {
     title: 'Advanced Product Designer',
     description: (

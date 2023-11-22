@@ -19,12 +19,17 @@ export default function ApplicationLayout({
   tabs,
   cards,
   buttonProps,
+  heroDescription,
   title,
   videoSectionProps,
 }: ApplicationLayoutProps) {
   return (
     <Stack gap="35px" sx={{ mb: 10 }}>
-      <ApplicationHero buttonProps={buttonProps} title={title} />
+      <ApplicationHero
+        buttonProps={buttonProps}
+        title={title}
+        heroDescription={heroDescription}
+      />
       {videoSectionProps && <ApplicationVideoSection {...videoSectionProps} />}
       {tabs && <ApplicationTabs tabs={tabs} />}
       {cards && <ApplicationCardSection items={cards} />}
