@@ -23,6 +23,8 @@ const pageConfig: ApplicationLayoutProps = {
         that you can use to get started.
       </p>
     ),
+    videoUrl:
+      'https://www.youtube-nocookie.com/embed/9ruQccctEtw?si=yJbjKrSCfGLxwPey',
   },
   cards: [
     {

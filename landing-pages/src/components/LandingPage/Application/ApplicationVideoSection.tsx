@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 import ApplicationDivider from './ApplicationDivider';
 import ApplicationNarrowTwoColumnLayout from './ApplicationNarrowTwoColumnLayout';
+import YouTubeVideo from 'components/YouTubeVideo';
 
 function VideoPlaceholder() {
   return (
@@ -38,13 +39,13 @@ function VideoPlaceholder() {
 export type ApplicationVideoSectionProps = {
   title: string;
   description: React.ReactNode;
-  videoId?: string;
+  videoUrl: string;
 };
 
 export default function ApplicationVideoSection({
   title,
   description,
-  videoId,
+  videoUrl,
 }: ApplicationVideoSectionProps) {
   return (
     <Container id="video-section">
@@ -73,7 +74,7 @@ export default function ApplicationVideoSection({
               justifyContent: 'flex-end',
             }}
           >
-            {videoId ? <div>{videoId}</div> : <VideoPlaceholder />}
+            <YouTubeVideo srcUrl={videoUrl} />
           </Box>
         }
       />
