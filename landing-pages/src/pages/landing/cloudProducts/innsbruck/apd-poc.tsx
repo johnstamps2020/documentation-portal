@@ -30,7 +30,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Creating Products with APD App',
-          docId: 'apdcreatingproductsinnsbruck',
+          pagePath: 'cloudProducts/innsbruck/apd/create-home',
         },
         {
           label: 'Integrating Products with PolicyCenter',
