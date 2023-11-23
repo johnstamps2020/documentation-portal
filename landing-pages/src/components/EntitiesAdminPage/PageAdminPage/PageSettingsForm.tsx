@@ -79,6 +79,7 @@ export default function PageSettingsForm({
   const [canSubmitData, setCanSubmitData] = useState(false);
   const [dataChanged, setDataChanged] = useState(false);
   const [pageAlreadyExists, setPageAlreadyExists] = useState<boolean>();
+  const [fileExists, setFileExists] = useState<boolean>();
   const [jsonIsInvalid, setJsonIsInvalid] = useState<boolean>();
 
   useEffect(() => {
@@ -109,6 +110,7 @@ export default function PageSettingsForm({
     if (
       isMutating ||
       pageAlreadyExists ||
+      fileExists === false ||
       jsonIsInvalid ||
       !tmpPageData.path ||
       !tmpPageData.title
@@ -117,7 +119,7 @@ export default function PageSettingsForm({
     } else {
       setCanSubmitData(true);
     }
-  }, [pageData, tmpPageData, pageAlreadyExists, jsonIsInvalid, isMutating]);
+  }, [pageData, tmpPageData, pageAlreadyExists, jsonIsInvalid, isMutating, fileExists]);
 
   if (isError && isError.status !== 307) {
     return (
@@ -203,12 +205,23 @@ export default function PageSettingsForm({
       jsonData.path === tmpPageData.path && pageData?.path !== tmpPageData.path
     );
   }
-
+  const checkIfFileExists = (path: string) => {
+    try {
+      return require(`../../../pages/landing/${path}.tsx`);
+    } catch (err) {
+      return null;
+    }
+  };
   async function handleSave() {
     try {
       const pageExists = await checkIfPageExists();
+      const fileAlreadyExists = checkIfFileExists(tmpPageData.path);
       if (pageExists) {
         setPageAlreadyExists(true);
+        return;
+      }
+      if (!fileAlreadyExists) {
+        setFileExists(false);
         return;
       }
       let dataToSave = tmpPageData;
@@ -258,8 +271,11 @@ export default function PageSettingsForm({
     >
       <TextField
         required
-        error={pageAlreadyExists}
-        helperText={pageAlreadyExists && 'Page with this path already exists'}
+        error={pageAlreadyExists || fileExists === false}
+        helperText={
+          (pageAlreadyExists && 'Page with this path already exists') ||
+          (fileExists === false && 'File for this page does not exist')
+        }
         disabled={editingDisabled}
         label="Path"
         value={tmpPageData.path}
