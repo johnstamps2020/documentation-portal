@@ -20,7 +20,7 @@ export type LandingPageSelectorProps = {
   label?: string;
   selectedItemLabel: string;
   items: LandingPageItemProps[];
-  labelColor: string;
+  labelColor?: string;
   sx?: SelectProps['sx'];
 };
 
