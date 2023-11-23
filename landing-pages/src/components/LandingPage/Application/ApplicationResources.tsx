@@ -4,15 +4,14 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { arrangeItems } from 'helpers/landingPageHelpers';
 import {
-  LandingPageItemData,
-  useLandingPageItems,
+    LandingPageItemData,
+    useLandingPageItems,
 } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageItemRenderer from '../LandingPageItemRenderer';
 import LandingPageLink from '../LandingPageLink';
-import { narrowWidth } from './ApplicationNarrowTwoColumnLayout';
-import LaunchIcon from '@mui/icons-material/Launch';
 import ApplicationDivider from './ApplicationDivider';
+import { narrowWidth } from './ApplicationNarrowTwoColumnLayout';
 
 function chunkArray(array: any[], chunkSize: number): any[] {
   var results = [];

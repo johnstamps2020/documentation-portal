@@ -1,42 +1,12 @@
-import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import YouTubeVideo from 'components/YouTubeVideo';
 import React from 'react';
 import ApplicationDivider from './ApplicationDivider';
-import ApplicationNarrowTwoColumnLayout, {
+import {
   narrowWidth,
 } from './ApplicationNarrowTwoColumnLayout';
-import YouTubeVideo from 'components/YouTubeVideo';
-
-function VideoPlaceholder() {
-  return (
-    <Box
-      sx={{
-        width: '361px',
-        height: '207px',
-        backgroundColor: 'lightgray',
-        borderRadius: '4px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '8px',
-      }}
-    >
-      <Typography variant="h5" component="div">
-        Video coming soon
-      </Typography>
-      <IconButton
-        onClick={() => alert("Don't click here, please")}
-        aria-label="Video placeholder trigger button"
-      >
-        <PlayCircleFilledIcon />
-      </IconButton>
-    </Box>
-  );
-}
 
 export type ApplicationVideoSectionProps = {
   title: string;
