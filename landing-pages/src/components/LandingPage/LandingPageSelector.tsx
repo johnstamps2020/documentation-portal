@@ -1,14 +1,14 @@
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem/MenuItem';
-import { useNavigate } from 'react-router-dom';
-import InputLabel from '@mui/material/InputLabel';
-import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem/MenuItem';
+import Select, { SelectChangeEvent, SelectProps } from '@mui/material/Select';
+import Skeleton from '@mui/material/Skeleton';
+import { styled } from '@mui/material/styles';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import Skeleton from '@mui/material/Skeleton';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export type PageSelectorItem = {
   label: string;
@@ -17,10 +17,11 @@ export type PageSelectorItem = {
 };
 
 export type LandingPageSelectorProps = {
-  label: string;
+  label?: string;
   selectedItemLabel: string;
   items: LandingPageItemProps[];
   labelColor: string;
+  sx?: SelectProps['sx'];
 };
 
 export function sortPageSelectorItems(
@@ -48,11 +49,9 @@ const PageSelectorInput = styled(InputBase)(({ theme }) => ({
     border: '1px solid #ced4da',
     fontSize: '0.875rem',
     padding: '4px 12px',
-    minWidth: '300px',
     textAlign: 'left',
     marginLeft: 0,
     marginRight: 'auto',
-    width: '300px',
     backgroundColor: 'white',
     '&:focus': {
       borderRadius: 4,
@@ -66,6 +65,7 @@ export default function LandingPageSelector({
   label,
   selectedItemLabel,
   labelColor,
+  sx,
 }: LandingPageSelectorProps) {
   const navigate = useNavigate();
   const { landingPageItems, isError, isLoading } = useLandingPageItems(items);
@@ -126,24 +126,25 @@ export default function LandingPageSelector({
     <FormControl
       variant="standard"
       sx={{
-        marginTop: '10px',
+        display: 'flex',
         alignItems: 'left',
-        width: '300px',
       }}
     >
-      <InputLabel
-        id="page-selector-label"
-        sx={{
-          color: labelColor,
-          fontSize: 20,
-          fontWeight: 400,
-          '&.Mui-focused': {
+      {label && (
+        <InputLabel
+          id="page-selector-label"
+          sx={{
             color: labelColor,
-          },
-        }}
-      >
-        {label}
-      </InputLabel>
+            fontSize: 20,
+            fontWeight: 400,
+            '&.Mui-focused': {
+              color: labelColor,
+            },
+          }}
+        >
+          {label}
+        </InputLabel>
+      )}
       <Select
         labelId="page-selector-label"
         id="page-selector"
@@ -172,7 +173,7 @@ export default function LandingPageSelector({
           marginRight: 'auto',
           backgroundColor: 'white',
           borderRadius: 4,
-          width: '300px',
+          ...sx,
         }}
       >
         {sortedPageSelectorItems.map((item) => (

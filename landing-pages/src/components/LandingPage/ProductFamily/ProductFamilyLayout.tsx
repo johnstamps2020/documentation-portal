@@ -1,21 +1,21 @@
-import Grid from '@mui/material/Unstable_Grid2';
-import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import ProductFamilyCard from './ProductFamilyCard';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Unstable_Grid2';
+import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
+import LandingPageSelector, {
+  LandingPageSelectorProps,
+} from 'components/LandingPage/LandingPageSelector';
 import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
+import NotLoggedInInfo from 'components/NotLoggedInInfo';
+import { usePageData } from 'hooks/usePageData';
 import {
   LandingPageItemProps,
   LandingPageLayoutProps,
 } from 'pages/LandingPage/LandingPageTypes';
-import { usePageData } from 'hooks/usePageData';
-import ProductFamilySidebar from './ProductFamilySidebar';
-import LandingPageSelector, {
-  LandingPageSelectorProps,
-} from 'components/LandingPage/LandingPageSelector';
 import EditPagePropsButton from '../EditPagePropsButton';
-import NotLoggedInInfo from 'components/NotLoggedInInfo';
+import ProductFamilyCard from './ProductFamilyCard';
+import ProductFamilySidebar from './ProductFamilySidebar';
 
 export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
@@ -69,7 +69,9 @@ export default function ProductFamilyLayout({
           <NotLoggedInInfo
             styles={{ color: variableColor, borderColor: '#B2B5BD' }}
           />
-          {selector && <LandingPageSelector {...selector} />}{' '}
+          {selector && (
+            <LandingPageSelector {...selector} sx={{ width: '300px' }} />
+          )}
         </Stack>
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>

@@ -1,18 +1,18 @@
-import Grid from '@mui/material/Unstable_Grid2';
-import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
-import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Section, { SectionProps } from './Section';
-import { usePageData } from 'hooks/usePageData';
-import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Unstable_Grid2';
+import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
 import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
-import EditPagePropsButton from '../EditPagePropsButton';
 import { mainHeight } from 'components/Layout/Layout';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
+import { usePageData } from 'hooks/usePageData';
+import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
+import EditPagePropsButton from '../EditPagePropsButton';
+import Section, { SectionProps } from './Section';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];
@@ -62,7 +62,11 @@ export default function SectionLayout({
           </Typography>
           <NotLoggedInInfo />
           {selector && (
-            <LandingPageSelector key={selector.label} {...selector} />
+            <LandingPageSelector
+              key={selector.label}
+              {...selector}
+              sx={{ width: '300px' }}
+            />
           )}
         </Stack>
       </Grid>
