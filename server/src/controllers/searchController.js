@@ -4,6 +4,7 @@ const { winstonLogger } = require('./loggerController');
 const { getAllEntities } = require('./configController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
+const fragmentSize = 300;
 
 // Every keyword field in Elasticsearch is included in the filter list
 async function getKeywordFields() {
@@ -213,42 +214,42 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
       queryWithFiltersFromUrl.bool.filter = queryFilters;
     }
 
+    // - The highlighter type is set to "fvh" (fast vector highlighter). One of the benefits of this type is that
+    //      it can combine matches from multiple fields into one result by means of the "matched_fields" property).
+    // - The title and body fields, including the .exact subfields, use term vectors,
+    //      that is, "term_vector" is set to "with_positions_offsets" in the field mapping. Using term vectors
+    //      increases the index size, but it's fast especially for large fields (> 1MB) and for highlighting multi-term
+    //      queries like prefix or wildcard because it can access the dictionary of terms for each document.
     // - Title - number_of_fragments is set to 0 for this field
     //      so that instead of fragments, the entire field content is returned with highlights.
     // - Body - number_of_fragments is set to 5, highlighted fragments are as long as the body excerpt that is shown for a doc in results.
     //      Fragments are ordered by score.
-    //      The value of the fragment size (150) is a compromise between showing a meaningful chunk of text and good performance.
-    //      The value of 300 is too high because it considerably deteriorates performance.
     //      It seemed like a good idea to set the fragment size parameter to 0
     //      (no sentence splitting for sentences longer than the fragment size) but then it turned out that chunks
     //      of text from the body are sometimes not separated properly.
     //      For example, the content of a table is not separated from the section that follows it.
     //      Because of that, in the search result, the entire table content is provided in the excerpt
     //      because Elasticsearch treats the table content and the following section as one sentence.
-    // - max_analyzed_offset - this value determines how many characters are analyzed for highlighting.
-    //      By default, Elasticsearch has a limit of 1000000 configured on the index.
-    //      If this limit is exceeded, an error is thrown. To prevent the error, max_analyzed_offset must be set to a lower value on the query.
-    //      We set to it 999999. When Elasticsearch reaches this limit, it just stops analyzing characters above the limit and doesn’t throw an error.
-    //      This parameter is valid only for the title field.
-    //      The body field uses the postings list (that is, "index_options" is set to "offsets" in the field mapping)
     const highlightParameters = {
+      type: 'fvh',
       fields: [
         {
-          'title*': {
+          title: {
             number_of_fragments: 0,
+            matched_fields: ['title', 'title.exact'],
           },
         },
         {
-          'body*': {
+          body: {
             number_of_fragments: 5,
             order: 'score',
-            fragment_size: 150,
+            fragment_size: fragmentSize,
+            matched_fields: ['body', 'body.exact'],
           },
         },
       ],
       pre_tags: ['<span class="searchResultHighlight highlighted">'],
       post_tags: ['</span>'],
-      max_analyzed_offset: 999999,
     };
 
     const searchResultsCount = await elasticClient.search({
@@ -405,15 +406,17 @@ async function prepareResultsToDisplay(searchResults) {
     const mainResultHighlight = topHit.highlight;
     const mainResultTitle = mainResult.title;
     const mainResultBody = mainResult.body || '';
-    const mainResultBodyFragment = mainResultBody.substring(0, 300);
+    const mainResultBodyFragment = mainResultBody.substring(0, fragmentSize);
 
+    // The title field in the highlighter matches results from the title and title.exact fields.
     const highlightTitleKey = Object.getOwnPropertyNames(
       mainResultHighlight
-    ).find((k) => k.startsWith('title') && !k.startsWith('title.raw'));
+    ).find((k) => k === 'title');
 
+    // The body field in the highlighter matches results from the body and body.exact fields.
     const highlightBodyKey = Object.getOwnPropertyNames(
       mainResultHighlight
-    ).find((k) => k.startsWith('body'));
+    ).find((k) => k === 'body');
 
     // The "number_of_fragments" parameter is set to "0' for the title field.
     // So no fragments are produced, instead the whole content of the field is returned
@@ -439,7 +442,8 @@ async function prepareResultsToDisplay(searchResults) {
       })
       .join(',');
 
-    // Get the highlighted body fragment with the highest score to display it on the search results page
+    // Get the highlighted body fragment with the highest score to display it on the search results page.
+    // If not available, use the first 300 characters of the body
     const bodyExcerpt = highlightBodyKey
       ? mainResultHighlight[highlightBodyKey][0]
       : mainResultBodyFragment;
