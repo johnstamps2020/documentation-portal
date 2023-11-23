@@ -2,12 +2,8 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { useEnvInfo } from 'hooks/useApi';
 import LoginPageCard from './LoginPageCard';
-import {
-  gwEmployeeLoginOption,
-  loginOptions,
-  loginOptionsProd,
-} from './loginOptionConfigs';
-import LoginButton from './LoginButton';
+import { loginOptions, loginOptionsProd } from './loginOptionConfigs';
+import GwEmployeeLoginText from './GwEmployeeLoginText';
 
 export default function LoginPageCards() {
   const {
@@ -47,10 +43,7 @@ export default function LoginPageCards() {
         ))}
       </Box>
       <Box>
-        <LoginButton
-          {...gwEmployeeLoginOption.buttons[0]}
-          label={gwEmployeeLoginOption.label}
-        />
+        <GwEmployeeLoginText />
       </Box>
     </Stack>
   );

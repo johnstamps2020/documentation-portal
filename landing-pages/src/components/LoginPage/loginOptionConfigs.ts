@@ -61,17 +61,3 @@ export const loginOptions: LoginOptionConfig[] = [
   gwCustomerCommunityLoginOption,
   gwPartnerCommunityLoginOption,
 ];
-
-export const gwEmployeeLoginOption: LoginOptionConfig = {
-  label: 'Click here to log in as an employee',
-  description: 'Use your Guidewire Okta account to access documentation',
-  buttons: [
-    {
-      label: 'Guidewire Employee',
-      href: gwCloudLoginUrl,
-      region: 'amer',
-      variant: 'outlined',
-      sx: { fontWeight: 600, border: 1 },
-    },
-  ],
-};
