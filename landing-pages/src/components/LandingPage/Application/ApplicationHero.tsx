@@ -3,25 +3,26 @@ import Container from '@mui/material/Container';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Unstable_Grid2';
 import { useLayoutContext } from 'LayoutContext';
 import LandingPageItemRenderer from 'components/LandingPage/LandingPageItemRenderer';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
 import { arrangeItems } from 'helpers/landingPageHelpers';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import LandingPageLink from '../LandingPageLink';
 import { ReactComponent as HeroImage } from './application-hero-image.svg';
 
 export type ApplicationHeroProps = {
   buttonProps: LandingPageItemProps;
   title: string;
+  heroDescription?: React.ReactNode;
 };
 
 export default function ApplicationHero({
   buttonProps,
   title,
+  heroDescription,
 }: ApplicationHeroProps) {
   const { setTitle } = useLayoutContext();
   const { isError, isLoading, landingPageItems } = useLandingPageItems([
@@ -64,10 +65,18 @@ export default function ApplicationHero({
         backgroundColor: 'primary.main',
         color: 'white',
       }}
+      id="application-hero"
     >
       <Container>
-        <Grid container justifyContent="space-between">
-          <Grid>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexDirection: { xs: 'column', sm: 'row' },
+            height: '100%',
+          }}
+        >
+          <Box sx={{ flex: 1 }}>
             <Stack
               gap={3}
               justifyContent="space-between"
@@ -77,6 +86,13 @@ export default function ApplicationHero({
               <Typography variant="h1" sx={{ lineHeight: 1.4, fontSize: 30 }}>
                 {title}
               </Typography>
+              {heroDescription && (
+                <Box
+                  sx={{ fontSize: '16px', fontWeight: 600, lineHeight: '20px' }}
+                >
+                  {heroDescription}
+                </Box>
+              )}
               <Box>
                 <LandingPageItemRenderer
                   isError={isError}
@@ -88,11 +104,19 @@ export default function ApplicationHero({
               </Box>
               <NotLoggedInInfo styles={{ color: 'white' }} />
             </Stack>
-          </Grid>
-          <Grid alignSelf="flex-end">
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              height: '100%',
+            }}
+          >
             <HeroImage height={170} />
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

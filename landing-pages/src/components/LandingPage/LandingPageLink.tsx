@@ -5,10 +5,12 @@ import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import { Link as RouterLink } from 'react-router-dom';
 import InternalTooltip from './InternalTooltip';
 import VideoIcon from './VideoIcon';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 export type LandingPageLinkProps = {
   landingPageItem: LandingPageItemData;
   sx?: LinkProps['sx'];
+  showExternalIcon?: boolean;
 };
 
 function resolveUrl(srcUrl: string | undefined) {
@@ -51,6 +53,7 @@ export function LandingPageButton({
 export default function LandingPageLink({
   landingPageItem,
   sx,
+  showExternalIcon,
 }: LandingPageLinkProps) {
   return (
     <Stack
@@ -68,6 +71,7 @@ export default function LandingPageLink({
           {landingPageItem?.label}
         </Link>
       )}
+      {showExternalIcon && <LaunchIcon sx={sx} />}
       {landingPageItem?.videoIcon && <VideoIcon />}
       {landingPageItem?.internal && <InternalTooltip />}
     </Stack>

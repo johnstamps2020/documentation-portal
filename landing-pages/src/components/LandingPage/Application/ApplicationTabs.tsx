@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useState } from 'react';
-import ApplicationLinkList, { TabPanelProps } from './ApplicationLinkList';
+import ApplicationLinkList, { TabPanelProps } from './ApplicationTabLinkList';
 import ApplicationTabIcon, {
   ApplicationTabIconProps,
 } from './ApplicationTabIcon';

@@ -104,7 +104,7 @@ declare module '@theme/VideoWrapper' {
     title?: string;
     description?: JSX.Element | JSX.Element[];
     transcript?: string;
-    videoId: string;
+    videoId?: string;
     ariaLabelForDownload?: string;
     src?: string;
     width?: string;

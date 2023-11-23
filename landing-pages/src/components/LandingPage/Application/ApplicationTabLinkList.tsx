@@ -14,7 +14,9 @@ export interface TabPanelProps {
   items: LandingPageItemProps[];
 }
 
-export default function ApplicationLinkList(props: TabPanelProps): JSX.Element {
+export default function ApplicationTabLinkList(
+  props: TabPanelProps
+): JSX.Element {
   const { value, index, items, ...other } = props;
   const { isError, isLoading, landingPageItems } = useLandingPageItems(items);
   const arrangedItems = arrangeItems(items, landingPageItems);
