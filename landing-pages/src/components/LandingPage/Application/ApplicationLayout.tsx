@@ -12,6 +12,9 @@ import ApplicationTabs, { ApplicationTabItemProps } from './ApplicationTabs';
 import ApplicationVideoSection, {
   ApplicationVideoSectionProps,
 } from './ApplicationVideoSection';
+import { LandingPageSelectorProps } from '../LandingPageSelector';
+import { useEffect } from 'react';
+import { useLayoutContext } from 'LayoutContext';
 
 export type ApplicationLayoutProps = ApplicationHeroProps & {
   tabs?: ApplicationTabItemProps[];
@@ -19,6 +22,7 @@ export type ApplicationLayoutProps = ApplicationHeroProps & {
   cards?: ApplicationCardProps[];
   featureSections?: ApplicationFeatureSectionProps[];
   resources?: ApplicationResourcesProps;
+  selector?: LandingPageSelectorProps;
 };
 
 export default function ApplicationLayout({
@@ -30,7 +34,20 @@ export default function ApplicationLayout({
   videoSectionProps,
   featureSections,
   resources,
+  selector,
 }: ApplicationLayoutProps) {
+  const { setSelector } = useLayoutContext();
+
+  useEffect(() => {
+    if (selector) {
+      setSelector(selector);
+    }
+
+    return () => {
+      setSelector(undefined);
+    };
+  }, [selector, setSelector]);
+
   return (
     <Stack gap="35px">
       <ApplicationHero

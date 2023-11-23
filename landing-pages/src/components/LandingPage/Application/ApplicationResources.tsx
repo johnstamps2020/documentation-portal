@@ -4,8 +4,8 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { arrangeItems } from 'helpers/landingPageHelpers';
 import {
-    LandingPageItemData,
-    useLandingPageItems,
+  LandingPageItemData,
+  useLandingPageItems,
 } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageItemRenderer from '../LandingPageItemRenderer';
@@ -71,7 +71,10 @@ export default function ApplicationResources({
       >
         {chunkArray(arrangedItems, 4).map(
           (chunk: LandingPageItemData[], idx) => (
-            <Box sx={{ flex: { xs: 1, sm: '0 0 50%', md: '0 0 33%' } }}>
+            <Box
+              sx={{ flex: { xs: 1, sm: '0 0 50%', md: '0 0 33%' } }}
+              key={idx}
+            >
               {chunk.map((item, idx) => (
                 <LandingPageItemRenderer
                   key={idx}

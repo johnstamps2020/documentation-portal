@@ -5,6 +5,7 @@ import ApplicationLayout, {
 } from 'components/LandingPage/Application/ApplicationLayout';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import workflowImage from './img/conceptualize-visualize-finalize.png';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const apdInnsbruckReleaseNotes: LandingPageItemProps = {
   label: 'Release notes',
@@ -191,6 +192,10 @@ const pageConfig: ApplicationLayoutProps = {
       ),
     },
   ],
+  selector: {
+    selectedItemLabel: 'Innsbruck (2023.10)',
+    items: allSelectors.apdCreateHome,
+  },
 };
 
 export default function CreateHome() {

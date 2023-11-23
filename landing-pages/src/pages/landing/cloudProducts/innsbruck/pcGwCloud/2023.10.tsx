@@ -1,6 +1,7 @@
 import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: ApplicationLayoutProps = {
   title: 'PolicyCenter for Guidewire Cloud 2023.10',
@@ -562,6 +563,11 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
   ],
+  selector: {
+    selectedItemLabel: 'Innsbruck (2023.10)',
+    items: allSelectors.s1793805ac84baf801d4eb31b00ab1ddf,
+    labelColor: 'black',
+  },
 };
 
 export default function LandingPage202310() {

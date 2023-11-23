@@ -1,3 +1,4 @@
+import { LandingPageSelectorProps } from 'components/LandingPage/LandingPageSelector';
 import { HeaderOptions } from 'components/Layout/Header/Header';
 import { createContext, useState, useContext } from 'react';
 
@@ -10,6 +11,10 @@ interface LayoutContextInterface {
   setPath: React.Dispatch<React.SetStateAction<string>>;
   backgroundColor: React.CSSProperties['backgroundColor'];
   setBackgroundColor: React.Dispatch<React.SetStateAction<string>>;
+  selector?: LandingPageSelectorProps;
+  setSelector: React.Dispatch<
+    React.SetStateAction<LandingPageSelectorProps | undefined>
+  >;
 }
 
 export const LayoutContext = createContext<LayoutContextInterface | null>(null);
@@ -23,6 +28,9 @@ export function LayoutContextProvider({
   const [headerOptions, setHeaderOptions] = useState({});
   const [backgroundColor, setBackgroundColor] = useState('');
   const [path, setPath] = useState('');
+  const [selector, setSelector] = useState<
+    LandingPageSelectorProps | undefined
+  >(undefined);
 
   return (
     <LayoutContext.Provider
@@ -35,6 +43,8 @@ export function LayoutContextProvider({
         setPath,
         backgroundColor,
         setBackgroundColor,
+        selector,
+        setSelector,
       }}
     >
       {children}

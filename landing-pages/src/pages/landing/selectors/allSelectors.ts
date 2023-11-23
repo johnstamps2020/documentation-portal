@@ -982,4 +982,22 @@ export const allSelectors = {
         'httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya',
     },
   ],
+  apdCreateHome: [
+    {
+      label: 'Innsbruck (2023.10)',
+      pagePath: 'cloudProducts/innsbruck/apd/create-home',
+    },
+    {
+      label: 'Hakuba (2023.06)',
+      docId: 'apdapphakuba',
+    },
+    {
+      label: 'Hakuba (2023.02)',
+      docId: 'apdappgarmisch',
+    },
+    {
+      label: 'Flaine (2022.09)',
+      docId: 'apdappflaine',
+    },
+  ],
 };

@@ -71,7 +71,12 @@ export default function Category2Layout({
               <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
                 <Breadcrumbs />
               </Container>
-              {selector && <LandingPageSelector {...selector} />}
+              {selector && (
+                <LandingPageSelector
+                  {...selector}
+                  sx={{ width: '300px !important' }}
+                />
+              )}
             </Stack>
             {isRelease && (
               <SelfManagedLink

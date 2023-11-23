@@ -1,6 +1,7 @@
 import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: ApplicationLayoutProps = {
   title: 'ClaimCenter for Guidewire Cloud 2023.10',
@@ -505,6 +506,11 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
   ],
+  selector: {
+    selectedItemLabel: 'Hakuba (2023.06)',
+    items: allSelectors.seab31eee2944c2607a774b9dd9cda0ad,
+    labelColor: 'black',
+  },
 };
 
 export default function LandingPage202310() {
