@@ -50,7 +50,7 @@ function mapDbItemsOntoPageItems(
       result.push(
         ...matchingPageItems.map((pageItem) => ({
           ...doc,
-          label: pageItem.label || doc.title,
+          label: pageItem.label || doc.displayTitle || doc.title,
           url: pageItem.pathInDoc
             ? doc.url + '/' + pageItem.pathInDoc
             : doc.url,
