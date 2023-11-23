@@ -5,7 +5,9 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import ApplicationDivider from './ApplicationDivider';
-import ApplicationNarrowTwoColumnLayout from './ApplicationNarrowTwoColumnLayout';
+import ApplicationNarrowTwoColumnLayout, {
+  narrowWidth,
+} from './ApplicationNarrowTwoColumnLayout';
 import YouTubeVideo from 'components/YouTubeVideo';
 
 function VideoPlaceholder() {
@@ -49,35 +51,44 @@ export default function ApplicationVideoSection({
 }: ApplicationVideoSectionProps) {
   return (
     <Container id="video-section">
-      <ApplicationNarrowTwoColumnLayout
-        left={
-          <>
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: '24px',
-                lineHeight: '30px',
-                fontWeight: 600,
-              }}
-            >
-              {title}
-            </Typography>
-            <Typography component="div" sx={{ fontSize: '14px' }}>
-              {description}
-            </Typography>
-          </>
-        }
-        right={
-          <Box
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: narrowWidth,
+          mx: 'auto',
+          my: '75px',
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'column', md: 'row' },
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: { xs: '16px', sm: '16px', md: '140px' },
+        }}
+      >
+        <Box>
+          <Typography
+            variant="h2"
             sx={{
-              display: 'flex',
-              justifyContent: 'flex-end',
+              fontSize: '24px',
+              lineHeight: '30px',
+              fontWeight: 600,
             }}
           >
-            <YouTubeVideo srcUrl={videoUrl} />
-          </Box>
-        }
-      />
+            {title}
+          </Typography>
+          <Typography component="div" sx={{ fontSize: '14px' }}>
+            {description}
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+          }}
+        >
+          <YouTubeVideo srcUrl={videoUrl} />
+        </Box>
+      </Box>
       <ApplicationDivider />
     </Container>
   );

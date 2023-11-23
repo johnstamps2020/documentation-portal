@@ -22,7 +22,7 @@ const pageConfig: ApplicationLayoutProps = {
     </>
   ),
   videoSectionProps: {
-    title: 'Advanced Product Designer',
+    title: 'Learn  about Advanced Product Designer (APD)',
     description: (
       <p>
         Advanced Product Designer is a cloud service for launching and updating
@@ -41,7 +41,7 @@ const pageConfig: ApplicationLayoutProps = {
       cardTitle: 'Get started',
       items: [
         {
-          label: 'Learn about Advanced Product Designer App (APD)',
+          label: 'Learn about APD',
           docId: 'apdcreatingproductsinnsbruck',
           pathInDoc: 'topics/c_intro.html',
         },

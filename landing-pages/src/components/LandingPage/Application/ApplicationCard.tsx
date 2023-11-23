@@ -28,7 +28,7 @@ export default function ApplicationCard({
         flex: 1,
         boxShadow: '0px 2px 4px 0px rgba(40, 51, 63, 0.24)',
       }}
-      className='application-card'
+      className="application-card"
     >
       <Typography
         sx={{
@@ -56,7 +56,7 @@ export default function ApplicationCard({
           item={
             <LandingPageLink
               landingPageItem={item}
-              sx={{ fontSize: '14px', fontWeight: 600, lineHeight: '21px' }}
+              sx={{ fontSize: '14px', lineHeight: '150%', color: '00739D' }}
             />
           }
         />
