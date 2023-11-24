@@ -110,7 +110,6 @@ export default function PageSettingsForm({
     if (
       isMutating ||
       pageAlreadyExists ||
-      fileExists === false ||
       jsonIsInvalid ||
       !tmpPageData.path ||
       !tmpPageData.title
@@ -119,7 +118,7 @@ export default function PageSettingsForm({
     } else {
       setCanSubmitData(true);
     }
-  }, [pageData, tmpPageData, pageAlreadyExists, jsonIsInvalid, isMutating, fileExists]);
+  }, [pageData, tmpPageData, pageAlreadyExists, jsonIsInvalid, isMutating]);
 
   if (isError && isError.status !== 307) {
     return (
@@ -155,6 +154,7 @@ export default function PageSettingsForm({
     const resetToData = pageData || initialPageData;
     setTmpPageData(generateTmpPageData(resetToData));
     setPageAlreadyExists(false);
+    setFileExists(undefined);
     setJsonIsInvalid(false);
   }
 
@@ -205,23 +205,22 @@ export default function PageSettingsForm({
       jsonData.path === tmpPageData.path && pageData?.path !== tmpPageData.path
     );
   }
-  const checkIfFileExists = (path: string) => {
+  
+  function checkIfFileExists(path: string) {
     try {
-      return require(`../../../pages/landing/${path}.tsx`);
+      const success = require(`../../../pages/landing/${path}.tsx`);
+      if (success) {
+        setFileExists(true);
+      }
     } catch (err) {
-      return null;
+      setFileExists(false);
     }
-  };
+  }
   async function handleSave() {
     try {
       const pageExists = await checkIfPageExists();
-      const fileAlreadyExists = checkIfFileExists(tmpPageData.path);
       if (pageExists) {
         setPageAlreadyExists(true);
-        return;
-      }
-      if (!fileAlreadyExists) {
-        setFileExists(false);
         return;
       }
       let dataToSave = tmpPageData;
@@ -271,11 +270,13 @@ export default function PageSettingsForm({
     >
       <TextField
         required
-        error={pageAlreadyExists || fileExists === false}
+        error={pageAlreadyExists}
         helperText={
           (pageAlreadyExists && 'Page with this path already exists') ||
           (fileExists === false && 'File for this page does not exist')
         }
+        color={fileExists === false ? 'warning' : 'primary'}
+        onBlur={() => checkIfFileExists(tmpPageData.path)}
         disabled={editingDisabled}
         label="Path"
         value={tmpPageData.path}
