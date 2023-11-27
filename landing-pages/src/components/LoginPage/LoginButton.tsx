@@ -2,6 +2,7 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { LoginButtonConfig } from './loginOptionConfigs';
 import LoginInProgress from './LoginInProgress';
+import { getRedirectToPath } from 'helpers/navigationHelpers';
 
 export default function LoginButton({
   href,
@@ -16,9 +17,7 @@ export default function LoginButton({
   const query = new URLSearchParams(window.location.search);
   const isLoginPage = window.location.pathname.endsWith('/gw-login');
   const redirectTo =
-    query.get('redirectTo') ||
-    (isLoginPage && '/') ||
-    window.location.href.replace(window.location.origin, '');
+    query.get('redirectTo') || (isLoginPage && '/') || getRedirectToPath();
 
   function handleClick() {
     setLoginInProgress(true);
