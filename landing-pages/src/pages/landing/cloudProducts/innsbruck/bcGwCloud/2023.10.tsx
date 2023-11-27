@@ -127,14 +127,16 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>Configure BillingCenter features to meet your business needs.</>
           ),
-          url: '/cloud/bc/202310/config/?contextid=p-BillingCenter',
+          docId: 'isbc202310config',
+          pathInDoc: '?contextid=p-BillingCenter',
         },
         {
           label: 'Configuration parameter reference',
           description: (
             <>A reference of the application configuration parameters.</>
           ),
-          url: '/cloud/bc/202310/config/?contextid=c_au6600343',
+          docId: 'isbc202310config',
+          pathInDoc: '?contextid=c_au6600343',
         },
         {
           label: 'Data model configuration',
@@ -143,12 +145,14 @@ const pageConfig: ApplicationLayoutProps = {
               Create and extend BillingCenter data model entities and typelists.
             </>
           ),
-          url: '/cloud/bc/202310/config/?contextid=c_pdatamodel',
+          docId: 'isbc202310config',
+          pathInDoc: '?contextid=c_pdatamodel',
         },
         {
           label: 'User interface configuration',
           description: <>Configure the BillingCenter user interface.</>,
-          url: '/cloud/bc/202310/config/?contextid=p-ui-config',
+          docId: 'isbc202310config',
+          pathInDoc: '?contextid=p-ui-config',
         },
         {
           label: 'Gosu rules',
@@ -169,7 +173,8 @@ const pageConfig: ApplicationLayoutProps = {
               calculation.
             </>
           ),
-          url: '/cloud/bc/202310/integration/?contextid=c_part-plugins',
+          docId: 'isbc202310integ',
+          pathInDoc: '?contextid=c_part-plugins',
         },
         {
           label: 'Globalizing BillingCenter',
@@ -186,7 +191,8 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Search configuration',
           description: <>Configure search in BillingCenter.</>,
-          url: '/cloud/bc/202310/config/?contextid=c_ff3710248',
+          docId: 'isbc202310config',
+          pathInDoc: '?contextid=c_ff3710248',
         },
         {
           label: 'Workflow configuration',
@@ -196,14 +202,16 @@ const pageConfig: ApplicationLayoutProps = {
               business processes.
             </>
           ),
-          url: '/cloud/bc/202310/config/?contextid=p-workflow',
+          docId: 'isbc202310config',
+          pathInDoc: '?contextid=p-workflow',
         },
         {
           label: 'Email configuration',
           description: (
             <>Configure BillingCenter functionality related to sending email.</>
           ),
-          url: '/cloud/bc/202310/config/?contextid=c_mx2909421',
+          docId: 'isbc202310config',
+          pathInDoc: '?contextid=c_mx2909421',
         },
         {
           label: 'Define activity patterns',
@@ -213,7 +221,8 @@ const pageConfig: ApplicationLayoutProps = {
               integration operations.
             </>
           ),
-          url: '/cloud/bc/202310/config/?contextid=c_eg2072244',
+          docId: 'isbc202310config',
+          pathInDoc: '?contextid=c_eg2072244',
         },
       ],
     },
@@ -293,7 +302,8 @@ const pageConfig: ApplicationLayoutProps = {
               integration operations.
             </>
           ),
-          url: '/cloud/bc/202310/integration/?contextid=c_part-plugins',
+          docId: 'isbc202310integ',
+          pathInDoc: '?contextid=c_part-plugins',
         },
         {
           label: 'REST API Client',
@@ -321,7 +331,8 @@ const pageConfig: ApplicationLayoutProps = {
               responses.
             </>
           ),
-          url: '/cloud/bc/202310/integration/?contextid=c_part-messaging',
+          docId: 'isbc202310integ',
+          pathInDoc: '?contextid=c_part-messaging',
         },
         {
           label: 'Billing and account integrations',
@@ -331,7 +342,8 @@ const pageConfig: ApplicationLayoutProps = {
               data.
             </>
           ),
-          url: '/cloud/bc/202310/integration/?contextid=c_ph1012431',
+          docId: 'isbc202310integ',
+          pathInDoc: '?contextid=c_ph1012431',
         },
         {
           label: 'Cloud API for ContactManager',
@@ -351,7 +363,8 @@ const pageConfig: ApplicationLayoutProps = {
               integration points.
             </>
           ),
-          url: '/cloud/bc/202310/integration/?contextid=c_part-datatransfer',
+          docId: 'isbc202310integ',
+          pathInDoc: '?contextid=c_part-datatransfer',
         },
         {
           label: 'Startable plugins',
@@ -361,7 +374,8 @@ const pageConfig: ApplicationLayoutProps = {
               asynchronous messages from third-party applications.
             </>
           ),
-          url: '/cloud/bc/202310/integration/?contextid=c_ns2380296',
+          docId: 'isbc202310integ',
+          pathInDoc: '?contextid=c_ns2380296',
         },
         {
           label: 'REST API Framework',
@@ -423,7 +437,8 @@ const pageConfig: ApplicationLayoutProps = {
               permissions.
             </>
           ),
-          url: '/cloud/bc/202310/admin/?contextid=p_security',
+          docId: 'isbc202310admin',
+          pathInDoc: '?contextid=p_security',
         },
         {
           label: 'Network connectivity',
@@ -458,7 +473,8 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Database administration',
           description: <>Manage and maintain your Guidewire databases.</>,
-          url: '/cloud/bc/202310/admin/?contextid=p_data',
+          docId: 'isbc202310admin',
+          pathInDoc: '?contextid=p_data',
         },
         {
           label: 'Server administration',
@@ -468,7 +484,8 @@ const pageConfig: ApplicationLayoutProps = {
               run levels, and manage server memory.
             </>
           ),
-          url: '/cloud/bc/202310/admin/?contextid=p_server',
+          docId: 'isbc202310admin',
+          pathInDoc: '?contextid=p_server',
         },
         {
           label: 'Observability',
