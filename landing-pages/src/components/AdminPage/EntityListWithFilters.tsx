@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import Box, { BoxProps } from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
 import Pagination from '@mui/material/Pagination';
@@ -7,6 +7,7 @@ import EditButton from './EditButton';
 import EntityCard from './EntityCard';
 import EntityFilters from './EntityFilters';
 import EntityLink from './EntityLink';
+import ViewSwitcher from './ViewSwitcher';
 
 export type Entity = {
   label: string;
@@ -55,6 +56,24 @@ function sortEntities(entities: Entity[]) {
   });
 }
 
+const gridViewStyles: BoxProps['sx'] = {
+  display: 'grid',
+  gridTemplateColumns: {
+    md: 'repeat(3, 1fr)',
+    sm: 'repeat(2, 1fr)',
+    xs: '1fr',
+  },
+  gap: 2,
+  py: 6,
+};
+
+const listViewStyles: BoxProps['sx'] = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 2,
+  py: 6,
+};
+
 export default function EntityListWithFilters({
   entities,
   entityName,
@@ -94,6 +113,7 @@ export default function EntityListWithFilters({
     }
   }, [entities, filters]);
 
+  const [listView, setListView] = useState(false);
   const [page, setPage] = useState(1);
   const resultsPerPage = 12;
   const numberOfPages =
@@ -116,7 +136,7 @@ export default function EntityListWithFilters({
       />
       <Divider variant="middle" sx={{ margin: '20px' }}>
         <Chip
-          label={`Showing results: ${filteredEntities.length}/${entities.length}`}
+          label={`Filtered results: ${filteredEntities.length}/${entities.length}`}
         ></Chip>
       </Divider>
       {numberOfPages > 1 && (
@@ -130,20 +150,20 @@ export default function EntityListWithFilters({
       )}
       <Box
         sx={{
-          display: 'grid',
-          gridTemplateColumns: {
-            md: 'repeat(3, 1fr)',
-            sm: 'repeat(2, 1fr)',
-            xs: '1fr',
-          },
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
           gap: 2,
-          py: 6,
         }}
       >
+        <ViewSwitcher listView={listView} setListView={setListView} />
+      </Box>
+      <Box sx={listView ? listViewStyles : gridViewStyles}>
         {filteredEntities
           .slice(resultsOffset, resultsOffset + resultsPerPage)
           .map(({ label, url }) => (
             <EntityCard
+              listView={listView}
               key={`${label}_${url}`}
               title={label}
               cardContents={<EntityLink url={url} label={url} />}

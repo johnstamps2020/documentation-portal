@@ -7,19 +7,21 @@ type EntityCardProps = {
   title: string;
   cardContents: JSX.Element;
   cardButtons: JSX.Element;
+  listView?: boolean;
 };
 
 export default function EntityCard({
   title,
   cardContents,
   cardButtons,
+  listView,
 }: EntityCardProps) {
   return (
     <Card
       sx={{
-        padding: 1,
+        padding: listView ? 0 : 1,
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: listView ? 'row' : 'column',
         justifyContent: 'space-between',
         height: '100%',
       }}
@@ -27,9 +29,10 @@ export default function EntityCard({
       <CardContent
         sx={{
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: listView ? 'row' : 'column',
           justifyContent: 'space-between',
           height: '100%',
+          gap: '16px',
         }}
       >
         <Typography variant="h2">{title}</Typography>
