@@ -22,12 +22,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guida alle applicazioni BI',
-          url: '/l10n/pdfs/it-IT/ic/10.0.0/IC10-bi-applications-it.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/ic/10.0.0/IC10-bi-applications-it.pdf',
           videoIcon: false,
         },
         {
           label: 'Guida alle Specifiche dati',
-          url: '/l10n/pdfs/it-IT/ic/10.0.0/IC10-dataspec-it.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/ic/10.0.0/IC10-dataspec-it.pdf',
           videoIcon: false,
         },
       ],

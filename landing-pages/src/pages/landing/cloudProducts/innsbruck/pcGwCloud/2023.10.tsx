@@ -109,7 +109,8 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Policy rates',
-          url: '/cloud/pc/202310/app/?contextid=c_df1082048',
+          docId: 'ispc202310app',
+          pathInDoc: '?contextid=c_df1082048',
           description: (
             <>
               Learn how PolicyCenter generates quotes for policy transactions,
@@ -200,7 +201,8 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>A reference of the application configuration parameters.</>
           ),
-          url: '/cloud/pc/202310/config/?contextid=c_au6600343',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=c_au6600343',
         },
         {
           label: 'Data model configuration',
@@ -209,7 +211,8 @@ const pageConfig: ApplicationLayoutProps = {
               Create and extend PolicyCenter data model entities and typelists.
             </>
           ),
-          url: '/cloud/pc/202310/config/?contextid=c_pdatamodel',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=c_pdatamodel',
         },
 
         {
@@ -220,7 +223,8 @@ const pageConfig: ApplicationLayoutProps = {
               operations, such as policy number generation and quote purging.
             </>
           ),
-          url: '/cloud/pc/202310/integration/?contextid=c_part-plugins',
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_part-plugins',
         },
 
         {
@@ -231,7 +235,8 @@ const pageConfig: ApplicationLayoutProps = {
               business processes such as submissions and renewals.
             </>
           ),
-          url: '/cloud/pc/202310/config/?contextid=p-workflow',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=p-workflow',
         },
 
         {
@@ -242,7 +247,8 @@ const pageConfig: ApplicationLayoutProps = {
               destruction) to meet your business needs.
             </>
           ),
-          url: '/cloud/pc/202310/config/?contextid=p-PolicyCenter',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=p-PolicyCenter',
         },
 
         {
@@ -253,27 +259,31 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'User interface configuration',
           description: <>Configure the PolicyCenter user interface.</>,
-          url: '/cloud/pc/202310/config/?contextid=p-ui-config',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=p-ui-config',
         },
 
         {
           label: 'Search configuration',
           description: <>Configure search in PolicyCenter.</>,
-          url: '/cloud/pc/202310/config/?contextid=c_all-fe3275213',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=c_all-fe3275213',
         },
         {
           label: 'Email configuration',
           description: (
             <>Configure PolicyCenter functionality related to sending email.</>
           ),
-          url: '/cloud/pc/202310/config/?contextid=c_mx2909421',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=c_mx2909421',
         },
         {
           label: 'Jobs configuration',
           description: (
             <>Configure functionality related to PolicyCenter jobs.</>
           ),
-          url: '/cloud/pc/202310/config/?contextid=p-PolicyCenter_jobs',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=p-PolicyCenter_jobs',
         },
         {
           label: 'Rating App (Early Access)',
@@ -329,7 +339,8 @@ const pageConfig: ApplicationLayoutProps = {
               integration points.
             </>
           ),
-          url: '/cloud/pc/202310/integration/?contextid=c_part-datatransfer',
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_part-datatransfer',
         },
         {
           label: 'Messaging',
@@ -340,7 +351,8 @@ const pageConfig: ApplicationLayoutProps = {
               account creation), and manage responses.
             </>
           ),
-          url: '/cloud/pc/202310/integration/?contextid=c_part-messaging',
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_part-messaging',
         },
         {
           label: 'REST API Client',
@@ -360,7 +372,8 @@ const pageConfig: ApplicationLayoutProps = {
               asynchronous messages from third-party applications.
             </>
           ),
-          url: '/cloud/pc/202310/integration/?contextid=c_ns2380296',
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_ns2380296',
         },
         {
           label: 'Application events',
@@ -439,7 +452,8 @@ const pageConfig: ApplicationLayoutProps = {
               inference.
             </>
           ),
-          url: '/cloud/pc/202310/integration/?contextid=c_part-policy-integrations',
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_part-policy-integrations',
         },
         {
           label: 'API Sandbox',
@@ -496,7 +510,8 @@ const pageConfig: ApplicationLayoutProps = {
               permissions.
             </>
           ),
-          url: '/cloud/pc/202310/admin/?contextid=p_security',
+          docId: 'ispc202310admin',
+          pathInDoc: '?contextid=p_security',
         },
         {
           label: 'Network connectivity',
@@ -531,7 +546,8 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Database administration',
           description: <>Manage and maintain your Guidewire databases.</>,
-          url: '/cloud/pc/202310/admin/?contextid=p_data',
+          docId: 'ispc202310admin',
+          pathInDoc: '?contextid=p_data',
         },
         {
           label: 'Server administration',
@@ -541,14 +557,16 @@ const pageConfig: ApplicationLayoutProps = {
               run levels, and manage server memory.
             </>
           ),
-          url: '/cloud/pc/202310/admin/?contextid=p_server',
+          docId: 'ispc202310admin',
+          pathInDoc: '?contextid=p_server',
         },
         {
           label: 'Business rules',
           description: (
             <>Create, edit, and manage underwriting issues in PolicyCenter.</>
           ),
-          url: '/cloud/pc/202310/admin/?contextid=p_bizrules',
+          docId: 'ispc202310admin',
+          pathInDoc: '?contextid=p_bizrules',
         },
         {
           label: 'Observability',

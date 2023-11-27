@@ -97,7 +97,8 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'HazardHub',
-          url: '/hazardhub/HazardHub_Intro_gw.pdf',
+          docId: 'hazardhub',
+          pathInDoc: 'HazardHub_Intro_gw.pdf',
           videoIcon: false,
         },
         {

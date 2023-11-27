@@ -149,7 +149,8 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>A reference of the application configuration parameters.</>
           ),
-          url: '/cloud/cc/202310/config/?contextid=c_au6600343',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_au6600343',
         },
         {
           label: 'Data model configuration',
@@ -158,7 +159,8 @@ const pageConfig: ApplicationLayoutProps = {
               Create and extend ClaimCenter data model entities and typelists.
             </>
           ),
-          url: '/cloud/cc/202310/config/?contextid=c_pdatamodel',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_pdatamodel',
         },
         {
           label: 'Configuration plugins',
@@ -168,7 +170,8 @@ const pageConfig: ApplicationLayoutProps = {
               operations, such as generating a new claim number.
             </>
           ),
-          url: '/cloud/cc/202310/integration/?contextid=c_part-plugins',
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_part-plugins',
         },
         {
           label: 'Workflow configuration',
@@ -178,7 +181,8 @@ const pageConfig: ApplicationLayoutProps = {
               processes.
             </>
           ),
-          url: '/cloud/cc/202310/config/?contextid=p-workflow',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=p-workflow',
         },
         {
           label: 'ClaimCenter functionality configuration',
@@ -188,14 +192,16 @@ const pageConfig: ApplicationLayoutProps = {
               services, and deductibles) to meet your business needs.
             </>
           ),
-          url: '/cloud/cc/202310/config/?contextid=p-ClaimCenter',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=p-ClaimCenter',
         },
         {
           label: 'Define activity patterns',
           description: (
             <>Configure activity patterns for ClaimCenter activities</>
           ),
-          url: '/cloud/cc/202310/config/?contextid=c_eg2072244',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_eg2072244',
         },
         {
           label: 'Gosu reference',
@@ -205,19 +211,22 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'User interface configuration',
           description: <>Configure the ClaimCenter user interface.</>,
-          url: '/cloud/cc/202310/config/?contextid=p-ui-config',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=p-ui-config',
         },
         {
           label: 'Search configuration',
           description: <>Configure search in ClaimCenter.</>,
-          url: '/cloud/cc/202310/config/?contextid=c_all-fe3275213',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_all-fe3275213',
         },
         {
           label: 'Email configuration',
           description: (
             <>Configure ClaimCenter functionality related to sending email.</>
           ),
-          url: '/cloud/cc/202310/config/?contextid=c_mx2909421',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_mx2909421',
         },
         {
           label: 'Financials configuration',
@@ -227,7 +236,8 @@ const pageConfig: ApplicationLayoutProps = {
               payments, checks, and transactions.
             </>
           ),
-          url: '/cloud/cc/202310/config/?contextid=c_xn1012431',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_xn1012431',
         },
       ],
     },
@@ -273,7 +283,8 @@ const pageConfig: ApplicationLayoutProps = {
               integration points.
             </>
           ),
-          url: '/cloud/cc/202310/integration/?contextid=c_part-datatransfer',
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_part-datatransfer',
         },
         {
           label: 'Messaging',
@@ -284,7 +295,8 @@ const pageConfig: ApplicationLayoutProps = {
               ClaimCenter business events and manage responses.
             </>
           ),
-          url: '/cloud/cc/202310/integration/?contextid=c_part-messaging',
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_part-messaging',
         },
         {
           label: 'REST API Client',
@@ -304,7 +316,8 @@ const pageConfig: ApplicationLayoutProps = {
               asynchronous messages from third-party applications.
             </>
           ),
-          url: '/cloud/cc/202310/integration/?contextid=c_ns2380296',
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_ns2380296',
         },
         {
           label: 'Application events',
@@ -382,7 +395,8 @@ const pageConfig: ApplicationLayoutProps = {
               system, to track claims on policies.
             </>
           ),
-          url: '/cloud/cc/202310/integration/?contextid=c_part-claim-integrations',
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_part-claim-integrations',
         },
         {
           label: 'API Sandbox',
@@ -439,7 +453,8 @@ const pageConfig: ApplicationLayoutProps = {
               permissions.
             </>
           ),
-          url: '/cloud/cc/202310/admin/?contextid=p_security',
+          docId: 'iscc202310admin',
+          pathInDoc: '?contextid=p_security',
         },
         {
           label: 'Network connectivity',
@@ -474,7 +489,8 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Database administration',
           description: <>Manage and maintain your Guidewire databases.</>,
-          url: '/cloud/cc/202310/admin/?contextid=p_data',
+          docId: 'iscc202310admin',
+          pathInDoc: '?contextid=p_data',
         },
         {
           label: 'Server administration',
@@ -484,14 +500,16 @@ const pageConfig: ApplicationLayoutProps = {
               run levels, and manage server memory.
             </>
           ),
-          url: '/cloud/cc/202310/admin/?contextid=p_server',
+          docId: 'iscc202310admin',
+          pathInDoc: '?contextid=p_server',
         },
         {
           label: 'Business rules',
           description: (
             <>Create, edit, and manage underwriting issues in ClaimCenter.</>
           ),
-          url: '/cloud/cc/202310/admin/?contextid=p_bizrules',
+          docId: 'iscc202310admin',
+          pathInDoc: '?contextid=p_bizrules',
         },
         {
           label: 'Observability',

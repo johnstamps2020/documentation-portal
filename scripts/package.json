@@ -2,7 +2,8 @@
   "name": "scripts",
   "packageManager": "yarn@3.2.4",
   "scripts": {
-    "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts"
+    "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts",
+    "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts"
   },
   "devDependencies": {
     "@types/node": "^18.14.6",

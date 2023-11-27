@@ -67,7 +67,8 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Data Platform Release Notes',
-          url: '/cloud/dataplatform/topics/c_rn-new-changed.html',
+          docId: 'dataplatform',
+          pathInDoc: 'topics/c_rn-new-changed.html',
           videoIcon: false,
         },
         {
@@ -118,7 +119,8 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Jutro Release Notes',
-          url: '/jutro/documentation/7.4.3/relnotes/r-elysian/',
+          docId: 'jutro743',
+          pathInDoc: 'relnotes/r-elysian/',
           videoIcon: false,
         },
       ],

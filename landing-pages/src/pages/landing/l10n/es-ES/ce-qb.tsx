@@ -31,7 +31,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-ES/ce-qb/11.1/es-ES-CE_QB-onprem_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/ce-qb/11.1/es-ES-CE_QB-onprem_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -41,17 +42,20 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-ES/ce-qb/10.0.1/es-ES_CEQB_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/ce-qb/10.0.1/es-ES_CEQB_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-ES/ce-qb/10.0.1/es-ES_CEQB_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/ce-qb/10.0.1/es-ES_CEQB_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-ES/ce-qb/10.0.1/es-ES_CEQB_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/ce-qb/10.0.1/es-ES_CEQB_AppGuide.pdf',
           videoIcon: false,
         },
       ],

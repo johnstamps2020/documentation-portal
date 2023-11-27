@@ -45,12 +45,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-ES/bc/10.1.1/BC1011_es-ES_ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/bc/10.1.1/BC1011_es-ES_ConfigGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-ES/bc/10.1.1/BC1011_es-ES_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/bc/10.1.1/BC1011_es-ES_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -60,12 +62,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-ES/bc/10.0.2/esES-BC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/bc/10.0.2/esES-BC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de gestión de contactos de Guidewire',
-          url: '/l10n/pdfs/es-ES/bc/10.0.2/esES-BC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/bc/10.0.2/esES-BC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
       ],

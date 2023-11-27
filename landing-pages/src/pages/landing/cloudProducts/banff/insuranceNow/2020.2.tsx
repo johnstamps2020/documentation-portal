@@ -83,7 +83,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Predictive Analytics Integration',
           docId: 'in20202pa',
-        }
+        },
       ],
     },
     {
@@ -106,7 +106,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20202portaldev',
         },
       ],
-    }
+    },
   ],
   selector: {
     label: 'Select cloud release',

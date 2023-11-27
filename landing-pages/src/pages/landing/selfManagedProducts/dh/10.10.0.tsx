@@ -19,7 +19,8 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Support Matrix',
-          url: '/support-matrices/data-management/data-management-10.10-support-matrix.pdf',
+          docId: 'supportmatrices',
+          pathInDoc: 'data-management/data-management-10.10-support-matrix.pdf',
           videoIcon: false,
         },
       ],

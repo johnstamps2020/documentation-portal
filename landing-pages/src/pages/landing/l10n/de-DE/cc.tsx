@@ -70,12 +70,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/2020.05/ISCL_202005_de_CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/2020.05/ISCL_202005_de_CC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guidewire-Kontaktmanagementhandbuch',
-          url: '/l10n/pdfs/de-DE/cc/2020.05/ISCL_202005_de_CC_ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/2020.05/ISCL_202005_de_CC_ContactMgmtGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -85,27 +87,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.2.0/CC-InstallGuide_de-DE.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.2.0/CC-InstallGuide_de-DE.pdf',
           videoIcon: false,
         },
         {
           label: 'German Documentation (de-DE) Release Notes',
-          url: '/l10n/pdfs/de-DE/cc/10.2.0/ReleaseNotes-10.2.0-docs-de.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.2.0/ReleaseNotes-10.2.0-docs-de.pdf',
           videoIcon: false,
         },
         {
           label: 'Konfigurationshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.2.0/CC-ConfigGuide_de-DE.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.2.0/CC-ConfigGuide_de-DE.pdf',
           videoIcon: false,
         },
         {
           label: 'Guidewire-Kontaktmanagementhandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.2.0/CC-ContactMgmtGuide_de-DE.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.2.0/CC-ContactMgmtGuide_de-DE.pdf',
           videoIcon: false,
         },
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.2.0/CC-AppGuide_de-DE.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.2.0/CC-AppGuide_de-DE.pdf',
           videoIcon: false,
         },
       ],
@@ -115,12 +122,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guidewire-Kontaktmanagementhandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.1.1/CC1011_de-DE_ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.1.1/CC1011_de-DE_ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.1.1/CC1011_de-DE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.1.1/CC1011_de-DE_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -130,17 +139,20 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Regelhandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.0.2/de-CC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.0.2/de-CC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.0.2/de-CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.0.2/de-CC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guidewire-Kontaktmanagementhandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.0.2/de-CC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.0.2/de-CC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -150,12 +162,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.0.0/de-CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.0.0/de-CC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Kontaktmanagementhandbuch',
-          url: '/l10n/pdfs/de-DE/cc/10.0.0/de-CC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/cc/10.0.0/de-CC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
       ],

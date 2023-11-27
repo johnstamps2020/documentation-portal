@@ -35,7 +35,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'installazione",
-          url: '/l10n/pdfs/it-IT/ce-qb/11.3/it-CEQB-11.3-onprem-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/ce-qb/11.3/it-CEQB-11.3-onprem-InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -45,7 +46,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/ce-qb/10.0.1/it-CEQB_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/ce-qb/10.0.1/it-CEQB_AppGuide.pdf',
           videoIcon: false,
         },
       ],

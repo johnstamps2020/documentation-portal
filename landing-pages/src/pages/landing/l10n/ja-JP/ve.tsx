@@ -49,7 +49,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/ve/11.1/ja-VE-onprem-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/ve/11.1/ja-VE-onprem-InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -59,23 +60,28 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: '管理およびセキュリティガイド',
-          url: '/l10n/pdfs/ja-JP/ve/10.0.1/ja-VE_Admin and Security Guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/ve/10.0.1/ja-VE_Admin and Security Guide.pdf',
           videoIcon: false,
         },
         {
           label:
             'ライブスタイルガイド：インストールおよびコンフィギュレーションガイド',
-          url: '/l10n/pdfs/ja-JP/ve/10.0.1/ja-VE_Live Style Guide Install and Config.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/ve/10.0.1/ja-VE_Live Style Guide Install and Config.pdf',
           videoIcon: false,
         },
         {
           label: 'アプリケーションガイド',
-          url: '/l10n/pdfs/ja-JP/ve/10.0.1/ja-VE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/ve/10.0.1/ja-VE_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/ve/10.0.1/ja-VE_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/ve/10.0.1/ja-VE_InstallGuide.pdf',
           videoIcon: false,
         },
       ],

@@ -35,7 +35,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'installazione",
-          url: '/l10n/pdfs/it-IT/pe/2020.08/it-PE-202008-cloud-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/pe/2020.08/it-PE-202008-cloud-InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -45,7 +46,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'installazione",
-          url: '/l10n/pdfs/it-IT/pe/11.3/it-PE-11.3-onprem-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/pe/11.3/it-PE-11.3-onprem-InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -55,7 +57,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/pe/10.0.1/it_PE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/pe/10.0.1/it_PE_AppGuide.pdf',
           videoIcon: false,
         },
       ],
