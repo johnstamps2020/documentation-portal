@@ -507,7 +507,7 @@ const pageConfig: ApplicationLayoutProps = {
     },
   ],
   selector: {
-    selectedItemLabel: 'Hakuba (2023.06)',
+    selectedItemLabel: 'Innsbruck (2023.10)',
     items: allSelectors.seab31eee2944c2607a774b9dd9cda0ad,
     labelColor: 'black',
   },
