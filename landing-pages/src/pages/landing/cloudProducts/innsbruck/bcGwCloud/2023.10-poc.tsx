@@ -9,6 +9,8 @@ const pageConfig: ApplicationLayoutProps = {
     label: 'Release notes',
     docId: 'isbc202310releasenotes',
   },
+  heroDescription:
+    'Guidewire BillingCenter manages billing, payment, and delinquency operations for policies.',
   tabs: [
     {
       icon: 'get-started',

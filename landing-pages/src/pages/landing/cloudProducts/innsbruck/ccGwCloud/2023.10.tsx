@@ -9,6 +9,8 @@ const pageConfig: ApplicationLayoutProps = {
     label: 'Release notes',
     docId: 'iscc202310releasenotes',
   },
+  heroDescription:
+    'Guidewire ClaimCenter manages the process of reporting, verifying, and making payments on claims against policies.',
   tabs: [
     {
       icon: 'get-started',
