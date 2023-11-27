@@ -444,9 +444,13 @@ async function prepareResultsToDisplay(searchResults) {
 
     // Get the highlighted body fragment with the highest score to display it on the search results page.
     // If not available, use the first 300 characters of the body
-    const bodyExcerpt = highlightBodyKey
-      ? mainResultHighlight[highlightBodyKey][0]
-      : mainResultBodyFragment;
+    const bodyExcerpt = (
+      highlightBodyKey
+        ? mainResultHighlight[highlightBodyKey][0]
+        : mainResultBodyFragment
+    )
+      .replace(titleText, '')
+      .replaceAll(/\s{2,}/gm, '');
 
     return {
       ...mainResult,
