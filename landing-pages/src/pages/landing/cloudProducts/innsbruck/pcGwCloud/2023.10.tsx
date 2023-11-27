@@ -309,9 +309,9 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'appeventsdev',
           description: (
             <>
-              Use application events to send outbound messages asynchronously in
-              response to specific PolicyCenter business events (such as account
-              creation), and manage responses.
+              Use application events to send outbound messages asynchronously,
+              without the need for Gosu code, in response to specific business
+              events and manage responses.
             </>
           ),
         },
@@ -388,9 +388,10 @@ const pageConfig: ApplicationLayoutProps = {
           label: 'Messaging',
           description: (
             <>
-              Use Guidewire messaging to send outbound messages asynchronously
-              in response to specific PolicyCenter business events (such as
-              account creation), and manage responses.
+              Use traditional Guidewire messaging to configure Gosu rules and
+              custom message transport plugins that send outbound messages
+              asynchronously in response to specific business events and manage
+              responses.
             </>
           ),
           docId: 'ispc202310integ',

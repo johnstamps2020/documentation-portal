@@ -263,8 +263,8 @@ const pageConfig: ApplicationLayoutProps = {
           description: (
             <>
               Use application events to send outbound messages asynchronously,
-              without the need for Gosu code, in response to specific
-              ClaimCenter business events and manage responses.
+              without the need for Gosu code, in response to specific business
+              events and manage responses.
             </>
           ),
         },
@@ -341,9 +341,10 @@ const pageConfig: ApplicationLayoutProps = {
           label: 'Messaging',
           description: (
             <>
-              Use traditional Guidewire messaging to configure Gosu rules that
-              send outbound messages asynchronously in response to specific
-              ClaimCenter business events and manage responses.
+              Use traditional Guidewire messaging to configure Gosu rules and
+              custom message transport plugins that send outbound messages
+              asynchronously in response to specific business events and manage
+              responses.
             </>
           ),
           docId: 'iscc202310integ',
