@@ -81,18 +81,24 @@ export default function ApplicationHero({
               gap={3}
               justifyContent="space-between"
               height="100%"
-              sx={{ pb: '8px' }}
+              sx={{ pb: '16px' }}
             >
-              <Typography variant="h1" sx={{ lineHeight: 1.4, fontSize: 30 }}>
-                {title}
-              </Typography>
-              {heroDescription && (
-                <Box
-                  sx={{ fontSize: '16px', fontWeight: 600, lineHeight: '20px' }}
-                >
-                  {heroDescription}
-                </Box>
-              )}
+              <Stack sx={{ gap: '16px' }}>
+                <Typography variant="h1" sx={{ lineHeight: 1.4, fontSize: 30 }}>
+                  {title}
+                </Typography>
+                {heroDescription && (
+                  <Box
+                    sx={{
+                      fontSize: '16px',
+                      fontWeight: 600,
+                      lineHeight: '20px',
+                    }}
+                  >
+                    {heroDescription}
+                  </Box>
+                )}
+              </Stack>
               <Box>
                 <LandingPageItemRenderer
                   isError={isError}
