@@ -9,6 +9,8 @@ const pageConfig: ApplicationLayoutProps = {
     label: 'Release notes',
     docId: 'ispc202310releasenotes',
   },
+  heroDescription:
+    'Guidewire PolicyCenter provides underwriting and policy administration for personal and commercial line insurers in the property and casualty industry.',
   tabs: [
     {
       icon: 'get-started',
