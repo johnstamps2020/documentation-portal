@@ -1,6 +1,7 @@
 import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: ApplicationLayoutProps = {
   title: 'BillingCenter for Guidewire Cloud 2023.10',
@@ -462,6 +463,11 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
   ],
+  selector: {
+    selectedItemLabel: 'Innsbruck (2023.10)',
+    items: allSelectors.s344cd6ac814e55dd2f6e1bddf2c969db,
+    labelColor: 'black',
+  },
 };
 
 export default function LandingPage202310() {
