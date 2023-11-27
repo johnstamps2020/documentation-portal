@@ -49,7 +49,7 @@ export default function ApplicationLayout({
   }, [selector, setSelector]);
 
   return (
-    <Stack gap="35px">
+    <Stack>
       <ApplicationHero
         buttonProps={buttonProps}
         title={title}

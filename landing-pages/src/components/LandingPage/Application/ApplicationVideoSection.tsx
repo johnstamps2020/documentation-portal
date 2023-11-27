@@ -4,9 +4,7 @@ import Typography from '@mui/material/Typography';
 import YouTubeVideo from 'components/YouTubeVideo';
 import React from 'react';
 import ApplicationDivider from './ApplicationDivider';
-import {
-  narrowWidth,
-} from './ApplicationNarrowTwoColumnLayout';
+import { narrowWidth } from './ApplicationNarrowTwoColumnLayout';
 
 export type ApplicationVideoSectionProps = {
   title: string;
@@ -20,7 +18,7 @@ export default function ApplicationVideoSection({
   videoUrl,
 }: ApplicationVideoSectionProps) {
   return (
-    <Container id="video-section">
+    <Container id="video-section" sx={{ pt: '25px' }}>
       <Box
         sx={{
           width: '100%',
