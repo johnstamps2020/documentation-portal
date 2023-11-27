@@ -104,6 +104,10 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Runtime Properties API',
           docId: 'runtimepropertiesapi',
         },
+        {
+          label: 'Database Service API',
+          docId: 'dbserviceapi',
+        },
       ],
     },
     {
