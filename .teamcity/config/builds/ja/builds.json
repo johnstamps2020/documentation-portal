@@ -6,8 +6,8 @@
       "root": "GWCP-ReleaseNotes.ditamap",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
-      "srcId": "gwcpjareleasenotessrc",
-      "docId": "gwcpjareleasenotes",
+      "srcId": "gwcpreleasenotesjaJPsrc",
+      "docId": "gwcpjaJPreleasenotes",
       "disabled": false
     }
   ]
