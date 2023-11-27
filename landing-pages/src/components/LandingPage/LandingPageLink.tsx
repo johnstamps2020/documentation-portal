@@ -1,3 +1,5 @@
+import LaunchIcon from '@mui/icons-material/Launch';
+import Box from '@mui/material/Box';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Link, { LinkProps } from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
@@ -5,7 +7,6 @@ import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import { Link as RouterLink } from 'react-router-dom';
 import InternalTooltip from './InternalTooltip';
 import VideoIcon from './VideoIcon';
-import LaunchIcon from '@mui/icons-material/Launch';
 
 export type LandingPageLinkProps = {
   landingPageItem: LandingPageItemData;
@@ -68,10 +69,23 @@ export default function LandingPageLink({
         </Link>
       ) : (
         <Link href={resolveUrl(landingPageItem?.url)} sx={sx}>
-          {landingPageItem?.label}
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <Box>{landingPageItem?.label}</Box>
+
+            {showExternalIcon && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <LaunchIcon sx={sx} />
+              </Box>
+            )}
+          </Stack>
         </Link>
       )}
-      {showExternalIcon && <LaunchIcon sx={sx} />}
       {landingPageItem?.videoIcon && <VideoIcon />}
       {landingPageItem?.internal && <InternalTooltip />}
     </Stack>
