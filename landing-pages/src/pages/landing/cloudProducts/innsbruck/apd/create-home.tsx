@@ -194,7 +194,7 @@ const pageConfig: ApplicationLayoutProps = {
   ],
   selector: {
     selectedItemLabel: 'Innsbruck (2023.10)',
-    items: allSelectors.apdCreateHome,
+    items: allSelectors.apdApp,
   },
 };
 
