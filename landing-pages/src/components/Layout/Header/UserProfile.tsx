@@ -9,6 +9,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import HeaderMenuDesktop from './Desktop/HeaderMenuDesktop';
 import { useAdminLinks } from 'hooks/useAdminLinks';
 import LoginButtonsInDrawer from '../../LoginPage/LoginButtonsInDrawer';
+import { getRedirectToPath } from 'helpers/navigationHelpers';
 
 type LoginButtonProps = {
   drawerOpen: boolean;
@@ -86,10 +87,7 @@ export default function UserProfile() {
       id="profile-menu"
       items={[
         {
-          href: `/gw-logout?redirectTo=${window.location.href.replace(
-            window.location.origin,
-            ''
-          )}`,
+          href: `/gw-logout?redirectTo=${getRedirectToPath()}`,
           children: 'Log out',
           disableReactRouter: true,
         },
