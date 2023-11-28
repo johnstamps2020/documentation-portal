@@ -420,6 +420,25 @@
       "earlyAccess": true
     },
     {
+      "id": "jutrosdkinnsbruck",
+      "title": "Jutro SDK",
+      "url": "jutro/sdk/innsbruck",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["Innsbruck"],
+        "subject": ["Best practices"],
+        "release": ["Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "jutrorewards",
       "title": "Jutro Rewards",
       "url": "jutro/rewards",
@@ -1950,11 +1969,11 @@
     {
       "id": "jutro1000",
       "title": "Jutro Design System and UI Framework",
-      "url": "jutro/documentation/10.0.0",
+      "url": "jutro/documentation/10.0",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["10.0.0"],
+        "version": ["10.0"],
         "subject": ["Best practices"],
         "language": "en"
       },
@@ -1962,17 +1981,17 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
       "id": "storybook1000",
       "title": "Jutro Storybook",
-      "url": "jutro/storybook/10.0.0",
+      "url": "jutro/storybook/10.0",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["10.0.0"],
+        "version": ["10.0"],
         "subject": ["Development"],
         "language": "en"
       },
@@ -1980,7 +1999,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {

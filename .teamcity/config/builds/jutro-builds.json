@@ -181,6 +181,12 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutrosdkinnsbruck",
+      "srcId": "srcjutrosdkinnsbruck",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutronext",
       "srcId": "srcjutronext",
       "workingDir": "website",

@@ -155,7 +155,7 @@ const pageConfig: Category2LayoutProps = {
           docId: 'isrestapiclientguidenext',
         },
         {
-          label: 'Jutro Digital Platform (Early Access)',
+          label: 'Jutro Digital Platform',
           docId: 'jutro1000',
         },
         {
