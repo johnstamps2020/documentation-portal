@@ -208,9 +208,11 @@ export default function PageSettingsForm({
   
   function checkIfFileExists(path: string) {
     try {
-      const success = require(`../../../pages/landing/${path}.tsx`);
-      if (success) {
-        setFileExists(true);
+      if (path) {
+        const success = require(`../../../pages/landing/${path}.tsx`);
+        if (success) {
+          setFileExists(true);
+        }
       }
     } catch (err) {
       setFileExists(false);
@@ -273,7 +275,8 @@ export default function PageSettingsForm({
         error={pageAlreadyExists}
         helperText={
           (pageAlreadyExists && 'Page with this path already exists') ||
-          (fileExists === false && 'File for this page does not exist')
+          (fileExists === false &&
+            "React component for this page path doesn't exist in landing pages")
         }
         color={fileExists === false ? 'warning' : 'primary'}
         onBlur={() => checkIfFileExists(tmpPageData.path)}
@@ -282,6 +285,14 @@ export default function PageSettingsForm({
         value={tmpPageData.path}
         onChange={(event) => handleChange('path', event.target.value)}
         fullWidth
+        sx={{
+          '.MuiFormHelperText-root': {
+            color: '#e65100',
+            fontSize: '14px',
+            m: "3px 3px 0px 3px",
+
+          },
+        }}
       />
       <TextField
         required
