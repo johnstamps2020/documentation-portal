@@ -132,27 +132,12 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Submission Intake',
-          docId: 'submissionintake',
-          description: <>Streamline submission creation in PolicyCenter.</>,
-        },
-        {
           label: 'Claims Intake (Early Access)',
           docId: 'fnoltemplatemain',
           description: (
             <>
               Create a digital FNOL self-service flow for a first-party personal
               auto damage claim.
-            </>
-          ),
-        },
-        {
-          label: 'Guidewire Rules (Early Access)',
-          docId: 'gwrules',
-          description: (
-            <>
-              Create and manage business rules that trigger when specific
-              business conditions occur.
             </>
           ),
         },
@@ -218,6 +203,16 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Guidewire Rules (Early Access)',
+          docId: 'gwrules',
+          description: (
+            <>
+              Create and manage business rules that trigger when specific
+              business conditions occur.
+            </>
+          ),
+        },
+        {
           label: 'Plugins',
           description: (
             <>
@@ -277,6 +272,11 @@ const pageConfig: ApplicationLayoutProps = {
           ),
           docId: 'ispc202310config',
           pathInDoc: '?contextid=p-PolicyCenter_jobs',
+        },
+        {
+          label: 'Submission Intake',
+          docId: 'submissionintake',
+          description: <>Streamline submission creation in PolicyCenter.</>,
         },
         {
           label: 'Rating App (Early Access)',

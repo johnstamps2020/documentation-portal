@@ -103,16 +103,6 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-        {
-          label: 'Guidewire Rules (Early Access)',
-          docId: 'gwrules',
-          description: (
-            <>
-              Enable business analysts to create and manage segmentation rules
-              that trigger when specific business conditions occur.
-            </>
-          ),
-        },
       ],
     },
     {
@@ -171,6 +161,16 @@ const pageConfig: ApplicationLayoutProps = {
             <>
               Configure the Gosu rules that control basic functionality, such as
               validation, preupdate actions, and assignment.
+            </>
+          ),
+        },
+        {
+          label: 'Guidewire Rules (Early Access)',
+          docId: 'gwrules',
+          description: (
+            <>
+              Enable business analysts to create and manage segmentation rules
+              that trigger when specific business conditions occur.
             </>
           ),
         },
