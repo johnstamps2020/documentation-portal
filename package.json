@@ -44,6 +44,7 @@
     "test:landing-pages": "yarn workspace landing-pages test",
     "test": "yarn test:server && yarn test:landing-pages",
     "scripts:migrate-pages": "yarn workspace scripts migrate-pages && yarn prettier:landing-pages",
+    "scripts:replace-url-with-doc-id": "yarn workspace scripts replace-url-with-doc-id && yarn prettier:landing-pages",
     "scripts:get-root-breadcrumbs": "yarn workspace scripts get-root-breadcrumbs",
     "profile:html5": "yarn build:theme && yarn workspace html5 profile"
   },
