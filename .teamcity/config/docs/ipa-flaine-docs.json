@@ -10,7 +10,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "subject": ["Release notes"],
@@ -33,7 +34,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "subject": ["Development"],
@@ -56,7 +58,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "subject": ["Features and functionality"],

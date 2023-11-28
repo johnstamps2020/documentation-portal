@@ -49,7 +49,9 @@ docId: 'dx202310frFRceamrelnotes',
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ce-am/2021.11/fr-FR Digital v.2021.11 CE-AM_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-am/2021.11/fr-FR Digital v.2021.11 CE-AM_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -59,22 +61,30 @@ docId: 'dx202310frFRceamrelnotes',
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ce-am/11.4.1/fr-FR Digital v.11.4.1 CE-AM AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-am/11.4.1/fr-FR Digital v.11.4.1 CE-AM AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ce-am/11.4.1/fr-FR Digital v.11.4.1 CE-AM InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-am/11.4.1/fr-FR Digital v.11.4.1 CE-AM InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/ce-am/11.4.1/fr-FR-Digital v.11.4.1 CE-AM admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-am/11.4.1/fr-FR-Digital v.11.4.1 CE-AM admin&security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide du développeur',
-          url: '/l10n/pdfs/fr-FR/ce-am/11.4.1/fr-FR-Digital v.11.4.1 CE-AM DevelopersGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-am/11.4.1/fr-FR-Digital v.11.4.1 CE-AM DevelopersGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -84,7 +94,8 @@ docId: 'dx202310frFRceamrelnotes',
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ce-am/11.1/fr-CE_AM-onprem_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-am/11.1/fr-CE_AM-onprem_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -94,27 +105,33 @@ docId: 'dx202310frFRceamrelnotes',
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ce-am/10.0.1/fr-CE_AM_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-am/10.0.1/fr-CE_AM_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation et de configuration Live Style Guide",
-          url: '/l10n/pdfs/fr-FR/ce-am/10.0.1/fr-CE_AM_Life_Style_Guide Install and Config.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-am/10.0.1/fr-CE_AM_Life_Style_Guide Install and Config.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/ce-am/10.0.1/fr-CE_AM_admin-and-security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-am/10.0.1/fr-CE_AM_admin-and-security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/ce-am/10.0.1/fr-CE_AM_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-am/10.0.1/fr-CE_AM_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des applications',
-          url: '/l10n/pdfs/fr-FR/ce-am/10.0.1/fr-CE_AM__AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-am/10.0.1/fr-CE_AM__AppGuide.pdf',
           videoIcon: false,
         },
       ],

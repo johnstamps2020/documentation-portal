@@ -40,7 +40,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/ce-am/11.1/es-419-CE_AM-onprem-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-am/11.1/es-419-CE_AM-onprem-InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -50,27 +51,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-LA/ce-am/10.0.1/es-CEAM_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-am/10.0.1/es-CEAM_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/ce-am/10.0.1/es-CEAM-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-am/10.0.1/es-CEAM-InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-LA/ce-am/10.0.1/es-CEAM_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-am/10.0.1/es-CEAM_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de seguridad y administración',
-          url: '/l10n/pdfs/es-LA/ce-am/10.0.1/es-CEAM_admin-and-security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-am/10.0.1/es-CEAM_admin-and-security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de configuración e instalación de Live Style Guide',
-          url: '/l10n/pdfs/es-LA/ce-am/10.0.1/es-CEAM_LiveStyleGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-am/10.0.1/es-CEAM_LiveStyleGuide.pdf',
           videoIcon: false,
         },
       ],

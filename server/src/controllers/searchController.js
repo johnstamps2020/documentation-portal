@@ -4,6 +4,7 @@ const { winstonLogger } = require('./loggerController');
 const { getAllEntities } = require('./configController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
+const fragmentSize = 300;
 
 // Every keyword field in Elasticsearch is included in the filter list
 async function getKeywordFields() {
@@ -213,42 +214,42 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
       queryWithFiltersFromUrl.bool.filter = queryFilters;
     }
 
+    // - The highlighter type is set to "fvh" (fast vector highlighter). One of the benefits of this type is that
+    //      it can combine matches from multiple fields into one result by means of the "matched_fields" property).
+    // - The title and body fields, including the .exact subfields, use term vectors,
+    //      that is, "term_vector" is set to "with_positions_offsets" in the field mapping. Using term vectors
+    //      increases the index size, but it's fast especially for large fields (> 1MB) and for highlighting multi-term
+    //      queries like prefix or wildcard because it can access the dictionary of terms for each document.
     // - Title - number_of_fragments is set to 0 for this field
     //      so that instead of fragments, the entire field content is returned with highlights.
     // - Body - number_of_fragments is set to 5, highlighted fragments are as long as the body excerpt that is shown for a doc in results.
     //      Fragments are ordered by score.
-    //      The value of the fragment size (150) is a compromise between showing a meaningful chunk of text and good performance.
-    //      The value of 300 is too high because it considerably deteriorates performance.
     //      It seemed like a good idea to set the fragment size parameter to 0
     //      (no sentence splitting for sentences longer than the fragment size) but then it turned out that chunks
     //      of text from the body are sometimes not separated properly.
     //      For example, the content of a table is not separated from the section that follows it.
     //      Because of that, in the search result, the entire table content is provided in the excerpt
     //      because Elasticsearch treats the table content and the following section as one sentence.
-    // - max_analyzed_offset - this value determines how many characters are analyzed for highlighting.
-    //      By default, Elasticsearch has a limit of 1000000 configured on the index.
-    //      If this limit is exceeded, an error is thrown. To prevent the error, max_analyzed_offset must be set to a lower value on the query.
-    //      We set to it 999999. When Elasticsearch reaches this limit, it just stops analyzing characters above the limit and doesn’t throw an error.
-    //      This parameter is valid only for the title field.
-    //      The body field uses the postings list (that is, "index_options" is set to "offsets" in the field mapping)
     const highlightParameters = {
+      type: 'fvh',
       fields: [
         {
-          'title*': {
+          title: {
             number_of_fragments: 0,
+            matched_fields: ['title', 'title.exact'],
           },
         },
         {
-          'body*': {
+          body: {
             number_of_fragments: 5,
             order: 'score',
-            fragment_size: 150,
+            fragment_size: fragmentSize,
+            matched_fields: ['body', 'body.exact'],
           },
         },
       ],
       pre_tags: ['<span class="searchResultHighlight highlighted">'],
       post_tags: ['</span>'],
-      max_analyzed_offset: 999999,
     };
 
     const searchResultsCount = await elasticClient.search({
@@ -332,33 +333,11 @@ function sanitizeTagNames(textToSanitize) {
   return sanitizedText5;
 }
 
-function sortObjectsFromNewestToOldest(objectsList) {
-  try {
-    return objectsList
-      .sort(function (a, b) {
-        const verNum = (versions) =>
-          versions[0]
-            .split('.')
-            .map((n) => +n + 100000)
-            .join('.');
-        const verNumA = verNum(a._source.version);
-        const verNumB = verNum(b._source.version);
-        let comparison = 0;
-        if (verNumA > verNumB) {
-          comparison = 1;
-        } else if (verNumA < verNumB) {
-          comparison = -1;
-        }
-        return comparison;
-      })
-      .reverse();
-  } catch (err) {
-    winstonLogger.error(`Problem sorting objects from newest to oldest
-      objectList: ${JSON.stringify(objectsList)}`);
-  }
+function getHighestScore(scores) {
+  return Math.max(...scores);
 }
 
-function getHighestVersionNumber(versions) {
+function getHighestVersion(versions, numeric = false) {
   if (!versions || versions.length === 0) {
     return null;
   }
@@ -367,11 +346,20 @@ function getHighestVersionNumber(versions) {
     return versions[0];
   }
 
-  versions.sort(function (a, b) {
-    return a.localeCompare(b);
-  });
+  if (numeric) {
+    versions.sort(function (a, b) {
+      return a.localeCompare(b, undefined, {
+        numeric: true,
+        sensitivity: 'base',
+      });
+    });
+  } else {
+    versions.sort(function (a, b) {
+      return a.localeCompare(b);
+    });
+  }
 
-  return versions[0];
+  return versions.reverse()[0];
 }
 
 function getUniqueResultsSortedByVersion(resultList) {
@@ -381,69 +369,65 @@ function getUniqueResultsSortedByVersion(resultList) {
       uniqueResults.push(result);
     }
   }
+  uniqueResults
+    .sort(function (a, b) {
+      const highestScore = getHighestScore([a._score, b._score]);
+      const releaseA = getHighestVersion(a._source.release);
+      const releaseB = getHighestVersion(b._source.release);
+      if (releaseA && releaseB) {
+        if (releaseA === releaseB) {
+          return highestScore;
+        }
+        return releaseA.localeCompare(releaseB);
+      }
+      const verNumA = getHighestVersion(a._source.version, true);
+      const verNumB = getHighestVersion(b._source.version, true);
+      if (verNumA === verNumB) {
+        return highestScore;
+      }
+      return verNumA.localeCompare(verNumB, undefined, {
+        numeric: true,
+        sensitivity: 'base',
+      });
+    })
+    .reverse();
 
-  uniqueResults.sort(function (a, b) {
-    const releaseA = getHighestVersionNumber(a._source.release);
-    const releaseB = getHighestVersionNumber(b._source.release);
-    if (releaseA && releaseB) {
-      return releaseA.localeCompare(releaseB);
-    }
-
-    const versionA = getHighestVersionNumber(a._source.version);
-    const versionB = getHighestVersionNumber(b._source.version);
-    return versionA.localeCompare(versionB);
-  });
-
-  return sortObjectsFromNewestToOldest(uniqueResults);
+  return uniqueResults;
 }
 
 async function prepareResultsToDisplay(searchResults) {
   return searchResults.hits.map((result) => {
-    const docScore = result._score;
-    let mainResult = result;
     const innerHits = result.inner_hits.same_title.hits.hits;
+    const allHits = [result, ...innerHits];
+    const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
+    const [topHit, ...otherHits] = allHitsSortedFromLatest;
+    const mainResult = topHit._source;
+    const mainResultScore = topHit._score;
+    const mainResultHighlight = topHit.highlight;
+    const mainResultTitle = mainResult.title;
+    const mainResultBody = mainResult.body || '';
+    const mainResultBodyFragment = mainResultBody.substring(0, fragmentSize);
 
-    // if there are inner hits, we grab the one with the latest version number
-    // and use it as the main result
-    const allResultsSorted = getUniqueResultsSortedByVersion([
-      mainResult,
-      ...innerHits,
-    ]);
+    // The title field in the highlighter matches results from the title and title.exact fields.
+    const highlightTitleKey = Object.getOwnPropertyNames(
+      mainResultHighlight
+    ).find((k) => k === 'title');
 
-    const innerHitsMatchingDocScore = innerHits.filter(
-      (h) => h._score === docScore
-    );
-
-    // If there are multiple inner hits with the same score as the main result,
-    // we want to display the inner hit with the newest version number.
-    if (innerHitsMatchingDocScore.length > 0) {
-      mainResult = sortObjectsFromNewestToOldest(innerHitsMatchingDocScore)[0];
-    }
-
-    const [doc, ...otherResults] = allResultsSorted.map((r) => r._source);
-    const highlight = mainResult.highlight;
-    const docTitle = doc.title;
-    const docBody = doc.body || '';
-    const docBodyFragment = docBody.substring(0, 300);
-
-    const highlightTitleKey = Object.getOwnPropertyNames(highlight).find(
-      (k) => k.startsWith('title') && !k.startsWith('title.raw')
-    );
-
-    const highlightBodyKey = Object.getOwnPropertyNames(highlight).find((k) =>
-      k.startsWith('body')
-    );
+    // The body field in the highlighter matches results from the body and body.exact fields.
+    const highlightBodyKey = Object.getOwnPropertyNames(
+      mainResultHighlight
+    ).find((k) => k === 'body');
 
     // The "number_of_fragments" parameter is set to "0' for the title field.
     // So no fragments are produced, instead the whole content of the field is returned
     // as the first element of the array, and matches are highlighted.
     const titleText = highlightTitleKey
-      ? highlight[highlightTitleKey][0]
-      : docTitle;
+      ? mainResultHighlight[highlightTitleKey][0]
+      : mainResultTitle;
     // If there are highlights in the body, join all fragments to get a complete list of highlighted terms
     const bodyText = highlightBodyKey
-      ? highlight[highlightBodyKey].join(' ')
-      : docBodyFragment;
+      ? mainResultHighlight[highlightBodyKey].join(' ')
+      : mainResultBodyFragment;
     const allText = titleText + bodyText;
     const regExp = new RegExp(
       '<span class="searchResultHighlight.*?">(.*?)</span>',
@@ -458,19 +442,24 @@ async function prepareResultsToDisplay(searchResults) {
       })
       .join(',');
 
-    // Get the highlighted body fragment with the highest score to display it on the search results page
-    const bodyExcerpt = highlightBodyKey
-      ? highlight[highlightBodyKey][0]
-      : docBodyFragment;
+    // Get the highlighted body fragment with the highest score to display it on the search results page.
+    // If not available, use the first 300 characters of the body
+    const bodyExcerpt = (
+      highlightBodyKey
+        ? mainResultHighlight[highlightBodyKey][0]
+        : mainResultBodyFragment
+    )
+      .replace(titleText, '')
+      .replaceAll(/\s{2,}/gm, '');
 
     return {
-      ...doc,
-      score: docScore,
+      ...mainResult,
+      score: mainResultScore,
       title: sanitizeTagNames(titleText),
-      titlePlain: sanitizeTagNames(docTitle),
+      titlePlain: sanitizeTagNames(mainResultTitle),
       body: sanitizeTagNames(bodyExcerpt + '...'),
-      bodyPlain: sanitizeTagNames(docBodyFragment + '...'),
-      innerHits: otherResults,
+      bodyPlain: sanitizeTagNames(mainResultBodyFragment + '...'),
+      innerHits: otherHits.map((r) => r._source),
       uniqueHighlightTerms: uniqueHighlightTerms,
     };
   });

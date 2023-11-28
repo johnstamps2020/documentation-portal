@@ -7,6 +7,12 @@
       "srcId": "cloudintegrationbasicssrc",
       "workingDir": "website",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "billinginapd",
+      "srcId": "billinginapdsrc",
+      "disabled": false
     }
   ]
 }

@@ -31,7 +31,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guia de instalação',
-          url: '/l10n/pdfs/pt-BR/ve/11.1/pt-VE-onprem-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/ve/11.1/pt-VE-onprem-InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -41,22 +42,27 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guia de administração e segurança',
-          url: '/l10n/pdfs/pt-BR/ve/10.0.1/pt-VE_Admin and Security Guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/ve/10.0.1/pt-VE_Admin and Security Guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia do aplicativo',
-          url: '/l10n/pdfs/pt-BR/ve/10.0.1/pt-VE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/ve/10.0.1/pt-VE_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia de instalação e configuração do Live Style Guide',
-          url: '/l10n/pdfs/pt-BR/ve/10.0.1/pt-VE_Live Style Guide Installand Config.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'pt-BR/ve/10.0.1/pt-VE_Live Style Guide Installand Config.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia de instalação',
-          url: '/l10n/pdfs/pt-BR/ve/10.0.1/pt-VE_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/ve/10.0.1/pt-VE_InstallGuide.pdf',
           videoIcon: false,
         },
       ],

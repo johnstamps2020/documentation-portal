@@ -6,7 +6,7 @@
   "author": "Doc Tools <doctools@guidewire.com>",
   "license": "UNLICENSED",
   "private": true,
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@4.0.2",
   "workspaces": [
     "server",
     "landing-pages",
@@ -14,7 +14,6 @@
     "docusaurus/test-site",
     "docusaurus/plugins/gw-plugin-redoc",
     "docusaurus/themes/gw-theme-classic",
-    "docusaurus/vite-project",
     "html5",
     "scripts",
     "ci/uploadLegacyConfigsToDb"
@@ -40,10 +39,12 @@
     "build": "yarn server-build && yarn landing-pages-build",
     "pages:test-site": "yarn build:plugin && yarn workspace test-site pages",
     "prettier": "prettier --write .",
+    "prettier:landing-pages": "prettier landing-pages/src/pages/landing --write",
     "test:server": "yarn workspace server test",
     "test:landing-pages": "yarn workspace landing-pages test",
     "test": "yarn test:server && yarn test:landing-pages",
-    "scripts:migrate-pages": "yarn workspace scripts migrate-pages && prettier landing-pages/src/pages/landing --write",
+    "scripts:migrate-pages": "yarn workspace scripts migrate-pages && yarn prettier:landing-pages",
+    "scripts:replace-url-with-doc-id": "yarn workspace scripts replace-url-with-doc-id && yarn prettier:landing-pages",
     "scripts:get-root-breadcrumbs": "yarn workspace scripts get-root-breadcrumbs",
     "profile:html5": "yarn build:theme && yarn workspace html5 profile"
   },
@@ -58,14 +59,9 @@
     "trim": "1.0.1"
   },
   "dependencies": {
-    "concurrently": "7.4.0",
-    "express-fileupload": "^1.4.0",
-    "jest-watch-typeahead": "0.6.5",
-    "react-error-boundary": "^4.0.10",
-    "swr": "^2.0.3"
+    "concurrently": "7.4.0"
   },
   "devDependencies": {
-    "@types/harmon": "^1.4.1",
     "prettier": "^2.8.4"
   }
 }

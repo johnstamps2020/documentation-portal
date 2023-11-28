@@ -24,12 +24,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Jutro SDK (Early Access)',
-          url: '/jutro/sdk/garmisch/docs/jutro-sdk-overview',
+          docId: 'jutrosdkgarmisch',
+          pathInDoc: 'docs/jutro-sdk-overview',
           videoIcon: false,
         },
         {
           label: 'APD toolkit (Early Access)',
-          url: '/jutro/sdk/garmisch/docs/apd-toolkit-overview',
+          docId: 'jutrosdkgarmisch',
+          pathInDoc: 'docs/apd-toolkit-overview',
           videoIcon: false,
         },
       ],

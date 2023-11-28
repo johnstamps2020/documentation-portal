@@ -49,7 +49,8 @@ docId: 'dx202310frFRperelnotes',
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/pe/2021.11/fr-FR Digital v.2021.11 PE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/pe/2021.11/fr-FR Digital v.2021.11 PE_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -59,22 +60,29 @@ docId: 'dx202310frFRperelnotes',
       items: [
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/pe/11.4.1/fr-FR-Digital v.11.4.1 PE admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe/11.4.1/fr-FR-Digital v.11.4.1 PE admin&security-guide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/pe/11.4.1/fr-FR Digital v.11.4.1 PE AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/pe/11.4.1/fr-FR Digital v.11.4.1 PE AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/pe/11.4.1/fr-FR-Digital v.11.4.1 PE InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe/11.4.1/fr-FR-Digital v.11.4.1 PE InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide du développeur',
-          url: '/l10n/pdfs/fr-FR/pe/11.4.1/fr-FR-Digital v.11.4.1 PE-DevelopersGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe/11.4.1/fr-FR-Digital v.11.4.1 PE-DevelopersGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -84,12 +92,14 @@ docId: 'dx202310frFRperelnotes',
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/pe/11.1/fr-PE-onprem_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/pe/11.1/fr-PE-onprem_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/pe/11.1/fr-PE-cloud_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/pe/11.1/fr-PE-cloud_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -99,27 +109,33 @@ docId: 'dx202310frFRperelnotes',
       items: [
         {
           label: 'Guide des applications',
-          url: '/l10n/pdfs/fr-FR/pe/10.0.1/fr-PE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/pe/10.0.1/fr-PE_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/pe/10.0.1/fr-PE_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/pe/10.0.1/fr-PE_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation et de configuration Live Style Guide",
-          url: '/l10n/pdfs/fr-FR/pe/10.0.1/fr-PE_Life Style Guide Install and Config.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe/10.0.1/fr-PE_Life Style Guide Install and Config.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/pe/10.0.1/fr-PE_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/pe/10.0.1/fr-PE_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/pe/10.0.1/fr-PE_admin-and-security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/pe/10.0.1/fr-PE_admin-and-security-guide.pdf',
           videoIcon: false,
         },
       ],

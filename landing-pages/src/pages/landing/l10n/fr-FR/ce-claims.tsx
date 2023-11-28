@@ -49,7 +49,9 @@ docId: 'dx202310frFRceclaimsrelnotes',
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ce-claims/2021.11/fr-FR Digital v.2021.11 CE-AM Claims_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-claims/2021.11/fr-FR Digital v.2021.11 CE-AM Claims_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -59,22 +61,30 @@ docId: 'dx202310frFRceclaimsrelnotes',
       items: [
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/ce-claims/11.4.1/fr-FR-Digital v.11.4.1 CE-AM - Claims admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-claims/11.4.1/fr-FR-Digital v.11.4.1 CE-AM - Claims admin&security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide du développeur',
-          url: '/l10n/pdfs/fr-FR/ce-claims/11.4.1/fr-FR-Digital v,11.4.1 CE-AM Claims Developers Guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-claims/11.4.1/fr-FR-Digital v,11.4.1 CE-AM Claims Developers Guide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ce-claims/11.4.1/fr-FR Digital v.11.4.1 CE-AM  CE-AM Claims InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-claims/11.4.1/fr-FR Digital v.11.4.1 CE-AM  CE-AM Claims InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ce-claims/11.4.1/Fr-FR Digital v.11.4.1 CE-AM-Claims AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-claims/11.4.1/Fr-FR Digital v.11.4.1 CE-AM-Claims AppGuide.pdf',
           videoIcon: false,
         },
       ],

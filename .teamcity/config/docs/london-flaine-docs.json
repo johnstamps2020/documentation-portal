@@ -10,7 +10,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Features and functionality"],
@@ -33,7 +34,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Features and functionality"],
@@ -56,7 +58,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Development"],
@@ -79,7 +82,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Release notes"],

@@ -42,12 +42,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Jutro SDK',
-          url: '/jutro/sdk/next/docs/jutro-sdk-overview',
+          docId: 'jutrosdknext',
+          pathInDoc: 'docs/jutro-sdk-overview',
           videoIcon: false,
         },
         {
           label: 'APD toolkit',
-          url: '/jutro/sdk/next/docs/apd-toolkit-overview',
+          docId: 'jutrosdknext',
+          pathInDoc: 'docs/apd-toolkit-overview',
           videoIcon: false,
         },
       ],

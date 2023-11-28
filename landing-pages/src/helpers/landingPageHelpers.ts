@@ -2,7 +2,7 @@ import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 
 export function arrangeItems(
-  items: LandingPageItemProps[] | undefined ,
+  items: LandingPageItemProps[] | undefined,
   data: LandingPageItemData[] | undefined
 ) {
   const landingPageItems: LandingPageItemData[] = [];

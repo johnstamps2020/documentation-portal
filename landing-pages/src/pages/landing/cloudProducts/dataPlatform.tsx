@@ -18,7 +18,8 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Data Platform',
-          url: '/cloud/dataplatform/topics/c_rn-new-changed.html',
+          docId: 'dataplatform',
+          pathInDoc: 'topics/c_rn-new-changed.html',
           videoIcon: false,
         },
       ],

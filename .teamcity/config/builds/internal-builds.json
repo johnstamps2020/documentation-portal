@@ -52,6 +52,13 @@
     },
     {
       "buildType": "yarn",
+      "docId": "heliosclient",
+      "srcId": "heliosclientsrc",
+      "workingDir": "client/website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "mithril",
       "srcId": "mithrilsrc",
       "disabled": false

@@ -51,7 +51,7 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
-    }, 
+    },
     {
       "id": "binrepo",
       "title": "Binary Repository",
@@ -107,6 +107,23 @@
       "id": "helios",
       "title": "Helios",
       "url": "internal/helios/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "Helios"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "heliosclient",
+      "title": "Helios Client",
+      "url": "internal/heliosclient/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Internal Docs", "Helios"],

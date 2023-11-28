@@ -3,6 +3,7 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { useUserInfo } from 'hooks/useApi';
 import { Link as RouterLink } from 'react-router-dom';
+import { getRedirectToPath } from 'helpers/navigationHelpers';
 
 type NotLoggedInInfoProps = {
   styles?: BoxProps['sx'];
@@ -18,13 +19,6 @@ export default function NotLoggedInInfo({ styles }: NotLoggedInInfoProps) {
   return (
     <Box
       sx={{
-        borderWidth: '0.5px',
-        borderStyle: 'solid',
-        borderColor: 'divider',
-        borderRadius: '4px',
-        px: '32px',
-        py: '10px',
-        width: 'fit-content',
         ...styles,
       }}
     >
@@ -32,7 +26,7 @@ export default function NotLoggedInInfo({ styles }: NotLoggedInInfoProps) {
         You are viewing limited content. To access all documentation, please{' '}
         <Link
           component={RouterLink}
-          to={`/gw-login?redirectTo=${window.location.pathname}`}
+          to={`/gw-login?redirectTo=${getRedirectToPath()}`}
           sx={{
             ...styles,
             textDecoration: 'underline',

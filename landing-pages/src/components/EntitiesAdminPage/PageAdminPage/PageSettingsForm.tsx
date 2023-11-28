@@ -79,6 +79,7 @@ export default function PageSettingsForm({
   const [canSubmitData, setCanSubmitData] = useState(false);
   const [dataChanged, setDataChanged] = useState(false);
   const [pageAlreadyExists, setPageAlreadyExists] = useState<boolean>();
+  const [fileExists, setFileExists] = useState<boolean>();
   const [jsonIsInvalid, setJsonIsInvalid] = useState<boolean>();
 
   useEffect(() => {
@@ -153,6 +154,7 @@ export default function PageSettingsForm({
     const resetToData = pageData || initialPageData;
     setTmpPageData(generateTmpPageData(resetToData));
     setPageAlreadyExists(false);
+    setFileExists(undefined);
     setJsonIsInvalid(false);
   }
 
@@ -204,6 +206,18 @@ export default function PageSettingsForm({
     );
   }
 
+  function checkIfFileExists(path: string) {
+    try {
+      if (path) {
+        const success = require(`../../../pages/landing/${path}.tsx`);
+        if (success) {
+          setFileExists(true);
+        }
+      }
+    } catch (err) {
+      setFileExists(false);
+    }
+  }
   async function handleSave() {
     try {
       const pageExists = await checkIfPageExists();
@@ -259,12 +273,25 @@ export default function PageSettingsForm({
       <TextField
         required
         error={pageAlreadyExists}
-        helperText={pageAlreadyExists && 'Page with this path already exists'}
+        helperText={
+          (pageAlreadyExists && 'Page with this path already exists') ||
+          (fileExists === false &&
+            "React component for this page path doesn't exist in landing pages")
+        }
+        color={fileExists === false ? 'warning' : 'primary'}
+        onBlur={() => checkIfFileExists(tmpPageData.path)}
         disabled={editingDisabled}
         label="Path"
         value={tmpPageData.path}
         onChange={(event) => handleChange('path', event.target.value)}
         fullWidth
+        sx={{
+          '.MuiFormHelperText-root': {
+            color: '#e65100',
+            fontSize: '14px',
+            m: '3px 3px 0px 3px',
+          },
+        }}
       />
       <TextField
         required

@@ -1,9 +1,12 @@
 export const allSelectors = {
-  apdapp: [
+  apdApp: [
     { label: 'Flaine (2022.09)', pagePath: 'cloudProducts/flaine/apd' },
     { label: 'Garmisch (2023.02)', pagePath: 'cloudProducts/garmisch/apd' },
     { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba/apd' },
-    { label: 'Innsbruck (2023.10)', pagePath: 'cloudProducts/innsbruck/apd' },
+    {
+      label: 'Innsbruck (2023.10)',
+      pagePath: 'cloudProducts/innsbruck/apd/create-home',
+    },
   ],
   testingFrameworkSelector: [
     { label: 'Elysian (2022.05)', pagePath: 'testingFramework/elysian' },

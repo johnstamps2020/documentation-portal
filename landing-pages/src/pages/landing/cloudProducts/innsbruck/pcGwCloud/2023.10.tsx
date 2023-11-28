@@ -1,6 +1,7 @@
 import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: ApplicationLayoutProps = {
   title: 'PolicyCenter for Guidewire Cloud 2023.10',
@@ -8,6 +9,8 @@ const pageConfig: ApplicationLayoutProps = {
     label: 'Release notes',
     docId: 'ispc202310releasenotes',
   },
+  heroDescription:
+    'Guidewire PolicyCenter provides underwriting and policy administration for personal and commercial line insurers in the property and casualty industry.',
   tabs: [
     {
       icon: 'get-started',
@@ -18,6 +21,26 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'ispc202310releasenotes',
           description: (
             <>Learn about changes in this release of PolicyCenter.</>
+          ),
+        },
+        {
+          label: 'AppReader Release Notes',
+          docId: 'appreaderrn400',
+          description: (
+            <>
+              Learn about changes to the AppReader microservice, which performs
+              optical character recognition of PDF documents.
+            </>
+          ),
+        },
+        {
+          label: 'Studio Release Notes',
+          docId: 'isstudiolatestrn',
+          description: (
+            <>
+              Learn about changes to Guidewire Studio, the administration tool
+              for creating and managing InsuranceSuite resources.
+            </>
           ),
         },
         {
@@ -72,6 +95,17 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Contact Management',
+          docId: 'is202310contact',
+          description: (
+            <>
+              Describes how to configure Guidewire InsuranceSuite applications
+              to integrate with ContactManager, and how to manage client and
+              vendor contacts in a single system of record.
+            </>
+          ),
+        },
+        {
           label: 'Product Designer',
           docId: 'ispc202310pd',
           description: (
@@ -88,7 +122,8 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Policy rates',
-          url: '/cloud/pc/202310/app/?contextid=c_df1082048',
+          docId: 'ispc202310app',
+          pathInDoc: '?contextid=c_df1082048',
           description: (
             <>
               Learn how PolicyCenter generates quotes for policy transactions,
@@ -121,17 +156,6 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-        {
-          label: 'Contact Management',
-          docId: 'is202310contact',
-          description: (
-            <>
-              Describes how to configure Guidewire InsuranceSuite applications
-              to integrate with ContactManager, and how to manage client and
-              vendor contacts in a single system of record.
-            </>
-          ),
-        },
       ],
     },
     {
@@ -148,7 +172,41 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-
+        {
+          label: 'PolicyCenter functionality configuration',
+          description: (
+            <>
+              Configure PolicyCenter features (such as rating, quoting, and data
+              destruction) to meet your business needs.
+            </>
+          ),
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=p-PolicyCenter',
+        },
+        {
+          label: 'Configuration parameter reference',
+          description: (
+            <>A reference of the application configuration parameters.</>
+          ),
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=c_au6600343',
+        },
+        {
+          label: 'Data model configuration',
+          description: (
+            <>
+              Create and extend PolicyCenter data model entities and typelists.
+            </>
+          ),
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=c_pdatamodel',
+        },
+        {
+          label: 'User interface configuration',
+          description: <>Configure the PolicyCenter user interface.</>,
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=p-ui-config',
+        },
         {
           label: 'Gosu rules',
           docId: 'ispc202310rules',
@@ -159,13 +217,22 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-
+        {
+          label: 'Plugins',
+          description: (
+            <>
+              Manage PolicyCenter predefined plugins to configure standard
+              operations, such as policy number generation and quote purging.
+            </>
+          ),
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_part-plugins',
+        },
         {
           label: 'Product model configuration',
           docId: 'ispc202310pm',
           description: <>Describes the PolicyCenter product model.</>,
         },
-
         {
           label: 'Globalizing PolicyCenter',
           docId: 'ispc202310global',
@@ -173,35 +240,17 @@ const pageConfig: ApplicationLayoutProps = {
             <>Configure PolicyCenter functionality related to localization.</>
           ),
         },
-
         {
-          label: 'Configuration parameter reference',
-          description: (
-            <>A reference of the application configuration parameters.</>
-          ),
-          url: '/cloud/pc/202310/config/?contextid=c_au6600343',
+          label: 'Gosu reference',
+          docId: 'gosureflatest',
+          description: <>A reference for the Gosu programming language. </>,
         },
         {
-          label: 'Data model configuration',
-          description: (
-            <>
-              Create and extend PolicyCenter data model entities and typelists.
-            </>
-          ),
-          url: '/cloud/pc/202310/config/?contextid=c_pdatamodel',
+          label: 'Search configuration',
+          description: <>Configure search in PolicyCenter.</>,
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=c_all-fe3275213',
         },
-
-        {
-          label: 'Configuration plugins',
-          description: (
-            <>
-              Manage PolicyCenter predefined plugins to configure standard
-              operations, such as policy number generation and quote purging.
-            </>
-          ),
-          url: '/cloud/pc/202310/integration/?contextid=c_part-plugins',
-        },
-
         {
           label: 'Workflow configuration',
           description: (
@@ -210,52 +259,27 @@ const pageConfig: ApplicationLayoutProps = {
               business processes such as submissions and renewals.
             </>
           ),
-          url: '/cloud/pc/202310/config/?contextid=p-workflow',
-        },
-
-        {
-          label: 'PolicyCenter functionality configuration',
-          description: (
-            <>
-              Configure PolicyCenter features (such as rating, quoting, and data
-              destruction) to meet your business needs.
-            </>
-          ),
-          url: '/cloud/pc/202310/config/?contextid=p-PolicyCenter',
-        },
-
-        {
-          label: 'Gosu reference',
-          docId: 'gosureflatest',
-          description: <>A reference for the Gosu programming language. </>,
-        },
-        {
-          label: 'User interface configuration',
-          description: <>Configure the PolicyCenter user interface.</>,
-          url: '/cloud/pc/202310/config/?contextid=p-ui-config',
-        },
-
-        {
-          label: 'Search configuration',
-          description: <>Configure search in PolicyCenter.</>,
-          url: '/cloud/pc/202310/config/?contextid=c_all-fe3275213',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=p-workflow',
         },
         {
           label: 'Email configuration',
           description: (
             <>Configure PolicyCenter functionality related to sending email.</>
           ),
-          url: '/cloud/pc/202310/config/?contextid=c_mx2909421',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=c_mx2909421',
         },
         {
           label: 'Jobs configuration',
           description: (
             <>Configure functionality related to PolicyCenter jobs.</>
           ),
-          url: '/cloud/pc/202310/config/?contextid=p-PolicyCenter_jobs',
+          docId: 'ispc202310config',
+          pathInDoc: '?contextid=p-PolicyCenter_jobs',
         },
         {
-          label: 'Rating App',
+          label: 'Rating App (Early Access)',
           docId: 'ispc202310ratingapp',
           description: (
             <>
@@ -281,99 +305,13 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Cloud API Developer Guide',
-          docId: 'ispc202310apica',
-          description: (
-            <>
-              Configure inbound endpoint behavior, create new endpoints, and
-              implement authentication in Cloud API.
-            </>
-          ),
-        },
-        {
-          label: 'Integration Data Manager',
-          docId: 'ispc202310integdatamgr',
-          description: (
-            <>
-              Store third-party data for use with InsuranceSuite, view this
-              data, and use it in business logic.
-            </>
-          ),
-        },
-        {
-          label: 'File-based integration',
-          description: (
-            <>
-              Configure filed-based integration for both inbound and outbound
-              integration points.
-            </>
-          ),
-          url: '/cloud/pc/202310/integration/?contextid=c_part-datatransfer',
-        },
-        {
-          label: 'Messaging',
-          description: (
-            <>
-              Use Guidewire messaging to send outbound messages asynchronously
-              in response to specific PolicyCenter business events (such as
-              account creation), and manage responses.
-            </>
-          ),
-          url: '/cloud/pc/202310/integration/?contextid=c_part-messaging',
-        },
-        {
-          label: 'REST API Client',
-          docId: 'isrestapiclientguide',
-          description: (
-            <>
-              Use REST API Client to make outbound HTTP calls to internal or
-              third-party REST services.
-            </>
-          ),
-        },
-        {
-          label: 'Startable plugins',
-          description: (
-            <>
-              Configure startable plugins that listen for and process inbound
-              asynchronous messages from third-party applications.
-            </>
-          ),
-          url: '/cloud/pc/202310/integration/?contextid=c_ns2380296',
-        },
-        {
           label: 'Application events',
           docId: 'appeventsdev',
           description: (
             <>
-              Use application events to send outbound messages asynchronously in
-              response to specific PolicyCenter business events (such as account
-              creation), and manage responses.
-            </>
-          ),
-        },
-        {
-          label: 'Cloud API reference',
-          docId: 'pcapirefinnsbruck',
-          description: <>The API definitions for Cloud API for PolicyCenter.</>,
-        },
-        {
-          label: 'REST API Framework',
-          docId: 'ispc202310restapifw',
-          description: (
-            <>
-              Create custom inbound RESTful APIs for business requirements that
-              are not addressed in Cloud API.
-            </>
-          ),
-        },
-        {
-          label: 'SOAP APIs',
-          docId: 'ispc202310integ',
-          description: (
-            <>
-              Use the base configuration SOAP APIs that PolicyCenter publishes,
-              publish custom SOAP APIs, and consume third-party SOAP APIs.
+              Use application events to send outbound messages asynchronously,
+              without the need for Gosu code, in response to specific business
+              events and manage responses.
             </>
           ),
         },
@@ -388,12 +326,13 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Cloud API for ContactManager',
-          docId: 'ispc202310apicm',
+          label: 'SOAP APIs',
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_pwebservices',
           description: (
             <>
-              Use Cloud API to make inbound calls from third-party applications
-              that create, edit, and retrieve data from ContactManager.
+              Use the base configuration SOAP APIs that PolicyCenter publishes,
+              publish custom SOAP APIs, and consume third-party SOAP APIs.
             </>
           ),
         },
@@ -410,6 +349,55 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Cloud API Developer Guide',
+          docId: 'ispc202310apica',
+          description: (
+            <>
+              Configure inbound endpoint behavior, create new endpoints, and
+              implement authentication in Cloud API.
+            </>
+          ),
+        },
+        {
+          label: 'Plugins',
+          description: (
+            <>
+              Manage PolicyCenter predefined plugins to configure standard
+              integration operations.
+            </>
+          ),
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_part-plugins',
+        },
+        {
+          label: 'REST API Client',
+          docId: 'isrestapiclientguide',
+          description: (
+            <>
+              Use REST API Client to make outbound HTTP calls to internal or
+              third-party REST services.
+            </>
+          ),
+        },
+        {
+          label: 'Cloud API reference',
+          docId: 'pcapirefinnsbruck',
+          description: <>The API definitions for Cloud API for PolicyCenter.</>,
+        },
+        {
+          label: 'Messaging',
+          description: (
+            <>
+              Use traditional Guidewire messaging to configure Gosu rules and
+              custom message transport plugins that send outbound messages
+              asynchronously in response to specific business events and manage
+              responses.
+            </>
+          ),
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_part-messaging',
+        },
+        {
           label: 'Pre-built integrations',
           description: (
             <>
@@ -418,7 +406,60 @@ const pageConfig: ApplicationLayoutProps = {
               inference.
             </>
           ),
-          url: '/cloud/pc/202310/integration/?contextid=c_part-policy-integrations',
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_part-policy-integrations',
+        },
+        {
+          label: 'Integration Data Manager',
+          docId: 'ispc202310integdatamgr',
+          description: (
+            <>
+              Store third-party data for use with InsuranceSuite, view this
+              data, and use it in business logic.
+            </>
+          ),
+        },
+        {
+          label: 'Cloud API for ContactManager',
+          docId: 'ispc202310apicm',
+          description: (
+            <>
+              Use Cloud API to make inbound calls from third-party applications
+              that create, edit, and retrieve data from ContactManager.
+            </>
+          ),
+        },
+        {
+          label: 'File-based integration',
+          description: (
+            <>
+              Configure filed-based integration for both inbound and outbound
+              integration points.
+            </>
+          ),
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_part-datatransfer',
+        },
+        {
+          label: 'Startable plugins',
+          description: (
+            <>
+              Configure startable plugins that listen for and process inbound
+              asynchronous messages from third-party applications.
+            </>
+          ),
+          docId: 'ispc202310integ',
+          pathInDoc: '?contextid=c_ns2380296',
+        },
+        {
+          label: 'REST API Framework',
+          docId: 'ispc202310restapifw',
+          description: (
+            <>
+              Create custom inbound RESTful APIs for business requirements that
+              are not addressed in Cloud API.
+            </>
+          ),
         },
         {
           label: 'API Sandbox',
@@ -429,6 +470,18 @@ const pageConfig: ApplicationLayoutProps = {
               explore a limited range of InsuranceSuite features.
             </>
           ),
+        },
+        {
+          label: 'Cloud Integration Basics Course',
+          description: (
+            <>A self-paced course covering the basics of Cloud Integration</>
+          ),
+          docId: 'cloudintegrationbasics',
+        },
+        {
+          label: 'Gosu reference',
+          docId: 'gosureflatest',
+          description: <>A reference for the Gosu programming language. </>,
         },
       ],
     },
@@ -468,7 +521,8 @@ const pageConfig: ApplicationLayoutProps = {
               permissions.
             </>
           ),
-          url: '/cloud/pc/202310/admin/?contextid=p_security',
+          docId: 'ispc202310admin',
+          pathInDoc: '?contextid=p_security',
         },
         {
           label: 'Network connectivity',
@@ -503,7 +557,8 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Database administration',
           description: <>Manage and maintain your Guidewire databases.</>,
-          url: '/cloud/pc/202310/admin/?contextid=p_data',
+          docId: 'ispc202310admin',
+          pathInDoc: '?contextid=p_data',
         },
         {
           label: 'Server administration',
@@ -513,14 +568,16 @@ const pageConfig: ApplicationLayoutProps = {
               run levels, and manage server memory.
             </>
           ),
-          url: '/cloud/pc/202310/admin/?contextid=p_server',
+          docId: 'ispc202310admin',
+          pathInDoc: '?contextid=p_server',
         },
         {
           label: 'Business rules',
           description: (
             <>Create, edit, and manage underwriting issues in PolicyCenter.</>
           ),
-          url: '/cloud/pc/202310/admin/?contextid=p_bizrules',
+          docId: 'ispc202310admin',
+          pathInDoc: '?contextid=p_bizrules',
         },
         {
           label: 'Observability',
@@ -535,6 +592,11 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
   ],
+  selector: {
+    selectedItemLabel: 'Innsbruck (2023.10)',
+    items: allSelectors.s1793805ac84baf801d4eb31b00ab1ddf,
+    labelColor: 'black',
+  },
 };
 
 export default function LandingPage202310() {

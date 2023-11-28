@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useState } from 'react';
-import ApplicationLinkList, { TabPanelProps } from './ApplicationLinkList';
+import ApplicationLinkList, { TabPanelProps } from './ApplicationTabLinkList';
 import ApplicationTabIcon, {
   ApplicationTabIconProps,
 } from './ApplicationTabIcon';
@@ -46,7 +46,7 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
   const tabHeight = '42px';
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', my: { xs: '40px', sm: '40px', md: '75px' } }}>
       <Box
         sx={{
           borderBottom: 1,

@@ -53,5 +53,7 @@ function getFileContents(filePath: string) {
 }
 
 export function getAnalyticsInitializeScript() {
-  return getFileContents(join(__dirname, 'utils', 'analyticsInitializeScript.js'));
+  return getFileContents(
+    join(__dirname, 'utils', 'analyticsInitializeScript.js')
+  );
 }

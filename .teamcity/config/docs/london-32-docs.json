@@ -10,7 +10,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "release": ["Dobson"],
         "platform": ["Cloud"],
         "version": ["3.2"],
@@ -33,7 +34,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "release": ["Dobson"],
         "platform": ["Cloud"],
         "version": ["3.2"],

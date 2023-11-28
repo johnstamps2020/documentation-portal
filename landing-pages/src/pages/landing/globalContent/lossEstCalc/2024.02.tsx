@@ -14,7 +14,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'gondolaslecrninnsbruck',
+          docId: 'gondolaslecrnjasper',
         },
       ],
     },
@@ -23,7 +23,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Application Guide',
-          docId: 'gondolaslecappinnsbruck',
+          docId: 'gondolaslecappjasper',
         },
       ],
     },
@@ -32,7 +32,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Installation and Deployment',
-          docId: 'gondolaslecinstallinnsbruck',
+          docId: 'gondolaslecinstalljasper',
         },
       ],
     },
@@ -41,7 +41,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Configuration',
-          docId: 'gondolaslecconfiginnsbruck',
+          docId: 'gondolaslecconfigjasper',
         },
       ],
     },
@@ -50,13 +50,13 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Integration',
-          docId: 'gondolaslecinteginnsbruck',
+          docId: 'gondolaslecintegjasper',
         },
       ],
     },
   ],
 };
 
-export default function LandingPage202310() {
+export default function LandingPage202402() {
   return <SectionLayout {...pageConfig} />;
 }

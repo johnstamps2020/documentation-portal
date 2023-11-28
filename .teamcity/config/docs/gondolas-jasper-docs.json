@@ -2,14 +2,14 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "gondolaslecappinnsbruck",
+      "id": "gondolaslecappjasper",
       "title": "Loss Estimate Calculator Application Guide",
-      "url": "cloud/global/losscalc/202310/app",
+      "url": "cloud/global/losscalc/202402/app",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Features and functionality"],
         "language": "en"
       },
@@ -18,17 +18,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolaslecrninnsbruck",
+      "id": "gondolaslecrnjasper",
       "title": "Loss Estimate Calculator Release Notes",
-      "url": "cloud/global/losscalc/202310/rn",
+      "url": "cloud/global/losscalc/202402/rn",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Release notes"],
         "language": "en"
       },
@@ -37,17 +37,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolaslecconfiginnsbruck",
+      "id": "gondolaslecconfigjasper",
       "title": "Loss Estimate Calculator Configuration",
-      "url": "cloud/global/losscalc/202310/config",
+      "url": "cloud/global/losscalc/202402/config",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -56,17 +56,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolaslecinstallinnsbruck",
+      "id": "gondolaslecinstalljasper",
       "title": "Loss Estimate Calculator Installation and Deployment",
-      "url": "cloud/global/losscalc/202310/install",
+      "url": "cloud/global/losscalc/202402/install",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Installation"],
         "language": "en"
       },
@@ -75,17 +75,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolaslecinteginnsbruck",
+      "id": "gondolaslecintegjasper",
       "title": "Loss Estimate Calculator Integration",
-      "url": "cloud/global/losscalc/202310/integ",
+      "url": "cloud/global/losscalc/202402/integ",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Integration"],
         "language": "en"
       },
@@ -94,17 +94,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolaslgappinnsbruck",
+      "id": "gondolaslgappjasper",
       "title": "Lookup Generator Application Guide",
-      "url": "cloud/global/lookup-generator/202310/app",
+      "url": "cloud/global/lookup-generator/202402/app",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Features and functionality"],
         "language": "en"
       },
@@ -113,17 +113,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolaslgrninnsbruck",
+      "id": "gondolaslgrnjasper",
       "title": "Lookup Generator Release Notes",
-      "url": "cloud/global/lookup-generator/202310/rn",
+      "url": "cloud/global/lookup-generator/202402/rn",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Release notes"],
         "language": "en"
       },
@@ -132,17 +132,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolaslgconfiginnsbruck",
+      "id": "gondolaslgconfigjasper",
       "title": "Lookup Generator Configuration",
-      "url": "cloud/global/lookup-generator/202310/config",
+      "url": "cloud/global/lookup-generator/202402/config",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -151,17 +151,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolaslginstallinnsbruck",
+      "id": "gondolaslginstalljasper",
       "title": "Lookup Generator Installation and Deployment",
-      "url": "cloud/global/lookup-generator/202310/install",
+      "url": "cloud/global/lookup-generator/202402/install",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Installation"],
         "language": "en"
       },
@@ -170,17 +170,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolaslginteginnsbruck",
+      "id": "gondolaslgintegjasper",
       "title": "Lookup Generator Integration",
-      "url": "cloud/global/lookup-generator/202310/integ",
+      "url": "cloud/global/lookup-generator/202402/integ",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Integration"],
         "language": "en"
       },
@@ -189,17 +189,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolasmsappinnsbruck",
+      "id": "gondolasmsappjasper",
       "title": "Message Store Application Guide",
-      "url": "cloud/global/message-store/202310/app",
+      "url": "cloud/global/message-store/202402/app",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Features and functionality"],
         "language": "en"
       },
@@ -208,17 +208,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolasmsrninnsbruck",
+      "id": "gondolasmsrnjasper",
       "title": "Message Store Release Notes",
-      "url": "cloud/global/message-store/202310/rn",
+      "url": "cloud/global/message-store/202402/rn",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Release notes"],
         "language": "en"
       },
@@ -227,17 +227,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolasmsconfiginnsbruck",
+      "id": "gondolasmsconfigjasper",
       "title": "Message Store Configuration",
-      "url": "cloud/global/message-store/202310/config",
+      "url": "cloud/global/message-store/202402/config",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -246,17 +246,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolasmsinstallinnsbruck",
+      "id": "gondolasmsinstalljasper",
       "title": "Message Store Installation and Deployment",
-      "url": "cloud/global/message-store/202310/install",
+      "url": "cloud/global/message-store/202402/install",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Installation"],
         "language": "en"
       },
@@ -265,17 +265,17 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
-      "id": "gondolasmsinteginnsbruck",
+      "id": "gondolasmsintegjasper",
       "title": "Message Store Integration",
-      "url": "cloud/global/message-store/202310/integ",
+      "url": "cloud/global/message-store/202402/integ",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["2023.10"],
+        "release": ["Jasper"],
+        "version": ["2024.02"],
         "subject": ["Integration"],
         "language": "en"
       },
@@ -284,7 +284,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     }
   ]
 }

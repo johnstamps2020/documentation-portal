@@ -19,7 +19,9 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Support Matrix',
-          url: '/support-matrices/data-management/data-management-2023.02-garmisch-support-matrix.pdf',
+          docId: 'supportmatrices',
+          pathInDoc:
+            'data-management/data-management-2023.02-garmisch-support-matrix.pdf',
           videoIcon: false,
         },
       ],

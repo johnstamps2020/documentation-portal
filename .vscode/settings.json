@@ -1,6 +1,6 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "cSpell.enableFiletypes": ["mdx"],
   "terminal.integrated.profiles.osx": {
     "bash": {
@@ -38,6 +38,7 @@
   "cSpell.words": [
     "aggs",
     "AMST",
+    "apac",
     "Aspen",
     "Avenir",
     "Banff",
@@ -78,6 +79,7 @@
     "justcopybuild",
     "libpq",
     "mbox",
+    "multilineproducts",
     "Nederlands",
     "OIDC",
     "pendo",
@@ -98,6 +100,8 @@
     "typelists",
     "typeorm",
     "whatsnew",
+    "workset",
+    "xmind",
     "yarnbuild"
   ],
   "cSpell.ignorePaths": [

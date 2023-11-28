@@ -49,7 +49,9 @@ docId: 'dx202310frFRpeclaimsrelnotes',
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/pe-claims/2021.11/fr-FR Digital v.2021.11 PE Claims_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/2021.11/fr-FR Digital v.2021.11 PE Claims_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -59,22 +61,30 @@ docId: 'dx202310frFRpeclaimsrelnotes',
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims admin&security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide du développeur',
-          url: '/l10n/pdfs/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims DevelopersGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims DevelopersGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims AppGuide.pdf',
           videoIcon: false,
         },
       ],

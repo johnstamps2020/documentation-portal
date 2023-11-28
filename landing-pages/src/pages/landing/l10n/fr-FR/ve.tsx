@@ -49,7 +49,8 @@ docId: 'dx202310frFRverelnotes',
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ve/2021.11/fr-FR Digital 2021.11 VE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ve/2021.11/fr-FR Digital 2021.11 VE_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -59,22 +60,29 @@ docId: 'dx202310frFRverelnotes',
       items: [
         {
           label: 'Guide du développeur',
-          url: '/l10n/pdfs/fr-FR/ve/11.4.1/fr-FR-Digital v.11.4.1 VE-DevelopersGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ve/11.4.1/fr-FR-Digital v.11.4.1 VE-DevelopersGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/ve/11.4.1/fr-FR-Digital v.11.4.1 VE admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ve/11.4.1/fr-FR-Digital v.11.4.1 VE admin&security-guide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ve/11.4.1/fr-FR Digital v.11.4.1 VE AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ve/11.4.1/fr-FR Digital v.11.4.1 VE AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ve/11.4.1/fr-FR-Digital v.11.4.1 VE InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ve/11.4.1/fr-FR-Digital v.11.4.1 VE InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -84,7 +92,8 @@ docId: 'dx202310frFRverelnotes',
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ve/11.1/fr-VE-11.1_onprem_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ve/11.1/fr-VE-11.1_onprem_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -94,22 +103,27 @@ docId: 'dx202310frFRverelnotes',
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ve/10.0.1/fr-VE_InstallGuide_fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ve/10.0.1/fr-VE_InstallGuide_fr.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation et de configuration Live Style Guide",
-          url: '/l10n/pdfs/fr-FR/ve/10.0.1/fr-VE_Life Style Guide Install and Config.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ve/10.0.1/fr-VE_Life Style Guide Install and Config.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des applications',
-          url: '/l10n/pdfs/fr-FR/ve/10.0.1/fr-VE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ve/10.0.1/fr-VE_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/ve/10.0.1/fr-VE_admin-and-security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ve/10.0.1/fr-VE_admin-and-security-guide.pdf',
           videoIcon: false,
         },
       ],

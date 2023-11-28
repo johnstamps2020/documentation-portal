@@ -49,7 +49,9 @@ docId: 'isupgradecompatibilityjaJP',
       items: [
         {
           label: 'ガイド',
-          url: '/l10n/pdfs/ja-JP/is-configupgradetools/3.2.0/InsuranceSuiteConfigurationUpgradeTools.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/is-configupgradetools/3.2.0/InsuranceSuiteConfigurationUpgradeTools.pdf',
           videoIcon: false,
         },
       ],

@@ -40,7 +40,9 @@ docId: 'dx202310deDEceamrelnotes',
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/2023.02/CustomerEngage_AccountManagement_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-am/2023.02/CustomerEngage_AccountManagement_AppGuide.pdf',
           videoIcon: false,
         },
         {
@@ -54,7 +56,9 @@ docId: 'dx202310deDEceamrelnotes',
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/2021.11/de-DE Digital v.2021.11 CE-AM_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-am/2021.11/de-DE Digital v.2021.11 CE-AM_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -64,22 +68,30 @@ docId: 'dx202310deDEceamrelnotes',
       items: [
         {
           label: 'Administrator- und Sicherheitshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/11.4.1/de-DE-Digital v11.4.1 CE-AM admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-am/11.4.1/de-DE-Digital v11.4.1 CE-AM admin&security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM Installer-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM Installer-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Entwicklerhandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CEAM Developers-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CEAM Developers-guide.pdf',
           videoIcon: false,
         },
       ],
@@ -89,7 +101,8 @@ docId: 'dx202310deDEceamrelnotes',
       items: [
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/11.1/de-CE-AM-11.1_onprem_InstallGuides.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ce-am/11.1/de-CE-AM-11.1_onprem_InstallGuides.pdf',
           videoIcon: false,
         },
       ],
@@ -99,27 +112,33 @@ docId: 'dx202310deDEceamrelnotes',
       items: [
         {
           label: 'Konfigurationshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ce-am/10.0.1/de-CEAM_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Live Style Guide Installation and Configuration Guide',
-          url: '/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_Life Style Guide Install and Config.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-am/10.0.1/de-CEAM_Life Style Guide Install and Config.pdf',
           videoIcon: false,
         },
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ce-am/10.0.1/de-CEAM_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Administrator- und Sicherheitshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_admin-and-security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ce-am/10.0.1/de-CEAM_admin-and-security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ce-am/10.0.1/de-CEAM_InstallGuide.pdf',
           videoIcon: false,
         },
       ],

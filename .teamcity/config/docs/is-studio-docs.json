@@ -8,13 +8,9 @@
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": [
-          "2023.06"
-        ],
+        "version": ["2023.06"],
         "subject": ["Installation"],
-        "release": [
-          "Hakuba"
-        ],
+        "release": ["Hakuba"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
