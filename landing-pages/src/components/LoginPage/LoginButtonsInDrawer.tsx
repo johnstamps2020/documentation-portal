@@ -19,8 +19,9 @@ export default function LoginButtonsInDrawer() {
     return null;
   }
 
+  //FIXME: Login options for prod are not used until we resolve the issue with conflicting Okta strategies
   const loginOptionsToRender =
-    envInfo?.name === 'omega2-andromeda' ? loginOptionsProd : loginOptions;
+    envInfo?.name === 'omega2-andromeda' ? loginOptions : loginOptions;
 
   return (
     <Stack gap={2}>

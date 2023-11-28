@@ -47,9 +47,10 @@ async function createOktaStrategies() {
     `${process.env.APP_BASE_URL!}/authorization-code/callback`,
   ];
 
+  // FIXME: Strategies for EMEA and APAC are removed until we resolve the issue with conflicting Okta strategies
   const oktaInstances: OktaInstance[] =
     process.env.DEPLOY_ENV === 'omega2-andromeda'
-      ? [oktaInstanceAmer, oktaIntanceApac, oktaInstanceEmea]
+      ? [oktaInstanceAmer]
       : [oktaInstanceAmer];
 
   const oktaStrategies: OktaStrategy[] = [];
