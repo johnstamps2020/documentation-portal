@@ -17,13 +17,12 @@ export function useQueryParameters() {
     } else {
       filterValues.splice(filterValues.indexOf(filterValue), 1);
     }
-    
+
     const onlyNonEmptyFilterValues = filterValues.filter(Boolean);
     onlyNonEmptyFilterValues.length > 0
       ? query.set(filterName, onlyNonEmptyFilterValues.join(','))
       : query.delete(filterName);
 
-    
     const addPlatform = (value: string) => {
       const queryPlatform = query.get('platform');
       const existingValues = queryPlatform?.split(',') || [];
@@ -31,19 +30,20 @@ export function useQueryParameters() {
         existingValues.push(value);
         query.set('platform', existingValues.join(','));
       }
-    }
-    
+    };
+
     const removePlatform = (value: string) => {
       const queryPlatform = query.get('platform');
       const existingValues = queryPlatform?.split(',') || [];
       if (existingValues.includes(value)) {
         existingValues.splice(existingValues.indexOf(value), 1);
-        if (existingValues.length > 0){
-        query.set('platform', existingValues.join(','));} else {
+        if (existingValues.length > 0) {
+          query.set('platform', existingValues.join(','));
+        } else {
           query.delete('platform');
         }
       }
-    }
+    };
 
     if (query.has('version')) {
       addPlatform('Self-managed');
@@ -56,7 +56,7 @@ export function useQueryParameters() {
     if (!query.has('version')) {
       removePlatform('Self-managed');
     }
-    
+
     if (!query.has('release')) {
       removePlatform('Cloud');
     }

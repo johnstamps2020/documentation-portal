@@ -9,7 +9,14 @@
         "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
         "language": "en"
       },
       "displayOnLandingPages": true,
@@ -27,7 +34,14 @@
         "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.12"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
         "language": "en"
       },
       "environments": ["staging"],
@@ -45,7 +59,14 @@
         "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.11"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
         "language": "en"
       },
       "environments": ["staging"],
@@ -63,7 +84,14 @@
         "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.10"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
         "language": "en"
       },
       "environments": ["staging"],

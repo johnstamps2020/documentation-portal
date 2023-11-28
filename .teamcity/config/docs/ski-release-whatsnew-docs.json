@@ -13,7 +13,8 @@
           "PolicyCenter",
           "InsuranceNow",
           "DataHub",
-          "InfoCenter"],
+          "InfoCenter"
+        ],
         "version": ["2023.10", "2023.3"],
         "release": ["Innsbruck"],
         "subject": ["Release notes"],
@@ -38,7 +39,8 @@
           "PolicyCenter",
           "InsuranceNow",
           "DataHub",
-          "InfoCenter"],
+          "InfoCenter"
+        ],
         "version": ["2023.06", "2023.2"],
         "release": ["Hakuba"],
         "subject": ["Release notes"],
@@ -63,7 +65,8 @@
           "PolicyCenter",
           "InsuranceNow",
           "DataHub",
-          "InfoCenter"],
+          "InfoCenter"
+        ],
         "version": ["2023.02", "2023.1"],
         "release": ["Garmisch"],
         "subject": ["Release notes"],
@@ -88,7 +91,8 @@
           "PolicyCenter",
           "InsuranceNow",
           "DataHub",
-          "InfoCenter"],
+          "InfoCenter"
+        ],
         "version": ["2022.09", "2022.2"],
         "release": ["Flaine"],
         "subject": ["Release notes"],

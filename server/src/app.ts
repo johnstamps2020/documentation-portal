@@ -144,8 +144,8 @@ app.use('/alive', (req, res) => {
 
 // Google Search Console verification DO NOT DELETE!
 app.use('/google6a1282aff702e827.html', (req, res) => {
-  res.status(200).send(`google-site-verification: google6a1282aff702e827.html`)
-})
+  res.status(200).send(`google-site-verification: google6a1282aff702e827.html`);
+});
 
 app.use(express.json());
 app.use('/jira', jiraRouter);

@@ -51,7 +51,7 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
-    }, 
+    },
     {
       "id": "binrepo",
       "title": "Binary Repository",

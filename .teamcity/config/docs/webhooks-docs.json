@@ -6,7 +6,12 @@
       "title": "Webhooks API Reference",
       "url": "cloud/is/webhooksapi",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter", "App Events Webhooks"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "App Events Webhooks"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09", "2023.02", "2023.06"],
         "release": ["Flaine", "Garmisch", "Hakuba"],

@@ -6,7 +6,12 @@
       "title": "App Events",
       "url": "cloud/is/appevents/next",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter", "App Events Webhooks"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "App Events Webhooks"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.10"],
         "release": ["Innsbruck"],

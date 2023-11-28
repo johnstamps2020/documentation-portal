@@ -205,7 +205,7 @@ export default function PageSettingsForm({
       jsonData.path === tmpPageData.path && pageData?.path !== tmpPageData.path
     );
   }
-  
+
   function checkIfFileExists(path: string) {
     try {
       if (path) {
@@ -289,8 +289,7 @@ export default function PageSettingsForm({
           '.MuiFormHelperText-root': {
             color: '#e65100',
             fontSize: '14px',
-            m: "3px 3px 0px 3px",
-
+            m: '3px 3px 0px 3px',
           },
         }}
       />

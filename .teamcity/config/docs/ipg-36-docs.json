@@ -10,7 +10,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Features and functionality"],
@@ -32,7 +33,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Features and functionality"],
@@ -54,7 +56,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Installation"],
@@ -76,7 +79,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Release notes"],
@@ -98,7 +102,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Release notes"],
@@ -120,7 +125,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Glossary"],
@@ -142,7 +148,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Features and functionality"],

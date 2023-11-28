@@ -677,10 +677,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.2"],
         "subject": ["Features and functionality"],
-        "release": ["Hakuba","Innsbruck"],
+        "release": ["Hakuba", "Innsbruck"],
         "language": "en"
       },
-      "environments": ["staging","prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

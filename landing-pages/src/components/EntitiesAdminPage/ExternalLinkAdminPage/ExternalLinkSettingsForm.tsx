@@ -69,7 +69,8 @@ export default function ExternalLinkSettingsForm({
   );
   const [canSubmitData, setCanSubmitData] = useState(false);
   const [dataChanged, setDataChanged] = useState(false);
-  const [externalLinkAlreadyExists, setExternalLinkAlreadyExists] = useState<boolean>();
+  const [externalLinkAlreadyExists, setExternalLinkAlreadyExists] =
+    useState<boolean>();
   const [jsonIsInvalid, setJsonIsInvalid] = useState<boolean>();
 
   useEffect(() => {
@@ -212,7 +213,10 @@ export default function ExternalLinkSettingsForm({
       <TextField
         required
         error={externalLinkAlreadyExists}
-        helperText={externalLinkAlreadyExists && 'External link with this url already exists'}
+        helperText={
+          externalLinkAlreadyExists &&
+          'External link with this url already exists'
+        }
         disabled={editingDisabled}
         label="Url"
         value={tmpExternalLinkData.url}
