@@ -17,17 +17,16 @@ const pageConfig: CategoryLayoutProps = {
   },
 
   cards: [
-{
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
-docId: 'isconfigupgradetoolsdeDE500', 
-}, 
-],
-},
-{
-  ],
+    {
+      label: '2023.10 (Innsbruck)', 
+      items: [
+        {
+          label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
+          docId: 'isconfigupgradetoolsdeDE500', 
+        }, 
+      ]
+    }
+  ]
 };
 
 export default function Isconfigupgradetools() {

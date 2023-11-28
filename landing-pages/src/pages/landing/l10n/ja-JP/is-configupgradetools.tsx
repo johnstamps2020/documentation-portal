@@ -18,19 +18,18 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
 {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
-docId: 'isconfigupgradetoolsjaJP500', 
-}, 
-{
-label: '[TBD]IS Configuration Upgrade Tools Compatibility', 
-docId: 'isupgradecompatibilityjaJP', 
-}, 
-],
+      label: '2023.10 (Innsbruck)', 
+      items: [
+      {
+      label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
+      docId: 'isconfigupgradetoolsjaJP500', 
+      }, 
+      {
+      label: '[TBD]IS Configuration Upgrade Tools Compatibility', 
+      docId: 'isupgradecompatibilityjaJP', 
+      }, 
+      ],
 },
-{
     {
       label: '4.6.0',
       items: [
@@ -48,7 +47,7 @@ docId: 'isupgradecompatibilityjaJP',
       label: '3.2.0',
       items: [
         {
-          label: 'ガイド',
+          label: 'Upgrade Tools ガイド',
           docId: 'l10npdfss3folder',
           pathInDoc:
             'ja-JP/is-configupgradetools/3.2.0/InsuranceSuiteConfigurationUpgradeTools.pdf',
