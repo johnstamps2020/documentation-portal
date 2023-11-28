@@ -1,9 +1,12 @@
 export const allSelectors = {
-  apdapp: [
+  apdApp: [
     { label: 'Flaine (2022.09)', pagePath: 'cloudProducts/flaine/apd' },
     { label: 'Garmisch (2023.02)', pagePath: 'cloudProducts/garmisch/apd' },
     { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba/apd' },
-    { label: 'Innsbruck (2023.10)', pagePath: 'cloudProducts/innsbruck/apd' },
+    {
+      label: 'Innsbruck (2023.10)',
+      pagePath: 'cloudProducts/innsbruck/apd/create-home',
+    },
   ],
   testingFrameworkSelector: [
     { label: 'Elysian (2022.05)', pagePath: 'testingFramework/elysian' },
@@ -980,24 +983,6 @@ export const allSelectors = {
       label: '8.1.0',
       docId:
         'httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya',
-    },
-  ],
-  apdCreateHome: [
-    {
-      label: 'Innsbruck (2023.10)',
-      pagePath: 'cloudProducts/innsbruck/apd/create-home',
-    },
-    {
-      label: 'Hakuba (2023.06)',
-      docId: 'apdapphakuba',
-    },
-    {
-      label: 'Hakuba (2023.02)',
-      docId: 'apdappgarmisch',
-    },
-    {
-      label: 'Flaine (2022.09)',
-      docId: 'apdappflaine',
     },
   ],
 };

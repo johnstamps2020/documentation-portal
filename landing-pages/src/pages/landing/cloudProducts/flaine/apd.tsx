@@ -12,7 +12,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Flaine (2022.09)',
-    items: allSelectors.apdapp,
+    items: allSelectors.apdApp,
     labelColor: 'black',
   },
   sections: [

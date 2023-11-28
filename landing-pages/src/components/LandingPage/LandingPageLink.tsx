@@ -68,7 +68,11 @@ export default function LandingPageLink({
           {landingPageItem.label}
         </Link>
       ) : (
-        <Link href={resolveUrl(landingPageItem?.url)} sx={sx}>
+        <Link
+          href={resolveUrl(landingPageItem?.url)}
+          target={showExternalIcon ? '_blank' : undefined}
+          sx={sx}
+        >
           <Stack direction="row" alignItems="center" spacing={1}>
             <Box>{landingPageItem?.label}</Box>
 
