@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
 import Pagination from '@mui/material/Pagination';
+import FileValidationWarning from 'components/EntitiesAdminPage/PageAdminPage/FileValidationWarning';
 import React, { useEffect, useState } from 'react';
 import EditButton from './EditButton';
 import EntityCard from './EntityCard';
@@ -158,6 +159,7 @@ export default function EntityListWithFilters({
                   <DeleteButton primaryKey={url} />
                 </>
               }
+              cardWarning={<FileValidationWarning path={url} />}
             />
           ))}
       </Box>

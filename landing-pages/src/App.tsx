@@ -3,7 +3,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import LandingPage from 'pages/LandingPage/LandingPage';
 import ForbiddenPage from 'pages/ForbiddenPage/ForbiddenPage';
 import FourOhFourPage from 'pages/FourOhFourPage/FourOhFourPage';
-import DocAdminPage from 'pages/DocAdminPage/DocAdminPage';
 import SearchPage from 'pages/SearchPage/SearchPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import { appTheme } from 'themes/appTheme';
@@ -15,6 +14,7 @@ import AdminPage from 'pages/AdminPage/AdminPage';
 import { LayoutContextProvider } from 'LayoutContext';
 import Layout from 'components/Layout/Layout';
 import ExternalLinkAdminPage from 'pages/ExternalLinkAdminPage/ExternalLinkAdminPage';
+import FileValidator from 'pages/FileValidator/FileValidator';
 
 const router = createBrowserRouter([
   {
@@ -38,16 +38,16 @@ const router = createBrowserRouter([
         element: <AdminPage />,
       },
       {
-        path: 'admin-panel/doc',
-        element: <DocAdminPage />,
-      },
-      {
         path: 'admin-panel/page',
         element: <PageAdminPage />,
       },
       {
         path: 'admin-panel/external-link',
         element: <ExternalLinkAdminPage />,
+      },
+      {
+        path: 'admin-panel/file-validator',
+        element: <FileValidator />,
       },
       {
         path: 'search-results',
