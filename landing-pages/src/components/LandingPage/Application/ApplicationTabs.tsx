@@ -46,7 +46,7 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
   const tabHeight = '42px';
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', my: { xs: '40px', sm: '40px', md: '75px' } }}>
       <Box
         sx={{
           borderBottom: 1,
