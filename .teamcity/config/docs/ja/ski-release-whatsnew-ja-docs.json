@@ -7,9 +7,7 @@
       "title": "What's new in innsbruck ja",
       "displayTitle": "Innsbruck の新機能",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
+        "platform": [ "Cloud" ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -18,59 +16,37 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": [
-          "2023.10"
-        ],
-        "release": [
-          "Innsbruck"
-        ],
-        "subject": [
-          "Release notes"
-        ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
         "language": "ja"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": [ "staging" ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false,
       "displayOnLandingPages": true
-    },
-    {
+    }, {
       "id": "whatsnewjahakuba",
       "url": "ja/cloud/hakuba/whatsnew",
       "title": "What's new in Hakuba ja",
       "displayTitle": "Hakuba の新機能",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
+        "platform": [ "Cloud" ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
           "InsuranceNow",
           "DataHub",
-          "InfoCenter"
-        ],
-        "version": [
-          "2023.06",
-          "2023.2"
-        ],
-        "release": [
-          "Hakuba"
-        ],
-        "subject": [
-          "Release notes"
-        ],
+          "InfoCenter" ],
+        "version": [ "2023.06", "2023.2" ],
+        "release": [ "Hakuba" ],
+        "subject": [ "Release notes" ],
         "language": "ja"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": [ "staging", "prod" ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
