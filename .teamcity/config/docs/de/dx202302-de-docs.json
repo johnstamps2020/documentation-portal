@@ -4,7 +4,7 @@
     {
       "id": "dx202302deDEceamapp",
       "title": "CustomerEngage Account Management Application Guide de",
-      "displayTitle": "Anwendungshandbuch",
+      "displayTitle": "CustomerEngage Account Management Anwendungshandbuch",
       "url": "de/cloud/dx/ce-am/202302/app",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -24,7 +24,7 @@
     {
       "id": "dx202302deDEceclaimsapp",
       "title": "CustomerEngage Account Management for ClaimCenter Application Guide de",
-      "displayTitle": "Anwendungshandbuch",
+      "displayTitle": "CustomerEngage Account Management für ClaimCenter Anwendungshandbuch",
       "url": "de/cloud/dx/ce-claims/202302/app",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -44,7 +44,7 @@
     {
       "id": "dx202302deDEceqbapp",
       "title": "CustomerEngage Quote and Buy Application Guide de",
-      "displayTitle": "Anwendungshandbuch",
+      "displayTitle": "CustomerEngage Quote and Buy Anwendungshandbuch",
       "url": "de/cloud/dx/ce-qb/202302/app",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -64,7 +64,7 @@
     {
       "id": "dx202302deDEpeapp",
       "title": "ProducerEngage Application Guide de",
-      "displayTitle": "Anwendungshandbuch",
+      "displayTitle": "ProducerEngage Anwendungshandbuch",
       "url": "de/cloud/dx/pe/202302/app",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -84,7 +84,7 @@
     {
       "id": "dx202302deDEpeclaimsapp",
       "title": "ProducerEngage for ClaimCenter Application Guide de",
-      "displayTitle": "Anwendungshandbuch",
+      "displayTitle": "ProducerEngage für ClaimCenter Anwendungshandbuch",
       "url": "de/cloud/dx/pe-claims/202302/app",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -104,7 +104,7 @@
     {
       "id": "dx202302deDEsreapp",
       "title": "ServiceRepEngage Application Guide de",
-      "displayTitle": "Anwendungshandbuch",
+      "displayTitle": "ServiceRepEngage Anwendungshandbuch",
       "url": "de/cloud/dx/sre/202302/app",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -124,7 +124,7 @@
     {
       "id": "dx202302deDEveapp",
       "title": "VendorEngage Application Guide de",
-      "displayTitle": "Anwendungshandbuch",
+      "displayTitle": "VendorEngage Anwendungshandbuch",
       "url": "de/cloud/dx/ve/202302/app",
       "metadata": {
         "product": ["Digital Reference Applications"],

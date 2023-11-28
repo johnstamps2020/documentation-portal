@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: '[TBD]What\'s new in Innsubruck',
+      pagePath: 'l10n/de-DE/innsbruck',
+    },
+    {
       label: 'Was ist neu in Hakuba',
       pagePath: 'l10n/de-DE/202306hakubawhatsnew',
     },
@@ -49,6 +53,10 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'InsuranceSuite Contact Management',
       pagePath: 'l10n/de-DE/cm',
+    },
+    {
+      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/de-DE/is-configupgradetools',
     },
     {
       label: 'DataHub',

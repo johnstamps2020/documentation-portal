@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]CustomerEngage Account Management Release Notes', 
+docId: 'dx202310frFRceamrelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -116,3 +125,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Ceam() {
   return <CategoryLayout {...pageConfig} />;
 }
+

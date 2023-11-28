@@ -4,17 +4,17 @@
     {
       "id": "gwcpfrFRreleasenotes",
       "title": "Cloud Platform Release Notes fr",
-      "displayTitle": "Notes de version de la plate-forme Guidewire Cloud",
+      "displayTitle": "Notes sur la version",
       "url": "fr/cloud/gwcprelnotes/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Hakuba"],
+        "release": ["Innsbruck"],
         "subject": ["Release notes"],
         "language": "fr"
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -23,3 +23,4 @@
     }
   ]
 }
+

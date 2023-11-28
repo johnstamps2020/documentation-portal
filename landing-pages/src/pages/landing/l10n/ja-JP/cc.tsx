@@ -36,6 +36,19 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]ClaimCenter Release Notes', 
+docId: 'iscc202310jaJPreleasenotes', 
+}, 
+{
+label: '[TBD]ClaimCenter Update', 
+docId: 'iscc202310jaJPupdate', 
+}, 
+],
+},
+{
       label: '2023.06 (Hakuba)',
       items: [
         {
@@ -310,3 +323,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Cc() {
   return <CategoryLayout {...pageConfig} />;
 }
+

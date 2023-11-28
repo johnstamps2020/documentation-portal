@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]ProducerEngage Release Notes', 
+docId: 'dx202310deDEperelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -126,3 +135,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Pe() {
   return <CategoryLayout {...pageConfig} />;
 }
+

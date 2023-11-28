@@ -17,6 +17,20 @@ const pageConfig: CategoryLayoutProps = {
   },
 
   cards: [
+{
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
+docId: 'isconfigupgradetoolsjaJP500', 
+}, 
+{
+label: '[TBD]IS Configuration Upgrade Tools Compatibility', 
+docId: 'isupgradecompatibilityjaJP', 
+}, 
+],
+},
+{
     {
       label: '4.6.0',
       items: [
@@ -46,3 +60,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Isconfigupgradetools() {
   return <CategoryLayout {...pageConfig} />;
 }
+
