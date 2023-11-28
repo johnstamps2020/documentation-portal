@@ -28,12 +28,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Jutro SDK (Early Access)',
-          url: '/jutro/sdk/hakuba/docs/jutro-sdk-overview',
+          docId: 'jutrosdkhakuba',
+          pathInDoc: 'docs/jutro-sdk-overview',
           videoIcon: false,
         },
         {
           label: 'APD toolkit (Early Access)',
-          url: '/jutro/sdk/hakuba/docs/apd-toolkit-overview',
+          docId: 'jutrosdkhakuba',
+          pathInDoc: 'docs/apd-toolkit-overview',
           videoIcon: false,
         },
       ],

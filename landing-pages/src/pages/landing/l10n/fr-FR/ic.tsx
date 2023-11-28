@@ -22,27 +22,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guide de mise à niveau',
-          url: '/l10n/pdfs/fr-FR/ic/10.0.0/IC10-upgrade-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ic/10.0.0/IC10-upgrade-fr.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ic/10.0.0/IC10-install-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ic/10.0.0/IC10-install-fr.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration",
-          url: '/l10n/pdfs/fr-FR/ic/10.0.0/IC10-admin-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ic/10.0.0/IC10-admin-fr.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration InfoCenter',
-          url: '/l10n/pdfs/fr-FR/ic/10.0.0/IC10-config-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ic/10.0.0/IC10-config-fr.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des spécifications de données',
-          url: '/l10n/pdfs/fr-FR/ic/10.0.0/IC10-dataspec-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ic/10.0.0/IC10-dataspec-fr.pdf',
           videoIcon: false,
         },
       ],

@@ -40,12 +40,16 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'ルールガイド',
-          url: '/l10n/pdfs/ja-JP/pc/2021.04 Cortina/PC_CL202104_ja-JP_RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/pc/2021.04 Cortina/PC_CL202104_ja-JP_RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'テストガイド',
-          url: '/l10n/pdfs/ja-JP/pc/2021.04 Cortina/PC_CL202104_ja-JP_TestingGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/pc/2021.04 Cortina/PC_CL202104_ja-JP_TestingGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -55,17 +59,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/pc/2020.11 Banff/PCCloud202011_ja-JP_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/pc/2020.11 Banff/PCCloud202011_ja-JP_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Advanced Product Designer ガイド',
-          url: '/l10n/pdfs/ja-JP/pc/2020.11 Banff/Cloud202011_ja-JP_AdvancedProductDesigner.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/pc/2020.11 Banff/Cloud202011_ja-JP_AdvancedProductDesigner.pdf',
           videoIcon: false,
         },
         {
           label: 'コンフィギュレーションガイド',
-          url: '/l10n/pdfs/ja-JP/pc/2020.11 Banff/PCCloud202011_ja-JP_ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/pc/2020.11 Banff/PCCloud202011_ja-JP_ConfigGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -75,12 +85,15 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guidewire 連絡先管理ガイド',
-          url: '/l10n/pdfs/ja-JP/pc/2020.05 Aspen/IS_CL202005-PC-ContactMgmtGuide-ja_JP.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/pc/2020.05 Aspen/IS_CL202005-PC-ContactMgmtGuide-ja_JP.pdf',
           videoIcon: false,
         },
         {
           label: 'アプリケーションガイド',
-          url: '/l10n/pdfs/ja-JP/pc/2020.05 Aspen/IS_CL202005-PC-AppGuide-ja_JP.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/2020.05 Aspen/IS_CL202005-PC-AppGuide-ja_JP.pdf',
           videoIcon: false,
         },
       ],
@@ -90,7 +103,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.1.1/PC1011_ja-JP_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.1.1/PC1011_ja-JP_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -100,62 +114,74 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'ルールガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: '保険商品モデルガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-ProductModelGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-ProductModelGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'システム管理ガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-AdminGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-AdminGuide.pdf',
           videoIcon: false,
         },
         {
           label: '連携ガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-IntegrationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-IntegrationGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Gosu リファレンスガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-GosuRefGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-GosuRefGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guidewire 連絡先管理ガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'PolicyCenter  用語集',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-Glossary.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-Glossary.pdf',
           videoIcon: false,
         },
         {
           label: 'Product Designer ガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-ProductDesignerGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-ProductDesignerGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'コンフィギュレーションガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-ConfigGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'アプリケーションガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'ベストプラクティスガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.2/ja-PC-BestPracticesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.2/ja-PC-BestPracticesGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -165,47 +191,56 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.0/ja-PC-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.0/ja-PC-InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'ルールガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.0/ja-PC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.0/ja-PC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: '保険商品モデルガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.0/ja-PC-ProductModelGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.0/ja-PC-ProductModelGuide.pdf',
           videoIcon: false,
         },
         {
           label: '連携ガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.0/ja-PC-IntegrationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.0/ja-PC-IntegrationGuide.pdf',
           videoIcon: false,
         },
         {
           label: '連絡先管理ガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.0/ja-PC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.0/ja-PC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Product Designer ガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.0/ja-PC-ProductDesignerGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.0/ja-PC-ProductDesignerGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'コンフィギュレーションガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.0/ja-PC-ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.0/ja-PC-ConfigGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'アプリケーションガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.0/ja-PC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.0/ja-PC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'ベストプラクティスガイド',
-          url: '/l10n/pdfs/ja-JP/pc/10.0.0/ja-PC-BestPracticesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/pc/10.0.0/ja-PC-BestPracticesGuide.pdf',
           videoIcon: false,
         },
       ],

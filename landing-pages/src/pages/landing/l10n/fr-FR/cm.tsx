@@ -22,12 +22,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'French Documentation (fr-FR) Release Notes',
-          url: '/l10n/pdfs/fr-FR/cm/2021.11/ReleaseNotes-2021.11-docs-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cm/2021.11/ReleaseNotes-2021.11-docs-fr.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
-          url: '/l10n/pdfs/fr-FR/cm/2021.11/ContactMgmtGuide_FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cm/2021.11/ContactMgmtGuide_FR.pdf',
           videoIcon: false,
         },
       ],

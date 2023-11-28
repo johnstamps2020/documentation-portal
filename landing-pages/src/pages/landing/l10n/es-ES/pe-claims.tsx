@@ -22,7 +22,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-ES/pe-claims/2022.05/es-ES v.2022.05 PE Claims_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'es-ES/pe-claims/2022.05/es-ES v.2022.05 PE Claims_AppGuide.pdf',
           videoIcon: false,
         },
       ],

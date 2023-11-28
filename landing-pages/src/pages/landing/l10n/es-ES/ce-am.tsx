@@ -31,7 +31,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-ES/ce-am/11.1/es-ES-CE_AM-onprem-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/ce-am/11.1/es-ES-CE_AM-onprem-InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -41,17 +42,20 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-ES/ce-am/10.0.1/es-ES_CEAM_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/ce-am/10.0.1/es-ES_CEAM_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-ES/ce-am/10.0.1/es-ES_CEAM_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/ce-am/10.0.1/es-ES_CEAM_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-ES/ce-am/10.0.1/es-ES_CEAM_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/ce-am/10.0.1/es-ES_CEAM_InstallGuide.pdf',
           videoIcon: false,
         },
       ],

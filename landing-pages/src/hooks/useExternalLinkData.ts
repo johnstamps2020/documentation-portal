@@ -23,7 +23,7 @@ const externalLinkGetter = async (externalLinkUrl: string) => {
   );
   const { status } = response;
   const jsonData = await response.json();
-  
+
   if (!response.ok) {
     throw new ExternalLinkError(status, jsonData.message);
   }

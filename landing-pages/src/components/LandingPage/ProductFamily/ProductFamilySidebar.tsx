@@ -10,33 +10,35 @@ import LandingPageItemRenderer from '../LandingPageItemRenderer';
 export default function ProductFamilySidebar({ label, items }: SidebarProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
   const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
-  const productFamilySidebarItem = (<Paper
-    sx={{
-      height: 'fit-content',
-      minHeight: '180px',
-      minWidth: '270px',
-      width: {
-        sm: 'fit-content',
-        xs: '100%',
-      },
-      padding: '24px',
-    }}
-  >
-    <Typography variant="h2">{label}</Typography>
-    <>
-      {arrangedLandingPageItems.map((sidebarItem) => (
-        <FamilyProductItem key={sidebarItem.label} {...sidebarItem} />
-      ))}
-    </>
-  </Paper>)
+  const productFamilySidebarItem = (
+    <Paper
+      sx={{
+        height: 'fit-content',
+        minHeight: '180px',
+        minWidth: '270px',
+        width: {
+          sm: 'fit-content',
+          xs: '100%',
+        },
+        padding: '24px',
+      }}
+    >
+      <Typography variant="h2">{label}</Typography>
+      <>
+        {arrangedLandingPageItems.map((sidebarItem) => (
+          <FamilyProductItem key={sidebarItem.label} {...sidebarItem} />
+        ))}
+      </>
+    </Paper>
+  );
 
   return (
     <LandingPageItemRenderer
-    item={productFamilySidebarItem}
-    skeleton={<SidebarSkeleton />}
-    landingPageItems={arrangedLandingPageItems}
-    isLoading={isLoading}
-    isError={isError}
-  />
+      item={productFamilySidebarItem}
+      skeleton={<SidebarSkeleton />}
+      landingPageItems={arrangedLandingPageItems}
+      isLoading={isLoading}
+      isError={isError}
+    />
   );
 }

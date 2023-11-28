@@ -35,7 +35,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'installazione",
-          url: '/l10n/pdfs/it-IT/sre/11.3/it-SRE-IT - 11.3-onprem-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/sre/11.3/it-SRE-IT - 11.3-onprem-InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -45,7 +46,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/sre/10.0.1/it-SRE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/sre/10.0.1/it-SRE_AppGuide.pdf',
           videoIcon: false,
         },
       ],

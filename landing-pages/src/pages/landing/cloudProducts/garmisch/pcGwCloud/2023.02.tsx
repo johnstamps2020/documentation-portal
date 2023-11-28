@@ -111,7 +111,8 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Submission Intake Configuration',
-          url: '/cloud/subintake/?contextid=submissionIntakeConfiguration',
+          docId: 'submissionintake',
+          pathInDoc: '?contextid=submissionIntakeConfiguration',
           videoIcon: false,
         },
         {

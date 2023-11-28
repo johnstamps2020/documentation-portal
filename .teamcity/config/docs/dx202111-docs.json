@@ -672,9 +672,7 @@
       "url": "dx/js-docs/202111",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "Digital Reference Applications"
-        ],
+        "product": ["Digital Reference Applications"],
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development", "Integration"],

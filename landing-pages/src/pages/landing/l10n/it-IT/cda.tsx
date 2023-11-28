@@ -22,7 +22,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/cda/2021.11/IT-CloudDataAccess.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/cda/2021.11/IT-CloudDataAccess.pdf',
           videoIcon: false,
         },
       ],

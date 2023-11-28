@@ -47,7 +47,15 @@ export type ServerSearchFilterValue = {
 };
 
 export type ServerSearchFilter = {
-  name: 'platform' | 'product' | 'version' | 'language' | 'release' | 'subject' | 'doc_title' | 'doc_display_title';
+  name:
+    | 'platform'
+    | 'product'
+    | 'version'
+    | 'language'
+    | 'release'
+    | 'subject'
+    | 'doc_title'
+    | 'doc_display_title';
   values: ServerSearchFilterValue[];
 };
 

@@ -40,7 +40,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/ce-qb/11.1/es-419-CE_QB-onprem_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-qb/11.1/es-419-CE_QB-onprem_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -50,27 +51,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de configuración e instalación de Live Style Guide',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_LiveStyleGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-qb/10.0.1/es-CEQB_LiveStyleGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-qb/10.0.1/es-CEQB_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-qb/10.0.1/es-CEQB_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_InstallGuide-es.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-qb/10.0.1/es-CEQB_InstallGuide-es.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de seguridad y administración',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_admin-and-security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/ce-qb/10.0.1/es-CEQB_admin-and-security-guide.pdf',
           videoIcon: false,
         },
       ],

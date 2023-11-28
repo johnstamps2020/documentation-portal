@@ -35,7 +35,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          docId: "iscc202302frFRapp",
+          docId: 'iscc202302frFRapp',
           videoIcon: false,
         },
       ],
@@ -46,27 +46,34 @@ const pageConfig: CategoryLayoutProps = {
         {
           label:
             "Guide de configuration et de flux opérationnels de l'API Cloud",
-          url: '/l10n/pdfs/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf',
           videoIcon: false,
         },
         {
           label: 'French Documentation (fr-FR) Release Notes',
-          url: '/l10n/pdfs/fr-FR/cc/2021.11/ReleaseNotes-2021.11-docs-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/2021.11/ReleaseNotes-2021.11-docs-fr.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/cc/2021.11/CC-AppGuide_FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/2021.11/CC-AppGuide_FR.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'authentification de l'API Cloud",
-          url: '/l10n/pdfs/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-Auth.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-Auth.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/cc/2021.11/CC-ConfigGuide_FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/2021.11/CC-ConfigGuide_FR.pdf',
           videoIcon: false,
         },
       ],
@@ -76,12 +83,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/cc/2020.11/CC_CL202011_fr-FR_ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/2020.11/CC_CL202011_fr-FR_ConfigGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/cc/2020.11/CC_CL202011_fr-FR_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/2020.11/CC_CL202011_fr-FR_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -91,12 +100,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/cc/2020.05/ISCL_202005_fr_CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/2020.05/ISCL_202005_fr_CC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
-          url: '/l10n/pdfs/fr-FR/cc/2020.05/ISCL_202005_fr_CC_ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/2020.05/ISCL_202005_fr_CC_ContactMgmtGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -106,27 +117,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/cc/10.2.0/CC-AppGuide_fr-FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.2.0/CC-AppGuide_fr-FR.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/cc/10.2.0/CC-ConfigGuide_fr-FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.2.0/CC-ConfigGuide_fr-FR.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
-          url: '/l10n/pdfs/fr-FR/cc/10.2.0/CC-ContactMgmtGuide_fr-FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.2.0/CC-ContactMgmtGuide_fr-FR.pdf',
           videoIcon: false,
         },
         {
           label: 'French Documentation (fr-FR) Release Notes',
-          url: '/l10n/pdfs/fr-FR/cc/10.2.0/ReleaseNotes-10.2.0-docs-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.2.0/ReleaseNotes-10.2.0-docs-fr.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/cc/10.2.0/CC-InstallGuide_fr-FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.2.0/CC-InstallGuide_fr-FR.pdf',
           videoIcon: false,
         },
       ],
@@ -136,12 +152,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/cc/10.1.1/CC-AppGuide_FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.1.1/CC-AppGuide_FR.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
-          url: '/l10n/pdfs/fr-FR/cc/10.1.1/CC-ContactMgmtGuide_FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.1.1/CC-ContactMgmtGuide_FR.pdf',
           videoIcon: false,
         },
       ],
@@ -151,27 +169,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/cc/10.0.2/InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.2/InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des règles',
-          url: '/l10n/pdfs/fr-FR/cc/10.0.2/RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.2/RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/cc/10.0.2/CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.2/CC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
-          url: '/l10n/pdfs/fr-FR/cc/10.0.2/ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.2/ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/cc/10.0.2/ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.2/ConfigGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -181,27 +204,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guide de gestion des contacts',
-          url: '/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.0/fr-CC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.0/fr-CC-ConfigGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.0/fr-CC-InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.0/fr-CC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des règles',
-          url: '/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/cc/10.0.0/fr-CC-RulesGuide.pdf',
           videoIcon: false,
         },
       ],

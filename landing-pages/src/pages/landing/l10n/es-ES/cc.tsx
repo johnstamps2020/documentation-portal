@@ -49,27 +49,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-ES/cc/10.0.2/esES-CC-ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/cc/10.0.2/esES-CC-ConfigGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de reglas',
-          url: '/l10n/pdfs/es-ES/cc/10.0.2/esES-CC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/cc/10.0.2/esES-CC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de gestión de contactos de Guidewire',
-          url: '/l10n/pdfs/es-ES/cc/10.0.2/esES-CC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/cc/10.0.2/esES-CC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-ES/cc/10.0.2/esES-CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/cc/10.0.2/esES-CC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-ES/cc/10.0.2/esES-CC-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-ES/cc/10.0.2/esES-CC-InstallGuide.pdf',
           videoIcon: false,
         },
       ],

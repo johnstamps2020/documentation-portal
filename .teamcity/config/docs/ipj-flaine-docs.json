@@ -10,7 +10,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud", "Self-managed"],
         "version": ["0.1"],
         "release": ["Flaine"],
@@ -33,7 +34,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud", "Self-managed"],
         "version": ["0.1"],
         "release": ["Flaine"],
@@ -56,7 +58,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud", "Self-managed"],
         "version": ["0.1"],
         "release": ["Flaine"],
@@ -79,7 +82,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -102,7 +106,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -125,7 +130,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -148,7 +154,8 @@
           "BillingCenter",
           "ClaimCenter",
           "PolicyCenter",
-          "Global Content"],
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
