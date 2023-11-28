@@ -37,7 +37,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
       "id": "clouddataaccessguide",

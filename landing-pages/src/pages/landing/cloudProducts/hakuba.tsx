@@ -118,7 +118,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/cyence',
         },
         {
-          label: 'Data Studio',
+          label: 'Data Studio (Early Access)',
           docId: 'datastudiorelease',
         },
       ],
