@@ -360,7 +360,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     },
     {
       "id": "jutrosdkflaine",
