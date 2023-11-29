@@ -16,9 +16,8 @@ export default function LoginPageCards() {
     return null;
   }
 
-  //FIXME: Login options for prod are not used until we resolve the issue with conflicting Okta strategies
   const loginPageCardsToRender =
-    envInfo?.name === 'omega2-andromeda' ? loginOptions : loginOptions;
+    envInfo?.name === 'omega2-andromeda' ? loginOptionsProd : loginOptions;
 
   return (
     <Stack gap={2}>
