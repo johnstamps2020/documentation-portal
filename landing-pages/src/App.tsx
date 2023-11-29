@@ -14,7 +14,6 @@ import AdminPage from 'pages/AdminPage/AdminPage';
 import { LayoutContextProvider } from 'LayoutContext';
 import Layout from 'components/Layout/Layout';
 import ExternalLinkAdminPage from 'pages/ExternalLinkAdminPage/ExternalLinkAdminPage';
-import FileValidator from 'pages/FileValidator/FileValidator';
 
 const router = createBrowserRouter([
   {
@@ -44,10 +43,6 @@ const router = createBrowserRouter([
       {
         path: 'admin-panel/external-link',
         element: <ExternalLinkAdminPage />,
-      },
-      {
-        path: 'admin-panel/file-validator',
-        element: <FileValidator />,
       },
       {
         path: 'search-results',
