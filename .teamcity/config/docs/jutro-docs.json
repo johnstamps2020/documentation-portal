@@ -360,7 +360,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     },
     {
       "id": "jutrosdkflaine",
@@ -1909,7 +1909,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -1927,7 +1927,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -1968,10 +1968,10 @@
     },
     {
       "id": "jutro1000",
-      "title": "Jutro Design System and UI Framework",
+      "title": "Jutro Digital Platform",
       "url": "jutro/documentation/10.0",
       "metadata": {
-        "product": ["Jutro Design System"],
+        "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["10.0"],
         "subject": ["Best practices"],
@@ -1989,7 +1989,7 @@
       "title": "Jutro Storybook",
       "url": "jutro/storybook/10.0",
       "metadata": {
-        "product": ["Jutro Design System"],
+        "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["10.0"],
         "subject": ["Development"],
