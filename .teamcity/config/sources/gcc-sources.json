@@ -27,7 +27,7 @@
     },
     {
       "id": "dbserviceapisrc",
-      "title": "Database Service API",
+      "title": "Database API",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/db-service-api.git",
       "branch": "main"
     },

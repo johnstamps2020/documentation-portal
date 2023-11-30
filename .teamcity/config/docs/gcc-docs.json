@@ -78,7 +78,7 @@
     },
     {
       "id": "dbserviceapi",
-      "title": "Database Service API",
+      "title": "Database API",
       "url": "cloud/console/dbserviceapi",
       "metadata": {
         "product": ["Cloud Platform"],
