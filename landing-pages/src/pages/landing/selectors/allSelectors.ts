@@ -5,7 +5,7 @@ export const allSelectors = {
     { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba/apd' },
     {
       label: 'Innsbruck (2023.10)',
-      pagePath: 'cloudProducts/innsbruck/apd/create-home',
+      pagePath: 'cloudProducts/innsbruck/apd',
     },
   ],
   testingFrameworkSelector: [
