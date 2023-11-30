@@ -2,6 +2,9 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
 import Pagination from '@mui/material/Pagination';
+import FileValidationWarning, {
+  checkIfFileExists,
+} from 'components/EntitiesAdminPage/PageAdminPage/FileValidationWarning';
 import React, { useEffect, useState } from 'react';
 import EditButton from './EditButton';
 import EntityCard from './EntityCard';
@@ -22,13 +25,17 @@ type EntityListWithFiltersProps = {
   DeleteButton: React.ElementType;
 };
 
-function getEmptyFilters(entities: Entity[]) {
+function getEmptyFilters(entities: Entity[], entityName: string) {
   const emptyFilters: Entity = {
     label: '',
     url: '',
   };
   const entity = entities[0];
-  const { uuid, ...entityNoId } = entity;
+  let { uuid, ...entityNoId } = entity;
+  if (entityName === 'page') {
+    const missingFileInLandingPages = false;
+    entityNoId = { ...entityNoId, missingFileInLandingPages };
+  }
   for (const [k, v] of Object.entries(entityNoId)) {
     if (typeof v === 'boolean') {
       emptyFilters[k] = false;
@@ -62,21 +69,30 @@ export default function EntityListWithFilters({
   DuplicateButton,
   FormComponent,
 }: EntityListWithFiltersProps) {
-  const emptyFilters = getEmptyFilters(entities);
+  const emptyFilters = getEmptyFilters(entities, entityName);
   const [filters, setFilters] = useState<Entity>(emptyFilters);
   const [filteredEntities, setFilteredEntities] = useState<Entity[]>(entities);
 
   useEffect(() => {
-    function filterExternalLinks() {
-      return entities?.filter((p) => {
+    function filterEntities() {
+      return entities?.filter((entity) => {
         let matchesFilters = true;
         for (const [k, v] of Object.entries(filters)) {
-          if (typeof v === 'boolean' && v && p[k as keyof typeof p] !== v) {
-            matchesFilters = false;
+          if (typeof v === 'boolean') {
+            if (v && entity[k as keyof typeof entity] !== v) {
+              matchesFilters = false;
+            }
+            if (
+              k === 'missingFileInLandingPages' &&
+              v &&
+              !checkIfFileExists(entity.url)
+            ) {
+              matchesFilters = true;
+            }
           } else if (
             typeof v === 'string' &&
             v !== '' &&
-            !p[k as keyof typeof p]
+            !entity[k as keyof typeof entity]
               ?.toString()
               ?.toLocaleLowerCase()
               .includes(v.toLocaleLowerCase())
@@ -87,10 +103,9 @@ export default function EntityListWithFilters({
         return matchesFilters;
       });
     }
-    const filteredExternalLinks = filterExternalLinks();
-
-    if (filteredExternalLinks) {
-      setFilteredEntities(sortEntities(filteredExternalLinks));
+    const filteredEntities = filterEntities();
+    if (filteredEntities) {
+      setFilteredEntities(sortEntities(filteredEntities));
     }
   }, [entities, filters]);
 
@@ -158,6 +173,7 @@ export default function EntityListWithFilters({
                   <DeleteButton primaryKey={url} />
                 </>
               }
+              cardWarning={<FileValidationWarning path={url} />}
             />
           ))}
       </Box>

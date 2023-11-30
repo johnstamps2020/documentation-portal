@@ -7,12 +7,14 @@ type EntityCardProps = {
   title: string;
   cardContents: JSX.Element;
   cardButtons: JSX.Element;
+  cardWarning?: JSX.Element;
 };
 
 export default function EntityCard({
   title,
   cardContents,
   cardButtons,
+  cardWarning,
 }: EntityCardProps) {
   return (
     <Card
@@ -32,6 +34,7 @@ export default function EntityCard({
           height: '100%',
         }}
       >
+        {cardWarning}
         <Typography variant="h2">{title}</Typography>
         {cardContents}
       </CardContent>
