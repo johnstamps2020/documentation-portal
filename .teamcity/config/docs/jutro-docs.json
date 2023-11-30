@@ -431,7 +431,7 @@
         "release": ["Innsbruck"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1670,7 +1670,7 @@
         "subject": ["Best practices"],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1688,7 +1688,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1761,7 +1761,7 @@
         "subject": ["Best practices"],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1779,7 +1779,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1977,7 +1977,7 @@
         "subject": ["Best practices"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1995,7 +1995,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2009,7 +2009,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.13.3 (latest)"],
+        "version": ["10.0 (latest)"],
         "subject": ["Best practices"],
         "language": "en"
       },
@@ -2027,7 +2027,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.13.3 (latest)"],
+        "version": ["10.0 (latest)"],
         "subject": ["Development"],
         "language": "en"
       },
