@@ -17,7 +17,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true,
+      "earlyAccess": false,
       "displayOnLandingPages": true
     },
     {
@@ -36,7 +36,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true,
+      "earlyAccess": false,
       "displayOnLandingPages": true
     },
     {
@@ -55,7 +55,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true,
+      "earlyAccess": false,
       "displayOnLandingPages": true
     }
   ]
