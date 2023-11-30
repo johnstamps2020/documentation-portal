@@ -9,7 +9,7 @@
         "platform": ["Cloud"],
         "product": ["Data Platform"],
         "version": ["latest"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "subject": ["Features and functionality", "Release notes"],
         "language": "en"
       },
@@ -29,7 +29,7 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
-        "release": ["Flaine", "Garmisch", "Hakuba"],
+        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -37,7 +37,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     },
     {
       "id": "clouddataaccessguide",
@@ -53,7 +53,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -79,7 +80,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "subject": ["Release notes"],
         "language": "en"
@@ -105,7 +107,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "subject": ["Features and functionality"],
         "language": "en"

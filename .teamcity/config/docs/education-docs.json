@@ -25,6 +25,7 @@
       "url": "education/apd-billing-props/latest",
       "metadata": {
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "product": ["Advanced Product Designer"],
         "version": ["2023.10"],
         "subject": ["Features and functionality"],

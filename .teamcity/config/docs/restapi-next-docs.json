@@ -13,8 +13,8 @@
           "App Events Webhooks"
         ],
         "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
         "subject": ["Integration"],
         "language": "en"
       },
@@ -32,8 +32,8 @@
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
         "subject": ["Integration"],
         "language": "en"
       },
@@ -51,9 +51,9 @@
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2023.10"],
+        "version": ["2024.02"],
         "subject": ["Integration"],
-        "release": ["Innsbruck"],
+        "release": ["Jasper"],
         "language": "en"
       },
       "environments": ["staging"],
