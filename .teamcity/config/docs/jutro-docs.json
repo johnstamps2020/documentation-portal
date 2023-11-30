@@ -2004,10 +2004,10 @@
     },
     {
       "id": "jutrolatest",
-      "title": "Jutro Design System and UI Framework",
+      "title": "Jutro Digital Platform",
       "url": "jutro/documentation/latest",
       "metadata": {
-        "product": ["Jutro Design System"],
+        "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["10.0 (latest)"],
         "subject": ["Best practices"],
@@ -2025,7 +2025,7 @@
       "title": "Jutro Storybook",
       "url": "jutro/storybook/latest",
       "metadata": {
-        "product": ["Jutro Design System"],
+        "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["10.0 (latest)"],
         "subject": ["Development"],
