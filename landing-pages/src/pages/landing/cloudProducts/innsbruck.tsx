@@ -126,7 +126,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/cyence',
         },
         {
-          label: 'Data Studio (Early Access)',
+          label: 'Data Studio',
           docId: 'datastudiorelease',
         },
       ],
@@ -144,15 +144,15 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Integration Gateway',
-          docId: 'integgatewaydevnext',
+          docId: 'integgatewaydevlatest',
         },
         {
           label: 'App Events',
-          docId: 'appeventsdevnext',
+          docId: 'appeventsdev',
         },
         {
           label: 'REST API Client',
-          docId: 'isrestapiclientguidenext',
+          docId: 'isrestapiclientguide',
         },
         {
           label: 'Jutro Digital Platform',
