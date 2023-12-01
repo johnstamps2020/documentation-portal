@@ -186,15 +186,15 @@ const permanentRedirectUrls = [
 const temporaryRedirectUrls = [
   {
     from: '',
-    to: isProd ? 'cloudProducts/hakuba' : 'cloudProducts/innsbruck',
+    to: isProd ? 'cloudProducts/innsbruck' : 'cloudProducts/innsbruck',
   },
   {
     from: 'cloudProducts',
-    to: isProd ? 'cloudProducts/hakuba' : 'cloudProducts/innsbruck',
+    to: isProd ? 'cloudProducts/innsbruck' : 'cloudProducts/innsbruck',
   },
   {
     from: 'apiReferences',
-    to: isProd ? 'apiReferences/hakuba' : 'apiReferences/innsbruck',
+    to: isProd ? 'apiReferences/innsbruck' : 'apiReferences/innsbruck',
   },
 ];
 
