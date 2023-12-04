@@ -672,9 +672,7 @@
       "url": "dx/js-docs/202104",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "Digital Reference Applications"
-        ],
+        "product": ["Digital Reference Applications"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Development", "Integration"],

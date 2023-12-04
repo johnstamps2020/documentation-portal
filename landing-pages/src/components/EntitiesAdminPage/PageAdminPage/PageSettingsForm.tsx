@@ -14,6 +14,7 @@ import { Page } from 'server/dist/model/entity/Page';
 import useSWRMutation from 'swr/mutation';
 import { usePageData } from '../../../hooks/usePageData';
 import { SearchFilters } from 'server/dist/types/config';
+import { checkIfFileExists } from './FileValidationWarning';
 
 type NewPage = Omit<Page, 'uuid'> & { stringifiedSearchFilters?: string };
 
@@ -205,17 +206,6 @@ export default function PageSettingsForm({
       jsonData.path === tmpPageData.path && pageData?.path !== tmpPageData.path
     );
   }
-  
-  function checkIfFileExists(path: string) {
-    try {
-      const success = require(`../../../pages/landing/${path}.tsx`);
-      if (success) {
-        setFileExists(true);
-      }
-    } catch (err) {
-      setFileExists(false);
-    }
-  }
   async function handleSave() {
     try {
       const pageExists = await checkIfPageExists();
@@ -273,15 +263,23 @@ export default function PageSettingsForm({
         error={pageAlreadyExists}
         helperText={
           (pageAlreadyExists && 'Page with this path already exists') ||
-          (fileExists === false && 'File for this page does not exist')
+          (fileExists === false &&
+            "React component for this page path doesn't exist in landing pages")
         }
         color={fileExists === false ? 'warning' : 'primary'}
-        onBlur={() => checkIfFileExists(tmpPageData.path)}
+        onBlur={() => setFileExists(checkIfFileExists(tmpPageData.path))}
         disabled={editingDisabled}
         label="Path"
         value={tmpPageData.path}
         onChange={(event) => handleChange('path', event.target.value)}
         fullWidth
+        sx={{
+          '.MuiFormHelperText-root': {
+            color: '#e65100',
+            fontSize: '14px',
+            m: '3px 3px 0px 3px',
+          },
+        }}
       />
       <TextField
         required

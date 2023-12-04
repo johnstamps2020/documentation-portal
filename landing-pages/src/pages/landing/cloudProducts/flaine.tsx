@@ -97,7 +97,8 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'HazardHub',
-          url: '/hazardhub/HazardHub_Intro_gw.pdf',
+          docId: 'hazardhub',
+          pathInDoc: 'HazardHub_Intro_gw.pdf',
           videoIcon: false,
         },
         {
@@ -109,7 +110,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/cyence',
         },
         {
-          label: 'Data Studio (Early Access)',
+          label: 'Data Studio',
           docId: 'datastudiorelease',
         },
       ],

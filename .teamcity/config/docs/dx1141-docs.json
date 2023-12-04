@@ -762,9 +762,7 @@
       "title": "Log4j Patch Release Notes",
       "url": "cloud/dx/log4jrelnotes",
       "metadata": {
-        "product": [
-          "Digital Reference Applications"
-        ],
+        "product": ["Digital Reference Applications"],
         "platform": ["Self-managed"],
         "version": ["11.4.1"],
         "subject": ["Release notes"],

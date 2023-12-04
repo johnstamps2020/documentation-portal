@@ -42,7 +42,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/dataPlatform',
         },
         {
-          label: 'Autopilot Workflow Service (Early Access)',
+          label: 'Autopilot Workflow Service',
           pagePath: 'cloudProducts/autopilotworkflowservice',
         },
       ],
@@ -101,7 +101,8 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'HazardHub',
-          url: '/hazardhub/HazardHub_Intro_gw.pdf',
+          docId: 'hazardhub',
+          pathInDoc: 'HazardHub_Intro_gw.pdf',
           videoIcon: false,
         },
         {
@@ -113,7 +114,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/cyence',
         },
         {
-          label: 'Data Studio (Early Access)',
+          label: 'Data Studio',
           docId: 'datastudiorelease',
         },
       ],

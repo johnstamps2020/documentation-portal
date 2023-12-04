@@ -108,27 +108,25 @@ createOktaStrategies()
     });
     router.use(passport.initialize());
     router.use(passport.session());
+    for (const oktaStrategy of oktaStrategies) {
+      passport.use(oktaStrategy.region, oktaStrategy.oidcStrategy);
+    }
 
-    const oidcStrategyName: string = 'oidcStrategy';
-    router.get(
-      '/',
-      function (req, res, next) {
-        const { region } = req.query;
-        const strategy =
-          oktaStrategies.find((s) => s.region === region) || oktaStrategies[0];
-        passport.use(oidcStrategyName, strategy.oidcStrategy);
-        saveRedirectUrlToSession(req);
-        next();
-      },
-      passport.authenticate(oidcStrategyName)
-    );
+    router.get('/', function (req, res, next) {
+      const { region } = req.query;
+      saveRedirectUrlToSession(req);
+      const oidcStrategyName = region as string;
+      req.session!.oidcStrategyName = oidcStrategyName;
+      passport.authenticate(oidcStrategyName)(req, res, next);
+    });
 
     router.use(
       '/callback',
       function (req, res, next) {
-        next();
+        const oidcStrategyName = req.session!.oidcStrategyName;
+        delete req.session!.oidcStrategyName;
+        passport.authenticate(oidcStrategyName)(req, res, next);
       },
-      passport.authenticate(oidcStrategyName),
       function (req, res) {
         res.redirect(resolveRequestedUrl(req));
       }

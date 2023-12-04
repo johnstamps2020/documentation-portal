@@ -9,7 +9,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter", "PolicyCenter"],
         "version": ["latest"],
-        "release": ["Hakuba"],
+        "release": ["Hakuba", "Innsbruck"],
         "subject": ["Features and functionality"],
         "language": "en"
       },

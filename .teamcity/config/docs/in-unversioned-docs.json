@@ -8,9 +8,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1", "2022.2", "2023.1", "2023.2"],
+        "version": ["2022.1", "2022.2", "2023.1", "2023.2", "2023.3"],
         "subject": ["Release notes"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -27,9 +27,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1", "2022.2", "2023.1", "2023.2"],
+        "version": ["2022.1", "2022.2", "2023.1", "2023.2", "2023.3"],
         "subject": ["Release notes"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -51,7 +51,7 @@
         "release": ["Innsbruck"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -255,9 +255,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -274,9 +274,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -293,7 +293,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Features and functionality"],
         "release": [
           "Cortina",
@@ -301,7 +301,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
@@ -324,7 +325,7 @@
         "release": ["Innsbruck"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -452,7 +453,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Installation"],
         "release": [
           "Cortina",
@@ -460,7 +461,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
@@ -483,7 +485,7 @@
         "release": ["Innsbruck"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -611,7 +613,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Upgrade"],
         "release": [
           "Cortina",
@@ -619,7 +621,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
@@ -637,9 +640,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -656,9 +659,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -675,12 +678,12 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2"],
+        "version": ["2023.2", "2023.3"],
         "subject": ["Features and functionality"],
-        "release": ["Hakuba","Innsbruck"],
+        "release": ["Hakuba", "Innsbruck"],
         "language": "en"
       },
-      "environments": ["staging","prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

@@ -16,22 +16,26 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Help Center',
-          url: '/cyence/cyber/HelpCenter',
+          docId: 'cyence',
+          pathInDoc: 'cyber/HelpCenter',
           videoIcon: false,
         },
         {
           label: 'Help Center - Accumulation Only',
-          url: '/cyence/cyber/HelpCenterAccum',
+          docId: 'cyence',
+          pathInDoc: 'cyber/HelpCenterAccum',
           videoIcon: false,
         },
         {
           label: 'Risk Model Technical Reference',
-          url: '/cyence/cyber/Model/RiskModelTechRef.pdf',
+          docId: 'cyence',
+          pathInDoc: 'cyber/Model/RiskModelTechRef.pdf',
           videoIcon: false,
         },
         {
           label: 'Python SDK and REST API Reference',
-          url: '/cyence/cyber/SdkApiRef',
+          docId: 'cyence',
+          pathInDoc: 'cyber/SdkApiRef',
           videoIcon: false,
         },
       ],
@@ -41,7 +45,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'C#/Python SDKs and REST API Reference',
-          url: '/cyence/smb/SdkApiRef',
+          docId: 'cyence',
+          pathInDoc: 'smb/SdkApiRef',
           videoIcon: false,
         },
       ],

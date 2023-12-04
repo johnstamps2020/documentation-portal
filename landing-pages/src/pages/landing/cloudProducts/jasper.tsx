@@ -2,10 +2,10 @@ import Category2Layout, {
   Category2LayoutProps,
 } from 'components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import hakubaBackgroundImage from 'images/background-hakuba.svg';
-import hakubaBadge from 'images/badge-hakuba.svg';
+import innsbruckBackgroundImage from 'images/background-innsbruck.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import innsbruckBadge from 'images/badge-innsbruck.svg';
 import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: Category2LayoutProps = {
@@ -14,13 +14,13 @@ const pageConfig: Category2LayoutProps = {
     backgroundImage: {
       xs: `url(${gradientBackgroundImage})`,
       sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
-  url(${hakubaBackgroundImage}), 
+  url(${innsbruckBackgroundImage}), 
   linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Hakuba',
+    selectedItemLabel: 'Innsbruck',
     items: allSelectors.sb372c5e3c1cec5d40289c85a78eaef30,
     labelColor: 'white',
   },
@@ -52,27 +52,31 @@ const pageConfig: Category2LayoutProps = {
       items: [
         {
           label: 'PolicyCenter',
-          pagePath: 'cloudProducts/hakuba/pcGwCloud/2023.06',
+          pagePath: 'cloudProducts/innsbruck/pcGwCloud/2023.10',
         },
         {
           label: 'ClaimCenter',
-          pagePath: 'cloudProducts/hakuba/ccGwCloud/2023.06',
+          pagePath: 'cloudProducts/innsbruck/ccGwCloud/2023.10',
         },
         {
           label: 'BillingCenter',
-          pagePath: 'cloudProducts/hakuba/bcGwCloud/2023.06',
+          pagePath: 'cloudProducts/innsbruck/bcGwCloud/2023.10',
         },
         {
           label: 'InsuranceNow',
-          pagePath: 'cloudProducts/hakuba/insuranceNow/2023.2',
+          pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
         },
         {
           label: 'Digital Reference Applications',
-          pagePath: 'cloudProducts/hakuba/dx-ref-apps',
+          pagePath: 'cloudProducts/innsbruck/dx-ref-apps',
         },
         {
           label: 'Global Content Reference Applications',
-          pagePath: 'cloudProducts/hakuba/global-ref-apps',
+          pagePath: 'cloudProducts/innsbruck/global-ref-apps',
+        },
+        {
+          label: 'Underwriting Workbench (Early Access)',
+          docId: 'uwworkbench',
         },
       ],
     },
@@ -81,11 +85,15 @@ const pageConfig: Category2LayoutProps = {
       items: [
         {
           label: 'DataHub',
-          pagePath: 'cloudProducts/hakuba/dhGwCloud/2023.06',
+          pagePath: 'cloudProducts/innsbruck/dhGwCloud/2023.10',
         },
         {
           label: 'InfoCenter',
-          pagePath: 'cloudProducts/hakuba/icGwCloud/2023.06',
+          pagePath: 'cloudProducts/innsbruck/icGwCloud/2023.10',
+        },
+        {
+          label: 'Analytics Manager',
+          docId: 'analyticsmanager',
         },
         {
           label: 'Explore',
@@ -128,35 +136,35 @@ const pageConfig: Category2LayoutProps = {
       items: [
         {
           label: 'Advanced Product Designer App',
-          pagePath: 'cloudProducts/hakuba/apd',
+          pagePath: 'cloudProducts/innsbruck/apd',
         },
         {
           label: 'API References',
-          pagePath: 'apiReferences/hakuba',
-        },
-        {
-          label: 'API Sandbox',
-          docId: 'is202306apisandbox',
+          pagePath: 'apiReferences/innsbruck',
         },
         {
           label: 'Integration Gateway',
-          docId: 'integgatewaydevlatest',
+          docId: 'integgatewaydevnext',
         },
         {
           label: 'App Events',
-          docId: 'appeventsdev',
+          docId: 'appeventsdevnext',
         },
         {
           label: 'REST API Client',
-          docId: 'isrestapiclientguide',
+          docId: 'isrestapiclientguidenext',
         },
         {
-          label: 'Jutro Digital Platform (Early Access)',
-          pagePath: 'cloudProducts/hakuba/jutroDigitalPlatform',
+          label: 'Jutro Digital Platform',
+          docId: 'jutro1000',
         },
         {
           label: 'Guidewire Testing',
-          pagePath: 'testingFramework/hakuba',
+          pagePath: 'testingFramework/innsbruck',
+        },
+        {
+          label: 'Lifecycle Manager',
+          docId: 'lifecyclemgr',
         },
         {
           label: 'Workset Manager',
@@ -166,24 +174,14 @@ const pageConfig: Category2LayoutProps = {
     },
   ],
   whatsNew: {
-    label: 'Hakuba',
-    badge: hakubaBadge,
-    item: { label: 'Learn more', docId: 'whatsnewhakuba' },
-    content: [
-      'Integration Data Manager for third-party data storage',
-      'Real-time monitoring of cloud services by region',
-      'Multi-currency support for global commercial lines',
-      'APD App rate modifiers for premium adjustments',
-      'Cloud API enhancements',
-      'InsuranceNow Data Service Console',
-      'One Inc ClaimsPay® integration with InsuranceNow',
-      'London Market programmes and journal financials',
-      'Cyence Model 6',
-    ],
+    label: 'Jasper',
+    badge: innsbruckBadge,
+    item: { label: 'Learn more', docId: 'whatsnewinnsbruck' },
+    content: ['This card to be updated.'],
   },
   sidebar: implementationResourcesSidebar,
 };
 
-export default function Hakuba() {
+export default function Jasper() {
   return <Category2Layout {...pageConfig} />;
 }

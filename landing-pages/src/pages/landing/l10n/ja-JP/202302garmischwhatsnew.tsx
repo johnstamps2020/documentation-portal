@@ -22,7 +22,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/VendorEngage/Loc_ReleaseNotes_ve.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/202302garmischwhatsnew/VendorEngage/Loc_ReleaseNotes_ve.pdf',
           videoIcon: false,
         },
       ],
@@ -32,7 +34,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/ServiceRepEngage/Loc_ReleaseNotes_sre.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/202302garmischwhatsnew/ServiceRepEngage/Loc_ReleaseNotes_sre.pdf',
           videoIcon: false,
         },
       ],
@@ -42,7 +46,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/Guidewire Testing/Guidewire_Test_Automation202302_ReleaseNotes.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/202302garmischwhatsnew/Guidewire Testing/Guidewire_Test_Automation202302_ReleaseNotes.pdf',
           videoIcon: false,
         },
       ],
@@ -52,7 +58,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Garmisch の新機能',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/Garmisch/whatsnew.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/202302garmischwhatsnew/Garmisch/whatsnew.pdf',
           videoIcon: false,
         },
       ],
@@ -62,7 +69,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/CustomerEngage Account Management for ClaimCenter/Loc_ReleaseNotes_ceclaims.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/202302garmischwhatsnew/CustomerEngage Account Management for ClaimCenter/Loc_ReleaseNotes_ceclaims.pdf',
           videoIcon: false,
         },
       ],
@@ -72,7 +81,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/Cloud Platform/GWCP-ReleaseNotes.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/202302garmischwhatsnew/Cloud Platform/GWCP-ReleaseNotes.pdf',
           videoIcon: false,
         },
       ],
@@ -82,22 +93,29 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'コンフィギュレーションアップグレードツールガイド',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/ClaimCenter/InsuranceSuiteConfigurationUpgradeTools.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/202302garmischwhatsnew/ClaimCenter/InsuranceSuiteConfigurationUpgradeTools.pdf',
           videoIcon: false,
         },
         {
           label: 'アップデートガイド',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/ClaimCenter/UpdateGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/202302garmischwhatsnew/ClaimCenter/UpdateGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'コンフィギュレーションアップグレードツールの互換性',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/ClaimCenter/ISUpgradeCompatibility.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/202302garmischwhatsnew/ClaimCenter/ISUpgradeCompatibility.pdf',
           videoIcon: false,
         },
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/202302garmischwhatsnew/ClaimCenter/ClaimCenter_ReleaseNotes.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/202302garmischwhatsnew/ClaimCenter/ClaimCenter_ReleaseNotes.pdf',
           videoIcon: false,
         },
       ],

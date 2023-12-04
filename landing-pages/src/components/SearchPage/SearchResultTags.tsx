@@ -17,7 +17,6 @@ export function createSearchResultTags(
       ? searchResult.release
       : searchResult.version,
     searchResult.subject,
-    searchResult.doc_display_title || searchResult.doc_title,
     languageLabels.find((l) => l.key === searchResult.language)?.label ||
       searchResult.language,
   ]
@@ -25,7 +24,9 @@ export function createSearchResultTags(
     .filter(Boolean);
 }
 
-export default function SearchResultTags(searchResult: ServerSearchResult) {
+export default function SearchResultTags(
+  searchResult: ServerSearchResult | SearchResultSource
+) {
   const ListItem = styled('li')(() => ({
     margin: '0 4px 6px 0',
   }));

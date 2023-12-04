@@ -7,9 +7,7 @@ type DuplicateButtonProps = {
   primaryKey: string;
 };
 
-export default function DuplicateButton({
-  primaryKey,
-}: DuplicateButtonProps) {
+export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
   const { isError, isLoading, externalLinkData } =
     useExternalLinkData(primaryKey);
 

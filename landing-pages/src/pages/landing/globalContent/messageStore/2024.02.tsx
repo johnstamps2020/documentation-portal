@@ -14,16 +14,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'londonrnflaine',
-        },
-      ],
-    },
-    {
-      label: 'Developers',
-      items: [
-        {
-          label: 'Configuration Guide',
-          docId: 'londonconfigflaine',
+          docId: 'gondolasmsrnjasper',
         },
       ],
     },
@@ -31,18 +22,41 @@ const pageConfig: SectionLayoutProps = {
       label: 'Features and functionality',
       items: [
         {
-          label: 'ClaimCenter for London Market Application Guide',
-          docId: 'londonccappflaine',
+          label: 'Application Guide',
+          docId: 'gondolasmsappjasper',
         },
+      ],
+    },
+    {
+      label: 'Installation',
+      items: [
         {
-          label: 'PolicyCenter for London Market Application Guide',
-          docId: 'londonpcappflaine',
+          label: 'Installation and Deployment',
+          docId: 'gondolasmsinstalljasper',
+        },
+      ],
+    },
+    {
+      label: 'Configuration',
+      items: [
+        {
+          label: 'Configuration',
+          docId: 'gondolasmsconfigjasper',
+        },
+      ],
+    },
+    {
+      label: 'Integration',
+      items: [
+        {
+          label: 'Integration',
+          docId: 'gondolasmsintegjasper',
         },
       ],
     },
   ],
 };
 
-export default function Flaine() {
+export default function LandingPage202402() {
   return <SectionLayout {...pageConfig} />;
 }

@@ -7,6 +7,7 @@ type EntityCardProps = {
   title: string;
   cardContents: JSX.Element;
   cardButtons: JSX.Element;
+  cardWarning?: JSX.Element;
   listView?: boolean;
 };
 
@@ -14,6 +15,7 @@ export default function EntityCard({
   title,
   cardContents,
   cardButtons,
+  cardWarning,
   listView,
 }: EntityCardProps) {
   return (
@@ -35,6 +37,7 @@ export default function EntityCard({
           gap: '16px',
         }}
       >
+        {cardWarning}
         <Typography variant="h2">{title}</Typography>
         {cardContents}
       </CardContent>

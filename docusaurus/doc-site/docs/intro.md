@@ -146,5 +146,6 @@ these approaches:
 ## Request deployment builds
 
 Contact the ContentOps team for assistance:
+
 - Slack: [#ask-docs](https://guidewire.slack.com/archives/C2LUW57BL)
 - Email: [doctools@guidewire.com](mailto:doctools@guidewire.com)

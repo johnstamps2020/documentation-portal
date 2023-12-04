@@ -564,7 +564,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     },
     {
       "id": "jutrosdkflaine",
@@ -661,6 +661,38 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
+    },
+    {
+      "id": "jutrosdkinnsbruck",
+      "title": "Jutro SDK",
+      "url": "jutro/sdk/innsbruck",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "jutrorewards",
@@ -2620,8 +2652,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -2649,8 +2680,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -2768,8 +2798,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -2797,8 +2826,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3002,7 +3030,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -3031,7 +3059,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -3094,76 +3122,87 @@
     },
     {
       "id": "jutro1000",
-      "title": "Jutro Design System and UI Framework",
-      "url": "jutro/documentation/10.0.0",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/documentation/10.0",
       "metadata": {
         "product": [
-          "Jutro Design System"
+          "Jutro Digital Platform"
         ],
         "platform": [
           "Cloud"
         ],
         "version": [
-          "10.0.0"
+          "10.0"
         ],
         "subject": [
           "Best practices"
         ],
+        "release": [
+          "Innsbruck"
+        ],
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
       "id": "storybook1000",
       "title": "Jutro Storybook",
-      "url": "jutro/storybook/10.0.0",
+      "url": "jutro/storybook/10.0",
       "metadata": {
         "product": [
-          "Jutro Design System"
+          "Jutro Digital Platform"
         ],
         "platform": [
           "Cloud"
         ],
         "version": [
-          "10.0.0"
+          "10.0"
         ],
         "subject": [
           "Development"
         ],
+        "release": [
+          "Innsbruck"
+        ],
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
       "id": "jutrolatest",
-      "title": "Jutro Design System and UI Framework",
+      "title": "Jutro Digital Platform",
       "url": "jutro/documentation/latest",
       "metadata": {
         "product": [
-          "Jutro Design System"
+          "Jutro Digital Platform"
         ],
         "platform": [
           "Cloud"
         ],
         "version": [
-          "8.13.3 (latest)"
+          "10.0 (latest)"
         ],
         "subject": [
           "Best practices"
+        ],
+        "release": [
+          "Innsbruck"
         ],
         "language": "en"
       },
@@ -3183,16 +3222,19 @@
       "url": "jutro/storybook/latest",
       "metadata": {
         "product": [
-          "Jutro Design System"
+          "Jutro Digital Platform"
         ],
         "platform": [
           "Cloud"
         ],
         "version": [
-          "8.13.3 (latest)"
+          "10.0 (latest)"
         ],
         "subject": [
           "Development"
+        ],
+        "release": [
+          "Innsbruck"
         ],
         "language": "en"
       },

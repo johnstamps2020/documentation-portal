@@ -188,6 +188,12 @@
       "branch": "release/hakuba"
     },
     {
+      "id": "srcjutrosdkinnsbruck",
+      "title": "Jutro SDK Innsbruck",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "release/innsbruck"
+    },
+    {
       "id": "srcjutrosbbizpatterns652",
       "title": "Jutro Storybook Business Patterns 6.5.2",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/storybook-business-patterns.git",
@@ -399,7 +405,7 @@
     },
     {
       "id": "srcjutro1000",
-      "title": "Jutro Design System 10.0.0",
+      "title": "Jutro Digital Platform 10.0",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/10.0.0"
     },

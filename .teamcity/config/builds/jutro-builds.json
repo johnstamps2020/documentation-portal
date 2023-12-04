@@ -142,14 +142,14 @@
     {
       "buildType": "yarn",
       "docId": "jutrolatest",
-      "srcId": "srcjutro8133",
+      "srcId": "srcjutro1000",
       "workingDir": "website",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "storybooklatest",
-      "srcId": "srcjutro8133",
+      "srcId": "srcjutro1000",
       "workingDir": "storybook",
       "disabled": false
     },
@@ -177,6 +177,12 @@
       "buildType": "yarn",
       "docId": "jutrosdkhakuba",
       "srcId": "srcjutrosdkhakuba",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutrosdkinnsbruck",
+      "srcId": "srcjutrosdkinnsbruck",
       "disabled": false
     },
     {

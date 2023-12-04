@@ -42,7 +42,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/dataPlatform',
         },
         {
-          label: 'Autopilot Workflow Service (Early Access)',
+          label: 'Autopilot Workflow Service',
           pagePath: 'cloudProducts/autopilotworkflowservice',
         },
       ],
@@ -109,7 +109,8 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'HazardHub',
-          url: '/hazardhub/HazardHub_Intro_gw.pdf',
+          docId: 'hazardhub',
+          pathInDoc: 'HazardHub_Intro_gw.pdf',
           videoIcon: false,
         },
         {
@@ -125,7 +126,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/cyence',
         },
         {
-          label: 'Data Studio (Early Access)',
+          label: 'Data Studio',
           docId: 'datastudiorelease',
         },
       ],
@@ -143,18 +144,18 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Integration Gateway',
-          docId: 'integgatewaydevnext',
+          docId: 'integgatewaydevlatest',
         },
         {
           label: 'App Events',
-          docId: 'appeventsdevnext',
+          docId: 'appeventsdev',
         },
         {
           label: 'REST API Client',
-          docId: 'isrestapiclientguidenext',
+          docId: 'isrestapiclientguide',
         },
         {
-          label: 'Jutro Digital Platform (Early Access)',
+          label: 'Jutro Digital Platform',
           docId: 'jutro1000',
         },
         {
@@ -176,7 +177,18 @@ const pageConfig: Category2LayoutProps = {
     label: 'Innsbruck',
     badge: innsbruckBadge,
     item: { label: 'Learn more', docId: 'whatsnewinnsbruck' },
-    content: ['Coming soon'],
+    content: [
+      'Jutro Digital Platform',
+      'Autopilot Workflow Service',
+      'Data Studio',
+      'Analytics Manager',
+      'Claims Visibility',
+      'New Cyence and HazardHub reports',
+      'InsuranceNow GO support for Commercial Package Policy',
+      'Update automation for InsuranceNow (EA) and EnterpriseEngage',
+      'App Events availability with BillingCenter',
+      'Cloud API updates',
+    ],
   },
   sidebar: implementationResourcesSidebar,
 };

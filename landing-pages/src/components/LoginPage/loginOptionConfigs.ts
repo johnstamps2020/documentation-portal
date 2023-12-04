@@ -18,7 +18,7 @@ export type LoginOptionConfig = {
 
 const gwCloudLoginUrl: string = '/authorization-code';
 const gwCloudLoginDescription =
-  'Use your Guidewire Cloud Platform account to access documentation';
+  'Use your Guidewire Cloud account to access documentation';
 
 const gwCustomerCommunityLoginOption: LoginOptionConfig = {
   label: 'Customer Community',

@@ -12,6 +12,8 @@ import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import React, { useEffect } from 'react';
 import LandingPageLink from '../LandingPageLink';
 import { ReactComponent as HeroImage } from './application-hero-image.svg';
+import EditPagePropsButton from 'components/LandingPage/EditPagePropsButton';
+import { usePageData } from 'hooks/usePageData';
 
 export type ApplicationHeroProps = {
   buttonProps: LandingPageItemProps;
@@ -29,6 +31,11 @@ export default function ApplicationHero({
     buttonProps,
   ]);
   const arrangedItems = arrangeItems([buttonProps], landingPageItems);
+  const {
+    isError: pageLoading,
+    isLoading: pageError,
+    pageData,
+  } = usePageData();
 
   const linkButton = (
     <LandingPageLink
@@ -68,6 +75,9 @@ export default function ApplicationHero({
       id="application-hero"
     >
       <Container>
+        {!pageLoading && !pageError && pageData && (
+          <EditPagePropsButton pagePath={pageData.path} />
+        )}
         <Box
           sx={{
             display: 'flex',

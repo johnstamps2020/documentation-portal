@@ -35,7 +35,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'installazione",
-          url: '/l10n/pdfs/it-IT/ce-claims/11.3/it-CE-Claims-11.3-onprem- InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'it-IT/ce-claims/11.3/it-CE-Claims-11.3-onprem- InstallGuide.pdf',
           videoIcon: false,
         },
       ],

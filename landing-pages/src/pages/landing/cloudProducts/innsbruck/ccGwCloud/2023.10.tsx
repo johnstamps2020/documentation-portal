@@ -9,6 +9,8 @@ const pageConfig: ApplicationLayoutProps = {
     label: 'Release notes',
     docId: 'iscc202310releasenotes',
   },
+  heroDescription:
+    'Guidewire ClaimCenter manages the process of reporting, verifying, and making payments on claims against policies.',
   tabs: [
     {
       icon: 'get-started',
@@ -81,26 +83,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Claims Intake: Personal Auto FNOL Template (Early Access)',
-          docId: 'fnoltemplatemain',
-          description: (
-            <>
-              Create a digital FNOL self-service flow for a first-party personal
-              auto damage claim.
-            </>
-          ),
-        },
-        {
-          label: 'Guidewire Rules (Early Access)',
-          docId: 'gwrules',
-          description: (
-            <>
-              Enable business analysts to create and manage segmentation rules
-              that trigger when specific business conditions occur.
-            </>
-          ),
-        },
-        {
           label: 'Contact Management',
           docId: 'is202310contact',
           description: (
@@ -108,6 +90,16 @@ const pageConfig: ApplicationLayoutProps = {
               Describes how to configure Guidewire InsuranceSuite applications
               to integrate with ContactManager, and how to manage client and
               vendor contacts in a single system of record.
+            </>
+          ),
+        },
+        {
+          label: 'Claims Intake: Personal Auto FNOL Template (Early Access)',
+          docId: 'fnoltemplatemain',
+          description: (
+            <>
+              Create a digital FNOL self-service flow for a first-party personal
+              auto damage claim.
             </>
           ),
         },
@@ -128,6 +120,41 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'ClaimCenter functionality configuration',
+          description: (
+            <>
+              Configure ClaimCenter features (such as lines of business,
+              services, and deductibles) to meet your business needs.
+            </>
+          ),
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=p-ClaimCenter',
+        },
+        {
+          label: 'Configuration parameter reference',
+          description: (
+            <>A reference of the application configuration parameters.</>
+          ),
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_au6600343',
+        },
+        {
+          label: 'Data model configuration',
+          description: (
+            <>
+              Create and extend ClaimCenter data model entities and typelists.
+            </>
+          ),
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_pdatamodel',
+        },
+        {
+          label: 'User interface configuration',
+          description: <>Configure the ClaimCenter user interface.</>,
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=p-ui-config',
+        },
+        {
           label: 'Gosu rules',
           docId: 'iscc202310rules',
           description: (
@@ -138,6 +165,27 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Guidewire Rules (Early Access)',
+          docId: 'gwrules',
+          description: (
+            <>
+              Enable business analysts to create and manage segmentation rules
+              that trigger when specific business conditions occur.
+            </>
+          ),
+        },
+        {
+          label: 'Plugins',
+          description: (
+            <>
+              Manage ClaimCenter predefined plugins to configure standard
+              operations, such as generating a new claim number.
+            </>
+          ),
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_part-plugins',
+        },
+        {
           label: 'Globalizing ClaimCenter',
           docId: 'iscc202310global',
           description: (
@@ -145,30 +193,15 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Configuration parameter reference',
-          description: (
-            <>A reference of the application configuration parameters.</>
-          ),
-          url: '/cloud/cc/202310/config/?contextid=c_au6600343',
+          label: 'Gosu reference',
+          docId: 'gosureflatest',
+          description: <>A reference for the Gosu programming language. </>,
         },
         {
-          label: 'Data model configuration',
-          description: (
-            <>
-              Create and extend ClaimCenter data model entities and typelists.
-            </>
-          ),
-          url: '/cloud/cc/202310/config/?contextid=c_pdatamodel',
-        },
-        {
-          label: 'Configuration plugins',
-          description: (
-            <>
-              Manage ClaimCenter predefined plugins to configure standard
-              operations, such as generating a new claim number.
-            </>
-          ),
-          url: '/cloud/cc/202310/integration/?contextid=c_part-plugins',
+          label: 'Search configuration',
+          description: <>Configure search in ClaimCenter.</>,
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_all-fe3275213',
         },
         {
           label: 'Workflow configuration',
@@ -178,46 +211,24 @@ const pageConfig: ApplicationLayoutProps = {
               processes.
             </>
           ),
-          url: '/cloud/cc/202310/config/?contextid=p-workflow',
-        },
-        {
-          label: 'ClaimCenter functionality configuration',
-          description: (
-            <>
-              Configure ClaimCenter features (such as lines of business,
-              services, and deductibles) to meet your business needs.
-            </>
-          ),
-          url: '/cloud/cc/202310/config/?contextid=p-ClaimCenter',
-        },
-        {
-          label: 'Define activity patterns',
-          description: (
-            <>Configure activity patterns for ClaimCenter activities</>
-          ),
-          url: '/cloud/cc/202310/config/?contextid=c_eg2072244',
-        },
-        {
-          label: 'Gosu reference',
-          docId: 'gosureflatest',
-          description: <>A reference for the Gosu programming language. </>,
-        },
-        {
-          label: 'User interface configuration',
-          description: <>Configure the ClaimCenter user interface.</>,
-          url: '/cloud/cc/202310/config/?contextid=p-ui-config',
-        },
-        {
-          label: 'Search configuration',
-          description: <>Configure search in ClaimCenter.</>,
-          url: '/cloud/cc/202310/config/?contextid=c_all-fe3275213',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=p-workflow',
         },
         {
           label: 'Email configuration',
           description: (
             <>Configure ClaimCenter functionality related to sending email.</>
           ),
-          url: '/cloud/cc/202310/config/?contextid=c_mx2909421',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_mx2909421',
+        },
+        {
+          label: 'Define activity patterns',
+          description: (
+            <>Configure activity patterns for ClaimCenter activities</>
+          ),
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_eg2072244',
         },
         {
           label: 'Financials configuration',
@@ -227,7 +238,8 @@ const pageConfig: ApplicationLayoutProps = {
               payments, checks, and transactions.
             </>
           ),
-          url: '/cloud/cc/202310/config/?contextid=c_xn1012431',
+          docId: 'iscc202310config',
+          pathInDoc: '?contextid=c_xn1012431',
         },
       ],
     },
@@ -246,99 +258,13 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Cloud API Developer Guide',
-          docId: 'iscc202310apica',
-          description: (
-            <>
-              Configure inbound endpoint behavior, create new endpoints, and
-              implement authentication in Cloud API.
-            </>
-          ),
-        },
-        {
-          label: 'Integration Data Manager',
-          docId: 'iscc202310integdatamgr',
-          description: (
-            <>
-              Store third-party data for use with InsuranceSuite, view this
-              data, and use it in business logic.
-            </>
-          ),
-        },
-        {
-          label: 'File-based integration',
-          description: (
-            <>
-              Configure filed-based integration for both inbound and outbound
-              integration points.
-            </>
-          ),
-          url: '/cloud/cc/202310/integration/?contextid=c_part-datatransfer',
-        },
-        {
-          label: 'Messaging',
-          description: (
-            <>
-              Use traditional Guidewire messaging to configure Gosu rules that
-              send outbound messages asynchronously in response to specific
-              ClaimCenter business events and manage responses.
-            </>
-          ),
-          url: '/cloud/cc/202310/integration/?contextid=c_part-messaging',
-        },
-        {
-          label: 'REST API Client',
-          docId: 'isrestapiclientguide',
-          description: (
-            <>
-              Use REST API Client to make outbound HTTP calls to internal or
-              third-party REST services.
-            </>
-          ),
-        },
-        {
-          label: 'Startable plugins',
-          description: (
-            <>
-              Configure startable plugins that listen for and process inbound
-              asynchronous messages from third-party applications.
-            </>
-          ),
-          url: '/cloud/cc/202310/integration/?contextid=c_ns2380296',
-        },
-        {
           label: 'Application events',
           docId: 'appeventsdev',
           description: (
             <>
               Use application events to send outbound messages asynchronously,
-              without the need for Gosu code, in response to specific
-              ClaimCenter business events and manage responses.
-            </>
-          ),
-        },
-        {
-          label: 'Cloud API reference',
-          docId: 'ccapirefinnsbruck',
-          description: <>The API definitions for Cloud API for ClaimCenter.</>,
-        },
-        {
-          label: 'REST API Framework',
-          docId: 'iscc202310restapifw',
-          description: (
-            <>
-              Create custom inbound RESTful APIs for business requirements that
-              are not addressed in Cloud API.
-            </>
-          ),
-        },
-        {
-          label: 'SOAP APIs',
-          docId: 'iscc202310integ',
-          description: (
-            <>
-              Use the base configuration SOAP APIs that ClaimCenter publishes,
-              publish custom SOAP APIs, and consume third-party SOAP APIs.
+              without the need for Gosu code, in response to specific business
+              events and manage responses.
             </>
           ),
         },
@@ -353,12 +279,13 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Cloud API for ContactManager',
-          docId: 'iscc202310apicm',
+          label: 'SOAP APIs',
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_pwebservices',
           description: (
             <>
-              Use Cloud API to make inbound calls from third-party applications
-              that create, edit, and retrieve data from ContactManager.
+              Use the base configuration SOAP APIs that ClaimCenter publishes,
+              publish custom SOAP APIs, and consume third-party SOAP APIs.
             </>
           ),
         },
@@ -375,6 +302,55 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Cloud API Developer Guide',
+          docId: 'iscc202310apica',
+          description: (
+            <>
+              Configure inbound endpoint behavior, create new endpoints, and
+              implement authentication in Cloud API.
+            </>
+          ),
+        },
+        {
+          label: 'Plugins',
+          description: (
+            <>
+              Manage ClaimCenter predefined plugins to configure standard
+              integration operations.
+            </>
+          ),
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_part-plugins',
+        },
+        {
+          label: 'REST API Client',
+          docId: 'isrestapiclientguide',
+          description: (
+            <>
+              Use REST API Client to make outbound HTTP calls to internal or
+              third-party REST services.
+            </>
+          ),
+        },
+        {
+          label: 'Cloud API reference',
+          docId: 'ccapirefinnsbruck',
+          description: <>The API definitions for Cloud API for ClaimCenter.</>,
+        },
+        {
+          label: 'Messaging',
+          description: (
+            <>
+              Use traditional Guidewire messaging to configure Gosu rules and
+              custom message transport plugins that send outbound messages
+              asynchronously in response to specific business events and manage
+              responses.
+            </>
+          ),
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_part-messaging',
+        },
+        {
           label: 'Claim and policy integrations',
           description: (
             <>
@@ -382,7 +358,60 @@ const pageConfig: ApplicationLayoutProps = {
               system, to track claims on policies.
             </>
           ),
-          url: '/cloud/cc/202310/integration/?contextid=c_part-claim-integrations',
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_part-claim-integrations',
+        },
+        {
+          label: 'Integration Data Manager',
+          docId: 'iscc202310integdatamgr',
+          description: (
+            <>
+              Store third-party data for use with InsuranceSuite, view this
+              data, and use it in business logic.
+            </>
+          ),
+        },
+        {
+          label: 'Cloud API for ContactManager',
+          docId: 'iscc202310apicm',
+          description: (
+            <>
+              Use Cloud API to make inbound calls from third-party applications
+              that create, edit, and retrieve data from ContactManager.
+            </>
+          ),
+        },
+        {
+          label: 'File-based integration',
+          description: (
+            <>
+              Configure filed-based integration for both inbound and outbound
+              integration points.
+            </>
+          ),
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_part-datatransfer',
+        },
+        {
+          label: 'Startable plugins',
+          description: (
+            <>
+              Configure startable plugins that listen for and process inbound
+              asynchronous messages from third-party applications.
+            </>
+          ),
+          docId: 'iscc202310integ',
+          pathInDoc: '?contextid=c_ns2380296',
+        },
+        {
+          label: 'REST API Framework',
+          docId: 'iscc202310restapifw',
+          description: (
+            <>
+              Create custom inbound RESTful APIs for business requirements that
+              are not addressed in Cloud API.
+            </>
+          ),
         },
         {
           label: 'API Sandbox',
@@ -400,6 +429,11 @@ const pageConfig: ApplicationLayoutProps = {
             <>A self-paced course covering the basics of Cloud Integration</>
           ),
           docId: 'cloudintegrationbasics',
+        },
+        {
+          label: 'Gosu reference',
+          docId: 'gosureflatest',
+          description: <>A reference for the Gosu programming language. </>,
         },
       ],
     },
@@ -439,7 +473,8 @@ const pageConfig: ApplicationLayoutProps = {
               permissions.
             </>
           ),
-          url: '/cloud/cc/202310/admin/?contextid=p_security',
+          docId: 'iscc202310admin',
+          pathInDoc: '?contextid=p_security',
         },
         {
           label: 'Network connectivity',
@@ -474,7 +509,8 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Database administration',
           description: <>Manage and maintain your Guidewire databases.</>,
-          url: '/cloud/cc/202310/admin/?contextid=p_data',
+          docId: 'iscc202310admin',
+          pathInDoc: '?contextid=p_data',
         },
         {
           label: 'Server administration',
@@ -484,14 +520,16 @@ const pageConfig: ApplicationLayoutProps = {
               run levels, and manage server memory.
             </>
           ),
-          url: '/cloud/cc/202310/admin/?contextid=p_server',
+          docId: 'iscc202310admin',
+          pathInDoc: '?contextid=p_server',
         },
         {
           label: 'Business rules',
           description: (
             <>Create, edit, and manage underwriting issues in ClaimCenter.</>
           ),
-          url: '/cloud/cc/202310/admin/?contextid=p_bizrules',
+          docId: 'iscc202310admin',
+          pathInDoc: '?contextid=p_bizrules',
         },
         {
           label: 'Observability',
@@ -507,7 +545,7 @@ const pageConfig: ApplicationLayoutProps = {
     },
   ],
   selector: {
-    selectedItemLabel: 'Hakuba (2023.06)',
+    selectedItemLabel: 'Innsbruck (2023.10)',
     items: allSelectors.seab31eee2944c2607a774b9dd9cda0ad,
     labelColor: 'black',
   },

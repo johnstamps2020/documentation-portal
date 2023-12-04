@@ -14,7 +14,8 @@
           "PolicyCenter",
           "InsuranceNow",
           "DataHub",
-          "InfoCenter"],
+          "InfoCenter"
+        ],
         "version": ["2023.06", "2023.2"],
         "release": ["Hakuba"],
         "subject": ["Release notes"],

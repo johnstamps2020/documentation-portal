@@ -18,14 +18,12 @@ export const StyledHeading2 = styled(Typography)<TypographyProps>(() => ({
   paddingBottom: '16px',
 }));
 
-export const StyledAdvancedHelpTitle = styled(Typography)<TypographyProps>(
-  () => ({
-    fontSize: 30,
-    textAlign: 'left',
-    color: 'black',
-    fontWeight: 600,
-  })
-);
+export const StyledHeading3 = styled(Typography)<TypographyProps>(() => ({
+  fontWeight: 400,
+  fontSize: '1rem',
+  color: 'rgb(0, 116, 158)',
+  textAlign: 'left',
+}));
 
 export const StyledAdvancedHelpSectionTitle = styled(
   Typography

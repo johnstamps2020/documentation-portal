@@ -8,8 +8,8 @@
       "metadata": {
         "product": ["Rules", "PolicyCenter", "ClaimCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02", "2023.06"],
-        "release": ["Flaine", "Garmisch", "Hakuba"],
+        "version": ["2022.09", "2023.02", "2023.06", "2023.10"],
+        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -27,8 +27,8 @@
       "metadata": {
         "product": ["Rules", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2023.02", "2023.06"],
-        "release": ["Garmisch", "Hakuba"],
+        "version": ["2023.02", "2023.06", "2023.10"],
+        "release": ["Garmisch", "Hakuba", "Innsbruck"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -46,8 +46,8 @@
       "metadata": {
         "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02", "2023.06"],
-        "release": ["Flaine", "Garmisch", "Hakuba"],
+        "version": ["2022.09", "2023.02", "2023.06", "2023.10"],
+        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "subject": ["Features and functionality"],
         "language": "en"
       },
@@ -66,7 +66,7 @@
         "product": ["Workset Manager"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Flaine", "Garmisch", "Hakuba"],
+        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -89,7 +89,7 @@
         "subject": ["Configuration"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
