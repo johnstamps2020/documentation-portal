@@ -1,0 +1,195 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "testingframeworksapijasper",
+      "title": "API Testing",
+      "url": "cloud/testing/202402/api",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Development", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksuijasper",
+      "title": "User Interface Testing",
+      "url": "cloud/testing/202402/ui",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Development", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksloadjasper",
+      "title": "Load and Performance Testing",
+      "url": "cloud/testing/202402/load",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Development", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "testingframeworksmgmtjasper",
+      "title": "Test Management",
+      "url": "cloud/testing/202402/mgmt",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Development", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksrnjasper",
+      "title": "Guidewire Testing Framework Release Notes",
+      "url": "cloud/testing/202402/releasenotes",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Release notes", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksmatrixjasper",
+      "title": "Guidewire Testing Framework Supported Software Components",
+      "url": "cloud/testing/202402/matrix",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Development", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksinstalljasper",
+      "title": "Guidewire Testing Framework Installation",
+      "url": "cloud/testing/202402/install",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Installation", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "is202402testing",
+      "title": "InsuranceSuite Unit Testing",
+      "url": "cloud/testing/202402/isunittesting",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Development", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "is202402access",
+      "title": "User Interface Accessibility Testing",
+      "url": "cloud/testing/202402/isuiaccesstesting",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Development", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "testing202402overview",
+      "title": "Overview of GT: Framework",
+      "url": "cloud/testing/202402/overview",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Features and functionality", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
