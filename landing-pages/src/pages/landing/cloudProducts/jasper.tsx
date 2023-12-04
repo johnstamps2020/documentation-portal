@@ -20,7 +20,7 @@ const pageConfig: Category2LayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Innsbruck',
+    selectedItemLabel: 'Jasper',
     items: allSelectors.sb372c5e3c1cec5d40289c85a78eaef30,
     labelColor: 'white',
   },
@@ -160,7 +160,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Guidewire Testing',
-          pagePath: 'testingFramework/innsbruck',
+          pagePath: 'testingFramework/jasper',
         },
         {
           label: 'Lifecycle Manager',

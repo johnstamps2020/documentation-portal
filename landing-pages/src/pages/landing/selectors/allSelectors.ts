@@ -14,6 +14,7 @@ export const allSelectors = {
     { label: 'Garmisch (2023.02)', pagePath: 'testingFramework/garmisch' },
     { label: 'Hakuba (2023.06)', pagePath: 'testingFramework/hakuba' },
     { label: 'Innsbruck (2023.10)', pagePath: 'testingFramework/innsbruck' },
+    { label: 'Jasper (2024.02)', pagePath: 'testingFramework/jasper' },
   ],
   s0f196c0b55cf55f2cdd1e05b1bf5e94e: [
     { label: 'Cortina', pagePath: 'apiReferences/cortina' },
@@ -116,6 +117,7 @@ export const allSelectors = {
     { label: 'Garmisch', pagePath: 'cloudProducts/garmisch' },
     { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
     { label: 'Innsbruck', pagePath: 'cloudProducts/innsbruck' },
+    { label: 'Jasper', pagePath: 'cloudProducts/jasper' },
   ],
   s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {
