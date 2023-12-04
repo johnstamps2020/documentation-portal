@@ -5,13 +5,13 @@
       "buildType": "yarn",
       "docId": "pc202104apiref",
       "srcId": "srcpcapiref202011",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
       "docId": "cc202104apiref",
       "srcId": "srcapiref202104",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
