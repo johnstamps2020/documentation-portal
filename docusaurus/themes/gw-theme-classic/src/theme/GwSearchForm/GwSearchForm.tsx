@@ -34,6 +34,7 @@ export default function GwSearchForm() {
           description: 'Text which appears in the search box, placeholder',
         })}
         type="search"
+        autoComplete="off"
         variant="outlined"
         name="q"
         size="small"
