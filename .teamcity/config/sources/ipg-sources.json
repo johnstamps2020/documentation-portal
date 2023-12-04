@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "midipg39src",
+      "title": "InsuranceSuite Package for Germany 3.9",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
+      "branch": "release/3.9"
+    },
+    {
       "id": "midipg38src",
       "title": "InsuranceSuite Package for Germany 3.8",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",

@@ -1,0 +1,68 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ImplementationGuide.ditamap",
+      "srcId": "midipg39src",
+      "docId": "midipgimpl39",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGApplicationGuide.ditamap",
+      "srcId": "midipg39src",
+      "docId": "midipgapp39",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "midipg39src",
+      "docId": "midipginstall39",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGGlossary.ditamap",
+      "srcId": "midipg39src",
+      "docId": "midipgglossary39",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGReleaseNotes.ditamap",
+      "srcId": "midipg39src",
+      "docId": "midipgrnen39",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGReleaseNotesDE.ditamap",
+      "srcId": "midipg39src",
+      "docId": "midipgrnde39",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGApplicationGuideDE.ditamap",
+      "srcId": "midipg39src",
+      "docId": "midipgappde39",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}
