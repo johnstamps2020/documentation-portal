@@ -2,13 +2,13 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { useAdminViewContext } from './AdminViewContext';
 
 type EntityCardProps = {
   title: string;
   cardContents: JSX.Element;
   cardButtons: JSX.Element;
   cardWarning?: JSX.Element;
-  listView?: boolean;
 };
 
 export default function EntityCard({
@@ -16,8 +16,9 @@ export default function EntityCard({
   cardContents,
   cardButtons,
   cardWarning,
-  listView,
 }: EntityCardProps) {
+  const { listView } = useAdminViewContext();
+
   return (
     <Card
       sx={{
