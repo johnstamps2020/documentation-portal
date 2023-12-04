@@ -22,6 +22,8 @@ export type Entity = {
 type EntityListWithFiltersProps = {
   entities: Entity[];
   entityName: string;
+  entityDatabaseName: string;
+  entityPrimaryKeyName: string;
   FormComponent: React.ElementType;
   DuplicateButton: React.ElementType;
   DeleteButton: React.ElementType;
@@ -67,6 +69,8 @@ function sortEntities(entities: Entity[]) {
 export default function EntityListWithFilters({
   entities,
   entityName,
+  entityDatabaseName,
+  entityPrimaryKeyName,
   DeleteButton,
   DuplicateButton,
   FormComponent,
@@ -145,7 +149,10 @@ export default function EntityListWithFilters({
           onChange={handleChangePage}
         />
       )}
-      <ActionBar />
+      <ActionBar
+        entityDatabaseName={entityDatabaseName}
+        entityPrimaryKeyName={entityPrimaryKeyName}
+      />
       <AdminViewWrapper>
         {filteredEntities
           .slice(resultsOffset, resultsOffset + resultsPerPage)

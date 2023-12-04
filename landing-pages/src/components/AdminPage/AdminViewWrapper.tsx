@@ -1,7 +1,7 @@
 import Box, { BoxProps } from '@mui/material/Box';
 import { useAdminViewContext } from './AdminViewContext';
 
-export default function AdminVIewWrapper({
+export default function AdminViewWrapper({
   children,
 }: {
   children: React.ReactNode | React.ReactNode[];
