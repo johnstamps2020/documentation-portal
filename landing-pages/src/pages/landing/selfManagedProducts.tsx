@@ -86,6 +86,10 @@ const pageConfig: CategoryLayoutProps = {
               pagePath: 'globalContent/ipg/3.8',
             },
             {
+              label: 'Germany 3.9',
+              pagePath: 'globalContent/ipg/3.9',
+            },
+            {
               label: 'Japan (0.1)',
               pagePath: 'globalContent/ipj/flaine',
             },
