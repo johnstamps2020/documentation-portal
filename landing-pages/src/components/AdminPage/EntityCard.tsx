@@ -3,9 +3,12 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { useAdminViewContext } from './AdminViewContext';
+import EntityCheckbox from './EntityCheckbox';
+import { Entity } from './EntityListWithFilters';
 
 type EntityCardProps = {
   title: string;
+  entity: Entity;
   cardContents: JSX.Element;
   cardButtons: JSX.Element;
   cardWarning?: JSX.Element;
@@ -13,6 +16,7 @@ type EntityCardProps = {
 
 export default function EntityCard({
   title,
+  entity,
   cardContents,
   cardButtons,
   cardWarning,
@@ -38,6 +42,7 @@ export default function EntityCard({
           gap: '16px',
         }}
       >
+        {listView && <EntityCheckbox entity={entity} />}
         {cardWarning}
         <Typography variant="h2">{title}</Typography>
         {cardContents}

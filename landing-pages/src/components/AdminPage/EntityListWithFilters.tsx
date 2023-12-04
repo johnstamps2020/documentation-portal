@@ -149,9 +149,10 @@ export default function EntityListWithFilters({
       <AdminViewWrapper>
         {filteredEntities
           .slice(resultsOffset, resultsOffset + resultsPerPage)
-          .map(({ label, url }) => (
+          .map(({ label, url, ...rest }) => (
             <EntityCard
               key={`${label}_${url}`}
+              entity={{ label, url, ...rest }}
               title={label}
               cardContents={<EntityLink url={url} label={url} />}
               cardButtons={

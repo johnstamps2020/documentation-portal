@@ -1,17 +1,23 @@
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
+import { Entity } from './EntityListWithFilters';
 
 interface AdminViewInterface {
   listView: boolean;
   setListView: (value: boolean) => void;
+  selectedEntities: Entity[];
+  setSelectedEntities: React.Dispatch<React.SetStateAction<Entity[]>>;
 }
 
 export const AdminViewContext = createContext<AdminViewInterface | null>(null);
 
 export function AdminViewProvider({ children }: { children: React.ReactNode }) {
-  const [listView, setListView] = useState(false);
+  const [listView, setListView] = useState(true);
+  const [selectedEntities, setSelectedEntities] = useState<Entity[]>([]);
 
   return (
-    <AdminViewContext.Provider value={{ listView, setListView }}>
+    <AdminViewContext.Provider
+      value={{ listView, setListView, selectedEntities, setSelectedEntities }}
+    >
       {children}
     </AdminViewContext.Provider>
   );
