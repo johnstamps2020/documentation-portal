@@ -6,12 +6,12 @@ import FileValidationWarning, {
 } from 'components/EntitiesAdminPage/PageAdminPage/FileValidationWarning';
 import React, { useEffect, useState } from 'react';
 import ActionBar from './ActionBar';
-import { AdminViewProvider } from './AdminViewContext';
+import { AdminViewContext } from './AdminViewContext';
+import AdminViewWrapper from './AdminViewWrapper';
 import EditButton from './EditButton';
 import EntityCard from './EntityCard';
 import EntityFilters from './EntityFilters';
 import EntityLink from './EntityLink';
-import AdminViewWrapper from './AdminViewWrapper';
 
 export type Entity = {
   label: string;
@@ -69,15 +69,24 @@ function sortEntities(entities: Entity[]) {
 export default function EntityListWithFilters({
   entities,
   entityName,
-  entityDatabaseName,
-  entityPrimaryKeyName,
+  entityDatabaseName: initialEntityDatabaseName,
+  entityPrimaryKeyName: initialEntityPrimaryKeyName,
   DeleteButton,
   DuplicateButton,
   FormComponent,
 }: EntityListWithFiltersProps) {
   const emptyFilters = getEmptyFilters(entities, entityName);
   const [filters, setFilters] = useState<Entity>(emptyFilters);
+
+  const [listView, setListView] = useState(true);
+  const [selectedEntities, setSelectedEntities] = useState<Entity[]>([]);
   const [filteredEntities, setFilteredEntities] = useState<Entity[]>(entities);
+  const [entityDatabaseName, setEntityDatabaseName] = useState(
+    initialEntityDatabaseName
+  );
+  const [entityPrimaryKeyName, setEntityPrimaryKeyName] = useState(
+    initialEntityPrimaryKeyName
+  );
 
   useEffect(() => {
     function filterEntities() {
@@ -127,7 +136,20 @@ export default function EntityListWithFilters({
   }
 
   return (
-    <AdminViewProvider>
+    <AdminViewContext.Provider
+      value={{
+        listView,
+        setListView,
+        selectedEntities,
+        filteredEntities,
+        setFilteredEntities,
+        setSelectedEntities,
+        entityDatabaseName,
+        setEntityDatabaseName,
+        entityPrimaryKeyName,
+        setEntityPrimaryKeyName,
+      }}
+    >
       <EntityFilters
         emptyFilters={emptyFilters}
         filters={filters}
@@ -149,10 +171,7 @@ export default function EntityListWithFilters({
           onChange={handleChangePage}
         />
       )}
-      <ActionBar
-        entityDatabaseName={entityDatabaseName}
-        entityPrimaryKeyName={entityPrimaryKeyName}
-      />
+      <ActionBar />
       <AdminViewWrapper>
         {filteredEntities
           .slice(resultsOffset, resultsOffset + resultsPerPage)
@@ -177,6 +196,6 @@ export default function EntityListWithFilters({
             />
           ))}
       </AdminViewWrapper>
-    </AdminViewProvider>
+    </AdminViewContext.Provider>
   );
 }

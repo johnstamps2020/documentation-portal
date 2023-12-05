@@ -12,7 +12,13 @@ export default function EntityCheckbox({ entity }: EntityCheckboxProps) {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    if (selectedEntities.includes(entity)) {
+    if (
+      selectedEntities.find(
+        (selectedEntity) =>
+          selectedEntity.label === entity.label &&
+          selectedEntity.url === entity.url
+      )
+    ) {
       setChecked(true);
     } else {
       setChecked(false);

@@ -1,9 +1,11 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
 import { Entity } from './EntityListWithFilters';
 
 interface AdminViewInterface {
   listView: boolean;
   setListView: (value: boolean) => void;
+  filteredEntities: Entity[];
+  setFilteredEntities: React.Dispatch<React.SetStateAction<Entity[]>>;
   selectedEntities: Entity[];
   setSelectedEntities: React.Dispatch<React.SetStateAction<Entity[]>>;
   entityDatabaseName: string;
@@ -13,30 +15,6 @@ interface AdminViewInterface {
 }
 
 export const AdminViewContext = createContext<AdminViewInterface | null>(null);
-
-export function AdminViewProvider({ children }: { children: React.ReactNode }) {
-  const [listView, setListView] = useState(true);
-  const [selectedEntities, setSelectedEntities] = useState<Entity[]>([]);
-  const [entityDatabaseName, setEntityDatabaseName] = useState('');
-  const [entityPrimaryKeyName, setEntityPrimaryKeyName] = useState('');
-
-  return (
-    <AdminViewContext.Provider
-      value={{
-        listView,
-        setListView,
-        selectedEntities,
-        setSelectedEntities,
-        entityDatabaseName,
-        setEntityDatabaseName,
-        entityPrimaryKeyName,
-        setEntityPrimaryKeyName,
-      }}
-    >
-      {children}
-    </AdminViewContext.Provider>
-  );
-}
 
 export function useAdminViewContext() {
   const context = useContext(AdminViewContext);
