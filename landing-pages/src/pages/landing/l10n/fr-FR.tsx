@@ -23,10 +23,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/fr-FR/innsbruck',
     },
     {
-      label: 'Nouveautés de Hakuba',
-      pagePath: 'l10n/fr-FR/202306hakubawhatsnew',
-    },
-    {
       label: 'BillingCenter',
       pagePath: 'l10n/fr-FR/bc',
     },
