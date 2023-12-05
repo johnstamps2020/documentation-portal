@@ -6,112 +6,128 @@
 			"filter": "Digital-ve-MgSvcs.ditaval",
 			"root": "GWCP-ReleaseNotes.ditamap",
 			"srcId": "gwcpreleasenotesdeDEsrc",
-			"docId": "gwcpdeDEreleasenotes"
+			"docId": "gwcpdeDEreleasenotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "Digital-ce-am-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310deDEsrc",
-			"docId": "dx202310deDEceamrelnotes"
+			"docId": "dx202310deDEceamrelnotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "Digital-ce-claims-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310deDEsrc",
-			"docId": "dx202310deDEceclaimsrelnotes"
+			"docId": "dx202310deDEceclaimsrelnotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "Digital-ce-qb-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310deDEsrc",
-			"docId": "dx202310deDEceqbrelnotes"
+			"docId": "dx202310deDEceqbrelnotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "Digital-pe-claims-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310deDEsrc",
-			"docId": "dx202310deDEperelnotes"
+			"docId": "dx202310deDEperelnotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "Digital-pe-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310deDEsrc",
-			"docId": "dx202310deDEpeclaimsrelnotes"
+			"docId": "dx202310deDEpeclaimsrelnotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "Digital-sre-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310deDEsrc",
-			"docId": "dx202310deDEsrerelnotes"
+			"docId": "dx202310deDEsrerelnotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "Digital-ve-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310deDEsrc",
-			"docId": "dx202310deDEverelnotes"
+			"docId": "dx202310deDEverelnotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "IS-BC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
 			"srcId": "is202310deDEsrc",
-			"docId": "isbc202310deDEreleasenotes"
+			"docId": "isbc202310deDEreleasenotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "IS-BC-Cloud-Release.ditaval",
 			"root": "UpdateGuide.ditamap",
 			"srcId": "is202310deDEsrc",
-			"docId": "isbc202310deDEupdate"
+			"docId": "isbc202310deDEupdate",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "IS-CC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
 			"srcId": "is202310deDEsrc",
-			"docId": "iscc202310deDEreleasenotes"
+			"docId": "iscc202310deDEreleasenotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "IS-CC-Cloud-Release.ditaval",
 			"root": "UpdateGuide.ditamap",
 			"srcId": "is202310deDEsrc",
-			"docId": "iscc202310deDEupdate"
+			"docId": "iscc202310deDEupdate",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "IS-PC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
 			"srcId": "is202310deDEsrc",
-			"docId": "ispc202310deDEreleasenotes"
+			"docId": "ispc202310deDEreleasenotes",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "IS-PC-Cloud-Release.ditaval",
 			"root": "UpdateGuide.ditamap",
 			"srcId": "is202310deDEsrc",
-			"docId": "ispc202310deDEupdate"
+			"docId": "ispc202310deDEupdate",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "GW-Generic-Release.ditaval",
 			"root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
 			"srcId": "isconfigupgradetools500deDEsrc",
-			"docId": "isconfigupgradetoolsdeDE500"
+			"docId": "isconfigupgradetoolsdeDE500",
+			"disabled": false
 		},
 		{
 			"buildType": "dita",
 			"filter": "GW-Generic-Release.ditaval",
 			"root": "whatsnew.ditamap",
 			"srcId": "whatsnewinnsbruckdeDEsrc",
-			"docId": "whatsnewdeDEinnsbruck"
+			"docId": "whatsnewdeDEinnsbruck",
+			"disabled": false
 		}
 	]
 }
