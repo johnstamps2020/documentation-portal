@@ -1,5 +1,4 @@
-import WarningIcon from '@mui/icons-material/Warning';
-import { Paper, Typography } from '@mui/material';
+import EntityCardValidationWarning from 'components/AdminPage/EntityCardValidationWarning';
 
 type FileValidationWarningProps = {
   path: string;
@@ -21,23 +20,9 @@ export default function FileValidationWarning({
     const fileExists = checkIfFileExists(path);
     if (!fileExists) {
       return (
-        <>
-          <Paper
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              mb: '16px',
-              p: '6px',
-              border: 1,
-              borderColor: '#FF7F7F',
-            }}
-          >
-            <WarningIcon color="warning" sx={{ m: 'auto 8px' }} />
-            <Typography>
-              React component for this page path doesn't exist in landing pages.
-            </Typography>
-          </Paper>
-        </>
+        <EntityCardValidationWarning>
+          React component for this page path doesn't exist in landing pages.
+        </EntityCardValidationWarning>
       );
     }
     return <></>;

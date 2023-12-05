@@ -5,7 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import { Entity } from './EntityListWithFilters';
+import { useAdminViewContext } from './AdminViewContext';
 
 export type ExternalLinkFilters = {
   url: string;
@@ -16,20 +16,9 @@ export type ExternalLinkFilters = {
   isInProduction: boolean;
 };
 
-type EntityFiltersProps = {
-  filters: Entity;
-  setFilters: (filters: Entity) => void;
-  page: number;
-  setPage: (page: number) => void;
-  emptyFilters: Entity;
-};
+export default function EntityFilters(): JSX.Element {
+  const { filters, setFilters, setPage, emptyFilters } = useAdminViewContext();
 
-export default function EntityFilters({
-  filters,
-  setFilters,
-  setPage,
-  emptyFilters,
-}: EntityFiltersProps): JSX.Element {
   function handleChange(field: string, value: string | boolean) {
     setFilters({
       ...filters,
