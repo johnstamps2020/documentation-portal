@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]Cloud Platform Release Notes	', 
+docId: 'gwcpfrFRreleasenotes', 
+}, 
+],
+},
+{
       label: '2023.06 (Hakuba)',
       items: [
         {
@@ -32,3 +41,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Cp() {
   return <CategoryLayout {...pageConfig} />;
 }
+

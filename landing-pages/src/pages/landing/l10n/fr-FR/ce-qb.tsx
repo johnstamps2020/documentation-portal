@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]CustomerEngage Quote and Buy Release Notes', 
+docId: 'dx202310frFRceqbrelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -133,3 +142,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Ceqb() {
   return <CategoryLayout {...pageConfig} />;
 }
+

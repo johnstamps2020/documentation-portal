@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]SRE Release Notes', 
+docId: 'dx202310frFRsrerelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -132,3 +141,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Sre() {
   return <CategoryLayout {...pageConfig} />;
 }
+

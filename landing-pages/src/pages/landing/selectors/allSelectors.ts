@@ -302,6 +302,10 @@ export const allSelectors = {
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/de-DE/ce-qb' },
     { label: 'DataHub', pagePath: 'l10n/de-DE/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/de-DE/ic' },
+    {
+      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/de-DE/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/de-DE/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/de-DE/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/de-DE/pe' },
@@ -312,8 +316,8 @@ export const allSelectors = {
     { label: 'ServiceRepEngage', pagePath: 'l10n/de-DE/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/de-DE/ve' },
     {
-      label: 'Was ist neu in Hakuba',
-      pagePath: 'l10n/de-DE/202306hakubawhatsnew',
+      label: '[TBD]What\'s new in Innsubruck',
+      pagePath: 'l10n/de-DE/innsbruck',
     },
   ],
   sfa48f3b641ce1ec0fe00a60fefbb4192: [
@@ -395,10 +399,14 @@ export const allSelectors = {
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/fr-FR/ce-qb' },
     { label: 'DataHub', pagePath: 'l10n/fr-FR/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/fr-FR/ic' },
+    {
+      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/fr-FR/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
     {
-      label: 'Nouveautés de Hakuba',
-      pagePath: 'l10n/fr-FR/202306hakubawhatsnew',
+      label: '[TBD]What\'s new in Innsubruck',
+      pagePath: 'l10n/fr-FR/innsbruck',
     },
     { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/fr-FR/pe' },
@@ -455,6 +463,10 @@ export const allSelectors = {
     {
       label: 'Hakuba (2023.06) の新機能',
       pagePath: 'l10n/ja-JP/202306hakubawhatsnew',
+    },
+    {
+      label: 'Innsubruck (2023.10) の新機能',
+      pagePath: 'l10n/ja-JP/innsbruck',
     },
     { label: 'Guidewire Identity Federation Hub', pagePath: 'l10n/ja-JP/gwid' },
     { label: 'Guidewire Testing', pagePath: 'l10n/ja-JP/gtest' },

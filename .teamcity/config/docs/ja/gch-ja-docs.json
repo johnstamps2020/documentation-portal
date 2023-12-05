@@ -7,13 +7,23 @@
       "displayTitle": "Guidewire Cloud Home ヘルプ",
       "url": "ja/help/GCH",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Home"],
-        "version": ["latest"],
-        "release": ["Garmisch"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Cloud Home"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
         "language": "ja"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -25,12 +35,20 @@
       "title": "Guidewire Cloud Home Help ja - Early Access",
       "url": "ja/help/GCH-earlyaccess",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Home"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Cloud Home"
+        ],
+        "version": [
+          "latest"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "indexForSearch": false,
       "public": false,
       "internal": false,

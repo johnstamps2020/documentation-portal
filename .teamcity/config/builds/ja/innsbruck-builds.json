@@ -1,0 +1,82 @@
+{
+	"$schema": "../../config-schema.json",
+	"builds": [
+		{
+			"buildType": "dita",
+			"filter": "Digital-ve-MgSvcs.ditaval",
+			"root": "GWCP-ReleaseNotes.ditamap",
+			"srcId": "gwcpreleasenotesjaJPsrc",
+			"docId": "gwcpjaJPreleasenotes"
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-ce-claims-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310jaJPsrc",
+			"docId": "dx202310jaJPceclaimsrelnotes"
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-sre-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310jaJPsrc",
+			"docId": "dx202310jaJPsrerelnotes"
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-ve-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310jaJPsrc",
+			"docId": "dx202310jaJPverelnotes"
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "GuidewireCloud.ditamap",
+			"srcId": "gchhelpjaJPsrc",
+			"docId": "gchjaJPhelprelease"
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-CC-Cloud-Release.ditaval",
+			"root": "ReleaseNotes.ditamap",
+			"srcId": "is202310jaJPsrc",
+			"docId": "iscc202310jaJPreleasenotes"
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-CC-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"srcId": "is202310jaJPsrc",
+			"docId": "iscc202310jaJPupdate"
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
+			"srcId": "isconfigupgradetools500jaJPsrc",
+			"docId": "isconfigupgradetoolsjaJP500"
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "ISUpgradeCompatibility.ditamap",
+			"srcId": "isunversionedjaJPsrc",
+			"docId": "isjaJPupgradecompatibility"
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "testingframeworksjaJPrninnsbruck"
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "whatsnew.ditamap",
+			"srcId": "whatsnewinnsbruckjaJPsrc",
+			"docId": "whatsnewjaJPinnsbruck"
+		}
+	]
+}
