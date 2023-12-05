@@ -23,6 +23,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/innsbruck',
     },
     {
+      label: 'Hakuba (2023.06) の新機能',
+      pagePath: 'l10n/ja-JP/202306hakubawhatsnew',
+    },
+    {
       label: 'Garmisch (2023.02) の新機能',
       pagePath: 'l10n/ja-JP/202302garmischwhatsnew',
     },
