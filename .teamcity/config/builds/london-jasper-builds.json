@@ -1,0 +1,41 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "CCLMAppGuide.ditamap",
+      "srcId": "lmjaspersrc",
+      "docId": "londonccappjasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PCLMAppGuide.ditamap",
+      "srcId": "lmjaspersrc",
+      "docId": "londonpcappjasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "LMConfigGuide.ditamap",
+      "srcId": "lmjaspersrc",
+      "docId": "londonconfigjasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "LMReleaseNotes.ditamap",
+      "srcId": "lmjaspersrc",
+      "docId": "londonrnjasper",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}
