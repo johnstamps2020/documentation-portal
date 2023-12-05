@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "lmjaspersrc",
+      "title": "London Markets Jasper",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/london-markets.git",
+      "branch": "release/jasper"
+    },
+    {
       "id": "lminnsbrucksrc",
       "title": "London Markets Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/london-markets.git",

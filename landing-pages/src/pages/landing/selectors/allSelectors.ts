@@ -246,6 +246,10 @@ export const allSelectors = {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/global-ref-apps',
     },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/global-ref-apps',
+    },
   ],
   s06dcd02c361b9539495548fd0bfb3ad2: [
     {
