@@ -56,6 +56,7 @@ export default function EntityCard({
             {cardWarning}
           </Box>
           <Typography variant="h2" sx={{ pb: 0 }}>
+            {!listView && <EntityCheckbox entity={entity} />}
             {title}
           </Typography>
           {cardContents}

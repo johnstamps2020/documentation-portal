@@ -9,6 +9,8 @@ interface AdminViewInterface {
   emptyFilters: Entity;
   page: number;
   setPage: (value: number) => void;
+  resultsPerPage: number;
+  setResultsPerPage: (value: number) => void;
   filteredEntities: Entity[];
   setFilteredEntities: React.Dispatch<React.SetStateAction<Entity[]>>;
   selectedEntities: Entity[];

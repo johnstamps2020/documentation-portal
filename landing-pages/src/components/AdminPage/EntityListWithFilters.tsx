@@ -1,6 +1,3 @@
-import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
-import Pagination from '@mui/material/Pagination';
 import FileValidationWarning, {
   checkIfFileExists,
 } from 'components/EntitiesAdminPage/PageAdminPage/FileValidationWarning';
@@ -12,6 +9,8 @@ import EditButton from './EditButton';
 import EntityCard from './EntityCard';
 import EntityFilters from './EntityFilters';
 import EntityLink from './EntityLink';
+import EntityListCount from './EntityListCount';
+import EntityListPagination from './EntityListPagination';
 
 export type Entity = {
   label: string;
@@ -78,6 +77,8 @@ export default function EntityListWithFilters({
   const emptyFilters = getEmptyFilters(entities, entityName);
   const [filters, setFilters] = useState<Entity>(emptyFilters);
 
+  const [page, setPage] = useState(1);
+  const [resultsPerPage, setResultsPerPage] = useState(12);
   const [listView, setListView] = useState(true);
   const [selectedEntities, setSelectedEntities] = useState<Entity[]>([]);
   const [filteredEntities, setFilteredEntities] = useState<Entity[]>(entities);
@@ -124,16 +125,7 @@ export default function EntityListWithFilters({
     }
   }, [entities, filters]);
 
-  const [page, setPage] = useState(1);
-  const resultsPerPage = 12;
-  const numberOfPages =
-    filteredEntities.length > resultsPerPage
-      ? Math.ceil(filteredEntities.length / resultsPerPage)
-      : 1;
   const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
-  function handleChangePage(event: React.ChangeEvent<unknown>, value: number) {
-    setPage(value);
-  }
 
   return (
     <AdminViewContext.Provider
@@ -145,6 +137,8 @@ export default function EntityListWithFilters({
         emptyFilters,
         page,
         setPage,
+        resultsPerPage,
+        setResultsPerPage,
         filteredEntities,
         setFilteredEntities,
         selectedEntities,
@@ -156,20 +150,8 @@ export default function EntityListWithFilters({
       }}
     >
       <EntityFilters />
-      <Divider variant="middle" sx={{ margin: '20px' }}>
-        <Chip
-          label={`Filtered results: ${filteredEntities.length}/${entities.length}`}
-        ></Chip>
-      </Divider>
-      {numberOfPages > 1 && (
-        <Pagination
-          sx={{ alignSelf: 'center', margin: '16px 0' }}
-          color="primary"
-          count={numberOfPages}
-          page={page}
-          onChange={handleChangePage}
-        />
-      )}
+      <EntityListCount totalEntities={entities.length} />
+      <EntityListPagination />
       <ActionBar />
       <AdminViewWrapper>
         {filteredEntities
