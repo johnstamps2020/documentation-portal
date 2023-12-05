@@ -137,7 +137,7 @@ function showCookieConsentModal() {
 
   modal.innerHTML = `
     <h2 style="margin-block-start: 0">This website uses cookies</h2>
-      <p>We use cookies to analyze our traffic. You consent to our cookies if you continue to use our website.</p>
+      <p>We use cookies to analyze our traffic. If you click allow, you consent to our cookies.</p>
       <div class="cookieModalButtons" style="display:flex;gap:12px">
         <button autofocus id="cookieAllowButton" type="button" style="${buttonStyles}">Allow all cookies</button>
         <button id="cookieDenyButton" type="button" style="${buttonStyles}">Deny all cookies</button>
