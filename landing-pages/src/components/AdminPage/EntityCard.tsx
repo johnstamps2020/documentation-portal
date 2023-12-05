@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -42,10 +43,23 @@ export default function EntityCard({
           gap: '16px',
         }}
       >
-        {listView && <EntityCheckbox entity={entity} />}
-        {cardWarning}
-        <Typography variant="h2">{title}</Typography>
-        {cardContents}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: listView ? 'row' : 'column',
+            alignItems: listView ? 'center' : 'flex-start',
+            gap: '16px',
+          }}
+        >
+          <Box>
+            {listView && <EntityCheckbox entity={entity} />}
+            {cardWarning}
+          </Box>
+          <Typography variant="h2" sx={{ pb: 0 }}>
+            {title}
+          </Typography>
+          {cardContents}
+        </Box>
       </CardContent>
       <CardActions>{cardButtons}</CardActions>
     </Card>
