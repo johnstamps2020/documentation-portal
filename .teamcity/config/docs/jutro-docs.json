@@ -3332,6 +3332,37 @@
       "public": false,
       "internal": true,
       "earlyAccess": true
+    },
+    {
+      "id": "agentquoteandbuypersonalautoinnsbruck",
+      "title": "Agent Quote and Buy Personal Auto",
+      "url": "jutro/agent-quote-and-buy-pa/innsbruck",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Innsbruck"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging", "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
     }
   ]
 }

@@ -168,6 +168,14 @@
       "disabled": false
     },
     {
+      "buildType": "dita",
+      "docId": "agentquoteandbuypersonalautoinnsbruck",
+      "srcId": "jutrodigitalcontentsrcinnsbruck",
+      "root": "AgentQuoteAndBuyPA.ditamap",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
       "buildType": "yarn",
       "docId": "jutrosdknext",
       "srcId": "srcjutrosdknext",

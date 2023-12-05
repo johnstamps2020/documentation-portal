@@ -426,6 +426,12 @@
       "title": "Jutro Digital Content",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
       "branch": "main"
+    },
+    {
+      "id": "jutrodigitalcontentsrcinnsbruck",
+      "title": "Jutro Digital Content Innsbruck",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
+      "branch": "release/innsbruck"
     }
   ]
 }
