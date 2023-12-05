@@ -72,7 +72,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Global Content Reference Applications',
-          pagePath: 'cloudProducts/innsbruck/global-ref-apps',
+          pagePath: 'cloudProducts/jasper/global-ref-apps',
         },
         {
           label: 'Underwriting Workbench (Early Access)',
