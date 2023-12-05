@@ -1,5 +1,4 @@
 import Checkbox from '@mui/material/Checkbox';
-import { useEffect, useState } from 'react';
 import { useAdminViewContext } from './AdminViewContext';
 import { Entity } from './EntityListWithFilters';
 

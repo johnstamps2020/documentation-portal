@@ -5,7 +5,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import { Entity } from './EntityListWithFilters';
 import { useAdminViewContext } from './AdminViewContext';
 
 export type ExternalLinkFilters = {
