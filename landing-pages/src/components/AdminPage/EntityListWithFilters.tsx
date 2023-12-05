@@ -140,9 +140,14 @@ export default function EntityListWithFilters({
       value={{
         listView,
         setListView,
-        selectedEntities,
+        filters,
+        setFilters,
+        emptyFilters,
+        page,
+        setPage,
         filteredEntities,
         setFilteredEntities,
+        selectedEntities,
         setSelectedEntities,
         entityDatabaseName,
         setEntityDatabaseName,
@@ -150,13 +155,7 @@ export default function EntityListWithFilters({
         setEntityPrimaryKeyName,
       }}
     >
-      <EntityFilters
-        emptyFilters={emptyFilters}
-        filters={filters}
-        page={page}
-        setFilters={setFilters}
-        setPage={setPage}
-      />
+      <EntityFilters />
       <Divider variant="middle" sx={{ margin: '20px' }}>
         <Chip
           label={`Filtered results: ${filteredEntities.length}/${entities.length}`}

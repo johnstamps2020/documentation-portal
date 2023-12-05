@@ -51,7 +51,7 @@ export default function EntityCard({
             gap: '16px',
           }}
         >
-          <Box>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {listView && <EntityCheckbox entity={entity} />}
             {cardWarning}
           </Box>

@@ -7,23 +7,22 @@ type EntityCheckboxProps = {
   entity: Entity;
 };
 
+function getMatchingEntity(
+  entity: Entity,
+  selectedEntities: Entity[]
+): Entity | undefined {
+  return selectedEntities.find(
+    (selectedEntity) =>
+      selectedEntity.label === entity.label && selectedEntity.url === entity.url
+  );
+}
+
+function isSelected(entity: Entity, selectedEntities: Entity[]): boolean {
+  return getMatchingEntity(entity, selectedEntities) !== undefined;
+}
+
 export default function EntityCheckbox({ entity }: EntityCheckboxProps) {
   const { selectedEntities, setSelectedEntities } = useAdminViewContext();
-  const [checked, setChecked] = useState(false);
-
-  useEffect(() => {
-    if (
-      selectedEntities.find(
-        (selectedEntity) =>
-          selectedEntity.label === entity.label &&
-          selectedEntity.url === entity.url
-      )
-    ) {
-      setChecked(true);
-    } else {
-      setChecked(false);
-    }
-  }, [selectedEntities, entity]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const requestedValue = event.target.checked;
@@ -31,14 +30,16 @@ export default function EntityCheckbox({ entity }: EntityCheckboxProps) {
       if (requestedValue) {
         return [...prevSelectedEntities, entity];
       } else {
-        return prevSelectedEntities.filter((e) => e !== entity);
+        return prevSelectedEntities.filter(
+          (e) => getMatchingEntity(e, [entity]) === undefined
+        );
       }
     });
   };
 
   return (
     <Checkbox
-      checked={checked}
+      checked={isSelected(entity, selectedEntities)}
       onChange={handleChange}
       aria-label={`Select ${entity.label}`}
     />

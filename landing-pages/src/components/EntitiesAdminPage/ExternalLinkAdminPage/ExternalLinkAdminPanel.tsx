@@ -16,7 +16,7 @@ export default function ExternalLinkAdminPanel() {
       entityName="external link"
       entityDatabaseName="ExternalLink"
       entityPrimaryKeyName="url"
-      entities={externalLinks.map(({ label, ...rest }) => ({ label, ...rest }))}
+      entities={externalLinks}
       DeleteButton={DeleteButton}
       DuplicateButton={DuplicateButton}
       FormComponent={ExternalLinkSettingsForm}

@@ -4,6 +4,11 @@ import { Entity } from './EntityListWithFilters';
 interface AdminViewInterface {
   listView: boolean;
   setListView: (value: boolean) => void;
+  filters: Entity;
+  setFilters: React.Dispatch<React.SetStateAction<Entity>>;
+  emptyFilters: Entity;
+  page: number;
+  setPage: (value: number) => void;
   filteredEntities: Entity[];
   setFilteredEntities: React.Dispatch<React.SetStateAction<Entity[]>>;
   selectedEntities: Entity[];

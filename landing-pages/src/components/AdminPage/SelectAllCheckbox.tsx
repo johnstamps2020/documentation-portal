@@ -1,5 +1,6 @@
 import Checkbox from '@mui/material/Checkbox';
 import { useAdminViewContext } from './AdminViewContext';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function SelectAllCheckbox() {
   const { selectedEntities, setSelectedEntities, filteredEntities } =
@@ -14,9 +15,11 @@ export default function SelectAllCheckbox() {
   };
 
   return (
-    <Checkbox
-      onChange={handleChange}
-      value={selectedEntities.length === filteredEntities.length}
-    />
+    <Tooltip title="Select all filtered items">
+      <Checkbox
+        onChange={handleChange}
+        value={selectedEntities.length === filteredEntities.length}
+      />
+    </Tooltip>
   );
 }
