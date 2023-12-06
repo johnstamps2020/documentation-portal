@@ -40,6 +40,25 @@
       "earlyAccess": false
     },
     {
+      "id": "incsp20241rn",
+      "title": "Consumer Service Portal 2024.1 Release Notes",
+      "url": "cloud/in/csp20241rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "incsp20233rn",
       "title": "Consumer Service Portal 2023.3 Release Notes",
       "url": "cloud/in/csp20233rn",
@@ -314,6 +333,25 @@
       "earlyAccess": false
     },
     {
+      "id": "in20241studiorn",
+      "title": "Studio 2024.1 Release Notes",
+      "url": "cloud/in/20241/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "in20233studiorn",
       "title": "Studio 2023.3 Release Notes",
       "url": "cloud/in/20233/studiorn",
@@ -471,6 +509,25 @@
       "indexForSearch": true,
       "public": false,
       "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20241rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20241/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
       "earlyAccess": false
     },
     {

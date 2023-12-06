@@ -156,6 +156,10 @@ export const allSelectors = {
       label: 'Innsbruck (2023.3)',
       pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
     },
+    {
+      label: 'Jasper (2024.1)',
+      pagePath: 'cloudProducts/jasper/insuranceNow/2024.1',
+    },
   ],
   s1793805ac84baf801d4eb31b00ab1ddf: [
     {
@@ -316,7 +320,7 @@ export const allSelectors = {
     { label: 'ServiceRepEngage', pagePath: 'l10n/de-DE/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/de-DE/ve' },
     {
-      label: '[TBD]What\'s new in Innsubruck',
+      label: "[TBD]What's new in Innsubruck",
       pagePath: 'l10n/de-DE/innsbruck',
     },
   ],
@@ -405,7 +409,7 @@ export const allSelectors = {
     },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
     {
-      label: '[TBD]What\'s new in Innsubruck',
+      label: "[TBD]What's new in Innsubruck",
       pagePath: 'l10n/fr-FR/innsbruck',
     },
     { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },

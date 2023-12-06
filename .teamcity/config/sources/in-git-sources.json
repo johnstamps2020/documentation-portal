@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "in20241",
+      "title": "InsuranceNow 2024.1 Jasper",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2024.1JASPER"
+    },
+    {
       "id": "in20233",
       "title": "InsuranceNow 2023.3 Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
