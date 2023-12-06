@@ -7,6 +7,7 @@
 			"root": "GWCP-ReleaseNotes.ditamap",
 			"srcId": "gwcpreleasenotesjaJPsrc",
 			"docId": "gwcpjaJPreleasenotes",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -15,6 +16,7 @@
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310jaJPsrc",
 			"docId": "dx202310jaJPceclaimsrelnotes",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -23,6 +25,7 @@
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310jaJPsrc",
 			"docId": "dx202310jaJPsrerelnotes",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -31,6 +34,7 @@
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310jaJPsrc",
 			"docId": "dx202310jaJPverelnotes",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -39,6 +43,7 @@
 			"root": "GuidewireCloud.ditamap",
 			"srcId": "gchhelpjaJPsrc",
 			"docId": "gchjaJPhelprelease",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -47,6 +52,7 @@
 			"root": "ReleaseNotes.ditamap",
 			"srcId": "is202310jaJPsrc",
 			"docId": "iscc202310jaJPreleasenotes",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -55,6 +61,7 @@
 			"root": "UpdateGuide.ditamap",
 			"srcId": "is202310jaJPsrc",
 			"docId": "iscc202310jaJPupdate",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -63,6 +70,7 @@
 			"root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
 			"srcId": "isconfigupgradetools500jaJPsrc",
 			"docId": "isconfigupgradetoolsjaJP500",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -71,6 +79,7 @@
 			"root": "ISUpgradeCompatibility.ditamap",
 			"srcId": "isunversionedjaJPsrc",
 			"docId": "isjaJPupgradecompatibility",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -79,6 +88,7 @@
 			"root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
 			"srcId": "testingframeworks202310jaJPsrc",
 			"docId": "testingframeworksjaJPrninnsbruck",
+			"indexRedirect": true,
 			"disabled": false
 		},
 		{
@@ -87,6 +97,7 @@
 			"root": "whatsnew.ditamap",
 			"srcId": "whatsnewinnsbruckjaJPsrc",
 			"docId": "whatsnewjaJPinnsbruck",
+			"indexRedirect": true,
 			"disabled": false
 		}
 	]

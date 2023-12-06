@@ -18,10 +18,10 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
 {
-label: '[TBD]What\'s new in Innsbruck', 
+label: 'Innsbruck の新機能', 
 items: [
 {
-label: '[TBD]What\'s New in Innsbruck', 
+label: 'Innsbruck の新機能', 
 docId: 'whatsnewjaJPinnsbruck', 
 }, 
 ],
