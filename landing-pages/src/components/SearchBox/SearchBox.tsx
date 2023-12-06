@@ -99,6 +99,8 @@ export default function SearchBox({ big = true }: SearchBoxProps) {
             fontFamily: 'Source Sans Pro,Helvetica,Arial,sans-serif',
           },
         }}
+        type="search"
+        autoComplete="off"
         placeholder={placeholder}
         inputProps={{ 'aria-label': placeholder }}
         name="q"
