@@ -62,6 +62,12 @@
       "branch": "release/2020.1ASPEN"
     },
     {
+      "id": "srcin20241apiref",
+      "title": "InsuranceNow API Reference Jasper",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "release/jasper"
+    },
+    {
       "id": "srcin20233apiref",
       "title": "InsuranceNow API Reference Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",

@@ -64,7 +64,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'InsuranceNow',
-          pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
+          pagePath: 'cloudProducts/jasper/insuranceNow/2024.1',
         },
         {
           label: 'Digital Reference Applications',
