@@ -358,6 +358,15 @@
       "docId": "indataservice",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ProgrammingStandards.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inprogstandards",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
