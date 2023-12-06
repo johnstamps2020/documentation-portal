@@ -2,6 +2,7 @@ import EntityCardValidationWarning from 'components/AdminPage/EntityCardValidati
 
 type FileValidationWarningProps = {
   path: string;
+  entityName: string;
 };
 
 export function checkIfFileExists(path: string) {
@@ -15,7 +16,11 @@ export function checkIfFileExists(path: string) {
 
 export default function FileValidationWarning({
   path,
+  entityName,
 }: FileValidationWarningProps) {
+  if (entityName !== 'page') {
+    return null;
+  }
   try {
     const fileExists = checkIfFileExists(path);
     if (!fileExists) {

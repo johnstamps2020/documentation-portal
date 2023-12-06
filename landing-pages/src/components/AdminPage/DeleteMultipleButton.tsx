@@ -18,10 +18,10 @@ export default function DeleteMultipleButton() {
 
   async function handleDelete() {
     const responses = await Promise.all(
-      selectedEntities.map(({ url }) => {
+      selectedEntities.map(({ id }) => {
         return fetch(`/admin/entity/${entityDatabaseName}`, {
           method: 'DELETE',
-          body: `{ "${entityPrimaryKeyName}": "${url}" }`,
+          body: `{ "${entityPrimaryKeyName}": "${id}" }`,
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',

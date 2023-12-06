@@ -11,28 +11,30 @@ import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
-import { useExternalLinkData } from 'hooks/useEntitiesData';
+import { useSourceData } from 'hooks/useEntitiesData';
+import { Source } from 'server/dist/model/entity/Source';
 
-type NewExternalLink = Omit<ExternalLink, 'uuid'>;
+type NewSource = Omit<Source, 'uuid'>;
 
-export const emptyExternalLink: NewExternalLink = {
-  url: '',
-  label: '',
+export const emptySource: NewSource = {
+  id: '',
+  name: '',
+  gitUrl: '',
+  gitBranch: '',
   internal: false,
   public: false,
   earlyAccess: false,
   isInProduction: false,
 };
 
-type ExternalLinkSettingsFormProps = {
+type SourceSettingsFormProps = {
   primaryKey?: string;
   disabled?: boolean;
-  initialExternalLinkData?: NewExternalLink;
+  initialSourceData?: NewSource;
 };
 
-async function sendRequest(url: string, { arg }: { arg: NewExternalLink }) {
-  return await fetch(url, {
+async function sendRequest(id: string, { arg }: { arg: NewSource }) {
+  return await fetch(id, {
     method: 'PUT',
     body: JSON.stringify(arg),
     headers: {
@@ -42,42 +44,39 @@ async function sendRequest(url: string, { arg }: { arg: NewExternalLink }) {
   });
 }
 
-function generateTmpExternalLinkData(
-  externalLinkData: NewExternalLink | undefined
-) {
-  return externalLinkData ? externalLinkData : emptyExternalLink;
+function generateTmpSourceData(sourceData: NewSource | undefined) {
+  return sourceData ? sourceData : emptySource;
 }
 
-export default function ExternalLinkSettingsForm({
-  primaryKey: urlFromProps,
+export default function SourceSettingsForm({
+  primaryKey: idFromProps,
   disabled,
-  initialExternalLinkData,
-}: ExternalLinkSettingsFormProps) {
-  const [externalLinkUrl, setExternalLinkUrl] = useState(urlFromProps);
+  initialSourceData,
+}: SourceSettingsFormProps) {
+  const [sourceId, setSourceId] = useState(idFromProps);
   const { showMessage } = useNotification();
-  const { externalLinkData, isError, isLoading } =
-    useExternalLinkData(externalLinkUrl);
+  const { sourceData, isError, isLoading } = useSourceData(sourceId);
   const { trigger, isMutating } = useSWRMutation(
-    '/admin/entity/ExternalLink',
+    '/admin/entity/Source',
     sendRequest
   );
-  const [tmpExternalLinkData, setTmpExternalLinkData] = useState(
-    generateTmpExternalLinkData(initialExternalLinkData)
+  const [tmpSourceData, setTmpSourceData] = useState(
+    generateTmpSourceData(initialSourceData)
   );
+  console.log(initialSourceData);
   const [editingDisabled, setEditingDisabled] = useState(
     disabled ? disabled : false
   );
   const [canSubmitData, setCanSubmitData] = useState(false);
   const [dataChanged, setDataChanged] = useState(false);
-  const [externalLinkAlreadyExists, setExternalLinkAlreadyExists] =
-    useState<boolean>();
+  const [sourceAlreadyExists, setSourceAlreadyExists] = useState<boolean>();
   const [jsonIsInvalid, setJsonIsInvalid] = useState<boolean>();
 
   useEffect(() => {
-    externalLinkUrl &&
-      externalLinkData &&
-      setTmpExternalLinkData(generateTmpExternalLinkData(externalLinkData));
-  }, [externalLinkData, externalLinkUrl]);
+    sourceId &&
+      sourceData &&
+      setTmpSourceData(generateTmpSourceData(sourceData));
+  }, [sourceData, sourceId]);
 
   useEffect(() => {
     if (disabled || isMutating) {
@@ -88,38 +87,32 @@ export default function ExternalLinkSettingsForm({
   }, [disabled, isMutating]);
 
   useEffect(() => {
-    const dataForComparison = initialExternalLinkData || externalLinkData;
+    const dataForComparison = initialSourceData || sourceData;
     if (
-      JSON.stringify(tmpExternalLinkData) ===
-      JSON.stringify(generateTmpExternalLinkData(dataForComparison))
+      JSON.stringify(tmpSourceData) ===
+      JSON.stringify(generateTmpSourceData(dataForComparison))
     ) {
       setDataChanged(false);
     } else {
       setDataChanged(true);
     }
-  }, [
-    tmpExternalLinkData,
-    externalLinkData,
-    externalLinkUrl,
-    initialExternalLinkData,
-  ]);
+  }, [tmpSourceData, sourceData, sourceId, initialSourceData]);
 
   useEffect(() => {
     if (
       isMutating ||
-      externalLinkAlreadyExists ||
+      sourceAlreadyExists ||
       jsonIsInvalid ||
-      !tmpExternalLinkData.url ||
-      !tmpExternalLinkData.label
+      !tmpSourceData.id
     ) {
       setCanSubmitData(false);
     } else {
       setCanSubmitData(true);
     }
   }, [
-    externalLinkData,
-    tmpExternalLinkData,
-    externalLinkAlreadyExists,
+    sourceData,
+    tmpSourceData,
+    sourceAlreadyExists,
     jsonIsInvalid,
     isMutating,
   ]);
@@ -131,7 +124,7 @@ export default function ExternalLinkSettingsForm({
           padding: 4,
         }}
       >
-        <Typography variant="h2">Problem loading external link data</Typography>
+        <Typography variant="h2">Problem loading source data</Typography>
         <pre>
           <code>{JSON.stringify(isError, null, 2)}</code>
         </pre>
@@ -144,26 +137,26 @@ export default function ExternalLinkSettingsForm({
   }
 
   function handleChange(field: string, value: string | boolean) {
-    setTmpExternalLinkData((currentTmpExternalLinkData) => ({
-      ...currentTmpExternalLinkData,
+    setTmpSourceData((currentTmpSourceData) => ({
+      ...currentTmpSourceData,
       [field]: value,
     }));
 
-    if (field === 'url') {
-      setExternalLinkAlreadyExists(false);
+    if (field === 'id') {
+      setSourceAlreadyExists(false);
     }
   }
 
   function handleResetForm() {
-    const resetToData = externalLinkData || initialExternalLinkData;
-    setTmpExternalLinkData(generateTmpExternalLinkData(resetToData));
-    setExternalLinkAlreadyExists(false);
+    const resetToData = sourceData || initialSourceData;
+    setTmpSourceData(generateTmpSourceData(resetToData));
+    setSourceAlreadyExists(false);
     setJsonIsInvalid(false);
   }
 
-  async function checkIfExternalLinkExists(): Promise<boolean> {
+  async function checkIfSourceExists(): Promise<boolean> {
     const response = await fetch(
-      `/safeConfig/entity/ExternalLink?url=${tmpExternalLinkData.url}`
+      `/safeConfig/entity/Source?id=${tmpSourceData.id}`
     );
 
     if (response.status === 404) {
@@ -173,31 +166,30 @@ export default function ExternalLinkSettingsForm({
     const jsonData = await response.json();
 
     return (
-      jsonData.url === tmpExternalLinkData.url &&
-      externalLinkData?.url !== tmpExternalLinkData.url
+      jsonData.id === tmpSourceData.id && sourceData?.id !== tmpSourceData.id
     );
   }
 
   async function handleSave() {
     try {
-      const externalLinkExists = await checkIfExternalLinkExists();
+      const externalLinkExists = await checkIfSourceExists();
       if (externalLinkExists) {
-        setExternalLinkAlreadyExists(true);
+        setSourceAlreadyExists(true);
         return;
       }
-      let dataToSave = tmpExternalLinkData;
+      let dataToSave = tmpSourceData;
       const response = await trigger(dataToSave);
 
       if (response?.ok) {
-        showMessage('External link saved successfully', 'success');
-        setExternalLinkUrl(tmpExternalLinkData.url);
+        showMessage('Source saved successfully', 'success');
+        setSourceId(tmpSourceData.id);
         setDataChanged(false);
       } else if (response) {
         const jsonError = await response.json();
         throw new Error(jsonError.message);
       }
     } catch (err) {
-      showMessage(`External link not saved: ${err}`, 'error');
+      showMessage(`Source not saved: ${err}`, 'error');
     }
   }
 
@@ -212,23 +204,36 @@ export default function ExternalLinkSettingsForm({
     >
       <TextField
         required
-        error={externalLinkAlreadyExists}
-        helperText={
-          externalLinkAlreadyExists &&
-          'External link with this url already exists'
-        }
+        error={sourceAlreadyExists}
+        helperText={sourceAlreadyExists && 'Source with this id already exists'}
         disabled={editingDisabled}
-        label="Url"
-        value={tmpExternalLinkData.url}
-        onChange={(event) => handleChange('url', event.target.value)}
+        label="Id"
+        value={tmpSourceData.id}
+        onChange={(event) => handleChange('id', event.target.value)}
         fullWidth
       />
       <TextField
         required
         disabled={editingDisabled}
-        label="Label"
-        onChange={(event) => handleChange('label', event.target.value)}
-        value={tmpExternalLinkData.label}
+        label="Name"
+        onChange={(event) => handleChange('name', event.target.value)}
+        value={tmpSourceData.name}
+        fullWidth
+      />
+      <TextField
+        required
+        disabled={editingDisabled}
+        label="Git url"
+        onChange={(event) => handleChange('gitUrl', event.target.value)}
+        value={tmpSourceData.gitUrl}
+        fullWidth
+      />
+      <TextField
+        required
+        disabled={editingDisabled}
+        label="Git branch"
+        onChange={(event) => handleChange('gitBranch', event.target.value)}
+        value={tmpSourceData.gitBranch}
         fullWidth
       />
       <FormGroup>
@@ -247,9 +252,7 @@ export default function ExternalLinkSettingsForm({
                   <Switch
                     value={key}
                     checked={
-                      tmpExternalLinkData[
-                        key as keyof typeof externalLinkData
-                      ] as boolean
+                      tmpSourceData[key as keyof typeof sourceData] as boolean
                     }
                     onChange={(event) =>
                       handleChange(key, event.target.checked)

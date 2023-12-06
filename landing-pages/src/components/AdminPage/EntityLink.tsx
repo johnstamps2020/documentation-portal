@@ -5,12 +5,17 @@ import { Link as RouterLink } from 'react-router-dom';
 type EntityLinkProps = {
   url: string;
   label: string;
+  entityName: string;
 };
 
-export default function EntityLink({ url, label }: EntityLinkProps) {
+export default function EntityLink({
+  url,
+  label,
+  entityName,
+}: EntityLinkProps) {
   return (
     <Link
-      to={`/${url}`}
+      to={entityName === 'page' ? `/${url}` : url}
       target="_blank"
       component={RouterLink}
       sx={{ textDecoration: 'underline' }}

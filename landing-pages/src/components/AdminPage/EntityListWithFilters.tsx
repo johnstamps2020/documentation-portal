@@ -7,6 +7,7 @@ import { AdminViewContext } from './AdminViewContext';
 import AdminViewWrapper from './AdminViewWrapper';
 import EditButton from './EditButton';
 import EntityCard from './EntityCard';
+import EntityDescription from './EntityDescription';
 import EntityFilters from './EntityFilters';
 import EntityLink from './EntityLink';
 import EntityListCount from './EntityListCount';
@@ -14,7 +15,8 @@ import EntityListPagination from './EntityListPagination';
 
 export type Entity = {
   label: string;
-  url: string;
+  url?: string;
+  id?: string;
   [x: string]: string | boolean | any;
 };
 
@@ -31,7 +33,6 @@ type EntityListWithFiltersProps = {
 function getEmptyFilters(entities: Entity[], entityName: string) {
   const emptyFilters: Entity = {
     label: '',
-    url: '',
   };
   const entity = entities[0];
   let { uuid, ...entityNoId } = entity;
@@ -101,6 +102,7 @@ export default function EntityListWithFilters({
             if (
               k === 'missingFileInLandingPages' &&
               v &&
+              entity.url &&
               !checkIfFileExists(entity.url)
             ) {
               matchesFilters = true;
@@ -156,26 +158,71 @@ export default function EntityListWithFilters({
       <AdminViewWrapper>
         {filteredEntities
           .slice(resultsOffset, resultsOffset + resultsPerPage)
-          .map(({ label, url, ...rest }) => (
-            <EntityCard
-              key={`${label}_${url}`}
-              entity={{ label, url, ...rest }}
-              title={label}
-              cardContents={<EntityLink url={url} label={url} />}
-              cardButtons={
-                <>
-                  <EditButton
-                    buttonLabel={`Open ${entityName} editor`}
-                    dialogTitle={`Update ${entityName} settings`}
-                    formComponent={<FormComponent primaryKey={url} />}
+          .map((entity) =>
+            entity.url ? (
+              <EntityCard
+                key={`${entity.label}_${entity.url}`}
+                title={entity.label}
+                entity={entity}
+                cardContents={
+                  <EntityLink
+                    url={entity.url}
+                    label={entity.url}
+                    entityName={entityName}
                   />
-                  <DuplicateButton primaryKey={url} />
-                  <DeleteButton primaryKey={url} />
-                </>
-              }
-              cardWarning={<FileValidationWarning path={url} />}
-            />
-          ))}
+                }
+                cardButtons={
+                  <>
+                    <EditButton
+                      buttonLabel={`Open ${entityName} editor`}
+                      dialogTitle={`Update ${entityName} settings`}
+                      formComponent={<FormComponent primaryKey={entity.url} />}
+                    />
+                    <DuplicateButton primaryKey={entity.url} />
+                    <DeleteButton primaryKey={entity.url} />
+                  </>
+                }
+                cardWarning={
+                  <FileValidationWarning
+                    path={entity.url}
+                    entityName={entityName}
+                  />
+                }
+              />
+            ) : (
+              entity.id && (
+                <EntityCard
+                  key={`${entity.label}_${entity.id}`}
+                  title={entity.label}
+                  entity={entity}
+                  cardContents={
+                    <EntityDescription
+                      prop1={{ key: 'id', value: entity.id }}
+                      prop2={{ key: 'gitUrl', value: entity.gitUrl }}
+                      prop3={{ key: 'gitBranch', value: entity.gitBranch }}
+                    />
+                  }
+                  cardButtons={
+                    <>
+                      <EditButton
+                        buttonLabel={`Open ${entityName} editor`}
+                        dialogTitle={`Update ${entityName} settings`}
+                        formComponent={<FormComponent primaryKey={entity.id} />}
+                      />
+                      <DuplicateButton primaryKey={entity.id} />
+                      <DeleteButton primaryKey={entity.id} />
+                    </>
+                  }
+                  cardWarning={
+                    <FileValidationWarning
+                      path={entity.id}
+                      entityName={entityName}
+                    />
+                  }
+                />
+              )
+            )
+          )}
       </AdminViewWrapper>
     </AdminViewContext.Provider>
   );
