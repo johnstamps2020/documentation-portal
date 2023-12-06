@@ -1,12 +1,16 @@
-import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
-import Pagination from '@mui/material/Pagination';
+import FileValidationWarning, {
+  checkIfFileExists,
+} from 'components/EntitiesAdminPage/PageAdminPage/FileValidationWarning';
 import React, { useEffect, useState } from 'react';
+import ActionBar from './ActionBar';
+import { AdminViewContext } from './AdminViewContext';
+import AdminViewWrapper from './AdminViewWrapper';
 import EditButton from './EditButton';
 import EntityCard from './EntityCard';
 import EntityFilters from './EntityFilters';
 import EntityLink from './EntityLink';
+import EntityListCount from './EntityListCount';
+import EntityListPagination from './EntityListPagination';
 
 export type Entity = {
   label: string;
@@ -17,18 +21,24 @@ export type Entity = {
 type EntityListWithFiltersProps = {
   entities: Entity[];
   entityName: string;
+  entityDatabaseName: string;
+  entityPrimaryKeyName: string;
   FormComponent: React.ElementType;
   DuplicateButton: React.ElementType;
   DeleteButton: React.ElementType;
 };
 
-function getEmptyFilters(entities: Entity[]) {
+function getEmptyFilters(entities: Entity[], entityName: string) {
   const emptyFilters: Entity = {
     label: '',
     url: '',
   };
   const entity = entities[0];
-  const { uuid, ...entityNoId } = entity;
+  let { uuid, ...entityNoId } = entity;
+  if (entityName === 'page') {
+    const missingFileInLandingPages = false;
+    entityNoId = { ...entityNoId, missingFileInLandingPages };
+  }
   for (const [k, v] of Object.entries(entityNoId)) {
     if (typeof v === 'boolean') {
       emptyFilters[k] = false;
@@ -58,25 +68,47 @@ function sortEntities(entities: Entity[]) {
 export default function EntityListWithFilters({
   entities,
   entityName,
+  entityDatabaseName: initialEntityDatabaseName,
+  entityPrimaryKeyName: initialEntityPrimaryKeyName,
   DeleteButton,
   DuplicateButton,
   FormComponent,
 }: EntityListWithFiltersProps) {
-  const emptyFilters = getEmptyFilters(entities);
+  const emptyFilters = getEmptyFilters(entities, entityName);
   const [filters, setFilters] = useState<Entity>(emptyFilters);
+
+  const [page, setPage] = useState(1);
+  const [resultsPerPage, setResultsPerPage] = useState(12);
+  const [listView, setListView] = useState(true);
+  const [selectedEntities, setSelectedEntities] = useState<Entity[]>([]);
   const [filteredEntities, setFilteredEntities] = useState<Entity[]>(entities);
+  const [entityDatabaseName, setEntityDatabaseName] = useState(
+    initialEntityDatabaseName
+  );
+  const [entityPrimaryKeyName, setEntityPrimaryKeyName] = useState(
+    initialEntityPrimaryKeyName
+  );
 
   useEffect(() => {
-    function filterExternalLinks() {
-      return entities?.filter((p) => {
+    function filterEntities() {
+      return entities?.filter((entity) => {
         let matchesFilters = true;
         for (const [k, v] of Object.entries(filters)) {
-          if (typeof v === 'boolean' && v && p[k as keyof typeof p] !== v) {
-            matchesFilters = false;
+          if (typeof v === 'boolean') {
+            if (v && entity[k as keyof typeof entity] !== v) {
+              matchesFilters = false;
+            }
+            if (
+              k === 'missingFileInLandingPages' &&
+              v &&
+              !checkIfFileExists(entity.url)
+            ) {
+              matchesFilters = true;
+            }
           } else if (
             typeof v === 'string' &&
             v !== '' &&
-            !p[k as keyof typeof p]
+            !entity[k as keyof typeof entity]
               ?.toString()
               ?.toLocaleLowerCase()
               .includes(v.toLocaleLowerCase())
@@ -87,64 +119,47 @@ export default function EntityListWithFilters({
         return matchesFilters;
       });
     }
-    const filteredExternalLinks = filterExternalLinks();
-
-    if (filteredExternalLinks) {
-      setFilteredEntities(sortEntities(filteredExternalLinks));
+    const filteredEntities = filterEntities();
+    if (filteredEntities) {
+      setFilteredEntities(sortEntities(filteredEntities));
     }
   }, [entities, filters]);
 
-  const [page, setPage] = useState(1);
-  const resultsPerPage = 12;
-  const numberOfPages =
-    filteredEntities.length > resultsPerPage
-      ? Math.ceil(filteredEntities.length / resultsPerPage)
-      : 1;
   const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
-  function handleChangePage(event: React.ChangeEvent<unknown>, value: number) {
-    setPage(value);
-  }
 
   return (
-    <>
-      <EntityFilters
-        emptyFilters={emptyFilters}
-        filters={filters}
-        page={page}
-        setFilters={setFilters}
-        setPage={setPage}
-      />
-      <Divider variant="middle" sx={{ margin: '20px' }}>
-        <Chip
-          label={`Showing results: ${filteredEntities.length}/${entities.length}`}
-        ></Chip>
-      </Divider>
-      {numberOfPages > 1 && (
-        <Pagination
-          sx={{ alignSelf: 'center', margin: '16px 0' }}
-          color="primary"
-          count={numberOfPages}
-          page={page}
-          onChange={handleChangePage}
-        />
-      )}
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: {
-            md: 'repeat(3, 1fr)',
-            sm: 'repeat(2, 1fr)',
-            xs: '1fr',
-          },
-          gap: 2,
-          py: 6,
-        }}
-      >
+    <AdminViewContext.Provider
+      value={{
+        listView,
+        setListView,
+        filters,
+        setFilters,
+        emptyFilters,
+        page,
+        setPage,
+        resultsPerPage,
+        setResultsPerPage,
+        filteredEntities,
+        setFilteredEntities,
+        selectedEntities,
+        setSelectedEntities,
+        entityDatabaseName,
+        setEntityDatabaseName,
+        entityPrimaryKeyName,
+        setEntityPrimaryKeyName,
+      }}
+    >
+      <EntityFilters />
+      <EntityListCount totalEntities={entities.length} />
+      <EntityListPagination />
+      <ActionBar />
+      <AdminViewWrapper>
         {filteredEntities
           .slice(resultsOffset, resultsOffset + resultsPerPage)
-          .map(({ label, url }) => (
+          .map(({ label, url, ...rest }) => (
             <EntityCard
               key={`${label}_${url}`}
+              entity={{ label, url, ...rest }}
               title={label}
               cardContents={<EntityLink url={url} label={url} />}
               cardButtons={
@@ -158,9 +173,10 @@ export default function EntityListWithFilters({
                   <DeleteButton primaryKey={url} />
                 </>
               }
+              cardWarning={<FileValidationWarning path={url} />}
             />
           ))}
-      </Box>
-    </>
+      </AdminViewWrapper>
+    </AdminViewContext.Provider>
   );
 }

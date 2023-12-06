@@ -8,7 +8,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceamapp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceaminstall",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceamdev",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceamrefguides",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -44,7 +44,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceclaimsapp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -53,7 +53,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceclaimsinstall",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -62,7 +62,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceclaimsdev",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -71,7 +71,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceclaimsrefguides",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -80,7 +80,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceqbapp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -89,7 +89,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceqbinstall",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -98,7 +98,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceqbdev",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -107,7 +107,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104ceqbrefguides",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -116,7 +116,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104peapp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -125,7 +125,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104peinstall",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -134,7 +134,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104pedev",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -143,7 +143,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104perefguides",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -152,7 +152,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104peclaimsapp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -161,7 +161,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104peclaimsinstall",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -170,7 +170,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104peclaimsdev",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -179,7 +179,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104peclaimsrefguides",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -188,7 +188,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104sreapp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -197,7 +197,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104sreinstall",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -206,7 +206,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104sredev",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -215,7 +215,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104srerefguides",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -224,7 +224,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104veapp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -233,7 +233,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104veinstall",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -242,7 +242,7 @@
       "srcId": "dx202104src",
       "docId": "dx202104vedev",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -251,13 +251,13 @@
       "srcId": "dx202104src",
       "docId": "dx202104verefguides",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
       "srcId": "dxjsdocs202104src",
       "docId": "dxjsdocs202104",
-      "disabled": false
+      "disabled": true
     }
   ]
 }

@@ -95,16 +95,6 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-        {
-          label: 'Guidewire Rules (Early Access)',
-          docId: 'gwrules',
-          description: (
-            <>
-              Create and manage business rules that trigger when specific
-              business conditions occur.
-            </>
-          ),
-        },
       ],
     },
     {

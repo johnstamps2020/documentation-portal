@@ -22,6 +22,7 @@ export default function SearchInput({ children, onSubmit }: SearchInputProps) {
         <input
           type="search"
           name="q"
+          autoComplete="off"
           placeholder={placeholder}
           id={searchFieldId}
           className={searchFieldId}

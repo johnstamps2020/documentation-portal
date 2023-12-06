@@ -14,6 +14,8 @@ export default function PageAdminPanel() {
   return (
     <EntityListWithFilters
       entityName="page"
+      entityDatabaseName="Page"
+      entityPrimaryKeyName='path'
       entities={pages.map(({ title, path, ...rest }) => ({
         label: title,
         url: path,

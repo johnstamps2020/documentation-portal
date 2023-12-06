@@ -49,7 +49,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
@@ -68,7 +69,7 @@
         "platform": ["Cloud"],
         "product": ["Predict"],
         "version": ["latest"],
-        "release": ["Hakuba"],
+        "release": ["Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -92,7 +93,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
@@ -134,7 +136,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
@@ -236,7 +239,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "subject": ["Glossary"],
         "language": "en"
@@ -272,7 +276,7 @@
       "metadata": {
         "product": ["Cyence"],
         "platform": ["Cloud"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "version": ["latest"],
         "language": "en"
       },
@@ -290,7 +294,7 @@
       "metadata": {
         "product": ["HazardHub Casualty"],
         "platform": ["Cloud"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "version": ["latest"],
         "language": "en"
       },
@@ -419,6 +423,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "release": [
+          "Innsbruck",
           "Hakuba",
           "Garmisch",
           "Flaine",

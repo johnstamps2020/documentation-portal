@@ -13,8 +13,8 @@
           "App Events Webhooks"
         ],
         "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02", "2023.06"],
-        "release": ["Flaine", "Garmisch", "Hakuba"],
+        "version": ["2022.09", "2023.02", "2023.06", "2023.10"],
+        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "subject": ["Integration"],
         "language": "en"
       },
@@ -32,8 +32,8 @@
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.05", "2022.09", "2023.02", "2023.06"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "version": ["2022.05", "2022.09", "2023.02", "2023.06", "2023.10"],
+        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "subject": ["Integration"],
         "language": "en"
       },
@@ -59,7 +59,8 @@
           "2022.05",
           "2022.09",
           "2023.02",
-          "2023.06"
+          "2023.06",
+          "2023.10"
         ],
         "subject": ["Integration"],
         "release": [
@@ -68,7 +69,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },

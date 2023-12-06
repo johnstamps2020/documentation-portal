@@ -15,7 +15,7 @@
           "srcId": "dhicextrassrc"
         }
       ],
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -31,7 +31,7 @@
           "srcId": "dhicextrassrc"
         }
       ],
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",

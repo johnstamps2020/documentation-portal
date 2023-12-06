@@ -5,7 +5,7 @@ export const allSelectors = {
     { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba/apd' },
     {
       label: 'Innsbruck (2023.10)',
-      pagePath: 'cloudProducts/innsbruck/apd/create-home',
+      pagePath: 'cloudProducts/innsbruck/apd',
     },
   ],
   testingFrameworkSelector: [
@@ -14,6 +14,7 @@ export const allSelectors = {
     { label: 'Garmisch (2023.02)', pagePath: 'testingFramework/garmisch' },
     { label: 'Hakuba (2023.06)', pagePath: 'testingFramework/hakuba' },
     { label: 'Innsbruck (2023.10)', pagePath: 'testingFramework/innsbruck' },
+    { label: 'Jasper (2024.02)', pagePath: 'testingFramework/jasper' },
   ],
   s0f196c0b55cf55f2cdd1e05b1bf5e94e: [
     { label: 'Cortina', pagePath: 'apiReferences/cortina' },
@@ -116,6 +117,7 @@ export const allSelectors = {
     { label: 'Garmisch', pagePath: 'cloudProducts/garmisch' },
     { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
     { label: 'Innsbruck', pagePath: 'cloudProducts/innsbruck' },
+    { label: 'Jasper', pagePath: 'cloudProducts/jasper' },
   ],
   s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {
@@ -244,6 +246,10 @@ export const allSelectors = {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/global-ref-apps',
     },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/global-ref-apps',
+    },
   ],
   s06dcd02c361b9539495548fd0bfb3ad2: [
     {
@@ -279,6 +285,7 @@ export const allSelectors = {
     { label: '3.6', pagePath: 'globalContent/ipg/3.6' },
     { label: '3.7', pagePath: 'globalContent/ipg/3.7' },
     { label: '3.8', pagePath: 'globalContent/ipg/3.8' },
+    { label: '3.9', pagePath: 'globalContent/ipg/3.9' },
   ],
   sabc928e21c4c1dfb2a841b6b2331c9db: [
     { label: 'BillingCenter', pagePath: 'l10n/de-DE/bc' },

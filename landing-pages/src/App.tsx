@@ -3,7 +3,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import LandingPage from 'pages/LandingPage/LandingPage';
 import ForbiddenPage from 'pages/ForbiddenPage/ForbiddenPage';
 import FourOhFourPage from 'pages/FourOhFourPage/FourOhFourPage';
-import DocAdminPage from 'pages/DocAdminPage/DocAdminPage';
 import SearchPage from 'pages/SearchPage/SearchPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import { appTheme } from 'themes/appTheme';
@@ -36,10 +35,6 @@ const router = createBrowserRouter([
       {
         path: 'admin-panel',
         element: <AdminPage />,
-      },
-      {
-        path: 'admin-panel/doc',
-        element: <DocAdminPage />,
       },
       {
         path: 'admin-panel/page',

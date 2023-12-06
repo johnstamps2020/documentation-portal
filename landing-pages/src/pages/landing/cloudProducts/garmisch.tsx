@@ -42,7 +42,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/dataPlatform',
         },
         {
-          label: 'Autopilot Workflow Service (Early Access)',
+          label: 'Autopilot Workflow Service',
           pagePath: 'cloudProducts/autopilotworkflowservice',
         },
       ],
@@ -114,7 +114,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/cyence',
         },
         {
-          label: 'Data Studio (Early Access)',
+          label: 'Data Studio',
           docId: 'datastudiorelease',
         },
       ],

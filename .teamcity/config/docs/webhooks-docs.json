@@ -13,8 +13,8 @@
           "App Events Webhooks"
         ],
         "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02", "2023.06"],
-        "release": ["Flaine", "Garmisch", "Hakuba"],
+        "version": ["2022.09", "2023.02", "2023.06", "2023.10"],
+        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "subject": ["Integration"],
         "language": "en"
       },

@@ -573,7 +573,7 @@ async function createVersionEntities(legacyDocConfig: LegacyDocConfig[]) {
 
 async function createReleaseEntities(legacyDocConfig: LegacyDocConfig[]) {
   const dbDocReleasesToSave: Release[] = [];
-  const nonProdReleases = ['Innsbruck'];
+  const nonProdReleases = ['Jasper'];
   for (const doc of legacyDocConfig) {
     const legacyDocReleases = doc.metadata.release;
     if (legacyDocReleases && legacyDocReleases.length > 0) {

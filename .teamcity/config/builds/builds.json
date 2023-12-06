@@ -92,7 +92,7 @@
       "srcId": "configmgrhelpcortinasrc",
       "docId": "configmgrhelpcortina",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -101,7 +101,7 @@
       "srcId": "configmgrhelpbanffsrc",
       "docId": "configmgrhelpbanff",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
