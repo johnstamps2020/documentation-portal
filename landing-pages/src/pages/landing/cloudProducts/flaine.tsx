@@ -85,7 +85,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Explore',
-          pagePath: 'cloudProducts/explore/latest',
+          docId: 'exploreusingrelease',
         },
         {
           label: 'Canvas',
