@@ -49,6 +49,15 @@ const pageConfig: SectionLayoutProps = {
       ],
     },
     {
+      label: 'Best Practices',
+      items: [
+        {
+          label: 'Best Testing Practices',
+          docId: 'testing202402bestpractices',
+        },
+      ],
+    },
+    {
       label: 'Application-specific Capabilities',
       items: [
         {
