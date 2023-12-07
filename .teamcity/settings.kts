@@ -2000,8 +2000,8 @@ object User {
                     docBuildType.steps.step(copyFromStagingToProdStep)
                     docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
                 } else {
-                    docBuildType.artifactRules =
-                        "${workingDir}/${outputDir}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}"
+                    docBuildType.artifactRules += "\n${workingDir}/${outputDir}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}"
+
                     val buildDitaProjectStep: ScriptBuildStep
                     val buildPdfs = when (env) {
                         GwDeployEnvs.STAGING.envName -> true
