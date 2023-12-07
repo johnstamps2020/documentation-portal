@@ -752,7 +752,7 @@ object GwBuildSteps {
         }
     }
 
-    fun createRunDocCrawlerStep(deployEnv: String, docId: String, configFile: String): ScriptBuildStep {
+    fun createRunDocCrawlerStep(deployEnv: String, docIds: String, releases: String): ScriptBuildStep {
         val docS3Url = Helpers.getS3BucketUrl(deployEnv)
         val appBaseUrl = Helpers.getTargetUrl(deployEnv)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
@@ -786,7 +786,8 @@ object GwBuildSteps {
                 export OKTA_ISSUER="$oktaIssuer"
                 export OKTA_SCOPES="$oktaScopes"
                 
-                export DOC_ID="$docId"
+                export DOC_IDS="$docIds"
+                export RELEASES="$releases"
                 export DOC_S3_URL="$docS3Url"
                 export ELASTICSEARCH_URLS="$elasticsearchUrls"
                 export APP_BASE_URL="$appBaseUrl"
@@ -2240,8 +2241,7 @@ object User {
                     artifactRules = """
                     %teamcity.build.workingDir%/*.log => build_logs
                 """.trimIndent()
-                    val configFile = "%teamcity.build.workingDir%/config.json"
-                    val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deployEnv, docId, configFile)
+                    val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deployEnv, docId, "")
                     steps.step(crawlDocStep)
                     steps.stepsOrder.add(crawlDocStep.id.toString())
                 }
@@ -3684,7 +3684,6 @@ object Admin {
         }
 
         private fun createUpdateSearchIndexBuildType(deployEnv: String): BuildType {
-            val configFile = "%teamcity.build.workingDir%/config.json"
             return BuildType {
                 name = "Update search index on $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
@@ -3695,17 +3694,25 @@ object Admin {
 
                 params {
                     text(
-                        "DOC_ID",
+                        "DOC_IDS",
                         "",
-                        label = "Doc ID",
-                        description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+                        label = "Doc IDs",
+                        description = "A comma-separated list of document IDs. Only documents with the provided IDs are reindexed. To reindex all documents, leave all fields empty",
+                        display = ParameterDisplay.PROMPT,
+                        allowEmpty = true
+                    )
+                    text(
+                        "RELEASES",
+                        "",
+                        label = "Releases",
+                        description = "A comma-separated list of releases. Only documents that are assigned to at least one of the provided releases are reindexed. This parameter is ignored if doc IDs are provided. To reindex all documents, leave all fields empty",
                         display = ParameterDisplay.PROMPT,
                         allowEmpty = true
                     )
                 }
 
                 steps {
-                    step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%DOC_ID%", configFile))
+                    step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%DOC_IDS%", "%RELEASES%"))
                 }
 
                 features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
