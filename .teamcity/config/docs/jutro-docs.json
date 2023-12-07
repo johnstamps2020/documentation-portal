@@ -2910,8 +2910,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -2939,8 +2938,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3185,6 +3183,64 @@
       "earlyAccess": false
     },
     {
+      "id": "jutro1010",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/documentation/10.1",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.1"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook1010",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/10.1",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.1"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutrolatest",
       "title": "Jutro Digital Platform",
       "url": "jutro/documentation/latest",
@@ -3196,13 +3252,10 @@
           "Cloud"
         ],
         "version": [
-          "10.0 (latest)"
+          "10.1 (latest)"
         ],
         "subject": [
           "Best practices"
-        ],
-        "release": [
-          "Innsbruck"
         ],
         "language": "en"
       },
@@ -3228,13 +3281,10 @@
           "Cloud"
         ],
         "version": [
-          "10.0 (latest)"
+          "10.1 (latest)"
         ],
         "subject": [
           "Development"
-        ],
-        "release": [
-          "Innsbruck"
         ],
         "language": "en"
       },
@@ -3345,9 +3395,6 @@
           "Cloud"
         ],
         "version": [
-          "Innsbruck"
-        ],
-        "release": [
           "Innsbruck"
         ],
         "subject": [
