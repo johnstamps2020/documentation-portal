@@ -49,7 +49,7 @@ services:
   search:
     networks:
       - docportal_network
-    image: artifactory.guidewire.com/hub-docker-remote/elasticsearch:7.17.4
+    image: artifactory.guidewire.com/hub-docker-remote/elasticsearch:8.11
     container_name: search
     environment:
       - cluster.name=es-docker-cluster
