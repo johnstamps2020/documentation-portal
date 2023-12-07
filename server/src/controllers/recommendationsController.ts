@@ -2,7 +2,7 @@ import { ApiResponse } from '../types/apiResponse';
 import { Request, Response } from 'express';
 import { Client } from '@elastic/elasticsearch';
 import { findEntity } from './configController';
-
+import { estypes } from '@elastic/elasticsearch/index';
 import { Doc } from '../model/entity/Doc';
 import { isUserAllowedToAccessResource } from './authController';
 
@@ -29,7 +29,7 @@ export async function getTopicRecommendations(
     const indexExistsResult = await elasticClient.indices.exists({
       index: recommendationsIndexName,
     });
-    if (!indexExistsResult.body) {
+    if (!indexExistsResult) {
       return {
         status: 404,
         body: {
@@ -44,15 +44,13 @@ export async function getTopicRecommendations(
         query: {
           match: {
             id: {
-              query: topicId,
+              query: topicId as string,
             },
           },
         },
       },
     });
-    const hit = response.body.hits.hits.map(
-      (h: { _source: any }) => h._source
-    )[0];
+    const hit = response.hits.hits.map((h) => h._source)[0] as any;
     if (hit) {
       let topicRecommendations = hit.recommendations;
       const availableRecommendations = [];

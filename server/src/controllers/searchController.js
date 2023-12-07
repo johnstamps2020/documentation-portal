@@ -3,7 +3,7 @@ const { Client } = require('@elastic/elasticsearch');
 const { winstonLogger } = require('./loggerController');
 const { getAllEntities } = require('./configController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
-const searchIndexName = 'gw-docs';
+const searchIndexName = 'gw-docs-semantic';
 const fragmentSize = 300;
 
 // Every keyword field in Elasticsearch is included in the filter list
@@ -11,7 +11,7 @@ async function getKeywordFields() {
   const mappingResults = await elasticClient.indices.getMapping({
     index: searchIndexName,
   });
-  const mappings = mappingResults.body[searchIndexName].mappings.properties;
+  const mappings = mappingResults[searchIndexName].mappings.properties;
   return Object.keys(mappings).filter(
     (key) => mappings[key].type === 'keyword'
   );
@@ -75,7 +75,7 @@ async function getAllowedFilterValues(fieldName, query) {
 
     const result = await elasticClient.search(requestBody);
 
-    return result.body.aggregations.allowedForField.keywordFilter.buckets.map(
+    return result.aggregations.allowedForField.keywordFilter.buckets.map(
       (bucket) => {
         return { label: bucket.key, doc_count: bucket.doc_count };
       }
@@ -272,6 +272,103 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
       },
     });
 
+    const vectorizedSearchPhrase = [
+      1.16597101e-1, -1.61751062e-2, 7.2133027e-2, -1.11951537e-1,
+      6.42219651e-3, 3.35433371e-2, -3.76729965e-2, -2.55014878e-2,
+      8.83942656e-3, 3.64394598e-2, 2.05600969e-2, -6.13615513e-2,
+      -4.47221808e-2, -3.63813597e-3, 6.66740388e-2, -6.35112748e-2,
+      6.07822873e-2, -9.47677437e-3, 7.55074024e-2, 2.07440685e-2,
+      7.36510055e-3, -5.66093065e-2, 1.95922311e-2, -7.5135842e-2,
+      -6.83374237e-4, 1.28483335e-2, 3.67951095e-2, 7.22433254e-2,
+      4.46558259e-2, 1.51448892e-2, -2.97821071e-2, 4.69294051e-3,
+      -8.45117792e-2, -5.60565218e-2, 2.12755669e-2, -1.53878899e-2,
+      1.88203976e-2, -9.60255712e-2, -6.13120645e-2, -4.75287363e-2,
+      1.02017209e-1, 4.93082069e-2, -6.9972449e-3, 6.94206581e-2,
+      -2.30429843e-2, -2.41685789e-2, 3.09684761e-2, 6.58689719e-3,
+      1.16509229e-1, -1.15417346e-1, -4.43445984e-3, 2.33531781e-2,
+      8.0194734e-2, -7.90837929e-2, 1.19222822e-2, -2.76737735e-2, 4.3771103e-2,
+      9.61383358e-2, 7.38176629e-2, -1.62528958e-2, -2.5318725e-2,
+      5.25340848e-2, -9.32461303e-3, 9.2322873e-3, -3.71312946e-2,
+      -5.01153879e-2, -1.80450436e-2, 1.13674022e-1, 4.11189906e-2,
+      -3.16796787e-2, -7.92236105e-2, -2.4349954e-2, 5.01820296e-2,
+      1.11277485e-2, -9.52209234e-2, 1.02242071e-3, 6.2747458e-3,
+      -8.31822678e-2, -2.77462769e-2, -3.97763215e-2, -2.68103797e-2,
+      -5.66248409e-2, -9.68353301e-2, 2.18846872e-2, 2.59378571e-2,
+      2.83641629e-2, 2.51312386e-2, 8.05448741e-3, 7.37130046e-2,
+      -8.70674197e-3, 5.87925501e-2, 2.46586315e-2, -1.29490029e-2,
+      -6.55716052e-3, 1.87550765e-2, 1.03527671e-2, 4.77292947e-2,
+      4.98136282e-2, -2.89655477e-2, -2.79760617e-3, 3.13474275e-2,
+      -3.7333861e-2, 5.7334587e-2, 3.81458923e-2, 5.20061888e-2, -1.17414938e-2,
+      -3.53226215e-2, -4.5322448e-2, 7.3855266e-2, -4.21268977e-2,
+      -5.2635245e-2, -3.673115e-2, -5.2699931e-2, 3.10104769e-2, 1.31086269e-2,
+      6.0381107e-2, -9.81554296e-3, -5.86171113e-2, -9.66047198e-2,
+      -1.64334048e-2, 1.58216767e-2, -1.30565703e-1, -5.03470823e-2,
+      -1.60917453e-2, 3.25057246e-2, 1.41154248e-2, -1.95762655e-3,
+      7.64071422e-31, 2.466272e-2, -2.66225319e-2, 5.51035479e-2, 1.41782025e-2,
+      4.97743413e-2, -5.39760925e-2, 3.75931114e-2, 1.66784208e-2,
+      -1.72162391e-2, 3.18380408e-2, -3.01575754e-2, -4.75365967e-2,
+      -7.45359203e-3, -1.77632999e-2, 2.32168175e-2, 2.36489326e-2,
+      -5.23875542e-2, -5.31543717e-2, 9.87222269e-2, 5.63052902e-3,
+      2.10532118e-2, -1.46377951e-1, -4.24948372e-2, -5.69581464e-2,
+      -1.31369354e-2, 4.33280542e-2, 5.10085076e-2, 4.30559367e-3, 1.2979871e-1,
+      2.86226105e-2, 1.0759785e-1, -8.18132311e-2, -5.69754541e-2,
+      3.87272574e-2, -7.31428936e-2, -4.17633206e-2, -5.49879707e-2,
+      -2.98680924e-2, -3.54213431e-3, 1.98486634e-2, -2.15308229e-3,
+      -5.42605203e-3, 3.92392427e-2, 1.29427649e-2, 1.17567331e-2,
+      -9.66181457e-2, -3.19916978e-2, -6.07641824e-2, 1.11792892e-1,
+      5.45525402e-2, -1.71590094e-2, -6.15665056e-2, 7.05060549e-3,
+      2.93064378e-2, 5.42208217e-2, 5.88888526e-2, -5.39979152e-2,
+      3.19261812e-2, 1.24959638e-2, -6.48759007e-2, -1.85071751e-2,
+      -3.49099599e-2, -7.80235007e-2, 8.24882314e-2, 1.51036819e-2,
+      8.20937976e-2, 2.14495305e-2, 8.40988662e-3, 6.81878701e-2,
+      -7.12693203e-3, -6.50920495e-2, -1.18957059e-2, 1.95469186e-2,
+      3.70289162e-2, 9.78229102e-3, 1.00009525e-2, -7.66287521e-2,
+      -1.41161317e-2, -3.68438028e-2, 1.12037036e-4, 3.84636745e-2,
+      3.01296301e-2, -5.7037171e-2, 4.79331389e-2, 7.45180994e-2, -3.6539014e-3,
+      6.49966206e-3, 4.91939187e-2, 2.29503885e-2, 3.0500574e-2, -2.58558895e-2,
+      -2.26414371e-2, 1.79252289e-2, -1.14507403e-3, -1.36831924e-1,
+      -2.0505373e-33, 4.3089129e-2, 1.3583974e-2, -1.43433586e-2,
+      -1.04274573e-2, -1.43307e-2, 2.49889735e-2, 1.43588148e-2, 4.7135219e-2,
+      -2.83057876e-2, -1.96945183e-2, -1.76964507e-1, -1.33965649e-2,
+      1.65093109e-1, 5.76462708e-2, -4.74085622e-2, 8.54475051e-2,
+      2.33946294e-2, 3.80706154e-2, -1.83474291e-2, -1.52233168e-2,
+      -1.07432753e-1, 1.86935347e-2, 6.94184825e-2, 1.72134917e-2,
+      -2.24163495e-2, -5.68436347e-2, 4.02111337e-2, -2.7655255e-2,
+      -5.71133122e-2, -5.32662347e-2, 1.94767024e-2, 4.45351377e-2,
+      -5.46431281e-2, -5.48436902e-2, -6.20850548e-2, -5.91299613e-5,
+      4.40388136e-2, -1.40745472e-2, 1.912269e-2, -3.3625681e-3, 8.07032287e-2,
+      -3.83663699e-2, -1.7606359e-2, -2.22179983e-2, -9.00388286e-2,
+      3.05372756e-3, 1.25928214e-2, -4.77037504e-2, -8.59638825e-2,
+      1.22937979e-2, 1.66545082e-2, 8.80838558e-3, 3.6386054e-2, -3.84740792e-2,
+      4.44455585e-3, 5.33562712e-2, 5.27464487e-2, 5.8583051e-2, -8.40930045e-2,
+      5.24567217e-2, 5.2686438e-2, -5.17361164e-2, -8.70707631e-2,
+      -3.7409611e-2, -1.94478482e-2, 7.80671984e-2, 3.71647105e-2,
+      9.55177546e-2, 2.50032288e-3, -6.60597458e-2, -5.95150553e-2,
+      -1.61837488e-2, -2.57328674e-2, -2.31480356e-2, -4.47462425e-2,
+      -3.4623988e-2, -1.49680348e-2, -2.09510028e-2, 4.83438326e-3,
+      -7.64077064e-3, 5.68939857e-2, 3.8946718e-2, -2.88448632e-2,
+      -1.04007974e-1, -7.19388307e-4, 5.89873455e-3, -9.82304737e-2,
+      5.50895073e-2, 6.53759316e-2, -2.72694584e-2, -4.94820774e-2,
+      5.17550893e-2, -2.82615889e-2, 4.61700968e-2, -4.48559485e-2,
+      -1.87875313e-33, 7.78687075e-2, 5.45221195e-3, 4.73550335e-2,
+      6.31668568e-2, -7.71570355e-2, 1.26530826e-1, 4.07864973e-2,
+      -2.74586002e-3, 2.65303683e-2, 2.62133572e-2, 3.55401933e-2,
+      -5.23528047e-2, -6.0739778e-2, 9.8185122e-2, -1.44671984e-2,
+      2.13675294e-2, -1.05263377e-2, 1.49225906e-1, 6.83785323e-3,
+      -9.75248404e-3, 1.06893163e-2, 3.93518992e-2, -5.08229434e-3,
+      6.13523982e-2, 1.60891302e-2, 2.84029953e-2, -1.78452972e-2,
+      -2.58284807e-2, -4.4168774e-3, -9.9452287e-3, -4.05394211e-2,
+      2.93156859e-2, -5.25074117e-2, 1.18227385e-3, -9.92130712e-2,
+      2.32279468e-2, -6.49392828e-2, 8.04224312e-2, -1.70676992e-3,
+      3.14483531e-2, -6.5466594e-3, 7.76525075e-3, -4.70474921e-2,
+      -7.09465817e-2, 5.52409366e-2, 2.15324685e-2, -2.92395521e-3,
+      -5.72465956e-2, 2.76085269e-2, 2.47885119e-2, 1.69364735e-2,
+      -3.15927491e-2, 1.53256422e-2, -1.78542156e-2, 2.67513096e-2,
+      8.08146447e-2, -6.86517283e-2, -8.49196166e-2, 7.94099458e-3,
+      2.75107846e-2, -3.9455954e-2, 3.46186049e-2, -4.27670516e-2,
+      5.07377312e-2,
+    ];
+
     const searchResults = await elasticClient.search({
       index: searchIndexName,
       from: startIndex,
@@ -291,11 +388,23 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
       },
     });
 
+    const vectorSearchResults = await elasticClient.search({
+      index: searchIndexName,
+      knn: {
+        field: 'body_vector',
+        query_vector: vectorizedSearchPhrase,
+        k: 10,
+        num_candidates: 100,
+        filter: queryWithFiltersFromUrl.bool.filter,
+      },
+    });
+
     return {
-      numberOfHits: searchResultsCount.body.aggregations.totalHits.doc_count,
+      numberOfHits: searchResultsCount.aggregations.totalHits.doc_count,
       numberOfCollapsedHits:
-        searchResultsCount.body.aggregations.totalHits.totalCollapsedHits.value,
-      hits: searchResults.body.hits.hits,
+        searchResultsCount.aggregations.totalHits.totalCollapsedHits.value,
+      hits: searchResults.hits.hits,
+      vectorHits: vectorSearchResults.hits.hits,
     };
   } catch (err) {
     winstonLogger.error(
@@ -304,7 +413,7 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
           startIndex: ${startIndex},  
           resultsPerPage: ${resultsPerPage},
           urlFilters: ${urlFilters},
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${err}`
     );
   }
 }
@@ -484,7 +593,7 @@ async function searchController(req, res, next) {
       bool: {
         must: {
           simple_query_string: {
-            query: searchPhrase,
+            query: 'how to run jutro app locally',
             fields: ['title^12', 'body'],
             quote_field_suffix: '.exact',
             default_operator: 'AND',
@@ -540,6 +649,7 @@ async function searchController(req, res, next) {
       const searchData = {
         searchPhrase: searchPhrase,
         searchResults: resultsToDisplay,
+        vectorSearchResults: results.vectorHits,
         totalNumOfResults: results.numberOfHits,
         totalNumOfCollapsedResults: results.numberOfCollapsedHits,
         currentPage: currentPage,
