@@ -3689,6 +3689,10 @@ object Admin {
                 name = "Update search index on $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
+                artifactRules = """
+                    %teamcity.build.workingDir%/*.log => build_logs
+                """.trimIndent()
+
                 params {
                     text(
                         "DOC_ID",
