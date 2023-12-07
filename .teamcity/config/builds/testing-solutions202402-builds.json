@@ -90,6 +90,15 @@
       "docId": "testing202402overview",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Best-Practices.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testing202402bestpractices",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
