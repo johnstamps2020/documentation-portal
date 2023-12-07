@@ -24,7 +24,21 @@ export default function DeleteButton({ primaryKey }: DeleteButtonProps) {
       showMessage('Source deleted successfully', 'success');
     } else {
       const jsonError = await response.json();
-      showMessage(`Source not deleted: ${jsonError.message}`, 'error');
+      const queryFailedErrorMessage =
+        'update or delete on table "source" violates foreign key constraint';
+      if (jsonError.message.includes(queryFailedErrorMessage)) {
+        const entityTypeFromError = jsonError.message.match(
+          /on table "((?!source)[^"]+)"/
+        )[1]; 
+        showMessage(
+          `Source not deleted - this source is connected with another entity 
+           named ${entityTypeFromError}. Please remove this source from the
+           ${entityTypeFromError} and try again.`,
+          'error'
+        );
+      } else {
+        showMessage(`Source not deleted: ${jsonError.message}`, 'error');
+      }
     }
   }
 
