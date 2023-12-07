@@ -17,11 +17,11 @@ export default function DeleteMultipleButton() {
   }
 
   async function handleDelete() {
-    const responses = await Promise.all(
-      selectedEntities.map(({ id }) => {
+    let responses = await Promise.all(
+      selectedEntities.map(({ url }) => {
         return fetch(`/admin/entity/${entityDatabaseName}`, {
           method: 'DELETE',
-          body: `{ "${entityPrimaryKeyName}": "${id}" }`,
+          body: `{ "${entityPrimaryKeyName}": "${url}" }`,
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -30,19 +30,52 @@ export default function DeleteMultipleButton() {
       })
     );
 
+    if (entityPrimaryKeyName === 'id') {
+      responses = await Promise.all(
+        selectedEntities.map(({ id }) => {
+          return fetch(`/admin/entity/${entityDatabaseName}`, {
+            method: 'DELETE',
+            body: `{ "${entityPrimaryKeyName}": "${id}" }`,
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+          });
+        })
+      );
+    }
+
     const failedResponses = responses.filter((response) => !response.ok);
     if (failedResponses.length) {
       const jsonError = await Promise.all(
         failedResponses.map((response) => response.json())
       );
-      showMessage(
-        `${
-          failedResponses.length
-        } items of type ${entityDatabaseName} not deleted correctly: ${JSON.stringify(
-          jsonError
-        )}`,
-        'error'
-      );
+
+      const queryFailedErrorMessage = 'update or delete on table';
+      if (
+        jsonError.map((error) =>
+          error.message.includes(queryFailedErrorMessage)
+        )
+      ) {
+        const entityTypeFromError = jsonError.map(
+          (error) => error.message.match(/on table "((?!source)[^"]+)"/)[1]
+        );
+        showMessage(
+          `${entityDatabaseName} not deleted - this ${entityDatabaseName} is connected with another entity 
+           named ${entityTypeFromError}. Please remove this ${entityDatabaseName} from the
+           ${entityTypeFromError} and try again.`,
+          'error'
+        );
+      } else {
+        showMessage(
+          `${
+            failedResponses.length
+          } items of type ${entityDatabaseName} not deleted correctly: ${JSON.stringify(
+            jsonError
+          )}`,
+          'error'
+        );
+      }
     } else {
       showMessage(
         `All ${selectedEntities.length} items of type ${entityDatabaseName} deleted successfully`,
@@ -59,7 +92,8 @@ export default function DeleteMultipleButton() {
       startIcon={<DeleteIcon />}
       onClick={handleDelete}
     >
-      Delete {selectedEntities.length} item{selectedEntities.length > 1 && 's'}
+      Delete {selectedEntities.length} item
+      {selectedEntities.length > 1 && 's'}
     </Button>
   );
 }
