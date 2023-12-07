@@ -63,7 +63,7 @@ export default function SourceSettingsForm({
   const [tmpSourceData, setTmpSourceData] = useState(
     generateTmpSourceData(initialSourceData)
   );
-  console.log(initialSourceData);
+
   const [editingDisabled, setEditingDisabled] = useState(
     disabled ? disabled : false
   );
