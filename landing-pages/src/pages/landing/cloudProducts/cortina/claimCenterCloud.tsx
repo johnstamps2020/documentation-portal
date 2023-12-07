@@ -43,7 +43,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'Explore',
-          pagePath: 'cloudProducts/explore/latest',
+          docId: 'exploreusingrelease',
         },
         {
           label: 'Live Predict',
