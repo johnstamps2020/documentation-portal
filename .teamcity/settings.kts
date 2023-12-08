@@ -752,7 +752,11 @@ object GwBuildSteps {
         }
     }
 
-    fun createRunDocCrawlerStep(deployEnv: String, docIds: String, releases: String): ScriptBuildStep {
+    fun createRunDocCrawlerStep(
+        deployEnv: String,
+        propertyName: String,
+        propertyValue: String,
+    ): ScriptBuildStep {
         val docS3Url = Helpers.getS3BucketUrl(deployEnv)
         val appBaseUrl = Helpers.getTargetUrl(deployEnv)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
@@ -786,8 +790,28 @@ object GwBuildSteps {
                 export OKTA_ISSUER="$oktaIssuer"
                 export OKTA_SCOPES="$oktaScopes"
                 
-                export DOC_IDS="$docIds"
-                export RELEASES="$releases"
+                if [[ ${propertyName.uppercase()} == NONE ]]; then
+                    echo "Indexing all documents"
+                else
+                    if [[ -z $propertyValue ]]; then
+                        echo "No value provided for $propertyName"
+                        exit 1
+                    fi
+                    
+                    if [[ ${propertyName.uppercase()} == DOC_IDS ]]; then
+                        export DOC_IDS=$propertyValue
+                    elif [[ ${propertyName.uppercase()} == RELEASES ]]; then
+                        export RELEASES=$propertyValue
+                    elif [[ ${propertyName.uppercase()} == VERSIONS ]]; then
+                        export VERSIONS=$propertyValue
+                    else
+                        echo "Incorrect property name"
+                        echo "Provided name: $propertyName"
+                        echo "Supported names: DOC_IDS, RELEASES, VERSIONS
+                        exit 1
+                    fi
+                fi
+                    
                 export DOC_S3_URL="$docS3Url"
                 export ELASTICSEARCH_URLS="$elasticsearchUrls"
                 export APP_BASE_URL="$appBaseUrl"
@@ -2241,7 +2265,8 @@ object User {
                     artifactRules = """
                     %teamcity.build.workingDir%/*.log => build_logs
                 """.trimIndent()
-                    val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deployEnv, docId, "")
+                    val crawlDocStep =
+                        GwBuildSteps.createRunDocCrawlerStep(deployEnv, "DOC_IDS", docId)
                     steps.step(crawlDocStep)
                     steps.stepsOrder.add(crawlDocStep.id.toString())
                 }
@@ -3693,26 +3718,37 @@ object Admin {
                 """.trimIndent()
 
                 params {
-                    text(
+                    select(
+                        "PROPERTY_NAME",
                         "DOC_IDS",
-                        "",
-                        label = "Doc IDs",
-                        description = "A comma-separated list of document IDs. Only documents with the provided IDs are reindexed. To reindex all documents, leave all fields empty",
+                        label = "Property name",
+                        description = """
+                            Choose the property that you want to use to limit the number of documents to index:
+                            - Doc IDs - only documents with specific IDs are indexed
+                            - Releases - only cloud documents that have at least one release from the property value field are indexed
+                            - Versions - only self-managed documents that have at least one version from the property value field are indexed
+                            - None - all documents are indexed. Think twice before selecting this option!
+                        """.trimIndent(),
+                        options = listOf(
+                            "Doc IDs" to "DOC_IDS",
+                            "Releases" to "RELEASES",
+                            "Versions" to "VERSIONS",
+                            "None (all docs)" to "NONE",
+                        ),
                         display = ParameterDisplay.PROMPT,
-                        allowEmpty = true
                     )
                     text(
-                        "RELEASES",
+                        "PROPERTY_VALUE",
                         "",
-                        label = "Releases",
-                        description = "A comma-separated list of releases. Only documents that are assigned to at least one of the provided releases are reindexed. This parameter is ignored if doc IDs are provided. To reindex all documents, leave all fields empty",
+                        label = "Property value",
+                        description = "A comma-separated list of values. This field is ignored if you index all documents. Example for releases: Hakuba,Innsbruck",
                         display = ParameterDisplay.PROMPT,
                         allowEmpty = true
                     )
                 }
 
                 steps {
-                    step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%DOC_IDS%", "%RELEASES%"))
+                    step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%PROPERTY_NAME%", "%PROPERTY_VALUE%"))
                 }
 
                 features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
