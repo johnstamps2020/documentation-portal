@@ -17,11 +17,12 @@ export default function DeleteMultipleButton() {
   }
 
   async function handleDelete() {
-    let responses = await Promise.all(
-      selectedEntities.map(({ url }) => {
+    const responses = await Promise.all(
+      selectedEntities.map((entity) => {
+        const primaryKeyValue = entity.path || entity.url || entity.id;
         return fetch(`/admin/entity/${entityDatabaseName}`, {
           method: 'DELETE',
-          body: `{ "${entityPrimaryKeyName}": "${url}" }`,
+          body: `{ "${entityPrimaryKeyName}": "${primaryKeyValue}" }`,
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -29,21 +30,6 @@ export default function DeleteMultipleButton() {
         });
       })
     );
-
-    if (entityPrimaryKeyName === 'id') {
-      responses = await Promise.all(
-        selectedEntities.map(({ id }) => {
-          return fetch(`/admin/entity/${entityDatabaseName}`, {
-            method: 'DELETE',
-            body: `{ "${entityPrimaryKeyName}": "${id}" }`,
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-            },
-          });
-        })
-      );
-    }
 
     const failedResponses = responses.filter((response) => !response.ok);
     if (failedResponses.length) {

@@ -2,6 +2,7 @@ import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
 import { useExternalLinks } from '../../../hooks/useApi';
 import DeleteButton from './DeleteButton';
 import DuplicateButton from './DuplicateButton';
+import ExternalLinkCardContents from './ExternalLinkCardContents';
 import ExternalLinkSettingsForm from './ExternalLinkSettingsForm';
 
 export default function ExternalLinkAdminPanel() {
@@ -20,6 +21,7 @@ export default function ExternalLinkAdminPanel() {
       DeleteButton={DeleteButton}
       DuplicateButton={DuplicateButton}
       FormComponent={ExternalLinkSettingsForm}
+      EntityCardContents={ExternalLinkCardContents}
     />
   );
 }

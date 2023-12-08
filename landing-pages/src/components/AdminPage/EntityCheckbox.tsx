@@ -12,7 +12,10 @@ function getMatchingEntity(
 ): Entity | undefined {
   return selectedEntities.find(
     (selectedEntity) =>
-      selectedEntity.label === entity.label && selectedEntity.url === entity.url
+      selectedEntity.label === entity.label &&
+      ((selectedEntity.url && selectedEntity.url === entity.url) ||
+        (selectedEntity.path && selectedEntity.path === entity.path) ||
+        (selectedEntity.id && selectedEntity.id === entity.id))
   );
 }
 

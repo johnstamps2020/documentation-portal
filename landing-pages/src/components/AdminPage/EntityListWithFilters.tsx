@@ -1,15 +1,10 @@
-import FileValidationWarning, {
-  checkIfFileExists,
-} from 'components/EntitiesAdminPage/PageAdminPage/FileValidationWarning';
 import React, { useEffect, useState } from 'react';
 import ActionBar from './ActionBar';
 import { AdminViewContext } from './AdminViewContext';
 import AdminViewWrapper from './AdminViewWrapper';
 import EditButton from './EditButton';
 import EntityCard from './EntityCard';
-import EntityDescription from './EntityDescription';
 import EntityFilters from './EntityFilters';
-import EntityLink from './EntityLink';
 import EntityListCount from './EntityListCount';
 import EntityListPagination from './EntityListPagination';
 
@@ -20,6 +15,12 @@ export type Entity = {
   [x: string]: string | boolean | any;
 };
 
+type AdditionalFilter = {
+  filterId: string;
+  emptyFilterValue: boolean | string;
+  filterFunction: (entity: Entity, filterPhrase?: string) => boolean;
+};
+
 type EntityListWithFiltersProps = {
   entities: Entity[];
   entityName: string;
@@ -28,19 +29,29 @@ type EntityListWithFiltersProps = {
   FormComponent: React.ElementType;
   DuplicateButton: React.ElementType;
   DeleteButton: React.ElementType;
+  EntityCardContents: React.ElementType;
+  CardWarning?: React.ElementType;
+  additionalFilters?: AdditionalFilter[];
 };
 
-function getEmptyFilters(entities: Entity[], entityName: string) {
+function getEmptyFilters(
+  entities: Entity[],
+  additionalFilters?: AdditionalFilter[]
+) {
   const emptyFilters: Entity = {
     label: '',
   };
   const entity = entities[0];
-  let { uuid, ...entityNoId } = entity;
-  if (entityName === 'page') {
-    const missingFileInLandingPages = false;
-    entityNoId = { ...entityNoId, missingFileInLandingPages };
-  }
-  for (const [k, v] of Object.entries(entityNoId)) {
+  const { uuid, ...entityNoId } = entity;
+  const additionalFilterIds = additionalFilters?.map((additionalFilter) => ({
+    [additionalFilter.filterId]: additionalFilter.emptyFilterValue,
+  }));
+  const entityPropsAndFilters = Object.assign(
+    entityNoId,
+    ...(additionalFilterIds || [])
+  );
+
+  for (const [k, v] of Object.entries(entityPropsAndFilters)) {
     if (typeof v === 'boolean') {
       emptyFilters[k] = false;
     }
@@ -74,8 +85,11 @@ export default function EntityListWithFilters({
   DeleteButton,
   DuplicateButton,
   FormComponent,
+  EntityCardContents,
+  CardWarning,
+  additionalFilters,
 }: EntityListWithFiltersProps) {
-  const emptyFilters = getEmptyFilters(entities, entityName);
+  const emptyFilters = getEmptyFilters(entities, additionalFilters);
   const [filters, setFilters] = useState<Entity>(emptyFilters);
 
   const [page, setPage] = useState(1);
@@ -95,27 +109,32 @@ export default function EntityListWithFilters({
       return entities?.filter((entity) => {
         let matchesFilters = true;
         for (const [k, v] of Object.entries(filters)) {
+          const matchingAdditionalFilter = additionalFilters?.find(
+            (additionalFilter) => additionalFilter.filterId === k
+          );
           if (typeof v === 'boolean') {
             if (v && entity[k as keyof typeof entity] !== v) {
               matchesFilters = false;
             }
-            if (
-              k === 'missingFileInLandingPages' &&
-              v &&
-              entity.url &&
-              !checkIfFileExists(entity.url)
-            ) {
-              matchesFilters = true;
+            if (v && matchingAdditionalFilter) {
+              matchesFilters = !matchingAdditionalFilter.filterFunction(entity);
             }
-          } else if (
-            typeof v === 'string' &&
-            v !== '' &&
-            !entity[k as keyof typeof entity]
-              ?.toString()
-              ?.toLocaleLowerCase()
-              .includes(v.toLocaleLowerCase())
-          ) {
-            matchesFilters = false;
+          } else if (typeof v === 'string') {
+            if (
+              v !== '' &&
+              !entity[k as keyof typeof entity]
+                ?.toString()
+                ?.toLocaleLowerCase()
+                .includes(v.toLocaleLowerCase())
+            ) {
+              matchesFilters = false;
+            }
+            if (v !== '' && matchingAdditionalFilter) {
+              matchesFilters = !matchingAdditionalFilter.filterFunction(
+                entity,
+                v
+              );
+            }
           }
         }
         return matchesFilters;
@@ -125,7 +144,7 @@ export default function EntityListWithFilters({
     if (filteredEntities) {
       setFilteredEntities(sortEntities(filteredEntities));
     }
-  }, [entities, filters]);
+  }, [additionalFilters, entities, filters]);
 
   const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
 
@@ -158,71 +177,30 @@ export default function EntityListWithFilters({
       <AdminViewWrapper>
         {filteredEntities
           .slice(resultsOffset, resultsOffset + resultsPerPage)
-          .map((entity) =>
-            entity.url ? (
-              <EntityCard
-                key={`${entity.label}_${entity.url}`}
-                title={entity.label}
-                entity={entity}
-                cardContents={
-                  <EntityLink
-                    url={entity.url}
-                    label={entity.url}
-                    entityName={entityName}
-                  />
-                }
-                cardButtons={
-                  <>
-                    <EditButton
-                      buttonLabel={`Open ${entityName} editor`}
-                      dialogTitle={`Update ${entityName} settings`}
-                      formComponent={<FormComponent primaryKey={entity.url} />}
-                    />
-                    <DuplicateButton primaryKey={entity.url} />
-                    <DeleteButton primaryKey={entity.url} />
-                  </>
-                }
-                cardWarning={
-                  <FileValidationWarning
-                    path={entity.url}
-                    entityName={entityName}
-                  />
-                }
-              />
-            ) : (
-              entity.id && (
-                <EntityCard
-                  key={`${entity.label}_${entity.id}`}
-                  title={entity.label}
-                  entity={entity}
-                  cardContents={
-                    <EntityDescription
-                      prop1={{ key: 'id', value: entity.id }}
-                      prop2={{ key: 'gitUrl', value: entity.gitUrl }}
-                      prop3={{ key: 'gitBranch', value: entity.gitBranch }}
-                    />
-                  }
-                  cardButtons={
-                    <>
-                      <EditButton
-                        buttonLabel={`Open ${entityName} editor`}
-                        dialogTitle={`Update ${entityName} settings`}
-                        formComponent={<FormComponent primaryKey={entity.id} />}
+          .map((entity, idx) => (
+            <EntityCard
+              key={idx}
+              title={entity.label}
+              entity={entity}
+              cardContents={<EntityCardContents {...entity} />}
+              cardButtons={
+                <>
+                  <EditButton
+                    buttonLabel={`Open ${entityName} editor`}
+                    dialogTitle={`Update ${entityName} settings`}
+                    formComponent={
+                      <FormComponent
+                        primaryKey={entity[entityPrimaryKeyName]}
                       />
-                      <DuplicateButton primaryKey={entity.id} />
-                      <DeleteButton primaryKey={entity.id} />
-                    </>
-                  }
-                  cardWarning={
-                    <FileValidationWarning
-                      path={entity.id}
-                      entityName={entityName}
-                    />
-                  }
-                />
-              )
-            )
-          )}
+                    }
+                  />
+                  <DuplicateButton primaryKey={entity[entityPrimaryKeyName]} />
+                  <DeleteButton primaryKey={entity[entityPrimaryKeyName]} />
+                </>
+              }
+              cardWarning={CardWarning && <CardWarning {...entity} />}
+            />
+          ))}
       </AdminViewWrapper>
     </AdminViewContext.Provider>
   );

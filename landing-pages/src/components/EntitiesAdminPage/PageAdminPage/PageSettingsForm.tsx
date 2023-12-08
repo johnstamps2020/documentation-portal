@@ -14,7 +14,7 @@ import { Page } from 'server/dist/model/entity/Page';
 import useSWRMutation from 'swr/mutation';
 import { usePageData } from '../../../hooks/usePageData';
 import { SearchFilters } from 'server/dist/types/config';
-import { checkIfFileExists } from './FileValidationWarning';
+import { checkIfFileExists } from './PageValidationWarning';
 
 type NewPage = Omit<Page, 'uuid'> & { stringifiedSearchFilters?: string };
 
@@ -267,7 +267,11 @@ export default function PageSettingsForm({
             "React component for this page path doesn't exist in landing pages")
         }
         color={fileExists === false ? 'warning' : 'primary'}
-        onBlur={() => setFileExists(checkIfFileExists(tmpPageData.path))}
+        onBlur={() =>
+          setFileExists(
+            checkIfFileExists({ label: 'temporaryPage', path: tmpPageData.path })
+          )
+        }
         disabled={editingDisabled}
         label="Path"
         value={tmpPageData.path}
