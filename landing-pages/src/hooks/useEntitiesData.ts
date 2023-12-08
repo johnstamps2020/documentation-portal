@@ -1,7 +1,8 @@
 import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
+import { Source } from 'server/dist/model/entity/Source';
 import useSWR from 'swr';
 
-export class ExternalLinkError {
+export class Error {
   status: number;
   message: string;
 
@@ -25,14 +26,14 @@ const externalLinkGetter = async (externalLinkUrl: string) => {
   const jsonData = await response.json();
 
   if (!response.ok) {
-    throw new ExternalLinkError(status, jsonData.message);
+    throw new Error(status, jsonData.message);
   }
 
   return jsonData;
 };
 
 export function useExternalLinkData(externalLinkUrl?: string) {
-  const { data, error, isLoading } = useSWR<ExternalLink, ExternalLinkError>(
+  const { data, error, isLoading } = useSWR<ExternalLink, Error>(
     externalLinkUrl,
     externalLinkGetter,
     {
@@ -42,6 +43,36 @@ export function useExternalLinkData(externalLinkUrl?: string) {
 
   return {
     externalLinkData: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+const sourceGetter = async (sourceId: string) => {
+  const response = await fetch(
+    `/safeConfig/entity/Source?id=${sourceId}`
+  );
+  const { status } = response;
+  const jsonData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(status, jsonData.message);
+  }
+
+  return jsonData;
+};
+
+export function useSourceData(sourceId?: string) {
+  const { data, error, isLoading } = useSWR<Source, Error>(
+    sourceId,
+    sourceGetter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    sourceData: data,
     isLoading,
     isError: error,
   };

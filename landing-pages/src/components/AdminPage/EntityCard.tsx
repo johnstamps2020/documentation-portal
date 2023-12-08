@@ -41,6 +41,7 @@ export default function EntityCard({
           justifyContent: 'space-between',
           height: '100%',
           gap: '16px',
+          wordBreak: 'break-word'
         }}
       >
         <Box

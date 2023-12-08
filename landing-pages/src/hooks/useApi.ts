@@ -8,6 +8,7 @@ import { SearchData, ServerSearchError } from 'server/dist/types/serverSearch';
 import { Page } from 'server/dist/model/entity/Page';
 import { TranslatedPage } from '../components/Layout/Header/TranslatedPages';
 import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
+import { Source } from 'server/dist/model/entity/Source';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 
@@ -131,6 +132,23 @@ export function useExternalLinks() {
 
   return {
     externalLinks: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useSources() {
+  const { data, error, isLoading } = useSWR<Source[], ServerSearchError>(
+    '/safeConfig/entity/Source/all',
+    getter,
+    {
+      keepPreviousData: true,
+      refreshInterval: 1000,
+    }
+  );
+
+  return {
+    sources: data,
     isLoading,
     isError: error,
   };

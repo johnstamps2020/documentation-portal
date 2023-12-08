@@ -1,5 +1,5 @@
 import AdminDuplicateButton from 'components/AdminPage/DuplicateButton';
-import { useExternalLinkData } from 'hooks/useExternalLinkData';
+import { useExternalLinkData } from 'hooks/useEntitiesData';
 import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
 import ExternalLinkSettingsForm from './ExternalLinkSettingsForm';
 

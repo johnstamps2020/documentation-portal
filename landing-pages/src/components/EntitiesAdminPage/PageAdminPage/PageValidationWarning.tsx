@@ -1,23 +1,18 @@
 import EntityCardValidationWarning from 'components/AdminPage/EntityCardValidationWarning';
+import { Entity } from 'components/AdminPage/EntityListWithFilters';
 
-type FileValidationWarningProps = {
-  path: string;
-};
-
-export function checkIfFileExists(path: string) {
+export function checkIfFileExists(entity: Entity) {
   try {
-    require(`../../../pages/landing/${path}.tsx`);
+    require(`../../../pages/landing/${entity.path}.tsx`);
     return true;
   } catch (err) {
     return false;
   }
 }
 
-export default function FileValidationWarning({
-  path,
-}: FileValidationWarningProps) {
+export default function PageValidationWarning(entity: Entity) {
   try {
-    const fileExists = checkIfFileExists(path);
+    const fileExists = checkIfFileExists(entity);
     if (!fileExists) {
       return (
         <EntityCardValidationWarning>
