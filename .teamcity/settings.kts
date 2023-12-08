@@ -790,20 +790,20 @@ object GwBuildSteps {
                 export OKTA_ISSUER="$oktaIssuer"
                 export OKTA_SCOPES="$oktaScopes"
                 
-                if [[ ${propertyName.uppercase()} == NONE ]]; then
+                if [[ "${propertyName.uppercase()}" == "NONE" ]]; then
                     echo "Indexing all documents"
                 else
-                    if [[ -z $propertyValue ]]; then
+                    if [[ -z "$propertyValue" ]]; then
                         echo "No value provided for $propertyName"
                         exit 1
                     fi
                     
-                    if [[ ${propertyName.uppercase()} == DOC_IDS ]]; then
-                        export DOC_IDS=$propertyValue
-                    elif [[ ${propertyName.uppercase()} == RELEASES ]]; then
-                        export RELEASES=$propertyValue
-                    elif [[ ${propertyName.uppercase()} == VERSIONS ]]; then
-                        export VERSIONS=$propertyValue
+                    if [[ "${propertyName.uppercase()}" == "DOC_IDS" ]]; then
+                        export DOC_IDS="$propertyValue"
+                    elif [[ "${propertyName.uppercase()}" == "RELEASES" ]]; then
+                        export RELEASES="$propertyValue"
+                    elif [[ "${propertyName.uppercase()}" == "VERSIONS" ]]; then
+                        export VERSIONS="$propertyValue"
                     else
                         echo "Incorrect property name"
                         echo "Provided name: $propertyName"
