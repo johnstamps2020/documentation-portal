@@ -807,7 +807,7 @@ object GwBuildSteps {
                     else
                         echo "Incorrect property name"
                         echo "Provided name: $propertyName"
-                        echo "Supported names: DOC_IDS, RELEASES, VERSIONS
+                        echo "Supported names: DOC_IDS, RELEASES, VERSIONS"
                         exit 1
                     fi
                 fi
