@@ -3,8 +3,8 @@
 	"builds": [
 		{
 			"buildType": "dita",
-			"filter": "Digital-ve-MgSvcs.ditaval",
 			"root": "GWCP-ReleaseNotes.ditamap",
+			"filter": "GW-Generic-Cloud-Release.ditaval",
 			"srcId": "gwcpreleasenotesjaJPsrc",
 			"docId": "gwcpjaJPreleasenotes",
 			"indexRedirect": true,

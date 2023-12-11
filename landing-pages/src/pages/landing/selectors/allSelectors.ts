@@ -323,6 +323,10 @@ export const allSelectors = {
       label: "[TBD]What's new in Innsubruck",
       pagePath: 'l10n/de-DE/innsbruck',
     },
+    {
+      label: 'Was ist neu in Hakuba',
+      pagePath: 'l10n/de-DE/202306hakubawhatsnew',
+    },
   ],
   sfa48f3b641ce1ec0fe00a60fefbb4192: [
     { label: 'Deutsch', pagePath: 'l10n/de-DE' },
@@ -411,6 +415,10 @@ export const allSelectors = {
     {
       label: "[TBD]What's new in Innsubruck",
       pagePath: 'l10n/fr-FR/innsbruck',
+    },
+    {
+      label: 'Nouveautés de Hakuba',
+      pagePath: 'l10n/fr-FR/202306hakubawhatsnew',
     },
     { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/fr-FR/pe' },
