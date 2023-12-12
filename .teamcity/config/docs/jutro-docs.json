@@ -3299,6 +3299,64 @@
       "earlyAccess": false
     },
     {
+      "id": "jutro1020",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/documentation/10.2",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.2"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook1020",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/10.2",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.2"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },    
+    {
       "id": "jutrolatest",
       "title": "Jutro Digital Platform",
       "url": "jutro/documentation/latest",
@@ -3310,7 +3368,7 @@
           "Cloud"
         ],
         "version": [
-          "10.1 (latest)"
+          "10.2 (latest)"
         ],
         "subject": [
           "Best practices"
@@ -3339,7 +3397,7 @@
           "Cloud"
         ],
         "version": [
-          "10.1 (latest)"
+          "10.2 (latest)"
         ],
         "subject": [
           "Development"
