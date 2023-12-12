@@ -1,6 +1,8 @@
+import { SearchHit } from '@elastic/elasticsearch/lib/api/types';
+
 export type SearchData = {
   searchPhrase: string;
-  searchResults: ServerSearchResult[];
+  searchResults: SearchHit<SearchResultSource>[];
   totalNumOfResults: number;
   totalNumOfCollapsedResults: number;
   currentPage: number;
