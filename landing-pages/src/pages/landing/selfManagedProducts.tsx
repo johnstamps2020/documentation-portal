@@ -102,11 +102,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'DataHub',
-          pagePath: 'selfManagedProducts/dh/10.10.0',
+          pagePath: 'selfManagedProducts/dh/10.11.0',
         },
         {
           label: 'InfoCenter',
-          pagePath: 'selfManagedProducts/ic/10.10.0',
+          pagePath: 'selfManagedProducts/ic/10.11.0',
         },
       ],
     },
