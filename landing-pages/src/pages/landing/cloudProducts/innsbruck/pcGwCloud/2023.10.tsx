@@ -305,13 +305,13 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Application events',
+          label: 'App Events',
           docId: 'appeventsdev',
           description: (
             <>
-              Use application events to send outbound messages asynchronously,
-              without the need for Gosu code, in response to specific business
-              events and manage responses.
+              Use App Events to send outbound messages asynchronously, without
+              the need for Gosu code, in response to specific business events
+              and manage responses.
             </>
           ),
         },
