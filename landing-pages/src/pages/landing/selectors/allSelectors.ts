@@ -319,14 +319,6 @@ export const allSelectors = {
     },
     { label: 'ServiceRepEngage', pagePath: 'l10n/de-DE/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/de-DE/ve' },
-    {
-      label: "[TBD]What's new in Innsubruck",
-      pagePath: 'l10n/de-DE/innsbruck',
-    },
-    {
-      label: 'Was ist neu in Hakuba',
-      pagePath: 'l10n/de-DE/202306hakubawhatsnew',
-    },
   ],
   sfa48f3b641ce1ec0fe00a60fefbb4192: [
     { label: 'Deutsch', pagePath: 'l10n/de-DE' },
@@ -357,10 +349,6 @@ export const allSelectors = {
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/es-419/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/es-419/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/es-419/cm' },
-    {
-      label: 'Novedades de Hakuba',
-      pagePath: 'l10n/es-419/202306hakubawhatsnew',
-    },
     { label: 'PolicyCenter', pagePath: 'l10n/es-419/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/es-419/pe' },
     {
@@ -412,14 +400,6 @@ export const allSelectors = {
       pagePath: 'l10n/fr-FR/is-configupgradetools',
     },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
-    {
-      label: "[TBD]What's new in Innsubruck",
-      pagePath: 'l10n/fr-FR/innsbruck',
-    },
-    {
-      label: 'Nouveautés de Hakuba',
-      pagePath: 'l10n/fr-FR/202306hakubawhatsnew',
-    },
     { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/fr-FR/pe' },
     {
@@ -476,10 +456,6 @@ export const allSelectors = {
       label: 'Hakuba (2023.06) の新機能',
       pagePath: 'l10n/ja-JP/202306hakubawhatsnew',
     },
-    {
-      label: 'Innsubruck (2023.10) の新機能',
-      pagePath: 'l10n/ja-JP/innsbruck',
-    },
     { label: 'Guidewire Identity Federation Hub', pagePath: 'l10n/ja-JP/gwid' },
     { label: 'Guidewire Testing', pagePath: 'l10n/ja-JP/gtest' },
     { label: 'Guidewire for Salesforce', pagePath: 'l10n/ja-JP/gwsf' },
@@ -512,10 +488,6 @@ export const allSelectors = {
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/pt-BR/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/pt-BR/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/pt-BR/cm' },
-    {
-      label: 'Novidades na Hakuba',
-      pagePath: 'l10n/pt-BR/202306hakubawhatsnew',
-    },
     { label: 'PolicyCenter', pagePath: 'l10n/pt-BR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/pt-BR/pe' },
     {
