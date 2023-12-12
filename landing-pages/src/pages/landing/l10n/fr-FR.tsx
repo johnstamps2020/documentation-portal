@@ -19,8 +19,12 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
-      label: '[TBD]What\'s new in Innsubruck',
-      pagePath: 'l10n/fr-FR/innsbruck',
+      label: 'Nouveautés de Innsbruck',
+      docId: 'whatsnewfrFRinnsbruck', 
+    },
+    {
+      label: 'Nouveautés de Hakuba',
+      docId: 'whatsnewfrFRhakuba',
     },
     {
       label: 'BillingCenter',
