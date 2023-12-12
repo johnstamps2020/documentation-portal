@@ -19,7 +19,7 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
-      label: 'Was ist neu in Innsubruck',
+      label: 'Was ist neu in Innsbruck',
       docId: 'whatsnewdeDEinnsbruck',
     },
     {
