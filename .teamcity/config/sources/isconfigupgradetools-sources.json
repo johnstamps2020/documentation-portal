@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "isconfigupgradetools510src",
+      "title": "InsuranceSuite Configuration Upgrade Tools 5.1.0",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
+      "branch": "release/5.1.0"
+    },
+    {
       "id": "isconfigupgradetools500src",
       "title": "InsuranceSuite Configuration Upgrade Tools 5.0.0",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",

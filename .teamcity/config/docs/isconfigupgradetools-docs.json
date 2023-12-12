@@ -2,6 +2,25 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "isconfigupgradetools510",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/510",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["5.1.0"],
+        "release": ["Hakuba", "Innsbruck"],
+        "subject": ["Upgrade"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "isconfigupgradetools500",
       "title": "InsuranceSuite Configuration Upgrade Tools",
       "url": "isconfigupgradetools/500",
