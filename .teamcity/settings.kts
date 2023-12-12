@@ -3691,7 +3691,7 @@ object Admin {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 arrayOf(
-                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
+                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
                 ).forEach {
                     buildType(createUpdateSearchIndexBuildType(it.envName))
                 }
