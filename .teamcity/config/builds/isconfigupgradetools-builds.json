@@ -6,6 +6,15 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
       "indexRedirect": true,
+      "srcId": "isconfigupgradetools510src",
+      "docId": "isconfigupgradetools510",
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
+      "indexRedirect": true,
       "srcId": "isconfigupgradetools500src",
       "docId": "isconfigupgradetools500",
       "disabled": false
