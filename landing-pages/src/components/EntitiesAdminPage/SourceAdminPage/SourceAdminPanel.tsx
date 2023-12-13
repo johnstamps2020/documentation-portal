@@ -1,6 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
 import { useSources } from '../../../hooks/useApi';
-import DeleteButton from './../../AdminPage/DeleteButton';
 import DuplicateButton from './DuplicateButton';
 import SourceCardContents from './SourceCardContents';
 import SourceSettingsForm from './SourceSettingsForm';
@@ -21,7 +20,6 @@ export default function SourceAdminPanel() {
         label: name,
         ...rest,
       }))}
-      DeleteButton={DeleteButton}
       DuplicateButton={DuplicateButton}
       FormComponent={SourceSettingsForm}
       EntityCardContents={SourceCardContents}

@@ -1,6 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
 import { useExternalLinks } from '../../../hooks/useApi';
-import DeleteButton from './../../AdminPage/DeleteButton';
 import DuplicateButton from './DuplicateButton';
 import ExternalLinkCardContents from './ExternalLinkCardContents';
 import ExternalLinkSettingsForm from './ExternalLinkSettingsForm';
@@ -18,7 +17,6 @@ export default function ExternalLinkAdminPanel() {
       entityDatabaseName="ExternalLink"
       entityPrimaryKeyName="url"
       entities={externalLinks}
-      DeleteButton={DeleteButton}
       DuplicateButton={DuplicateButton}
       FormComponent={ExternalLinkSettingsForm}
       EntityCardContents={ExternalLinkCardContents}
