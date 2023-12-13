@@ -1,8 +1,6 @@
-import { SearchHit } from '@elastic/elasticsearch/lib/api/types';
-
 export type SearchData = {
   searchPhrase: string;
-  searchResults: SearchHit<SearchResultSource>[];
+  searchResults: ServerSearchResult[];
   totalNumOfResults: number;
   totalNumOfCollapsedResults: number;
   currentPage: number;
@@ -44,6 +42,7 @@ export type ServerSearchResult = SearchResultSource & {
 
 export type ServerSearchFilterValue = {
   label: string;
+  key?: string;
   doc_count: number;
   checked: boolean;
 };

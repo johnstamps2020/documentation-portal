@@ -118,7 +118,10 @@ async function getAllowedFilterValues(
     return result.aggregations?.allowedForField.keywordFilter.buckets.map(
       (bucket: ServerSearchFilterValue) => {
         // @ts-ignore
-        return { label: bucket.key || bucket.label, doc_count: bucket.doc_count };
+        return {
+          label: bucket.key || bucket.label,
+          doc_count: bucket.doc_count,
+        };
       }
     );
   } catch (err) {
@@ -205,9 +208,9 @@ async function getFilters(
       );
       const filterValuesObjects = allFilterValues
         ?.map((value) => {
-          const docCount = allowedFilterValues?.find((v) => v.label === value)?.doc_count ||
-              0;
-          const isFilterChecked = !!urlFilterValues.find((v) => v === value)
+          const docCount =
+            allowedFilterValues?.find((v) => v.label === value)?.doc_count || 0;
+          const isFilterChecked = !!urlFilterValues.find((v) => v === value);
           return {
             label: value,
             doc_count: docCount,
@@ -376,13 +379,12 @@ async function runSearch(
     });
 
     // @ts-ignore
-    const numberOfHits = searchResultsCount.aggregations?.totalHits.doc_count
+    const numberOfHits = searchResultsCount.aggregations?.totalHits.doc_count;
     // @ts-ignore
     const numberOfCollapsedHits =
-        // @ts-ignore
-        searchResultsCount.aggregations?.totalHits.totalCollapsedHits
-        .value;
-    const hits = searchResults.hits.hits
+      // @ts-ignore
+      searchResultsCount.aggregations?.totalHits.totalCollapsedHits.value;
+    const hits = searchResults.hits.hits;
 
     return {
       numberOfHits,
@@ -499,7 +501,7 @@ function getUniqueResultsSortedByVersion(
 
 async function prepareResultsToDisplay(
   searchResults: GuidewireSearchControllerSearchResults
-): Promise<SearchHit<SearchResultSource>[]> {
+): Promise<SearchData['searchResults']> {
   return searchResults.hits.map((result) => {
     const innerHits = result.inner_hits?.same_title.hits.hits || [];
     const allHits = [result, ...innerHits];
@@ -559,14 +561,27 @@ async function prepareResultsToDisplay(
       .replaceAll(/\s{2,}/gm, '');
 
     return {
-      ...result,
-      ...mainResult,
-      score: mainResultScore,
+      product: mainResult?.product || [],
+      doc_display_title:
+        mainResult?.doc_display_title || result._source?.doc_display_title || null,
+      doc_id: mainResult?.doc_id || '',
+      doc_title: mainResult?.doc_title || 'Unknown doc title',
+      href: mainResult?.href || '',
+      id: mainResult?.id || '',
+      indexed_date: mainResult?.indexed_date || '',
+      internal: mainResult?.internal || true,
+      language: mainResult?.language || 'en',
+      platform: mainResult?.platform || [],
+      public: mainResult?.public || false,
+      release: mainResult?.release || [],
+      subject: mainResult?.subject || [],
+      version: mainResult?.version || [],
+      score: mainResultScore || 0,
       title: sanitizeTagNames(titleText),
       titlePlain: sanitizeTagNames(mainResultTitle),
       body: sanitizeTagNames(bodyExcerpt + '...'),
       bodyPlain: sanitizeTagNames(mainResultBodyFragment + '...'),
-      innerHits: otherHits.map((r) => r._source),
+      innerHits: otherHits?.map((r) => r._source as SearchResultSource) || [],
       uniqueHighlightTerms: uniqueHighlightTerms,
     };
   });
@@ -598,7 +613,7 @@ type SearchRequestExpress = Request<
 
 type SearchControllerResponse = {
   status: number;
-  body: SearchData | SearchHit<SearchResultSource>[];
+  body: SearchData['searchResults'] | SearchData;
 };
 
 export default async function searchController(
