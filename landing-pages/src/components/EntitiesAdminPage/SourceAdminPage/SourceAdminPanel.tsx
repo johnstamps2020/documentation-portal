@@ -1,6 +1,6 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
 import { useSources } from '../../../hooks/useApi';
-import DeleteButton from './DeleteButton';
+import DeleteButton from './../../AdminPage/DeleteButton';
 import DuplicateButton from './DuplicateButton';
 import SourceCardContents from './SourceCardContents';
 import SourceSettingsForm from './SourceSettingsForm';

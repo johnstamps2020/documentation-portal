@@ -1,6 +1,6 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
 import { usePages } from '../../../hooks/useApi';
-import DeleteButton from './DeleteButton';
+import DeleteButton from './../../AdminPage/DeleteButton';
 import DuplicateButton from './DuplicateButton';
 import FileValidationWarning, {
   checkIfFileExists,

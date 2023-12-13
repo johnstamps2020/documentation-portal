@@ -1,6 +1,6 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
 import { useExternalLinks } from '../../../hooks/useApi';
-import DeleteButton from './DeleteButton';
+import DeleteButton from './../../AdminPage/DeleteButton';
 import DuplicateButton from './DuplicateButton';
 import ExternalLinkCardContents from './ExternalLinkCardContents';
 import ExternalLinkSettingsForm from './ExternalLinkSettingsForm';
