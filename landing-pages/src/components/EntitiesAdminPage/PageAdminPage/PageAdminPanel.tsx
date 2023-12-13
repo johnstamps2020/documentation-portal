@@ -1,6 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
 import { usePages } from '../../../hooks/useApi';
-import DeleteButton from './DeleteButton';
 import DuplicateButton from './DuplicateButton';
 import FileValidationWarning, {
   checkIfFileExists,
@@ -24,7 +23,6 @@ export default function PageAdminPanel() {
         label: title,
         ...rest,
       }))}
-      DeleteButton={DeleteButton}
       DuplicateButton={DuplicateButton}
       FormComponent={PageSettingsForm}
       EntityCardContents={PageCardContents}

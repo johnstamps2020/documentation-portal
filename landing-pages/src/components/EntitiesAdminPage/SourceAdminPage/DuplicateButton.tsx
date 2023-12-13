@@ -1,4 +1,4 @@
-import AdminDuplicateButton from 'components/AdminPage/DuplicateButton';
+import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useSourceData } from 'hooks/useEntitiesData';
 import { Source } from 'server/dist/model/entity/Source';
 import SourceSettingsForm from './SourceSettingsForm';

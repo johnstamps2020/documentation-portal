@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ActionBar from './ActionBar';
 import { AdminViewContext } from './AdminViewContext';
 import AdminViewWrapper from './AdminViewWrapper';
+import DeleteButton from './DeleteButton';
 import EditButton from './EditButton';
 import EntityCard from './EntityCard';
 import EntityFilters from './EntityFilters';
@@ -28,7 +29,6 @@ type EntityListWithFiltersProps = {
   entityPrimaryKeyName: string;
   FormComponent: React.ElementType;
   DuplicateButton: React.ElementType;
-  DeleteButton: React.ElementType;
   EntityCardContents: React.ElementType;
   CardWarning?: React.ElementType;
   additionalFilters?: AdditionalFilter[];
@@ -82,7 +82,6 @@ export default function EntityListWithFilters({
   entityName,
   entityDatabaseName: initialEntityDatabaseName,
   entityPrimaryKeyName: initialEntityPrimaryKeyName,
-  DeleteButton,
   DuplicateButton,
   FormComponent,
   EntityCardContents,
