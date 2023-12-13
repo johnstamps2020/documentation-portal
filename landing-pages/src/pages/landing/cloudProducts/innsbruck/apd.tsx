@@ -35,7 +35,7 @@ const pageConfig: ApplicationLayoutProps = {
       </p>
     ),
     videoUrl:
-      'https://www.youtube-nocookie.com/embed/9ruQccctEtw?si=yJbjKrSCfGLxwPey',
+      'https://www.youtube-nocookie.com/embed/IrTP7677PQQ?si=OcnJ-DRAColM-L-g',
   },
   cards: [
     {
