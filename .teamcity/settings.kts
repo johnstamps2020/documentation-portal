@@ -788,9 +788,6 @@ object GwBuildSteps {
             name = "Run the doc crawler in the $operationMode mode"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-            #!/bin/bash
-            set -xe
-            
             export OPERATION_MODE="$operationMode"
             ${Helpers.setAwsEnvVars(deployEnv)}
             export OKTA_ISSUER="$oktaIssuer"
