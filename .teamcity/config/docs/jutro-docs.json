@@ -459,11 +459,11 @@
     },
     {
       "id": "jutronext",
-      "title": "Jutro Design System and UI Framework",
+      "title": "Jutro Digital Platform",
       "url": "jutro/documentation/next",
       "metadata": {
         "product": [
-          "Jutro Design System"
+          "Jutro Digital Platform"
         ],
         "platform": [
           "Cloud"
@@ -3355,7 +3355,7 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "jutrolatest",
       "title": "Jutro Digital Platform",
@@ -3519,7 +3519,8 @@
         "language": "en"
       },
       "environments": [
-        "staging", "prod"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
