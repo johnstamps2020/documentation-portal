@@ -21,12 +21,12 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.10 (Innsbruck)', 
       items: [
       {
-      label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
+      label: 'InsuranceSuite Configuraiton Upgrade Tools ガイド', 
       docId: 'isconfigupgradetoolsjaJP500', 
       }, 
       {
-      label: '[TBD]IS Configuration Upgrade Tools Compatibility', 
-      docId: 'isupgradecompatibilityjaJP', 
+      label: 'コンフィギュレーションアップグレードツールの互換性', 
+      docId: 'isjaJPupgradecompatibility', 
       }, 
       ],
 },
@@ -34,7 +34,7 @@ const pageConfig: CategoryLayoutProps = {
       label: '4.6.0',
       items: [
         {
-          label: 'Upgrade Tools ガイド',
+          label: 'InsuranceSuite Configuraiton Upgrade Tools ガイド',
           docId: 'isconfigupgradetoolsja460',
         },
         {

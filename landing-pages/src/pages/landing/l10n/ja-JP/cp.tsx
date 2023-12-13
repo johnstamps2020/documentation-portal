@@ -18,29 +18,16 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: '[TBD]Cloud Home Help', 
-docId: 'gchjaJPhelprelease', 
-}, 
-{
-label: '[TBD]Cloud Platform Release Notes	', 
-docId: 'gwcpjaJPreleasenotes', 
-}, 
-],
-},
-{
-      label: '2023.06 (Hakuba)',
+      label: '2023.10 (Innsbruck)', 
       items: [
         {
-          label: 'Guidewire Cloud Home ヘルプ',
-          docId: 'gchjaJPhelprelease',
-        },
+          label: 'Guidewire Cloud Home ヘルプ', 
+          docId: 'gchjaJPhelprelease', 
+        }, 
         {
-          label: 'Guidewire Cloud Platform リリースノート',
-          docId: 'gwcpjareleasenotes',
-        },
+          label: 'Guidewire Cloud Platform リリースノート', 
+          docId: 'gwcpjaJPreleasenotes', 
+        }, 
       ],
     },
     {

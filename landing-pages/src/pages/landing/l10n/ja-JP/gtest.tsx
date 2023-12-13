@@ -21,13 +21,13 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]Guidewire Testing Framework Release Notes', 
-docId: 'testingframeworksjaJPinnsbruck', 
+label: 'Testing Framework リリースノート', 
+docId: 'testingframeworksjaJPrninnsbruck', 
 }, 
 ],
 },
 {
-      label: '2023.06',
+      label: '2023.06 (Hakuba)',
       items: [
         {
           label: 'Testing Framework リリースノート',
