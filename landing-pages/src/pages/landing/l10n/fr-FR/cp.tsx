@@ -18,16 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: '[TBD]Cloud Platform Release Notes	', 
-docId: 'gwcpfrFRreleasenotes', 
-}, 
-],
-},
-{
-      label: '2023.06 (Hakuba)',
+      label: '2023.10 (Innsbruck)', 
       items: [
         {
           label: 'Notes de version de la plate-forme Guidewire Cloud',

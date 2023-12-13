@@ -39,11 +39,11 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]ClaimCenter Release Notes', 
+label: 'ClaimCenter リリースノート', 
 docId: 'iscc202310jaJPreleasenotes', 
 }, 
 {
-label: '[TBD]ClaimCenter Update', 
+label: 'ClaimCenter アップデート', 
 docId: 'iscc202310jaJPupdate', 
 }, 
 ],
