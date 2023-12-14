@@ -180,20 +180,6 @@
       "srcId": "srcjutro1020",
       "workingDir": "storybook",
       "disabled": false
-    },    
-    {
-      "buildType": "yarn",
-      "docId": "jutrolatest",
-      "srcId": "srcjutro1020",
-      "workingDir": "website",
-      "disabled": false
-    },
-    {
-      "buildType": "yarn",
-      "docId": "storybooklatest",
-      "srcId": "srcjutro1020",
-      "workingDir": "storybook",
-      "disabled": false
     },
     {
       "buildType": "yarn",
