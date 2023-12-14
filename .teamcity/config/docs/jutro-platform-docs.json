@@ -2,24 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "jutroplatformnext",
-      "title": "Jutro Digital Platform",
-      "url": "jutro/platform/next",
-      "metadata": {
-        "product": ["Jutro Digital Platform"],
-        "platform": ["Cloud"],
-        "version": ["next"],
-        "subject": ["Administration"],
-        "language": "en"
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "jutroplatformgarmisch",
       "title": "Jutro Digital Platform",
       "url": "jutro/platform/garmisch",
