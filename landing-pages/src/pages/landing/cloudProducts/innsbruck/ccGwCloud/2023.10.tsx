@@ -175,6 +175,11 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Guidewire Rules Type Manager (Early Access)',
+          docId: 'gwrulestypemgr',
+          description: <>Create and manage new rule types.</>,
+        },
+        {
           label: 'Plugins',
           description: (
             <>
