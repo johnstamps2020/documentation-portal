@@ -49,7 +49,7 @@ services:
   search:
     networks:
       - docportal_network
-    image: artifactory.guidewire.com/hub-docker-remote/elasticsearch:8.11.1
+    image: artifactory.guidewire.com/hub-docker-remote/elasticsearch:7.17.4
     container_name: search
     environment:
       - cluster.name=es-docker-cluster
@@ -60,8 +60,8 @@ services:
         soft: -1
         hard: -1
       nofile:
-        soft: 262144
-        hard: 262144
+        soft: 65536
+        hard: 65536
     volumes:
       - search_volume:/usr/share/elasticsearch/data
     ports:
@@ -73,10 +73,3 @@ networks:
 volumes:
   db_volume:
   search_volume:
-    # For details, see:
-    # https://docs.docker.com/engine/reference/commandline/volume_create/#driver-specific-options
-    driver: local
-    driver_opts:
-      o: "size=50g"
-      device: tmpfs
-      type: tmpfs
