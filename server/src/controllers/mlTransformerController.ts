@@ -6,7 +6,11 @@ class FeatureExtractionPipeline {
   static async getInstance(progress_callback = null) {
     if (this.instance === null) {
       // Dynamically import the Transformers.js library
-      let { pipeline, env } = await import('@xenova/transformers');
+      // By default, all import statements are converted to require during compilation.
+      //   the two lines below delay the import until after compilation.
+      //   https://stackoverflow.com/questions/76883048/err-require-esm-for-import-with-xenova-transformers
+      let TransformersApi = Function('return import("@xenova/transformers")')();
+      let { pipeline, env } = await TransformersApi;
       env.allowRemoteModels = false;
       env.localModelPath = process.env.MODEL_ABS_PATH;
       // @ts-ignore
