@@ -3080,8 +3080,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3109,8 +3108,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3138,8 +3136,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3160,6 +3157,63 @@
         ],
         "version": [
           "8.13.4"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "jutro8135",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/8.13.5",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "8.13.5"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook8135",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/8.13.5",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "8.13.5"
         ],
         "subject": [
           "Development"
