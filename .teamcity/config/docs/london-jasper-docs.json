@@ -1,0 +1,101 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "londonccappjasper",
+      "title": "ClaimCenter for London Market Application Guide",
+      "url": "london/jasper/ccapp",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "subject": ["Features and functionality"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonpcappjasper",
+      "title": "PolicyCenter for London Market Application Guide",
+      "url": "london/jasper/pcapp",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "subject": ["Features and functionality"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonconfigjasper",
+      "title": "London Market Configuration Guide",
+      "url": "london/jasper/config",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "subject": ["Development"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonrnjasper",
+      "title": "London Market Release Notes",
+      "url": "london/jasper/releasenotes",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": ["Cloud"],
+        "version": ["2024.02"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

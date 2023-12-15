@@ -18,7 +18,16 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.06',
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: 'Testing Framework リリースノート', 
+docId: 'testingframeworksjaJPrninnsbruck', 
+}, 
+],
+},
+{
+      label: '2023.06 (Hakuba)',
       items: [
         {
           label: 'Testing Framework リリースノート',
@@ -62,3 +71,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Gtest() {
   return <CategoryLayout {...pageConfig} />;
 }
+

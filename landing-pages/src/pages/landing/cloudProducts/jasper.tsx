@@ -64,7 +64,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'InsuranceNow',
-          pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
+          pagePath: 'cloudProducts/jasper/insuranceNow/2024.1',
         },
         {
           label: 'Digital Reference Applications',
@@ -72,7 +72,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Global Content Reference Applications',
-          pagePath: 'cloudProducts/innsbruck/global-ref-apps',
+          pagePath: 'cloudProducts/jasper/global-ref-apps',
         },
         {
           label: 'Underwriting Workbench (Early Access)',
@@ -97,7 +97,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Explore',
-          pagePath: 'cloudProducts/explore/latest',
+          docId: 'exploreusingrelease',
         },
         {
           label: 'Canvas',

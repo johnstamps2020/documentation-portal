@@ -1,0 +1,25 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "testingframeworksfrFRrninnsbruck",
+      "title": "Guidewire Testing Framework Release Notes fr",
+      "displayTitle": "[TBD]Guidewire Testing Framework Release Notes",
+      "url": "ja/cloud/testing/202306/releasenotes",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
+        "language": "fr"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import AdminDuplicateButton from 'components/AdminPage/DuplicateButton';
+import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import PageSettingsForm from 'components/EntitiesAdminPage/PageAdminPage/PageSettingsForm';
 import { usePageData } from 'hooks/usePageData';
 import { Page } from 'server/dist/model/entity/Page';

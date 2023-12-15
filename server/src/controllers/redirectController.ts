@@ -40,15 +40,15 @@ const permanentRedirectUrls = [
   },
   {
     from: 'cloudProducts/Banff/billingCenterCloud/explore/latest',
-    to: 'cloudProducts/explore/latest',
+    to: 'cloud/explore/app',
   },
   {
     from: 'cloudProducts/Banff/claimCenterCloud/explore/latest',
-    to: 'cloudProducts/explore/latest',
+    to: 'cloud/explore/app',
   },
   {
     from: 'cloudProducts/Banff/policyCenterCloud/explore/latest',
-    to: 'cloudProducts/explore/latest',
+    to: 'cloud/explore/app',
   },
   {
     from: 'cloudProducts/Banff/insuranceNow/IN20202xExt/latest',

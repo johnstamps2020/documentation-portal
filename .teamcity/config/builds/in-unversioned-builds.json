@@ -22,6 +22,15 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "INowServicePortalReleaseNotes20241Jasper.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp20241rn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowServicePortalReleaseNotes20233Innsbruck.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20233rn",
@@ -85,15 +94,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ConsumerServicePortalReleaseNotesV326.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "incsp326rn",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV325.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp325rn",
@@ -151,6 +151,15 @@
       "root": "ExcelDesignedRating23.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "inexcelrating23",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowStudioReleaseNotes20241Jasper.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20241studiorn",
       "indexRedirect": true,
       "disabled": false
     },
@@ -223,6 +232,15 @@
       "root": "InsuranceNow_InstallAssist_5.0.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "ininstallassistdraft",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowCoreReleaseNotes20241Jasper.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20241rn",
       "indexRedirect": true,
       "disabled": false
     },
@@ -329,6 +347,15 @@
       "root": "dataservice.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "indataservice",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ProgrammingStandards.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inprogstandards",
       "indexRedirect": true,
       "disabled": false
     }

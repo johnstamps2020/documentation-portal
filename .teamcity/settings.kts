@@ -123,7 +123,7 @@ enum class GwDockerImages(val imageUrl: String) {
     CONFIG_DEPLOYER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/config-deployer:latest"), DOC_CRAWLER_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-crawler:latest"
     ),
-    INDEX_CLEANER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/index-cleaner:latest"), BUILD_MANAGER_LATEST(
+    BUILD_MANAGER_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/build-manager:latest"
     ),
     RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"), LION_PKG_BUILDER_LATEST(
@@ -179,6 +179,11 @@ enum class GwTriggerPaths(val pathValue: String) {
     TEAMCITY_SETTINGS_KTS(".teamcity/settings.kts"),
     TEAMCITY_CONFIG(".teamcity/config/**"),
     YARN_LOCK("yarn.lock"),
+}
+
+enum class GwDocCrawlerOperationModes(val modeValue: String) {
+    CRAWL("crawl"),
+    CLEAN_INDEX("clean-index")
 }
 
 object Helpers {
@@ -266,14 +271,6 @@ object Helpers {
             branchName
         } else {
             "refs/heads/${branchName}"
-        }
-    }
-
-    fun getConfigFileUrl(deployEnv: String): String {
-        return if (arrayListOf(GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName).contains(deployEnv)) {
-            "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net/portal-config/config.json"
-        } else {
-            "https://docportal-content.${deployEnv}.ccs.guidewire.net/portal-config/config.json"
         }
     }
 
@@ -725,34 +722,12 @@ object GwBuildSteps {
         }
     }
 
-    fun createRunIndexCleanerStep(deployEnv: String): ScriptBuildStep {
-        // Do not use the config file from dev because here are hardly any docs configured for dev and the index
-        // will end up with very few docs.
-        val envForConfigFile =
-            if (deployEnv == GwDeployEnvs.DEV.envName) GwDeployEnvs.STAGING.envName else deployEnv
-        val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
-        val configFileUrl = Helpers.getConfigFileUrl(envForConfigFile)
-        return ScriptBuildStep {
-            name = "Run the index cleaner"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export ELASTICSEARCH_URLS="$elasticsearchUrls"
-                export CONFIG_FILE_URL="$configFileUrl"
-                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
-                
-                curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
-
-                index_cleaner
-            """.trimIndent()
-            dockerImage = GwDockerImages.INDEX_CLEANER_LATEST.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createRunDocCrawlerStep(deployEnv: String, docId: String, configFile: String): ScriptBuildStep {
+    fun createRunDocCrawlerStep(
+        deployEnv: String,
+        operationMode: String,
+        propertyName: String = "",
+        propertyValue: String = "",
+    ): ScriptBuildStep {
         val docS3Url = Helpers.getS3BucketUrl(deployEnv)
         val appBaseUrl = Helpers.getTargetUrl(deployEnv)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
@@ -775,29 +750,56 @@ object GwBuildSteps {
                 oktaScopes = "${GwConfigParams.OKTA_SCOPES.paramValue} NODE_Hawaii_Docs_Web.admin"
             }
         }
-        return ScriptBuildStep {
-            name = "Run the doc crawler"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                ${Helpers.setAwsEnvVars(deployEnv)}
-                export OKTA_ISSUER="$oktaIssuer"
-                export OKTA_SCOPES="$oktaScopes"
-                
-                export DOC_ID="$docId"
+        val additionalScriptContent = when (operationMode) {
+            GwDocCrawlerOperationModes.CRAWL.modeValue -> """
+                if [[ "${propertyName.uppercase()}" == "NONE" ]]; then
+                    echo "Indexing all documents"
+                else
+                    if [[ -z "$propertyValue" ]]; then
+                        echo "No value provided for $propertyName"
+                        exit 1
+                    fi
+                    
+                    if [[ "${propertyName.uppercase()}" == "DOC_IDS" ]]; then
+                        export DOC_IDS="$propertyValue"
+                    elif [[ "${propertyName.uppercase()}" == "RELEASES" ]]; then
+                        export RELEASES="$propertyValue"
+                    elif [[ "${propertyName.uppercase()}" == "VERSIONS" ]]; then
+                        export VERSIONS="$propertyValue"
+                    else
+                        echo "Incorrect property name"
+                        echo "Provided name: $propertyName"
+                        echo "Supported names: DOC_IDS, RELEASES, VERSIONS"
+                        exit 1
+                    fi
+                fi
+                    
                 export DOC_S3_URL="$docS3Url"
-                export ELASTICSEARCH_URLS="$elasticsearchUrls"
-                export APP_BASE_URL="$appBaseUrl"
-                export DOCS_INDEX_NAME="gw-docs"
                 export BROKEN_LINKS_INDEX_NAME="broken-links"
                 export SHORT_TOPICS_INDEX_NAME="short-topics"
                 export REPORT_BROKEN_LINKS="$reportBrokenLinks"
                 export REPORT_SHORT_TOPICS="$reportShortTopics"
-                
-                doc_crawler
             """.trimIndent()
+
+            else -> ""
+        }
+
+        return ScriptBuildStep {
+            name = "Run the doc crawler in the $operationMode mode"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+            export OPERATION_MODE="$operationMode"
+            ${Helpers.setAwsEnvVars(deployEnv)}
+            export OKTA_ISSUER="$oktaIssuer"
+            export OKTA_SCOPES="$oktaScopes"
+            export ELASTICSEARCH_URLS="$elasticsearchUrls"
+            export APP_BASE_URL="$appBaseUrl"
+            export DOCS_INDEX_NAME="gw-docs"
+            
+            $additionalScriptContent
+            
+            doc_crawler
+        """.trimIndent()
             dockerImage = GwDockerImages.DOC_CRAWLER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -1999,8 +2001,8 @@ object User {
                     docBuildType.steps.step(copyFromStagingToProdStep)
                     docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
                 } else {
-                    docBuildType.artifactRules =
-                        "${workingDir}/${outputDir}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}"
+                    docBuildType.artifactRules += "\n${workingDir}/${outputDir}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}"
+
                     val buildDitaProjectStep: ScriptBuildStep
                     val buildPdfs = when (env) {
                         GwDeployEnvs.STAGING.envName -> true
@@ -2240,8 +2242,13 @@ object User {
                     artifactRules = """
                     %teamcity.build.workingDir%/*.log => build_logs
                 """.trimIndent()
-                    val configFile = "%teamcity.build.workingDir%/config.json"
-                    val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deployEnv, docId, configFile)
+                    val crawlDocStep =
+                        GwBuildSteps.createRunDocCrawlerStep(
+                            deployEnv,
+                            GwDocCrawlerOperationModes.CRAWL.modeValue,
+                            propertyName = "DOC_IDS",
+                            propertyValue = docId,
+                        )
                     steps.step(crawlDocStep)
                     steps.stepsOrder.add(crawlDocStep.id.toString())
                 }
@@ -3652,7 +3659,12 @@ object Admin {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 steps {
-                    step(GwBuildSteps.createRunIndexCleanerStep(deployEnv))
+                    step(
+                        GwBuildSteps.createRunDocCrawlerStep(
+                            deployEnv,
+                            GwDocCrawlerOperationModes.CLEAN_INDEX.modeValue,
+                        )
+                    )
                 }
 
                 features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -3676,7 +3688,7 @@ object Admin {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 arrayOf(
-                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
+                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
                 ).forEach {
                     buildType(createUpdateSearchIndexBuildType(it.envName))
                 }
@@ -3684,24 +3696,53 @@ object Admin {
         }
 
         private fun createUpdateSearchIndexBuildType(deployEnv: String): BuildType {
-            val configFile = "%teamcity.build.workingDir%/config.json"
             return BuildType {
                 name = "Update search index on $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
+                artifactRules = """
+                    %teamcity.build.workingDir%/*.log => build_logs
+                """.trimIndent()
+
                 params {
+                    select(
+                        "PROPERTY_NAME",
+                        "DOC_IDS",
+                        label = "Property name",
+                        description = """
+                            Choose the property that you want to use to limit the number of documents to index:
+                            - Doc IDs - only documents with specific IDs are indexed
+                            - Releases - only cloud documents that have at least one release from the property value field are indexed
+                            - Versions - only self-managed documents that have at least one version from the property value field are indexed
+                            - None - all documents are indexed. Think twice before selecting this option!
+                        """.trimIndent(),
+                        options = listOf(
+                            "Doc IDs" to "DOC_IDS",
+                            "Releases" to "RELEASES",
+                            "Versions" to "VERSIONS",
+                            "None (all docs)" to "NONE",
+                        ),
+                        display = ParameterDisplay.PROMPT,
+                    )
                     text(
-                        "DOC_ID",
+                        "PROPERTY_VALUE",
                         "",
-                        label = "Doc ID",
-                        description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+                        label = "Property value",
+                        description = "A comma-separated list of values. This field is ignored if you index all documents. Example for releases: Hakuba,Innsbruck",
                         display = ParameterDisplay.PROMPT,
                         allowEmpty = true
                     )
                 }
 
                 steps {
-                    step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%DOC_ID%", configFile))
+                    step(
+                        GwBuildSteps.createRunDocCrawlerStep(
+                            deployEnv,
+                            GwDocCrawlerOperationModes.CRAWL.modeValue,
+                            propertyName = "%PROPERTY_NAME%",
+                            propertyValue = "%PROPERTY_VALUE%"
+                        )
+                    )
                 }
 
                 features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)

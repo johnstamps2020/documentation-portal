@@ -156,6 +156,10 @@ export const allSelectors = {
       label: 'Innsbruck (2023.3)',
       pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
     },
+    {
+      label: 'Jasper (2024.1)',
+      pagePath: 'cloudProducts/jasper/insuranceNow/2024.1',
+    },
   ],
   s1793805ac84baf801d4eb31b00ab1ddf: [
     {
@@ -246,6 +250,10 @@ export const allSelectors = {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/global-ref-apps',
     },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/global-ref-apps',
+    },
   ],
   s06dcd02c361b9539495548fd0bfb3ad2: [
     {
@@ -298,6 +306,10 @@ export const allSelectors = {
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/de-DE/ce-qb' },
     { label: 'DataHub', pagePath: 'l10n/de-DE/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/de-DE/ic' },
+    {
+      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/de-DE/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/de-DE/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/de-DE/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/de-DE/pe' },
@@ -307,10 +319,6 @@ export const allSelectors = {
     },
     { label: 'ServiceRepEngage', pagePath: 'l10n/de-DE/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/de-DE/ve' },
-    {
-      label: 'Was ist neu in Hakuba',
-      pagePath: 'l10n/de-DE/202306hakubawhatsnew',
-    },
   ],
   sfa48f3b641ce1ec0fe00a60fefbb4192: [
     { label: 'Deutsch', pagePath: 'l10n/de-DE' },
@@ -341,10 +349,6 @@ export const allSelectors = {
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/es-419/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/es-419/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/es-419/cm' },
-    {
-      label: 'Novedades de Hakuba',
-      pagePath: 'l10n/es-419/202306hakubawhatsnew',
-    },
     { label: 'PolicyCenter', pagePath: 'l10n/es-419/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/es-419/pe' },
     {
@@ -391,11 +395,11 @@ export const allSelectors = {
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/fr-FR/ce-qb' },
     { label: 'DataHub', pagePath: 'l10n/fr-FR/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/fr-FR/ic' },
-    { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
     {
-      label: 'Nouveautés de Hakuba',
-      pagePath: 'l10n/fr-FR/202306hakubawhatsnew',
+      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/fr-FR/is-configupgradetools',
     },
+    { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/fr-FR/pe' },
     {
@@ -484,10 +488,6 @@ export const allSelectors = {
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/pt-BR/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/pt-BR/ic' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/pt-BR/cm' },
-    {
-      label: 'Novidades na Hakuba',
-      pagePath: 'l10n/pt-BR/202306hakubawhatsnew',
-    },
     { label: 'PolicyCenter', pagePath: 'l10n/pt-BR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/pt-BR/pe' },
     {

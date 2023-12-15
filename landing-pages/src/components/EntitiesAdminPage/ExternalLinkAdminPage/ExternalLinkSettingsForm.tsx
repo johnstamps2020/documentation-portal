@@ -12,7 +12,7 @@ import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
 import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
-import { useExternalLinkData } from 'hooks/useExternalLinkData';
+import { useExternalLinkData } from 'hooks/useEntitiesData';
 
 type NewExternalLink = Omit<ExternalLink, 'uuid'>;
 

@@ -42,6 +42,7 @@ export type ServerSearchResult = SearchResultSource & {
 
 export type ServerSearchFilterValue = {
   label: string;
+  key?: string;
   doc_count: number;
   checked: boolean;
 };

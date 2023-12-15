@@ -7,7 +7,9 @@
       "title": "What's new in Hakuba de",
       "displayTitle": "Was ist neu in Hakuba",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": [
+          "Cloud"
+        ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -16,12 +18,59 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": ["2023.06", "2023.2"],
-        "release": ["Hakuba"],
-        "subject": ["Release notes"],
+        "version": [
+          "2023.06",
+          "2023.2"
+        ],
+        "release": [
+          "Hakuba"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "de"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "whatsnewdeDEinnsbruck",
+      "url": "de/cloud/innsbruck/whatsnew",
+      "title": "What's new in innsbruck de",
+      "displayTitle": "Was ist neu in Innsbruck",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "de"
+      },
+      "environments": [
+        "staging"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,

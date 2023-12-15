@@ -1,82 +1,59 @@
-import DeleteIcon from '@mui/icons-material/Delete';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import { useState } from 'react';
+import AdminDeleteButton from './AdminDeleteButton';
+import { useNotification } from 'components/Layout/NotificationContext';
+import { useAdminViewContext } from './AdminViewContext';
 
-export type DeleteButtonProps = {
-  buttonLabel: string;
-  dialogTitle: JSX.Element;
-  onDelete: () => void;
-  valueToMatch: string;
+type DeleteButtonProps = {
+  primaryKey: string;
 };
+export default function DeleteButton({ primaryKey }: DeleteButtonProps) {
+  const { showMessage } = useNotification();
 
-export default function DeleteButton({
-  buttonLabel,
-  dialogTitle,
-  onDelete,
-  valueToMatch,
-}: DeleteButtonProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [securityPhrase, setSecurityPhrase] = useState('');
+  const { entityDatabaseName, entityPrimaryKeyName } = useAdminViewContext();
 
-  function handleOpenConfirmationMessage() {
-    setIsOpen(true);
-  }
+  async function handleDelete() {
+    const response = await fetch(`/admin/entity/${entityDatabaseName}`, {
+      method: 'DELETE',
+      body: `{ "${entityPrimaryKeyName}": "${primaryKey}" }`,
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    });
 
-  function handleCloseConfirmationMessage() {
-    setSecurityPhrase('');
-    setIsOpen(false);
-  }
-
-  function handleDelete() {
-    onDelete();
-    setIsOpen(false);
+    if (response.ok) {
+      showMessage(`${entityDatabaseName} deleted successfully`, 'success');
+    } else {
+      const jsonError = await response.json();
+      const queryFailedErrorMessage = 'violates foreign key constraint';
+      if (jsonError.message.includes(queryFailedErrorMessage)) {
+        const entityTypeFromError = jsonError.message.match(
+          /(on table).*?(on table "([^"]+)")/
+        )[2];
+        showMessage(
+          `${entityDatabaseName} not deleted - this ${entityDatabaseName} is connected with another entity 
+           named ${entityTypeFromError}. Please remove this ${entityDatabaseName} from the
+           ${entityTypeFromError} and try again.`,
+          'error'
+        );
+      } else {
+        showMessage(
+          `${entityDatabaseName} not deleted: ${jsonError.message}`,
+          'error'
+        );
+      }
+    }
   }
 
   return (
-    <>
-      <IconButton
-        aria-label="delete"
-        title={buttonLabel}
-        onClick={handleOpenConfirmationMessage}
-      >
-        <DeleteIcon color="error" />
-      </IconButton>
-      <Dialog open={isOpen} onClose={handleCloseConfirmationMessage}>
-        <DialogTitle>{dialogTitle}</DialogTitle>
-        <DialogContent>
-          <Stack gap={2}>
-            <Typography>
-              Type in <strong>{valueToMatch}</strong> in the field below and
-              click DELETE.
-            </Typography>
-            <TextField
-              value={securityPhrase}
-              onChange={(event) => setSecurityPhrase(event.target.value)}
-              fullWidth
-            />
-          </Stack>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={handleDelete}
-            disabled={securityPhrase !== valueToMatch}
-            color="error"
-          >
-            Delete
-          </Button>
-          <Button onClick={handleCloseConfirmationMessage} color="primary">
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>
+    <AdminDeleteButton
+      buttonLabel={`Delete ${entityDatabaseName}`}
+      dialogTitle={
+        <>
+          Delete {entityDatabaseName} <strong>{primaryKey}</strong>
+        </>
+      }
+      onDelete={handleDelete}
+      valueToMatch={primaryKey}
+    />
   );
 }

@@ -10,26 +10,26 @@ const pageConfig: CategoryLayoutProps = {
     backgroundColor: `hsl(0, 0%, 98%)`,
   },
   selector: {
-    label: 'Seleccionar producto',
-    selectedItemLabel: 'Novedades de Hakuba',
-    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
+    label: 'Choisissez un produit',
+    selectedItemLabel: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+    items: allSelectors.sef23284b869fc03ddd79bc1738f4ad7d,
     labelColor: 'white',
   },
 
   cards: [
     {
-      label: 'Novedades de Hakuba',
-      items: [
-        {
-          label: 'Novedades de Hakuba',
-          docId: 'whatsnewes419hakuba',
-          videoIcon: false,
-        },
-      ],
+    label: '2023.10 (Innsbruck)', 
+    items: [
+    {
+    label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
+    docId: 'isconfigupgradetoolsfrFR500', 
+    }, 
+    ],
     },
-  ],
+  ]
 };
 
-export default function LandingPage202306hakubawhatsnew() {
+export default function Isconfigupgradetools() {
   return <CategoryLayout {...pageConfig} />;
 }
+

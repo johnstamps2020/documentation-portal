@@ -213,6 +213,11 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Guidewire Rules Type Manager (Early Access)',
+          docId: 'gwrulestypemgr',
+          description: <>Create and manage new rule types.</>,
+        },
+        {
           label: 'Plugins',
           description: (
             <>
@@ -305,13 +310,13 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Application events',
+          label: 'App Events',
           docId: 'appeventsdev',
           description: (
             <>
-              Use application events to send outbound messages asynchronously,
-              without the need for Gosu code, in response to specific business
-              events and manage responses.
+              Use App Events to send outbound messages asynchronously, without
+              the need for Gosu code, in response to specific business events
+              and manage responses.
             </>
           ),
         },

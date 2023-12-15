@@ -17,11 +17,24 @@ const pageConfig: CategoryLayoutProps = {
   },
 
   cards: [
+{
+      label: '2023.10 (Innsbruck)', 
+      items: [
+      {
+      label: 'InsuranceSuite Configuraiton Upgrade Tools ガイド', 
+      docId: 'isconfigupgradetoolsjaJP500', 
+      }, 
+      {
+      label: 'コンフィギュレーションアップグレードツールの互換性', 
+      docId: 'isjaJPupgradecompatibility', 
+      }, 
+      ],
+},
     {
       label: '4.6.0',
       items: [
         {
-          label: 'Upgrade Tools ガイド',
+          label: 'InsuranceSuite Configuraiton Upgrade Tools ガイド',
           docId: 'isconfigupgradetoolsja460',
         },
         {
@@ -34,7 +47,7 @@ const pageConfig: CategoryLayoutProps = {
       label: '3.2.0',
       items: [
         {
-          label: 'ガイド',
+          label: 'Upgrade Tools ガイド',
           docId: 'l10npdfss3folder',
           pathInDoc:
             'ja-JP/is-configupgradetools/3.2.0/InsuranceSuiteConfigurationUpgradeTools.pdf',
@@ -48,3 +61,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Isconfigupgradetools() {
   return <CategoryLayout {...pageConfig} />;
 }
+

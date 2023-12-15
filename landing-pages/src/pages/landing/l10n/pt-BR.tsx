@@ -20,7 +20,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   items: [
     {
       label: 'Novidades na Hakuba',
-      pagePath: 'l10n/pt-BR/202306hakubawhatsnew',
+      docId: 'whatsnewptBRhakuba',
     },
     {
       label: 'BillingCenter',

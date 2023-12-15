@@ -1,9 +1,10 @@
-import { ApiResponse } from '../types/apiResponse';
-import { Request, Response } from 'express';
 import { Client } from '@elastic/elasticsearch';
+import { Request, Response } from 'express';
+import { ApiResponse } from '../types/apiResponse';
 import { findEntity } from './configController';
 import { estypes } from '@elastic/elasticsearch/index';
 import { Doc } from '../model/entity/Doc';
+import { SearchResultSource } from '../types/serverSearch';
 import { isUserAllowedToAccessResource } from './authController';
 
 require('dotenv').config();
@@ -38,7 +39,7 @@ export async function getTopicRecommendations(
       };
     }
 
-    const response = await elasticClient.search({
+    const response = await elasticClient.search<SearchResultSource>({
       index: recommendationsIndexName,
       body: {
         query: {

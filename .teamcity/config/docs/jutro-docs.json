@@ -459,11 +459,11 @@
     },
     {
       "id": "jutronext",
-      "title": "Jutro Design System and UI Framework",
+      "title": "Jutro Digital Platform",
       "url": "jutro/documentation/next",
       "metadata": {
         "product": [
-          "Jutro Design System"
+          "Jutro Digital Platform"
         ],
         "platform": [
           "Cloud"
@@ -2910,8 +2910,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -2939,8 +2938,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3121,6 +3119,64 @@
       "earlyAccess": false
     },
     {
+      "id": "jutro8134",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/8.13.4",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "8.13.4"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook8134",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/8.13.4",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "8.13.4"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutro1000",
       "title": "Jutro Digital Platform",
       "url": "jutro/documentation/10.0",
@@ -3185,9 +3241,9 @@
       "earlyAccess": false
     },
     {
-      "id": "jutrolatest",
+      "id": "jutro1010",
       "title": "Jutro Digital Platform",
-      "url": "jutro/documentation/latest",
+      "url": "jutro/documentation/10.1",
       "metadata": {
         "product": [
           "Jutro Digital Platform"
@@ -3196,13 +3252,10 @@
           "Cloud"
         ],
         "version": [
-          "10.0 (latest)"
+          "10.1"
         ],
         "subject": [
           "Best practices"
-        ],
-        "release": [
-          "Innsbruck"
         ],
         "language": "en"
       },
@@ -3217,9 +3270,9 @@
       "earlyAccess": false
     },
     {
-      "id": "storybooklatest",
+      "id": "storybook1010",
       "title": "Jutro Storybook",
-      "url": "jutro/storybook/latest",
+      "url": "jutro/storybook/10.1",
       "metadata": {
         "product": [
           "Jutro Digital Platform"
@@ -3228,13 +3281,68 @@
           "Cloud"
         ],
         "version": [
-          "10.0 (latest)"
+          "10.1"
         ],
         "subject": [
           "Development"
         ],
-        "release": [
-          "Innsbruck"
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "jutro1020",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/documentation/10.2",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.2"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook1020",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/10.2",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.2"
+        ],
+        "subject": [
+          "Development"
         ],
         "language": "en"
       },
@@ -3331,6 +3439,35 @@
       "indexForSearch": true,
       "public": false,
       "internal": true,
+      "earlyAccess": true
+    },
+    {
+      "id": "agentquoteandbuypersonalautoinnsbruck",
+      "title": "Agent Quote and Buy Personal Auto",
+      "url": "jutro/agent-quote-and-buy-pa/innsbruck",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
       "earlyAccess": true
     }
   ]

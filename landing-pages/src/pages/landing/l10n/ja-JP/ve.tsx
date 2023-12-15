@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: 'VE リリースノート', 
+docId: 'dx202310jaJPverelnotes', 
+}, 
+],
+},
+{
       label: '2023.06 (Hakuba)',
       items: [
         {
@@ -92,3 +101,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Ve() {
   return <CategoryLayout {...pageConfig} />;
 }
+

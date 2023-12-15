@@ -1,42 +1,57 @@
-import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
-import Divider from '@mui/material/Divider';
-import Pagination from '@mui/material/Pagination';
-import FileValidationWarning, {
-  checkIfFileExists,
-} from 'components/EntitiesAdminPage/PageAdminPage/FileValidationWarning';
 import React, { useEffect, useState } from 'react';
+import ActionBar from './ActionBar';
+import { AdminViewContext } from './AdminViewContext';
+import AdminViewWrapper from './AdminViewWrapper';
+import DeleteButton from './DeleteButton';
 import EditButton from './EditButton';
 import EntityCard from './EntityCard';
 import EntityFilters from './EntityFilters';
-import EntityLink from './EntityLink';
+import EntityListCount from './EntityListCount';
+import EntityListPagination from './EntityListPagination';
 
 export type Entity = {
   label: string;
-  url: string;
+  url?: string;
+  id?: string;
   [x: string]: string | boolean | any;
+};
+
+type AdditionalFilter = {
+  filterId: string;
+  emptyFilterValue: boolean | string;
+  filterFunction: (entity: Entity, filterPhrase?: string) => boolean;
 };
 
 type EntityListWithFiltersProps = {
   entities: Entity[];
   entityName: string;
+  entityDatabaseName: string;
+  entityPrimaryKeyName: string;
   FormComponent: React.ElementType;
   DuplicateButton: React.ElementType;
-  DeleteButton: React.ElementType;
+  EntityCardContents: React.ElementType;
+  CardWarning?: React.ElementType;
+  additionalFilters?: AdditionalFilter[];
 };
 
-function getEmptyFilters(entities: Entity[], entityName: string) {
+function getEmptyFilters(
+  entities: Entity[],
+  additionalFilters?: AdditionalFilter[]
+) {
   const emptyFilters: Entity = {
     label: '',
-    url: '',
   };
   const entity = entities[0];
-  let { uuid, ...entityNoId } = entity;
-  if (entityName === 'page') {
-    const missingFileInLandingPages = false;
-    entityNoId = { ...entityNoId, missingFileInLandingPages };
-  }
-  for (const [k, v] of Object.entries(entityNoId)) {
+  const { uuid, ...entityNoId } = entity;
+  const additionalFilterIds = additionalFilters?.map((additionalFilter) => ({
+    [additionalFilter.filterId]: additionalFilter.emptyFilterValue,
+  }));
+  const entityPropsAndFilters = Object.assign(
+    entityNoId,
+    ...(additionalFilterIds || [])
+  );
+
+  for (const [k, v] of Object.entries(entityPropsAndFilters)) {
     if (typeof v === 'boolean') {
       emptyFilters[k] = false;
     }
@@ -65,39 +80,60 @@ function sortEntities(entities: Entity[]) {
 export default function EntityListWithFilters({
   entities,
   entityName,
-  DeleteButton,
+  entityDatabaseName: initialEntityDatabaseName,
+  entityPrimaryKeyName: initialEntityPrimaryKeyName,
   DuplicateButton,
   FormComponent,
+  EntityCardContents,
+  CardWarning,
+  additionalFilters,
 }: EntityListWithFiltersProps) {
-  const emptyFilters = getEmptyFilters(entities, entityName);
+  const emptyFilters = getEmptyFilters(entities, additionalFilters);
   const [filters, setFilters] = useState<Entity>(emptyFilters);
+
+  const [page, setPage] = useState(1);
+  const [resultsPerPage, setResultsPerPage] = useState(12);
+  const [listView, setListView] = useState(true);
+  const [selectedEntities, setSelectedEntities] = useState<Entity[]>([]);
   const [filteredEntities, setFilteredEntities] = useState<Entity[]>(entities);
+  const [entityDatabaseName, setEntityDatabaseName] = useState(
+    initialEntityDatabaseName
+  );
+  const [entityPrimaryKeyName, setEntityPrimaryKeyName] = useState(
+    initialEntityPrimaryKeyName
+  );
 
   useEffect(() => {
     function filterEntities() {
       return entities?.filter((entity) => {
         let matchesFilters = true;
         for (const [k, v] of Object.entries(filters)) {
+          const matchingAdditionalFilter = additionalFilters?.find(
+            (additionalFilter) => additionalFilter.filterId === k
+          );
           if (typeof v === 'boolean') {
             if (v && entity[k as keyof typeof entity] !== v) {
               matchesFilters = false;
             }
-            if (
-              k === 'missingFileInLandingPages' &&
-              v &&
-              !checkIfFileExists(entity.url)
-            ) {
-              matchesFilters = true;
+            if (v && matchingAdditionalFilter) {
+              matchesFilters = !matchingAdditionalFilter.filterFunction(entity);
             }
-          } else if (
-            typeof v === 'string' &&
-            v !== '' &&
-            !entity[k as keyof typeof entity]
-              ?.toString()
-              ?.toLocaleLowerCase()
-              .includes(v.toLocaleLowerCase())
-          ) {
-            matchesFilters = false;
+          } else if (typeof v === 'string') {
+            if (
+              v !== '' &&
+              !entity[k as keyof typeof entity]
+                ?.toString()
+                ?.toLocaleLowerCase()
+                .includes(v.toLocaleLowerCase())
+            ) {
+              matchesFilters = false;
+            }
+            if (v !== '' && matchingAdditionalFilter) {
+              matchesFilters = !matchingAdditionalFilter.filterFunction(
+                entity,
+                v
+              );
+            }
           }
         }
         return matchesFilters;
@@ -107,76 +143,64 @@ export default function EntityListWithFilters({
     if (filteredEntities) {
       setFilteredEntities(sortEntities(filteredEntities));
     }
-  }, [entities, filters]);
+  }, [additionalFilters, entities, filters]);
 
-  const [page, setPage] = useState(1);
-  const resultsPerPage = 12;
-  const numberOfPages =
-    filteredEntities.length > resultsPerPage
-      ? Math.ceil(filteredEntities.length / resultsPerPage)
-      : 1;
   const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
-  function handleChangePage(event: React.ChangeEvent<unknown>, value: number) {
-    setPage(value);
-  }
 
   return (
-    <>
-      <EntityFilters
-        emptyFilters={emptyFilters}
-        filters={filters}
-        page={page}
-        setFilters={setFilters}
-        setPage={setPage}
-      />
-      <Divider variant="middle" sx={{ margin: '20px' }}>
-        <Chip
-          label={`Showing results: ${filteredEntities.length}/${entities.length}`}
-        ></Chip>
-      </Divider>
-      {numberOfPages > 1 && (
-        <Pagination
-          sx={{ alignSelf: 'center', margin: '16px 0' }}
-          color="primary"
-          count={numberOfPages}
-          page={page}
-          onChange={handleChangePage}
-        />
-      )}
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: {
-            md: 'repeat(3, 1fr)',
-            sm: 'repeat(2, 1fr)',
-            xs: '1fr',
-          },
-          gap: 2,
-          py: 6,
-        }}
-      >
+    <AdminViewContext.Provider
+      value={{
+        listView,
+        setListView,
+        filters,
+        setFilters,
+        emptyFilters,
+        page,
+        setPage,
+        resultsPerPage,
+        setResultsPerPage,
+        filteredEntities,
+        setFilteredEntities,
+        selectedEntities,
+        setSelectedEntities,
+        entityDatabaseName,
+        setEntityDatabaseName,
+        entityPrimaryKeyName,
+        setEntityPrimaryKeyName,
+      }}
+    >
+      <EntityFilters />
+      <EntityListCount totalEntities={entities.length} />
+      <EntityListPagination />
+      <ActionBar />
+      <AdminViewWrapper>
         {filteredEntities
           .slice(resultsOffset, resultsOffset + resultsPerPage)
-          .map(({ label, url }) => (
+          .map((entity, idx) => (
             <EntityCard
-              key={`${label}_${url}`}
-              title={label}
-              cardContents={<EntityLink url={url} label={url} />}
+              key={idx}
+              title={entity.label}
+              entity={entity}
+              cardContents={<EntityCardContents {...entity} />}
               cardButtons={
                 <>
                   <EditButton
                     buttonLabel={`Open ${entityName} editor`}
                     dialogTitle={`Update ${entityName} settings`}
-                    formComponent={<FormComponent primaryKey={url} />}
+                    formComponent={
+                      <FormComponent
+                        primaryKey={entity[entityPrimaryKeyName]}
+                      />
+                    }
                   />
-                  <DuplicateButton primaryKey={url} />
-                  <DeleteButton primaryKey={url} />
+                  <DuplicateButton primaryKey={entity[entityPrimaryKeyName]} />
+                  <DeleteButton primaryKey={entity[entityPrimaryKeyName]} />
                 </>
               }
-              cardWarning={<FileValidationWarning path={url} />}
+              cardWarning={CardWarning && <CardWarning {...entity} />}
             />
           ))}
-      </Box>
-    </>
+      </AdminViewWrapper>
+    </AdminViewContext.Provider>
   );
 }
