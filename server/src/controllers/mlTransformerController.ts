@@ -1,6 +1,6 @@
 class FeatureExtractionPipeline {
   static task = 'feature-extraction';
-  static model = 'all-MiniLM-L6-v2';
+  static model = 'multi-qa-MiniLM-L6-cos-v1';
   static instance = null;
 
   static async getInstance(progress_callback = null) {

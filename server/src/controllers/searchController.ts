@@ -24,7 +24,7 @@ type FilterFromUrl = {
 
 dotenv.config();
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
-const searchIndexName = 'gw-docs';
+const searchIndexName = 'gw-docs-semantic';
 const fragmentSize = 300;
 
 // Every keyword field in Elasticsearch is included in the filter list
@@ -286,6 +286,7 @@ type GuidewireSearchControllerSearchResults = {
   numberOfHits: number;
   numberOfCollapsedHits: number;
   hits: SearchHit<SearchResultSource>[];
+  vectorHits: SearchHit<SearchResultSource>[];
 };
 
 async function runSearch(
@@ -380,6 +381,22 @@ async function runSearch(
       highlight: highlightParameters,
     });
 
+    // FIMXE: This function returns an object. We need to extract the actual vector from it (I guess this is the problem)
+    const vectorizedSearchPhrase = await createVectorFromText(
+      queryWithFiltersFromUrl.bool.must.simple_query_string.query
+    );
+
+    const vectorSearchResults = await elasticClient.search({
+      index: searchIndexName,
+      knn: {
+        field: 'body_vector',
+        query_vector: vectorizedSearchPhrase,
+        k: 10,
+        num_candidates: 100,
+        filter: queryWithFiltersFromUrl.bool.filter,
+      },
+    });
+
     // @ts-ignore
     const numberOfHits = searchResultsCount.aggregations?.totalHits.doc_count;
     // @ts-ignore
@@ -387,11 +404,15 @@ async function runSearch(
       // @ts-ignore
       searchResultsCount.aggregations?.totalHits.totalCollapsedHits.value;
     const hits = searchResults.hits.hits;
+    const vectorHits = vectorSearchResults
+      ? (vectorSearchResults.hits.hits as SearchHit<SearchResultSource>[])
+      : [];
 
     return {
       numberOfHits,
       numberOfCollapsedHits,
       hits,
+      vectorHits,
     };
   } catch (err) {
     winstonLogger.error(
@@ -404,6 +425,7 @@ async function runSearch(
     );
     return {
       hits: [],
+      vectorHits: [],
       numberOfCollapsedHits: 0,
       numberOfHits: 0,
     };
@@ -639,8 +661,6 @@ export default async function searchController(
     const keywordFields = await getKeywordFields();
     const filtersFromUrl = getFiltersFromUrl(keywordFields, urlQueryParameters);
 
-    const vectorText = await createVectorFromText(searchPhrase);
-
     const queryBody: QueryDslQueryContainer = {
       bool: {
         must: {
@@ -698,6 +718,7 @@ export default async function searchController(
       const searchData: SearchData = {
         searchPhrase: searchPhrase,
         searchResults: resultsToDisplay,
+        vectorSearchResults: results.vectorHits,
         totalNumOfResults: results?.numberOfHits || 0,
         totalNumOfCollapsedResults: results?.numberOfCollapsedHits || 0,
         currentPage: parseInt(currentPage),
