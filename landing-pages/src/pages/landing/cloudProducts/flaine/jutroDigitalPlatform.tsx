@@ -24,7 +24,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Jutro Digital Platform (Early Access)',
-          docId: 'jutroplatformnext',
+          docId: 'jutronext',
         },
       ],
     },
