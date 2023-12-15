@@ -9,6 +9,7 @@ class FeatureExtractionPipeline {
       let { pipeline, env } = await import('@xenova/transformers');
       env.allowRemoteModels = false;
       env.localModelPath = process.env.MODEL_ABS_PATH;
+      // @ts-ignore
       this.instance = pipeline(this.task, this.model, { progress_callback });
     }
 
@@ -16,11 +17,10 @@ class FeatureExtractionPipeline {
   }
 }
 
-FeatureExtractionPipeline.getInstance();
-
-export async function createVectorFromText(text) {
+export async function createVectorFromText(text: string) {
   const extractor = await FeatureExtractionPipeline.getInstance();
   if (extractor) {
+    // @ts-ignore
     return await extractor(text);
   }
   return null;

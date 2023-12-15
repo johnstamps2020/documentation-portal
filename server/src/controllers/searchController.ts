@@ -16,13 +16,15 @@ import {
 import { getAllEntities } from './configController';
 import { winstonLogger } from './loggerController';
 
+import { createVectorFromText } from './mlTransformerController';
+
 type FilterFromUrl = {
   [x: string]: string[];
 };
 
 dotenv.config();
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
-const searchIndexName = 'gw-docs';
+const searchIndexName = 'gw-docs-semantic';
 const fragmentSize = 300;
 
 // Every keyword field in Elasticsearch is included in the filter list
@@ -563,7 +565,9 @@ async function prepareResultsToDisplay(
     return {
       product: mainResult?.product || [],
       doc_display_title:
-        mainResult?.doc_display_title || result._source?.doc_display_title || null,
+        mainResult?.doc_display_title ||
+        result._source?.doc_display_title ||
+        null,
       doc_id: mainResult?.doc_id || '',
       doc_title: mainResult?.doc_title || 'Unknown doc title',
       href: mainResult?.href || '',
@@ -634,6 +638,8 @@ export default async function searchController(
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     const keywordFields = await getKeywordFields();
     const filtersFromUrl = getFiltersFromUrl(keywordFields, urlQueryParameters);
+
+    const vectorText = await createVectorFromText(searchPhrase);
 
     const queryBody: QueryDslQueryContainer = {
       bool: {

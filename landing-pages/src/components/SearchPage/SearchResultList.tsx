@@ -19,19 +19,19 @@ export default function SearchResultList() {
         <Box>
           <SearchResult key={`${r.title.toLowerCase()}${index}`} {...r} />
           <Divider variant="fullWidth"></Divider>
-          <Stack spacing={1} sx={{ marginBottom: '8px' }}>
-            <Typography variant="h3">
-              {/*@ts-ignore*/}
-              {searchData.vectorSearchResults[index]._source.title}
-            </Typography>
-            <Box>
-              {/*@ts-ignore*/}
-              {searchData.vectorSearchResults[index]._source.body.substring(
-                0,
-                300
-              )}
-            </Box>
-          </Stack>
+          {/*<Stack spacing={1} sx={{ marginBottom: '8px' }}>*/}
+          {/*  <Typography variant="h3">*/}
+          {/*    /!*@ts-ignore*!/*/}
+          {/*    {searchData.vectorSearchResults[index]._source.title}*/}
+          {/*  </Typography>*/}
+          {/*  <Box>*/}
+          {/*    /!*@ts-ignore*!/*/}
+          {/*    {searchData.vectorSearchResults[index]._source.body.substring(*/}
+          {/*      0,*/}
+          {/*      300*/}
+          {/*    )}*/}
+          {/*  </Box>*/}
+          {/*</Stack>*/}
         </Box>
       ))}
     </>
