@@ -50,7 +50,7 @@
       "branch": "release/ja-JP/innsbruck"
     },
     {
-      "id": "is202310jaJPeeudpatesrc",
+      "id": "is202310jaJPeeupdatesrc",
       "title": "IS 2023.10.0 eeupdate ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/ja-JP/2023.10.0-eeupdate"
