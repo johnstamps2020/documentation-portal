@@ -380,6 +380,8 @@ export async function getEntity(
   }
 }
 
+type ReqWithParams = Request & { params: { repo: string } };
+
 export async function getAllEntities(
   req: Request,
   res: Response,

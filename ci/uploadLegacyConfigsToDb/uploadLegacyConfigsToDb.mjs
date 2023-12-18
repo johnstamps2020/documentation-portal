@@ -73,6 +73,7 @@ if (json.errorCode) {
 const accessToken = json.access_token;
 console.log('Get access token from Okta: OK');
 
+let uploadCompletedWithErrors = false;
 for (const entityType of ['source', 'doc', 'build']) {
   console.log(`Uploading entities for ${entityType}...`);
   const response = await fetch(
@@ -92,6 +93,7 @@ for (const entityType of ['source', 'doc', 'build']) {
       `Upload entities for ${entityType}: OK. For details, see the ${jsonFileName} file in the build artifacts.`
     );
   } else {
+    uploadCompletedWithErrors = true;
     console.log(
       `Response is not okay for "${entityType}"`,
       JSON.stringify(json)
@@ -100,4 +102,7 @@ for (const entityType of ['source', 'doc', 'build']) {
 }
 
 console.timeEnd(timerName);
+if (uploadCompletedWithErrors) {
+  throw new Error('Upload completed with errors');
+}
 console.log('Done.');

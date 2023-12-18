@@ -3539,15 +3539,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@elastic/elasticsearch@npm:^7.17.0":
-  version: 7.17.13
-  resolution: "@elastic/elasticsearch@npm:7.17.13"
+"@elastic/elasticsearch@npm:^8.10.0":
+  version: 8.10.0
+  resolution: "@elastic/elasticsearch@npm:8.10.0"
   dependencies:
-    debug: "npm:^4.3.1"
-    hpagent: "npm:^0.1.1"
+    "@elastic/transport": "npm:^8.3.4"
+    tslib: "npm:^2.4.0"
+  checksum: bb93c63f5c25b9d908c3de69e24356bd24609d1d452c62820dd97f1560ea78d09f7e0a7d21bc927cc760fa2436291dccb54d3c3e5fd109787b9ff1211355c6d8
+  languageName: node
+  linkType: hard
+
+"@elastic/transport@npm:^8.3.4":
+  version: 8.3.4
+  resolution: "@elastic/transport@npm:8.3.4"
+  dependencies:
+    debug: "npm:^4.3.4"
+    hpagent: "npm:^1.0.0"
     ms: "npm:^2.1.3"
     secure-json-parse: "npm:^2.4.0"
-  checksum: c022eaf909fa1693c1badc9847da6b3c774c7cab34d5c515dab717d3e4d869f619f203c0a2d5b966d46b3732a18cf28322e1437645481480135cf1cb139a7995
+    tslib: "npm:^2.4.0"
+    undici: "npm:^5.22.1"
+  checksum: f81a160c035797f766ee9573c98d079d3d5890062d329a92b8f8252b05846b5b8044301014b3ae136e8047cfb2bc066b9eec085bea13fbb0553e8a74912d141c
   languageName: node
   linkType: hard
 
@@ -3736,6 +3748,13 @@ __metadata:
   version: 8.53.0
   resolution: "@eslint/js@npm:8.53.0"
   checksum: a372d55aa2bbe0d9399acc8de3c892dcfe507fd914d29fde6826ae54a13452619be626aa7eb70b1ec4d4da5302b6ed8e8ac9bf1f830003f15c0ad56c30b4f520
+  languageName: node
+  linkType: hard
+
+"@fastify/busboy@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "@fastify/busboy@npm:2.1.0"
+  checksum: f22c1e5c52dc350ddf9ba8be9f87b48d3ea5af00a37fd0a0d1e3e4b37f94d96763e514c68a350c7f570260fdd2f08b55ee090cdd879f92a03249eb0e3fd19113
   languageName: node
   linkType: hard
 
@@ -10033,7 +10052,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.4, debug@npm:~4.3.4":
+"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.2, debug@npm:^4.3.4, debug@npm:~4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -12864,10 +12883,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hpagent@npm:^0.1.1":
-  version: 0.1.2
-  resolution: "hpagent@npm:0.1.2"
-  checksum: bd033b3700bb523edc9a805f8683c71fddd622df901e73842b5e3357136ce062c2ddb2ab5e9f5b3d84e0977bfe439f5cdc51d755a11e99376eb95e4624312f0a
+"hpagent@npm:^1.0.0":
+  version: 1.2.0
+  resolution: "hpagent@npm:1.2.0"
+  checksum: bad186449da7e3456788a8cbae459fc6c0a855d5872a7f460c48ce4a613020d8d914839dad10047297099299c4f9e6c65a0eec3f5886af196c0a516e4ad8a845
   languageName: node
   linkType: hard
 
@@ -21066,7 +21085,7 @@ __metadata:
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.306.0"
     "@aws-sdk/lib-storage": "npm:^3.306.0"
-    "@elastic/elasticsearch": "npm:^7.17.0"
+    "@elastic/elasticsearch": "npm:^8.10.0"
     "@okta/jwt-verifier": "npm:^2.3.0"
     "@types/cookie-parser": "npm:^1.4.3"
     "@types/cookie-session": "npm:^2.0.44"
@@ -22606,7 +22625,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.5.0, tslib@npm:^2.6.0":
+"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.5.0, tslib@npm:^2.6.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: bd26c22d36736513980091a1e356378e8b662ded04204453d353a7f34a4c21ed0afc59b5f90719d4ba756e581a162ecbf93118dc9c6be5acf70aa309188166ca
@@ -22921,6 +22940,15 @@ __metadata:
   version: 5.26.5
   resolution: "undici-types@npm:5.26.5"
   checksum: 0097779d94bc0fd26f0418b3a05472410408877279141ded2bd449167be1aed7ea5b76f756562cb3586a07f251b90799bab22d9019ceba49c037c76445f7cddd
+  languageName: node
+  linkType: hard
+
+"undici@npm:^5.22.1":
+  version: 5.28.2
+  resolution: "undici@npm:5.28.2"
+  dependencies:
+    "@fastify/busboy": "npm:^2.0.0"
+  checksum: 07ab8b812c7322f5faba55268562e3626463171ace8a2e5861e5793e69f8901e809bcdeb4013126fe8d1602baac247ea3c0c996073dbf9709516295b0a4dd18f
   languageName: node
   linkType: hard
 
