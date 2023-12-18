@@ -24,6 +24,10 @@ items: [
 label: 'ServiceRepEngage リリースノート', 
 docId: 'dx202310jaJPsrerelnotes', 
 }, 
+{
+  label: 'EnterpriseEngage アップデートガイド', 
+  docId: 'ee202310jaJPupdate', 
+}, 
 ],
 },
 {

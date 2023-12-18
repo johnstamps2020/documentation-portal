@@ -24,6 +24,10 @@ items: [
 label: 'VendorEngage リリースノート', 
 docId: 'dx202310jaJPverelnotes', 
 }, 
+{
+  label: 'EnterpriseEngage アップデートガイド', 
+  docId: 'ee202310jaJPupdate', 
+}, 
 ],
 },
 {

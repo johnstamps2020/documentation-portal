@@ -48,6 +48,12 @@
       "title": "Ski Release What's New - Innsbruck ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
       "branch": "release/ja-JP/innsbruck"
+    },
+    {
+      "id": "is202310jaJPeeudpatesrc",
+      "title": "IS 2023.10.0 eeupdate ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/ja-JP/2023.10.0-eeupdate"
     }
   ]
 }
