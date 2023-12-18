@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { StyledHeading2, StyledLink } from './StyledSearchComponents';
 import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
+import Alert from '@mui/material/Alert';
 
 export default function SearchResultList() {
   const { searchData, isLoading } = useSearchData();
@@ -15,30 +17,33 @@ export default function SearchResultList() {
   }
 
   return (
-    <>
-      {searchData.searchResults.map((r, index) => (
-        <Box>
+    <Stack direction="row" spacing={6}>
+      <Stack>
+        <Alert severity="info" icon={false} sx={{ marginBottom: '16px' }}>
+          Keyword search results
+        </Alert>
+        {searchData.searchResults.map((r, index) => (
           <SearchResult key={`${r.title.toLowerCase()}${index}`} {...r} />
-          <Stack
-            spacing={1}
-            sx={{
-              margin: '16px 0 32px 0',
-              border: 'solid 2px gray',
-              padding: '8px',
-            }}
-          >
-            <Chip
-              label="Experimental semantic search result"
-              color="secondary"
-              size="small"
-              sx={{ width: 'fit-content' }}
-            ></Chip>
+        ))}
+      </Stack>
+      <Divider
+        orientation="vertical"
+        variant="fullWidth"
+        flexItem
+        sx={{ borderRightWidth: 3 }}
+      />
+      <Stack>
+        <Alert severity="warning" icon={false} sx={{ marginBottom: '16px' }}>
+          Experimental semantic search results
+        </Alert>
+        {searchData.vectorSearchResults.map((vr, index) => (
+          <Stack sx={{ paddingBottom: '24px' }}>
             {/*@ts-ignore*/}
-            <StyledLink href={searchData.vectorSearchResults[index].href}>
+            <StyledLink href={vr.href}>
               <StyledHeading2 variant="h3">
                 {/*@ts-ignore*/}
-                {searchData.vectorSearchResults[index].title} | {/*@ts-ignore*/}
-                {searchData.vectorSearchResults[index].doc_title}
+                {vr.title} | {/*@ts-ignore*/}
+                {vr.doc_title}
               </StyledHeading2>
             </StyledLink>
             <Typography
@@ -50,11 +55,11 @@ export default function SearchResultList() {
               }}
             >
               {/*@ts-ignore*/}
-              {searchData.vectorSearchResults[index].body.substring(0, 300)}
+              {vr.body.substring(0, 300)}
             </Typography>
           </Stack>
-        </Box>
-      ))}
-    </>
+        ))}
+      </Stack>
+    </Stack>
   );
 }
