@@ -14,18 +14,24 @@ class FeatureExtractionPipeline {
       env.allowRemoteModels = false;
       env.localModelPath = process.env.MODEL_ABS_PATH;
       // @ts-ignore
-      this.instance = pipeline(this.task, this.model, { progress_callback });
+      this.instance = pipeline(this.task, this.model, {
+        progress_callback,
+      });
     }
 
     return this.instance;
   }
 }
 
-export async function createVectorFromText(text: string) {
+export async function createVectorsFromText(text: string) {
   const extractor = await FeatureExtractionPipeline.getInstance();
   if (extractor) {
     // @ts-ignore
-    return await extractor(text);
+    const tensor = await extractor(text, {
+      pooling: 'mean',
+      normalize: true,
+    });
+    return tensor.flatten().tolist();
   }
   return null;
 }

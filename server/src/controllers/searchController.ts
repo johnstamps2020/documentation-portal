@@ -16,7 +16,7 @@ import {
 import { getAllEntities } from './configController';
 import { winstonLogger } from './loggerController';
 
-import { createVectorFromText } from './mlTransformerController';
+import { createVectorsFromText } from './mlTransformerController';
 
 type FilterFromUrl = {
   [x: string]: string[];
@@ -382,9 +382,10 @@ async function runSearch(
     });
 
     // FIMXE: This function returns an object. We need to extract the actual vector from it (I guess this is the problem)
-    const vectorizedSearchPhrase = await createVectorFromText(
-      queryWithFiltersFromUrl.bool.must.simple_query_string.query
-    );
+    const vectorizedSearchPhrase =
+      (await createVectorsFromText(
+        queryWithFiltersFromUrl.bool.must.simple_query_string.query
+      )) || [];
 
     const vectorSearchResults = await elasticClient.search({
       index: searchIndexName,
@@ -718,7 +719,7 @@ export default async function searchController(
       const searchData: SearchData = {
         searchPhrase: searchPhrase,
         searchResults: resultsToDisplay,
-        vectorSearchResults: results.vectorHits,
+        vectorSearchResults: results.vectorHits.map((vh) => vh._source),
         totalNumOfResults: results?.numberOfHits || 0,
         totalNumOfCollapsedResults: results?.numberOfCollapsedHits || 0,
         currentPage: parseInt(currentPage),
