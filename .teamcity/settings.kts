@@ -3895,8 +3895,8 @@ object Admin {
                     echo "Setting credentials to access prod"
                     $awsEnvVarsProd
                     
-                    cd %teamcity.build.checkoutDir%/ci
-                    ./downloadPdfsForEscrow.sh
+                    cd %teamcity.build.checkoutDir%/ci/downloadPdfsForEscrow
+                    ./installZipTool.sh && ./downloadPdfsForEscrow.sh
                 """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
