@@ -391,24 +391,41 @@ async function runSearch(
     const knnQuery = {
       field: 'body_vector',
       query_vector: vectorizedSearchPhrase,
-      k: 10,
       num_candidates: 100,
+      k: 100,
       filter: queryWithFiltersFromUrl.bool.filter,
     };
 
     const vectorSearchResults = await elasticClient.search({
       index: searchIndexName,
+      from: startIndex,
+      size: resultsPerPage,
       knn: knnQuery,
+      collapse: {
+        field: 'title.raw',
+        inner_hits: {
+          name: 'same_title',
+          size: 100,
+        },
+        max_concurrent_group_searches: 4,
+      },
     });
 
     const hybridSearchResults = await elasticClient.search({
       index: searchIndexName,
+      from: startIndex,
+      size: resultsPerPage,
       query: {
         bool: queryWithFiltersFromUrl.bool,
       },
-      knn: {
-        ...knnQuery,
-        boost: 1.2,
+      knn: { ...knnQuery, boost: 2.0 },
+      collapse: {
+        field: 'title.raw',
+        inner_hits: {
+          name: 'same_title',
+          size: 100,
+        },
+        max_concurrent_group_searches: 4,
       },
     });
 
@@ -543,10 +560,38 @@ function getUniqueResultsSortedByVersion(
   return uniqueResults;
 }
 
+function prepareVectorizedHits(vectorizedHits: any[]) {
+  return vectorizedHits.map((vh) => {
+    const innerHits = vh.inner_hits?.same_title.hits.hits || [];
+    const allHits = [vh, ...innerHits];
+    const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
+    const [topHit, ...otherHits] = allHitsSortedFromLatest;
+    const mainResult = topHit._source;
+    const mainResultTitle = mainResult?.title || 'Unknown title';
+    const mainResultBody = mainResult?.body || '';
+    const mainResultBodyFragment = mainResultBody
+      .substring(0, fragmentSize)
+      .replace(mainResultTitle, '')
+      .replaceAll(/\s{2,}/gm, '');
+    return {
+      ...mainResult,
+      title: mainResultTitle,
+      body: mainResultBodyFragment,
+      innerHits: otherHits?.map((ih) => ih._source as SearchResultSource) || [],
+    };
+  });
+}
+
 async function prepareResultsToDisplay(
   searchResults: GuidewireSearchControllerSearchResults
-): Promise<SearchData['searchResults']> {
-  return searchResults.hits.map((result) => {
+): Promise<{
+  searchResults: SearchData['searchResults'];
+  vectorSearchResults: SearchData['vectorSearchResults'];
+  hybridSearchResults: SearchData['hybridSearchResults'];
+}> {
+  const preparedVectorResults = prepareVectorizedHits(searchResults.vectorHits);
+  const preparedHybridResults = prepareVectorizedHits(searchResults.hybridHits);
+  const preparedKeywordResults = searchResults.hits.map((result) => {
     const innerHits = result.inner_hits?.same_title.hits.hits || [];
     const allHits = [result, ...innerHits];
     const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
@@ -631,6 +676,11 @@ async function prepareResultsToDisplay(
       uniqueHighlightTerms: uniqueHighlightTerms,
     };
   });
+  return {
+    searchResults: preparedKeywordResults,
+    vectorSearchResults: preparedVectorResults,
+    hybridSearchResults: preparedHybridResults,
+  };
 }
 
 type SearchReqDictionary = {};
@@ -732,14 +782,14 @@ export default async function searchController(
     if (req.query.rawJSON === 'true') {
       return {
         status: 200,
-        body: resultsToDisplay,
+        body: resultsToDisplay.searchResults,
       };
     } else {
       const searchData: SearchData = {
         searchPhrase: searchPhrase,
-        searchResults: resultsToDisplay,
-        vectorSearchResults: results.vectorHits.map((vh) => vh._source),
-        hybridSearchResults: results.hybridHits.map((vh) => vh._source),
+        searchResults: resultsToDisplay.searchResults,
+        vectorSearchResults: resultsToDisplay.vectorSearchResults,
+        hybridSearchResults: resultsToDisplay.hybridSearchResults,
         totalNumOfResults: results?.numberOfHits || 0,
         totalNumOfCollapsedResults: results?.numberOfCollapsedHits || 0,
         currentPage: parseInt(currentPage),
