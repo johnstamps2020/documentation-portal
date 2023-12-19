@@ -3920,6 +3920,8 @@ object Admin {
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         })
 
         object SyncDocsFromStagingToDev : BuildType({
