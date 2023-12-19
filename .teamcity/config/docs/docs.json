@@ -19,6 +19,28 @@
       "earlyAccess": false
     },
     {
+      "id": "l10nescrows3folder",
+      "title": "L10N Escrow S3 folder",
+      "url": "escrow",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Digital Reference Applications"
+        ],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "l10npdfss3folder",
       "title": "L10N pdfs S3 folder",
       "url": "l10n/pdfs",
@@ -276,7 +298,14 @@
       "metadata": {
         "product": ["Cyence"],
         "platform": ["Cloud"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "release": [
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck"
+        ],
         "version": ["latest"],
         "language": "en"
       },
@@ -294,7 +323,14 @@
       "metadata": {
         "product": ["HazardHub Casualty"],
         "platform": ["Cloud"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "release": [
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck"
+        ],
         "version": ["latest"],
         "language": "en"
       },

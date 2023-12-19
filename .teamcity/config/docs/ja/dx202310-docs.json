@@ -224,6 +224,38 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "ee202310jaJPupdate",
+      "title": "Update ja",
+      "displayTitle": "EnterpriseEngage アップデートガイド",
+      "url": "ja/cloud/ee/202310/update",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "ja"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

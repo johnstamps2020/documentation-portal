@@ -9,6 +9,7 @@ import { AlertProps } from '@mui/material';
 import Notification, { NotificationProps } from '../Notification';
 import Translate, { translate } from '@theme/Translate';
 import { FeedbackProps } from '@theme/Feedback';
+import Tooltip from '@mui/material/Tooltip';
 
 const thumbsUpLabel = translate({
   id: 'feedback.thumbsUp',
@@ -79,24 +80,28 @@ export default function Feedback({
           </Typography>
         )}
         <div className="feedbackThumbs">
-          <IconButton
-            onClick={() => {
-              handleOpen(true);
-            }}
-            aria-label={thumbsUpLabel}
-            className="feedbackButtonPositive"
-          >
-            <ThumbUpOffAltIcon />
-          </IconButton>
-          <IconButton
-            onClick={() => {
-              handleOpen(false);
-            }}
-            aria-label={thumbsDownLabel}
-            className="feedbackButtonNegative"
-          >
-            <ThumbDownOffAltIcon />
-          </IconButton>
+          <Tooltip title={thumbsUpLabel}>
+            <IconButton
+              onClick={() => {
+                handleOpen(true);
+              }}
+              aria-label={thumbsUpLabel}
+              className="feedbackButtonPositive"
+            >
+              <ThumbUpOffAltIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title={thumbsDownLabel}>
+            <IconButton
+              onClick={() => {
+                handleOpen(false);
+              }}
+              aria-label={thumbsDownLabel}
+              className="feedbackButtonNegative"
+            >
+              <ThumbDownOffAltIcon />
+            </IconButton>
+          </Tooltip>
         </div>
         <FeedbackDialog
           open={showingDialog}

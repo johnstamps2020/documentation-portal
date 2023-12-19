@@ -54,6 +54,12 @@
       "title": "Mithril",
       "gitUrl": "ssh://git@stash.guidewire.com/ccs/mithril-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "novasrc",
+      "title": "Nova",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/nova-docs.git",
+      "branch": "main"
     }
   ]
 }
