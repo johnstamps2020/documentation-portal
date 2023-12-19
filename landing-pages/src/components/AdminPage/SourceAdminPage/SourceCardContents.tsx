@@ -1,12 +1,7 @@
 import EntityDescription from 'components/AdminPage/EntityDescription';
 import { Entity } from 'components/AdminPage/EntityListWithFilters';
 
-export default function SourceCardContents({
-  label,
-  id,
-  gitUrl,
-  gitBranch,
-}: Entity) {
+export default function SourceCardContents({ id, gitUrl, gitBranch }: Entity) {
   return (
     <EntityDescription
       propList={[

@@ -1,7 +1,7 @@
 import EditIcon from '@mui/icons-material/Edit';
 import Fab from '@mui/material/Fab';
 import AdminDialog from 'components/AdminPage/AdminDialog';
-import PageSettingsForm from 'components/EntitiesAdminPage/PageAdminPage/PageSettingsForm';
+import PageSettingsForm from 'components/AdminPage/PageAdminPage/PageSettingsForm';
 import { useState } from 'react';
 import { useEnvInfo, useUserInfo } from '../../hooks/useApi';
 import { prodDeployEnv } from '../../vars';
