@@ -3,7 +3,7 @@
   "sources": [
     {
       "id": "datastudioreleasesrc",
-      "title": "Data Studio Release",
+      "title": "Data Studio",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-studio.git",
       "branch": "release/latest"
     }
