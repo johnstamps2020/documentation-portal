@@ -2,6 +2,7 @@ export type SearchData = {
   searchPhrase: string;
   searchResults: ServerSearchResult[];
   vectorSearchResults: any[];
+  hybridSearchResults: any[];
   totalNumOfResults: number;
   totalNumOfCollapsedResults: number;
   currentPage: number;

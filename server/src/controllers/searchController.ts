@@ -287,6 +287,7 @@ type GuidewireSearchControllerSearchResults = {
   numberOfCollapsedHits: number;
   hits: SearchHit<SearchResultSource>[];
   vectorHits: SearchHit<SearchResultSource>[];
+  hybridHits: SearchHit<SearchResultSource>[];
 };
 
 async function runSearch(
@@ -387,14 +388,27 @@ async function runSearch(
         queryWithFiltersFromUrl.bool.must.simple_query_string.query
       )) || [];
 
+    const knnQuery = {
+      field: 'body_vector',
+      query_vector: vectorizedSearchPhrase,
+      k: 10,
+      num_candidates: 100,
+      filter: queryWithFiltersFromUrl.bool.filter,
+    };
+
     const vectorSearchResults = await elasticClient.search({
       index: searchIndexName,
+      knn: knnQuery,
+    });
+
+    const hybridSearchResults = await elasticClient.search({
+      index: searchIndexName,
+      query: {
+        bool: queryWithFiltersFromUrl.bool,
+      },
       knn: {
-        field: 'body_vector',
-        query_vector: vectorizedSearchPhrase,
-        k: 10,
-        num_candidates: 100,
-        filter: queryWithFiltersFromUrl.bool.filter,
+        ...knnQuery,
+        boost: 1.2,
       },
     });
 
@@ -408,12 +422,16 @@ async function runSearch(
     const vectorHits = vectorSearchResults
       ? (vectorSearchResults.hits.hits as SearchHit<SearchResultSource>[])
       : [];
+    const hybridHits = hybridSearchResults
+      ? (hybridSearchResults.hits.hits as SearchHit<SearchResultSource>[])
+      : [];
 
     return {
       numberOfHits,
       numberOfCollapsedHits,
       hits,
       vectorHits,
+      hybridHits,
     };
   } catch (err) {
     winstonLogger.error(
@@ -427,6 +445,7 @@ async function runSearch(
     return {
       hits: [],
       vectorHits: [],
+      hybridHits: [],
       numberOfCollapsedHits: 0,
       numberOfHits: 0,
     };
@@ -720,6 +739,7 @@ export default async function searchController(
         searchPhrase: searchPhrase,
         searchResults: resultsToDisplay,
         vectorSearchResults: results.vectorHits.map((vh) => vh._source),
+        hybridSearchResults: results.hybridHits.map((vh) => vh._source),
         totalNumOfResults: results?.numberOfHits || 0,
         totalNumOfCollapsedResults: results?.numberOfCollapsedHits || 0,
         currentPage: parseInt(currentPage),
