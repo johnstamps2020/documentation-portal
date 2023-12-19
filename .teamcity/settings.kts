@@ -968,6 +968,7 @@ object GwBuildSteps {
         schematronReportsDir: String,
         indexRedirect: Boolean,
         buildFilter: String? = null,
+        docId: String? = null
     ): ScriptBuildStep {
         val logFile = "${outputFormat}_build.log"
         val fullOutputPath = "${outputDir}/${outputFormat}"
@@ -1004,6 +1005,7 @@ object GwBuildSteps {
                 ditaCommandParams.add(Pair("--temp", "${workingDir}/${tempDir}"))
                 ditaCommandParams.add(Pair("--clean.temp", "no"))
                 ditaCommandParams.add(Pair("--schematron.validate", "yes"))
+                ditaCommandParams.add(Pair("--gw-doc-id", "${docId}"))
                 ditaCommandParams.add(Pair("%env.ENABLE_DEBUG_MODE%", ""))
                 if (indexRedirect) {
                     ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
@@ -2915,7 +2917,8 @@ object User {
                                 normalizedDitaDir,
                                 schematronReportsDir,
                                 indexRedirect,
-                                buildFilter
+                                buildFilter,
+                                docId
                             )
                         )
                         step(uploadStep)
