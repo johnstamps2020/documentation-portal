@@ -9,12 +9,12 @@ import { appTheme } from 'themes/appTheme';
 import CssBaseline from '@mui/material/CssBaseline';
 import SupportPage from 'pages/SupportPage/SupportPage';
 import InternalPage from 'pages/InternalPage/InternalPage';
-import PageAdminPage from 'pages/PageAdminPage/PageAdminPage';
+import PageAdminPage from 'components/AdminPage/PageAdminPage/PageAdminPage';
 import AdminPage from 'pages/AdminPage/AdminPage';
 import { LayoutContextProvider } from 'LayoutContext';
 import Layout from 'components/Layout/Layout';
-import ExternalLinkAdminPage from 'pages/ExternalLinkAdminPage/ExternalLinkAdminPage';
-import SourceAdminPage from 'pages/SourceAdminPage/SourceAdminPage';
+import ExternalLinkAdminPage from 'components/AdminPage/ExternalLinkAdminPage/ExternalLinkAdminPage';
+import SourceAdminPage from 'components/AdminPage/SourceAdminPage/SourceAdminPage';
 
 const router = createBrowserRouter([
   {
@@ -36,18 +36,20 @@ const router = createBrowserRouter([
       {
         path: 'admin-panel',
         element: <AdminPage />,
-      },
-      {
-        path: 'admin-panel/page',
-        element: <PageAdminPage />,
-      },
-      {
-        path: 'admin-panel/external-link',
-        element: <ExternalLinkAdminPage />,
-      },
-      {
-        path: 'admin-panel/source',
-        element: <SourceAdminPage />,
+        children: [
+          {
+            path: 'page',
+            element: <PageAdminPage />,
+          },
+          {
+            path: 'external-link',
+            element: <ExternalLinkAdminPage />,
+          },
+          {
+            path: 'source',
+            element: <SourceAdminPage />,
+          },
+        ],
       },
       {
         path: 'search-results',

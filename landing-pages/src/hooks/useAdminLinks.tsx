@@ -27,7 +27,7 @@ export function useAdminLinks(): AdminLinks {
   return {
     adminLinks: [
       {
-        href: '/admin-panel',
+        href: '/admin-panel/page',
         children: 'Admin panel',
       },
     ],
