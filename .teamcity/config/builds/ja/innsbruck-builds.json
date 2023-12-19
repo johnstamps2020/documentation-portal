@@ -50,7 +50,7 @@
 			"buildType": "dita",
 			"filter": "IS-CC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
-			"srcId": "is202310jaJPsrc",
+			"srcId": "is202310jaJPeeupdatesrc",
 			"docId": "iscc202310jaJPreleasenotes",
 			"indexRedirect": true,
 			"disabled": false
@@ -59,7 +59,7 @@
 			"buildType": "dita",
 			"filter": "IS-CC-Cloud-Release.ditaval",
 			"root": "UpdateGuide.ditamap",
-			"srcId": "is202310jaJPsrc",
+			"srcId": "is202310jaJPeeupdatesrc",
 			"docId": "iscc202310jaJPupdate",
 			"indexRedirect": true,
 			"disabled": false
@@ -98,6 +98,15 @@
 			"srcId": "whatsnewinnsbruckjaJPsrc",
 			"docId": "whatsnewjaJPinnsbruck",
 			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "EE-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"indexRedirect": true,
+			"srcId": "is202310jaJPeeupdatesrc",
+			"docId": "ee202310jaJPupdate",
 			"disabled": false
 		}
 	]

@@ -1,10 +1,10 @@
-import { Response, Request } from 'express';
+import { Request, Response } from 'express';
 import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { RedirectResponse } from '../types/apiResponse';
-import { isUserAllowedToAccessResource } from './authController';
 import { getEnvInfo } from './envController';
 import { winstonLogger } from './loggerController';
+import { isUserAllowedToAccessResource } from './authController';
 
 const fetch = require('node-fetch-retry');
 
@@ -357,8 +357,6 @@ export async function getRedirectUrl(
       const pathExists = await s3BucketUrlExists(requestedPath);
       if (!pathExists) {
         const latestVersionUrl = await getLatestVersionUrl(res, normalizedPath);
-        // there is nothing to redirect to,
-        // but if the user is not logged in, redirect them to log in and then we can try again
         if (!latestVersionUrl && !req.isAuthenticated()) {
           return {
             status: 403,
