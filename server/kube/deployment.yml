@@ -281,6 +281,13 @@ spec:
             limits:
               memory: \"${LIMITS_MEMORY}\"
               cpu: \"${LIMITS_CPU}\"
+          volumeMounts:
+            - mountPath: /usr/app/semantic-search
+              name: semantic-search-model-storage
+      volumes:
+        - name: semantic-search-model-storage
+          persistentVolumeClaim:
+            claimName: ${APP_NAME}-semantic-search-model-pv-claim-${DEPLOY_ENV}
 ---
 apiVersion: v1
 kind: Service
