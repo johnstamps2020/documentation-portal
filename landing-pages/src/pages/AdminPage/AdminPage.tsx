@@ -25,6 +25,10 @@ const links: AdminLink[] = [
     path: 'source',
     title: 'Sources',
   },
+  {
+    path: '/admin-panel/resource',
+    title: 'Manage resources',
+  },
 ];
 
 export default function AdminPage() {
