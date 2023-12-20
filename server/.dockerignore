@@ -11,3 +11,6 @@
 !tsconfig.json
 !webpack.config.js
 !yarn.lock
+!multi-qa-MiniLM-L6-cos-v1/onnx
+!multi-qa-MiniLM-L6-cos-v1/*.json
+!multi-qa-MiniLM-L6-cos-v1/*.txt
