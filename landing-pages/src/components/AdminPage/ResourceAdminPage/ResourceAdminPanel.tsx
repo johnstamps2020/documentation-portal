@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useResources } from '../../../../hooks/useApi';
+import { useResources } from '../../../hooks/useApi';
 import DuplicateButton from './DuplicateButton';
 import ResourceCardContents from './ResourceCardContents';
 import ResourceSettingsForm from './ResourceSettingsForm';
@@ -17,7 +17,6 @@ export default function ResourceAdminPanel() {
       entityDatabaseName="Resource"
       entityPrimaryKeyName="id"
       entities={resources.map(({ id, ...rest }) => ({
-        //should I leave only label or have id and label?
         label: id,
         id: id,
         ...rest,

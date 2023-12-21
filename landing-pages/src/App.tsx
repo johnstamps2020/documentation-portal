@@ -50,12 +50,13 @@ const router = createBrowserRouter([
             path: 'source',
             element: <SourceAdminPage />,
           },
+          {
+            path: 'resource',
+            element: <ResourceAdminPage />,
+          },
         ],
       },
-      {
-        path: 'admin-panel/resource',
-        element: <ResourceAdminPage />,
-      },
+
       {
         path: 'search-results',
         element: <SearchPage />,

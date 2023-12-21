@@ -40,7 +40,10 @@ type ResourceSettingsFormProps = {
   initialResourceData?: NewResourceWithRelations;
 };
 
-async function sendRequest(id: string, { arg }: { arg: NewResource }) {
+async function sendRequest(
+  id: string,
+  { arg }: { arg: NewResource }
+) {
   return await fetch(id, {
     method: 'PUT',
     body: JSON.stringify(arg),
@@ -144,10 +147,17 @@ export default function ResourceSettingsForm({
   async function handleChange(field: string, value: string | boolean | Source) {
     if (field === 'source') {
       const source = sources?.find((s) => s.id === value);
-      setTmpResourceData((currentTmpResourceData) => ({
-        ...currentTmpResourceData,
-        [field]: source,
-      }));
+      if (source) {
+        setTmpResourceData((currentTmpResourceData) => ({
+          ...currentTmpResourceData,
+          [field]: source,
+        }));
+      } else {
+        setTmpResourceData((currentTmpResourceData) => ({
+          ...currentTmpResourceData,
+          [field]: null,
+        }));
+      }
     } else {
       setTmpResourceData((currentTmpResourceData) => ({
         ...currentTmpResourceData,
@@ -191,7 +201,6 @@ export default function ResourceSettingsForm({
         return;
       }
       let dataToSave = tmpResourceData;
-      console.log({ dataToSave });
       const response = await trigger(dataToSave);
 
       if (response?.ok) {
@@ -205,13 +214,6 @@ export default function ResourceSettingsForm({
     } catch (err) {
       showMessage(`Resource not saved: ${err}`, 'error');
     }
-  }
-
-  function disconnectSource(tmpResourceData: NewResourceWithRelations) {
-    const { source, ...tmpResourceDataNoRelation } = tmpResourceData;
-    setTmpResourceData(tmpResourceDataNoRelation);
-    console.log({ tmpResourceDataNoRelation });
-    showMessage('Source disconnected successfully', 'success');
   }
 
   return (
@@ -294,7 +296,7 @@ export default function ResourceSettingsForm({
             <Button
               color="error"
               variant="outlined"
-              onClick={() => disconnectSource(tmpResourceData)}
+              onClick={() => handleChange('source', tmpResourceData.source)}
             >
               Disconnect relation
             </Button>
@@ -328,6 +330,7 @@ export default function ResourceSettingsForm({
                     handleChange('source', event.target.value as string);
                     setSourceCollapse(true);
                   }}
+                  defaultValue=""
                 >
                   {sources.map(({ uuid, ...source }) => (
                     <MenuItem
