@@ -20,6 +20,8 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { Source } from 'server/dist/model/entity/Source';
+import SourceTextFields from './SourceTextFields';
+import FormHelperText from '@mui/material/FormHelperText';
 
 type NewResourceWithRelations = Omit<Resource, 'uuid'>;
 type NewResource = Omit<NewResourceWithRelations, 'source'>;
@@ -40,10 +42,7 @@ type ResourceSettingsFormProps = {
   initialResourceData?: NewResourceWithRelations;
 };
 
-async function sendRequest(
-  id: string,
-  { arg }: { arg: NewResource }
-) {
+async function sendRequest(id: string, { arg }: { arg: NewResource }) {
   return await fetch(id, {
     method: 'PUT',
     body: JSON.stringify(arg),
@@ -88,8 +87,8 @@ export default function ResourceSettingsForm({
   const [ResourceAlreadyExists, setResourceAlreadyExists] = useState<boolean>();
   const [sourceCollapse, setSourceCollapse] = useState(false);
   const [sourceListCollapse, setSourceListCollapse] = useState(false);
+  const [sourceError, setSourceError] = useState(false);
 
-  const sourceButtonLabel = sourceCollapse ? 'Hide source' : 'Show source';
   useEffect(() => {
     resourceId &&
       resourceData &&
@@ -147,17 +146,10 @@ export default function ResourceSettingsForm({
   async function handleChange(field: string, value: string | boolean | Source) {
     if (field === 'source') {
       const source = sources?.find((s) => s.id === value);
-      if (source) {
-        setTmpResourceData((currentTmpResourceData) => ({
-          ...currentTmpResourceData,
-          [field]: source,
-        }));
-      } else {
-        setTmpResourceData((currentTmpResourceData) => ({
-          ...currentTmpResourceData,
-          [field]: null,
-        }));
-      }
+      setTmpResourceData((currentTmpResourceData) => ({
+        ...currentTmpResourceData,
+        [field]: source,
+      }));
     } else {
       setTmpResourceData((currentTmpResourceData) => ({
         ...currentTmpResourceData,
@@ -200,6 +192,12 @@ export default function ResourceSettingsForm({
         setResourceAlreadyExists(true);
         return;
       }
+      if (!('source' in tmpResourceData)) {
+        setSourceError(true);
+        setSourceCollapse(true);
+        setSourceListCollapse(true);
+        return;
+      }
       let dataToSave = tmpResourceData;
       const response = await trigger(dataToSave);
 
@@ -207,6 +205,9 @@ export default function ResourceSettingsForm({
         showMessage('Resource saved successfully', 'success');
         setResourceId(tmpResourceData.id);
         setDataChanged(false);
+        setSourceError(false);
+        setSourceCollapse(false);
+        setSourceListCollapse(false);
       } else if (response) {
         const jsonError = await response.json();
         throw new Error(jsonError.message);
@@ -253,84 +254,36 @@ export default function ResourceSettingsForm({
         value={tmpResourceData.targetFolder}
         fullWidth
       />
-      {'source' in tmpResourceData && tmpResourceData.source ? (
-        <>
-          <Button onClick={() => setSourceCollapse(!sourceCollapse)}>
-            {sourceButtonLabel}
-          </Button>
-          <Collapse in={sourceCollapse}>
-            <Stack
-              spacing={1}
-              sx={{
-                alignItems: 'center',
-                py: 2,
-                minWidth: '300px',
-              }}
-            >
-              <TextField
-                disabled
-                label="Source id"
-                value={tmpResourceData.source.id}
-                fullWidth
-              />
-
-              <TextField
-                disabled
-                label="Source name"
-                value={tmpResourceData.source.name}
-                fullWidth
-              />
-              <TextField
-                disabled
-                label="Source gitUrl"
-                value={tmpResourceData.source.gitUrl}
-                fullWidth
-              />
-              <TextField
-                disabled
-                label="Source gitBranch"
-                value={tmpResourceData.source.gitBranch}
-                fullWidth
-              />
-            </Stack>
-            <Button
-              color="error"
-              variant="outlined"
-              onClick={() => handleChange('source', tmpResourceData.source)}
-            >
-              Disconnect relation
-            </Button>
-          </Collapse>
-        </>
-      ) : (
-        sources && (
-          <Stack
-            spacing={1}
-            sx={{
-              alignItems: 'center',
-              py: 2,
-              maxWidth: '322px',
-              minWidth: '300px',
-            }}
+      <Button
+        onClick={() => setSourceCollapse(!sourceCollapse)}
+        fullWidth
+        variant="outlined"
+      >
+        Source
+      </Button>
+      <Collapse in={sourceCollapse}>
+        <Stack spacing={1} paddingBottom="24px">
+          <Button
+            color="success"
+            variant="outlined"
+            onClick={() => setSourceListCollapse(!sourceListCollapse)}
+            disabled={editingDisabled}
+            fullWidth
           >
-            <Typography>This resource does not have a source.</Typography>
-
-            <Button
-              onClick={() => setSourceListCollapse(!sourceListCollapse)}
-              disabled={editingDisabled}
-            >
-              Connect to a source
-            </Button>
+            Pick source from the list
+          </Button>
+          {sources && (
             <Collapse in={sourceListCollapse}>
-              <FormControl sx={{ width: '300px' }}>
-                <InputLabel>Source</InputLabel>
+              <FormControl sx={{ width: '300px' }} required>
+                <InputLabel>New source</InputLabel>
                 <Select
-                  label="Source"
+                  label="New source"
                   onChange={(event) => {
                     handleChange('source', event.target.value as string);
                     setSourceCollapse(true);
                   }}
                   defaultValue=""
+                  error={sourceError}
                 >
                   {sources.map(({ uuid, ...source }) => (
                     <MenuItem
@@ -342,12 +295,17 @@ export default function ResourceSettingsForm({
                     </MenuItem>
                   ))}
                 </Select>
+                {sourceError && (
+                  <FormHelperText error>Source is required</FormHelperText>
+                )}
               </FormControl>
             </Collapse>
-          </Stack>
-        )
-      )}
-
+          )}
+        </Stack>
+        {'source' in tmpResourceData && tmpResourceData.source && (
+          <SourceTextFields source={tmpResourceData.source} />
+        )}
+      </Collapse>
       <FormGroup>
         <Box
           sx={{
