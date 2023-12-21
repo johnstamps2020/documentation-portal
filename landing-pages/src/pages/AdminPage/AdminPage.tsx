@@ -26,8 +26,8 @@ const links: AdminLink[] = [
     title: 'Sources',
   },
   {
-    path: '/admin-panel/resource',
-    title: 'Manage resources',
+    path: 'resource',
+    title: 'Resources',
   },
 ];
 
