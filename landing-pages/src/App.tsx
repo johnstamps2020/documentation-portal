@@ -15,6 +15,7 @@ import { LayoutContextProvider } from 'LayoutContext';
 import Layout from 'components/Layout/Layout';
 import ExternalLinkAdminPage from 'components/AdminPage/ExternalLinkAdminPage/ExternalLinkAdminPage';
 import SourceAdminPage from 'components/AdminPage/SourceAdminPage/SourceAdminPage';
+import ResourceAdminPage from 'components/AdminPage/ResourceAdminPage/ResourceAdminPage';
 
 const router = createBrowserRouter([
   {
@@ -49,8 +50,13 @@ const router = createBrowserRouter([
             path: 'source',
             element: <SourceAdminPage />,
           },
+          {
+            path: 'resource',
+            element: <ResourceAdminPage />,
+          },
         ],
       },
+
       {
         path: 'search-results',
         element: <SearchPage />,
