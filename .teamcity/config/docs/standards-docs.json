@@ -15,13 +15,40 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "environments": ["staging", "prod"],
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "standards202401",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202401",
+      "metadata": {
+        "product": ["Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2024.01"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck"
+        ],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
