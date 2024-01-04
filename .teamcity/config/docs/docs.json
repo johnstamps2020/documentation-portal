@@ -8,6 +8,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Internal Docs"],
+        "release": ["Innsbruck", "Hakuba", "Garmisch"],
         "version": ["latest"],
         "language": "en"
       },
@@ -391,6 +392,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Product Adoption"],
+        "release": ["Innsbruck", "Hakuba", "Garmisch"],
         "version": ["latest"],
         "language": "en"
       },
@@ -442,6 +444,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Community Case Templates"],
+        "release": ["Innsbruck", "Hakuba", "Garmisch"],
         "version": ["latest"],
         "language": "en"
       },
