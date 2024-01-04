@@ -24,7 +24,7 @@ type FilterFromUrl = {
 
 dotenv.config();
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
-const searchIndexName = 'gw-docs-semantic';
+const searchIndexName = 'gw-docs';
 const fragmentSize = 300;
 
 // Every keyword field in Elasticsearch is included in the filter list
