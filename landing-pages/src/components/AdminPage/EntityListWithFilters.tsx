@@ -11,6 +11,7 @@ import EntityListPagination from './EntityListPagination';
 
 export type Entity = {
   label: string;
+  name?: string;
   url?: string;
   id?: string;
   [x: string]: string | boolean | any;

@@ -19,7 +19,8 @@ export default function DeleteMultipleButton() {
   async function handleDelete() {
     const responses = await Promise.all(
       selectedEntities.map((entity) => {
-        const primaryKeyValue = entity.path || entity.url || entity.id;
+        const primaryKeyValue =
+          entity.path || entity.url || entity.id || entity.name;
         return fetch(`/admin/entity/${entityDatabaseName}`, {
           method: 'DELETE',
           body: `{ "${entityPrimaryKeyName}": "${primaryKeyValue}" }`,

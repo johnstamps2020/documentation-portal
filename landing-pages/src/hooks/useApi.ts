@@ -10,6 +10,7 @@ import { TranslatedPage } from '../components/Layout/Header/TranslatedPages';
 import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
 import { Source } from 'server/dist/model/entity/Source';
 import { Resource } from 'server/dist/model/entity/Resource';
+import { Release } from 'server/dist/model/entity/Release';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 
@@ -167,6 +168,23 @@ export function useResources() {
 
   return {
     resources: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useReleases() {
+  const { data, error, isLoading } = useSWR<Release[], ServerSearchError>(
+    '/safeConfig/entity/Release/all',
+    getter,
+    {
+      keepPreviousData: true,
+      refreshInterval: 1000,
+    }
+  );
+
+  return {
+    releases: data,
     isLoading,
     isError: error,
   };

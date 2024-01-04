@@ -1,4 +1,5 @@
 import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
+import { Release } from 'server/dist/model/entity/Release';
 import { Resource } from 'server/dist/model/entity/Resource';
 import { Source } from 'server/dist/model/entity/Source';
 import useSWR from 'swr';
@@ -104,6 +105,38 @@ export function useResourceData(resourceId?: string) {
 
   return {
     resourceData: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+const releaseGetter = async (releaseName: string) => {
+  const response = await fetch(
+    `/safeConfig/entity/Release?name=${replaceAmpersandInUrl(
+      releaseName
+    )}`
+  );
+  const { status } = response;
+  const jsonData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(status, jsonData.message);
+  }
+
+  return jsonData;
+};
+
+export function useReleaseData(releaseName?: string) {
+  const { data, error, isLoading } = useSWR<Release, Error>(
+    releaseName,
+    releaseGetter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    releaseData: data,
     isLoading,
     isError: error,
   };

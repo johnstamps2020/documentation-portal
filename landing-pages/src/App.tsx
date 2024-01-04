@@ -16,6 +16,7 @@ import Layout from 'components/Layout/Layout';
 import ExternalLinkAdminPage from 'components/AdminPage/ExternalLinkAdminPage/ExternalLinkAdminPage';
 import SourceAdminPage from 'components/AdminPage/SourceAdminPage/SourceAdminPage';
 import ResourceAdminPage from 'components/AdminPage/ResourceAdminPage/ResourceAdminPage';
+import ReleaseAdminPage from 'components/AdminPage/ReleaseAdminPage/ReleaseAdminPage';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
           {
             path: 'resource',
             element: <ResourceAdminPage />,
+          },
+          {
+            path: 'release',
+            element: <ReleaseAdminPage />,
           },
         ],
       },
