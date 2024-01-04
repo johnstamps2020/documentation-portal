@@ -95,6 +95,7 @@ enum class GwConfigParams(val paramValue: String) {
     CONFIG_DB_HOST_PROD("tenant-doctools-docportal-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-1.c3qnnou7xlkq.us-east-1.rds.amazonaws.com"),
     DB_CLIENT_POD_NAME("postgresql-client-shell-teamcity"),
     DB_CLIENT_IMAGE_NAME("alpine"),
+    DB_CLIENT_PACKAGE_NAME("postgresql13-client"),
     DB_DUMP_ZIP_PACKAGE_NAME("docportalconfig.zip"),
 
     DOC_PORTAL_APP_NAME("docportal"),
@@ -4298,7 +4299,7 @@ object Admin {
                         while [ ${'$'}SECONDS -le 30 ]; do
                           status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
                           if [ "${'$'}status" == "Running" ]; then
-                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
+                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk update && apk add --no-cache ${GwConfigParams.DB_CLIENT_PACKAGE_NAME.paramValue} zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
                             break
                           else
                             echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
@@ -4384,7 +4385,7 @@ object Admin {
                             while [ ${'$'}SECONDS -le 30 ]; do
                               status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
                               if [ "${'$'}status" == "Running" ]; then
-                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
+                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk update && apk add --no-cache ${GwConfigParams.DB_CLIENT_PACKAGE_NAME.paramValue} zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
                                 break
                               else
                                 echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
