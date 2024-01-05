@@ -16,7 +16,7 @@ import {
 import { getAllEntities } from './configController';
 import { winstonLogger } from './loggerController';
 
-import { createVectorsFromText } from './mlTransformerController';
+import { createVectorFromText } from './machineLearningController';
 
 type FilterFromUrl = {
   [x: string]: string[];
@@ -384,7 +384,7 @@ async function runSearch(
 
     // FIMXE: This function returns an object. We need to extract the actual vector from it (I guess this is the problem)
     const vectorizedSearchPhrase =
-      (await createVectorsFromText(
+      (await createVectorFromText(
         queryWithFiltersFromUrl.bool.must.simple_query_string.query
       )) || [];
 
