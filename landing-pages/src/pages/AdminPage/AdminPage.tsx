@@ -41,6 +41,18 @@ const links: AdminLink[] = [
     path: 'language',
     title: 'Languages',
   },
+  {
+    path: 'platform',
+    title: 'Platforms',
+  },
+  {
+    path: 'product',
+    title: 'Products',
+  },
+  {
+    path: 'version',
+    title: 'Versions',
+  },
 ];
 
 export default function AdminPage() {
