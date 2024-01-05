@@ -14,6 +14,7 @@ export type Entity = {
   name?: string;
   url?: string;
   id?: string;
+  code?: string;
   [x: string]: string | boolean | any;
 };
 

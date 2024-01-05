@@ -3,7 +3,6 @@ import { Entity } from 'components/AdminPage/EntityListWithFilters';
 
 export default function ResourceCardContents({
   label,
-  id,
   sourceFolder,
   targetFolder,
   source,

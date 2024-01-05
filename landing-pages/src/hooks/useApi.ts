@@ -12,6 +12,7 @@ import { Source } from 'server/dist/model/entity/Source';
 import { Resource } from 'server/dist/model/entity/Resource';
 import { Release } from 'server/dist/model/entity/Release';
 import { Subject } from 'server/dist/model/entity/Subject';
+import { Language } from 'server/dist/model/entity/Language';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 
@@ -203,6 +204,23 @@ export function useSubjects() {
 
   return {
     subjects: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useLanguages() {
+  const { data, error, isLoading } = useSWR<Language[], ServerSearchError>(
+    '/safeConfig/entity/Language/all',
+    getter,
+    {
+      keepPreviousData: true,
+      refreshInterval: 1000,
+    }
+  );
+
+  return {
+    languages: data,
     isLoading,
     isError: error,
   };
