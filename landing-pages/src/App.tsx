@@ -18,6 +18,7 @@ import SourceAdminPage from 'components/AdminPage/SourceAdminPage/SourceAdminPag
 import ResourceAdminPage from 'components/AdminPage/ResourceAdminPage/ResourceAdminPage';
 import ReleaseAdminPage from 'components/AdminPage/ReleaseAdminPage/ReleaseAdminPage';
 import SubjectAdminPage from 'components/AdminPage/SubjectAdminPage/SubjectAdminPage';
+import LanguageAdminPage from 'components/AdminPage/LanguageAdminPage/LanguageAdminPage';
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
           {
             path: 'subject',
             element: <SubjectAdminPage />,
+          },
+          {
+            path: 'language',
+            element: <LanguageAdminPage />,
           },
         ],
       },

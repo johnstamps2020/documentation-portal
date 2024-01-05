@@ -1,4 +1,5 @@
 import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
+import { Language } from 'server/dist/model/entity/Language';
 import { Release } from 'server/dist/model/entity/Release';
 import { Resource } from 'server/dist/model/entity/Resource';
 import { Source } from 'server/dist/model/entity/Source';
@@ -52,9 +53,7 @@ export function useExternalLinkData(externalLinkUrl?: string) {
 }
 
 const sourceGetter = async (sourceId: string) => {
-  const response = await fetch(
-    `/safeConfig/entity/Source?id=${sourceId}`
-  );
+  const response = await fetch(`/safeConfig/entity/Source?id=${sourceId}`);
   const { status } = response;
   const jsonData = await response.json();
 
@@ -113,9 +112,7 @@ export function useResourceData(resourceId?: string) {
 
 const releaseGetter = async (releaseName: string) => {
   const response = await fetch(
-    `/safeConfig/entity/Release?name=${replaceAmpersandInUrl(
-      releaseName
-    )}`
+    `/safeConfig/entity/Release?name=${releaseName}`
   );
   const { status } = response;
   const jsonData = await response.json();
@@ -145,9 +142,7 @@ export function useReleaseData(releaseName?: string) {
 
 const subjectGetter = async (subjectName: string) => {
   const response = await fetch(
-    `/safeConfig/entity/Subject?name=${replaceAmpersandInUrl(
-      subjectName
-    )}`
+    `/safeConfig/entity/Subject?name=${subjectName}`
   );
   const { status } = response;
   const jsonData = await response.json();
@@ -170,6 +165,36 @@ export function useSubjectData(subjectName?: string) {
 
   return {
     subjectData: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+const languageGetter = async (languageLabel: string) => {
+  const response = await fetch(
+    `/safeConfig/entity/Language?code=${languageLabel}`
+  );
+  const { status } = response;
+  const jsonData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(status, jsonData.message);
+  }
+
+  return jsonData;
+};
+
+export function useLanguageData(languageLabel?: string) {
+  const { data, error, isLoading } = useSWR<Language, Error>(
+    languageLabel,
+    languageGetter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    languageData: data,
     isLoading,
     isError: error,
   };

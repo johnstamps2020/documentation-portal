@@ -37,6 +37,10 @@ const links: AdminLink[] = [
     path: 'subject',
     title: 'Subjects',
   },
+  {
+    path: 'language',
+    title: 'Languages',
+  },
 ];
 
 export default function AdminPage() {
