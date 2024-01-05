@@ -1,9 +1,12 @@
 import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
 import { Language } from 'server/dist/model/entity/Language';
+import { Platform } from 'server/dist/model/entity/Platform';
+import { Product } from 'server/dist/model/entity/Product';
 import { Release } from 'server/dist/model/entity/Release';
 import { Resource } from 'server/dist/model/entity/Resource';
 import { Source } from 'server/dist/model/entity/Source';
 import { Subject } from 'server/dist/model/entity/Subject';
+import { Version } from 'server/dist/model/entity/Version';
 import useSWR from 'swr';
 
 export class Error {
@@ -170,9 +173,9 @@ export function useSubjectData(subjectName?: string) {
   };
 }
 
-const languageGetter = async (languageLabel: string) => {
+const languageGetter = async (languageCode: string) => {
   const response = await fetch(
-    `/safeConfig/entity/Language?code=${languageLabel}`
+    `/safeConfig/entity/Language?code=${languageCode}`
   );
   const { status } = response;
   const jsonData = await response.json();
@@ -184,9 +187,9 @@ const languageGetter = async (languageLabel: string) => {
   return jsonData;
 };
 
-export function useLanguageData(languageLabel?: string) {
+export function useLanguageData(languageCode?: string) {
   const { data, error, isLoading } = useSWR<Language, Error>(
-    languageLabel,
+    languageCode,
     languageGetter,
     {
       revalidateOnFocus: false,
@@ -195,6 +198,99 @@ export function useLanguageData(languageLabel?: string) {
 
   return {
     languageData: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+
+const productGetter = async (productName: string) => {
+  const response = await fetch(
+    `/safeConfig/entity/Product?name=${productName}`
+  );
+  const { status } = response;
+  const jsonData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(status, jsonData.message);
+  }
+
+  return jsonData;
+};
+
+export function useProductData(productName?: string) {
+  const { data, error, isLoading } = useSWR<Product, Error>(
+    productName,
+    productGetter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    productData: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+
+const platformGetter = async (platformName: string) => {
+  const response = await fetch(
+    `/safeConfig/entity/Platform?name=${platformName}`
+  );
+  const { status } = response;
+  const jsonData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(status, jsonData.message);
+  }
+
+  return jsonData;
+};
+
+export function usePlatformData(platformName?: string) {
+  const { data, error, isLoading } = useSWR<Platform, Error>(
+    platformName,
+    platformGetter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    platformData: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+
+const versionGetter = async (versionName: string) => {
+  const response = await fetch(
+    `/safeConfig/entity/Version?name=${versionName}`
+  );
+  const { status } = response;
+  const jsonData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(status, jsonData.message);
+  }
+
+  return jsonData;
+};
+
+export function useVersionData(versionName?: string) {
+  const { data, error, isLoading } = useSWR<Version, Error>(
+    versionName,
+    versionGetter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    versionData: data,
     isLoading,
     isError: error,
   };

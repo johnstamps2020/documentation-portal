@@ -19,6 +19,9 @@ import ResourceAdminPage from 'components/AdminPage/ResourceAdminPage/ResourceAd
 import ReleaseAdminPage from 'components/AdminPage/ReleaseAdminPage/ReleaseAdminPage';
 import SubjectAdminPage from 'components/AdminPage/SubjectAdminPage/SubjectAdminPage';
 import LanguageAdminPage from 'components/AdminPage/LanguageAdminPage/LanguageAdminPage';
+import PlatformAdminPage from 'components/AdminPage/PlatformAdminPage/PlatformAdminPage';
+import ProductAdminPage from 'components/AdminPage/ProductAdminPage/ProductAdminPage';
+import VersionAdminPage from 'components/AdminPage/VersionAdminPage/VersionAdminPage';
 
 const router = createBrowserRouter([
   {
@@ -68,6 +71,18 @@ const router = createBrowserRouter([
           {
             path: 'language',
             element: <LanguageAdminPage />,
+          },
+          {
+            path: 'platform',
+            element: <PlatformAdminPage />,
+          },
+          {
+            path: 'product',
+            element: <ProductAdminPage />,
+          },
+          {
+            path: 'version',
+            element: <VersionAdminPage />,
           },
         ],
       },
