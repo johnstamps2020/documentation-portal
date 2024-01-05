@@ -17,6 +17,7 @@ import ExternalLinkAdminPage from 'components/AdminPage/ExternalLinkAdminPage/Ex
 import SourceAdminPage from 'components/AdminPage/SourceAdminPage/SourceAdminPage';
 import ResourceAdminPage from 'components/AdminPage/ResourceAdminPage/ResourceAdminPage';
 import ReleaseAdminPage from 'components/AdminPage/ReleaseAdminPage/ReleaseAdminPage';
+import SubjectAdminPage from 'components/AdminPage/SubjectAdminPage/SubjectAdminPage';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
           {
             path: 'release',
             element: <ReleaseAdminPage />,
+          },
+          {
+            path: 'subject',
+            element: <SubjectAdminPage />,
           },
         ],
       },

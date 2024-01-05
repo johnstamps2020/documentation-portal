@@ -2,6 +2,7 @@ import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
 import { Release } from 'server/dist/model/entity/Release';
 import { Resource } from 'server/dist/model/entity/Resource';
 import { Source } from 'server/dist/model/entity/Source';
+import { Subject } from 'server/dist/model/entity/Subject';
 import useSWR from 'swr';
 
 export class Error {
@@ -137,6 +138,38 @@ export function useReleaseData(releaseName?: string) {
 
   return {
     releaseData: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+const subjectGetter = async (subjectName: string) => {
+  const response = await fetch(
+    `/safeConfig/entity/Subject?name=${replaceAmpersandInUrl(
+      subjectName
+    )}`
+  );
+  const { status } = response;
+  const jsonData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(status, jsonData.message);
+  }
+
+  return jsonData;
+};
+
+export function useSubjectData(subjectName?: string) {
+  const { data, error, isLoading } = useSWR<Subject, Error>(
+    subjectName,
+    subjectGetter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    subjectData: data,
     isLoading,
     isError: error,
   };
