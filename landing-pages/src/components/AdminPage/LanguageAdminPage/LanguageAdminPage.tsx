@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 export default function LanguageAdminPage() {
   const { title, setTitle, setHeaderOptions } = useLayoutContext();
   useEffect(() => {
-    setTitle('Manage language');
+    setTitle('Manage languages');
   }, [setHeaderOptions, setTitle]);
 
   return (
