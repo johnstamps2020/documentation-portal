@@ -46,7 +46,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools500',
+          docId: 'isconfigupgradetools510',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
