@@ -11,6 +11,7 @@ import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
 import { Source } from 'server/dist/model/entity/Source';
 import { Resource } from 'server/dist/model/entity/Resource';
 import { Release } from 'server/dist/model/entity/Release';
+import { Subject } from 'server/dist/model/entity/Subject';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 
@@ -185,6 +186,23 @@ export function useReleases() {
 
   return {
     releases: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useSubjects() {
+  const { data, error, isLoading } = useSWR<Subject[], ServerSearchError>(
+    '/safeConfig/entity/Subject/all',
+    getter,
+    {
+      keepPreviousData: true,
+      refreshInterval: 1000,
+    }
+  );
+
+  return {
+    subjects: data,
     isLoading,
     isError: error,
   };

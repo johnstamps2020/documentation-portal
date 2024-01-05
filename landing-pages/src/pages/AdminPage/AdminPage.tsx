@@ -33,6 +33,10 @@ const links: AdminLink[] = [
     path: 'release',
     title: 'Releases',
   },
+  {
+    path: 'subject',
+    title: 'Subjects',
+  },
 ];
 
 export default function AdminPage() {
