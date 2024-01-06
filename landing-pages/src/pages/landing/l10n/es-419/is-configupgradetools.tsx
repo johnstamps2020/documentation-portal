@@ -18,12 +18,12 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.10 (Innsbruck)', 
+      label: '2023.10 (Innsbruck)',
       items: [
         {
-          label: 'Guía de herramientas de actualización de configuración', 
-          docId: 'isconfigupgradetoolses419500', 
-        }, 
+          label: 'Guía de herramientas de actualización de configuración',
+          docId: 'isconfigupgradetoolses419500',
+        },
       ]
     }
   ]

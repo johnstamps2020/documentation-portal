@@ -120,5 +120,8 @@
     "\"(id|docId|srcId)\": \"[a-zA-Z0-9]+\"",
     "\"(url|root|filter|targetFolder|gitUrl|zipFilename)\": \"[^\"]+\"",
     "gtag([^)]+)"
-  ]
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }
