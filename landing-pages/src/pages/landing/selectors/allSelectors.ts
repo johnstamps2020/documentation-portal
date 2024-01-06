@@ -348,6 +348,10 @@ export const allSelectors = {
     { label: 'Explore', pagePath: 'l10n/es-419/explore' },
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/es-419/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/es-419/ic' },
+    {
+      label: 'Guía de herramientas de actualización de configuración',
+      pagePath: 'l10n/es-419/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/es-419/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/es-419/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/es-419/pe' },
@@ -487,6 +491,10 @@ export const allSelectors = {
     { label: 'Explore', pagePath: 'l10n/pt-BR/explore' },
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/pt-BR/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/pt-BR/ic' },
+    {
+      label: 'Ferramentas de atualização de configuração do Guidewire InsuranceSuite',
+      pagePath: 'l10n/pt-BR/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/pt-BR/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/pt-BR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/pt-BR/pe' },

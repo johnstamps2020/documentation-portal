@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Novedades de Innsbruck',
+      docId: 'whatsnewes419innsbruck',
+    },
+    {
       label: 'Novedades de Hakuba',
       docId: 'whatsnewes419hakuba',
     },

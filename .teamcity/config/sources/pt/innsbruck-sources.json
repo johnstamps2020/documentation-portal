@@ -1,0 +1,29 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "gwcpreleasenotesptBRsrc",
+      "title": "Cloud Platform Release Notes pt",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
+      "branch": "release/pt-BR/innsbruck"
+    },
+    {
+      "id": "is202310ptBRsrc",
+      "title": "IS 2023.10.0 pt",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/pt-BR/2023.10.0"
+    },
+    {
+      "id": "isconfigupgradetools500ptBRsrc",
+      "title": "InsuranceSuite Configuration Upgrade Tools 5.0.0 pt",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
+      "branch": "release/pt-BR/5.0.0"
+    },
+    {
+      "id": "whatsnewinnsbruckptBRsrc",
+      "title": "Ski Release What's New - Innsbruck pt",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
+      "branch": "release/pt-BR/innsbruck"
+    }
+  ]
+}

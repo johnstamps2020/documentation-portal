@@ -1,0 +1,38 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isconfigupgradetoolses419500",
+      "title": "InsuranceSuite Configuration Upgrade Tools es",
+      "displayTitle": "Guía de herramientas de actualización de configuración",
+      "url": "es/isconfigupgradetools/500",
+      "metadata": {
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "InsuranceSuite Configuration Upgrade Tools"
+        ],
+        "version": [
+          "5.0.0"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Upgrade"
+        ],
+        "language": "es"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
