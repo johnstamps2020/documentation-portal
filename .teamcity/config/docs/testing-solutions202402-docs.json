@@ -17,8 +17,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
-      "earlyAccess": false
+      "internal": false,
+      "earlyAccess": true
     },
     {
       "id": "testingframeworksapijasper",
