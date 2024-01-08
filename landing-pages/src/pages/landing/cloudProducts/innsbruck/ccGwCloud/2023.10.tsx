@@ -204,17 +204,6 @@ const pageConfig: ApplicationLayoutProps = {
           pathInDoc: '?contextid=c_all-fe3275213',
         },
         {
-          label: 'Workflow configuration',
-          description: (
-            <>
-              Configure ClaimCenter workflows for management of complex business
-              processes.
-            </>
-          ),
-          docId: 'iscc202310config',
-          pathInDoc: '?contextid=p-workflow',
-        },
-        {
           label: 'Email configuration',
           description: (
             <>Configure ClaimCenter functionality related to sending email.</>
