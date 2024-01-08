@@ -19,7 +19,7 @@ export default function ApplicationTabLinkList(
 ): JSX.Element {
   const { value, index, items, ...other } = props;
   const { isError, isLoading, landingPageItems } = useLandingPageItems(items);
-  const arrangedItems = arrangeItems(items, landingPageItems);
+  const arrangedItems = arrangeItems(items, landingPageItems, true);
 
   const tabItemContents = (
     <Grid container spacing={4} sx={{ pt: '68px' }}>
@@ -37,7 +37,7 @@ export default function ApplicationTabLinkList(
             <LandingPageLink landingPageItem={item} />
           </Typography>
           <Typography variant="body1" component="p">
-            {items[idx].description}
+            {item.description}
           </Typography>
         </Grid>
       ))}
