@@ -316,6 +316,14 @@ object Helpers {
         }
     }
 
+    fun getMlTransformerUrl(deployEnv: String): String {
+        return if (arrayOf(GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName).contains(deployEnv)) {
+            "https://ml-transformer.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
+        } else {
+            "https://ml-transformer.${deployEnv}.ccs.guidewire.net"
+        }
+    }
+
     fun getS3BucketUrl(deployEnv: String): String {
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
@@ -732,6 +740,7 @@ object GwBuildSteps {
         val docS3Url = Helpers.getS3BucketUrl(deployEnv)
         val appBaseUrl = Helpers.getTargetUrl(deployEnv)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
+        val mlTransformerUrl = Helpers.getMlTransformerUrl(deployEnv)
         val reportBrokenLinks: String
         val reportShortTopics: String
         val oktaIssuer: String
@@ -780,6 +789,7 @@ object GwBuildSteps {
                 export SHORT_TOPICS_INDEX_NAME="short-topics"
                 export REPORT_BROKEN_LINKS="$reportBrokenLinks"
                 export REPORT_SHORT_TOPICS="$reportShortTopics"
+                export ML_TRANSFORMER_URL="$mlTransformerUrl"
             """.trimIndent()
 
             else -> ""
