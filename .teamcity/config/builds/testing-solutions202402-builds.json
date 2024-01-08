@@ -94,9 +94,18 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "GT-Best-Practices.ditamap",
+      "root": "GT-Testing-Standards.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "testing202402bestpractices",
+      "docId": "testing202402testingstandards",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "InsuranceSuite-Testing.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testing202402istesting",
       "indexRedirect": true,
       "disabled": false
     }

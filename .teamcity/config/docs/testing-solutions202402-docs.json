@@ -192,15 +192,34 @@
       "earlyAccess": false
     },
     {
-      "id": "testing202402bestpractices",
-      "title": "Best Testing Practices",
-      "url": "cloud/testing/202402/bestpractices",
+      "id": "testing202402testingstandards",
+      "title": "Testing Standards",
+      "url": "cloud/testing/202402/testingstandards",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2024.02"],
         "release": ["Jasper"],
         "subject": ["Best practices", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202402istesting",
+      "title": "InsuranceSuite Testing",
+      "url": "cloud/testing/202402/istesting",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Testing"],
         "language": "en"
       },
       "environments": ["staging"],
