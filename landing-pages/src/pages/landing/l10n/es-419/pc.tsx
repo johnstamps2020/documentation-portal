@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'PolicyCenter Notas de la versión',
+          docId: 'ispc202310es419releasenotes',
+        },
+        {
+          label: 'PolicyCenter Guía de renovación',
+          docId: 'ispc202310es419update',
+        },
+      ],
+    },
+    {
       label: '2023.06',
       items: [
         {

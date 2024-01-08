@@ -2,12 +2,14 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
-      "id": "whatsnewes419hakuba",
+      "id": "whatsnewes419innsbruck",
       "url": "es/cloud/hakuba/whatsnew",
       "title": "What's new in Hakuba es",
-      "displayTitle": "Novedades de Hakuba",
+      "displayTitle": "Novedades en Innsbruck",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": [
+          "Cloud"
+        ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -16,12 +18,48 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": ["2023.06", "2023.2"],
-        "release": ["Hakuba"],
-        "subject": ["Release notes"],
+        "version": [
+          "2023.06",
+          "2023.2"
+        ],
+        "release": [
+          "Hakuba"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "es"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging"
+      ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "whatsnewes419hakuba",
+      "url": "es/cloud/hakuba/whatsnew",
+      "title": "What's new in Hakuba es",
+      "displayTitle": "Novedades de Hakuba",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"
+        ],
+        "version": [ "2023.06", "2023.2" ],
+        "release": [ "Hakuba" ],
+        "subject": [ "Release notes" ],
+        "language": "es"
+      },
+      "environments": [ "staging", "prod" ],
       "indexForSearch": true,
       "public": false,
       "internal": false,

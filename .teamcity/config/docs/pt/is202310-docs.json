@@ -1,0 +1,125 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc202310ptBRreleasenotes",
+      "title": "Release Notes pt",
+      "displayTitle": "Notas de versão",
+      "url": "pt/cloud/bc/202310/releasenotes",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "BillingCenter" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
+        "language": "pt"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202310ptBRupdate",
+      "title": "Update pt",
+      "displayTitle": "Guia de atualização",
+      "url": "pt/cloud/bc/202310/update",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "BillingCenter" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Installation" ],
+        "language": "pt"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202310ptBRreleasenotes",
+      "title": "Release Notes pt",
+      "displayTitle": "Notas de versão",
+      "url": "pt/cloud/cc/202310/releasenotes",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "ClaimCenter" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
+        "language": "pt"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202310ptBRupdate",
+      "title": "Update pt",
+      "displayTitle": "Guia de atualização",
+      "url": "pt/cloud/cc/202310/update",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "ClaimCenter" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Installation" ],
+        "language": "pt"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202310ptBRreleasenotes",
+      "title": "Release Notes pt",
+      "displayTitle": "Notas de versão",
+      "url": "pt/cloud/pc/202310/releasenotes",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "PolicyCenter" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
+        "language": "pt"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202310ptBRupdate",
+      "title": "Update pt",
+      "displayTitle": "Guia de atualização",
+      "url": "pt/cloud/pc/202310/update",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "PolicyCenter" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Installation" ],
+        "language": "pt"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

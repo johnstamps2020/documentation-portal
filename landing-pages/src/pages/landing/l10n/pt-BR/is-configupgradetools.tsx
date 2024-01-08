@@ -10,9 +10,9 @@ const pageConfig: CategoryLayoutProps = {
     backgroundColor: `hsl(0, 0%, 98%)`,
   },
   selector: {
-    label: 'Seleccionar producto',
+    label: 'Selecione o produto',
     selectedItemLabel: 'Cloud Platform',
-    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
+    items: allSelectors.s04aae4cce94a63b38358bb52ee3acace,
     labelColor: 'white',
   },
 
@@ -21,14 +21,15 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.10 (Innsbruck)', 
       items: [
         {
-          label: 'Notas de la version de la Plataforma de Guidewire Cloud',
-          docId: 'gwcpes419releasenotes',
-        },
-      ],
-    },
-  ],
+          label: 'Ferramentas de atualização de configuração do Guidewire InsuranceSuite', 
+          docId: 'isconfigupgradetoolsptBR500', 
+        }, 
+      ]
+    }
+  ]
 };
 
-export default function Cp() {
+export default function Isconfigupgradetools() {
   return <CategoryLayout {...pageConfig} />;
 }
+

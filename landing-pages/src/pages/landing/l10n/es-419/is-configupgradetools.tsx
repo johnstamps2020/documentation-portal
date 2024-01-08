@@ -18,17 +18,18 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.10 (Innsbruck)', 
+      label: '2023.10 (Innsbruck)',
       items: [
         {
-          label: 'Notas de la version de la Plataforma de Guidewire Cloud',
-          docId: 'gwcpes419releasenotes',
+          label: 'Guía de herramientas de actualización de configuración',
+          docId: 'isconfigupgradetoolses419500',
         },
-      ],
-    },
-  ],
+      ]
+    }
+  ]
 };
 
-export default function Cp() {
+export default function Isconfigupgradetools() {
   return <CategoryLayout {...pageConfig} />;
 }
+

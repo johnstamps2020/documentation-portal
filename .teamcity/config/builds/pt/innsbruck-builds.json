@@ -1,0 +1,86 @@
+{
+	"$schema": "../../config-schema.json",
+	"builds": [
+		{
+			"buildType": "dita",
+			"root": "GWCP-ReleaseNotes.ditamap",
+			"filter": "GW-Generic-Cloud-Release.ditaval",
+			"srcId": "gwcpreleasenotesptBRsrc",
+			"docId": "gwcpptBRreleasenotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-BC-Cloud-Release.ditaval",
+			"root": "ReleaseNotes.ditamap",
+			"srcId": "is202310ptBRsrc",
+			"docId": "isbc202310ptBRreleasenotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-BC-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"srcId": "is202310ptBRsrc",
+			"docId": "isbc202310ptBRupdate",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-CC-Cloud-Release.ditaval",
+			"root": "ReleaseNotes.ditamap",
+			"srcId": "is202310ptBRsrc",
+			"docId": "iscc202310ptBRreleasenotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-CC-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"srcId": "is202310ptBRsrc",
+			"docId": "iscc202310ptBRupdate",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-PC-Cloud-Release.ditaval",
+			"root": "ReleaseNotes.ditamap",
+			"srcId": "is202310ptBRsrc",
+			"docId": "ispc202310ptBRreleasenotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-PC-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"srcId": "is202310ptBRsrc",
+			"docId": "ispc202310ptBRupdate",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
+			"srcId": "isconfigupgradetools500ptBRsrc",
+			"docId": "isconfigupgradetoolsptBR500",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "whatsnew.ditamap",
+			"srcId": "whatsnewinnsbruckptBRsrc",
+			"docId": "whatsnewptBRinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
+		}
+	]
+}

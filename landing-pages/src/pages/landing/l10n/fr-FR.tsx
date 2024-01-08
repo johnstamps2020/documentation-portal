@@ -19,7 +19,7 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
-      label: 'Nouveautés de Innsbruck',
+      label: 'Nouveautés d\'Innsbruck',
       docId: 'whatsnewfrFRinnsbruck', 
     },
     {
