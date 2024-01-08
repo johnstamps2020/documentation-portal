@@ -9,6 +9,15 @@
       "srcId": "appreadersrc",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "root": "AppReader.ditamap",
+      "filter": "GW-Generic-Release.ditaval",
+      "docId": "appreader",
+      "srcId": "appreadersrc",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
