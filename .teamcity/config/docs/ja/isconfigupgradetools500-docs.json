@@ -1,0 +1,38 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isconfigupgradetoolsjaJP500",
+      "title": "InsuranceSuite Configuration Upgrade Tools ja",
+      "displayTitle": "InsuranceSuite Configuration Upgrade Tools ガイド",
+      "url": "ja/isconfigupgradetools/500",
+      "metadata": {
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "InsuranceSuite Configuration Upgrade Tools"
+        ],
+        "version": [
+          "5.0.0"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Upgrade"
+        ],
+        "language": "ja"
+      },
+      "environments": [
+        "staging", "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

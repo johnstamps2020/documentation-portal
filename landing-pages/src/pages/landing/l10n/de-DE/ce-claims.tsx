@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]CustomerEngage Account Management for ClaimCenter Release Notes', 
+docId: 'dx202310deDEceclaimsrelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -31,7 +40,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-claims/2023.02/CustomerEngage_Claims_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-claims/2023.02/CustomerEngage_Claims_AppGuide.pdf',
           videoIcon: false,
         },
         {
@@ -45,7 +56,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-claims/2021.11/de-DE Digital v.2021.11 CE-AM Claims_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-claims/2021.11/de-DE Digital v.2021.11 CE-AM Claims_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -55,22 +68,30 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims Installer-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims Installer-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Entwicklerhandbuch',
-          url: '/l10n/pdfs/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims Developers-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims Developers-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Administrator- und Sicherheitshandbuch',
-          url: '/l10n/pdfs/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims admin&security-guide.pdf',
           videoIcon: false,
         },
       ],
@@ -81,3 +102,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Ceclaims() {
   return <CategoryLayout {...pageConfig} />;
 }
+

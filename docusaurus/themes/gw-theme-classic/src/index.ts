@@ -46,7 +46,9 @@ export default async function (
 
   const themeConfig = context.siteConfig.themeConfig as ThemeConfig;
   if (themeConfig?.colorMode) {
-    themeConfig.colorMode.disableSwitch = true;
+    (themeConfig.colorMode.disableSwitch = true),
+      (themeConfig.colorMode.defaultMode = 'light'),
+      (themeConfig.colorMode.respectPrefersColorScheme = false);
   }
 
   return {

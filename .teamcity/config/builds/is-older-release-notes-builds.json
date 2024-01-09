@@ -20,7 +20,7 @@
           "srcId": "insurancesuiteextrassrc"
         }
       ],
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -41,7 +41,7 @@
           "srcId": "insurancesuiteextrassrc"
         }
       ],
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -62,7 +62,7 @@
           "srcId": "insurancesuiteextrassrc"
         }
       ],
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",

@@ -2,6 +2,25 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "isconfigupgradetools510",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/510",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["5.1.0"],
+        "release": ["Hakuba", "Innsbruck"],
+        "subject": ["Upgrade"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "isconfigupgradetools500",
       "title": "InsuranceSuite Configuration Upgrade Tools",
       "url": "isconfigupgradetools/500",
@@ -10,6 +29,7 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["5.0.0"],
         "release": ["Hakuba", "Innsbruck"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -27,7 +47,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.7.0"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -46,6 +67,7 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.6.0"],
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -63,7 +85,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.5.0"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -81,7 +104,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.4.0"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -99,8 +123,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.3.0"],
-        "release": ["Cortina", "Dobson", "Elysian"],
-        "subject": ["Installation"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -119,7 +143,7 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.2.0"],
         "release": ["Cortina", "Dobson"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -138,7 +162,7 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.1.0"],
         "release": ["Cortina", "Dobson"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -157,7 +181,7 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.0.0"],
         "release": ["Cortina", "Dobson"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -175,8 +199,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.3.0"],
-        "release": ["Cortina", "Dobson"],
-        "subject": ["Installation"],
+        "release": ["Cortina"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

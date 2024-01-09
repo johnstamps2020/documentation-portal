@@ -78,8 +78,6 @@ enum class GwConfigParams(val paramValue: String) {
     AWS_ROLE("arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"),
     AWS_ROLE_PROD("arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"),
     ARTIFACTORY_HOST("artifactory.guidewire.com"),
-    OKTA_IDP("0oamwriqo1E1dOdd70h7"),
-    OKTA_IDP_PROD("0oa25tk18zhGOqMfj357"),
     OKTA_ISSUER("https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"),
     OKTA_ISSUER_PROD("https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"),
     OKTA_ISSUER_APAC("https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"),
@@ -97,6 +95,7 @@ enum class GwConfigParams(val paramValue: String) {
     CONFIG_DB_HOST_PROD("tenant-doctools-docportal-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-1.c3qnnou7xlkq.us-east-1.rds.amazonaws.com"),
     DB_CLIENT_POD_NAME("postgresql-client-shell-teamcity"),
     DB_CLIENT_IMAGE_NAME("alpine"),
+    DB_CLIENT_PACKAGE_NAME("postgresql13-client"),
     DB_DUMP_ZIP_PACKAGE_NAME("docportalconfig.zip"),
 
     DOC_PORTAL_APP_NAME("docportal"),
@@ -125,7 +124,7 @@ enum class GwDockerImages(val imageUrl: String) {
     CONFIG_DEPLOYER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/config-deployer:latest"), DOC_CRAWLER_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-crawler:latest"
     ),
-    INDEX_CLEANER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/index-cleaner:latest"), BUILD_MANAGER_LATEST(
+    BUILD_MANAGER_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/build-manager:latest"
     ),
     RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"), LION_PKG_BUILDER_LATEST(
@@ -135,8 +134,9 @@ enum class GwDockerImages(val imageUrl: String) {
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/sitemap-generator:latest"
     ),
     DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-validator:latest"),
-    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"), NODE_16_16_0("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:16.16.0"), NODE_18_14_0(
-        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:18.14.0"
+    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"),
+    NODE_18_18_2(
+        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:18.18.2"
     ),
     GENERIC_14_14_0_YARN_CHROME(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/jutro-docker-dev/generic:14.14.0-yarn-chrome"
@@ -180,6 +180,11 @@ enum class GwTriggerPaths(val pathValue: String) {
     TEAMCITY_SETTINGS_KTS(".teamcity/settings.kts"),
     TEAMCITY_CONFIG(".teamcity/config/**"),
     YARN_LOCK("yarn.lock"),
+}
+
+enum class GwDocCrawlerOperationModes(val modeValue: String) {
+    CRAWL("crawl"),
+    CLEAN_INDEX("clean-index")
 }
 
 object Helpers {
@@ -270,14 +275,6 @@ object Helpers {
         }
     }
 
-    fun getConfigFileUrl(deployEnv: String): String {
-        return if (arrayListOf(GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName).contains(deployEnv)) {
-            "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net/portal-config/config.json"
-        } else {
-            "https://docportal-content.${deployEnv}.ccs.guidewire.net/portal-config/config.json"
-        }
-    }
-
     fun setAwsEnvVars(deployEnv: String): String {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = when (deployEnv) {
             GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName -> Triple(
@@ -316,6 +313,14 @@ object Helpers {
             "https://docsearch-doctools.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
         } else {
             "https://docsearch-doctools.${deployEnv}.ccs.guidewire.net"
+        }
+    }
+
+    fun getMlTransformerUrl(deployEnv: String): String {
+        return if (arrayOf(GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName).contains(deployEnv)) {
+            "https://ml-transformer.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
+        } else {
+            "https://ml-transformer.${deployEnv}.ccs.guidewire.net"
         }
     }
 
@@ -433,7 +438,6 @@ object Helpers {
                 export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER_PROD.paramValue}"
                 export OKTA_ISSUER_APAC="${GwConfigParams.OKTA_ISSUER_APAC.paramValue}"
                 export OKTA_ISSUER_EMEA="${GwConfigParams.OKTA_ISSUER_EMEA.paramValue}"
-                export OKTA_IDP="${GwConfigParams.OKTA_IDP_PROD.paramValue}"
                 export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES_PROD.paramValue}"
                 export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
                 export CONFIG_DB_HOST="${GwConfigParams.CONFIG_DB_HOST_PROD.paramValue}" 
@@ -453,7 +457,6 @@ object Helpers {
                 export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
                 export OKTA_ISSUER_APAC="issuerNotConfigured"
                 export OKTA_ISSUER_EMEA="issuerNotConfigured"
-                export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
                 export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
                 export ELASTIC_SEARCH_URL="http://docsearch-${deployEnv}.doctools:9200"
                 export CONFIG_DB_HOST="${
@@ -644,7 +647,7 @@ object GwBuildSteps {
                 npm publish
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:16.16.0"
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
         }
     }
 
@@ -728,37 +731,16 @@ object GwBuildSteps {
         }
     }
 
-    fun createRunIndexCleanerStep(deployEnv: String): ScriptBuildStep {
-        // Do not use the config file from dev because here are hardly any docs configured for dev and the index
-        // will end up with very few docs.
-        val envForConfigFile =
-            if (deployEnv == GwDeployEnvs.DEV.envName) GwDeployEnvs.STAGING.envName else deployEnv
-        val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
-        val configFileUrl = Helpers.getConfigFileUrl(envForConfigFile)
-        return ScriptBuildStep {
-            name = "Run the index cleaner"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export ELASTICSEARCH_URLS="$elasticsearchUrls"
-                export CONFIG_FILE_URL="$configFileUrl"
-                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
-                
-                curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
-
-                index_cleaner
-            """.trimIndent()
-            dockerImage = GwDockerImages.INDEX_CLEANER_LATEST.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createRunDocCrawlerStep(deployEnv: String, docId: String, configFile: String): ScriptBuildStep {
+    fun createRunDocCrawlerStep(
+        deployEnv: String,
+        operationMode: String,
+        propertyName: String = "",
+        propertyValue: String = "",
+    ): ScriptBuildStep {
         val docS3Url = Helpers.getS3BucketUrl(deployEnv)
         val appBaseUrl = Helpers.getTargetUrl(deployEnv)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
+        val mlTransformerUrl = Helpers.getMlTransformerUrl(deployEnv)
         val reportBrokenLinks: String
         val reportShortTopics: String
         val oktaIssuer: String
@@ -778,29 +760,57 @@ object GwBuildSteps {
                 oktaScopes = "${GwConfigParams.OKTA_SCOPES.paramValue} NODE_Hawaii_Docs_Web.admin"
             }
         }
-        return ScriptBuildStep {
-            name = "Run the doc crawler"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                ${Helpers.setAwsEnvVars(deployEnv)}
-                export OKTA_ISSUER="$oktaIssuer"
-                export OKTA_SCOPES="$oktaScopes"
-                
-                export DOC_ID="$docId"
+        val additionalScriptContent = when (operationMode) {
+            GwDocCrawlerOperationModes.CRAWL.modeValue -> """
+                if [[ "${propertyName.uppercase()}" == "NONE" ]]; then
+                    echo "Indexing all documents"
+                else
+                    if [[ -z "$propertyValue" ]]; then
+                        echo "No value provided for $propertyName"
+                        exit 1
+                    fi
+                    
+                    if [[ "${propertyName.uppercase()}" == "DOC_IDS" ]]; then
+                        export DOC_IDS="$propertyValue"
+                    elif [[ "${propertyName.uppercase()}" == "RELEASES" ]]; then
+                        export RELEASES="$propertyValue"
+                    elif [[ "${propertyName.uppercase()}" == "VERSIONS" ]]; then
+                        export VERSIONS="$propertyValue"
+                    else
+                        echo "Incorrect property name"
+                        echo "Provided name: $propertyName"
+                        echo "Supported names: DOC_IDS, RELEASES, VERSIONS"
+                        exit 1
+                    fi
+                fi
+                    
                 export DOC_S3_URL="$docS3Url"
-                export ELASTICSEARCH_URLS="$elasticsearchUrls"
-                export APP_BASE_URL="$appBaseUrl"
-                export DOCS_INDEX_NAME="gw-docs"
                 export BROKEN_LINKS_INDEX_NAME="broken-links"
                 export SHORT_TOPICS_INDEX_NAME="short-topics"
                 export REPORT_BROKEN_LINKS="$reportBrokenLinks"
                 export REPORT_SHORT_TOPICS="$reportShortTopics"
-                
-                doc_crawler
+                export ML_TRANSFORMER_URL="$mlTransformerUrl"
             """.trimIndent()
+
+            else -> ""
+        }
+
+        return ScriptBuildStep {
+            name = "Run the doc crawler in the $operationMode mode"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+            export OPERATION_MODE="$operationMode"
+            ${Helpers.setAwsEnvVars(deployEnv)}
+            export OKTA_ISSUER="$oktaIssuer"
+            export OKTA_SCOPES="$oktaScopes"
+            export ELASTICSEARCH_URLS="$elasticsearchUrls"
+            export APP_BASE_URL="$appBaseUrl"
+            export DOCS_INDEX_NAME="gw-docs"
+            
+            $additionalScriptContent
+            
+            doc_crawler
+        """.trimIndent()
             dockerImage = GwDockerImages.DOC_CRAWLER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -969,6 +979,7 @@ object GwBuildSteps {
         schematronReportsDir: String,
         indexRedirect: Boolean,
         buildFilter: String? = null,
+        docId: String? = null
     ): ScriptBuildStep {
         val logFile = "${outputFormat}_build.log"
         val fullOutputPath = "${outputDir}/${outputFormat}"
@@ -1005,6 +1016,7 @@ object GwBuildSteps {
                 ditaCommandParams.add(Pair("--temp", "${workingDir}/${tempDir}"))
                 ditaCommandParams.add(Pair("--clean.temp", "no"))
                 ditaCommandParams.add(Pair("--schematron.validate", "yes"))
+                ditaCommandParams.add(Pair("--gw-doc-id", "${docId}"))
                 ditaCommandParams.add(Pair("%env.ENABLE_DEBUG_MODE%", ""))
                 if (indexRedirect) {
                     ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
@@ -1213,7 +1225,7 @@ object GwBuildSteps {
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
-            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:16.16.0"
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
         }
@@ -1234,7 +1246,7 @@ object GwBuildSteps {
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
-            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:16.16.0"
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
         }
@@ -1275,13 +1287,17 @@ object GwBuildSteps {
         exitCodeEnvVarName: String = "",
     ): ScriptBuildStep {
         val nodeImage = when (nodeImageVersion) {
-            null -> "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:17.6.0"
+            null -> "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:20.9.0"
             else -> "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:${nodeImageVersion}"
         }
         val scriptBuildCommand = buildCommand ?: "build"
         val logFile = "yarn_build.log"
         val buildCommandBlock = if (validationMode) {
             """
+                export BASE_URL="/${publishPath}/"
+                if [[ "%teamcity.build.branch.is_default%" == "true" ]]; then
+                    BASE_URL="/"
+                fi
                 export EXIT_CODE=0
                 yarn $scriptBuildCommand &> "${workingDir}/${logFile}" || EXIT_CODE=${'$'}?
                 
@@ -1296,6 +1312,7 @@ object GwBuildSteps {
                 """.trimIndent()
         } else {
             """
+                export BASE_URL="/${publishPath}/"
                 export EXIT_CODE=0
                 yarn $scriptBuildCommand || EXIT_CODE=${'$'}?
                 exit ${'$'}EXIT_CODE
@@ -1320,7 +1337,6 @@ object GwBuildSteps {
                     export GW_PLATFORM="$gwPlatforms"
                     export GW_VERSION="$gwVersions"
                     export TARGET_URL="$targetUrl"
-                    export BASE_URL="/${publishPath}/"
                     $customEnvExportVars
                     
                     cd "$workingDir"
@@ -1773,172 +1789,12 @@ object User {
             name = "User"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
-            subProject(Runners.rootProject)
             subProject(Docs.rootProject)
             subProject(Sources.rootProject)
             subProject(Recommendations.rootProject)
             subProject(BuildListeners.rootProject)
             subProject(Custom.rootProject)
         }
-    }
-
-    object Runners {
-        val rootProject = createRootProjectForRunners()
-
-        private fun getDocConfigsFromBuildConfigsForEnv(deployEnv: String): List<JSONObject> {
-            val docConfigsForEnv = mutableListOf<JSONObject>()
-            Helpers.buildConfigs.forEach {
-                val docId = it.getString("docId")
-                val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
-                val docEnvironments = docConfig.getJSONArray("environments")
-                if (docEnvironments.contains(deployEnv)) {
-                    docConfigsForEnv.add(docConfig)
-                }
-            }
-            return docConfigsForEnv
-        }
-
-        private fun getDocIdsForProductAndVersion(
-            docConfigs: List<JSONObject>,
-            gwProduct: String,
-            gwVersion: String,
-        ): List<String> {
-            val matchingDocIds = mutableListOf<String>()
-            docConfigs.forEach {
-                val docId = it.getString("id")
-                val metadata = it.getJSONObject("metadata")
-                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
-                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
-                val docConfigMatchesProductAndVersion =
-                    gwProducts.any { p -> p == gwProduct } && gwVersions.any { v -> v == gwVersion }
-                if (docConfigMatchesProductAndVersion) {
-                    matchingDocIds.add(docId)
-                }
-            }
-            return matchingDocIds
-        }
-
-
-        private fun createRootProjectForRunners(): Project {
-            return Project {
-                name = "Runners"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                arrayOf(
-                    GwDeployEnvs.DEV.envName,
-                    GwDeployEnvs.STAGING.envName,
-                    GwDeployEnvs.PROD.envName
-                ).map {
-                    subProject(createRunnersProjectForEnv(it))
-                }
-            }
-        }
-
-        private fun createRunnersProjectForEnv(deployEnv: String): Project {
-            val docConfigsForEnv = getDocConfigsFromBuildConfigsForEnv(deployEnv)
-            val productProjects = generateProductProjects(deployEnv, docConfigsForEnv)
-            return Project {
-                name = "Runners for $deployEnv"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                productProjects.forEach { pp ->
-                    pp.subProjects.forEach { vp ->
-                        val gwProduct = pp.name
-                        val gwVersion = vp.name
-                        val matchingDocIds = getDocIdsForProductAndVersion(docConfigsForEnv, gwProduct, gwVersion)
-                        if (matchingDocIds.size > 1) {
-                            val publishAllDocsBuildType = createRunnerBuildType(
-                                deployEnv, matchingDocIds, "Publish all docs", gwProduct, gwVersion
-                            )
-                            vp.buildType(publishAllDocsBuildType)
-                        }
-                    }
-                    subProject(pp)
-                }
-            }
-        }
-
-        private fun generateProductProjects(deployEnv: String, docConfigs: List<JSONObject>): List<Project> {
-            val productProjects = mutableListOf<Project>()
-            for (docConfig in docConfigs) {
-                val docId = docConfig.getString("id")
-                val docTitle = docConfig.getString("title")
-                val metadata = docConfig.getJSONObject("metadata")
-                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
-                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
-                for (gwProduct in gwProducts) {
-                    val existingProductProject = productProjects.find { it.name == gwProduct }
-                    if (existingProductProject == null) {
-                        productProjects.add(Project {
-                            name = gwProduct
-                            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${deployEnv}"))
-
-                            gwVersions.forEach {
-                                subProject {
-                                    name = it
-                                    id =
-                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
-
-                                    buildType(createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, it))
-                                }
-                            }
-                        })
-                    } else {
-                        for (gwVersion in gwVersions) {
-                            val runnerBuildType =
-                                createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, gwVersion)
-                            val existingVersionSubproject =
-                                existingProductProject.subProjects.find { it.name == gwVersion }
-                            if (existingVersionSubproject == null) {
-                                existingProductProject.subProject {
-                                    name = gwVersion
-                                    id =
-                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
-
-                                    buildType(runnerBuildType)
-                                }
-                            } else {
-                                existingVersionSubproject.buildType(runnerBuildType)
-                            }
-                        }
-                    }
-                }
-            }
-            return productProjects
-        }
-
-        private fun createRunnerBuildType(
-            deployEnv: String,
-            docIds: List<String>,
-            docTitle: String,
-            gwProduct: String,
-            gwVersion: String,
-        ): BuildType {
-            return BuildType {
-                val uniqueId = Helpers.md5("${deployEnv}${gwProduct}${gwVersion}${docIds.joinToString()}")
-                name = "$docTitle (${uniqueId})"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                type = BuildTypeSettings.Type.COMPOSITE
-
-                dependencies {
-                    docIds.forEach {
-                        snapshot(Helpers.resolveRelativeIdFromIdString(Helpers.md5("Publish to ${deployEnv}${it}"))) {
-                            // Build runners reuse doc builds to avoid unnecessary build runs.
-                            // This feature can't be used in runners for prod doc builds because the prod doc builds
-                            // don’t use a VCS Root - they only copy from staging to prod.
-                            // Therefore, runners can’t discover any changes in the VCS Root from which the staging output
-                            // was built and as a result they don’t trigger the dependent doc build for prod.
-                            if (deployEnv == GwDeployEnvs.PROD.envName) {
-                                reuseBuilds = ReuseBuilds.NO
-                            }
-                            onDependencyFailure = FailureAction.FAIL_TO_START
-                        }
-                    }
-                }
-            }
-        }
-
     }
 
     object Docs {
@@ -2158,8 +2014,8 @@ object User {
                     docBuildType.steps.step(copyFromStagingToProdStep)
                     docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
                 } else {
-                    docBuildType.artifactRules =
-                        "${workingDir}/${outputDir}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}"
+                    docBuildType.artifactRules += "\n${workingDir}/${outputDir}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}"
+
                     val buildDitaProjectStep: ScriptBuildStep
                     val buildPdfs = when (env) {
                         GwDeployEnvs.STAGING.envName -> true
@@ -2399,8 +2255,13 @@ object User {
                     artifactRules = """
                     %teamcity.build.workingDir%/*.log => build_logs
                 """.trimIndent()
-                    val configFile = "%teamcity.build.workingDir%/config.json"
-                    val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deployEnv, docId, configFile)
+                    val crawlDocStep =
+                        GwBuildSteps.createRunDocCrawlerStep(
+                            deployEnv,
+                            GwDocCrawlerOperationModes.CRAWL.modeValue,
+                            propertyName = "DOC_IDS",
+                            propertyValue = docId,
+                        )
                     steps.step(crawlDocStep)
                     steps.stepsOrder.add(crawlDocStep.id.toString())
                 }
@@ -3067,7 +2928,8 @@ object User {
                                 normalizedDitaDir,
                                 schematronReportsDir,
                                 indexRedirect,
-                                buildFilter
+                                buildFilter,
+                                docId
                             )
                         )
                         step(uploadStep)
@@ -3383,6 +3245,7 @@ object Admin {
             subProject(Frontend.rootProject)
             subProject(Server.rootProject)
             subProject(Content.rootProject)
+            subProject(Runners.rootProject)
         }
     }
 
@@ -3403,7 +3266,7 @@ object Admin {
                 shellScript = """
                     yarn && yarn audit:all
                 """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             }
         }
 
@@ -3441,6 +3304,7 @@ object Admin {
                 goals = "teamcity-configs:generate"
                 pomLocation = ".teamcity/pom.xml"
                 workingDir = ""
+                runnerArgs = "-X"
             }
         }
 
@@ -3809,7 +3673,12 @@ object Admin {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 steps {
-                    step(GwBuildSteps.createRunIndexCleanerStep(deployEnv))
+                    step(
+                        GwBuildSteps.createRunDocCrawlerStep(
+                            deployEnv,
+                            GwDocCrawlerOperationModes.CLEAN_INDEX.modeValue,
+                        )
+                    )
                 }
 
                 features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -3833,7 +3702,7 @@ object Admin {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 arrayOf(
-                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
+                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
                 ).forEach {
                     buildType(createUpdateSearchIndexBuildType(it.envName))
                 }
@@ -3841,24 +3710,53 @@ object Admin {
         }
 
         private fun createUpdateSearchIndexBuildType(deployEnv: String): BuildType {
-            val configFile = "%teamcity.build.workingDir%/config.json"
             return BuildType {
                 name = "Update search index on $deployEnv"
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
+                artifactRules = """
+                    %teamcity.build.workingDir%/*.log => build_logs
+                """.trimIndent()
+
                 params {
+                    select(
+                        "PROPERTY_NAME",
+                        "DOC_IDS",
+                        label = "Property name",
+                        description = """
+                            Choose the property that you want to use to limit the number of documents to index:
+                            - Doc IDs - only documents with specific IDs are indexed
+                            - Releases - only cloud documents that have at least one release from the property value field are indexed
+                            - Versions - only self-managed documents that have at least one version from the property value field are indexed
+                            - None - all documents are indexed. Think twice before selecting this option!
+                        """.trimIndent(),
+                        options = listOf(
+                            "Doc IDs" to "DOC_IDS",
+                            "Releases" to "RELEASES",
+                            "Versions" to "VERSIONS",
+                            "None (all docs)" to "NONE",
+                        ),
+                        display = ParameterDisplay.PROMPT,
+                    )
                     text(
-                        "DOC_ID",
+                        "PROPERTY_VALUE",
                         "",
-                        label = "Doc ID",
-                        description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+                        label = "Property value",
+                        description = "A comma-separated list of values. This field is ignored if you index all documents. Example for releases: Hakuba,Innsbruck",
                         display = ParameterDisplay.PROMPT,
                         allowEmpty = true
                     )
                 }
 
                 steps {
-                    step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%DOC_ID%", configFile))
+                    step(
+                        GwBuildSteps.createRunDocCrawlerStep(
+                            deployEnv,
+                            GwDocCrawlerOperationModes.CRAWL.modeValue,
+                            propertyName = "%PROPERTY_NAME%",
+                            propertyValue = "%PROPERTY_VALUE%"
+                        )
+                    )
                 }
 
                 features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -4011,8 +3909,8 @@ object Admin {
                     echo "Setting credentials to access prod"
                     $awsEnvVarsProd
                     
-                    cd %teamcity.build.checkoutDir%/ci
-                    ./downloadPdfsForEscrow.sh
+                    cd %teamcity.build.checkoutDir%/ci/downloadPdfsForEscrow
+                    ./installZipTool.sh && ./downloadPdfsForEscrow.sh
                 """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -4036,6 +3934,8 @@ object Admin {
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         })
 
         object SyncDocsFromStagingToDev : BuildType({
@@ -4068,7 +3968,7 @@ object Admin {
                     
                     node ci/reindexFromStagingToDev.mjs
                     """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
             }
 
@@ -4409,7 +4309,7 @@ object Admin {
                         while [ ${'$'}SECONDS -le 30 ]; do
                           status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
                           if [ "${'$'}status" == "Running" ]; then
-                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
+                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk update && apk add --no-cache ${GwConfigParams.DB_CLIENT_PACKAGE_NAME.paramValue} zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
                             break
                           else
                             echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
@@ -4495,7 +4395,7 @@ object Admin {
                             while [ ${'$'}SECONDS -le 30 ]; do
                               status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
                               if [ "${'$'}status" == "Running" ]; then
-                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
+                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk update && apk add --no-cache ${GwConfigParams.DB_CLIENT_PACKAGE_NAME.paramValue} zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
                                 break
                               else
                                 echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
@@ -4599,7 +4499,7 @@ object Admin {
                         yarn
                         node uploadLegacyConfigsToDb.mjs
                         """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
             }
 
@@ -4915,7 +4815,7 @@ object Admin {
                     CI=true yarn test:landing-pages
                     yarn build
                 """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
             }
 
@@ -5134,7 +5034,6 @@ object Admin {
                     set -e
                     export OKTA_CLIENT_ID=mock
                     export OKTA_CLIENT_SECRET=mock
-                    export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
                     export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
                     export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
                     export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
@@ -5163,7 +5062,7 @@ object Admin {
                     yarn
                     yarn test:server
                 """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
             }
 
@@ -5276,5 +5175,164 @@ object Admin {
 
             return deployServerBuildType
         }
+    }
+
+    object Runners {
+        val rootProject = createRootProjectForRunners()
+
+        private fun getDocConfigsFromBuildConfigsForEnv(deployEnv: String): List<JSONObject> {
+            val docConfigsForEnv = mutableListOf<JSONObject>()
+            Helpers.buildConfigs.forEach {
+                val docId = it.getString("docId")
+                val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
+                val docEnvironments = docConfig.getJSONArray("environments")
+                if (docEnvironments.contains(deployEnv)) {
+                    docConfigsForEnv.add(docConfig)
+                }
+            }
+            return docConfigsForEnv
+        }
+
+        private fun getDocIdsForProductAndVersion(
+            docConfigs: List<JSONObject>,
+            gwProduct: String,
+            gwVersion: String,
+        ): List<String> {
+            val matchingDocIds = mutableListOf<String>()
+            docConfigs.forEach {
+                val docId = it.getString("id")
+                val metadata = it.getJSONObject("metadata")
+                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
+                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
+                val docConfigMatchesProductAndVersion =
+                    gwProducts.any { p -> p == gwProduct } && gwVersions.any { v -> v == gwVersion }
+                if (docConfigMatchesProductAndVersion) {
+                    matchingDocIds.add(docId)
+                }
+            }
+            return matchingDocIds
+        }
+
+
+        private fun createRootProjectForRunners(): Project {
+            return Project {
+                name = "Runners"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                arrayOf(
+                    GwDeployEnvs.DEV.envName,
+                    GwDeployEnvs.STAGING.envName,
+                    GwDeployEnvs.PROD.envName
+                ).map {
+                    subProject(createRunnersProjectForEnv(it))
+                }
+            }
+        }
+
+        private fun createRunnersProjectForEnv(deployEnv: String): Project {
+            val docConfigsForEnv = getDocConfigsFromBuildConfigsForEnv(deployEnv)
+            val productProjects = generateProductProjects(deployEnv, docConfigsForEnv)
+            return Project {
+                name = "Runners for $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                productProjects.forEach { pp ->
+                    pp.subProjects.forEach { vp ->
+                        val gwProduct = pp.name
+                        val gwVersion = vp.name
+                        val matchingDocIds = getDocIdsForProductAndVersion(docConfigsForEnv, gwProduct, gwVersion)
+                        if (matchingDocIds.size > 1) {
+                            val publishAllDocsBuildType = createRunnerBuildType(
+                                deployEnv, matchingDocIds, "Publish all docs", gwProduct, gwVersion
+                            )
+                            vp.buildType(publishAllDocsBuildType)
+                        }
+                    }
+                    subProject(pp)
+                }
+            }
+        }
+
+        private fun generateProductProjects(deployEnv: String, docConfigs: List<JSONObject>): List<Project> {
+            val productProjects = mutableListOf<Project>()
+            for (docConfig in docConfigs) {
+                val docId = docConfig.getString("id")
+                val docTitle = docConfig.getString("title")
+                val metadata = docConfig.getJSONObject("metadata")
+                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
+                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
+                for (gwProduct in gwProducts) {
+                    val existingProductProject = productProjects.find { it.name == gwProduct }
+                    if (existingProductProject == null) {
+                        productProjects.add(Project {
+                            name = gwProduct
+                            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${deployEnv}"))
+
+                            gwVersions.forEach {
+                                subProject {
+                                    name = it
+                                    id =
+                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
+
+                                    buildType(createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, it))
+                                }
+                            }
+                        })
+                    } else {
+                        for (gwVersion in gwVersions) {
+                            val runnerBuildType =
+                                createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, gwVersion)
+                            val existingVersionSubproject =
+                                existingProductProject.subProjects.find { it.name == gwVersion }
+                            if (existingVersionSubproject == null) {
+                                existingProductProject.subProject {
+                                    name = gwVersion
+                                    id =
+                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
+
+                                    buildType(runnerBuildType)
+                                }
+                            } else {
+                                existingVersionSubproject.buildType(runnerBuildType)
+                            }
+                        }
+                    }
+                }
+            }
+            return productProjects
+        }
+
+        private fun createRunnerBuildType(
+            deployEnv: String,
+            docIds: List<String>,
+            docTitle: String,
+            gwProduct: String,
+            gwVersion: String,
+        ): BuildType {
+            return BuildType {
+                val uniqueId = Helpers.md5("${deployEnv}${gwProduct}${gwVersion}${docIds.joinToString()}")
+                name = "$docTitle (${uniqueId})"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                type = BuildTypeSettings.Type.COMPOSITE
+
+                dependencies {
+                    docIds.forEach {
+                        snapshot(Helpers.resolveRelativeIdFromIdString(Helpers.md5("Publish to ${deployEnv}${it}"))) {
+                            // Build runners reuse doc builds to avoid unnecessary build runs.
+                            // This feature can't be used in runners for prod doc builds because the prod doc builds
+                            // don’t use a VCS Root - they only copy from staging to prod.
+                            // Therefore, runners can’t discover any changes in the VCS Root from which the staging output
+                            // was built and as a result they don’t trigger the dependent doc build for prod.
+                            if (deployEnv == GwDeployEnvs.PROD.envName) {
+                                reuseBuilds = ReuseBuilds.NO
+                            }
+                            onDependencyFailure = FailureAction.FAIL_TO_START
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -19,7 +19,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Release Video',
-          url: 'https://www.brainshark.com/1/player/guidewire?pi=zHjz8nvg0ziJoAz0&r3f1=&fb=0',
+          url: 'https://www.brainshark.com/guidewire/InsuranceNowInnsbruck',
           videoIcon: true,
         },
         {
@@ -55,6 +55,10 @@ const pageConfig: SectionLayoutProps = {
           label: 'Excel Designed Rating',
           docId: 'inexcelrating30',
         },
+        {
+          label: 'Data Service',
+          docId: 'indataservice',
+        },
       ],
     },
     {
@@ -86,7 +90,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'inapidevelopment',
         },
         {
-          label: 'Developer Setup Draft',
+          label: 'Developer Setup - Internal',
           docId: 'indevguidejava11draft',
         },
         {
@@ -143,7 +147,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20233provportal',
         },
         {
-          label: 'Provisioning Portal Internal',
+          label: 'Provisioning Portal - Internal',
           docId: 'in20233provportalinternal',
         },
       ],

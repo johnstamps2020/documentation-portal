@@ -2,14 +2,21 @@ import Category2Layout, {
   Category2LayoutProps,
 } from 'components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
+import innsbruckBackgroundImage from 'images/background-innsbruck.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
-import hakubaBadge from 'images/badge-hakuba.svg';
+import innsbruckBadge from 'images/badge-innsbruck.svg';
+import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundImage: `url(${gradientBackgroundImage})`,
+    backgroundImage: {
+      xs: `url(${gradientBackgroundImage})`,
+      sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
+  url(${innsbruckBackgroundImage}), 
+  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+    },
   },
   selector: {
     label: 'Select cloud release',
@@ -35,7 +42,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/dataPlatform',
         },
         {
-          label: 'Autopilot Workflow Service (Early Access)',
+          label: 'Autopilot Workflow Service',
           pagePath: 'cloudProducts/autopilotworkflowservice',
         },
       ],
@@ -90,7 +97,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Explore',
-          pagePath: 'cloudProducts/explore/latest',
+          docId: 'exploreusingrelease',
         },
         {
           label: 'Canvas',
@@ -102,7 +109,8 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'HazardHub',
-          url: '/hazardhub/HazardHub_Intro_gw.pdf',
+          docId: 'hazardhub',
+          pathInDoc: 'HazardHub_Intro_gw.pdf',
           videoIcon: false,
         },
         {
@@ -118,7 +126,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/cyence',
         },
         {
-          label: 'Data Studio (Early Access)',
+          label: 'Data Studio',
           docId: 'datastudiorelease',
         },
       ],
@@ -136,19 +144,19 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Integration Gateway',
-          docId: 'integgatewaydevnext',
+          docId: 'integgatewaydevlatest',
         },
         {
           label: 'App Events',
-          docId: 'appeventsdevnext',
+          docId: 'appeventsdev',
         },
         {
           label: 'REST API Client',
-          docId: 'isrestapiclientguidenext',
+          docId: 'isrestapiclientguide',
         },
         {
-          label: 'Jutro Digital Platform (Early Access)',
-          pagePath: 'cloudProducts/innsbruck/jutroDigitalPlatform',
+          label: 'Jutro Digital Platform',
+          docId: 'jutro1000',
         },
         {
           label: 'Guidewire Testing',
@@ -167,37 +175,22 @@ const pageConfig: Category2LayoutProps = {
   ],
   whatsNew: {
     label: 'Innsbruck',
-    badge: hakubaBadge,
-    item: { label: 'Learn more', docId: 'whatsnewhakuba' },
+    badge: innsbruckBadge,
+    item: { label: 'Learn more', docId: 'whatsnewinnsbruck' },
     content: [
-      'Coming soon',
+      'Jutro Digital Platform',
+      'Autopilot Workflow Service',
+      'Data Studio',
+      'Analytics Manager',
+      'Claims Visibility',
+      'New Cyence and HazardHub reports',
+      'InsuranceNow GO support for Commercial Package Policy',
+      'Update automation for InsuranceNow (EA) and EnterpriseEngage',
+      'App Events availability with BillingCenter',
+      'Cloud API updates',
     ],
   },
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-      {
-        label: 'Internal docs',
-        docId: 'internaldocslatest',
-      },
-    ],
-  },
+  sidebar: implementationResourcesSidebar,
 };
 
 export default function Innsbruck() {

@@ -17,6 +17,12 @@ const pageConfig: SectionLayoutProps = {
           label: 'Release Notes',
           docId: 'dh1090rn',
         },
+        {
+          label: 'Support Matrix',
+          docId: 'supportmatrices',
+          pathInDoc: 'data-management/data-management-10.9-support-matrix.pdf',
+          videoIcon: false,
+        },
       ],
     },
     {

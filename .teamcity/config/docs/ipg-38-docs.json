@@ -3,10 +3,15 @@
   "docs": [
     {
       "id": "midipgimpl38",
-      "title": "Implementation",
+      "title": "InsuranceSuite Package for Germany Implementation",
       "url": "self-managed/ipg/38/impl",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Features and functionality"],
@@ -21,16 +26,21 @@
     },
     {
       "id": "midipgapp38",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Germany Application Guide",
       "url": "self-managed/ipg/38/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Features and functionality"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -39,10 +49,15 @@
     },
     {
       "id": "midipginstall38",
-      "title": "Installation",
+      "title": "InsuranceSuite Package for Germany Installation",
       "url": "self-managed/ipg/38/install",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Installation"],
@@ -57,16 +72,21 @@
     },
     {
       "id": "midipgrnen38",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Germany Release Notes",
       "url": "self-managed/ipg/38/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Release notes"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -75,16 +95,21 @@
     },
     {
       "id": "midipgrnde38",
-      "title": "Release Notes (German)",
+      "title": "InsuranceSuite Package for Germany Release Notes (German)",
       "url": "de/self-managed/ipg/38/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Release notes"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -93,10 +118,15 @@
     },
     {
       "id": "midipgglossary38",
-      "title": "Glossary",
+      "title": "InsuranceSuite Package for Germany Glossary",
       "url": "self-managed/ipg/38/glossary",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Glossary"],
@@ -111,16 +141,21 @@
     },
     {
       "id": "midipgappde38",
-      "title": "Application Guide (German)",
+      "title": "InsuranceSuite Package for Germany Application Guide (German)",
       "url": "de/self-managed/ipg/38/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Germany"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Self-managed"],
         "version": ["3.8"],
         "subject": ["Features and functionality"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: 'ServiceRepEngage リリースノート', 
+docId: 'dx202310jaJPsrerelnotes', 
+}, 
+{
+  label: 'EnterpriseEngage アップデートガイド', 
+  docId: 'ee202310jaJPupdate', 
+}, 
+],
+},
+{
       label: '2023.06 (Hakuba)',
       items: [
         {
@@ -32,7 +45,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/sre/2023.02/Loc_ReleaseNotes_sre.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/sre/2023.02/Loc_ReleaseNotes_sre.pdf',
           videoIcon: false,
         },
       ],
@@ -59,7 +73,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/sre/11.1/ja-SRE onprem_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/sre/11.1/ja-SRE onprem_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -69,28 +84,34 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'コンフィギュレーションガイド',
-          url: '/l10n/pdfs/ja-JP/sre/10.0.1/ja-SRE_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/sre/10.0.1/ja-SRE_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: '管理およびセキュリティガイド',
-          url: '/l10n/pdfs/ja-JP/sre/10.0.1/ja-SRE_Admin and Security Guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/sre/10.0.1/ja-SRE_Admin and Security Guide.pdf',
           videoIcon: false,
         },
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/sre/10.0.1/ja-SRE_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/sre/10.0.1/ja-SRE_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'アプリケーションガイド',
-          url: '/l10n/pdfs/ja-JP/sre/10.0.1/ja-SRE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/sre/10.0.1/ja-SRE_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label:
             'ライブスタイルガイド：インストールおよびコンフィギュレーションガイド',
-          url: '/l10n/pdfs/ja-JP/sre/10.0.1/ja-SRE_Live Style Guide Install and Config.pdf.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/sre/10.0.1/ja-SRE_Live Style Guide Install and Config.pdf.pdf',
           videoIcon: false,
         },
       ],
@@ -101,3 +122,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Sre() {
   return <CategoryLayout {...pageConfig} />;
 }
+

@@ -1,3 +1,5 @@
+import LaunchIcon from '@mui/icons-material/Launch';
+import Box from '@mui/material/Box';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Link, { LinkProps } from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
@@ -9,6 +11,7 @@ import VideoIcon from './VideoIcon';
 export type LandingPageLinkProps = {
   landingPageItem: LandingPageItemData;
   sx?: LinkProps['sx'];
+  showExternalIcon?: boolean;
 };
 
 function resolveUrl(srcUrl: string | undefined) {
@@ -51,6 +54,7 @@ export function LandingPageButton({
 export default function LandingPageLink({
   landingPageItem,
   sx,
+  showExternalIcon,
 }: LandingPageLinkProps) {
   return (
     <Stack
@@ -64,8 +68,26 @@ export default function LandingPageLink({
           {landingPageItem.label}
         </Link>
       ) : (
-        <Link href={resolveUrl(landingPageItem?.url)} sx={sx}>
-          {landingPageItem?.label}
+        <Link
+          href={resolveUrl(landingPageItem?.url)}
+          target={showExternalIcon ? '_blank' : undefined}
+          sx={sx}
+        >
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <Box>{landingPageItem?.label}</Box>
+
+            {showExternalIcon && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <LaunchIcon sx={sx} />
+              </Box>
+            )}
+          </Stack>
         </Link>
       )}
       {landingPageItem?.videoIcon && <VideoIcon />}

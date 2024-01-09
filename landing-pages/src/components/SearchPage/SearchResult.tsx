@@ -1,56 +1,48 @@
-import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
-  ServerSearchInnerHit,
+  SearchResultSource,
   ServerSearchResult,
 } from 'server/dist/types/serverSearch';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import {
-  StyledAccordion,
-  StyledAccordionDetails,
-  StyledAccordionSummary,
-  StyledHeading2,
-  StyledLink,
-} from './StyledSearchComponents';
+import { StyledHeading2, StyledLink } from './StyledSearchComponents';
+import SearchResultTags from './SearchResultTags';
+import SearchResultInnerHits from './SearchResultInnerHits';
+import { languageLabels } from '../../vars';
+
+export function createSearchResultLink(
+  searchResult: ServerSearchResult | SearchResultSource
+) {
+  const docTitle = searchResult.doc_display_title || searchResult.doc_title;
+  const topicTitle = searchResult.title;
+  if (topicTitle.includes('|')) {
+    return topicTitle.replace(/\|(.*)$/g, `| ${docTitle}`);
+  }
+  return `${topicTitle} | ${docTitle}`;
+}
 
 export default function SearchResult(searchResult: ServerSearchResult) {
-  const ListItem = styled('li')(() => ({
-    margin: '0 4px 6px 0',
-  }));
-
   const highlightedTermsUrlParam = `hl=${searchResult.uniqueHighlightTerms}`;
-
+  const searchResultTags = [
+    searchResult.product,
+    searchResult.release && searchResult.release.length > 0
+      ? searchResult.release
+      : searchResult.version,
+    searchResult.subject || '',
+    languageLabels.find((l) => l.key === searchResult.language)?.label ||
+      searchResult.language,
+  ]
+    .flat()
+    .filter(Boolean);
   return (
     <Stack sx={{ paddingBottom: '24px' }}>
       <StyledLink href={`${searchResult.href}?${highlightedTermsUrlParam}`}>
         <StyledHeading2
-          dangerouslySetInnerHTML={{ __html: searchResult.title }}
+          dangerouslySetInnerHTML={{
+            __html: createSearchResultLink(searchResult),
+          }}
         />
       </StyledLink>
-
-      <Stack direction="row" spacing={1}>
-        <Paper
-          sx={{
-            display: 'flex',
-            justifyContent: 'flex-start',
-            flexWrap: 'wrap',
-            listStyle: 'none',
-            p: 0,
-            m: 0,
-          }}
-          component="ul"
-          elevation={0}
-        >
-          {searchResult.docTags.flat().map((t, tIndex) => (
-            <ListItem key={tIndex}>
-              <Chip label={t} variant="filled" size="small" />
-            </ListItem>
-          ))}
-        </Paper>
-      </Stack>
+      <SearchResultTags {...searchResult} />
       <Typography
         paragraph
         dangerouslySetInnerHTML={{ __html: searchResult.body }}
@@ -61,30 +53,7 @@ export default function SearchResult(searchResult: ServerSearchResult) {
           my: 0,
         }}
       />
-      {searchResult.innerHits.length > 0 && (
-        <StyledAccordion>
-          <StyledAccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="inner-hit-panel-content"
-            id="inner-hit-panel-header"
-          >
-            Also found in {searchResult.innerHits.length} pages with the same
-            title
-          </StyledAccordionSummary>
-          <StyledAccordionDetails>
-            <Stack>
-              {searchResult.innerHits.map((h: ServerSearchInnerHit, index) => (
-                <StyledLink
-                  key={`${h.label}${index}`}
-                  href={`${h.href}?${highlightedTermsUrlParam}`}
-                >
-                  {h.tags.join(', ')}
-                </StyledLink>
-              ))}
-            </Stack>
-          </StyledAccordionDetails>
-        </StyledAccordion>
-      )}
+      <SearchResultInnerHits {...searchResult} />
     </Stack>
   );
 }

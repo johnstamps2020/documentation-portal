@@ -57,7 +57,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/pc/2020.05/ISCL_202005_it_IT_PC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/pc/2020.05/ISCL_202005_it_IT_PC-AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -67,7 +68,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/pc/10.1.1/PC1011-it_IT-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/pc/10.1.1/PC1011-it_IT-AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -77,7 +79,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/pc/10.0.2/it-PC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/pc/10.0.2/it-PC-AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -87,7 +90,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/pc/10.0.0/it-PC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/pc/10.0.0/it-PC-AppGuide.pdf',
           videoIcon: false,
         },
       ],

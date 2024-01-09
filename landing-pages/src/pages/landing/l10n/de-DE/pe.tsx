@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]ProducerEngage Release Notes', 
+docId: 'dx202310deDEperelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -31,7 +40,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/2023.02/ProducerEngage_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/pe/2023.02/ProducerEngage_AppGuide.pdf',
           videoIcon: false,
         },
         {
@@ -45,7 +55,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/2021.11/de-DE Digital v.2021.11 PE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/pe/2021.11/de-DE Digital v.2021.11 PE_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -55,22 +66,29 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Administrator- und Sicherheitshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE admin&security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Entwicklerhandbuch',
-          url: '/l10n/pdfs/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE Developers-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE Developers-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE Installer-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE Installer-guide.pdf',
           videoIcon: false,
         },
       ],
@@ -80,12 +98,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/11.1/de-PE-onprem_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/pe/11.1/de-PE-onprem_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/11.1/de-PE-cloud_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/pe/11.1/de-PE-cloud_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -95,27 +115,33 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/10.0.1/de-PE_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/pe/10.0.1/de-PE_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Konfigurationshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/10.0.1/de-PE_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/pe/10.0.1/de-PE_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/10.0.1/de-PE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/pe/10.0.1/de-PE_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Live Style Guide Installation and Configuration Guide',
-          url: '/l10n/pdfs/de-DE/pe/10.0.1/de-PE_Life Style Guide Install and Config.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/pe/10.0.1/de-PE_Life Style Guide Install and Config.pdf',
           videoIcon: false,
         },
         {
           label: 'Administrator- und Sicherheitshandbuch',
-          url: '/l10n/pdfs/de-DE/pe/10.0.1/de-PE_admin-and-security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/pe/10.0.1/de-PE_admin-and-security-guide.pdf',
           videoIcon: false,
         },
       ],
@@ -126,3 +152,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Pe() {
   return <CategoryLayout {...pageConfig} />;
 }
+

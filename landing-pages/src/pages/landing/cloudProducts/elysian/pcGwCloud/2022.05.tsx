@@ -31,10 +31,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'ispc202205devsetup',
         },
         {
-          label: 'Upgrade',
-          docId: 'ispc202205upgrade',
-        },
-        {
           label: 'InsuranceSuite Configuration Upgrade Tools',
           docId: 'isconfigupgradetools470',
         },

@@ -24,7 +24,7 @@
       "srcId": "dm202302109src",
       "docId": "dh1090product",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -33,7 +33,7 @@
       "srcId": "dm202302109src",
       "docId": "dh1090install",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -42,7 +42,7 @@
       "srcId": "dm202302109src",
       "docId": "dh1090upgrade",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -51,7 +51,7 @@
       "srcId": "dm202302109src",
       "docId": "dh1090config",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -110,7 +110,7 @@
       "srcId": "dm202302109src",
       "docId": "ic1090product",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -119,7 +119,7 @@
       "srcId": "dm202302109src",
       "docId": "ic1090install",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -128,7 +128,7 @@
       "srcId": "dm202302109src",
       "docId": "ic1090upgrade",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -137,7 +137,7 @@
       "srcId": "dm202302109src",
       "docId": "ic1090config",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",

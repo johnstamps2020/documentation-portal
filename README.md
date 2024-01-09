@@ -10,8 +10,8 @@ You need the following tools:
 - Docker Desktop
 - [nvm](https://github.com/nvm-sh/nvm) for managing Node.js versions. We use
   `.nvmrc` files for automatic version switching.
-- Node.js 16.18.0 for running the server (install through nvm)
-- Node.js 18.15.0 for loading configs into the database (install through nvm)
+- Node.js 18.18.2 for running the server and loading configs into the database
+  (install through nvm)
 - `pg_restore` - it's a command line tool for working with Postgres dumps. It's
   included in the Postgres installation. If you use macOS, you can install it
   through Homebrew: `brew install libpq`.
@@ -27,18 +27,22 @@ You need the following tools:
 
 Create a `server/.env` file with the following variables:
 
-> IMPORTANT: Private keys and other sensitive data are not listed below, so you
-> need to get them from Password Vault or AWS Secrets Manager.
-
-> IMPORTANT: If you use docker compose for running the local dev environment,
-> you need to set different values for the following variables:
-> CONFIG_DB_HOST=db, FRONTEND_URL=http://landing-pages:6006,
-> ELASTIC_SEARCH_URL=http://search:9200
+> IMPORTANT:
+>
+> - Private keys and other sensitive data are not listed below, so you need to
+>   get them from Password Vault or AWS Secrets Manager.
+> - By default, Node.js 18 resolves `localhost` to the IPv6 address (`::1`), so
+>   you may need to change the value of the `FRONTEND_URL` variable to
+>   `http://127.0.0.1:6006`
+> - If you use docker compose for running the local dev environment, you need to
+>   set different values for the following variables:
+>   - `CONFIG_DB_HOST=db`
+>   - `FRONTEND_URL=http://landing-pages:6006`
+>   - `ELASTIC_SEARCH_URL=http://search:9200`
 
 ```
 OKTA_CLIENT_ID=
 OKTA_CLIENT_SECRET=
-OKTA_IDP=
 OKTA_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
 OKTA_SCOPES="NODE_Hawaii_Docs_Web.read"
 OKTA_AUDIENCE=Guidewire

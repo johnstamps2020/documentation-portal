@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Notas de versão',
+          docId: 'iscc202310ptBRreleasenotes',
+        },
+        {
+          label: 'Guia de atualização',
+          docId: 'iscc202310ptBRupdate',
+        },
+      ],
+    },
+    {
       label: '2023.06',
       items: [
         {
@@ -44,7 +57,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guia do aplicativo',
-          url: '/l10n/pdfs/pt-BR/cc/2021.11/CC-AppGuide_pt-BR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/2021.11/CC-AppGuide_pt-BR.pdf',
           videoIcon: false,
         },
       ],
@@ -54,12 +68,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guia de instalação',
-          url: '/l10n/pdfs/pt-BR/cc/2020.11/CCCloud202011_pt-BR_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/2020.11/CCCloud202011_pt-BR_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia de configuração',
-          url: '/l10n/pdfs/pt-BR/cc/2020.11/CCCloud202011_pt-BR_ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/2020.11/CCCloud202011_pt-BR_ConfigGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -69,7 +85,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guia do aplicativo',
-          url: '/l10n/pdfs/pt-BR/cc/2020.05/IS_CL_202005_pt-BR_CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/2020.05/IS_CL_202005_pt-BR_CC-AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -79,12 +96,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guia de gerenciamento de contatos da Guidewire',
-          url: '/l10n/pdfs/pt-BR/cc/10.1.1/CC-ContactMgmtGuide_PTBR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.1.1/CC-ContactMgmtGuide_PTBR.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia do aplicativo',
-          url: '/l10n/pdfs/pt-BR/cc/10.1.1/CC-AppGuide_PTBR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.1.1/CC-AppGuide_PTBR.pdf',
           videoIcon: false,
         },
       ],
@@ -94,17 +113,20 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guia do aplicativo',
-          url: '/l10n/pdfs/pt-BR/cc/10.0.2/pt-CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.0.2/pt-CC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia de regras',
-          url: '/l10n/pdfs/pt-BR/cc/10.0.2/pt-CC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.0.2/pt-CC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia de configuração',
-          url: '/l10n/pdfs/pt-BR/cc/10.0.2/pt-CC-ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.0.2/pt-CC-ConfigGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -114,27 +136,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guia do aplicativo',
-          url: '/l10n/pdfs/pt-BR/cc/10.0.0/pt-CC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.0.0/pt-CC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia de instalação',
-          url: '/l10n/pdfs/pt-BR/cc/10.0.0/pt-CC-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.0.0/pt-CC-InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia de gerenciamento de contatos',
-          url: '/l10n/pdfs/pt-BR/cc/10.0.0/pt-CC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.0.0/pt-CC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia de regras',
-          url: '/l10n/pdfs/pt-BR/cc/10.0.0/pt-CC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.0.0/pt-CC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guia de configuração',
-          url: '/l10n/pdfs/pt-BR/cc/10.0.0/pt-CC-ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'pt-BR/cc/10.0.0/pt-CC-ConfigGuide.pdf',
           videoIcon: false,
         },
       ],

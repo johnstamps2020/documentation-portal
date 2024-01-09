@@ -6,7 +6,12 @@
       "title": "ClaimCenter for London Market Application Guide",
       "url": "london/flaine/ccapp",
       "metadata": {
-        "product": ["London Market"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Features and functionality"],
@@ -25,7 +30,12 @@
       "title": "PolicyCenter for London Market Application Guide",
       "url": "london/flaine/pcapp",
       "metadata": {
-        "product": ["London Market"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Features and functionality"],
@@ -44,7 +54,12 @@
       "title": "London Market Configuration Guide",
       "url": "london/flaine/config",
       "metadata": {
-        "product": ["London Market"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Development"],
@@ -63,7 +78,12 @@
       "title": "London Market Release Notes",
       "url": "london/flaine/releasenotes",
       "metadata": {
-        "product": ["London Market"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Release notes"],

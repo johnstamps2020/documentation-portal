@@ -10,33 +10,33 @@
         "product": ["Workflow Service"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
-        "release": ["Hakuba"],
+        "release": ["Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true,
+      "earlyAccess": false,
       "displayOnLandingPages": true
     },
     {
       "id": "workflowconsole",
-      "title": "Workflow Console",
+      "title": "Workflow Administration",
       "url": "cloud/workflow-service/workflow-console",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Workflow Service"],
         "version": ["latest"],
         "subject": ["Administration"],
-        "release": ["Garmisch", "Hakuba"],
+        "release": ["Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true,
+      "earlyAccess": false,
       "displayOnLandingPages": true
     },
     {
@@ -48,14 +48,14 @@
         "product": ["Workflow Service"],
         "version": ["latest"],
         "subject": ["Release notes"],
-        "release": ["Garmisch", "Hakuba"],
+        "release": ["Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true,
+      "earlyAccess": false,
       "displayOnLandingPages": true
     }
   ]

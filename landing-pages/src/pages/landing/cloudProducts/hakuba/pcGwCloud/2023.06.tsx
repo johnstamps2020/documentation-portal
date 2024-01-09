@@ -40,7 +40,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools500',
+          docId: 'isconfigupgradetools510',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -110,10 +110,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'gwrules',
         },
         {
-          label: 'Guidewire Rules Type Manager (Early Access)',
-          docId: 'gwrulestypemgr',
-        },
-        {
           label: 'Product Designer',
           docId: 'ispc202306pd',
         },
@@ -123,7 +119,8 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Submission Intake Configuration',
-          url: '/cloud/subintake/?contextid=submissionIntakeConfiguration',
+          docId: 'submissionintake',
+          pathInDoc: '?contextid=submissionIntakeConfiguration',
           videoIcon: false,
         },
         {

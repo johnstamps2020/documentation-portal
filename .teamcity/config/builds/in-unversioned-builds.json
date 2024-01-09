@@ -22,6 +22,15 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "INowServicePortalReleaseNotes20241Jasper.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp20241rn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowServicePortalReleaseNotes20233Innsbruck.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20233rn",
@@ -79,15 +88,6 @@
       "root": "INowServicePortalReleaseNotes20211Cortina.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20211rn",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "ConsumerServicePortalReleaseNotesV326.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "incsp326rn",
       "indexRedirect": true,
       "disabled": false
     },
@@ -157,6 +157,24 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "INowStudioReleaseNotes20241Jasper.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20241studiorn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowStudioReleaseNotes20233Innsbruck.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20233studiorn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowStudioReleaseNotes20232Hakuba.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20232studiorn",
@@ -214,6 +232,15 @@
       "root": "InsuranceNow_InstallAssist_5.0.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "ininstallassistdraft",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowCoreReleaseNotes20241Jasper.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20241rn",
       "indexRedirect": true,
       "disabled": false
     },
@@ -302,6 +329,33 @@
       "root": "GWCPOperations.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "ingwcpops",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConfiguringINowasanIdP.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "ininowasidp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "dataservice.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "indataservice",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ProgrammingStandards.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inprogstandards",
       "indexRedirect": true,
       "disabled": false
     }

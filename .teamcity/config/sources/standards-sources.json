@@ -2,6 +2,24 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "standards202401src",
+      "title": "Standards 2024.01",
+      "branch": "2024.01",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
+      "id": "standards202312src",
+      "title": "Standards 2023.12",
+      "branch": "2023.12",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
+      "id": "standards202311src",
+      "title": "Standards 2023.11",
+      "branch": "2023.11",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
       "id": "standards202310src",
       "title": "Standards 2023.10",
       "branch": "2023.10",

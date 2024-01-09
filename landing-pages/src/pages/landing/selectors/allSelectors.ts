@@ -1,9 +1,12 @@
 export const allSelectors = {
-  apdapp: [
+  apdApp: [
     { label: 'Flaine (2022.09)', pagePath: 'cloudProducts/flaine/apd' },
     { label: 'Garmisch (2023.02)', pagePath: 'cloudProducts/garmisch/apd' },
     { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba/apd' },
-    { label: 'Innsbruck (2023.10)', pagePath: 'cloudProducts/innsbruck/apd' },
+    {
+      label: 'Innsbruck (2023.10)',
+      pagePath: 'cloudProducts/innsbruck/apd',
+    },
   ],
   testingFrameworkSelector: [
     { label: 'Elysian (2022.05)', pagePath: 'testingFramework/elysian' },
@@ -11,6 +14,7 @@ export const allSelectors = {
     { label: 'Garmisch (2023.02)', pagePath: 'testingFramework/garmisch' },
     { label: 'Hakuba (2023.06)', pagePath: 'testingFramework/hakuba' },
     { label: 'Innsbruck (2023.10)', pagePath: 'testingFramework/innsbruck' },
+    { label: 'Jasper (2024.02)', pagePath: 'testingFramework/jasper' },
   ],
   s0f196c0b55cf55f2cdd1e05b1bf5e94e: [
     { label: 'Cortina', pagePath: 'apiReferences/cortina' },
@@ -113,6 +117,7 @@ export const allSelectors = {
     { label: 'Garmisch', pagePath: 'cloudProducts/garmisch' },
     { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
     { label: 'Innsbruck', pagePath: 'cloudProducts/innsbruck' },
+    { label: 'Jasper', pagePath: 'cloudProducts/jasper' },
   ],
   s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {
@@ -150,6 +155,10 @@ export const allSelectors = {
     {
       label: 'Innsbruck (2023.3)',
       pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
+    },
+    {
+      label: 'Jasper (2024.1)',
+      pagePath: 'cloudProducts/jasper/insuranceNow/2024.1',
     },
   ],
   s1793805ac84baf801d4eb31b00ab1ddf: [
@@ -241,6 +250,10 @@ export const allSelectors = {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/global-ref-apps',
     },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/global-ref-apps',
+    },
   ],
   s06dcd02c361b9539495548fd0bfb3ad2: [
     {
@@ -276,10 +289,12 @@ export const allSelectors = {
     { label: '3.6', pagePath: 'globalContent/ipg/3.6' },
     { label: '3.7', pagePath: 'globalContent/ipg/3.7' },
     { label: '3.8', pagePath: 'globalContent/ipg/3.8' },
+    { label: '3.9', pagePath: 'globalContent/ipg/3.9' },
   ],
   sabc928e21c4c1dfb2a841b6b2331c9db: [
     { label: 'BillingCenter', pagePath: 'l10n/de-DE/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/de-DE/cc' },
+    { label: 'Cloud Platform', pagePath: 'l10n/de-DE/cp' },
     {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/de-DE/ce-am',
@@ -291,6 +306,10 @@ export const allSelectors = {
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/de-DE/ce-qb' },
     { label: 'DataHub', pagePath: 'l10n/de-DE/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/de-DE/ic' },
+    {
+      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/de-DE/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/de-DE/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/de-DE/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/de-DE/pe' },
@@ -315,6 +334,7 @@ export const allSelectors = {
     { label: 'BillingCenter', pagePath: 'l10n/es-419/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/es-419/cc' },
     { label: 'Cloud Data Access', pagePath: 'l10n/es-419/cda' },
+    { label: 'Cloud Platform', pagePath: 'l10n/es-419/cp' },
     {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/es-419/ce-am',
@@ -328,6 +348,10 @@ export const allSelectors = {
     { label: 'Explore', pagePath: 'l10n/es-419/explore' },
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/es-419/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/es-419/ic' },
+    {
+      label: 'Guía de herramientas de actualización de configuración',
+      pagePath: 'l10n/es-419/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/es-419/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/es-419/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/es-419/pe' },
@@ -363,6 +387,7 @@ export const allSelectors = {
   sef23284b869fc03ddd79bc1738f4ad7d: [
     { label: 'BillingCenter', pagePath: 'l10n/fr-FR/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/fr-FR/cc' },
+    { label: 'Cloud Platform', pagePath: 'l10n/fr-FR/cp' },
     {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/fr-FR/ce-am',
@@ -374,6 +399,10 @@ export const allSelectors = {
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/fr-FR/ce-qb' },
     { label: 'DataHub', pagePath: 'l10n/fr-FR/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/fr-FR/ic' },
+    {
+      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/fr-FR/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/fr-FR/pe' },
@@ -448,18 +477,31 @@ export const allSelectors = {
     { label: 'BillingCenter', pagePath: 'l10n/pt-BR/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/pt-BR/cc' },
     { label: 'Cloud Data Access', pagePath: 'l10n/pt-BR/cda' },
+    { label: 'Cloud Platform', pagePath: 'l10n/pt-BR/cp' },
     {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/pt-BR/ce-am',
+    },
+    {
+      label: 'CustomerEngage for ClaimCenter',
+      pagePath: 'l10n/pt-BR/ce-claims',
     },
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/pt-BR/ce-qb' },
     { label: 'DataHub', pagePath: 'l10n/pt-BR/dh' },
     { label: 'Explore', pagePath: 'l10n/pt-BR/explore' },
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/pt-BR/gcc' },
     { label: 'InfoCenter', pagePath: 'l10n/pt-BR/ic' },
+    {
+      label: 'Ferramentas de atualização de configuração do Guidewire InsuranceSuite',
+      pagePath: 'l10n/pt-BR/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/pt-BR/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/pt-BR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/pt-BR/pe' },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/pt-BR/pe-claims',
+    },
     { label: 'ServiceRepEngage', pagePath: 'l10n/pt-BR/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/pt-BR/ve' },
   ],
@@ -480,6 +522,7 @@ export const allSelectors = {
     { label: '10.2.0', docId: 'bc1020' },
     { label: '10.2.1', pagePath: 'selfManagedProducts/bc/10.2.1' },
     { label: '10.2.2', pagePath: 'selfManagedProducts/bc/10.2.2' },
+    { label: '10.2.3', pagePath: 'selfManagedProducts/bc/10.2.3' },
     {
       label: '8.0.0',
       docId: 'httpsportalguidewirecomportalsecuredocbcillingenterdocammzblnv',
@@ -565,6 +608,7 @@ export const allSelectors = {
     { label: '10.2.0', docId: 'cc1020' },
     { label: '10.2.1', pagePath: 'selfManagedProducts/cc/10.2.1' },
     { label: '10.2.2', pagePath: 'selfManagedProducts/cc/10.2.2' },
+    { label: '10.2.3', pagePath: 'selfManagedProducts/cc/10.2.3' },
     {
       label: '8.0.0',
       docId: 'httpsportalguidewirecomportalsecuredoccclaimenterdocuwuokkoq',
@@ -765,6 +809,7 @@ export const allSelectors = {
     { label: '10.2.0', docId: 'pc1020' },
     { label: '10.2.1', pagePath: 'selfManagedProducts/pc/10.2.1' },
     { label: '10.2.2', pagePath: 'selfManagedProducts/pc/10.2.2' },
+    { label: '10.2.3', pagePath: 'selfManagedProducts/pc/10.2.3' },
     {
       label: '8.0.0',
       docId: 'httpsportalguidewirecomportalsecuredocpcolicyenterdocjninxbqx',
@@ -949,1200 +994,6 @@ export const allSelectors = {
       label: '8.1.0',
       docId:
         'httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya',
-    },
-  ],
-  s65a8f50f5baaf3e8c91f86c0e3b5c1f1: [
-    {
-      label: 'Upgrade From 10.0.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.0.0',
-    },
-    {
-      label: 'Upgrade From 10.0.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.0.1',
-    },
-    {
-      label: 'Upgrade From 10.0.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.0.2',
-    },
-    {
-      label: 'Upgrade From 10.0.3',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.0.3',
-    },
-    {
-      label: 'Upgrade From 10.1.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.1.0',
-    },
-    {
-      label: 'Upgrade From 10.1.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.1.1',
-    },
-    {
-      label: 'Upgrade From 10.1.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.1.2',
-    },
-    {
-      label: 'Upgrade From 10.2.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.2.0',
-    },
-    {
-      label: 'Upgrade From 10.2.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.2.1',
-    },
-    {
-      label: 'Upgrade From 10.2.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 10.2.2',
-    },
-    {
-      label: 'Upgrade From 2.1.10',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 2.1.10',
-    },
-    {
-      label: 'Upgrade From 2.1.7',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 2.1.7',
-    },
-    {
-      label: 'Upgrade From 2.1.9',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 2.1.9',
-    },
-    {
-      label: 'Upgrade From 3.0.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 3.0.1',
-    },
-    {
-      label: 'Upgrade From 3.0.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 3.0.2',
-    },
-    {
-      label: 'Upgrade From 3.0.3',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 3.0.3',
-    },
-    {
-      label: 'Upgrade From 3.0.4',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 3.0.4',
-    },
-    {
-      label: 'Upgrade From 3.0.5',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 3.0.5',
-    },
-    {
-      label: 'Upgrade From 3.0.6',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 3.0.6',
-    },
-    {
-      label: 'Upgrade From 3.0.7',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 3.0.7',
-    },
-    {
-      label: 'Upgrade From 3.0.8',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 3.0.8',
-    },
-    {
-      label: 'Upgrade From 50.0.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.0.0',
-    },
-    {
-      label: 'Upgrade From 50.1.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.1.0',
-    },
-    {
-      label: 'Upgrade From 50.1.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.1.1',
-    },
-    {
-      label: 'Upgrade From 50.1.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.1.2',
-    },
-    {
-      label: 'Upgrade From 50.2.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.2.0',
-    },
-    {
-      label: 'Upgrade From 50.2.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.2.1',
-    },
-    {
-      label: 'Upgrade From 50.3.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.3.0',
-    },
-    {
-      label: 'Upgrade From 50.3.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.3.1',
-    },
-    {
-      label: 'Upgrade From 50.3.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.3.2',
-    },
-    {
-      label: 'Upgrade From 50.4.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.4.0',
-    },
-    {
-      label: 'Upgrade From 50.4.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.4.1',
-    },
-    {
-      label: 'Upgrade From 50.4.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.4.2',
-    },
-    {
-      label: 'Upgrade From 50.4.3',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.4.3',
-    },
-    {
-      label: 'Upgrade From 50.5.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.5.0',
-    },
-    {
-      label: 'Upgrade From 50.5.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.5.1',
-    },
-    {
-      label: 'Upgrade From 50.5.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.5.2',
-    },
-    {
-      label: 'Upgrade From 50.6.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.6.0',
-    },
-    {
-      label: 'Upgrade From 50.7.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 50.7.0',
-    },
-    {
-      label: 'Upgrade From 7.0.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 7.0.0',
-    },
-    {
-      label: 'Upgrade From 7.0.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 7.0.1',
-    },
-    {
-      label: 'Upgrade From 7.0.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 7.0.2',
-    },
-    {
-      label: 'Upgrade From 7.0.3',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 7.0.3',
-    },
-    {
-      label: 'Upgrade From 7.0.4',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 7.0.4',
-    },
-    {
-      label: 'Upgrade From 7.0.5',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 7.0.5',
-    },
-    {
-      label: 'Upgrade From 7.0.6',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 7.0.6',
-    },
-    {
-      label: 'Upgrade From 7.0.7',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 7.0.7',
-    },
-    {
-      label: 'Upgrade From 7.0.8',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 7.0.8',
-    },
-    {
-      label: 'Upgrade From 8.0.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 8.0.0',
-    },
-    {
-      label: 'Upgrade From 8.0.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 8.0.1',
-    },
-    {
-      label: 'Upgrade From 8.0.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 8.0.2',
-    },
-    {
-      label: 'Upgrade From 8.0.3',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 8.0.3',
-    },
-    {
-      label: 'Upgrade From 8.0.4',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 8.0.4',
-    },
-    {
-      label: 'Upgrade From 8.0.5',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 8.0.5',
-    },
-    {
-      label: 'Upgrade From 8.0.6',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 8.0.6',
-    },
-    {
-      label: 'Upgrade From 8.0.7',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 8.0.7',
-    },
-    {
-      label: 'Upgrade From 9.0.0',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.0',
-    },
-    {
-      label: 'Upgrade From 9.0.1',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.1',
-    },
-    {
-      label: 'Upgrade From 9.0.10',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.10',
-    },
-    {
-      label: 'Upgrade From 9.0.2',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.2',
-    },
-    {
-      label: 'Upgrade From 9.0.3',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.3',
-    },
-    {
-      label: 'Upgrade From 9.0.4',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.4',
-    },
-    {
-      label: 'Upgrade From 9.0.5',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.5',
-    },
-    {
-      label: 'Upgrade From 9.0.6',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.6',
-    },
-    {
-      label: 'Upgrade From 9.0.7',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.7',
-    },
-    {
-      label: 'Upgrade From 9.0.8',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.8',
-    },
-    {
-      label: 'Upgrade From 9.0.9',
-      pagePath: 'upgradediffs/BillingCenter/Upgrade From 9.0.9',
-    },
-  ],
-  sbfa25ca7f841c9f2498e1036db9bc9b2: [
-    { label: 'BillingCenter', pagePath: 'upgradediffs/BillingCenter' },
-    { label: 'ClaimCenter', pagePath: 'upgradediffs/ClaimCenter' },
-    { label: 'ContactManager', pagePath: 'upgradediffs/ContactManager' },
-    { label: 'PolicyCenter', pagePath: 'upgradediffs/PolicyCenter' },
-  ],
-  s4467f4b28aafbb2a809226f71aa5682a: [
-    {
-      label: 'Upgrade From 10.0.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.0.0',
-    },
-    {
-      label: 'Upgrade From 10.0.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.0.1',
-    },
-    {
-      label: 'Upgrade From 10.0.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.0.2',
-    },
-    {
-      label: 'Upgrade From 10.0.3',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.0.3',
-    },
-    {
-      label: 'Upgrade From 10.1.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.1.0',
-    },
-    {
-      label: 'Upgrade From 10.1.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.1.1',
-    },
-    {
-      label: 'Upgrade From 10.1.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.1.2',
-    },
-    {
-      label: 'Upgrade From 10.2.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.2.0',
-    },
-    {
-      label: 'Upgrade From 10.2.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.2.1',
-    },
-    {
-      label: 'Upgrade From 10.2.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 10.2.2',
-    },
-    {
-      label: 'Upgrade From 4.0.3',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 4.0.3',
-    },
-    {
-      label: 'Upgrade From 4.0.4',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 4.0.4',
-    },
-    {
-      label: 'Upgrade From 4.0.5',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 4.0.5',
-    },
-    {
-      label: 'Upgrade From 4.0.6',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 4.0.6',
-    },
-    {
-      label: 'Upgrade From 4.0.7',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 4.0.7',
-    },
-    {
-      label: 'Upgrade From 4.0.8',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 4.0.8',
-    },
-    {
-      label: 'Upgrade From 4.0.9',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 4.0.9',
-    },
-    {
-      label: 'Upgrade From 5.0.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 5.0.1',
-    },
-    {
-      label: 'Upgrade From 5.0.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 5.0.2',
-    },
-    {
-      label: 'Upgrade From 5.0.3',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 5.0.3',
-    },
-    {
-      label: 'Upgrade From 5.0.4',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 5.0.4',
-    },
-    {
-      label: 'Upgrade From 5.0.5',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 5.0.5',
-    },
-    {
-      label: 'Upgrade From 5.0.6',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 5.0.6',
-    },
-    {
-      label: 'Upgrade From 5.0.7',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 5.0.7',
-    },
-    {
-      label: 'Upgrade From 5.0.8',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 5.0.8',
-    },
-    {
-      label: 'Upgrade From 5.0.9',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 5.0.9',
-    },
-    {
-      label: 'Upgrade From 50.0.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.0.0',
-    },
-    {
-      label: 'Upgrade From 50.1.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.1.0',
-    },
-    {
-      label: 'Upgrade From 50.1.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.1.1',
-    },
-    {
-      label: 'Upgrade From 50.1.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.1.2',
-    },
-    {
-      label: 'Upgrade From 50.2.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.2.0',
-    },
-    {
-      label: 'Upgrade From 50.2.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.2.1',
-    },
-    {
-      label: 'Upgrade From 50.3.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.3.0',
-    },
-    {
-      label: 'Upgrade From 50.3.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.3.1',
-    },
-    {
-      label: 'Upgrade From 50.3.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.3.2',
-    },
-    {
-      label: 'Upgrade From 50.4.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.4.0',
-    },
-    {
-      label: 'Upgrade From 50.4.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.4.1',
-    },
-    {
-      label: 'Upgrade From 50.4.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.4.2',
-    },
-    {
-      label: 'Upgrade From 50.4.3',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.4.3',
-    },
-    {
-      label: 'Upgrade From 50.5.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.5.0',
-    },
-    {
-      label: 'Upgrade From 50.5.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.5.1',
-    },
-    {
-      label: 'Upgrade From 50.5.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.5.2',
-    },
-    {
-      label: 'Upgrade From 50.6.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.6.0',
-    },
-    {
-      label: 'Upgrade From 50.7.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 50.7.0',
-    },
-    {
-      label: 'Upgrade From 6.0.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 6.0.0',
-    },
-    {
-      label: 'Upgrade From 6.0.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 6.0.1',
-    },
-    {
-      label: 'Upgrade From 6.0.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 6.0.2',
-    },
-    {
-      label: 'Upgrade From 6.0.3',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 6.0.3',
-    },
-    {
-      label: 'Upgrade From 6.0.4',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 6.0.4',
-    },
-    {
-      label: 'Upgrade From 6.0.5',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 6.0.5',
-    },
-    {
-      label: 'Upgrade From 6.0.6',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 6.0.6',
-    },
-    {
-      label: 'Upgrade From 6.0.7',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 6.0.7',
-    },
-    {
-      label: 'Upgrade From 6.0.8',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 6.0.8',
-    },
-    {
-      label: 'Upgrade From 7.0.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 7.0.0',
-    },
-    {
-      label: 'Upgrade From 7.0.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 7.0.1',
-    },
-    {
-      label: 'Upgrade From 7.0.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 7.0.2',
-    },
-    {
-      label: 'Upgrade From 7.0.3',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 7.0.3',
-    },
-    {
-      label: 'Upgrade From 7.0.4',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 7.0.4',
-    },
-    {
-      label: 'Upgrade From 7.0.5',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 7.0.5',
-    },
-    {
-      label: 'Upgrade From 7.0.6',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 7.0.6',
-    },
-    {
-      label: 'Upgrade From 7.0.7',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 7.0.7',
-    },
-    {
-      label: 'Upgrade From 7.0.8',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 7.0.8',
-    },
-    {
-      label: 'Upgrade From 8.0.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 8.0.0',
-    },
-    {
-      label: 'Upgrade From 8.0.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 8.0.1',
-    },
-    {
-      label: 'Upgrade From 8.0.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 8.0.2',
-    },
-    {
-      label: 'Upgrade From 8.0.3',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 8.0.3',
-    },
-    {
-      label: 'Upgrade From 8.0.4',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 8.0.4',
-    },
-    {
-      label: 'Upgrade From 8.0.5',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 8.0.5',
-    },
-    {
-      label: 'Upgrade From 8.0.6',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 8.0.6',
-    },
-    {
-      label: 'Upgrade From 8.0.7',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 8.0.7',
-    },
-    {
-      label: 'Upgrade From 9.0.0',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.0',
-    },
-    {
-      label: 'Upgrade From 9.0.1',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.1',
-    },
-    {
-      label: 'Upgrade From 9.0.10',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.10',
-    },
-    {
-      label: 'Upgrade From 9.0.2',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.2',
-    },
-    {
-      label: 'Upgrade From 9.0.3',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.3',
-    },
-    {
-      label: 'Upgrade From 9.0.4',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.4',
-    },
-    {
-      label: 'Upgrade From 9.0.5',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.5',
-    },
-    {
-      label: 'Upgrade From 9.0.6',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.6',
-    },
-    {
-      label: 'Upgrade From 9.0.7',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.7',
-    },
-    {
-      label: 'Upgrade From 9.0.8',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.8',
-    },
-    {
-      label: 'Upgrade From 9.0.9',
-      pagePath: 'upgradediffs/ClaimCenter/Upgrade From 9.0.9',
-    },
-  ],
-  sa288a848df7d818862b837a92f8ca01a: [
-    {
-      label: 'Upgrade From 10.0.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.0.0',
-    },
-    {
-      label: 'Upgrade From 10.0.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.0.1',
-    },
-    {
-      label: 'Upgrade From 10.0.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.0.2',
-    },
-    {
-      label: 'Upgrade From 10.0.3',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.0.3',
-    },
-    {
-      label: 'Upgrade From 10.1.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.1.0',
-    },
-    {
-      label: 'Upgrade From 10.1.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.1.1',
-    },
-    {
-      label: 'Upgrade From 10.1.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.1.2',
-    },
-    {
-      label: 'Upgrade From 10.2.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.2.0',
-    },
-    {
-      label: 'Upgrade From 10.2.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.2.1',
-    },
-    {
-      label: 'Upgrade From 10.2.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 10.2.2',
-    },
-    {
-      label: 'Upgrade From 4.0.3',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 4.0.3',
-    },
-    {
-      label: 'Upgrade From 4.0.4',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 4.0.4',
-    },
-    {
-      label: 'Upgrade From 4.0.5',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 4.0.5',
-    },
-    {
-      label: 'Upgrade From 4.0.6',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 4.0.6',
-    },
-    {
-      label: 'Upgrade From 4.0.7',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 4.0.7',
-    },
-    {
-      label: 'Upgrade From 4.0.8',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 4.0.8',
-    },
-    {
-      label: 'Upgrade From 4.0.9',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 4.0.9',
-    },
-    {
-      label: 'Upgrade From 5.0.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 5.0.1',
-    },
-    {
-      label: 'Upgrade From 5.0.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 5.0.2',
-    },
-    {
-      label: 'Upgrade From 5.0.3',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 5.0.3',
-    },
-    {
-      label: 'Upgrade From 5.0.4',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 5.0.4',
-    },
-    {
-      label: 'Upgrade From 5.0.5',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 5.0.5',
-    },
-    {
-      label: 'Upgrade From 5.0.6',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 5.0.6',
-    },
-    {
-      label: 'Upgrade From 5.0.7',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 5.0.7',
-    },
-    {
-      label: 'Upgrade From 5.0.8',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 5.0.8',
-    },
-    {
-      label: 'Upgrade From 5.0.9',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 5.0.9',
-    },
-    {
-      label: 'Upgrade From 50.0.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.0.0',
-    },
-    {
-      label: 'Upgrade From 50.1.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.1.0',
-    },
-    {
-      label: 'Upgrade From 50.1.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.1.1',
-    },
-    {
-      label: 'Upgrade From 50.1.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.1.2',
-    },
-    {
-      label: 'Upgrade From 50.2.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.2.0',
-    },
-    {
-      label: 'Upgrade From 50.2.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.2.1',
-    },
-    {
-      label: 'Upgrade From 50.3.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.3.0',
-    },
-    {
-      label: 'Upgrade From 50.3.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.3.1',
-    },
-    {
-      label: 'Upgrade From 50.3.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.3.2',
-    },
-    {
-      label: 'Upgrade From 50.4.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.4.0',
-    },
-    {
-      label: 'Upgrade From 50.4.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.4.1',
-    },
-    {
-      label: 'Upgrade From 50.4.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.4.2',
-    },
-    {
-      label: 'Upgrade From 50.4.3',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.4.3',
-    },
-    {
-      label: 'Upgrade From 50.5.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.5.0',
-    },
-    {
-      label: 'Upgrade From 50.5.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.5.1',
-    },
-    {
-      label: 'Upgrade From 50.5.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.5.2',
-    },
-    {
-      label: 'Upgrade From 50.6.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.6.0',
-    },
-    {
-      label: 'Upgrade From 50.7.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 50.7.0',
-    },
-    {
-      label: 'Upgrade From 6.0.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 6.0.0',
-    },
-    {
-      label: 'Upgrade From 6.0.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 6.0.1',
-    },
-    {
-      label: 'Upgrade From 6.0.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 6.0.2',
-    },
-    {
-      label: 'Upgrade From 6.0.3',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 6.0.3',
-    },
-    {
-      label: 'Upgrade From 6.0.4',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 6.0.4',
-    },
-    {
-      label: 'Upgrade From 6.0.5',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 6.0.5',
-    },
-    {
-      label: 'Upgrade From 6.0.6',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 6.0.6',
-    },
-    {
-      label: 'Upgrade From 6.0.7',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 6.0.7',
-    },
-    {
-      label: 'Upgrade From 6.0.8',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 6.0.8',
-    },
-    {
-      label: 'Upgrade From 7.0.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 7.0.0',
-    },
-    {
-      label: 'Upgrade From 7.0.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 7.0.1',
-    },
-    {
-      label: 'Upgrade From 7.0.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 7.0.2',
-    },
-    {
-      label: 'Upgrade From 7.0.3',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 7.0.3',
-    },
-    {
-      label: 'Upgrade From 7.0.4',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 7.0.4',
-    },
-    {
-      label: 'Upgrade From 7.0.5',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 7.0.5',
-    },
-    {
-      label: 'Upgrade From 7.0.6',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 7.0.6',
-    },
-    {
-      label: 'Upgrade From 7.0.7',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 7.0.7',
-    },
-    {
-      label: 'Upgrade From 7.0.8',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 7.0.8',
-    },
-    {
-      label: 'Upgrade From 8.0.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 8.0.0',
-    },
-    {
-      label: 'Upgrade From 8.0.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 8.0.1',
-    },
-    {
-      label: 'Upgrade From 8.0.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 8.0.2',
-    },
-    {
-      label: 'Upgrade From 8.0.3',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 8.0.3',
-    },
-    {
-      label: 'Upgrade From 8.0.4',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 8.0.4',
-    },
-    {
-      label: 'Upgrade From 8.0.5',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 8.0.5',
-    },
-    {
-      label: 'Upgrade From 8.0.6',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 8.0.6',
-    },
-    {
-      label: 'Upgrade From 8.0.7',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 8.0.7',
-    },
-    {
-      label: 'Upgrade From 9.0.0',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.0',
-    },
-    {
-      label: 'Upgrade From 9.0.1',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.1',
-    },
-    {
-      label: 'Upgrade From 9.0.10',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.10',
-    },
-    {
-      label: 'Upgrade From 9.0.2',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.2',
-    },
-    {
-      label: 'Upgrade From 9.0.3',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.3',
-    },
-    {
-      label: 'Upgrade From 9.0.4',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.4',
-    },
-    {
-      label: 'Upgrade From 9.0.5',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.5',
-    },
-    {
-      label: 'Upgrade From 9.0.6',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.6',
-    },
-    {
-      label: 'Upgrade From 9.0.7',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.7',
-    },
-    {
-      label: 'Upgrade From 9.0.8',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.8',
-    },
-    {
-      label: 'Upgrade From 9.0.9',
-      pagePath: 'upgradediffs/ContactManager/Upgrade From 9.0.9',
-    },
-  ],
-  se35267e17c7ce576935c15ca39e19d20: [
-    {
-      label: 'Upgrade From 10.0.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.0.0',
-    },
-    {
-      label: 'Upgrade From 10.0.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.0.1',
-    },
-    {
-      label: 'Upgrade From 10.0.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.0.2',
-    },
-    {
-      label: 'Upgrade From 10.0.3',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.0.3',
-    },
-    {
-      label: 'Upgrade From 10.1.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.1.0',
-    },
-    {
-      label: 'Upgrade From 10.1.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.1.1',
-    },
-    {
-      label: 'Upgrade From 10.1.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.1.2',
-    },
-    {
-      label: 'Upgrade From 10.2.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.2.0',
-    },
-    {
-      label: 'Upgrade From 10.2.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.2.1',
-    },
-    {
-      label: 'Upgrade From 10.2.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 10.2.2',
-    },
-    {
-      label: 'Upgrade From 4.0.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 4.0.2',
-    },
-    {
-      label: 'Upgrade From 4.0.3',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 4.0.3',
-    },
-    {
-      label: 'Upgrade From 4.0.4',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 4.0.4',
-    },
-    {
-      label: 'Upgrade From 4.0.5',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 4.0.5',
-    },
-    {
-      label: 'Upgrade From 4.0.6',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 4.0.6',
-    },
-    {
-      label: 'Upgrade From 50.0.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.0.0',
-    },
-    {
-      label: 'Upgrade From 50.1.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.1.0',
-    },
-    {
-      label: 'Upgrade From 50.1.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.1.1',
-    },
-    {
-      label: 'Upgrade From 50.1.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.1.2',
-    },
-    {
-      label: 'Upgrade From 50.1.3',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.1.3',
-    },
-    {
-      label: 'Upgrade From 50.2.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.2.0',
-    },
-    {
-      label: 'Upgrade From 50.2.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.2.1',
-    },
-    {
-      label: 'Upgrade From 50.3.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.3.0',
-    },
-    {
-      label: 'Upgrade From 50.3.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.3.1',
-    },
-    {
-      label: 'Upgrade From 50.3.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.3.2',
-    },
-    {
-      label: 'Upgrade From 50.4.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.4.0',
-    },
-    {
-      label: 'Upgrade From 50.4.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.4.1',
-    },
-    {
-      label: 'Upgrade From 50.4.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.4.2',
-    },
-    {
-      label: 'Upgrade From 50.4.3',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.4.3',
-    },
-    {
-      label: 'Upgrade From 50.5.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.5.0',
-    },
-    {
-      label: 'Upgrade From 50.5.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.5.1',
-    },
-    {
-      label: 'Upgrade From 50.5.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.5.2',
-    },
-    {
-      label: 'Upgrade From 50.6.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.6.0',
-    },
-    {
-      label: 'Upgrade From 50.7.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 50.7.0',
-    },
-    {
-      label: 'Upgrade From 7.0.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.0',
-    },
-    {
-      label: 'Upgrade From 7.0.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.1',
-    },
-    {
-      label: 'Upgrade From 7.0.10',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.10',
-    },
-    {
-      label: 'Upgrade From 7.0.11',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.11',
-    },
-    {
-      label: 'Upgrade From 7.0.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.2',
-    },
-    {
-      label: 'Upgrade From 7.0.3',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.3',
-    },
-    {
-      label: 'Upgrade From 7.0.4',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.4',
-    },
-    {
-      label: 'Upgrade From 7.0.5',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.5',
-    },
-    {
-      label: 'Upgrade From 7.0.6',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.6',
-    },
-    {
-      label: 'Upgrade From 7.0.7',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.7',
-    },
-    {
-      label: 'Upgrade From 7.0.8',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.8',
-    },
-    {
-      label: 'Upgrade From 7.0.9',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 7.0.9',
-    },
-    {
-      label: 'Upgrade From 8.0.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 8.0.0',
-    },
-    {
-      label: 'Upgrade From 8.0.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 8.0.1',
-    },
-    {
-      label: 'Upgrade From 8.0.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 8.0.2',
-    },
-    {
-      label: 'Upgrade From 8.0.3',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 8.0.3',
-    },
-    {
-      label: 'Upgrade From 8.0.4',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 8.0.4',
-    },
-    {
-      label: 'Upgrade From 8.0.5',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 8.0.5',
-    },
-    {
-      label: 'Upgrade From 8.0.6',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 8.0.6',
-    },
-    {
-      label: 'Upgrade From 8.0.7',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 8.0.7',
-    },
-    {
-      label: 'Upgrade From 8.0.8',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 8.0.8',
-    },
-    {
-      label: 'Upgrade From 9.0.0',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.0',
-    },
-    {
-      label: 'Upgrade From 9.0.1',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.1',
-    },
-    {
-      label: 'Upgrade From 9.0.10',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.10',
-    },
-    {
-      label: 'Upgrade From 9.0.2',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.2',
-    },
-    {
-      label: 'Upgrade From 9.0.3',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.3',
-    },
-    {
-      label: 'Upgrade From 9.0.4',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.4',
-    },
-    {
-      label: 'Upgrade From 9.0.5',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.5',
-    },
-    {
-      label: 'Upgrade From 9.0.6',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.6',
-    },
-    {
-      label: 'Upgrade From 9.0.7',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.7',
-    },
-    {
-      label: 'Upgrade From 9.0.8',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.8',
-    },
-    {
-      label: 'Upgrade From 9.0.9',
-      pagePath: 'upgradediffs/PolicyCenter/Upgrade From 9.0.9',
     },
   ],
 };

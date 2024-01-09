@@ -6,7 +6,6 @@
       "docId": "keti",
       "srcId": "ketisrc",
       "workingDir": "website",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
@@ -14,7 +13,6 @@
       "docId": "dma",
       "srcId": "dmasrc",
       "workingDir": "website",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
@@ -22,7 +20,6 @@
       "docId": "gch",
       "srcId": "gchsrc",
       "workingDir": "website",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
@@ -30,7 +27,6 @@
       "docId": "binrepo",
       "srcId": "binreposrc",
       "workingDir": "website",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
@@ -38,7 +34,6 @@
       "docId": "nebula",
       "srcId": "nebulasrc",
       "workingDir": "website",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
@@ -46,7 +41,40 @@
       "docId": "atlas",
       "srcId": "atlassrc",
       "workingDir": "service/website",
-      "nodeImageVersion": "18.0.0",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "helios",
+      "srcId": "heliossrc",
+      "workingDir": "service/website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "heliosclient",
+      "srcId": "heliosclientsrc",
+      "workingDir": "client/website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "mithril",
+      "srcId": "mithrilsrc",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "nova",
+      "srcId": "novasrc",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "msk",
+      "srcId": "msksrc",
+      "workingDir": "website",
       "disabled": false
     }
   ]

@@ -2,10 +2,10 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "gondolasinnsbrucksrc",
-      "title": "Global Content - Gondolas - Innsbruck",
+      "id": "gondolasjaspersrc",
+      "title": "Global Content - Gondolas - Jasper",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gondolas.git",
-      "branch": "release/innsbruck"
+      "branch": "release/jasper"
     }
   ]
 }

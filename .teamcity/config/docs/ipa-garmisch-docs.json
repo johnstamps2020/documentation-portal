@@ -3,10 +3,15 @@
   "docs": [
     {
       "id": "ipagarmischrn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Australia Release Notes",
       "url": "cloud/ipa/garmisch/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Release notes"],
@@ -22,10 +27,15 @@
     },
     {
       "id": "ipagarmischconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Australia Configuration",
       "url": "cloud/ipa/garmisch/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Development"],
@@ -41,10 +51,15 @@
     },
     {
       "id": "ipagarmischapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Australia Application Guide",
       "url": "cloud/ipa/garmisch/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Features and functionality"],
@@ -60,13 +75,18 @@
     },
     {
       "id": "ipagarmischupgrade",
-      "title": "Upgrade Guide",
+      "title": "InsuranceSuite Package for Australia Upgrade Guide",
       "url": "cloud/ipa/garmisch/upgrade",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.02"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "release": ["Garmisch"],
         "language": "en"
       },
@@ -79,10 +99,15 @@
     },
     {
       "id": "ipagarmischinstall",
-      "title": "Installation Guide",
+      "title": "InsuranceSuite Package for Australia Installation Guide",
       "url": "cloud/ipa/garmisch/install",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Installation"],

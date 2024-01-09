@@ -55,6 +55,10 @@ const pageConfig: SectionLayoutProps = {
           label: 'Excel Designed Rating',
           docId: 'inexcelrating30',
         },
+        {
+          label: 'Data Service',
+          docId: 'indataservice',
+        },
       ],
     },
     {
@@ -86,7 +90,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'inapidevelopment',
         },
         {
-          label: 'Developer Setup Draft',
+          label: 'Developer Setup - Internal',
           docId: 'indevguidejava11draft',
         },
         {
@@ -143,7 +147,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20232provportal',
         },
         {
-          label: 'Provisioning Portal Internal',
+          label: 'Provisioning Portal - Internal',
           docId: 'in20232provportalinternal',
         },
       ],

@@ -311,10 +311,11 @@ export function readLocalSourceConfigs(dirPath: string): LegacySourceConfig[] {
 async function addUuidIfEntityExists(
   entityName: string,
   where: FindOptionsWhere<ObjectLiteral>,
-  entityInstance: ObjectLiteral
+  entityInstance: ObjectLiteral,
+  loadRelations: boolean = false
 ): Promise<ObjectLiteral> {
   try {
-    const dbEntityInstance = await findEntity(entityName, where, false);
+    const dbEntityInstance = await findEntity(entityName, where, loadRelations);
     if (dbEntityInstance) {
       entityInstance.uuid = dbEntityInstance.uuid;
     }
@@ -573,6 +574,7 @@ async function createVersionEntities(legacyDocConfig: LegacyDocConfig[]) {
 
 async function createReleaseEntities(legacyDocConfig: LegacyDocConfig[]) {
   const dbDocReleasesToSave: Release[] = [];
+  const nonProdReleases = ['Jasper'];
   for (const doc of legacyDocConfig) {
     const legacyDocReleases = doc.metadata.release;
     if (legacyDocReleases && legacyDocReleases.length > 0) {
@@ -584,6 +586,8 @@ async function createReleaseEntities(legacyDocConfig: LegacyDocConfig[]) {
         ) {
           const dbDocRelease = new Release();
           dbDocRelease.name = legacyDocRelease;
+          dbDocRelease.isInProduction =
+            !nonProdReleases.includes(legacyDocRelease);
           const dbDocReleaseToSave = await addUuidIfEntityExists(
             Release.name,
             { name: dbDocRelease.name },
@@ -943,8 +947,13 @@ async function putBuildConfigsInDatabase(): Promise<ApiResponse> {
         }
         const dbBuildConfigToSave = await addUuidIfEntityExists(
           dbBuild.constructor.name,
-          { id: dbBuild.id },
-          dbBuild
+          {
+            doc: {
+              id: build.docId,
+            },
+          },
+          dbBuild,
+          true
         );
         dbBuildConfigsToSave.push(dbBuildConfigToSave);
       }

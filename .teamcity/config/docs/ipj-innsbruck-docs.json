@@ -3,17 +3,22 @@
   "docs": [
     {
       "id": "ipjinnsbruckrn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Japan Release Notes",
       "url": "ipj/innsbruck/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.10"],
         "release": ["Innsbruck"],
         "subject": ["Release notes"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -22,17 +27,22 @@
     },
     {
       "id": "ipjinnsbruckconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Japan Configuration",
       "url": "ipj/innsbruck/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.10"],
         "release": ["Innsbruck"],
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -41,17 +51,22 @@
     },
     {
       "id": "ipjinnsbruckapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Japan Application Guide",
       "url": "ipj/innsbruck/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.10"],
         "release": ["Innsbruck"],
         "subject": ["Features and functionality"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -60,17 +75,22 @@
     },
     {
       "id": "ipjinnsbruckinstall",
-      "title": "Installation Guide",
+      "title": "InsuranceSuite Package for Japan Installation Guide",
       "url": "ipj/innsbruck/install",
       "metadata": {
-        "product": ["InsuranceSuite Package for Japan"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.10"],
         "release": ["Innsbruck"],
         "subject": ["Installation"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

@@ -446,21 +446,18 @@
       "buildType": "yarn",
       "docId": "ccapirefgarmisch",
       "srcId": "srcccapirefgarmisch",
-      "nodeImageVersion": "16.16.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "pcapirefgarmisch",
       "srcId": "srcpcapirefgarmisch",
-      "nodeImageVersion": "16.16.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "bcapirefgarmisch",
       "srcId": "srcbcapirefgarmisch",
-      "nodeImageVersion": "16.16.0",
       "disabled": false
     }
   ]

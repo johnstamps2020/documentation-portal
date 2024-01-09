@@ -6,10 +6,18 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/latest",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck"
+        ],
         "language": "en"
       },
       "displayOnLandingPages": true,
@@ -20,14 +28,97 @@
       "earlyAccess": false
     },
     {
+      "id": "standards202401",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202401",
+      "metadata": {
+        "product": ["Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2024.01"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck"
+        ],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "standards202312",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202312",
+      "metadata": {
+        "product": ["Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2023.12"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "standards202311",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202311",
+      "metadata": {
+        "product": ["Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2023.11"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "standards202310",
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202310",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.10"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
         "language": "en"
       },
       "environments": ["staging"],
@@ -42,7 +133,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202308",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.08"],
         "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
@@ -60,7 +151,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202303",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.03"],
         "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
@@ -78,7 +169,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202302",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
@@ -96,7 +187,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202301",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.01"],
         "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
@@ -114,7 +205,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202211",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
@@ -132,7 +223,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202210",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.10"],
         "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
@@ -150,7 +241,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202209",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Cortina", "Dobson", "Elysian"],
@@ -168,7 +259,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202207",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.07"],
         "release": ["Cortina", "Dobson", "Elysian"],
@@ -186,7 +277,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202206",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.06"],
         "release": ["Cortina", "Dobson", "Elysian"],
@@ -204,7 +295,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202205",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Cortina", "Dobson"],
@@ -222,7 +313,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202204",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.04"],
         "release": ["Cortina", "Dobson"],
@@ -240,7 +331,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202203",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.03"],
         "release": ["Cortina", "Dobson"],
@@ -258,7 +349,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202202",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.02"],
         "release": ["Cortina", "Dobson"],
@@ -276,7 +367,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202201",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.01"],
         "release": ["Cortina", "Dobson"],
@@ -294,7 +385,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202111",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Cortina", "Dobson"],
@@ -312,7 +403,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202110",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.10"],
         "release": ["Cortina"],
@@ -330,7 +421,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202109",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.09"],
         "release": ["Cortina"],
@@ -348,7 +439,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202108",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.08"],
         "release": ["Cortina"],
@@ -366,7 +457,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202107",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.07"],
         "release": ["Cortina"],
@@ -384,7 +475,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202106",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.06"],
         "release": ["Cortina"],
@@ -402,7 +493,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202105",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.05"],
         "release": ["Cortina"],
@@ -420,7 +511,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202104",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Aspen", "Banff"],
@@ -438,7 +529,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202103",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.03"],
         "release": ["Aspen", "Banff"],
@@ -456,7 +547,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202102",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.02"],
         "release": ["Aspen", "Banff"],
@@ -474,7 +565,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202101",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.01"],
         "release": ["Aspen", "Banff"],
@@ -492,7 +583,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202011",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2020.11"],
         "release": ["Aspen", "Banff"],
@@ -510,7 +601,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202010",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2020.10"],
         "release": ["Aspen", "Banff"],
@@ -528,7 +619,7 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/master",
       "metadata": {
-        "product": ["Guidewire Cloud Standards"],
+        "product": ["Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["master"],
         "language": "en"

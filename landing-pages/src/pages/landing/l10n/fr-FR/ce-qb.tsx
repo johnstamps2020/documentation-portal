@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]CustomerEngage Quote and Buy Release Notes', 
+docId: 'dx202310frFRceqbrelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -40,7 +49,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ce-qb/2021.11/fr-FR Digital v.2021.11 CE-QB_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-qb/2021.11/fr-FR Digital v.2021.11 CE-QB_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -50,22 +61,30 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guide du développeur',
-          url: '/l10n/pdfs/fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB Developers Guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB Developers Guide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ce-qb/11.4.1/fr-FR Digital v.11.4.1 CE-QB AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-qb/11.4.1/fr-FR Digital v.11.4.1 CE-QB AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB admin&security-guide.pdf',
           videoIcon: false,
         },
       ],
@@ -75,7 +94,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ce-qb/11.1/fr-CE_QB-onprem_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-qb/11.1/fr-CE_QB-onprem_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -85,27 +105,33 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guide des applications',
-          url: '/l10n/pdfs/fr-FR/ce-qb/10.0.1/fr-CE_QB_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-qb/10.0.1/fr-CE_QB_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/ce-qb/10.0.1/fr-CE_QB_admin-and-security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-qb/10.0.1/fr-CE_QB_admin-and-security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/ce-qb/10.0.1/fr-CE_QA_ConfigurationGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-qb/10.0.1/fr-CE_QA_ConfigurationGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation et de configuration Live Style Guide",
-          url: '/l10n/pdfs/fr-FR/ce-qb/10.0.1/fr-CE_QB_Life Style Guide Install and Config.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/ce-qb/10.0.1/fr-CE_QB_Life Style Guide Install and Config.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/ce-qb/10.0.1/fr-CE_QB_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/ce-qb/10.0.1/fr-CE_QB_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -116,3 +142,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Ceqb() {
   return <CategoryLayout {...pageConfig} />;
 }
+

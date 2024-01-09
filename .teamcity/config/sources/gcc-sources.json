@@ -27,7 +27,7 @@
     },
     {
       "id": "dbserviceapisrc",
-      "title": "Database Service API",
+      "title": "Database API",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/db-service-api.git",
       "branch": "main"
     },
@@ -130,8 +130,8 @@
     {
       "id": "planetservicesrc",
       "title": "Planet Service",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-internal-docs-template-planet-service.git",
-      "branch": "main"
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/gcc-internal-docs-template-planet-service.git",
+      "branch": "master"
     },
     {
       "id": "apigatewayconfigservicesrc",

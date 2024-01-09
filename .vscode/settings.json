@@ -1,6 +1,6 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "cSpell.enableFiletypes": ["mdx"],
   "terminal.integrated.profiles.osx": {
     "bash": {
@@ -36,7 +36,9 @@
     "**/static/html5/**": true
   },
   "cSpell.words": [
+    "aggs",
     "AMST",
+    "apac",
     "Aspen",
     "Avenir",
     "Banff",
@@ -58,6 +60,7 @@
     "doctools",
     "Elysian",
     "España",
+    "estypes",
     "fileupload",
     "financials",
     "flaine",
@@ -77,12 +80,14 @@
     "justcopybuild",
     "libpq",
     "mbox",
+    "multilineproducts",
     "Nederlands",
     "OIDC",
     "pendo",
     "platformproductversion",
     "PLXG",
     "Português",
+    "preupdate",
     "redoc",
     "reindex",
     "reindexing",
@@ -93,8 +98,11 @@
     "testtesttest",
     "tinycolor",
     "topicref",
+    "typelists",
     "typeorm",
     "whatsnew",
+    "workset",
+    "xmind",
     "yarnbuild"
   ],
   "cSpell.ignorePaths": [

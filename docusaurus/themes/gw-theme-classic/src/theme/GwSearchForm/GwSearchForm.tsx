@@ -9,7 +9,7 @@ import { translate } from '@theme/Translate';
 
 function getSearchUrl() {
   if (window.location.hostname === 'localhost') {
-    return 'https://docs.int.ccs.guidewire.net/search';
+    return 'https://docs.staging.ccs.guidewire.net/search';
   }
 
   return `${window.location.protocol}//${window.location.hostname}/search`;
@@ -34,6 +34,7 @@ export default function GwSearchForm() {
           description: 'Text which appears in the search box, placeholder',
         })}
         type="search"
+        autoComplete="off"
         variant="outlined"
         name="q"
         size="small"

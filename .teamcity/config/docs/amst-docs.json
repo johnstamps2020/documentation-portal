@@ -8,11 +8,12 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -26,6 +27,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -44,6 +46,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -62,6 +65,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -80,6 +84,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -98,6 +103,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -116,6 +122,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -134,6 +141,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -152,6 +160,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -170,6 +179,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -188,6 +198,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -206,6 +217,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -224,6 +236,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -242,6 +255,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -260,6 +274,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"
@@ -278,6 +293,7 @@
       "metadata": {
         "product": ["Analytics Manager Solution Templates"],
         "platform": ["Cloud"],
+        "release": ["Innsbruck"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "language": "en"

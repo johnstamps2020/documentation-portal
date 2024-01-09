@@ -22,7 +22,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guida alle Specifiche dati',
-          url: '/l10n/pdfs/it-IT/dh/10.0.0/DH10-dataspec-it.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/dh/10.0.0/DH10-dataspec-it.pdf',
           videoIcon: false,
         },
       ],

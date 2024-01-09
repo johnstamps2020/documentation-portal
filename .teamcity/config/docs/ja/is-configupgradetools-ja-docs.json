@@ -11,6 +11,7 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.2.0"],
         "release": ["Aspen", "Banff", "Cortina"],
+        "subject": ["Upgrade"],
         "language": "ja"
       },
       "environments": ["staging"],
@@ -30,6 +31,7 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.6.0"],
         "release": ["Hakuba"],
+        "subject": ["Upgrade"],
         "language": "ja"
       },
       "environments": ["staging", "prod"],

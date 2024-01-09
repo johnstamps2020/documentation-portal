@@ -36,6 +36,36 @@
       "title": "Atlas",
       "gitUrl": "ssh://git@stash.guidewire.com/ccs/atlas-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "heliossrc",
+      "title": "Helios",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/helios-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "heliosclientsrc",
+      "title": "Helios Client",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/helios-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "mithrilsrc",
+      "title": "Mithril",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/mithril-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "novasrc",
+      "title": "Nova",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/nova-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "msksrc",
+      "title": "MSK",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/msk-docs.git",
+      "branch": "master"
     }
   ]
 }

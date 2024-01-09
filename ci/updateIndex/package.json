@@ -2,6 +2,6 @@
   "name": "update-language-property",
   "version": "1.0.0",
   "dependencies": {
-    "@elastic/elasticsearch": "^7.17.0"
+    "@elastic/elasticsearch": "^8.10.0"
   }
 }

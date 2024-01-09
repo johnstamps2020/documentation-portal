@@ -5,6 +5,15 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "whatsnew.ditamap",
+      "srcId": "whatsnewinnsbrucksrc",
+      "docId": "whatsnewinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "whatsnew.ditamap",
       "srcId": "whatsnewhakubasrc",
       "docId": "whatsnewhakuba",
       "indexRedirect": true,

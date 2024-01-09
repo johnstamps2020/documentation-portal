@@ -1,9 +1,10 @@
-import { ApiResponse } from '../types/apiResponse';
-import { Request, Response } from 'express';
 import { Client } from '@elastic/elasticsearch';
+import { Request, Response } from 'express';
+import { ApiResponse } from '../types/apiResponse';
 import { findEntity } from './configController';
 
 import { Doc } from '../model/entity/Doc';
+import { SearchResultSource } from '../types/serverSearch';
 import { isUserAllowedToAccessResource } from './authController';
 
 require('dotenv').config();
@@ -29,7 +30,7 @@ export async function getTopicRecommendations(
     const indexExistsResult = await elasticClient.indices.exists({
       index: recommendationsIndexName,
     });
-    if (!indexExistsResult.body) {
+    if (!indexExistsResult) {
       return {
         status: 404,
         body: {
@@ -38,21 +39,19 @@ export async function getTopicRecommendations(
       };
     }
 
-    const response = await elasticClient.search({
+    const response = await elasticClient.search<SearchResultSource>({
       index: recommendationsIndexName,
       body: {
         query: {
           match: {
             id: {
-              query: topicId,
+              query: topicId as string,
             },
           },
         },
       },
     });
-    const hit = response.body.hits.hits.map(
-      (h: { _source: any }) => h._source
-    )[0];
+    const hit = response.hits.hits.map((h) => h._source)[0] as any;
     if (hit) {
       let topicRecommendations = hit.recommendations;
       const availableRecommendations = [];

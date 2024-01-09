@@ -3,10 +3,15 @@
   "docs": [
     {
       "id": "ipukflainern",
-      "title": "Release Notes",
+      "title": "OIC Integration Release Notes",
       "url": "ipuk/flaine/releasenotes",
       "metadata": {
-        "product": ["OIC Integration"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -22,10 +27,15 @@
     },
     {
       "id": "ipukflaineconfig",
-      "title": "Configuration",
+      "title": "OIC Integration Configuration",
       "url": "ipuk/flaine/config",
       "metadata": {
-        "product": ["OIC Integration"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
@@ -41,10 +51,15 @@
     },
     {
       "id": "ipukflaineapp",
-      "title": "Application Guide",
+      "title": "OIC Integration Application Guide",
       "url": "ipuk/flaine/app",
       "metadata": {
-        "product": ["OIC Integration"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],

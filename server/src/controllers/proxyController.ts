@@ -38,8 +38,9 @@ export async function sitemapProxy(
     req,
     res,
     {
-      target: `${process.env.DOC_S3_URL}/sitemap`,
+      target: `${process.env.DOC_S3_URL}/sitemap/${req.originalUrl}`,
       changeOrigin: true,
+      ignorePath: true,
     },
     next
   );

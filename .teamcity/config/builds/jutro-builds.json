@@ -6,7 +6,6 @@
       "docId": "jutro652",
       "srcId": "srcjutro652",
       "workingDir": "website",
-      "nodeImageVersion": "14.14.0",
       "disabled": false
     },
     {
@@ -27,14 +26,12 @@
       "docId": "jutro743",
       "srcId": "srcjutro743",
       "workingDir": "website",
-      "nodeImageVersion": "14.18.3",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "storybook743",
       "srcId": "srcjutro743",
-      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -49,14 +46,12 @@
       "docId": "jutro832",
       "srcId": "srcjutro832",
       "workingDir": "website",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "storybook832",
       "srcId": "srcjutro832",
-      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "disabled": false
     },
@@ -65,14 +60,12 @@
       "docId": "jutro861",
       "srcId": "srcjutro861",
       "workingDir": "website",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "storybook861",
       "srcId": "srcjutro861",
-      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "disabled": false
     },
@@ -81,14 +74,12 @@
       "docId": "jutro8100",
       "srcId": "srcjutro8100",
       "workingDir": "website",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "storybook8100",
       "srcId": "srcjutro8100",
-      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "disabled": false
     },
@@ -97,14 +88,12 @@
       "docId": "jutro8121",
       "srcId": "srcjutro8121",
       "workingDir": "website",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "storybook8121",
       "srcId": "srcjutro8121",
-      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "disabled": false
     },
@@ -113,14 +102,54 @@
       "docId": "jutro8132",
       "srcId": "srcjutro8132",
       "workingDir": "website",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "storybook8132",
       "srcId": "srcjutro8132",
-      "nodeImageVersion": "17.6.0",
+      "workingDir": "storybook",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutro8133",
+      "srcId": "srcjutro8133",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook8133",
+      "srcId": "srcjutro8133",
+      "workingDir": "storybook",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutro8134",
+      "srcId": "srcjutro8134",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook8134",
+      "srcId": "srcjutro8134",
+      "workingDir": "storybook",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutro8135",
+      "srcId": "srcjutro8135",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook8135",
+      "srcId": "srcjutro8135",
       "workingDir": "storybook",
       "disabled": false
     },
@@ -129,30 +158,40 @@
       "docId": "jutro1000",
       "srcId": "srcjutro1000",
       "workingDir": "website",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "storybook1000",
       "srcId": "srcjutro1000",
-      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "disabled": false
     },
     {
       "buildType": "yarn",
-      "docId": "jutrolatest",
-      "srcId": "srcjutro8132",
+      "docId": "jutro1010",
+      "srcId": "srcjutro1010",
       "workingDir": "website",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
-      "docId": "storybooklatest",
-      "srcId": "srcjutro8132",
-      "nodeImageVersion": "17.6.0",
+      "docId": "storybook1010",
+      "srcId": "srcjutro1010",
+      "workingDir": "storybook",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutro1020",
+      "srcId": "srcjutro1020",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook1020",
+      "srcId": "srcjutro1020",
       "workingDir": "storybook",
       "disabled": false
     },
@@ -160,7 +199,6 @@
       "buildType": "yarn",
       "docId": "jutrodocsnext",
       "srcId": "jutrodocsnextsrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
@@ -172,17 +210,29 @@
       "disabled": false
     },
     {
+      "buildType": "dita",
+      "docId": "agentquoteandbuypersonalautoinnsbruck",
+      "srcId": "jutrodigitalcontentsrcinnsbruck",
+      "root": "AgentQuoteAndBuyPA.ditamap",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
       "buildType": "yarn",
       "docId": "jutrosdknext",
       "srcId": "srcjutrosdknext",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "jutrosdkhakuba",
       "srcId": "srcjutrosdkhakuba",
-      "nodeImageVersion": "17.6.0",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutrosdkinnsbruck",
+      "srcId": "srcjutrosdkinnsbruck",
       "disabled": false
     },
     {
@@ -190,14 +240,12 @@
       "docId": "jutronext",
       "srcId": "srcjutronext",
       "workingDir": "website",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "jutroplaygroundnext",
       "srcId": "srcjutroplaygroundnext",
-      "nodeImageVersion": "16.14.2",
       "outputPath": "dist",
       "disabled": false
     },
@@ -205,7 +253,6 @@
       "buildType": "yarn",
       "docId": "storybooknext",
       "srcId": "srcjutronext",
-      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -219,14 +266,12 @@
       "buildType": "yarn",
       "docId": "jutroeditornext",
       "srcId": "srcjutroeditornext",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "jutrosdkgarmisch",
       "srcId": "srcjutrosdkgarmisch",
-      "nodeImageVersion": "17.6.0",
       "disabled": false
     }
   ]

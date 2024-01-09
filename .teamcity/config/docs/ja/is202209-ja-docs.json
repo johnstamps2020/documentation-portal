@@ -7,27 +7,14 @@
       "displayTitle": "Cloud API 認証ガイド",
       "url": "ja/cloud/cc/202209/cloudapica",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "ClaimCenter"
-        ],
-        "version": [
-          "2022.09"
-        ],
-        "release": [
-          "Flaine"
-        ],
-        "subject": [
-          "Integration"
-        ],
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Integration"],
         "language": "ja"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -40,27 +27,14 @@
       "displayTitle": "Cloud API ビジネスフローとコンフィギュレーションガイド",
       "url": "ja/cloud/cc/202209/cloudapibf",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "ClaimCenter"
-        ],
-        "version": [
-          "2022.09"
-        ],
-        "release": [
-          "Flaine"
-        ],
-        "subject": [
-          "Integration"
-        ],
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Integration"],
         "language": "ja"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -73,27 +47,14 @@
       "displayTitle": "Cloud API ContactManager ガイド",
       "url": "ja/cloud/cc/202209/cloudapicm",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "ClaimCenter"
-        ],
-        "version": [
-          "2022.09"
-        ],
-        "release": [
-          "Flaine"
-        ],
-        "subject": [
-          "Integration"
-        ],
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Integration"],
         "language": "ja"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

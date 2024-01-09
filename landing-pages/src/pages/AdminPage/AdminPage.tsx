@@ -1,15 +1,11 @@
-import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { Link as RouterLink } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import AdminAccess from '../../components/AdminPage/AdminAccess';
 import { useEnvInfo } from '../../hooks/useApi';
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { prodDeployEnv } from '../../vars';
-import { useLayoutContext } from 'LayoutContext';
+import Divider from '@mui/material/Divider';
 
 type AdminLink = {
   path: string;
@@ -18,29 +14,55 @@ type AdminLink = {
 
 const links: AdminLink[] = [
   {
-    path: '/admin-panel/page',
-    title: 'Manage pages',
+    path: 'page',
+    title: 'Pages',
   },
   {
-    path: '/admin-panel/external-link',
-    title: 'Manage external links',
+    path: 'external-link',
+    title: 'External links',
+  },
+  {
+    path: 'source',
+    title: 'Sources',
+  },
+  {
+    path: 'resource',
+    title: 'Resources',
+  },
+  {
+    path: 'release',
+    title: 'Releases',
+  },
+  {
+    path: 'subject',
+    title: 'Subjects',
+  },
+  {
+    path: 'language',
+    title: 'Languages',
+  },
+  {
+    path: 'platform',
+    title: 'Platforms',
+  },
+  {
+    path: 'product',
+    title: 'Products',
+  },
+  {
+    path: 'version',
+    title: 'Versions',
   },
 ];
 
 export default function AdminPage() {
   const { envInfo, isLoading, isError } = useEnvInfo();
   const navigate = useNavigate();
-  const { setTitle } = useLayoutContext();
-  const title = 'Admin panel';
   useEffect(() => {
     if (envInfo && envInfo.name === prodDeployEnv) {
       navigate(`/forbidden?unauthorized=/admin-panel`);
     }
   }, [envInfo, navigate]);
-
-  useEffect(() => {
-    setTitle(title);
-  }, [setTitle]);
 
   if (isLoading || isError) {
     return null;
@@ -48,17 +70,34 @@ export default function AdminPage() {
   return (
     <AdminAccess pagePath={window.location.href}>
       <Container sx={{ padding: '3rem 0' }}>
-        <Typography variant="h1" color="WindowText">
-          {title}
-        </Typography>
-        <Stack spacing={2} direction="row" sx={{ padding: '2rem 0' }}>
+        <Stack direction="row" sx={{ pt: '2rem', justifyContent: 'center' }}>
           {links.map(({ title, path }) => (
-            <Link key={path} component={RouterLink} to={path}>
-              <Card sx={{ padding: '2rem 3rem' }} variant="outlined">
-                {title}
-              </Card>
-            </Link>
+            <NavLink
+              key={path}
+              to={path}
+              style={({ isActive }) => {
+                return {
+                  color: isActive ? 'white' : 'black',
+                  textDecoration: 'none',
+                  backgroundColor: isActive ? 'black' : 'transparent',
+                  padding: '8px 16px',
+                  borderTopLeftRadius: '6px',
+                  borderTopRightRadius: '6px',
+                  borderWidth: '0.5px',
+                  borderStyle: 'solid',
+                  borderColor: isActive ? 'black' : 'gray',
+                  cursor: isActive ? 'default' : 'pointer',
+                  fontSize: '20px',
+                };
+              }}
+            >
+              {title}
+            </NavLink>
           ))}
+        </Stack>
+        <Divider />
+        <Stack spacing={2} sx={{ py: '1rem' }}>
+          <Outlet />
         </Stack>
       </Container>
     </AdminAccess>

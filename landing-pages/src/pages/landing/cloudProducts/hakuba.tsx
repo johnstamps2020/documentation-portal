@@ -6,6 +6,7 @@ import hakubaBackgroundImage from 'images/background-hakuba.svg';
 import hakubaBadge from 'images/badge-hakuba.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
@@ -41,7 +42,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/dataPlatform',
         },
         {
-          label: 'Autopilot Workflow Service (Early Access)',
+          label: 'Autopilot Workflow Service',
           pagePath: 'cloudProducts/autopilotworkflowservice',
         },
       ],
@@ -88,7 +89,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Explore',
-          pagePath: 'cloudProducts/explore/latest',
+          docId: 'exploreusingrelease',
         },
         {
           label: 'Canvas',
@@ -100,7 +101,8 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'HazardHub',
-          url: '/hazardhub/HazardHub_Intro_gw.pdf',
+          docId: 'hazardhub',
+          pathInDoc: 'HazardHub_Intro_gw.pdf',
           videoIcon: false,
         },
         {
@@ -116,7 +118,7 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'cloudProducts/cyence',
         },
         {
-          label: 'Data Studio (Early Access)',
+          label: 'Data Studio',
           docId: 'datastudiorelease',
         },
       ],
@@ -179,31 +181,7 @@ const pageConfig: Category2LayoutProps = {
       'Cyence Model 6',
     ],
   },
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-      {
-        label: 'Internal docs',
-        docId: 'internaldocslatest',
-      },
-    ],
-  },
+  sidebar: implementationResourcesSidebar,
 };
 
 export default function Hakuba() {

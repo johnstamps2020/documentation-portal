@@ -3,6 +3,8 @@ import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageLink from 'components/LandingPage/LandingPageLink';
 import Skeleton from '@mui/material/Skeleton';
+import LandingPageItemRenderer from '../LandingPageItemRenderer';
+import { arrangeItems } from 'helpers/landingPageHelpers';
 
 export default function ProductFamilyCard(item: LandingPageItemProps) {
   const sx = {
@@ -10,24 +12,8 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
     fontWeight: 800,
   };
   const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
-
-  if (isError || landingPageItems?.length === 0 || !landingPageItems) {
-    return null;
-  }
-
-  if (isLoading) {
-    return (
-      <Skeleton
-        variant="rectangular"
-        sx={{
-          width: { sm: '300px', xs: '100%' },
-          height: '100px',
-        }}
-      />
-    );
-  }
-
-  return (
+  const arrangedLandingPageItems = arrangeItems([item], landingPageItems);
+  const productFamilyItem = (
     <Paper
       sx={{
         height: '100px',
@@ -39,9 +25,30 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
         textAlign: 'center',
       }}
     >
-      {landingPageItems && (
-        <LandingPageLink landingPageItem={landingPageItems[0]} sx={sx} />
+      {arrangedLandingPageItems && (
+        <LandingPageLink
+          landingPageItem={arrangedLandingPageItems[0]}
+          sx={sx}
+        />
       )}
     </Paper>
+  );
+  const productFamilySkeleton = (
+    <Skeleton
+      variant="rectangular"
+      sx={{
+        width: { sm: '300px', xs: '100%' },
+        height: '100px',
+      }}
+    />
+  );
+  return (
+    <LandingPageItemRenderer
+      landingPageItems={arrangedLandingPageItems}
+      isLoading={isLoading}
+      isError={isError}
+      skeleton={productFamilySkeleton}
+      item={productFamilyItem}
+    />
   );
 }

@@ -2,6 +2,18 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "is1023src",
+      "title": "InsuranceSuite 10.2.3",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/10.2.3"
+    },
+    {
+      "id": "isupgradeguide1023src",
+      "title": "InsuranceSuite Upgrade Guide 10.2.3",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
+      "branch": "release/10.2.3"
+    },
+    {
       "id": "is1022src",
       "title": "InsuranceSuite 10.2.2",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",

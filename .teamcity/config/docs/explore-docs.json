@@ -2,34 +2,8 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "explorernrelease",
-      "title": "Release Notes",
-      "url": "cloud/explore/relnotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine",
-          "Garmisch",
-          "Hakuba"
-        ],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "exploreusingrelease",
-      "title": "Application Guide for ThoughtSpot-based Explore",
+      "title": "Explore",
       "url": "cloud/explore/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -42,59 +16,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
-        ],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "exploreusingkibanarelease",
-      "title": "Application Guide for Kibana-based Explore",
-      "url": "cloud/explore/app-kibana",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine",
-          "Garmisch",
-          "Hakuba"
-        ],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "exploredatadictrelease",
-      "title": "Data Dictionaries",
-      "url": "cloud/explore/datadict",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": ["latest"],
-        "subject": ["Development"],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine",
-          "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },

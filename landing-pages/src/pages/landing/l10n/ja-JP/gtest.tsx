@@ -18,7 +18,16 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.06',
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: 'Testing Framework リリースノート', 
+docId: 'testingframeworksjaJPrninnsbruck',
+}, 
+],
+},
+{
+      label: '2023.06 (Hakuba)',
       items: [
         {
           label: 'Testing Framework リリースノート',
@@ -31,22 +40,27 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'UI テスト',
-          url: '/l10n/pdfs/ja-JP/gtest/2022.05/GT-UI-JA.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/gtest/2022.05/GT-UI-JA.pdf',
           videoIcon: false,
         },
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/gtest/2022.05/Guidewire_Test_Automation202205_ReleaseNotes_ja-JP.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/gtest/2022.05/Guidewire_Test_Automation202205_ReleaseNotes_ja-JP.pdf',
           videoIcon: false,
         },
         {
           label: 'Guidewire API テスト',
-          url: '/l10n/pdfs/ja-JP/gtest/2022.05/GT-API-JA.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/gtest/2022.05/GT-API-JA.pdf',
           videoIcon: false,
         },
         {
           label: 'InsuranceSuite ユニットテスト',
-          url: '/l10n/pdfs/ja-JP/gtest/2022.05/ISUnitTesting-JA.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/gtest/2022.05/ISUnitTesting-JA.pdf',
           videoIcon: false,
         },
       ],
@@ -57,3 +71,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Gtest() {
   return <CategoryLayout {...pageConfig} />;
 }
+

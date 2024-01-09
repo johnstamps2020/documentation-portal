@@ -92,7 +92,7 @@
       "srcId": "configmgrhelpcortinasrc",
       "docId": "configmgrhelpcortina",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -101,7 +101,7 @@
       "srcId": "configmgrhelpbanffsrc",
       "docId": "configmgrhelpbanff",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
@@ -153,7 +153,6 @@
       "buildType": "yarn",
       "srcId": "internaldocssrc",
       "docId": "internaldocslatest",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
@@ -178,14 +177,12 @@
       "buildType": "yarn",
       "srcId": "cloudtickettemplatessrc",
       "docId": "cloudtickettemplates",
-      "nodeImageVersion": "18.12.1",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "upgradediffssrc",
       "docId": "upgradediffs",
-      "nodeImageVersion": "18.12.1",
       "disabled": false
     },
     {

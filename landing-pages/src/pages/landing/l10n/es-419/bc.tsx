@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Notas de la versión',
+          docId: 'isbc202310es419releasenotes',
+        },
+        {
+          label: 'Guía de renovación',
+          docId: 'isbc202310es419update',
+        },
+      ],
+    },
+    {
       label: '2023.06',
       items: [
         {
@@ -44,7 +57,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/bc/2021.11/BC-AppGuide-ESLA.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/2021.11/BC-AppGuide-ESLA.pdf',
           videoIcon: false,
         },
       ],
@@ -54,12 +68,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-LA/bc/2020.11/BCCloud202011_es-419_ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/2020.11/BCCloud202011_es-419_ConfigGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/bc/2020.11/BCCloud202011_es-419_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/2020.11/BCCloud202011_es-419_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -69,12 +85,15 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de administración de contactos de Guidewire',
-          url: '/l10n/pdfs/es-LA/bc/2020.05/ISCL_202005_ESLA_BC_ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'es-LA/bc/2020.05/ISCL_202005_ESLA_BC_ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/bc/2020.05/ISCL_202005_ESLA_BC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/2020.05/ISCL_202005_ESLA_BC-AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -84,7 +103,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/bc/10.1.1/BC1011_es-419_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/10.1.1/BC1011_es-419_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -94,17 +114,20 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de reglas',
-          url: '/l10n/pdfs/es-LA/bc/10.0.2/es-BC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/10.0.2/es-BC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/bc/10.0.2/es-BC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/10.0.2/es-BC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-LA/bc/10.0.2/es-BC-ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/10.0.2/es-BC-ConfigGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -114,27 +137,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/10.0.0/es-BC-InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de reglas',
-          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/10.0.0/es-BC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/10.0.0/es-BC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de administración de contactos',
-          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/10.0.0/es-BC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/bc/10.0.0/es-BC-ConfigGuide.pdf',
           videoIcon: false,
         },
       ],

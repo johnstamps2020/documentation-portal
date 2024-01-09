@@ -13,25 +13,32 @@ import Benefits from '@site/docs/\_benefits.md'
 Not convinced? Look at [deploying to Atmos](./deploy-to-atmos.md) without using
 a Guidewire theme. You can still use the Redoc plugin.
 
-## Create a new Docusaurus site
+## Install required tools
 
-[Follow the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
+### Node.js
 
-## Upgrade to Yarn 3
+Node.js version 18.0 or above is required. Your current version of Node.js can
+be checked by running `node -v`. If this is your first time using Node.js, you
+can install it from [Node.js official website](https://nodejs.org/en/download/).
 
-Use Yarn 3 in builds for docs.guidewire.com. If this is your first time
-upgrading Yarn, you may want to read
-[the official article about Yarn migration](https://yarnpkg.com/getting-started/migration).
+### Yarn 3
 
-Here are the highlights of the process:
+Builds for docs.guidewire.com use Yarn 3. Follow the steps below to set up Yarn
+on your machine.
 
-1. Install Yarn 3.
+1. If you don't have Yarn, install it by following instructions in the
+   [official documentation](https://yarnpkg.com/getting-started/install).
+2. Set Yarn to version 3.
+
    ```bash
-   yarn set version berry
+   yarn set version 3.6.4
    ```
-   This adds the `.yarn` folder to your repo.
-1. Add the recommended files to `.gitignore`:
-   ```git
+
+   This adds the `.yarn` folder and `.yarnrc.yml` file to your repo.
+
+3. Add the recommended files to `.gitignore`:
+
+   ```git title=".gitignore"
    .pnp.*
    .yarn/*
    !.yarn/patches
@@ -40,8 +47,11 @@ Here are the highlights of the process:
    !.yarn/sdks
    !.yarn/versions
    ```
-1. In your `.yarnrc.yml`, after `yarnPath: .yarn/releases/yarn-3.X.X.cjs`, add:
-   ```yaml
+
+4. In your `.yarnrc.yml` file, after `yarnPath: .yarn/releases/yarn-3.X.X.cjs`,
+   add:
+
+   ```js yaml title=".yarnrc.yml"
    nodeLinker: node-modules
    npmAlwaysAuth: true
    npmAuthToken: ${NPM_AUTH_TOKEN}
@@ -49,25 +59,49 @@ Here are the highlights of the process:
      doctools:
        npmRegistryServer: https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
    ```
-1. If you have a `yarn.lock` generated with a previous version of Yarn, **delete
-   it**.
-1. Run `yarn` to install dependencies and update `yarn.lock`.
 
-## trailingSlash
+5. If you have a `yarn.lock` generated with a previous version of Yarn, **delete
+   it**.
+6. Run `yarn` to install dependencies and update `yarn.lock`.
+
+## Set up access to the @doctools scope in Artifactory (first time only)
+
+import Artifactory from './\_set-up-artifactory.md';
+
+<Artifactory/>
+
+## Create a new Docusaurus site
+
+Run this command to create a Docusaurus site:
+
+```bash
+yarn create docusaurus
+```
+
+If you want to read more about creating Docusaurus sites, look at
+[the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
+
+> :warning: Default package manager suggested by Docusaurus is `npx`. Do not run
+> commands in `npx` or `npm` since it can cause problems later on. Stick to the
+> `yarn` command provided above.
+
+## Configure your project
+
+### trailingSlash
 
 import { RightWrong, Right, Wrong } from "@theme/RightWrong";
 
 <RightWrong>
 <Right>
 
-```js
+```js title="docusaurus.config.js"
 trailingSlash: true,
 ```
 
 </Right>
 <Wrong>
 
-```js
+```js title="docusaurus.config.js"
 trailingSlash: false,
 ```
 
@@ -79,18 +113,12 @@ hosting. Leave `trailingSlash` undefined, or set it to `true`. If
 `trailingSlash` is not defined in your settings, there is no need to add it, as
 it defaults to `true`.
 
-## Setup access to the @doctools scope in Artifactory (first time only)
-
-import Artifactory from './\_set-up-artifactory.md';
-
-<Artifactory/>
-
-## Add Guidewire theme/plugin
+### Add Guidewire theme/plugin
 
 - [See set up instructions for the theme](./Themes/Classic/set-up-theme.mdx).
 - [See set up instructions for the plugin](./Plugins/Redoc/set-up-plugin.mdx).
 
-## Complex builds
+## Extend your build pipeline
 
 Deployments to docs.guidewire.com run the following commands:
 
@@ -115,9 +143,9 @@ these approaches:
   them into your documentation repo. You control when each build is run, for
   example on release, or on various triggers from different repos.
 
-## Configure deployment
+## Request deployment builds
 
-Get in touch with The Doctools team and they can provide assistance.
+Contact the ContentOps team for assistance:
 
-- [#ask-docs](https://guidewire.slack.com/archives/C2LUW57BL) on Slack
-- email [doctools@guidewire.com](mailto:doctools@guidewire.com)
+- Slack: [#ask-docs](https://guidewire.slack.com/archives/C2LUW57BL)
+- Email: [doctools@guidewire.com](mailto:doctools@guidewire.com)

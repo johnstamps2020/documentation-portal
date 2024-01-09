@@ -12,6 +12,8 @@ let docTitle = undefined;
 let docSubject = undefined;
 let docInternal = undefined;
 let docEarlyAccess = undefined;
+let docRelease = undefined;
+let docLanguage = 'en';
 const topicId = window.location.pathname;
 
 async function showTopicRecommendations() {
@@ -63,6 +65,8 @@ async function fetchMetadata() {
         docPlatform = docInfo.docPlatforms || docPlatform;
         docCategory = docInfo.docCategories || docCategory;
         docSubject = docInfo.docSubjects;
+        docRelease = docInfo.docReleases;
+        docLanguage = docInfo.docLanguage || docLanguage;
         return true;
       } catch (err) {
         console.error(err);
@@ -615,13 +619,16 @@ async function configureSearch() {
           }
         }
 
-        // Filters and their names must match filters in the displayOrder variable in searchController.js
-        searchForm.firstChild.appendChild(createInput('doc_title', docTitle));
+        // Filters and their names must match filters returned by searchController.js
+        docPlatform.includes('Cloud') &&
+          docRelease &&
+          searchForm.firstChild.appendChild(createInput('release', docRelease));
+        docPlatform.includes('Self-managed') &&
+          docVersion &&
+          searchForm.firstChild.appendChild(createInput('version', docVersion));
         searchForm.firstChild.appendChild(createInput('platform', docPlatform));
         searchForm.firstChild.appendChild(createInput('product', docProduct));
-        searchForm.firstChild.appendChild(createInput('version', docVersion));
-        docSubject &&
-          searchForm.firstChild.appendChild(createInput('subject', docSubject));
+        searchForm.firstChild.appendChild(createInput('language', docLanguage));
       }
     }
   } else {

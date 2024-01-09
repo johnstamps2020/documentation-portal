@@ -7,7 +7,7 @@
       "url": "internal/keti/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Internal Docs"],
+        "product": ["Keti", "Internal Docs"],
         "version": ["latest"],
         "language": "en"
       },
@@ -51,7 +51,7 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
-    }, 
+    },
     {
       "id": "binrepo",
       "title": "Binary Repository",
@@ -93,6 +93,91 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Internal Docs", "Atlas"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "helios",
+      "title": "Helios",
+      "url": "internal/helios/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "Helios"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "heliosclient",
+      "title": "Helios Client",
+      "url": "internal/heliosclient/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "Helios"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "mithril",
+      "title": "Mithril",
+      "url": "internal/mithril/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "nova",
+      "title": "Nova",
+      "url": "internal/nova/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "Nova"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "msk",
+      "title": "MSK",
+      "url": "internal/msk/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "MSK"],
         "version": ["latest"],
         "language": "en"
       },

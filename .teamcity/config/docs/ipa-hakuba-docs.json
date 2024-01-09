@@ -3,10 +3,15 @@
   "docs": [
     {
       "id": "ipahakubarn",
-      "title": "Release Notes",
+      "title": "InsuranceSuite Package for Australia Release Notes",
       "url": "cloud/ipa/hakuba/releasenotes",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "subject": ["Release notes"],
@@ -22,10 +27,15 @@
     },
     {
       "id": "ipahakubaconfig",
-      "title": "Configuration",
+      "title": "InsuranceSuite Package for Australia Configuration",
       "url": "cloud/ipa/hakuba/config",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "subject": ["Development"],
@@ -41,10 +51,15 @@
     },
     {
       "id": "ipahakubaapp",
-      "title": "Application Guide",
+      "title": "InsuranceSuite Package for Australia Application Guide",
       "url": "cloud/ipa/hakuba/app",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "subject": ["Features and functionality"],
@@ -60,13 +75,18 @@
     },
     {
       "id": "ipahakubaupgrade",
-      "title": "Upgrade Guide",
+      "title": "InsuranceSuite Package for Australia Upgrade Guide",
       "url": "cloud/ipa/hakuba/upgrade",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.06"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "release": ["Hakuba"],
         "language": "en"
       },
@@ -79,10 +99,15 @@
     },
     {
       "id": "ipahakubainstall",
-      "title": "Installation Guide",
+      "title": "InsuranceSuite Package for Australia Installation Guide",
       "url": "cloud/ipa/hakuba/install",
       "metadata": {
-        "product": ["InsuranceSuite Package for Australia"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "subject": ["Installation"],

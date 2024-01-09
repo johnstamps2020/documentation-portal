@@ -67,12 +67,12 @@
         "product": ["BillingCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -314,12 +314,12 @@
         "product": ["ClaimCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -599,12 +599,12 @@
         "product": ["PolicyCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false

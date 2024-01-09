@@ -8,15 +8,16 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
-        "version": ["2022.09", "2023.02", "2023.06"],
+        "version": ["2022.09", "2023.02", "2023.06", "2023.10"],
         "release": ["Flaine", "Garmisch", "Hakuba"],
+        "subject": ["Development", "Integration"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
       "internal": false,
       "earlyAccess": false,
       "indexForSearch": true,
-      "public": false,
+      "public": true,
       "displayOnLandingPages": true
     },
     {
@@ -211,7 +212,7 @@
     },
     {
       "id": "apdcreatingproductsinnsbruck",
-      "title": "Creating Products",
+      "title": "Creating Products with APD App",
       "url": "cloud/apd/innsbruck/create",
       "metadata": {
         "platform": ["Cloud"],
@@ -221,7 +222,7 @@
         "subject": ["Configuration"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -230,7 +231,7 @@
     },
     {
       "id": "apdfinalizingproductsinnsbruck",
-      "title": "Finalizing Products",
+      "title": "Integrating Products with PolicyCenter",
       "url": "cloud/apd/innsbruck/finalize",
       "metadata": {
         "platform": ["Cloud"],
@@ -240,7 +241,7 @@
         "subject": ["Configuration"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -259,7 +260,7 @@
         "subject": ["Configuration"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,

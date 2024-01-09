@@ -34,19 +34,19 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'PolicyCenter',
-          pagePath: 'selfManagedProducts/pc/10.2.2',
+          pagePath: 'selfManagedProducts/pc/10.2.3',
         },
         {
           label: 'ClaimCenter',
-          pagePath: 'selfManagedProducts/cc/10.2.2',
+          pagePath: 'selfManagedProducts/cc/10.2.3',
         },
         {
           label: 'BillingCenter',
-          pagePath: 'selfManagedProducts/bc/10.2.2',
+          pagePath: 'selfManagedProducts/bc/10.2.3',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools500',
+          docId: 'isconfigupgradetools510',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -71,11 +71,11 @@ const pageConfig: CategoryLayoutProps = {
             },
             {
               label: 'Germany',
-              pagePath: 'globalContent/ipg/3.7',
+              pagePath: 'globalContent/ipg/3.8',
             },
             {
-              label: 'Germany',
-              pagePath: 'globalContent/ipg/3.8',
+              label: 'Germany 3.9',
+              pagePath: 'globalContent/ipg/3.9',
             },
             {
               label: 'Japan (0.1)',
@@ -90,11 +90,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'DataHub',
-          pagePath: 'selfManagedProducts/dh/10.10.0',
+          pagePath: 'selfManagedProducts/dh/10.11.0',
         },
         {
           label: 'InfoCenter',
-          pagePath: 'selfManagedProducts/ic/10.10.0',
+          pagePath: 'selfManagedProducts/ic/10.11.0',
         },
       ],
     },

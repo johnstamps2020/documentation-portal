@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]ProducerEngage for ClaimCenter Release Notes', 
+docId: 'dx202310frFRpeclaimsrelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -40,7 +49,9 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/pe-claims/2021.11/fr-FR Digital v.2021.11 PE Claims_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/2021.11/fr-FR Digital v.2021.11 PE Claims_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -50,22 +61,30 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'administration et de sécurité",
-          url: '/l10n/pdfs/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims admin&security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide du développeur',
-          url: '/l10n/pdfs/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims DevelopersGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims DevelopersGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -76,3 +95,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Peclaims() {
   return <CategoryLayout {...pageConfig} />;
 }
+

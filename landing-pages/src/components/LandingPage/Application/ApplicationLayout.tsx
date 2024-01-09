@@ -1,16 +1,68 @@
 import Stack from '@mui/material/Stack';
-import ApplicationHero from './ApplicationHero';
+import { ApplicationCardProps } from './ApplicationCard';
+import ApplicationCardSection from './ApplicationCardSection';
+import ApplicationFeatureSection, {
+  ApplicationFeatureSectionProps,
+} from './ApplicationFeatureSection';
+import ApplicationHero, { ApplicationHeroProps } from './ApplicationHero';
+import ApplicationResources, {
+  ApplicationResourcesProps,
+} from './ApplicationResources';
 import ApplicationTabs, { ApplicationTabItemProps } from './ApplicationTabs';
+import ApplicationVideoSection, {
+  ApplicationVideoSectionProps,
+} from './ApplicationVideoSection';
+import { LandingPageSelectorProps } from '../LandingPageSelector';
+import { useEffect } from 'react';
+import { useLayoutContext } from 'LayoutContext';
 
-export type ApplicationLayoutProps = {
-  tabs: ApplicationTabItemProps[];
+export type ApplicationLayoutProps = ApplicationHeroProps & {
+  tabs?: ApplicationTabItemProps[];
+  videoSectionProps?: ApplicationVideoSectionProps;
+  cards?: ApplicationCardProps[];
+  featureSections?: ApplicationFeatureSectionProps[];
+  resources?: ApplicationResourcesProps;
+  selector?: LandingPageSelectorProps;
 };
 
-export default function ApplicationLayout({ tabs }: ApplicationLayoutProps) {
+export default function ApplicationLayout({
+  tabs,
+  cards,
+  buttonProps,
+  heroDescription,
+  title,
+  videoSectionProps,
+  featureSections,
+  resources,
+  selector,
+}: ApplicationLayoutProps) {
+  const { setSelector } = useLayoutContext();
+
+  useEffect(() => {
+    if (selector) {
+      setSelector(selector);
+    }
+
+    return () => {
+      setSelector(undefined);
+    };
+  }, [selector, setSelector]);
+
   return (
-    <Stack gap="35px" sx={{ mb: 10 }}>
-      <ApplicationHero />
-      <ApplicationTabs tabs={tabs} />
+    <Stack>
+      <ApplicationHero
+        buttonProps={buttonProps}
+        title={title}
+        heroDescription={heroDescription}
+      />
+      {videoSectionProps && <ApplicationVideoSection {...videoSectionProps} />}
+      {tabs && <ApplicationTabs tabs={tabs} />}
+      {cards && <ApplicationCardSection items={cards} />}
+      {featureSections &&
+        featureSections.map((featureSection, idx) => (
+          <ApplicationFeatureSection key={idx} {...featureSection} />
+        ))}
+      {resources && <ApplicationResources {...resources} />}
     </Stack>
   );
 }

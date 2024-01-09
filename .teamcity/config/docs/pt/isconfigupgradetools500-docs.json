@@ -1,0 +1,38 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isconfigupgradetoolsptBR500",
+      "title": "InsuranceSuite Configuration Upgrade Tools pt",
+      "displayTitle": "Ferramentas de atualização de configuração do Guidewire InsuranceSuite",
+      "url": "pt/isconfigupgradetools/500",
+      "metadata": {
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "InsuranceSuite Configuration Upgrade Tools"
+        ],
+        "version": [
+          "5.0.0"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Upgrade"
+        ],
+        "language": "pt"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

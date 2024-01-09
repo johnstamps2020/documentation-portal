@@ -1,6 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import CategoryCard, { CategoryCardProps } from './CategoryCard';
 import { LandingPageItemData } from 'hooks/useLandingPageItems';
+import LandingPageItem from './CategoryItem';
+import LandingPageItemRenderer, {
+  LandingPageItemRendererProps,
+} from '../LandingPageItemRenderer';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
 
 const bikeLandingPageItemData: LandingPageItemData[] = [
   {
@@ -18,23 +25,49 @@ const bikeLandingPageItemData: LandingPageItemData[] = [
   },
 ];
 
-jest.mock('hooks/useLandingPageItems', () => ({
-  useLandingPageItems: () => ({
-    landingPageItems: bikeLandingPageItemData,
-    isError: false,
-    isLoading: false,
-  }),
-}));
-
 const title = 'Two-wheelers';
 
-const cardConfig: CategoryCardProps = {
-  label: title,
-  items: [],
+const categoryCardItem = (
+  <Paper
+    sx={{
+      width: {
+        sm: '300px',
+        xs: '100%',
+      },
+      padding: '24px',
+    }}
+  >
+    <Typography variant="h2" sx={{ fontSize: '1.25rem', fontWeight: '600' }}>
+      {title}
+    </Typography>
+    <Stack sx={{ fontSize: '0.875rem', color: 'black', gap: 1 }}>
+      {bikeLandingPageItemData?.map((categoryItem, idx) => (
+        <LandingPageItem {...categoryItem} key={idx} />
+      ))}
+    </Stack>
+  </Paper>
+);
+
+const categoryCardSkeleton = (
+  <Skeleton
+    variant="rectangular"
+    sx={{
+      width: { sm: '300px', xs: '100%' },
+      height: '450px',
+    }}
+  />
+);
+
+const rendererConfig: LandingPageItemRendererProps = {
+  item: categoryCardItem,
+  skeleton: categoryCardSkeleton,
+  landingPageItems: bikeLandingPageItemData,
+  isLoading: false,
+  isError: undefined,
 };
 
 test('renders the card title', () => {
-  render(<CategoryCard {...cardConfig} />);
+  render(<LandingPageItemRenderer {...rendererConfig} />);
   const titleElement = screen.getByText(title);
   expect(titleElement).toBeInTheDocument();
 });

@@ -15,8 +15,10 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
+        "subject": ["Administration", "Configuration"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -40,8 +42,10 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
+        "subject": ["Integration"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -65,8 +69,10 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
+        "subject": ["Release notes"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

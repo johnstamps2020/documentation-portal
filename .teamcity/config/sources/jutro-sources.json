@@ -188,6 +188,12 @@
       "branch": "release/hakuba"
     },
     {
+      "id": "srcjutrosdkinnsbruck",
+      "title": "Jutro SDK Innsbruck",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "release/innsbruck"
+    },
+    {
       "id": "srcjutrosbbizpatterns652",
       "title": "Jutro Storybook Business Patterns 6.5.2",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/storybook-business-patterns.git",
@@ -392,11 +398,41 @@
       "branch": "release/8.13.2"
     },
     {
+      "id": "srcjutro8133",
+      "title": "Jutro Design System 8.13.3",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.13.3"
+    },
+    {
+      "id": "srcjutro8134",
+      "title": "Jutro Design System 8.13.4",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.13.4"
+    },
+    {
+      "id": "srcjutro8135",
+      "title": "Jutro Design System 8.13.5",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.13.5"
+    },
+    {
       "id": "srcjutro1000",
-      "title": "Jutro Design System 10.0.0",
+      "title": "Jutro Digital Platform 10.0",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/10.0.0"
     },
+    {
+      "id": "srcjutro1010",
+      "title": "Jutro Digital Platform 10.1",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/10.1.0"
+    },
+    {
+      "id": "srcjutro1020",
+      "title": "Jutro Digital Platform 10.2",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/10.2.0"
+    },    
     {
       "id": "srcjutroa11yapp",
       "title": "Jutro a11y app source",
@@ -414,6 +450,12 @@
       "title": "Jutro Digital Content",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
       "branch": "main"
+    },
+    {
+      "id": "jutrodigitalcontentsrcinnsbruck",
+      "title": "Jutro Digital Content Innsbruck",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
+      "branch": "release/innsbruck"
     }
   ]
 }

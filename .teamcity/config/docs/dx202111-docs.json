@@ -3,10 +3,10 @@
   "docs": [
     {
       "id": "dx202111ceamapp",
-      "title": "Application Guide",
+      "title": "CustomerEngage Account Management Application Guide",
       "url": "cloud/dx/ce-am/202111/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -22,10 +22,10 @@
     },
     {
       "id": "dx202111ceaminstall",
-      "title": "Installation Guide",
+      "title": "CustomerEngage Account Management Installation Guide",
       "url": "cloud/dx/ce-am/202111/install",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -41,10 +41,10 @@
     },
     {
       "id": "dx202111ceamdev",
-      "title": "Development Guide",
+      "title": "CustomerEngage Account Management Development Guide",
       "url": "cloud/dx/ce-am/202111/dev",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -60,10 +60,10 @@
     },
     {
       "id": "dx202111ceamrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "CustomerEngage Account Management Digital Services Reference Guides",
       "url": "cloud/dx/ce-am/202111/ref",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -79,10 +79,10 @@
     },
     {
       "id": "dx202111ceamrelnotes",
-      "title": "Release Notes",
+      "title": "CustomerEngage Account Management Release Notes",
       "url": "cloud/dx/ce-am/202111/relnotes",
       "metadata": {
-        "product": ["CustomerEngage Account Management"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -98,10 +98,10 @@
     },
     {
       "id": "dx202111ceclaimsapp",
-      "title": "Application Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Application Guide",
       "url": "cloud/dx/ce-claims/202111/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -117,10 +117,10 @@
     },
     {
       "id": "dx202111ceclaimsinstall",
-      "title": "Installation Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Installation Guide",
       "url": "cloud/dx/ce-claims/202111/install",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -136,10 +136,10 @@
     },
     {
       "id": "dx202111ceclaimsdev",
-      "title": "Development Guide",
+      "title": "CustomerEngage Account Management for ClaimCenter Development Guide",
       "url": "cloud/dx/ce-claims/202111/dev",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -155,10 +155,10 @@
     },
     {
       "id": "dx202111ceclaimsrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "CustomerEngage Account Management for ClaimCenter Digital Services Reference Guides",
       "url": "cloud/dx/ce-claims/202111/ref",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -174,10 +174,10 @@
     },
     {
       "id": "dx202111ceclaimsrelnotes",
-      "title": "Release Notes",
+      "title": "CustomerEngage Account Management for ClaimCenter Release Notes",
       "url": "cloud/dx/ce-claims/202111/relnotes",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -193,10 +193,10 @@
     },
     {
       "id": "dx202111ceqbapp",
-      "title": "Application Guide",
+      "title": "CustomerEngage Quote and Buy Application Guide",
       "url": "cloud/dx/ce-qb/202111/app",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -212,10 +212,10 @@
     },
     {
       "id": "dx202111ceqbinstall",
-      "title": "Installation Guide",
+      "title": "CustomerEngage Quote and Buy Installation Guide",
       "url": "cloud/dx/ce-qb/202111/install",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -231,10 +231,10 @@
     },
     {
       "id": "dx202111ceqbdev",
-      "title": "Development Guide",
+      "title": "CustomerEngage Quote and Buy Development Guide",
       "url": "cloud/dx/ce-qb/202111/dev",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -250,10 +250,10 @@
     },
     {
       "id": "dx202111ceqbrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "CustomerEngage Quote and Buy Digital Services Reference Guides",
       "url": "cloud/dx/ce-qb/202111/ref",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -269,10 +269,10 @@
     },
     {
       "id": "dx202111ceqbrelnotes",
-      "title": "Release Notes",
+      "title": "CustomerEngage Quote and Buy Release Notes",
       "url": "cloud/dx/ce-qb/202111/relnotes",
       "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -288,10 +288,10 @@
     },
     {
       "id": "dx202111peapp",
-      "title": "Application Guide",
+      "title": "ProducerEngage Application Guide",
       "url": "cloud/dx/pe/202111/app",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -307,10 +307,10 @@
     },
     {
       "id": "dx202111peinstall",
-      "title": "Installation Guide",
+      "title": "ProducerEngage Installation Guide",
       "url": "cloud/dx/pe/202111/install",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -326,10 +326,10 @@
     },
     {
       "id": "dx202111pedev",
-      "title": "Development Guide",
+      "title": "ProducerEngage Development Guide",
       "url": "cloud/dx/pe/202111/dev",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -345,10 +345,10 @@
     },
     {
       "id": "dx202111perefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "ProducerEngage Digital Services Reference Guides",
       "url": "cloud/dx/pe/202111/ref",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -364,10 +364,10 @@
     },
     {
       "id": "dx202111perelnotes",
-      "title": "Release Notes",
+      "title": "ProducerEngage Release Notes",
       "url": "cloud/dx/pe/202111/relnotes",
       "metadata": {
-        "product": ["ProducerEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -383,10 +383,10 @@
     },
     {
       "id": "dx202111peclaimsapp",
-      "title": "Application Guide",
+      "title": "ProducerEngage for ClaimCenter Application Guide",
       "url": "cloud/dx/pe-claims/202111/app",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -402,10 +402,10 @@
     },
     {
       "id": "dx202111peclaimsinstall",
-      "title": "Installation Guide",
+      "title": "ProducerEngage for ClaimCenter Installation Guide",
       "url": "cloud/dx/pe-claims/202111/install",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -421,10 +421,10 @@
     },
     {
       "id": "dx202111peclaimsdev",
-      "title": "Development Guide",
+      "title": "ProducerEngage for ClaimCenter Development Guide",
       "url": "cloud/dx/pe-claims/202111/dev",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -440,10 +440,10 @@
     },
     {
       "id": "dx202111peclaimsrefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "ProducerEngage for ClaimCenter Digital Services Reference Guides",
       "url": "cloud/dx/pe-claims/202111/ref",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -459,10 +459,10 @@
     },
     {
       "id": "dx202111peclaimsrelnotes",
-      "title": "Release Notes",
+      "title": "ProducerEngage for ClaimCenter Release Notes",
       "url": "cloud/dx/pe-claims/202111/relnotes",
       "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -478,10 +478,10 @@
     },
     {
       "id": "dx202111sreapp",
-      "title": "Application Guide",
+      "title": "ServiceRepEngage Application Guide",
       "url": "cloud/dx/sre/202111/app",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -497,10 +497,10 @@
     },
     {
       "id": "dx202111sreinstall",
-      "title": "Installation Guide",
+      "title": "ServiceRepEngage Installation Guide",
       "url": "cloud/dx/sre/202111/install",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -516,10 +516,10 @@
     },
     {
       "id": "dx202111sredev",
-      "title": "Development Guide",
+      "title": "ServiceRepEngage Development Guide",
       "url": "cloud/dx/sre/202111/dev",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -535,10 +535,10 @@
     },
     {
       "id": "dx202111srerefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "ServiceRepEngage Digital Services Reference Guides",
       "url": "cloud/dx/sre/202111/ref",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -554,10 +554,10 @@
     },
     {
       "id": "dx202111srerelnotes",
-      "title": "Release Notes",
+      "title": "ServiceRepEngage Release Notes",
       "url": "cloud/dx/sre/202111/relnotes",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -573,10 +573,10 @@
     },
     {
       "id": "dx202111veapp",
-      "title": "Application Guide",
+      "title": "VendorEngage Application Guide",
       "url": "cloud/dx/ve/202111/app",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -592,10 +592,10 @@
     },
     {
       "id": "dx202111veinstall",
-      "title": "Installation Guide",
+      "title": "VendorEngage Installation Guide",
       "url": "cloud/dx/ve/202111/install",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -611,10 +611,10 @@
     },
     {
       "id": "dx202111vedev",
-      "title": "Development Guide",
+      "title": "VendorEngage Development Guide",
       "url": "cloud/dx/ve/202111/dev",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -630,10 +630,10 @@
     },
     {
       "id": "dx202111verefguides",
-      "title": "Digital Services Reference Guides",
+      "title": "VendorEngage Digital Services Reference Guides",
       "url": "cloud/dx/ve/202111/ref",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -649,10 +649,10 @@
     },
     {
       "id": "dx202111verelnotes",
-      "title": "Release Notes",
+      "title": "VendorEngage Release Notes",
       "url": "cloud/dx/ve/202111/relnotes",
       "metadata": {
-        "product": ["VendorEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "release": ["Dobson"],
@@ -672,17 +672,10 @@
       "url": "dx/js-docs/202111",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "CustomerEngage Account Management",
-          "CustomerEngage Account Management for ClaimCenter",
-          "CustomerEngage Quote and Buy",
-          "ProducerEngage",
-          "ProducerEngage for ClaimCenter",
-          "ServiceRepEngage",
-          "VendorEngage"
-        ],
+        "product": ["Digital Reference Applications"],
         "version": ["2021.11"],
         "release": ["Dobson"],
+        "subject": ["Development", "Integration"],
         "language": "en"
       },
       "displayOnLandingPages": false,

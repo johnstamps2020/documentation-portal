@@ -17,6 +17,13 @@ const pageConfig: SectionLayoutProps = {
           label: 'Release Notes',
           docId: 'dhrn202306',
         },
+        {
+          label: 'Support Matrix',
+          docId: 'supportmatrices',
+          pathInDoc:
+            'data-management/data-management-2023.06-hakuba-support-matrix.pdf',
+          videoIcon: false,
+        },
       ],
     },
     {

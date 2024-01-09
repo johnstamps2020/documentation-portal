@@ -1,49 +1,57 @@
 {
   "$schema": "../config-schema.json",
   "docs": [
-    {"id": "security",
+    {
+      "id": "security",
       "title": "Security",
       "url": "security",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
+        "platform": ["Cloud"],
         "product": ["Internal Docs"],
-        "version": [
-          "latest"
-        ],
+        "release": ["Innsbruck", "Hakuba", "Garmisch"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging", 
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": true,
       "internal": false,
-      "earlyAccess": false},
+      "earlyAccess": false
+    },
+    {
+      "id": "l10nescrows3folder",
+      "title": "L10N Escrow S3 folder",
+      "url": "escrow",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Digital Reference Applications"
+        ],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
     {
       "id": "l10npdfss3folder",
       "title": "L10N pdfs S3 folder",
       "url": "l10n/pdfs",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter",
-          "ClaimCenter",
-          "PolicyCenter"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "prod"
-      ],
+      "environments": ["prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -55,29 +63,21 @@
       "title": "Predict",
       "url": "cloud/predict/latest",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Predict"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Predict"],
+        "version": ["latest"],
         "release": [
           "Cortina",
           "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -89,23 +89,13 @@
       "title": "Predict Upgrade",
       "url": "cloud/predict/upgrade",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Predict"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Hakuba"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Predict"],
+        "version": ["latest"],
+        "release": ["Hakuba", "Innsbruck"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -117,29 +107,21 @@
       "title": "Compare",
       "url": "cloud/compare/latest",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Compare"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Compare"],
+        "version": ["latest"],
         "release": [
           "Cortina",
           "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -151,21 +133,12 @@
       "title": "Guidewire Cloud Home Help - Early Access",
       "url": "help/GCH-earlyaccess",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Guidewire Cloud Home"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Home"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -177,30 +150,21 @@
       "title": "Guidewire Cloud Home Help",
       "url": "help/GCH",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Guidewire Cloud Home"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Home"],
+        "version": ["latest"],
         "release": [
           "Cortina",
           "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
-      "environments": [
-        "dev",
-        "staging",
-        "prod"
-      ],
+      "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -212,25 +176,14 @@
       "title": "Configuration Manager Help",
       "url": "help/cortina/configuration-manager",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Configuration Manager"
-        ],
-        "version": [
-          "Cortina"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Configuration Manager"],
+        "version": ["Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "displayOnLandingPages": false,
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -241,25 +194,14 @@
       "title": "Configuration Manager Help",
       "url": "help/configuration-manager",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Configuration Manager"
-        ],
-        "version": [
-          "Banff"
-        ],
-        "release": [
-          "Banff"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Configuration Manager"],
+        "version": ["Banff"],
+        "release": ["Banff"],
         "language": "en"
       },
       "displayOnLandingPages": false,
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -270,25 +212,16 @@
       "title": "Checksums",
       "url": "checksums",
       "metadata": {
-        "platform": [
-          "Self-managed"
-        ],
-        "product": [
-          "Checksums"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Self-managed"],
+        "product": ["Checksums"],
+        "version": ["latest"],
         "language": "en"
       },
       "displayOnLandingPages": false,
       "public": false,
       "internal": false,
       "indexForSearch": true,
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "earlyAccess": false
     },
     {
@@ -296,25 +229,16 @@
       "title": "EasyGuide",
       "url": "easyguide",
       "metadata": {
-        "platform": [
-          "Self-managed"
-        ],
-        "product": [
-          "EasyGuide"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Self-managed"],
+        "product": ["EasyGuide"],
+        "version": ["latest"],
         "language": "en"
       },
       "displayOnLandingPages": false,
       "public": false,
       "internal": false,
       "indexForSearch": false,
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "earlyAccess": false
     },
     {
@@ -322,29 +246,29 @@
       "title": "Glossary",
       "url": "glossary",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
+        "platform": ["Cloud", "Self-managed"],
         "product": [
-          "Glossary"
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "DataHub",
+          "InfoCenter",
+          "Digital Reference Applications"
         ],
-        "version": [
-          "latest"
-        ],
+        "version": ["latest"],
         "release": [
           "Cortina",
           "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
+        "subject": ["Glossary"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -356,21 +280,12 @@
       "title": "Learning Analytics",
       "url": "learning-analytics",
       "metadata": {
-        "product": [
-          "LRS"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
+        "product": ["LRS"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -382,28 +297,20 @@
       "title": "Cyence",
       "url": "cyence",
       "metadata": {
-        "product": [
-          "Cyence"
-        ],
-        "platform": [
-          "Cloud"
-        ],
+        "product": ["Cyence"],
+        "platform": ["Cloud"],
         "release": [
           "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
-        "version": [
-          "latest"
-        ],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -415,28 +322,20 @@
       "title": "HazardHub",
       "url": "hazardhub",
       "metadata": {
-        "product": [
-          "HazardHub Casualty"
-        ],
-        "platform": [
-          "Cloud"
-        ],
+        "product": ["HazardHub Casualty"],
+        "platform": ["Cloud"],
         "release": [
           "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
-        "version": [
-          "latest"
-        ],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -448,20 +347,12 @@
       "title": "Portfolio Assembly (Porta)",
       "url": "porta/latest",
       "metadata": {
-        "product": [
-          "Portfolio Assembly"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
+        "product": ["Portfolio Assembly"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -473,21 +364,21 @@
       "title": "Internal Docs",
       "url": "internal-docs",
       "metadata": {
-        "platform": [
-          "Cloud",
-          "Self-managed"
+        "platform": ["Cloud", "Self-managed"],
+        "release": [
+          "Innsbruck",
+          "Hakuba",
+          "Garmisch",
+          "Flaine",
+          "Elysian",
+          "Dobson",
+          "Cortina"
         ],
-        "product": [
-          "Internal Docs"
-        ],
-        "version": [
-          "latest"
-        ],
+        "product": ["Internal Docs"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -499,21 +390,13 @@
       "title": "Product Adoption Resources",
       "url": "product-adoption-resources/latest",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Product Adoption Resources"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Product Adoption"],
+        "release": ["Innsbruck", "Hakuba", "Garmisch"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -525,20 +408,12 @@
       "title": "CDS Docs S3 folder",
       "url": "cds/docs",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Product Adoption Resources"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Product Adoption"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "prod"
-      ],
+      "environments": ["prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -550,20 +425,12 @@
       "title": "Doctools S3 manager",
       "url": "doctools/s3-manager",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Product Adoption Resources"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Product Adoption"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "earlyAccess": false,
@@ -575,22 +442,13 @@
       "title": "Community Case Templates",
       "url": "cloud/requests/latest",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Community Case Templates"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Community Case Templates"],
+        "release": ["Innsbruck", "Hakuba", "Garmisch"],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "dev",
-        "staging",
-        "prod"
-      ],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "earlyAccess": false,
@@ -602,24 +460,22 @@
       "title": "Upgrade Diff Reports",
       "url": "upgradediffs",
       "metadata": {
-        "platform": [
-          "Cloud"
+        "platform": ["Cloud"],
+        "release": [
+          "Innsbruck",
+          "Hakuba",
+          "Garmisch",
+          "Flaine",
+          "Elysian",
+          "Dobson",
+          "Cortina"
         ],
-        "product": [
-          "BillingCenter",
-          "ClaimCenter",
-          "PolicyCenter"
-        ],
-        "version": [
-          "latest"
-        ],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["latest"],
+        "subject": ["Upgrade"],
         "language": "en"
       },
-      "environments": [
-        "dev",
-        "staging",
-        "prod"
-      ],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "earlyAccess": false,
@@ -631,9 +487,7 @@
       "title": "Support Matrices",
       "url": "support-matrices",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
+        "platform": ["Cloud"],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -641,15 +495,10 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": [
-          "latest"
-        ],
+        "version": ["latest"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "earlyAccess": false,

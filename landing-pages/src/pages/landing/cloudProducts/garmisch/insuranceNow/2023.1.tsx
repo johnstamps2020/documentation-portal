@@ -86,7 +86,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'inapidevelopment',
         },
         {
-          label: 'Developer Setup Draft',
+          label: 'Developer Setup - Internal',
           docId: 'indevguidejava11draft',
         },
         {
@@ -147,7 +147,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20231provportal',
         },
         {
-          label: 'Provisioning Portal Internal',
+          label: 'Provisioning Portal - Internal',
           docId: 'in20231provportalinternal',
         },
       ],

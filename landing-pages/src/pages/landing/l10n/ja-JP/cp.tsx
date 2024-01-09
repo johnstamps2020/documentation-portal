@@ -18,16 +18,16 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.06 (Hakuba)',
+      label: '2023.10 (Innsbruck)', 
       items: [
         {
-          label: 'Guidewire Cloud Home ヘルプ',
-          docId: 'gchjaJPhelprelease',
-        },
+          label: 'Guidewire Cloud Home ヘルプ', 
+          docId: 'gchjaJPhelprelease', 
+        }, 
         {
-          label: 'Guidewire Cloud Platform リリースノート',
-          docId: 'gwcpjareleasenotes',
-        },
+          label: 'Guidewire Cloud Platform リリースノート', 
+          docId: 'gwcpjaJPreleasenotes', 
+        }, 
       ],
     },
     {
@@ -35,17 +35,21 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/cp/2022.09/GWCP-ReleaseNotes_ja-JP.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/cp/2022.09/GWCP-ReleaseNotes_ja-JP.pdf',
           videoIcon: false,
         },
         {
           label: 'Guidewire Cloud Console ガイド',
-          url: '/l10n/pdfs/ja-JP/cp/2022.09/guidewire_cloud_platform_guide_ja-JP.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'ja-JP/cp/2022.09/guidewire_cloud_platform_guide_ja-JP.pdf',
           videoIcon: false,
         },
         {
           label: 'Guidewire Cloud Platform の操作',
-          url: '/l10n/pdfs/ja-JP/cp/2022.09/CloudPlatform_ja-JP.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/cp/2022.09/CloudPlatform_ja-JP.pdf',
           videoIcon: false,
         },
         {
@@ -59,7 +63,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Cloud Standards',
-          url: '/l10n/pdfs/ja-JP/cp/2022.06/CloudStandards(surepath)-JA.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja-JP/cp/2022.06/CloudStandards(surepath)-JA.pdf',
           videoIcon: false,
         },
       ],
@@ -70,3 +75,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Cp() {
   return <CategoryLayout {...pageConfig} />;
 }
+

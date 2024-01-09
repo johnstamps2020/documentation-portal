@@ -4,7 +4,7 @@
     {
       "id": "dx202306deDEceamrelnotes",
       "title": "CustomerEngage Account Management Release Notes de",
-      "displayTitle": "Versionshinweise",
+      "displayTitle": "CustomerEngage Account Management Versionshinweise",
       "url": "de/cloud/dx/ce-am/202306/relnotes",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -14,7 +14,7 @@
         "subject": ["Release notes"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -24,7 +24,7 @@
     {
       "id": "dx202306deDEceclaimsrelnotes",
       "title": "CustomerEngage Account Management for ClaimCenter Release Notes de",
-      "displayTitle": "Versionshinweise",
+      "displayTitle": "CustomerEngage Account Management für ClaimCenter Versionshinweise",
       "url": "de/cloud/dx/ce-claims/202306/relnotes",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -34,7 +34,7 @@
         "subject": ["Release notes"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,7 +44,7 @@
     {
       "id": "dx202306deDEceqbrelnotes",
       "title": "CustomerEngage Quote and Buy Release Notes de",
-      "displayTitle": "Versionshinweise",
+      "displayTitle": "CustomerEngage Quote and Buy Versionshinweise",
       "url": "de/cloud/dx/ce-qb/202306/relnotes",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -54,7 +54,7 @@
         "subject": ["Release notes"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -64,7 +64,7 @@
     {
       "id": "dx202306deDEperelnotes",
       "title": "ProducerEngage Release Notes de",
-      "displayTitle": "Versionshinweise",
+      "displayTitle": "ProducerEngage Versionshinweise",
       "url": "de/cloud/dx/pe/202306/relnotes",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -74,7 +74,7 @@
         "subject": ["Release notes"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -84,7 +84,7 @@
     {
       "id": "dx202306deDEpeclaimsrelnotes",
       "title": "ProducerEngage for ClaimCenter Release Notes de",
-      "displayTitle": "Versionshinweise",
+      "displayTitle": "ProducerEngage für ClaimCenter Versionshinweise",
       "url": "de/cloud/dx/pe-claims/202306/relnotes",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -94,7 +94,7 @@
         "subject": ["Release notes"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -104,7 +104,7 @@
     {
       "id": "dx202306deDEsrerelnotes",
       "title": "ServiceRepEngage Release Notes de",
-      "displayTitle": "Versionshinweise",
+      "displayTitle": "ServiceRepEngage Versionshinweise",
       "url": "de/cloud/dx/sre/202306/relnotes",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -114,7 +114,7 @@
         "subject": ["Release notes"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -124,7 +124,7 @@
     {
       "id": "dx202306deDEverelnotes",
       "title": "VendorEngage Release Notes de",
-      "displayTitle": "Versionshinweise",
+      "displayTitle": "VendorEngage Versionshinweise",
       "url": "de/cloud/dx/ve/202306/relnotes",
       "metadata": {
         "product": ["Digital Reference Applications"],
@@ -134,7 +134,7 @@
         "subject": ["Release notes"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

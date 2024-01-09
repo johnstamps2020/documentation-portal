@@ -3,10 +3,15 @@
   "docs": [
     {
       "id": "ipukhakubarn",
-      "title": "Release Notes",
+      "title": "OIC Integration Release Notes",
       "url": "ipuk/hakuba/releasenotes",
       "metadata": {
-        "product": ["OIC Integration"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
@@ -22,10 +27,15 @@
     },
     {
       "id": "ipukhakubaconfig",
-      "title": "Configuration",
+      "title": "OIC Integration Configuration",
       "url": "ipuk/hakuba/config",
       "metadata": {
-        "product": ["OIC Integration"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
@@ -41,10 +51,15 @@
     },
     {
       "id": "ipukhakubaapp",
-      "title": "Application Guide",
+      "title": "OIC Integration Application Guide",
       "url": "ipuk/hakuba/app",
       "metadata": {
-        "product": ["OIC Integration"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
         "platform": ["Cloud"],
         "version": ["2023.06"],
         "release": ["Hakuba"],

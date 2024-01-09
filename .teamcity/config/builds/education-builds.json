@@ -6,7 +6,12 @@
       "docId": "cloudintegrationbasics",
       "srcId": "cloudintegrationbasicssrc",
       "workingDir": "website",
-      "nodeImageVersion": "18.16.0",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "billinginapd",
+      "srcId": "billinginapdsrc",
       "disabled": false
     }
   ]

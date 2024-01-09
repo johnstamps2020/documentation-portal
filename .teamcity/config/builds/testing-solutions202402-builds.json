@@ -1,0 +1,113 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-API.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testingframeworksapijasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-UI.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testingframeworksuijasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Load.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testingframeworksloadjasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Management.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testingframeworksmgmtjasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Matrix.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testingframeworksmatrixjasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testingframeworksrnjasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Framework-Installation.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testingframeworksinstalljasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ISUnitTesting.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "is202402testing",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Accessibility.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "is202402access",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Overview.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testing202402overview",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Testing-Standards.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testing202402testingstandards",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "InsuranceSuite-Testing.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testing202402istesting",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

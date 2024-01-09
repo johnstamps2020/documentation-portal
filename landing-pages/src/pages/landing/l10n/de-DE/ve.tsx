@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]VE Release Notes', 
+docId: 'dx202310deDEverelnotes', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -31,7 +40,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ve/2023.02/VendorEngage_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ve/2023.02/VendorEngage_AppGuide.pdf',
           videoIcon: false,
         },
         {
@@ -45,7 +55,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ve/2021.11/de-DE Digital v.2021.11 VE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ve/2021.11/de-DE Digital v.2021.11 VE_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -55,22 +66,29 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE_AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Entwicklerhandbuch',
-          url: '/l10n/pdfs/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE Developers-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE Developers-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Administrator- und Sicherheitshandbuch',
-          url: '/l10n/pdfs/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE admin&security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE admin&security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE Installer-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE Installer-guide.pdf',
           videoIcon: false,
         },
       ],
@@ -80,7 +98,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/ve/11.1/de-VE-11.1_onprem_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ve/11.1/de-VE-11.1_onprem_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -90,22 +109,27 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Administrator- und Sicherheitshandbuch',
-          url: '/l10n/pdfs/de-DE/ve/10.0.1/de-VE_admin-and-security-guide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ve/10.0.1/de-VE_admin-and-security-guide.pdf',
           videoIcon: false,
         },
         {
           label: 'Live Style Guide Installation and Configuration Guide',
-          url: '/l10n/pdfs/de-DE/ve/10.0.1/de-VE_Life Style Guide Install and Config.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'de-DE/ve/10.0.1/de-VE_Life Style Guide Install and Config.pdf',
           videoIcon: false,
         },
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/ve/10.0.1/de-VE_AppGuide_de.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ve/10.0.1/de-VE_AppGuide_de.pdf',
           videoIcon: false,
         },
         {
           label: 'Installationshandbuch',
-          url: '/l10n/pdfs/de-DE/ve/10.0.1/de-VM_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/ve/10.0.1/de-VM_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -116,3 +140,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Ve() {
   return <CategoryLayout {...pageConfig} />;
 }
+

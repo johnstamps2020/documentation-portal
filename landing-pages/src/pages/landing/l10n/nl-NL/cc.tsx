@@ -15,7 +15,8 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guidewire Contact Management Guide',
-          url: '/l10n/pdfs/nl-NL/cc/10.0.2/nl-CC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'nl-NL/cc/10.0.2/nl-CC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
       ],

@@ -23,21 +23,18 @@
       "buildType": "yarn",
       "docId": "gccinternallatests",
       "srcId": "gccinternalsrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "gccuiinternallatest",
       "srcId": "gccuiinternallatestsrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "guidewirecloudconsolerootinsurerdev",
       "srcId": "gcccloudconsoledocusaurussrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
@@ -56,21 +53,18 @@
       "buildType": "yarn",
       "docId": "databaseservice",
       "srcId": "databaseservicesrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "insurancesuiteplatformdeployer",
       "srcId": "insurancesuiteplatformdeployersrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "gwcpinfrastructureprovisioningservice",
       "srcId": "gwcpinfrastructureprovisioningservicesrc",
-      "nodeImageVersion": "18.0.0",
       "workingDir": "website",
       "disabled": false
     },
@@ -78,21 +72,18 @@
       "buildType": "yarn",
       "docId": "isdeploymentorchestrator",
       "srcId": "isdeploymentorchestratorsrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "buildpromoter",
       "srcId": "buildpromotersrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "nps",
       "srcId": "npssrc",
-      "nodeImageVersion": "18.0.0",
       "workingDir": "atmos-provisioning-docs",
       "disabled": false
     },
@@ -100,7 +91,6 @@
       "buildType": "yarn",
       "docId": "sms",
       "srcId": "smssrc",
-      "nodeImageVersion": "18.0.0",
       "workingDir": "secret-management-service-docs",
       "disabled": false
     },
@@ -108,7 +98,6 @@
       "buildType": "yarn",
       "docId": "storageservice",
       "srcId": "storageservicesrc",
-      "nodeImageVersion": "18.0.0",
       "workingDir": "website",
       "disabled": false
     },
@@ -116,7 +105,6 @@
       "buildType": "yarn",
       "docId": "projectservice",
       "srcId": "projectservicesrc",
-      "nodeImageVersion": "18.0.0",
       "workingDir": "website",
       "disabled": false
     },
@@ -124,14 +112,12 @@
       "buildType": "yarn",
       "docId": "dad",
       "srcId": "dadsrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "cicdmanager",
       "srcId": "cicdmanagersrc",
-      "nodeImageVersion": "18.0.0",
       "workingDir": "website",
       "disabled": false
     },
@@ -139,7 +125,6 @@
       "buildType": "yarn",
       "docId": "scm",
       "srcId": "scmsrc",
-      "nodeImageVersion": "18.0.0",
       "workingDir": "website",
       "disabled": false
     },
@@ -147,14 +132,12 @@
       "buildType": "yarn",
       "docId": "planetservice",
       "srcId": "planetservicesrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "apigatewayconfigservice",
       "srcId": "apigatewayconfigservicesrc",
-      "nodeImageVersion": "18.0.0",
       "disabled": false
     }
   ]

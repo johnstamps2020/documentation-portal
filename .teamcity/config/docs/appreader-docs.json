@@ -8,7 +8,28 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire AppReader"],
+        "release": ["Innsbruck", "Hakuba", "Garmisch", "Flaine", "Elysian"],
         "version": ["4.0.0"],
+        "subject": ["Release notes"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "internal": false,
+      "earlyAccess": false,
+      "indexForSearch": true,
+      "public": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "appreader",
+      "title": "AppReader",
+      "url": "cloud/appreader/latest/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire AppReader"],
+        "release": ["Innsbruck", "Hakuba", "Garmisch", "Flaine", "Elysian"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
         "language": "en"
       },
       "environments": ["staging", "prod"],

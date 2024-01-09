@@ -8,9 +8,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1", "2022.2", "2023.1", "2023.2"],
+        "version": ["2022.1", "2022.2", "2023.1", "2023.2", "2023.3"],
         "subject": ["Release notes"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -27,12 +27,31 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1", "2022.2", "2023.1", "2023.2"],
+        "version": ["2022.1", "2022.2", "2023.1", "2023.2", "2023.3"],
         "subject": ["Release notes"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "incsp20241rn",
+      "title": "Consumer Service Portal 2024.1 Release Notes",
+      "url": "cloud/in/csp20241rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -51,7 +70,7 @@
         "release": ["Innsbruck"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -255,9 +274,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -274,9 +293,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -288,12 +307,12 @@
     },
     {
       "id": "inexcelrating30",
-      "title": "Excel Designed Rating 3.0",
+      "title": "Excel Designed Rating 3.0 for InsuranceNow",
       "url": "cloud/in/excelrating30",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Features and functionality"],
         "release": [
           "Cortina",
@@ -301,8 +320,47 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20241studiorn",
+      "title": "Studio 2024.1 Release Notes",
+      "url": "cloud/in/20241/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20233studiorn",
+      "title": "Studio 2023.3 Release Notes",
+      "url": "cloud/in/20233/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.3"],
+        "subject": ["Release notes"],
+        "release": ["Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -433,7 +491,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Installation"],
         "release": [
           "Cortina",
@@ -441,7 +499,8 @@
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
@@ -450,6 +509,25 @@
       "indexForSearch": true,
       "public": false,
       "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20241rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20241/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -464,7 +542,7 @@
         "release": ["Innsbruck"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -592,15 +670,16 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
-        "subject": ["Installation"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
+        "subject": ["Upgrade"],
         "release": [
           "Cortina",
           "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },
@@ -618,12 +697,69 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ininowasidp",
+      "title": "InsuranceNow as an IdP",
+      "url": "cloud/in/inow-idp",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.3", "2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
+        "subject": ["Installation"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "indataservice",
+      "title": "Data Service",
+      "url": "cloud/in/data-service",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.2", "2023.3"],
+        "subject": ["Features and functionality"],
+        "release": ["Hakuba", "Innsbruck"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "inprogstandards",
+      "title": "Programming Standards",
+      "url": "cloud/in/inprogstandards",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Development"],
+        "release": ["Jasper"],
+        "language": "en"
+      },
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

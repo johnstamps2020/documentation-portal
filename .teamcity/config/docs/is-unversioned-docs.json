@@ -17,14 +17,15 @@
           "4.0.0",
           "3.3.0"
         ],
-        "subject": ["Installation"],
+        "subject": ["Upgrade"],
         "release": [
           "Cortina",
           "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
-          "Hakuba"
+          "Hakuba",
+          "Innsbruck"
         ],
         "language": "en"
       },

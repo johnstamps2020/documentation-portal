@@ -98,10 +98,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'gwrules',
         },
         {
-          label: 'Guidewire Rules Type Manager (Early Access)',
-          docId: 'gwrulestypemgr',
-        },
-        {
           label: 'Product Designer',
           docId: 'ispc202302pd',
         },
@@ -111,7 +107,8 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Submission Intake Configuration',
-          url: '/cloud/subintake/?contextid=submissionIntakeConfiguration',
+          docId: 'submissionintake',
+          pathInDoc: '?contextid=submissionIntakeConfiguration',
           videoIcon: false,
         },
         {

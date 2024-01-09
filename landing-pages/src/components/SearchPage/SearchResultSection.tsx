@@ -1,4 +1,4 @@
-import AppliedFilters from './AppliedFilters';
+import AppliedFilters from './SearchFilters/AppliedFilters';
 import PaginationSelector from './PaginationSelector';
 import Stack from '@mui/material/Stack';
 import Highlighter from './Highlighter';

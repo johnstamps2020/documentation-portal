@@ -3,6 +3,7 @@ import ProductFamilyLayout, {
 } from 'components/LandingPage/ProductFamily/ProductFamilyLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {
@@ -18,8 +19,12 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Was ist neu in Innsbruck',
+      docId: 'whatsnewdeDEinnsbruck',
+    },
+    {
       label: 'Was ist neu in Hakuba',
-      pagePath: 'l10n/de-DE/202306hakubawhatsnew',
+      docId: 'whatsnewdeDEhakuba',
     },
     {
       label: 'BillingCenter',
@@ -50,6 +55,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/de-DE/cm',
     },
     {
+      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/de-DE/is-configupgradetools',
+    },
+    {
       label: 'DataHub',
       pagePath: 'l10n/de-DE/dh',
     },
@@ -78,31 +87,7 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/de-DE/ve',
     },
   ],
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-      {
-        label: 'Internal docs',
-        docId: 'internaldocslatest',
-      },
-    ],
-  },
+  sidebar: implementationResourcesSidebar,
 };
 
 export default function DeDE() {

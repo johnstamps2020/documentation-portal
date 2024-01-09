@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+label: '2023.10 (Innsbruck)', 
+items: [
+{
+label: '[TBD]BillingCenter Release Notes', 
+docId: 'isbc202310frFRreleasenotes', 
+}, 
+{
+label: '[TBD]BillingCenter Update', 
+docId: 'isbc202310frFRupdate', 
+}, 
+],
+},
+{
       label: '2023.06',
       items: [
         {
@@ -35,7 +48,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          docId: "isbc202302frFRapp",
+          docId: 'isbc202302frFRapp',
           videoIcon: false,
         },
       ],
@@ -45,23 +58,28 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/bc/2021.11/BC-AppGuide_FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/2021.11/BC-AppGuide_FR.pdf',
           videoIcon: false,
         },
         {
           label:
             "Guide de configuration et de flux opérationnels de l'API Cloud",
-          url: '/l10n/pdfs/fr-FR/bc/2021.11/BC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc:
+            'fr-FR/bc/2021.11/BC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf',
           videoIcon: false,
         },
         {
           label: 'French Documentation (fr-FR) Release Notes',
-          url: '/l10n/pdfs/fr-FR/bc/2021.11/ReleaseNotes-2021.11-docs-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/2021.11/ReleaseNotes-2021.11-docs-fr.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/bc/2021.11/BC-ConfigGuide_FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/2021.11/BC-ConfigGuide_FR.pdf',
           videoIcon: false,
         },
       ],
@@ -71,12 +89,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/bc/2020.11/BC_CL202011_fr-FR_InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/2020.11/BC_CL202011_fr-FR_InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/bc/2020.11/BC_CL202011_fr-FR_ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/2020.11/BC_CL202011_fr-FR_ConfigGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -86,12 +106,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/bc/2020.05/ISCL_202005_fr_BC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/2020.05/ISCL_202005_fr_BC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
-          url: '/l10n/pdfs/fr-FR/bc/2020.05/ISCL_202005_fr_BC_ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/2020.05/ISCL_202005_fr_BC_ContactMgmtGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -101,27 +123,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/bc/10.2.0/BC-InstallGuide_fr-FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.2.0/BC-InstallGuide_fr-FR.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
-          url: '/l10n/pdfs/fr-FR/bc/10.2.0/BC-ContactMgmtGuide_fr-FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.2.0/BC-ContactMgmtGuide_fr-FR.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/bc/10.2.0/BC-AppGuide_fr-FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.2.0/BC-AppGuide_fr-FR.pdf',
           videoIcon: false,
         },
         {
           label: 'French Documentation (fr-FR) Release Notes',
-          url: '/l10n/pdfs/fr-FR/bc/10.2.0/ReleaseNotes-10.2.0-docs-fr.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.2.0/ReleaseNotes-10.2.0-docs-fr.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/bc/10.2.0/BC-ConfigGuide_fr-FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.2.0/BC-ConfigGuide_fr-FR.pdf',
           videoIcon: false,
         },
       ],
@@ -131,12 +158,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/bc/10.1.1/BC-AppGuide_FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.1.1/BC-AppGuide_FR.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
-          url: '/l10n/pdfs/fr-FR/bc/10.1.1/BC-ContactMgmtGuide_FR.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.1.1/BC-ContactMgmtGuide_FR.pdf',
           videoIcon: false,
         },
       ],
@@ -146,27 +175,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/bc/10.0.2/InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.2/InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des règles',
-          url: '/l10n/pdfs/fr-FR/bc/10.0.2/RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.2/RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/bc/10.0.2/BC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.2/BC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
-          url: '/l10n/pdfs/fr-FR/bc/10.0.2/ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.2/ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/bc/10.0.2/ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.2/ConfigGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -176,27 +210,32 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guide de configuration',
-          url: '/l10n/pdfs/fr-FR/bc/10.0.0/fr-BC-ConfigGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.0/fr-BC-ConfigGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide d'installation",
-          url: '/l10n/pdfs/fr-FR/bc/10.0.0/fr-BC-InstallGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.0/fr-BC-InstallGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide des règles',
-          url: '/l10n/pdfs/fr-FR/bc/10.0.0/fr-BC-RulesGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.0/fr-BC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guide de gestion des contacts',
-          url: '/l10n/pdfs/fr-FR/bc/10.0.0/fr-BC-ContactMgmtGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.0/fr-BC-ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/bc/10.0.0/fr-BC-AppGuide.pdf',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/bc/10.0.0/fr-BC-AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -207,3 +246,4 @@ const pageConfig: CategoryLayoutProps = {
 export default function Bc() {
   return <CategoryLayout {...pageConfig} />;
 }
+

@@ -11,7 +11,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Selecione o produto',
-    selectedItemLabel: 'ProducerEngage',
+    selectedItemLabel: 'ProducerEngage for ClaimCenter',
     items: allSelectors.s04aae4cce94a63b38358bb52ee3acace,
     labelColor: 'white',
   },

@@ -5,6 +5,8 @@ import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import SectionItem from './SectionItem';
 import SectionIcon from './SectionIcon';
+import LandingPageItemRenderer from '../LandingPageItemRenderer';
+import { arrangeItems } from 'helpers/landingPageHelpers';
 
 export type SectionProps = {
   label: string;
@@ -13,25 +15,8 @@ export type SectionProps = {
 
 export default function Section({ label, items }: SectionProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
-
-  if (isError || landingPageItems?.length === 0 || !landingPageItems) {
-    return null;
-  }
-
-  if (isLoading) {
-    return (
-      <Skeleton
-        variant="rectangular"
-        sx={{
-          width: { sm: '450px', xs: '100%' },
-          height: '200px',
-          margin: '0 0 32px 16px',
-        }}
-      />
-    );
-  }
-
-  return (
+  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
+  const sectionItem = (
     <Stack
       spacing={2}
       sx={{
@@ -54,7 +39,7 @@ export default function Section({ label, items }: SectionProps) {
         </Typography>
       </Stack>
       <Stack spacing={1} paddingLeft="40px">
-        {landingPageItems?.map((sectionItem) => (
+        {arrangedLandingPageItems?.map((sectionItem) => (
           <SectionItem
             {...sectionItem}
             key={`${sectionItem.label}_${sectionItem.internal}`}
@@ -62,5 +47,24 @@ export default function Section({ label, items }: SectionProps) {
         ))}
       </Stack>
     </Stack>
+  );
+  const sectionSkeleton = (
+    <Skeleton
+      variant="rectangular"
+      sx={{
+        width: { sm: '450px', xs: '100%' },
+        height: '200px',
+        margin: '0 0 32px 16px',
+      }}
+    />
+  );
+  return (
+    <LandingPageItemRenderer
+      isError={isError}
+      isLoading={isLoading}
+      landingPageItems={arrangedLandingPageItems}
+      skeleton={sectionSkeleton}
+      item={sectionItem}
+    />
   );
 }

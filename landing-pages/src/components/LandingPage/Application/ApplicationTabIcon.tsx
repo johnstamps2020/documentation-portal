@@ -1,8 +1,8 @@
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import MenuIcon from '@mui/icons-material/Menu';
-import CodeIcon from '@mui/icons-material/Code';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import administer from './icons/administer.svg';
+import configure from './icons/configure.svg';
+import getStarted from './icons/get-started.svg';
+import integrate from './icons/integrate.svg';
+import learnAbout from './icons/learn-about.svg';
 
 export type ApplicationTabIconProps = {
   icon:
@@ -13,21 +13,31 @@ export type ApplicationTabIconProps = {
     | 'administer';
 };
 
-export default function ApplicationTabIcon({
-  icon,
-}: ApplicationTabIconProps): JSX.Element | null {
+function getIconImage(icon: ApplicationTabIconProps['icon']) {
   switch (icon) {
     case 'get-started':
-      return <NotificationsActiveIcon />;
+      return getStarted;
     case 'learn-about':
-      return <MenuIcon />;
+      return learnAbout;
     case 'configure':
-      return <CodeIcon />;
+      return configure;
     case 'integrate':
-      return <FilterListIcon />;
+      return integrate;
     case 'administer':
-      return <DashboardIcon />;
+      return administer;
     default:
       return null;
   }
+}
+
+export default function ApplicationTabIcon({
+  icon,
+}: ApplicationTabIconProps): JSX.Element | null {
+  const iconImage = getIconImage(icon);
+
+  if (!iconImage) {
+    return null;
+  }
+
+  return <img src={iconImage} alt="" />;
 }

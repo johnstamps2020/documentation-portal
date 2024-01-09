@@ -31,7 +31,7 @@ const pageConfig: SectionLayoutProps = {
       label: 'Administration',
       items: [
         {
-          label: 'Workflow Console',
+          label: 'Workflow Administration',
           docId: 'workflowconsole',
         },
       ],
