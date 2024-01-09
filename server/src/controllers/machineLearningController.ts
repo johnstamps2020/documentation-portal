@@ -1,6 +1,8 @@
 import { winstonLogger } from './loggerController';
 
-export async function createVectorFromText(text: string) {
+export async function createVectorFromText(
+  text: string
+): Promise<number[] | null> {
   try {
     const response = await fetch(`${process.env.ML_TRANSFORMER_URL}/encode`, {
       method: 'POST',
@@ -16,9 +18,9 @@ export async function createVectorFromText(text: string) {
     if (response.ok) {
       return await response.json();
     }
-    return [];
+    return null;
   } catch (err) {
     winstonLogger.error(err);
-    return [];
+    return null;
   }
 }

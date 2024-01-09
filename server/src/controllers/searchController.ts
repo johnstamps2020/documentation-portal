@@ -382,52 +382,55 @@ async function runSearch(
       highlight: highlightParameters,
     });
 
-    // FIMXE: This function returns an object. We need to extract the actual vector from it (I guess this is the problem)
-    const vectorizedSearchPhrase =
-      (await createVectorFromText(
-        queryWithFiltersFromUrl.bool.must.simple_query_string.query
-      )) || [];
+    const vectorizedSearchPhrase = await createVectorFromText(
+      queryWithFiltersFromUrl.bool.must.simple_query_string.query
+    );
 
-    const knnQuery = {
-      field: 'body_vector',
-      query_vector: vectorizedSearchPhrase,
-      num_candidates: 100,
-      k: 100,
-      filter: queryWithFiltersFromUrl.bool.filter,
-    };
+    let vectorSearchResults = null;
+    let hybridSearchResults = null;
 
-    const vectorSearchResults = await elasticClient.search({
-      index: searchIndexName,
-      from: startIndex,
-      size: resultsPerPage,
-      knn: knnQuery,
-      collapse: {
-        field: 'title.raw',
-        inner_hits: {
-          name: 'same_title',
-          size: 100,
+    if (vectorizedSearchPhrase) {
+      const knnQuery = {
+        field: 'body_vector',
+        query_vector: vectorizedSearchPhrase,
+        num_candidates: 100,
+        k: 100,
+        filter: queryWithFiltersFromUrl.bool.filter,
+      };
+
+      vectorSearchResults = await elasticClient.search<SearchResultSource>({
+        index: searchIndexName,
+        from: startIndex,
+        size: resultsPerPage,
+        knn: knnQuery,
+        collapse: {
+          field: 'title.raw',
+          inner_hits: {
+            name: 'same_title',
+            size: 100,
+          },
+          max_concurrent_group_searches: 4,
         },
-        max_concurrent_group_searches: 4,
-      },
-    });
+      });
 
-    const hybridSearchResults = await elasticClient.search({
-      index: searchIndexName,
-      from: startIndex,
-      size: resultsPerPage,
-      query: {
-        bool: queryWithFiltersFromUrl.bool,
-      },
-      knn: { ...knnQuery, boost: 2.0 },
-      collapse: {
-        field: 'title.raw',
-        inner_hits: {
-          name: 'same_title',
-          size: 100,
+      hybridSearchResults = await elasticClient.search<SearchResultSource>({
+        index: searchIndexName,
+        from: startIndex,
+        size: resultsPerPage,
+        query: {
+          bool: queryWithFiltersFromUrl.bool,
         },
-        max_concurrent_group_searches: 4,
-      },
-    });
+        knn: { ...knnQuery, boost: 2.0 },
+        collapse: {
+          field: 'title.raw',
+          inner_hits: {
+            name: 'same_title',
+            size: 100,
+          },
+          max_concurrent_group_searches: 4,
+        },
+      });
+    }
 
     // @ts-ignore
     const numberOfHits = searchResultsCount.aggregations?.totalHits.doc_count;
