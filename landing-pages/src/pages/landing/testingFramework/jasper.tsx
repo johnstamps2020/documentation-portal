@@ -94,10 +94,6 @@ const pageConfig: SectionLayoutProps = {
           label: 'User Interface Testing',
           docId: 'testingframeworksuijasper',
         },
-        {
-          label: 'User Interface Accessibility Testing',
-          docId: 'is202402access',
-        },
       ],
     },
   ],
