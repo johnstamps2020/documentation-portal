@@ -170,6 +170,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "msk",
+      "title": "MSK",
+      "url": "internal/msk/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "MSK"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
