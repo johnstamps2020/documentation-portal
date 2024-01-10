@@ -111,7 +111,7 @@
 		},
 		{
 			"buildType": "dita",
-			"filter": "EGW-Generic-Release.ditaval",
+			"filter": "GW-Generic-Release.ditaval",
 			"root": "surepath.ditamap",
 			"indexRedirect": true,
 			"srcId": "standards202312jaJPsrc",
