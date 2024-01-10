@@ -108,6 +108,24 @@
 			"srcId": "is202310jaJPeeupdatesrc",
 			"docId": "ee202310jaJPupdate",
 			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "surepath.ditamap",
+			"indexRedirect": true,
+			"srcId": "standards202312jaJPsrc",
+			"docId": "standards202312jaJP",
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Cloud-Release.ditaval",
+			"root": "OverviewCloudIntegration.ditamap",
+			"srcId": "is202310jaJPintegoverviewsrc",
+			"docId": "is202310jaJPintegoverview",
+			"indexRedirect": true,
+			"disabled": false
 		}
 	]
 }
