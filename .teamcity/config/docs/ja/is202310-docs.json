@@ -64,6 +64,25 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "is202310jaJPintegoverview",
+      "title": "クラウド連携の概要",
+      "url": "ja/cloud/202310/integoverview",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "BillingCenter", "ClaimCenter", "PolicyCenter" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Integration" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
