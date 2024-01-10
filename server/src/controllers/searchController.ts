@@ -153,6 +153,7 @@ async function getFilters(
   try {
     let filterNamesAndValues: GuidewireSearchControllerFilter[] = [];
     for (const field of filterFields) {
+      const updatedQuery = JSON.parse(JSON.stringify(query));
       const additionalQueryFilters: QueryDslQueryContainer[] = [];
       if (field === 'version') {
         additionalQueryFilters.push({
@@ -169,14 +170,17 @@ async function getFilters(
         });
       }
       if (query.bool?.filter) {
-        (query.bool!.filter as QueryDslQueryContainer[]).push(
+        (updatedQuery.bool!.filter as QueryDslQueryContainer[]).push(
           ...additionalQueryFilters
         );
       } else {
-        query.bool!.filter = additionalQueryFilters;
+        updatedQuery.bool!.filter = additionalQueryFilters;
       }
 
-      const allowedFilterValues = await getAllowedFilterValues(field, query);
+      const allowedFilterValues = await getAllowedFilterValues(
+        field,
+        updatedQuery
+      );
 
       const urlFilterValues = urlFilters.hasOwnProperty(field)
         ? urlFilters[field]

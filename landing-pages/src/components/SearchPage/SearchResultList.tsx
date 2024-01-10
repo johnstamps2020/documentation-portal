@@ -32,7 +32,7 @@ export default function SearchResultList() {
         <Alert severity="warning" icon={false} sx={{ marginBottom: '16px' }}>
           Experimental semantic search results
         </Alert>
-        {searchData.vectorSearchResults.map((vr, index) => (
+        {searchData.semanticSearchResults.map((vr, index) => (
           <SearchResult key={`${vr.title.toLowerCase()}${index}`} {...vr} />
         ))}
       </Stack>

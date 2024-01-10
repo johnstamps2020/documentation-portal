@@ -1,8 +1,8 @@
 export type SearchData = {
   searchPhrase: string;
   searchResults: ServerSearchResult[];
-  vectorSearchResults: any[];
-  hybridSearchResults: any[];
+  semanticSearchResults: ServerSearchResult[];
+  hybridSearchResults: ServerSearchResult[];
   totalNumOfResults: number;
   totalNumOfCollapsedResults: number;
   currentPage: number;
@@ -35,11 +35,11 @@ export type SearchResultSource = {
 export type ServerSearchResult = SearchResultSource & {
   score: number;
   title: string;
-  titlePlain: string;
+  titlePlain?: string;
   body: string;
-  bodyPlain: string;
+  bodyPlain?: string;
   innerHits: SearchResultSource[];
-  uniqueHighlightTerms: string;
+  uniqueHighlightTerms?: string;
 };
 
 export type ServerSearchFilterValue = {
