@@ -1,5 +1,6 @@
 import { Client } from '@elastic/elasticsearch';
 import {
+  KnnQuery,
   QueryDslQueryContainer,
   SearchHighlight,
   SearchHit,
@@ -12,6 +13,7 @@ import {
   SearchResultSource,
   ServerSearchFilter,
   ServerSearchFilterValue,
+  ServerSearchResult,
 } from '../types/serverSearch';
 import { getAllEntities } from './configController';
 import { winstonLogger } from './loggerController';
@@ -151,53 +153,30 @@ async function getFilters(
   try {
     let filterNamesAndValues: GuidewireSearchControllerFilter[] = [];
     for (const field of filterFields) {
-      const queryWithFiltersFromUrl: QueryDslQueryContainer = JSON.parse(
-        JSON.stringify(query)
-      );
-
-      const filterObject = queryWithFiltersFromUrl.bool?.filter;
-
-      const queryFilters: QueryDslQueryContainer[] =
-        filterObject !== undefined &&
-        Array.isArray(filterObject) &&
-        filterObject.length > 0
-          ? filterObject
-          : [];
-      for (const [key, value] of Object.entries(urlFilters)) {
-        if (key !== field) {
-          queryFilters.push({
-            terms: {
-              [key]: value,
-            },
-          });
-        }
-      }
+      const additionalQueryFilters: QueryDslQueryContainer[] = [];
       if (field === 'version') {
-        queryFilters.push({
+        additionalQueryFilters.push({
           term: {
             platform: 'Self-managed',
           },
         });
       }
       if (field === 'release') {
-        queryFilters.push({
+        additionalQueryFilters.push({
           term: {
             platform: 'Cloud',
           },
         });
       }
-      if (queryWithFiltersFromUrl.bool) {
-        queryWithFiltersFromUrl.bool.filter = queryFilters;
+      if (query.bool?.filter) {
+        (query.bool!.filter as QueryDslQueryContainer[]).push(
+          ...additionalQueryFilters
+        );
       } else {
-        queryWithFiltersFromUrl.bool = {
-          filter: queryFilters,
-        };
+        query.bool!.filter = additionalQueryFilters;
       }
 
-      const allowedFilterValues = await getAllowedFilterValues(
-        field,
-        queryWithFiltersFromUrl
-      );
+      const allowedFilterValues = await getAllowedFilterValues(field, query);
 
       const urlFilterValues = urlFilters.hasOwnProperty(field)
         ? urlFilters[field]
@@ -286,32 +265,77 @@ type GuidewireSearchControllerSearchResults = {
   numberOfHits: number;
   numberOfCollapsedHits: number;
   hits: SearchHit<SearchResultSource>[];
-  vectorHits: SearchHit<SearchResultSource>[];
-  hybridHits: SearchHit<SearchResultSource>[];
 };
+
+const noHitsResponse: GuidewireSearchControllerSearchResults = {
+  numberOfHits: 0,
+  numberOfCollapsedHits: 0,
+  hits: [],
+};
+
+function createQueryFilters(
+  urlFilters: {
+    [x: string]: string[];
+  },
+  requestIsAuthenticated: Boolean,
+  hasGuidewireEmail: Boolean
+) {
+  let queryFilters = [];
+  if (urlFilters) {
+    for (const [key, value] of Object.entries(urlFilters)) {
+      queryFilters.push({
+        terms: {
+          [key]: value,
+        },
+      });
+    }
+  }
+
+  if (!requestIsAuthenticated) {
+    queryFilters.push({
+      term: {
+        public: true,
+      },
+    });
+  } else if (requestIsAuthenticated && !hasGuidewireEmail) {
+    queryFilters.push({
+      term: {
+        internal: false,
+      },
+    });
+  }
+  return queryFilters;
+}
+
+function addFiltersToQuery(
+  query: QueryDslQueryContainer,
+  queryFilters: QueryDslQueryContainer[]
+) {
+  const updatedQuery = JSON.parse(JSON.stringify(query));
+  if (queryFilters.length > 0) {
+    updatedQuery.bool.filter = queryFilters;
+  }
+  return updatedQuery;
+}
+
+function addFiltersToKnnQuery(
+  knnQuery: KnnQuery[],
+  queryFilters: QueryDslQueryContainer[]
+) {
+  const updatedKnnQuery = [...knnQuery];
+  if (queryFilters.length > 0) {
+    updatedKnnQuery[0].filter = queryFilters;
+    updatedKnnQuery[1].filter = queryFilters;
+  }
+  return updatedKnnQuery;
+}
 
 async function runSearch(
   query: any,
   startIndex: number,
-  resultsPerPage: number,
-  urlFilters: { [x: string]: string[] }
+  resultsPerPage: number
 ): Promise<GuidewireSearchControllerSearchResults> {
   try {
-    const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
-    if (urlFilters) {
-      let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
-        ? [...queryWithFiltersFromUrl.bool.filter]
-        : [];
-      for (const [key, value] of Object.entries(urlFilters)) {
-        queryFilters.push({
-          terms: {
-            [key]: value,
-          },
-        });
-      }
-      queryWithFiltersFromUrl.bool.filter = queryFilters;
-    }
-
     // - The highlighter type is set to "fvh" (fast vector highlighter). One of the benefits of this type is that
     //      it can combine matches from multiple fields into one result by means of the "matched_fields" property).
     // - The title and body fields, including the .exact subfields, use term vectors,
@@ -347,12 +371,12 @@ async function runSearch(
       post_tags: ['</span>'],
     };
 
-    const searchResultsCount = await elasticClient.search<SearchResultSource>({
+    const resultsCount = await elasticClient.search<SearchResultSource>({
       index: searchIndexName,
       size: 0,
       aggs: {
         totalHits: {
-          filter: queryWithFiltersFromUrl,
+          filter: query,
           aggs: {
             totalCollapsedHits: {
               cardinality: {
@@ -365,11 +389,11 @@ async function runSearch(
       },
     });
 
-    const searchResults = await elasticClient.search<SearchResultSource>({
+    const results = await elasticClient.search<SearchResultSource>({
       index: searchIndexName,
       from: startIndex,
       size: resultsPerPage,
-      query: queryWithFiltersFromUrl,
+      query: query,
       collapse: {
         field: 'title.raw',
         inner_hits: {
@@ -382,76 +406,18 @@ async function runSearch(
       highlight: highlightParameters,
     });
 
-    const vectorizedSearchPhrase = await createVectorFromText(
-      queryWithFiltersFromUrl.bool.must.simple_query_string.query
-    );
-
-    let vectorSearchResults = null;
-    let hybridSearchResults = null;
-
-    if (vectorizedSearchPhrase) {
-      const knnQuery = {
-        field: 'body_vector',
-        query_vector: vectorizedSearchPhrase,
-        num_candidates: 100,
-        k: 100,
-        filter: queryWithFiltersFromUrl.bool.filter,
-      };
-
-      vectorSearchResults = await elasticClient.search<SearchResultSource>({
-        index: searchIndexName,
-        from: startIndex,
-        size: resultsPerPage,
-        knn: knnQuery,
-        collapse: {
-          field: 'title.raw',
-          inner_hits: {
-            name: 'same_title',
-            size: 100,
-          },
-          max_concurrent_group_searches: 4,
-        },
-      });
-
-      hybridSearchResults = await elasticClient.search<SearchResultSource>({
-        index: searchIndexName,
-        from: startIndex,
-        size: resultsPerPage,
-        query: {
-          bool: queryWithFiltersFromUrl.bool,
-        },
-        knn: { ...knnQuery, boost: 2.0 },
-        collapse: {
-          field: 'title.raw',
-          inner_hits: {
-            name: 'same_title',
-            size: 100,
-          },
-          max_concurrent_group_searches: 4,
-        },
-      });
-    }
-
     // @ts-ignore
-    const numberOfHits = searchResultsCount.aggregations?.totalHits.doc_count;
+    const numberOfHits = resultsCount.aggregations?.totalHits.doc_count;
     // @ts-ignore
     const numberOfCollapsedHits =
       // @ts-ignore
-      searchResultsCount.aggregations?.totalHits.totalCollapsedHits.value;
-    const hits = searchResults.hits.hits;
-    const vectorHits = vectorSearchResults
-      ? (vectorSearchResults.hits.hits as SearchHit<SearchResultSource>[])
-      : [];
-    const hybridHits = hybridSearchResults
-      ? (hybridSearchResults.hits.hits as SearchHit<SearchResultSource>[])
-      : [];
+      resultsCount.aggregations?.totalHits.totalCollapsedHits.value;
+    const hits = results.hits.hits;
 
     return {
       numberOfHits,
       numberOfCollapsedHits,
       hits,
-      vectorHits,
-      hybridHits,
     };
   } catch (err) {
     winstonLogger.error(
@@ -459,16 +425,152 @@ async function runSearch(
           query: ${query},    
           startIndex: ${startIndex},  
           resultsPerPage: ${resultsPerPage},
-          urlFilters: ${urlFilters},
           ERROR: ${JSON.stringify(err)}`
     );
+    return noHitsResponse;
+  }
+}
+
+async function runSemanticSearch(
+  knnQuery: KnnQuery[],
+  startIndex: number,
+  resultsPerPage: number
+): Promise<GuidewireSearchControllerSearchResults> {
+  try {
+    const searchResultsCount = await elasticClient.search<SearchResultSource>({
+      index: searchIndexName,
+      size: 0,
+      aggs: {
+        totalHits: {
+          filter: {
+            bool: {
+              filter: knnQuery[0].filter,
+            },
+          },
+          aggs: {
+            totalCollapsedHits: {
+              cardinality: {
+                field: 'title.raw',
+                precision_threshold: 40000,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    const results = await elasticClient.search<SearchResultSource>({
+      index: searchIndexName,
+      from: startIndex,
+      size: resultsPerPage,
+      knn: knnQuery,
+      collapse: {
+        field: 'title.raw',
+        inner_hits: {
+          name: 'same_title',
+          size: 100,
+        },
+        max_concurrent_group_searches: 4,
+      },
+    });
+
+    // @ts-ignore
+    const numberOfHits = searchResultsCount.aggregations?.totalHits.doc_count;
+    // @ts-ignore
+    const numberOfCollapsedHits =
+      // @ts-ignore
+      searchResultsCount.aggregations?.totalHits.totalCollapsedHits.value;
+    const hits = results
+      ? (results.hits.hits as SearchHit<SearchResultSource>[])
+      : [];
+
     return {
-      hits: [],
-      vectorHits: [],
-      hybridHits: [],
-      numberOfCollapsedHits: 0,
-      numberOfHits: 0,
+      numberOfHits,
+      numberOfCollapsedHits,
+      hits,
     };
+  } catch (err) {
+    winstonLogger.error(
+      `Problem running search for  
+          knnQuery: ${knnQuery},    
+          startIndex: ${startIndex},  
+          resultsPerPage: ${resultsPerPage},
+          ERROR: ${JSON.stringify(err)}`
+    );
+    return noHitsResponse;
+  }
+}
+
+async function runHybridSearch(
+  query: QueryDslQueryContainer,
+  knnQuery: KnnQuery[],
+  startIndex: number,
+  resultsPerPage: number
+): Promise<GuidewireSearchControllerSearchResults> {
+  try {
+    const searchResultsCount = await elasticClient.search<SearchResultSource>({
+      index: searchIndexName,
+      size: 0,
+      aggs: {
+        totalHits: {
+          filter: {
+            bool: {
+              filter: knnQuery[0].filter,
+            },
+          },
+          aggs: {
+            totalCollapsedHits: {
+              cardinality: {
+                field: 'title.raw',
+                precision_threshold: 40000,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    const results = await elasticClient.search<SearchResultSource>({
+      index: searchIndexName,
+      from: startIndex,
+      size: resultsPerPage,
+      query: query,
+      knn: knnQuery,
+      collapse: {
+        field: 'title.raw',
+        inner_hits: {
+          name: 'same_title',
+          size: 100,
+        },
+        max_concurrent_group_searches: 4,
+      },
+    });
+
+    // @ts-ignore
+    const numberOfHits = searchResultsCount.aggregations?.totalHits.doc_count;
+    // @ts-ignore
+    const numberOfCollapsedHits =
+      // @ts-ignore
+      searchResultsCount.aggregations?.totalHits.totalCollapsedHits.value;
+    const hits = results
+      ? (results.hits.hits as SearchHit<SearchResultSource>[])
+      : [];
+
+    return {
+      numberOfHits,
+      numberOfCollapsedHits,
+      hits,
+    };
+  } catch (err) {
+    winstonLogger.error(
+      `Problem running search for  
+          query: ${query},
+          knnQuery: ${knnQuery},    
+          startIndex: ${startIndex},  
+          resultsPerPage: ${resultsPerPage},
+          ERROR: ${JSON.stringify(err)}`
+    );
+    return noHitsResponse;
   }
 }
 
@@ -563,13 +665,16 @@ function getUniqueResultsSortedByVersion(
   return uniqueResults;
 }
 
-function prepareVectorizedHits(vectorizedHits: any[]) {
-  return vectorizedHits.map((vh) => {
-    const innerHits = vh.inner_hits?.same_title.hits.hits || [];
-    const allHits = [vh, ...innerHits];
+function prepareVectorizedResultsToDisplay(
+  results: GuidewireSearchControllerSearchResults
+): SearchData['searchResults'] {
+  return results.hits.map((result) => {
+    const innerHits = result.inner_hits?.same_title.hits.hits || [];
+    const allHits = [result, ...innerHits];
     const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
     const [topHit, ...otherHits] = allHitsSortedFromLatest;
     const mainResult = topHit._source;
+    const mainResultScore = topHit._score;
     const mainResultTitle = mainResult?.title || 'Unknown title';
     const mainResultBody = mainResult?.body || '';
     const mainResultBodyFragment = mainResultBody
@@ -577,24 +682,35 @@ function prepareVectorizedHits(vectorizedHits: any[]) {
       .replace(mainResultTitle, '')
       .replaceAll(/\s{2,}/gm, '');
     return {
-      ...mainResult,
       title: mainResultTitle,
       body: mainResultBodyFragment,
       innerHits: otherHits?.map((ih) => ih._source as SearchResultSource) || [],
+      product: mainResult?.product || [],
+      doc_display_title:
+        mainResult?.doc_display_title ||
+        result._source?.doc_display_title ||
+        null,
+      doc_id: mainResult?.doc_id || '',
+      doc_title: mainResult?.doc_title || 'Unknown doc title',
+      href: mainResult?.href || '',
+      id: mainResult?.id || '',
+      indexed_date: mainResult?.indexed_date || '',
+      internal: mainResult?.internal || true,
+      language: mainResult?.language || 'en',
+      platform: mainResult?.platform || [],
+      public: mainResult?.public || false,
+      release: mainResult?.release || [],
+      subject: mainResult?.subject || [],
+      version: mainResult?.version || [],
+      score: mainResultScore || 0,
     };
   });
 }
 
-async function prepareResultsToDisplay(
-  searchResults: GuidewireSearchControllerSearchResults
-): Promise<{
-  searchResults: SearchData['searchResults'];
-  vectorSearchResults: SearchData['vectorSearchResults'];
-  hybridSearchResults: SearchData['hybridSearchResults'];
-}> {
-  const preparedVectorResults = prepareVectorizedHits(searchResults.vectorHits);
-  const preparedHybridResults = prepareVectorizedHits(searchResults.hybridHits);
-  const preparedKeywordResults = searchResults.hits.map((result) => {
+function prepareResultsToDisplay(
+  results: GuidewireSearchControllerSearchResults
+): SearchData['searchResults'] {
+  return results.hits.map((result) => {
     const innerHits = result.inner_hits?.same_title.hits.hits || [];
     const allHits = [result, ...innerHits];
     const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
@@ -679,11 +795,6 @@ async function prepareResultsToDisplay(
       uniqueHighlightTerms: uniqueHighlightTerms,
     };
   });
-  return {
-    searchResults: preparedKeywordResults,
-    vectorSearchResults: preparedVectorResults,
-    hybridSearchResults: preparedHybridResults,
-  };
 }
 
 type SearchReqDictionary = {};
@@ -725,14 +836,19 @@ export default async function searchController(
     const searchPhrase = urlQueryParameters.q
       ? decodeURI(urlQueryParameters.q)
       : '';
-    const resultsPerPage = urlQueryParameters.pagination || '10';
-    const currentPage = urlQueryParameters.page || '1';
-    const startIndex = parseInt(resultsPerPage) * (parseInt(currentPage) - 1);
+    const resultsPerPage = parseInt(urlQueryParameters.pagination || '10');
+    const currentPage = parseInt(urlQueryParameters.page || '1');
+    const startIndex = resultsPerPage * currentPage - 1;
     const userInfo = res.locals.userInfo;
     const requestIsAuthenticated = userInfo.isLoggedIn;
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     const keywordFields = await getKeywordFields();
     const filtersFromUrl = getFiltersFromUrl(keywordFields, urlQueryParameters);
+    const queryFilters = createQueryFilters(
+      filtersFromUrl,
+      requestIsAuthenticated,
+      hasGuidewireEmail
+    );
 
     const queryBody: QueryDslQueryContainer = {
       bool: {
@@ -747,25 +863,13 @@ export default async function searchController(
       },
     };
 
-    if (!requestIsAuthenticated) {
-      queryBody.bool!.filter = [
-        {
-          term: {
-            public: true,
-          },
-        },
-      ];
-    } else if (requestIsAuthenticated && !hasGuidewireEmail) {
-      queryBody.bool!.filter = [
-        {
-          term: {
-            internal: false,
-          },
-        },
-      ];
-    }
+    const queryWithFilters = addFiltersToQuery(queryBody, queryFilters);
 
-    const filters = await getFilters(queryBody, keywordFields, filtersFromUrl);
+    const filters = await getFilters(
+      queryWithFilters,
+      keywordFields,
+      filtersFromUrl
+    );
 
     const filtersValidatedAgainstDb = await validateFilterValuesAgainstDb(
       req,
@@ -773,37 +877,76 @@ export default async function searchController(
       filters
     );
 
-    const results = await runSearch(
-      queryBody,
+    const keywordResults = await runSearch(
+      queryWithFilters,
       startIndex,
-      parseInt(resultsPerPage),
-      filtersFromUrl
+      resultsPerPage
     );
 
-    const resultsToDisplay = await prepareResultsToDisplay(results);
+    const vectorizedSearchPhrase = await createVectorFromText(searchPhrase);
+
+    let semanticResultsToDisplay: ServerSearchResult[] = [];
+    let hybridResultsToDisplay: ServerSearchResult[] = [];
+    if (vectorizedSearchPhrase) {
+      const knnQueryBody = [
+        {
+          field: 'title_vector',
+          query_vector: vectorizedSearchPhrase,
+          num_candidates: 100,
+          k: 100,
+          boost: 12,
+        },
+        {
+          field: 'body_vector',
+          query_vector: vectorizedSearchPhrase,
+          num_candidates: 100,
+          k: 100,
+        },
+      ];
+      const knnQueryWithFilters = addFiltersToKnnQuery(
+        knnQueryBody,
+        queryFilters
+      );
+      const semanticResults = await runSemanticSearch(
+        knnQueryWithFilters,
+        startIndex,
+        resultsPerPage
+      );
+      const hybridResults = await runHybridSearch(
+        queryWithFilters,
+        knnQueryWithFilters,
+        startIndex,
+        resultsPerPage
+      );
+      semanticResultsToDisplay =
+        prepareVectorizedResultsToDisplay(semanticResults);
+      hybridResultsToDisplay = prepareVectorizedResultsToDisplay(hybridResults);
+    }
+
+    const keywordResultsToDisplay = prepareResultsToDisplay(keywordResults);
 
     if (req.query.rawJSON === 'true') {
       return {
         status: 200,
-        body: resultsToDisplay.searchResults,
+        body: keywordResultsToDisplay,
       };
     } else {
       const searchData: SearchData = {
         searchPhrase: searchPhrase,
-        searchResults: resultsToDisplay.searchResults,
-        vectorSearchResults: resultsToDisplay.vectorSearchResults,
-        hybridSearchResults: resultsToDisplay.hybridSearchResults,
-        totalNumOfResults: results?.numberOfHits || 0,
-        totalNumOfCollapsedResults: results?.numberOfCollapsedHits || 0,
-        currentPage: parseInt(currentPage),
+        searchResults: keywordResultsToDisplay,
+        semanticSearchResults: semanticResultsToDisplay,
+        hybridSearchResults: hybridResultsToDisplay,
+        totalNumOfResults: keywordResults?.numberOfHits || 0,
+        totalNumOfCollapsedResults: keywordResults?.numberOfCollapsedHits || 0,
+        currentPage: currentPage,
         // We limited the number of pages because the search results page crashes when there are over 10000 hits
         // and you try to display a page for results from 10000 upward
         pages: Math.ceil(
-          (results?.numberOfCollapsedHits <= 10000
-            ? results?.numberOfCollapsedHits
-            : 10000) / parseInt(resultsPerPage)
+          (keywordResults?.numberOfCollapsedHits <= 10000
+            ? keywordResults?.numberOfCollapsedHits
+            : 10000) / resultsPerPage
         ),
-        resultsPerPage: parseInt(resultsPerPage),
+        resultsPerPage: resultsPerPage,
         filters: filtersValidatedAgainstDb.map((f) => ({
           name: f.name,
           values: f.values,
