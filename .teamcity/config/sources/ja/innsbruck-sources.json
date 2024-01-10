@@ -62,7 +62,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
-      "id": "is202310jajPintegoverviewsrc",
+      "id": "is202310jaJPintegoverviewsrc",
       "title": "IS 2023.10.0 integoverview ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/ja-JP/2023.10.0-integoverview"

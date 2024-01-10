@@ -122,7 +122,7 @@
 			"buildType": "dita",
 			"filter": "GW-Generic-Cloud-Release.ditaval",
 			"root": "OverviewCloudIntegration.ditamap",
-			"srcId": "is202310jajPintegoverviewsrc",
+			"srcId": "is202310jaJPintegoverviewsrc",
 			"docId": "is202310jaJPintegoverview",
 			"indexRedirect": true,
 			"disabled": false
