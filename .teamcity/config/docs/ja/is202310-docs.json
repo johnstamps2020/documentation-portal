@@ -67,7 +67,8 @@
     },
     {
       "id": "is202310jaJPintegoverview",
-      "title": "クラウド連携の概要",
+      "title": "Overview of Cloud Integration ja",
+      "displayTitle": "クラウド連携の概要",
       "url": "ja/cloud/202310/integoverview",
       "metadata": {
         "platform": [ "Cloud" ],
