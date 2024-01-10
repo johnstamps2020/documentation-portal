@@ -1,10 +1,10 @@
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { RedirectResponse } from '../types/apiResponse';
-import { isUserAllowedToAccessResource } from './authController';
 import { getEnvInfo } from './envController';
 import { winstonLogger } from './loggerController';
+import { isUserAllowedToAccessResource } from './authController';
 
 const fetch = require('node-fetch-retry');
 
@@ -305,6 +305,7 @@ export async function getLatestVersionUrl(
 }
 
 export async function getRedirectUrl(
+  req: Request,
   res: Response,
   requestedPath: string | null | undefined
 ): Promise<RedirectResponse> {
@@ -356,6 +357,15 @@ export async function getRedirectUrl(
       const pathExists = await s3BucketUrlExists(requestedPath);
       if (!pathExists) {
         const latestVersionUrl = await getLatestVersionUrl(res, normalizedPath);
+        if (!latestVersionUrl && !req.isAuthenticated()) {
+          return {
+            status: 403,
+            body: {
+              redirectStatusCode: 307,
+              redirectUrl: `/gw-login?redirectTo=${requestedPath}`,
+            },
+          };
+        }
         if (latestVersionUrl) {
           return {
             status: 200,

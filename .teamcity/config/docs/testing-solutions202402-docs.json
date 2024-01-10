@@ -17,8 +17,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
-      "earlyAccess": false
+      "internal": false,
+      "earlyAccess": true
     },
     {
       "id": "testingframeworksapijasper",
@@ -154,25 +154,6 @@
       "earlyAccess": false
     },
     {
-      "id": "is202402access",
-      "title": "User Interface Accessibility Testing",
-      "url": "cloud/testing/202402/isuiaccesstesting",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Development", "Testing"],
-        "language": "en"
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "testing202402overview",
       "title": "Overview of GT: Framework",
       "url": "cloud/testing/202402/overview",
@@ -192,15 +173,34 @@
       "earlyAccess": false
     },
     {
-      "id": "testing202402bestpractices",
-      "title": "Best Testing Practices",
-      "url": "cloud/testing/202402/bestpractices",
+      "id": "testing202402testingstandards",
+      "title": "Testing Standards",
+      "url": "cloud/testing/202402/testingstandards",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2024.02"],
         "release": ["Jasper"],
         "subject": ["Best practices", "Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202402istesting",
+      "title": "InsuranceSuite Testing",
+      "url": "cloud/testing/202402/istesting",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2024.02"],
+        "release": ["Jasper"],
+        "subject": ["Testing"],
         "language": "en"
       },
       "environments": ["staging"],

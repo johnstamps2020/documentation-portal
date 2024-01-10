@@ -22,7 +22,7 @@ label: '2023.10 (Innsbruck)',
 items: [
 {
 label: 'Testing Framework リリースノート', 
-docId: 'testingframeworksjaJPrninnsbruck', 
+docId: 'testingframeworksjaJPrninnsbruck',
 }, 
 ],
 },

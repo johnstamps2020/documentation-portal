@@ -57,7 +57,7 @@
         "language": "ja"
       },
       "environments": [
-        "staging"
+        "staging", "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -185,7 +185,7 @@
         "language": "ja"
       },
       "environments": [
-        "staging"
+        "staging", "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -217,7 +217,39 @@
         "language": "ja"
       },
       "environments": [
-        "staging"
+        "staging", "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ee202310jaJPupdate",
+      "title": "Update ja",
+      "displayTitle": "EnterpriseEngage アップデートガイド",
+      "url": "ja/cloud/ee/202310/update",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "ja"
+      },
+      "environments": [
+        "staging", "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,

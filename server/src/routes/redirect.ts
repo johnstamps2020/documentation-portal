@@ -4,7 +4,7 @@ import { getRedirectUrl } from '../controllers/redirectController';
 const router = Router();
 router.get('/', async function (req, res) {
   const { cameFrom } = req.query;
-  const { status, body } = await getRedirectUrl(res, cameFrom as string);
+  const { status, body } = await getRedirectUrl(req, res, cameFrom as string);
   return res.status(status).json(body);
 });
 

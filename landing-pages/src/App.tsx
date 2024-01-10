@@ -9,12 +9,19 @@ import { appTheme } from 'themes/appTheme';
 import CssBaseline from '@mui/material/CssBaseline';
 import SupportPage from 'pages/SupportPage/SupportPage';
 import InternalPage from 'pages/InternalPage/InternalPage';
-import PageAdminPage from 'pages/PageAdminPage/PageAdminPage';
+import PageAdminPage from 'components/AdminPage/PageAdminPage/PageAdminPage';
 import AdminPage from 'pages/AdminPage/AdminPage';
 import { LayoutContextProvider } from 'LayoutContext';
 import Layout from 'components/Layout/Layout';
-import ExternalLinkAdminPage from 'pages/ExternalLinkAdminPage/ExternalLinkAdminPage';
-import SourceAdminPage from 'pages/SourceAdminPage/SourceAdminPage';
+import ExternalLinkAdminPage from 'components/AdminPage/ExternalLinkAdminPage/ExternalLinkAdminPage';
+import SourceAdminPage from 'components/AdminPage/SourceAdminPage/SourceAdminPage';
+import ResourceAdminPage from 'components/AdminPage/ResourceAdminPage/ResourceAdminPage';
+import ReleaseAdminPage from 'components/AdminPage/ReleaseAdminPage/ReleaseAdminPage';
+import SubjectAdminPage from 'components/AdminPage/SubjectAdminPage/SubjectAdminPage';
+import LanguageAdminPage from 'components/AdminPage/LanguageAdminPage/LanguageAdminPage';
+import PlatformAdminPage from 'components/AdminPage/PlatformAdminPage/PlatformAdminPage';
+import ProductAdminPage from 'components/AdminPage/ProductAdminPage/ProductAdminPage';
+import VersionAdminPage from 'components/AdminPage/VersionAdminPage/VersionAdminPage';
 
 const router = createBrowserRouter([
   {
@@ -36,19 +43,50 @@ const router = createBrowserRouter([
       {
         path: 'admin-panel',
         element: <AdminPage />,
+        children: [
+          {
+            path: 'page',
+            element: <PageAdminPage />,
+          },
+          {
+            path: 'external-link',
+            element: <ExternalLinkAdminPage />,
+          },
+          {
+            path: 'source',
+            element: <SourceAdminPage />,
+          },
+          {
+            path: 'resource',
+            element: <ResourceAdminPage />,
+          },
+          {
+            path: 'release',
+            element: <ReleaseAdminPage />,
+          },
+          {
+            path: 'subject',
+            element: <SubjectAdminPage />,
+          },
+          {
+            path: 'language',
+            element: <LanguageAdminPage />,
+          },
+          {
+            path: 'platform',
+            element: <PlatformAdminPage />,
+          },
+          {
+            path: 'product',
+            element: <ProductAdminPage />,
+          },
+          {
+            path: 'version',
+            element: <VersionAdminPage />,
+          },
+        ],
       },
-      {
-        path: 'admin-panel/page',
-        element: <PageAdminPage />,
-      },
-      {
-        path: 'admin-panel/external-link',
-        element: <ExternalLinkAdminPage />,
-      },
-      {
-        path: 'admin-panel/source',
-        element: <SourceAdminPage />,
-      },
+
       {
         path: 'search-results',
         element: <SearchPage />,

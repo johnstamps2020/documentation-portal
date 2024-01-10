@@ -18,7 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.06 (Hakuba)',
+      label: '2023.10 (Innsbruck)', 
       items: [
         {
           label: 'Notas de la version de la Plataforma de Guidewire Cloud',

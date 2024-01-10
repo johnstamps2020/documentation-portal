@@ -21,8 +21,12 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]SRE Release Notes', 
+label: 'ServiceRepEngage リリースノート', 
 docId: 'dx202310jaJPsrerelnotes', 
+}, 
+{
+  label: 'EnterpriseEngage アップデートガイド', 
+  docId: 'ee202310jaJPupdate', 
 }, 
 ],
 },

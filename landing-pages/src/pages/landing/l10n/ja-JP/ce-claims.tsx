@@ -20,10 +20,14 @@ const pageConfig: CategoryLayoutProps = {
     {
 label: '2023.10 (Innsbruck)', 
 items: [
-{
-label: '[TBD]CustomerEngage Account Management for ClaimCenter Release Notes', 
-docId: 'dx202310jaJPceclaimsrelnotes', 
-}, 
+    {
+      label: 'CustomerEngage Account Management for ClaimCenter リリースノート', 
+      docId: 'dx202310jaJPceclaimsrelnotes', 
+    }, 
+    {
+      label: 'EnterpriseEngage アップデートガイド', 
+      docId: 'ee202310jaJPupdate', 
+    }, 
 ],
 },
 {

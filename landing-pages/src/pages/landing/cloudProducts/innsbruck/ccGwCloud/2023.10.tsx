@@ -48,7 +48,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Upgrade tools',
-          docId: 'isconfigupgradetools500',
+          docId: 'isconfigupgradetools510',
           description: (
             <>
               Learn about the Guidewire InsuranceSuite configuration upgrade
@@ -175,11 +175,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Guidewire Rules Type Manager (Early Access)',
-          docId: 'gwrulestypemgr',
-          description: <>Create and manage new rule types.</>,
-        },
-        {
           label: 'Plugins',
           description: (
             <>
@@ -207,17 +202,6 @@ const pageConfig: ApplicationLayoutProps = {
           description: <>Configure search in ClaimCenter.</>,
           docId: 'iscc202310config',
           pathInDoc: '?contextid=c_all-fe3275213',
-        },
-        {
-          label: 'Workflow configuration',
-          description: (
-            <>
-              Configure ClaimCenter workflows for management of complex business
-              processes.
-            </>
-          ),
-          docId: 'iscc202310config',
-          pathInDoc: '?contextid=p-workflow',
         },
         {
           label: 'Email configuration',

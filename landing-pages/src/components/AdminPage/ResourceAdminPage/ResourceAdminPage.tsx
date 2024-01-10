@@ -4,29 +4,29 @@ import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
 import AddButton from 'components/AdminPage/AddButton';
 import AdminAccess from 'components/AdminPage/AdminAccess';
-import SourceAdminPanel from 'components/EntitiesAdminPage/SourceAdminPage/SourceAdminPanel';
-import SourceSettingsForm from 'components/EntitiesAdminPage/SourceAdminPage/SourceSettingsForm';
+import ResourceAdminPanel from './ResourceAdminPanel';
+import ResourceSettingsForm from './ResourceSettingsForm';
 import { useEffect } from 'react';
 
-export default function SourceAdminPage() {
+export default function ResourceAdminPage() {
   const { title, setTitle, setHeaderOptions } = useLayoutContext();
   useEffect(() => {
-    setTitle('Manage sources');
+    setTitle('Manage Resources');
   }, [setHeaderOptions, setTitle]);
 
   return (
     <AdminAccess pagePath={window.location.pathname}>
       <Container>
         <AddButton
-          buttonLabel="Add source"
-          dialogTitle="Create a new source"
-          formComponent={<SourceSettingsForm />}
+          buttonLabel="Add resource"
+          dialogTitle="Create a new resource"
+          formComponent={<ResourceSettingsForm />}
         />
         <Stack spacing={2}>
           <Typography variant="h1" sx={{ color: 'black' }}>
             {title}
           </Typography>
-          <SourceAdminPanel />
+          <ResourceAdminPanel />
         </Stack>
       </Container>
     </AdminAccess>

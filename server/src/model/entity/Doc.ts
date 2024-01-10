@@ -41,12 +41,13 @@ export class Doc extends GwEntity {
 
   @ManyToMany(
     () => PlatformProductVersion,
-    (platform_product_version) => platform_product_version.uuid
+    (platform_product_version) => platform_product_version.uuid,
+    { nullable: false }
   )
   @JoinTable()
   platformProductVersions: PlatformProductVersion[];
 
-  @ManyToOne(() => Language, (language) => language.uuid)
+  @ManyToOne(() => Language, (language) => language.uuid, { nullable: false })
   @JoinColumn()
   language: Language;
 

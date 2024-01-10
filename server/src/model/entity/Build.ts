@@ -22,11 +22,11 @@ export abstract class Build extends GwEntity {
   @Column({ type: 'boolean' })
   disabled: boolean;
 
-  @OneToOne(() => Doc, (doc) => doc.uuid)
+  @OneToOne(() => Doc, (doc) => doc.uuid, { nullable: false })
   @JoinColumn()
   doc: Doc;
 
-  @ManyToOne(() => Source, (source) => source.uuid)
+  @ManyToOne(() => Source, (source) => source.uuid, { nullable: false })
   @JoinColumn()
   source: Source;
 

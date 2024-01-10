@@ -95,6 +95,7 @@ enum class GwConfigParams(val paramValue: String) {
     CONFIG_DB_HOST_PROD("tenant-doctools-docportal-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-1.c3qnnou7xlkq.us-east-1.rds.amazonaws.com"),
     DB_CLIENT_POD_NAME("postgresql-client-shell-teamcity"),
     DB_CLIENT_IMAGE_NAME("alpine"),
+    DB_CLIENT_PACKAGE_NAME("postgresql13-client"),
     DB_DUMP_ZIP_PACKAGE_NAME("docportalconfig.zip"),
 
     DOC_PORTAL_APP_NAME("docportal"),
@@ -312,6 +313,14 @@ object Helpers {
             "https://docsearch-doctools.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
         } else {
             "https://docsearch-doctools.${deployEnv}.ccs.guidewire.net"
+        }
+    }
+
+    fun getMlTransformerUrl(deployEnv: String): String {
+        return if (arrayOf(GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName).contains(deployEnv)) {
+            "https://ml-transformer.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
+        } else {
+            "https://ml-transformer.${deployEnv}.ccs.guidewire.net"
         }
     }
 
@@ -731,6 +740,7 @@ object GwBuildSteps {
         val docS3Url = Helpers.getS3BucketUrl(deployEnv)
         val appBaseUrl = Helpers.getTargetUrl(deployEnv)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
+        val mlTransformerUrl = Helpers.getMlTransformerUrl(deployEnv)
         val reportBrokenLinks: String
         val reportShortTopics: String
         val oktaIssuer: String
@@ -779,6 +789,7 @@ object GwBuildSteps {
                 export SHORT_TOPICS_INDEX_NAME="short-topics"
                 export REPORT_BROKEN_LINKS="$reportBrokenLinks"
                 export REPORT_SHORT_TOPICS="$reportShortTopics"
+                export ML_TRANSFORMER_URL="$mlTransformerUrl"
             """.trimIndent()
 
             else -> ""
@@ -968,6 +979,7 @@ object GwBuildSteps {
         schematronReportsDir: String,
         indexRedirect: Boolean,
         buildFilter: String? = null,
+        docId: String? = null
     ): ScriptBuildStep {
         val logFile = "${outputFormat}_build.log"
         val fullOutputPath = "${outputDir}/${outputFormat}"
@@ -1004,6 +1016,7 @@ object GwBuildSteps {
                 ditaCommandParams.add(Pair("--temp", "${workingDir}/${tempDir}"))
                 ditaCommandParams.add(Pair("--clean.temp", "no"))
                 ditaCommandParams.add(Pair("--schematron.validate", "yes"))
+                ditaCommandParams.add(Pair("--gw-doc-id", "${docId}"))
                 ditaCommandParams.add(Pair("%env.ENABLE_DEBUG_MODE%", ""))
                 if (indexRedirect) {
                     ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
@@ -2915,7 +2928,8 @@ object User {
                                 normalizedDitaDir,
                                 schematronReportsDir,
                                 indexRedirect,
-                                buildFilter
+                                buildFilter,
+                                docId
                             )
                         )
                         step(uploadStep)
@@ -3895,8 +3909,8 @@ object Admin {
                     echo "Setting credentials to access prod"
                     $awsEnvVarsProd
                     
-                    cd %teamcity.build.checkoutDir%/ci
-                    ./downloadPdfsForEscrow.sh
+                    cd %teamcity.build.checkoutDir%/ci/downloadPdfsForEscrow
+                    ./installZipTool.sh && ./downloadPdfsForEscrow.sh
                 """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -3920,6 +3934,8 @@ object Admin {
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         })
 
         object SyncDocsFromStagingToDev : BuildType({
@@ -4293,7 +4309,7 @@ object Admin {
                         while [ ${'$'}SECONDS -le 30 ]; do
                           status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
                           if [ "${'$'}status" == "Running" ]; then
-                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
+                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk update && apk add --no-cache ${GwConfigParams.DB_CLIENT_PACKAGE_NAME.paramValue} zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
                             break
                           else
                             echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
@@ -4379,7 +4395,7 @@ object Admin {
                             while [ ${'$'}SECONDS -le 30 ]; do
                               status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
                               if [ "${'$'}status" == "Running" ]; then
-                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
+                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk update && apk add --no-cache ${GwConfigParams.DB_CLIENT_PACKAGE_NAME.paramValue} zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
                                 break
                               else
                                 echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"

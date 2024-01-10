@@ -15,7 +15,9 @@ function getMatchingEntity(
       selectedEntity.label === entity.label &&
       ((selectedEntity.url && selectedEntity.url === entity.url) ||
         (selectedEntity.path && selectedEntity.path === entity.path) ||
-        (selectedEntity.id && selectedEntity.id === entity.id))
+        (selectedEntity.id && selectedEntity.id === entity.id) ||
+        (selectedEntity.name && selectedEntity.name === entity.name) ||
+        (selectedEntity.code && selectedEntity.code === entity.code))
   );
 }
 

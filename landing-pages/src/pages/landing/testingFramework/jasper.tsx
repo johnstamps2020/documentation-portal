@@ -49,17 +49,21 @@ const pageConfig: SectionLayoutProps = {
       ],
     },
     {
-      label: 'Best Practices',
+      label: 'Testing Practices',
       items: [
         {
-          label: 'Best Testing Practices',
-          docId: 'testing202402bestpractices',
+          label: 'Testing Standards',
+          docId: 'testing202402testingstandards',
         },
       ],
     },
     {
       label: 'Application-specific Capabilities',
       items: [
+        {
+          label: 'InsuranceSuite Testing',
+          docId: 'testing202402istesting',
+        },
         {
           label: 'InsuranceSuite Unit Testing',
           docId: 'is202402testing',
@@ -89,10 +93,6 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'User Interface Testing',
           docId: 'testingframeworksuijasper',
-        },
-        {
-          label: 'User Interface Accessibility Testing',
-          docId: 'is202402access',
         },
       ],
     },

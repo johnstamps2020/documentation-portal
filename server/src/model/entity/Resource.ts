@@ -14,7 +14,7 @@ export class Resource extends GwEntity {
   @Column({ type: 'varchar' })
   targetFolder: string;
 
-  @ManyToOne(() => Source, (source) => source.uuid)
+  @ManyToOne(() => Source, (source) => source.uuid, { nullable: false })
   @JoinColumn()
   source: Source;
 }

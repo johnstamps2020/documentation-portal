@@ -3,11 +3,14 @@ import InitialDocItemFooter from '@theme-init/DocItem/Footer';
 import Feedback from '@theme/Feedback';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import { useDocContext } from '@theme/DocContext';
+import { useDocItemContext } from '@theme/DocItem/DocItem';
 
 export default function Footer(props) {
   // Context
   const isBrowser = useIsBrowser();
+
   const { userInformation, searchMeta, authors } = useDocContext();
+  const { title } = useDocItemContext();
 
   const jiraApiUrl =
     process.env.NODE_ENV === 'development'
@@ -15,10 +18,6 @@ export default function Footer(props) {
       : isBrowser
       ? `${window.location.origin}/jira`
       : 'https://unknown.com/jira';
-
-  const title = isBrowser
-    ? document.querySelector('title').innerHTML
-    : 'Unknown title';
 
   const url = isBrowser
     ? window.location.href

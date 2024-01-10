@@ -62,6 +62,20 @@
       "docId": "mithril",
       "srcId": "mithrilsrc",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "nova",
+      "srcId": "novasrc",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "msk",
+      "srcId": "msksrc",
+      "workingDir": "website",
+      "disabled": false
     }
   ]
 }

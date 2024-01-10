@@ -1,10 +1,13 @@
 import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 
+type ArrangedItem = LandingPageItemData & { description?: React.ReactNode };
+
 export function arrangeItems(
   items: LandingPageItemProps[] | undefined,
-  data: LandingPageItemData[] | undefined
-) {
+  data: LandingPageItemData[] | undefined,
+  passDescriptions: boolean = false
+): ArrangedItem[] {
   const landingPageItems: LandingPageItemData[] = [];
 
   items?.forEach((inputItem) => {
@@ -18,7 +21,11 @@ export function arrangeItems(
     });
 
     if (matchingOutputItem && !landingPageItems.includes(matchingOutputItem)) {
-      landingPageItems.push(matchingOutputItem);
+      const resultingItem = passDescriptions
+        ? { ...matchingOutputItem, description: inputItem.description }
+        : matchingOutputItem;
+
+      landingPageItems.push(resultingItem);
     }
   });
 
