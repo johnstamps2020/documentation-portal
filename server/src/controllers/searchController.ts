@@ -20,7 +20,7 @@ import { winstonLogger } from './loggerController';
 
 import { createVectorFromText } from './machineLearningController';
 
-type FilterFromUrl = {
+type UrlFilters = {
   [x: string]: string[];
 };
 
@@ -50,9 +50,9 @@ async function getKeywordFields(): Promise<string[]> {
 function getFiltersFromUrl(
   filterFields: string[],
   queryParams: SearchReqQuery
-): FilterFromUrl {
+): UrlFilters {
   try {
-    let filtersFromUrl: FilterFromUrl = {};
+    let filtersFromUrl: UrlFilters = {};
     for (const param in queryParams) {
       if (filterFields.includes(param)) {
         const matchingParamValue = Object.entries(queryParams).find(
@@ -145,10 +145,10 @@ type GuidewireSearchControllerFilter = {
   values: ServerSearchFilterValue[];
 };
 
-async function getFilters(
+async function createSearchFilters(
   query: QueryDslQueryContainer,
   filterFields: string[],
-  urlFilters: FilterFromUrl
+  urlFilters: UrlFilters
 ): Promise<GuidewireSearchControllerFilter[]> {
   try {
     let filterNamesAndValues: GuidewireSearchControllerFilter[] = [];
@@ -225,7 +225,7 @@ async function getFilters(
 
 // TODO: This function is a temporary solution. We need to align the data model in Elasticsearch
 //  with the database data model to be able to filter out values in a more flexible way.
-async function validateFilterValuesAgainstDb(
+async function validateSearchFiltersAgainstDb(
   req: Request,
   res: Response,
   searchFilters: GuidewireSearchControllerFilter[]
@@ -277,10 +277,8 @@ const noHitsResponse: GuidewireSearchControllerSearchResults = {
   hits: [],
 };
 
-function createQueryFilters(
-  urlFilters: {
-    [x: string]: string[];
-  },
+function createElasticsearchQueryFilters(
+  urlFilters: UrlFilters,
   requestIsAuthenticated: Boolean,
   hasGuidewireEmail: Boolean
 ) {
@@ -311,7 +309,7 @@ function createQueryFilters(
   return queryFilters;
 }
 
-function addFiltersToQuery(
+function addFiltersToElasticsearchQuery(
   query: QueryDslQueryContainer,
   queryFilters: QueryDslQueryContainer[]
 ) {
@@ -322,20 +320,21 @@ function addFiltersToQuery(
   return updatedQuery;
 }
 
-function addFiltersToKnnQuery(
+function addFiltersToElasticsearchKnnQuery(
   knnQuery: KnnQuery[],
   queryFilters: QueryDslQueryContainer[]
 ) {
   const updatedKnnQuery = [...knnQuery];
   if (queryFilters.length > 0) {
-    updatedKnnQuery[0].filter = queryFilters;
-    updatedKnnQuery[1].filter = queryFilters;
+    updatedKnnQuery.map((queryItem) => {
+      queryItem.filter = queryFilters;
+    });
   }
   return updatedKnnQuery;
 }
 
-async function runSearch(
-  query: any,
+async function runKeywordSearch(
+  query: QueryDslQueryContainer,
   startIndex: number,
   resultsPerPage: number
 ): Promise<GuidewireSearchControllerSearchResults> {
@@ -848,13 +847,8 @@ export default async function searchController(
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     const keywordFields = await getKeywordFields();
     const filtersFromUrl = getFiltersFromUrl(keywordFields, urlQueryParameters);
-    const queryFilters = createQueryFilters(
-      filtersFromUrl,
-      requestIsAuthenticated,
-      hasGuidewireEmail
-    );
 
-    const queryBody: QueryDslQueryContainer = {
+    const elasticsearchQueryBody: QueryDslQueryContainer = {
       bool: {
         must: {
           simple_query_string: {
@@ -867,32 +861,41 @@ export default async function searchController(
       },
     };
 
-    const queryWithFilters = addFiltersToQuery(queryBody, queryFilters);
+    const elasticsearchQueryFilters = createElasticsearchQueryFilters(
+      filtersFromUrl,
+      requestIsAuthenticated,
+      hasGuidewireEmail
+    );
 
-    const filters = await getFilters(
-      queryWithFilters,
+    const elasticsearchQueryWithFilters = addFiltersToElasticsearchQuery(
+      elasticsearchQueryBody,
+      elasticsearchQueryFilters
+    );
+
+    const searchFilters = await createSearchFilters(
+      elasticsearchQueryWithFilters,
       keywordFields,
       filtersFromUrl
     );
 
-    const filtersValidatedAgainstDb = await validateFilterValuesAgainstDb(
-      req,
-      res,
-      filters
-    );
+    const searchFiltersValidatedAgainstDb =
+      await validateSearchFiltersAgainstDb(req, res, searchFilters);
 
-    const keywordResults = await runSearch(
-      queryWithFilters,
+    const keywordSearchResults = await runKeywordSearch(
+      elasticsearchQueryWithFilters,
       startIndex,
       resultsPerPage
     );
 
+    const keywordSearchResultsToDisplay =
+      prepareResultsToDisplay(keywordSearchResults);
+
     const vectorizedSearchPhrase = await createVectorFromText(searchPhrase);
 
-    let semanticResultsToDisplay: ServerSearchResult[] = [];
-    let hybridResultsToDisplay: ServerSearchResult[] = [];
+    let semanticSearchResultsToDisplay: ServerSearchResult[] = [];
+    let hybridSearchResultsToDisplay: ServerSearchResult[] = [];
     if (vectorizedSearchPhrase) {
-      const knnQueryBody = [
+      const elasticsearchKnnQueryBody = [
         {
           field: 'title_vector',
           query_vector: vectorizedSearchPhrase,
@@ -907,51 +910,53 @@ export default async function searchController(
           k: 100,
         },
       ];
-      const knnQueryWithFilters = addFiltersToKnnQuery(
-        knnQueryBody,
-        queryFilters
-      );
-      const semanticResults = await runSemanticSearch(
-        knnQueryWithFilters,
+      const elasticsearchKnnQueryWithFilters =
+        addFiltersToElasticsearchKnnQuery(
+          elasticsearchKnnQueryBody,
+          elasticsearchQueryFilters
+        );
+      const semanticSearchResults = await runSemanticSearch(
+        elasticsearchKnnQueryWithFilters,
         startIndex,
         resultsPerPage
       );
-      const hybridResults = await runHybridSearch(
-        queryWithFilters,
-        knnQueryWithFilters,
+      semanticSearchResultsToDisplay = prepareVectorizedResultsToDisplay(
+        semanticSearchResults
+      );
+      const hybridSearchResults = await runHybridSearch(
+        elasticsearchQueryWithFilters,
+        elasticsearchKnnQueryWithFilters,
         startIndex,
         resultsPerPage
       );
-      semanticResultsToDisplay =
-        prepareVectorizedResultsToDisplay(semanticResults);
-      hybridResultsToDisplay = prepareVectorizedResultsToDisplay(hybridResults);
+      hybridSearchResultsToDisplay =
+        prepareVectorizedResultsToDisplay(hybridSearchResults);
     }
-
-    const keywordResultsToDisplay = prepareResultsToDisplay(keywordResults);
 
     if (req.query.rawJSON === 'true') {
       return {
         status: 200,
-        body: keywordResultsToDisplay,
+        body: keywordSearchResultsToDisplay,
       };
     } else {
       const searchData: SearchData = {
         searchPhrase: searchPhrase,
-        searchResults: keywordResultsToDisplay,
-        semanticSearchResults: semanticResultsToDisplay,
-        hybridSearchResults: hybridResultsToDisplay,
-        totalNumOfResults: keywordResults?.numberOfHits || 0,
-        totalNumOfCollapsedResults: keywordResults?.numberOfCollapsedHits || 0,
+        searchResults: keywordSearchResultsToDisplay,
+        semanticSearchResults: semanticSearchResultsToDisplay,
+        hybridSearchResults: hybridSearchResultsToDisplay,
+        totalNumOfResults: keywordSearchResults?.numberOfHits || 0,
+        totalNumOfCollapsedResults:
+          keywordSearchResults?.numberOfCollapsedHits || 0,
         currentPage: currentPage,
         // We limited the number of pages because the search results page crashes when there are over 10000 hits
         // and you try to display a page for results from 10000 upward
         pages: Math.ceil(
-          (keywordResults?.numberOfCollapsedHits <= 10000
-            ? keywordResults?.numberOfCollapsedHits
+          (keywordSearchResults?.numberOfCollapsedHits <= 10000
+            ? keywordSearchResults?.numberOfCollapsedHits
             : 10000) / resultsPerPage
         ),
         resultsPerPage: resultsPerPage,
-        filters: filtersValidatedAgainstDb.map((f) => ({
+        filters: searchFiltersValidatedAgainstDb.map((f) => ({
           name: f.name,
           values: f.values,
         })) as ServerSearchFilter[],
