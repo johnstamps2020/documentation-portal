@@ -1,5 +1,6 @@
 import { Client } from '@elastic/elasticsearch';
 import {
+  AggregationsAggregationContainer,
   KnnQuery,
   QueryDslQueryContainer,
   SearchHighlight,
@@ -13,7 +14,6 @@ import {
   SearchResultSource,
   ServerSearchFilter,
   ServerSearchFilterValue,
-  ServerSearchResult,
 } from '../types/serverSearch';
 import { getAllEntities } from './configController';
 import { winstonLogger } from './loggerController';
@@ -91,16 +91,28 @@ function getFiltersFromUrl(
   }
 }
 
+type GwSearchRequest = {
+  index: string;
+  size: number;
+  query?: QueryDslQueryContainer;
+  knn?: KnnQuery[];
+  body: {
+    aggs: Record<string, AggregationsAggregationContainer>;
+  };
+};
+
 async function getAllowedFilterValues(
   fieldName: string,
-  query: QueryDslQueryContainer
+  query?: QueryDslQueryContainer,
+  knnQuery?: KnnQuery[]
 ): Promise<ServerSearchFilterValue[]> {
   try {
-    const requestBody = {
+    let searchRequest: GwSearchRequest = {
       index: searchIndexName,
       size: 0,
+      query: query || {},
+      knn: knnQuery || [],
       body: {
-        query: query,
         aggs: {
           allowedValues: {
             terms: {
@@ -112,7 +124,17 @@ async function getAllowedFilterValues(
       },
     };
 
-    const result = await elasticClient.search<SearchResultSource>(requestBody);
+    if (!query) {
+      delete searchRequest.query;
+    }
+
+    if (!knnQuery) {
+      delete searchRequest.knn;
+    }
+
+    const result = await elasticClient.search<SearchResultSource>(
+      searchRequest
+    );
 
     // @ts-ignore
     return result.aggregations?.allowedValues.buckets.map(
@@ -128,7 +150,8 @@ async function getAllowedFilterValues(
     winstonLogger.error(
       `Problem getting allowed filter values for 
           fieldName: ${fieldName}, 
-          query: ${query}, 
+          query: ${JSON.stringify(query)},
+          knnQuery: ${JSON.stringify(knnQuery)}, 
           ERROR: ${JSON.stringify(err)}`
     );
 
@@ -137,14 +160,19 @@ async function getAllowedFilterValues(
 }
 
 async function createSearchFilters(
-  query: QueryDslQueryContainer,
   filterFields: ServerSearchFilter['name'][],
-  urlFilters: UrlFilters
+  urlFilters: UrlFilters,
+  query?: QueryDslQueryContainer,
+  knnQuery?: KnnQuery[]
 ): Promise<ServerSearchFilter[]> {
   try {
     let filterNamesAndValues: ServerSearchFilter[] = [];
     for (const field of filterFields) {
-      const allowedFilterValues = await getAllowedFilterValues(field, query);
+      const allowedFilterValues = await getAllowedFilterValues(
+        field,
+        query,
+        knnQuery
+      );
 
       const urlFilterValues = urlFilters.hasOwnProperty(field)
         ? urlFilters[field]
@@ -177,7 +205,8 @@ async function createSearchFilters(
   } catch (err) {
     winstonLogger.error(
       `Problem getting filters for 
-          QUERY: ${JSON.stringify(query)},    
+          QUERY: ${JSON.stringify(query)},
+          KNN QUERY: ${JSON.stringify(knnQuery)},    
           FILTER FIELDS: ${filterFields},  
           URL FILTERS: ${JSON.stringify(urlFilters)},
           ERROR: ${err}: ==> ${JSON.stringify(err)}`
@@ -352,19 +381,23 @@ async function runKeywordSearch(
       post_tags: ['</span>'],
     };
 
-    const resultsCount = await elasticClient.search<SearchResultSource>({
+    const resultCount = await elasticClient.search<SearchResultSource>({
       index: searchIndexName,
       size: 0,
+      query: query,
       aggs: {
         totalHits: {
-          filter: query,
-          aggs: {
-            totalCollapsedHits: {
-              cardinality: {
-                field: 'title.raw',
-                precision_threshold: 40000,
-              },
-            },
+          value_count: {
+            field: 'title.raw',
+          },
+        },
+        // Approximate count of values with the distinct title.
+        // We collapse hits for multiple versions under the same title, therefore we need this distinct count
+        // to calculate the number of pages.
+        totalCollapsedHits: {
+          cardinality: {
+            field: 'title.raw',
+            precision_threshold: 40000,
           },
         },
       },
@@ -388,11 +421,11 @@ async function runKeywordSearch(
     });
 
     // @ts-ignore
-    const numberOfHits = resultsCount.aggregations?.totalHits.doc_count;
+    const numberOfHits = resultCount.aggregations?.totalHits.value;
     // @ts-ignore
     const numberOfCollapsedHits =
       // @ts-ignore
-      resultsCount.aggregations?.totalHits.totalCollapsedHits.value;
+      resultCount.aggregations?.totalCollapsedHits.value;
     const hits = results.hits.hits;
 
     return {
@@ -406,7 +439,7 @@ async function runKeywordSearch(
           query: ${query},    
           startIndex: ${startIndex},  
           resultsPerPage: ${resultsPerPage},
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${err}`
     );
     return noHitsResponse;
   }
@@ -418,23 +451,28 @@ async function runSemanticSearch(
   resultsPerPage: number
 ): Promise<GuidewireSearchControllerSearchResults> {
   try {
-    const searchResultsCount = await elasticClient.search<SearchResultSource>({
+    const resultCount = await elasticClient.search<SearchResultSource>({
       index: searchIndexName,
       size: 0,
+      knn: knnQuery,
+      post_filter: {
+        bool: {
+          filter: knnQuery[0].filter,
+        },
+      },
       aggs: {
         totalHits: {
-          filter: {
-            bool: {
-              filter: knnQuery[0].filter,
-            },
+          value_count: {
+            field: 'title.raw',
           },
-          aggs: {
-            totalCollapsedHits: {
-              cardinality: {
-                field: 'title.raw',
-                precision_threshold: 40000,
-              },
-            },
+        },
+        // Approximate count of values with the distinct title.
+        // We collapse hits for multiple versions under the same title, therefore we need this distinct count
+        // to calculate the number of pages.
+        totalCollapsedHits: {
+          cardinality: {
+            field: 'title.raw',
+            precision_threshold: 40000,
           },
         },
       },
@@ -445,6 +483,11 @@ async function runSemanticSearch(
       from: startIndex,
       size: resultsPerPage,
       knn: knnQuery,
+      post_filter: {
+        bool: {
+          filter: knnQuery[0].filter,
+        },
+      },
       collapse: {
         field: 'title.raw',
         inner_hits: {
@@ -456,11 +499,11 @@ async function runSemanticSearch(
     });
 
     // @ts-ignore
-    const numberOfHits = searchResultsCount.aggregations?.totalHits.doc_count;
+    const numberOfHits = resultCount.aggregations?.totalHits.value;
     // @ts-ignore
     const numberOfCollapsedHits =
       // @ts-ignore
-      searchResultsCount.aggregations?.totalHits.totalCollapsedHits.value;
+      resultCount.aggregations?.totalCollapsedHits.value;
     const hits = results
       ? (results.hits.hits as SearchHit<SearchResultSource>[])
       : [];
@@ -476,7 +519,7 @@ async function runSemanticSearch(
           knnQuery: ${knnQuery},    
           startIndex: ${startIndex},  
           resultsPerPage: ${resultsPerPage},
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${err}`
     );
     return noHitsResponse;
   }
@@ -489,23 +532,24 @@ async function runHybridSearch(
   resultsPerPage: number
 ): Promise<GuidewireSearchControllerSearchResults> {
   try {
-    const searchResultsCount = await elasticClient.search<SearchResultSource>({
+    const resultCount = await elasticClient.search<SearchResultSource>({
       index: searchIndexName,
       size: 0,
+      query: query,
+      knn: knnQuery,
       aggs: {
         totalHits: {
-          filter: {
-            bool: {
-              filter: knnQuery[0].filter,
-            },
+          value_count: {
+            field: 'title.raw',
           },
-          aggs: {
-            totalCollapsedHits: {
-              cardinality: {
-                field: 'title.raw',
-                precision_threshold: 40000,
-              },
-            },
+        },
+        // Approximate count of values with the distinct title.
+        // We collapse hits for multiple versions under the same title, therefore we need this distinct count
+        // to calculate the number of pages.
+        totalCollapsedHits: {
+          cardinality: {
+            field: 'title.raw',
+            precision_threshold: 40000,
           },
         },
       },
@@ -528,11 +572,11 @@ async function runHybridSearch(
     });
 
     // @ts-ignore
-    const numberOfHits = searchResultsCount.aggregations?.totalHits.doc_count;
+    const numberOfHits = resultCount.aggregations?.totalHits.value;
     // @ts-ignore
     const numberOfCollapsedHits =
       // @ts-ignore
-      searchResultsCount.aggregations?.totalHits.totalCollapsedHits.value;
+      resultCount.aggregations?.totalCollapsedHits.value;
     const hits = results
       ? (results.hits.hits as SearchHit<SearchResultSource>[])
       : [];
@@ -549,7 +593,7 @@ async function runHybridSearch(
           knnQuery: ${knnQuery},    
           startIndex: ${startIndex},  
           resultsPerPage: ${resultsPerPage},
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${err}`
     );
     return noHitsResponse;
   }
@@ -662,10 +706,18 @@ function prepareVectorizedResultsToDisplay(
       .substring(0, fragmentSize)
       .replace(mainResultTitle, '')
       .replaceAll(/\s{2,}/gm, '');
+    const preparedInnerHits =
+      otherHits?.map((ih) => {
+        // TODO: It may be better to exclude these fields from _source in the Elasticsearch mappings.
+        //  Refer to: https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#include-exclude
+        delete ih._source?.title_vector;
+        delete ih._source?.body_vector;
+        return ih._source as SearchResultSource;
+      }) || [];
     return {
       title: mainResultTitle,
       body: mainResultBodyFragment,
-      innerHits: otherHits?.map((ih) => ih._source as SearchResultSource) || [],
+      innerHits: preparedInnerHits,
       product: mainResult?.product || [],
       doc_display_title:
         mainResult?.doc_display_title ||
@@ -782,6 +834,7 @@ type SearchReqDictionary = {};
 type SearchReqBody = {};
 type SearchReqQuery = {
   q?: string;
+  searchType?: 'keyword' | 'semantic' | 'hybrid';
   pagination?: string;
   resultsPerPage?: string;
   page?: string;
@@ -814,6 +867,8 @@ export default async function searchController(
 ): Promise<SearchControllerResponse | void> {
   try {
     const urlQueryParameters = req.query;
+    const searchType = urlQueryParameters.searchType || 'keyword';
+    const rawJson = urlQueryParameters.rawJSON === 'true';
     const searchPhrase = urlQueryParameters.q
       ? decodeURI(urlQueryParameters.q)
       : '';
@@ -825,7 +880,11 @@ export default async function searchController(
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     const keywordFields = await getKeywordFields();
     const filtersFromUrl = getFiltersFromUrl(keywordFields, urlQueryParameters);
-
+    const elasticsearchQueryFilters = createElasticsearchQueryFilters(
+      filtersFromUrl,
+      requestIsAuthenticated,
+      hasGuidewireEmail
+    );
     const elasticsearchQueryBody: QueryDslQueryContainer = {
       bool: {
         must: {
@@ -839,109 +898,180 @@ export default async function searchController(
       },
     };
 
-    const elasticsearchQueryFilters = createElasticsearchQueryFilters(
-      filtersFromUrl,
-      requestIsAuthenticated,
-      hasGuidewireEmail
-    );
-
     const elasticsearchQueryWithFilters = addFiltersToElasticsearchQuery(
       elasticsearchQueryBody,
       elasticsearchQueryFilters
     );
 
-    const searchFilters = await createSearchFilters(
-      elasticsearchQueryWithFilters,
-      keywordFields,
-      filtersFromUrl
-    );
+    if (searchType === 'keyword') {
+      const keywordSearchFilters = await createSearchFilters(
+        keywordFields,
+        filtersFromUrl,
+        elasticsearchQueryWithFilters
+      );
 
-    const searchFiltersValidatedAgainstDb =
-      await validateSearchFiltersAgainstDb(req, res, searchFilters);
+      const keywordSearchFiltersValidatedAgainstDb =
+        await validateSearchFiltersAgainstDb(req, res, keywordSearchFilters);
 
-    const keywordSearchResults = await runKeywordSearch(
-      elasticsearchQueryWithFilters,
-      startIndex,
-      resultsPerPage
-    );
+      const keywordSearchResults = await runKeywordSearch(
+        elasticsearchQueryWithFilters,
+        startIndex,
+        resultsPerPage
+      );
 
-    const keywordSearchResultsToDisplay =
-      prepareResultsToDisplay(keywordSearchResults);
+      const keywordSearchResultsToDisplay =
+        prepareResultsToDisplay(keywordSearchResults);
+
+      return rawJson
+        ? {
+            status: 200,
+            body: keywordSearchResultsToDisplay,
+          }
+        : {
+            status: 200,
+            body: {
+              searchPhrase: searchPhrase,
+              currentPage: currentPage,
+              resultsPerPage: resultsPerPage,
+              filtersFromUrl: filtersFromUrl,
+              requestIsAuthenticated: requestIsAuthenticated,
+              searchResults: keywordSearchResultsToDisplay,
+              totalNumOfResults: keywordSearchResults?.numberOfHits || 0,
+              totalNumOfCollapsedResults:
+                keywordSearchResults?.numberOfCollapsedHits || 0,
+              // We limited the number of pages because the search results page crashes when there are over 10000 hits
+              // and you try to display a page for results from 10000 upward
+              pages: Math.ceil(
+                (keywordSearchResults?.numberOfCollapsedHits <= 10000
+                  ? keywordSearchResults?.numberOfCollapsedHits
+                  : 10000) / resultsPerPage
+              ),
+              filters: keywordSearchFiltersValidatedAgainstDb,
+            },
+          };
+    }
 
     const vectorizedSearchPhrase = await createVectorFromText(searchPhrase);
+    if (!vectorizedSearchPhrase) {
+      return {
+        status: 500,
+        body: [],
+      };
+    }
+    const elasticsearchKnnQueryBody = [
+      {
+        field: 'title_vector',
+        query_vector: vectorizedSearchPhrase,
+        num_candidates: 100,
+        k: 100,
+        boost: 12,
+      },
+      {
+        field: 'body_vector',
+        query_vector: vectorizedSearchPhrase,
+        num_candidates: 100,
+        k: 100,
+      },
+    ];
+    const elasticsearchKnnQueryWithFilters = addFiltersToElasticsearchKnnQuery(
+      elasticsearchKnnQueryBody,
+      elasticsearchQueryFilters
+    );
 
-    let semanticSearchResultsToDisplay: ServerSearchResult[] = [];
-    let hybridSearchResultsToDisplay: ServerSearchResult[] = [];
-    if (vectorizedSearchPhrase) {
-      const elasticsearchKnnQueryBody = [
-        {
-          field: 'title_vector',
-          query_vector: vectorizedSearchPhrase,
-          num_candidates: 100,
-          k: 100,
-          boost: 12,
-        },
-        {
-          field: 'body_vector',
-          query_vector: vectorizedSearchPhrase,
-          num_candidates: 100,
-          k: 100,
-        },
-      ];
-      const elasticsearchKnnQueryWithFilters =
-        addFiltersToElasticsearchKnnQuery(
-          elasticsearchKnnQueryBody,
-          elasticsearchQueryFilters
-        );
+    if (searchType === 'semantic') {
+      const semanticSearchFilters = await createSearchFilters(
+        keywordFields,
+        filtersFromUrl,
+        undefined,
+        elasticsearchKnnQueryWithFilters
+      );
+
+      const semanticSearchFiltersValidatedAgainstDb =
+        await validateSearchFiltersAgainstDb(req, res, semanticSearchFilters);
       const semanticSearchResults = await runSemanticSearch(
         elasticsearchKnnQueryWithFilters,
         startIndex,
         resultsPerPage
       );
-      semanticSearchResultsToDisplay = prepareVectorizedResultsToDisplay(
+      const semanticSearchResultsToDisplay = prepareVectorizedResultsToDisplay(
         semanticSearchResults
       );
+      return rawJson
+        ? {
+            status: 200,
+            body: semanticSearchResultsToDisplay,
+          }
+        : {
+            status: 200,
+            body: {
+              searchPhrase: searchPhrase,
+              currentPage: currentPage,
+              resultsPerPage: resultsPerPage,
+              filtersFromUrl: filtersFromUrl,
+              requestIsAuthenticated: requestIsAuthenticated,
+              searchResults: semanticSearchResultsToDisplay,
+              totalNumOfResults: semanticSearchResults?.numberOfHits || 0,
+              totalNumOfCollapsedResults:
+                semanticSearchResults?.numberOfCollapsedHits || 0,
+              // We limited the number of pages because the search results page crashes when there are over 10000 hits
+              // and you try to display a page for results from 10000 upward
+              pages: Math.ceil(
+                (semanticSearchResults?.numberOfCollapsedHits <= 10000
+                  ? semanticSearchResults?.numberOfCollapsedHits
+                  : 10000) / resultsPerPage
+              ),
+              filters: semanticSearchFiltersValidatedAgainstDb,
+            },
+          };
+    }
+
+    if (searchType === 'hybrid') {
+      const hybridSearchFilters = await createSearchFilters(
+        keywordFields,
+        filtersFromUrl,
+        elasticsearchQueryWithFilters,
+        elasticsearchKnnQueryWithFilters
+      );
+
+      const hybridSearchFiltersValidatedAgainstDb =
+        await validateSearchFiltersAgainstDb(req, res, hybridSearchFilters);
+
       const hybridSearchResults = await runHybridSearch(
         elasticsearchQueryWithFilters,
         elasticsearchKnnQueryWithFilters,
         startIndex,
         resultsPerPage
       );
-      hybridSearchResultsToDisplay =
+      const hybridSearchResultsToDisplay =
         prepareVectorizedResultsToDisplay(hybridSearchResults);
-    }
 
-    if (req.query.rawJSON === 'true') {
-      return {
-        status: 200,
-        body: keywordSearchResultsToDisplay,
-      };
-    } else {
-      const searchData: SearchData = {
-        searchPhrase: searchPhrase,
-        searchResults: keywordSearchResultsToDisplay,
-        semanticSearchResults: semanticSearchResultsToDisplay,
-        hybridSearchResults: hybridSearchResultsToDisplay,
-        totalNumOfResults: keywordSearchResults?.numberOfHits || 0,
-        totalNumOfCollapsedResults:
-          keywordSearchResults?.numberOfCollapsedHits || 0,
-        currentPage: currentPage,
-        // We limited the number of pages because the search results page crashes when there are over 10000 hits
-        // and you try to display a page for results from 10000 upward
-        pages: Math.ceil(
-          (keywordSearchResults?.numberOfCollapsedHits <= 10000
-            ? keywordSearchResults?.numberOfCollapsedHits
-            : 10000) / resultsPerPage
-        ),
-        resultsPerPage: resultsPerPage,
-        filters: searchFiltersValidatedAgainstDb,
-        filtersFromUrl: filtersFromUrl,
-        requestIsAuthenticated: requestIsAuthenticated,
-      };
-      return {
-        status: 200,
-        body: searchData,
-      };
+      return rawJson
+        ? {
+            status: 200,
+            body: hybridSearchResultsToDisplay,
+          }
+        : {
+            status: 200,
+            body: {
+              searchPhrase: searchPhrase,
+              currentPage: currentPage,
+              resultsPerPage: resultsPerPage,
+              filtersFromUrl: filtersFromUrl,
+              requestIsAuthenticated: requestIsAuthenticated,
+              searchResults: hybridSearchResultsToDisplay,
+              totalNumOfResults: hybridSearchResults?.numberOfHits || 0,
+              totalNumOfCollapsedResults:
+                hybridSearchResults?.numberOfCollapsedHits || 0,
+              // We limited the number of pages because the search results page crashes when there are over 10000 hits
+              // and you try to display a page for results from 10000 upward
+              pages: Math.ceil(
+                (hybridSearchResults?.numberOfCollapsedHits <= 10000
+                  ? hybridSearchResults?.numberOfCollapsedHits
+                  : 10000) / resultsPerPage
+              ),
+              filters: hybridSearchFiltersValidatedAgainstDb,
+            },
+          };
     }
   } catch (err) {
     winstonLogger.error(

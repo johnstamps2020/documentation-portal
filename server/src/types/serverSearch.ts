@@ -1,8 +1,6 @@
 export type SearchData = {
   searchPhrase: string;
   searchResults: ServerSearchResult[];
-  semanticSearchResults: ServerSearchResult[];
-  hybridSearchResults: ServerSearchResult[];
   totalNumOfResults: number;
   totalNumOfCollapsedResults: number;
   currentPage: number;
@@ -22,7 +20,9 @@ export type SearchResultSource = {
   doc_display_title: string | null;
   language: string;
   title: string;
+  title_vector?: number[];
   body: string;
+  body_vector?: number[];
   doc_id: string;
   version: string[];
   platform: string[];
