@@ -14,7 +14,7 @@ export default function SearchResultList() {
 
   return (
     <Stack direction="row" spacing={6}>
-      <Stack>
+      <Stack sx={{ flex: 1 }}>
         <Alert severity="info" icon={false} sx={{ marginBottom: '16px' }}>
           Keyword search results
         </Alert>
@@ -28,7 +28,7 @@ export default function SearchResultList() {
         flexItem
         sx={{ borderRightWidth: 3 }}
       />
-      <Stack>
+      <Stack sx={{ flex: 1 }}>
         <Alert severity="warning" icon={false} sx={{ marginBottom: '16px' }}>
           Experimental semantic search results
         </Alert>
@@ -42,7 +42,7 @@ export default function SearchResultList() {
         flexItem
         sx={{ borderRightWidth: 3 }}
       />
-      <Stack>
+      <Stack sx={{ flex: 1 }}>
         <Alert severity="error" icon={false} sx={{ marginBottom: '16px' }}>
           Experimental hybrid search results
         </Alert>
