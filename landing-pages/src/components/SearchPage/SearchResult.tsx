@@ -1,13 +1,12 @@
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import {
   SearchResultSource,
   ServerSearchResult,
 } from 'server/dist/types/serverSearch';
-import Typography from '@mui/material/Typography';
-import { StyledHeading2, StyledLink } from './StyledSearchComponents';
-import SearchResultTags from './SearchResultTags';
 import SearchResultInnerHits from './SearchResultInnerHits';
-import { languageLabels } from '../../vars';
+import SearchResultTags from './SearchResultTags';
+import { StyledHeading2, StyledLink } from './StyledSearchComponents';
 
 export function createSearchResultLink(
   searchResult: ServerSearchResult | SearchResultSource
@@ -22,17 +21,7 @@ export function createSearchResultLink(
 
 export default function SearchResult(searchResult: ServerSearchResult) {
   const highlightedTermsUrlParam = `hl=${searchResult.uniqueHighlightTerms}`;
-  const searchResultTags = [
-    searchResult.product,
-    searchResult.release && searchResult.release.length > 0
-      ? searchResult.release
-      : searchResult.version,
-    searchResult.subject || '',
-    languageLabels.find((l) => l.key === searchResult.language)?.label ||
-      searchResult.language,
-  ]
-    .flat()
-    .filter(Boolean);
+
   return (
     <Stack sx={{ paddingBottom: '24px' }}>
       <StyledLink href={`${searchResult.href}?${highlightedTermsUrlParam}`}>

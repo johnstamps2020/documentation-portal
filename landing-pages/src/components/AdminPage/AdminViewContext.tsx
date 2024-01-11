@@ -19,6 +19,7 @@ interface AdminViewInterface {
   setEntityDatabaseName: (value: string) => void;
   entityPrimaryKeyName: string;
   setEntityPrimaryKeyName: (value: string) => void;
+  EntityFormComponent: React.ElementType;
 }
 
 export const AdminViewContext = createContext<AdminViewInterface | null>(null);

@@ -169,6 +169,7 @@ export default function EntityListWithFilters({
         setEntityDatabaseName,
         entityPrimaryKeyName,
         setEntityPrimaryKeyName,
+        EntityFormComponent: FormComponent,
       }}
     >
       <EntityFilters />
