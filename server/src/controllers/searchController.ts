@@ -30,7 +30,7 @@ const searchIndexName = 'gw-docs';
 const fragmentSize = 300;
 
 // Every keyword field in Elasticsearch is included in the filter list
-async function getKeywordFields(): Promise<string[]> {
+async function getKeywordFields(): Promise<ServerSearchFilter['name'][]> {
   const mappingResults = await elasticClient.indices.getMapping({
     index: searchIndexName,
   });
@@ -41,7 +41,7 @@ async function getKeywordFields(): Promise<string[]> {
 
   return Object.keys(mappings).filter(
     (key) => mappings[key].type === 'keyword'
-  );
+  ) as ServerSearchFilter['name'][];
 }
 
 // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
@@ -140,18 +140,13 @@ async function getAllowedFilterValues(
   }
 }
 
-type GuidewireSearchControllerFilter = {
-  name: string;
-  values: ServerSearchFilterValue[];
-};
-
 async function createSearchFilters(
   query: QueryDslQueryContainer,
-  filterFields: string[],
+  filterFields: ServerSearchFilter['name'][],
   urlFilters: UrlFilters
-): Promise<GuidewireSearchControllerFilter[]> {
+): Promise<ServerSearchFilter[]> {
   try {
-    let filterNamesAndValues: GuidewireSearchControllerFilter[] = [];
+    let filterNamesAndValues: ServerSearchFilter[] = [];
     for (const field of filterFields) {
       const updatedQuery = JSON.parse(JSON.stringify(query));
       const additionalQueryFilters: QueryDslQueryContainer[] = [];
@@ -228,7 +223,7 @@ async function createSearchFilters(
 async function validateSearchFiltersAgainstDb(
   req: Request,
   res: Response,
-  searchFilters: GuidewireSearchControllerFilter[]
+  searchFilters: ServerSearchFilter[]
 ) {
   const validatedFilters = [];
   const filterFieldsToBeValidated = ['version', 'release'];
@@ -956,10 +951,7 @@ export default async function searchController(
             : 10000) / resultsPerPage
         ),
         resultsPerPage: resultsPerPage,
-        filters: searchFiltersValidatedAgainstDb.map((f) => ({
-          name: f.name,
-          values: f.values,
-        })) as ServerSearchFilter[],
+        filters: searchFiltersValidatedAgainstDb,
         filtersFromUrl: filtersFromUrl,
         requestIsAuthenticated: requestIsAuthenticated,
       };
