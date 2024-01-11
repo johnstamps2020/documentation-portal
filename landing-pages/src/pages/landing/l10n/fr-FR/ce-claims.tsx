@@ -21,9 +21,13 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]CustomerEngage Account Management for ClaimCenter Release Notes', 
+label: 'CustomerEngage Account Management for ClaimCenter - Notes de version', 
 docId: 'dx202310frFRceclaimsrelnotes', 
 }, 
+{
+  label: 'EnterpriseEngage - Guide de mise à jour',
+  docId: 'ee202310frFRupdate',
+},
 ],
 },
 {

@@ -21,9 +21,13 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]CustomerEngage Quote and Buy Release Notes', 
+label: 'CustomerEngage Quote and Buy - Notes de version', 
 docId: 'dx202310frFRceqbrelnotes', 
 }, 
+{
+  label: 'EnterpriseEngage - Guide de mise à jour',
+  docId: 'ee202310frFRupdate',
+},
 ],
 },
 {

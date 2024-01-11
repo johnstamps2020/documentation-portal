@@ -4,17 +4,17 @@
     {
       "id": "dx202310deDEceamrelnotes",
       "title": "CustomerEngage Account Management Release Notes de",
-      "displayTitle": "CustomerEngage Account Management Versionshinweise",
+      "displayTitle": "CustomerEngage Account Management - Versionshinweise",
       "url": "de/cloud/dx/ce-am/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [ "staging" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -24,17 +24,17 @@
     {
       "id": "dx202310deDEceclaimsrelnotes",
       "title": "CustomerEngage Account Management for ClaimCenter Release Notes de",
-      "displayTitle": "CustomerEngage Account Management für ClaimCenter Versionshinweise",
+      "displayTitle": "CustomerEngage Account Management für ClaimCenter - Versionshinweise",
       "url": "de/cloud/dx/ce-claims/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [ "staging" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,17 +44,17 @@
     {
       "id": "dx202310deDEceqbrelnotes",
       "title": "CustomerEngage Quote and Buy Release Notes de",
-      "displayTitle": "CustomerEngage Quote and Buy Versionshinweise",
+      "displayTitle": "CustomerEngage Quote and Buy - Versionshinweise",
       "url": "de/cloud/dx/ce-qb/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [ "staging" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -64,17 +64,17 @@
     {
       "id": "dx202310deDEperelnotes",
       "title": "ProducerEngage Release Notes de",
-      "displayTitle": "ProducerEngage Versionshinweise",
+      "displayTitle": "ProducerEngage - Versionshinweise",
       "url": "de/cloud/dx/pe/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [ "staging" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -84,17 +84,17 @@
     {
       "id": "dx202310deDEpeclaimsrelnotes",
       "title": "ProducerEngage for ClaimCenter Release Notes de",
-      "displayTitle": "ProducerEngage für ClaimCenter Versionshinweise",
+      "displayTitle": "ProducerEngage für ClaimCenter - Versionshinweise",
       "url": "de/cloud/dx/pe-claims/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [ "staging" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -104,17 +104,17 @@
     {
       "id": "dx202310deDEsrerelnotes",
       "title": "ServiceRepEngage Release Notes de",
-      "displayTitle": "ServiceRepEngage Versionshinweise",
+      "displayTitle": "ServiceRepEngage - Versionshinweise",
       "url": "de/cloud/dx/sre/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [ "staging" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -124,17 +124,49 @@
     {
       "id": "dx202310deDEverelnotes",
       "title": "VendorEngage Release Notes de",
-      "displayTitle": "VendorEngage Versionshinweise",
+      "displayTitle": "VendorEngage - Versionshinweise",
       "url": "de/cloud/dx/ve/202310/relnotes",
       "metadata": {
-        "product": ["Digital Reference Applications"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Release notes" ],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAcc,ess": false
+    },
+    {
+      "id": "ee202310deDEupdate",
+      "title": "Update de",
+      "displayTitle": "EnterpriseEngage - Update-Handbuch",
+      "url": "de/cloud/ee/202310/update",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "de"
+      },
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

@@ -21,11 +21,11 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]ClaimCenter Release Notes', 
+label: 'ClaimCenter - Notes de version', 
 docId: 'iscc202310frFRreleasenotes', 
 }, 
 {
-label: '[TBD]ClaimCenter Update', 
+label: 'ClaimCenter - Guide de mise à jour', 
 docId: 'iscc202310frFRupdate', 
 }, 
 ],

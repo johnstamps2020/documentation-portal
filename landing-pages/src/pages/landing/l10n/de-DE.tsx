@@ -55,7 +55,7 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/de-DE/cm',
     },
     {
-      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      label: 'InsuranceSuite Configuration Upgrade Tools',
       pagePath: 'l10n/de-DE/is-configupgradetools',
     },
     {
