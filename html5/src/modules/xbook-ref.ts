@@ -67,11 +67,15 @@ async function findDocLink(
         if (contextid) {
           let topicTitle;
           let topicUrl = await getTopicUrl(docInfo.url, contextid);
-
           if (topicUrl) {
-            targetUrl = targetUrl.concat(`/${topicUrl}`);
+            targetUrl = targetUrl.concat(`/${topicUrl}#${contextid}`);
             topicTitle = await getTopicTitle(targetUrl);
           } else {
+            //TODO: The updated redirect causes a minor issue here. If the
+            // targetTestUrl is invalid but is within a doc, the root
+            // of the doc is returned and we append the contextid as a path.
+            // The redirect catches this again and does the right thing.
+            // However, the URL in the link is technically incorrect.
             const targetTestUrl = targetUrl.concat(`/${contextid}`);
             topicTitle = await getTopicTitle(targetTestUrl);
             if (topicTitle) {
@@ -108,7 +112,11 @@ async function getTopicUrl(url: string, contextid: string) {
       const id = idInfo.contextIds.find((match: { ids: string | String[] }) =>
         match.ids.includes(contextid)
       );
-      return id.file;
+      if (id) {
+        return id.file;
+      }
+      return;
+      
     }
   } catch (err) {
     console.error(err);
