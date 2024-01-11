@@ -144,34 +144,7 @@ async function createSearchFilters(
   try {
     let filterNamesAndValues: ServerSearchFilter[] = [];
     for (const field of filterFields) {
-      const updatedQuery = JSON.parse(JSON.stringify(query));
-      const additionalQueryFilters: QueryDslQueryContainer[] = [];
-      if (field === 'version') {
-        additionalQueryFilters.push({
-          term: {
-            platform: 'Self-managed',
-          },
-        });
-      }
-      if (field === 'release') {
-        additionalQueryFilters.push({
-          term: {
-            platform: 'Cloud',
-          },
-        });
-      }
-      if (query.bool?.filter) {
-        (updatedQuery.bool!.filter as QueryDslQueryContainer[]).push(
-          ...additionalQueryFilters
-        );
-      } else {
-        updatedQuery.bool!.filter = additionalQueryFilters;
-      }
-
-      const allowedFilterValues = await getAllowedFilterValues(
-        field,
-        updatedQuery
-      );
+      const allowedFilterValues = await getAllowedFilterValues(field, query);
 
       const urlFilterValues = urlFilters.hasOwnProperty(field)
         ? urlFilters[field]
@@ -276,6 +249,20 @@ function createElasticsearchQueryFilters(
   let queryFilters = [];
   if (urlFilters) {
     for (const [key, value] of Object.entries(urlFilters)) {
+      if (key === 'version') {
+        queryFilters.push({
+          term: {
+            platform: 'Self-managed',
+          },
+        });
+      }
+      if (key === 'release') {
+        queryFilters.push({
+          term: {
+            platform: 'Cloud',
+          },
+        });
+      }
       queryFilters.push({
         terms: {
           [key]: value,
