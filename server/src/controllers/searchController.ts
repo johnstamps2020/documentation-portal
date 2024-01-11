@@ -100,16 +100,12 @@ async function getAllowedFilterValues(
       index: searchIndexName,
       size: 0,
       body: {
+        query: query,
         aggs: {
-          allowedForField: {
-            filter: query,
-            aggs: {
-              keywordFilter: {
-                terms: {
-                  field: fieldName,
-                  size: 100,
-                },
-              },
+          allowedValues: {
+            terms: {
+              field: fieldName,
+              size: 100,
             },
           },
         },
@@ -119,7 +115,7 @@ async function getAllowedFilterValues(
     const result = await elasticClient.search<SearchResultSource>(requestBody);
 
     // @ts-ignore
-    return result.aggregations?.allowedForField.keywordFilter.buckets.map(
+    return result.aggregations?.allowedValues.buckets.map(
       (bucket: ServerSearchFilterValue) => {
         // @ts-ignore
         return {
