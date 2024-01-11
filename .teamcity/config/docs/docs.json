@@ -7,8 +7,9 @@
       "url": "security",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Internal Docs"],
+        "product": ["Cloud Platform", "Cloud Standards", "Product Adoption"],
         "release": ["Innsbruck", "Hakuba", "Garmisch"],
+        "subject": ["Security"],
         "version": ["latest"],
         "language": "en"
       },
