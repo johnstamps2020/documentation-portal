@@ -841,7 +841,7 @@ export default async function searchController(
       : '';
     const resultsPerPage = parseInt(urlQueryParameters.pagination || '10');
     const currentPage = parseInt(urlQueryParameters.page || '1');
-    const startIndex = resultsPerPage * currentPage - 1;
+    const startIndex = resultsPerPage * (currentPage - 1);
     const userInfo = res.locals.userInfo;
     const requestIsAuthenticated = userInfo.isLoggedIn;
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
