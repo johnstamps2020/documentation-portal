@@ -21,11 +21,11 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: 'ProducerEngage - Notes de version', 
+label: 'Notes sur la version', 
 docId: 'dx202310frFRperelnotes', 
 }, 
 {
-  label: 'EnterpriseEngage - Guide de mise à jour',
+  label: 'Guide de mise à jour',
   docId: 'ee202310frFRupdate',
 },
 ],

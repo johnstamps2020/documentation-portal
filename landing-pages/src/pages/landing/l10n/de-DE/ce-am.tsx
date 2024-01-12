@@ -21,7 +21,7 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: 'Versionshinweise für CustomerEngage Account Management', 
+label: 'Versionshinweise', 
 docId: 'dx202310deDEceamrelnotes', 
 }, 
 {

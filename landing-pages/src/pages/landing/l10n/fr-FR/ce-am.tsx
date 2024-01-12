@@ -21,11 +21,11 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: 'CustomerEngage Account Management - Notes de version', 
+label: 'Notes sur la version', 
 docId: 'dx202310frFRceamrelnotes', 
 }, 
 {
-  label: 'EnterpriseEngage - Guide de mise à jour',
+  label: 'Guide de mise à jour',
   docId: 'ee202310frFRupdate',
 },
 ],

@@ -21,7 +21,7 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: 'Versionshinweise für CustomerEngage Quote and Buy', 
+label: 'Versionshinweise', 
 docId: 'dx202310deDEceqbrelnotes', 
 }, 
 {

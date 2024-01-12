@@ -21,7 +21,7 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: 'Versionshinweise für ProducerEngage for ClaimCenter', 
+label: 'Versionshinweise', 
 docId: 'dx202310deDEpeclaimsrelnotes', 
 }, {
   label: 'EnterpriseEngage - Update-Handbuch',

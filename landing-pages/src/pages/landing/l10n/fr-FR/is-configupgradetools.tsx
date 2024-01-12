@@ -11,7 +11,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Choisissez un produit',
-    selectedItemLabel: 'Guide des outils de mise à niveau de la configuration',
+    selectedItemLabel: 'InsuranceSuite Configuration Upgrade Tools',
     items: allSelectors.sef23284b869fc03ddd79bc1738f4ad7d,
     labelColor: 'white',
   },
