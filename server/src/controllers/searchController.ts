@@ -830,11 +830,13 @@ function prepareResultsToDisplay(
   });
 }
 
+export type SearchType = 'keyword' | 'semantic' | 'hybrid';
+
 type SearchReqDictionary = {};
 type SearchReqBody = {};
 type SearchReqQuery = {
   q?: string;
-  searchType?: 'keyword' | 'semantic' | 'hybrid';
+  searchType?: SearchType;
   pagination?: string;
   resultsPerPage?: string;
   page?: string;
@@ -860,6 +862,8 @@ type SearchControllerResponse = {
   body: SearchData['searchResults'] | SearchData;
 };
 
+const searchTypeQueryParameterName = 'searchType';
+
 export default async function searchController(
   req: SearchRequestExpress,
   res: Response,
@@ -867,7 +871,8 @@ export default async function searchController(
 ): Promise<SearchControllerResponse | void> {
   try {
     const urlQueryParameters = req.query;
-    const searchType = urlQueryParameters.searchType || 'keyword';
+    const searchType =
+      urlQueryParameters[searchTypeQueryParameterName] || 'keyword';
     const rawJson = urlQueryParameters.rawJSON === 'true';
     const searchPhrase = urlQueryParameters.q
       ? decodeURI(urlQueryParameters.q)

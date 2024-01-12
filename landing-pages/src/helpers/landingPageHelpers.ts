@@ -31,3 +31,9 @@ export function arrangeItems(
 
   return landingPageItems;
 }
+
+export function capitalizeFirstLetter(text: string) {
+  return text.replace(/^(.)/, function (string) {
+    return string.toUpperCase();
+  });
+}
