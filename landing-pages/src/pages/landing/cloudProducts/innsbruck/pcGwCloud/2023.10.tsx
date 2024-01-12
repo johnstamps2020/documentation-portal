@@ -13,6 +13,7 @@ const pageConfig: ApplicationLayoutProps = {
     'Guidewire PolicyCenter provides underwriting and policy administration for personal and commercial line insurers in the property and casualty industry.',
   tabs: [
     {
+      id: 'get-started',
       icon: 'get-started',
       title: 'Get started',
       items: [
@@ -81,6 +82,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'learn-about',
       icon: 'learn-about',
       title: 'Learn about',
       items: [
@@ -144,6 +146,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'configure',
       icon: 'configure',
       title: 'Configure',
       items: [
@@ -291,6 +294,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'integrate',
       icon: 'integrate',
       title: 'Integrate',
       items: [
@@ -486,6 +490,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'administer',
       icon: 'administer',
       title: 'Administer',
       items: [
