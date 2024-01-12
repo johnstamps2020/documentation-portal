@@ -139,7 +139,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAcc,ess": false
+      "earlyAccess": false
     },
     {
       "id": "ee202310deDEupdate",
