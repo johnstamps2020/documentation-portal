@@ -10,8 +10,6 @@ import ApplicationTabIcon, {
 } from './ApplicationTabIcon';
 import indicator from './indicator.svg';
 
-export const tabsWidth = 1428;
-
 function a11yProps(index: number) {
   return {
     id: `doc-tab-${index}`,
@@ -19,13 +17,8 @@ function a11yProps(index: number) {
   };
 }
 
-export type LinkSectionProps = {
-  title: string;
-  url: string;
-  description: JSX.Element | string;
-};
-
 export type ApplicationTabItemProps = {
+  id: string;
   title: string;
   items: TabPanelProps['items'];
 } & ApplicationTabIconProps;

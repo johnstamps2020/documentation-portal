@@ -22,7 +22,7 @@ export default function ApplicationTabLinkList(
   const arrangedItems = arrangeItems(items, landingPageItems, true);
 
   const tabItemContents = (
-    <Grid container spacing={4} sx={{ pt: '68px' }}>
+    <Grid container spacing={4} sx={{ pt: '68px' }} className="tabSection">
       {arrangedItems.map((item, idx) => (
         <Grid xs={12} sm={6} md={4} key={idx}>
           <Typography

@@ -39,6 +39,7 @@ const pageConfig: ApplicationLayoutProps = {
   },
   cards: [
     {
+      cardId: 'get-started',
       cardTitle: 'Get started',
       items: [
         {
@@ -69,6 +70,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      cardId: 'build',
       cardTitle: 'Build insurance products',
       items: [
         {
@@ -99,6 +101,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      cardId: 'additional-references',
       cardTitle: 'Additional references',
       items: [
         {
