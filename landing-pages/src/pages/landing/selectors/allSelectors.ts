@@ -307,7 +307,7 @@ export const allSelectors = {
     { label: 'DataHub', pagePath: 'l10n/de-DE/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/de-DE/ic' },
     {
-      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      label: 'InsuranceSuite Configuration Upgrade Tools',
       pagePath: 'l10n/de-DE/is-configupgradetools',
     },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/de-DE/cm' },
@@ -400,7 +400,7 @@ export const allSelectors = {
     { label: 'DataHub', pagePath: 'l10n/fr-FR/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/fr-FR/ic' },
     {
-      label: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+      label: 'InsuranceSuite Configuration Upgrade Tools',
       pagePath: 'l10n/fr-FR/is-configupgradetools',
     },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },

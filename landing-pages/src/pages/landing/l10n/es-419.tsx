@@ -75,6 +75,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/es-419/cm',
     },
     {
+      label: 'InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/es-419/is-configupgradetools',
+    },
+    {
       label: 'PolicyCenter',
       pagePath: 'l10n/es-419/pc',
     },

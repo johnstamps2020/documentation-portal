@@ -11,7 +11,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Produkt auswählen',
-    selectedItemLabel: '[TBD]InsuranceSuite Configuration Upgrade Tools',
+    selectedItemLabel: 'InsuranceSuite Configuration Upgrade Tools',
     items: allSelectors.se8b84bf91d6fdc9fe9f57fab16d97983,
     labelColor: 'white',
   },
@@ -21,7 +21,7 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.10 (Innsbruck)', 
       items: [
         {
-          label: '[TBD]InsuranceSuite Configuraiton Upgrade Guide', 
+          label: 'InsuranceSuite Configuraiton Upgrade Guide', 
           docId: 'isconfigupgradetoolsdeDE500', 
         }, 
       ]

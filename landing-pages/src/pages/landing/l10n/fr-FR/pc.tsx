@@ -21,11 +21,11 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]PolicyCenter Release Notes', 
+label: 'PolicyCenter - Notes de version', 
 docId: 'ispc202310frFRreleasenotes', 
 }, 
 {
-label: '[TBD]PolicyCenter Update', 
+label: 'PolicyCenter - Guide de mise à jour', 
 docId: 'ispc202310frFRupdate', 
 }, 
 ],
