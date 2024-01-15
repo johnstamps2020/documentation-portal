@@ -162,16 +162,35 @@ async function getAllowedFilterValues(
 async function createSearchFilters(
   filterFields: ServerSearchFilter['name'][],
   urlFilters: UrlFilters,
-  query?: QueryDslQueryContainer,
-  knnQuery?: KnnQuery[]
+  requestIsAuthenticated: Boolean,
+  hasGuidewireEmail: Boolean,
+  queryBody?: QueryDslQueryContainer,
+  knnQueryBody?: KnnQuery[]
 ): Promise<ServerSearchFilter[]> {
   try {
     let filterNamesAndValues: ServerSearchFilter[] = [];
     for (const field of filterFields) {
+      const queryFiltersForFilterValues =
+        createElasticsearchQueryFiltersForFilterValues(
+          field,
+          urlFilters,
+          requestIsAuthenticated,
+          hasGuidewireEmail
+        );
+      const updatedQuery = queryBody
+        ? addFiltersToElasticsearchQuery(queryBody, queryFiltersForFilterValues)
+        : queryBody;
+      const updatedKnnQuery = knnQueryBody
+        ? addFiltersToElasticsearchKnnQuery(
+            knnQueryBody,
+            queryFiltersForFilterValues
+          )
+        : knnQueryBody;
+
       const allowedFilterValues = await getAllowedFilterValues(
         field,
-        query,
-        knnQuery
+        updatedQuery,
+        updatedKnnQuery
       );
 
       const urlFilterValues = urlFilters.hasOwnProperty(field)
@@ -205,8 +224,8 @@ async function createSearchFilters(
   } catch (err) {
     winstonLogger.error(
       `Problem getting filters for 
-          QUERY: ${JSON.stringify(query)},
-          KNN QUERY: ${JSON.stringify(knnQuery)},    
+          QUERY: ${JSON.stringify(queryBody)},
+          KNN QUERY: ${JSON.stringify(knnQueryBody)},    
           FILTER FIELDS: ${filterFields},  
           URL FILTERS: ${JSON.stringify(urlFilters)},
           ERROR: ${err}: ==> ${JSON.stringify(err)}`
@@ -270,7 +289,59 @@ const noHitsResponse: GuidewireSearchControllerSearchResults = {
   hits: [],
 };
 
-function createElasticsearchQueryFilters(
+// To get all allowed values for a keyword field, we must run a query with all checked filters,
+// except for filters for this keyword field.
+function createElasticsearchQueryFiltersForFilterValues(
+  filterName: ServerSearchFilter['name'],
+  urlFilters: UrlFilters,
+  requestIsAuthenticated: Boolean,
+  hasGuidewireEmail: Boolean
+) {
+  let queryFilters = [];
+  if (urlFilters) {
+    for (const [key, value] of Object.entries(urlFilters)) {
+      if (key !== filterName) {
+        queryFilters.push({
+          terms: {
+            [key]: value,
+          },
+        });
+      }
+    }
+  }
+
+  if (filterName === 'version') {
+    queryFilters.push({
+      term: {
+        platform: 'Self-managed',
+      },
+    });
+  }
+  if (filterName === 'release') {
+    queryFilters.push({
+      term: {
+        platform: 'Cloud',
+      },
+    });
+  }
+
+  if (!requestIsAuthenticated) {
+    queryFilters.push({
+      term: {
+        public: true,
+      },
+    });
+  } else if (requestIsAuthenticated && !hasGuidewireEmail) {
+    queryFilters.push({
+      term: {
+        internal: false,
+      },
+    });
+  }
+  return queryFilters;
+}
+
+function createElasticsearchQueryFiltersForSearchRequest(
   urlFilters: UrlFilters,
   requestIsAuthenticated: Boolean,
   hasGuidewireEmail: Boolean
@@ -885,11 +956,12 @@ export default async function searchController(
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     const keywordFields = await getKeywordFields();
     const filtersFromUrl = getFiltersFromUrl(keywordFields, urlQueryParameters);
-    const elasticsearchQueryFilters = createElasticsearchQueryFilters(
-      filtersFromUrl,
-      requestIsAuthenticated,
-      hasGuidewireEmail
-    );
+    const elasticsearchQueryFilters =
+      createElasticsearchQueryFiltersForSearchRequest(
+        filtersFromUrl,
+        requestIsAuthenticated,
+        hasGuidewireEmail
+      );
     const elasticsearchQueryBody: QueryDslQueryContainer = {
       bool: {
         must: {
@@ -912,7 +984,10 @@ export default async function searchController(
       const keywordSearchFilters = await createSearchFilters(
         keywordFields,
         filtersFromUrl,
-        elasticsearchQueryWithFilters
+        requestIsAuthenticated,
+        hasGuidewireEmail,
+        elasticsearchQueryBody,
+        undefined
       );
 
       const keywordSearchFiltersValidatedAgainstDb =
@@ -987,8 +1062,10 @@ export default async function searchController(
       const semanticSearchFilters = await createSearchFilters(
         keywordFields,
         filtersFromUrl,
+        requestIsAuthenticated,
+        hasGuidewireEmail,
         undefined,
-        elasticsearchKnnQueryWithFilters
+        elasticsearchKnnQueryBody
       );
 
       const semanticSearchFiltersValidatedAgainstDb =
@@ -1034,8 +1111,10 @@ export default async function searchController(
       const hybridSearchFilters = await createSearchFilters(
         keywordFields,
         filtersFromUrl,
-        elasticsearchQueryWithFilters,
-        elasticsearchKnnQueryWithFilters
+        requestIsAuthenticated,
+        hasGuidewireEmail,
+        elasticsearchQueryBody,
+        elasticsearchKnnQueryBody
       );
 
       const hybridSearchFiltersValidatedAgainstDb =
