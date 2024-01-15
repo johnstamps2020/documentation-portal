@@ -66,6 +66,12 @@
       "title": "MSK",
       "gitUrl": "ssh://git@stash.guidewire.com/ccs/msk-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "mskadminsrc",
+      "title": "MSK Admin",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/msk-admin-docs.git",
+      "branch": "master"
     }
   ]
 }

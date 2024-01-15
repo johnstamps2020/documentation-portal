@@ -187,6 +187,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "mskadmin",
+      "title": "MSK Admin",
+      "url": "internal/mskadmin/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "MSK Admin"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
