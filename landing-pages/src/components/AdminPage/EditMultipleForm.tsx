@@ -1,10 +1,13 @@
 import FormControlLabel from '@mui/material/FormControlLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import Typography from '@mui/material/Typography';
+import { useEffect, useState } from 'react';
 import AdminFormWrapper from './AdminFormWrapper';
 import { useAdminViewContext } from './AdminViewContext';
+import { Entity } from './EntityListWithFilters';
 
 type BatchFormField = {
   name: string;
@@ -19,9 +22,27 @@ type BatchFormField = {
     | 'function';
 };
 
+type FieldValue = string | boolean | undefined;
+
 type FieldWithValue = BatchFormField & {
-  value: string | number | undefined;
+  value: FieldValue;
 };
+
+function getBooleanValueAsString(value: boolean | undefined) {
+  if (value === undefined) {
+    return 'unset';
+  }
+
+  return value ? 'true' : 'false';
+}
+
+function getStringValueAsBoolean(value: string) {
+  if (value === 'unset') {
+    return undefined;
+  }
+
+  return value === 'true';
+}
 
 function getEditableFields(entities: any[]): BatchFormField[] {
   return Object.entries(entities[0])
@@ -38,7 +59,7 @@ function getDefaultValue(type: BatchFormField['type']) {
   }
 
   if (type === 'boolean') {
-    return -1;
+    return undefined;
   }
 
   return undefined;
@@ -57,12 +78,75 @@ function getEditableFieldWithDefaultValues(
 export default function EditMultipleForm() {
   const { selectedEntities } = useAdminViewContext();
   const editableFields = getEditableFields(selectedEntities);
-  const [modifiedEntities, setModifiedEntities] = useState(selectedEntities);
   const [formState, setFormState] = useState(
     getEditableFieldWithDefaultValues(editableFields)
   );
+  const [entitiesAfterChange, setEntitiesAfterChange] = useState<Entity[]>(
+    selectedEntities as Entity[]
+  );
 
-  function handleFieldChange(fieldName: string, fieldValue: string | boolean) {}
+  function getCurrentValue(
+    fieldName: string,
+    fieldType: BatchFormField['type']
+  ) {
+    const field = formState.find((f) => f.name === fieldName);
+    if (!field) {
+      return undefined;
+    }
+
+    if (fieldType === 'boolean') {
+      return getBooleanValueAsString(field.value as boolean | undefined);
+    }
+
+    return field.value;
+  }
+
+  function handleFieldChange(
+    fieldName: string,
+    fieldType: BatchFormField['type'],
+    fieldValue: FieldValue
+  ) {
+    setFormState((prev) =>
+      prev.map((f) => {
+        if (f.name === fieldName) {
+          if (fieldType === 'boolean') {
+            return {
+              ...f,
+              value: getStringValueAsBoolean(fieldValue as string),
+            };
+          }
+
+          return {
+            ...f,
+            value: fieldValue,
+          };
+        }
+
+        return f;
+      })
+    );
+  }
+
+  useEffect(() => {
+    setEntitiesAfterChange((prev) =>
+      prev.map((entity) => {
+        const changedFields = formState.filter(
+          (f) => f.value !== getDefaultValue(f.type)
+        );
+
+        return {
+          ...entity,
+          ...changedFields.reduce(
+            (acc, { name, value }) => ({
+              ...acc,
+              [name]: value,
+            }),
+            {}
+          ),
+        };
+      })
+    );
+  }, [formState]);
 
   return (
     <AdminFormWrapper
@@ -77,41 +161,113 @@ export default function EditMultipleForm() {
         alignItems: 'flex-start',
       }}
     >
-      {editableFields.map(({ name, type }, idx) => {
-        if (type === 'string') {
-          return <TextField key={idx} label={name} name={name} fullWidth />;
-        }
+      <>
+        {editableFields.map(({ name, type }, idx) => {
+          if (type === 'string') {
+            return (
+              <TextField
+                key={idx}
+                label={name}
+                name={name}
+                fullWidth
+                onChange={(e) => handleFieldChange(name, type, e.target.value)}
+                value={getCurrentValue(name, type)}
+              />
+            );
+          }
 
-        if (type === 'boolean') {
+          if (type === 'boolean') {
+            return (
+              <FormControlLabel
+                key={idx}
+                control={
+                  <RadioGroup
+                    name={name}
+                    value={getCurrentValue(name, type)}
+                    onChange={(e) =>
+                      handleFieldChange(name, type, e.target.value as string)
+                    }
+                    sx={{ flexDirection: 'row' }}
+                  >
+                    <FormControlLabel
+                      value="unset"
+                      control={<Radio />}
+                      label="keep as is"
+                    />
+                    <FormControlLabel
+                      value="true"
+                      control={<Radio />}
+                      label="set to true"
+                    />
+                    <FormControlLabel
+                      value="false"
+                      control={<Radio />}
+                      label="set to false"
+                    />
+                  </RadioGroup>
+                }
+                label={`"${name}":`}
+                labelPlacement="start"
+                name={name}
+                sx={{
+                  gap: '12px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                }}
+              />
+            );
+          }
+
           return (
-            <FormControlLabel
-              key={idx}
-              control={
-                <Select name={name} defaultValue={-1}>
-                  <MenuItem value={-1}>keep as is</MenuItem>
-                  <MenuItem value={1}>true</MenuItem>
-                  <MenuItem value={0}>false</MenuItem>
-                </Select>
-              }
-              label={`"${name}" set to:`}
-              labelPlacement="start"
-              name={name}
-              sx={{
-                gap: '12px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}
-            />
+            <div key={idx}>
+              {name}: <code>{type}</code>
+            </div>
           );
-        }
+        })}
+        <Typography variant="h2">Your requested changes</Typography>
+        <Stack>
+          {entitiesAfterChange.map((entity, idx) => {
+            const changedFields = formState.filter(
+              (f) => f.value !== getDefaultValue(f.type)
+            );
 
-        return (
-          <div key={idx}>
-            {name}: <code>{type}</code>
-          </div>
-        );
-      })}
+            if (changedFields.length === 0) {
+              return null;
+            }
+
+            const differences = changedFields
+              .map((field) => {
+                if (field.value !== entity[field.name]) {
+                  console.log({ field }, entity[field.name]);
+                  return field;
+                }
+
+                return null;
+              })
+              .filter(Boolean);
+
+            return (
+              <div key={idx}>
+                <Typography variant="h3">Entity {idx + 1}</Typography>
+                <div>
+                  {differences.map((field, fieldIdx) => {
+                    if (!field) {
+                      return <div>no changes</div>;
+                    }
+
+                    return (
+                      <div key={fieldIdx}>
+                        from: {entity[field.name]} to {field.value}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </Stack>
+      </>
     </AdminFormWrapper>
   );
 }
