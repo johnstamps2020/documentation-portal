@@ -1,75 +1,18 @@
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import AdminFormWrapper from '../AdminFormWrapper';
 import { useAdminViewContext } from '../AdminViewContext';
-import EditMultipleDiffTable, { DiffTableRow } from './EditMultipleDiffTable';
 import EditMultipleFields from './EditMultipleFields';
 import {
-  BatchFormField,
-  FieldType,
-  FieldValue,
-  FieldWithValue,
-} from './editMultipleTypes';
-
-function getBooleanValueAsString(value: boolean | undefined) {
-  if (value === undefined) {
-    return 'unset';
-  }
-
-  return value ? 'true' : 'false';
-}
-
-function getStringValueAsBoolean(value: string) {
-  if (value === 'unset') {
-    return undefined;
-  }
-
-  return value === 'true';
-}
-
-function getDisplayValue(type: FieldType, value: FieldValue): string {
-  if (type === 'boolean') {
-    return getBooleanValueAsString(value as boolean | undefined);
-  }
-
-  if (!value) {
-    return '';
-  }
-
-  return value.toString();
-}
-
-function getEditableFields(entities: any[]): BatchFormField[] {
-  return Object.entries(entities[0])
-    .filter(([key]) => key !== 'uuid')
-    .map(([key, value]) => ({
-      name: key,
-      type: typeof value,
-    }));
-}
-
-function getDefaultValue(type: FieldType) {
-  if (type === 'string') {
-    return '';
-  }
-
-  if (type === 'boolean') {
-    return undefined;
-  }
-
-  return undefined;
-}
-
-function getEditableFieldWithDefaultValues(
-  editableFields: BatchFormField[]
-): FieldWithValue[] {
-  return editableFields.map(({ name, type }) => ({
-    name,
-    type,
-    value: getDefaultValue(type),
-  }));
-}
+  getBooleanValueAsString,
+  getDefaultValue,
+  getEditableFieldWithDefaultValues,
+  getEditableFields,
+  getStringValueAsBoolean,
+} from './editMultipleHelpers';
+import { BatchFormField, FieldValue } from './editMultipleTypes';
+import EditMultipleChangeList from './EditMultipleChangeList';
+import { Entity } from '../EntityListWithFilters';
 
 export default function EditMultipleForm() {
   const { selectedEntities } = useAdminViewContext();
@@ -165,46 +108,10 @@ export default function EditMultipleForm() {
           getCurrentValue={getCurrentValue}
           handleFieldChange={handleFieldChange}
         />
-        <Typography variant="h2">Your requested changes</Typography>
-        {changedEntities.map((entity, idx) => {
-          if (!entity) {
-            return null;
-          }
-          const changedFields = formState.filter(
-            (f) => f.value !== getDefaultValue(f.type)
-          );
-
-          if (changedFields.length === 0) {
-            return null;
-          }
-
-          const differences = changedFields
-            .map((field) => {
-              if (field.value !== entity[field.name]) {
-                return field;
-              }
-
-              return null;
-            })
-            .filter(Boolean);
-
-          if (differences.length === 0) {
-            return null;
-          }
-
-          const rows: DiffTableRow[] = differences.map((field) => ({
-            name: field!.name,
-            oldValue: getDisplayValue(field!.type, entity[field!.name]),
-            newValue: getDisplayValue(field!.type, field!.value),
-          }));
-
-          return (
-            <div key={idx}>
-              <Typography variant="h3">Entity {entity?.label}</Typography>
-              <EditMultipleDiffTable rows={rows} />
-            </div>
-          );
-        })}
+        <EditMultipleChangeList
+          changedEntities={changedEntities as Entity[]}
+          changedFields={changedFields}
+        />
       </Container>
     </AdminFormWrapper>
   );
