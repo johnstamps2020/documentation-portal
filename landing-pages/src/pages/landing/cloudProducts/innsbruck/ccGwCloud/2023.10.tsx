@@ -178,6 +178,16 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Guidewire Rules for ClaimCenter (Early Access)',
+          docId: 'gwrulescc',
+          description: (
+            <>
+              Create and manage business rules that trigger when specific
+              business conditions occur in ClaimCenter.
+            </>
+          ),
+        },
+        {
           label: 'Plugins',
           description: (
             <>
