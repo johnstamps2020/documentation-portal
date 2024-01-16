@@ -14,7 +14,7 @@
         "subject": [ "Release notes" ],
         "language": "pt"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

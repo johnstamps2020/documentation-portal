@@ -3,8 +3,8 @@
   "docs": [
     {
       "id": "whatsnewes419innsbruck",
-      "url": "es/cloud/hakuba/whatsnew",
-      "title": "What's new in Hakuba es",
+      "url": "es/cloud/innsbruck/whatsnew",
+      "title": "What's new in Innsbruck es",
       "displayTitle": "Novedades en Innsbruck",
       "metadata": {
         "platform": [
@@ -31,7 +31,7 @@
         "language": "es"
       },
       "environments": [
-        "staging"
+        "staging", "prod"
       ],
       "indexForSearch": true,
       "public": false,

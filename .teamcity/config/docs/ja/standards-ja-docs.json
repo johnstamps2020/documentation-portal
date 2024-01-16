@@ -30,7 +30,7 @@
         "release": [ "Aspen", "Banff", "Cortina", "Dobson", "Elysian" ],
         "language": "ja"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
