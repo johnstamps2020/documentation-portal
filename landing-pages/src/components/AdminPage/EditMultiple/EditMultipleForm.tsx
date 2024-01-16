@@ -46,12 +46,16 @@ function getStringValueAsBoolean(value: string) {
   return value === 'true';
 }
 
-function getDisplayValue(type: FieldType, value: FieldValue) {
+function getDisplayValue(type: FieldType, value: FieldValue): string {
+  if (!value) {
+    return '';
+  }
+
   if (type === 'boolean') {
     return getBooleanValueAsString(value as boolean | undefined);
   }
 
-  return value;
+  return value.toString();
 }
 
 function getEditableFields(entities: any[]): BatchFormField[] {
@@ -160,13 +164,11 @@ export default function EditMultipleForm() {
 
   const thereAreChanges = changedEntities.length > 0;
 
-  console.log({ changedEntities, thereAreChanges });
-
   return (
     <AdminFormWrapper
-      disabled={false}
-      dataChanged={false}
-      canSubmitData={false}
+      disabled={!thereAreChanges}
+      dataChanged={thereAreChanges}
+      canSubmitData={thereAreChanges}
       handleSave={() => {}}
       handleResetForm={() => {}}
       sx={{
@@ -240,46 +242,45 @@ export default function EditMultipleForm() {
           );
         })}
         <Typography variant="h2">Your requested changes</Typography>
-        <Stack>
-          {selectedEntities.map((entity, idx) => {
-            const changedFields = formState.filter(
-              (f) => f.value !== getDefaultValue(f.type)
-            );
+        {changedEntities.map((entity, idx) => {
+          if (!entity) {
+            return null;
+          }
+          const changedFields = formState.filter(
+            (f) => f.value !== getDefaultValue(f.type)
+          );
 
-            if (changedFields.length === 0) {
+          if (changedFields.length === 0) {
+            return null;
+          }
+
+          const differences = changedFields
+            .map((field) => {
+              if (field.value !== entity[field.name]) {
+                return field;
+              }
+
               return null;
-            }
+            })
+            .filter(Boolean);
 
-            const differences = changedFields
-              .map((field) => {
-                if (field.value !== entity[field.name]) {
-                  return field;
-                }
+          if (differences.length === 0) {
+            return null;
+          }
 
-                return null;
-              })
-              .filter(Boolean);
+          const rows: DiffTableRow[] = differences.map((field) => ({
+            name: field!.name,
+            oldValue: getDisplayValue(field!.type, entity[field!.name]),
+            newValue: getDisplayValue(field!.type, field!.value),
+          }));
 
-            return (
-              <div key={idx}>
-                <Typography variant="h3">Entity {idx + 1}</Typography>
-                <div>
-                  {differences.map((field, fieldIdx) => {
-                    if (!field) {
-                      return <div>no changes</div>;
-                    }
-
-                    return (
-                      <div key={fieldIdx}>
-                        from: {entity[field.name]} to {field.value}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
-        </Stack>
+          return (
+            <div key={idx}>
+              <Typography variant="h3">Entity {entity?.label}</Typography>
+              <EditMultipleDiffTable rows={rows} />
+            </div>
+          );
+        })}
       </>
     </AdminFormWrapper>
   );
