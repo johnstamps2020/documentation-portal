@@ -216,6 +216,16 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Guidewire Rules for PolicyCenter (Early Access)',
+          docId: 'gwrulespc',
+          description: (
+            <>
+              Create and manage business rules that trigger when specific
+              business conditions occur in PolicyCenter.
+            </>
+          ),
+        },
+        {
           label: 'Plugins',
           description: (
             <>

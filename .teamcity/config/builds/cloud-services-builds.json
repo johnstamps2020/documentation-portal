@@ -3,10 +3,19 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "Rules.ditamap",
       "srcId": "rulessrc",
-      "docId": "gwrules",
+      "docId": "gwrulescc",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "Rules.ditamap",
+      "srcId": "rulessrc",
+      "docId": "gwrulespc",
       "indexRedirect": true,
       "disabled": false
     },
