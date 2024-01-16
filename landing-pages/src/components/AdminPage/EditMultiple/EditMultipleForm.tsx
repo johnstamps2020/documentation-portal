@@ -7,6 +7,7 @@ import { useState } from 'react';
 import AdminFormWrapper from '../AdminFormWrapper';
 import { useAdminViewContext } from '../AdminViewContext';
 import EditMultipleDiffTable, { DiffTableRow } from './EditMultipleDiffTable';
+import Container from '@mui/material/Container';
 
 type FieldType =
   | 'string'
@@ -176,7 +177,7 @@ export default function EditMultipleForm() {
         alignItems: 'flex-start',
       }}
     >
-      <>
+      <Container>
         {editableFields.map(({ name, type }, idx) => {
           if (type === 'string') {
             return (
@@ -280,7 +281,7 @@ export default function EditMultipleForm() {
             </div>
           );
         })}
-      </>
+      </Container>
     </AdminFormWrapper>
   );
 }
