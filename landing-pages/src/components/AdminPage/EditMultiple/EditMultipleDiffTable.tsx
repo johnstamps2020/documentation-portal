@@ -19,28 +19,25 @@ type EditMultipleDiffTableProps = {
 export default function EditMultipleDiffTable({
   rows,
 }: EditMultipleDiffTableProps) {
+  console.log({ rows });
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="table of differences">
+      <Table aria-label="table of differences">
         <TableHead>
           <TableRow>
             <TableCell>Field</TableCell>
-            <TableCell align="right">Old value</TableCell>
-            <TableCell align="right">New value</TableCell>
+            <TableCell>Old value</TableCell>
+            <TableCell>New value</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
+          {rows.map(({ name, newValue, oldValue }) => (
+            <TableRow key={name}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {name}
               </TableCell>
-              <TableCell align="right">{row.name}</TableCell>
-              <TableCell align="right">{row.oldValue}</TableCell>
-              <TableCell align="right">{row.newValue}</TableCell>
+              <TableCell sx={{ color: 'gray' }}>{oldValue}</TableCell>
+              <TableCell sx={{ color: 'green' }}>{newValue}</TableCell>
             </TableRow>
           ))}
         </TableBody>

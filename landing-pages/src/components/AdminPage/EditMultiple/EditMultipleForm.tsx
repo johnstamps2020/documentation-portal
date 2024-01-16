@@ -1,7 +1,6 @@
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
@@ -47,12 +46,12 @@ function getStringValueAsBoolean(value: string) {
 }
 
 function getDisplayValue(type: FieldType, value: FieldValue): string {
-  if (!value) {
-    return '';
-  }
-
   if (type === 'boolean') {
     return getBooleanValueAsString(value as boolean | undefined);
+  }
+
+  if (!value) {
+    return '';
   }
 
   return value.toString();
@@ -267,6 +266,8 @@ export default function EditMultipleForm() {
           if (differences.length === 0) {
             return null;
           }
+
+          console.log({ differences });
 
           const rows: DiffTableRow[] = differences.map((field) => ({
             name: field!.name,
