@@ -1,7 +1,7 @@
 import { writeFileSync } from 'fs';
 import {
-  SecretsManagerClient,
   GetSecretValueCommand,
+  SecretsManagerClient,
 } from '@aws-sdk/client-secrets-manager';
 
 const requiredEnvVars = [
@@ -83,7 +83,6 @@ for (const entityType of ['source', 'doc', 'build']) {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-      signal: AbortSignal.timeout(240000),
     }
   );
   const json = await response.json();
