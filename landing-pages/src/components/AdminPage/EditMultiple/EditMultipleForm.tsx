@@ -21,6 +21,10 @@ export default function EditMultipleForm() {
     getEditableFieldWithDefaultValues(editableFields)
   );
 
+  function handleResetForm() {
+    setFormState(getEditableFieldWithDefaultValues(editableFields));
+  }
+
   function getCurrentValue(fieldName: string) {
     const field = formState.find((f) => f.name === fieldName);
     if (!field) {
@@ -30,10 +34,7 @@ export default function EditMultipleForm() {
     return getDisplayValue(field.type, field.value);
   }
 
-  function handleFieldChange(
-    fieldName: string,
-    fieldValue: FieldValue
-  ) {
+  function handleFieldChange(fieldName: string, fieldValue: FieldValue) {
     setFormState((prev) =>
       prev.map((f) => {
         if (fieldValue && f.name === fieldName) {
@@ -80,7 +81,7 @@ export default function EditMultipleForm() {
       dataChanged={thereAreChanges}
       canSubmitData={thereAreChanges}
       handleSave={() => {}}
-      handleResetForm={() => {}}
+      handleResetForm={handleResetForm}
     >
       <Container>
         <EditMultipleFields
