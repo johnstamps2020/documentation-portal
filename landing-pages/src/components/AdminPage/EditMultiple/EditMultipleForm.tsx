@@ -1,34 +1,16 @@
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import AdminFormWrapper from '../AdminFormWrapper';
 import { useAdminViewContext } from '../AdminViewContext';
 import EditMultipleDiffTable, { DiffTableRow } from './EditMultipleDiffTable';
-import Container from '@mui/material/Container';
-
-type FieldType =
-  | 'string'
-  | 'number'
-  | 'bigint'
-  | 'boolean'
-  | 'symbol'
-  | 'undefined'
-  | 'object'
-  | 'function';
-
-type BatchFormField = {
-  name: string;
-  type: FieldType;
-};
-
-type FieldValue = string | boolean | undefined;
-
-export type FieldWithValue = BatchFormField & {
-  value: FieldValue;
-};
+import EditMultipleFields from './EditMultipleFields';
+import {
+  BatchFormField,
+  FieldType,
+  FieldValue,
+  FieldWithValue,
+} from './editMultipleTypes';
 
 function getBooleanValueAsString(value: boolean | undefined) {
   if (value === undefined) {
@@ -67,7 +49,7 @@ function getEditableFields(entities: any[]): BatchFormField[] {
     }));
 }
 
-function getDefaultValue(type: BatchFormField['type']) {
+function getDefaultValue(type: FieldType) {
   if (type === 'string') {
     return '';
   }
@@ -178,69 +160,11 @@ export default function EditMultipleForm() {
       }}
     >
       <Container>
-        {editableFields.map(({ name, type }, idx) => {
-          if (type === 'string') {
-            return (
-              <TextField
-                key={idx}
-                label={name}
-                name={name}
-                fullWidth
-                onChange={(e) => handleFieldChange(name, type, e.target.value)}
-                value={getCurrentValue(name, type)}
-              />
-            );
-          }
-
-          if (type === 'boolean') {
-            return (
-              <FormControlLabel
-                key={idx}
-                control={
-                  <RadioGroup
-                    name={name}
-                    value={getCurrentValue(name, type)}
-                    onChange={(e) =>
-                      handleFieldChange(name, type, e.target.value as string)
-                    }
-                    sx={{ flexDirection: 'row' }}
-                  >
-                    <FormControlLabel
-                      value="unset"
-                      control={<Radio />}
-                      label="keep as is"
-                    />
-                    <FormControlLabel
-                      value="true"
-                      control={<Radio />}
-                      label="set to true"
-                    />
-                    <FormControlLabel
-                      value="false"
-                      control={<Radio />}
-                      label="set to false"
-                    />
-                  </RadioGroup>
-                }
-                label={`"${name}":`}
-                labelPlacement="start"
-                name={name}
-                sx={{
-                  gap: '12px',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                }}
-              />
-            );
-          }
-
-          return (
-            <div key={idx}>
-              {name}: <code>{type}</code>
-            </div>
-          );
-        })}
+        <EditMultipleFields
+          editableFields={editableFields}
+          getCurrentValue={getCurrentValue}
+          handleFieldChange={handleFieldChange}
+        />
         <Typography variant="h2">Your requested changes</Typography>
         {changedEntities.map((entity, idx) => {
           if (!entity) {
