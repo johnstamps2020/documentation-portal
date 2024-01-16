@@ -4,27 +4,29 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
-import AdminFormWrapper from './AdminFormWrapper';
-import { useAdminViewContext } from './AdminViewContext';
-import { Entity } from './EntityListWithFilters';
+import { useState } from 'react';
+import AdminFormWrapper from '../AdminFormWrapper';
+import { useAdminViewContext } from '../AdminViewContext';
+import EditMultipleDiffTable, { DiffTableRow } from './EditMultipleDiffTable';
+
+type FieldType =
+  | 'string'
+  | 'number'
+  | 'bigint'
+  | 'boolean'
+  | 'symbol'
+  | 'undefined'
+  | 'object'
+  | 'function';
 
 type BatchFormField = {
   name: string;
-  type:
-    | 'string'
-    | 'number'
-    | 'bigint'
-    | 'boolean'
-    | 'symbol'
-    | 'undefined'
-    | 'object'
-    | 'function';
+  type: FieldType;
 };
 
 type FieldValue = string | boolean | undefined;
 
-type FieldWithValue = BatchFormField & {
+export type FieldWithValue = BatchFormField & {
   value: FieldValue;
 };
 
@@ -42,6 +44,14 @@ function getStringValueAsBoolean(value: string) {
   }
 
   return value === 'true';
+}
+
+function getDisplayValue(type: FieldType, value: FieldValue) {
+  if (type === 'boolean') {
+    return getBooleanValueAsString(value as boolean | undefined);
+  }
+
+  return value;
 }
 
 function getEditableFields(entities: any[]): BatchFormField[] {
@@ -80,9 +90,6 @@ export default function EditMultipleForm() {
   const editableFields = getEditableFields(selectedEntities);
   const [formState, setFormState] = useState(
     getEditableFieldWithDefaultValues(editableFields)
-  );
-  const [entitiesAfterChange, setEntitiesAfterChange] = useState<Entity[]>(
-    selectedEntities as Entity[]
   );
 
   function getCurrentValue(
@@ -127,26 +134,33 @@ export default function EditMultipleForm() {
     );
   }
 
-  useEffect(() => {
-    setEntitiesAfterChange((prev) =>
-      prev.map((entity) => {
-        const changedFields = formState.filter(
-          (f) => f.value !== getDefaultValue(f.type)
-        );
+  const changedFields = formState.filter(
+    (f) => f.value !== getDefaultValue(f.type)
+  );
 
-        return {
-          ...entity,
-          ...changedFields.reduce(
-            (acc, { name, value }) => ({
-              ...acc,
-              [name]: value,
-            }),
-            {}
-          ),
-        };
-      })
-    );
-  }, [formState]);
+  const changedEntities = selectedEntities
+    .map((entity) => {
+      if (changedFields.length === 0) {
+        return null;
+      }
+
+      const changedFieldsInEntity = changedFields
+        .map((field) => {
+          if (field.value !== entity[field.name]) {
+            return field;
+          }
+
+          return null;
+        })
+        .filter(Boolean);
+
+      return changedFieldsInEntity.length > 0 ? entity : null;
+    })
+    .filter(Boolean);
+
+  const thereAreChanges = changedEntities.length > 0;
+
+  console.log({ changedEntities, thereAreChanges });
 
   return (
     <AdminFormWrapper
@@ -227,7 +241,7 @@ export default function EditMultipleForm() {
         })}
         <Typography variant="h2">Your requested changes</Typography>
         <Stack>
-          {entitiesAfterChange.map((entity, idx) => {
+          {selectedEntities.map((entity, idx) => {
             const changedFields = formState.filter(
               (f) => f.value !== getDefaultValue(f.type)
             );
@@ -239,7 +253,6 @@ export default function EditMultipleForm() {
             const differences = changedFields
               .map((field) => {
                 if (field.value !== entity[field.name]) {
-                  console.log({ field }, entity[field.name]);
                   return field;
                 }
 

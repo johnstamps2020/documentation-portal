@@ -1,8 +1,8 @@
 import EditIcon from '@mui/icons-material/Edit';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import AdminDialog from './AdminDialog';
-import { useAdminViewContext } from './AdminViewContext';
+import AdminDialog from '../AdminDialog';
+import { useAdminViewContext } from '../AdminViewContext';
 import EditMultipleForm from './EditMultipleForm';
 
 export default function EditButton() {
