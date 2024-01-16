@@ -1,12 +1,14 @@
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { useLocaleParams } from 'hooks/useLocale';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
+import Paper from '@mui/material/Paper';
+import { useLayoutContext } from 'LayoutContext';
 import { useSearchData } from 'hooks/useApi';
+import { useLocaleParams } from 'hooks/useLocale';
 import { useMobile } from 'hooks/useMobile';
 import { useEffect, useState } from 'react';
-import { useLayoutContext } from 'LayoutContext';
+import { useLocation } from 'react-router-dom';
+import { searchTypeQueryParameterName } from 'vars';
 
 type SearchBoxProps = {
   big?: boolean;
@@ -36,6 +38,8 @@ const regularSizeProps = {
 };
 
 export default function SearchBox({ big = true }: SearchBoxProps) {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
   const { placeholder } = useLocaleParams();
   const { searchData } = useSearchData();
   const { isMobile } = useMobile();
@@ -117,6 +121,14 @@ export default function SearchBox({ big = true }: SearchBoxProps) {
             value={searchFilters[k].join(',')}
           />
         ))}
+      {query.get(searchTypeQueryParameterName) && (
+        <InputBase
+          id={searchTypeQueryParameterName}
+          type="hidden"
+          name={searchTypeQueryParameterName}
+          value={query.get(searchTypeQueryParameterName)}
+        />
+      )}
       <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
         <SearchIcon />
       </IconButton>

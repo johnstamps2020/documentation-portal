@@ -18,6 +18,7 @@ WORKDIR /usr/app
 
 COPY --from=app-builder /usr/app/node_modules/ node_modules/
 COPY --from=app-builder /usr/app/dist/ .
+COPY multi-qa-MiniLM-L6-cos-v1 /usr/app/multi-qa-MiniLM-L6-cos-v1
 
 EXPOSE 8081
 LABEL "org.opencontainers.image.title"="docportal" \

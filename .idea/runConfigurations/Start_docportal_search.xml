@@ -2,7 +2,7 @@
   <configuration default="false" name="Start docportal search" type="docker-deploy" factoryName="docker-image" server-name="Docker">
     <deployment type="docker-image">
       <settings>
-        <option name="imageTag" value="artifactory.guidewire.com/hub-docker-remote/elasticsearch:7.17.4" />
+        <option name="imageTag" value="artifactory.guidewire.com/hub-docker-remote/elasticsearch:8.11.1" />
         <option name="containerName" value="docportal-search" />
         <option name="envVars">
           <list>
@@ -37,7 +37,7 @@
           <list>
             <DockerVolumeBindingImpl>
               <option name="containerPath" value="/usr/share/elasticsearch/data" />
-              <option name="hostPath" value="$PROJECT_DIR$/.dev/volumes/search" />
+              <option name="hostPath" value="dev_search_volume" />
             </DockerVolumeBindingImpl>
           </list>
         </option>

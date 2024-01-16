@@ -2,7 +2,7 @@ import { Client } from '@elastic/elasticsearch';
 import { Request, Response } from 'express';
 import { ApiResponse } from '../types/apiResponse';
 import { findEntity } from './configController';
-
+import { estypes } from '@elastic/elasticsearch/index';
 import { Doc } from '../model/entity/Doc';
 import { SearchResultSource } from '../types/serverSearch';
 import { isUserAllowedToAccessResource } from './authController';
