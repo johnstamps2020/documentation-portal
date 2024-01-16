@@ -197,6 +197,20 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro1030",
+      "srcId": "srcjutro1030",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook1030",
+      "srcId": "srcjutro1030",
+      "workingDir": "storybook",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutrodocsnext",
       "srcId": "jutrodocsnextsrc",
       "disabled": false
@@ -233,6 +247,12 @@
       "buildType": "yarn",
       "docId": "jutrosdkinnsbruck",
       "srcId": "srcjutrosdkinnsbruck",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutrosdkjasper",
+      "srcId": "srcjutrosdkjasper",
       "disabled": false
     },
     {

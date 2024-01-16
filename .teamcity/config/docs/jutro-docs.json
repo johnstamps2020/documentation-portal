@@ -695,6 +695,38 @@
       "earlyAccess": false
     },
     {
+      "id": "jutrosdkjasper",
+      "title": "Jutro SDK",
+      "url": "jutro/sdk/jasper",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Jasper"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutrorewards",
       "title": "Jutro Rewards",
       "url": "jutro/rewards",
@@ -3394,6 +3426,64 @@
         ],
         "version": [
           "10.2"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "jutro1030",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/documentation/10.3",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.3"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook1030",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/10.3",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.3"
         ],
         "subject": [
           "Development"
