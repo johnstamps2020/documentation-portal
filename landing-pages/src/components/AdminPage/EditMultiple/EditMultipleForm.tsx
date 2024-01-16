@@ -267,8 +267,6 @@ export default function EditMultipleForm() {
             return null;
           }
 
-          console.log({ differences });
-
           const rows: DiffTableRow[] = differences.map((field) => ({
             name: field!.name,
             oldValue: getDisplayValue(field!.type, entity[field!.name]),

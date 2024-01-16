@@ -19,7 +19,6 @@ type EditMultipleDiffTableProps = {
 export default function EditMultipleDiffTable({
   rows,
 }: EditMultipleDiffTableProps) {
-  console.log({ rows });
   return (
     <TableContainer component={Paper}>
       <Table aria-label="table of differences">
