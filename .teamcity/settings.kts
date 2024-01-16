@@ -4481,7 +4481,7 @@ object Admin {
                 cleanCheckout = true
             }
 
-            artifactRules = "response*.json => /"
+            artifactRules = "ci/uploadLegacyConfigsToDb/response*.json => /"
             steps {
                 step(GwBuildSteps.MergeAllLegacyConfigsStep)
                 step(GwBuildSteps.createUploadLegacyConfigsToS3BucketStep(GwDeployEnvs.STAGING.envName))
