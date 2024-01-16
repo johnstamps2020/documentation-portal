@@ -46,10 +46,10 @@ export default function EditMultipleChangeList({
         }));
 
         return (
-          <div key={idx}>
-            <Typography variant="h3">Entity {entity?.label}</Typography>
+          <section key={idx}>
+            <Typography variant="h3">{entity?.label}</Typography>
             <EditMultipleDiffTable rows={rows} />
-          </div>
+          </section>
         );
       })}
     </>

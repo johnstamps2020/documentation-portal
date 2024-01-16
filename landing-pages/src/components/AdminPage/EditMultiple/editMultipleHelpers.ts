@@ -5,7 +5,7 @@ import {
   FieldWithValue,
 } from './editMultipleTypes';
 
-export function getBooleanValueAsString(value: boolean | undefined) {
+function getBooleanValueAsString(value: boolean | undefined) {
   if (value === undefined) {
     return 'unset';
   }
@@ -13,7 +13,7 @@ export function getBooleanValueAsString(value: boolean | undefined) {
   return value ? 'true' : 'false';
 }
 
-export function getStringValueAsBoolean(value: string) {
+function getStringValueAsBoolean(value: string) {
   if (value === 'unset') {
     return undefined;
   }
@@ -31,6 +31,14 @@ export function getDisplayValue(type: FieldType, value: FieldValue): string {
   }
 
   return value.toString();
+}
+
+export function getDataValue(type: FieldType, value: string): FieldValue {
+  if (type === 'boolean') {
+    return getStringValueAsBoolean(value);
+  }
+
+  return value;
 }
 
 export function getEditableFields(entities: any[]): BatchFormField[] {

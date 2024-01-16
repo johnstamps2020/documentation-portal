@@ -2,17 +2,17 @@ import Container from '@mui/material/Container';
 import { useState } from 'react';
 import AdminFormWrapper from '../AdminFormWrapper';
 import { useAdminViewContext } from '../AdminViewContext';
+import { Entity } from '../EntityListWithFilters';
+import EditMultipleChangeList from './EditMultipleChangeList';
 import EditMultipleFields from './EditMultipleFields';
 import {
-  getBooleanValueAsString,
+  getDataValue,
   getDefaultValue,
+  getDisplayValue,
   getEditableFieldWithDefaultValues,
   getEditableFields,
-  getStringValueAsBoolean,
 } from './editMultipleHelpers';
-import { BatchFormField, FieldValue } from './editMultipleTypes';
-import EditMultipleChangeList from './EditMultipleChangeList';
-import { Entity } from '../EntityListWithFilters';
+import { FieldValue } from './editMultipleTypes';
 
 export default function EditMultipleForm() {
   const { selectedEntities } = useAdminViewContext();
@@ -21,40 +21,25 @@ export default function EditMultipleForm() {
     getEditableFieldWithDefaultValues(editableFields)
   );
 
-  function getCurrentValue(
-    fieldName: string,
-    fieldType: BatchFormField['type']
-  ) {
+  function getCurrentValue(fieldName: string) {
     const field = formState.find((f) => f.name === fieldName);
     if (!field) {
       return undefined;
     }
 
-    if (fieldType === 'boolean') {
-      return getBooleanValueAsString(field.value as boolean | undefined);
-    }
-
-    return field.value;
+    return getDisplayValue(field.type, field.value);
   }
 
   function handleFieldChange(
     fieldName: string,
-    fieldType: BatchFormField['type'],
     fieldValue: FieldValue
   ) {
     setFormState((prev) =>
       prev.map((f) => {
-        if (f.name === fieldName) {
-          if (fieldType === 'boolean') {
-            return {
-              ...f,
-              value: getStringValueAsBoolean(fieldValue as string),
-            };
-          }
-
+        if (fieldValue && f.name === fieldName) {
           return {
             ...f,
-            value: fieldValue,
+            value: getDataValue(f.type, fieldValue.toString()),
           };
         }
 

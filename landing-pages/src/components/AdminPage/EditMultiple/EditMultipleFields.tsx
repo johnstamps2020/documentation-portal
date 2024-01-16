@@ -3,12 +3,12 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import { BatchFormField } from './editMultipleTypes';
+import { BatchFormField, FieldValue } from './editMultipleTypes';
 
 type EditMultipleFieldsProps = {
   editableFields: BatchFormField[];
-  handleFieldChange: any;
-  getCurrentValue: any;
+  handleFieldChange: (fieldName: string, fieldValue: FieldValue) => void;
+  getCurrentValue: (fieldName: string) => FieldValue;
 };
 
 export default function EditMultipleFields({
@@ -26,8 +26,8 @@ export default function EditMultipleFields({
               label={name}
               name={name}
               fullWidth
-              onChange={(e) => handleFieldChange(name, type, e.target.value)}
-              value={getCurrentValue(name, type)}
+              onChange={(e) => handleFieldChange(name, e.target.value)}
+              value={getCurrentValue(name)}
             />
           );
         }
@@ -39,9 +39,9 @@ export default function EditMultipleFields({
               control={
                 <RadioGroup
                   name={name}
-                  value={getCurrentValue(name, type)}
+                  value={getCurrentValue(name)}
                   onChange={(e) =>
-                    handleFieldChange(name, type, e.target.value as string)
+                    handleFieldChange(name, e.target.value as string)
                   }
                   sx={{ flexDirection: 'row' }}
                 >
