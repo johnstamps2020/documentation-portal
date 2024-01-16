@@ -96,11 +96,6 @@ export default function EditMultipleForm() {
       canSubmitData={thereAreChanges}
       handleSave={() => {}}
       handleResetForm={() => {}}
-      sx={{
-        maxWidth: '100%',
-        minWidth: '800px',
-        alignItems: 'flex-start',
-      }}
     >
       <Container>
         <EditMultipleFields
