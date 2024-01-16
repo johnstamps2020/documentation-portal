@@ -1,21 +1,22 @@
 import Typography from '@mui/material/Typography';
-import { Entity } from '../EntityListWithFilters';
-import { FieldWithValue } from './editMultipleTypes';
+import { useEditMultipleContext } from './EditMultipleContext';
 import EditMultipleDiffTable, { DiffTableRow } from './EditMultipleDiffTable';
 import { getDisplayValue } from './editMultipleHelpers';
 
-type EditMultipleChangeListProps = {
-  changedEntities: Entity[];
-  changedFields: FieldWithValue[];
-};
+export default function EditMultipleChangeList() {
+  const { changedEntities, changedFields } = useEditMultipleContext();
 
-export default function EditMultipleChangeList({
-  changedEntities,
-  changedFields,
-}: EditMultipleChangeListProps) {
+  console.log({ name: 'list', changedEntities });
+
+  if (changedEntities.length === 0) {
+    return null;
+  }
+
   return (
     <>
-      <Typography variant="h2">Your requested changes</Typography>
+      <Typography variant="h2">
+        Your requested changes ({changedEntities.length})
+      </Typography>
       {changedEntities.map((entity, idx) => {
         if (!entity) {
           return null;

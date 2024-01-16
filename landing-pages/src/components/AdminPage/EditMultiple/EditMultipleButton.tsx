@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import AdminDialog from '../AdminDialog';
 import { useAdminViewContext } from '../AdminViewContext';
-import EditMultipleForm from './EditMultipleForm';
+import EditMultipleWrapper from './EditMultipleWrapper';
 
 export default function EditButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +41,7 @@ export default function EditButton() {
         isOpen={isOpen}
         showInFullScreen
       >
-        <EditMultipleForm />
+        <EditMultipleWrapper />
       </AdminDialog>
     </>
   );
