@@ -2,8 +2,7 @@ import Container from '@mui/material/Container';
 import AdminFormWrapper from '../AdminFormWrapper';
 import EditMultipleChangeList from './EditMultipleChangeList';
 import {
-  EditMultipleContextProvider,
-  useEditMultipleContext,
+  useEditMultipleContext
 } from './EditMultipleContext';
 import EditMultipleFields from './EditMultipleFields';
 
