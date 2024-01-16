@@ -56,8 +56,8 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
-      pagePath: 'l10n/de-DE/is-configupgradetools',
-    },
+      docId: 'isconfigupgradetoolsdeDE500', 
+},
     {
       label: 'DataHub',
       pagePath: 'l10n/de-DE/dh',
