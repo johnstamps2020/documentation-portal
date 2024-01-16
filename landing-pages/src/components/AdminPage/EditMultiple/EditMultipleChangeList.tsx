@@ -6,8 +6,6 @@ import { getDisplayValue } from './editMultipleHelpers';
 export default function EditMultipleChangeList() {
   const { changedEntities, changedFields } = useEditMultipleContext();
 
-  console.log({ name: 'list', changedEntities });
-
   if (changedEntities.length === 0) {
     return null;
   }
