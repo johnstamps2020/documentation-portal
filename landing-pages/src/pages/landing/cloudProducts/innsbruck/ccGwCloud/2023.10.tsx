@@ -227,7 +227,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Define activity patterns',
           description: (
-            <>Configure activity patterns for ClaimCenter activities</>
+            <>Configure ClaimCenter activity patterns that are used for activities.</>
           ),
           docId: 'iscc202310config',
           pathInDoc: '?contextid=c_eg2072244',
