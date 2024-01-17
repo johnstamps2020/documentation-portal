@@ -402,7 +402,7 @@ function addFiltersToElasticsearchKnnQuery(
   knnQuery: KnnQuery[],
   queryFilters: QueryDslQueryContainer[]
 ) {
-  const updatedKnnQuery = [...knnQuery];
+  const updatedKnnQuery = JSON.parse(JSON.stringify(knnQuery)) as KnnQuery[];
   if (queryFilters.length > 0) {
     updatedKnnQuery.map((queryItem) => {
       queryItem.filter = queryFilters;
@@ -526,11 +526,6 @@ async function runSemanticSearch(
       index: searchIndexName,
       size: 0,
       knn: knnQuery,
-      post_filter: {
-        bool: {
-          filter: knnQuery[0].filter,
-        },
-      },
       aggs: {
         totalHits: {
           value_count: {
