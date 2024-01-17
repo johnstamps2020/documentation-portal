@@ -549,11 +549,6 @@ async function runSemanticSearch(
       from: startIndex,
       size: resultsPerPage,
       knn: knnQuery,
-      post_filter: {
-        bool: {
-          filter: knnQuery[0].filter,
-        },
-      },
       collapse: {
         field: 'title.raw',
         inner_hits: {
@@ -1037,15 +1032,15 @@ export default async function searchController(
       {
         field: 'title_vector',
         query_vector: vectorizedSearchPhrase,
-        num_candidates: 100,
-        k: 100,
+        num_candidates: 1000,
+        k: 1000,
         boost: 12,
       },
       {
         field: 'body_vector',
         query_vector: vectorizedSearchPhrase,
-        num_candidates: 100,
-        k: 100,
+        num_candidates: 1000,
+        k: 1000,
       },
     ];
     const elasticsearchKnnQueryWithFilters = addFiltersToElasticsearchKnnQuery(
