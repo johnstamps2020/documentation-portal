@@ -15,7 +15,7 @@ import {
   FieldWithValue,
 } from './editMultipleTypes';
 
-interface EditMultipleContextProps {
+export interface EditMultipleContextProps {
   thereAreChanges: boolean;
   handleResetForm: () => void;
   editableFields: BatchFormField[];
@@ -55,10 +55,16 @@ export function EditMultipleContextProvider({
   }
 
   function getCurrentValue(fieldName: string): FieldValue {
-    const matchingField: FieldValue = formState.find(
+    const matchingField: FieldWithValue | undefined = formState.find(
       (f) => f.name === fieldName
-    )?.value;
-    return matchingField;
+    );
+
+    if (!matchingField) {
+      console.error(`No field found with name ${fieldName}`);
+      return '';
+    }
+
+    return matchingField.value;
   }
 
   function handleFieldChange(fieldName: string, fieldValue: FieldValue): void {
