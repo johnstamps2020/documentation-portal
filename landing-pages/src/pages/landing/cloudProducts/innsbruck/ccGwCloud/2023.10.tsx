@@ -530,7 +530,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Business rules',
           description: (
-            <>Create, edit, and manage underwriting issues in ClaimCenter.</>
+            <>Manage, administer, and import or export ClaimCenter business rules.</>
           ),
           docId: 'iscc202310admin',
           pathInDoc: '?contextid=p_bizrules',
