@@ -21,6 +21,44 @@
       "earlyAccess": true
     },
     {
+      "id": "gwrulescc",
+      "title": "Guidewire ClaimCenter Rules",
+      "url": "cloud/cc/gwrules",
+      "metadata": {
+        "product": ["Rules", "ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09", "2023.02", "2023.06", "2023.10"],
+        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "gwrulespc",
+      "title": "Guidewire Rules",
+      "url": "cloud/pc/gwrules",
+      "metadata": {
+        "product": ["Rules", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09", "2023.02", "2023.06", "2023.10"],
+        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "gwrulestypemgr",
       "title": "Guidewire Rules Type Manager",
       "url": "cloud/gwrulestypemgr",

@@ -130,6 +130,7 @@
               "Installation",
               "Integration",
               "Release notes",
+              "Security",
               "Testing",
               "Upgrade"
             ]
@@ -216,6 +217,7 @@
           "Lines of Business",
           "LRS",
           "MSK",
+          "MSK Admin",
           "Nebula",
           "Nova",
           "PolicyCenter",

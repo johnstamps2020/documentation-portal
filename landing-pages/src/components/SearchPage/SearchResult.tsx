@@ -21,7 +21,6 @@ export function createSearchResultLink(
 
 export default function SearchResult(searchResult: ServerSearchResult) {
   const highlightedTermsUrlParam = `hl=${searchResult.uniqueHighlightTerms}`;
-
   return (
     <Stack sx={{ paddingBottom: '24px' }}>
       <StyledLink href={`${searchResult.href}?${highlightedTermsUrlParam}`}>

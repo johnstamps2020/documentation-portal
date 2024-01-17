@@ -20,7 +20,9 @@ export type SearchResultSource = {
   doc_display_title: string | null;
   language: string;
   title: string;
+  title_vector?: number[];
   body: string;
+  body_vector?: number[];
   doc_id: string;
   version: string[];
   platform: string[];
@@ -33,11 +35,11 @@ export type SearchResultSource = {
 export type ServerSearchResult = SearchResultSource & {
   score: number;
   title: string;
-  titlePlain: string;
+  titlePlain?: string;
   body: string;
-  bodyPlain: string;
+  bodyPlain?: string;
   innerHits: SearchResultSource[];
-  uniqueHighlightTerms: string;
+  uniqueHighlightTerms?: string;
 };
 
 export type ServerSearchFilterValue = {

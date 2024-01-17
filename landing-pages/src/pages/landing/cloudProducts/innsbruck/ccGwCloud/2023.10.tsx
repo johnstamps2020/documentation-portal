@@ -13,6 +13,7 @@ const pageConfig: ApplicationLayoutProps = {
     'Guidewire ClaimCenter manages the process of reporting, verifying, and making payments on claims against policies.',
   tabs: [
     {
+      id: 'get-started',
       icon: 'get-started',
       title: 'Get started',
       items: [
@@ -69,6 +70,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'learn-about',
       icon: 'learn-about',
       title: 'Learn about',
       items: [
@@ -106,6 +108,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'configure',
       icon: 'configure',
       title: 'Configure',
       items: [
@@ -175,6 +178,16 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Guidewire Rules for ClaimCenter (Early Access)',
+          docId: 'gwrulescc',
+          description: (
+            <>
+              Create and manage business rules that trigger when specific
+              business conditions occur in ClaimCenter.
+            </>
+          ),
+        },
+        {
           label: 'Plugins',
           description: (
             <>
@@ -233,6 +246,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'integrate',
       icon: 'integrate',
       title: 'Integrate',
       items: [
@@ -427,6 +441,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'administer',
       icon: 'administer',
       title: 'Administer',
       items: [

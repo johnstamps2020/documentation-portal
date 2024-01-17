@@ -69,7 +69,7 @@
         "language": "de"
       },
       "environments": [
-        "staging"
+        "staging", "prod"
       ],
       "indexForSearch": true,
       "public": false,

@@ -274,6 +274,8 @@ spec:
                   key: config_db_password
             - name: AWS_REGION
               value: ${AWS_REGION}
+            - name: ML_TRANSFORMER_URL
+              value: ${ML_TRANSFORMER_URL}
           resources:
             requests:
               memory: \"${REQUESTS_MEMORY}\"

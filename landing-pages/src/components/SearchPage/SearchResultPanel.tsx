@@ -11,8 +11,11 @@ import { mainHeight } from 'components/Layout/Layout';
 import { useSearchLayoutContext } from './SearchLayoutContext';
 import { useTheme } from '@mui/material/styles';
 import ExactMatchHint from './ExactMatchHint';
+import SearchTypeSelector from './SearchTypeSelector';
+import { useEnvInfo } from 'hooks/useApi';
 
 export default function SearchResultPanel() {
+  const { envInfo } = useEnvInfo();
   const { helpWidth, isHelpExpanded } = useSearchLayoutContext();
   const theme = useTheme();
 
@@ -38,6 +41,7 @@ export default function SearchResultPanel() {
       >
         <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
           <NotLoggedInAlert />
+          {envInfo?.name === 'dev' && <SearchTypeSelector />}
           <SearchBox />
           <ExactMatchHint />
           <AdvancedSearchHelpButton />

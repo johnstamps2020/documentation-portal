@@ -38,5 +38,15 @@
         "Value": "redirect-server"
       }
     ]
+  },
+  {
+    "repoName": "tenant-doctools-ml-transformer",
+    "resourceArn": "arn:aws:ecr:us-west-2:627188849628:repository/tenant-doctools-ml-transformer",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "ml-transformer"
+      }
+    ]
   }
 ]

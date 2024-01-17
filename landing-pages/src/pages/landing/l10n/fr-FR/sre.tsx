@@ -21,9 +21,13 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]SRE Release Notes', 
+label: 'Notes sur la version', 
 docId: 'dx202310frFRsrerelnotes', 
 }, 
+{
+  label: 'Guide de mise à jour',
+  docId: 'ee202310frFRupdate',
+},
 ],
 },
 {

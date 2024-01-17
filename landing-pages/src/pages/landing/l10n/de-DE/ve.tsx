@@ -21,9 +21,13 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]VE Release Notes', 
+label: 'Versionshinweise', 
 docId: 'dx202310deDEverelnotes', 
 }, 
+{
+  label: 'EnterpriseEngage - Update-Handbuch',
+  docId: 'ee202310deDEupdate',
+},
 ],
 },
 {

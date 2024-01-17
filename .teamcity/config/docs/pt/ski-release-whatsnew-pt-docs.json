@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "whatsnewptBRinnsbruck",
-      "url": "pt/cloud/hakuba/whatsnew",
+      "url": "pt/cloud/innsbruck/whatsnew",
       "title": "What's new in Innsbruck pt",
       "displayTitle": "Novidades na Innsbruck",
       "metadata": {
@@ -31,7 +31,7 @@
         "language": "pt"
       },
       "environments": [
-        "staging"
+        "staging", "prod"
       ],
       "indexForSearch": true,
       "public": false,

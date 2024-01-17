@@ -409,6 +409,7 @@ object Helpers {
         val appBaseUrl = getTargetUrl(deployEnv)
         val docS3Url = getS3BucketUrl(deployEnv)
         val portal2S3Url = getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)
+        val mlTransformerUrl = Helpers.getMlTransformerUrl(deployEnv)
         val commonEnvVars = """
             export APP_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
@@ -426,6 +427,7 @@ object Helpers {
             export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
             export PARTNERS_LOGIN_URL="$partnersLoginUrl"
             export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
+            export ML_TRANSFORMER_URL="$mlTransformerUrl"
         """.trimIndent()
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> """
@@ -4479,7 +4481,7 @@ object Admin {
                 cleanCheckout = true
             }
 
-            artifactRules = "response*.json => /"
+            artifactRules = "ci/uploadLegacyConfigsToDb/response*.json => /"
             steps {
                 step(GwBuildSteps.MergeAllLegacyConfigsStep)
                 step(GwBuildSteps.createUploadLegacyConfigsToS3BucketStep(GwDeployEnvs.STAGING.envName))

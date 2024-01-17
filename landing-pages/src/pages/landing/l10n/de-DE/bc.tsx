@@ -21,11 +21,11 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]BillingCenter Release Notes', 
+label: 'Versionshinweise für BillingCenter', 
 docId: 'isbc202310deDEreleasenotes', 
 }, 
 {
-label: '[TBD]BillingCenter Update', 
+label: 'BillingCenter - Update-Handbuch', 
 docId: 'isbc202310deDEupdate', 
 }, 
 ],
