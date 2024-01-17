@@ -509,8 +509,7 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'ispc202310admin',
           description: (
             <>
-              Manage security, backups, logging, user data, and more for a
-              PolicyCenter system.
+              Manage PolicyCenter security, backups, logging, user data, and more.
             </>
           ),
         },

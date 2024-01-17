@@ -450,8 +450,7 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'iscc202310admin',
           description: (
             <>
-              Manage security, backups, logging, user data, and more for a
-              ClaimCenter system.
+              Manage ClaimCenter security, backups, logging, user data, and more.
             </>
           ),
         },
