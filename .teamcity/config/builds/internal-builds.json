@@ -76,6 +76,13 @@
       "srcId": "msksrc",
       "workingDir": "website",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "mskadmin",
+      "srcId": "mskadminsrc",
+      "workingDir": "website",
+      "disabled": false
     }
   ]
 }

@@ -13,6 +13,7 @@ const pageConfig: ApplicationLayoutProps = {
     'Guidewire BillingCenter manages billing, payment, and delinquency operations for policies.',
   tabs: [
     {
+      id: 'get-started',
       icon: 'get-started',
       title: 'Get started',
       items: [
@@ -71,6 +72,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'learn-about',
       icon: 'learn-about',
       title: 'Learn about',
       items: [
@@ -98,6 +100,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'configure',
       icon: 'configure',
       title: 'Configure',
       items: [
@@ -217,6 +220,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'integrate',
       icon: 'integrate',
       title: 'Integrate',
       items: [
@@ -393,6 +397,7 @@ const pageConfig: ApplicationLayoutProps = {
       ],
     },
     {
+      id: 'administer',
       icon: 'administer',
       title: 'Administer',
       items: [

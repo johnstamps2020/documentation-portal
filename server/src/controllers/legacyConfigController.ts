@@ -827,7 +827,7 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
     return {
       status: 200,
       body: {
-        successfullySaved: dbDocConfigsSaveResult,
+        successfullySavedToDb: dbDocConfigsSaveResult,
       },
     };
   } catch (err) {
@@ -962,7 +962,7 @@ async function putBuildConfigsInDatabase(): Promise<ApiResponse> {
     return {
       status: 200,
       body: {
-        successfullySaved: dbBuildConfigsSaveResult,
+        successfullySavedToDb: dbBuildConfigsSaveResult,
       },
     };
   } catch (err) {

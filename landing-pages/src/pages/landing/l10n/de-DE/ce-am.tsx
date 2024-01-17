@@ -21,9 +21,13 @@ const pageConfig: CategoryLayoutProps = {
 label: '2023.10 (Innsbruck)', 
 items: [
 {
-label: '[TBD]CustomerEngage Account Management Release Notes', 
+label: 'Versionshinweise', 
 docId: 'dx202310deDEceamrelnotes', 
 }, 
+{
+  label: 'EnterpriseEngage - Update-Handbuch',
+  docId: 'ee202310deDEupdate',
+},
 ],
 },
 {

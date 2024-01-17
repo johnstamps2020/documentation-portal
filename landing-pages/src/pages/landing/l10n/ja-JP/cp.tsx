@@ -28,6 +28,14 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Guidewire Cloud Platform リリースノート', 
           docId: 'gwcpjaJPreleasenotes', 
         }, 
+        {
+          label: 'Cloud Standards',
+          docId: 'standards202312jaJP',
+        },
+        {
+          label: 'クラウド連携の概要',
+          docId: 'is202310jaJPintegoverview',
+        },
       ],
     },
     {

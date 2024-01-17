@@ -7,14 +7,15 @@
       "url": "security",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Internal Docs"],
+        "product": ["Cloud Platform", "Cloud Standards", "Product Adoption"],
         "release": ["Innsbruck", "Hakuba", "Garmisch"],
+        "subject": ["Security"],
         "version": ["latest"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": true,
       "internal": false,
       "earlyAccess": false

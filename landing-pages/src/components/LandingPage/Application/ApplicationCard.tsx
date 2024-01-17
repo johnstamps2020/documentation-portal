@@ -9,11 +9,13 @@ import Skeleton from '@mui/material/Skeleton';
 import LandingPageLink from '../LandingPageLink';
 
 export type ApplicationCardProps = {
+  cardId: string;
   cardTitle: string;
   items: LandingPageItemProps[];
 };
 
 export default function ApplicationCard({
+  cardId,
   cardTitle,
   items,
 }: ApplicationCardProps) {
@@ -29,6 +31,7 @@ export default function ApplicationCard({
         boxShadow: '0px 2px 4px 0px rgba(40, 51, 63, 0.24)',
       }}
       className="application-card"
+      id={cardId}
     >
       <Typography
         sx={{

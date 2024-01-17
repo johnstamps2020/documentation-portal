@@ -1,7 +1,7 @@
 import { writeFileSync } from 'fs';
 import {
-  SecretsManagerClient,
   GetSecretValueCommand,
+  SecretsManagerClient,
 } from '@aws-sdk/client-secrets-manager';
 
 const requiredEnvVars = [
@@ -86,16 +86,16 @@ for (const entityType of ['source', 'doc', 'build']) {
     }
   );
   const json = await response.json();
+  const jsonFileName = `response_${entityType}.json`;
+  writeFileSync(jsonFileName, JSON.stringify(json));
   if (response.ok) {
-    const jsonFileName = `response_${entityType}.json`;
-    writeFileSync(jsonFileName, JSON.stringify(json));
     console.log(
-      `Upload entities for ${entityType}: OK. For details, see the ${jsonFileName} file in the build artifacts.`
+      `Upload entities for "${entityType}": OK. For details, see the ${jsonFileName} file in the build artifacts.`
     );
   } else {
     uploadCompletedWithErrors = true;
     console.log(
-      `Response is not okay for "${entityType}"`,
+      `Response is not okay for "${entityType}". For details, see the ${jsonFileName} file in the build artifacts.`,
       JSON.stringify(json)
     );
   }

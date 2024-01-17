@@ -3,7 +3,7 @@
 	"builds": [
 		{
 			"buildType": "dita",
-			"filter": "Digital-ve-MgSvcs.ditaval",
+			"filter": "GW-Generic-Cloud-Release.ditaval",
 			"root": "GWCP-ReleaseNotes.ditamap",
 			"srcId": "gwcpreleasenotesfrFRsrc",
 			"docId": "gwcpfrFRreleasenotes",
@@ -143,6 +143,15 @@
 			"srcId": "whatsnewinnsbruckfrFRsrc",
 			"docId": "whatsnewfrFRinnsbruck",
 			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "EE-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"indexRedirect": true,
+			"srcId": "is202310frFRsrc",
+			"docId": "ee202310frFRupdate",
 			"disabled": false
 		}
 	]

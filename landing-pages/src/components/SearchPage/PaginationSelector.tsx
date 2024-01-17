@@ -1,12 +1,11 @@
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem/MenuItem';
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
-import { useSearchData } from 'hooks/useApi';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Skeleton from '@mui/material/Skeleton';
+import { useSearchData } from 'hooks/useApi';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function PaginationSelector() {
   const { searchData, isLoading, isError } = useSearchData();

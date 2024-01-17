@@ -144,6 +144,15 @@
 			"docId": "whatsnewdeDEinnsbruck",
 			"indexRedirect": true,
 			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "EE-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"indexRedirect": true,
+			"srcId": "is202310deDEsrc",
+			"docId": "ee202310deDEupdate",
+			"disabled": false
 		}
 	]
 }

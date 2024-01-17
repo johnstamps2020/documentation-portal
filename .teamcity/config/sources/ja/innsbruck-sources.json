@@ -54,6 +54,18 @@
       "title": "IS 2023.10.0 eeupdate ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/ja-JP/2023.10.0-eeupdate"
+    },
+    {
+      "id": "standards202312jaJPsrc",
+      "title": "Standards 2023.12 ja-JP",
+      "branch": "build/ja-JP/2023.12",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
+      "id": "is202310jaJPintegoverviewsrc",
+      "title": "IS 2023.10.0 integoverview ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/ja-JP/2023.10.0-integoverview"
     }
   ]
 }

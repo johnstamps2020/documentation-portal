@@ -94,6 +94,10 @@ const pageConfig: SectionLayoutProps = {
           docId: 'gwrules',
         },
         {
+          label: 'Guidewire Rules for ClaimCenter (Early Access)',
+          docId: 'gwrulescc',
+        },
+        {
           label: 'APD for Claims (Early Access)',
           docId: 'apdclaimsflaine',
         },
