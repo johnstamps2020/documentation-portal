@@ -402,7 +402,7 @@ function addFiltersToElasticsearchKnnQuery(
   knnQuery: KnnQuery[],
   queryFilters: QueryDslQueryContainer[]
 ) {
-  const updatedKnnQuery = [...knnQuery];
+  const updatedKnnQuery = JSON.parse(JSON.stringify(knnQuery)) as KnnQuery[];
   if (queryFilters.length > 0) {
     updatedKnnQuery.map((queryItem) => {
       queryItem.filter = queryFilters;
@@ -526,11 +526,6 @@ async function runSemanticSearch(
       index: searchIndexName,
       size: 0,
       knn: knnQuery,
-      post_filter: {
-        bool: {
-          filter: knnQuery[0].filter,
-        },
-      },
       aggs: {
         totalHits: {
           value_count: {
@@ -554,11 +549,6 @@ async function runSemanticSearch(
       from: startIndex,
       size: resultsPerPage,
       knn: knnQuery,
-      post_filter: {
-        bool: {
-          filter: knnQuery[0].filter,
-        },
-      },
       collapse: {
         field: 'title.raw',
         inner_hits: {
@@ -1042,15 +1032,15 @@ export default async function searchController(
       {
         field: 'title_vector',
         query_vector: vectorizedSearchPhrase,
-        num_candidates: 100,
-        k: 100,
+        num_candidates: 1000,
+        k: 1000,
         boost: 12,
       },
       {
         field: 'body_vector',
         query_vector: vectorizedSearchPhrase,
-        num_candidates: 100,
-        k: 100,
+        num_candidates: 1000,
+        k: 1000,
       },
     ];
     const elasticsearchKnnQueryWithFilters = addFiltersToElasticsearchKnnQuery(
