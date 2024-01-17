@@ -227,7 +227,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Define activity patterns',
           description: (
-            <>Configure activity patterns for ClaimCenter activities</>
+            <>Configure ClaimCenter activity patterns that are used for activities.</>
           ),
           docId: 'iscc202310config',
           pathInDoc: '?contextid=c_eg2072244',
@@ -450,8 +450,7 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'iscc202310admin',
           description: (
             <>
-              Manage security, backups, logging, user data, and more for a
-              ClaimCenter system.
+              Manage ClaimCenter security, backups, logging, user data, and more.
             </>
           ),
         },
@@ -530,7 +529,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Business rules',
           description: (
-            <>Create, edit, and manage underwriting issues in ClaimCenter.</>
+            <>Manage, administer, and import or export ClaimCenter business rules.</>
           ),
           docId: 'iscc202310admin',
           pathInDoc: '?contextid=p_bizrules',

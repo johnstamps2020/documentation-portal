@@ -509,8 +509,7 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'ispc202310admin',
           description: (
             <>
-              Manage security, backups, logging, user data, and more for a
-              PolicyCenter system.
+              Manage PolicyCenter security, backups, logging, user data, and more.
             </>
           ),
         },
@@ -589,7 +588,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Business rules',
           description: (
-            <>Create, edit, and manage underwriting issues in PolicyCenter.</>
+            <>Manage, administer, and import or export PolicyCenter business rules.</>
           ),
           docId: 'ispc202310admin',
           pathInDoc: '?contextid=p_bizrules',
