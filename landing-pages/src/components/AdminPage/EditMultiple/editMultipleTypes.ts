@@ -1,3 +1,5 @@
+import { Entity } from '../EntityListWithFilters';
+
 export type FieldType =
   | 'string'
   | 'number'
@@ -13,8 +15,18 @@ export type BatchFormField = {
   type: FieldType;
 };
 
-export type FieldValue = string | boolean | undefined;
+export type RegexField = {
+  regex: string;
+  replaceWith: string;
+};
+
+export type FieldValue = string | boolean | undefined | RegexField;
 
 export type FieldWithValue = BatchFormField & {
   value: FieldValue;
+};
+
+export type EntityDiff = {
+  oldEntity: Entity;
+  newEntity: Entity;
 };

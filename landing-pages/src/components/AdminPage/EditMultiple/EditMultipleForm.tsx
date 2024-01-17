@@ -1,9 +1,7 @@
 import Container from '@mui/material/Container';
 import AdminFormWrapper from '../AdminFormWrapper';
 import EditMultipleChangeList from './EditMultipleChangeList';
-import {
-  useEditMultipleContext
-} from './EditMultipleContext';
+import { useEditMultipleContext } from './EditMultipleContext';
 import EditMultipleFields from './EditMultipleFields';
 
 export default function EditMultipleForm() {

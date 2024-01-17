@@ -1,10 +1,4 @@
 import { createContext, useContext, useState } from 'react';
-import { Entity } from '../EntityListWithFilters';
-import {
-  BatchFormField,
-  FieldValue,
-  FieldWithValue,
-} from './editMultipleTypes';
 import { useAdminViewContext } from '../AdminViewContext';
 import {
   getDataValue,
@@ -12,15 +6,23 @@ import {
   getDisplayValue,
   getEditableFieldWithDefaultValues,
   getEditableFields,
+  getEntityDiff,
 } from './editMultipleHelpers';
+import {
+  BatchFormField,
+  EntityDiff,
+  FieldValue,
+  FieldWithValue,
+} from './editMultipleTypes';
 
 interface EditMultipleContextProps {
   thereAreChanges: boolean;
   handleResetForm: () => void;
   editableFields: BatchFormField[];
-  handleFieldChange: (fieldName: string, newValue: string) => void;
+  handleFieldChange: (fieldName: string, newValue: FieldValue) => void;
   getCurrentDisplayValue: (fieldName: string) => string;
-  changedEntities: Entity[];
+  getCurrentValue: (fieldName: string) => FieldValue;
+  entityDiffList: EntityDiff[];
   changedFields: FieldWithValue[];
 }
 
@@ -52,7 +54,14 @@ export function EditMultipleContextProvider({
     return getDisplayValue(field.type, field.value);
   }
 
-  function handleFieldChange(fieldName: string, fieldValue: FieldValue) {
+  function getCurrentValue(fieldName: string): FieldValue {
+    const matchingField: FieldValue = formState.find(
+      (f) => f.name === fieldName
+    )?.value;
+    return matchingField;
+  }
+
+  function handleFieldChange(fieldName: string, fieldValue: FieldValue): void {
     setFormState((prev) =>
       prev.map((f) => {
         if (fieldValue && f.name === fieldName) {
@@ -67,31 +76,19 @@ export function EditMultipleContextProvider({
     );
   }
 
-  const changedFields = formState.filter(
-    (f) => f.value !== getDefaultValue(f.type)
-  );
+  const changedFields = formState.filter((f) => {
+    const defaultValue = getDefaultValue(f.type);
+    const currentValue = f.value;
+    const compareResult =
+      JSON.stringify(defaultValue) !== JSON.stringify(currentValue);
 
-  const changedEntities = selectedEntities
-    .map((entity) => {
-      if (changedFields.length === 0) {
-        return null;
-      }
+    return compareResult;
+  });
 
-      const changedFieldsInEntity = changedFields
-        .map((field) => {
-          if (field.value !== entity[field.name]) {
-            return field;
-          }
+  const entityDiffList = getEntityDiff(selectedEntities, changedFields) || [];
 
-          return null;
-        })
-        .filter(Boolean);
-
-      return changedFieldsInEntity.length > 0 ? entity : null;
-    })
-    .filter(Boolean) as Entity[];
-
-  const thereAreChanges = changedEntities.length > 0;
+  const thereAreChanges =
+    entityDiffList && entityDiffList.length > 0 ? true : false;
 
   return (
     <EditMultipleContext.Provider
@@ -101,7 +98,8 @@ export function EditMultipleContextProvider({
         editableFields,
         handleFieldChange,
         getCurrentDisplayValue,
-        changedEntities,
+        getCurrentValue,
+        entityDiffList,
         changedFields,
       }}
     >

@@ -5,6 +5,11 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { EntityDiff } from './editMultipleTypes';
+import {
+  getDisplayValue,
+  getEntityFieldDisplayValue,
+} from './editMultipleHelpers';
 
 export type DiffTableRow = {
   name: string;
@@ -13,11 +18,11 @@ export type DiffTableRow = {
 };
 
 type EditMultipleDiffTableProps = {
-  rows: DiffTableRow[];
+  entityDiff: EntityDiff;
 };
 
 export default function EditMultipleDiffTable({
-  rows,
+  entityDiff,
 }: EditMultipleDiffTableProps) {
   return (
     <TableContainer component={Paper}>
@@ -30,15 +35,27 @@ export default function EditMultipleDiffTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(({ name, newValue, oldValue }) => (
-            <TableRow key={name}>
-              <TableCell component="th" scope="row">
-                {name}
-              </TableCell>
-              <TableCell sx={{ color: 'gray' }}>{oldValue}</TableCell>
-              <TableCell sx={{ color: 'green' }}>{newValue}</TableCell>
-            </TableRow>
-          ))}
+          {Object.keys(entityDiff.oldEntity).map((key) => {
+            const oldValue = getEntityFieldDisplayValue(
+              entityDiff.oldEntity[key]
+            );
+            const newValue = getEntityFieldDisplayValue(
+              entityDiff.newEntity[key]
+            );
+            const isDifferent = oldValue !== newValue;
+
+            return (
+              <TableRow key={key}>
+                <TableCell component="th" scope="row">
+                  {key}
+                </TableCell>
+                <TableCell sx={{ color: 'gray' }}>{oldValue}</TableCell>
+                <TableCell sx={{ color: isDifferent ? 'green' : 'black' }}>
+                  {newValue}
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </TableContainer>

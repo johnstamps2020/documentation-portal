@@ -46,7 +46,6 @@ export default function EditMultipleBoolean({
         gap: '12px',
         display: 'flex',
         justifyContent: 'space-between',
-        width: '100%',
       }}
     />
   );
