@@ -21,7 +21,6 @@ export interface EditMultipleContextProps {
   editableFields: BatchFormField[];
   handleFieldChange: (fieldName: string, newValue: FieldValue) => void;
   getCurrentDisplayValue: (fieldName: string) => string;
-  getCurrentValue: (fieldName: string) => FieldValue;
   entityDiffList: EntityDiff[];
   changedFields: FieldWithValue[];
 }
@@ -54,26 +53,13 @@ export function EditMultipleContextProvider({
     return getDisplayValue(field.type, field.value);
   }
 
-  function getCurrentValue(fieldName: string): FieldValue {
-    const matchingField: FieldWithValue | undefined = formState.find(
-      (f) => f.name === fieldName
-    );
-
-    if (!matchingField) {
-      console.error(`No field found with name ${fieldName}`);
-      return '';
-    }
-
-    return matchingField.value;
-  }
-
   function handleFieldChange(fieldName: string, fieldValue: FieldValue): void {
     setFormState((prev) =>
       prev.map((f) => {
         if (fieldValue && f.name === fieldName) {
           return {
             ...f,
-            value: getDataValue(f.type, fieldValue.toString()),
+            value: getDataValue(f.type, fieldValue),
           };
         }
 
@@ -90,6 +76,7 @@ export function EditMultipleContextProvider({
 
     return compareResult;
   });
+  console.log({ changedFields });
 
   const entityDiffList = getEntityDiff(selectedEntities, changedFields) || [];
 
@@ -104,7 +91,6 @@ export function EditMultipleContextProvider({
         editableFields,
         handleFieldChange,
         getCurrentDisplayValue,
-        getCurrentValue,
         entityDiffList,
         changedFields,
       }}

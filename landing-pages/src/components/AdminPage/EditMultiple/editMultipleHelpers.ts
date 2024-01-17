@@ -50,9 +50,9 @@ export function getDisplayValue(type: FieldType, value: FieldValue): string {
   return value.toString();
 }
 
-export function getDataValue(type: FieldType, value: string): FieldValue {
+export function getDataValue(type: FieldType, value: FieldValue): FieldValue {
   if (type === 'boolean') {
-    return getStringValueAsBoolean(value);
+    return getStringValueAsBoolean(value as string);
   }
 
   return value;
