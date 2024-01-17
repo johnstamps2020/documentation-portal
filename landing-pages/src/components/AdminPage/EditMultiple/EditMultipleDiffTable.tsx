@@ -41,6 +41,10 @@ export default function EditMultipleDiffTable({
             );
             const isDifferent = oldValue !== newValue;
 
+            if (!isDifferent) {
+              return null;
+            }
+
             return (
               <TableRow key={key}>
                 <TableCell component="th" scope="row">
