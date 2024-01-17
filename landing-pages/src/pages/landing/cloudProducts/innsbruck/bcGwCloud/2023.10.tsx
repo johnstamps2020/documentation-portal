@@ -406,8 +406,7 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'isbc202310admin',
           description: (
             <>
-              Manage security, backups, logging, user data, and more for a
-              BillingCenter system.
+              Manage BillingCenter security, backups, logging, user data, and more.
             </>
           ),
         },
