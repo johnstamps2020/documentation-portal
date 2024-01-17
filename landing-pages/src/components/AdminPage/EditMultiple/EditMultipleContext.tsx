@@ -76,7 +76,6 @@ export function EditMultipleContextProvider({
 
     return compareResult;
   });
-  console.log({ changedFields });
 
   const entityDiffList = getEntityDiff(selectedEntities, changedFields) || [];
 
