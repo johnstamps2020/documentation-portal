@@ -1,0 +1,11 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "whatsnewinnsbruckelGRsrc",
+      "title": "Ski Release What's New - Innsbruck el",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
+      "branch": "release/el-GR/innsbruck"
+    }
+  ]
+}
