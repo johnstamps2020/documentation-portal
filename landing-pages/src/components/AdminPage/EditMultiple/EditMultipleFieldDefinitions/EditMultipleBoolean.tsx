@@ -8,7 +8,7 @@ type EditMultipleBooleanProps = {
   name: string;
 };
 
-const defaultValue = 'unset';
+const defaultValue = 'keep as is';
 const booleanOptions = [defaultValue, 'true', 'false'];
 type BooleanControlOption = (typeof booleanOptions)[number];
 

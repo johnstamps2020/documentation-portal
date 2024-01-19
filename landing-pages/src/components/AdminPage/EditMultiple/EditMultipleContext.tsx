@@ -69,7 +69,6 @@ function getEntityDiffList(
   selectedEntities: Entity[],
   changedFields: FieldWithValue[]
 ): EntityDiff[] | null {
-  console.log({ changedFields });
   if (selectedEntities.length === 0) {
     return null;
   }
@@ -110,7 +109,6 @@ export interface EditMultipleContextProps {
   handleResetForm: () => void;
   editableFields: BatchFormField[];
   handleFieldChange: (fieldName: string, newValue: FieldValue) => void;
-  getCurrentFieldValue: (fieldName: string) => FieldValue;
   entityDiffList: EntityDiff[];
   changedFields: FieldWithValue[];
 }
@@ -132,15 +130,6 @@ export function EditMultipleContextProvider({
 
   function handleResetForm() {
     setFormState(getEditableFieldsWithDefaultValue(editableFields));
-  }
-
-  function getCurrentFieldValue(fieldName: string): FieldValue {
-    const field = formState.find((f) => f.name === fieldName);
-    if (!field) {
-      return undefined;
-    }
-
-    return field.value;
   }
 
   function handleFieldChange(fieldName: string, fieldValue: FieldValue): void {
@@ -180,7 +169,6 @@ export function EditMultipleContextProvider({
         handleResetForm,
         editableFields,
         handleFieldChange,
-        getCurrentFieldValue,
         entityDiffList,
         changedFields,
       }}
