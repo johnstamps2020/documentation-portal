@@ -30,6 +30,15 @@ async function checkTaskStatus(taskId, elapsedTime = 0, reindexTaskResponse) {
 const elasticsearchDevUrl =
   'https://docsearch-doctools.dev.ccs.guidewire.net:443';
 const indexName = 'gw-docs';
+const deleteIndexResponse = await fetch(`${elasticsearchDevUrl}/${indexName}`, {
+  method: 'DELETE',
+}).then((res) => res.json());
+const deleteIndexResponseError = deleteIndexResponse.error;
+if (deleteIndexResponseError) {
+  throw new Error(
+    `Unable to delete the "${indexName}" index from ${elasticsearchDevUrl}. Error: ${deleteIndexResponseError.reason}`
+  );
+}
 const reindexTaskResponse = await fetch(
   `${elasticsearchDevUrl}/_reindex?wait_for_completion=false`,
   {
@@ -49,6 +58,11 @@ const reindexTaskResponse = await fetch(
       },
       dest: {
         index: indexName,
+      },
+      script: {
+        source:
+          "ctx._source.href = ctx._source.href.replace('https://docs.staging.ccs.guidewire.net/', 'https://docs.dev.ccs.guidewire.net/')",
+        lang: 'painless',
       },
     }),
   }
