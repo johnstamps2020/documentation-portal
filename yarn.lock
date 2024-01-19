@@ -3539,19 +3539,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@elastic/elasticsearch@npm:^8.10.0":
-  version: 8.10.0
-  resolution: "@elastic/elasticsearch@npm:8.10.0"
+"@elastic/elasticsearch@npm:^8.11.0":
+  version: 8.11.0
+  resolution: "@elastic/elasticsearch@npm:8.11.0"
   dependencies:
-    "@elastic/transport": "npm:^8.3.4"
+    "@elastic/transport": "npm:^8.4.0"
     tslib: "npm:^2.4.0"
-  checksum: bb93c63f5c25b9d908c3de69e24356bd24609d1d452c62820dd97f1560ea78d09f7e0a7d21bc927cc760fa2436291dccb54d3c3e5fd109787b9ff1211355c6d8
+  checksum: f8353a3dbbf0f9cf4f67e09fbf0eeb7dd22d62f15151583f7b97f21e0452093a46608bd058eca81f2ddba32e82d9dcc31a5cf8a1b76adf9fae46bc70e970220d
   languageName: node
   linkType: hard
 
-"@elastic/transport@npm:^8.3.4":
-  version: 8.3.4
-  resolution: "@elastic/transport@npm:8.3.4"
+"@elastic/transport@npm:^8.4.0":
+  version: 8.4.0
+  resolution: "@elastic/transport@npm:8.4.0"
   dependencies:
     debug: "npm:^4.3.4"
     hpagent: "npm:^1.0.0"
@@ -3559,7 +3559,7 @@ __metadata:
     secure-json-parse: "npm:^2.4.0"
     tslib: "npm:^2.4.0"
     undici: "npm:^5.22.1"
-  checksum: f81a160c035797f766ee9573c98d079d3d5890062d329a92b8f8252b05846b5b8044301014b3ae136e8047cfb2bc066b9eec085bea13fbb0553e8a74912d141c
+  checksum: 8f022e3fc6fa6e1704418d2f4d55bf49a0e9a91e3ad42e1c31f73c215e4d09760b7c8248cf67f0a55b70e635f9058cddc1b67ec13b37cecae5e0cf36e82bbb85
   languageName: node
   linkType: hard
 
@@ -21085,7 +21085,7 @@ __metadata:
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.306.0"
     "@aws-sdk/lib-storage": "npm:^3.306.0"
-    "@elastic/elasticsearch": "npm:^8.10.0"
+    "@elastic/elasticsearch": "npm:^8.11.0"
     "@okta/jwt-verifier": "npm:^2.3.0"
     "@types/cookie-parser": "npm:^1.4.3"
     "@types/cookie-session": "npm:^2.0.44"

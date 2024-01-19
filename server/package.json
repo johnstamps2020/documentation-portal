@@ -16,7 +16,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.306.0",
     "@aws-sdk/lib-storage": "^3.306.0",
-    "@elastic/elasticsearch": "^8.10.0",
+    "@elastic/elasticsearch": "^8.11.0",
     "@okta/jwt-verifier": "^2.3.0",
     "@types/cookie-parser": "^1.4.3",
     "@types/cookie-session": "^2.0.44",
