@@ -9,6 +9,7 @@ import {
   RegexField,
 } from './editMultipleTypes';
 import { Entity } from '../EntityListWithFilters';
+import { MultipleOperationName } from '../MultipleButton';
 
 function getEditableFields(entities: Entity[]): BatchFormField[] {
   return Object.entries(entities[0])
@@ -67,7 +68,8 @@ function getUpdatedFieldValue(
 
 function getEntityDiffList(
   selectedEntities: Entity[],
-  changedFields: FieldWithValue[]
+  changedFields: FieldWithValue[],
+  operationName: MultipleOperationName
 ): EntityDiff[] | null {
   if (selectedEntities.length === 0) {
     return null;
@@ -87,12 +89,17 @@ function getEntityDiffList(
     }
 
     if (Object.keys(fieldUpdatesForEntity).length > 0) {
+      const oldEntity = { ...entity };
+      const newEntity = {
+        ...entity,
+        ...fieldUpdatesForEntity,
+      };
+      if (operationName === 'Duplicate') {
+        delete newEntity.uuid;
+      }
       itemsWhichNeedChangesApplied.push({
-        oldEntity: { ...entity },
-        newEntity: {
-          ...entity,
-          ...fieldUpdatesForEntity,
-        },
+        oldEntity,
+        newEntity,
       });
     }
   }
@@ -116,12 +123,14 @@ export const EditMultipleContext = createContext<
   EditMultipleContextProps | undefined
 >(undefined);
 
+type EditMultipleContextProviderProps = {
+  children: React.ReactNode;
+};
+
 export function EditMultipleContextProvider({
   children,
-}: {
-  children: React.ReactNode;
-}) {
-  const { selectedEntities } = useAdminViewContext();
+}: EditMultipleContextProviderProps) {
+  const { selectedEntities, operationName } = useAdminViewContext();
   const editableFields = getEditableFields(selectedEntities);
   const [formState, setFormState] = useState(
     getEditableFieldsWithDefaultValue(editableFields)
@@ -156,7 +165,11 @@ export function EditMultipleContextProvider({
   });
 
   const entityDiffList =
-    getEntityDiffList(selectedEntities, changedFields) || [];
+    getEntityDiffList(
+      selectedEntities,
+      changedFields,
+      operationName || 'Edit'
+    ) || [];
 
   const thereAreChanges =
     entityDiffList && entityDiffList.length > 0 ? true : false;

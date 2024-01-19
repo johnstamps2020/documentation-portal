@@ -1,6 +1,7 @@
 import Typography from '@mui/material/Typography';
 import { useEditMultipleContext } from './EditMultipleContext';
 import EditMultipleDiffTable from './EditMultipleDiffTable';
+import Stack from '@mui/material/Stack';
 
 export default function EditMultipleChangeList() {
   const { entityDiffList } = useEditMultipleContext();
@@ -15,10 +16,10 @@ export default function EditMultipleChangeList() {
         Your requested changes ({entityDiffList.length})
       </Typography>
       {entityDiffList.map((entityDiff, idx) => (
-        <section key={idx}>
-          <Typography variant="h3">{entityDiff.oldEntity.name}</Typography>
+        <Stack key={idx} component="section" sx={{ pt: '32px', gap: '8px' }}>
+          <Typography variant="h3">{entityDiff.oldEntity.label}</Typography>
           <EditMultipleDiffTable entityDiff={entityDiff} />
-        </section>
+        </Stack>
       ))}
     </>
   );
