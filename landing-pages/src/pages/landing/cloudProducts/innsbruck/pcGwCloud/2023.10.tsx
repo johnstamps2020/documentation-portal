@@ -25,16 +25,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'AppReader Release Notes',
-          docId: 'appreaderrn400',
-          description: (
-            <>
-              Learn about changes to the AppReader microservice, which performs
-              optical character recognition of PDF documents.
-            </>
-          ),
-        },
-        {
           label: 'Studio Release Notes',
           docId: 'isstudiolatestrn',
           description: (
@@ -472,6 +462,16 @@ const pageConfig: ApplicationLayoutProps = {
             <>
               Create a non-production development environment where you can
               explore a limited range of InsuranceSuite features.
+            </>
+          ),
+        },
+        {
+          label: 'AppReader',
+          docId: 'appreader',
+          description: (
+            <>
+              Use the AppReader API to extract data from ACORD forms and loss
+              runs.
             </>
           ),
         },
