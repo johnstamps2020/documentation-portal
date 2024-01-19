@@ -143,6 +143,7 @@ export function EditMultipleContextProvider({
   }
 
   function handleFieldChange(fieldName: string, fieldValue: FieldValue): void {
+    console.log('handleFieldChange', { fieldName, fieldValue });
     setFormState((prev) =>
       prev.map((f) => {
         if (fieldValue && f.name === fieldName) {
@@ -152,7 +153,7 @@ export function EditMultipleContextProvider({
           };
         }
 
-        return f;
+        return { ...f };
       })
     );
   }

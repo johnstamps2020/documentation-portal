@@ -21,14 +21,18 @@ export default function EditMultipleText({ name }: EditMultipleTextProps) {
 
   function handleApply() {
     handleFieldChange(name, {
-      regex: regex,
-      replaceWith: replaceWith,
+      regex,
+      replaceWith,
     } as RegexField);
   }
 
   function handleReset() {
     setRegex('');
     setReplaceWith('');
+    handleFieldChange(name, {
+      regex,
+      replaceWith,
+    });
   }
 
   return (
