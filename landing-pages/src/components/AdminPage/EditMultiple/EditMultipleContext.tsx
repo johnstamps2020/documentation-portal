@@ -110,7 +110,6 @@ export interface EditMultipleContextProps {
   editableFields: BatchFormField[];
   handleFieldChange: (fieldName: string, newValue: FieldValue) => void;
   entityDiffList: EntityDiff[];
-  changedFields: FieldWithValue[];
 }
 
 export const EditMultipleContext = createContext<
@@ -170,7 +169,6 @@ export function EditMultipleContextProvider({
         editableFields,
         handleFieldChange,
         entityDiffList,
-        changedFields,
       }}
     >
       {children}
