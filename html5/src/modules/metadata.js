@@ -52,7 +52,7 @@ export async function setMetadata() {
   let sessionDocId = sessionStorage.getItem('docId');
 
   if (docId === sessionDocId) {
-    console.log('Fetching metadata from sessionStorage');
+    //console.log('Fetching metadata from sessionStorage');
     window.docProduct = sessionStorage.getItem('docProduct');
     window.docPlatform = sessionStorage.getItem('docPlatform');
     window.docVersion = sessionStorage.getItem('docVersion');
@@ -61,11 +61,10 @@ export async function setMetadata() {
     window.docRelease = sessionStorage.getItem('docRelease');
     window.docTitle = sessionStorage.getItem('docTitle');
     window.docDisplayTitle = sessionStorage.getItem('docDisplayTitle');
-    window.docUrl = sessionStorage.getItem('docUrl');
     window.docInternal = sessionStorage.getItem('docInternal') === 'true';
     window.docEarlyAccess = sessionStorage.getItem('docEarlyAccess') === 'true';
   } else {
-    console.log('Fetching metadata from endpoint');
+    //console.log('Fetching metadata from endpoint');
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
       try {
