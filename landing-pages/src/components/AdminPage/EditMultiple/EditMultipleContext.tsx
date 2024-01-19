@@ -69,6 +69,7 @@ function getEntityDiffList(
   selectedEntities: Entity[],
   changedFields: FieldWithValue[]
 ): EntityDiff[] | null {
+  console.log({ changedFields });
   if (selectedEntities.length === 0) {
     return null;
   }
@@ -143,10 +144,9 @@ export function EditMultipleContextProvider({
   }
 
   function handleFieldChange(fieldName: string, fieldValue: FieldValue): void {
-    console.log('handleFieldChange', { fieldName, fieldValue });
     setFormState((prev) =>
       prev.map((f) => {
-        if (fieldValue && f.name === fieldName) {
+        if (f.name === fieldName) {
           return {
             ...f,
             value: fieldValue,
