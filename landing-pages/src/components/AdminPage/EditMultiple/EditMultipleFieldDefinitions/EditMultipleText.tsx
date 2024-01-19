@@ -6,7 +6,6 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import { useEditMultipleContext } from '../EditMultipleContext';
-import { RegexField } from '../editMultipleTypes';
 
 type EditMultipleTextProps = {
   name: string;
@@ -23,7 +22,7 @@ export default function EditMultipleText({ name }: EditMultipleTextProps) {
     handleFieldChange(name, {
       regex,
       replaceWith,
-    } as RegexField);
+    });
   }
 
   function handleReset() {
