@@ -6,14 +6,28 @@
       "title": "Personal Auto FNOL Template",
       "url": "cloud/is/fnoltemplate",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter", "PolicyCenter"],
-        "version": ["latest"],
-        "release": ["Hakuba", "Innsbruck"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Hakuba",
+          "Innsbruck"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

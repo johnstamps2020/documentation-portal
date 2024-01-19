@@ -133,16 +133,6 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
-        {
-          label: 'Claims Intake (Early Access)',
-          docId: 'fnoltemplatemain',
-          description: (
-            <>
-              Create a digital FNOL self-service flow for a first-party personal
-              auto damage claim.
-            </>
-          ),
-        },
       ],
     },
     {
@@ -509,7 +499,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'ispc202310admin',
           description: (
             <>
-              Manage PolicyCenter security, backups, logging, user data, and more.
+              Manage PolicyCenter security, backups, logging, user data, and
+              more.
             </>
           ),
         },
@@ -588,7 +579,10 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Business rules',
           description: (
-            <>Manage, administer, and import or export PolicyCenter business rules.</>
+            <>
+              Manage, administer, and import or export PolicyCenter business
+              rules.
+            </>
           ),
           docId: 'ispc202310admin',
           pathInDoc: '?contextid=p_bizrules',
