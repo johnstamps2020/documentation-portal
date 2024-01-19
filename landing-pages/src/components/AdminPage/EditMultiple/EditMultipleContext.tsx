@@ -1,26 +1,115 @@
 import { createContext, useContext, useState } from 'react';
 import { useAdminViewContext } from '../AdminViewContext';
 import {
-  getDataValue,
-  getDefaultValue,
-  getDisplayValue,
-  getEditableFieldWithDefaultValues,
-  getEditableFields,
-  getEntityDiff,
-} from './editMultipleHelpers';
-import {
   BatchFormField,
   EntityDiff,
+  FieldType,
   FieldValue,
   FieldWithValue,
+  RegexField,
 } from './editMultipleTypes';
+import { Entity } from '../EntityListWithFilters';
+
+function getEditableFields(entities: Entity[]): BatchFormField[] {
+  return Object.entries(entities[0])
+    .filter(([key]) => key !== 'uuid')
+    .map(([key, value]) => ({
+      name: key,
+      type: typeof value,
+    }));
+}
+
+function getDefaultValue(type: FieldType) {
+  if (type === 'string') {
+    return {
+      regex: '',
+      replaceWith: '',
+    };
+  }
+
+  if (type === 'boolean') {
+    return undefined;
+  }
+
+  return undefined;
+}
+
+function getEditableFieldsWithDefaultValue(
+  editableFields: BatchFormField[]
+): FieldWithValue[] {
+  return editableFields.map(({ name, type }) => ({
+    name,
+    type,
+    value: getDefaultValue(type),
+  }));
+}
+
+function getUpdatedFieldValue(
+  fieldWithChangeToApply: FieldWithValue,
+  oldValue: any
+): FieldValue {
+  const valueToApply = fieldWithChangeToApply.value;
+  // String: apply regex
+  if (fieldWithChangeToApply.type === 'string') {
+    const regularExpression = new RegExp(
+      (valueToApply as RegexField)?.regex,
+      'g'
+    );
+    const replaceWith: string = (valueToApply as RegexField)?.replaceWith || '';
+    const updatedValue = oldValue.replace(regularExpression, replaceWith);
+
+    return updatedValue;
+  }
+
+  // Boolean: apply value
+  return valueToApply;
+}
+
+function getEntityDiffList(
+  selectedEntities: Entity[],
+  changedFields: FieldWithValue[]
+): EntityDiff[] | null {
+  if (selectedEntities.length === 0) {
+    return null;
+  }
+
+  const itemsWhichNeedChangesApplied: EntityDiff[] = [];
+
+  for (const entity of selectedEntities) {
+    let fieldUpdatesForEntity: { [key: string]: any } = {};
+    for (const changedField of changedFields) {
+      const oldValue = entity[changedField.name];
+      const newValue = getUpdatedFieldValue(changedField, oldValue);
+
+      if (oldValue !== newValue) {
+        fieldUpdatesForEntity[changedField.name] = newValue;
+      }
+    }
+
+    if (Object.keys(fieldUpdatesForEntity).length > 0) {
+      itemsWhichNeedChangesApplied.push({
+        oldEntity: { ...entity },
+        newEntity: {
+          ...entity,
+          ...fieldUpdatesForEntity,
+        },
+      });
+    }
+  }
+
+  if (itemsWhichNeedChangesApplied.length === 0) {
+    return null;
+  }
+
+  return itemsWhichNeedChangesApplied;
+}
 
 export interface EditMultipleContextProps {
   thereAreChanges: boolean;
   handleResetForm: () => void;
   editableFields: BatchFormField[];
   handleFieldChange: (fieldName: string, newValue: FieldValue) => void;
-  getCurrentDisplayValue: (fieldName: string) => string;
+  getCurrentFieldValue: (fieldName: string) => FieldValue;
   entityDiffList: EntityDiff[];
   changedFields: FieldWithValue[];
 }
@@ -37,20 +126,20 @@ export function EditMultipleContextProvider({
   const { selectedEntities } = useAdminViewContext();
   const editableFields = getEditableFields(selectedEntities);
   const [formState, setFormState] = useState(
-    getEditableFieldWithDefaultValues(editableFields)
+    getEditableFieldsWithDefaultValue(editableFields)
   );
 
   function handleResetForm() {
-    setFormState(getEditableFieldWithDefaultValues(editableFields));
+    setFormState(getEditableFieldsWithDefaultValue(editableFields));
   }
 
-  function getCurrentDisplayValue(fieldName: string): string {
+  function getCurrentFieldValue(fieldName: string): FieldValue {
     const field = formState.find((f) => f.name === fieldName);
     if (!field) {
-      return '';
+      return undefined;
     }
 
-    return getDisplayValue(field.type, field.value);
+    return field.value;
   }
 
   function handleFieldChange(fieldName: string, fieldValue: FieldValue): void {
@@ -59,7 +148,7 @@ export function EditMultipleContextProvider({
         if (fieldValue && f.name === fieldName) {
           return {
             ...f,
-            value: getDataValue(f.type, fieldValue),
+            value: fieldValue,
           };
         }
 
@@ -77,7 +166,8 @@ export function EditMultipleContextProvider({
     return compareResult;
   });
 
-  const entityDiffList = getEntityDiff(selectedEntities, changedFields) || [];
+  const entityDiffList =
+    getEntityDiffList(selectedEntities, changedFields) || [];
 
   const thereAreChanges =
     entityDiffList && entityDiffList.length > 0 ? true : false;
@@ -89,7 +179,7 @@ export function EditMultipleContextProvider({
         handleResetForm,
         editableFields,
         handleFieldChange,
-        getCurrentDisplayValue,
+        getCurrentFieldValue,
         entityDiffList,
         changedFields,
       }}

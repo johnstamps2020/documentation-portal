@@ -20,7 +20,9 @@ export type RegexField = {
   replaceWith: string;
 };
 
-export type FieldValue = string | boolean | undefined | RegexField;
+export type BooleanField = boolean | undefined;
+
+export type FieldValue = RegexField | BooleanField;
 
 export type FieldWithValue = BatchFormField & {
   value: FieldValue;

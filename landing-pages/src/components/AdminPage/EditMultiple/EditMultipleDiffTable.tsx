@@ -5,7 +5,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { getEntityFieldDisplayValue } from './editMultipleHelpers';
 import { EntityDiff } from './editMultipleTypes';
 
 export type DiffTableRow = {
@@ -33,12 +32,8 @@ export default function EditMultipleDiffTable({
         </TableHead>
         <TableBody>
           {Object.keys(entityDiff.oldEntity).map((key) => {
-            const oldValue = getEntityFieldDisplayValue(
-              entityDiff.oldEntity[key]
-            );
-            const newValue = getEntityFieldDisplayValue(
-              entityDiff.newEntity[key]
-            );
+            const oldValue = entityDiff.oldEntity[key];
+            const newValue = entityDiff.newEntity[key];
             const isDifferent = oldValue !== newValue;
 
             if (!isDifferent) {
@@ -50,9 +45,9 @@ export default function EditMultipleDiffTable({
                 <TableCell component="th" scope="row">
                   {key}
                 </TableCell>
-                <TableCell sx={{ color: 'gray' }}>{oldValue}</TableCell>
+                <TableCell sx={{ color: 'gray' }}>{`${oldValue}`}</TableCell>
                 <TableCell sx={{ color: isDifferent ? 'green' : 'black' }}>
-                  {newValue}
+                  {`${newValue}`}
                 </TableCell>
               </TableRow>
             );
