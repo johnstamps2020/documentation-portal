@@ -102,7 +102,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'apdclaimshakuba',
         },
         {
-          label: 'Personal Auto FNOL Template (Early Access)',
+          label: 'Personal Auto FNOL Template',
           docId: 'fnoltemplatemain',
         },
       ],
