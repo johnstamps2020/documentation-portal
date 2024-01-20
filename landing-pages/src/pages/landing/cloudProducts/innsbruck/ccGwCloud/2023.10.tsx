@@ -96,7 +96,7 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Claims Intake: Personal Auto FNOL Template (Early Access)',
+          label: 'Claims Intake: Personal Auto FNOL Template',
           docId: 'fnoltemplatemain',
           description: (
             <>
@@ -227,7 +227,10 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Define activity patterns',
           description: (
-            <>Configure ClaimCenter activity patterns that are used for activities.</>
+            <>
+              Configure ClaimCenter activity patterns that are used for
+              activities.
+            </>
           ),
           docId: 'iscc202310config',
           pathInDoc: '?contextid=c_eg2072244',
@@ -450,7 +453,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'iscc202310admin',
           description: (
             <>
-              Manage ClaimCenter security, backups, logging, user data, and more.
+              Manage ClaimCenter security, backups, logging, user data, and
+              more.
             </>
           ),
         },
@@ -529,7 +533,10 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Business rules',
           description: (
-            <>Manage, administer, and import or export ClaimCenter business rules.</>
+            <>
+              Manage, administer, and import or export ClaimCenter business
+              rules.
+            </>
           ),
           docId: 'iscc202310admin',
           pathInDoc: '?contextid=p_bizrules',
