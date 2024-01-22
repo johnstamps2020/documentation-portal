@@ -30,6 +30,29 @@ async function checkTaskStatus(taskId, elapsedTime = 0, reindexTaskResponse) {
 const elasticsearchDevUrl =
   'https://docsearch-doctools.dev.ccs.guidewire.net:443';
 const indexName = 'gw-docs';
+const deleteAllEntriesResponse = await fetch(
+  `${elasticsearchDevUrl}/${indexName}/_delete_by_query?conflicts=proceed`,
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: {
+        match_all: {},
+      },
+    }),
+  }
+).then((res) => res.json());
+const deleteAllEntriesResponseError = deleteAllEntriesResponse.error;
+if (deleteAllEntriesResponseError) {
+  throw new Error(
+    `Unable to delete all entries from the "${indexName}" index at ${elasticsearchDevUrl}. Error: ${deleteAllEntriesResponseError.reason}`
+  );
+}
+console.log(
+  `All entries deleted from the "${indexName}" index at ${elasticsearchDevUrl}`
+);
 const reindexTaskResponse = await fetch(
   `${elasticsearchDevUrl}/_reindex?wait_for_completion=false`,
   {
@@ -50,6 +73,11 @@ const reindexTaskResponse = await fetch(
       dest: {
         index: indexName,
       },
+      script: {
+        source:
+          "ctx._source.href = ctx._source.href.replace('https://docs.staging.ccs.guidewire.net/', 'https://docs.dev.ccs.guidewire.net/')",
+        lang: 'painless',
+      },
     }),
   }
 ).then((res) => res.json());
@@ -63,4 +91,5 @@ if (reindexTaskError) {
 if (reindexTaskId === '') {
   throw new Error('Unable to get task ID');
 }
+console.log(`Reindexing task started. Task ID: ${reindexTaskId}`);
 await checkTaskStatus(reindexTaskId, undefined, reindexTaskResponse);

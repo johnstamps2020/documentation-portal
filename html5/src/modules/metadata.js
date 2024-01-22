@@ -44,41 +44,87 @@ export async function setMetadata() {
   const docId = document
     .querySelector('[name="gw-doc-id"]')
     ?.getAttribute('content');
-  if (docId) {
-    try {
-      const response = await fetch(`/safeConfig/docMetadata/${docId}`);
-      if (response.ok) {
+
+  if (!docId) {
+    return;
+  }
+
+  let sessionDocId = sessionStorage.getItem('docId');
+
+  if (docId === sessionDocId) {
+    //console.log('Fetching metadata from sessionStorage');
+    window.docProduct = sessionStorage.getItem('docProduct');
+    window.docPlatform = sessionStorage.getItem('docPlatform');
+    window.docVersion = sessionStorage.getItem('docVersion');
+    window.docSubject = sessionStorage.getItem('docSubject');
+    window.docLanguage = sessionStorage.getItem('docLanguage');
+    window.docRelease = sessionStorage.getItem('docRelease');
+    window.docTitle = sessionStorage.getItem('docTitle');
+    window.docDisplayTitle = sessionStorage.getItem('docDisplayTitle');
+    window.docInternal = sessionStorage.getItem('docInternal') === 'true';
+    window.docEarlyAccess = sessionStorage.getItem('docEarlyAccess') === 'true';
+  } else {
+    //console.log('Fetching metadata from endpoint');
+    const response = await fetch(`/safeConfig/docMetadata/${docId}`);
+    if (response.ok) {
+      try {
         const valueSeparator = ',';
         const docInfo = await response.json();
         if (!docInfo.error) {
+          sessionStorage.setItem('docId', docId);
+
           window.docProduct = wrapInQuotes(docInfo.product)?.join(
             valueSeparator
           );
+          sessionStorage.setItem('docProduct', window.docProduct);
+
           window.docPlatform = wrapInQuotes(docInfo.platform)?.join(
             valueSeparator
           );
+          sessionStorage.setItem('docPlatform', window.docPlatform);
+
           window.docVersion = wrapInQuotes(docInfo.version)?.join(
             valueSeparator
           );
-          window.docCategory = wrapInQuotes(docInfo.category)?.join(
-            valueSeparator
-          );
+          sessionStorage.setItem('docVersion', window.docVersion);
+
+          sessionStorage.removeItem('docSubject');
           window.docSubject = wrapInQuotes(docInfo.subject)?.join(
             valueSeparator
           );
+          if (window.docSubject) {
+            sessionStorage.setItem('docSubject', window.docSubject);
+          }
+
           window.docLanguage = wrapInQuotes(docInfo.language);
+          sessionStorage.setItem('docLanguage', window.docLanguage);
+
+          sessionStorage.removeItem('docRelease');
           window.docRelease = wrapInQuotes(docInfo.release)?.join(
             valueSeparator
           );
+          if (window.docRelease) {
+            sessionStorage.setItem('docRelease', window.docRelease);
+          }
+
           window.docTitle = wrapInQuotes(docInfo.docTitle);
+          sessionStorage.setItem('docTitle', window.docTitle);
+
+          sessionStorage.removeItem('docDisplayTitle');
           window.docDisplayTitle = wrapInQuotes(docInfo.docDisplayTitle);
-          window.docUrl = wrapInQuotes(docInfo.docUrl);
+          if (window.docDisplayTitle) {
+            sessionStorage.setItem('docDisplayTitle', window.docDisplayTitle);
+          }
+
           window.docInternal = docInfo.docInternal;
+          sessionStorage.setItem('docInternal', window.docInternal);
+
           window.docEarlyAccess = docInfo.docEarlyAccess;
+          sessionStorage.setItem('docEarlyAccess', window.docEarlyAccess);
         }
+      } catch (err) {
+        console.error(err);
       }
-    } catch (err) {
-      console.error(err);
     }
   }
 

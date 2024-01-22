@@ -402,7 +402,7 @@ function addFiltersToElasticsearchKnnQuery(
   knnQuery: KnnQuery[],
   queryFilters: QueryDslQueryContainer[]
 ) {
-  const updatedKnnQuery = [...knnQuery];
+  const updatedKnnQuery = JSON.parse(JSON.stringify(knnQuery)) as KnnQuery[];
   if (queryFilters.length > 0) {
     updatedKnnQuery.map((queryItem) => {
       queryItem.filter = queryFilters;
@@ -526,24 +526,10 @@ async function runSemanticSearch(
       index: searchIndexName,
       size: 0,
       knn: knnQuery,
-      post_filter: {
-        bool: {
-          filter: knnQuery[0].filter,
-        },
-      },
       aggs: {
         totalHits: {
           value_count: {
             field: 'title.raw',
-          },
-        },
-        // Approximate count of values with the distinct title.
-        // We collapse hits for multiple versions under the same title, therefore we need this distinct count
-        // to calculate the number of pages.
-        totalCollapsedHits: {
-          cardinality: {
-            field: 'title.raw',
-            precision_threshold: 40000,
           },
         },
       },
@@ -554,34 +540,18 @@ async function runSemanticSearch(
       from: startIndex,
       size: resultsPerPage,
       knn: knnQuery,
-      post_filter: {
-        bool: {
-          filter: knnQuery[0].filter,
-        },
-      },
-      collapse: {
-        field: 'title.raw',
-        inner_hits: {
-          name: 'same_title',
-          size: 100,
-        },
-        max_concurrent_group_searches: 4,
-      },
     });
 
     // @ts-ignore
     const numberOfHits = resultCount.aggregations?.totalHits.value;
     // @ts-ignore
-    const numberOfCollapsedHits =
-      // @ts-ignore
-      resultCount.aggregations?.totalCollapsedHits.value;
     const hits = results
       ? (results.hits.hits as SearchHit<SearchResultSource>[])
       : [];
 
     return {
       numberOfHits,
-      numberOfCollapsedHits,
+      numberOfCollapsedHits: numberOfHits,
       hits,
     };
   } catch (err) {
@@ -1042,15 +1012,15 @@ export default async function searchController(
       {
         field: 'title_vector',
         query_vector: vectorizedSearchPhrase,
-        num_candidates: 100,
-        k: 100,
+        num_candidates: 10000,
+        k: 10000,
         boost: 12,
       },
       {
         field: 'body_vector',
         query_vector: vectorizedSearchPhrase,
-        num_candidates: 100,
-        k: 100,
+        num_candidates: 10000,
+        k: 10000,
       },
     ];
     const elasticsearchKnnQueryWithFilters = addFiltersToElasticsearchKnnQuery(

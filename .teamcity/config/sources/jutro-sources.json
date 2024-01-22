@@ -194,6 +194,12 @@
       "branch": "release/innsbruck"
     },
     {
+      "id": "srcjutrosdkjasper",
+      "title": "Jutro SDK Jasper",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "release/jasper"
+    },
+    {
       "id": "srcjutrosbbizpatterns652",
       "title": "Jutro Storybook Business Patterns 6.5.2",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/storybook-business-patterns.git",
@@ -416,6 +422,12 @@
       "branch": "release/8.13.5"
     },
     {
+      "id": "srcjutro8136",
+      "title": "Jutro Design System 8.13.6",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.13.6"
+    },
+    {
       "id": "srcjutro1000",
       "title": "Jutro Digital Platform 10.0",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
@@ -433,6 +445,12 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/10.2.0"
     },    
+    {
+      "id": "srcjutro1030",
+      "title": "Jutro Digital Platform 10.3",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/10.3.0"
+    },  
     {
       "id": "srcjutroa11yapp",
       "title": "Jutro a11y app source",

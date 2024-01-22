@@ -25,16 +25,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'AppReader Release Notes',
-          docId: 'appreaderrn400',
-          description: (
-            <>
-              Learn about changes to the AppReader microservice, which performs
-              optical character recognition of PDF documents.
-            </>
-          ),
-        },
-        {
           label: 'Studio Release Notes',
           docId: 'isstudiolatestrn',
           description: (
@@ -130,16 +120,6 @@ const pageConfig: ApplicationLayoutProps = {
             <>
               Learn how PolicyCenter generates quotes for policy transactions,
               such as submissions.
-            </>
-          ),
-        },
-        {
-          label: 'Claims Intake (Early Access)',
-          docId: 'fnoltemplatemain',
-          description: (
-            <>
-              Create a digital FNOL self-service flow for a first-party personal
-              auto damage claim.
             </>
           ),
         },
@@ -486,6 +466,16 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'AppReader',
+          docId: 'appreader',
+          description: (
+            <>
+              Use the AppReader API to extract data from ACORD forms and loss
+              runs.
+            </>
+          ),
+        },
+        {
           label: 'Cloud Integration Basics Course',
           description: (
             <>A self-paced course covering the basics of Cloud Integration</>
@@ -509,8 +499,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'ispc202310admin',
           description: (
             <>
-              Manage security, backups, logging, user data, and more for a
-              PolicyCenter system.
+              Manage PolicyCenter security, backups, logging, user data, and
+              more.
             </>
           ),
         },
@@ -589,7 +579,10 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Business rules',
           description: (
-            <>Create, edit, and manage underwriting issues in PolicyCenter.</>
+            <>
+              Manage, administer, and import or export PolicyCenter business
+              rules.
+            </>
           ),
           docId: 'ispc202310admin',
           pathInDoc: '?contextid=p_bizrules',

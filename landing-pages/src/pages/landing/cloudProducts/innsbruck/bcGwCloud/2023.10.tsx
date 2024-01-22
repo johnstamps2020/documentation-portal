@@ -210,8 +210,7 @@ const pageConfig: ApplicationLayoutProps = {
           label: 'Define activity patterns',
           description: (
             <>
-              Manage BillingCenter predefined plugins to configure standard
-              integration operations.
+              Configure BillingCenter activity patterns that are used for activities.
             </>
           ),
           docId: 'isbc202310config',
@@ -406,8 +405,7 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'isbc202310admin',
           description: (
             <>
-              Manage security, backups, logging, user data, and more for a
-              BillingCenter system.
+              Manage BillingCenter security, backups, logging, user data, and more.
             </>
           ),
         },
