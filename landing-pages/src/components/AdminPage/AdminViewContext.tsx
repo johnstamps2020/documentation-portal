@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { Entity } from './EntityListWithFilters';
-import { MultipleOperationName } from './MultipleButton';
+import { MultipleOperationMode } from './MultipleButton';
 
 interface AdminViewInterface {
   listView: boolean;
@@ -21,10 +21,8 @@ interface AdminViewInterface {
   entityPrimaryKeyName: string;
   setEntityPrimaryKeyName: (value: string) => void;
   EntityFormComponent: React.ElementType;
-  operationName: MultipleOperationName | null;
-  setOperationName: React.Dispatch<
-    React.SetStateAction<MultipleOperationName | null>
-  >;
+  mode: MultipleOperationMode | null;
+  setMode: React.Dispatch<React.SetStateAction<MultipleOperationMode | null>>;
 }
 
 export const AdminViewContext = createContext<AdminViewInterface | null>(null);

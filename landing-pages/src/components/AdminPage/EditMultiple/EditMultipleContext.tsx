@@ -9,7 +9,7 @@ import {
   RegexField,
 } from './editMultipleTypes';
 import { Entity } from '../EntityListWithFilters';
-import { MultipleOperationName } from '../MultipleButton';
+import { MultipleOperationMode } from '../MultipleButton';
 
 function getEditableFields(entities: Entity[]): BatchFormField[] {
   return Object.entries(entities[0])
@@ -69,7 +69,7 @@ function getUpdatedFieldValue(
 function getEntityDiffList(
   selectedEntities: Entity[],
   changedFields: FieldWithValue[],
-  operationName: MultipleOperationName
+  mode: MultipleOperationMode
 ): EntityDiff[] | null {
   if (selectedEntities.length === 0) {
     return null;
@@ -94,7 +94,7 @@ function getEntityDiffList(
         ...entity,
         ...fieldUpdatesForEntity,
       };
-      if (operationName === 'Duplicate') {
+      if (mode === 'Duplicate') {
         delete newEntity.uuid;
       }
       itemsWhichNeedChangesApplied.push({
@@ -130,7 +130,7 @@ type EditMultipleContextProviderProps = {
 export function EditMultipleContextProvider({
   children,
 }: EditMultipleContextProviderProps) {
-  const { selectedEntities, operationName } = useAdminViewContext();
+  const { selectedEntities, mode } = useAdminViewContext();
   const editableFields = getEditableFields(selectedEntities);
   const [formState, setFormState] = useState(
     getEditableFieldsWithDefaultValue(editableFields)
@@ -165,11 +165,7 @@ export function EditMultipleContextProvider({
   });
 
   const entityDiffList =
-    getEntityDiffList(
-      selectedEntities,
-      changedFields,
-      operationName || 'Edit'
-    ) || [];
+    getEntityDiffList(selectedEntities, changedFields, mode || 'Edit') || [];
 
   const thereAreChanges =
     entityDiffList && entityDiffList.length > 0 ? true : false;

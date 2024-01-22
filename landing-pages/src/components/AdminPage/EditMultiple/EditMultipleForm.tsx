@@ -5,12 +5,24 @@ import { useAdminViewContext } from '../AdminViewContext';
 import EditMultipleChangeList from './EditMultipleChangeList';
 import { useEditMultipleContext } from './EditMultipleContext';
 import EditMultipleFields from './EditMultipleFields';
+import { MultipleOperationMode } from '../MultipleButton';
+import { useEffect } from 'react';
 
-export default function EditMultipleForm() {
+type EditMultipleFormProps = {
+  mode: MultipleOperationMode;
+};
+
+export default function EditMultipleForm({ mode }: EditMultipleFormProps) {
   const { thereAreChanges, handleResetForm, entityDiffList } =
     useEditMultipleContext();
-  const { entityDatabaseName } = useAdminViewContext();
+  const { entityDatabaseName, setMode } = useAdminViewContext();
   const { showMessage } = useNotification();
+
+  useEffect(() => {
+    setMode(mode);
+
+    return () => setMode(null);
+  }, [mode, setMode]);
 
   async function handleSave() {
     const failedResponseErrorMessages: string[] = [];

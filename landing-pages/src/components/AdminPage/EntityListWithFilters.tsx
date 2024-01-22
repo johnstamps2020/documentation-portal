@@ -8,7 +8,7 @@ import EntityCard from './EntityCard';
 import EntityFilters from './EntityFilters';
 import EntityListCount from './EntityListCount';
 import EntityListPagination from './EntityListPagination';
-import { MultipleOperationName } from './MultipleButton';
+import { MultipleOperationMode } from './MultipleButton';
 
 export type Entity = {
   label: string;
@@ -105,8 +105,7 @@ export default function EntityListWithFilters({
   const [entityPrimaryKeyName, setEntityPrimaryKeyName] = useState(
     initialEntityPrimaryKeyName
   );
-  const [operationName, setOperationName] =
-    useState<MultipleOperationName | null>(null);
+  const [mode, setMode] = useState<MultipleOperationMode | null>(null);
 
   useEffect(() => {
     function filterEntities() {
@@ -173,8 +172,8 @@ export default function EntityListWithFilters({
         entityPrimaryKeyName,
         setEntityPrimaryKeyName,
         EntityFormComponent: FormComponent,
-        operationName,
-        setOperationName,
+        mode,
+        setMode,
       }}
     >
       <EntityFilters />

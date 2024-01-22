@@ -1,35 +1,23 @@
 import Button from '@mui/material/Button';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material/SvgIcon';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AdminDialog from './AdminDialog';
 import { useAdminViewContext } from './AdminViewContext';
 import EditMultipleWrapper from './EditMultiple/EditMultipleWrapper';
 
-export type MultipleOperationName = 'Edit' | 'Duplicate';
+export type MultipleOperationMode = 'Edit' | 'Duplicate';
 
 type MultipleButtonProps = {
   Icon: OverridableComponent<SvgIconTypeMap<{}, 'svg'>> & {
     muiName: string;
   };
-  operationName: MultipleOperationName;
+  mode: MultipleOperationMode;
 };
 
-export default function MultipleButton({
-  Icon,
-  operationName,
-}: MultipleButtonProps) {
+export default function MultipleButton({ Icon, mode }: MultipleButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const { selectedEntities, entityDatabaseName, setOperationName } =
-    useAdminViewContext();
-
-  useEffect(() => {
-    setOperationName(operationName);
-
-    return () => {
-      setOperationName(null);
-    };
-  }, [operationName, setOperationName]);
+  const { selectedEntities } = useAdminViewContext();
 
   if (selectedEntities.length === 0) {
     return null;
@@ -45,14 +33,14 @@ export default function MultipleButton({
 
   const label =
     selectedEntities.length === 1
-      ? `${operationName} item`
-      : `${operationName} items`;
+      ? `${mode} item`
+      : `${mode} ${selectedEntities.length} items`;
 
   return (
     <>
       <Button
         variant="contained"
-        color={operationName === 'Edit' ? 'primary' : 'secondary'}
+        color={mode === 'Edit' ? 'primary' : 'secondary'}
         onClick={handleOpenEditor}
         startIcon={<Icon />}
       >
@@ -64,7 +52,7 @@ export default function MultipleButton({
         isOpen={isOpen}
         showInFullScreen
       >
-        <EditMultipleWrapper />
+        <EditMultipleWrapper mode={mode} />
       </AdminDialog>
     </>
   );

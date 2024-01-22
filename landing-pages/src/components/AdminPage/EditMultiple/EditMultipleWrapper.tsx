@@ -1,10 +1,15 @@
+import { MultipleOperationMode } from '../MultipleButton';
 import { EditMultipleContextProvider } from './EditMultipleContext';
 import EditMultipleForm from './EditMultipleForm';
 
-export default function EditMultipleWrapper() {
+type MultipleWrapperProps = {
+  mode: MultipleOperationMode;
+};
+
+export default function EditMultipleWrapper({ mode }: MultipleWrapperProps) {
   return (
     <EditMultipleContextProvider>
-      <EditMultipleForm />
+      <EditMultipleForm mode={mode} />
     </EditMultipleContextProvider>
   );
 }
