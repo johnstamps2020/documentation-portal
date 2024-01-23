@@ -1,74 +1,45 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';
-import { useAdminViewContext } from './AdminViewContext';
 import { useNotification } from 'components/Layout/NotificationContext';
+import { useAdminViewContext } from './AdminViewContext';
 
 export default function DeleteMultipleButton() {
   const { showMessage } = useNotification();
-  const {
-    selectedEntities,
-    setSelectedEntities,
-    entityDatabaseName,
-    entityPrimaryKeyName,
-  } = useAdminViewContext();
+  const { selectedEntities, setSelectedEntities, entityDatabaseName } =
+    useAdminViewContext();
 
   if (selectedEntities.length === 0) {
     return null;
   }
 
   async function handleDelete() {
-    const responses = await Promise.all(
-      selectedEntities.map((entity) => {
-        const primaryKeyValue =
-          entity.path || entity.url || entity.id || entity.name || entity.code;
-        return fetch(`/admin/entity/${entityDatabaseName}`, {
-          method: 'DELETE',
-          body: `{ "${entityPrimaryKeyName}": "${primaryKeyValue}" }`,
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        });
-      })
-    );
+    try {
+      const response = await fetch(`/admin/entities/${entityDatabaseName}`, {
+        method: 'DELETE',
+        body: JSON.stringify(selectedEntities),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      });
 
-    const failedResponses = responses.filter((response) => !response.ok);
-    if (failedResponses.length) {
-      const jsonError = await Promise.all(
-        failedResponses.map((response) => response.json())
-      );
+      const jsonResult = await response.json();
 
-      const queryFailedErrorMessage = 'update or delete on table';
-      if (
-        jsonError.map((error) =>
-          error.message.includes(queryFailedErrorMessage)
-        )
-      ) {
-        const entityTypeFromError = jsonError.map(
-          (error) => error.message.match(/on table "((?!source)[^"]+)"/)[1]
-        );
+      if (!response.ok) {
         showMessage(
-          `${entityDatabaseName} not deleted - this ${entityDatabaseName} is connected with another entity 
-           named ${entityTypeFromError}. Please remove this ${entityDatabaseName} from the
-           ${entityTypeFromError} and try again.`,
+          `Error deleting ${entityDatabaseName}: ${JSON.stringify(jsonResult)}`,
           'error'
         );
-      } else {
-        showMessage(
-          `${
-            failedResponses.length
-          } items of type ${entityDatabaseName} not deleted correctly: ${JSON.stringify(
-            jsonError
-          )}`,
-          'error'
-        );
+        return;
       }
-    } else {
+
       showMessage(
-        `All ${selectedEntities.length} items of type ${entityDatabaseName} deleted successfully`,
+        `Deleted ${jsonResult.affected} items of type ${entityDatabaseName} successfully`,
         'success'
       );
       setSelectedEntities([]);
+    } catch (error) {
+      showMessage(`Error deleting entities: ${error}`, 'error');
     }
   }
 

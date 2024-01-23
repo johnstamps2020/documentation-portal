@@ -1,12 +1,12 @@
 import Container from '@mui/material/Container';
 import { useNotification } from 'components/Layout/NotificationContext';
+import { useEffect } from 'react';
 import AdminFormWrapper from '../AdminFormWrapper';
 import { useAdminViewContext } from '../AdminViewContext';
+import { MultipleOperationMode } from '../MultipleButton';
 import EditMultipleChangeList from './EditMultipleChangeList';
 import { useEditMultipleContext } from './EditMultipleContext';
 import EditMultipleFields from './EditMultipleFields';
-import { MultipleOperationMode } from '../MultipleButton';
-import { useEffect } from 'react';
 
 type EditMultipleFormProps = {
   mode: MultipleOperationMode;
@@ -25,49 +25,33 @@ export default function EditMultipleForm({ mode }: EditMultipleFormProps) {
   }, [mode, setMode]);
 
   async function handleSave() {
-    const failedResponseErrorMessages: string[] = [];
-    let successfulResponseCount = 0;
-    await Promise.all(
-      entityDiffList.map(async ({ newEntity }) => {
-        const response = await fetch(`/admin/entity/${entityDatabaseName}`, {
-          method: 'PUT',
-          body: JSON.stringify(newEntity),
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        });
+    try {
+      const newEntities = entityDiffList.map(({ newEntity }) => newEntity);
+      const response = await fetch(`/admin/entities/${entityDatabaseName}`, {
+        method: 'PUT',
+        body: JSON.stringify(newEntities),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      });
 
-        if (!response.ok) {
-          const jsonError = await response.json();
-          failedResponseErrorMessages.push(
-            `Error updating entity: ${JSON.stringify(
-              newEntity
-            )}. Error received: ${JSON.stringify(jsonError)}`
-          );
-        } else {
-          successfulResponseCount++;
-        }
-      })
-    );
+      const jsonResult = await response.json();
 
-    if (failedResponseErrorMessages.length) {
-      failedResponseErrorMessages.forEach((errorMessage, index) =>
+      if (!response.ok) {
         showMessage(
-          `PROBLEM ${index + 1}/${
-            failedResponseErrorMessages.length
-          } ${errorMessage}`,
+          `Error updating ${entityDatabaseName}: ${JSON.stringify(jsonResult)}`,
           'error'
-        )
-      );
-    }
+        );
+        return;
+      }
 
-    if (successfulResponseCount) {
       showMessage(
-        `Successfully updated ${successfulResponseCount} entities`,
+        `Successfully updated ${newEntities.length} items of type ${entityDatabaseName} successfully`,
         'success'
       );
-      handleResetForm();
+    } catch (error) {
+      showMessage(`Error deleting entities: ${error}`, 'error');
     }
   }
 
