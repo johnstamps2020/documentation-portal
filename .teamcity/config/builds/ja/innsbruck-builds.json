@@ -126,6 +126,15 @@
 			"docId": "is202310jaJPintegoverview",
 			"indexRedirect": true,
 			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Cloud-Release.ditaval",
+			"root": "AdvancedProductDesigner.ditamap",
+			"srcId": "ispc202310jaJPapdsrc",
+			"docId": "ispc202310jaJPapd",
+			"indexRedirect": true,
+			"disabled": false
 		}
 	]
 }
