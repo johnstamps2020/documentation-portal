@@ -12,6 +12,15 @@
     },
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "Webhooks.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapinextsrc",
+      "docId": "webhooksnext",
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IntegrationGatewayForDevelopers.ditamap",
       "indexRedirect": true,

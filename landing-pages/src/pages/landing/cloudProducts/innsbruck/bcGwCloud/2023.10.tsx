@@ -210,7 +210,8 @@ const pageConfig: ApplicationLayoutProps = {
           label: 'Define activity patterns',
           description: (
             <>
-              Configure BillingCenter activity patterns that are used for activities.
+              Configure BillingCenter activity patterns that are used for
+              activities.
             </>
           ),
           docId: 'isbc202310config',
@@ -241,6 +242,18 @@ const pageConfig: ApplicationLayoutProps = {
               Use App Events to send outbound messages asynchronously, without
               the need for Gosu code, in response to specific business events
               and manage responses.
+            </>
+          ),
+        },
+        {
+          label: 'Webhooks',
+          docId: 'webhooksrelease',
+          description: (
+            <>
+              Webhooks enable customers to effortlessly subscribe external
+              systems to application events occurring within the InsuranceSuite,
+              facilitated by a user-friendly UI and API for subscription
+              management.
             </>
           ),
         },
@@ -405,7 +418,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'isbc202310admin',
           description: (
             <>
-              Manage BillingCenter security, backups, logging, user data, and more.
+              Manage BillingCenter security, backups, logging, user data, and
+              more.
             </>
           ),
         },

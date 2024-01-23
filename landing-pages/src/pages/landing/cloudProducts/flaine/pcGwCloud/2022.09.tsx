@@ -141,6 +141,10 @@ const pageConfig: SectionLayoutProps = {
           docId: 'appeventsdev',
         },
         {
+          label: 'Webhooks',
+          docId: 'webhooksrelease',
+        },
+        {
           label: 'PolicyCenter Cloud API Consumer Guide',
           docId: 'ispc202209apibf',
         },

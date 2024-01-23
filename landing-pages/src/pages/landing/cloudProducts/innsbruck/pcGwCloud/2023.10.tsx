@@ -310,6 +310,18 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Webhooks',
+          docId: 'webhooksrelease',
+          description: (
+            <>
+              Webhooks enable customers to effortlessly subscribe external
+              systems to application events occurring within the InsuranceSuite,
+              facilitated by a user-friendly UI and API for subscription
+              management.
+            </>
+          ),
+        },
+        {
           label: 'Cloud API Consumer Guide',
           docId: 'ispc202310apibf',
           description: (
