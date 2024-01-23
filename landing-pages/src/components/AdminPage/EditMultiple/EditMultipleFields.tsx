@@ -5,6 +5,7 @@ import EditMultipleText from './EditMultipleFieldDefinitions/EditMultipleText';
 
 export default function EditMultipleFields() {
   const { editableFields } = useEditMultipleContext();
+  editableFields.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <Stack sx={{ gap: '16px', pb: '64px' }}>
