@@ -135,6 +135,16 @@
 			"docId": "ispc202310jaJPapd",
 			"indexRedirect": true,
 			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "GT-Framework-Installation.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "testingframeworksjaJPinstallinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
 		}
+
 	]
 }

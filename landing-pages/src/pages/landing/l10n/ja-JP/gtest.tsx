@@ -24,6 +24,10 @@ items: [
 label: 'Testing Framework リリースノート', 
 docId: 'testingframeworksjaJPrninnsbruck',
 }, 
+{
+  label: 'Testing Framework インストールガイド', 
+  docId: 'testingframeworksjaJPinstallinnsbruck',
+  }, 
 ],
 },
 {
