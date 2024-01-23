@@ -1,19 +1,15 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useAdminViewContext } from '../AdminViewContext';
 import ChangeListDetailsButton from './ChangeListDetailsButton';
 import { useEditMultipleContext } from './EditMultipleContext';
 import EditMultipleDiffTable from './EditMultipleDiffTable';
 
 export default function EditMultipleChangeList() {
   const { entityDiffList } = useEditMultipleContext();
-  const { selectedEntities } = useAdminViewContext();
 
   if (entityDiffList.length === 0) {
     return null;
   }
-
-  console.log('entityDiffList', { entityDiffList, selectedEntities });
 
   return (
     <>
