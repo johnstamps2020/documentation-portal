@@ -11,11 +11,6 @@ import EntityListPagination from './EntityListPagination';
 import { MultipleOperationMode } from './MultipleButton';
 
 export type Entity = {
-  label: string;
-  name?: string;
-  url?: string;
-  id?: string;
-  code?: string;
   [x: string]: string | boolean | any;
 };
 
@@ -41,9 +36,7 @@ function getEmptyFilters(
   entities: Entity[],
   additionalFilters?: AdditionalFilter[]
 ) {
-  const emptyFilters: Entity = {
-    label: '',
-  };
+  const emptyFilters: Entity = {};
   const entity = entities[0];
   const { uuid, ...entityNoId } = entity;
   const additionalFilterIds = additionalFilters?.map((additionalFilter) => ({
@@ -68,8 +61,8 @@ function getEmptyFilters(
 
 function sortEntities(entities: Entity[]) {
   return entities.sort((a, b) => {
-    const aTitle = a.label.toLowerCase();
-    const bTitle = b.label.toLowerCase();
+    const aTitle = a.label?.toLowerCase() || a.title?.toLowerCase();
+    const bTitle = b.label?.toLowerCase() || b.title?.toLowerCase();
     let result = 0;
     if (aTitle > bTitle) {
       result = 1;
@@ -186,7 +179,7 @@ export default function EntityListWithFilters({
           .map((entity, idx) => (
             <EntityCard
               key={idx}
-              title={entity.label}
+              title={entity.label || entity.title}
               entity={entity}
               cardContents={<EntityCardContents {...entity} />}
               cardButtons={
