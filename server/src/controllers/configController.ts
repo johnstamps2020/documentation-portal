@@ -1,10 +1,5 @@
-import fetch from 'node-fetch';
-import { winstonLogger } from './loggerController';
 import { Request, Response } from 'express';
-import { AppDataSource } from '../model/connection';
-import { Doc } from '../model/entity/Doc';
-import { PlatformProductVersion } from '../model/entity/PlatformProductVersion';
-import { Release } from '../model/entity/Release';
+import fetch from 'node-fetch';
 import {
   FindOneAndDeleteOptions,
   FindOneOptions,
@@ -13,13 +8,18 @@ import {
   In,
   ObjectLiteral,
 } from 'typeorm';
-import { ApiResponse } from '../types/apiResponse';
-import { Page } from '../model/entity/Page';
-import { isUserAllowedToAccessResource } from './authController';
-import { LegacyVersionObject } from '../types/legacyConfig';
-import { Subject } from '../model/entity/Subject';
-import { PageItemsRequestBody, PageItemsResponse } from '../types/config';
+import { AppDataSource } from '../model/connection';
+import { Doc } from '../model/entity/Doc';
 import { ExternalLink } from '../model/entity/ExternalLink';
+import { Page } from '../model/entity/Page';
+import { PlatformProductVersion } from '../model/entity/PlatformProductVersion';
+import { Release } from '../model/entity/Release';
+import { Subject } from '../model/entity/Subject';
+import { ApiResponse } from '../types/apiResponse';
+import { PageItemsRequestBody, PageItemsResponse } from '../types/config';
+import { LegacyVersionObject } from '../types/legacyConfig';
+import { isUserAllowedToAccessResource } from './authController';
+import { winstonLogger } from './loggerController';
 
 function wrapInQuotes(
   stringsToWrap: string[] | string | undefined
@@ -380,8 +380,6 @@ export async function getEntity(
   }
 }
 
-type ReqWithParams = Request & { params: { repo: string } };
-
 export async function getAllEntities(
   req: Request,
   res: Response,
@@ -430,15 +428,20 @@ export async function getAllEntities(
   }
 }
 
-export async function createOrUpdateEntity(req: Request): Promise<ApiResponse> {
+async function createOrUpdate(
+  req: Request,
+  invalidRequestMessage: string,
+  errorMessage: string,
+  validationFunction: (options: any) => boolean
+): Promise<ApiResponse> {
   try {
     const { repo } = req.params;
     const options = req.body;
-    if (!optionsAreValid(options)) {
+    if (!validationFunction(options)) {
       return {
         status: 400,
         body: {
-          message: 'Invalid request. Body cannot be empty or an array.',
+          message: `Invalid request. ${invalidRequestMessage}`,
         },
       };
     }
@@ -450,9 +453,29 @@ export async function createOrUpdateEntity(req: Request): Promise<ApiResponse> {
   } catch (err) {
     return {
       status: 500,
-      body: { message: `Operation failed: ${(err as Error).message}` },
+      body: { message: `${errorMessage}: ${(err as Error).message}` },
     };
   }
+}
+
+export async function createOrUpdateEntity(req: Request): Promise<ApiResponse> {
+  return createOrUpdate(
+    req,
+    'Body cannot be empty or an array.',
+    'saving entity failed',
+    optionsAreValid
+  );
+}
+
+export async function createOrUpdateMultipleEntities(
+  req: Request
+): Promise<ApiResponse> {
+  return createOrUpdate(
+    req,
+    'Body has to be an array of more than one element.',
+    'saving entities failed',
+    (options: any) => Array.isArray(options) && options.length > 0
+  );
 }
 
 export async function deleteEntity(req: Request): Promise<ApiResponse> {
@@ -484,6 +507,44 @@ export async function deleteEntity(req: Request): Promise<ApiResponse> {
     return {
       status: 500,
       body: { message: `Operation failed: ${err}` },
+    };
+  }
+}
+
+export async function deleteEntities(req: Request): Promise<ApiResponse> {
+  try {
+    const { repo } = req.params;
+    const options = req.body;
+
+    if (!Array.isArray(options) || options.length === 0) {
+      return {
+        status: 400,
+        body: {
+          message:
+            'Invalid request. Body has to be an array of more than one element.',
+        },
+      };
+    }
+
+    const result = await AppDataSource.manager.delete(repo, options);
+
+    if (!result.affected || result.affected === 0) {
+      return {
+        status: 500,
+        body: {
+          message: 'Entities not deleted. Who knows why?',
+        },
+      };
+    }
+
+    return {
+      status: 200,
+      body: result,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Could not delete entities: ${err}` },
     };
   }
 }

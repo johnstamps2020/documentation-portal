@@ -9,6 +9,7 @@ type DialogProps = {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  showInFullScreen?: boolean;
 };
 
 export default function AdminDialog({
@@ -16,9 +17,10 @@ export default function AdminDialog({
   isOpen,
   onClose,
   children,
+  showInFullScreen,
 }: DialogProps): JSX.Element {
   return (
-    <Dialog open={isOpen} onClose={onClose}>
+    <Dialog open={isOpen} onClose={onClose} fullScreen={showInFullScreen}>
       <DialogTitle>{label}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>

@@ -1,12 +1,12 @@
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import {
   SearchResultSource,
   ServerSearchResult,
 } from 'server/dist/types/serverSearch';
-import Typography from '@mui/material/Typography';
-import { StyledHeading2, StyledLink } from './StyledSearchComponents';
-import SearchResultTags from './SearchResultTags';
 import SearchResultInnerHits from './SearchResultInnerHits';
+import SearchResultTags from './SearchResultTags';
+import { StyledHeading2, StyledLink } from './StyledSearchComponents';
 
 export function createSearchResultLink(
   searchResult: ServerSearchResult | SearchResultSource

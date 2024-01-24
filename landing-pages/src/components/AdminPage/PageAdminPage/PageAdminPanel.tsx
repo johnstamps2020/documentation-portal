@@ -19,9 +19,8 @@ export default function PageAdminPanel() {
       entityName="page"
       entityDatabaseName="Page"
       entityPrimaryKeyName="path"
-      entities={pages.map(({ title, ...rest }) => ({
-        label: title,
-        ...rest,
+      entities={pages.map((entity) => ({
+        ...entity,
       }))}
       DuplicateButton={DuplicateButton}
       FormComponent={PageSettingsForm}
