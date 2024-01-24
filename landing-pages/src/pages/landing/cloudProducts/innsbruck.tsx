@@ -151,6 +151,10 @@ const pageConfig: Category2LayoutProps = {
           docId: 'appeventsdev',
         },
         {
+          label: 'Webhooks',
+          docId: 'webhooksrelease',
+        },
+        {
           label: 'REST API Client',
           docId: 'isrestapiclientguide',
         },

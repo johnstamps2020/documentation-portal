@@ -1,7 +1,9 @@
 import Box from '@mui/material/Box';
 import DeleteMultipleButton from './DeleteMultipleButton';
+import EditMultipleButton from './EditMultiple/EditMultipleButton';
 import SelectAllCheckbox from './SelectAllCheckbox';
 import ViewSwitcher from './ViewSwitcher';
+import DuplicateMultipleButton from './EditMultiple/DuplicateMultipleButton';
 
 export default function ActionBar() {
   return (
@@ -14,7 +16,9 @@ export default function ActionBar() {
       }}
     >
       <SelectAllCheckbox />
-      <Box>
+      <Box sx={{ display: 'flex', gap: '6px' }}>
+        <DuplicateMultipleButton />
+        <EditMultipleButton />
         <DeleteMultipleButton />
         <ViewSwitcher />
       </Box>

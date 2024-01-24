@@ -4,10 +4,19 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "ApplicationEventsForDevelopers.ditamap",
+      "root": "AppEventsForDevelopers.ditamap",
       "indexRedirect": true,
       "srcId": "restapinextsrc",
       "docId": "appeventsdevnext",
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "Webhooks.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapinextsrc",
+      "docId": "webhooksnext",
       "disabled": false
     },
     {

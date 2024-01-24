@@ -45,7 +45,7 @@ export default function EntityCheckbox({ entity }: EntityCheckboxProps) {
     <Checkbox
       checked={isSelected(entity, selectedEntities)}
       onChange={handleChange}
-      aria-label={`Select ${entity.label}`}
+      aria-label={`Select ${entity.label || entity.title}`}
     />
   );
 }

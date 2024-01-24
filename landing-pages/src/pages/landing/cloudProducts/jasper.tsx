@@ -151,6 +151,10 @@ const pageConfig: Category2LayoutProps = {
           docId: 'appeventsdevnext',
         },
         {
+          label: 'Webhooks',
+          docId: 'webhooksnext',
+        },
+        {
           label: 'REST API Client',
           docId: 'isrestapiclientguidenext',
         },

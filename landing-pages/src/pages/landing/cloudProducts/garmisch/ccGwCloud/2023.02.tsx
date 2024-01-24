@@ -115,6 +115,10 @@ const pageConfig: SectionLayoutProps = {
           docId: 'appeventsdev',
         },
         {
+          label: 'Webhooks',
+          docId: 'webhooksrelease',
+        },
+        {
           label: 'ClaimCenter Cloud API Consumer Guide',
           docId: 'iscc202302apibf',
         },

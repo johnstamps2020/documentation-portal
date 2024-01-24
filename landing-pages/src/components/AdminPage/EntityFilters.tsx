@@ -7,15 +7,6 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { useAdminViewContext } from './AdminViewContext';
 
-export type ExternalLinkFilters = {
-  url: string;
-  label: string;
-  internal: boolean;
-  public: boolean;
-  earlyAccess: boolean;
-  isInProduction: boolean;
-};
-
 export default function EntityFilters(): JSX.Element {
   const { filters, setFilters, setPage, emptyFilters } = useAdminViewContext();
 
