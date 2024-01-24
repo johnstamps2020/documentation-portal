@@ -47,7 +47,9 @@ export default function EditMultipleDiffTable({
                 </TableCell>
                 <TableCell sx={{ color: 'gray' }}>{`${oldValue}`}</TableCell>
                 <TableCell sx={{ color: isDifferent ? 'green' : 'black' }}>
-                  {`${newValue}`}
+                  {`${newValue}${
+                    key === 'uuid' ? ' (entry will get a new uuid)' : ''
+                  }`}
                 </TableCell>
               </TableRow>
             );
