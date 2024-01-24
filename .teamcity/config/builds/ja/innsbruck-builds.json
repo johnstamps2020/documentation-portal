@@ -144,7 +144,42 @@
 			"docId": "testingframeworksjaJPinstallinnsbruck",
 			"indexRedirect": true,
 			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "ISUnitTesting.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "is202310jaJPtesting",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "GT-Management.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "testingframeworksjaJPmgmtinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "GT-API.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "testingframeworksjaJPapiinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "GT-UI.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "testingframeworksjaJPuiinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
 		}
-
 	]
 }
