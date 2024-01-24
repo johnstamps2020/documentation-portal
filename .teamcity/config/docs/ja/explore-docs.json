@@ -1,0 +1,27 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "exploreusingjaJPrelease",
+      "title": "Explore",
+      "displayTitle": "Explore",
+      "url": "ja/cloud/explore/app",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "Explore" ],
+        "version": [ "latest" ],
+        "subject": [ "Features and functionality" ],
+        "release": [
+          "Innsbruck"
+        ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

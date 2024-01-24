@@ -180,6 +180,24 @@
 			"docId": "testingframeworksjaJPuiinnsbruck",
 			"indexRedirect": true,
 			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Cloud-Release.ditaval",
+			"root": "m_cloud-usingExplore.ditamap",
+			"srcId": "explorejaJPsrc",
+			"docId": "exploreusingjaJPrelease",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-EA-Release.ditaval",
+			"root": "b_data-studio.ditamap",
+			"srcId": "datastudiojaJPreleasesrc",
+			"docId": "datastudiojaJPrelease",
+			"indexRedirect": true,
+			"disabled": false
 		}
 	]
 }

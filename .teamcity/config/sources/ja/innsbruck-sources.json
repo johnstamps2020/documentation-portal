@@ -72,6 +72,18 @@
       "title": "IS 2023.10.0 Advanced Product Designer in PolicyCenter ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
       "branch": "release/ja-JP/pc/2023.10"
+    },
+    {
+      "id": "datastudiojaJPreleasesrc",
+      "title": "Data Studio ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-studio.git",
+      "branch": "release/ja-JP/latest"
+    },
+    {
+      "id": "explorejaJPsrc",
+      "title": "Explore ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "branch": "release/ja-JP/2024.01"
     }
   ]
 }
