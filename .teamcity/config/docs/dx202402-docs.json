@@ -1,0 +1,1122 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202402ceamapp",
+      "title": "CustomerEngage Account Management Application Guide",
+      "url": "cloud/dx/ce-am/202402/app",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceaminstall",
+      "title": "CustomerEngage Account Management Installation Guide",
+      "url": "cloud/dx/ce-am/202402/install",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceamdev",
+      "title": "CustomerEngage Account Management Development Guide",
+      "url": "cloud/dx/ce-am/202402/dev",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceamrefguides",
+      "title": "CustomerEngage Account Management Digital Services Reference Guides",
+      "url": "cloud/dx/ce-am/202402/ref",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceamrelnotes",
+      "title": "CustomerEngage Account Management Release Notes",
+      "url": "cloud/dx/ce-am/202402/relnotes",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceclaimsapp",
+      "title": "CustomerEngage Account Management for ClaimCenter Application Guide",
+      "url": "cloud/dx/ce-claims/202402/app",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceclaimsinstall",
+      "title": "CustomerEngage Account Management for ClaimCenter Installation Guide",
+      "url": "cloud/dx/ce-claims/202402/install",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceclaimsdev",
+      "title": "CustomerEngage Account Management for ClaimCenter Development Guide",
+      "url": "cloud/dx/ce-claims/202402/dev",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceclaimsrefguides",
+      "title": "CustomerEngage Account Management for ClaimCenter Digital Services Reference Guides",
+      "url": "cloud/dx/ce-claims/202402/ref",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceclaimsrelnotes",
+      "title": "CustomerEngage Account Management for ClaimCenter Release Notes",
+      "url": "cloud/dx/ce-claims/202402/relnotes",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceqbapp",
+      "title": "CustomerEngage Quote and Buy Application Guide",
+      "url": "cloud/dx/ce-qb/202402/app",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceqbinstall",
+      "title": "CustomerEngage Quote and Buy Installation Guide",
+      "url": "cloud/dx/ce-qb/202402/install",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceqbdev",
+      "title": "CustomerEngage Quote and Buy Development Guide",
+      "url": "cloud/dx/ce-qb/202402/dev",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceqbrefguides",
+      "title": "CustomerEngage Quote and Buy Digital Services Reference Guides",
+      "url": "cloud/dx/ce-qb/202402/ref",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402ceqbrelnotes",
+      "title": "CustomerEngage Quote and Buy Release Notes",
+      "url": "cloud/dx/ce-qb/202402/relnotes",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402peapp",
+      "title": "ProducerEngage Application Guide",
+      "url": "cloud/dx/pe/202402/app",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402peinstall",
+      "title": "ProducerEngage Installation Guide",
+      "url": "cloud/dx/pe/202402/install",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402pedev",
+      "title": "ProducerEngage Development Guide",
+      "url": "cloud/dx/pe/202402/dev",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402perefguides",
+      "title": "ProducerEngage Digital Services Reference Guides",
+      "url": "cloud/dx/pe/202402/ref",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402perelnotes",
+      "title": "ProducerEngage Release Notes",
+      "url": "cloud/dx/pe/202402/relnotes",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402peclaimsapp",
+      "title": "ProducerEngage for ClaimCenter Application Guide",
+      "url": "cloud/dx/pe-claims/202402/app",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402peclaimsinstall",
+      "title": "ProducerEngage for ClaimCenter Installation Guide",
+      "url": "cloud/dx/pe-claims/202402/install",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402peclaimsdev",
+      "title": "ProducerEngage for ClaimCenter Development Guide",
+      "url": "cloud/dx/pe-claims/202402/dev",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402peclaimsrefguides",
+      "title": "ProducerEngage for ClaimCenter Digital Services Reference Guides",
+      "url": "cloud/dx/pe-claims/202402/ref",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402peclaimsrelnotes",
+      "title": "ProducerEngage for ClaimCenter Release Notes",
+      "url": "cloud/dx/pe-claims/202402/relnotes",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402sreapp",
+      "title": "ServiceRepEngage Application Guide",
+      "url": "cloud/dx/sre/202402/app",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402sreinstall",
+      "title": "ServiceRepEngage Installation Guide",
+      "url": "cloud/dx/sre/202402/install",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402sredev",
+      "title": "ServiceRepEngage Development Guide",
+      "url": "cloud/dx/sre/202402/dev",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402srerefguides",
+      "title": "ServiceRepEngage Digital Services Reference Guides",
+      "url": "cloud/dx/sre/202402/ref",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402srerelnotes",
+      "title": "ServiceRepEngage Release Notes",
+      "url": "cloud/dx/sre/202402/relnotes",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402veapp",
+      "title": "VendorEngage Application Guide",
+      "url": "cloud/dx/ve/202402/app",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402veinstall",
+      "title": "VendorEngage Installation Guide",
+      "url": "cloud/dx/ve/202402/install",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402vedev",
+      "title": "VendorEngage Development Guide",
+      "url": "cloud/dx/ve/202402/dev",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402verefguides",
+      "title": "VendorEngage Digital Services Reference Guides",
+      "url": "cloud/dx/ve/202402/ref",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402verelnotes",
+      "title": "VendorEngage Release Notes",
+      "url": "cloud/dx/ve/202402/relnotes",
+      "metadata": {
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxjsdocs202402",
+      "title": "Digital Frontend API Documentation",
+      "url": "dx/js-docs/202402",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Integration"
+        ],
+        "language": "en"
+      },
+      "displayOnLandingPages": false,
+      "public": false,
+      "internal": false,
+      "indexForSearch": false,
+      "environments": [
+        "staging"
+      ],
+      "earlyAccess": false
+    }
+  ]
+}

@@ -46,7 +46,7 @@ type FeedbackRequestBody = {
     Product: string;
     Version: string;
     Platform: string;
-    Category: string;
+    Subject: string;
     URL: string;
     'Feedback type': 'Kudos' | 'Critique';
     Comment: string;
@@ -98,7 +98,7 @@ export default function FeedbackDialog({
           Product: searchMeta?.product?.join(', ') || '',
           Version: searchMeta?.version?.join(', ') || '',
           Platform: searchMeta?.platform?.join(', ') || '',
-          Category: 'Best practices',
+          Subject: searchMeta?.subject?.join(', ') || '',
           URL: url,
           'Feedback type': positive ? 'Kudos' : 'Critique',
           Comment: comment,
