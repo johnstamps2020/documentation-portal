@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import DeleteMultipleButton from './DeleteMultipleButton';
-import EditMultipleButton from './EditMultipleButton';
+import EditMultipleButton from './EditMultiple/EditMultipleButton';
 import SelectAllCheckbox from './SelectAllCheckbox';
 import ViewSwitcher from './ViewSwitcher';
-import DuplicateMultipleButton from './DuplicateMultipleButton';
+import DuplicateMultipleButton from './EditMultiple/DuplicateMultipleButton';
 
 export default function ActionBar() {
   return (

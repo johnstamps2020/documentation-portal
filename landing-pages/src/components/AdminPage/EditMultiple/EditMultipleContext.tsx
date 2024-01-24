@@ -9,7 +9,7 @@ import {
   RegexField,
 } from './editMultipleTypes';
 import { Entity } from '../EntityListWithFilters';
-import { MultipleOperationMode } from '../MultipleButton';
+import { MultipleOperationMode } from './MultipleButton';
 
 function getEditableFields(entities: Entity[]): BatchFormField[] {
   return Object.entries(entities[0])

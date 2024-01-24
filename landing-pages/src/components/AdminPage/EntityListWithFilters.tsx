@@ -8,7 +8,7 @@ import EntityCard from './EntityCard';
 import EntityFilters from './EntityFilters';
 import EntityListCount from './EntityListCount';
 import EntityListPagination from './EntityListPagination';
-import { MultipleOperationMode } from './MultipleButton';
+import { MultipleOperationMode } from './EditMultiple/MultipleButton';
 
 export type Entity = {
   [x: string]: string | boolean | any;

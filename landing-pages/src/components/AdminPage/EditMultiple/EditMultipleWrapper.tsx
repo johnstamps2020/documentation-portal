@@ -1,4 +1,4 @@
-import { MultipleOperationMode } from '../MultipleButton';
+import { MultipleOperationMode } from './MultipleButton';
 import { EditMultipleContextProvider } from './EditMultipleContext';
 import EditMultipleForm from './EditMultipleForm';
 

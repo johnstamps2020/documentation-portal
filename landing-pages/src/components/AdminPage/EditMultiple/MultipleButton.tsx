@@ -2,9 +2,9 @@ import Button from '@mui/material/Button';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material/SvgIcon';
 import { useState } from 'react';
-import AdminDialog from './AdminDialog';
-import { useAdminViewContext } from './AdminViewContext';
-import EditMultipleWrapper from './EditMultiple/EditMultipleWrapper';
+import AdminDialog from '../AdminDialog';
+import { useAdminViewContext } from '../AdminViewContext';
+import EditMultipleWrapper from './EditMultipleWrapper';
 
 export type MultipleOperationMode = 'Edit' | 'Duplicate';
 

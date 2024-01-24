@@ -3,7 +3,7 @@ import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect } from 'react';
 import AdminFormWrapper from '../AdminFormWrapper';
 import { useAdminViewContext } from '../AdminViewContext';
-import { MultipleOperationMode } from '../MultipleButton';
+import { MultipleOperationMode } from './MultipleButton';
 import EditMultipleChangeList from './EditMultipleChangeList';
 import { useEditMultipleContext } from './EditMultipleContext';
 import EditMultipleFields from './EditMultipleFields';

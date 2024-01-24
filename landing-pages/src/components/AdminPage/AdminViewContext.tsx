@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { Entity } from './EntityListWithFilters';
-import { MultipleOperationMode } from './MultipleButton';
+import { MultipleOperationMode } from './EditMultiple/MultipleButton';
 
 interface AdminViewInterface {
   listView: boolean;
