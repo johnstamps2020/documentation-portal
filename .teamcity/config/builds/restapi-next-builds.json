@@ -4,7 +4,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "ApplicationEventsForDevelopers.ditamap",
+      "root": "AppEventsForDevelopers.ditamap",
       "indexRedirect": true,
       "srcId": "restapinextsrc",
       "docId": "appeventsdevnext",
