@@ -85,6 +85,7 @@ router.get('/docMetadata/:docId', async function (req, res) {
     product: splitLegacyValueByCommaAndReturnUnique(body.docProducts),
     version: splitLegacyValueByCommaAndReturnUnique(body.docVersions),
     release: splitLegacyValueByCommaAndReturnUnique(body.docReleases),
+    subject: splitLegacyValueByCommaAndReturnUnique(body.docSubjects),
     language: body.docLanguage,
   };
 
