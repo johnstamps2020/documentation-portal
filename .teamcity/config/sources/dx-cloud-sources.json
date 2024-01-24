@@ -2,6 +2,18 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "dx202402src",
+      "title": "Digital 2024.02",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
+      "branch": "release/2024.02"
+    },
+    {
+      "id": "dxjsdocs202402src",
+      "title": "Digital Frontend API 2024.02",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-extras.git",
+      "branch": "release/2024.02"
+    },
+    {
       "id": "dx202310src",
       "title": "Digital 2023.10",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
