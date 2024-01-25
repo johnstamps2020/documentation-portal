@@ -30,6 +30,18 @@
       "title": "Ski Release What's New - Innsbruck de",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
       "branch": "release/de-DE/innsbruck"
+    },
+    {
+      "id": "datastudiodeDEreleasesrc",
+      "title": "Data Studio de",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-studio.git",
+      "branch": "release/de-DE/latest"
+    },
+    {
+      "id": "exploredeDEsrc",
+      "title": "Explore de",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "branch": "release/de-DE/2024.01"
     }
   ]
 }

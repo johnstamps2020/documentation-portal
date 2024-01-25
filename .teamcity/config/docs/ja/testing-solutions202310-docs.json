@@ -34,6 +34,106 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksjaJPinstallinnsbruck",
+      "title": "Guidewire Testing Framework Installation ja",
+      "displayTitle": "Testing Framework インストールガイド",
+      "url": "ja/cloud/testing/202310/install",
+      "metadata": {
+        "product": [ "BillingCenter", "ClaimCenter", "PolicyCenter" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Installation", "Testing" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "is202310jaJPtesting",
+      "title": "InsuranceSuite Unit Testing ja",
+      "displayTitle": "InsuranceSuite ユニットテスト",
+      "url": "ja/cloud/testing/202310/isunittesting",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "BillingCenter", "ClaimCenter", "PolicyCenter" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Development", "Testing" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksjaJPmgmtinnsbruck",
+      "title": "Test Management ja",
+      "displayTitle": "Test Management",
+      "url": "ja/cloud/testing/202310/mgmt",
+      "metadata": {
+        "product": [ "BillingCenter", "ClaimCenter", "PolicyCenter" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Development", "Testing" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksjaJPapiinnsbruck",
+      "title": "API Testing",
+      "displayTitle": "API テスト",
+      "url": "ja/cloud/testing/202310/api",
+      "metadata": {
+        "product": [ "BillingCenter", "ClaimCenter", "PolicyCenter" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Development", "Testing" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksjaJPuiinnsbruck",
+      "title": "User Interface Testing",
+      "displayTitle": "UI テスト",
+      "url": "ja/cloud/testing/202310/ui",
+      "metadata": {
+        "product": [ "BillingCenter", "ClaimCenter", "PolicyCenter" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Development", "Testing" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

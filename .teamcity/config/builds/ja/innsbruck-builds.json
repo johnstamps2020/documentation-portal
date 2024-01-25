@@ -126,6 +126,78 @@
 			"docId": "is202310jaJPintegoverview",
 			"indexRedirect": true,
 			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Cloud-Release.ditaval",
+			"root": "AdvancedProductDesigner.ditamap",
+			"srcId": "ispc202310jaJPapdsrc",
+			"docId": "ispc202310jaJPapd",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "GT-Framework-Installation.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "testingframeworksjaJPinstallinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "ISUnitTesting.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "is202310jaJPtesting",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "GT-Management.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "testingframeworksjaJPmgmtinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "GT-API.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "testingframeworksjaJPapiinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "GT-UI.ditamap",
+			"srcId": "testingframeworks202310jaJPsrc",
+			"docId": "testingframeworksjaJPuiinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Cloud-Release.ditaval",
+			"root": "m_cloud-usingExplore.ditamap",
+			"srcId": "explorejaJPsrc",
+			"docId": "exploreusingjaJPrelease",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-EA-Release.ditaval",
+			"root": "b_data-studio.ditamap",
+			"srcId": "datastudiojaJPreleasesrc",
+			"docId": "datastudiojaJPrelease",
+			"indexRedirect": true,
+			"disabled": false
 		}
 	]
 }

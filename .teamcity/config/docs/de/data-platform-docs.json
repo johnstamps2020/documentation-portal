@@ -1,0 +1,25 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "datastudiodeDErelease",
+      "title": "Data Studio",
+      "displayTitle": "Data Studio",
+      "url": "de/cloud/datastudio/app",
+      "metadata": {
+        "product": [ "Data Platform" ],
+        "platform": [ "Cloud" ],
+        "version": [ "latest" ],
+        "subject": [ "Features and functionality" ],
+        "release": [ "Innsbruck" ],
+        "language": "de"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -153,6 +153,24 @@
 			"srcId": "is202310frFRsrc",
 			"docId": "ee202310frFRupdate",
 			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Cloud-Release.ditaval",
+			"root": "m_cloud-usingExplore.ditamap",
+			"srcId": "explorefrFRsrc",
+			"docId": "exploreusingfrFRrelease",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-EA-Release.ditaval",
+			"root": "b_data-studio.ditamap",
+			"srcId": "datastudiofrFRreleasesrc",
+			"docId": "datastudiofrFRrelease",
+			"indexRedirect": true,
+			"disabled": false
 		}
 	]
 }
