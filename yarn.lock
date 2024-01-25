@@ -2931,6 +2931,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@doctools/components@workspace:*, @doctools/components@workspace:components":
+  version: 0.0.0-use.local
+  resolution: "@doctools/components@workspace:components"
+  dependencies:
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
 "@doctools/gw-plugin-redoc@workspace:*, @doctools/gw-plugin-redoc@workspace:docusaurus/plugins/gw-plugin-redoc":
   version: 0.0.0-use.local
   resolution: "@doctools/gw-plugin-redoc@workspace:docusaurus/plugins/gw-plugin-redoc"
@@ -15542,6 +15550,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "landing-pages@workspace:landing-pages"
   dependencies:
+    "@doctools/components": "workspace:*"
     "@emotion/react": "npm:^11.11.0"
     "@emotion/styled": "npm:^11.11.0"
     "@fontsource/source-sans-pro": "npm:^4.5.11"
@@ -19846,8 +19855,8 @@ __metadata:
 
 "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage::locator=landing-pages%40workspace%3Alanding-pages":
   version: 0.0.0
-  resolution: "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage#../shims/react-native-sqlite-storage::hash=c6737d&locator=landing-pages%40workspace%3Alanding-pages"
-  checksum: 6b2c10a733f3539f19d1ce646ef1ffee2574172c4880e4b4fe4406b311c5d3e4c7d8aba4bee8037fcb3312a9f9e712320b7e69b093b614b9f33aed125bd71e98
+  resolution: "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage#../shims/react-native-sqlite-storage::hash=14ef99&locator=landing-pages%40workspace%3Alanding-pages"
+  checksum: ad1117bf779237f70331987a15467f34c31e4d9c844ddc6e717a3a71b787f51cc4b00462b1841c2536d15c3b07b0f92c7a81be3f0064b7be8d30b23ee90729ae
   languageName: node
   linkType: hard
 
@@ -22883,6 +22892,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^5.3.3":
+  version: 5.3.3
+  resolution: "typescript@npm:5.3.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 6e4e6a14a50c222b3d14d4ea2f729e79f972fa536ac1522b91202a9a65af3605c2928c4a790a4a50aa13694d461c479ba92cedaeb1e7b190aadaa4e4b96b8e18
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@npm%3A^4.4.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.8.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.9.5#optional!builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"
@@ -22900,6 +22919,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: f79cc2ba802c94c2b78dbb00d767a10adb67368ae764709737dc277273ec148aa4558033a03ce901406b35fddf4eac46dabc94a1e1d12d2587e2b9cfe5707b4a
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.3.3#optional!builtin<compat/typescript>":
+  version: 5.3.3
+  resolution: "typescript@patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: c93786fcc9a70718ba1e3819bab56064ead5817004d1b8186f8ca66165f3a2d0100fee91fa64c840dcd45f994ca5d615d8e1f566d39a7470fc1e014dbb4cf15d
   languageName: node
   linkType: hard
 

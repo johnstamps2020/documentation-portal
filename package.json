@@ -16,15 +16,18 @@
     "docusaurus/themes/gw-theme-classic",
     "html5",
     "scripts",
-    "ci/uploadLegacyConfigsToDb"
+    "ci/uploadLegacyConfigsToDb",
+    "components"
   ],
   "scripts": {
     "audit:all": "yarn npm audit --all --severity high",
+    "build:components": "NODE_ENV=development yarn workspace @doctools/components build",
     "build:doc-site": "yarn build:theme && yarn workspace doc-site build",
     "build:html5": "yarn build:theme && yarn workspace html5 build",
     "build:html5-offline": "yarn build:theme && yarn workspace html5 build-offline",
     "build:plugin": "yarn workspace @doctools/gw-plugin-redoc build",
     "build:theme": "yarn workspace @doctools/gw-theme-classic build",
+    "dev:components": "NODE_ENV=development yarn workspace @doctools/components dev",
     "dev:doc-site": "NODE_ENV=development yarn workspace doc-site dev",
     "dev:html5": "NODE_ENV=development yarn workspace html5 dev",
     "dev:html5-offline": "NODE_ENV=development yarn workspace html5 dev-offline",
@@ -36,7 +39,7 @@
     "landing-pages-dev": "yarn workspace landing-pages start",
     "server-dev": "yarn workspace server dev",
     "dev": "yarn server-build && concurrently --kill-others-on-fail \"yarn server-dev\" \"yarn landing-pages-dev\"",
-    "build": "yarn server-build && yarn landing-pages-build",
+    "build": "yarn build:components && yarn server-build && yarn landing-pages-build",
     "pages:test-site": "yarn build:plugin && yarn workspace test-site pages",
     "prettier": "prettier --write .",
     "prettier:landing-pages": "prettier landing-pages/src/pages/landing --write",
