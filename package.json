@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "audit:all": "yarn npm audit --all --severity high",
-    "build:components": "NODE_ENV=development yarn workspace @doctools/components build",
+    "build:components": "yarn workspace @doctools/components build",
     "build:doc-site": "yarn build:theme && yarn workspace doc-site build",
     "build:html5": "yarn build:theme && yarn workspace html5 build",
     "build:html5-offline": "yarn build:theme && yarn workspace html5 build-offline",
