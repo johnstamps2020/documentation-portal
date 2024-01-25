@@ -18,19 +18,20 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label:
+            'CustomerEngage Account Management for ClaimCenter リリースノート',
+          docId: 'dx202310jaJPceclaimsrelnotes',
+        },
+        {
+          label: 'EnterpriseEngage アップデートガイド',
+          docId: 'ee202310jaJPupdate',
+        },
+      ],
+    },
     {
-      label: 'CustomerEngage Account Management for ClaimCenter リリースノート', 
-      docId: 'dx202310jaJPceclaimsrelnotes', 
-    }, 
-    {
-      label: 'EnterpriseEngage アップデートガイド', 
-      docId: 'ee202310jaJPupdate', 
-    }, 
-],
-},
-{
       label: '2023.06 (Hakuba)',
       items: [
         {
@@ -63,4 +64,3 @@ items: [
 export default function Ceclaims() {
   return <CategoryLayout {...pageConfig} />;
 }
-

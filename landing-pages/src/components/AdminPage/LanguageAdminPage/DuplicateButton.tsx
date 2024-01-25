@@ -1,6 +1,6 @@
+import { Language } from '@doctools/server';
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useLanguageData } from 'hooks/useEntitiesData';
-import { Language } from '@doctools/server';
 import LanguageSettingsForm from './LanguageSettingsForm';
 
 type DuplicateButtonProps = {

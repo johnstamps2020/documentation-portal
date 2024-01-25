@@ -19,8 +19,8 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
-      label: 'Nouveautés d\'Innsbruck',
-      docId: 'whatsnewfrFRinnsbruck', 
+      label: "Nouveautés d'Innsbruck",
+      docId: 'whatsnewfrFRinnsbruck',
     },
     {
       label: 'Nouveautés de Hakuba',
@@ -56,7 +56,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
-      docId: 'isconfigupgradetoolsfrFR500', 
+      docId: 'isconfigupgradetoolsfrFR500',
     },
     {
       label: 'DataHub',

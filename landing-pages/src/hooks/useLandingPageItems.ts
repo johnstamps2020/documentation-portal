@@ -1,10 +1,13 @@
+import {
+  Doc,
+  ExternalLink,
+  Page,
+  PageItemsRequestBody,
+  PageItemsResponse,
+} from '@doctools/server';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import { PageError } from './usePageData';
-import { PageItemsRequestBody, PageItemsResponse } from '@doctools/server';
 import useSWR from 'swr';
-import { Doc } from '@doctools/server';
-import { Page } from '@doctools/server';
-import { ExternalLink } from '@doctools/server';
+import { PageError } from './usePageData';
 
 export type LandingPageItemData = {
   label?: string;

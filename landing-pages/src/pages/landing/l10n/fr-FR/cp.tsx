@@ -18,7 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.10 (Innsbruck)', 
+      label: '2023.10 (Innsbruck)',
       items: [
         {
           label: 'Notes de version de la plate-forme Guidewire Cloud',
@@ -32,4 +32,3 @@ const pageConfig: CategoryLayoutProps = {
 export default function Cp() {
   return <CategoryLayout {...pageConfig} />;
 }
-

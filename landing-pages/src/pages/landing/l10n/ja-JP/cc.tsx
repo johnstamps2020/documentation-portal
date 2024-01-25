@@ -36,19 +36,19 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: 'ClaimCenter リリースノート', 
-docId: 'iscc202310jaJPreleasenotes', 
-}, 
-{
-label: 'ClaimCenter アップデート', 
-docId: 'iscc202310jaJPupdate', 
-}, 
-],
-},
-{
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'ClaimCenter リリースノート',
+          docId: 'iscc202310jaJPreleasenotes',
+        },
+        {
+          label: 'ClaimCenter アップデート',
+          docId: 'iscc202310jaJPupdate',
+        },
+      ],
+    },
+    {
       label: '2023.06 (Hakuba)',
       items: [
         {
@@ -359,4 +359,3 @@ docId: 'iscc202310jaJPupdate',
 export default function Cc() {
   return <CategoryLayout {...pageConfig} />;
 }
-

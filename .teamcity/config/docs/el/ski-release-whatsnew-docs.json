@@ -7,9 +7,7 @@
       "title": "What's new in Innsbruck el",
       "displayTitle": "What's new in Innsbruck",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
+        "platform": ["Cloud"],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -18,19 +16,12 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": [
-          "2023.10" ],
-        "release": [
-          "Innsbruck"
-        ],
-        "subject": [
-          "Release notes"
-        ],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
         "language": "el"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "indexForSearch": true,
       "public": false,
       "internal": false,

@@ -1,12 +1,14 @@
-import { ExternalLink } from '@doctools/server';
-import { Language } from '@doctools/server';
-import { Platform } from '@doctools/server';
-import { Product } from '@doctools/server';
-import { Release } from '@doctools/server';
-import { Resource } from '@doctools/server';
-import { Source } from '@doctools/server';
-import { Subject } from '@doctools/server';
-import { Version } from '@doctools/server';
+import {
+  ExternalLink,
+  Language,
+  Platform,
+  Product,
+  Release,
+  Resource,
+  Source,
+  Subject,
+  Version,
+} from '@doctools/server';
 import useSWR from 'swr';
 
 export class Error {

@@ -1,3 +1,4 @@
+import { Language } from '@doctools/server';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -9,10 +10,9 @@ import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
+import { useLanguageData } from 'hooks/useEntitiesData';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { Language } from '@doctools/server';
-import { useLanguageData } from 'hooks/useEntitiesData';
 
 type NewLanguage = Omit<Language, 'uuid'>;
 

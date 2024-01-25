@@ -7,9 +7,7 @@
       "title": "What's new in Innsbruck pt",
       "displayTitle": "Novidades na Innsbruck",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
+        "platform": ["Cloud"],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -18,33 +16,25 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": [
-          "2023.06",
-          "2023.2"
-        ],
-        "release": [
-          "Innsbruck"
-        ],
-        "subject": [
-          "Release notes"
-        ],
+        "version": ["2023.06", "2023.2"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
         "language": "pt"
       },
-      "environments": [
-        "staging", "prod"
-      ],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false,
       "displayOnLandingPages": true
-    }, {
+    },
+    {
       "id": "whatsnewptBRhakuba",
       "url": "pt/cloud/hakuba/whatsnew",
       "title": "What's new in Hakuba pt",
       "displayTitle": "Novidades na Hakuba",
       "metadata": {
-        "platform": [ "Cloud" ],
+        "platform": ["Cloud"],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -53,12 +43,12 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": [ "2023.06", "2023.2" ],
-        "release": [ "Hakuba" ],
-        "subject": [ "Release notes" ],
+        "version": ["2023.06", "2023.2"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
         "language": "pt"
       },
-      "environments": [ "staging", "prod" ],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,

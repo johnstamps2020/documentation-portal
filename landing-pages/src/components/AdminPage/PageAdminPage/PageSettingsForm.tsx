@@ -1,3 +1,4 @@
+import { Page, SearchFilters } from '@doctools/server';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -10,10 +11,8 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
-import { Page } from '@doctools/server';
 import useSWRMutation from 'swr/mutation';
 import { usePageData } from '../../../hooks/usePageData';
-import { SearchFilters } from '@doctools/server';
 import { checkIfFileExists } from './PageValidationWarning';
 
 type NewPage = Omit<Page, 'uuid'> & { stringifiedSearchFilters?: string };

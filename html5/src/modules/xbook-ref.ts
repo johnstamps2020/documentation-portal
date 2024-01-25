@@ -116,7 +116,6 @@ async function getTopicUrl(url: string, contextid: string) {
         return id.file;
       }
       return;
-      
     }
   } catch (err) {
     console.error(err);

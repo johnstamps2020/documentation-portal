@@ -18,19 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: 'Versionshinweise', 
-docId: 'dx202310deDEceclaimsrelnotes', 
-}, 
-{
-  label: 'EnterpriseEngage - Update-Handbuch',
-  docId: 'ee202310deDEupdate',
-},
-],
-},
-{
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Versionshinweise',
+          docId: 'dx202310deDEceclaimsrelnotes',
+        },
+        {
+          label: 'EnterpriseEngage - Update-Handbuch',
+          docId: 'ee202310deDEupdate',
+        },
+      ],
+    },
+    {
       label: '2023.06',
       items: [
         {
@@ -106,4 +106,3 @@ docId: 'dx202310deDEceclaimsrelnotes',
 export default function Ceclaims() {
   return <CategoryLayout {...pageConfig} />;
 }
-
