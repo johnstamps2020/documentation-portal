@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { Version } from 'server/dist/model/entity/Version';
+import { Version } from '@doctools/server';
 import { useVersionData } from 'hooks/useEntitiesData';
 
 type NewVersion = Omit<Version, 'uuid'>;

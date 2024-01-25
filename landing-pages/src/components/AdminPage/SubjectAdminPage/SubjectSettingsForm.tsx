@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { Subject } from 'server/dist/model/entity/Subject';
+import { Subject } from '@doctools/server';
 import { useSubjectData } from 'hooks/useEntitiesData';
 
 type NewSubject = Omit<Subject, 'uuid'>;

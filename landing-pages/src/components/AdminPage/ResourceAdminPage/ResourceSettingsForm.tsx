@@ -12,14 +12,14 @@ import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
 import { useResourceData } from 'hooks/useEntitiesData';
-import { Resource } from 'server/dist/model/entity/Resource';
+import { Resource } from '@doctools/server';
 import { useSources } from 'hooks/useApi';
 import Collapse from '@mui/material/Collapse';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { Source } from 'server/dist/model/entity/Source';
+import { Source } from '@doctools/server';
 import SourceTextFields from './SourceTextFields';
 import FormHelperText from '@mui/material/FormHelperText';
 

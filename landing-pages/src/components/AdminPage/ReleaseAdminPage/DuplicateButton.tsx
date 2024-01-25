@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useReleaseData } from 'hooks/useEntitiesData';
-import { Release } from 'server/dist/model/entity/Release';
+import { Release } from '@doctools/server';
 import ReleaseSettingsForm from './ReleaseSettingsForm';
 
 type DuplicateButtonProps = {
@@ -8,8 +8,7 @@ type DuplicateButtonProps = {
 };
 
 export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
-  const { isError, isLoading, releaseData } =
-    useReleaseData(primaryKey);
+  const { isError, isLoading, releaseData } = useReleaseData(primaryKey);
 
   if (isError || isLoading || !releaseData) {
     return null;
@@ -27,18 +26,14 @@ export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
       leftFormTitle="Source release"
       leftFormComponent={
         <ReleaseSettingsForm
-          initialReleaseData={getReleaseDataWithoutUuid(
-            releaseData
-          )}
+          initialReleaseData={getReleaseDataWithoutUuid(releaseData)}
           disabled
         />
       }
       rightFormTitle="New release"
       rightFormComponent={
         <ReleaseSettingsForm
-          initialReleaseData={getReleaseDataWithoutUuid(
-            releaseData
-          )}
+          initialReleaseData={getReleaseDataWithoutUuid(releaseData)}
         />
       }
     />

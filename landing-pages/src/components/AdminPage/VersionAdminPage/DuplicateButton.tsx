@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useVersionData } from 'hooks/useEntitiesData';
-import { Version } from 'server/dist/model/entity/Version';
+import { Version } from '@doctools/server';
 import VersionSettingsForm from './VersionSettingsForm';
 
 type DuplicateButtonProps = {
@@ -8,8 +8,7 @@ type DuplicateButtonProps = {
 };
 
 export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
-  const { isError, isLoading, versionData } =
-    useVersionData(primaryKey);
+  const { isError, isLoading, versionData } = useVersionData(primaryKey);
 
   if (isError || isLoading || !versionData) {
     return null;
@@ -27,18 +26,14 @@ export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
       leftFormTitle="Source version"
       leftFormComponent={
         <VersionSettingsForm
-          initialVersionData={getVersionDataWithoutUuid(
-            versionData
-          )}
+          initialVersionData={getVersionDataWithoutUuid(versionData)}
           disabled
         />
       }
       rightFormTitle="New version"
       rightFormComponent={
         <VersionSettingsForm
-          initialVersionData={getVersionDataWithoutUuid(
-            versionData
-          )}
+          initialVersionData={getVersionDataWithoutUuid(versionData)}
         />
       }
     />

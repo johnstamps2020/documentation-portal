@@ -1,9 +1,10 @@
 {
-  "name": "landing-pages",
+  "name": "@doctools/landing-pages",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@doctools/components": "workspace:*",
+    "@doctools/server": "workspace:*",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@fontsource/source-sans-pro": "^4.5.11",
@@ -16,7 +17,6 @@
     "react-native-sqlite-storage": "file:../shims/react-native-sqlite-storage",
     "react-router-dom": "6.4.2",
     "react-scripts": "5.0.1",
-    "server": "workspace:*",
     "swr": "^2.0.3",
     "tinycolor2": "^1.6.0",
     "typescript": "^4.4.2",

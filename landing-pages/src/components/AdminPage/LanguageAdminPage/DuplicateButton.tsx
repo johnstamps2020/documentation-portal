@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useLanguageData } from 'hooks/useEntitiesData';
-import { Language } from 'server/dist/model/entity/Language';
+import { Language } from '@doctools/server';
 import LanguageSettingsForm from './LanguageSettingsForm';
 
 type DuplicateButtonProps = {
@@ -8,8 +8,7 @@ type DuplicateButtonProps = {
 };
 
 export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
-  const { isError, isLoading, languageData } =
-    useLanguageData(primaryKey);
+  const { isError, isLoading, languageData } = useLanguageData(primaryKey);
 
   if (isError || isLoading || !languageData) {
     return null;
@@ -27,18 +26,14 @@ export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
       leftFormTitle="Source language"
       leftFormComponent={
         <LanguageSettingsForm
-          initialLanguageData={getLanguageDataWithoutUuid(
-            languageData
-          )}
+          initialLanguageData={getLanguageDataWithoutUuid(languageData)}
           disabled
         />
       }
       rightFormTitle="New language"
       rightFormComponent={
         <LanguageSettingsForm
-          initialLanguageData={getLanguageDataWithoutUuid(
-            languageData
-          )}
+          initialLanguageData={getLanguageDataWithoutUuid(languageData)}
         />
       }
     />

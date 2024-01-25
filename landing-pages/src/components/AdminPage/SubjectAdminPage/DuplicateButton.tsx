@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useSubjectData } from 'hooks/useEntitiesData';
-import { Subject } from 'server/dist/model/entity/Subject';
+import { Subject } from '@doctools/server';
 import SubjectSettingsForm from './SubjectSettingsForm';
 
 type DuplicateButtonProps = {
@@ -8,8 +8,7 @@ type DuplicateButtonProps = {
 };
 
 export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
-  const { isError, isLoading, subjectData } =
-    useSubjectData(primaryKey);
+  const { isError, isLoading, subjectData } = useSubjectData(primaryKey);
 
   if (isError || isLoading || !subjectData) {
     return null;
@@ -27,18 +26,14 @@ export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
       leftFormTitle="Source subject"
       leftFormComponent={
         <SubjectSettingsForm
-          initialSubjectData={getSubjectDataWithoutUuid(
-            subjectData
-          )}
+          initialSubjectData={getSubjectDataWithoutUuid(subjectData)}
           disabled
         />
       }
       rightFormTitle="New subject"
       rightFormComponent={
         <SubjectSettingsForm
-          initialSubjectData={getSubjectDataWithoutUuid(
-            subjectData
-          )}
+          initialSubjectData={getSubjectDataWithoutUuid(subjectData)}
         />
       }
     />

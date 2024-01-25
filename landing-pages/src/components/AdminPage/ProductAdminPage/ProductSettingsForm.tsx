@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { Product } from 'server/dist/model/entity/Product';
+import { Product } from '@doctools/server';
 import { useProductData } from 'hooks/useEntitiesData';
 
 type NewProduct = Omit<Product, 'uuid'>;

@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack';
 import { mainHeight } from 'components/Layout/Layout';
 import { useSearchData } from 'hooks/useApi';
-import { ServerSearchFilter } from 'server/dist/types/serverSearch';
+import { ServerSearchFilter } from '@doctools/server';
 import FilterItemsSkeleton from '../FilterItemsSkeleton';
 import { ExpandCollapseProvider } from './ExpandCollapseContext';
 import SearchFilter from './SearchFilter';

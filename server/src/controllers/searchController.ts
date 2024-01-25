@@ -12,6 +12,7 @@ import { Version } from '../model/entity/Version';
 import {
   SearchData,
   SearchResultSource,
+  SearchType,
   ServerSearchFilter,
   ServerSearchFilterValue,
 } from '../types/serverSearch';
@@ -870,8 +871,6 @@ function prepareResultsToDisplay(
     };
   });
 }
-
-export type SearchType = 'keyword' | 'semantic' | 'hybrid';
 
 type SearchReqDictionary = {};
 type SearchReqBody = {};

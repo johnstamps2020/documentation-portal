@@ -1,5 +1,5 @@
-import { Page } from 'server/dist/model/entity/Page';
-import { RedirectResponseBody } from 'server/dist/types/apiResponse';
+import { Page } from '@doctools/server';
+import { RedirectResponseBody } from '@doctools/server';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 

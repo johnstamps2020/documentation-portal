@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
+import { ExternalLink } from '@doctools/server';
 import { useExternalLinkData } from 'hooks/useEntitiesData';
 
 type NewExternalLink = Omit<ExternalLink, 'uuid'>;

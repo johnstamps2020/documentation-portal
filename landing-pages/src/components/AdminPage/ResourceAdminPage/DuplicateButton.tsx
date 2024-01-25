@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useResourceData } from 'hooks/useEntitiesData';
-import { Resource } from 'server/dist/model/entity/Resource';
+import { Resource } from '@doctools/server';
 import ResourceSettingsForm from './ResourceSettingsForm';
 
 type DuplicateButtonProps = {

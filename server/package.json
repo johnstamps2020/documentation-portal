@@ -1,11 +1,11 @@
 {
-  "name": "server",
+  "name": "@doctools/server",
   "version": "3.0.0",
   "private": true,
   "engines": {
     "node": "18.18.2"
   },
-  "main": "./src/server.ts",
+  "main": "dist/index.js",
   "scripts": {
     "build": "rimraf -r dist && tsc && node scripts/copyNonTxFiles.mjs",
     "start": "node dist/server.js",

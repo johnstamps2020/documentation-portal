@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { Language } from 'server/dist/model/entity/Language';
+import { Language } from '@doctools/server';
 import { useLanguageData } from 'hooks/useEntitiesData';
 
 type NewLanguage = Omit<Language, 'uuid'>;
