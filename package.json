@@ -26,7 +26,7 @@
     "build:html5": "yarn build:components && yarn build:theme && yarn workspace html5 build",
     "build:html5-offline": "yarn build:components && yarn build:theme && yarn workspace html5 build-offline",
     "build:plugin": "yarn workspace @doctools/gw-plugin-redoc build",
-    "build:theme": "yarn workspace @doctools/gw-theme-classic build",
+    "build:theme": "yarn build:components && yarn workspace @doctools/gw-theme-classic build",
     "dev:components": "NODE_ENV=development yarn workspace @doctools/components dev",
     "dev:doc-site": "NODE_ENV=development yarn workspace doc-site dev",
     "dev:html5": "NODE_ENV=development yarn workspace html5 dev",
