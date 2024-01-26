@@ -62,10 +62,6 @@ export default async function (
       return resolve(__dirname, '../src/theme');
     },
 
-    async getDefaultCodeTranslationMessages() {
-      return readJsonFile(`${context.i18n.currentLocale}.json`);
-    },
-
     async contentLoaded({ actions, allContent }) {
       const defaultContent: any =
         allContent['docusaurus-plugin-content-docs'].default;
