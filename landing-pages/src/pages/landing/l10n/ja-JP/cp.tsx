@@ -37,12 +37,12 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'is202310jaJPintegoverview',
         },
         {
-          label: 'Explore', 
-          docId: 'exploreusingjaJPrelease', 
-        }, 
+          label: 'Explore',
+          docId: 'exploreusingjaJPrelease',
+        },
         {
-          label: 'Data Studio', 
-          docId: 'datastudiojaJPrelease', 
+          label: 'Data Studio',
+          docId: 'datastudiojaJPrelease',
         },
       ],
     },

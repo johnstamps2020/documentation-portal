@@ -25,12 +25,12 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'gwcpfrFRreleasenotes',
         },
         {
-          label: 'Explore', 
-          docId: 'exploreusingfrFRrelease', 
-        }, 
+          label: 'Explore',
+          docId: 'exploreusingfrFRrelease',
+        },
         {
-          label: 'Data Studio', 
-          docId: 'datastudiofrFRrelease', 
+          label: 'Data Studio',
+          docId: 'datastudiofrFRrelease',
         },
       ],
     },

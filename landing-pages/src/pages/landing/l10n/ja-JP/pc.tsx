@@ -23,7 +23,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Advanced Product Designer in PolicyCenter ガイド',
           docId: 'ispc202310jaJPapd',
-        }
+        },
       ],
     },
     {

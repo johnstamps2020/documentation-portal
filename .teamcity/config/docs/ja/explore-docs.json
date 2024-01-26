@@ -7,16 +7,14 @@
       "displayTitle": "Explore",
       "url": "ja/cloud/explore/app",
       "metadata": {
-        "platform": [ "Cloud" ],
-        "product": [ "Explore" ],
-        "version": [ "latest" ],
-        "subject": [ "Features and functionality" ],
-        "release": [
-          "Innsbruck"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "release": ["Innsbruck"],
         "language": "ja"
       },
-      "environments": [ "staging" ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
