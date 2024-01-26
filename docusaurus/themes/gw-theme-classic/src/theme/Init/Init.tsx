@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import { SearchMeta } from '@doctools/components';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import { useDocContext } from '@theme/DocContext';
+import { PluginData } from '@theme/Types';
 import mockUserData from '@theme/mockUserData';
-import { versionSelectorMockup } from './versionSelectorMockup';
-import { PluginData, SearchMeta } from '@theme/Types';
+import React, { useEffect } from 'react';
 import { PLUGIN_NAME } from '../../types/constants';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { versionSelectorMockup } from './versionSelectorMockup';
 
 export default function Init(props) {
   const {

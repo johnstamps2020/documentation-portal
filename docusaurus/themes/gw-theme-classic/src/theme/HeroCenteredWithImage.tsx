@@ -1,11 +1,11 @@
-import React from 'react';
+import { Translate } from '@doctools/components';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import TagList from '@theme/TagList';
 import ArrowLink from '@theme/ArrowLink';
-import Translate from '@theme/Translate';
+import TagList from '@theme/TagList';
+import React from 'react';
 
 type ResourceProps = {
   label: string;

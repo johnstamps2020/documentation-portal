@@ -1,8 +1,7 @@
 import '../stylesheets/modules/feedback.css';
 import React from 'react';
 import { render } from 'react-dom';
-import { SearchMeta } from '@theme/Types';
-import Feedback from '@theme/Feedback';
+import { SearchMeta, Feedback } from '@doctools/components';
 
 function getPossibleContacts() {
   const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
@@ -53,6 +52,9 @@ export function addFeedbackElements() {
   };
   const userInformation = window.userInformation || {
     preferred_username: 'unknown',
+    hasGuidewireEmail: false,
+    isLoggedIn: false,
+    name: 'unknown',
   };
 
   const possibleContacts = getPossibleContacts();

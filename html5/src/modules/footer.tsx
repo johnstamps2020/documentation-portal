@@ -1,4 +1,4 @@
-import Translate from '@theme/Translate';
+import { Translate } from '@doctools/components';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import '../stylesheets/modules/footer.css';

@@ -15,8 +15,8 @@ yarn dev:components
 
 To add a component, create the following files:
 
-- `src/ComponentName/ComponentName.tsx`
-- `src/ComponentName/index.ts`
+- `src/components/ComponentName/ComponentName.tsx`
+- `src/components/ComponentName/index.ts`
 
 The `ComponentName.tsx` file should contain the component itself.
 
@@ -40,7 +40,7 @@ export * from './ComponentName';
 ## Adding a component to the library
 
 For the component to be available in '@doctools/components', you need to add it
-to the `src/index.ts` file:
+to the `src/components/index.ts` file:
 
 ```ts
 export * from './ComponentName';

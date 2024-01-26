@@ -1,0 +1,131 @@
+{
+  "docHighlighter.label": {
+    "message": "Hervorheben aktivieren/deaktivieren",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
+  },
+  "anonymous.positive": {
+    "message": "Sie sind anonym,",
+    "description": "Tells the user their identity is not revealed to us"
+  },
+  "anonymous.shareEmail": {
+    "message": "klicken Sie hier, um uns Ihre E-Mail mitzuteilen",
+    "description": "The button which the user can click to reveal their email to us"
+  },
+  "anonymous.enterEmail": {
+    "message": "Geben Sie Ihre E-Mail Adresse ein,",
+    "description": "Asks the user to type in their email address"
+  },
+  "anonymous.becomeAnonymous": {
+    "message": "klicken Sie hier, um anonym zu bleiben"
+  },
+  "privacy.warning": {
+    "message": "Durch die Angabe Ihrer E-Mail-Adresse erklären Sie sich damit einverstanden, von Guidewire kontaktiert zu werden."
+  },
+  "privacy.link": {
+    "message": "Die Datenschutzrichtlinie von Guidewire finden Sie hier."
+  },
+  "rightWrong.positiveTitle": {
+    "message": "Ja"
+  },
+  "theme.rightWrong.negativeTitle": {
+    "message": "Nein"
+  },
+  "anonymous.youAreSharing": {
+    "message": "Sie teilen uns Ihre E-Mail mit,",
+    "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
+  },
+  "feedback.helpful": {
+    "message": "War diese Seite hilfreich?"
+  },
+  "feedback.thumbsUp": {
+    "message": "Diese Seite war hilfreich",
+    "description": "The description of the \"thumbs up\" icon which the user can click to share positive feedback"
+  },
+  "feedback.thumbsDown": {
+    "message": "Diese Seite könnte verbessert werden",
+    "description": "The description of the \"thumbs thumbs\" icon which the user can click to share constructive feedback"
+  },
+  "feedbackDialog.thanks": {
+    "message": "Vielen Dank!",
+    "description": "Appears ot thank the user for their feedback"
+  },
+  "feedbackDialog.followUp": {
+    "message": "Ein Mitglied unseres Dokumentationsteams wird Ihr Feedback prüfen. Wenn Sie Ihre E-Mail-Adresse angegeben haben, können wir uns mit Ihnen in Verbindung setzen, falls wir weitere Informationen benötigen.",
+    "description": "Explains how the support team will react to user feedback"
+  },
+  "feedbackDialog.anythingElse": {
+    "message": "Danke, wir haben Ihre Bewertung registriert. Haben Sie uns noch etwas zu sagen?",
+    "description": "Appears above the feedback form"
+  },
+  "feedbackDialog.comment": {
+    "message": "Ihr Kommentar"
+  },
+  "feedbackDialog.email": {
+    "message": "Ihre E-Mail"
+  },
+  "feedbackDialog.clearEmail": {
+    "message": "E-Mail löschen"
+  },
+  "feedbackDialog.validEmail": {
+    "message": "Geben Sie eine gültige E-Mail-Adresse an",
+    "description": "Appears under the email field asking the user to provide an email address which contains all the elements of an email address, such as the @ symbol and a domain"
+  },
+  "feedbackDialog.cancel": {
+    "message": "Abbrechen",
+    "description": "Cancel and do not send your feedback"
+  },
+  "feedbackDialog.submit": {
+    "message": "Absenden",
+    "description": "Send your feedback, submit your feedback to us"
+  },
+  "internal.employeesOnly": {
+    "message": "Dieser Inhalt ist nur für Guidewire-Mitarbeiter zugänglich"
+  },
+  "internal.info.toView": {
+    "message": "Um diese Seite anzuzeigen, müssen Sie sich mit Ihrem Guidewire-Mitarbeiterkonto anmelden. Wenn Sie weitere Hilfe benötigen, wenden Sie sich bitte an Ihren Guidewire-Vertreter."
+  },
+  "internal.label": {
+    "message": "Dieser Inhalt ist nur zur internen Verwendung und ist daher nur für Guidewire-Mitarbeiter zugänglich."
+  },
+  "loginButton.out": {
+    "message": "Abmelden"
+  },
+  "loginButton.in": {
+    "message": "Anmelden"
+  },
+  "transcriptDownloadLink.label": {
+    "message": "Transkript herunterladen"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Zum Hauptinhalt springen",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "gwSearchForm.placeholder": {
+    "message": "Suche",
+    "description": "Text which appears in the search box, placeholder"
+  },
+  "miniToc.heading": {
+    "message": "Auf dieser Seite",
+    "description": "Appears at the top of a list of links heading which the user can see on the page. Each item on the list is a link."
+  },
+  "collapsible.title": {
+    "message": "Erweitern",
+    "description": "Describes an accordion that contains \"more content\" or \"additional information\""
+  },
+  "footer.published": {
+    "message": "Veröffentlicht:",
+    "description": "Text preceding the date on which the page was published"
+  },
+  "heroCenteredWithImage.resources-heading": {
+    "message": "Resources",
+    "description": "The heading of the resources section"
+  },
+  "cardList.all-items-button": {
+    "message": "All",
+    "description": "The button which the user can click to see all the items in a list"
+  }
+}
