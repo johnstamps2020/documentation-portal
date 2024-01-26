@@ -4,7 +4,7 @@
   "description": "A collection of React components for Doctools",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc --build --clean",
+    "build": "tsc --build --verbose",
     "dev": "tsc --watch"
   },
   "devDependencies": {
