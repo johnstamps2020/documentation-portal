@@ -24,6 +24,14 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Notes de version de la plate-forme Guidewire Cloud',
           docId: 'gwcpfrFRreleasenotes',
         },
+        {
+          label: 'Explore', 
+          docId: 'exploreusingfrFRrelease', 
+        }, 
+        {
+          label: 'Data Studio', 
+          docId: 'datastudiofrFRrelease', 
+        },
       ],
     },
   ],

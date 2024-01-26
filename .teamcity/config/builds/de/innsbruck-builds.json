@@ -1,158 +1,158 @@
 {
-  "$schema": "../../config-schema.json",
-  "builds": [
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-MgSvcs.ditaval",
-      "root": "GWCP-ReleaseNotes.ditamap",
-      "srcId": "gwcpreleasenotesdeDEsrc",
-      "docId": "gwcpdeDEreleasenotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
-      "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202310deDEsrc",
-      "docId": "dx202310deDEceamrelnotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-claims-MgSvcs.ditaval",
-      "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202310deDEsrc",
-      "docId": "dx202310deDEceclaimsrelnotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
-      "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202310deDEsrc",
-      "docId": "dx202310deDEceqbrelnotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-claims-MgSvcs.ditaval",
-      "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202310deDEsrc",
-      "docId": "dx202310deDEperelnotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
-      "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202310deDEsrc",
-      "docId": "dx202310deDEpeclaimsrelnotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
-      "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202310deDEsrc",
-      "docId": "dx202310deDEsrerelnotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-MgSvcs.ditaval",
-      "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202310deDEsrc",
-      "docId": "dx202310deDEverelnotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
-      "root": "ReleaseNotes.ditamap",
-      "srcId": "is202310deDEsrc",
-      "docId": "isbc202310deDEreleasenotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
-      "root": "UpdateGuide.ditamap",
-      "srcId": "is202310deDEsrc",
-      "docId": "isbc202310deDEupdate",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "ReleaseNotes.ditamap",
-      "srcId": "is202310deDEsrc",
-      "docId": "iscc202310deDEreleasenotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "UpdateGuide.ditamap",
-      "srcId": "is202310deDEsrc",
-      "docId": "iscc202310deDEupdate",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "ReleaseNotes.ditamap",
-      "srcId": "is202310deDEsrc",
-      "docId": "ispc202310deDEreleasenotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "UpdateGuide.ditamap",
-      "srcId": "is202310deDEsrc",
-      "docId": "ispc202310deDEupdate",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
-      "srcId": "isconfigupgradetools500deDEsrc",
-      "docId": "isconfigupgradetoolsdeDE500",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "whatsnew.ditamap",
-      "srcId": "whatsnewinnsbruckdeDEsrc",
-      "docId": "whatsnewdeDEinnsbruck",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "EE-Cloud-Release.ditaval",
-      "root": "UpdateGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "is202310deDEsrc",
-      "docId": "ee202310deDEupdate",
-      "disabled": false
-    }
-  ]
+	"$schema": "../../config-schema.json",
+	"builds": [
+		{
+			"buildType": "dita",
+			"filter": "Digital-ve-MgSvcs.ditaval",
+			"root": "GWCP-ReleaseNotes.ditamap",
+			"srcId": "gwcpreleasenotesdeDEsrc",
+			"docId": "gwcpdeDEreleasenotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-ce-am-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310deDEsrc",
+			"docId": "dx202310deDEceamrelnotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-ce-claims-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310deDEsrc",
+			"docId": "dx202310deDEceclaimsrelnotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-ce-qb-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310deDEsrc",
+			"docId": "dx202310deDEceqbrelnotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-pe-claims-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310deDEsrc",
+			"docId": "dx202310deDEperelnotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-pe-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310deDEsrc",
+			"docId": "dx202310deDEpeclaimsrelnotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-sre-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310deDEsrc",
+			"docId": "dx202310deDEsrerelnotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "Digital-ve-MgSvcs.ditaval",
+			"root": "cloud_digital-release-notes.ditamap",
+			"srcId": "dx202310deDEsrc",
+			"docId": "dx202310deDEverelnotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-BC-Cloud-Release.ditaval",
+			"root": "ReleaseNotes.ditamap",
+			"srcId": "is202310deDEsrc",
+			"docId": "isbc202310deDEreleasenotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-BC-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"srcId": "is202310deDEsrc",
+			"docId": "isbc202310deDEupdate",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-CC-Cloud-Release.ditaval",
+			"root": "ReleaseNotes.ditamap",
+			"srcId": "is202310deDEsrc",
+			"docId": "iscc202310deDEreleasenotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-CC-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"srcId": "is202310deDEsrc",
+			"docId": "iscc202310deDEupdate",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-PC-Cloud-Release.ditaval",
+			"root": "ReleaseNotes.ditamap",
+			"srcId": "is202310deDEsrc",
+			"docId": "ispc202310deDEreleasenotes",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "IS-PC-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"srcId": "is202310deDEsrc",
+			"docId": "ispc202310deDEupdate",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
+			"srcId": "isconfigupgradetools500deDEsrc",
+			"docId": "isconfigupgradetoolsdeDE500",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "GW-Generic-Release.ditaval",
+			"root": "whatsnew.ditamap",
+			"srcId": "whatsnewinnsbruckdeDEsrc",
+			"docId": "whatsnewdeDEinnsbruck",
+			"indexRedirect": true,
+			"disabled": false
+		},
+		{
+			"buildType": "dita",
+			"filter": "EE-Cloud-Release.ditaval",
+			"root": "UpdateGuide.ditamap",
+			"indexRedirect": true,
+			"srcId": "is202310deDEsrc",
+			"docId": "ee202310deDEupdate",
+			"disabled": false
+		}
+	]
 }

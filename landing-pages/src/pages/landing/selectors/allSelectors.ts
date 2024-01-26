@@ -232,6 +232,10 @@ export const allSelectors = {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/dx-ref-apps',
     },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/dx-ref-apps',
+    },
   ],
   sfc2c6edff3f08e7f4db564282c6812c7: [
     {

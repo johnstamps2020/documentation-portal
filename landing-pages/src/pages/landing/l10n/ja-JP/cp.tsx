@@ -36,6 +36,14 @@ const pageConfig: CategoryLayoutProps = {
           label: 'クラウド連携の概要',
           docId: 'is202310jaJPintegoverview',
         },
+        {
+          label: 'Explore', 
+          docId: 'exploreusingjaJPrelease', 
+        }, 
+        {
+          label: 'Data Studio', 
+          docId: 'datastudiojaJPrelease', 
+        },
       ],
     },
     {

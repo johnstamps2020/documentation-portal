@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2023.10 Innsbruck',
+      items: [
+        {
+          label: 'Advanced Product Designer in PolicyCenter ガイド',
+          docId: 'ispc202310jaJPapd',
+        }
+      ],
+    },
+    {
       label: '',
       items: [
         {

@@ -49,7 +49,7 @@ export function addFeedbackElements() {
     platform: window.docPlatform?.split(',') || ['unknown'],
     version: window.docVersion?.split(',') || ['unknown'],
     release: ['unknown'],
-    subject: ['unknown'],
+    subject: window.docSubject?.split(',') || ['unknown'],
   };
   const userInformation = window.userInformation || {
     preferred_username: 'unknown',

@@ -21,10 +21,18 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.10 (Innsbruck)',
       items: [
         {
-          label: 'Guidewire Cloud Platform - Versionshinweise',
-          docId: 'gwcpdeDEreleasenotes',
+          label: 'Guidewire Cloud Platform - Versionshinweise', 
+          docId: 'gwcpdeDEreleasenotes', 
+        }, 
+        {
+          label: 'Explore', 
+          docId: 'exploreusingdeDErelease', 
+        }, 
+        {
+          label: 'Data Studio', 
+          docId: 'datastudiodeDErelease', 
         },
-      ],
+],
     },
   ],
 };
