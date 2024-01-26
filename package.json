@@ -22,7 +22,7 @@
   "scripts": {
     "audit:all": "yarn npm audit --all --severity high",
     "build:components": "yarn workspace @doctools/components build",
-    "build:doc-site": "yarn build:components && yarn build:theme && yarn workspace doc-site build",
+    "build:doc-site": "yarn build:theme && yarn workspace doc-site build",
     "build:html5": "yarn build:components && yarn build:theme && yarn workspace html5 build",
     "build:html5-offline": "yarn build:components && yarn build:theme && yarn workspace html5 build-offline",
     "build:plugin": "yarn build:components && yarn workspace @doctools/gw-plugin-redoc build",
