@@ -7,26 +7,14 @@
       "displayTitle": "リリースノート",
       "url": "ja/cloud/gwcprelnotes/latest",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Cloud Platform"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Innsbruck"
-        ],
-        "subject": [
-          "Release notes"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Innsbruck"],
+        "subject": ["Release notes"],
         "language": "ja"
       },
-      "environments": [
-        "staging", "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

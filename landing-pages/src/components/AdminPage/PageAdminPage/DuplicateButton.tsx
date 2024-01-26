@@ -1,7 +1,7 @@
+import { Page } from '@doctools/server';
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import PageSettingsForm from 'components/AdminPage/PageAdminPage/PageSettingsForm';
 import { usePageData } from 'hooks/usePageData';
-import { Page } from 'server/dist/model/entity/Page';
 
 type DuplicateButtonProps = {
   primaryKey: string;

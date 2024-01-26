@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { Release } from 'server/dist/model/entity/Release';
+import { Release } from '@doctools/server';
 import { useReleaseData } from 'hooks/useEntitiesData';
 
 type NewRelease = Omit<Release, 'uuid'>;
@@ -21,7 +21,7 @@ export const emptyRelease: NewRelease = {
   public: false,
   internal: false,
   earlyAccess: false,
-  isInProduction: false
+  isInProduction: false,
 };
 
 type ReleaseSettingsFormProps = {

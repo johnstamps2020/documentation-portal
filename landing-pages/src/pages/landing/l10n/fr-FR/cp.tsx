@@ -18,19 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.10 (Innsbruck)', 
+      label: '2023.10 (Innsbruck)',
       items: [
         {
           label: 'Notes de version de la plate-forme Guidewire Cloud',
           docId: 'gwcpfrFRreleasenotes',
         },
         {
-          label: 'Explore', 
-          docId: 'exploreusingfrFRrelease', 
-        }, 
+          label: 'Explore',
+          docId: 'exploreusingfrFRrelease',
+        },
         {
-          label: 'Data Studio', 
-          docId: 'datastudiofrFRrelease', 
+          label: 'Data Studio',
+          docId: 'datastudiofrFRrelease',
         },
       ],
     },
@@ -40,4 +40,3 @@ const pageConfig: CategoryLayoutProps = {
 export default function Cp() {
   return <CategoryLayout {...pageConfig} />;
 }
-

@@ -1,13 +1,13 @@
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import { PageError } from './usePageData';
 import {
+  Doc,
+  ExternalLink,
+  Page,
   PageItemsRequestBody,
   PageItemsResponse,
-} from 'server/dist/types/config';
+} from '@doctools/server';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import useSWR from 'swr';
-import { Doc } from 'server/dist/model/entity/Doc';
-import { Page } from 'server/dist/model/entity/Page';
-import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
+import { PageError } from './usePageData';
 
 export type LandingPageItemData = {
   label?: string;

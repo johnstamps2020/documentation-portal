@@ -1,13 +1,12 @@
 {
   "name": "scripts",
-  "packageManager": "yarn@3.2.4",
   "scripts": {
     "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts",
     "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts"
   },
   "devDependencies": {
+    "@doctools/landing-pages": "workspace:*",
     "@types/node": "^18.14.6",
-    "landing-pages": "workspace:*",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }

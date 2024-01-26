@@ -18,19 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: 'Notes sur la version', 
-docId: 'dx202310frFRperelnotes', 
-}, 
-{
-  label: 'Guide de mise à jour',
-  docId: 'ee202310frFRupdate',
-},
-],
-},
-{
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Notes sur la version',
+          docId: 'dx202310frFRperelnotes',
+        },
+        {
+          label: 'Guide de mise à jour',
+          docId: 'ee202310frFRupdate',
+        },
+      ],
+    },
+    {
       label: '2023.06',
       items: [
         {
@@ -150,4 +150,3 @@ docId: 'dx202310frFRperelnotes',
 export default function Pe() {
   return <CategoryLayout {...pageConfig} />;
 }
-

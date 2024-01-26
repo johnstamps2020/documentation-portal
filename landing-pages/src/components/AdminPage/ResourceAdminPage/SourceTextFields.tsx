@@ -1,6 +1,6 @@
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import { Source } from "server/dist/model/entity/Source";
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import { Source } from '@doctools/server';
 
 type SourceTextFieldsProps = {
   source: Source;
@@ -16,18 +16,8 @@ export default function SourceTextFields({ source }: SourceTextFieldsProps) {
         minWidth: '300px',
       }}
     >
-      <TextField
-        disabled
-        label="Source id"
-        value={source.id}
-        fullWidth
-      />
-      <TextField
-        disabled
-        label="Source name"
-        value={source.name}
-        fullWidth
-      />
+      <TextField disabled label="Source id" value={source.id} fullWidth />
+      <TextField disabled label="Source name" value={source.name} fullWidth />
       <TextField
         disabled
         label="Source gitUrl"

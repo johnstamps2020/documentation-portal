@@ -444,13 +444,13 @@
       "title": "Jutro Digital Platform 10.2",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/10.2.0"
-    },    
+    },
     {
       "id": "srcjutro1030",
       "title": "Jutro Digital Platform 10.3",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/10.3.0"
-    },  
+    },
     {
       "id": "srcjutroa11yapp",
       "title": "Jutro a11y app source",

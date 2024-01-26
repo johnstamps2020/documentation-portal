@@ -1,12 +1,14 @@
-import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
-import { Language } from 'server/dist/model/entity/Language';
-import { Platform } from 'server/dist/model/entity/Platform';
-import { Product } from 'server/dist/model/entity/Product';
-import { Release } from 'server/dist/model/entity/Release';
-import { Resource } from 'server/dist/model/entity/Resource';
-import { Source } from 'server/dist/model/entity/Source';
-import { Subject } from 'server/dist/model/entity/Subject';
-import { Version } from 'server/dist/model/entity/Version';
+import {
+  ExternalLink,
+  Language,
+  Platform,
+  Product,
+  Release,
+  Resource,
+  Source,
+  Subject,
+  Version,
+} from '@doctools/server';
 import useSWR from 'swr';
 
 export class Error {
@@ -203,7 +205,6 @@ export function useLanguageData(languageCode?: string) {
   };
 }
 
-
 const productGetter = async (productName: string) => {
   const response = await fetch(
     `/safeConfig/entity/Product?name=${productName}`
@@ -234,7 +235,6 @@ export function useProductData(productName?: string) {
   };
 }
 
-
 const platformGetter = async (platformName: string) => {
   const response = await fetch(
     `/safeConfig/entity/Platform?name=${platformName}`
@@ -264,7 +264,6 @@ export function usePlatformData(platformName?: string) {
     isError: error,
   };
 }
-
 
 const versionGetter = async (versionName: string) => {
   const response = await fetch(

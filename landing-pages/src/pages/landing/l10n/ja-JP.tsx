@@ -20,7 +20,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   items: [
     {
       label: 'Innsbruck (2023.10) の新機能',
-      docId: 'whatsnewjaJPinnsbruck', 
+      docId: 'whatsnewjaJPinnsbruck',
     },
     {
       label: 'Hakuba (2023.06) の新機能',

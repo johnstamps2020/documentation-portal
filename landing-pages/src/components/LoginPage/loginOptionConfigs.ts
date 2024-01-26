@@ -1,5 +1,5 @@
 import { ButtonProps } from '@mui/material/Button';
-import { OktaRegion } from 'server/dist/types/auth';
+import { OktaRegion } from '@doctools/server';
 
 export type LoginButtonConfig = {
   label?: string;

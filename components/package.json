@@ -1,0 +1,17 @@
+{
+  "name": "@doctools/components",
+  "version": "1.0.0",
+  "description": "A collection of React components for Doctools",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --build --clean",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}

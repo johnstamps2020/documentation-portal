@@ -18,35 +18,35 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: 'Testing Framework リリースノート', 
-docId: 'testingframeworksjaJPrninnsbruck',
-}, 
-{
-  label: 'Testing Framework インストールガイド', 
-  docId: 'testingframeworksjaJPinstallinnsbruck',
-  },
-  {
-  label:'InsuranceSuite ユニットテスト',
-  docId: 'is202310jaJPtesting',
-  }, 
-  {
-    label: 'Test Management',
-    docId: 'testingframeworksjaJPmgmtinnsbruck',
-  },
-  {
-    label: 'API テスト',
-    docId: 'testingframeworksjaJPapiinnsbruck',
-  },
-  {
-    label: 'UI テスト',
-    docId: 'testingframeworksjaJPuiinnsbruck',
-  },
-],
-},
-{
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Testing Framework リリースノート',
+          docId: 'testingframeworksjaJPrninnsbruck',
+        },
+        {
+          label: 'Testing Framework インストールガイド',
+          docId: 'testingframeworksjaJPinstallinnsbruck',
+        },
+        {
+          label: 'InsuranceSuite ユニットテスト',
+          docId: 'is202310jaJPtesting',
+        },
+        {
+          label: 'Test Management',
+          docId: 'testingframeworksjaJPmgmtinnsbruck',
+        },
+        {
+          label: 'API テスト',
+          docId: 'testingframeworksjaJPapiinnsbruck',
+        },
+        {
+          label: 'UI テスト',
+          docId: 'testingframeworksjaJPuiinnsbruck',
+        },
+      ],
+    },
+    {
       label: '2023.06 (Hakuba)',
       items: [
         {
@@ -91,4 +91,3 @@ docId: 'testingframeworksjaJPrninnsbruck',
 export default function Gtest() {
   return <CategoryLayout {...pageConfig} />;
 }
-

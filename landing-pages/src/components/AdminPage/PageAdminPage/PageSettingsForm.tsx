@@ -1,3 +1,4 @@
+import { Page, SearchFilters } from '@doctools/server';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -10,10 +11,8 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
-import { Page } from 'server/dist/model/entity/Page';
 import useSWRMutation from 'swr/mutation';
 import { usePageData } from '../../../hooks/usePageData';
-import { SearchFilters } from 'server/dist/types/config';
 import { checkIfFileExists } from './PageValidationWarning';
 
 type NewPage = Omit<Page, 'uuid'> & { stringifiedSearchFilters?: string };
@@ -269,7 +268,10 @@ export default function PageSettingsForm({
         color={fileExists === false ? 'warning' : 'primary'}
         onBlur={() =>
           setFileExists(
-            checkIfFileExists({ label: 'temporaryPage', path: tmpPageData.path })
+            checkIfFileExists({
+              label: 'temporaryPage',
+              path: tmpPageData.path,
+            })
           )
         }
         disabled={editingDisabled}

@@ -18,19 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: 'Versionshinweise für ClaimCenter', 
-docId: 'iscc202310deDEreleasenotes', 
-}, 
-{
-label: 'ClaimCenter - Update-Handbuch', 
-docId: 'iscc202310deDEupdate', 
-}, 
-],
-},
-{
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Versionshinweise für ClaimCenter',
+          docId: 'iscc202310deDEreleasenotes',
+        },
+        {
+          label: 'ClaimCenter - Update-Handbuch',
+          docId: 'iscc202310deDEupdate',
+        },
+      ],
+    },
+    {
       label: '2023.06',
       items: [
         {
@@ -193,4 +193,3 @@ docId: 'iscc202310deDEupdate',
 export default function Cc() {
   return <CategoryLayout {...pageConfig} />;
 }
-

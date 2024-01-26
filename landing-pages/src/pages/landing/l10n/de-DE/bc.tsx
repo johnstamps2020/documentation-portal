@@ -18,19 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: 'Versionshinweise für BillingCenter', 
-docId: 'isbc202310deDEreleasenotes', 
-}, 
-{
-label: 'BillingCenter - Update-Handbuch', 
-docId: 'isbc202310deDEupdate', 
-}, 
-],
-},
-{
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Versionshinweise für BillingCenter',
+          docId: 'isbc202310deDEreleasenotes',
+        },
+        {
+          label: 'BillingCenter - Update-Handbuch',
+          docId: 'isbc202310deDEupdate',
+        },
+      ],
+    },
+    {
       label: '2023.06',
       items: [
         {
@@ -189,4 +189,3 @@ docId: 'isbc202310deDEupdate',
 export default function Bc() {
   return <CategoryLayout {...pageConfig} />;
 }
-

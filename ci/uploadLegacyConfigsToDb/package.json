@@ -5,7 +5,6 @@
   "author": "Doc Tools <doctools@guidewire.com>",
   "license": "UNLICENSED",
   "private": true,
-  "packageManager": "yarn@3.4.1",
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.391.0"
   }

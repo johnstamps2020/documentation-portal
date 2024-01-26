@@ -66,3 +66,5 @@ export type ServerSearchError = {
   status: number;
   message: string;
 };
+
+export type SearchType = 'keyword' | 'semantic' | 'hybrid';

@@ -1,4 +1,4 @@
-import { ServerSearchFilter } from 'server/dist/types/serverSearch';
+import { ServerSearchFilter } from '@doctools/server';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
