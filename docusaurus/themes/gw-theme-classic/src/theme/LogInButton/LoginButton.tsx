@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDocContext } from '@theme/DocContext';
 import styles from './LoginButton.module.css';
-import Translate from '@theme/Translate';
+import { Translate } from '@doctools/components';
 import clsx from 'clsx';
 
 export default function LogInButton({ dark }) {

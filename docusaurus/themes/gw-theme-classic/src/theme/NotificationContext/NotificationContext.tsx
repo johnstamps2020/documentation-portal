@@ -1,6 +1,6 @@
 import { AlertProps } from '@mui/material';
 import React, { createContext, useContext, useState } from 'react';
-import Notification, { NotificationProps } from '@theme/Notification';
+import Notification, { NotificationProps } from '../../../../../../components/src/components/Notification';
 
 interface NotificationContextInterface {
   isOpen: boolean;

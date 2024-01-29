@@ -7,7 +7,7 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "build": "rimraf -r dist && tsc && node scripts/copyNonTxFiles.mjs",
+    "build": "rimraf -r dist && tsc && copy-non-tx-files",
     "start": "node dist/server.js",
     "db": "./start_docportal_db_container.sh",
     "dev": "NODE_ENV=development nodemon src/server.ts -e ts,tsx,js,ejs,css,html,jpg,png,svg",
@@ -57,6 +57,7 @@
     "winston": "^3.7.2"
   },
   "devDependencies": {
+    "@doctools/scripts": "workspace:*",
     "@types/harmon": "^1.4.1",
     "@types/jest": "^29.5.9",
     "@types/jsdom": "^20.0.0",

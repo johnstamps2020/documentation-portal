@@ -4,13 +4,19 @@
   "description": "A collection of React components for Doctools",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc --build --clean",
+    "build": "tsc --build --verbose && copy-non-tx-files",
     "dev": "tsc --watch"
   },
   "devDependencies": {
+    "@doctools/scripts": "workspace:*",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/source-sans-pro": "^4.5.11",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }

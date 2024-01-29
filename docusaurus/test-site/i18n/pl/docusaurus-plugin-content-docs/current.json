@@ -1,0 +1,270 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.mainSidebar.category.API Reference": {
+    "message": "API Reference",
+    "description": "The label for category API Reference in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.API Reference.link.generated-index.description": {
+    "message": "Generated API references to test the Redoc plugin",
+    "description": "The generated-index page description for category API Reference in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.APD API definitions": {
+    "message": "APD API definitions",
+    "description": "The label for category APD API definitions in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Account API": {
+    "message": "Account API",
+    "description": "The label for category Account API in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.CICD Manager API test": {
+    "message": "CICD Manager API test",
+    "description": "The label for category CICD Manager API test in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.build-schedules-controller": {
+    "message": "build-schedules-controller",
+    "description": "The label for category build-schedules-controller in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.ci-cd-configurations-controller": {
+    "message": "ci-cd-configurations-controller",
+    "description": "The label for category ci-cd-configurations-controller in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.config-parameters-controller": {
+    "message": "config-parameters-controller",
+    "description": "The label for category config-parameters-controller in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.project-controller": {
+    "message": "project-controller",
+    "description": "The label for category project-controller in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.swagger-config-resource": {
+    "message": "swagger-config-resource",
+    "description": "The label for category swagger-config-resource in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Example Job API with LOB": {
+    "message": "Example Job API with LOB",
+    "description": "The label for category Example Job API with LOB in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.InsuranceNow API": {
+    "message": "InsuranceNow API",
+    "description": "The label for category InsuranceNow API in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Addresses": {
+    "message": "Addresses",
+    "description": "The label for category Addresses in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Application Details": {
+    "message": "Application Details",
+    "description": "The label for category Application Details in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Applications": {
+    "message": "Applications",
+    "description": "The label for category Applications in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Attachment Templates": {
+    "message": "Attachment Templates",
+    "description": "The label for category Attachment Templates in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Bank Accounts": {
+    "message": "Bank Accounts",
+    "description": "The label for category Bank Accounts in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Bank Information": {
+    "message": "Bank Information",
+    "description": "The label for category Bank Information in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Billing": {
+    "message": "Billing",
+    "description": "The label for category Billing in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Claim Details": {
+    "message": "Claim Details",
+    "description": "The label for category Claim Details in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Claim Products": {
+    "message": "Claim Products",
+    "description": "The label for category Claim Products in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Claims": {
+    "message": "Claims",
+    "description": "The label for category Claims in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Client": {
+    "message": "Client",
+    "description": "The label for category Client in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.CodeRefs": {
+    "message": "CodeRefs",
+    "description": "The label for category CodeRefs in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Customer Claim Events": {
+    "message": "Customer Claim Events",
+    "description": "The label for category Customer Claim Events in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Customer Logins": {
+    "message": "Customer Logins",
+    "description": "The label for category Customer Logins in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Customer Policy Changes": {
+    "message": "Customer Policy Changes",
+    "description": "The label for category Customer Policy Changes in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Customer Registrations": {
+    "message": "Customer Registrations",
+    "description": "The label for category Customer Registrations in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Customers": {
+    "message": "Customers",
+    "description": "The label for category Customers in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Email Events": {
+    "message": "Email Events",
+    "description": "The label for category Email Events in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Full Applications": {
+    "message": "Full Applications",
+    "description": "The label for category Full Applications in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Full Policies": {
+    "message": "Full Policies",
+    "description": "The label for category Full Policies in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Full Quotes": {
+    "message": "Full Quotes",
+    "description": "The label for category Full Quotes in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Himarley Chat": {
+    "message": "Himarley Chat",
+    "description": "The label for category Himarley Chat in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.News Banner": {
+    "message": "News Banner",
+    "description": "The label for category News Banner in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Note Templates": {
+    "message": "Note Templates",
+    "description": "The label for category Note Templates in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.OpenWork": {
+    "message": "OpenWork",
+    "description": "The label for category OpenWork in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Policies": {
+    "message": "Policies",
+    "description": "The label for category Policies in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Policy Details": {
+    "message": "Policy Details",
+    "description": "The label for category Policy Details in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Addresses": {
+    "message": "Pre-release - Addresses",
+    "description": "The label for category Pre-release - Addresses in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Billing": {
+    "message": "Pre-release - Billing",
+    "description": "The label for category Pre-release - Billing in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Claim": {
+    "message": "Pre-release - Claim",
+    "description": "The label for category Pre-release - Claim in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Claim Products": {
+    "message": "Pre-release - Claim Products",
+    "description": "The label for category Pre-release - Claim Products in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Claims": {
+    "message": "Pre-release - Claims",
+    "description": "The label for category Pre-release - Claims in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Client": {
+    "message": "Pre-release - Client",
+    "description": "The label for category Pre-release - Client in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Consumer Claim Reporting": {
+    "message": "Pre-release - Consumer Claim Reporting",
+    "description": "The label for category Pre-release - Consumer Claim Reporting in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - DataReports": {
+    "message": "Pre-release - DataReports",
+    "description": "The label for category Pre-release - DataReports in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Full Claim Transactions": {
+    "message": "Pre-release - Full Claim Transactions",
+    "description": "The label for category Pre-release - Full Claim Transactions in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Full Provider": {
+    "message": "Pre-release - Full Provider",
+    "description": "The label for category Pre-release - Full Provider in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Interfaces": {
+    "message": "Pre-release - Interfaces",
+    "description": "The label for category Pre-release - Interfaces in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - ModelSpecification": {
+    "message": "Pre-release - ModelSpecification",
+    "description": "The label for category Pre-release - ModelSpecification in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - OneInc": {
+    "message": "Pre-release - OneInc",
+    "description": "The label for category Pre-release - OneInc in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Pre-release - Provider": {
+    "message": "Pre-release - Provider",
+    "description": "The label for category Pre-release - Provider in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Products": {
+    "message": "Products",
+    "description": "The label for category Products in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Providers": {
+    "message": "Providers",
+    "description": "The label for category Providers in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Quotes": {
+    "message": "Quotes",
+    "description": "The label for category Quotes in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Recently Viewed": {
+    "message": "Recently Viewed",
+    "description": "The label for category Recently Viewed in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Search": {
+    "message": "Search",
+    "description": "The label for category Search in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Sms Events": {
+    "message": "Sms Events",
+    "description": "The label for category Sms Events in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Statement Accounts": {
+    "message": "Statement Accounts",
+    "description": "The label for category Statement Accounts in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Tasks": {
+    "message": "Tasks",
+    "description": "The label for category Tasks in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Users": {
+    "message": "Users",
+    "description": "The label for category Users in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Vehicle Information": {
+    "message": "Vehicle Information",
+    "description": "The label for category Vehicle Information in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Webhooks API": {
+    "message": "Webhooks API",
+    "description": "The label for category Webhooks API in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Generated Guides": {
+    "message": "Generated Guides",
+    "description": "The label for category Generated Guides in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Generated Guides.link.generated-index.description": {
+    "message": "This page is meant ot test guides with various automation features and the internal component",
+    "description": "The generated-index page description for category Generated Guides in sidebar mainSidebar"
+  }
+}

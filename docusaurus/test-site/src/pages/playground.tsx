@@ -2,8 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Internal from '@theme/Internal';
 import { Right, Wrong, RightWrong } from '@theme/RightWrong';
-import Feedback from '@theme/Feedback';
-import { SearchMeta, UserInformation } from '@theme/Types';
+import { Feedback, SearchMeta, UserInformation } from '@doctools/components';
 
 const mockSearchMeta: SearchMeta = {
   docEarlyAccess: false,

@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "Guidewire Docusaurus Test Site",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Test Site Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Playground": {
+    "message": "Playground",
+    "description": "Navbar item with label Playground"
+  }
+}
