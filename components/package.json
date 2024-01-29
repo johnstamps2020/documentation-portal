@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A collection of React components for Doctools",
   "main": "dist/index.js",
+  "publishConfig": {
+    "registry": "https://artifactory.guidewire.com/api/npm/doctools-npm-dev/"
+  },
   "scripts": {
     "build": "tsc --build --verbose && copy-non-tx-files",
     "dev": "tsc --watch"

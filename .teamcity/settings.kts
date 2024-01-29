@@ -644,8 +644,12 @@ object GwBuildSteps {
                 npm config set unsafe-perm true
                 
                 yarn install
+                
+                yarn build:components
+                yarn publication:components --tolerate-republish
+                
                 yarn build:$packageHandle
-                yarn npm publish:$packageHandle
+                yarn publish:$packageHandle --tolerate-republish
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl

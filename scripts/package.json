@@ -1,5 +1,8 @@
 {
   "name": "@doctools/scripts",
+  "publishConfig": {
+    "registry": "https://artifactory.guidewire.com/api/npm/doctools-npm-dev/"
+  },
   "scripts": {
     "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts",
     "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts"
