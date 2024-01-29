@@ -645,8 +645,7 @@ object GwBuildSteps {
                 
                 yarn install
                 yarn build:$packageHandle
-                cd $packagePath
-                npm publish:$packageHandle
+                yarn npm publish:$packageHandle
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
