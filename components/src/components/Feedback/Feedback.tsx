@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
-import Notification, { NotificationProps } from '../Notification';
+import { Notification, NotificationProps } from '../Notification';
 import { FeedbackDialog, FeedbackDialogProps } from './FeedbackDialog';
 
 type FeedbackProps = {

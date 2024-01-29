@@ -646,10 +646,10 @@ object GwBuildSteps {
                 yarn install
                 
                 yarn build:components
-                yarn publication:components --tolerate-republish
+                yarn publish:components
                 
                 yarn build:$packageHandle
-                yarn publish:$packageHandle --tolerate-republish
+                yarn publish:$packageHandle
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl

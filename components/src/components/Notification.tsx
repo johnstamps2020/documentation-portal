@@ -10,7 +10,7 @@ export type NotificationProps = {
   onClose: SnackbarProps['onClose'];
 };
 
-export default function Notification({
+export function Notification({
   open,
   onClose,
   severity,
