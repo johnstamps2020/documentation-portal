@@ -42,6 +42,8 @@
     "build": "yarn build:components && yarn server-build && yarn landing-pages-build",
     "pages:test-site": "yarn build:plugin && yarn workspace test-site pages",
     "prettier": "prettier --write .",
+    "publish:plugin": "yarn workspace @doctools/gw-plugin-redoc npm publish",
+    "publish:theme": "yarn workspace @doctools/gw-theme-classic npm publish",
     "prettier:landing-pages": "prettier landing-pages/src/pages/landing --write",
     "test:server": "yarn workspace @doctools/server test",
     "test:landing-pages": "yarn workspace @doctools/landing-pages test",
