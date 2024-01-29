@@ -7,17 +7,27 @@ ARG TAG_VERSION
 ARG DEPT_CODE
 ARG POD_NAME
 
-COPY . .
+COPY .yarn .yarn
+COPY components components
+COPY .yarnrc.yml .yarnrc.yml
+COPY package.json package.json
+COPY yarn.lock yarn.lock
+COPY server server
+COPY landing-pages landing-pages
+COPY components components
+COPY shims shims
+COPY scripts scripts
+
 RUN yarn
 RUN yarn build
-RUN mkdir dist/static
+RUN mkdir server/dist/static
 
 FROM artifactory.guidewire.com/hub-docker-remote/node:18.18.2-alpine
 
 WORKDIR /usr/app
 
 COPY --from=app-builder /usr/app/node_modules/ node_modules/
-COPY --from=app-builder /usr/app/dist/ .
+COPY --from=app-builder /usr/app/server/dist/ .
 
 EXPOSE 8081
 LABEL "org.opencontainers.image.title"="docportal" \

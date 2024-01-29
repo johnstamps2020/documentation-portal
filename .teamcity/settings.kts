@@ -646,7 +646,7 @@ object GwBuildSteps {
                 yarn install
                 yarn build:$packageHandle
                 cd $packagePath
-                npm publish
+                npm publish:$packageHandle
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
@@ -3335,7 +3335,7 @@ object Admin {
     fun createBuildAndPublishDockerImageToDevEcrBuildType(
         tagVersion: String,
         devDockerImageUrl: String,
-        dockerfilePath: String,
+        dockerfileName: String,
         snapshotDependencies: List<BuildType>,
     ): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
@@ -3368,7 +3368,7 @@ object Admin {
                         set +x
                         docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
                         set -x
-                        docker build -t ${devDockerImageUrl}:${tagVersion} $dockerfilePath \
+                        docker build -f $dockerfileName -t ${devDockerImageUrl}:${tagVersion} . \
                         --build-arg NPM_AUTH_TOKEN \
                         --build-arg TAG_VERSION \
                         --build-arg DEPT_CODE \
@@ -4623,7 +4623,7 @@ object Admin {
             createBuildAndPublishDockerImageToDevEcrBuildType(
                 GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
                 GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
-                "%teamcity.build.checkoutDir%",
+                "Dockerfile",
                 listOf(runCheckmarxScan, TestReactLandingPagesBuildType)
             )
         private val publishDockerImageToProdEcrBuildType = createPublishDockerImageToProdEcrBuildType(
@@ -4955,7 +4955,7 @@ object Admin {
             createBuildAndPublishDockerImageToDevEcrBuildType(
                 GwDockerImageTags.DOC_PORTAL.tagValue,
                 GwDockerImages.DOC_PORTAL.imageUrl,
-                "%teamcity.build.checkoutDir%/${GwConfigParams.DOC_PORTAL_DIR.paramValue}",
+                "Dockerfile.server",
                 listOf(runCheckmarxScan, TestDocSiteServerApp)
             )
         private val publishDockerImageToProdEcrBuildType = createPublishDockerImageToProdEcrBuildType(

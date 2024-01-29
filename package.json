@@ -42,13 +42,15 @@
     "build": "yarn build:components && yarn server-build && yarn landing-pages-build",
     "pages:test-site": "yarn build:plugin && yarn workspace test-site pages",
     "prettier": "prettier --write .",
+    "publish:plugin": "yarn workspace @doctools/gw-plugin-redoc npm publish",
+    "publish:theme": "yarn workspace @doctools/gw-theme-classic npm publish",
     "prettier:landing-pages": "prettier landing-pages/src/pages/landing --write",
     "test:server": "yarn workspace @doctools/server test",
     "test:landing-pages": "yarn workspace @doctools/landing-pages test",
     "test": "yarn test:server && yarn test:landing-pages",
-    "scripts:migrate-pages": "yarn workspace scripts migrate-pages && yarn prettier:landing-pages",
-    "scripts:replace-url-with-doc-id": "yarn workspace scripts replace-url-with-doc-id && yarn prettier:landing-pages",
-    "scripts:get-root-breadcrumbs": "yarn workspace scripts get-root-breadcrumbs",
+    "scripts:migrate-pages": "yarn workspace @doctools/scripts migrate-pages && yarn prettier:landing-pages",
+    "scripts:replace-url-with-doc-id": "yarn workspace @doctools/scripts replace-url-with-doc-id && yarn prettier:landing-pages",
+    "scripts:get-root-breadcrumbs": "yarn workspace @doctools/scripts get-root-breadcrumbs",
     "profile:html5": "yarn build:theme && yarn workspace html5 profile"
   },
   "resolutions": {
