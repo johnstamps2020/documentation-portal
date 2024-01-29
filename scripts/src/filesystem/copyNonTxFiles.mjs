@@ -52,4 +52,6 @@ async function copyFilesConditionally(startingDir) {
   }
 }
 
-copyFilesConditionally(sourceDir);
+console.log('Copying files...');
+await copyFilesConditionally(sourceDir);
+console.log('Done!');
