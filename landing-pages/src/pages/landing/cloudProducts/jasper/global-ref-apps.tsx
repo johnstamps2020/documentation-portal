@@ -69,19 +69,19 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'ipjinnsbruckrn',
+          docId: 'ipjjasperrn',
         },
         {
           label: 'Application Guide',
-          docId: 'ipjinnsbruckapp',
+          docId: 'ipjjasperapp',
         },
         {
           label: 'Configuration',
-          docId: 'ipjinnsbruckconfig',
+          docId: 'ipjjasperconfig',
         },
         {
           label: 'Installation',
-          docId: 'ipjinnsbruckinstall',
+          docId: 'ipjjasperinstall',
         },
       ],
     },
