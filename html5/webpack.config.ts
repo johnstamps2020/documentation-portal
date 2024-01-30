@@ -1,6 +1,10 @@
-import { resolve } from 'path';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { PathData, DefinePlugin, Configuration } from 'webpack';
+import { resolve } from 'path';
+import { Configuration, DefinePlugin, PathData } from 'webpack';
+import TerserPlugin from 'terser-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
 
 const isOffline = process.env.BUILD_MODE === 'offline';
 
@@ -29,7 +33,7 @@ const postCss = {
 };
 
 const config: Configuration = {
-  mode: 'production',
+  mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
   entry: {
     html5help: {
       import: './src/html5help/html5.ts',
@@ -44,8 +48,17 @@ const config: Configuration = {
       filename: 'html5skip.js',
     },
   },
-  devtool: 'inline-source-map',
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+  },
+  devtool: 'eval-source-map',
   plugins: [
+    new CompressionPlugin(),
+    new CleanWebpackPlugin({
+      dangerouslyAllowCleanPatternsOutsideProject: true,
+      dry: true,
+    }),
     new MiniCssExtractPlugin({
       filename: (pathData: PathData) => {
         if (pathData.chunk?.name === 'html5Home') {

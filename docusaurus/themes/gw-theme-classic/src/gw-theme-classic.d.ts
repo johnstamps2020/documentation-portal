@@ -6,6 +6,7 @@
 // TODO we'll eventually migrate to TS `paths` option. This is not easy due to
 // our theme shadowing—we probably need the user to specify multiple theme paths
 // in their tsconfig.
+import React from 'react';
 
 declare module '@doctools/gw-theme-classic' {}
 

@@ -1,6 +1,6 @@
 import '../stylesheets/modules/feedback.css';
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { SearchMeta, Feedback } from '@doctools/components';
 
 function getPossibleContacts() {
@@ -59,7 +59,9 @@ export function addFeedbackElements() {
 
   const possibleContacts = getPossibleContacts();
 
-  render(
+  const feedbackRoot = createRoot(feedbackContainer);
+
+  feedbackRoot.render(
     <Feedback
       jiraApiUrl={jiraApiUrl}
       searchMeta={searchMeta}
@@ -68,7 +70,6 @@ export function addFeedbackElements() {
       url={url}
       userInformation={userInformation}
       possibleContacts={possibleContacts}
-    />,
-    feedbackContainer
+    />
   );
 }
