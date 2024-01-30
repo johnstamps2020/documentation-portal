@@ -79,6 +79,7 @@
     "Italiano",
     "justcopybuild",
     "libpq",
+    "Lightbox",
     "mbox",
     "minitoc",
     "multilineproducts",
@@ -118,7 +119,8 @@
     ".git/objects",
     ".vscode",
     ".vscode-insiders",
-    "docusaurus/themes/gw-theme-classic/src/i18n"
+    "docusaurus/themes/gw-theme-classic/src/i18n",
+    "webpack.config.ts"
   ],
   "cSpell.ignoreRegExpList": [
     "(docId|pagePath|url): [\"'][^\"']+[\"']",

@@ -1,10 +1,10 @@
 import React from 'react';
 import Lightbox from './components/LightBox/Lightbox';
+import { createRoot } from 'react-dom/client';
 
 export async function addLightbox() {
   const lightboxElements = document.querySelectorAll('img, table');
   if (lightboxElements) {
-    const { render } = await import('react-dom');
     lightboxElements.forEach((lightboxElem, i) => {
       const lightboxContainer = document.createElement('span');
       lightboxContainer.id = `lightbox${i}`;
@@ -18,13 +18,13 @@ export async function addLightbox() {
         );
       }
       const fullSizeElement = thumbnailDeepCopy.outerHTML;
-      render(
+      const lightboxRoot = createRoot(lightboxContainer);
+      lightboxRoot.render(
         <Lightbox
           thumbnail={thumbnail}
           elementOuterHtml={fullSizeElement}
           clickToEnlarge={isImage}
-        />,
-        lightboxContainer
+        />
       );
       lightboxElem.remove();
     });
