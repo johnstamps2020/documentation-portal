@@ -115,9 +115,9 @@ use the terminal, run this command in the root folder of the project:
    cd server
    ./start_docportal_db_container.sh
    ```
-1. Open a new terminal window and start the server by running `yarn server-dev`.
+1. Open a new terminal window and start the server by running `yarn dev:server`.
 1. Open a new terminal window and start the frontend by running
-   `yarn landing-pages-dev`.
+   `yarn dev:landing-pages`.
 
 ## Step 5: Import a database dump
 
