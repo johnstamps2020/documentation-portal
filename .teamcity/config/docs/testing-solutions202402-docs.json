@@ -2,37 +2,33 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "testingframeworksloadjasper",
-      "title": "Load and Performance Testing",
-      "url": "cloud/testing/202402/load",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Development", "Testing"],
-        "language": "en"
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "testingframeworksapijasper",
       "title": "API Testing",
       "url": "cloud/testing/202402/api",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Development", "Testing"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,14 +40,29 @@
       "title": "User Interface Testing",
       "url": "cloud/testing/202402/ui",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Development", "Testing"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -63,14 +74,29 @@
       "title": "Test Management",
       "url": "cloud/testing/202402/mgmt",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Development", "Testing"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,14 +108,29 @@
       "title": "Guidewire Testing Framework Release Notes",
       "url": "cloud/testing/202402/releasenotes",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Release notes", "Testing"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes",
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -101,14 +142,29 @@
       "title": "Guidewire Testing Framework Supported Software Components",
       "url": "cloud/testing/202402/matrix",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Development", "Testing"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -120,14 +176,29 @@
       "title": "Guidewire Testing Framework Installation",
       "url": "cloud/testing/202402/install",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Installation", "Testing"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Installation",
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -139,14 +210,29 @@
       "title": "InsuranceSuite Unit Testing",
       "url": "cloud/testing/202402/isunittesting",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Development", "Testing"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -158,14 +244,29 @@
       "title": "Overview of GT: Framework",
       "url": "cloud/testing/202402/overview",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Features and functionality", "Testing"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality",
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -177,14 +278,29 @@
       "title": "Testing Standards",
       "url": "cloud/testing/202402/testingstandards",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Best practices", "Testing"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Best practices",
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -196,14 +312,28 @@
       "title": "InsuranceSuite Testing",
       "url": "cloud/testing/202402/istesting",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Testing"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Testing"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
