@@ -23,23 +23,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'ipainnsbruckrn',
+          docId: 'ipajasperrn',
         },
         {
           label: 'Application Guide',
-          docId: 'ipainnsbruckapp',
+          docId: 'ipajasperapp',
         },
         {
           label: 'Configuration',
-          docId: 'ipainnsbruckconfig',
+          docId: 'ipajasperconfig',
         },
         {
           label: 'Installation',
-          docId: 'ipainnsbruckinstall',
+          docId: 'ipajasperinstall',
         },
         {
           label: 'Upgrade',
-          docId: 'ipainnsbruckupgrade',
+          docId: 'ipajasperupgrade',
         },
       ],
     },
