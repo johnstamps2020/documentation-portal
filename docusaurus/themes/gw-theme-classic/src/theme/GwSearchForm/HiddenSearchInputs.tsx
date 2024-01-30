@@ -17,7 +17,7 @@ export default function HiddenSearchInputs() {
   const isSelfManagedDoc = platform.includes('Self-managed');
   const releaseExists = release.length > 0;
   const versionExists = version.length > 0;
-  const hiddenInputs = { platform, product };
+  const hiddenInputs = { platform, product, version };
   if (isCloudDoc && releaseExists) {
     hiddenInputs['release'] = release;
   }
