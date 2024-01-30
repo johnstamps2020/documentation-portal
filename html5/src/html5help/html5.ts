@@ -42,15 +42,19 @@ docReady(async function () {
   addLogo();
   addFooterContents(isOffline);
   highlightCode();
-  !isOffline &&
-    setMetadata().then(() => {
-      addVersionSelector();
-      addAvatar();
-      addInternalBadge();
-      addEarlyAccessMark();
-      addSearchBox(isOffline);
-      addPageNavigators(isOffline);
-      addFeedbackElements();
-      addBookLinks();
-    });
+  !isOffline
+    ? setMetadata().then(() => {
+        addVersionSelector();
+        addAvatar();
+        addInternalBadge();
+        addEarlyAccessMark();
+        addSearchBox(isOffline);
+        addPageNavigators(isOffline);
+        addFeedbackElements();
+        addBookLinks();
+      })
+    : (() => {
+        addSearchBox(isOffline);
+        addPageNavigators(isOffline);
+      })();
 });
