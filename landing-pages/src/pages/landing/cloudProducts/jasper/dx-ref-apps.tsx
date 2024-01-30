@@ -19,15 +19,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: 'Jutro Design System 8.13.2',
+      label: 'Jutro Design System 10.0.3',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutro8132',
+          docId: 'jutro1000',
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybook8132',
+          docId: 'storybook1000',
         },
       ],
     },

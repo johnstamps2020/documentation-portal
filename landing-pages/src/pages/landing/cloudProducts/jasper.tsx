@@ -160,7 +160,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Jutro Digital Platform',
-          docId: 'jutro1000',
+          docId: 'jutro1030',
         },
         {
           label: 'Guidewire Testing',
