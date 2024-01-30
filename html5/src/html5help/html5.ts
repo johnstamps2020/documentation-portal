@@ -37,18 +37,20 @@ const isOffline = BUILD_MODE === 'offline';
 docReady(async function () {
   normalizeCode();
   addSkipNav();
-  await setUpSidebar();
-  !isOffline && (await setMetadata());
-  addInternalBadge();
-  addEarlyAccessMark();
-  addLogo();
-  addSearchBox(isOffline);
-  !isOffline && (await addVersionSelector());
-  !isOffline && (await addAvatar());
-  await addPageNavigators(isOffline);
-  addFooterContents(isOffline);
-  !isOffline && addFeedbackElements();
-  !isOffline && (await addBookLinks());
+  setUpSidebar();
   addLightbox();
+  addLogo();
+  addFooterContents(isOffline);
   highlightCode();
+  !isOffline &&
+    setMetadata().then(() => {
+      addVersionSelector();
+      addAvatar();
+      addInternalBadge();
+      addEarlyAccessMark();
+      addSearchBox(isOffline);
+      addPageNavigators(isOffline);
+      addFeedbackElements();
+      addBookLinks();
+    });
 });
