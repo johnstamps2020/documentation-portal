@@ -1,4 +1,4 @@
-import { translate } from '@theme/Translate';
+import { translate } from '@doctools/components';
 import React from 'react';
 
 type SearchInputProps = {

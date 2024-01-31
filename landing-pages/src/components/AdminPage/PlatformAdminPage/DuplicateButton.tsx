@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { usePlatformData } from 'hooks/useEntitiesData';
-import { Platform } from 'server/dist/model/entity/Platform';
+import { Platform } from '@doctools/server';
 import PlatformSettingsForm from './PlatformSettingsForm';
 
 type DuplicateButtonProps = {
@@ -8,8 +8,7 @@ type DuplicateButtonProps = {
 };
 
 export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
-  const { isError, isLoading, platformData } =
-    usePlatformData(primaryKey);
+  const { isError, isLoading, platformData } = usePlatformData(primaryKey);
 
   if (isError || isLoading || !platformData) {
     return null;
@@ -27,18 +26,14 @@ export default function DuplicateButton({ primaryKey }: DuplicateButtonProps) {
       leftFormTitle="Source platform"
       leftFormComponent={
         <PlatformSettingsForm
-          initialPlatformData={getPlatformDataWithoutUuid(
-            platformData
-          )}
+          initialPlatformData={getPlatformDataWithoutUuid(platformData)}
           disabled
         />
       }
       rightFormTitle="New platform"
       rightFormComponent={
         <PlatformSettingsForm
-          initialPlatformData={getPlatformDataWithoutUuid(
-            platformData
-          )}
+          initialPlatformData={getPlatformDataWithoutUuid(platformData)}
         />
       }
     />

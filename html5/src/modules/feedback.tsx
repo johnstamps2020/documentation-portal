@@ -1,8 +1,7 @@
 import '../stylesheets/modules/feedback.css';
 import React from 'react';
-import { render } from 'react-dom';
-import { SearchMeta } from '@theme/Types';
-import Feedback from '@theme/Feedback';
+import { createRoot } from 'react-dom/client';
+import { SearchMeta, Feedback } from '@doctools/components';
 
 function getPossibleContacts() {
   const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
@@ -53,11 +52,16 @@ export function addFeedbackElements() {
   };
   const userInformation = window.userInformation || {
     preferred_username: 'unknown',
+    hasGuidewireEmail: false,
+    isLoggedIn: false,
+    name: 'unknown',
   };
 
   const possibleContacts = getPossibleContacts();
 
-  render(
+  const feedbackRoot = createRoot(feedbackContainer);
+
+  feedbackRoot.render(
     <Feedback
       jiraApiUrl={jiraApiUrl}
       searchMeta={searchMeta}
@@ -66,7 +70,6 @@ export function addFeedbackElements() {
       url={url}
       userInformation={userInformation}
       possibleContacts={possibleContacts}
-    />,
-    feedbackContainer
+    />
   );
 }

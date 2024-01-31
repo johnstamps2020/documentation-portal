@@ -1,13 +1,18 @@
 {
-  "name": "scripts",
-  "packageManager": "yarn@3.2.4",
+  "name": "@doctools/scripts",
+  "publishConfig": {
+    "registry": "https://artifactory.guidewire.com/api/npm/doctools-npm-dev/"
+  },
   "scripts": {
     "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts",
     "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts"
   },
+  "bin": {
+    "copy-non-tx-files": "src/filesystem/copyNonTxFiles.mjs"
+  },
   "devDependencies": {
+    "@doctools/landing-pages": "workspace:*",
     "@types/node": "^18.14.6",
-    "landing-pages": "workspace:*",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }

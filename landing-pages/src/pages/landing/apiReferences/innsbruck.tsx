@@ -40,6 +40,10 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Cloud API Developer Guide',
           docId: 'isbc202310apica',
         },
+        {
+          label: 'Cloud API for ContactManager',
+          docId: 'isbc202310apicm',
+        },
       ],
     },
     {
@@ -57,6 +61,10 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Cloud API Developer Guide',
           docId: 'iscc202310apica',
         },
+        {
+          label: 'Cloud API for ContactManager',
+          docId: 'iscc202310apicm',
+        },
       ],
     },
     {
@@ -73,6 +81,10 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Cloud API Developer Guide',
           docId: 'ispc202310apica',
+        },
+        {
+          label: 'Cloud API for ContactManager',
+          docId: 'ispc202310apicm',
         },
       ],
     },

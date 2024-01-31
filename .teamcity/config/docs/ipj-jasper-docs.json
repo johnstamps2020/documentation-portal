@@ -1,0 +1,141 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipjjasperrn",
+      "title": "InsuranceSuite Package for Japan Release Notes",
+      "url": "ipj/jasper/releasenotes",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjjasperconfig",
+      "title": "InsuranceSuite Package for Japan Configuration",
+      "url": "ipj/jasper/config",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjjasperapp",
+      "title": "InsuranceSuite Package for Japan Application Guide",
+      "url": "ipj/jasper/app",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjjasperinstall",
+      "title": "InsuranceSuite Package for Japan Installation Guide",
+      "url": "ipj/jasper/install",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -105,6 +105,10 @@ const pageConfig: SectionLayoutProps = {
           label: 'Portal Development',
           docId: 'in20233portaldev',
         },
+        {
+          label: 'Programming Standards',
+          docId: 'inprogstandards',
+        },
       ],
     },
     {

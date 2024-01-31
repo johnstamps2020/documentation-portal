@@ -1,9 +1,6 @@
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
-import {
-  SearchResultSource,
-  ServerSearchResult,
-} from 'server/dist/types/serverSearch';
+import { SearchResultSource, ServerSearchResult } from '@doctools/server';
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import { languageLabels } from '../../vars';

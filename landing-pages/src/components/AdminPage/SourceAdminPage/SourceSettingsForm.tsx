@@ -12,7 +12,7 @@ import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
 import { useSourceData } from 'hooks/useEntitiesData';
-import { Source } from 'server/dist/model/entity/Source';
+import { Source } from '@doctools/server';
 
 type NewSource = Omit<Source, 'uuid'>;
 

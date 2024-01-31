@@ -7,11 +7,12 @@
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
-    "types": ["node", "@doctools/gw-theme-classic"],
+    "types": ["node"],
     "baseUrl": ".",
     "lib": ["ES2015", "DOM"],
     "sourceMap": true,
     "declaration": true,
+    "emitDeclarationOnly": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "downlevelIteration": true

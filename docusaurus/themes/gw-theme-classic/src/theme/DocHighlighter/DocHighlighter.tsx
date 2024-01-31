@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { translate } from '@theme/Translate';
+import { translate } from '@doctools/components';
 import './DocHighlighter.css';
 import Mark from 'mark.js';
 import IconButton from '@mui/material/IconButton';

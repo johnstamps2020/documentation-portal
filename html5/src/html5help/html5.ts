@@ -14,7 +14,7 @@ import { addInternalBadge } from '../modules/internal';
 import { addLightbox } from '../modules/lightbox';
 import { addEarlyAccessMark } from '../modules/earlyAccess';
 import '../stylesheets/html5template.css';
-import { UserInformation } from '@theme/Types';
+import { UserInformation } from '@doctools/components';
 import { addBookLinks } from '../modules/xbook-ref';
 
 declare global {
@@ -37,18 +37,24 @@ const isOffline = BUILD_MODE === 'offline';
 docReady(async function () {
   normalizeCode();
   addSkipNav();
-  await setUpSidebar();
-  !isOffline && (await setMetadata());
-  addInternalBadge();
-  addEarlyAccessMark();
-  addLogo();
-  addSearchBox(isOffline);
-  !isOffline && (await addVersionSelector());
-  !isOffline && (await addAvatar());
-  await addPageNavigators(isOffline);
-  addFooterContents(isOffline);
-  !isOffline && addFeedbackElements();
-  !isOffline && (await addBookLinks());
+  setUpSidebar();
   addLightbox();
+  addLogo();
+  addFooterContents(isOffline);
   highlightCode();
+  !isOffline
+    ? setMetadata().then(() => {
+        addVersionSelector();
+        addAvatar();
+        addInternalBadge();
+        addEarlyAccessMark();
+        addSearchBox(isOffline);
+        addPageNavigators(isOffline);
+        addFeedbackElements();
+        addBookLinks();
+      })
+    : (() => {
+        addSearchBox(isOffline);
+        addPageNavigators(isOffline);
+      })();
 });

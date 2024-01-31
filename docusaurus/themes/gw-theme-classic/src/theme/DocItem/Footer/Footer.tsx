@@ -1,7 +1,7 @@
 import React from 'react';
-import InitialDocItemFooter from '@theme-init/DocItem/Footer';
-import Feedback from '@theme/Feedback';
+import { Feedback } from '@doctools/components';
 import useIsBrowser from '@docusaurus/useIsBrowser';
+import InitialDocItemFooter from '@theme-init/DocItem/Footer';
 import { useDocContext } from '@theme/DocContext';
 import { useDocItemContext } from '@theme/DocItem/DocItem';
 

@@ -17,11 +17,17 @@
     "delete-generated": "ts-node ./src/scripts/deleteGenerated.ts"
   },
   "dependencies": {
+    "@doctools/components": "workspace:*",
     "@doctools/gw-plugin-redoc": "workspace:*",
     "@doctools/gw-theme-classic": "workspace:*",
     "@docusaurus/core": "3.0.0",
     "@docusaurus/preset-classic": "3.0.0",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/source-sans-pro": "^4.5.11",
     "@mdx-js/react": "3.0.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.3",
     "@svgr/webpack": "^5.5.0",
     "clsx": "^1.1.1",
     "docusaurus-plugin-image-zoom": "^0.1.4",

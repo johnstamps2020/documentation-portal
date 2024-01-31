@@ -15,6 +15,7 @@ COPY server server
 COPY landing-pages landing-pages
 COPY shims shims
 COPY scripts scripts
+COPY components components
 
 RUN yarn
 RUN yarn build

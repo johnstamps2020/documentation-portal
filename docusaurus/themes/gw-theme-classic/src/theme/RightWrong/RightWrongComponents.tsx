@@ -1,12 +1,12 @@
-import React from 'react';
-import clsx from 'clsx';
-import DoneIcon from '@mui/icons-material/Done';
-import CloseIcon from '@mui/icons-material/Close';
-import { IconButtonProps } from '@mui/material/IconButton';
-import styles from './RightWrong.module.css';
-import { RightWrongCardProps, RightWrongImageProps } from '@theme/RightWrong';
+import { translate } from '@doctools/components';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { translate } from '@theme/Translate';
+import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from '@mui/icons-material/Done';
+import { IconButtonProps } from '@mui/material/IconButton';
+import { RightWrongCardProps, RightWrongImageProps } from '@theme/RightWrong';
+import clsx from 'clsx';
+import React from 'react';
+import styles from './RightWrong.module.css';
 
 const defaultPositiveTitle = translate({
   id: 'rightWrong.positiveTitle',

@@ -36,6 +36,12 @@
       "title": "InsuranceSuite Package for Australia for Guidewire Cloud Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
       "branch": "release/innsbruck"
+    },
+    {
+      "id": "ipajaspersrc",
+      "title": "InsuranceSuite Package for Australia for Guidewire Cloud Jasper",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
+      "branch": "release/jasper"
     }
   ]
 }

@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { Platform } from 'server/dist/model/entity/Platform';
+import { Platform } from '@doctools/server';
 import { usePlatformData } from 'hooks/useEntitiesData';
 
 type NewPlatform = Omit<Platform, 'uuid'>;

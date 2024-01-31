@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import useIsMobile from '../../hooks/useIsMobile';
+import { translate } from '@doctools/components';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
+import React, { useEffect, useState } from 'react';
+import useIsMobile from '../../hooks/useIsMobile';
 import HiddenSearchInputs from './HiddenSearchInputs';
-import { translate } from '@theme/Translate';
 
 function getSearchUrl() {
   if (window.location.hostname === 'localhost') {

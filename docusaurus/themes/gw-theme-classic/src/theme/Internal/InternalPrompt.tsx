@@ -1,4 +1,4 @@
-import Translate from '@theme/Translate';
+import { Translate } from '@doctools/components';
 import React from 'react';
 import styles from './Internal.module.css';
 

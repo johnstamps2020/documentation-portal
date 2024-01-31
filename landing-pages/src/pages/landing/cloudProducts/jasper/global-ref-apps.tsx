@@ -23,23 +23,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'ipainnsbruckrn',
+          docId: 'ipajasperrn',
         },
         {
           label: 'Application Guide',
-          docId: 'ipainnsbruckapp',
+          docId: 'ipajasperapp',
         },
         {
           label: 'Configuration',
-          docId: 'ipainnsbruckconfig',
+          docId: 'ipajasperconfig',
         },
         {
           label: 'Installation',
-          docId: 'ipainnsbruckinstall',
+          docId: 'ipajasperinstall',
         },
         {
           label: 'Upgrade',
-          docId: 'ipainnsbruckupgrade',
+          docId: 'ipajasperupgrade',
         },
       ],
     },
@@ -69,19 +69,19 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'ipjinnsbruckrn',
+          docId: 'ipjjasperrn',
         },
         {
           label: 'Application Guide',
-          docId: 'ipjinnsbruckapp',
+          docId: 'ipjjasperapp',
         },
         {
           label: 'Configuration',
-          docId: 'ipjinnsbruckconfig',
+          docId: 'ipjjasperconfig',
         },
         {
           label: 'Installation',
-          docId: 'ipjinnsbruckinstall',
+          docId: 'ipjjasperinstall',
         },
       ],
     },

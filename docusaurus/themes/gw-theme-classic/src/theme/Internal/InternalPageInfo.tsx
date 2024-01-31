@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDocContext } from '@theme/DocContext';
-import InfoImage from './undraw_personal_info_re_ur1n.svg';
-import Translate from '@theme/Translate';
-import styles from './Internal.module.css';
-import LogInButton from '@theme/LogInButton';
+import { Translate } from '@doctools/components';
 import useIsBrowser from '@docusaurus/useIsBrowser';
+import { useDocContext } from '@theme/DocContext';
+import LogInButton from '@theme/LogInButton';
+import React from 'react';
+import styles from './Internal.module.css';
+import InfoImage from './undraw_personal_info_re_ur1n.svg';
 
 export default function InternalPageInfo() {
   const { userInformation } = useDocContext();
@@ -29,21 +29,6 @@ export default function InternalPageInfo() {
           This content is available to Guidewire employees only
         </Translate>
       </h2>
-      {userInformation?.isLoggedIn && (
-        <div>
-          <Translate
-            id="internal.noAccess"
-            values={{
-              name: <strong>{userInformation.name || 'Name Unknown'}</strong>,
-              email: userInformation.preferred_username,
-            }}
-          >
-            {
-              'You are logged in as {name} ({email}) and you do not have access.'
-            }
-          </Translate>
-        </div>
-      )}
       <div>
         <Translate id="internal.info.toView">
           To view this page, you must log in with your Guidewire employee

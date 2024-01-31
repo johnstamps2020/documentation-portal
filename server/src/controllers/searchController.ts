@@ -12,6 +12,7 @@ import { Version } from '../model/entity/Version';
 import {
   SearchData,
   SearchResultSource,
+  SearchType,
   ServerSearchFilter,
   ServerSearchFilterValue,
 } from '../types/serverSearch';
@@ -871,8 +872,6 @@ function prepareResultsToDisplay(
   });
 }
 
-export type SearchType = 'keyword' | 'semantic' | 'hybrid';
-
 type SearchReqDictionary = {};
 type SearchReqBody = {};
 type SearchReqQuery = {
@@ -1008,19 +1007,21 @@ export default async function searchController(
         body: [],
       };
     }
+    const numberOfCandidates = 50;
+    const k = 10;
     const elasticsearchKnnQueryBody = [
       {
         field: 'title_vector',
         query_vector: vectorizedSearchPhrase,
-        num_candidates: 10000,
-        k: 10000,
-        boost: 12,
+        num_candidates: numberOfCandidates,
+        k: k,
       },
       {
         field: 'body_vector',
         query_vector: vectorizedSearchPhrase,
-        num_candidates: 10000,
-        k: 10000,
+        num_candidates: numberOfCandidates,
+        k: k,
+        boost: 12,
       },
     ];
     const elasticsearchKnnQueryWithFilters = addFiltersToElasticsearchKnnQuery(

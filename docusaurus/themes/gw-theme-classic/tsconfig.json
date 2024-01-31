@@ -2,7 +2,7 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "Node16",
+    "jsx": "react",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "paths": {

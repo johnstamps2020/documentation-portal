@@ -1,21 +1,24 @@
+import {
+  EnvInfo,
+  ExternalLink,
+  Language,
+  Page,
+  Platform,
+  Product,
+  Release,
+  Resource,
+  SearchData,
+  ServerSearchError,
+  Source,
+  Subject,
+  UserInfo,
+  Version,
+} from '@doctools/server';
+import { useParams, useSearchParams } from 'react-router-dom';
 import useSWR from 'swr';
 import useSWRImmutable from 'swr/immutable';
-import { PageError } from './usePageData';
-import { UserInfo } from 'server/dist/types/user';
-import { EnvInfo } from 'server/dist/types/env';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { SearchData, ServerSearchError } from 'server/dist/types/serverSearch';
-import { Page } from 'server/dist/model/entity/Page';
 import { TranslatedPage } from '../components/Layout/Header/TranslatedPages';
-import { ExternalLink } from 'server/dist/model/entity/ExternalLink';
-import { Source } from 'server/dist/model/entity/Source';
-import { Resource } from 'server/dist/model/entity/Resource';
-import { Release } from 'server/dist/model/entity/Release';
-import { Subject } from 'server/dist/model/entity/Subject';
-import { Language } from 'server/dist/model/entity/Language';
-import { Platform } from 'server/dist/model/entity/Platform';
-import { Product } from 'server/dist/model/entity/Product';
-import { Version } from 'server/dist/model/entity/Version';
+import { PageError } from './usePageData';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import { PLUGIN_NAME } from '../../types/constants';
-import { PluginData } from '@theme/Types';
+import { PluginData } from '../../types';
 import { internalNavItemClass } from './InternalWrapper';
 
 type InternalLinkControllerProps = {

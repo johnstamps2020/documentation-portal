@@ -1317,13 +1317,15 @@
           "InsuranceNow"
         ],
         "version": [
-          "2024.1"
+          "2024.1",
+          "2023.3"
         ],
         "subject": [
           "Development"
         ],
         "release": [
-          "Jasper"
+          "Jasper",
+          "Innsbruck"
         ],
         "language": "en"
       },

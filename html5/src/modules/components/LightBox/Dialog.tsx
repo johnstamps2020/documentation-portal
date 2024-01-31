@@ -44,10 +44,10 @@ export default function Dialog({
   return (
     <dialog ref={dialogRef} className={styles.dialog}>
       <div
-        onClick={closeOnClick && handleClose}
-        className={closeOnClick && styles.embiggenedImage}
+        onClick={closeOnClick ? handleClose : undefined}
+        className={closeOnClick ? styles.embiggenedImage : undefined}
         dangerouslySetInnerHTML={
-          elementOuterHtml && { __html: elementOuterHtml }
+          elementOuterHtml ? { __html: elementOuterHtml } : undefined
         }
       >
         {children}

@@ -3,7 +3,7 @@ import InitialDocSidebarItemCategory from '@theme-init/DocSidebarItem/Category';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import { internalNavItemClass } from '@theme/Internal/InternalWrapper';
 import { chain } from 'lodash';
-import { PluginData } from '@theme/Types';
+import { PluginData } from '../../../types';
 import { PLUGIN_NAME } from '../../../types/constants';
 
 export default function DocSidebarItemCategory(props) {
