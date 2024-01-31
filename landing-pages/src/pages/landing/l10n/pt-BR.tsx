@@ -60,7 +60,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
-      docId: 'isconfigupgradetoolsptBR500', 
+      docId: 'isconfigupgradetoolsptBR500',
     },
     {
       label: 'DataHub',

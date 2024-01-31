@@ -18,19 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: 'Versionshinweise für PolicyCenter', 
-docId: 'ispc202310deDEreleasenotes', 
-}, 
-{
-label: 'PolicyCenter - Update-Handbuch', 
-docId: 'ispc202310deDEupdate', 
-}, 
-],
-},
-{
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Versionshinweise für PolicyCenter',
+          docId: 'ispc202310deDEreleasenotes',
+        },
+        {
+          label: 'PolicyCenter - Update-Handbuch',
+          docId: 'ispc202310deDEupdate',
+        },
+      ],
+    },
+    {
       label: '2023.06',
       items: [
         {
@@ -269,4 +269,3 @@ docId: 'ispc202310deDEupdate',
 export default function Pc() {
   return <CategoryLayout {...pageConfig} />;
 }
-

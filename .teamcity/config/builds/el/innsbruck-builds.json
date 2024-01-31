@@ -1,14 +1,14 @@
 {
-	"$schema": "../../config-schema.json",
-	"builds": [
-		{
-			"buildType": "dita",
-			"filter": "GW-Generic-Release.ditaval",
-			"root": "whatsnew.ditamap",
-			"srcId": "whatsnewinnsbruckelGRsrc",
-			"docId": "whatsnewelGRinnsbruck",
-			"indexRedirect": true,
-			"disabled": false
-		}
-	]
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "whatsnew.ditamap",
+      "srcId": "whatsnewinnsbruckelGRsrc",
+      "docId": "whatsnewelGRinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
 }

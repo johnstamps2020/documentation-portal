@@ -18,19 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-label: '2023.10 (Innsbruck)', 
-items: [
-{
-label: 'ServiceRepEngage リリースノート', 
-docId: 'dx202310jaJPsrerelnotes', 
-}, 
-{
-  label: 'EnterpriseEngage アップデートガイド', 
-  docId: 'ee202310jaJPupdate', 
-}, 
-],
-},
-{
+      label: '2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'ServiceRepEngage リリースノート',
+          docId: 'dx202310jaJPsrerelnotes',
+        },
+        {
+          label: 'EnterpriseEngage アップデートガイド',
+          docId: 'ee202310jaJPupdate',
+        },
+      ],
+    },
+    {
       label: '2023.06 (Hakuba)',
       items: [
         {
@@ -122,4 +122,3 @@ docId: 'dx202310jaJPsrerelnotes',
 export default function Sre() {
   return <CategoryLayout {...pageConfig} />;
 }
-
