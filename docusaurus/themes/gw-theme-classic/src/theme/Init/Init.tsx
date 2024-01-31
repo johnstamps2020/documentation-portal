@@ -2,7 +2,7 @@ import { SearchMeta } from '@doctools/components';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import { useDocContext } from '@theme/DocContext';
-import { PluginData } from '@theme/Types';
+import { PluginData } from '../../types';
 import mockUserData from '@theme/mockUserData';
 import React, { useEffect } from 'react';
 import { PLUGIN_NAME } from '../../types/constants';
@@ -19,7 +19,8 @@ export default function Init(props) {
   } = useDocContext();
   const context = useDocusaurusContext();
   const { siteConfig } = context;
-  const configuredAuthors = siteConfig.customFields?.authors || [];
+  const configuredAuthors =
+    (siteConfig.customFields?.authors as string[]) || [];
   const { gwDocId } = usePluginData(PLUGIN_NAME) as PluginData;
   const isDevelopment = process.env.NODE_ENV === 'development';
 

@@ -8,7 +8,7 @@ import DialogActions from '@mui/material/DialogActions';
 import Typography from '@mui/material/Typography';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import DataDisplay from './DataDisplay';
-import { PluginData } from '@theme/Types';
+import { PluginData } from '../../types';
 import { PLUGIN_NAME } from '../../types/constants';
 
 export default function PluginDataPreview() {

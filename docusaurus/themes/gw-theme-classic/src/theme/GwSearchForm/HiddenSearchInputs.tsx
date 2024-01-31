@@ -13,17 +13,7 @@ export default function HiddenSearchInputs() {
   }
 
   const { platform, product, version, release } = searchMeta;
-  const isCloudDoc = platform.includes('Cloud');
-  const isSelfManagedDoc = platform.includes('Self-managed');
-  const releaseExists = release.length > 0;
-  const versionExists = version.length > 0;
-  const hiddenInputs = { platform, product };
-  if (isCloudDoc && releaseExists) {
-    hiddenInputs['release'] = release;
-  }
-  if (isSelfManagedDoc && versionExists) {
-    hiddenInputs['version'] = version;
-  }
+  const hiddenInputs = { platform, product, version, release };
 
   return (
     <>

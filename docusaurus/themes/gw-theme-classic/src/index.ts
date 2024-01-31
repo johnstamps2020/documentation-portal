@@ -2,7 +2,7 @@ import type { LoadContext, Plugin } from '@docusaurus/types';
 import type { PluginOptions } from '@docusaurus/theme-classic';
 import type { ThemeConfig } from '@docusaurus/theme-common';
 import { resolve } from 'path';
-import { PluginData } from '@theme/Types';
+import { PluginData } from './types';
 import { PLUGIN_NAME } from './types/constants';
 import type { TranslationFileContent } from '@docusaurus/types';
 import { readFileSync } from 'fs';
@@ -32,7 +32,7 @@ const getAppBaseUrl = () => {
 };
 
 const siteMetadata = {
-  gwDocId: process.env['GW_DOC_ID'] || 'exampleid',
+  gwDocId: process.env['GW_DOC_ID'] || 'exampleId',
   appBaseUrl: getAppBaseUrl(),
 };
 

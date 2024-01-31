@@ -44,11 +44,7 @@ declare module '@theme/RightWrong' {
 }
 
 declare module '@theme/Types' {
-  export type PluginData = {
-    internalDocIds: string[];
-    gwDocId: string;
-    appBaseUrl: string;
-  };
+  export { PluginData } from './types';
 }
 
 declare module '@theme/VideoWrapper' {
@@ -92,8 +88,6 @@ declare module '@theme/DocContext' {
       | React.ReactFragment
       | React.ReactPortal;
   };
-
-  export function useDocContext();
 
   export function DocContextProvider(
     props: DocContextProviderProps

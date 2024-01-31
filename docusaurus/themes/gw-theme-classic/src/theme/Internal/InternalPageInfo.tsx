@@ -2,6 +2,7 @@ import { Translate } from '@doctools/components';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import { useDocContext } from '@theme/DocContext';
 import LogInButton from '@theme/LogInButton';
+import React from 'react';
 import styles from './Internal.module.css';
 import InfoImage from './undraw_personal_info_re_ur1n.svg';
 
