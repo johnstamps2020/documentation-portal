@@ -41,7 +41,15 @@ export function DocContextProvider(props: DocContextProviderProps) {
   );
 }
 
-export const useDocContext = () => React.useContext(DocContext);
+export const useDocContext = () => {
+  const contextValue = React.useContext(DocContext);
+
+  if (!contextValue) {
+    throw new Error('Please check that your app is wrapped in DocContext');
+  }
+
+  return contextValue;
+};
 
 export const useFileList = () => {
   const contextValue = React.useContext(DocContext);
