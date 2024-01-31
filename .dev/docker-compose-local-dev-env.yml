@@ -14,7 +14,7 @@ services:
     volumes:
       - ..:/usr/app
     working_dir: /usr/app
-    command: yarn server-dev
+    command: yarn dev:server
     depends_on:
       - db
   landing-pages:
@@ -31,7 +31,7 @@ services:
     volumes:
       - ..:/usr/app
     working_dir: /usr/app
-    command: yarn landing-pages-dev
+    command: yarn dev:landing-pages
   db:
     networks:
       - docportal_network
