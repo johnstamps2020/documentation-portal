@@ -2,6 +2,19 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Start Doc Portal Search",
+      "type": "shell",
+      "command": "docker run --detach -p 9200:9200 -p 9300:9300 -v dev_search_volume:/usr/share/elasticsearch/data --env cluster.name=es-docker-cluster --env discovery.type=single-node --env xpack.security.enabled=false --name docportal-search --pull missing --ulimit nofile=65536 --ulimit memlock=-1 artifactory.guidewire.com/hub-docker-remote/elasticsearch:8.11.1",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Compose local dev environment",
       "type": "docker-compose",
       "dockerCompose": {
