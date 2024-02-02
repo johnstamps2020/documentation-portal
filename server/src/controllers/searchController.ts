@@ -735,15 +735,21 @@ function getUniqueResultsSortedByVersion(
 function prepareVectorizedResultsToDisplay(
   results: GuidewireSearchControllerSearchResults
 ): SearchData['searchResults'] {
-  return results.hits.map((result) => {
+  const vectorizedSearchResultsToDisplay: SearchData['searchResults'] = [];
+  for (const result of results.hits) {
     const innerHits = result.inner_hits?.same_title.hits.hits || [];
     const allHits = [result, ...innerHits];
     const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
     const [topHit, ...otherHits] = allHitsSortedFromLatest;
     const mainResult = topHit._source;
-    const mainResultScore = topHit._score;
-    const mainResultTitle = mainResult?.title || 'Unknown title';
-    const mainResultBody = mainResult?.body || '';
+
+    if (!mainResult) {
+      continue;
+    }
+
+    const mainResultScore = topHit._score || 0;
+    const mainResultTitle = mainResult.title;
+    const mainResultBody = mainResult.body;
     const mainResultBodyFragment = mainResultBody
       .substring(0, fragmentSize)
       .replace(mainResultTitle, '')
@@ -756,45 +762,52 @@ function prepareVectorizedResultsToDisplay(
         delete ih._source?.body_vector;
         return ih._source as SearchResultSource;
       }) || [];
-    return {
+    vectorizedSearchResultsToDisplay.push({
       title: mainResultTitle,
       body: mainResultBodyFragment,
       innerHits: preparedInnerHits,
-      product: mainResult?.product || [],
+      product: mainResult.product,
       doc_display_title:
-        mainResult?.doc_display_title ||
+        mainResult.doc_display_title ||
         result._source?.doc_display_title ||
         null,
-      doc_id: mainResult?.doc_id || '',
-      doc_title: mainResult?.doc_title || 'Unknown doc title',
-      href: mainResult?.href || '',
-      id: mainResult?.id || '',
-      indexed_date: mainResult?.indexed_date || '',
-      internal: mainResult?.internal || true,
-      language: mainResult?.language || 'en',
-      platform: mainResult?.platform || [],
-      public: mainResult?.public || false,
-      release: mainResult?.release || [],
-      subject: mainResult?.subject || [],
-      version: mainResult?.version || [],
-      score: mainResultScore || 0,
-    };
-  });
+      doc_id: mainResult.doc_id,
+      doc_title: mainResult.doc_title,
+      href: mainResult.href,
+      id: mainResult.id,
+      indexed_date: mainResult.indexed_date,
+      internal: mainResult.internal,
+      language: mainResult.language,
+      platform: mainResult.platform,
+      public: mainResult.public,
+      release: mainResult.release || [],
+      subject: mainResult.subject || [],
+      version: mainResult.version,
+      score: mainResultScore,
+    });
+  }
+  return vectorizedSearchResultsToDisplay;
 }
 
 function prepareResultsToDisplay(
   results: GuidewireSearchControllerSearchResults
 ): SearchData['searchResults'] {
-  return results.hits.map((result) => {
+  const searchResultsToDisplay: SearchData['searchResults'] = [];
+  for (const result of results.hits) {
     const innerHits = result.inner_hits?.same_title.hits.hits || [];
     const allHits = [result, ...innerHits];
     const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
     const [topHit, ...otherHits] = allHitsSortedFromLatest;
     const mainResult = topHit._source;
-    const mainResultScore = topHit._score;
+
+    if (!mainResult) {
+      continue;
+    }
+
+    const mainResultScore = topHit._score || 0;
     const mainResultHighlight = topHit.highlight;
-    const mainResultTitle = mainResult?.title || 'Unknown title';
-    const mainResultBody = mainResult?.body || '';
+    const mainResultTitle = mainResult.title;
+    const mainResultBody = mainResult.body;
     const mainResultBodyFragment = mainResultBody.substring(0, fragmentSize);
 
     // The title field in the highlighter matches results from the title and title.exact fields.
@@ -843,33 +856,35 @@ function prepareResultsToDisplay(
       .replace(titleText, '')
       .replaceAll(/\s{2,}/gm, '');
 
-    return {
-      product: mainResult?.product || [],
+    searchResultsToDisplay.push({
+      product: mainResult.product || [],
       doc_display_title:
-        mainResult?.doc_display_title ||
+        mainResult.doc_display_title ||
         result._source?.doc_display_title ||
         null,
-      doc_id: mainResult?.doc_id || '',
-      doc_title: mainResult?.doc_title || 'Unknown doc title',
-      href: mainResult?.href || '',
-      id: mainResult?.id || '',
-      indexed_date: mainResult?.indexed_date || '',
-      internal: mainResult?.internal || true,
-      language: mainResult?.language || 'en',
-      platform: mainResult?.platform || [],
-      public: mainResult?.public || false,
-      release: mainResult?.release || [],
-      subject: mainResult?.subject || [],
-      version: mainResult?.version || [],
-      score: mainResultScore || 0,
+      doc_id: mainResult.doc_id,
+      doc_title: mainResult.doc_title,
+      href: mainResult.href,
+      id: mainResult.id,
+      indexed_date: mainResult.indexed_date,
+      internal: mainResult.internal,
+      language: mainResult.language,
+      platform: mainResult.platform,
+      public: mainResult.public,
+      release: mainResult.release || [],
+      subject: mainResult.subject || [],
+      version: mainResult.version,
+      score: mainResultScore,
       title: sanitizeTagNames(titleText),
       titlePlain: sanitizeTagNames(mainResultTitle),
       body: sanitizeTagNames(bodyExcerpt + '...'),
       bodyPlain: sanitizeTagNames(mainResultBodyFragment + '...'),
-      innerHits: otherHits?.map((r) => r._source as SearchResultSource) || [],
+      innerHits: otherHits.map((r) => r._source as SearchResultSource),
       uniqueHighlightTerms: uniqueHighlightTerms,
-    };
-  });
+    });
+  }
+
+  return searchResultsToDisplay;
 }
 
 type SearchReqDictionary = {};
