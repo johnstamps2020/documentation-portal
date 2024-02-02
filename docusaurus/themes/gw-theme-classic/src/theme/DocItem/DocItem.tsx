@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import InitialDocItem from '@theme-init/DocItem';
 import EarlyAccess from '@theme/EarlyAccess';
 import Internal from '@theme/Internal';
+import { guidewireMetaPrefix } from '@doctools/components';
+import Head from '@docusaurus/Head';
 
 interface DocItemContextProps {
   title: string;
@@ -32,6 +34,9 @@ export default function DocItem(props) {
         value={{ title: topicTitle, setTitle: setTopicTitle }}
       >
         <Internal showInfo>
+          <Head>
+            <meta name={`${guidewireMetaPrefix}:internal`} content="true" />
+          </Head>
           <CustomizedDocItem />
         </Internal>
       </DocItemContext.Provider>
