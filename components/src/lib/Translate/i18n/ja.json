@@ -19,16 +19,16 @@
     "message": "非公開にするにはここをクリック"
   },
   "privacy.warning": {
-    "message": "By providing your e-mail address, you consent to being contacted by Guidewire."
+    "message": "メールアドレスを入力することにより、お客様は Guidewire からこのメールアドレスへ連絡することを許可したものとみなされます。"
   },
   "privacy.link": {
-    "message": "Guidewire's Privacy Policy can be found here."
+    "message": "Guidewire のプライバシーポリシーについてはこちらをご覧ください。"
   },
   "rightWrong.positiveTitle": {
-    "message": "Do"
+    "message": "する"
   },
   "theme.rightWrong.negativeTitle": {
-    "message": "Don't"
+    "message": "しない"
   },
   "anonymous.youAreSharing": {
     "message": "メールアドレスが送信されます。",
@@ -121,11 +121,11 @@
     "description": "Text preceding the date on which the page was published"
   },
   "heroCenteredWithImage.resources-heading": {
-    "message": "Resources",
+    "message": "リソース",
     "description": "The heading of the resources section"
   },
   "cardList.all-items-button": {
-    "message": "All",
+    "message": "すべて表示",
     "description": "The button which the user can click to see all the items in a list"
   }
 }
