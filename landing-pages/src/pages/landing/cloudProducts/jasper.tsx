@@ -52,15 +52,15 @@ const pageConfig: Category2LayoutProps = {
       items: [
         {
           label: 'PolicyCenter',
-          pagePath: 'cloudProducts/innsbruck/pcGwCloud/2023.10',
+          pagePath: 'cloudProducts/jasper/pc',
         },
         {
           label: 'ClaimCenter',
-          pagePath: 'cloudProducts/innsbruck/ccGwCloud/2023.10',
+          pagePath: 'cloudProducts/jasper/cc',
         },
         {
           label: 'BillingCenter',
-          pagePath: 'cloudProducts/innsbruck/bcGwCloud/2023.10',
+          pagePath: 'cloudProducts/jasper/bc',
         },
         {
           label: 'InsuranceNow',
@@ -140,7 +140,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'API References',
-          pagePath: 'apiReferences/innsbruck',
+          pagePath: 'apiReferences/jasper',
         },
         {
           label: 'Integration Gateway',
