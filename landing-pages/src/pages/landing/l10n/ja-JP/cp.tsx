@@ -44,6 +44,18 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Data Studio',
           docId: 'datastudiojaJPrelease',
         },
+        {
+          label: 'Workflow Designer',
+          docId: 'workflow202401jaJPdesigner',
+        },
+        {
+          label: 'Workflow Administration',
+          docId: 'workflow202401jaJPconsole',
+        },
+        {
+          label: 'Workflow リリースノート',
+          docId: 'workflow202401jaJPreleasenotes',
+        },
       ],
     },
     {

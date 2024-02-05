@@ -198,6 +198,33 @@
       "docId": "datastudiojaJPrelease",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "workflow-designer-dev.ditamap",
+      "srcId": "workflowservicejaJPsrc",
+      "docId": "workflow202401jaJPdesigner",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "workflow-console-ops.ditamap",
+      "srcId": "workflowservicejaJPsrc",
+      "docId": "workflow202401jaJPconsole",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "release-notes-book.ditamap",
+      "srcId": "workflowservicejaJPsrc",
+      "docId": "workflow202401jaJPreleasenotes",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

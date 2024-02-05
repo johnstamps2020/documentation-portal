@@ -1,0 +1,65 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "workflow202401jaJPdesigner",
+      "title": "Workflow Designer ja",
+      "displayTitle": "Workflow Designer",
+      "url": "ja/cloud/workflow-service/designer",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "Workflow Service" ],
+        "version": [ "latest" ],
+        "subject": [ "Features and functionality" ],
+        "release": [ "Innsbruck" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "workflow202401jaJPconsole",
+      "title": "Workflow Administration ja",
+      "displayTitle": "Workflow Administration",
+      "url": "ja/cloud/workflow-service/workflow-console",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "Workflow Service" ],
+        "version": [ "latest" ],
+        "subject": [ "Administration" ],
+        "release": [ "Innsbruck" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "workflow202401jaJPreleasenotes",
+      "title": "Release Notes ja",
+      "displayTitle": "Release Notes",
+      "url": "ja/cloud/workflow-service/releasenotes",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "Workflow Service" ],
+        "version": [ "latest" ],
+        "subject": [ "Release notes" ],
+        "release": [ "Innsbruck" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    }
+  ]
+}

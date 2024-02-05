@@ -84,6 +84,12 @@
       "title": "Explore ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "release/ja-JP/2024.01"
+    },
+    {
+      "id": "workflowservicejaJPsrc",
+      "title": "Workflow Service ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/workflow-service.git",
+      "branch": "release/ja-JP/2024.01"
     }
   ]
 }
