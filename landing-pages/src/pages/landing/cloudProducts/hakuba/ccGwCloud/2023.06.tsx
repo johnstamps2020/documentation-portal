@@ -98,10 +98,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'gwrulescc',
         },
         {
-          label: 'APD for Claims (Early Access)',
-          docId: 'apdclaimshakuba',
-        },
-        {
           label: 'Personal Auto FNOL Template',
           docId: 'fnoltemplatemain',
         },

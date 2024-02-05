@@ -7,6 +7,10 @@ export const allSelectors = {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/apd',
     },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/apd',
+    },
   ],
   testingFrameworkSelector: [
     { label: 'Elysian (2022.05)', pagePath: 'testingFramework/elysian' },

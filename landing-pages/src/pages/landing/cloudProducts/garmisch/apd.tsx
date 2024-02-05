@@ -43,15 +43,6 @@ const pageConfig: SectionLayoutProps = {
         },
       ],
     },
-    {
-      label: 'Configuration',
-      items: [
-        {
-          label: 'APD for Claims (Early Access)',
-          docId: 'apdclaimsgarmisch',
-        },
-      ],
-    },
   ],
 };
 

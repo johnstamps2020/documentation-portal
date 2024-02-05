@@ -90,10 +90,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'gwrulescc',
         },
         {
-          label: 'APD for Claims (Early Access)',
-          docId: 'apdclaimsgarmisch',
-        },
-        {
           label: 'Claims Intake FNOL Template (Early Access)',
           docId: 'is202302fnoltemplate',
         },
