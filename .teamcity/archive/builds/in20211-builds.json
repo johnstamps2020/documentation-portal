@@ -103,15 +103,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "BusinessIntelligenceIntegrationGuide20211x.ditamap",
-      "srcId": "in20211src",
-      "docId": "in20211xbiintegdraft",
-      "indexRedirect": true,
-      "disabled": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
       "root": "CommonFunctionalityConfigurationReference20211x.ditamap",
       "srcId": "in20211src",
       "docId": "in20211xcommonconfigdraft",

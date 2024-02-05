@@ -6,14 +6,27 @@
       "title": "Business Intelligence Getting Started Guide",
       "url": "cloud/in/20202/bi",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Features and functionality"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -25,14 +38,27 @@
       "title": "Consumer Sales Portal Features",
       "url": "cloud/in/20202/csalesp",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Features and functionality"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,14 +70,27 @@
       "title": "Consumer Service Portal Features",
       "url": "cloud/in/20202/cservicep",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Features and functionality"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -63,14 +102,27 @@
       "title": "AppReader Integration",
       "url": "cloud/in/20202/appreaderinteg",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Integration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,14 +134,27 @@
       "title": "Predictive Analytics Integration",
       "url": "cloud/in/20202/pa",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Integration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -101,14 +166,27 @@
       "title": "Core Configuration Guide",
       "url": "cloud/in/20202/config",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Configuration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -120,14 +198,27 @@
       "title": "Studio Configuration Guide",
       "url": "cloud/in/20202/studioconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Configuration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -139,14 +230,27 @@
       "title": "Portal Development",
       "url": "cloud/in/20202/portaldev",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Configuration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -158,14 +262,27 @@
       "title": "Product Attribute Reference",
       "url": "cloud/in/20202/prodattref",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Configuration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -177,33 +294,26 @@
       "title": "Application Guide",
       "url": "cloud/in/20202/app",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Features and functionality"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20202biinteg",
-      "title": "Business Intelligence Integration",
-      "url": "cloud/in/20202/biinteg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Integration"],
-        "release": ["Banff"],
-        "language": "en"
-      },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -215,14 +325,26 @@
       "title": "Claims Product Configuration Guide",
       "url": "cloud/in/20202/claimsconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Configuration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -234,14 +356,26 @@
       "title": "Consumer Service Portal Configuration Guide",
       "url": "cloud/in/20202/cservicepconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Configuration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -253,14 +387,26 @@
       "title": "Provisioning Portal",
       "url": "cloud/in/20202/provportal",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Configuration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -272,14 +418,26 @@
       "title": "Underwriting Product Configuration Guide",
       "url": "cloud/in/20202/uwconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Configuration"],
-        "release": ["Banff"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

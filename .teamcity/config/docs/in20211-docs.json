@@ -6,14 +6,27 @@
       "title": "Application Guide",
       "url": "cloud/in/20211/app",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -25,14 +38,27 @@
       "title": "Business Intelligence Getting Started Guide",
       "url": "cloud/in/20211/bi",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,14 +70,27 @@
       "title": "Consumer Sales Portal Features",
       "url": "cloud/in/20211/csalesp",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -63,14 +102,27 @@
       "title": "Consumer Service Portal Features",
       "url": "cloud/in/20211/cservicep",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,14 +134,27 @@
       "title": "AppReader Integration",
       "url": "cloud/in/20211/appreaderinteg",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Integration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -101,14 +166,27 @@
       "title": "Predictive Analytics Integration",
       "url": "cloud/in/20211/pa",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Integration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -120,14 +198,27 @@
       "title": "Core Configuration Guide",
       "url": "cloud/in/20211/config",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Configuration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -139,14 +230,27 @@
       "title": "Studio Configuration Guide",
       "url": "cloud/in/20211/studioconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Configuration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -158,14 +262,27 @@
       "title": "Portal Development",
       "url": "cloud/in/20211/portaldev",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Configuration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -177,14 +294,27 @@
       "title": "Product Attribute Reference",
       "url": "cloud/in/20211/prodattref",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Configuration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -196,14 +326,27 @@
       "title": "Underwriting Configuration Reference",
       "url": "cloud/in/20211/uwconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Configuration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -211,37 +354,30 @@
       "earlyAccess": false
     },
     {
-      "id": "in20211xbiintegdraft",
-      "title": "Business Intelligence Integration Draft",
-      "url": "cloud/in/20211x/biinteg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Integration"],
-        "release": ["Cortina"],
-        "language": "en"
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
       "id": "in20211xcommonconfigdraft",
       "title": "Common Functionality Configuration Reference Draft",
       "url": "cloud/in/20211x/commonconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Configuration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -253,14 +389,26 @@
       "title": "Consumer Service Portal Configuration Guide Draft",
       "url": "cloud/in/20211x/cservicepconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Configuration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -272,14 +420,26 @@
       "title": "Provisioning Portal Draft",
       "url": "cloud/in/20211x/provportal",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Configuration"],
-        "release": ["Cortina"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

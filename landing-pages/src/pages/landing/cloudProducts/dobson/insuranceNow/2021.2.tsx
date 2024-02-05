@@ -61,10 +61,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20212appreaderinteg',
         },
         {
-          label: 'Business Intelligence Integration',
-          docId: 'in20212xbiintegdraft',
-        },
-        {
           label: 'Live Predict Integration',
           docId: 'in20212pa',
         },

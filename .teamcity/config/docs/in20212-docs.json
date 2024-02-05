@@ -6,14 +6,27 @@
       "title": "AppReader Integration",
       "url": "cloud/in/20212/appreaderinteg",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Integration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -25,14 +38,27 @@
       "title": "Application Guide",
       "url": "cloud/in/20212/app",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Features and functionality"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,14 +70,27 @@
       "title": "Billing Configuration Reference",
       "url": "cloud/in/20212/billref",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -59,37 +98,30 @@
       "earlyAccess": false
     },
     {
-      "id": "in20212xbiintegdraft",
-      "title": "Business Intelligence Integration - Internal",
-      "url": "cloud/in/20212/biinteg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Integration"],
-        "release": ["Dobson"],
-        "language": "en"
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
       "id": "in20212xcsalespconfigdraft",
       "title": "Consumer Sales Portal Configuration - Internal",
       "url": "cloud/in/20212/csalespconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -101,14 +133,27 @@
       "title": "Consumer Sales Portal Features",
       "url": "cloud/in/20212/csalesp",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Features and functionality"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -120,14 +165,26 @@
       "title": "Consumer Service Portal Configuration Guide - Internal",
       "url": "cloud/in/20212/cservicepconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -139,14 +196,27 @@
       "title": "Consumer Service Portal Features",
       "url": "cloud/in/20212/cservicep",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Features and functionality"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -158,14 +228,27 @@
       "title": "Live Predict Integration",
       "url": "cloud/in/20212/pa",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Integration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -177,14 +260,27 @@
       "title": "Core Configuration",
       "url": "cloud/in/20212/config",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -196,14 +292,26 @@
       "title": "Common Functionality Configuration Reference - Internal",
       "url": "cloud/in/20212/commonconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -215,14 +323,27 @@
       "title": "Studio Configuration Guide",
       "url": "cloud/in/20212/studioconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -234,14 +355,27 @@
       "title": "Portal Development",
       "url": "cloud/in/20212/portaldev",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -253,14 +387,27 @@
       "title": "Product Attribute Reference",
       "url": "cloud/in/20212/prodattref",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -272,14 +419,26 @@
       "title": "Provisioning Portal - Internal",
       "url": "cloud/in/20212/provportalinternal",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -291,14 +450,27 @@
       "title": "Underwriting Configuration Reference",
       "url": "cloud/in/20212/uwconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -310,14 +482,27 @@
       "title": "Claims Configuration Reference",
       "url": "cloud/in/20212/claimsconfig",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -329,14 +514,27 @@
       "title": "API Reference",
       "url": "cloud/in/20212/apiref",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Integration"],
-        "release": ["Dobson"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.2"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
