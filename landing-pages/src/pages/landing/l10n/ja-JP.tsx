@@ -31,6 +31,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/202302garmischwhatsnew',
     },
     {
+      label: 'Advanced Product Designer',
+      pagePath: 'l10n/ja-JP/apd',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/ja-JP/bc',
     },
