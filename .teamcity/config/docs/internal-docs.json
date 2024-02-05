@@ -204,6 +204,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "sonarqube",
+      "title": "SonarQube",
+      "url": "internal/sonarqube/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "SonarQube"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
