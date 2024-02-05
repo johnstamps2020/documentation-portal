@@ -127,15 +127,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "BusinessIntelligenceIntegrationGuide.ditamap",
-      "srcId": "in20233",
-      "docId": "in20233xbiintegdraft",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "ConsumersSalesPortalConfig.ditamap",
       "srcId": "in20233",
       "docId": "in20233xcsalespconfigdraft",
