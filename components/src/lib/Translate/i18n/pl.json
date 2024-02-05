@@ -119,13 +119,5 @@
   "footer.published": {
     "message": "Data publikacji:",
     "description": "Text preceding the date on which the page was published"
-  },
-  "heroCenteredWithImage.resources-heading": {
-    "message": "Zasoby",
-    "description": "The heading of the resources section"
-  },
-  "cardList.all-items-button": {
-    "message": "Wszystkie",
-    "description": "The button which the user can click to see all the items in a list"
   }
 }
