@@ -40,7 +40,8 @@
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",
     "@types/lodash": "^4.14.190",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "mark.js": "^8.11.1"
   },
   "peerDependencies": {
     "react": "^18.2.0",
