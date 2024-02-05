@@ -27,6 +27,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       docId: 'whatsnewes419hakuba',
     },
     {
+      label: 'Advanced Product Designer',
+      pagePath: 'l10n/es-419/apd',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/es-419/bc',
     },

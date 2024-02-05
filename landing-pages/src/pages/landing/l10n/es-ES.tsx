@@ -19,10 +19,6 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
-      label: 'Advanced Product Designer',
-      pagePath: 'l10n/es-419/apd',
-    },
-    {
       label: 'BillingCenter',
       pagePath: 'l10n/es-ES/bc',
     },
