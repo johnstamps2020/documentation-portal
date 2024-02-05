@@ -2240,6 +2240,42 @@
       "earlyAccess": false
     },
     {
+      "id": "jutro1040",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/documentation/10.4",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["10.4"],
+        "subject": ["Best practices"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook1040",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/10.4",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["10.4"],
+        "subject": ["Development"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },    
+    {
       "id": "jutroa11yapp",
       "title": "Jutro a11y app",
       "url": "jutro/a11y/latest",
