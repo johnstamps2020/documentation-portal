@@ -31,15 +31,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "BusinessIntelligenceIntegrationGuide.ditamap",
-      "srcId": "in20212",
-      "docId": "in20212xbiintegdraft",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "ClaimsConfigurationReference.ditamap",
       "srcId": "in20212",
       "docId": "in20212claimsconfig",

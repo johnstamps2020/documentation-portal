@@ -8,11 +8,12 @@
     "registry": "https://artifactory.guidewire.com/api/npm/doctools-npm-dev/"
   },
   "scripts": {
-    "build": "tsc --build --verbose && copy-non-tx-files",
-    "dev": "tsc --watch"
+    "build": "rimraf dist && tsc --build --verbose && copy-non-tx-files",
+    "dev": "yarn build && tsc --watch"
   },
   "devDependencies": {
     "@doctools/scripts": "workspace:*",
+    "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {

@@ -77,10 +77,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20202appreaderinteg',
         },
         {
-          label: 'Business Intelligence Integration',
-          docId: 'in20202xbiintegdraft',
-        },
-        {
           label: 'Predictive Analytics Integration',
           docId: 'in20202pa',
         },

@@ -1,0 +1,35 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "cloudisapd202402src",
+      "title": "IS 2024.02 Advanced Product Designer for PolicyCenter",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/pc/2024.02"
+    },
+    {
+      "id": "is202402src",
+      "title": "IS 2024.02.0",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/2024.02.0"
+    },
+    {
+      "id": "srcpcapirefjasper",
+      "title": "PC API ref preview 2024.02",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
+      "branch": "release/jasper"
+    },
+    {
+      "id": "srcccapirefjasper",
+      "title": "CC API ref preview 2024.02",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
+      "branch": "release/jasper"
+    },
+    {
+      "id": "srcbcapirefjasper",
+      "title": "BC API ref preview 2024.02",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/bc-api-ref.git",
+      "branch": "release/jasper"
+    }
+  ]
+}

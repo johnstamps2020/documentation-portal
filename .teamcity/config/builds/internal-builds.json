@@ -83,6 +83,13 @@
       "srcId": "mskadminsrc",
       "workingDir": "website",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "sonarqube",
+      "srcId": "sonarqubesrc",
+      "workingDir": "website",
+      "disabled": false
     }
   ]
 }

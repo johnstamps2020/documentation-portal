@@ -72,6 +72,12 @@
       "title": "MSK Admin",
       "gitUrl": "ssh://git@stash.guidewire.com/ccs/msk-admin-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "sonarqubesrc",
+      "title": "SonarQube",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/sonarqube-docs.git",
+      "branch": "master"
     }
   ]
 }

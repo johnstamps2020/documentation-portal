@@ -119,13 +119,5 @@
   "footer.published": {
     "message": "公開日：",
     "description": "Text preceding the date on which the page was published"
-  },
-  "heroCenteredWithImage.resources-heading": {
-    "message": "リソース",
-    "description": "The heading of the resources section"
-  },
-  "cardList.all-items-button": {
-    "message": "すべて表示",
-    "description": "The button which the user can click to see all the items in a list"
   }
 }
