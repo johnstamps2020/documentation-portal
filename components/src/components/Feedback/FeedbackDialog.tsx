@@ -10,16 +10,17 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useState } from 'react';
-import { SearchMeta, UserInformation } from '../../lib/types';
+import { SearchMeta } from '../../lib/types';
 import GwBackdrop from '../GwBackdrop';
 import { Anonymous } from './Anonymous';
 import { PrivacyNotice } from './PrivacyNotice';
+import { UserInfo } from '@doctools/server';
 
 export type FeedbackDialogProps = {
   open: boolean;
   onClose: () => void;
   positive: boolean;
-  userInformation: UserInformation;
+  userInformation: UserInfo;
   title: string;
   searchMeta: SearchMeta;
   jiraApiUrl: string;

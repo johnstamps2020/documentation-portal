@@ -122,8 +122,8 @@
     ".git/objects",
     ".vscode",
     ".vscode-insiders",
-    "docusaurus/themes/gw-theme-classic/src/i18n",
-    "webpack.config.ts"
+    "webpack.config.ts",
+    "**/lib/Translate/i18n/**"
   ],
   "cSpell.ignoreRegExpList": [
     "(docId|pagePath|url): [\"'][^\"']+[\"']",
