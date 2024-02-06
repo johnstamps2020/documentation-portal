@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
+import { Page } from '../model/entity/Page';
 import { RedirectResponse } from '../types/apiResponse';
 import { getEnvInfo } from './envController';
 import { winstonLogger } from './loggerController';
@@ -256,6 +257,36 @@ async function findMatchingDocs(res: Response, urls: string[]) {
   return [];
 }
 
+async function findMatchingPages(res: Response, urls: string[]) {
+  for (const u of urls) {
+    const matches: Page[] = await AppDataSource.getRepository(Page)
+      .createQueryBuilder('page')
+      .select([
+        'page.path',
+        'page.public',
+        'page.internal',
+        'page.isInProduction',
+      ])
+      .where(
+        "page.path LIKE :urlPattern AND page.path NOT LIKE :excludedUrlPattern AND page.path NOT LIKE '%next%'",
+        { urlPattern: u, excludedUrlPattern: u.replace('%', '%/%') }
+      )
+      .getMany();
+    if (matches.length > 0) {
+      return matches.filter(
+        (m) =>
+          isUserAllowedToAccessResource(
+            res,
+            m.public,
+            m.internal,
+            m.isInProduction
+          ).status === 200
+      );
+    }
+  }
+  return [];
+}
+
 function removeSlashesFromPath(path: string): string {
   return path.replace(/^\//, '').replace(/\/$/, '');
 }
@@ -285,23 +316,43 @@ export async function getLatestVersionUrl(
       urlsToCheck.push(partialUrl);
     }
   }
+  const wildcardIndex = wildcardUrlSegments.indexOf('%');
 
   const matchingDocs = await findMatchingDocs(res, urlsToCheck);
   if (matchingDocs.length === 0) {
-    return null;
+    const matchingPages = await findMatchingPages(res, urlsToCheck);
+    if (matchingPages.length === 0) {
+      return null;
+    } else {
+      const sortedUrls = matchingPages
+        .map((d) => d.path.split('/'))
+        .sort((a, b) => sortUrlsByVersion(a, b, wildcardIndex))
+        .reverse();
+      const urlWithHighestVersionSegments = sortedUrls[0];
+      const targetUrlSegments = Array.from(wildcardUrlSegments);
+      targetUrlSegments[wildcardIndex] =
+        urlWithHighestVersionSegments[wildcardIndex];
+      const targetUrl = targetUrlSegments.join('/');
+      const targetUrlExists = await s3BucketUrlExists(targetUrl);
+      return targetUrlExists
+        ? targetUrl
+        : urlWithHighestVersionSegments.join('/');
+    }
+  } else {
+    const sortedUrls = matchingDocs
+      .map((d) => d.url.split('/'))
+      .sort((a, b) => sortUrlsByVersion(a, b, wildcardIndex))
+      .reverse();
+    const urlWithHighestVersionSegments = sortedUrls[0];
+    const targetUrlSegments = Array.from(wildcardUrlSegments);
+    targetUrlSegments[wildcardIndex] =
+      urlWithHighestVersionSegments[wildcardIndex];
+    const targetUrl = targetUrlSegments.join('/');
+    const targetUrlExists = await s3BucketUrlExists(targetUrl);
+    return targetUrlExists
+      ? targetUrl
+      : urlWithHighestVersionSegments.join('/');
   }
-  const wildcardIndex = wildcardUrlSegments.indexOf('%');
-  const sortedUrls = matchingDocs
-    .map((d) => d.url.split('/'))
-    .sort((a, b) => sortUrlsByVersion(a, b, wildcardIndex))
-    .reverse();
-  const urlWithHighestVersionSegments = sortedUrls[0];
-  const targetUrlSegments = Array.from(wildcardUrlSegments);
-  targetUrlSegments[wildcardIndex] =
-    urlWithHighestVersionSegments[wildcardIndex];
-  const targetUrl = targetUrlSegments.join('/');
-  const targetUrlExists = await s3BucketUrlExists(targetUrl);
-  return targetUrlExists ? targetUrl : urlWithHighestVersionSegments.join('/');
 }
 
 export async function getRedirectUrl(
