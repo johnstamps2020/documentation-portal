@@ -3034,7 +3034,6 @@ __metadata:
   resolution: "@doctools/components@workspace:components"
   dependencies:
     "@doctools/scripts": "workspace:*"
-    "@doctools/server": "workspace:*"
     rimraf: "npm:^5.0.5"
     typescript: "npm:^5.3.3"
   peerDependencies:

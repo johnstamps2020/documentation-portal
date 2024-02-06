@@ -1,6 +1,6 @@
 {
   "name": "@doctools/components",
-  "version": "1.0.6",
+  "version": "1.0.5",
   "description": "A collection of React components for Doctools",
   "license": "UNLICENSED",
   "main": "dist/index.js",
@@ -15,9 +15,6 @@
     "@doctools/scripts": "workspace:*",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "@doctools/server": "workspace:*"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.0",
