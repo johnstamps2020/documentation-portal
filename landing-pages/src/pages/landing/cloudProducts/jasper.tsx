@@ -136,7 +136,7 @@ const pageConfig: Category2LayoutProps = {
       items: [
         {
           label: 'Advanced Product Designer App',
-          pagePath: 'cloudProducts/innsbruck/apd',
+          pagePath: 'cloudProducts/jasper/apd',
         },
         {
           label: 'API References',
