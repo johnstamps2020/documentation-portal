@@ -27,6 +27,12 @@ export default function SearchResult(searchResult: ServerSearchResult) {
           }}
         />
       </StyledLink>
+      {/*searchResult.keywords && (
+        <Typography
+          paragraph
+          dangerouslySetInnerHTML={{ __html: searchResult.keywords }}
+        />
+      )*/}
       <SearchResultTags {...searchResult} />
       <Typography
         paragraph

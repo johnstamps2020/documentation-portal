@@ -23,6 +23,7 @@ export type SearchResultSource = {
   title_vector?: number[];
   body: string;
   body_vector?: number[];
+  keywords: string;
   doc_id: string;
   version: string[];
   platform: string[];
@@ -38,6 +39,7 @@ export type ServerSearchResult = SearchResultSource & {
   titlePlain?: string;
   body: string;
   bodyPlain?: string;
+  keywords: string;
   innerHits: SearchResultSource[];
   uniqueHighlightTerms?: string;
 };

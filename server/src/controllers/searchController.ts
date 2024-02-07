@@ -448,6 +448,11 @@ async function runKeywordSearch(
           fragment_size: fragmentSize,
           matched_fields: ['body', 'body.exact'],
         },
+
+        keywords: {
+          number_of_fragments: 0,
+          matched_fields: ['keywords', 'keywords.exact'],
+        },
       },
       pre_tags: ['<span class="searchResultHighlight highlighted">'],
       post_tags: ['</span>'],
@@ -765,6 +770,7 @@ function prepareVectorizedResultsToDisplay(
     vectorizedSearchResultsToDisplay.push({
       title: mainResultTitle,
       body: mainResultBodyFragment,
+      keywords: mainResult?.keywords || '',
       innerHits: preparedInnerHits,
       product: mainResult.product,
       doc_display_title:
@@ -809,7 +815,7 @@ function prepareResultsToDisplay(
     const mainResultTitle = mainResult.title;
     const mainResultBody = mainResult.body;
     const mainResultBodyFragment = mainResultBody.substring(0, fragmentSize);
-
+    const mainResultKeywords = mainResult.keywords || '';
     // The title field in the highlighter matches results from the title and title.exact fields.
     const highlightTitleKey = Object.getOwnPropertyNames(
       mainResultHighlight
@@ -820,7 +826,11 @@ function prepareResultsToDisplay(
       mainResultHighlight
     ).find((k) => k === 'body');
 
-    // The "number_of_fragments" parameter is set to "0' for the title field.
+    const highlightKeywordsKey = Object.getOwnPropertyNames(
+      mainResultHighlight
+    ).find((k) => k === 'keywords');
+
+    // The "number_of_fragments" parameter is set to "0' for the title and keywords fields.
     // So no fragments are produced, instead the whole content of the field is returned
     // as the first element of the array, and matches are highlighted.
     const titleText =
@@ -832,7 +842,13 @@ function prepareResultsToDisplay(
       highlightBodyKey && mainResultHighlight
         ? mainResultHighlight[highlightBodyKey].join(' ')
         : mainResultBodyFragment;
-    const allText: string = titleText + bodyText;
+
+    const keywordsText =
+      highlightKeywordsKey && mainResultHighlight
+        ? mainResultHighlight[highlightKeywordsKey][0]
+        : mainResultKeywords;
+
+    const allText: string = titleText + bodyText + keywordsText;
     const regExp = new RegExp(
       '<span class="searchResultHighlight.*?">(.*?)</span>',
       'g'
@@ -879,7 +895,8 @@ function prepareResultsToDisplay(
       titlePlain: sanitizeTagNames(mainResultTitle),
       body: sanitizeTagNames(bodyExcerpt + '...'),
       bodyPlain: sanitizeTagNames(mainResultBodyFragment + '...'),
-      innerHits: otherHits.map((r) => r._source as SearchResultSource),
+      keywords: sanitizeTagNames(keywordsText),
+      innerHits: otherHits?.map((r) => r._source as SearchResultSource) || [],
       uniqueHighlightTerms: uniqueHighlightTerms,
     });
   }
@@ -951,7 +968,7 @@ export default async function searchController(
         must: {
           simple_query_string: {
             query: searchPhrase,
-            fields: ['title^12', 'body'],
+            fields: ['title^12', 'body', 'keywords^20'], //MCG adding keywords here causes error
             quote_field_suffix: '.exact',
             default_operator: 'AND',
           },
