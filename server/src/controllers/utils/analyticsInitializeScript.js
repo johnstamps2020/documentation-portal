@@ -84,7 +84,9 @@ async function initializeAnalytics() {
     // Google Analytics
     gtag('js', new Date());
 
-    gtag('config', 'G-QRTVTBY678');
+    gtag('config', 'G-QRTVTBY678', {
+      user_id: id,
+    });
     gtag('set', 'user_properties', {
       is_employee: isEmployee,
     });
