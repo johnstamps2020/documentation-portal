@@ -172,6 +172,7 @@
       "docId": "jutro1000",
       "srcId": "srcjutro1000",
       "workingDir": "website",
+      "createTranslationKit": true,
       "disabled": false
     },
     {
@@ -236,7 +237,7 @@
       "srcId": "srcjutro1040",
       "workingDir": "storybook",
       "disabled": false
-    },    
+    },
     {
       "buildType": "yarn",
       "docId": "jutrodocsnext",
