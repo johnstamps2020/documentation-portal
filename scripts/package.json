@@ -5,7 +5,8 @@
   },
   "scripts": {
     "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts",
-    "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts"
+    "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts",
+    "create-docusaurus-translation-kit": "ts-node src/translations/createDocusaurusTranslationKit.ts"
   },
   "bin": {
     "copy-non-tx-files": "src/filesystem/copyNonTxFiles.mjs"
