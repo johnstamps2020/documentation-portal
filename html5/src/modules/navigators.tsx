@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import '../stylesheets/modules/minitoc.css';
 import { addHashLinks } from './hashLink';
-import { addHighlightToggle, highlightTextFromUrl } from './highlight';
+import { addHighlightButton } from './highlight';
 import { addPdfLink } from './pdflink';
 
 async function getLanguageBreadcrumb() {
@@ -408,7 +408,7 @@ function addNavbar() {
   addVerticalDivider();
   addPdfLink();
   addPrintButton();
-  addHighlightToggle();
+  addHighlightButton();
   addScrollToTop();
 }
 
@@ -532,5 +532,4 @@ export async function addPageNavigators(isOffline: boolean) {
 
   addNavbar();
   !isOffline && (await addBreadCrumbs());
-  highlightTextFromUrl();
 }
