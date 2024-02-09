@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import highlightIcon from 'images/icon-highlighter.svg';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import Tooltip from '@mui/material/Tooltip';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
 import GlobalStyles from '@mui/material/GlobalStyles';
-import { useSearchData } from 'hooks/useApi';
+import IconButton from '@mui/material/IconButton';
 import Skeleton from '@mui/material/Skeleton';
+import Tooltip from '@mui/material/Tooltip';
+import { useSearchData } from 'hooks/useApi';
+import { useEffect, useState } from 'react';
+import { HighlightButton } from '@doctools/components';
 
 export default function Highlighter() {
   const { searchData, isLoading, isError } = useSearchData();
   const [highlight, setHighlight] = useState<string | null>(null);
-  const [highlightedIcon, setHighlightedIcon] = useState(true);
 
   useEffect(() => {
     if (searchData) {
@@ -20,17 +19,14 @@ export default function Highlighter() {
     }
   }, [searchData]);
 
-  function toggleHighlight(
-    event: React.MouseEvent<HTMLElement>,
-    highlightSearchPhrase: string | null
-  ) {
+  function toggleHighlight() {
     const highlightedElements = document.getElementsByClassName(
       'searchResultHighlight'
     );
     for (const highlightedElement of highlightedElements) {
       highlightedElement.classList.toggle('highlighted');
     }
-    setHighlight(highlightSearchPhrase);
+    setHighlight((prev) => (prev === 'enabled' ? null : 'enabled'));
   }
 
   if (!searchData || isLoading) {
@@ -50,34 +46,18 @@ export default function Highlighter() {
           '.highlighted': { fontWeight: 700 },
         }}
       />
-      <ToggleButtonGroup
-        color="primary"
-        size="small"
-        value={highlight}
-        exclusive
-        onChange={toggleHighlight}
-        aria-label="Toggle highlight for search phrases"
-      >
-        <ToggleButton
-          value="enabled"
-          aria-label="highlight"
-          sx={{ marginLeft: 2, padding: 0, border: 0 }}
+      <Tooltip title="Toggle highlight for search phrases" placement="top">
+        <IconButton
+          aria-label="Toggle highlight for search phrases"
+          sx={{
+            height: '24px',
+            color: highlight ? 'black' : 'disabled',
+          }}
+          onClick={toggleHighlight}
         >
-          <Tooltip title="Toggle highlight for search phrases">
-            <img
-              src={highlightIcon}
-              alt="highlighter-icon"
-              height="24px"
-              onClick={() => setHighlightedIcon(!highlightedIcon)}
-              style={{
-                backgroundColor: highlightedIcon
-                  ? 'hsl(60, 100%, 77%)'
-                  : 'hsl(100, 100%, 100%)',
-              }}
-            />
-          </Tooltip>
-        </ToggleButton>
-      </ToggleButtonGroup>
+          <BorderColorIcon />
+        </IconButton>
+      </Tooltip>
     </>
   );
 }

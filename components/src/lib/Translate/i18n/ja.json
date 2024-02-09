@@ -1,4 +1,8 @@
 {
+  "docHighlighter.tooltip": {
+    "message": "検索フレーズのハイライトを切り替える",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off. This is the tooltip for the button"
+  },
   "docHighlighter.label": {
     "message": "検索キーワード強調表示",
     "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
