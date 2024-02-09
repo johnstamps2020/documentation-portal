@@ -3086,7 +3086,7 @@ __metadata:
     "@docusaurus/types": "npm:3.1.1"
     "@emotion/react": "npm:^11.10.0"
     "@emotion/styled": "npm:^11.10.0"
-    "@fontsource/source-sans-pro": "npm:^4.5.11"
+    "@fontsource/source-sans-pro": "npm:^5.0.8"
     "@mui/icons-material": "npm:^5.15.6"
     "@mui/material": "npm:^5.15.6"
     "@types/lodash": "npm:^4.14.190"
@@ -4553,6 +4553,13 @@ __metadata:
   version: 4.5.11
   resolution: "@fontsource/source-sans-pro@npm:4.5.11"
   checksum: 15e899f3eef8725b223ecd3b7a96825d7027f814c5c54d4c4bbf4925992a9d8358410d8288a0ab5436f9ffa4d04aec52fb3138cbe45c1b42d1e124218c056027
+  languageName: node
+  linkType: hard
+
+"@fontsource/source-sans-pro@npm:^5.0.8":
+  version: 5.0.8
+  resolution: "@fontsource/source-sans-pro@npm:5.0.8"
+  checksum: 33646c9eb0a4b39164106e3ff84db20f4602d75c50024f615c85982744655b5edcaa5b6832e825857a16caddd6e46441ff727de229a11b41eb1035150c064acb
   languageName: node
   linkType: hard
 
