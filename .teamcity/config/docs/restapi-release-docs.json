@@ -12,13 +12,30 @@
           "PolicyCenter",
           "App Events Webhooks"
         ],
-        "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02", "2023.06", "2023.10"],
-        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.09",
+          "2023.02",
+          "2023.06",
+          "2023.10"
+        ],
+        "release": [
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -36,13 +53,30 @@
           "PolicyCenter",
           "App Events Webhooks"
         ],
-        "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02", "2023.06", "2023.10"],
-        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.09",
+          "2023.02",
+          "2023.06",
+          "2023.10"
+        ],
+        "release": [
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -54,14 +88,37 @@
       "title": "Integration Gateway",
       "url": "cloud/is/integgateway/release",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05", "2022.09", "2023.02", "2023.06", "2023.10"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
-        "subject": ["Integration"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.05",
+          "2022.09",
+          "2023.02",
+          "2023.06",
+          "2023.10"
+        ],
+        "release": [
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -73,8 +130,15 @@
       "title": "REST API Client",
       "url": "is/restapiclient/release/guide",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
         "version": [
           "10.2.1",
           "10.2.2",
@@ -86,7 +150,9 @@
           "2023.06",
           "2023.10"
         ],
-        "subject": ["Integration"],
+        "subject": [
+          "Integration"
+        ],
         "release": [
           "Cortina",
           "Dobson",
@@ -98,7 +164,10 @@
         ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
