@@ -45,18 +45,10 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'datastudiojaJPrelease',
         },
         {
-          label: 'Workflow Designer',
-          docId: 'workflow202401jaJPdesigner',
+          label: 'Autopilot Workflow Service',
+          pagePath: 'l10n/ja-JP/cloudProducts/autopilotworkflowservice',
         },
-        {
-          label: 'Workflow Administration',
-          docId: 'workflow202401jaJPconsole',
-        },
-        {
-          label: 'Workflow リリースノート',
-          docId: 'workflow202401jaJPreleasenotes',
-        },
-      ],
+          ],
     },
     {
       label: '2022.09 (Flaine)',
