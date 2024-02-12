@@ -46,7 +46,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'Autopilot Workflow Service',
-          pagePath: 'l10n/ja-JP/cloudProducts/autopilotworkflowservice',
+          pagePath: 'ja-JP/cloudProducts/autopilotworkflowservice',
         },
           ],
     },
