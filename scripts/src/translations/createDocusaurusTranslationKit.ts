@@ -14,9 +14,9 @@ console.log('Current directory:', workingDir);
 
 const i18nDir = `${workingDir}/i18n/en`;
 const docsDir = `${workingDir}/docs`;
-const outputDir = `${workingDir}/${process.env.OUTPUT_DIR || 'out'}`;
-const i18nOutputDir = `${outputDir}/config`;
-const docsOutputDir = `${outputDir}/docs`;
+const outputDir = `${workingDir}/${process.env.OUTPUT_DIR || 'out/i18n/en'}`;
+const i18nOutputDir = `${outputDir}`;
+const docsOutputDir = `${outputDir}/docusaurus-plugin-content-docs/current`;
 console.log('Output directory:', outputDir);
 
 // create the output folders if they don't exist
