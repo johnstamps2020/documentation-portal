@@ -2,6 +2,37 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "indataservicereleasenotes",
+      "title": "Data Service Release Notes",
+      "url": "cloud/in/dataservicereleasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.1"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "inapidevelopment",
       "title": "Custom API Development",
       "url": "cloud/in/apidevelopment",
