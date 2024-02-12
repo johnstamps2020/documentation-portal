@@ -35,6 +35,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/apd',
     },
     {
+      label: 'Autopilot Workflow Service',
+      pagePath: 'l10n/ja-JP/cloudProducts/autopilotworkflowservice',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/ja-JP/bc',
     },
@@ -102,7 +106,7 @@ const pageConfig: ProductFamilyLayoutProps = {
       label: 'VendorEngage',
       pagePath: 'l10n/ja-JP/ve',
     },
-  ],
+],
   sidebar: implementationResourcesSidebar,
 };
 
