@@ -410,10 +410,6 @@
           "description": "If set to true, the build is disabled. Defaults to false if not set.",
           "type": "boolean"
         },
-        "createTranslationKit": {
-          "description": "If set to true, adds an extra build which creates a translation kit. Defaults to false if not set.",
-          "type": "boolean"
-        },
         "customEnv": {
           "type": "array",
           "items": {

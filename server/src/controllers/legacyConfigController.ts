@@ -171,7 +171,6 @@ async function getLegacyBuildConfigs(): Promise<LegacyBuildConfig[]> {
       disabled: ditaBuild.disabled,
       root: ditaBuild.root,
       indexRedirect: ditaBuild.indexRedirect,
-      createTranslationKit: ditaBuild.createTranslationKit || undefined,
     };
     const ditaBuildFilter = ditaBuild.filter;
     if (ditaBuildFilter) {
@@ -185,7 +184,6 @@ async function getLegacyBuildConfigs(): Promise<LegacyBuildConfig[]> {
       srcId: yarnBuild.source.id,
       docId: yarnBuild.doc.id,
       disabled: yarnBuild.disabled,
-      createTranslationKit: yarnBuild.createTranslationKit || undefined,
     };
     const properties = [
       'customEnv',
@@ -210,7 +208,6 @@ async function getLegacyBuildConfigs(): Promise<LegacyBuildConfig[]> {
       docId: sourceZipBuild.doc.id,
       disabled: sourceZipBuild.disabled,
       zipFilename: sourceZipBuild.zipFilename,
-      createTranslationKit: sourceZipBuild.createTranslationKit || undefined,
     };
     legacyBuilds.push(
       addResourcesToLegacyBuildConfig(sourceZipBuild, legacyBuild)
@@ -222,7 +219,6 @@ async function getLegacyBuildConfigs(): Promise<LegacyBuildConfig[]> {
       srcId: justCopyBuild.source.id,
       docId: justCopyBuild.doc.id,
       disabled: justCopyBuild.disabled,
-      createTranslationKit: justCopyBuild.createTranslationKit || undefined,
     };
     legacyBuilds.push(
       addResourcesToLegacyBuildConfig(justCopyBuild, legacyBuild)
@@ -856,15 +852,11 @@ function createBuildObject(
         legacyBuildConfig.yarnBuildCustomCommand || null;
       yarnBuild.outputPath = legacyBuildConfig.outputPath || null;
       yarnBuild.customEnv = legacyBuildConfig.customEnv || null;
-      yarnBuild.createTranslationKit =
-        legacyBuildConfig.createTranslationKit || null;
       return yarnBuild;
     case 'source-zip':
       const sourceZipBuild = new SourceZipBuild();
       sourceZipBuild.zipFilename =
         legacyBuildConfig.zipFilename || 'output.zip';
-      sourceZipBuild.createTranslationKit =
-        legacyBuildConfig.createTranslationKit || null;
       return sourceZipBuild;
     case 'just-copy':
       return new JustCopyBuild();
@@ -873,8 +865,6 @@ function createBuildObject(
       ditaBuild.root = legacyBuildConfig.root || '';
       ditaBuild.filter = legacyBuildConfig.filter || null;
       ditaBuild.indexRedirect = legacyBuildConfig.indexRedirect || true;
-      ditaBuild.createTranslationKit =
-        legacyBuildConfig.createTranslationKit || null;
       return ditaBuild;
   }
 }

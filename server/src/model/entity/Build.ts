@@ -22,9 +22,6 @@ export abstract class Build extends GwEntity {
   @Column({ type: 'boolean' })
   disabled: boolean;
 
-  @Column({ type: 'boolean', nullable: true })
-  createTranslationKit: boolean | null;
-
   @OneToOne(() => Doc, (doc) => doc.uuid, { nullable: false })
   @JoinColumn()
   doc: Doc;

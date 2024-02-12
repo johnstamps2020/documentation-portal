@@ -89,7 +89,6 @@ export type LegacyBuildConfig = {
   zipFilename?: string;
   customEnv?: EnvironmentVariable[];
   disabled: boolean;
-  createTranslationKit?: boolean;
 };
 
 export type LegacySourceConfig = {

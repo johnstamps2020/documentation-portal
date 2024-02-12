@@ -127,8 +127,8 @@ enum class GwDockerImages(val imageUrl: String) {
     BUILD_MANAGER_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/build-manager:latest"
     ),
-    RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"), LION_PKG_BUILDER_LATEST(
-        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/lion-pkg-builder:latest"
+    RECOMMENDATION_ENGINE_LATEST(
+        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"
     ),
     SITEMAP_GENERATOR_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/sitemap-generator:latest"
@@ -685,33 +685,6 @@ object GwBuildSteps {
         }
     }
 
-    fun createRunLionPkgBuilderStep(
-        workingDir: String,
-        outputDir: String,
-        tcBuildTypeId: String,
-    ): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Run the lion pkg builder"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
-                export TEAMCITY_API_AUTH_TOKEN="%env.TEAMCITY_API_ACCESS_TOKEN%"
-                export TEAMCITY_RESOURCES_ARTIFACT_PATH="${GwConfigParams.BUILD_DATA_DIR.paramValue}/${GwConfigParams.BUILD_DATA_FILE.paramValue}"
-                export ZIP_SRC_DIR="zip"
-                export OUTPUT_PATH="$outputDir"
-                export WORKING_DIR="$workingDir"
-                export TC_BUILD_TYPE_ID="$tcBuildTypeId"
-                
-                lion_pkg_builder
-            """.trimIndent()
-            dockerImage = GwDockerImages.LION_PKG_BUILDER_LATEST.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
     fun createRunSitemapGeneratorStep(deployEnv: String, outputDir: String): ScriptBuildStep {
         val appBaseUrl = Helpers.getTargetUrl(deployEnv)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
@@ -970,6 +943,19 @@ object GwBuildSteps {
         }
     }
 
+    fun createGitCloneRepoStep(targetDir: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Clone git repo and branch"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% $targetDir --recurse-submodules
+            """.trimIndent()
+        }
+    }
+
     fun createBuildDitaProjectForValidationsStep(
         outputFormat: String,
         rootMap: String,
@@ -981,7 +967,7 @@ object GwBuildSteps {
         schematronReportsDir: String,
         indexRedirect: Boolean,
         buildFilter: String? = null,
-        docId: String? = null
+        docId: String? = null,
     ): ScriptBuildStep {
         val logFile = "${outputFormat}_build.log"
         val fullOutputPath = "${outputDir}/${outputFormat}"
@@ -1722,17 +1708,6 @@ object GwVcsRoots {
     }
 }
 
-object GwVcsSettings {
-    fun createBranchFilter(gitBranches: List<String>, addDefaultBranch: Boolean = true): String {
-        val gitBranchesEntries = mutableListOf<String>()
-        if (addDefaultBranch) gitBranchesEntries.add("+:<default>")
-        gitBranches.forEach {
-            gitBranchesEntries.add("+:${Helpers.createFullGitBranchName(it)}")
-        }
-        return gitBranchesEntries.joinToString("\n")
-    }
-}
-
 object GwTemplates {
     object BuildListenerTemplate : Template({
         name = "Build listener"
@@ -2246,90 +2221,6 @@ object User {
             }
         }
 
-        private fun createDitaTranslationKitBuildType(
-            workingDir: String,
-            outputDir: String,
-            docId: String,
-            teamcityGitRepoId: RelativeId,
-            gitBranch: String,
-            stagingBuildTypeIdString: String,
-            rootMap: String,
-            buildFilter: String?
-        ): BuildType {
-            return BuildType {
-                name = "Create translation kit"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${docId}"))
-
-                artifactRules = """
-                    ${workingDir}/${outputDir} => /
-                """.trimIndent()
-
-                vcs {
-                    root(teamcityGitRepoId)
-                    branchFilter = GwVcsSettings.createBranchFilter(listOf(gitBranch))
-                    cleanCheckout = true
-                }
-
-                steps {
-                    step(
-                        GwBuildSteps.createRunLionPkgBuilderStep(
-                            workingDir, outputDir, stagingBuildTypeIdString
-                        )
-                    )
-                    script {
-                        name = "Add build data"
-                        scriptContent = """
-                            #!/bin/bash
-                            set -xe
-
-                            mkdir _builds
-                            jq -n '{"root": "$rootMap", "filter": "$buildFilter"}' > _builds/$docId.json
-                            zip -ur $workingDir/$outputDir/l10n_package.zip _builds 
-                        """.trimIndent()
-                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    }
-                }
-
-                features {
-                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                }
-            }
-        }
-
-        private fun createYarnTranslatonKitBuildType(
-            docId: String,
-            srcId: String
-        ) : BuildType {
-            return BuildType {
-                name = "Create translation kit"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${docId}"))
-                maxRunningBuilds = 1
-
-                vcs {
-                    root(Helpers.resolveRelativeIdFromIdString(Helpers.md5(srcId)), "+:.=>$srcId")
-                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                }
-
-                artifactRules = "%teamcity.build.workingDir%/$srcId/out/* => translation-kit"
-
-                steps {
-                    nodeJS {
-                        name = "Run the translation kit script"
-                        id = Helpers.createIdStringFromName(this.name)
-
-                        shellScript = """
-                            #!/bin/sh
-                            set -e
-                            yarn && yarn workspace @doctools/scripts create-docusaurus-translation-kit "%teamcity.build.workingDir%/$srcId"
-                        """.trimIndent()
-                        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-                    }
-                }
-
-                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
-
         private fun createDocProject(buildConfig: JSONObject, srcId: String): Project {
             val gwBuildType = buildConfig.getString("buildType")
             val docId = buildConfig.getString("docId")
@@ -2367,7 +2258,6 @@ object User {
 
             val docProjectBuildTypes = mutableListOf<BuildType>()
             val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
-            val createTranslationKit = if (buildConfig.has("createTranslationKit")) buildConfig.getBoolean("createTranslationKit") else false
 
             val buildIsDisabled = buildConfig.getBoolean("disabled")
             if (!buildIsDisabled) {
@@ -2392,10 +2282,6 @@ object User {
                             gwVersionsString,
                             customEnv
                         )
-
-                        if (createTranslationKit) {
-                            docProjectBuildTypes += createYarnTranslatonKitBuildType(docId, srcId)
-                        }
                     }
 
                     GwBuildTypes.STORYBOOK.buildTypeName -> {
@@ -2456,23 +2342,6 @@ object User {
                             resourcesToCopy
                         )
 
-                        if (docEnvironments.contains(GwDeployEnvs.STAGING.envName) && createTranslationKit) {
-                            val stagingBuildTypeIdString =
-                                Helpers.resolveRelativeIdFromIdString(Helpers.md5("Publish to ${GwDeployEnvs.STAGING.envName}${docId}"))
-                                    .toString()
-                            val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(Helpers.md5(srcId))
-                            docProjectBuildTypes += createDitaTranslationKitBuildType(
-                                workingDir,
-                                outputDir,
-                                docId,
-                                teamcityGitRepoId,
-                                gitBranch,
-                                stagingBuildTypeIdString,
-                                rootMap,
-                                buildFilter
-                            )
-                        }
-
                     }
 
                     GwBuildTypes.SOURCE_ZIP.buildTypeName -> {
@@ -2518,8 +2387,107 @@ object User {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 buildType(BuildCustomDitaOutputBuildType)
+                buildType(DitaTranslationKitBuildType)
+                buildType(DocusaurusTranslatonKitBuildType)
             }
         }
+
+        object DocusaurusTranslatonKitBuildType : BuildType({
+            name = "Create translation kit (Docusaurus)"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            params {
+                text(
+                    "env.GIT_URL", "", label = "Git repo URL", display = ParameterDisplay.PROMPT
+                )
+                text(
+                    "env.GIT_BRANCH", "", label = "Git branch name", display = ParameterDisplay.PROMPT
+                )
+            }
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            }
+
+            val docRepoCheckoutDir = "clonedDocRepo"
+
+            artifactRules = "$docRepoCheckoutDir/out/* => translation-kit"
+
+            steps {
+                step(
+                    GwBuildSteps.createGitCloneRepoStep(docRepoCheckoutDir)
+                )
+
+                nodeJS {
+                    name = "Run the translation kit script"
+                    id = Helpers.createIdStringFromName(this.name)
+
+                    shellScript = """
+                            #!/bin/sh
+                            set -e
+                            yarn && yarn scripts:create-docusaurus-translation-kit "%teamcity.build.workingDir%/$docRepoCheckoutDir"
+                        """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        })
+
+
+        object DitaTranslationKitBuildType : BuildType({
+            name = "Create translation kit (DITA)"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            params {
+                text(
+                    "env.GIT_URL", "", label = "Git repo URL", display = ParameterDisplay.PROMPT
+                )
+                text(
+                    "env.GIT_BRANCH", "", label = "Git branch name", display = ParameterDisplay.PROMPT
+                )
+                text(
+                    "env.DOC_ID",
+                    "",
+                    label = "Document id",
+                    description = "The docId from the doc config",
+                    display = ParameterDisplay.PROMPT
+                )
+            }
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            }
+
+            val docRepoCheckoutDir = "clonedDocRepo"
+
+            artifactRules = """
+                    $docRepoCheckoutDir/* => /translation_kit
+                """.trimIndent()
+
+            steps {
+                step(
+                    GwBuildSteps.createGitCloneRepoStep(docRepoCheckoutDir)
+                )
+
+                nodeJS {
+                    name = "Add build data"
+                    id = Helpers.createIdStringFromName(this.name)
+
+                    shellScript = """
+                            #!/bin/bash
+                            set -xe
+
+                            yarn && yarn scripts:create-dita-build-info %env.DOC_ID% $docRepoCheckoutDir
+                        """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+        })
 
         object BuildCustomDitaOutputBuildType : BuildType({
             name = "Build custom DITA output"
