@@ -24,7 +24,7 @@
     "@docusaurus/preset-classic": "3.0.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@fontsource/source-sans-pro": "^4.5.11",
+    "@fontsource/source-sans-pro": "^5.0.8",
     "@mdx-js/react": "3.0.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.3",

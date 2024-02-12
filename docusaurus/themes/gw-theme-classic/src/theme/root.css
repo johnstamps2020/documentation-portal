@@ -6,7 +6,7 @@
   --ifm-color-primary-light: #007fad;
   --ifm-color-primary-lighter: #0084b5;
   --ifm-color-primary-lightest: #0095cc;
-  --gw-font: 'Source Sans Pro', Helvetica, Arial, sans-serif !important;
+  --gw-font: 'Source Sans Pro', sans-serif !important;
   --gw-slate: #131d2e;
 
   --ifm-navbar-height: 68px;

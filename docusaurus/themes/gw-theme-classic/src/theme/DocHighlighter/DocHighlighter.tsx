@@ -1,18 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { translate } from '@doctools/components';
-import './DocHighlighter.css';
-import Mark from 'mark.js';
-import IconButton from '@mui/material/IconButton';
-import HighlightIcon from '@mui/icons-material/Highlight';
-import { useTheme } from '@mui/material/styles';
+import { HighlightButton } from '@doctools/components';
 import { useHistory } from '@docusaurus/router';
-
-const label = translate({
-  id: 'docHighlighter.label',
-  description:
-    'If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off.',
-  message: 'toggle highlights',
-});
+import React, { useEffect, useState } from 'react';
+import './DocHighlighter.css';
 
 function getWordList(urlSearchParams: URLSearchParams): string[] {
   const params = Object.fromEntries(urlSearchParams.entries());
@@ -29,8 +18,6 @@ function getWordList(urlSearchParams: URLSearchParams): string[] {
 
 export default function DocHighlighter() {
   const [words, setWords] = useState<string[] | undefined>(undefined);
-  const [highlighting, setHighlighting] = useState(false);
-  const theme = useTheme();
   const { location } = useHistory();
 
   useEffect(
@@ -43,45 +30,11 @@ export default function DocHighlighter() {
     [location]
   );
 
-  useEffect(
-    function () {
-      if (words?.length > 0) {
-        setHighlighting(true);
-        const article = document.querySelector('article');
-        const instance = new Mark(article);
-        for (const word of words) {
-          instance.mark(word);
-        }
-      }
-    },
-    [words]
-  );
-
-  useEffect(
-    function () {
-      document.querySelector('body').classList.toggle('disableHighlights');
-    },
-    [highlighting]
-  );
-
-  function toggleHighlights() {
-    setHighlighting(!highlighting);
-  }
-
   if (!words) {
     return null;
   }
 
   return (
-    <IconButton
-      onClick={toggleHighlights}
-      aria-label={label}
-      title={label}
-      sx={{
-        color: highlighting ? '#ffff8a' : theme.palette.background.default,
-      }}
-    >
-      <HighlightIcon />
-    </IconButton>
+    <HighlightButton words={words} activeColor="yellow" inactiveColor="white" />
   );
 }
