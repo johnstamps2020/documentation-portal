@@ -1,4 +1,8 @@
 {
+  "docHighlighter.tooltip": {
+    "message": "Alternar destaque para frases de pesquisa",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off. This is the tooltip for the button"
+  },
   "docHighlighter.label": {
     "message": "ativar/desativar realces",
     "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."

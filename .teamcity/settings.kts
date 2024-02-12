@@ -637,11 +637,8 @@ object GwBuildSteps {
             name = "NPM publish $packageHandle"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                npm install -g npm-cli-login
-                npm-cli-login -u ${'$'}{ARTIFACTORY_SERVICE_ACCOUNT_USERNAME} -p ${'$'}{ARTIFACTORY_API_KEY} -e svc-doc-artifactory@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev
-                npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
-                npm config set always-auth true
-                npm config set unsafe-perm true
+                #!/bin/bash
+                set -xe
                 
                 yarn install
                 

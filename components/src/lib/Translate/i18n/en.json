@@ -1,4 +1,8 @@
 {
+  "docHighlighter.tooltip": {
+    "message": "Toggle highlight for search phrases",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off. This is the tooltip for the button"
+  },
   "docHighlighter.label": {
     "message": "toggle highlights",
     "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."

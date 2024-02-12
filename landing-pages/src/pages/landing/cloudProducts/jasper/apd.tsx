@@ -7,14 +7,14 @@ import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import workflowImage from '../../img/conceptualize-visualize-finalize.png';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
-const apdInnsbruckReleaseNotes: LandingPageItemProps = {
+const apdJasperReleaseNotes: LandingPageItemProps = {
   label: 'Release notes',
-  docId: 'apdapprninnsbruck',
+  docId: 'apdapprnjasper',
 };
 
 const pageConfig: ApplicationLayoutProps = {
   title: 'Advanced Product Designer',
-  buttonProps: apdInnsbruckReleaseNotes,
+  buttonProps: apdJasperReleaseNotes,
   heroDescription: (
     <>
       Advanced Product Designer (APD) accelerates product design to enable
@@ -44,27 +44,27 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'Learn about APD',
-          docId: 'apdcreatingproductsinnsbruck',
+          docId: 'apdcreatingproductsjasper',
           pathInDoc: 'topics/c_intro.html',
         },
         {
           label: 'Request to enable APD',
-          docId: 'apdfinalizingproductsinnsbruck',
+          docId: 'apdfinalizingproductsjasper',
           pathInDoc: 'topics/c_request-enable-apd-app.html',
         },
         {
           label: 'Select a workset',
-          docId: 'apdfinalizingproductsinnsbruck',
+          docId: 'apdfinalizingproductsjasper',
           pathInDoc: 'topics/c_select-workset.html',
         },
         {
           label: 'Add Guidewire markers',
-          docId: 'apdcreatingproductsinnsbruck',
+          docId: 'apdcreatingproductsjasper',
           pathInDoc: 'working-with-xmind.html',
         },
         {
           label: 'Glossary',
-          docId: 'apdcreatingproductsinnsbruck',
+          docId: 'apdcreatingproductsjasper',
           pathInDoc: 'topics/c_glossary.html',
         },
       ],
@@ -75,27 +75,27 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'Conceptualize products',
-          docId: 'apdcreatingproductsinnsbruck',
+          docId: 'apdcreatingproductsjasper',
           pathInDoc: 'topics/c_visualize.html',
         },
         {
           label: 'Localize products',
-          docId: 'apdcreatingproductsinnsbruck',
+          docId: 'apdcreatingproductsjasper',
           pathInDoc: 'view-localize-product.html',
         },
         {
           label: 'Create multi-line products',
-          docId: 'apdcreatingproductsinnsbruck',
+          docId: 'apdcreatingproductsjasper',
           pathInDoc: 'multilineproducts.html',
         },
         {
           label: 'Visualize products',
-          docId: 'apdfinalizingproductsinnsbruck',
+          docId: 'apdfinalizingproductsjasper',
           pathInDoc: 'topics/c_apd_visualize.html',
         },
         {
           label: 'Finalize products',
-          docId: 'apdfinalizingproductsinnsbruck',
+          docId: 'apdfinalizingproductsjasper',
           pathInDoc: 'topics/t_finalizing.html',
         },
       ],
@@ -106,12 +106,12 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'Vary insurance products over-time',
-          docId: 'apdcreatingproductsinnsbruck',
+          docId: 'apdcreatingproductsjasper',
           pathInDoc: 'topics/c_editions.html',
         },
         {
           label: 'Create customer segments',
-          docId: 'apdcreatingproductsinnsbruck',
+          docId: 'apdcreatingproductsjasper',
           pathInDoc: 'product-seg.html',
         },
         {
@@ -133,19 +133,19 @@ const pageConfig: ApplicationLayoutProps = {
     items: [
       {
         label: 'Creating products with APD',
-        docId: 'apdcreatingproductsinnsbruck',
+        docId: 'apdcreatingproductsjasper',
         pathInDoc: 'topics/c_landing-page.html',
       },
       {
         label: 'Integrating products with PolicyCenter',
-        docId: 'apdfinalizingproductsinnsbruck',
+        docId: 'apdfinalizingproductsjasper',
         pathInDoc: 'topics/c_finalizing-products-landing-page.html',
       },
       {
         label: 'API reference',
         docId: 'apdmaindoc',
       },
-      apdInnsbruckReleaseNotes,
+      apdJasperReleaseNotes,
       {
         label: 'Guidewire Education',
         url: 'https://education.guidewire.com/lmt/lmtlogin.prHome?site=guidewire',
@@ -196,7 +196,7 @@ const pageConfig: ApplicationLayoutProps = {
     },
   ],
   selector: {
-    selectedItemLabel: 'Innsbruck (2023.10)',
+    selectedItemLabel: 'Jasper (2024.02)',
     items: allSelectors.apdApp,
   },
 };

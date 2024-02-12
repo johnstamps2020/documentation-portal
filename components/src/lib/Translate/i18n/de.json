@@ -1,4 +1,8 @@
 {
+  "docHighlighter.tooltip": {
+    "message": "Suchphrasen hervorheben umschalten",
+    "description": "Wenn der Benutzer die Seite aus dem Suchfenster öffnet, werden die Suchwörter hervorgehoben. Mit diesem Button können Sie die Hervorhebungen ein- und ausschalten. Dies ist der Tooltip für den Button"
+  },
   "docHighlighter.label": {
     "message": "Hervorheben aktivieren/deaktivieren",
     "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."

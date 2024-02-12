@@ -65,10 +65,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20222appreaderinteg',
         },
         {
-          label: 'Business Intelligence Integration',
-          docId: 'in20222xbiintegdraft',
-        },
-        {
           label: 'API Reference',
           docId: 'in20222apiref',
         },

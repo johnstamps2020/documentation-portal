@@ -35,6 +35,7 @@ function getEmployeeEmail(email) {
 
 function getUserData(userInfo) {
   if (userInfo.isLoggedIn) {
+    const id = userInfo.id;
     const isEmployee = userInfo.hasGuidewireEmail;
     const role = isEmployee ? 'employee' : 'customer/partner';
     const email = isEmployee
@@ -45,10 +46,11 @@ function getUserData(userInfo) {
       : 'Anonymous User';
     const domain = email.split('@')[1];
 
-    return { email, name, role, domain, isEmployee };
+    return { id, email, name, role, domain, isEmployee };
   }
 
   return {
+    id: 'anonymous',
     email: 'anonymous@user.com',
     name: 'User Not Logged In',
     role: 'Not Logged In',
@@ -61,13 +63,13 @@ async function initializeAnalytics() {
   const response = await fetch('/userInformation');
   if (response.ok) {
     const userInfo = await response.json();
-    const { email, name, role, domain, isEmployee } = getUserData(userInfo);
+    const { id, email, name, role, domain, isEmployee } = getUserData(userInfo);
 
     if (cookieConsentDecision === 'allow') {
       // Pendo
       pendo.initialize({
         visitor: {
-          id: email,
+          id: id,
           email: email,
           full_name: name,
           role: role,
@@ -82,7 +84,9 @@ async function initializeAnalytics() {
     // Google Analytics
     gtag('js', new Date());
 
-    gtag('config', 'G-QRTVTBY678');
+    gtag('config', 'G-QRTVTBY678', {
+      user_id: id,
+    });
     gtag('set', 'user_properties', {
       is_employee: isEmployee,
     });

@@ -28,15 +28,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-EA-Release.ditaval",
-      "root": "AdvancedProductDesignerClaims.ditamap",
-      "srcId": "apdappflainesrc",
-      "docId": "apdclaimsflaine",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-EA-Release.ditaval",
       "root": "AdvancedProductDesigner_Release_Notes.ditamap",
       "srcId": "apdappgarmischsrc",
       "docId": "apdapprngarmisch",
@@ -49,24 +40,6 @@
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "apdappgarmischsrc",
       "docId": "apdappgarmisch",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-EA-Release.ditaval",
-      "root": "AdvancedProductDesignerClaims.ditamap",
-      "srcId": "apdappgarmischsrc",
-      "docId": "apdclaimsgarmisch",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "AdvancedProductDesignerClaims.ditamap",
-      "srcId": "apdapphakubasrc",
-      "docId": "apdclaimshakuba",
       "indexRedirect": true,
       "disabled": false
     },
@@ -109,9 +82,27 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "AdvancedProductDesignerClaims.ditamap",
+      "root": "AdvancedProductDesigner_Release_Notes.ditamap",
       "srcId": "apdappinnsbrucksrc",
-      "docId": "apdclaimsinnsbruck",
+      "docId": "apdapprninnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "CreatingProducts.ditamap",
+      "srcId": "apdappjaspersrc",
+      "docId": "apdcreatingproductsjasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "FinalizingProducts.ditamap",
+      "srcId": "apdappjaspersrc",
+      "docId": "apdfinalizingproductsjasper",
       "indexRedirect": true,
       "disabled": false
     },
@@ -119,8 +110,8 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "AdvancedProductDesigner_Release_Notes.ditamap",
-      "srcId": "apdappinnsbrucksrc",
-      "docId": "apdapprninnsbruck",
+      "srcId": "apdappjaspersrc",
+      "docId": "apdapprnjasper",
       "indexRedirect": true,
       "disabled": false
     }

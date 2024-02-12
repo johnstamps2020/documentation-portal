@@ -3034,12 +3034,14 @@ __metadata:
   resolution: "@doctools/components@workspace:components"
   dependencies:
     "@doctools/scripts": "workspace:*"
+    "@types/mark.js": "npm:^8.11.12"
+    mark.js: "npm:^8.11.1"
     rimraf: "npm:^5.0.5"
     typescript: "npm:^5.3.3"
   peerDependencies:
     "@emotion/react": ^11.11.0
     "@emotion/styled": ^11.11.0
-    "@fontsource/source-sans-pro": ^4.5.11
+    "@fontsource/source-sans-pro": ^5.0.8
     "@mui/icons-material": ^5.15.6
     "@mui/material": ^5.15.6
     react: ^18.2.0
@@ -3057,7 +3059,7 @@ __metadata:
     "@babel/preset-react": "npm:^7.18.6"
     "@babel/preset-typescript": "npm:^7.21.0"
     "@docusaurus/types": "npm:3.1.1"
-    "@fontsource/source-sans-pro": "npm:^4.5.11"
+    "@fontsource/source-sans-pro": "npm:^5.0.8"
     cross-env: "npm:^7.0.3"
     lodash: "npm:^4.17.21"
     yaml: "npm:^1.10.2"
@@ -3086,13 +3088,12 @@ __metadata:
     "@docusaurus/types": "npm:3.1.1"
     "@emotion/react": "npm:^11.10.0"
     "@emotion/styled": "npm:^11.10.0"
-    "@fontsource/source-sans-pro": "npm:^4.5.11"
+    "@fontsource/source-sans-pro": "npm:^5.0.8"
     "@mui/icons-material": "npm:^5.15.6"
     "@mui/material": "npm:^5.15.6"
     "@types/lodash": "npm:^4.14.190"
     cross-env: "npm:^7.0.3"
     lodash: "npm:^4.17.21"
-    mark.js: "npm:^8.11.1"
     rimraf: "npm:^4.1.2"
     typescript: "npm:~5.2.2"
   peerDependencies:
@@ -3109,7 +3110,7 @@ __metadata:
     "@doctools/server": "workspace:*"
     "@emotion/react": "npm:^11.11.0"
     "@emotion/styled": "npm:^11.11.0"
-    "@fontsource/source-sans-pro": "npm:^4.5.11"
+    "@fontsource/source-sans-pro": "npm:^5.0.8"
     "@mui/icons-material": "npm:^5.15.6"
     "@mui/material": "npm:^5.15.6"
     "@testing-library/dom": "npm:^9.3.3"
@@ -4549,10 +4550,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/source-sans-pro@npm:^4.5.11":
-  version: 4.5.11
-  resolution: "@fontsource/source-sans-pro@npm:4.5.11"
-  checksum: 15e899f3eef8725b223ecd3b7a96825d7027f814c5c54d4c4bbf4925992a9d8358410d8288a0ab5436f9ffa4d04aec52fb3138cbe45c1b42d1e124218c056027
+"@fontsource/source-sans-pro@npm:^5.0.8":
+  version: 5.0.8
+  resolution: "@fontsource/source-sans-pro@npm:5.0.8"
+  checksum: 33646c9eb0a4b39164106e3ff84db20f4602d75c50024f615c85982744655b5edcaa5b6832e825857a16caddd6e46441ff727de229a11b41eb1035150c064acb
   languageName: node
   linkType: hard
 
@@ -7235,6 +7236,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jquery@npm:*":
+  version: 3.5.29
+  resolution: "@types/jquery@npm:3.5.29"
+  dependencies:
+    "@types/sizzle": "npm:*"
+  checksum: 364facf2cb0bc935cb4b7f4af0b12c8e901b02b08a85af213172485166123b10aad8563f8e51e363f65a778c4105a59a64dedd0b0fd73f96557219d46477af56
+  languageName: node
+  linkType: hard
+
 "@types/jsdom@npm:^20.0.0":
   version: 20.0.1
   resolution: "@types/jsdom@npm:20.0.1"
@@ -7289,6 +7299,15 @@ __metadata:
   version: 4.14.202
   resolution: "@types/lodash@npm:4.14.202"
   checksum: 1bb9760a5b1dda120132c4b987330d67979c95dbc22612678682cd61b00302e190f4207228f3728580059cdab5582362262e3819aea59960c1017bd2b9fb26f6
+  languageName: node
+  linkType: hard
+
+"@types/mark.js@npm:^8.11.12":
+  version: 8.11.12
+  resolution: "@types/mark.js@npm:8.11.12"
+  dependencies:
+    "@types/jquery": "npm:*"
+  checksum: b2a8e33b07025c358a8430a1557178027357c40e5bbfce292c94ad76fb3a0592ea19121adafd371828e880a5aaefa172de1302f00f42b64565cb4da6aee945c7
   languageName: node
   linkType: hard
 
@@ -7611,6 +7630,13 @@ __metadata:
     "@types/mime": "npm:*"
     "@types/node": "npm:*"
   checksum: 49aa21c367fffe4588fc8c57ea48af0ea7cbadde7418bc53cde85d8bd57fd2a09a293970d9ea86e79f17a87f8adeb3e20da76aab38e1c4d1567931fa15c8af38
+  languageName: node
+  linkType: hard
+
+"@types/sizzle@npm:*":
+  version: 2.3.8
+  resolution: "@types/sizzle@npm:2.3.8"
+  checksum: 2ac62443dc917f5f903cbd9afc51c7d6cc1c6569b4e1a15faf04aea5b13b486e7f208650014c3dc4fed34653eded3e00fe5abffe0e6300cbf0e8a01beebf11a6
   languageName: node
   linkType: hard
 
@@ -13925,7 +13951,7 @@ __metadata:
     "@doctools/components": "workspace:*"
     "@emotion/react": "npm:^11.11.0"
     "@emotion/styled": "npm:^11.11.0"
-    "@fontsource/source-sans-pro": "npm:^4.5.11"
+    "@fontsource/source-sans-pro": "npm:^5.0.8"
     "@mui/icons-material": "npm:^5.15.6"
     "@mui/material": "npm:^5.15.6"
     "@types/node": "npm:^18.13.0"
@@ -23521,7 +23547,7 @@ __metadata:
     "@docusaurus/tsconfig": "npm:3.0.0"
     "@emotion/react": "npm:^11.11.0"
     "@emotion/styled": "npm:^11.11.0"
-    "@fontsource/source-sans-pro": "npm:^4.5.11"
+    "@fontsource/source-sans-pro": "npm:^5.0.8"
     "@mdx-js/react": "npm:3.0.0"
     "@mui/icons-material": "npm:^5.11.16"
     "@mui/material": "npm:^5.13.3"

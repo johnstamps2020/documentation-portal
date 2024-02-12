@@ -1,4 +1,8 @@
 {
+  "docHighlighter.tooltip": {
+    "message": "検索フレーズのハイライトを切り替える",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off. This is the tooltip for the button"
+  },
   "docHighlighter.label": {
     "message": "検索キーワード強調表示",
     "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
@@ -19,16 +23,16 @@
     "message": "非公開にするにはここをクリック"
   },
   "privacy.warning": {
-    "message": "By providing your e-mail address, you consent to being contacted by Guidewire."
+    "message": "メールアドレスを入力することにより、お客様は Guidewire からこのメールアドレスへ連絡することを許可したものとみなされます。"
   },
   "privacy.link": {
-    "message": "Guidewire's Privacy Policy can be found here."
+    "message": "Guidewire のプライバシーポリシーについてはこちらをご覧ください。"
   },
   "rightWrong.positiveTitle": {
-    "message": "Do"
+    "message": "する"
   },
   "theme.rightWrong.negativeTitle": {
-    "message": "Don't"
+    "message": "しない"
   },
   "anonymous.youAreSharing": {
     "message": "メールアドレスが送信されます。",

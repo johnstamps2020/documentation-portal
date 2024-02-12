@@ -7,6 +7,10 @@ export const allSelectors = {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/apd',
     },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/apd',
+    },
   ],
   testingFrameworkSelector: [
     { label: 'Elysian (2022.05)', pagePath: 'testingFramework/elysian' },
@@ -24,6 +28,7 @@ export const allSelectors = {
     { label: 'Garmisch', pagePath: 'apiReferences/garmisch' },
     { label: 'Hakuba', pagePath: 'apiReferences/hakuba' },
     { label: 'Innsbruck', pagePath: 'apiReferences/innsbruck' },
+    { label: 'Jasper', pagePath: 'apiReferences/jasper' },
   ],
   s344cd6ac814e55dd2f6e1bddf2c969db: [
     {
@@ -53,6 +58,10 @@ export const allSelectors = {
     {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/bcGwCloud/2023.10',
+    },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/bc',
     },
   ],
   sb1572a4ac17ba705fdfb0f9ebe00d8e1: [
@@ -97,6 +106,10 @@ export const allSelectors = {
     {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/ccGwCloud/2023.10',
+    },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/cc',
     },
   ],
   sb8b6bf6e1344485406813caca67c4038: [
@@ -189,6 +202,10 @@ export const allSelectors = {
     {
       label: 'Innsbruck (2023.10)',
       pagePath: 'cloudProducts/innsbruck/pcGwCloud/2023.10',
+    },
+    {
+      label: 'Jasper (2024.02)',
+      pagePath: 'cloudProducts/jasper/pc',
     },
   ],
   se7d12fdd8fa65284de1403b37a585252: [

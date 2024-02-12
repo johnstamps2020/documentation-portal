@@ -65,10 +65,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20221appreaderinteg',
         },
         {
-          label: 'Business Intelligence Integration',
-          docId: 'in20221xbiintegdraft',
-        },
-        {
           label: 'Guidewire Predict Integration',
           docId: 'in20221pa',
         },
