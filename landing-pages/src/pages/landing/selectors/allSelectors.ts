@@ -348,6 +348,7 @@ export const allSelectors = {
     { label: '日本語', pagePath: 'l10n/ja-JP' },
   ],
   sc63ff31ab2489ea7a914b16720221401: [
+    { label: 'Advanced Product Designer', pagePath: 'l10n/es-419/apd' },
     { label: 'BillingCenter', pagePath: 'l10n/es-419/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/es-419/cc' },
     { label: 'Cloud Data Access', pagePath: 'l10n/es-419/cda' },
@@ -449,6 +450,7 @@ export const allSelectors = {
     { label: 'VendorEngage', pagePath: 'l10n/it-IT/ve' },
   ],
   se8b84bf91d6fdc9fe9f57fab16d97983: [
+    { label: 'Advanced Product Designer', pagePath: 'l10n/ja-JP/apd' },
     { label: 'BillingCenter', pagePath: 'l10n/ja-JP/bc' },
     { label: 'ClaimCenter', pagePath: 'l10n/ja-JP/cc' },
     { label: 'Cloud Platform', pagePath: 'l10n/ja-JP/cp' },

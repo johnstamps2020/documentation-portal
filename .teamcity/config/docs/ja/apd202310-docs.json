@@ -20,6 +20,66 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "apdjaJPapprninnsbruck",
+      "title": "Advanced Product Designer Release Notes ja",
+      "displayTitle": "Advanced Product Designer リリースノート",
+      "url": "ja/cloud/apd/innsbruck/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "apdjaJPcreatingproductsinnsbruck",
+      "title": "Creating Products with APD App ja",
+      "displayTitle": "APD アプリを使用した保険商品の作成",
+      "url": "ja/cloud/apd/innsbruck/create",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "apdjaJPfinalizingproductsinnsbruck",
+      "title": "Integrating Products with PolicyCenter ja",
+      "displayTitle": "PolicyCenter を使用した保険商品の連携",
+      "url": "ja/cloud/apd/innsbruck/finalize",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "language": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

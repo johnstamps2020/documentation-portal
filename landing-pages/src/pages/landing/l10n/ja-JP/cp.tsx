@@ -44,7 +44,11 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Data Studio',
           docId: 'datastudiojaJPrelease',
         },
-      ],
+        {
+          label: 'Autopilot Workflow Service',
+          pagePath: 'l10n/ja-JP/cloudProducts/autopilotworkflowservice',
+        },
+          ],
     },
     {
       label: '2022.09 (Flaine)',

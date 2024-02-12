@@ -84,6 +84,18 @@
       "title": "Explore ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "release/ja-JP/2024.01"
+    },
+    {
+      "id": "workflowservicejaJPsrc",
+      "title": "Workflow Service ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/workflow-service.git",
+      "branch": "release/ja-JP/2024.01"
+    },
+    {
+      "id": "apdjaJPappinnsbrucksrc",
+      "title": "Advanced Product Designer App Innsbruck",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/app/ja-JP/innsbruck"
     }
   ]
 }

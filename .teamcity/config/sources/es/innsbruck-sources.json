@@ -24,6 +24,12 @@
       "title": "Ski Release What's New - Innsbruck es",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
       "branch": "release/es-419/innsbruck"
+    },
+    {
+      "id": "apdes419appinnsbrucksrc",
+      "title": "Advanced Product Designer App Innsbruck es",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/app/es-419/innsbruck"
     }
   ]
 }
