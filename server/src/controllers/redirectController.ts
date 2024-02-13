@@ -187,15 +187,15 @@ const permanentRedirectUrls = [
 const temporaryRedirectUrls = [
   {
     from: '',
-    to: isProd ? 'cloudProducts/innsbruck' : 'cloudProducts/innsbruck',
+    to: isProd ? 'cloudProducts/innsbruck' : 'cloudProducts/jasper',
   },
   {
     from: 'cloudProducts',
-    to: isProd ? 'cloudProducts/innsbruck' : 'cloudProducts/innsbruck',
+    to: isProd ? 'cloudProducts/innsbruck' : 'cloudProducts/jasper',
   },
   {
     from: 'apiReferences',
-    to: isProd ? 'apiReferences/innsbruck' : 'apiReferences/innsbruck',
+    to: isProd ? 'apiReferences/innsbruck' : 'apiReferences/jasper',
   },
 ];
 
