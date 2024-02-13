@@ -990,8 +990,7 @@ object GwBuildSteps {
             Pair("-i", "${workingDir}/${rootMap}"),
             Pair("-o", "${workingDir}/${fullOutputPath}"),
             Pair("-l", "${workingDir}/${logFile}"),
-            Pair("--args.draft", "yes"),
-            Pair("--processing-mode", "strict")
+            Pair("--args.draft", "yes")
         )
 
         if (buildFilter != null) {
