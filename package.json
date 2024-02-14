@@ -64,7 +64,8 @@
     "trim": "1.0.1"
   },
   "dependencies": {
-    "concurrently": "7.4.0"
+    "concurrently": "7.4.0",
+    "levenshtein-js": "^1.0.2"
   },
   "devDependencies": {
     "prettier": "^2.8.4"
