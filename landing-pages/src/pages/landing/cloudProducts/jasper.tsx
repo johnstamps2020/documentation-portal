@@ -85,11 +85,11 @@ const pageConfig: Category2LayoutProps = {
       items: [
         {
           label: 'DataHub',
-          pagePath: 'cloudProducts/innsbruck/dhGwCloud/2023.10',
+          pagePath: 'cloudProducts/jasper/dh',
         },
         {
           label: 'InfoCenter',
-          pagePath: 'cloudProducts/innsbruck/icGwCloud/2023.10',
+          pagePath: 'cloudProducts/jasper/ic',
         },
         {
           label: 'Analytics Manager',
