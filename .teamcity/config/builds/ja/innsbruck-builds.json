@@ -252,6 +252,12 @@
       "docId": "apdjaJPfinalizingproductsinnsbruck",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "cloudtickettemplatessrc",
+      "docId": "cloudtickettemplatesjaJP",
+      "disabled": false
     }
   ]
 }

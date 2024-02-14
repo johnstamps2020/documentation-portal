@@ -83,6 +83,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       docId: 'isconfigupgradetoolses419500',
     },
     {
+      label: 'Plantillas de Community Case',
+      docId: 'cloudtickettemplateses419',
+    },
+    {
       label: 'PolicyCenter',
       pagePath: 'l10n/es-419/pc',
     },

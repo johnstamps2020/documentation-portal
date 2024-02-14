@@ -47,6 +47,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/cp',
     },
     {
+      label: 'コミュニティケースのテンプレート',
+      docId: 'cloudtickettemplatesjaJP',
+    },
+    {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/ja-JP/ce-am',
     },
