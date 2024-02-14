@@ -87,7 +87,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/fr-FR/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function FrFR() {

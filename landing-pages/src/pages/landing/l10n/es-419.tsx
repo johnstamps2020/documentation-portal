@@ -107,7 +107,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/es-419/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function Es419() {

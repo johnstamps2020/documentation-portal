@@ -79,7 +79,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/it-IT/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function ItIT() {

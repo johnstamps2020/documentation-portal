@@ -87,7 +87,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/de-DE/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function DeDE() {

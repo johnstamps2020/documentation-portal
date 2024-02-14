@@ -106,8 +106,7 @@ const pageConfig: ProductFamilyLayoutProps = {
       label: 'VendorEngage',
       pagePath: 'l10n/ja-JP/ve',
     },
-],
-  sidebar: implementationResourcesSidebar,
+  ],
 };
 
 export default function JaJP() {

@@ -99,7 +99,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/pt-BR/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function PtBR() {

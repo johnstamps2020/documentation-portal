@@ -63,7 +63,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/es-ES/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function EsES() {
