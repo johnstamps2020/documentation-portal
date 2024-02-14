@@ -532,8 +532,7 @@
       "url": "internal-docs",
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "Internal Docs"
