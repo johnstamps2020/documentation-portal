@@ -2,6 +2,39 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
+      "id": "apdjaJPmaindoc",
+      "title": "APD API docs ja",
+      "displayTitle": "APD API リファレンス",
+      "url": "apd/api/latest/ja",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Advanced Product Designer"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Development",
+          "Integration"
+        ],
+        "language": "ja"
+      },
+      "environments": [
+        "staging"
+      ],
+      "internal": false,
+      "earlyAccess": false,
+      "indexForSearch": true,
+      "public": true,
+      "displayOnLandingPages": true
+    },
+    {
       "id": "ispc202310jaJPapd",
       "title": "Advanced Product Designer in PolicyCenter ja",
       "displayTitle": "Advanced Product Designer in PolicyCenter",

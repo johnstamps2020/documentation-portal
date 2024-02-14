@@ -258,6 +258,12 @@
       "srcId": "cloudtickettemplatessrc",
       "docId": "cloudtickettemplatesjaJP",
       "disabled": false
-    }
+    },
+    {
+      "docId": "apdjaJPmaindoc",
+      "srcId": "apdapiintsrc",
+      "buildType": "yarn",
+      "disabled": false
+    },
   ]
 }
