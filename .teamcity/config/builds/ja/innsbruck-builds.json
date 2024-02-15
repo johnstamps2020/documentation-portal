@@ -3,6 +3,15 @@
   "builds": [
     {
       "buildType": "dita",
+      "root": "GWCP-ReleaseNotes.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "srcId": "gwcpreleasenotesjaJPsrc",
+      "docId": "gwcpjaJPreleasenotes",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202310jaJPsrc",
@@ -255,6 +264,6 @@
       "srcId": "apdapiintsrc",
       "buildType": "yarn",
       "disabled": false
-    },
+    }
   ]
 }
