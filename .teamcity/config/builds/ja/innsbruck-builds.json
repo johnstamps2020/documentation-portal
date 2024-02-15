@@ -264,6 +264,6 @@
       "srcId": "apdapiintsrc",
       "buildType": "yarn",
       "disabled": false
-    },
+    }
   ]
 }
