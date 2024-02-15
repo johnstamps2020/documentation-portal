@@ -1,0 +1,29 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "gwcpreleasenoteses419src",
+      "title": "Cloud Platform Release Notes es",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
+      "branch": "release/es-419/jasper"
+    },
+    {
+      "id": "is202403es419src",
+      "title": "IS 2024.03.0 es",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/es-419/2024.03.0"
+    },
+    {
+      "id": "isconfigupgradetools510es419src",
+      "title": "InsuranceSuite Configuration Upgrade Tools 5.1.0 es",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
+      "branch": "release/es-419/5.1.0"
+    },
+    {
+      "id": "whatsnewjasperes419src",
+      "title": "Ski Release What's New - Innsbruck es",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
+      "branch": "release/es-419/jasper"
+    }
+  ]
+}

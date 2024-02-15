@@ -54,6 +54,33 @@
       "internal": false,
       "earlyAccess": false,
       "displayOnLandingPages": true
+    },
+    {
+      "id": "whatsnewdeDEjasper",
+      "url": "de/cloud/jasper/whatsnew",
+      "title": "What's new in jasper de",
+      "displayTitle": "Was ist neu in Jasper",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"
+        ],
+        "version": ["2024.03"],
+        "release": ["Jasper"],
+        "subject": ["Release notes"],
+        "language": "de"
+      },
+      "environments": ["staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     }
   ]
 }

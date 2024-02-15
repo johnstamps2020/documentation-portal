@@ -3,10 +3,19 @@
   "builds": [
     {
       "buildType": "dita",
+      "root": "GWCP-ReleaseNotes.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "srcId": "gwcpreleasenotesptBRsrc",
+      "docId": "gwcpptBRreleasenotes",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotes.ditamap",
-      "srcId": "is202310ptBRsrc",
-      "docId": "isbc202310ptBRreleasenotes",
+      "srcId": "is202403ptBRsrc",
+      "docId": "isbc202403ptBRreleasenotes",
       "indexRedirect": true,
       "disabled": false
     },
@@ -14,8 +23,8 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "UpdateGuide.ditamap",
-      "srcId": "is202310ptBRsrc",
-      "docId": "isbc202310ptBRupdate",
+      "srcId": "is202403ptBRsrc",
+      "docId": "isbc202403ptBRupdate",
       "indexRedirect": true,
       "disabled": false
     },
@@ -23,8 +32,8 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "ReleaseNotes.ditamap",
-      "srcId": "is202310ptBRsrc",
-      "docId": "iscc202310ptBRreleasenotes",
+      "srcId": "is202403ptBRsrc",
+      "docId": "iscc202403ptBRreleasenotes",
       "indexRedirect": true,
       "disabled": false
     },
@@ -32,8 +41,8 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "UpdateGuide.ditamap",
-      "srcId": "is202310ptBRsrc",
-      "docId": "iscc202310ptBRupdate",
+      "srcId": "is202403ptBRsrc",
+      "docId": "iscc202403ptBRupdate",
       "indexRedirect": true,
       "disabled": false
     },
@@ -41,8 +50,8 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "ReleaseNotes.ditamap",
-      "srcId": "is202310ptBRsrc",
-      "docId": "ispc202310ptBRreleasenotes",
+      "srcId": "is202403ptBRsrc",
+      "docId": "ispc202403ptBRreleasenotes",
       "indexRedirect": true,
       "disabled": false
     },
@@ -50,8 +59,8 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "UpdateGuide.ditamap",
-      "srcId": "is202310ptBRsrc",
-      "docId": "ispc202310ptBRupdate",
+      "srcId": "is202403ptBRsrc",
+      "docId": "ispc202403ptBRupdate",
       "indexRedirect": true,
       "disabled": false
     },
@@ -59,8 +68,8 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
-      "srcId": "isconfigupgradetools500ptBRsrc",
-      "docId": "isconfigupgradetoolsptBR500",
+      "srcId": "isconfigupgradetools510ptBRsrc",
+      "docId": "isconfigupgradetoolsptBR510",
       "indexRedirect": true,
       "disabled": false
     },
@@ -68,8 +77,8 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "whatsnew.ditamap",
-      "srcId": "whatsnewinnsbruckptBRsrc",
-      "docId": "whatsnewptBRinnsbruck",
+      "srcId": "whatsnewjasperptBRsrc",
+      "docId": "whatsnewptBRjasper",
       "indexRedirect": true,
       "disabled": false
     }

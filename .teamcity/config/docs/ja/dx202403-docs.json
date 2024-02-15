@@ -1,0 +1,85 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202403jaJPceclaimsrelnotes",
+      "title": "CustomerEngage Account Management for ClaimCenter Release Notes ja",
+      "displayTitle": "CustomerEngage Account Management for ClaimCenter リリースノート",
+      "url": "ja/cloud/dx/ce-claims/202403/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2024.03"],
+        "release": ["Jasper"],
+        "subject": ["Release notes"],
+        "language": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202403jaJPsrerelnotes",
+      "title": "ServiceRepEngage Release Notes ja",
+      "displayTitle": "ServiceRepEngage リリースノート",
+      "url": "ja/cloud/dx/sre/202403/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2024.03"],
+        "release": ["Jasper"],
+        "subject": ["Release notes"],
+        "language": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202403jaJPverelnotes",
+      "title": "VendorEngage Release Notes ja",
+      "displayTitle": "VendorEngage リリースノート",
+      "url": "ja/cloud/dx/ve/202403/relnotes",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2024.03"],
+        "release": ["Jasper"],
+        "subject": ["Release notes"],
+        "language": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ee202403jaJPupdate",
+      "title": "Update ja",
+      "displayTitle": "EnterpriseEngage アップデートガイド",
+      "url": "ja/cloud/ee/202403/update",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2024.03"],
+        "release": ["Jasper"],
+        "subject": ["Installation"],
+        "language": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

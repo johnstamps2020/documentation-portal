@@ -1,0 +1,45 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "iscc202403jaJPreleasenotes",
+      "title": "Release Notes ja",
+      "displayTitle": "リリースノート",
+      "url": "ja/cloud/cc/202403/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2024.03"],
+        "release": ["Jasper"],
+        "subject": ["Release notes"],
+        "language": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202403jaJPupdate",
+      "title": "Update ja",
+      "displayTitle": "アップデート",
+      "url": "ja/cloud/cc/202403/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2024.03"],
+        "release": ["Jasper"],
+        "subject": ["Installation"],
+        "language": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

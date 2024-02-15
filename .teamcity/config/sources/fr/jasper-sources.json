@@ -1,0 +1,35 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "dx202403frFRsrc",
+      "title": "Digital 2024.03 fr",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
+      "branch": "release/fr-FR/2024.03"
+    },
+    {
+      "id": "gwcpreleasenotesfrFRsrc",
+      "title": "Cloud Platform Release Notes fr",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
+      "branch": "release/fr-FR/jasper"
+    },
+    {
+      "id": "is202403frFRsrc",
+      "title": "IS 2024.03.0 fr",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/fr-FR/2024.03.0"
+    },
+    {
+      "id": "isconfigupgradetools510frFRsrc",
+      "title": "InsuranceSuite Configuration Upgrade Tools 5.1.0 fr",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
+      "branch": "release/fr-FR/5.1.0"
+    },
+    {
+      "id": "whatsnewjasperfrFRsrc",
+      "title": "Ski Release What's New - Innsbruck fr",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
+      "branch": "release/fr-FR/jasper"
+    }
+  ]
+}
