@@ -2,22 +2,22 @@
   "$schema": "../../config-schema.json",
   "sources": [
     {
-      "id": "dx202403jaJPsrc",
-      "title": "Digital 2024.03 ja",
+      "id": "dx202402jaJPsrc",
+      "title": "Digital 2024.02 ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
-      "branch": "release/ja-JP/2024.03"
+      "branch": "release/ja-JP/2024.02"
     },
     {
-      "id": "gwcpreleasenotesjaJPsrc",
+      "id": "gwcpjaJPreleasenotessrc",
       "title": "Cloud Platform Release Notes ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
       "branch": "release/ja-JP/jasper"
     },
     {
-      "id": "is202403jaJPsrc",
-      "title": "IS 2024.03.0 ja",
+      "id": "is202402jaJPsrc",
+      "title": "IS 2024.02.0 ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/ja-JP/2024.03.0"
+      "branch": "release/ja-JP/2024.02.0"
     },
     {
       "id": "isconfigupgradetools510jaJPsrc",
@@ -32,16 +32,10 @@
       "branch": "release/ja-JP/jasper"
     },
     {
-      "id": "is202403jaJPeeupdatesrc",
-      "title": "IS 2024.03.0 eeupdate ja",
+      "id": "is202402jaJPeeupdatesrc",
+      "title": "IS 2024.02.0 eeupdate ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/ja-JP/2024.03.0-eeupdate"
-    },
-    {
-      "id": "is202403jaJPintegoverviewsrc",
-      "title": "IS 2024.03.0 integoverview ja",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/ja-JP/2024.03.0-integoverview"
+      "branch": "release/ja-JP/2024.02.0-eeupdate"
     }
   ]
 }

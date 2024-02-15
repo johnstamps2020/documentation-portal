@@ -2,16 +2,16 @@
   "$schema": "../../config-schema.json",
   "sources": [
     {
-      "id": "gwcpreleasenoteses419src",
+      "id": "gwcpes419releasenotessrc",
       "title": "Cloud Platform Release Notes es",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
       "branch": "release/es-419/jasper"
     },
     {
-      "id": "is202403es419src",
-      "title": "IS 2024.03.0 es",
+      "id": "is202402es419src",
+      "title": "IS 2024.02.0 es",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/es-419/2024.03.0"
+      "branch": "release/es-419/2024.02.0"
     },
     {
       "id": "isconfigupgradetools510es419src",

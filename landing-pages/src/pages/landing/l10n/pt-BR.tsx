@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Novidades na Jaspser',
+      docId: 'whatsnewptBRjasper',
+    },
+    {
       label: 'Novidades na Innsbruck',
       docId: 'whatsnewptBRinnsbruck',
     },
@@ -60,7 +64,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
-      docId: 'isconfigupgradetoolsptBR500',
+      pagePath: 'l10n/pt-BR/is-configupgradetools',
     },
     {
       label: 'DataHub',

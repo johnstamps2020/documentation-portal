@@ -10,9 +10,9 @@ const pageConfig: CategoryLayoutProps = {
     backgroundColor: `hsl(0, 0%, 98%)`,
   },
   selector: {
-    label: 'Choisissez un produit',
-    selectedItemLabel: 'Cloud Platform',
-    items: allSelectors.sef23284b869fc03ddd79bc1738f4ad7d,
+    label: 'Selecione o produto',
+    selectedItemLabel: 'InsuranceSuite Configuration Upgrade Tools',
+    items: allSelectors.s04aae4cce94a63b38358bb52ee3acace,
     labelColor: 'white',
   },
 
@@ -21,27 +21,23 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.02 (Jasper)',
       items: [
         {
-          label: 'Notes de version de la plate-forme Guidewire Cloud',
-          docId: 'gwcpfrFRreleasenotes',
+          label: 'InsuranceSuite Configuraiton Upgrade Tools Guide',
+          docId: 'isconfigupgradetoolsptBR510',
         },
       ],
     },
     {
-      label: '2023.10 (Innsbruck)',
-      items: [
-        {
-          label: 'Explore',
-          docId: 'exploreusingfrFRrelease',
-        },
-        {
-          label: 'Data Studio',
-          docId: 'datastudiofrFRrelease',
-        },
-      ],
-    },
+    label: '2023.10 (Innsbruck)',
+    items: [
+      {
+        label: 'InsuranceSuite Configuraiton Upgrade Tools Guide',
+        docId: 'isconfigupgradetoolsptBR500',
+      },
+    ],
+  },
   ],
 };
 
-export default function Cp() {
+export default function Isconfigupgradetools() {
   return <CategoryLayout {...pageConfig} />;
 }

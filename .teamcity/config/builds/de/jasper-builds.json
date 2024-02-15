@@ -5,7 +5,7 @@
 			"buildType": "dita",
 			"filter": "Digital-ve-MgSvcs.ditaval",
 			"root": "GWCP-ReleaseNotes.ditamap",
-			"srcId": "gwcpreleasenotesdeDEsrc",
+			"srcId": "gwcpdeDEreleasenotessrc",
 			"docId": "gwcpdeDEreleasenotes",
 			"indexRedirect": true,
 			"disabled": false
@@ -14,8 +14,8 @@
 			"buildType": "dita",
 			"filter": "Digital-ce-am-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
-			"srcId": "dx202403deDEsrc",
-			"docId": "dx202403deDEceamrelnotes",
+			"srcId": "dx202402deDEsrc",
+			"docId": "dx202402deDEceamrelnotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -23,8 +23,8 @@
 			"buildType": "dita",
 			"filter": "Digital-ce-claims-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
-			"srcId": "dx202403deDEsrc",
-			"docId": "dx202403deDEceclaimsrelnotes",
+			"srcId": "dx202402deDEsrc",
+			"docId": "dx202402deDEceclaimsrelnotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -32,8 +32,8 @@
 			"buildType": "dita",
 			"filter": "Digital-ce-qb-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
-			"srcId": "dx202403deDEsrc",
-			"docId": "dx202403deDEceqbrelnotes",
+			"srcId": "dx202402deDEsrc",
+			"docId": "dx202402deDEceqbrelnotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -41,8 +41,8 @@
 			"buildType": "dita",
 			"filter": "Digital-pe-claims-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
-			"srcId": "dx202403deDEsrc",
-			"docId": "dx202403deDEperelnotes",
+			"srcId": "dx202402deDEsrc",
+			"docId": "dx202402deDEperelnotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -50,8 +50,8 @@
 			"buildType": "dita",
 			"filter": "Digital-pe-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
-			"srcId": "dx202403deDEsrc",
-			"docId": "dx202403deDEpeclaimsrelnotes",
+			"srcId": "dx202402deDEsrc",
+			"docId": "dx202402deDEpeclaimsrelnotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -59,8 +59,8 @@
 			"buildType": "dita",
 			"filter": "Digital-sre-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
-			"srcId": "dx202403deDEsrc",
-			"docId": "dx202403deDEsrerelnotes",
+			"srcId": "dx202402deDEsrc",
+			"docId": "dx202402deDEsrerelnotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -68,8 +68,8 @@
 			"buildType": "dita",
 			"filter": "Digital-ve-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
-			"srcId": "dx202403deDEsrc",
-			"docId": "dx202403deDEverelnotes",
+			"srcId": "dx202402deDEsrc",
+			"docId": "dx202402deDEverelnotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -77,8 +77,8 @@
 			"buildType": "dita",
 			"filter": "IS-BC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
-			"srcId": "is202403deDEsrc",
-			"docId": "isbc202403deDEreleasenotes",
+			"srcId": "is202402deDEsrc",
+			"docId": "isbc202402deDEreleasenotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -86,8 +86,8 @@
 			"buildType": "dita",
 			"filter": "IS-BC-Cloud-Release.ditaval",
 			"root": "UpdateGuide.ditamap",
-			"srcId": "is202403deDEsrc",
-			"docId": "isbc202403deDEupdate",
+			"srcId": "is202402deDEsrc",
+			"docId": "isbc202402deDEupdate",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -95,8 +95,8 @@
 			"buildType": "dita",
 			"filter": "IS-CC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
-			"srcId": "is202403deDEsrc",
-			"docId": "iscc202403deDEreleasenotes",
+			"srcId": "is202402deDEsrc",
+			"docId": "iscc202402deDEreleasenotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -104,8 +104,8 @@
 			"buildType": "dita",
 			"filter": "IS-CC-Cloud-Release.ditaval",
 			"root": "UpdateGuide.ditamap",
-			"srcId": "is202403deDEsrc",
-			"docId": "iscc202403deDEupdate",
+			"srcId": "is202402deDEsrc",
+			"docId": "iscc202402deDEupdate",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -113,8 +113,8 @@
 			"buildType": "dita",
 			"filter": "IS-PC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
-			"srcId": "is202403deDEsrc",
-			"docId": "ispc202403deDEreleasenotes",
+			"srcId": "is202402deDEsrc",
+			"docId": "ispc202402deDEreleasenotes",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -122,8 +122,8 @@
 			"buildType": "dita",
 			"filter": "IS-PC-Cloud-Release.ditaval",
 			"root": "UpdateGuide.ditamap",
-			"srcId": "is202403deDEsrc",
-			"docId": "ispc202403deDEupdate",
+			"srcId": "is202402deDEsrc",
+			"docId": "ispc202402deDEupdate",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -150,8 +150,8 @@
 			"filter": "EE-Cloud-Release.ditaval",
 			"root": "UpdateGuide.ditamap",
 			"indexRedirect": true,
-			"srcId": "is202403deDEsrc",
-			"docId": "ee202403deDEupdate",
+			"srcId": "is202402deDEsrc",
+			"docId": "ee202402deDEupdate",
 			"disabled": false
 		}
 	]

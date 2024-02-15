@@ -18,12 +18,17 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.10 (Innsbruck)',
+      label: '2024.02 (Jasper)',
       items: [
         {
           label: 'Guidewire Cloud Platform - Versionshinweise',
           docId: 'gwcpdeDEreleasenotes',
         },
+      ],
+    },
+    {
+      label: '2023.10 (Innsbruck)',
+      items: [
         {
           label: 'Explore',
           docId: 'exploreusingdeDErelease',

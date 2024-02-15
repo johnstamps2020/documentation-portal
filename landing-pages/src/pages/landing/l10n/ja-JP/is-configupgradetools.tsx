@@ -18,19 +18,28 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.10 (Innsbruck)',
+      label: '2024.02 (Jasper)',
       items: [
         {
           label: 'InsuranceSuite Configuraiton Upgrade Tools ガイド',
-          docId: 'isconfigupgradetoolsjaJP500',
-        },
-        {
-          label: 'コンフィギュレーションアップグレードツールの互換性',
-          docId: 'isjaJPupgradecompatibility',
+          docId: 'isconfigupgradetoolsjaJP510',
         },
       ],
     },
     {
+    label: '2023.10 (Innsbruck)',
+    items: [
+      {
+        label: 'InsuranceSuite Configuraiton Upgrade Tools ガイド',
+        docId: 'isconfigupgradetoolsjaJP500',
+      },
+      {
+        label: 'コンフィギュレーションアップグレードツールの互換性',
+        docId: 'isjaJPupgradecompatibility',
+      },
+    ],
+  },
+  {
       label: '4.6.0',
       items: [
         {

@@ -2,22 +2,22 @@
   "$schema": "../../config-schema.json",
   "sources": [
     {
-      "id": "dx202403deDEsrc",
-      "title": "Digital 2024.03 de",
+      "id": "dx202402deDEsrc",
+      "title": "Digital 2024.02 de",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
-      "branch": "release/de-DE/2024.03"
+      "branch": "release/de-DE/2024.02"
     },
     {
-      "id": "gwcpreleasenotesdeDEsrc",
+      "id": "gwcpdeDEreleasenotessrc",
       "title": "Cloud Platform Release Notes de",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
       "branch": "release/de-DE/jasper"
     },
     {
-      "id": "is202403deDEsrc",
-      "title": "IS 2024.03.0 de",
+      "id": "is202402deDEsrc",
+      "title": "IS 2024.02.0 de",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/de-DE/2024.03.0"
+      "branch": "release/de-DE/2024.02.0"
     },
     {
       "id": "isconfigupgradetools510deDEsrc",

@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Novedades de Jasper',
+      docId: 'whatsnewes419jasper',
+    },
+    {
       label: 'Novedades de Innsbruck',
       docId: 'whatsnewes419innsbruck',
     },
@@ -80,7 +84,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
-      docId: 'isconfigupgradetoolses419500',
+      pagePath: 'l10n/es-419/is-configupgradetools',
     },
     {
       label: 'Plantillas de Community Case',

@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.02 (Jasper)',
+      items: [
+        {
+          label: 'PolicyCenter Notas de la versión',
+          docId: 'ispc202402es419releasenotes',
+        },
+        {
+          label: 'PolicyCenter Guía de renovación',
+          docId: 'ispc202402es419update',
+        },
+      ],
+    },
+    {
       label: '2023.10 (Innsbruck)',
       items: [
         {

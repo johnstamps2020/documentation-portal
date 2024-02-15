@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Was ist neu in Jasper',
+      docId: 'whatsnewdeDEjasper',
+    },
+    {
       label: 'Was ist neu in Innsbruck',
       docId: 'whatsnewdeDEinnsbruck',
     },
@@ -56,7 +60,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
-      docId: 'isconfigupgradetoolsdeDE500',
+      pagePath: 'l10n/de-DE/is-configupgradetools',
     },
     {
       label: 'DataHub',

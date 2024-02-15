@@ -18,12 +18,12 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.10 (Innsbruck)',
+      label: '2024.02 (Jaspser)',
       items: [
         {
           label: 'Notas de versão da Cloud Platform',
           docId: 'gwcpptBRreleasenotes',
-        },
+        }
       ],
     },
   ],
