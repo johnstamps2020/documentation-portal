@@ -35,7 +35,6 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'APD API リファレンス',
           docId: 'apdmaindoc',
-          patnInDoc: 'ja',
         },
       ],
     },
