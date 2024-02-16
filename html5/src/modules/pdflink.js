@@ -6,7 +6,12 @@ export function addPdfLink() {
     return;
   }
 
-  const pdfLinkElement = createPdfLinkElement(pdfLink, pdfTitle);
+  const lang = document.documentElement.lang;
+  const regex = /Open (.*)/;
+  const pdfTitleFormatted = lang.startsWith('en')
+    ? pdfTitle
+    : pdfTitle.replace(regex, '$1');
+  const pdfLinkElement = createPdfLinkElement(pdfLink, pdfTitleFormatted);
 
   const navbarRight = document.querySelector('#navbarRight');
   if (navbarRight) {
