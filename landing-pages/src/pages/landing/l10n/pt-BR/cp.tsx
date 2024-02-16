@@ -18,7 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2024.02 (Jaspser)',
+      label: 'Notas de versão',
       items: [
         {
           label: 'Notas de versão da Cloud Platform',

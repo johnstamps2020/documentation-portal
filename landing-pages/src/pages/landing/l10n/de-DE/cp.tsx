@@ -18,7 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2024.02 (Jasper)',
+      label: 'Versionshinweise',
       items: [
         {
           label: 'Guidewire Cloud Platform - Versionshinweise',

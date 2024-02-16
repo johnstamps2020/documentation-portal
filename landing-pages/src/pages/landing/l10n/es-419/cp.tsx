@@ -18,18 +18,12 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2024.02 (Jasper)',
+      label: 'Notas de la version',
       items: [
         {
           label: 'Notas de la version de la Plataforma de Guidewire Cloud',
           docId: 'gwcpes419releasenotes',
         },
-
-      ],
-    },
-    {
-      label: '2023.10 (Innsbruck)',
-      items: [
       ],
     },
   ],
