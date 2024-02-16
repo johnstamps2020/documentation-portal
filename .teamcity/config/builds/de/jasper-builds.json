@@ -132,7 +132,7 @@
 			"filter": "GW-Generic-Release.ditaval",
 			"root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
 			"srcId": "isconfigupgradetools510deDEsrc",
-			"docId": "isconfigupgradetoolsdeDE510",
+			"docId": "isconfigupgradetools510deDE",
 			"indexRedirect": true,
 			"disabled": false
 		},
@@ -141,7 +141,7 @@
 			"filter": "GW-Generic-Release.ditaval",
 			"root": "whatsnew.ditamap",
 			"srcId": "whatsnewjasperdeDEsrc",
-			"docId": "whatsnewdeDEjasper",
+			"docId": "whatsnewjasperdeDE",
 			"indexRedirect": true,
 			"disabled": false
 		},

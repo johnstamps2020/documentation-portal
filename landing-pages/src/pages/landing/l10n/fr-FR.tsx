@@ -20,7 +20,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   items: [
     {
       label: "Nouveautés de Jasper",
-      docId: 'whatsnewfrFRjasper',
+      docId: 'whatsnewjasperfrFR',
     },
     {
       label: "Nouveautés d'Innsbruck",

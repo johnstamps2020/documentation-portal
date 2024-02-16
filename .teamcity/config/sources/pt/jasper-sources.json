@@ -5,7 +5,7 @@
       "id": "gwcpptBRreleasenotessrc",
       "title": "Cloud Platform Release Notes pt",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "release/pt-BR"
+      "branch": "release/main/pt-BR"
     },
     {
       "id": "is202402ptBRsrc",

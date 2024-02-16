@@ -23,7 +23,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'InsuranceSuite Configuraiton Upgrade Tools Guide',
-          docId: 'isconfigupgradetoolsfrFR510',
+          docId: 'isconfigupgradetools510frFR',
         },
       ],
     },

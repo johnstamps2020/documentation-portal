@@ -11,7 +11,7 @@
       "id": "gwcpjaJPreleasenotessrc",
       "title": "Cloud Platform Release Notes ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "release/ja-JP"
+      "branch": "release/main/ja-JP"
     },
     {
       "id": "is202402jaJPsrc",

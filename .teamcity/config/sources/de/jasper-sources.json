@@ -11,7 +11,7 @@
       "id": "gwcpdeDEreleasenotessrc",
       "title": "Cloud Platform Release Notes de",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "release/de-DE"
+      "branch": "release/main/de-DE"
     },
     {
       "id": "is202402deDEsrc",
