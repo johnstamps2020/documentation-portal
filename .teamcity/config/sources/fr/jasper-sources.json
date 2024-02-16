@@ -11,7 +11,7 @@
       "id": "gwcpfrFRreleasenotessrc",
       "title": "Cloud Platform Release Notes fr",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "release/main/fr-FR"
+      "branch": "release/fr-FR/latest"
     },
     {
       "id": "is202402frFRsrc",
