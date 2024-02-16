@@ -10,11 +10,11 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Innsbruck", "Jasper"],
+        "release": [ "Innsbruck" ],
         "subject": ["Release notes"],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
