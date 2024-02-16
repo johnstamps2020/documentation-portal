@@ -52,7 +52,8 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'コミュニティケースのテンプレート',
-      docId: 'cloudtickettemplatesjaJP',
+      docId: 'cloudtickettemplates',
+      pathInDoc: 'ja',
     },
     {
       label: 'CustomerEngage Account Management',

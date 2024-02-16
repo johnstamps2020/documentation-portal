@@ -99,12 +99,6 @@
       "docId": "apdes419finalizingproductsinnsbruck",
       "indexRedirect": true,
       "disabled": false
-    },
-    {
-      "buildType": "yarn",
-      "srcId": "cloudtickettemplatessrc",
-      "docId": "cloudtickettemplateses",
-      "disabled": false
     }
   ]
 }
