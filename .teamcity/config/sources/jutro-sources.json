@@ -480,6 +480,18 @@
       "title": "Jutro Digital Content Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
       "branch": "release/innsbruck"
+    },
+    {
+      "id": "jutrodigitalcontentsrcjasper",
+      "title": "Jutro Digital Content Jasper",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
+      "branch": "release/jasper"
+    },
+    {
+      "id": "jutrodigitalcontentsrckufri",
+      "title": "Jutro Digital Content Kufri",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
+      "branch": "release/kufri"
     }
   ]
 }
