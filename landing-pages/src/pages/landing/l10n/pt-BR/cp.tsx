@@ -23,7 +23,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Notas de versão da Cloud Platform',
           docId: 'gwcpptBRreleasenotes',
-        }
+        },
       ],
     },
   ],
