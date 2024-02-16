@@ -8,9 +8,13 @@ import { useDeltaDocContext } from './DeltaDocLayoutContext';
 import { useReleases } from 'hooks/useApi';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
-import { FormHelperText } from '@mui/material';
+import FormHelperText from '@mui/material/FormHelperText';
+import Button from '@mui/material/Button';
+import { useState } from 'react';
+import Container from '@mui/material/Container';
 
 export default function DeltaDocUpperPanel() {
+  const [temporaryUrl, setTemporaryUrl] = useState('');
   const { releaseA, releaseB, setReleaseA, setReleaseB, url, setUrl } =
     useDeltaDocContext();
   const { releases, isLoading, isError } = useReleases();
@@ -36,11 +40,7 @@ export default function DeltaDocUpperPanel() {
     ));
 
   return (
-    <>
-      <Typography variant="h1" marginBottom="16px">
-        Compare documents between releases
-      </Typography>
-      <Divider sx={{ width: '100%' }} />
+    <Container>
       <Stack spacing={2} sx={{ py: '1rem' }}>
         <FormControl sx={{ width: '450px', mr: 'auto' }}>
           <InputLabel>Release A</InputLabel>
@@ -67,14 +67,12 @@ export default function DeltaDocUpperPanel() {
           </Select>
         </FormControl>
         <FormControl sx={{ width: '450px' }}>
-          
           <TextField
             label="Doc URL to compare within releases"
-            value={url}
-            onChange={(event) =>
-              setUrl(event.target.value as string)
-            }
+            value={temporaryUrl}
+            onChange={(event) => setTemporaryUrl(event.target.value as string)}
           />
+          <Button onClick={() => setUrl(temporaryUrl)}>See results</Button>
           <FormHelperText>
             Ensure you account for doc sets that may have similar URLs, e.g.
             bc/xx/xx/xx and pc/xx/xx/xx\nEnter the directory you want to scan,
@@ -82,7 +80,6 @@ export default function DeltaDocUpperPanel() {
           </FormHelperText>
         </FormControl>
       </Stack>
-      <Divider sx={{ m: '8px 0 40px 0', width: '100%' }} />
-    </>
+    </Container>
   );
 }

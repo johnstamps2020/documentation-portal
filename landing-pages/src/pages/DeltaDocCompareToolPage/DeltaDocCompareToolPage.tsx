@@ -3,15 +3,16 @@ import {
   DeltaLevenshteinReturnType,
 } from '@doctools/server';
 import { useEffect } from 'react';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { useDeltaDocData } from 'hooks/useDeltaDocData';
 import { useLayoutContext } from 'LayoutContext';
-import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import { DeltaDocContextProvider } from 'components/DeltaDocCompareToolPage/DeltaDocLayoutContext';
 import DeltaDocUpperPanel from 'components/DeltaDocCompareToolPage/DeltaDocUpperPanel';
 import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResults';
+import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 const difference = require('js-levenshtein');
 
 function calculatePercentage(fileChangeAmount: number, docLength: number) {
@@ -93,7 +94,6 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
 
   function compareAllDocs() {
     const dirCompareResults = differentFiles;
-    console.log(dirCompareResults.length);
     const comparisonResults = [];
     for (const dirCompareResult of dirCompareResults) {
       var fileA: DeltaDocResultType;
@@ -144,16 +144,17 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     totalFilesScanned: number,
     differentFiles: number
   ) {
-    // const fileDifferenceNumber = unchangedFiles / totalFilesScanned;
-    // const percentageNumber = 100 - fileDifferenceNumber * 100;
-    // const totalFilePercentageNumber = totalFilesScanned * 100;
-    // const docBasePercentageChange =
-    //   (cumulativeFileChanges / totalFilePercentageNumber) * 100;
     const fileDifferenceNumber = differentFiles / totalFilesScanned;
-    const percentageNumber = fileDifferenceNumber * 100;
+    let percentageNumber = fileDifferenceNumber * 100;
     const totalFilePercentageNumber = totalFilesScanned * 100;
-    const docBasePercentageChange =
+    let docBasePercentageChange =
       (cumulativeFileChanges / totalFilePercentageNumber) * 100;
+    if (docBasePercentageChange > 100) {
+      docBasePercentageChange = 100;
+    }
+    if (percentageNumber > 100) {
+      percentageNumber = 100;
+    }
     return [percentageNumber.toFixed(2), docBasePercentageChange.toFixed(2)];
   }
 
@@ -200,7 +201,14 @@ export default function DeltaDocCompareToolPage() {
             padding: '3rem 0',
           }}
         >
-          <DeltaDocUpperPanel />
+          <Typography variant="h1" marginBottom="16px">
+            Compare documents between releases
+          </Typography>
+          <Stack direction="row">
+            <DeltaDocUpperPanel />
+            <DeltaDocStatistics />
+          </Stack>
+          <Divider sx={{ m: '8px 0 40px 0', width: '100%' }} />
           <DeltaDocResults />
         </Container>
       </Grid>

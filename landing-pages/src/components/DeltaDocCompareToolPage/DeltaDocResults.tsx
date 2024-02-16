@@ -5,11 +5,24 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useDeltaDocData } from 'hooks/useDeltaDocData';
 import { compareDocs } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
+import { useEffect } from 'react';
 import { useDeltaDocContext } from './DeltaDocLayoutContext';
 import DeltaDocPagination from './DeltaDocPagination';
 
 export default function DeltaDocResults() {
-  const { releaseA, releaseB, page, setPage, url } = useDeltaDocContext();
+  const {
+    releaseA,
+    releaseB,
+    page,
+    setPage,
+    url,
+    setUnchangedFiles,
+    setDocBaseFileChanges,
+    setDocBaseFilePercentageChanges,
+    setTotalFilesScanned,
+    setReleaseALength,
+    setReleaseBLength,
+  } = useDeltaDocContext();
   const {
     deltaDocData: data,
     isLoading,
@@ -19,6 +32,11 @@ export default function DeltaDocResults() {
     releaseB,
     url,
   });
+
+  useEffect(() => setPage(1), [releaseA, releaseB, url]);
+  if (!data && !url) {
+    return <></>;
+  }
 
   if (!data || isError || isLoading) {
     return (
@@ -31,6 +49,7 @@ export default function DeltaDocResults() {
       </Container>
     );
   }
+
   const {
     results,
     areReleasesIdentical,
@@ -42,7 +61,14 @@ export default function DeltaDocResults() {
     releaseBLength,
   } = compareDocs(data);
 
-  const resultsPerPage = 12;
+  setUnchangedFiles(identicalEntires);
+  setDocBaseFileChanges(docBaseFileChanges);
+  setTotalFilesScanned(totalFilesScanned);
+  setDocBaseFilePercentageChanges(docBaseFilePercentageChanges);
+  setReleaseALength(releaseALength);
+  setReleaseBLength(releaseBLength);
+
+  const resultsPerPage = 9;
   const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
 
   return !areReleasesIdentical ? (
@@ -56,28 +82,14 @@ export default function DeltaDocResults() {
         </>
       ) : (
         <>
+          <DeltaDocPagination
+            length={results.length}
+            page={page}
+            setPage={setPage}
+            resultsPerPage={resultsPerPage}
+          />
           <Typography variant="h1" textAlign="center">
-            Results
-          </Typography>
-          <Typography variant="h3">
-            Files scanned: {totalFilesScanned}{' '}
-          </Typography>
-          <Typography variant="h3">
-            Identical entries: {identicalEntires}
-          </Typography>{' '}
-          <Typography variant="h3">
-            {releaseA} file count: {releaseALength}
-          </Typography>
-          <Typography variant="h3">
-            {releaseB} file count: {releaseBLength}
-          </Typography>
-          <Typography variant="h3">
-            Percentage of files in the doc base that were edited:{' '}
-            {docBaseFileChanges}%
-          </Typography>{' '}
-          <Typography variant="h3">
-            Percentage that the doc base changed by between the two releases:{' '}
-            {docBaseFilePercentageChanges}%
+            Found {results.length} docs with differences
           </Typography>
           <Stack direction="row" flexWrap="wrap">
             {results
