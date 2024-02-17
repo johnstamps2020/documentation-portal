@@ -337,7 +337,7 @@ export const allSelectors = {
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/de-DE/ce-qb' },
     { label: 'DataHub', pagePath: 'l10n/de-DE/dh' },
     { label: 'InfoCenter', pagePath: 'l10n/de-DE/ic' },
-    { label: 'InsuranceSuite Configuraiton Upgrade Tools Guide', pagePath: 'l10n/de-DE/is-configupgradetools' },
+    { label: 'InsuranceSuite Configuration Upgrade Tools Guide', pagePath: 'l10n/de-DE/is-configupgradetools' },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/de-DE/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/de-DE/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/de-DE/pe' },
