@@ -21,7 +21,7 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.02 (Jasper)',
       items: [
         {
-          label: 'InsuranceSuite Configuraiton Upgrade Tools Guide',
+          label: 'InsuranceSuite Configuration Upgrade Tools Guide',
           docId: 'isconfigupgradetools510es419',
         },
       ],
