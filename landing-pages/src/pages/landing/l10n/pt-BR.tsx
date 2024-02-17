@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Novidades na Jaspser',
+      docId: 'whatsnewjasperptBR',
+    },
+    {
       label: 'Novidades na Innsbruck',
       docId: 'whatsnewptBRinnsbruck',
     },
@@ -60,7 +64,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
-      docId: 'isconfigupgradetoolsptBR500',
+      pagePath: 'l10n/pt-BR/is-configupgradetools',
     },
     {
       label: 'DataHub',
@@ -99,7 +103,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/pt-BR/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function PtBR() {

@@ -4,7 +4,7 @@
     {
       "id": "whatsnewes419innsbruck",
       "url": "es/cloud/innsbruck/whatsnew",
-      "title": "What's new in Innsbruck es",
+      "title": "What's new in Jasper es",
       "displayTitle": "Novedades en Innsbruck",
       "metadata": {
         "platform": [
@@ -72,6 +72,43 @@
       "environments": [
         "staging",
         "prod"
+      ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "whatsnewjasperes419",
+      "url": "es/cloud/jasper/whatsnew",
+      "title": "What's new in Jasper es",
+      "displayTitle": "Novedades en Jasper",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "es"
+      },
+      "environments": [
+        "staging"
       ],
       "indexForSearch": true,
       "public": false,

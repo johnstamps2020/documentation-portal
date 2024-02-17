@@ -14,12 +14,6 @@
       "branch": "release/ja-JP/innsbruck"
     },
     {
-      "id": "gwcpreleasenotesjaJPsrc",
-      "title": "Cloud Platform Release Notes ja",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "release/ja-JP/innsbruck"
-    },
-    {
       "id": "is202310jaJPsrc",
       "title": "IS 2023.10.0 ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",

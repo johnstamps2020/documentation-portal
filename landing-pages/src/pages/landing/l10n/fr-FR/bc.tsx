@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.02 (Jasper)',
+      items: [
+        {
+          label: 'BillingCenter - Notes de version',
+          docId: 'isbc202402frFRreleasenotes',
+        },
+        {
+          label: 'BillingCenter - Guide de mise à jour',
+          docId: 'isbc202402frFRupdate',
+        },
+      ],
+    },
+    {
       label: '2023.10 (Innsbruck)',
       items: [
         {

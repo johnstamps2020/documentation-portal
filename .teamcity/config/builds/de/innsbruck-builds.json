@@ -3,15 +3,6 @@
 	"builds": [
 		{
 			"buildType": "dita",
-			"filter": "Digital-ve-MgSvcs.ditaval",
-			"root": "GWCP-ReleaseNotes.ditamap",
-			"srcId": "gwcpreleasenotesdeDEsrc",
-			"docId": "gwcpdeDEreleasenotes",
-			"indexRedirect": true,
-			"disabled": false
-		},
-		{
-			"buildType": "dita",
 			"filter": "Digital-ce-am-MgSvcs.ditaval",
 			"root": "cloud_digital-release-notes.ditamap",
 			"srcId": "dx202310deDEsrc",

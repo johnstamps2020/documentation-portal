@@ -32,6 +32,11 @@ const pageConfig: CategoryLayoutProps = {
           label: 'PolicyCenter を使用した保険商品の連携',
           docId: 'apdjaJPfinalizingproductsinnsbruck',
         },
+        {
+          label: 'APD API リファレンス',
+          docId: 'apdmaindoc',
+          pathInDoc: 'ja'
+        },
       ],
     },
   ],

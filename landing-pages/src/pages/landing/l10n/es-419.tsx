@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Novedades de Jasper',
+      docId: 'whatsnewjasperes419',
+    },
+    {
       label: 'Novedades de Innsbruck',
       docId: 'whatsnewes419innsbruck',
     },
@@ -80,7 +84,12 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
-      docId: 'isconfigupgradetoolses419500',
+      pagePath: 'l10n/es-419/is-configupgradetools',
+    },
+    {
+      label: 'Plantillas de Community Case',
+      docId: 'cloudtickettemplates',
+      pathInDoc: 'es-419',
     },
     {
       label: 'PolicyCenter',
@@ -103,7 +112,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/es-419/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function Es419() {

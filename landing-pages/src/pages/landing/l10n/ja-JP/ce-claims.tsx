@@ -18,6 +18,20 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.02 (Jasper)',
+      items: [
+        {
+          label:
+            'CustomerEngage Account Management for ClaimCenter リリースノート',
+          docId: 'dx202402jaJPceclaimsrelnotes',
+        },
+        {
+          label: 'EnterpriseEngage アップデートガイド',
+          docId: 'ee202402jaJPupdate',
+        },
+      ],
+    },
+    {
       label: '2023.10 (Innsbruck)',
       items: [
         {

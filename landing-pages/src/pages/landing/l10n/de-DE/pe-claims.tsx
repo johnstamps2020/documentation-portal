@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.02 (Jasper)',
+      items: [
+        {
+          label: 'Versionshinweise',
+          docId: 'dx202402deDEpeclaimsrelnotes',
+        },
+        {
+          label: 'EnterpriseEngage - Update-Handbuch',
+          docId: 'ee202402deDEupdate',
+        },
+      ],
+    },
+    {
       label: '2023.10 (Innsbruck)',
       items: [
         {

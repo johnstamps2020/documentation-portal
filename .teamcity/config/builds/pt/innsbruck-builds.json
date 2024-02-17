@@ -3,15 +3,6 @@
   "builds": [
     {
       "buildType": "dita",
-      "root": "GWCP-ReleaseNotes.ditamap",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "srcId": "gwcpreleasenotesptBRsrc",
-      "docId": "gwcpptBRreleasenotes",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotes.ditamap",
       "srcId": "is202310ptBRsrc",

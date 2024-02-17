@@ -18,7 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.10 (Innsbruck)',
+      label: 'Notas de versão',
       items: [
         {
           label: 'Notas de versão da Cloud Platform',

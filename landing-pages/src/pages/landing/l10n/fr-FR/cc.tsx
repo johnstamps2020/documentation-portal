@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.02 (Jasper)',
+      items: [
+        {
+          label: 'ClaimCenter - Notes de version',
+          docId: 'iscc202402frFRreleasenotes',
+        },
+        {
+          label: 'ClaimCenter - Guide de mise à jour',
+          docId: 'iscc202402frFRupdate',
+        },
+      ],
+    },
+    {
       label: '2023.10 (Innsbruck)',
       items: [
         {

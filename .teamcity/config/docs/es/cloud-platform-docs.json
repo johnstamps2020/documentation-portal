@@ -10,11 +10,11 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Innsbruck"],
+        "release": [ "Innsbruck" ],
         "subject": ["Release notes"],
         "language": "es"
       },
-      "environments": ["staging", "prod"],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

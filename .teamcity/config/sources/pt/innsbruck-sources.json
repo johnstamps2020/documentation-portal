@@ -2,12 +2,6 @@
   "$schema": "../../config-schema.json",
   "sources": [
     {
-      "id": "gwcpreleasenotesptBRsrc",
-      "title": "Cloud Platform Release Notes pt",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "release/pt-BR/innsbruck"
-    },
-    {
       "id": "is202310ptBRsrc",
       "title": "IS 2023.10.0 pt",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",

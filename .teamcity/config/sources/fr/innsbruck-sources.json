@@ -8,12 +8,6 @@
       "branch": "release/fr-FR/2023.10"
     },
     {
-      "id": "gwcpreleasenotesfrFRsrc",
-      "title": "Cloud Platform Release Notes fr",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "release/fr-FR/innsbruck"
-    },
-    {
       "id": "is202310frFRsrc",
       "title": "IS 2023.10.0 fr",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",

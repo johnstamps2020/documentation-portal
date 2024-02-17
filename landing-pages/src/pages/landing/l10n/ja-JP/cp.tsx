@@ -18,15 +18,20 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: 'リリースノート',
+      items: [
+        {
+          label: 'Guidewire Cloud Platform リリースノート',
+          docId: 'gwcpjaJPreleasenotes',
+        },
+      ],
+    },
+    {
       label: '2023.10 (Innsbruck)',
       items: [
         {
           label: 'Guidewire Cloud Home ヘルプ',
           docId: 'gchjaJPhelprelease',
-        },
-        {
-          label: 'Guidewire Cloud Platform リリースノート',
-          docId: 'gwcpjaJPreleasenotes',
         },
         {
           label: 'Cloud Standards',
@@ -48,7 +53,7 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Autopilot Workflow Service',
           pagePath: 'l10n/ja-JP/cloudProducts/autopilotworkflowservice',
         },
-          ],
+      ],
     },
     {
       label: '2022.09 (Flaine)',
