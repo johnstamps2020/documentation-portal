@@ -123,5 +123,25 @@
   "footer.published": {
     "message": "公開日：",
     "description": "Text preceding the date on which the page was published"
+  },
+  "nav.scrollToTop": {
+    "message": "先頭へスクロール",
+    "description": "Hover text for button to scroll to top of page"
+  },
+  "navbar.nextTopic": {
+    "message": "次のトピック",
+    "description": "Hover text over button to navigate to next topic in document"
+  },
+  "navbar.prevTopic": {
+    "message": "前のトピック",
+    "description": "Hover text over button to navigate to previous topic in document"
+  },
+  "navbar.noNextOrPrevTopic": {
+    "message": "なし",
+    "description": "Hover text over disabled next or previous button when there is no next or previous topic in document"
+  },
+  "navbar.printThisPage": {
+    "message": "このページを印刷",
+    "description": "Hover text over print button"
   }
 }
