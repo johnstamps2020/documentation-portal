@@ -39,7 +39,15 @@ export function addFooterContents(isOffline: boolean) {
 
   const footerCenter = document.getElementById('footerCenter');
   const pubDate = footerCenter.innerText.match(/Published: (.*)/)[1];
-
+  const lang = document.documentElement.lang;
+  const pubDateFormatted = Intl.DateTimeFormat([lang, 'en-US'], {
+    dateStyle: 'long',
+    timeStyle: 'long',
+  }).format(Date.parse(pubDate));
+  const regex = /(\d\d:\d\d):\d\d/;
+  const pubDateFormattedNoSeconds = pubDateFormatted.replace(regex, '$1');
   const root = createRoot(footerCenter!);
-  root.render(<FooterPublicationDate publicationTime={pubDate} />);
+  root.render(
+    <FooterPublicationDate publicationTime={pubDateFormattedNoSeconds} />
+  );
 }

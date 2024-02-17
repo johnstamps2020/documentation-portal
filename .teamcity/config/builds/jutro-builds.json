@@ -236,7 +236,7 @@
       "srcId": "srcjutro1040",
       "workingDir": "storybook",
       "disabled": false
-    },    
+    },
     {
       "buildType": "yarn",
       "docId": "jutrodocsnext",
@@ -255,6 +255,22 @@
       "buildType": "dita",
       "docId": "agentquoteandbuypersonalautoinnsbruck",
       "srcId": "jutrodigitalcontentsrcinnsbruck",
+      "root": "AgentQuoteAndBuyPA.ditamap",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "docId": "agentquoteandbuypersonalautojasper",
+      "srcId": "jutrodigitalcontentsrcjasper",
+      "root": "AgentQuoteAndBuyPA.ditamap",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "docId": "agentquoteandbuypersonalautokufri",
+      "srcId": "jutrodigitalcontentsrckufri",
       "root": "AgentQuoteAndBuyPA.ditamap",
       "indexRedirect": true,
       "disabled": false
