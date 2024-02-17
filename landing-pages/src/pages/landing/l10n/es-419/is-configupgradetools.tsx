@@ -30,7 +30,7 @@ const pageConfig: CategoryLayoutProps = {
     label: '2023.10 (Innsbruck)',
     items: [
       {
-        label: 'InsuranceSuite Configuraiton Upgrade Tools Guide',
+        label: 'InsuranceSuite Configuration Upgrade Tools Guide',
         docId: 'isconfigupgradetoolses419500',
       },
     ],
