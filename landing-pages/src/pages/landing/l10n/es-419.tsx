@@ -89,6 +89,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'Plantillas de Community Case',
       docId: 'cloudtickettemplates',
+      pathInDoc: 'es-419',
     },
     {
       label: 'PolicyCenter',

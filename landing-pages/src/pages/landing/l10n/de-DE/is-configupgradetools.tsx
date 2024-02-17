@@ -21,7 +21,7 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.02 (Jasper)',
       items: [
         {
-          label: 'InsuranceSuite Configuraiton Upgrade Tools Guide',
+          label: 'InsuranceSuite Configuration Upgrade Tools Guide',
           docId: 'isconfigupgradetools510deDE',
         },
       ],
@@ -30,7 +30,7 @@ const pageConfig: CategoryLayoutProps = {
     label: '2023.10 (Innsbruck)',
     items: [
       {
-        label: 'InsuranceSuite Configuraiton Upgrade Tools Guide',
+        label: 'InsuranceSuite Configuration Upgrade Tools Guide',
         docId: 'isconfigupgradetoolsdeDE500',
       },
     ],
