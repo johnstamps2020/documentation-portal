@@ -123,5 +123,25 @@
   "footer.published": {
     "message": "Data publikacji:",
     "description": "Text preceding the date on which the page was published"
+  },
+  "nav.scrollToTop": {
+    "message": "Przewiń do góry",
+    "description": "Hover text for button to scroll to top of page"
+  },
+  "navbar.nextTopic": {
+    "message": "Następna strona",
+    "description": "Hover text over button to navigate to next topic in document"
+  },
+  "navbar.prevTopic": {
+    "message": "Poprzednia strona",
+    "description": "Hover text over button to navigate to previous topic in document"
+  },
+  "navbar.noNextOrPrevTopic": {
+    "message": "Nie ma strony",
+    "description": "Hover text over disabled next or previous button when there is no next or previous topic in document"
+  },
+  "navbar.printThisPage": {
+    "message": "Wydrukuj tę stronę",
+    "description": "Hover text over print button"
   }
 }
