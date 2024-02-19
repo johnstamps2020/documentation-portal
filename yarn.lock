@@ -3059,6 +3059,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.1.4"
     "@testing-library/react": "npm:^14.1.0"
     "@testing-library/user-event": "npm:^14.5.1"
+    "@types/file-saver": "npm:^2.0.7"
     "@types/jest": "npm:^29.5.9"
     "@types/js-levenshtein": "npm:^1.1.3"
     "@types/lodash": "npm:^4.14.190"
@@ -3066,6 +3067,7 @@ __metadata:
     "@types/react": "npm:^18.0.0"
     "@types/react-dom": "npm:^18.0.0"
     "@types/tinycolor2": "npm:^1.4.4"
+    file-saver: "npm:2.0.2"
     js-levenshtein: "npm:^1.1.6"
     levenshtein-js: "npm:^1.0.2"
     lodash: "npm:^4.17.21"
@@ -7076,6 +7078,13 @@ __metadata:
     "@types/qs": "npm:*"
     "@types/serve-static": "npm:*"
   checksum: 7a6d26cf6f43d3151caf4fec66ea11c9d23166e4f3102edfe45a94170654a54ea08cf3103d26b3928d7ebcc24162c90488e33986b7e3a5f8941225edd5eb18c7
+  languageName: node
+  linkType: hard
+
+"@types/file-saver@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "@types/file-saver@npm:2.0.7"
+  checksum: c3d1cd80eab1214767922cabac97681f3fb688e82b74890450d70deaca49537949bbc96d80d363d91e8f0a4752c7164909cc8902d9721c5c4809baafc42a3801
   languageName: node
   linkType: hard
 
@@ -12809,6 +12818,13 @@ __metadata:
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0
   checksum: 3a854be3a7501bdb0fd8a1c0d45c156c0dc8f0afced07cbdac0b13a79c2f2a03f7770d68cb555ff30b5ea7c20719df34e1b2bd896c93e3138ee31f0bdc560310
+  languageName: node
+  linkType: hard
+
+"file-saver@npm:2.0.2":
+  version: 2.0.2
+  resolution: "file-saver@npm:2.0.2"
+  checksum: 15e49e02db28934376385a462a735b00be2649eaf2335d6c718fc0142cac6cfe8c4a426b9feea32d796c44be045f584513e2bb6802683e8498f44d37f4c7d812
   languageName: node
   linkType: hard
 

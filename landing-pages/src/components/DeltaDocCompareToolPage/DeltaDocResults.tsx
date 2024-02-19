@@ -1,3 +1,4 @@
+import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
@@ -8,6 +9,7 @@ import { compareDocs } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPa
 import { useEffect } from 'react';
 import { useDeltaDocContext } from './DeltaDocLayoutContext';
 import DeltaDocPagination from './DeltaDocPagination';
+import { saveAs } from 'file-saver';
 
 export default function DeltaDocResults() {
   const {
@@ -23,22 +25,19 @@ export default function DeltaDocResults() {
     setReleaseALength,
     setReleaseBLength,
   } = useDeltaDocContext();
-  const {
-    deltaDocData: data,
-    isLoading,
-    isError,
-  } = useDeltaDocData({
+
+  const { deltaDocData, isLoading, isError } = useDeltaDocData({
     releaseA,
     releaseB,
     url,
   });
 
   useEffect(() => setPage(1), [releaseA, releaseB, url]);
-  if (!data && !url) {
+  if (!deltaDocData && !url) {
     return <></>;
   }
 
-  if (!data || isError || isLoading) {
+  if (!deltaDocData || isError || isLoading) {
     return (
       <Container
         sx={{
@@ -50,6 +49,13 @@ export default function DeltaDocResults() {
     );
   }
 
+  const regexSearch = url.replace(/\d+/, '......');
+  var outputRegex = new RegExp(regexSearch, 'g');
+  const stringifiedData = JSON.stringify(deltaDocData).replaceAll(
+    outputRegex,
+    '/'
+  );
+  const data = JSON.parse(stringifiedData);
   const {
     results,
     areReleasesIdentical,
@@ -71,6 +77,18 @@ export default function DeltaDocResults() {
   const resultsPerPage = 9;
   const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
 
+  function exportReport() {
+    const reportText = `Comparing ${url} in ${releaseA} and ${releaseB}\nFiles scanned: ${totalFilesScanned}\n`;
+    const resultsWithNames = JSON.stringify(results, null, 2)
+      .replaceAll('"docATitle":', `"${releaseA}Title":`)
+      .replaceAll('"docBTitle":', `"${releaseB}Title":`);
+    const report = reportText + resultsWithNames;
+    var blob = new Blob([report], {
+      type: 'text/plain;charset=utf-8',
+    });
+    saveAs(blob, `${releaseA}-${releaseB}-${url}-report.txt`);
+  }
+
   return !areReleasesIdentical ? (
     <>
       {releaseALength === 0 || releaseBLength === 0 ? (
@@ -91,6 +109,7 @@ export default function DeltaDocResults() {
           <Typography variant="h1" textAlign="center">
             Found {results.length} docs with differences
           </Typography>
+          <Button onClick={() => exportReport()}>Download report</Button>
           <Stack direction="row" flexWrap="wrap">
             {results
               .slice(resultsOffset, resultsOffset + resultsPerPage)

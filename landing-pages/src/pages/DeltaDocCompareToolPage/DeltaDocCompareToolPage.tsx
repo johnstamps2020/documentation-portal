@@ -28,7 +28,7 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   let unchangedFiles = 0;
   const areReleasesIdentical = releaseAFiles === releaseBFiles;
 
-  // TODO: statistics: equal entries: xx, distinct entries: xx, left only entries: xx, right only entries: xx, differences: xx
+  // TODO: statistics:  left only entries: xx, right only entries: xx,
 
   releaseBFiles.forEach(function (b) {
     if (
@@ -68,7 +68,6 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
 
   function compareTwoDocs(docA: DeltaDocResultType, docB: DeltaDocResultType) {
     const fileChangeAmount: number = difference(docA.body, docB.body);
-    console.log(docA, docB);
     var percentageChange: number = Math.ceil(
       calculatePercentage(fileChangeAmount, docB.body.length)
     );
@@ -162,8 +161,6 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   const results = compareAllDocs();
   const [docBaseFileChanges, docBaseFilePercentageChanges] =
     docBasePercentageTotal(totalFilesScanned, differentFiles.length);
-  console.log(`Percentage of files in the doc base that were edited: ${docBaseFileChanges}%
-Percentage that the doc base changed by between the two releases: ${docBaseFilePercentageChanges}%`);
   const releaseALength = releaseAFiles.length;
   const releaseBLength = releaseBFiles.length;
 
