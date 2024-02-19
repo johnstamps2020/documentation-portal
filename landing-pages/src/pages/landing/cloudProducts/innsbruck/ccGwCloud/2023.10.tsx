@@ -168,16 +168,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Guidewire Rules (Early Access)',
-          docId: 'gwrules',
-          description: (
-            <>
-              Enable business analysts to create and manage segmentation rules
-              that trigger when specific business conditions occur.
-            </>
-          ),
-        },
-        {
           label: 'Guidewire Rules for ClaimCenter (Early Access)',
           docId: 'gwrulescc',
           description: (
@@ -186,6 +176,11 @@ const pageConfig: ApplicationLayoutProps = {
               business conditions occur in ClaimCenter.
             </>
           ),
+        },
+        {
+          label: 'Guidewire Rules Type Manager (Early Access)',
+          docId: 'gwrulestypemgr',
+          description: <>Create and manage new rule types.</>,
         },
         {
           label: 'Plugins',
