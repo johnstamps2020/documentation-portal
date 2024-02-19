@@ -141,6 +141,12 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
     return res.redirect(redirectPath);
   }
 
+  if ([404, 406].includes(resourceStatus)) {
+    return res.redirect(
+      `${fourOhFourRoute}${req.url ? `?notFound=${req.originalUrl}` : ''}`
+    );
+  }
+
   openRequestedUrl(req, res);
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   return proxy.web(
