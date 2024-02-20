@@ -32,7 +32,18 @@ export default function DeltaDocResults() {
     url,
   });
 
-  useEffect(() => setPage(1), [releaseA, releaseB, url, setPage]);
+  useEffect(
+    () => (
+      setPage(1),
+      setUnchangedFiles(undefined),
+      setDocBaseFileChanges(undefined),
+      setTotalFilesScanned(undefined),
+      setDocBaseFilePercentageChanges(undefined),
+      setReleaseALength(undefined),
+      setReleaseBLength(undefined)
+    ),
+    [releaseA, releaseB, url, setPage]
+  );
   if (!deltaDocData && !url) {
     return <></>;
   }
@@ -67,12 +78,14 @@ export default function DeltaDocResults() {
     releaseBLength,
   } = compareDocs(data);
 
-  setUnchangedFiles(identicalEntires);
-  setDocBaseFileChanges(docBaseFileChanges);
-  setTotalFilesScanned(totalFilesScanned);
-  setDocBaseFilePercentageChanges(docBaseFilePercentageChanges);
-  setReleaseALength(releaseALength);
-  setReleaseBLength(releaseBLength);
+  if (results.length > 0) {
+    setUnchangedFiles(identicalEntires);
+    setDocBaseFileChanges(docBaseFileChanges);
+    setTotalFilesScanned(totalFilesScanned);
+    setDocBaseFilePercentageChanges(docBaseFilePercentageChanges);
+    setReleaseALength(releaseALength);
+    setReleaseBLength(releaseBLength);
+  }
 
   const resultsPerPage = 9;
   const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
