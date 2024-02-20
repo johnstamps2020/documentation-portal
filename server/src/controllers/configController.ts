@@ -782,7 +782,6 @@ export async function getVersionSelector(
       .where({ id: docId })
       .getOne();
     if (docResponse) {
-      console.log(docResponse);
       const useReleaseForLabel = docResponse.releases?.length === 1;
       // FIXME: Add query for displayOnLandingPages unless we remove this parameter
       const docsWithTheSameTitle = await docQueryBuilder
