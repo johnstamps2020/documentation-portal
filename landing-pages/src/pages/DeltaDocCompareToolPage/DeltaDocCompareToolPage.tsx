@@ -24,7 +24,7 @@ function calculatePercentage(fileChangeAmount: number, docLength: number) {
 export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   const releaseAFiles = deltaDocData[0];
   const releaseBFiles = deltaDocData[1];
-  var cumulativeFileChanges = 0;
+  let cumulativeFileChanges = 0;
   let unchangedFiles = 0;
   const areReleasesIdentical = releaseAFiles === releaseBFiles;
 
@@ -130,12 +130,10 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   ) {
     const filesAFileCount = filesA.length;
     const filesBFileCount = filesB.length;
-    var outputFileCount;
     if (filesAFileCount !== filesBFileCount) {
-      return (outputFileCount =
-        filesAFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount));
+      return filesAFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount);
     } else {
-      return (outputFileCount = filesAFileCount);
+      return filesAFileCount;
     }
   }
 

@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocPagination from './DeltaDocPagination';
 import { saveAs } from 'file-saver';
+import Link from '@mui/material/Link';
 
 export default function DeltaDocResults() {
   const {
@@ -136,9 +137,17 @@ export default function DeltaDocResults() {
                   }}
                   key={key}
                 >
-                  <Typography variant="h3" sx={{ wordWrap: 'break-word' }}>
-                    {result.URL}
-                  </Typography>{' '}
+                  <Link
+                    sx={{
+                      wordWrap: 'break-word',
+                      fontSize: '18px',
+                      fontWeight: 'bold',
+                    }}
+                    href={url.slice(0, -1) + result.URL}
+                    target="_blank"
+                  >
+                    {url.slice(0, -1) + result.URL}
+                  </Link>{' '}
                   {result.docATitle === result.docBTitle ? (
                     <>
                       <Typography>
