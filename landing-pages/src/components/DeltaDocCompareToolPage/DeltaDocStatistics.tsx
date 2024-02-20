@@ -36,11 +36,15 @@ export default function DeltaDocStatistics() {
   ];
   return (
     <Stack direction="column" sx={{ marginTop: '30px' }}>
-      {statistics.map((line) => {
+      {statistics.map((line, key) => {
         if (line.value !== undefined) {
-          return <Typography variant="h3">{line.text}</Typography>;
+          return (
+            <Typography key={`${line.value}_${line.text}_${key}`} variant="h3">
+              {line.text}
+            </Typography>
+          );
         }
-        return <></>
+        return <div key={`${line.value}_${line.text}_${key}`}></div>;
       })}
     </Stack>
   );

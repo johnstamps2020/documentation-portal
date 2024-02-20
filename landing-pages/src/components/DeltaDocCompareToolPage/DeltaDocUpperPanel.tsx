@@ -64,18 +64,26 @@ export default function DeltaDocUpperPanel() {
             {ReleaseMenuItem}
           </Select>
         </FormControl>
-        <FormControl sx={{ width: '450px' }}>
+        <FormControl sx={{ width: '450px', alignItems: "center" }}>
           <TextField
             label="Doc URL to compare within releases"
             value={temporaryUrl}
+            fullWidth
             onChange={(event) => setTemporaryUrl(event.target.value as string)}
           />
-          <Button onClick={() => setUrl(temporaryUrl)}>See results</Button>
-          <FormHelperText>
-            Ensure you account for doc sets that may have similar URLs, e.g.
-            bc/xx/xx/xx and pc/xx/xx/xx\nEnter the directory you want to scan,
-            including the first and last slash (/):
+          <FormHelperText sx={{ fontSize: '14px' }}>
+            Provide a URL that fits following pattern:{' '}
+            <b>/cloud/xx/000000/xxxx/</b> <br /> (eq.{' '}
+            <b>/cloud/pc/202302/devsetup/</b> or{' '}
+            <b>/cloud/is/202306/contact/</b>)
           </FormHelperText>
+          <Button
+            variant="outlined"
+            sx={{ mt: '12px', width: "250px" }}
+            onClick={() => setUrl(temporaryUrl)}
+          >
+            See results
+          </Button>
         </FormControl>
       </Stack>
     </Container>

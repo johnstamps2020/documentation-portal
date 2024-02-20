@@ -102,7 +102,7 @@ export default function DeltaDocResults() {
     saveAs(blob, `${releaseA}-${releaseB}-${url}-report.txt`);
   }
 
-  return !areReleasesIdentical ? (
+  return !areReleasesIdentical && results.length !== 0 ? (
     <>
       {releaseALength === 0 || releaseBLength === 0 ? (
         <>
