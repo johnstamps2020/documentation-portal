@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import Container from '@mui/material/Container';
 import { useLayoutContext } from 'LayoutContext';
 import Grid from '@mui/material/Grid';
-import { DeltaDocContextProvider } from 'components/DeltaDocCompareToolPage/DeltaDocLayoutContext';
+import { DeltaDocContextProvider } from 'components/DeltaDocCompareToolPage/DeltaDocContext';
 import DeltaDocUpperPanel from 'components/DeltaDocCompareToolPage/DeltaDocUpperPanel';
 import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResults';
 import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
@@ -131,7 +131,7 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     const filesAFileCount = filesA.length;
     const filesBFileCount = filesB.length;
     var outputFileCount;
-    if (filesAFileCount != filesBFileCount) {
+    if (filesAFileCount !== filesBFileCount) {
       return (outputFileCount =
         filesAFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount));
     } else {

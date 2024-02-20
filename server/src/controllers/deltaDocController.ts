@@ -1,5 +1,5 @@
-import { getAllDocsFromRelease } from './controllers/searchController';
-import { DeltaDocInputType, DeltaDocResultType, DeltaLevenshteinReturnType } from './types/deltaDoc';
+import { DeltaDocInputType, DeltaDocResultType } from './../types/deltaDoc';
+import { getAllDocsFromRelease } from './searchController';
 
 function capitalizeLetters(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -61,3 +61,6 @@ export async function prepareDocs({
   );
   return { status: 200, body: resultArray };
 }
+
+
+

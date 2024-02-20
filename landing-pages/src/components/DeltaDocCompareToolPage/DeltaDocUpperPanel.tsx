@@ -1,10 +1,8 @@
-import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { useDeltaDocContext } from './DeltaDocLayoutContext';
+import { useDeltaDocContext } from './DeltaDocContext';
 import { useReleases } from 'hooks/useApi';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
@@ -15,7 +13,7 @@ import Container from '@mui/material/Container';
 
 export default function DeltaDocUpperPanel() {
   const [temporaryUrl, setTemporaryUrl] = useState('');
-  const { releaseA, releaseB, setReleaseA, setReleaseB, url, setUrl } =
+  const { releaseA, releaseB, setReleaseA, setReleaseB, setUrl } =
     useDeltaDocContext();
   const { releases, isLoading, isError } = useReleases();
 

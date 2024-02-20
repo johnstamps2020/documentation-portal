@@ -1,4 +1,3 @@
-import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from 'react';

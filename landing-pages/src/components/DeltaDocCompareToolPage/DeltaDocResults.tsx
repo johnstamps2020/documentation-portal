@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { useDeltaDocData } from 'hooks/useDeltaDocData';
 import { compareDocs } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useEffect } from 'react';
-import { useDeltaDocContext } from './DeltaDocLayoutContext';
+import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocPagination from './DeltaDocPagination';
 import { saveAs } from 'file-saver';
 
@@ -32,7 +32,7 @@ export default function DeltaDocResults() {
     url,
   });
 
-  useEffect(() => setPage(1), [releaseA, releaseB, url]);
+  useEffect(() => setPage(1), [releaseA, releaseB, url, setPage]);
   if (!deltaDocData && !url) {
     return <></>;
   }

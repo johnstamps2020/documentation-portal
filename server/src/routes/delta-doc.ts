@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import { getRootBreadcrumb } from '../controllers/configController';
-import { prepareDocs } from '../prepareDocs';
+import { prepareDocs } from '../controllers/deltaDocController';
 const router = Router();
 
 router.get('/results', async function (req, res, next) {

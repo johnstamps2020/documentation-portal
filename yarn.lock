@@ -3067,9 +3067,8 @@ __metadata:
     "@types/react": "npm:^18.0.0"
     "@types/react-dom": "npm:^18.0.0"
     "@types/tinycolor2": "npm:^1.4.4"
-    file-saver: "npm:2.0.2"
+    file-saver: "npm:^2.0.5"
     js-levenshtein: "npm:^1.1.6"
-    levenshtein-js: "npm:^1.0.2"
     lodash: "npm:^4.17.21"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -10886,13 +10885,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-format@npm:^0.0.0":
-  version: 0.0.0
-  resolution: "date-format@npm:0.0.0"
-  checksum: 5521db0145ab6fc16c43f409be0cc08bfc204a9204a442165eda0f45afc89c4c51d8aea3848d7eb68b3c998b208f67e5482ee57e7f3ec394accf21a87e2c7882
-  languageName: node
-  linkType: hard
-
 "dayjs@npm:^1.11.9":
   version: 1.11.10
   resolution: "dayjs@npm:1.11.10"
@@ -10947,7 +10939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:2.6.9, debug@npm:^2.2.0, debug@npm:^2.6.0":
+"debug@npm:2.6.9, debug@npm:^2.6.0":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
   dependencies:
@@ -10974,13 +10966,6 @@ __metadata:
     supports-color:
       optional: true
   checksum: 0073c3bcbd9cb7d71dd5f6b55be8701af42df3e56e911186dfa46fac3a5b9eb7ce7f377dd1d3be6db8977221f8eb333d945216f645cf56f6b688cd484837d255
-  languageName: node
-  linkType: hard
-
-"debug@npm:^0.7.2":
-  version: 0.7.4
-  resolution: "debug@npm:0.7.4"
-  checksum: 5646bf2bb349381e1363f1107513270f29092df1a1a7c0f331b23867867c517da5acbd31f828101bef61969fe558b81f044288624dbadaccb2c088329450a74f
   languageName: node
   linkType: hard
 
@@ -11361,7 +11346,6 @@ __metadata:
   resolution: "documentation-portal-monorepo@workspace:."
   dependencies:
     concurrently: "npm:7.4.0"
-    levenshtein-js: "npm:^1.0.2"
     prettier: "npm:^2.8.4"
   languageName: unknown
   linkType: soft
@@ -12821,10 +12805,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-saver@npm:2.0.2":
-  version: 2.0.2
-  resolution: "file-saver@npm:2.0.2"
-  checksum: 15e49e02db28934376385a462a735b00be2649eaf2335d6c718fc0142cac6cfe8c4a426b9feea32d796c44be045f584513e2bb6802683e8498f44d37f4c7d812
+"file-saver@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "file-saver@npm:2.0.5"
+  checksum: fbba443d9b682fec0be6676c048a7ac688b9bd33b105c02e8e1a1cb3e354ed441198dc1f15dcbc137fa044bea73f8a7549f2617e3a952fa7d96390356d54a7c3
   languageName: node
   linkType: hard
 
@@ -16592,15 +16576,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"levenshtein-js@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "levenshtein-js@npm:1.0.2"
-  dependencies:
-    log4js: "npm:^1.1.1"
-  checksum: a762391fdf94b5598fab9a37bdefa76fe76f96e551d09d0c3f11c01ae6a1858e4116773ea1758b4f199567503e9fce1f2fb82d6e9a823813afca9f5d452002b1
-  languageName: node
-  linkType: hard
-
 "levn@npm:^0.4.1":
   version: 0.4.1
   resolution: "levn@npm:0.4.1"
@@ -16834,17 +16809,6 @@ __metadata:
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: c08619c038846ea6ac754abd6dd29d2568aa705feb69339e836dfa8d8b09abbb2f859371e86863eda41848221f9af43714491467b5b0299122431e202bb0c532
-  languageName: node
-  linkType: hard
-
-"log4js@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "log4js@npm:1.1.1"
-  dependencies:
-    debug: "npm:^2.2.0"
-    semver: "npm:^5.3.0"
-    streamroller: "npm:^0.4.0"
-  checksum: d7912f2a9718882a94297741b9770aabd1a2c12936191244312e211a94cbf44d46ffcc63ac874c096d9e3e69756077e4a0a55f7f3740e22056eddeceb0b6b1a4
   languageName: node
   linkType: hard
 
@@ -18144,17 +18108,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mkdirp@npm:^0.5.1, mkdirp@npm:~0.5.1":
-  version: 0.5.6
-  resolution: "mkdirp@npm:0.5.6"
-  dependencies:
-    minimist: "npm:^1.2.6"
-  bin:
-    mkdirp: bin/cmd.js
-  checksum: 0c91b721bb12c3f9af4b77ebf73604baf350e64d80df91754dc509491ae93bf238581e59c7188360cec7cb62fc4100959245a42cfe01834efedc5e9d068376c2
-  languageName: node
-  linkType: hard
-
 "mkdirp@npm:^1.0.3":
   version: 1.0.4
   resolution: "mkdirp@npm:1.0.4"
@@ -18170,6 +18123,17 @@ __metadata:
   bin:
     mkdirp: dist/cjs/src/bin.js
   checksum: 4672fadb94dca8d2eafeb6fff53f2c5ea74e885565ef23251791709064f216105167c2387088c61ef068901bd0776648999785e341d74728164fa551b1c65996
+  languageName: node
+  linkType: hard
+
+"mkdirp@npm:~0.5.1":
+  version: 0.5.6
+  resolution: "mkdirp@npm:0.5.6"
+  dependencies:
+    minimist: "npm:^1.2.6"
+  bin:
+    mkdirp: bin/cmd.js
+  checksum: 0c91b721bb12c3f9af4b77ebf73604baf350e64d80df91754dc509491ae93bf238581e59c7188360cec7cb62fc4100959245a42cfe01834efedc5e9d068376c2
   languageName: node
   linkType: hard
 
@@ -21422,7 +21386,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:>=1.1.13-1 <1.2.0-0, readable-stream@npm:^1.0.27-1, readable-stream@npm:^1.1.13-1, readable-stream@npm:^1.1.7, readable-stream@npm:~1.1.9":
+"readable-stream@npm:>=1.1.13-1 <1.2.0-0, readable-stream@npm:^1.0.27-1, readable-stream@npm:^1.1.13-1, readable-stream@npm:~1.1.9":
   version: 1.1.14
   resolution: "readable-stream@npm:1.1.14"
   dependencies:
@@ -22345,7 +22309,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^5.3.0, semver@npm:^5.4.1, semver@npm:^5.6.0, semver@npm:^5.7.1":
+"semver@npm:^5.4.1, semver@npm:^5.6.0, semver@npm:^5.7.1":
   version: 5.7.2
   resolution: "semver@npm:5.7.2"
   bin:
@@ -23022,18 +22986,6 @@ __metadata:
     readable-wrap: "npm:^1.0.0"
     through2: "npm:^1.0.0"
   checksum: 83d3af799b8a35a378584fabbf46134f9f106c11f8c2e21ea2b4b0dcd245341bc3f0b671f1fa9b741314b939fdf65d442c9e72b23d311ee2fd3e69a896c698a1
-  languageName: node
-  linkType: hard
-
-"streamroller@npm:^0.4.0":
-  version: 0.4.1
-  resolution: "streamroller@npm:0.4.1"
-  dependencies:
-    date-format: "npm:^0.0.0"
-    debug: "npm:^0.7.2"
-    mkdirp: "npm:^0.5.1"
-    readable-stream: "npm:^1.1.7"
-  checksum: a546d4905478c6aa32edffa970a485b641358e1a4b26b99a3caee05ca8054dd90eefdc0eac19f3a35a1984f9747dc35cd26f346cba084d2ee80c8844f9d7090b
   languageName: node
   linkType: hard
 

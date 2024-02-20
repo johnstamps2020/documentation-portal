@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useDeltaDocContext } from './DeltaDocLayoutContext';
+import { useDeltaDocContext } from './DeltaDocContext';
 
 export default function DeltaDocStatistics() {
   const {
@@ -40,6 +40,7 @@ export default function DeltaDocStatistics() {
         if (line.value !== undefined) {
           return <Typography variant="h3">{line.text}</Typography>;
         }
+        return <></>
       })}
     </Stack>
   );
