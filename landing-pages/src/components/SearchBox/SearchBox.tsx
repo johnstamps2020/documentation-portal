@@ -9,7 +9,6 @@ import { useMobile } from 'hooks/useMobile';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { searchTypeQueryParameterName } from 'vars';
-//import { translate, Translate } from '@doctools/components';
 
 type SearchBoxProps = {
   big?: boolean;
@@ -42,11 +41,6 @@ export default function SearchBox({ big = true }: SearchBoxProps) {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const { placeholder } = useLocaleParams();
-
-  // const placeholder = translate({
-  //   id: 'gwSearchForm.placeholder',
-  //   message: 'Search',
-  // });
   const { searchData } = useSearchData();
   const { isMobile } = useMobile();
   const { setTitle, headerOptions } = useLayoutContext();
