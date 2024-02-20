@@ -764,7 +764,8 @@ export async function getVersionSelector(
         'doc.platformProductVersions',
         'docPlatformProductVersions'
       )
-      .leftJoinAndSelect('doc.releases', 'docReleases');
+      .leftJoinAndSelect('doc.releases', 'docReleases')
+      .leftJoinAndSelect('doc.language', 'docLanguage');
     const docResponse = await docQueryBuilder
       .leftJoinAndSelect(
         'docPlatformProductVersions.platform',
@@ -781,6 +782,7 @@ export async function getVersionSelector(
       .where({ id: docId })
       .getOne();
     if (docResponse) {
+      console.log(docResponse);
       const useReleaseForLabel = docResponse.releases?.length === 1;
       // FIXME: Add query for displayOnLandingPages unless we remove this parameter
       const docsWithTheSameTitle = await docQueryBuilder
@@ -809,6 +811,9 @@ export async function getVersionSelector(
             ),
           }
         )
+        .andWhere('docLanguage.code = :languageCode', {
+          languageCode: docResponse.language.code,
+        })
         .getMany();
 
       const availableDocsWithTheSameTitle = [];
