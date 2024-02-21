@@ -5,12 +5,16 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useDeltaDocData } from 'hooks/useDeltaDocData';
-import { compareDocs } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
+import {
+  compareDocs,
+  fileDoesNotExistText,
+} from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useEffect } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocPagination from './DeltaDocPagination';
 import { saveAs } from 'file-saver';
 import Link from '@mui/material/Link';
+import { DeltaDocResultType } from '@doctools/server';
 
 export default function DeltaDocResults() {
   const {
@@ -61,13 +65,21 @@ export default function DeltaDocResults() {
     );
   }
 
+  const resultsPerPage = 9;
+  const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
+  
   const regexSearch = url.replace(/\d+/, '......');
   var outputRegex = new RegExp(regexSearch, 'g');
   const stringifiedData = JSON.stringify(deltaDocData).replaceAll(
     outputRegex,
     '/'
   );
-  const data = JSON.parse(stringifiedData);
+  const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
+  const data = parsedData.map((releaseData) =>
+    releaseData.filter((element) => {
+      return element.id.replace(/[0-9]/g, '') !== url.replace(/[0-9]/g, '');
+    })
+  );
   const {
     results,
     areReleasesIdentical,
@@ -88,9 +100,6 @@ export default function DeltaDocResults() {
     setReleaseBLength(releaseBLength);
   }
 
-  const resultsPerPage = 9;
-  const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
-
   function exportReport() {
     const reportText = `Comparing ${url} in ${releaseA} and ${releaseB}\nFiles scanned: ${totalFilesScanned}\n`;
     const resultsWithNames = JSON.stringify(results, null, 2)
@@ -101,6 +110,10 @@ export default function DeltaDocResults() {
       type: 'text/plain;charset=utf-8',
     });
     saveAs(blob, `${releaseA}-${releaseB}-${url}-report.txt`);
+  }
+
+  function getInfo(text: string, colorInfo: string) {
+    return <Typography sx={{ color: colorInfo }}>{text}</Typography>;
   }
 
   return !areReleasesIdentical && results.length !== 0 ? (
@@ -143,10 +156,16 @@ export default function DeltaDocResults() {
                       fontSize: '18px',
                       fontWeight: 'bold',
                     }}
-                    href={url.slice(0, -1) + result.URL}
+                    href={
+                      result.URL.includes('cloud')
+                        ? result.URL
+                        : url.slice(0, -1) + result.URL
+                    }
                     target="_blank"
                   >
-                    {url.slice(0, -1) + result.URL}
+                    {result.URL.includes('cloud')
+                      ? result.URL
+                      : url.slice(0, -1) + result.URL}
                   </Link>{' '}
                   {result.docATitle === result.docBTitle ? (
                     <>
@@ -167,9 +186,23 @@ export default function DeltaDocResults() {
                   <Typography sx={{ color: 'red' }}>
                     Number of changes: {result.changes}
                   </Typography>
-                  <Typography sx={{ color: 'red' }}>
-                    Percentage: {result.percentage}%
-                  </Typography>
+                  {result.percentage >= 100 &&
+                  (result.docATitle === fileDoesNotExistText ||
+                    result.docBTitle === fileDoesNotExistText) ? (
+                    <>
+                      {releaseA > releaseB
+                        ? result.docATitle === fileDoesNotExistText
+                          ? getInfo(`Deleted in ${releaseA}`, 'red')
+                          : getInfo(`Added in ${releaseA}`, 'green')
+                        : result.docBTitle === fileDoesNotExistText
+                        ? getInfo(`Deleted in ${releaseB}`, 'red')
+                        : getInfo(`Added in ${releaseB}`, 'green')}
+                    </>
+                  ) : (
+                    <Typography sx={{ color: 'red' }}>
+                      Percentage: {result.percentage}%
+                    </Typography>
+                  )}
                 </Paper>
               ))}{' '}
           </Stack>

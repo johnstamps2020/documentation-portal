@@ -15,6 +15,8 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 const difference = require('js-levenshtein');
 
+export const fileDoesNotExistText = 'N/A - file does not exist';
+
 function calculatePercentage(fileChangeAmount: number, docLength: number) {
   const fractionNumber = fileChangeAmount / docLength;
   const percentageNumber = fractionNumber * 100;
