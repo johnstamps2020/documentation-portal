@@ -18,8 +18,13 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: 'コンフィギュレーションアップグレードツールの互換性',
-      docId: 'isjaJPupgradecompatibility',
+      label: '互換性の一覧表',
+      items: [
+        {
+          label: 'コンフィギュレーションアップグレードツールの互換性',
+          docId: 'isjaJPupgradecompatibility',
+        },
+      ],
     },
     {
       label: '5.1.0',
