@@ -21,7 +21,7 @@ const pageConfig: CategoryLayoutProps = {
       label: '5.1.0',
       items: [
         {
-          label: 'InsuranceSuite Configuration Upgrade Tools Guide',
+          label: 'Ferramentas de atualização de configuração do Guidewire InsuranceSuite',
           docId: 'isconfigupgradetools510ptBR',
         },
       ],
@@ -30,7 +30,7 @@ const pageConfig: CategoryLayoutProps = {
     label: '5.0.0',
     items: [
       {
-        label: 'InsuranceSuite Configuration Upgrade Tools Guide',
+        label: 'Ferramentas de atualização de configuração do Guidewire InsuranceSuite',
         docId: 'isconfigupgradetoolsptBR500',
       },
     ],

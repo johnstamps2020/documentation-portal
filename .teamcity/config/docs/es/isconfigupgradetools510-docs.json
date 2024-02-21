@@ -10,7 +10,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["5.1.0"],
-        "release": ["Jasper"],
+				"release": ["Hakuba", "Innsbruck"],
         "subject": ["Upgrade"],
         "language": "es"
       },
