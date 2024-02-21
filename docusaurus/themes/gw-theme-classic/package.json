@@ -1,6 +1,6 @@
 {
   "name": "@doctools/gw-theme-classic",
-  "version": "3.0.17",
+  "version": "3.0.18",
   "main": "lib/index.js",
   "author": "doctools@guidewire.com",
   "license": "UNLICENSED",

@@ -20,20 +20,6 @@ type FeedbackProps = {
   possibleContacts?: string;
 };
 
-const thumbsUpLabel = translate({
-  id: 'feedback.thumbsUp',
-  message: 'This page was helpful',
-  description:
-    'The description of the "thumbs up" icon which the user can click to share positive feedback',
-});
-
-const thumbsDownLabel = translate({
-  id: 'feedback.thumbsDown',
-  message: 'This page needs improvement',
-  description:
-    'The description of the "thumbs thumbs" icon which the user can click to share constructive feedback',
-});
-
 export function Feedback({
   showLabel,
   jiraApiUrl,
@@ -49,6 +35,13 @@ export function Feedback({
   const [notificationMessage, setNotificationMessage] = useState(<></>);
   const [notificationSeverity, setNotificationSeverity] =
     useState<NotificationProps['severity']>('info');
+
+  const thumbsDownLabel = translate({
+    id: 'feedback.thumbsDown',
+    message: 'This page needs improvement',
+    description:
+      'The description of the "thumbs thumbs" icon which the user can click to share constructive feedback',
+  });
 
   function handleClose() {
     setIsPositive(undefined);
@@ -89,12 +82,24 @@ export function Feedback({
           </Typography>
         )}
         <div className="feedbackThumbs">
-          <Tooltip title={thumbsUpLabel}>
+          <Tooltip
+            title={translate({
+              id: 'feedback.thumbsUp',
+              message: 'This page was helpful',
+              description:
+                'The description of the "thumbs up" icon which the user can click to share positive feedback',
+            })}
+          >
             <IconButton
               onClick={() => {
                 handleOpen(true);
               }}
-              aria-label={thumbsUpLabel}
+              aria-label={translate({
+                id: 'feedback.thumbsUp',
+                message: 'This page was helpful',
+                description:
+                  'The description of the "thumbs up" icon which the user can click to share positive feedback',
+              })}
               className="feedbackButtonPositive"
             >
               <ThumbUpOffAltIcon />
