@@ -11,14 +11,73 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Produkt auswählen',
-    selectedItemLabel: 'InfoCenter',
+    selectedItemLabel: 'Analytics',
     items: allSelectors.sabc928e21c4c1dfb2a841b6b2331c9db,
     labelColor: 'white',
   },
 
   cards: [
     {
-      label: '10.0.0',
+      label: 'Explore 2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Explore',
+          docId: 'exploreusingdeDErelease',
+        },
+      ],
+    },    
+    {
+      label: 'Data Studio 2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Data Studio',
+          docId: 'datastudiodeDErelease',
+        },
+      ],
+    },    
+		{
+      label: 'DataHub 10.0.0',
+      items: [
+        {
+          label: 'Berichtshandbuch',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/dh/10.0.0/DH10-reports-de.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Upgrade-Handbuch',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/dh/10.0.0/DH10-upgrade-de.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Installationshandbuch',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/dh/10.0.0/DH10-install-de.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Leitfaden zur Datenspezifikation',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/dh/10.0.0/DH10-dataspec-de.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'DataHub Konfigurationshandbuch',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/dh/10.0.0/DH10-config-de.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Administrationshandbuch',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'de-DE/dh/10.0.0/DH10-admin-de.pdf',
+          videoIcon: false,
+        },
+      ],
+    },
+    {
+      label: 'InfoCenter 10.0.0',
       items: [
         {
           label: 'BI-Anwendungshandbuch',
@@ -70,9 +129,10 @@ const pageConfig: CategoryLayoutProps = {
         },
       ],
     },
+
   ],
 };
 
-export default function Ic() {
+export default function Analytics() {
   return <CategoryLayout {...pageConfig} />;
 }

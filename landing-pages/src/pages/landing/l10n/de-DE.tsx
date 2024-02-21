@@ -31,6 +31,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       docId: 'whatsnewdeDEhakuba',
     },
     {
+      label: 'Analytics',
+      pagePath: 'l10n/de-DE/analytics',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/de-DE/bc',
     },
@@ -61,14 +65,6 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
       pagePath: 'l10n/de-DE/is-configupgradetools',
-    },
-    {
-      label: 'DataHub',
-      pagePath: 'l10n/de-DE/dh',
-    },
-    {
-      label: 'InfoCenter',
-      pagePath: 'l10n/de-DE/ic',
     },
     {
       label: 'PolicyCenter',
