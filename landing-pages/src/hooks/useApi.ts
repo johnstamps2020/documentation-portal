@@ -198,6 +198,22 @@ export function useReleases() {
   };
 }
 
+export function useReleasesNoRevalidation() {
+  const { data, error, isLoading } = useSWR<Release[], ServerSearchError>(
+    '/safeConfig/entity/Release/all',
+    getter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    releases: data,
+    isLoading,
+    isError: error,
+  };
+}
+
 export function useSubjects() {
   const { data, error, isLoading } = useSWR<Subject[], ServerSearchError>(
     '/safeConfig/entity/Subject/all',

@@ -3,7 +3,7 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useDeltaDocContext } from './DeltaDocContext';
-import { useReleases } from 'hooks/useApi';
+import { useReleasesNoRevalidation } from 'hooks/useApi';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -15,7 +15,7 @@ export default function DeltaDocUpperPanel() {
   const [temporaryUrl, setTemporaryUrl] = useState('');
   const { releaseA, releaseB, setReleaseA, setReleaseB, setUrl } =
     useDeltaDocContext();
-  const { releases, isLoading, isError } = useReleases();
+  const { releases, isLoading, isError } = useReleasesNoRevalidation();
 
   if (isError || isLoading || !releases) {
     return null;
