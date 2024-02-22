@@ -70,12 +70,12 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Initializing App Events for existing data',
           docId: 'appeventsdev',
-          pathInDoc: '?contextid=',
+          pathInDoc: '?contextid=c_synch_overview',
         },
         {
           label: 'App Events framework release notes',
           docId: 'appeventsdev',
-          pathInDoc: '?contextid=c_synch_overview',
+          pathInDoc: '?contextid=c_app_events_rn',
         }
       ],
     },
