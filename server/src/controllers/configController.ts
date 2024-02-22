@@ -764,7 +764,8 @@ export async function getVersionSelector(
         'doc.platformProductVersions',
         'docPlatformProductVersions'
       )
-      .leftJoinAndSelect('doc.releases', 'docReleases');
+      .leftJoinAndSelect('doc.releases', 'docReleases')
+      .leftJoinAndSelect('doc.language', 'docLanguage');
     const docResponse = await docQueryBuilder
       .leftJoinAndSelect(
         'docPlatformProductVersions.platform',
@@ -809,6 +810,9 @@ export async function getVersionSelector(
             ),
           }
         )
+        .andWhere('docLanguage.code = :languageCode', {
+          languageCode: docResponse.language.code,
+        })
         .getMany();
 
       const availableDocsWithTheSameTitle = [];
