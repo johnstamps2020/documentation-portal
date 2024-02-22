@@ -6,8 +6,6 @@ interface DeltaDocInterface {
   setReleaseA: React.Dispatch<React.SetStateAction<string>>;
   releaseB: string;
   setReleaseB: React.Dispatch<React.SetStateAction<string>>;
-  page: number;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
   url: string;
   setUrl: React.Dispatch<React.SetStateAction<string>>;
   results: DeltaLevenshteinReturnType[] | undefined;
@@ -44,7 +42,6 @@ export function DeltaDocContextProvider({
   const [releaseA, setReleaseA] = useState('');
   const [releaseB, setReleaseB] = useState('');
   const [url, setUrl] = useState('');
-  const [page, setPage] = useState(1);
   const [results, setResults] = useState<DeltaLevenshteinReturnType[]>();
   const [unchangedFiles, setUnchangedFiles] = useState<number>();
   const [totalFilesScanned, setTotalFilesScanned] = useState<number>();
@@ -61,8 +58,6 @@ export function DeltaDocContextProvider({
         setReleaseA,
         releaseB,
         setReleaseB,
-        page,
-        setPage,
         url,
         setUrl,
         results,
