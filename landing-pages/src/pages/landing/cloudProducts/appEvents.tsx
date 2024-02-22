@@ -5,7 +5,7 @@ import ApplicationLayout, {
 } from 'components/LandingPage/Application/ApplicationLayout';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import workflowImage from '../../img/conceptualize-visualize-finalize.png';
-import appeventsDiagram from '../images/int-framework.png';
+import appEventsDiagram from '../images/int-framework.png';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const appEventsGuide: LandingPageItemProps = {
@@ -27,16 +27,16 @@ const pageConfig: ApplicationLayoutProps = {
    title: 'Learn about App Events',
    description: (
       <p>
-        By leveraging App Events, downstream systems can 
-        subscribe to specific business events and effortlessly receive near-real-time 
-        information, all without the need for extensive coding efforts.
-        App Events supports two delivery mechanisms, Webhooks and Integration Gateway.
+        Utilizing App Events, downstream systems can effortlessly subscribe to specific 
+        business events and receive near-real-time information without the need for extensive 
+        coding efforts. 
+        App Events offers support for two delivery mechanisms: Webhooks and Integration Gateway.
 
       </p>
     ),
    /* right: (
         <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <img alt="" src={appeventsDiagram} />
+          <img alt="" src={appEventsDiagram} />
         </Box>
       ),*/
     videoUrl:
@@ -50,32 +50,32 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'App Event structure',
           docId: 'appeventsdev',
-          pathInDoc: 'topics/r_event_structure.html',
+          pathInDoc: '?contextid=app-events-structure',
         },
         {
           label: 'Getting started with App Events',
           docId: 'appeventsdev',
-          pathInDoc: 'topics/c_getting-started.html',
+          pathInDoc: '?contextid=ae-get-started',
         },
         {
           label: 'Configuring custom events',
           docId: 'appeventsdev',
-          pathInDoc: 'topics/c_custom-events.html',
+          pathInDoc: '?contextid=custom-events',
         },
         {
           label: 'Using App Events API',
           docId: 'appeventsdev',
-          pathInDoc: 'topics/c_api_overview.html',
+          pathInDoc: '?contextid=c_api_overview',
         },
         {
           label: 'Initializing App Events for existing data',
           docId: 'appeventsdev',
-          pathInDoc: 'topics/c_synch_overview.html',
+          pathInDoc: '?contextid=',
         },
         {
           label: 'App Events framework release notes',
           docId: 'appeventsdev',
-          pathInDoc: 'release-notes/topics/c_app_events_rn.html',
+          pathInDoc: '?contextid=c_synch_overview',
         }
       ],
     },
