@@ -18,10 +18,10 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: 'Explore 2023.10 (Innsbruck)',
+      label: 'Explore',
       items: [
         {
-          label: 'Explore',
+          label: 'Guidewire Explore',
           docId: 'exploreusingdeDErelease',
         },
       ],

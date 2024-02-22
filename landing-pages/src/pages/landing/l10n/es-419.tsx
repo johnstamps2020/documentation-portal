@@ -31,6 +31,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       docId: 'whatsnewes419hakuba',
     },
     {
+      label: 'Analytics',
+      pagePath: 'l10n/es-419/analytics',
+    },
+    {
       label: 'Advanced Product Designer',
       pagePath: 'l10n/es-419/apd',
     },
@@ -63,20 +67,8 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/es-419/ce-qb',
     },
     {
-      label: 'DataHub',
-      pagePath: 'l10n/es-419/dh',
-    },
-    {
-      label: 'Explore',
-      docId: 'explorees419usingrelease',
-    },
-    {
       label: 'Guidewire Cloud Console',
       docId: 'guidewirecloudconsolerootinsurerdeves419',
-    },
-    {
-      label: 'InfoCenter',
-      pagePath: 'l10n/es-419/ic',
     },
     {
       label: 'InsuranceSuite Contact Management',

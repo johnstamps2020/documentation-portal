@@ -31,6 +31,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       docId: 'whatsnewfrFRhakuba',
     },
     {
+      label: 'Analytics',
+      pagePath: 'l10n/fr-FR/analytics',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/fr-FR/bc',
     },
@@ -61,14 +65,6 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
       pagePath: 'l10n/fr-FR/is-configupgradetools',
-    },
-    {
-      label: 'DataHub',
-      pagePath: 'l10n/fr-FR/dh',
-    },
-    {
-      label: 'InfoCenter',
-      pagePath: 'l10n/fr-FR/ic',
     },
     {
       label: 'PolicyCenter',
