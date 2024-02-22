@@ -4,7 +4,7 @@ import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import workflowImage from '../../img/conceptualize-visualize-finalize.png';
+import workflowImage from '../img/conceptualize-visualize-finalize.png';
 import appEventsDiagram from '../images/int-framework.png';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
