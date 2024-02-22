@@ -37,18 +37,26 @@ export default function DeltaDocResults() {
     url,
   });
 
-  useEffect(
-    () => (
-      setPage(1),
-      setUnchangedFiles(undefined),
-      setDocBaseFileChanges(undefined),
-      setTotalFilesScanned(undefined),
-      setDocBaseFilePercentageChanges(undefined),
-      setReleaseALength(undefined),
-      setReleaseBLength(undefined)
-    ),
-    [releaseA, releaseB, url, setPage]
-  );
+  useEffect(() => {
+    setPage(1);
+    setUnchangedFiles(undefined);
+    setDocBaseFileChanges(undefined);
+    setTotalFilesScanned(undefined);
+    setDocBaseFilePercentageChanges(undefined);
+    setReleaseALength(undefined);
+    setReleaseBLength(undefined);
+  }, [
+    releaseA,
+    releaseB,
+    url,
+    setPage,
+    setUnchangedFiles,
+    setDocBaseFileChanges,
+    setTotalFilesScanned,
+    setDocBaseFilePercentageChanges,
+    setReleaseALength,
+    setReleaseBLength,
+  ]);
   if (!deltaDocData && !url) {
     return <></>;
   }
@@ -67,7 +75,7 @@ export default function DeltaDocResults() {
 
   const resultsPerPage = 9;
   const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
-  
+
   const regexSearch = url.replace(/\d+/, '......');
   var outputRegex = new RegExp(regexSearch, 'g');
   const stringifiedData = JSON.stringify(deltaDocData).replaceAll(
