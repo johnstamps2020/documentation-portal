@@ -11,14 +11,67 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Choisissez un produit',
-    selectedItemLabel: 'InfoCenter',
+    selectedItemLabel: 'Analytics',
     items: allSelectors.sef23284b869fc03ddd79bc1738f4ad7d,
     labelColor: 'white',
   },
 
   cards: [
+		{
+      label: 'Explore 2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Explore',
+          docId: 'exploreusingfrFRrelease',
+        },
+      ],
+    },
     {
-      label: '10.0.0',
+      label: 'Data Studio 2023.10 (Innsbruck)',
+      items: [
+        {
+          label: 'Data Studio',
+          docId: 'datastudiofrFRrelease',
+        },
+      ],
+    },    
+		{
+      label: 'DataHub 10.0.0',
+      items: [
+        {
+          label: "Guide d'installation",
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/dh/10.0.0/DH10-install-fr.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guide de configuration DataHub',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/dh/10.0.0/DH10-config-fr.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guide de mise à niveau',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/dh/10.0.0/DH10-upgrade-fr.pdf',
+          videoIcon: false,
+        },
+        {
+          label: "Guide d'administration",
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/dh/10.0.0/DH10-admin-fr.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guide des spécifications de données',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'fr-FR/dh/10.0.0/DH10-dataspec-fr.pdf',
+          videoIcon: false,
+        },
+      ],
+s    },
+    {
+      label: 'InfoCenter 10.0.0',
       items: [
         {
           label: 'Guide de mise à niveau',
@@ -55,6 +108,6 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export default function Ic() {
+export default function Analytics() {
   return <CategoryLayout {...pageConfig} />;
 }
