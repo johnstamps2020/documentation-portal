@@ -34,11 +34,13 @@ async function getEntityByAttribute(
   return responseJson;
 }
 
-export async function getDocInfoByDocId(docId: string): Promise<{
+export type DocInfo = {
   doc: any;
   build: any;
   source: any;
-}> {
+};
+
+export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
   const accessToken = await getAccessToken();
 
   const doc = await getEntityByAttribute('Doc', 'id', docId, accessToken);
