@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { useDeltaDocContext } from './DeltaDocContext';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
+import DeltaDocCardText from './DeltaDocCardText';
 
 export default function DeltaDocResultCard({
   result,
@@ -14,10 +15,6 @@ export default function DeltaDocResultCard({
   result: DeltaLevenshteinReturnType;
 }) {
   const { releaseA, releaseB, url } = useDeltaDocContext();
-
-  function Info({ text, colorInfo }: { text: string; colorInfo: string }) {
-    return <Typography sx={{ color: colorInfo }}>{text}</Typography>;
-  }
 
   return (
     <Paper
@@ -66,17 +63,7 @@ export default function DeltaDocResultCard({
       (result.docATitle === fileDoesNotExistText ||
         result.docBTitle === fileDoesNotExistText) ? (
         <>
-          {releaseA > releaseB ? (
-            result.docATitle === fileDoesNotExistText ? (
-              <Info text={`Deleted in ${releaseA}`} colorInfo="red" />
-            ) : (
-              <Info text={`Added in ${releaseA}`} colorInfo="green" />
-            )
-          ) : result.docBTitle === fileDoesNotExistText ? (
-            <Info text={`Deleted in ${releaseB}`} colorInfo="red" />
-          ) : (
-            <Info text={`Added in ${releaseB}`} colorInfo="green" />
-          )}
+          <DeltaDocCardText result={result} />
         </>
       ) : (
         <Typography sx={{ color: 'red' }}>
