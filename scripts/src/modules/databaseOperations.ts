@@ -4,13 +4,16 @@ async function getEntityByAttribute(
   entityName: string,
   attributeName: string,
   attributeValue: string,
-  accessToken: string
+  accessToken: string,
+  getRelations: boolean = false
 ): Promise<any> {
   console.log(
-    `Retrieving information for ${attributeName}: ${attributeValue}...`
+    `Retrieving information for ${attributeName}: "${attributeValue}"`
   );
   const configResponse = await fetch(
-    `https://docs.staging.ccs.guidewire.net/safeConfig/entity/${entityName}?${attributeName}=${attributeValue}`,
+    `https://docs.staging.ccs.guidewire.net/safeConfig/entity/${entityName}${
+      getRelations ? `/relations` : ''
+    }?${attributeName}=${attributeValue}`,
     {
       method: 'GET',
       headers: {
@@ -39,10 +42,17 @@ export async function getDocInfoByDocId(docId: string): Promise<{
   const accessToken = await getAccessToken();
 
   const doc = await getEntityByAttribute('Doc', 'id', docId, accessToken);
+  const build = await getEntityByAttribute(
+    'DitaBuild',
+    'doc.uuid',
+    doc.uuid,
+    accessToken,
+    true
+  );
 
   return {
     doc,
-    build: null,
-    source: null,
+    build,
+    source: build.source,
   };
 }

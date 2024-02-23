@@ -2409,29 +2409,27 @@ object User {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             }
 
-            val docRepoCheckoutDir = "clonedDocRepo"
-
-            artifactRules = "$docRepoCheckoutDir/out/* => translation-kit"
+            artifactRules = "./out/* => translation-kit"
 
             steps {
-                step(
-                    GwBuildSteps.createGitCloneRepoStep(docRepoCheckoutDir)
-                )
-
                 nodeJS {
-                    name = "Run the translation kit script"
+                    name = "Run the translation kit script for Docusaurus"
                     id = Helpers.createIdStringFromName(this.name)
 
                     shellScript = """
                             #!/bin/sh
                             set -e
-                            yarn && yarn scripts:create-docusaurus-translation-kit "%teamcity.build.workingDir%/$docRepoCheckoutDir"
+                            yarn && yarn scripts:create-docusaurus-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%"
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
             }
 
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
+            }
+
         })
 
 
@@ -2440,12 +2438,6 @@ object User {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             params {
-                text(
-                    "env.GIT_URL", "", label = "Git repo URL", display = ParameterDisplay.PROMPT
-                )
-                text(
-                    "env.GIT_BRANCH", "", label = "Git branch name", display = ParameterDisplay.PROMPT
-                )
                 text(
                     "env.DOC_ID",
                     "",
@@ -2459,26 +2451,17 @@ object User {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             }
 
-            val docRepoCheckoutDir = "clonedDocRepo"
-
-            artifactRules = """
-                    $docRepoCheckoutDir/* => /translation_kit
-                """.trimIndent()
+            artifactRules = "./out/* => translation-kit"
 
             steps {
-                step(
-                    GwBuildSteps.createGitCloneRepoStep(docRepoCheckoutDir)
-                )
-
                 nodeJS {
-                    name = "Add build data"
+                    name = "Run the translation kit script for DITA"
                     id = Helpers.createIdStringFromName(this.name)
 
                     shellScript = """
-                            #!/bin/bash
-                            set -xe
-
-                            yarn && yarn scripts:create-dita-build-info %env.DOC_ID% $docRepoCheckoutDir
+                            #!/bin/sh
+                            set -e
+                            yarn && yarn scripts:create-dita-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/"
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
@@ -2486,6 +2469,7 @@ object User {
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
             }
         })
 
