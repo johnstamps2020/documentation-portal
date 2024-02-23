@@ -7,7 +7,7 @@
     "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts",
     "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts",
     "create-docusaurus-translation-kit": "ts-node src/translations/createDocusaurusTranslationKit.ts",
-    "create-dita-build-info": "ts-node src/translations/createDitaBuildInfo.ts"
+    "create-dita-translation-kit": "ts-node src/translations/createDitaTranslationKit.ts"
   },
   "bin": {
     "copy-non-tx-files": "src/filesystem/copyNonTxFiles.mjs"
@@ -17,5 +17,9 @@
     "@types/node": "^18.14.6",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.515.0",
+    "dotenv": "^16.4.5"
   }
 }

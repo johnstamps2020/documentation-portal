@@ -46,7 +46,7 @@
     "publish:components": "yarn workspace @doctools/components npm publish --tolerate-republish",
     "publish:plugin": "yarn workspace @doctools/gw-plugin-redoc npm publish --tolerate-republish",
     "publish:theme": "yarn workspace @doctools/gw-theme-classic npm publish --tolerate-republish",
-    "scripts:create-dita-build-info": "yarn workspace @doctools/scripts create-dita-build-info",
+    "scripts:create-dita-translation-kit": "yarn workspace @doctools/scripts create-dita-translation-kit",
     "scripts:create-docusaurus-translation-kit": "yarn workspace @doctools/scripts create-docusaurus-translation-kit",
     "scripts:get-root-breadcrumbs": "yarn workspace @doctools/scripts get-root-breadcrumbs",
     "scripts:migrate-pages": "yarn workspace @doctools/scripts migrate-pages && yarn prettier:landing-pages",
