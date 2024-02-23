@@ -6,9 +6,9 @@ import { useDeltaDocData } from 'hooks/useDeltaDocData';
 import { compareDocs } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useEffect } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
-import DeltaDocPagination from './DeltaDocResults';
-import { saveAs } from 'file-saver';
 import { DeltaDocResultType } from '@doctools/server';
+import DeltaDocReportGenerator from './DeltaDocReportGenerator';
+import DeltaDocResults from './DeltaDocResults';
 
 export default function DeltaDocResultsPanel() {
   const {
@@ -98,18 +98,6 @@ export default function DeltaDocResultsPanel() {
     setReleaseBLength(releaseBLength);
   }
 
-  function exportReport() {
-    const reportText = `Comparing ${url} in ${releaseA} and ${releaseB}\nFiles scanned: ${totalFilesScanned}\n`;
-    const resultsWithNames = JSON.stringify(results, null, 2)
-      .replaceAll('"docATitle":', `"${releaseA}Title":`)
-      .replaceAll('"docBTitle":', `"${releaseB}Title":`);
-    const report = reportText + resultsWithNames;
-    var blob = new Blob([report], {
-      type: 'text/plain;charset=utf-8',
-    });
-    saveAs(blob, `${releaseA}-${releaseB}-${url}-report.txt`);
-  }
-
   return !areReleasesIdentical && results.length !== 0 ? (
     <>
       {releaseALength === 0 || releaseBLength === 0 ? (
@@ -121,8 +109,8 @@ export default function DeltaDocResultsPanel() {
         </>
       ) : (
         <>
-          <Button onClick={() => exportReport()}>Download report</Button>
-          <DeltaDocPagination
+          <DeltaDocReportGenerator results={results}/>
+          <DeltaDocResults
             results={results}
             resultsPerPage={resultsPerPage}
           />
