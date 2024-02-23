@@ -8,7 +8,7 @@ import { useLayoutContext } from 'LayoutContext';
 import Grid from '@mui/material/Grid';
 import { DeltaDocContextProvider } from 'components/DeltaDocCompareToolPage/DeltaDocContext';
 import DeltaDocUpperPanel from 'components/DeltaDocCompareToolPage/DeltaDocUpperPanel';
-import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResults';
+import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResultsPanel';
 import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
