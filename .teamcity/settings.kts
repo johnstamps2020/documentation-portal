@@ -2398,10 +2398,11 @@ object User {
 
             params {
                 text(
-                    "env.GIT_URL", "", label = "Git repo URL", display = ParameterDisplay.PROMPT
-                )
-                text(
-                    "env.GIT_BRANCH", "", label = "Git branch name", display = ParameterDisplay.PROMPT
+                    "env.DOC_ID",
+                    "",
+                    label = "Document id",
+                    description = "The docId from the doc config",
+                    display = ParameterDisplay.PROMPT
                 )
             }
 
@@ -2419,7 +2420,7 @@ object User {
                     shellScript = """
                             #!/bin/sh
                             set -e
-                            yarn && yarn scripts:create-docusaurus-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%"
+                            yarn && yarn scripts:create-docusaurus-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
@@ -2461,7 +2462,7 @@ object User {
                     shellScript = """
                             #!/bin/sh
                             set -e
-                            yarn && yarn scripts:create-dita-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/"
+                            yarn && yarn scripts:create-dita-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }

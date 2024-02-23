@@ -31,3 +31,6 @@ async function createDitaTranslationKit() {
 }
 
 createDitaTranslationKit();
+
+// Example command:
+// yarn scripts:create-dita-translation-kit dhrn202310 ~/git-repos/documentation-portal/out
