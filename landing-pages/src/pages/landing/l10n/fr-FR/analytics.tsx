@@ -69,7 +69,7 @@ const pageConfig: CategoryLayoutProps = {
           videoIcon: false,
         },
       ],
-s    },
+     },
     {
       label: 'InfoCenter 10.0.0',
       items: [
