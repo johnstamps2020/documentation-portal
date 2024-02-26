@@ -1,4 +1,4 @@
-import Button from '@mui/material/Button';
+import { DeltaDocResultType } from '@doctools/server';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -6,7 +6,6 @@ import { useDeltaDocData } from 'hooks/useDeltaDocData';
 import { compareDocs } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useEffect } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
-import { DeltaDocResultType } from '@doctools/server';
 import DeltaDocReportGenerator from './DeltaDocReportGenerator';
 import DeltaDocResults from './DeltaDocResults';
 

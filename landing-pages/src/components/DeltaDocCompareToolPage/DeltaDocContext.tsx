@@ -42,40 +42,45 @@ export function DeltaDocContextProvider({
   const [releaseA, setReleaseA] = useState('');
   const [releaseB, setReleaseB] = useState('');
   const [url, setUrl] = useState('');
-  const [results, setResults] = useState<DeltaLevenshteinReturnType[]>();
-  const [unchangedFiles, setUnchangedFiles] = useState<number>();
-  const [totalFilesScanned, setTotalFilesScanned] = useState<number>();
-  const [docBaseFileChanges, setDocBaseFileChanges] = useState<string>();
+  const [results, setResults] = useState<DeltaDocInterface['results']>([]);
+  const [unchangedFiles, setUnchangedFiles] =
+    useState<DeltaDocInterface['unchangedFiles']>();
+  const [totalFilesScanned, setTotalFilesScanned] =
+    useState<DeltaDocInterface['totalFilesScanned']>();
+  const [docBaseFileChanges, setDocBaseFileChanges] =
+    useState<DeltaDocInterface['docBaseFileChanges']>();
   const [docBaseFilePercentageChanges, setDocBaseFilePercentageChanges] =
-    useState<string>();
-  const [releaseALength, setReleaseALength] = useState<number>();
-  const [releaseBLength, setReleaseBLength] = useState<number>();
+    useState<DeltaDocInterface['docBaseFilePercentageChanges']>();
+  const [releaseALength, setReleaseALength] =
+    useState<DeltaDocInterface['releaseALength']>();
+  const [releaseBLength, setReleaseBLength] =
+    useState<DeltaDocInterface['releaseBLength']>();
+
+  const value: DeltaDocInterface = {
+    releaseA,
+    setReleaseA,
+    releaseB,
+    setReleaseB,
+    url,
+    setUrl,
+    results,
+    setResults,
+    unchangedFiles,
+    setUnchangedFiles,
+    totalFilesScanned,
+    setTotalFilesScanned,
+    docBaseFileChanges,
+    setDocBaseFileChanges,
+    docBaseFilePercentageChanges,
+    setDocBaseFilePercentageChanges,
+    releaseALength,
+    setReleaseALength,
+    releaseBLength,
+    setReleaseBLength,
+  };
 
   return (
-    <DeltaDocContext.Provider
-      value={{
-        releaseA,
-        setReleaseA,
-        releaseB,
-        setReleaseB,
-        url,
-        setUrl,
-        results,
-        setResults,
-        unchangedFiles,
-        setUnchangedFiles,
-        totalFilesScanned,
-        setTotalFilesScanned,
-        docBaseFileChanges,
-        setDocBaseFileChanges,
-        docBaseFilePercentageChanges,
-        setDocBaseFilePercentageChanges,
-        releaseALength,
-        setReleaseALength,
-        releaseBLength,
-        setReleaseBLength,
-      }}
-    >
+    <DeltaDocContext.Provider value={value}>
       {children}
     </DeltaDocContext.Provider>
   );
