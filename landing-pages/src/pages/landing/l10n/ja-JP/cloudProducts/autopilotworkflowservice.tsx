@@ -31,7 +31,7 @@ const pageConfig: SectionLayoutProps = {
       label: '管理',
       items: [
         {
-          label: 'Workflow Administration',
+          label: 'Workflow 管理',
           docId: 'workflow202401jaJPconsole',
         },
       ],
