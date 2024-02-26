@@ -41,13 +41,13 @@ export default function DeltaDocResultCard({
       </Link>
       {result.docATitle === result.docBTitle ? (
         <>
-          <Typography>Title in both releases: {result.docATitle}</Typography>{' '}
+          <Typography>Title in both releases: {result.docATitle}</Typography>
         </>
       ) : (
         <>
           <Typography>
             Title in {releaseA}: {result.docATitle}
-          </Typography>{' '}
+          </Typography>
           <Typography>
             Title in {releaseB}: {result.docBTitle}
           </Typography>

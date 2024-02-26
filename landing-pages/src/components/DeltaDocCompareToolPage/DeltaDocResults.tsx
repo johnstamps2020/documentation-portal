@@ -1,28 +1,27 @@
-import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
-import usePagination from '../../hooks/usePagination';
-import { useState } from 'react';
-import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { useState } from 'react';
+import usePagination from '../../hooks/usePagination';
+import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocResultCard from './DeltaDocResultCard';
 
-type DeltaDocResultsType = {
-  results: DeltaLevenshteinReturnType[];
-  resultsPerPage: number;
-};
-
-export default function DeltaDocResults({
-  results,
-  resultsPerPage,
-}: DeltaDocResultsType) {
+export default function DeltaDocResults() {
   const [page, setPage] = useState(1);
-
-  const count = Math.ceil(results.length / resultsPerPage);
+  const resultsPerPage = 9;
+  const { deltaDocData } = useDeltaDocContext();
   const paginationData = usePagination({
-    data: results,
+    data: deltaDocData?.results || [],
     itemsPerPage: resultsPerPage,
   });
+
+  if (!deltaDocData) {
+    return <></>;
+  }
+
+  const { results } = deltaDocData;
+  const count = Math.ceil(results.length / resultsPerPage);
 
   function handleChange(page: number) {
     setPage(page);

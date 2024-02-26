@@ -25,7 +25,6 @@ export default function DeltaDocResultsPanel() {
     );
   }
 
-  const resultsPerPage = 9;
   const { areReleasesIdentical, results, releaseALength, releaseBLength } =
     deltaDocData;
 
@@ -40,8 +39,8 @@ export default function DeltaDocResultsPanel() {
         </>
       ) : (
         <>
-          <DeltaDocReportGenerator results={results} />
-          <DeltaDocResults results={results} resultsPerPage={resultsPerPage} />
+          <DeltaDocReportGenerator />
+          <DeltaDocResults />
         </>
       )}
     </>

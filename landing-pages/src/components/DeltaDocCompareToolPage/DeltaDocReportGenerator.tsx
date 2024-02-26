@@ -1,14 +1,9 @@
-import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Button from '@mui/material/Button';
 import { saveAs } from 'file-saver';
 import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
 
-export default function DeltaDocReportGenerator({
-  results,
-}: {
-  results: DeltaLevenshteinReturnType[];
-}) {
+export default function DeltaDocReportGenerator() {
   const { releaseA, releaseB, url, deltaDocData } = useDeltaDocContext();
 
   if (!deltaDocData) {
@@ -22,6 +17,7 @@ export default function DeltaDocReportGenerator({
     releaseBLength,
     docBaseFileChanges,
     docBaseFilePercentageChanges,
+    results,
   } = deltaDocData;
 
   const statValues = [
