@@ -60,7 +60,6 @@ export default function ApplicationLayout({
       {introFeatureSectionProps && (
         <ApplicationFeatureSection {...introFeatureSectionProps} />
       )}
-
       {videoSectionProps && <ApplicationVideoSection {...videoSectionProps} />}
       {tabs && <ApplicationTabs tabs={tabs} />}
       {cards && <ApplicationCardSection items={cards} />}
