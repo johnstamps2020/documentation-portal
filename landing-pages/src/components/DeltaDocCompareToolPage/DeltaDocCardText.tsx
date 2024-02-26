@@ -1,10 +1,16 @@
 import { DeltaLevenshteinReturnType } from '@doctools/server';
-import Typography from '@mui/material/Typography';
+import Alert, { AlertProps } from '@mui/material/Alert';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
 
-function Info({ text, colorInfo }: { text: string; colorInfo: string }) {
-  return <Typography sx={{ color: colorInfo }}>{text}</Typography>;
+function Info({
+  text,
+  severity,
+}: {
+  text: string;
+  severity: AlertProps['severity'];
+}) {
+  return <Alert severity={severity}>{text}</Alert>;
 }
 
 export default function DeltaDocCardText({
@@ -16,13 +22,13 @@ export default function DeltaDocCardText({
 
   return releaseA > releaseB ? (
     result.docATitle === fileDoesNotExistText ? (
-      <Info text={`Deleted in ${releaseA}`} colorInfo="red" />
+      <Info text={`Deleted in ${releaseA}`} severity="error" />
     ) : (
-      <Info text={`Added in ${releaseA}`} colorInfo="green" />
+      <Info text={`Added in ${releaseA}`} severity="success" />
     )
   ) : result.docBTitle === fileDoesNotExistText ? (
-    <Info text={`Deleted in ${releaseB}`} colorInfo="red" />
+    <Info text={`Deleted in ${releaseB}`} severity="error" />
   ) : (
-    <Info text={`Added in ${releaseB}`} colorInfo="green" />
+    <Info text={`Added in ${releaseB}`} severity="success" />
   );
 }
