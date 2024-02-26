@@ -1,7 +1,6 @@
 import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Button from '@mui/material/Button';
 import { saveAs } from 'file-saver';
-import { useDeltaDocData } from 'hooks/useDeltaDocData';
 import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
 
