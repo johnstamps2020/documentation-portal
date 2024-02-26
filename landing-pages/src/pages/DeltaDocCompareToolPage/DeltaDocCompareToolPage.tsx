@@ -17,6 +17,27 @@ const difference = require('js-levenshtein');
 
 export const fileDoesNotExistText = 'N/A - file does not exist';
 
+export const statistics = [
+  { text: `Files scanned: `, value: 0 },
+  { text: `Identical entries: `, value: 0 },
+  {
+    text: `ReleaseA file count: `,
+    value: 0,
+  },
+  {
+    text: `ReleaseB file count: `,
+    value: 0,
+  },
+  {
+    text: `Percentage of files in the doc base that were edited: `,
+    value: '',
+  },
+  {
+    text: `Percentage that the doc base changed by between the two releases: `,
+    value: '',
+  },
+];
+
 function calculatePercentage(fileChangeAmount: number, docLength: number) {
   const fractionNumber = fileChangeAmount / docLength;
   const percentageNumber = fractionNumber * 100;

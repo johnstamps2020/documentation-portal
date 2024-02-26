@@ -1,5 +1,6 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
 
 export default function DeltaDocStatistics() {
@@ -14,36 +15,32 @@ export default function DeltaDocStatistics() {
     releaseBLength,
   } = useDeltaDocContext();
 
-  const statistics = [
-    { text: `Files scanned: ${totalFilesScanned}`, value: totalFilesScanned },
-    { text: `Identical entries: ${unchangedFiles}`, value: unchangedFiles },
-    {
-      text: `${releaseA} file count: ${releaseALength}`,
-      value: releaseALength,
-    },
-    {
-      text: `${releaseB} file count: ${releaseBLength}`,
-      value: releaseBLength,
-    },
-    {
-      text: `Percentage of files in the doc base that were edited: ${docBaseFileChanges}%`,
-      value: docBaseFileChanges,
-    },
-    {
-      text: `Percentage that the doc base changed by between the two releases: ${docBaseFilePercentageChanges}%`,
-      value: docBaseFilePercentageChanges,
-    },
+  const statValues = [
+    totalFilesScanned,
+    unchangedFiles,
+    releaseALength,
+    releaseBLength,
+    docBaseFileChanges,
+    docBaseFilePercentageChanges,
   ];
+
   return (
     <Stack direction="column" sx={{ marginTop: '30px' }}>
-      {statistics.map((line, key) => {
-        return (
-          line.value !== undefined && (
-            <Typography key={`${line.value}_${line.text}_${key}`} variant="h3">
-              {line.text}
+      {statistics.map((stat, index, key) => {
+        if (statValues[index] !== undefined) {
+          stat.value = statValues[index]!;
+          return (
+            <Typography key={`${stat.value}_${stat.text}_${key}`} variant="h3">
+              {stat.text.includes('ReleaseA') || stat.text.includes('ReleaseB')
+                ? stat.text
+                    .replace('ReleaseA', releaseA)
+                    .replace('ReleaseB', releaseB)
+                : stat.text}
+              {stat.value}
+              {typeof stat.value == 'string' ? '%' : ''}
             </Typography>
-          )
-        );
+          );
+        }
       })}
     </Stack>
   );

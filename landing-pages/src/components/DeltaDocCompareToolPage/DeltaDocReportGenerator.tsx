@@ -1,6 +1,7 @@
 import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Button from '@mui/material/Button';
 import { saveAs } from 'file-saver';
+import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
 
 export default function DeltaDocReportGenerator({
@@ -8,10 +9,46 @@ export default function DeltaDocReportGenerator({
 }: {
   results: DeltaLevenshteinReturnType[];
 }) {
-  const { releaseA, releaseB, url, totalFilesScanned } = useDeltaDocContext();
+  const {
+    releaseA,
+    releaseB,
+    url,
+    totalFilesScanned,
+    unchangedFiles,
+    releaseALength,
+    releaseBLength,
+    docBaseFileChanges,
+    docBaseFilePercentageChanges,
+  } = useDeltaDocContext();
+
+  const statValues = [
+    totalFilesScanned,
+    unchangedFiles,
+    releaseALength,
+    releaseBLength,
+    docBaseFileChanges,
+    docBaseFilePercentageChanges,
+  ];
 
   function exportReport() {
-    const reportText = `Comparing ${url} in ${releaseA} and ${releaseB}\nFiles scanned: ${totalFilesScanned}\nComparison run: ${new Date()}`;
+    const reportText = `Comparing ${url} in ${releaseA} and ${releaseB}\nComparison run: ${new Date()}\n\n`;
+    const statisticsText = statistics
+      .map((stat, index) => {
+        if (statValues[index] !== undefined) {
+          stat.value = statValues[index]!;
+          return `${
+            stat.text.includes('ReleaseA') || stat.text.includes('ReleaseB')
+              ? stat.text
+                  .replace('ReleaseA', releaseA)
+                  .replace('ReleaseB', releaseB)
+              : stat.text
+          }${stat.value}${typeof stat.value == 'string' ? '%' : ''}\n`;
+        }
+        return '';
+      })
+      .toString()
+      .replaceAll(',', '');
+
     const resultsWithNames = JSON.stringify(results)
       .replaceAll(',', `\n`)
       .replaceAll('{', `\n`)
@@ -24,7 +61,7 @@ export default function DeltaDocReportGenerator({
       .replaceAll('changes:', 'Number of changes: ')
       .replaceAll('percentage:', 'Percentage of the file changed: ')
       .replaceAll('URL:', 'URL: ');
-    const report = reportText + resultsWithNames;
+    const report = reportText + statisticsText + resultsWithNames;
     var blob = new Blob([report], {
       type: 'text/plain;charset=utf-8',
     });
