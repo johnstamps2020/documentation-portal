@@ -18,7 +18,16 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2024.02 (Jasper)',
+      label: '互換性の一覧表',
+      items: [
+        {
+          label: 'コンフィギュレーションアップグレードツールの互換性',
+          docId: 'isjaJPupgradecompatibility',
+        },
+      ],
+    },
+	  {
+      label: '5.1.0',
       items: [
         {
           label: 'InsuranceSuite Configuration Upgrade Tools ガイド',
@@ -27,15 +36,11 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-    label: '2023.10 (Innsbruck)',
+    label: '5.0.0',
     items: [
       {
         label: 'InsuranceSuite Configuration Upgrade Tools ガイド',
         docId: 'isconfigupgradetoolsjaJP500',
-      },
-      {
-        label: 'コンフィギュレーションアップグレードツールの互換性',
-        docId: 'isjaJPupgradecompatibility',
       },
     ],
   },
@@ -45,10 +50,6 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'InsuranceSuite Configuration Upgrade Tools ガイド',
           docId: 'isconfigupgradetoolsja460',
-        },
-        {
-          label: 'コンフィギュレーションアップグレードツールの互換性',
-          docId: 'isupgradecompatibilityja',
         },
       ],
     },

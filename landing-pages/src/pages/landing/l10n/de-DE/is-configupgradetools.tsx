@@ -18,7 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2024.02 (Jasper)',
+      label: '5.1.0',
       items: [
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Guide',
@@ -27,7 +27,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-    label: '2023.10 (Innsbruck)',
+    label: '5.0.0',
     items: [
       {
         label: 'InsuranceSuite Configuration Upgrade Tools Guide',
