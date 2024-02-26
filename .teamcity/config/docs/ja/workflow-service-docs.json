@@ -14,7 +14,7 @@
         "release": [ "Innsbruck" ],
         "language": "ja"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -24,7 +24,7 @@
     {
       "id": "workflow202401jaJPconsole",
       "title": "Workflow Administration ja",
-      "displayTitle": "Workflow Administration",
+      "displayTitle": "Workflow 管理",
       "url": "ja/cloud/workflow-service/workflow-console",
       "metadata": {
         "platform": [ "Cloud" ],
@@ -34,7 +34,7 @@
         "release": [ "Innsbruck" ],
         "language": "ja"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -44,7 +44,7 @@
     {
       "id": "workflow202401jaJPreleasenotes",
       "title": "Release Notes ja",
-      "displayTitle": "Release Notes",
+      "displayTitle": "リリースノート",
       "url": "ja/cloud/workflow-service/releasenotes",
       "metadata": {
         "platform": [ "Cloud" ],
@@ -54,7 +54,7 @@
         "release": [ "Innsbruck" ],
         "language": "ja"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
