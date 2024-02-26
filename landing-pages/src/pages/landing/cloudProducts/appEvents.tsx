@@ -181,6 +181,10 @@ const pageConfig: ApplicationLayoutProps = {
         docId: 'ispc202402apica',
       },
       {
+        label: 'Cloud API Consumer Guide',
+        docId: 'ispc202402apibf',
+      },
+      {
         label: 'REST API Client',
         docId: 'isrestapiclientguide',
       },
