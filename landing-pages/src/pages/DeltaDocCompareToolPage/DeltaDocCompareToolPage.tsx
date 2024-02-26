@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import Container from '@mui/material/Container';
 import { useLayoutContext } from 'LayoutContext';
 import Grid from '@mui/material/Grid';
-import { DeltaDocContextProvider } from 'components/DeltaDocCompareToolPage/DeltaDocContext';
+import { DeltaDocProvider } from 'components/DeltaDocCompareToolPage/DeltaDocContext';
 import DeltaDocUpperPanel from 'components/DeltaDocCompareToolPage/DeltaDocUpperPanel';
 import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResultsPanel';
 import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
@@ -204,7 +204,7 @@ export default function DeltaDocCompareToolPage() {
   }, [setTitle]);
 
   return (
-    <DeltaDocContextProvider>
+    <DeltaDocProvider>
       <Grid
         sx={{
           display: 'flex',
@@ -230,6 +230,6 @@ export default function DeltaDocCompareToolPage() {
           <DeltaDocResults />
         </Container>
       </Grid>
-    </DeltaDocContextProvider>
+    </DeltaDocProvider>
   );
 }

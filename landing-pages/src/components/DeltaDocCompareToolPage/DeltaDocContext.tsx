@@ -34,7 +34,7 @@ interface DeltaDocInterface {
 
 export const DeltaDocContext = createContext<DeltaDocInterface | null>(null);
 
-export function DeltaDocContextProvider({
+export function DeltaDocProvider({
   children,
 }: {
   children: React.ReactNode;
