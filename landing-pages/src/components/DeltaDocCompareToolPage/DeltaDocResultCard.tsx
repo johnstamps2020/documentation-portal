@@ -1,13 +1,10 @@
-import {
-  DeltaDocResultType,
-  DeltaLevenshteinReturnType,
-} from '@doctools/server';
+import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { useDeltaDocContext } from './DeltaDocContext';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import DeltaDocCardText from './DeltaDocCardText';
+import { useDeltaDocContext } from './DeltaDocContext';
 
 export default function DeltaDocResultCard({
   result,

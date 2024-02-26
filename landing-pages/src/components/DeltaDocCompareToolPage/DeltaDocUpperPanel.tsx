@@ -1,21 +1,38 @@
-import Stack from '@mui/material/Stack';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { useDeltaDocContext } from './DeltaDocContext';
-import { useReleasesNoRevalidation } from 'hooks/useApi';
-import MenuItem from '@mui/material/MenuItem';
-import TextField from '@mui/material/TextField';
-import FormHelperText from '@mui/material/FormHelperText';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
 import Container from '@mui/material/Container';
+import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import { useReleasesNoRevalidation } from 'hooks/useApi';
+import { useState } from 'react';
+import { useDeltaDocContext } from './DeltaDocContext';
 
 export default function DeltaDocUpperPanel() {
   const [temporaryUrl, setTemporaryUrl] = useState('');
-  const { releaseA, releaseB, setReleaseA, setReleaseB, setUrl } =
-    useDeltaDocContext();
+  const [temporaryReleaseA, setTemporaryReleaseA] = useState('');
+  const [temporaryReleaseB, setTemporaryReleaseB] = useState('');
+  const { releaseA, releaseB, url, setFormState } = useDeltaDocContext();
   const { releases, isLoading, isError } = useReleasesNoRevalidation();
+
+  const canSubmit =
+    (temporaryReleaseA !== releaseA ||
+      temporaryReleaseB !== releaseB ||
+      temporaryUrl !== url) &&
+    temporaryUrl.length > 0 &&
+    temporaryReleaseA.length > 0 &&
+    temporaryReleaseB.length > 0;
+
+  function handleSubmit() {
+    setFormState({
+      releaseA: temporaryReleaseA,
+      releaseB: temporaryReleaseB,
+      url: temporaryUrl,
+    });
+  }
 
   if (isError || isLoading || !releases) {
     return null;
@@ -44,9 +61,9 @@ export default function DeltaDocUpperPanel() {
           <InputLabel>Release A</InputLabel>
           <Select
             label="Release A to compare"
-            value={releaseA}
+            value={temporaryReleaseA}
             onChange={(event: SelectChangeEvent) =>
-              setReleaseA(event.target.value as string)
+              setTemporaryReleaseA(event.target.value as string)
             }
           >
             {ReleaseMenuItem}
@@ -56,15 +73,15 @@ export default function DeltaDocUpperPanel() {
           <InputLabel>Release B</InputLabel>
           <Select
             label="Release B to compare"
-            value={releaseB}
+            value={temporaryReleaseB}
             onChange={(event: SelectChangeEvent) =>
-              setReleaseB(event.target.value as string)
+              setTemporaryReleaseB(event.target.value as string)
             }
           >
             {ReleaseMenuItem}
           </Select>
         </FormControl>
-        <FormControl sx={{ width: '450px', alignItems: "center" }}>
+        <FormControl sx={{ width: '450px', alignItems: 'center' }}>
           <TextField
             label="Doc URL to compare within releases"
             value={temporaryUrl}
@@ -78,9 +95,10 @@ export default function DeltaDocUpperPanel() {
             <b>/cloud/is/202306/contact/</b>)
           </FormHelperText>
           <Button
-            variant="outlined"
-            sx={{ mt: '12px', width: "250px" }}
-            onClick={() => setUrl(temporaryUrl)}
+            variant="contained"
+            sx={{ mt: '12px', width: '250px' }}
+            onClick={handleSubmit}
+            disabled={!canSubmit}
           >
             See results
           </Button>

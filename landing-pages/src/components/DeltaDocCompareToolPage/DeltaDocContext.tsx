@@ -1,14 +1,13 @@
 import { DeltaDocData, useDeltaDocData } from 'hooks/useDeltaDocData';
 import React, { createContext, useContext, useState } from 'react';
 import { Error as DocPortalEntityError } from 'hooks/useEntitiesData';
+import { DeltaDocInputType } from '@doctools/server';
 
 interface DeltaDocInterface {
-  releaseA: string;
-  setReleaseA: React.Dispatch<React.SetStateAction<string>>;
-  releaseB: string;
-  setReleaseB: React.Dispatch<React.SetStateAction<string>>;
-  url: string;
-  setUrl: React.Dispatch<React.SetStateAction<string>>;
+  releaseA: DeltaDocInputType['releaseA'];
+  releaseB: DeltaDocInputType['releaseB'];
+  url: DeltaDocInputType['url'];
+  setFormState: React.Dispatch<React.SetStateAction<DeltaDocInputType>>;
   deltaDocData: DeltaDocData | undefined;
   isError: DocPortalEntityError | undefined;
   isLoading: boolean;
@@ -17,9 +16,12 @@ interface DeltaDocInterface {
 export const DeltaDocContext = createContext<DeltaDocInterface | null>(null);
 
 export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
-  const [releaseA, setReleaseA] = useState('');
-  const [releaseB, setReleaseB] = useState('');
-  const [url, setUrl] = useState('');
+  const [formState, setFormState] = useState<DeltaDocInputType>({
+    releaseA: '',
+    releaseB: '',
+    url: '',
+  });
+  const { releaseA, releaseB, url } = formState;
   const { deltaDocData, isError, isLoading } = useDeltaDocData({
     releaseA,
     releaseB,
@@ -27,12 +29,10 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
   });
 
   const value: DeltaDocInterface = {
-    releaseA,
-    setReleaseA,
-    releaseB,
-    setReleaseB,
-    url,
-    setUrl,
+    releaseA: formState.releaseA,
+    releaseB: formState.releaseB,
+    url: formState.url,
+    setFormState,
     deltaDocData,
     isError,
     isLoading,
