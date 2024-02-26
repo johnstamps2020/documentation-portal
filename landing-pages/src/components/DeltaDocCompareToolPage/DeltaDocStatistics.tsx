@@ -4,16 +4,20 @@ import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPag
 import { useDeltaDocContext } from './DeltaDocContext';
 
 export default function DeltaDocStatistics() {
+  const { releaseA, releaseB, deltaDocData } = useDeltaDocContext();
+
+  if (!deltaDocData) {
+    return <></>;
+  }
+
   const {
-    releaseA,
-    releaseB,
     unchangedFiles,
     docBaseFileChanges,
     docBaseFilePercentageChanges,
     totalFilesScanned,
     releaseALength,
     releaseBLength,
-  } = useDeltaDocContext();
+  } = deltaDocData;
 
   const statValues = [
     totalFilesScanned,
@@ -41,6 +45,8 @@ export default function DeltaDocStatistics() {
             </Typography>
           );
         }
+
+        return <></>;
       })}
     </Stack>
   );

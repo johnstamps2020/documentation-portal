@@ -1,51 +1,13 @@
-import { DeltaDocResultType } from '@doctools/server';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import { useDeltaDocData } from 'hooks/useDeltaDocData';
-import { compareDocs } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
-import { useEffect } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocReportGenerator from './DeltaDocReportGenerator';
 import DeltaDocResults from './DeltaDocResults';
 
 export default function DeltaDocResultsPanel() {
-  const {
-    releaseA,
-    releaseB,
-    url,
-    setUnchangedFiles,
-    setDocBaseFileChanges,
-    setDocBaseFilePercentageChanges,
-    setTotalFilesScanned,
-    setReleaseALength,
-    setReleaseBLength,
-  } = useDeltaDocContext();
-
-  const { deltaDocData, isLoading, isError } = useDeltaDocData({
-    releaseA,
-    releaseB,
-    url,
-  });
-
-  useEffect(() => {
-    setUnchangedFiles(undefined);
-    setDocBaseFileChanges(undefined);
-    setTotalFilesScanned(undefined);
-    setDocBaseFilePercentageChanges(undefined);
-    setReleaseALength(undefined);
-    setReleaseBLength(undefined);
-  }, [
-    releaseA,
-    releaseB,
-    url,
-    setUnchangedFiles,
-    setDocBaseFileChanges,
-    setTotalFilesScanned,
-    setDocBaseFilePercentageChanges,
-    setReleaseALength,
-    setReleaseBLength,
-  ]);
+  const { releaseA, releaseB, url, deltaDocData, isError, isLoading } =
+    useDeltaDocContext();
 
   if (!deltaDocData && !url) {
     return <></>;
@@ -64,38 +26,8 @@ export default function DeltaDocResultsPanel() {
   }
 
   const resultsPerPage = 9;
-  const regexSearch = url.replace(/\d+/, '......');
-  var outputRegex = new RegExp(regexSearch, 'g');
-  const stringifiedData = JSON.stringify(deltaDocData).replaceAll(
-    outputRegex,
-    '/'
-  );
-  const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
-  const data = parsedData.map((releaseData) =>
-    releaseData.filter((element) => {
-      return element.id.replace(/[0-9]/g, '') !== url.replace(/[0-9]/g, '');
-    })
-  );
-
-  const {
-    results,
-    areReleasesIdentical,
-    unchangedFiles: identicalEntires,
-    totalFilesScanned,
-    docBaseFileChanges,
-    docBaseFilePercentageChanges,
-    releaseALength,
-    releaseBLength,
-  } = compareDocs(data);
-
-  if (results.length > 0) {
-    setUnchangedFiles(identicalEntires);
-    setDocBaseFileChanges(docBaseFileChanges);
-    setTotalFilesScanned(totalFilesScanned);
-    setDocBaseFilePercentageChanges(docBaseFilePercentageChanges);
-    setReleaseALength(releaseALength);
-    setReleaseBLength(releaseBLength);
-  }
+  const { areReleasesIdentical, results, releaseALength, releaseBLength } =
+    deltaDocData;
 
   return !areReleasesIdentical && results.length !== 0 ? (
     <>
@@ -108,11 +40,8 @@ export default function DeltaDocResultsPanel() {
         </>
       ) : (
         <>
-          <DeltaDocReportGenerator results={results}/>
-          <DeltaDocResults
-            results={results}
-            resultsPerPage={resultsPerPage}
-          />
+          <DeltaDocReportGenerator results={results} />
+          <DeltaDocResults results={results} resultsPerPage={resultsPerPage} />
         </>
       )}
     </>
