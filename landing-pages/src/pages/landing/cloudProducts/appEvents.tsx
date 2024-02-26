@@ -4,8 +4,8 @@ import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import workflowImage from '../img/conceptualize-visualize-finalize.png';
-import appEventsDiagram from '../images/int-framework.png';
+import workflowImage from '../img/ae-land-page-workflow.png';
+import appEventsDiagram from '../images/ae-arch-diagram.png';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const appEventsGuide: LandingPageItemProps = {
