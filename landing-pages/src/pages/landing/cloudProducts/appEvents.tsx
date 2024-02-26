@@ -5,7 +5,7 @@ import ApplicationLayout, {
 } from 'components/LandingPage/Application/ApplicationLayout';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import workflowImage from '../img/ae-land-page-workflow.png';
-import appEventsDiagram from '../images/ae-arch-diagram.png';
+import appEventsDiagram from '../img/ae-arch-diagram.png';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const appEventsGuide: LandingPageItemProps = {
@@ -18,29 +18,41 @@ const pageConfig: ApplicationLayoutProps = {
   buttonProps: appEventsGuide,
   heroDescription: (
     <>
-      App Events is a vital component of the Guidewire Integration Framework, 
-      introducing a new approach to outbound integrations between InsuranceSuite 
+      App Events is a vital component of the Guidewire Integration Framework,
+      introducing a new approach to outbound integrations between InsuranceSuite
       and external systems.
     </>
   ),
-  videoSectionProps: {
-   title: 'Learn about App Events',
-   description: (
-      <p>
-        Utilizing App Events, downstream systems can effortlessly subscribe to specific 
-        business events and receive near-real-time information without the need for extensive 
-        coding efforts. 
-        App Events offers support for two delivery mechanisms: Webhooks and Integration Gateway.
-
-      </p>
-    ),
-   /* right: (
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <img alt="" src={appEventsDiagram} />
+  introFeatureSectionProps: {
+    left: (
+      <Box>
+        <Typography
+          variant="h2"
+          sx={{
+            fontSize: '24px',
+            fontWeight: 600,
+            lineHeight: '30px',
+          }}
+        >
+          Learn about App Events
+        </Typography>
+        <Box sx={{ fontSize: '14px', lineHeight: '150%' }}>
+          <p>
+            Utilizing App Events, downstream systems can effortlessly subscribe
+            to specific business events and receive near-real-time information
+            without the need for extensive coding efforts. App Events offers
+            support for two delivery mechanisms: Webhooks and Integration
+            Gateway.
+          </p>
         </Box>
-      ),*/
-    videoUrl:
-      'https://www.youtube-nocookie.com/embed/IrTP7677PQQ?si=OcnJ-DRAColM-L-g',
+      </Box>
+    ),
+    right: (
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <img alt="App Events diagram" src={appEventsDiagram} />
+      </Box>
+    ),
+    divider: true,
   },
   cards: [
     {
@@ -76,7 +88,7 @@ const pageConfig: ApplicationLayoutProps = {
           label: 'App Events framework release notes',
           docId: 'appeventsdev',
           pathInDoc: '?contextid=c_app_events_rn',
-        }
+        },
       ],
     },
     {
@@ -117,7 +129,7 @@ const pageConfig: ApplicationLayoutProps = {
           label: 'App Events Webhooks release notes',
           docId: 'webhooksrelease',
           pathInDoc: '?contextid=c_webhooks_rn',
-        }
+        },
       ],
     },
     {
@@ -137,8 +149,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Developing and testing integrations',
           docId: 'integgatewaydevlatest',
-          pathInDoc:
-            '?contextid=ig-dev-test',
+          pathInDoc: '?contextid=ig-dev-test',
         },
         {
           label: 'Using events',
@@ -198,11 +209,11 @@ const pageConfig: ApplicationLayoutProps = {
             Integration Framework Products
           </Typography>
           <Box sx={{ fontSize: '14px', lineHeight: '150%' }}>
-            <p>With Integration Framework producsts, you can:</p>
+            <p>With Integration Framework products, you can:</p>
             <ul>
               <li>
-                <strong>Design</strong>: Choose an integration pattern, outline the integration logic, 
-                and specify preferred products to use
+                <strong>Design</strong>: Choose an integration pattern, outline
+                the integration logic, and specify preferred products to use
               </li>
               <li>
                 <strong>Develop</strong>: Develop and test the integration
@@ -216,15 +227,11 @@ const pageConfig: ApplicationLayoutProps = {
       ),
       right: (
         <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <img alt="" src={workflowImage} />
+          <img alt="Integration Framework workflow" src={workflowImage} />
         </Box>
       ),
     },
   ],
-  selector: {
-    selectedItemLabel: 'Innsbruck (2023.10)',
-    items: allSelectors.apdApp,
-  },
 };
 
 export default function CreateHome() {
