@@ -1,6 +1,5 @@
 import { writeFileSync } from 'fs';
 import { DocInfo, getDocInfoByDocId } from '../modules/databaseOperations';
-import { cloneRepositoryForDoc } from '../modules/gitOperations';
 import { prepareBuildAndCloneDirectories } from '../modules/fileOperations';
 
 const { buildDir, cloneDir } = prepareBuildAndCloneDirectories();
@@ -25,17 +24,30 @@ async function createDitaTranslationKit() {
   }
 
   const docInfo = await getDocInfoByDocId(docId);
-  await cloneRepositoryForDoc(docInfo, cloneDir);
-  await buildDitaOutput(docInfo, cloneDir);
+  // await cloneRepositoryForDoc(docInfo, cloneDir);
+  const buildData = await getBuildData(docInfo.doc.url);
+  console.log(buildData);
 
   createDitaBuildInfo(docInfo.build, docId);
 }
 
 createDitaTranslationKit();
 
+async function getBuildData(docUrl: DocInfo) {
+  const buildDataUrl = `https://docportal-content.staging.ccs.guidewire.net/${docUrl}/build-data.json`;
+  console.log(`Getting build info from ${buildDataUrl}`);
+  const response = await fetch(buildDataUrl);
 
-function buildDitaOutput(docInfo: DocInfo, cloneDir: string) {
-  throw new Error('Function not implemented.');
+  if (!response.ok) {
+    console.error(
+      `Failed to get build info from ${buildDataUrl}, status code: ${response.status}`
+    );
+    process.exit(1);
+  }
+
+  const buildData = await response.json();
+  return buildData;
 }
+
 // Example command:
 // yarn scripts:create-dita-translation-kit dhrn202310 ~/git-repos/documentation-portal/out
