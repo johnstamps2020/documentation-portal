@@ -1,6 +1,7 @@
 import { writeFileSync } from 'fs';
 import { DocInfo, getDocInfoByDocId } from '../modules/databaseOperations';
 import { prepareBuildAndCloneDirectories } from '../modules/fileOperations';
+import { cloneRepositoryForDoc } from '../modules/gitOperations';
 
 const { buildDir, cloneDir } = prepareBuildAndCloneDirectories();
 
@@ -24,7 +25,7 @@ async function createDitaTranslationKit() {
   }
 
   const docInfo = await getDocInfoByDocId(docId);
-  // await cloneRepositoryForDoc(docInfo, cloneDir);
+  await cloneRepositoryForDoc(docInfo, cloneDir);
   const buildData = await getBuildData(docInfo.doc.url);
   console.log(buildData);
 
