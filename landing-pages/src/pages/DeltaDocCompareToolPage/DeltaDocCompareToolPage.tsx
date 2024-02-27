@@ -9,7 +9,7 @@ import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResultsP
 import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
 import DeltaDocUpperPanel from 'components/DeltaDocCompareToolPage/DeltaDocUpperPanel';
 import { useEffect } from 'react';
-
+import AdminAccess from 'components/AdminPage/AdminAccess';
 
 export const fileDoesNotExistText = 'N/A - file does not exist';
 
@@ -41,32 +41,34 @@ export default function DeltaDocCompareToolPage() {
   }, [setTitle]);
 
   return (
-    <DeltaDocProvider>
-      <Grid
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: 'fit-content',
-        }}
-      >
-        <Container
+    <AdminAccess pagePath={window.location.href}>
+      <DeltaDocProvider>
+        <Grid
           sx={{
-            padding: '3rem 0',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: 'fit-content',
           }}
         >
-          <Typography variant="h1" marginBottom="16px">
-            Compare documents between releases
-          </Typography>
-          <Stack direction="row">
-            <DeltaDocUpperPanel />
-            <DeltaDocStatistics />
-          </Stack>
-          <Divider sx={{ m: '8px 0 40px 0', width: '100%' }} />
-          <DeltaDocResults />
-        </Container>
-      </Grid>
-    </DeltaDocProvider>
+          <Container
+            sx={{
+              padding: '3rem 0',
+            }}
+          >
+            <Typography variant="h1" marginBottom="16px">
+              Compare documents between releases
+            </Typography>
+            <Stack direction="row">
+              <DeltaDocUpperPanel />
+              <DeltaDocStatistics />
+            </Stack>
+            <Divider sx={{ m: '8px 0 40px 0', width: '100%' }} />
+            <DeltaDocResults />
+          </Container>
+        </Grid>
+      </DeltaDocProvider>
+    </AdminAccess>
   );
 }
