@@ -78,6 +78,12 @@
       "title": "SonarQube",
       "gitUrl": "ssh://git@stash.guidewire.com/ccs/sonarqube-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "goldenimagesrc",
+      "title": "Golden Image",
+      "gitUrl": "ssh://git@stash.guidewire.com/re/cnb-docs.git",
+      "branch": "main"
     }
   ]
 }
