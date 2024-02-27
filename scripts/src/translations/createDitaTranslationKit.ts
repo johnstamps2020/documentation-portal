@@ -1,9 +1,9 @@
 import { writeFileSync } from 'fs';
-import { getDocInfoByDocId } from '../modules/databaseOperations';
+import { DocInfo, getDocInfoByDocId } from '../modules/databaseOperations';
 import { cloneRepositoryForDoc } from '../modules/gitOperations';
-import { prepareDirectories } from '../modules/fileOperations';
+import { prepareBuildAndCloneDirectories } from '../modules/fileOperations';
 
-const { buildDir, cloneDir } = prepareDirectories();
+const { buildDir, cloneDir } = prepareBuildAndCloneDirectories();
 
 async function createDitaBuildInfo(config: any, docId: string) {
   console.log('Creating a DITA build info...');
@@ -26,11 +26,16 @@ async function createDitaTranslationKit() {
 
   const docInfo = await getDocInfoByDocId(docId);
   await cloneRepositoryForDoc(docInfo, cloneDir);
+  await buildDitaOutput(docInfo, cloneDir);
 
   createDitaBuildInfo(docInfo.build, docId);
 }
 
 createDitaTranslationKit();
 
+
+function buildDitaOutput(docInfo: DocInfo, cloneDir: string) {
+  throw new Error('Function not implemented.');
+}
 // Example command:
 // yarn scripts:create-dita-translation-kit dhrn202310 ~/git-repos/documentation-portal/out

@@ -1,10 +1,4 @@
-import {
-  existsSync,
-  mkdirSync,
-  readdirSync,
-  rmSync,
-  statSync
-} from 'fs';
+import { existsSync, mkdirSync, readdirSync, rmSync, statSync } from 'fs';
 import { resolve } from 'path';
 
 export function getAllFilesRecursively(rootDir: string): string[] {
@@ -21,7 +15,7 @@ export function getAllFilesRecursively(rootDir: string): string[] {
     .flat();
 }
 
-export function prepareDirectories(): {
+export function prepareBuildAndCloneDirectories(): {
   buildDir: string;
   cloneDir: string;
 } {
