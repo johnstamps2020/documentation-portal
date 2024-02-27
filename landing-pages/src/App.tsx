@@ -22,6 +22,7 @@ import LanguageAdminPage from 'components/AdminPage/LanguageAdminPage/LanguageAd
 import PlatformAdminPage from 'components/AdminPage/PlatformAdminPage/PlatformAdminPage';
 import ProductAdminPage from 'components/AdminPage/ProductAdminPage/ProductAdminPage';
 import VersionAdminPage from 'components/AdminPage/VersionAdminPage/VersionAdminPage';
+import DeltaDocCompareToolPage from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 
 const router = createBrowserRouter([
   {
@@ -109,6 +110,7 @@ const router = createBrowserRouter([
           },
         ],
       },
+      { path: 'delta-doc', element: <DeltaDocCompareToolPage />},
     ],
   },
 ]);

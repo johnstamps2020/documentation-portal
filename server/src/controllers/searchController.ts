@@ -1169,3 +1169,43 @@ export default async function searchController(
     next(err);
   }
 }
+
+// Delta doc functionality
+
+export async function getAllDocsFromRelease(
+  releaseName: string,
+  urlRegex: string
+) {
+  try {
+    const result = await elasticClient.search<SearchResultSource>({
+      index: searchIndexName,
+      size: 1000,
+      body: {
+        query: {
+          bool: {
+            must: [
+              {
+                term: { release: { value: releaseName } },
+              },
+              {
+                regexp: {
+                  id: {
+                    value: urlRegex,
+                  },
+                },
+              },
+            ],
+            should: { term: { language: { value: 'en' } } },
+          },
+        },
+      },
+    });
+
+    return result;
+  } catch (err) {
+    winstonLogger.error(
+      `Problem comparing documents
+      ERROR: ${JSON.stringify(err)}`
+    );
+  }
+}
