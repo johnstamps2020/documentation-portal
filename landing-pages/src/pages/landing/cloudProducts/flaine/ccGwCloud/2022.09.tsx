@@ -90,10 +90,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'iscc202209rules',
         },
         {
-          label: 'Guidewire Rules (Early Access)',
-          docId: 'gwrules',
-        },
-        {
           label: 'Guidewire Rules for ClaimCenter (Early Access)',
           docId: 'gwrulescc',
         },

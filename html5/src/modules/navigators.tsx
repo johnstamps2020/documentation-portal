@@ -230,9 +230,21 @@ function createNavLink(isPrevious: boolean, linkObject: Element) {
   } else {
     navLink.classList.add('disabled');
   }
-  const title = linkObject ? linkObject.textContent : 'None';
+  const noneText = translate({
+    id: 'navbar.noNextOrPrevTopic',
+    message: 'None',
+  });
+  const title = linkObject ? linkObject.textContent : noneText;
+  const prevTopicLabel = translate({
+    id: 'navbar.prevTopic',
+    message: 'Previous topic',
+  });
+  const nextTopicLabel = translate({
+    id: 'navbar.nextTopic',
+    message: 'Next topic',
+  });
   const titleLabel = `${
-    isPrevious ? 'Previous topic' : 'Next topic'
+    isPrevious ? prevTopicLabel : nextTopicLabel
   }: ${title}`;
   navLink.setAttribute('title', titleLabel);
   navLink.setAttribute('aria-label', titleLabel);
@@ -296,7 +308,11 @@ function addPrintButton() {
   printButton.setAttribute('type', 'button');
   printButton.classList.add('navbarButton');
   printButton.classList.add('printButton');
-  const title = 'Print this page';
+  const title = translate({
+    id: 'navbar.printThisPage',
+    message: 'Print this page',
+  });
+
   printButton.setAttribute('title', title);
   printButton.setAttribute('aria-label', title);
   printButton.addEventListener('click', function () {
@@ -309,7 +325,10 @@ function addPrintButton() {
 function addScrollToTop() {
   const scrollToTopButton = document.createElement('button');
   scrollToTopButton.setAttribute('type', 'button');
-  const title = 'Scroll to top';
+  const title = translate({
+    id: 'nav.scrollToTop',
+    message: 'Scroll to top',
+  });
   scrollToTopButton.setAttribute('title', title);
   scrollToTopButton.setAttribute('aria-label', title);
   scrollToTopButton.classList.add('scrollToTopButton');

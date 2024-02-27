@@ -4,6 +4,15 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "dataservicereleasenotes.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "indataservicereleasenotes",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "API_Modernization.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "inapimodernization",

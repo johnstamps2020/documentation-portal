@@ -428,6 +428,12 @@
       "branch": "release/8.13.6"
     },
     {
+      "id": "srcjutro8137",
+      "title": "Jutro Design System 8.13.7",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.13.7"
+    },
+    {
       "id": "srcjutro1000",
       "title": "Jutro Digital Platform 10.0",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
@@ -480,6 +486,18 @@
       "title": "Jutro Digital Content Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
       "branch": "release/innsbruck"
+    },
+    {
+      "id": "jutrodigitalcontentsrcjasper",
+      "title": "Jutro Digital Content Jasper",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
+      "branch": "release/jasper"
+    },
+    {
+      "id": "jutrodigitalcontentsrckufri",
+      "title": "Jutro Digital Content Kufri",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
+      "branch": "release/kufri"
     }
   ]
 }

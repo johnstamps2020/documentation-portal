@@ -18,12 +18,17 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2023.10 (Innsbruck)',
+      label: 'Notes de version',
       items: [
         {
           label: 'Notes de version de la plate-forme Guidewire Cloud',
           docId: 'gwcpfrFRreleasenotes',
         },
+      ],
+    },
+    {
+      label: '2023.10 (Innsbruck)',
+      items: [
         {
           label: 'Explore',
           docId: 'exploreusingfrFRrelease',

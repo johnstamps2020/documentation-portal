@@ -1,0 +1,165 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202402frFRceamrelnotes",
+      "title": "CustomerEngage Account Management Release Notes fr",
+      "displayTitle": "CustomerEngage Account Management Notes sur la version",
+      "url": "fr/cloud/dx/ce-am/202402/relnotes",
+      "metadata": {
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Release notes" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402frFRceclaimsrelnotes",
+      "title": "CustomerEngage Account Management for ClaimCenter Release Notes fr",
+      "displayTitle": "CustomerEngage Account Management pour ClaimCenter Notes sur la version",
+      "url": "fr/cloud/dx/ce-claims/202402/relnotes",
+      "metadata": {
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Release notes" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402frFRceqbrelnotes",
+      "title": "CustomerEngage Quote and Buy Release Notes fr",
+      "displayTitle": "CustomerEngage Quote and Buy Notes sur la version",
+      "url": "fr/cloud/dx/ce-qb/202402/relnotes",
+      "metadata": {
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Release notes" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402frFRperelnotes",
+      "title": "ProducerEngage Release Notes fr",
+      "displayTitle": "ProducerEngage Notes sur la version",
+      "url": "fr/cloud/dx/pe/202402/relnotes",
+      "metadata": {
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Release notes" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402frFRpeclaimsrelnotes",
+      "title": "ProducerEngage for ClaimCenter Release Notes fr",
+      "displayTitle": "ProducerEngage pour ClaimCenter Notes sur la version",
+      "url": "fr/cloud/dx/pe-claims/202402/relnotes",
+      "metadata": {
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Release notes" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402frFRsrerelnotes",
+      "title": "ServiceRepEngage Release Notes fr",
+      "displayTitle": "ServiceRepEngage Notes sur la version",
+      "url": "fr/cloud/dx/sre/202402/relnotes",
+      "metadata": {
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Release notes" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202402frFRverelnotes",
+      "title": "VendorEngage Release Notes fr",
+      "displayTitle": "VendorEngage Notes sur la version",
+      "url": "fr/cloud/dx/ve/202402/relnotes",
+      "metadata": {
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Release notes" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ee202402frFRupdate",
+      "title": "Update fr",
+      "displayTitle": "EnterpriseEngage - Guide de mise à jour",
+      "url": "fr/cloud/ee/202402/update",
+      "metadata": {
+        "product": [ "Digital Reference Applications" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Installation" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -14,12 +14,6 @@
       "branch": "release/ja-JP/innsbruck"
     },
     {
-      "id": "gwcpreleasenotesjaJPsrc",
-      "title": "Cloud Platform Release Notes ja",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
-      "branch": "release/ja-JP/innsbruck"
-    },
-    {
       "id": "is202310jaJPsrc",
       "title": "IS 2023.10.0 ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
@@ -84,6 +78,18 @@
       "title": "Explore ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "release/ja-JP/2024.01"
+    },
+    {
+      "id": "workflowservicejaJPsrc",
+      "title": "Workflow Service ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/workflow-service.git",
+      "branch": "release/ja-JP/2024.01"
+    },
+    {
+      "id": "apdjaJPappinnsbrucksrc",
+      "title": "Advanced Product Designer App Innsbruck",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/app/ja-JP/innsbruck"
     }
   ]
 }

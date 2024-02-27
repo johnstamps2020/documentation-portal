@@ -90,6 +90,13 @@
       "srcId": "sonarqubesrc",
       "workingDir": "website",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "goldenimage",
+      "srcId": "goldenimagesrc",
+      "workingDir": "website",
+      "disabled": false
     }
   ]
 }

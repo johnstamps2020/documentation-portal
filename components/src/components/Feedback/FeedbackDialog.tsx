@@ -31,26 +31,6 @@ export type FeedbackDialogProps = {
   possibleContacts: string;
 };
 
-const commentLabel = translate({
-  id: 'feedbackDialog.comment',
-  message: 'Your comment',
-});
-
-const emailLabel = translate({
-  id: 'feedbackDialog.email',
-  message: 'Your email',
-});
-
-const clearLabel = translate({
-  id: 'feedbackDialog.clearEmail',
-  message: 'Clear email',
-});
-
-const validEmail = translate({
-  id: 'feedbackDialog.validEmail',
-  message: 'Provide a valid email address',
-});
-
 type JiraResponse = {
   id: string;
   key: string;
@@ -255,7 +235,10 @@ export function FeedbackDialog({
               </Translate>
             </Typography>
             <TextField
-              label={commentLabel}
+              label={translate({
+                id: 'feedbackDialog.comment',
+                message: 'Your comment',
+              })}
               multiline
               maxRows={8}
               minRows={4}
@@ -264,12 +247,18 @@ export function FeedbackDialog({
               variant="outlined"
             />
             <TextField
-              label={emailLabel}
+              label={translate({
+                id: 'feedbackDialog.email',
+                message: 'Your email',
+              })}
               value={email}
               onChange={handleChangeEmail}
               aria-describedby="email-helper-text"
               error={emailIsError}
-              helperText={validEmail}
+              helperText={translate({
+                id: 'feedbackDialog.validEmail',
+                message: 'Provide a valid email address',
+              })}
               onBlur={handleValidateEmail}
               variant="outlined"
               type="email"
@@ -277,7 +266,10 @@ export function FeedbackDialog({
                 endAdornment: (
                   <IconButton
                     onClick={handleClearEmail}
-                    aria-label={clearLabel}
+                    aria-label={translate({
+                      id: 'feedbackDialog.clearEmail',
+                      message: 'Clear email',
+                    })}
                     disabled={anonymous}
                   >
                     <ClearIcon />

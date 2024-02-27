@@ -23,7 +23,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/nl-NL/cc',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function NlNL() {

@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: "Nouveautés de Jasper",
+      docId: 'whatsnewjasperfrFR',
+    },
+    {
       label: "Nouveautés d'Innsbruck",
       docId: 'whatsnewfrFRinnsbruck',
     },
@@ -56,7 +60,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
-      docId: 'isconfigupgradetoolsfrFR500',
+      pagePath: 'l10n/fr-FR/is-configupgradetools',
     },
     {
       label: 'DataHub',
@@ -87,7 +91,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/fr-FR/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function FrFR() {

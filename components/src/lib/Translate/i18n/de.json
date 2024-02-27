@@ -123,5 +123,25 @@
   "footer.published": {
     "message": "Veröffentlicht:",
     "description": "Text preceding the date on which the page was published"
+  },
+  "nav.scrollToTop": {
+    "message": "Nach oben scrollen",
+    "description": "Hover text for button to scroll to top of page"
+  },
+  "navbar.nextTopic": {
+    "message": "Nächste Seite",
+    "description": "Hover text over button to navigate to next topic in document"
+  },
+  "navbar.prevTopic": {
+    "message": "Vorherige Seite",
+    "description": "Hover text over button to navigate to previous topic in document"
+  },
+  "navbar.noNextOrPrevTopic": {
+    "message": "Keiner",
+    "description": "Hover text following navbar.nextTopic or navbar.nextTopic when there is no next or previous topic in document"
+  },
+  "navbar.printThisPage": {
+    "message": "Drucke diese Seite",
+    "description": "Hover text over print button"
   }
 }

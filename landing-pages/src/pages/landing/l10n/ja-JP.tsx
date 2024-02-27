@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Jasper (2024.02) の新機能',
+      docId: 'whatsnewjasperjaJP',
+    },
+    {
       label: 'Innsbruck (2023.10) の新機能',
       docId: 'whatsnewjaJPinnsbruck',
     },
@@ -31,6 +35,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/202302garmischwhatsnew',
     },
     {
+      label: 'Advanced Product Designer',
+      pagePath: 'l10n/ja-JP/apd',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/ja-JP/bc',
     },
@@ -41,6 +49,11 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'Cloud Platform',
       pagePath: 'l10n/ja-JP/cp',
+    },
+    {
+      label: 'コミュニティケースのテンプレート',
+      docId: 'cloudtickettemplates',
+      pathInDoc: 'ja',
     },
     {
       label: 'CustomerEngage Account Management',
@@ -99,7 +112,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/ve',
     },
   ],
-  sidebar: implementationResourcesSidebar,
 };
 
 export default function JaJP() {

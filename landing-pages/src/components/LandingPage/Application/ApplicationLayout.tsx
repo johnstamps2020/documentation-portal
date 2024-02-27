@@ -18,6 +18,7 @@ import { useLayoutContext } from 'LayoutContext';
 
 export type ApplicationLayoutProps = ApplicationHeroProps & {
   tabs?: ApplicationTabItemProps[];
+  introFeatureSectionProps?: ApplicationFeatureSectionProps;
   videoSectionProps?: ApplicationVideoSectionProps;
   cards?: ApplicationCardProps[];
   featureSections?: ApplicationFeatureSectionProps[];
@@ -31,6 +32,7 @@ export default function ApplicationLayout({
   buttonProps,
   heroDescription,
   title,
+  introFeatureSectionProps,
   videoSectionProps,
   featureSections,
   resources,
@@ -55,6 +57,9 @@ export default function ApplicationLayout({
         title={title}
         heroDescription={heroDescription}
       />
+      {introFeatureSectionProps && (
+        <ApplicationFeatureSection {...introFeatureSectionProps} />
+      )}
       {videoSectionProps && <ApplicationVideoSection {...videoSectionProps} />}
       {tabs && <ApplicationTabs tabs={tabs} />}
       {cards && <ApplicationCardSection items={cards} />}

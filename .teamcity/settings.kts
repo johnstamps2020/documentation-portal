@@ -976,7 +976,7 @@ object GwBuildSteps {
             Pair("-i", "${workingDir}/${rootMap}"),
             Pair("-o", "${workingDir}/${fullOutputPath}"),
             Pair("-l", "${workingDir}/${logFile}"),
-            Pair("--args.draft", "yes"),
+            Pair("--args.draft", "yes")
         )
 
         if (buildFilter != null) {

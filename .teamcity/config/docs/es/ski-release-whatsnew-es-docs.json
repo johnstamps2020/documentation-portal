@@ -4,10 +4,12 @@
     {
       "id": "whatsnewes419innsbruck",
       "url": "es/cloud/innsbruck/whatsnew",
-      "title": "What's new in Innsbruck es",
+      "title": "What's new in Jasper es",
       "displayTitle": "Novedades en Innsbruck",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": [
+          "Cloud"
+        ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -16,12 +18,22 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": ["2023.06", "2023.2"],
-        "release": ["Hakuba"],
-        "subject": ["Release notes"],
+        "version": [
+          "2023.10",
+          "2023.3"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "es"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -34,7 +46,9 @@
       "title": "What's new in Hakuba es",
       "displayTitle": "Novedades de Hakuba",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": [
+          "Cloud"
+        ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -43,12 +57,59 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": ["2023.06", "2023.2"],
-        "release": ["Hakuba"],
-        "subject": ["Release notes"],
+        "version": [
+          "2023.06",
+          "2023.2"
+        ],
+        "release": [
+          "Hakuba"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "es"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "whatsnewjasperes419",
+      "url": "es/cloud/jasper/whatsnew",
+      "title": "What's new in Jasper es",
+      "displayTitle": "Novedades en Jasper",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "es"
+      },
+      "environments": [
+        "staging"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,

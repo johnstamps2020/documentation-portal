@@ -34,6 +34,10 @@ const pageConfig: SectionLayoutProps = {
           label: 'AppReader Release Notes',
           docId: 'appreaderrn400',
         },
+        {
+          label: 'Data Service Release Notes',
+          docId: 'indataservicereleasenotes',
+        },
       ],
     },
     {

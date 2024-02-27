@@ -8,15 +8,6 @@ import clsx from 'clsx';
 import React from 'react';
 import styles from './RightWrong.module.css';
 
-const defaultPositiveTitle = translate({
-  id: 'rightWrong.positiveTitle',
-  message: 'Do',
-});
-const defaultNegativeTitle = translate({
-  id: 'theme.rightWrong.negativeTitle',
-  message: "Don't",
-});
-
 function RightWrongTitle({ children }: { children: React.ReactNode }) {
   return <div>{children}</div>;
 }
@@ -43,7 +34,15 @@ type SectionProps = RightWrongCardProps & {
 };
 
 export function Section({ title, children, right }: SectionProps) {
-  const defaultTitle = right ? defaultPositiveTitle : defaultNegativeTitle;
+  const defaultTitle = right
+    ? translate({
+        id: 'rightWrong.positiveTitle',
+        message: 'Do',
+      })
+    : translate({
+        id: 'theme.rightWrong.negativeTitle',
+        message: "Don't",
+      });
   return (
     <div className={clsx(right ? styles.right : styles.wrong, styles.card)}>
       <div className={styles.cardTitle}>

@@ -14,7 +14,7 @@
         "release": ["Innsbruck"],
         "language": "fr"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
