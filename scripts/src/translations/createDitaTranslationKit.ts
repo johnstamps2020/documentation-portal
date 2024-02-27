@@ -17,6 +17,22 @@ async function createDitaBuildInfo(config: any, docId: string) {
   console.log(`Build file saved to ${outputFilePath}`);
 }
 
+async function getBuildData(docUrl: DocInfo) {
+  const buildDataUrl = `https://docportal-content.staging.ccs.guidewire.net/${docUrl}/build-data.json`;
+  console.log(`Getting build info from ${buildDataUrl}`);
+  const response = await fetch(buildDataUrl);
+
+  if (!response.ok) {
+    console.error(
+      `Failed to get build info from ${buildDataUrl}, status code: ${response.status}`
+    );
+    process.exit(1);
+  }
+
+  const buildData = await response.json();
+  return buildData;
+}
+
 async function createDitaTranslationKit() {
   const docId = process.argv[2];
   if (!docId) {
@@ -33,22 +49,6 @@ async function createDitaTranslationKit() {
 }
 
 createDitaTranslationKit();
-
-async function getBuildData(docUrl: DocInfo) {
-  const buildDataUrl = `https://docportal-content.staging.ccs.guidewire.net/${docUrl}/build-data.json`;
-  console.log(`Getting build info from ${buildDataUrl}`);
-  const response = await fetch(buildDataUrl);
-
-  if (!response.ok) {
-    console.error(
-      `Failed to get build info from ${buildDataUrl}, status code: ${response.status}`
-    );
-    process.exit(1);
-  }
-
-  const buildData = await response.json();
-  return buildData;
-}
 
 // Example command:
 // yarn scripts:create-dita-translation-kit dhrn202310 ~/git-repos/documentation-portal/out
