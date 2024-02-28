@@ -37,14 +37,17 @@ export default function DeltaDocUpperPanel() {
     const version = releaseDates.find((object) => {
       return object.release === temporaryReleaseA;
     });
-    setTemporaryUrl(`/${leftUrl}/${version?.date}/${rightUrl}/`);
+    if (version && leftUrl && rightUrl) {
+      setTemporaryUrl(`/${leftUrl}/${version.date}/${rightUrl}/`);
+    }
   }, [leftUrl, rightUrl, setTemporaryUrl, temporaryUrl, temporaryReleaseA]);
 
   const canSubmit =
     (temporaryReleaseA !== releaseA ||
       temporaryReleaseB !== releaseB ||
       temporaryUrl !== url) &&
-    temporaryUrl.length > 0 &&
+    rightUrl.length > 0 &&
+    leftUrl.length > 0 &&
     temporaryReleaseA.length > 0 &&
     temporaryReleaseB.length > 0;
 
