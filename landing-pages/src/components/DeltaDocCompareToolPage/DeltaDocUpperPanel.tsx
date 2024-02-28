@@ -48,6 +48,7 @@ export default function DeltaDocUpperPanel() {
       temporaryUrl !== url) &&
     rightUrl.length > 0 &&
     leftUrl.length > 0 &&
+    temporaryUrl.length > 0 && 
     temporaryReleaseA.length > 0 &&
     temporaryReleaseB.length > 0;
 
