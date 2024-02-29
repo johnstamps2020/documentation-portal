@@ -1,7 +1,7 @@
 import { writeFileSync } from 'fs';
-import { DocInfo, getDocInfoByDocId } from '../modules/databaseOperations';
-import { prepareBuildAndCloneDirectories } from '../modules/fileOperations';
-import { cloneRepositoryForDoc } from '../modules/gitOperations';
+import { DocInfo, getDocInfoByDocId } from '../modules/database';
+import { prepareBuildAndCloneDirectories } from '../modules/file';
+import { cloneRepositoryForDoc } from '../modules/git';
 
 const { buildDir, cloneDir } = prepareBuildAndCloneDirectories();
 

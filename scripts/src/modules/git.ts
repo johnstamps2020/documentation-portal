@@ -1,5 +1,5 @@
-import { DocInfo } from './databaseOperations';
-import { runInOs } from './osOperations';
+import { DocInfo } from './database';
+import { runInOs } from './os';
 
 export async function cloneRepositoryForDoc(
   docInfo: DocInfo,
