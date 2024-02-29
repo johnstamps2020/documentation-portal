@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "whatsnewjaspersrc",
+      "title": "Ski Release What's New - Jasper",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
+      "branch": "release/jasper"
+    },
+    {
       "id": "whatsnewinnsbrucksrc",
       "title": "Ski Release What's New - Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
