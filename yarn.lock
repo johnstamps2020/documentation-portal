@@ -3091,6 +3091,7 @@ __metadata:
   dependencies:
     "@aws-sdk/client-secrets-manager": "npm:^3.515.0"
     "@doctools/landing-pages": "workspace:*"
+    "@doctools/server": "workspace:*"
     "@types/node": "npm:^18.14.6"
     dotenv: "npm:^16.4.5"
     ts-node: "npm:^10.9.1"

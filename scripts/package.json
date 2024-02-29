@@ -6,14 +6,14 @@
   "scripts": {
     "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts",
     "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts",
-    "create-docusaurus-translation-kit": "ts-node src/translations/createDocusaurusTranslationKit.ts",
-    "create-dita-translation-kit": "ts-node src/translations/createDitaTranslationKit.ts"
+    "create-translation-kit": "ts-node src/translations/createTranslationKit.ts"
   },
   "bin": {
     "copy-non-tx-files": "src/filesystem/copyNonTxFiles.mjs"
   },
   "devDependencies": {
     "@doctools/landing-pages": "workspace:*",
+    "@doctools/server": "workspace:*",
     "@types/node": "^18.14.6",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"

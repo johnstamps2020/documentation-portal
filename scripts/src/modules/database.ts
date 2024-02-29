@@ -1,3 +1,4 @@
+import { DitaBuild, Doc, Source, YarnBuild } from '@doctools/server';
 import { getAccessToken } from './auth';
 
 async function getEntityByAttribute(
@@ -35,16 +36,22 @@ async function getEntityByAttribute(
 }
 
 export type DocInfo = {
-  doc: any;
-  build: any;
-  source: any;
+  doc: Doc;
+  build: DitaBuild & YarnBuild;
+  source: Source;
+  isDita: boolean;
 };
 
 export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
   const accessToken = await getAccessToken();
 
-  const doc = await getEntityByAttribute('Doc', 'id', docId, accessToken);
-  const build = await getEntityByAttribute(
+  const doc: DocInfo['doc'] = await getEntityByAttribute(
+    'Doc',
+    'id',
+    docId,
+    accessToken
+  );
+  const build: DocInfo['build'] = await getEntityByAttribute(
     'DitaBuild',
     'doc.uuid',
     doc.uuid,
@@ -56,5 +63,6 @@ export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
     doc,
     build,
     source: build.source,
+    isDita: build.root !== undefined,
   };
 }

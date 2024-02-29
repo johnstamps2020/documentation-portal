@@ -2387,13 +2387,13 @@ object User {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 buildType(BuildCustomDitaOutputBuildType)
-                buildType(DitaTranslationKitBuildType)
-                buildType(DocusaurusTranslatonKitBuildType)
+                buildType(TranslationKitBuildType)
             }
         }
 
-        object DocusaurusTranslatonKitBuildType : BuildType({
-            name = "Create translation kit (Docusaurus)"
+
+        object TranslationKitBuildType : BuildType({
+            name = "Create translation kit"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             params {
@@ -2410,59 +2410,17 @@ object User {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             }
 
-            artifactRules = "./out/* => translation-kit"
+            artifactRules = "./out/_kit* => translation-kit"
 
             steps {
                 nodeJS {
-                    name = "Run the translation kit script for Docusaurus"
+                    name = "Run the translation kit script"
                     id = Helpers.createIdStringFromName(this.name)
 
                     shellScript = """
                             #!/bin/sh
                             set -e
-                            yarn && yarn scripts:create-docusaurus-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
-                        """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.GwSshAgentBuildFeature)
-            }
-
-        })
-
-
-        object DitaTranslationKitBuildType : BuildType({
-            name = "Create translation kit (DITA)"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            params {
-                text(
-                    "env.DOC_ID",
-                    "",
-                    label = "Document id",
-                    description = "The docId from the doc config",
-                    display = ParameterDisplay.PROMPT
-                )
-            }
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            }
-
-            artifactRules = "./out/* => translation-kit"
-
-            steps {
-                nodeJS {
-                    name = "Run the translation kit script for DITA"
-                    id = Helpers.createIdStringFromName(this.name)
-
-                    shellScript = """
-                            #!/bin/sh
-                            set -e
-                            yarn && yarn scripts:create-dita-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
+                            yarn && yarn scripts:create-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
                 }
