@@ -2397,7 +2397,9 @@ object User {
 
             artifactRules = "./out/_kit* => translation-kit"
 
-            val serverDeployEnvVars = Helpers.setServerDeployEnvVars(GwDeployEnvs.STAGING.envName, GwDockerImageTags.DOC_PORTAL.tagValue)
+            val deployEnv = GwDeployEnvs.STAGING.envName
+            val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
+            val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
 
             steps {
                 nodeJS {
@@ -2409,6 +2411,7 @@ object User {
                             set -e
                             
                             $serverDeployEnvVars
+                            $awsEnvVars
                             
                             yarn && yarn scripts:create-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
                         """.trimIndent()
