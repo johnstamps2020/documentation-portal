@@ -5,9 +5,6 @@ export async function cloneRepositoryForDoc(
   docInfo: DocInfo,
   cloneDir: string
 ) {
-  // verify SHH key
-  await runInOs('ssh', ['-v', 'git@stash.guidewire.com'], 'SSH Key');
-
   const { gitUrl, gitBranch } = docInfo.source;
 
   const gitCommand = `git`;
