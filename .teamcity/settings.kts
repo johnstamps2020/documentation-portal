@@ -2410,8 +2410,6 @@ object User {
                             #!/bin/bash
                             set -xe
                             
-                            ssh -o 'PasswordAuthentication no'
-                            
                             $serverDeployEnvVars
                             $awsEnvVars
                             
