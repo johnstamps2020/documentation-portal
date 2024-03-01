@@ -943,19 +943,6 @@ object GwBuildSteps {
         }
     }
 
-    fun createGitCloneRepoStep(targetDir: String): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Clone git repo and branch"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% $targetDir --recurse-submodules
-            """.trimIndent()
-        }
-    }
-
     fun createBuildDitaProjectForValidationsStep(
         outputFormat: String,
         rootMap: String,
