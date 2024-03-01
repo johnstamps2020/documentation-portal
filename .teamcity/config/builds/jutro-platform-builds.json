@@ -5,7 +5,7 @@
       "buildType": "yarn",
       "docId": "jutroplatformflaine",
       "srcId": "srcjutroplatformflaine",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
