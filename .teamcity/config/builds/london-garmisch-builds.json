@@ -8,7 +8,7 @@
       "srcId": "lmgarmischsrc",
       "docId": "londonccappgarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "lmgarmischsrc",
       "docId": "londonpcappgarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "lmgarmischsrc",
       "docId": "londonconfiggarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "lmgarmischsrc",
       "docId": "londonrngarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }

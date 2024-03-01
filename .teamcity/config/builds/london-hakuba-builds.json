@@ -8,7 +8,7 @@
       "srcId": "lmhakubasrc",
       "docId": "londonccapphakuba",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "lmhakubasrc",
       "docId": "londonpcapphakuba",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "lmhakubasrc",
       "docId": "londonconfighakuba",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "lmhakubasrc",
       "docId": "londonrnhakuba",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }
