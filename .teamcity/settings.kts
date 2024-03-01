@@ -2407,7 +2407,7 @@ object User {
                     id = Helpers.createIdStringFromName(this.name)
 
                     shellScript = """
-                            #!/bin/sh
+                            #!/bin/bash
                             set -e
                             
                             $serverDeployEnvVars
