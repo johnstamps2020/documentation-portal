@@ -2397,6 +2397,8 @@ object User {
 
             artifactRules = "./out/_kit* => translation-kit"
 
+            val serverDeployEnvVars = Helpers.setServerDeployEnvVars(GwDeployEnvs.STAGING.envName, GwDockerImageTags.DOC_PORTAL.tagValue)
+
             steps {
                 nodeJS {
                     name = "Run the translation kit script"
@@ -2405,6 +2407,9 @@ object User {
                     shellScript = """
                             #!/bin/sh
                             set -e
+                            
+                            $serverDeployEnvVars
+                            
                             yarn && yarn scripts:create-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
