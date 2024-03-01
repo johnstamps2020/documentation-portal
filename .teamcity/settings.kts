@@ -2410,7 +2410,7 @@ object User {
                             #!/bin/bash
                             set -xe
                             
-                            ssh -o 'PasswordAuthentication no'
+                            export GIT_TRACE=1
                             
                             $serverDeployEnvVars
                             $awsEnvVars
