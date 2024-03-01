@@ -3,7 +3,7 @@ import {
   existsSync,
   lstatSync,
   mkdirSync,
-  readdirSync,
+  readdirSync
 } from 'fs';
 import { join } from 'path';
 

@@ -1,9 +1,11 @@
 import { existsSync, mkdirSync, rmSync } from 'fs';
+import { join } from 'path';
 import { getDocInfoByDocId } from '../modules/database';
 import {
-  createDitaBuildInfo,
   copyFilesBasedOnBuildData,
+  createDitaBuildInfo,
 } from '../modules/dita';
+import { copyDocusaurusTranslationFiles } from '../modules/docusaurus';
 import { cloneRepositoryForDoc } from '../modules/git';
 
 type TranslationKitOutputDirectoryConfig = {
@@ -29,11 +31,6 @@ function prepareTranslationKitOutputDirectories(): TranslationKitOutputDirectory
   const cloneDir = `${outputRoot}/_clone`;
 
   [buildDir, cloneDir].forEach((directory) => {
-    if (existsSync(directory)) {
-      console.log(`Removing ${directory}`);
-      rmSync(directory, { recursive: true });
-    }
-
     if (!existsSync(directory)) {
       mkdirSync(directory, { recursive: true });
     }
@@ -43,14 +40,14 @@ function prepareTranslationKitOutputDirectories(): TranslationKitOutputDirectory
 }
 
 async function createTranslationKit() {
-  const { cloneDir, kitDir, buildDir } =
-    prepareTranslationKitOutputDirectories();
-
   const docId = process.argv[2];
   if (!docId) {
     console.error('Please provide a document id as the first argument');
     process.exit(1);
   }
+
+  const { cloneDir, kitDir, buildDir } =
+    prepareTranslationKitOutputDirectories();
 
   const docInfo = await getDocInfoByDocId(docId);
 
@@ -66,7 +63,11 @@ async function createTranslationKit() {
   }
 
   if (translationKitType === 'docusaurus') {
-    console.log('Docusaurus translation kit creation is not yet implemented');
+    const workingDir = docInfo.build.workingDir
+      ? join(cloneDir, docInfo.build.workingDir)
+      : cloneDir;
+    copyDocusaurusTranslationFiles(workingDir, kitDir);
+    rmSync(buildDir, { recursive: true, force: true });
   }
 }
 

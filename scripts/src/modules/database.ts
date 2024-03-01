@@ -24,9 +24,13 @@ async function getEntityByAttribute(
   );
 
   if (!configResponse.ok) {
-    console.error('Failed to fetch item from database!');
-    console.error(configResponse);
-    process.exit(1);
+    throw new Error(
+      `Failed to fetch item from database!\n\n${JSON.stringify(
+        configResponse,
+        null,
+        2
+      )}`
+    );
   }
 
   const responseJson = await configResponse.json();
@@ -51,13 +55,33 @@ export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
     docId,
     accessToken
   );
-  const build: DocInfo['build'] = await getEntityByAttribute(
-    'DitaBuild',
-    'doc.uuid',
-    doc.uuid,
-    accessToken,
-    true
-  );
+
+  let build: DocInfo['build'];
+  try {
+    build = await getEntityByAttribute(
+      'DitaBuild',
+      'doc.uuid',
+      doc.uuid,
+      accessToken,
+      true
+    );
+  } catch (err) {
+    console.log(
+      'Could not fetch DITA build configuration from the database. Trying to fetch a yarn build instead of a dita build'
+    );
+    build = await getEntityByAttribute(
+      'YarnBuild',
+      'doc.uuid',
+      doc.uuid,
+      accessToken,
+      true
+    );
+  }
+
+  if (!build) {
+    console.error('UNEXPECTED ERROR: The build is somehow not available!');
+    process.exit(1);
+  }
 
   return {
     doc,
