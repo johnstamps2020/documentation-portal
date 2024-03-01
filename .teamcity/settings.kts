@@ -2410,10 +2410,10 @@ object User {
                             #!/bin/bash
                             set -xe
                             
+                            ssh -o 'PasswordAuthentication no'
+                            
                             $serverDeployEnvVars
                             $awsEnvVars
-                            
-                            ssh -v git@stash.guidewire.com
                             
                             yarn && yarn scripts:create-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
                         """.trimIndent()
