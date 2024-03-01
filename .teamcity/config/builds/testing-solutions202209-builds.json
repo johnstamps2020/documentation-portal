@@ -8,7 +8,7 @@
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksapiflaine",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksuiflaine",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksloadflaine",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksmgmtflaine",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -44,7 +44,7 @@
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksmatrixflaine",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -53,7 +53,7 @@
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksrnflaine",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -62,7 +62,7 @@
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksinstallflaine",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -71,7 +71,7 @@
       "srcId": "testingframeworks202209src",
       "docId": "is202209testing",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -80,7 +80,7 @@
       "srcId": "testingframeworks202209src",
       "docId": "is202209access",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }

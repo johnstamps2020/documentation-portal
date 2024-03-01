@@ -8,7 +8,7 @@
       "srcId": "midipg37src",
       "docId": "midipgimpl37",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "midipg37src",
       "docId": "midipgapp37",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "midipg37src",
       "docId": "midipginstall37",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "midipg37src",
       "docId": "midipgglossary37",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -44,7 +44,7 @@
       "srcId": "midipg37src",
       "docId": "midipgrnen37",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -53,7 +53,7 @@
       "srcId": "midipg37src",
       "docId": "midipgrnde37",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -62,7 +62,7 @@
       "srcId": "midipg37src",
       "docId": "midipgappde37",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }

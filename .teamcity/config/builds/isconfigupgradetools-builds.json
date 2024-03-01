@@ -35,7 +35,7 @@
       "indexRedirect": true,
       "srcId": "isconfigupgradetools470src",
       "docId": "isconfigupgradetools470",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -44,7 +44,7 @@
       "indexRedirect": true,
       "srcId": "isconfigupgradetools460src",
       "docId": "isconfigupgradetools460",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -53,7 +53,7 @@
       "indexRedirect": true,
       "srcId": "isconfigupgradetools450src",
       "docId": "isconfigupgradetools450",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -62,7 +62,7 @@
       "indexRedirect": true,
       "srcId": "isconfigupgradetools440src",
       "docId": "isconfigupgradetools440",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -71,7 +71,7 @@
       "indexRedirect": true,
       "srcId": "isconfigupgradetools430src",
       "docId": "isconfigupgradetools430",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -80,7 +80,7 @@
       "indexRedirect": true,
       "srcId": "isconfigupgradetools1450src",
       "docId": "selfmanagedbcupgradetools1450",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -89,7 +89,7 @@
       "indexRedirect": true,
       "srcId": "isconfigupgradetools1450src",
       "docId": "selfmanagedccupgradetools1450",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -98,7 +98,7 @@
       "indexRedirect": true,
       "srcId": "isconfigupgradetools1450src",
       "docId": "selfmanagedpcupgradetools1450",
-      "disabled": false
+      "disabled": true
     }
   ]
 }

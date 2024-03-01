@@ -8,7 +8,7 @@
       "srcId": "ipagarmischsrc",
       "docId": "ipagarmischrn",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "ipagarmischsrc",
       "docId": "ipagarmischconfig",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "ipagarmischsrc",
       "docId": "ipagarmischapp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "ipagarmischsrc",
       "docId": "ipagarmischupgrade",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -44,7 +44,7 @@
       "srcId": "ipagarmischsrc",
       "docId": "ipagarmischinstall",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }
