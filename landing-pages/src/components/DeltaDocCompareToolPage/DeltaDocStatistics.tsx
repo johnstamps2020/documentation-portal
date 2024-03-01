@@ -30,24 +30,29 @@ export default function DeltaDocStatistics() {
 
   return (
     <Stack direction="column" sx={{ marginTop: '30px' }}>
-      {statistics.map((stat, index, key) => {
-        if (statValues[index] !== undefined) {
-          stat.value = statValues[index]!;
-          return (
-            <Typography key={`${stat.value}_${stat.text}_${key}`} variant="h3">
-              {stat.text.includes('ReleaseA') || stat.text.includes('ReleaseB')
-                ? stat.text
-                    .replace('ReleaseA', releaseA)
-                    .replace('ReleaseB', releaseB)
-                : stat.text}
-              {stat.value}
-              {typeof stat.value == 'string' ? '%' : ''}
-            </Typography>
-          );
-        }
-
-        return <></>;
-      })}
+      {releaseALength !== 0 &&
+        releaseBLength !== 0 &&
+        statistics.map((stat, index, key) => {
+          if (statValues[index] !== undefined) {
+            stat.value = statValues[index]!;
+            return (
+              <Typography
+                key={`${stat.value}_${stat.text}_${key}`}
+                variant="h3"
+              >
+                {stat.text.includes('ReleaseA') ||
+                stat.text.includes('ReleaseB')
+                  ? stat.text
+                      .replace('ReleaseA', releaseA)
+                      .replace('ReleaseB', releaseB)
+                  : stat.text}
+                {stat.value}
+                {typeof stat.value == 'string' ? '%' : ''}
+              </Typography>
+            );
+          }
+          return <></>;
+        })}
     </Stack>
   );
 }

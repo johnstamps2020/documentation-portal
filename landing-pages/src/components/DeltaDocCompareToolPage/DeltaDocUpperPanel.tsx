@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
@@ -8,21 +9,46 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { useReleasesNoRevalidation } from 'hooks/useApi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 
+const releaseDates = [
+  { release: 'Kufri', date: '202406' },
+  { release: 'Jasper', date: '202402' },
+  { release: 'Innsbruck', date: '202310' },
+  { release: 'Hakuba', date: '202306' },
+  { release: 'Garmisch', date: '202302' },
+  { release: 'Flaine', date: '202209' },
+  { release: 'Elysian', date: '202205' },
+  { release: 'Dobson', date: '202111' },
+  { release: 'Cortina', date: '202104' },
+];
+
 export default function DeltaDocUpperPanel() {
+  const [leftUrl, setLeftUrl] = useState('');
+  const [rightUrl, setRightUrl] = useState('');
   const [temporaryUrl, setTemporaryUrl] = useState('');
   const [temporaryReleaseA, setTemporaryReleaseA] = useState('');
   const [temporaryReleaseB, setTemporaryReleaseB] = useState('');
   const { releaseA, releaseB, url, setFormState } = useDeltaDocContext();
   const { releases, isLoading, isError } = useReleasesNoRevalidation();
 
+  useEffect(() => {
+    const version = releaseDates.find((object) => {
+      return object.release === temporaryReleaseA;
+    });
+    if (version && leftUrl && rightUrl) {
+      setTemporaryUrl(`/${leftUrl}/${version.date}/${rightUrl}/`);
+    }
+  }, [leftUrl, rightUrl, setTemporaryUrl, temporaryUrl, temporaryReleaseA]);
+
   const canSubmit =
     (temporaryReleaseA !== releaseA ||
       temporaryReleaseB !== releaseB ||
       temporaryUrl !== url) &&
-    temporaryUrl.length > 0 &&
+    rightUrl.length > 0 &&
+    leftUrl.length > 0 &&
+    temporaryUrl.length > 0 && 
     temporaryReleaseA.length > 0 &&
     temporaryReleaseB.length > 0;
 
@@ -82,17 +108,29 @@ export default function DeltaDocUpperPanel() {
           </Select>
         </FormControl>
         <FormControl sx={{ width: '450px', alignItems: 'center' }}>
-          <TextField
-            label="Doc URL to compare within releases"
-            value={temporaryUrl}
-            fullWidth
-            onChange={(event) => setTemporaryUrl(event.target.value as string)}
-          />
+          <Stack direction="row" spacing={3} alignItems="center">
+            <Typography>/</Typography>
+            <TextField
+              label="Left URL"
+              value={leftUrl}
+              fullWidth
+              onChange={(event) => setLeftUrl(event.target.value as string)}
+            />
+            <Typography>/</Typography>
+            <Typography>version</Typography>
+            <Typography>/</Typography>
+            <TextField
+              label="Right URL"
+              value={rightUrl}
+              fullWidth
+              onChange={(event) => setRightUrl(event.target.value as string)}
+            />
+            <Typography>/</Typography>
+          </Stack>
           <FormHelperText sx={{ fontSize: '14px' }}>
-            Provide a URL that fits following pattern:{' '}
-            <b>/cloud/xx/000000/xxxx/</b> <br /> (eq.{' '}
-            <b>/cloud/pc/202302/devsetup/</b> or{' '}
-            <b>/cloud/is/202306/contact/</b>)
+            Example for url <b>/cloud/pc/202302/devsetup/</b>: <br />
+            left URL would be <b>cloud/pc</b> <br />
+            right URL would be <b>devsetup</b>
           </FormHelperText>
           <Button
             variant="contained"

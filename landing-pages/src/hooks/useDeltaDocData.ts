@@ -3,6 +3,7 @@ import {
   DeltaDocResultType,
   DeltaLevenshteinReturnType,
 } from '@doctools/server';
+import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import useSWR, { Fetcher } from 'swr';
 import { Error } from './useEntitiesData';
 const difference = require('js-levenshtein');
@@ -97,7 +98,7 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
       );
       const emptyReleaseObject: DeltaDocResultType = {
         id: '',
-        title: 'N/A - file does not exist',
+        title: `${fileDoesNotExistText}`,
         body: ' ',
       };
       if (releaseAFind) {
