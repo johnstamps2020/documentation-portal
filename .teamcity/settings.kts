@@ -2413,6 +2413,8 @@ object User {
                             $serverDeployEnvVars
                             $awsEnvVars
                             
+                            ssh -v git@stash.guidewire.com
+                            
                             yarn && yarn scripts:create-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
