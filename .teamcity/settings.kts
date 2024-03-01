@@ -2410,6 +2410,8 @@ object User {
                             #!/bin/bash
                             set -xe
                             
+                            export GIT_TRACE=1
+                            
                             $serverDeployEnvVars
                             $awsEnvVars
                             
