@@ -127,8 +127,8 @@ enum class GwDockerImages(val imageUrl: String) {
     BUILD_MANAGER_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/build-manager:latest"
     ),
-    RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"), LION_PKG_BUILDER_LATEST(
-        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/lion-pkg-builder:latest"
+    RECOMMENDATION_ENGINE_LATEST(
+        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"
     ),
     SITEMAP_GENERATOR_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/sitemap-generator:latest"
@@ -410,7 +410,7 @@ object Helpers {
         val appBaseUrl = getTargetUrl(deployEnv)
         val docS3Url = getS3BucketUrl(deployEnv)
         val portal2S3Url = getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)
-        val mlTransformerUrl = Helpers.getMlTransformerUrl(deployEnv)
+        val mlTransformerUrl = getMlTransformerUrl(deployEnv)
         val commonEnvVars = """
             export APP_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
@@ -633,7 +633,7 @@ object GwBuildSteps {
         }
     }
 
-    fun createPublishNpmPackageStep(packageHandle: String, packagePath: String): ScriptBuildStep {
+    fun createPublishNpmPackageStep(packageHandle: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "NPM publish $packageHandle"
             id = Helpers.createIdStringFromName(this.name)
@@ -683,33 +683,6 @@ object GwBuildSteps {
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-        }
-    }
-
-    fun createRunLionPkgBuilderStep(
-        workingDir: String,
-        outputDir: String,
-        tcBuildTypeId: String,
-    ): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Run the lion pkg builder"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
-                export TEAMCITY_API_AUTH_TOKEN="%env.TEAMCITY_API_ACCESS_TOKEN%"
-                export TEAMCITY_RESOURCES_ARTIFACT_PATH="${GwConfigParams.BUILD_DATA_DIR.paramValue}/${GwConfigParams.BUILD_DATA_FILE.paramValue}"
-                export ZIP_SRC_DIR="zip"
-                export OUTPUT_PATH="$outputDir"
-                export WORKING_DIR="$workingDir"
-                export TC_BUILD_TYPE_ID="$tcBuildTypeId"
-                
-                lion_pkg_builder
-            """.trimIndent()
-            dockerImage = GwDockerImages.LION_PKG_BUILDER_LATEST.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
 
@@ -1019,7 +992,7 @@ object GwBuildSteps {
                 ditaCommandParams.add(Pair("--temp", "${workingDir}/${tempDir}"))
                 ditaCommandParams.add(Pair("--clean.temp", "no"))
                 ditaCommandParams.add(Pair("--schematron.validate", "yes"))
-                ditaCommandParams.add(Pair("--gw-doc-id", "${docId}"))
+                ditaCommandParams.add(Pair("--gw-doc-id", "$docId"))
                 ditaCommandParams.add(Pair("%env.ENABLE_DEBUG_MODE%", ""))
                 if (indexRedirect) {
                     ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
@@ -1723,17 +1696,6 @@ object GwVcsRoots {
     }
 }
 
-object GwVcsSettings {
-    fun createBranchFilter(gitBranches: List<String>, addDefaultBranch: Boolean = true): String {
-        val gitBranchesEntries = mutableListOf<String>()
-        if (addDefaultBranch) gitBranchesEntries.add("+:<default>")
-        gitBranches.forEach {
-            gitBranchesEntries.add("+:${Helpers.createFullGitBranchName(it)}")
-        }
-        return gitBranchesEntries.joinToString("\n")
-    }
-}
-
 object GwTemplates {
     object BuildListenerTemplate : Template({
         name = "Build listener"
@@ -2176,51 +2138,6 @@ object User {
             }
             ditaBuildTypes.add(downloadableOutputBuildType)
 
-
-            if (envNames.contains(GwDeployEnvs.STAGING.envName)) {
-                val stagingBuildTypeIdString =
-                    Helpers.resolveRelativeIdFromIdString(Helpers.md5("Publish to ${GwDeployEnvs.STAGING.envName}${docId}"))
-                        .toString()
-                val localizationPackageBuildType = BuildType {
-                    name = "Build localization package"
-                    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${docId}"))
-
-                    artifactRules = """
-                    ${workingDir}/${outputDir} => /
-                """.trimIndent()
-
-                    vcs {
-                        root(teamcityGitRepoId)
-                        branchFilter = GwVcsSettings.createBranchFilter(listOf(gitBranch))
-                        cleanCheckout = true
-                    }
-
-                    steps {
-                        step(
-                            GwBuildSteps.createRunLionPkgBuilderStep(
-                                workingDir, outputDir, stagingBuildTypeIdString
-                            )
-                        )
-                        script {
-                            name = "Add build data"
-                            scriptContent = """
-                            #!/bin/bash
-                            set -xe
-
-                            mkdir _builds
-                            jq -n '{"root": "$rootMap", "filter": "$buildFilter"}' > _builds/$docId.json
-                            zip -ur $workingDir/$outputDir/l10n_package.zip _builds 
-                        """.trimIndent()
-                            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                        }
-                    }
-
-                    features {
-                        feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                    }
-                }
-                ditaBuildTypes.add(localizationPackageBuildType)
-            }
             return ditaBuildTypes
         }
 
@@ -2455,8 +2372,50 @@ object User {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 buildType(BuildCustomDitaOutputBuildType)
+                buildType(TranslationKitBuildType)
             }
         }
+
+
+        object TranslationKitBuildType : BuildType({
+            name = "Create translation kit"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            params {
+                text(
+                    "env.DOC_ID",
+                    "",
+                    label = "Document id",
+                    description = "The docId from the doc config",
+                    display = ParameterDisplay.PROMPT
+                )
+            }
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            }
+
+            artifactRules = "./out/_kit* => translation-kit"
+
+            steps {
+                nodeJS {
+                    name = "Run the translation kit script"
+                    id = Helpers.createIdStringFromName(this.name)
+
+                    shellScript = """
+                            #!/bin/sh
+                            set -e
+                            yarn && yarn scripts:create-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
+                        """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
+            }
+        })
 
         object BuildCustomDitaOutputBuildType : BuildType({
             name = "Build custom DITA output"
@@ -4854,7 +4813,7 @@ object Admin {
                 }
 
                 steps {
-                    step(GwBuildSteps.createPublishNpmPackageStep(packageHandle, packagePath))
+                    step(GwBuildSteps.createPublishNpmPackageStep(packageHandle))
                 }
 
                 // Supposedly, the build is triggered only on changes in package.json to publish a new package
