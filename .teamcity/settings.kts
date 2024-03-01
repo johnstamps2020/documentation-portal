@@ -2408,7 +2408,7 @@ object User {
 
                     shellScript = """
                             #!/bin/bash
-                            set -e
+                            set -xe
                             
                             $serverDeployEnvVars
                             $awsEnvVars
