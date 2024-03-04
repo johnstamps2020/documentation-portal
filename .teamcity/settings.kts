@@ -2395,7 +2395,7 @@ object User {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             }
 
-            artifactRules = "./out/_kit* => translation-kit"
+            artifactRules = "./out/_kit => translation-kit"
 
             val deployEnv = GwDeployEnvs.STAGING.envName
             val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
