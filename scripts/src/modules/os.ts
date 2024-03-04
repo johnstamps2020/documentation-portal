@@ -6,12 +6,7 @@ export async function runInOs(
   processLabel: string
 ): Promise<void> {
   return new Promise<void>((resolve, reject) => {
-    const cloneProcess = spawn(command, commandLineArgs, {
-      env: {
-        SSH_AUTH_SOCK: process.env.SSH_AUTH_SOCK,
-        SSH_AGENT_PID: process.env.SSH_AGENT_PID,
-      },
-    });
+    const cloneProcess = spawn(command, commandLineArgs);
 
     cloneProcess.stdout.on('data', (data) => {
       console.log(`${processLabel} LOG:`, data.toString());

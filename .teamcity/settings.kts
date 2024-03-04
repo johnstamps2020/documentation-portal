@@ -2413,6 +2413,8 @@ object User {
                             $serverDeployEnvVars
                             $awsEnvVars
                             
+                            mkdir -p /root/.ssh && touch /root/.ssh/known_hosts
+                            ssh-keyscan stash.guidewire.com >> /root/.ssh/known_hosts
                             yarn && yarn scripts:create-translation-kit "%env.DOC_ID%" "%teamcity.build.workingDir%/out"
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
