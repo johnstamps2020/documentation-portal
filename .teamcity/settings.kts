@@ -2402,11 +2402,11 @@ object User {
             val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
 
             steps {
-                nodeJS {
+                script {
                     name = "Run the translation kit script"
                     id = Helpers.createIdStringFromName(this.name)
 
-                    shellScript = """
+                    scriptContent = """
                             #!/bin/bash
                             set -xe
                             
