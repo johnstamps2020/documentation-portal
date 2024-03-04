@@ -5,6 +5,15 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "whatsnew.ditamap",
+      "srcId": "whatsnewjaspersrc",
+      "docId": "whatsnewjasper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "whatsnew.ditamap",
       "srcId": "whatsnewinnsbrucksrc",
       "docId": "whatsnewinnsbruck",
       "indexRedirect": true,
@@ -17,7 +26,7 @@
       "srcId": "whatsnewhakubasrc",
       "docId": "whatsnewhakuba",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +35,7 @@
       "srcId": "whatsnewgarmischsrc",
       "docId": "whatsnewgarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +44,7 @@
       "srcId": "whatsnewflainesrc",
       "docId": "whatsnewflaine",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }

@@ -26,7 +26,7 @@
       "srcId": "standards202312src",
       "docId": "standards202312",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "standards202311src",
       "docId": "standards202311",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -44,7 +44,7 @@
       "srcId": "standards202310src",
       "docId": "standards202310",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",

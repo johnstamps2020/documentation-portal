@@ -1,12 +1,10 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.css';
-import InstallationCodeBlock from '../InstallationCodeBlock';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Unstable_Grid2';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import React from 'react';
+import InstallationCodeBlock from '../InstallationCodeBlock';
+import Stack from '@mui/material/Stack';
 
 type FeatureItem = {
   title: string;
@@ -18,7 +16,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Theme',
-    CodeBlock: <InstallationCodeBlock />,
+    CodeBlock: <InstallationCodeBlock packageName="gw-theme-classic" />,
     description: (
       <>
         Ready for docs.guidewire.com! This is the official Guidewire theme for
@@ -30,7 +28,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Plugin',
-    CodeBlock: <InstallationCodeBlock forPlugin />,
+    CodeBlock: <InstallationCodeBlock packageName="gw-plugin-redoc" />,
     description: (
       <>
         This plugin allows you to generate static pages from your OpenAPI spec.
@@ -42,36 +40,41 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, CodeBlock, description, link }: FeatureItem) {
   return (
-    <Grid xs={12} sm={6}>
-      <div className={styles.feature}>
-        <Box>
-          <h2>{title}</h2>
-          <div className="text--center">{CodeBlock}</div>
-          <p>{description}</p>
-        </Box>
-        <Box>
-          <Button
-            className="button button--primary button--lg"
-            href={useBaseUrl(link)}
-            LinkComponent={Link}
-            variant="contained"
-          >
-            Details
-          </Button>
-        </Box>
-      </div>
-    </Grid>
+    <Stack sx={{ textAlign: 'center' }}>
+      <Box sx={{ flex: 1 }}>
+        <h2>{title}</h2>
+        <div className="text--center">{CodeBlock}</div>
+        <p>{description}</p>
+      </Box>
+      <Box>
+        <Button
+          className="button button--primary button--lg"
+          href={useBaseUrl(link)}
+          LinkComponent={Link}
+          variant="contained"
+        >
+          Details
+        </Button>
+      </Box>
+    </Stack>
   );
 }
 
 export default function HomepageFeatures(): JSX.Element {
   return (
     <div className="container">
-      <Grid container>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '1rem',
+          py: '2rem',
+        }}
+      >
         {FeatureList.map((props, idx) => (
           <Feature key={idx} {...props} />
         ))}
-      </Grid>
+      </Box>
     </div>
   );
 }

@@ -68,7 +68,7 @@ export default function Footer({ path }: FooterProps) {
       }}
     >
       <FooterText sx={{ display: 'contents' }}>
-        Copyright © 2023 Guidewire Software, Inc.
+        Copyright © 2024 Guidewire Software, Inc.
       </FooterText>
       <Link
         component={RouterLink}

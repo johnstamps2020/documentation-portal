@@ -5,7 +5,6 @@ import Skeleton from '@mui/material/Skeleton';
 import Tooltip from '@mui/material/Tooltip';
 import { useSearchData } from 'hooks/useApi';
 import { useEffect, useState } from 'react';
-import { HighlightButton } from '@doctools/components';
 
 export default function Highlighter() {
   const { searchData, isLoading, isError } = useSearchData();

@@ -2,11 +2,13 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "whatsnewinnsbruck",
-      "title": "What's new in Innsbruck",
-      "url": "cloud/innsbruck/whatsnew",
+      "id": "whatsnewjasper",
+      "title": "What's new in Jasper",
+      "url": "cloud/jasper/whatsnew",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": [
+          "Cloud"
+        ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -15,12 +17,59 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": ["2023.10", "2023.3"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "version": [
+          "2024.02",
+          "2024.1"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging"
+      ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "whatsnewinnsbruck",
+      "title": "What's new in Innsbruck",
+      "url": "cloud/innsbruck/whatsnew",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "DataHub",
+          "InfoCenter"
+        ],
+        "version": [
+          "2023.10",
+          "2023.3"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -32,7 +81,9 @@
       "title": "What's new in Hakuba",
       "url": "cloud/hakuba/whatsnew",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": [
+          "Cloud"
+        ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -41,12 +92,22 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": ["2023.06", "2023.2"],
-        "release": ["Hakuba"],
-        "subject": ["Release notes"],
+        "version": [
+          "2023.06",
+          "2023.2"
+        ],
+        "release": [
+          "Hakuba"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -58,7 +119,9 @@
       "title": "What's new in Garmisch",
       "url": "cloud/garmisch/whatsnew",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": [
+          "Cloud"
+        ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -67,12 +130,22 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": ["2023.02", "2023.1"],
-        "release": ["Garmisch"],
-        "subject": ["Release notes"],
+        "version": [
+          "2023.02",
+          "2023.1"
+        ],
+        "release": [
+          "Garmisch"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -84,7 +157,9 @@
       "title": "What's new in Flaine",
       "url": "cloud/flaine/whatsnew",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": [
+          "Cloud"
+        ],
         "product": [
           "BillingCenter",
           "ClaimCenter",
@@ -93,12 +168,22 @@
           "DataHub",
           "InfoCenter"
         ],
-        "version": ["2022.09", "2022.2"],
-        "release": ["Flaine"],
-        "subject": ["Release notes"],
+        "version": [
+          "2022.09",
+          "2022.2"
+        ],
+        "release": [
+          "Flaine"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": false,
       "public": false,
       "internal": false,

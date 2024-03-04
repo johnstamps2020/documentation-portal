@@ -8,7 +8,7 @@
       "srcId": "testingframeworks202205src",
       "docId": "testingframeworksapielysian",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "testingframeworks202205src",
       "docId": "testingframeworksuielysian",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "testingframeworks202205src",
       "docId": "testingframeworksdataelysian",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "testingframeworks202205src",
       "docId": "testingframeworksloadelysian",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -44,7 +44,7 @@
       "srcId": "testingframeworks202205src",
       "docId": "testingframeworksmgmtelysian",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -53,7 +53,7 @@
       "srcId": "testingframeworks202205src",
       "docId": "testingframeworksmatrixelysian",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -71,7 +71,7 @@
       "srcId": "testingframeworks202205src",
       "docId": "testingframeworksinstallelysian",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -80,7 +80,7 @@
       "srcId": "testingframeworks202205src",
       "docId": "is202205testing",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -89,7 +89,7 @@
       "srcId": "testingframeworks202205src",
       "docId": "is202205access",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }

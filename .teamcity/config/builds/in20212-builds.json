@@ -8,7 +8,7 @@
       "srcId": "in20212",
       "docId": "in20212app",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "in20212",
       "docId": "in20212appreaderinteg",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "in20212",
       "docId": "in20212billref",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "in20212",
       "docId": "in20212claimsconfig",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -44,7 +44,7 @@
       "srcId": "in20212",
       "docId": "in20212xcsalespconfigdraft",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -53,7 +53,7 @@
       "srcId": "in20212",
       "docId": "in20212csalesp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -62,7 +62,7 @@
       "srcId": "in20212",
       "docId": "in20212xcservicepconfigdraft",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -71,7 +71,7 @@
       "srcId": "in20212",
       "docId": "in20212cservicep",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -80,7 +80,7 @@
       "srcId": "in20212",
       "docId": "in20212pa",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -89,7 +89,7 @@
       "srcId": "in20212",
       "docId": "in20212config",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -98,7 +98,7 @@
       "srcId": "in20212",
       "docId": "in20212commonconfig",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -107,7 +107,7 @@
       "srcId": "in20212",
       "docId": "in20212portaldev",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -116,7 +116,7 @@
       "srcId": "in20212",
       "docId": "in20212prodattref",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -125,7 +125,7 @@
       "srcId": "in20212",
       "docId": "in20212provportalinternal",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -134,7 +134,7 @@
       "srcId": "in20212",
       "docId": "in20212studio",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -143,14 +143,14 @@
       "srcId": "in20212",
       "docId": "in20212uwconfig",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "yarn",
       "docId": "in20212apiref",
       "srcId": "srcin20212apiref",
       "nodeImageVersion": "14.14.0",
-      "disabled": false
+      "disabled": true
     }
   ]
 }

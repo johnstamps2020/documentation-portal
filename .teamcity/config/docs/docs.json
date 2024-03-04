@@ -364,6 +364,32 @@
       "earlyAccess": false
     },
     {
+      "id": "easyguideinnsbruck",
+      "title": "EasyGuide for Innsbruck",
+      "url": "easyguideinnsbruck",
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "EasyGuide"
+        ],
+        "version": [
+          "Innsbruck"
+        ],
+        "language": "en"
+      },
+      "displayOnLandingPages": false,
+      "public": false,
+      "internal": false,
+      "indexForSearch": false,
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "earlyAccess": false
+    },
+    {
       "id": "gwglossary",
       "title": "Glossary",
       "url": "glossary",
