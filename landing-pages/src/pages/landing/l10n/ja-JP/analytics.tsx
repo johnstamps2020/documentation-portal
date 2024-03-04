@@ -27,7 +27,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },    
     {
-      label: 'Data Studio 2023.10 (Innsbruck)',
+      label: 'Data Studio',
       items: [
         {
           label: 'Data Studio',
