@@ -16,6 +16,17 @@ export default function LandingPage() {
   const { pageData, isError } = usePageData();
   const { title, setTitle, setHeaderOptions, setPath } = useLayoutContext();
 
+  sessionStorage.setItem('latestLandingPagePath', pageData?.path || '');
+
+  if (pageData?.searchFilters?.release) {
+    sessionStorage.setItem(
+      'latestLandingPageReleases',
+      pageData.searchFilters.release.toString()
+    );
+  } else {
+    sessionStorage.removeItem('latestLandingPageReleases');
+  }
+
   useEffect(() => {
     const redirectError = isError?.redirect;
     if (redirectError) {
@@ -41,7 +52,6 @@ export default function LandingPage() {
   if (!pageData) {
     return <></>;
   }
-
   const PageComponent = lazy(() => {
     const pageDataPath = pageData.path;
     return import(`pages/landing/${pageDataPath}`);
