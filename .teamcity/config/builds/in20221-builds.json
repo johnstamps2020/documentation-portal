@@ -62,7 +62,7 @@
       "srcId": "in20221",
       "docId": "in20221config",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
