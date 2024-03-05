@@ -892,7 +892,7 @@ export async function getRootBreadcrumbs(
         status: 400,
         body: {
           message:
-            'Invalid request. Provide the "pagePathname" query parameter to get the root breadcrumb.',
+            'Invalid request. Provide the "pagePathname" query parameter to get the root breadcrumbs.',
         },
       };
     }
