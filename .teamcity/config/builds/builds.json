@@ -116,6 +116,12 @@
       "disabled": false
     },
     {
+      "buildType": "yarn",
+      "srcId": "easyguideinnsbrucksrc",
+      "docId": "easyguideinnsbruck",
+      "disabled": false
+    },
+    {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "Glossary.ditamap",

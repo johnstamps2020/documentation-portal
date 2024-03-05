@@ -221,6 +221,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "goldenimage",
+      "title": "Golden Image",
+      "url": "internal/goldenimage/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "Golden Image"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }

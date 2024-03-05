@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { getAllFilesRecursively } from '../modules/fileOperations';
+import { getAllFilesRecursively } from '../modules/file';
 import { LegacyDocConfig } from '../../../server/src/types/legacyConfig';
 import { readFileSync, writeFileSync } from 'fs';
 

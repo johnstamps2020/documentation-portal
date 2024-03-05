@@ -1,5 +1,5 @@
 import { dirname, parse, relative, resolve } from 'path';
-import { getAllFilesRecursively } from '../modules/fileOperations';
+import { getAllFilesRecursively } from '../modules/file';
 import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 
 type DocRootPages = {

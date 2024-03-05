@@ -6,3 +6,4 @@ export * from './env';
 export * from './legacyConfig';
 export * from './serverSearch';
 export * from './user';
+export * from './deltaDoc';

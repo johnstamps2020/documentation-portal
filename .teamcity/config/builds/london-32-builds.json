@@ -8,7 +8,7 @@
       "srcId": "lm32src",
       "docId": "londonpcapp32",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "lm32src",
       "docId": "londonrn32",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }

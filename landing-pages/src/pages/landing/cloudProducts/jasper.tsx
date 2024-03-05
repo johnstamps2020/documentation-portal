@@ -180,7 +180,7 @@ const pageConfig: Category2LayoutProps = {
   whatsNew: {
     label: 'Jasper',
     badge: innsbruckBadge,
-    item: { label: 'Learn more', docId: 'whatsnewinnsbruck' },
+    item: { label: 'Learn more', docId: 'whatsnewjasper' },
     content: ['This card to be updated.'],
   },
   sidebar: implementationResourcesSidebar,

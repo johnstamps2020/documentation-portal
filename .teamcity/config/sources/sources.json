@@ -140,6 +140,12 @@
       "branch": "master"
     },
     {
+      "id": "easyguideinnsbrucksrc",
+      "title": "EasyGuide source in git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/easyguide.git",
+      "branch": "release/innsbruck"
+    },
+    {
       "id": "gwglossarysrc",
       "title": "Guidewire Glossary",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/glossary.git",
