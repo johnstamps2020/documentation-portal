@@ -8,6 +8,16 @@ interface DeltaDocInterface {
   releaseB: DeltaDocInputType['releaseB'];
   url: DeltaDocInputType['url'];
   setFormState: React.Dispatch<React.SetStateAction<DeltaDocInputType>>;
+  setRootUrls: React.Dispatch<
+    React.SetStateAction<{
+      leftUrl: string;
+      rightUrl: string;
+    }>
+  >;
+  rootUrls: {
+    leftUrl: string;
+    rightUrl: string;
+  };
   deltaDocData: DeltaDocData | undefined;
   isError: DocPortalEntityError | undefined;
   isLoading: boolean;
@@ -21,6 +31,7 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     releaseB: '',
     url: '',
   });
+  const [rootUrls, setRootUrls] = useState({ leftUrl: '', rightUrl: '' });
   const { releaseA, releaseB, url } = formState;
   const { deltaDocData, isError, isLoading } = useDeltaDocData({
     releaseA,
@@ -33,6 +44,8 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     releaseB: formState.releaseB,
     url: formState.url,
     setFormState,
+    setRootUrls,
+    rootUrls,
     deltaDocData,
     isError,
     isLoading,

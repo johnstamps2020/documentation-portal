@@ -2,6 +2,7 @@ import {
   DeltaDocInputType,
   DeltaDocResultType,
   DeltaLevenshteinReturnType,
+  Doc,
 } from '@doctools/server';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import useSWR, { Fetcher } from 'swr';
@@ -62,7 +63,12 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   function compareTwoDocs(docA: DeltaDocResultType, docB: DeltaDocResultType) {
     const fileChangeAmount: number = difference(docA.body, docB.body);
     var percentageChange: number = Math.ceil(
-      calculatePercentage(fileChangeAmount, docB.body.length)
+      calculatePercentage(
+        fileChangeAmount,
+        docB.body.length > docA.body.length
+          ? docB.body.length
+          : docA.body.length
+      )
     );
     if (percentageChange > 100) {
       percentageChange = 100;
@@ -124,7 +130,15 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     const filesAFileCount = filesA.length;
     const filesBFileCount = filesB.length;
     if (filesAFileCount !== filesBFileCount) {
-      return filesAFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount);
+      if (filesAFileCount > filesBFileCount) {
+        return (
+          filesAFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount)
+        );
+      } else {
+        return (
+          filesBFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount)
+        );
+      }
     } else {
       return filesAFileCount;
     }
@@ -223,6 +237,37 @@ export function useDeltaDocData({
 
   return {
     deltaDocData: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+
+const deltaDocValidator = async (docUrl: string) => {
+  const response = await fetch(
+    `/safeConfig/entity/Doc/relations?url=${docUrl}`
+  );
+  const { status } = response;
+  const jsonData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(status, jsonData.message);
+  }
+
+  return jsonData;
+};
+
+export function useDeltaDocValidator(docUrl?: string) {
+  const { data, error, isLoading } = useSWR<Doc, Error>(
+    docUrl,
+    deltaDocValidator,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    docData: data,
     isLoading,
     isError: error,
   };

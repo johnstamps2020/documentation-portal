@@ -1,5 +1,6 @@
 import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Alert, { AlertProps } from '@mui/material/Alert';
+import Badge from '@mui/material/Badge';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
 
@@ -20,15 +21,55 @@ export default function DeltaDocCardText({
 }) {
   const { releaseA, releaseB } = useDeltaDocContext();
 
+  function CustomBadge({
+    content,
+    color,
+    percentage,
+  }: {
+    content: string;
+    color:
+      | 'success'
+      | 'info'
+      | 'warning'
+      | 'error'
+      | 'default'
+      | 'primary'
+      | 'secondary'
+      | undefined;
+    percentage: number;
+  }) {
+    return (
+      <Badge badgeContent={content} color={color}>
+        <div style={{ padding: '10px' }}>{percentage}%</div>
+      </Badge>
+    );
+  }
+
   return releaseA > releaseB ? (
     result.docATitle === fileDoesNotExistText ? (
-      <Info text={`Deleted in ${releaseA}`} severity="error" />
+      <CustomBadge
+        content="Deleted"
+        color="error"
+        percentage={result.percentage}
+      />
     ) : (
-      <Info text={`Added in ${releaseA}`} severity="success" />
+      <CustomBadge
+        content="Added"
+        color="success"
+        percentage={result.percentage}
+      />
     )
   ) : result.docBTitle === fileDoesNotExistText ? (
-    <Info text={`Deleted in ${releaseB}`} severity="error" />
+    <CustomBadge
+      content="Deleted"
+      color="error"
+      percentage={result.percentage}
+    />
   ) : (
-    <Info text={`Added in ${releaseB}`} severity="success" />
+    <CustomBadge
+      content="Added"
+      color="success"
+      percentage={result.percentage}
+    />
   );
 }

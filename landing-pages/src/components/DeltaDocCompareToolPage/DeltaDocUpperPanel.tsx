@@ -1,14 +1,10 @@
-import { Typography } from '@mui/material';
+import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import { useReleasesNoRevalidation } from 'hooks/useApi';
 import { useEffect, useState } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 
@@ -27,111 +23,138 @@ const releaseDates = [
 export default function DeltaDocUpperPanel() {
   const [leftUrl, setLeftUrl] = useState('');
   const [rightUrl, setRightUrl] = useState('');
-  const [temporaryUrl, setTemporaryUrl] = useState('');
   const [temporaryReleaseA, setTemporaryReleaseA] = useState('');
   const [temporaryReleaseB, setTemporaryReleaseB] = useState('');
-  const { releaseA, releaseB, url, setFormState } = useDeltaDocContext();
-  const { releases, isLoading, isError } = useReleasesNoRevalidation();
+  const [leftWarningMessage, setLeftWarningMessage] = useState('');
+  const [rightWarningMessage, setRightWarningMessage] = useState('');
+  const [alertMessage, setAlertMessage] = useState('');
+  const { setFormState, setRootUrls } = useDeltaDocContext();
 
-  useEffect(() => {
-    const version = releaseDates.find((object) => {
-      return object.release === temporaryReleaseA;
-    });
-    if (version && leftUrl && rightUrl) {
-      setTemporaryUrl(`/${leftUrl}/${version.date}/${rightUrl}/`);
-    }
-  }, [leftUrl, rightUrl, setTemporaryUrl, temporaryUrl, temporaryReleaseA]);
+  const versionWarningMessage = `This URL does not match any release. Please make sure the URL is correct. 
+  If the URL is correct, this tool does not support this versioning system.`;
 
-  const canSubmit =
-    (temporaryReleaseA !== releaseA ||
-      temporaryReleaseB !== releaseB ||
-      temporaryUrl !== url) &&
-    rightUrl.length > 0 &&
-    leftUrl.length > 0 &&
-    temporaryUrl.length > 0 && 
+  const urlValidation =
+    leftUrl !== rightUrl && rightUrl.length > 0 && leftUrl.length > 0;
+
+  const releaseValidation =
+    temporaryReleaseA &&
+    temporaryReleaseB &&
     temporaryReleaseA.length > 0 &&
     temporaryReleaseB.length > 0;
 
+  const canSubmit = urlValidation && releaseValidation;
+
+  function handleUrl(
+    url: string,
+    setRelease: (value: React.SetStateAction<string>) => void,
+    setHelperTextMessage: (value: React.SetStateAction<string>) => void
+  ) {
+    const urlVersionNumber = /\d+/.exec(url);
+    if (urlVersionNumber) {
+      const version = releaseDates.find((object) => {
+        return object.date === urlVersionNumber[0];
+      });
+      if (version) {
+        setRelease(version.release);
+        setHelperTextMessage(
+          `This document belongs to release: ${version.release}.`
+        );
+        setAlertMessage('');
+      } else {
+        if (urlVersionNumber.toString().length === 5 && url.includes('/in/')) {
+          setHelperTextMessage(
+            'Documents with 5-digit versioning are not supported.'
+          );
+        } else if (urlVersionNumber.toString().length === 12443) {
+          setHelperTextMessage('No support for Jutro');
+        } else {
+          setHelperTextMessage('This version is not connected to any release.');
+          setAlertMessage(
+            `Version provided in URL does not match any release.`
+          );
+        }
+        setRelease('');
+      }
+    } else {
+      !urlVersionNumber && setHelperTextMessage(versionWarningMessage);
+    }
+    url === '' && setHelperTextMessage('');
+  }
+
+  useEffect(() => {
+    handleUrl(leftUrl, setTemporaryReleaseA, setLeftWarningMessage);
+    handleUrl(rightUrl, setTemporaryReleaseB, setRightWarningMessage);
+  }, [
+    leftUrl,
+    setLeftUrl,
+    rightUrl,
+    setRightUrl,
+    canSubmit,
+    temporaryReleaseA,
+    temporaryReleaseB,
+  ]);
+
   function handleSubmit() {
+    const leftRootUrl = /\/cloud\/.*/.exec(leftUrl);
+    const rightRootUrl = /\/cloud\/.*/.exec(rightUrl);
     setFormState({
-      releaseA: temporaryReleaseA,
-      releaseB: temporaryReleaseB,
-      url: temporaryUrl,
+      releaseA: temporaryReleaseA ? temporaryReleaseA : '',
+      releaseB: temporaryReleaseB ? temporaryReleaseB : '',
+      url: leftRootUrl ? leftRootUrl[0] : '', //runs query on one of the urls since they're the same
+    });
+    setRootUrls({
+      leftUrl: leftRootUrl ? leftRootUrl[0] : '',
+      rightUrl: rightRootUrl ? rightRootUrl[0] : '',
     });
   }
-
-  if (isError || isLoading || !releases) {
-    return null;
-  }
-
-  const ReleaseMenuItem = releases
-    .sort((a, b) => {
-      if (a.name > b.name) {
-        return -1;
-      }
-      if (a.name < b.name) {
-        return 1;
-      }
-      return 0;
-    })
-    .map((release, key) => (
-      <MenuItem key={key} value={release.name}>
-        {release.name}
-      </MenuItem>
-    ));
 
   return (
     <Container>
       <Stack spacing={2} sx={{ py: '1rem' }}>
-        <FormControl sx={{ width: '450px', mr: 'auto' }}>
-          <InputLabel>Release A</InputLabel>
-          <Select
-            label="Release A to compare"
-            value={temporaryReleaseA}
-            onChange={(event: SelectChangeEvent) =>
-              setTemporaryReleaseA(event.target.value as string)
-            }
+        <FormControl sx={{ alignItems: 'center' }}>
+          <Stack
+            direction="row"
+            height="200px"
+            alignItems="center"
+            alignSelf="center"
           >
-            {ReleaseMenuItem}
-          </Select>
-        </FormControl>
-        <FormControl sx={{ width: '450px' }}>
-          <InputLabel>Release B</InputLabel>
-          <Select
-            label="Release B to compare"
-            value={temporaryReleaseB}
-            onChange={(event: SelectChangeEvent) =>
-              setTemporaryReleaseB(event.target.value as string)
-            }
-          >
-            {ReleaseMenuItem}
-          </Select>
-        </FormControl>
-        <FormControl sx={{ width: '450px', alignItems: 'center' }}>
-          <Stack direction="row" spacing={3} alignItems="center">
-            <Typography>/</Typography>
-            <TextField
-              label="Left URL"
-              value={leftUrl}
-              fullWidth
-              onChange={(event) => setLeftUrl(event.target.value as string)}
-            />
-            <Typography>/</Typography>
-            <Typography>version</Typography>
-            <Typography>/</Typography>
-            <TextField
-              label="Right URL"
-              value={rightUrl}
-              fullWidth
-              onChange={(event) => setRightUrl(event.target.value as string)}
-            />
-            <Typography>/</Typography>
+            <Stack padding={3}>
+              <TextField
+                label="First URL"
+                value={leftUrl}
+                sx={{ width: '450px' }}
+                onChange={(event) => setLeftUrl(event.target.value as string)}
+              />
+              <FormHelperText
+                sx={{ fontSize: '14px', height: '30px', maxWidth: '420px' }}
+              >
+                {leftWarningMessage}
+              </FormHelperText>
+            </Stack>
+            <Stack padding={3}>
+              <TextField
+                label="Second URL"
+                value={rightUrl}
+                sx={{ width: '450px' }}
+                onChange={(event) => setRightUrl(event.target.value as string)}
+              />
+              <FormHelperText
+                sx={{ fontSize: '14px', height: '30px', maxWidth: '420px' }}
+              >
+                {rightWarningMessage}
+              </FormHelperText>
+            </Stack>
           </Stack>
-          <FormHelperText sx={{ fontSize: '14px' }}>
-            Example for url <b>/cloud/pc/202302/devsetup/</b>: <br />
-            left URL would be <b>cloud/pc</b> <br />
-            right URL would be <b>devsetup</b>
-          </FormHelperText>
+          <Stack sx={{ height: '50px' }}>
+            {leftUrl === rightUrl &&
+              leftUrl.length !== 0 &&
+              rightUrl.length !== 0 && (
+                <Alert severity="error">
+                  The urls you provided are the same.
+                </Alert>
+              )}
+            {alertMessage && <Alert severity="error">{alertMessage}</Alert>}
+          </Stack>
           <Button
             variant="contained"
             sx={{ mt: '12px', width: '250px' }}

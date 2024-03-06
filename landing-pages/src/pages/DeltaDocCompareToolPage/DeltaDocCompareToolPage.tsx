@@ -57,13 +57,11 @@ export default function DeltaDocCompareToolPage() {
               padding: '3rem 0',
             }}
           >
-            <Typography variant="h1" marginBottom="16px">
+            <Typography variant="h1" marginBottom="16px" textAlign="center">
               Compare documents between releases
             </Typography>
-            <Stack direction="row">
-              <DeltaDocUpperPanel />
-              <DeltaDocStatistics />
-            </Stack>
+            <DeltaDocUpperPanel />
+            <DeltaDocStatistics />
             <Divider sx={{ m: '8px 0 40px 0', width: '100%' }} />
             <DeltaDocResults />
           </Container>
