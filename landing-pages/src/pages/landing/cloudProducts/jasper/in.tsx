@@ -115,7 +115,7 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'nstall Assist (Internal)',
+          label: 'Install Assist (Internal)',
           docId: 'ininstallassistdraft',
           description: (
             <>
