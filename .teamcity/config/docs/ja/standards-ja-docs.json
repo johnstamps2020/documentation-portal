@@ -7,13 +7,33 @@
       "displayTitle": "Guidewire Cloud Standards",
       "url": "ja/cloud/standards/202312",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2023.12"],
-        "release": ["Innsbruck"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.12"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "ja"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -25,13 +45,37 @@
       "title": "Guidewire Cloud Standards ja",
       "url": "ja/cloud/standards/202206",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.06"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.06"
+        ],
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian"
+        ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "ja"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
