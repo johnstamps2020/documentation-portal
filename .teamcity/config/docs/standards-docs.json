@@ -30,6 +30,9 @@
           "Hakuba",
           "Innsbruck"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "displayOnLandingPages": true,
@@ -71,6 +74,9 @@
           "Hakuba",
           "Innsbruck"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -109,6 +115,9 @@
           "Flaine",
           "Garmisch",
           "Hakuba"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -149,6 +158,9 @@
           "Garmisch",
           "Hakuba"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -188,6 +200,9 @@
           "Garmisch",
           "Hakuba"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -224,6 +239,9 @@
           "Dobson",
           "Elysian",
           "Flaine"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -262,6 +280,9 @@
           "Elysian",
           "Flaine"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -298,6 +319,9 @@
           "Dobson",
           "Elysian",
           "Flaine"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -336,6 +360,9 @@
           "Elysian",
           "Flaine"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -372,6 +399,9 @@
           "Dobson",
           "Elysian",
           "Flaine"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -410,6 +440,9 @@
           "Elysian",
           "Flaine"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -445,6 +478,9 @@
           "Cortina",
           "Dobson",
           "Elysian"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -482,6 +518,9 @@
           "Dobson",
           "Elysian"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -518,6 +557,9 @@
           "Dobson",
           "Elysian"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -552,6 +594,9 @@
         "release": [
           "Cortina",
           "Dobson"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -588,6 +633,9 @@
           "Cortina",
           "Dobson"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -622,6 +670,9 @@
         "release": [
           "Cortina",
           "Dobson"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -658,6 +709,9 @@
           "Cortina",
           "Dobson"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -692,6 +746,9 @@
         "release": [
           "Cortina",
           "Dobson"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -728,6 +785,9 @@
           "Cortina",
           "Dobson"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -761,6 +821,9 @@
         ],
         "release": [
           "Cortina"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -796,6 +859,9 @@
         "release": [
           "Cortina"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -829,6 +895,9 @@
         ],
         "release": [
           "Cortina"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -864,6 +933,9 @@
         "release": [
           "Cortina"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -898,6 +970,9 @@
         "release": [
           "Cortina"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -931,6 +1006,9 @@
         ],
         "release": [
           "Cortina"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -967,6 +1045,9 @@
           "Aspen",
           "Banff"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -1001,6 +1082,9 @@
         "release": [
           "Aspen",
           "Banff"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -1037,6 +1121,9 @@
           "Aspen",
           "Banff"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -1071,6 +1158,9 @@
         "release": [
           "Aspen",
           "Banff"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },
@@ -1107,6 +1197,9 @@
           "Aspen",
           "Banff"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -1142,6 +1235,9 @@
           "Aspen",
           "Banff"
         ],
+        "subject": [
+          "Cloud Standards"
+        ],
         "language": "en"
       },
       "environments": [
@@ -1172,6 +1268,9 @@
         ],
         "version": [
           "master"
+        ],
+        "subject": [
+          "Cloud Standards"
         ],
         "language": "en"
       },

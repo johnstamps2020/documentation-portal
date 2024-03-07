@@ -606,6 +606,9 @@
         "version": [
           "latest"
         ],
+        "subject": [
+          "Product Adoption"
+        ],
         "language": "en"
       },
       "environments": [
