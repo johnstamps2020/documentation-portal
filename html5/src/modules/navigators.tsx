@@ -71,29 +71,49 @@ async function getPlatformBreadcrumb() {
     return;
   }
   const platform = window.docPlatform.split(valueSeparator);
-  if (platform.length > 1) {
-    return;
-  }
 
-  if (platform[0] === 'Cloud') {
+  if (platform.includes('Cloud')) {
+    const release = window.docRelease.split(valueSeparator) || [];
+
+    const latestPageReleases =
+      sessionStorage
+        .getItem('latestLandingPageReleases')
+        ?.split(valueSeparator) || [];
+    // Can't find any release data for doc or latest landing page and doc is only for Cloud.
     if (
-      !window.docRelease ||
-      window.docRelease.split(valueSeparator).length > 1
+      release.length === 0 &&
+      latestPageReleases.length === 0 &&
+      platform.length === 1
     ) {
       return {
         text: 'Cloud',
         href: '/cloudProducts',
       };
     }
+    // Doc has multiple releases. Use release value from session if we can.
+    if (release.length > 1) {
+      if (latestPageReleases.length === 1) {
+        return {
+          text: latestPageReleases[0],
+          href: `/cloudProducts/${latestPageReleases[0].toLowerCase()}`,
+        };
+      }
+      if (platform.includes('Self-managed')) {
+        return {
+          text: 'Self-managed',
+          href: '/selfManagedProducts',
+        };
+      }
+    }
 
-    const release = window.docRelease.split(valueSeparator);
-
-    return {
-      text: release[0],
-      href: `/cloudProducts/${release[0].toLowerCase()}`,
-    };
+    if (release.length === 1) {
+      return {
+        text: release[0],
+        href: `/cloudProducts/${release[0].toLowerCase()}`,
+      };
+    }
   }
-  if (window.docPlatform[0] === 'Self-managed') {
+  if (platform[0] === 'Self-managed') {
     return {
       text: 'Self-managed',
       href: '/selfManagedProducts',
@@ -102,19 +122,46 @@ async function getPlatformBreadcrumb() {
 }
 
 async function getTopBreadcrumb() {
+  type RootPageObject = {
+    label: string;
+    path: string;
+  };
   try {
     const currentPagePathname = window.location.pathname;
     const response = await fetch(
       `/safeConfig/breadcrumbs?pagePathname=${currentPagePathname}`
     );
     const jsonResponse = await response.json();
-    const rootPageObject = jsonResponse.rootPage;
-    if (Object.keys(rootPageObject).length !== 0) {
+    const rootPageObjects = jsonResponse.rootPages;
+
+    if (rootPageObjects.length === 0) return null;
+
+    // if only one possible root page is found, use it. If we wait and depend
+    // on session data, the crumb will not be found if the session data does
+    // not exist, such as if a user goes directly to a doc without hitting a
+    // landing page first.
+    if (rootPageObjects.length === 1) {
       return {
-        text: rootPageObject.label,
-        href: rootPageObject.path,
+        text: rootPageObjects[0].label,
+        href: rootPageObjects[0].path,
       };
     }
+
+    const latestLangingPage = sessionStorage.getItem('latestLandingPagePath');
+    if (!latestLangingPage) return null;
+
+    const matchingRootPage = rootPageObjects.filter((rpo: RootPageObject) => {
+      return rpo.path === '/' + latestLangingPage;
+    });
+
+    if (matchingRootPage.length === 1) {
+      return {
+        text: matchingRootPage[0].label,
+        href: matchingRootPage[0].path,
+      };
+    }
+
+    return null;
   } catch (err) {
     console.error(err);
     return null;
@@ -194,11 +241,15 @@ async function addBreadCrumbs() {
     const languageBreadcrumb = await getLanguageBreadcrumb();
 
     if (languageBreadcrumb) {
-      linkTrail.push(languageBreadcrumb);
+      if (topBreadcrumb && topBreadcrumb.href !== languageBreadcrumb.href) {
+        linkTrail.push(languageBreadcrumb);
+      }
     } else {
       const platformBreadcrumb = await getPlatformBreadcrumb();
       if (platformBreadcrumb) {
-        linkTrail.push(platformBreadcrumb);
+        if (topBreadcrumb && topBreadcrumb.href !== platformBreadcrumb.href) {
+          linkTrail.push(platformBreadcrumb);
+        }
       }
     }
 

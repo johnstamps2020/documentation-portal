@@ -7,7 +7,7 @@ import {
   getDocUrlByMetadata,
   getEntity,
   getPageItems,
-  getRootBreadcrumb,
+  getRootBreadcrumbs,
   getVersionSelector,
   splitLegacyValueByCommaAndReturnUnique,
 } from '../controllers/configController';
@@ -16,7 +16,10 @@ const router = Router();
 
 router.get('/breadcrumbs', async function (req, res, next) {
   const { pagePathname } = req.query;
-  const { status, body } = await getRootBreadcrumb(pagePathname as string, res);
+  const { status, body } = await getRootBreadcrumbs(
+    pagePathname as string,
+    res
+  );
   return res.status(status).json(body);
 });
 
