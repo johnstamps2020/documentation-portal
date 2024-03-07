@@ -586,7 +586,13 @@
           "Cloud"
         ],
         "product": [
-          "Product Adoption"
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
         ],
         "release": [
           "Innsbruck",

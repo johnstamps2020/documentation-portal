@@ -6,9 +6,21 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/latest",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
         "release": [
           "Cortina",
           "Dobson",
@@ -22,7 +34,10 @@
       },
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -32,9 +47,21 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202401",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2024.01"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.01"
+        ],
         "release": [
           "Cortina",
           "Dobson",
@@ -46,7 +73,9 @@
         ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -58,9 +87,21 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202312",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2023.12"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.12"
+        ],
         "release": [
           "Cortina",
           "Dobson",
@@ -71,7 +112,9 @@
         ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -83,9 +126,21 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202311",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2023.11"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.11"
+        ],
         "release": [
           "Cortina",
           "Dobson",
@@ -96,7 +151,9 @@
         ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -108,9 +165,21 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202310",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2023.10"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
         "release": [
           "Cortina",
           "Dobson",
@@ -121,7 +190,9 @@
         ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -133,13 +204,32 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202308",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2023.08"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.08"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -151,13 +241,32 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202303",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2023.03"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.03"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -169,13 +278,32 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202302",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2023.02"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.02"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -187,13 +315,32 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202301",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2023.01"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.01"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -205,13 +352,32 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202211",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.11"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.11"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -223,13 +389,32 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202210",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.10"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.10"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -241,13 +426,31 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202209",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Cortina", "Dobson", "Elysian"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.09"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -259,13 +462,31 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202207",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.07"],
-        "release": ["Cortina", "Dobson", "Elysian"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.07"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -277,13 +498,31 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202206",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.06"],
-        "release": ["Cortina", "Dobson", "Elysian"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.06"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -295,13 +534,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202205",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Cortina", "Dobson"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.05"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -313,13 +569,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202204",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.04"],
-        "release": ["Cortina", "Dobson"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.04"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -331,13 +604,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202203",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.03"],
-        "release": ["Cortina", "Dobson"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.03"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -349,13 +639,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202202",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.02"],
-        "release": ["Cortina", "Dobson"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.02"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -367,13 +674,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202201",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.01"],
-        "release": ["Cortina", "Dobson"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2022.01"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -385,13 +709,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202111",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.11"],
-        "release": ["Cortina", "Dobson"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.11"
+        ],
+        "release": [
+          "Cortina",
+          "Dobson"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -403,13 +744,29 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202110",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.10"],
-        "release": ["Cortina"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.10"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -421,13 +778,29 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202109",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.09"],
-        "release": ["Cortina"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.09"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -439,13 +812,29 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202108",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.08"],
-        "release": ["Cortina"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.08"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -457,13 +846,29 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202107",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.07"],
-        "release": ["Cortina"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.07"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -475,13 +880,29 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202106",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.06"],
-        "release": ["Cortina"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.06"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -493,13 +914,29 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202105",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.05"],
-        "release": ["Cortina"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.05"
+        ],
+        "release": [
+          "Cortina"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -511,13 +948,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202104",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.04"],
-        "release": ["Aspen", "Banff"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -529,13 +983,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202103",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.03"],
-        "release": ["Aspen", "Banff"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.03"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -547,13 +1018,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202102",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.02"],
-        "release": ["Aspen", "Banff"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.02"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -565,13 +1053,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202101",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2021.01"],
-        "release": ["Aspen", "Banff"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.01"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -583,13 +1088,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202011",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2020.11"],
-        "release": ["Aspen", "Banff"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -601,13 +1123,30 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202010",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2020.10"],
-        "release": ["Aspen", "Banff"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.10"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -619,12 +1158,26 @@
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/master",
       "metadata": {
-        "product": ["Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["master"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "master"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
