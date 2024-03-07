@@ -10,9 +10,13 @@
           "Cloud"
         ],
         "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
           "Cloud Platform",
-          "Cloud Standards",
-          "Product Adoption"
+          "Data Platform"
         ],
         "release": [
           "Innsbruck",
@@ -623,7 +627,13 @@
           "Cloud"
         ],
         "product": [
-          "Product Adoption"
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
         ],
         "version": [
           "latest"
@@ -648,7 +658,13 @@
           "Cloud"
         ],
         "product": [
-          "Product Adoption"
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
         ],
         "version": [
           "latest"
