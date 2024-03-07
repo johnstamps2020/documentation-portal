@@ -85,15 +85,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ProvisioningPortalGuide.ditamap",
-      "srcId": "in20241",
-      "docId": "in20241provportal",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "ProvisioningPortal.ditamap",
       "srcId": "in20241",
       "docId": "in20241provportalinternal",

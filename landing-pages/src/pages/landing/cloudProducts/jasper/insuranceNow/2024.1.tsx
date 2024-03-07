@@ -147,10 +147,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20241xcservicepconfigdraft',
         },
         {
-          label: 'Provisioning Portal',
-          docId: 'in20241provportal',
-        },
-        {
           label: 'Provisioning Portal - Internal',
           docId: 'in20241provportalinternal',
         },
