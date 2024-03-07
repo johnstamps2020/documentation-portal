@@ -183,6 +183,10 @@ const permanentRedirectUrls = [
     from: 'cloudProducts/cloudConsole',
     to: 'cloud/gcc-guide/insurer-developer/latest',
   },
+  {
+    from: 'cloudProducts/jasper/insuranceNow/2024.1',
+    to: 'cloudProducts/jasper/in',
+  },
 ];
 const temporaryRedirectUrls = [
   {
