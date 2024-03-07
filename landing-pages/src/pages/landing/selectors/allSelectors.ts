@@ -171,7 +171,7 @@ export const allSelectors = {
     },
     {
       label: 'Jasper (2024.1)',
-      pagePath: 'cloudProducts/jasper/insuranceNow/2024.1',
+      pagePath: 'cloudProducts/jasper/in',
     },
   ],
   s1793805ac84baf801d4eb31b00ab1ddf: [
@@ -336,7 +336,10 @@ export const allSelectors = {
       pagePath: 'l10n/de-DE/ce-claims',
     },
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/de-DE/ce-qb' },
-    { label: 'InsuranceSuite Configuration Upgrade Tools Guide', pagePath: 'l10n/de-DE/is-configupgradetools' },
+    {
+      label: 'InsuranceSuite Configuration Upgrade Tools Guide',
+      pagePath: 'l10n/de-DE/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/de-DE/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/de-DE/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/de-DE/pe' },
@@ -374,7 +377,10 @@ export const allSelectors = {
     },
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/es-419/ce-qb' },
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/es-419/gcc' },
-    { label: 'InsuranceSuite Configuration Upgrade Tools', pagePath: 'l10n/es-419/is-configupgradetools' },
+    {
+      label: 'InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/es-419/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/es-419/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/es-419/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/es-419/pe' },
@@ -421,7 +427,10 @@ export const allSelectors = {
       pagePath: 'l10n/fr-FR/ce-claims',
     },
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/fr-FR/ce-qb' },
-    { label: 'InsuranceSuite Configuration Upgrade Tools', pagePath: 'l10n/fr-FR/is-configupgradetools' },
+    {
+      label: 'InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/fr-FR/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/fr-FR/pe' },
@@ -510,7 +519,10 @@ export const allSelectors = {
     },
     { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/pt-BR/ce-qb' },
     { label: 'Guidewire Cloud Console', pagePath: 'l10n/pt-BR/gcc' },
-    { label: 'InsuranceSuite Configuration Upgrade Tools', pagePath: 'l10n/pt-BR/is-configupgradetools' },
+    {
+      label: 'InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/pt-BR/is-configupgradetools',
+    },
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/pt-BR/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/pt-BR/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/pt-BR/pe' },
