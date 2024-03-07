@@ -26,19 +26,6 @@ const pageConfig: CategoryLayoutProps = {
         },
       ],
     },
-    {
-      label: '2023.10 (Innsbruck)',
-      items: [
-        {
-          label: 'Explore',
-          docId: 'exploreusingfrFRrelease',
-        },
-        {
-          label: 'Data Studio',
-          docId: 'datastudiofrFRrelease',
-        },
-      ],
-    },
   ],
 };
 

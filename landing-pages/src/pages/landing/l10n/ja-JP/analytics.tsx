@@ -10,9 +10,9 @@ const pageConfig: CategoryLayoutProps = {
     backgroundColor: `hsl(0, 0%, 98%)`,
   },
   selector: {
-    label: 'Selecione o produto',
-    selectedItemLabel: 'Explore',
-    items: allSelectors.s04aae4cce94a63b38358bb52ee3acace,
+    label: '製品を選択',
+    selectedItemLabel: 'Analytics',
+    items: allSelectors.se8b84bf91d6fdc9fe9f57fab16d97983,
     labelColor: 'white',
   },
 
@@ -21,14 +21,25 @@ const pageConfig: CategoryLayoutProps = {
       label: 'Explore',
       items: [
         {
-          label: 'Guia do aplicativo',
-          docId: 'exploreptBRusingrelease',
+          label: 'Explore ガイド',
+          docId: 'exploreusingjaJPrelease',
         },
       ],
-    },
+    },    
+    {
+      label: 'Data Studio',
+      items: [
+        {
+          label: 'Data Studio',
+          docId: 'datastudiojaJPrelease',
+        },
+      ],
+    },    
+
+
   ],
 };
 
-export default function Explore() {
+export default function Analytics() {
   return <CategoryLayout {...pageConfig} />;
 }

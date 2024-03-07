@@ -39,6 +39,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/apd',
     },
     {
+      label: 'Analytics',
+      pagePath: 'l10n/ja-JP/analytics',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/ja-JP/bc',
     },

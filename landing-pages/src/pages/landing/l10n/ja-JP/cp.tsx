@@ -42,14 +42,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'is202310jaJPintegoverview',
         },
         {
-          label: 'Explore',
-          docId: 'exploreusingjaJPrelease',
-        },
-        {
-          label: 'Data Studio',
-          docId: 'datastudiojaJPrelease',
-        },
-        {
           label: 'Autopilot Workflow Service',
           pagePath: 'l10n/ja-JP/cloudProducts/autopilotworkflowservice',
         },

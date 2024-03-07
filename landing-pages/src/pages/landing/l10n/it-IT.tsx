@@ -19,6 +19,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Analytics',
+      pagePath: 'l10n/it-IT/analytics',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/it-IT/bc',
     },
@@ -43,20 +47,12 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/it-IT/ce-qb',
     },
     {
-      label: 'DataHub',
-      pagePath: 'l10n/it-IT/dh',
-    },
-    {
       label: 'Guidewire Cloud Console',
       pagePath: 'l10n/it-IT/gcc',
     },
     {
       label: 'Guidewire Identity Federation Hub',
       pagePath: 'l10n/it-IT/gwid',
-    },
-    {
-      label: 'InfoCenter',
-      pagePath: 'l10n/it-IT/ic',
     },
     {
       label: 'PolicyCenter',
