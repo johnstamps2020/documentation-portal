@@ -11,14 +11,25 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Seleziona il prodotto',
-    selectedItemLabel: 'InfoCenter',
+    selectedItemLabel: 'Analytics',
     items: allSelectors.sfe3981f25d5c58ed2a73f60e2c949230,
     labelColor: 'white',
   },
 
   cards: [
+		{
+      label: 'DataHub 10.0.0',
+      items: [
+        {
+          label: 'Guida alle Specifiche dati',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'it-IT/dh/10.0.0/DH10-dataspec-it.pdf',
+          videoIcon: false,
+        },
+      ],
+    },
     {
-      label: '10.0.0',
+      label: 'InfoCenter 10.0.0',
       items: [
         {
           label: 'Guida alle applicazioni BI',
@@ -37,6 +48,6 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export default function Ic() {
+export default function Analytics() {
   return <CategoryLayout {...pageConfig} />;
 }

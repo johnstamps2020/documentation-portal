@@ -11,23 +11,58 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Seleccionar producto',
-    selectedItemLabel: 'InfoCenter',
+    selectedItemLabel: 'Analytics',
     items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
     labelColor: 'white',
   },
 
   cards: [
-    {
-      label: '10.9.0',
+		{
+			label: 'Explore',
       items: [
         {
-          label: 'Guía de informes',
-          docId: 'ic1090reportses419',
+          label: 'Guía de la aplicación',
+          docId: 'explorees419usingrelease',
+        },
+      ],
+		},
+		{
+      label: 'DataHub 10.0.0',
+      items: [
+        {
+          label: 'Guía de configuración de DataHub',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/dh/10.0.0/DH10-config-es.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guía de administración',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/dh/10.0.0/DH10-admin-es.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guía de Data Specifications',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/dh/10.0.0/DH10-dataspec-es.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guía del producto',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/dh/10.0.0/DH10-product-es.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guía de instalación',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'es-LA/dh/10.0.0/DH10-install-es.pdf',
+          videoIcon: false,
         },
       ],
     },
     {
-      label: '10.0.0',
+      label: 'InfoCenter 10.0.0',
       items: [
         {
           label: 'Guía de administración',
@@ -61,9 +96,18 @@ const pageConfig: CategoryLayoutProps = {
         },
       ],
     },
+    {
+      label: 'InfoCenter 10.9.0',
+      items: [
+        {
+          label: 'Guía de informes',
+          docId: 'ic1090reportses419',
+        },
+      ],
+    },
   ],
 };
 
-export default function Ic() {
+export default function Analytics() {
   return <CategoryLayout {...pageConfig} />;
 }

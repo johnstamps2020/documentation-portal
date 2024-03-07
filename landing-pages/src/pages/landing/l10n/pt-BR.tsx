@@ -31,6 +31,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       docId: 'whatsnewptBRhakuba',
     },
     {
+      label: 'Analytics',
+      pagePath: 'l10n/pt-BR/analytics',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/pt-BR/bc',
     },
@@ -67,20 +71,8 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/pt-BR/is-configupgradetools',
     },
     {
-      label: 'DataHub',
-      pagePath: 'l10n/pt-BR/dh',
-    },
-    {
-      label: 'Explore',
-      docId: 'exploreptBRusingrelease',
-    },
-    {
       label: 'Guidewire Cloud Console',
       docId: 'guidewirecloudconsolerootinsurerdevptBR',
-    },
-    {
-      label: 'InfoCenter',
-      pagePath: 'l10n/pt-BR/ic',
     },
     {
       label: 'PolicyCenter',
