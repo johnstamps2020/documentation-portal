@@ -2385,8 +2385,8 @@ object User {
                 text(
                     "env.DOC_ID",
                     "",
-                    label = "Document id",
-                    description = "The docId from the doc config",
+                    label = "Document ID",
+                    description = "The `id` attribute which you can find in the `doc-portal` repo, in one of the configs located in `.teamcity/config/docs`",
                     display = ParameterDisplay.PROMPT
                 )
             }
