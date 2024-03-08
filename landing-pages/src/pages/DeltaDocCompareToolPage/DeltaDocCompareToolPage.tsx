@@ -62,7 +62,6 @@ export default function DeltaDocCompareToolPage() {
             </Typography>
             <DeltaDocUpperPanel />
             <DeltaDocStatistics />
-            <Divider sx={{ m: '8px 0 40px 0', width: '100%' }} />
             <DeltaDocResults />
           </Container>
         </Grid>

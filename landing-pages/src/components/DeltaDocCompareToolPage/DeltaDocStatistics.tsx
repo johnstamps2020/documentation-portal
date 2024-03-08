@@ -1,3 +1,4 @@
+import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
@@ -30,6 +31,7 @@ export default function DeltaDocStatistics() {
 
   return (
     <Stack direction="column" sx={{ marginTop: '30px' }}>
+      <Divider sx={{ m: '8px 0 24px 0', width: '100%' }} />
       {releaseALength !== 0 &&
         releaseBLength !== 0 &&
         statistics.map((stat, index, key) => {
@@ -53,6 +55,7 @@ export default function DeltaDocStatistics() {
           }
           return <></>;
         })}
+      <Divider sx={{ m: '24px 0 24px 0', width: '100%' }} />
     </Stack>
   );
 }

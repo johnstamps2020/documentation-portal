@@ -262,7 +262,7 @@ export function useDeltaDocValidator(docUrl?: string) {
     docUrl,
     deltaDocValidator,
     {
-      revalidateOnFocus: false,
+      revalidateOnFocus: true,
     }
   );
 

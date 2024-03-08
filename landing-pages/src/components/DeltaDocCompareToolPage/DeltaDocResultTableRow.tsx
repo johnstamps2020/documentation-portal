@@ -62,10 +62,10 @@ export default function DeltaDocResultTableRow({
         <TableCell sx={{ maxWidth: '200px' }}>
           {getLink(input.secondLink)}
         </TableCell>
-        <TableCell align="center">
+        <TableCell align="center" sx={{ maxWidth: '200px' }}>
           {input.firstTitle === fileDoesNotExistText ? '-' : input.firstTitle}
         </TableCell>
-        <TableCell align="center">
+        <TableCell align="center" sx={{ maxWidth: '200px' }}>
           {input.secondTitle === fileDoesNotExistText ? '-' : input.secondTitle}
         </TableCell>
       </>
