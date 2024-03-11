@@ -2,6 +2,40 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "appeventsanalyzerrelease",
+      "title": "App Events Analyzer",
+      "url": "cloud/is/appevents-analyzer/release",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "App Events Webhooks"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "appeventsdev",
       "title": "App Events",
       "url": "cloud/is/appevents/release",
