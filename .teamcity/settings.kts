@@ -2393,6 +2393,7 @@ object User {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
             }
 
             artifactRules = "./out/_kit => translation-kit"
