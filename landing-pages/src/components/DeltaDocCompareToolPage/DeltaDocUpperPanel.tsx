@@ -2,7 +2,6 @@ import { Doc } from '@doctools/server';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import Stack from '@mui/material/Stack';
@@ -36,6 +35,8 @@ export default function DeltaDocUpperPanel() {
   const [temporaryReleaseB, setTemporaryReleaseB] = useState('');
   const [leftWarningMessage, setLeftWarningMessage] = useState('');
   const [rightWarningMessage, setRightWarningMessage] = useState('');
+  const [canSubmit, setCanSubmit] = useState(false);
+  const [submittingAlert, setSubmittingAlert] = useState(false);
   const [alert, setAlert] = useState<JSX.Element>();
   const { setFormState, setRootUrls } = useDeltaDocContext();
   const leftRootUrlNoSlash = /cloud\/.*/.exec(temporaryLeftUrl);
@@ -64,19 +65,16 @@ export default function DeltaDocUpperPanel() {
     (temporaryLeftUrl !== leftUrl || temporaryRightUrl !== rightUrl);
 
   const releaseValidation =
-    temporaryReleaseA &&
-    temporaryReleaseB &&
-    temporaryReleaseA.length > 0 &&
-    temporaryReleaseB.length > 0;
+    temporaryReleaseA.length > 0 && temporaryReleaseB.length > 0;
 
-  const docValidation = rightDocData && leftDocData;
+  const docValidation = rightDocData !== undefined && leftDocData !== undefined;
 
-  const canSubmit =
+  const canSubmitValue =
     urlValidation && urlIsNotEmpty && releaseValidation && docValidation;
 
   function validateData(dataA: Doc | undefined, dataB: Doc | undefined) {
-    // walidacja:
-    //    - rozroznienie na cloud i jutro
+    // TODO:
+    //   - validate jutro and self-managed docs, now works only on cloud/..
 
     validateUrl(dataA, setTemporaryReleaseA, setLeftWarningMessage);
     validateUrl(dataB, setTemporaryReleaseB, setRightWarningMessage);
@@ -85,22 +83,27 @@ export default function DeltaDocUpperPanel() {
       dataB &&
       dataA.url.replace(/\d+/, '') !== dataB.url.replace(/\d+/, '')
     ) {
-      dataA.title !== dataB.title
-        ? setAlert(
-            <Alert severity="info">
-              You are comparing documents with different titles:{' '}
-              <b>{dataA.title} </b> and <b>{dataB.title}</b>. Are you sure?
-            </Alert>
-          )
-        : setAlert(
-            <Alert severity="info">
-              You are comparing documents that don't match. Are you sure?
-            </Alert>
-          );
+      if (dataA.title !== dataB.title) {
+        setAlert(
+          <Alert severity="error">
+            You are trying to compare documents with different titles:{' '}
+            <b>{dataA.title} </b> and <b>{dataB.title}</b>.
+          </Alert>
+        );
+        setSubmittingAlert(true);
+      } else if (dataA.title === dataB.title) {
+        setAlert(
+          <Alert severity="error">
+            You are trying to compare documents that don't match.
+          </Alert>
+        );
+        setSubmittingAlert(true);
+      }
     } else if (temporaryLeftUrl === temporaryRightUrl && urlIsNotEmpty) {
       setAlert(
         <Alert severity="error">The urls you provided are the same.</Alert>
       );
+      setSubmittingAlert(true);
     } else if (
       (temporaryLeftUrl.length !== 0 &&
         temporaryRightUrl.length !== 0 &&
@@ -113,6 +116,7 @@ export default function DeltaDocUpperPanel() {
           topic.
         </Alert>
       );
+      setSubmittingAlert(true);
     } else if (
       leftDocData &&
       rightDocData &&
@@ -126,13 +130,16 @@ export default function DeltaDocUpperPanel() {
           <b>{rightDocData?.releases[0].name}</b>
         </Alert>
       );
+      setSubmittingAlert(false);
     } else {
       setAlert(<></>);
+      setSubmittingAlert(false);
     }
   }
 
   useEffect(() => {
     validateData(leftDocData, rightDocData);
+    setCanSubmit(canSubmitValue && !submittingAlert);
     if (temporaryLeftUrl.length === 0) {
       setLeftWarningMessage('');
     }
@@ -146,9 +153,10 @@ export default function DeltaDocUpperPanel() {
     setTemporaryLeftUrl,
     temporaryRightUrl,
     setTemporaryRightUrl,
-    canSubmit,
+    canSubmitValue,
     temporaryReleaseA,
     temporaryReleaseB,
+    alert,
   ]);
 
   function slashValidation(url: string) {
@@ -179,7 +187,6 @@ export default function DeltaDocUpperPanel() {
     setRightUrl(temporaryRightUrl);
     const leftRootUrl = handleUrl(temporaryLeftUrl);
     const rightRootUrl = handleUrl(temporaryRightUrl);
-    console.log({ leftRootUrl, rightRootUrl });
     if (leftRootUrl && rightRootUrl) {
       setFormState({
         releaseA: temporaryReleaseA ? temporaryReleaseA : '',
