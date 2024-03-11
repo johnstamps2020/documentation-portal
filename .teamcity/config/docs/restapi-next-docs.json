@@ -2,6 +2,40 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "appeventsanalyzernext",
+      "title": "App Events Analyzer",
+      "url": "cloud/is/appevents-analyzer/next",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "App Events Webhooks"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "appeventsdevnext",
       "title": "App Events",
       "url": "cloud/is/appevents/next",
@@ -12,13 +46,23 @@
           "PolicyCenter",
           "App Events Webhooks"
         ],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -36,13 +80,23 @@
           "PolicyCenter",
           "App Events Webhooks"
         ],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -54,14 +108,28 @@
       "title": "Integration Gateway",
       "url": "cloud/is/integgateway/next",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "release": ["Jasper"],
-        "subject": ["Integration"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -73,14 +141,29 @@
       "title": "REST API Client",
       "url": "is/restapiclient/next/guide",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2024.02"],
-        "subject": ["Integration"],
-        "release": ["Jasper"],
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
