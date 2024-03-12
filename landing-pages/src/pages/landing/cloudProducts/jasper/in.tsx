@@ -247,7 +247,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Data Service',
-          docId: 'in20241dataservice',
+          docId: 'indataservice',
           pathInDoc: '?contextid=ds_purpose_and_functionality',
           description: (
             <>
