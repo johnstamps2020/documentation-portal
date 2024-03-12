@@ -1,6 +1,6 @@
 import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Alert, { AlertProps } from '@mui/material/Alert';
-import Badge from '@mui/material/Badge';
+import Badge, { BadgeProps } from '@mui/material/Badge';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
 
@@ -28,14 +28,6 @@ export default function DeltaDocCardText({
   }: {
     content: string;
     color: BadgeProps['color'];
-      | 'success'
-      | 'info'
-      | 'warning'
-      | 'error'
-      | 'default'
-      | 'primary'
-      | 'secondary'
-      | undefined;
     percentage: number;
   }) {
     return (
