@@ -215,7 +215,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'InsuranceNow reports',
           docId: 'in20241app',
-          pathInDoc: '??contextid=c_InsuranceNow_Reports',
+          pathInDoc: '?contextid=c_InsuranceNow_Reports',
           description: (
             <>
               View static reports for various business functions in
