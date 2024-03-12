@@ -915,31 +915,35 @@ export async function getRootBreadcrumbs(
     }
 
     const validCrumbs = await Promise.all(
-      matchingBreadcrumb.rootPages.map(async (matchingRootPage: string) => {
-        const findEntityResult = await findEntity(
-          Page.name,
-          {
-            path: matchingRootPage.replace(/^\//g, ''),
-          },
-          false
-        );
+      matchingBreadcrumb.rootPages
+        .map(async (matchingRootPage: string) => {
+          const findEntityResult = await findEntity(
+            Page.name,
+            {
+              path: matchingRootPage.replace(/^\//g, ''),
+            },
+            false
+          );
 
-        if (findEntityResult) {
-          const isUserAllowedToAccessResourceResult =
-            isUserAllowedToAccessResource(
-              res,
-              findEntityResult.public,
-              findEntityResult.internal,
-              findEntityResult.isInProduction
-            );
-          if (isUserAllowedToAccessResourceResult.status === 200) {
-            return {
-              path: matchingRootPage,
-              label: findEntityResult.title,
-            };
+          if (findEntityResult) {
+            const isUserAllowedToAccessResourceResult =
+              isUserAllowedToAccessResource(
+                res,
+                findEntityResult.public,
+                findEntityResult.internal,
+                findEntityResult.isInProduction
+              );
+            if (isUserAllowedToAccessResourceResult.status === 200) {
+              return {
+                path: matchingRootPage,
+                label: findEntityResult.title,
+              };
+            }
           }
-        }
-      })
+        })
+        .filter((item: {} | null) => {
+          return item !== null;
+        })
     );
 
     if (validCrumbs.length > 0) {
