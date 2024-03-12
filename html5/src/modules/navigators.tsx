@@ -147,11 +147,11 @@ async function getTopBreadcrumb() {
       };
     }
 
-    const latestLangingPage = sessionStorage.getItem('latestLandingPagePath');
-    if (!latestLangingPage) return null;
+    const latestLandingPage = sessionStorage.getItem('latestLandingPagePath');
+    if (!latestLandingPage) return null;
 
     const matchingRootPage = rootPageObjects.filter((rpo: RootPageObject) => {
-      return rpo.path === '/' + latestLangingPage;
+      return rpo.path === '/' + latestLandingPage;
     });
 
     if (matchingRootPage.length === 1) {
