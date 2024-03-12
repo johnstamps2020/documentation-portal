@@ -191,14 +191,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Loss notices and claims',
-          docId: 'in20241app',
-          pathInDoc: '?contextid=c_Claims_overview',
-          description: (
-            <>Process loss notices, claims, and claims transactions.</>
-          ),
-        },
-        {
           label: 'Business Intelligence dashboards',
           docId: 'in20241app',
           pathInDoc: '?contextid=c_reports_business_intelligence',
@@ -244,7 +236,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Consumer Service Portal',
-          docId: 'in20241xcservicepfeatures',
+          docId: 'in20241cservicep',
           pathInDoc: '?contextid=c_cspfeatures',
           description: (
             <>
@@ -255,7 +247,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Data Service',
-          docId: 'in2024dataservice',
+          docId: 'in20241dataservice',
           pathInDoc: '?contextid=ds_purpose_and_functionality',
           description: (
             <>
