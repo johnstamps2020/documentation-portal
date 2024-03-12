@@ -4,16 +4,6 @@ import Badge, { BadgeProps } from '@mui/material/Badge';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
 
-function Info({
-  text,
-  severity,
-}: {
-  text: string;
-  severity: AlertProps['severity'];
-}) {
-  return <Alert severity={severity}>{text}</Alert>;
-}
-
 export default function DeltaDocCardText({
   result,
 }: {

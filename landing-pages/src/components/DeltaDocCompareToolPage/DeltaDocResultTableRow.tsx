@@ -16,21 +16,17 @@ export default function DeltaDocResultTableRow({
   index: number;
   releases: { lowerRelease: string; higherRelease: string };
 }) {
-  const { rootUrls, releaseA, releaseB } = useDeltaDocContext();
+  const { rootUrls, releaseA } = useDeltaDocContext();
 
-  const leftLinkUrl =
-    result.docATitle !== fileDoesNotExistText
+  function getUrlValue(title: string, rootUrl: string) {
+    return title !== fileDoesNotExistText
       ? result.URL.includes('cloud')
         ? result.URL
-        : rootUrls.leftUrl.slice(0, -1) + result.URL
+        : rootUrl.slice(0, -1) + result.URL
       : '';
-
-  const rightLinkUrl =
-    result.docBTitle !== fileDoesNotExistText
-      ? result.URL.includes('cloud')
-        ? result.URL
-        : rootUrls.rightUrl.slice(0, -1) + result.URL
-      : '';
+  }
+  const leftLinkUrl = getUrlValue(result.docATitle, rootUrls.leftUrl);
+  const rightLinkUrl = getUrlValue(result.docBTitle, rootUrls.rightUrl);
 
   function getLink(url: string) {
     return url ? (
