@@ -151,7 +151,7 @@ async function getTopBreadcrumb() {
     if (!latestLandingPage) return null;
 
     const matchingRootPage = rootPageObjects.filter((rpo: RootPageObject) => {
-      return rpo.path === '/' + latestLandingPage;
+      return rpo && rpo.path === '/' + latestLandingPage;
     });
 
     if (matchingRootPage.length === 1) {
