@@ -941,11 +941,8 @@ export async function getRootBreadcrumbs(
             }
           }
         })
-        .filter((item: {} | null) => {
-          return item !== null;
-        })
+        .filter(Boolean)
     );
-
     if (validCrumbs.length > 0) {
       return {
         status: 200,
