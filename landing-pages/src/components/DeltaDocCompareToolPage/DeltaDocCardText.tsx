@@ -27,7 +27,7 @@ export default function DeltaDocCardText({
     percentage,
   }: {
     content: string;
-    color:
+    color: BadgeProps['color'];
       | 'success'
       | 'info'
       | 'warning'
