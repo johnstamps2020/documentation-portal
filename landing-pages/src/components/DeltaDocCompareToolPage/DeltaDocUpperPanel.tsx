@@ -1,137 +1,247 @@
-import { Typography } from '@mui/material';
+import { Doc } from '@doctools/server';
+import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import { useReleasesNoRevalidation } from 'hooks/useApi';
+import { useDeltaDocValidator } from 'hooks/useDeltaDocData';
 import { useEffect, useState } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 
-const releaseDates = [
-  { release: 'Kufri', date: '202406' },
-  { release: 'Jasper', date: '202402' },
-  { release: 'Innsbruck', date: '202310' },
-  { release: 'Hakuba', date: '202306' },
-  { release: 'Garmisch', date: '202302' },
-  { release: 'Flaine', date: '202209' },
-  { release: 'Elysian', date: '202205' },
-  { release: 'Dobson', date: '202111' },
-  { release: 'Cortina', date: '202104' },
-];
+function validateUrl(
+  data: Doc | undefined,
+  setRelease: (value: React.SetStateAction<string>) => void,
+  setHelperTextMessage: (value: React.SetStateAction<string>) => void
+) {
+  const urlRelease = data?.releases;
+  if (urlRelease) {
+    setRelease(urlRelease[0].name);
+    setHelperTextMessage(
+      `This document belongs to release: ${urlRelease[0].name}.`
+    );
+  } else {
+    setHelperTextMessage('No doc matches this url.');
+  }
+}
 
 export default function DeltaDocUpperPanel() {
   const [leftUrl, setLeftUrl] = useState('');
   const [rightUrl, setRightUrl] = useState('');
-  const [temporaryUrl, setTemporaryUrl] = useState('');
+  const [temporaryLeftUrl, setTemporaryLeftUrl] = useState('');
+  const [temporaryRightUrl, setTemporaryRightUrl] = useState('');
   const [temporaryReleaseA, setTemporaryReleaseA] = useState('');
   const [temporaryReleaseB, setTemporaryReleaseB] = useState('');
-  const { releaseA, releaseB, url, setFormState } = useDeltaDocContext();
-  const { releases, isLoading, isError } = useReleasesNoRevalidation();
+  const [leftWarningMessage, setLeftWarningMessage] = useState('');
+  const [rightWarningMessage, setRightWarningMessage] = useState('');
+  const [canSubmit, setCanSubmit] = useState(false);
+  const [submittingAlert, setSubmittingAlert] = useState(false);
+  const [alert, setAlert] = useState<JSX.Element>();
+  const { setFormState, setRootUrls } = useDeltaDocContext();
+  const leftRootUrlNoSlash = /cloud\/.*/.exec(temporaryLeftUrl);
+  const rightRootUrlNoSlash = /cloud\/.*/.exec(temporaryRightUrl);
+
+  const {
+    docData: leftDocData,
+    isError: leftIsError,
+    isLoading: leftIsLoading,
+  } = useDeltaDocValidator(
+    leftRootUrlNoSlash ? leftRootUrlNoSlash[0].slice(0, -1) : ''
+  );
+
+  const {
+    docData: rightDocData,
+    isError: rightIsError,
+    isLoading: rightLeftError,
+  } = useDeltaDocValidator(
+    rightRootUrlNoSlash ? rightRootUrlNoSlash[0].slice(0, -1) : ''
+  );
+
+  const urlIsNotEmpty =
+    temporaryRightUrl.length !== 0 && temporaryLeftUrl.length !== 0;
+  const urlValidation =
+    temporaryLeftUrl !== temporaryRightUrl &&
+    (temporaryLeftUrl !== leftUrl || temporaryRightUrl !== rightUrl);
+
+  const releaseValidation =
+    temporaryReleaseA.length > 0 && temporaryReleaseB.length > 0;
+
+  const docValidation = rightDocData !== undefined && leftDocData !== undefined;
+
+  const canSubmitValue =
+    urlValidation && urlIsNotEmpty && releaseValidation && docValidation;
+
+  function validateData(dataA: Doc | undefined, dataB: Doc | undefined) {
+    // TODO:
+    //   - validate jutro and self-managed docs, now works only on cloud/..
+
+    validateUrl(dataA, setTemporaryReleaseA, setLeftWarningMessage);
+    validateUrl(dataB, setTemporaryReleaseB, setRightWarningMessage);
+    if (
+      dataA &&
+      dataB &&
+      dataA.url.replace(/\d+/, '') !== dataB.url.replace(/\d+/, '')
+    ) {
+      if (dataA.title !== dataB.title) {
+        setAlert(
+          <Alert severity="error">
+            You are trying to compare documents with different titles:{' '}
+            <b>{dataA.title} </b> and <b>{dataB.title}</b>.
+          </Alert>
+        );
+        setSubmittingAlert(true);
+      } else if (dataA.title === dataB.title) {
+        setAlert(
+          <Alert severity="error">
+            You are trying to compare documents that don't match.
+          </Alert>
+        );
+        setSubmittingAlert(true);
+      }
+    } else if (temporaryLeftUrl === temporaryRightUrl && urlIsNotEmpty) {
+      setAlert(
+        <Alert severity="error">The urls you provided are the same.</Alert>
+      );
+      setSubmittingAlert(true);
+    } else if (
+      (temporaryLeftUrl.length !== 0 &&
+        temporaryRightUrl.length !== 0 &&
+        temporaryLeftUrl.includes('.html')) ||
+      temporaryRightUrl.includes('.html')
+    ) {
+      setAlert(
+        <Alert severity="error">
+          Url should be to the root of the document, you provided a link to a
+          topic.
+        </Alert>
+      );
+      setSubmittingAlert(true);
+    } else if (
+      leftDocData &&
+      rightDocData &&
+      leftDocData.releases &&
+      rightDocData.releases
+    ) {
+      setAlert(
+        <Alert severity="info">
+          You are comparing <b>{leftDocData.title}</b> in{' '}
+          <b>{leftDocData?.releases[0].name}</b> and{' '}
+          <b>{rightDocData?.releases[0].name}</b>
+        </Alert>
+      );
+      setSubmittingAlert(false);
+    } else {
+      setAlert(<></>);
+      setSubmittingAlert(false);
+    }
+  }
 
   useEffect(() => {
-    const version = releaseDates.find((object) => {
-      return object.release === temporaryReleaseA;
-    });
-    if (version && leftUrl && rightUrl) {
-      setTemporaryUrl(`/${leftUrl}/${version.date}/${rightUrl}/`);
+    validateData(leftDocData, rightDocData);
+    setCanSubmit(canSubmitValue && !submittingAlert);
+    if (temporaryLeftUrl.length === 0) {
+      setLeftWarningMessage('');
     }
-  }, [leftUrl, rightUrl, setTemporaryUrl, temporaryUrl, temporaryReleaseA]);
+    if (temporaryRightUrl.length === 0) {
+      setRightWarningMessage('');
+    }
+  }, [
+    leftDocData,
+    rightDocData,
+    temporaryLeftUrl,
+    setTemporaryLeftUrl,
+    temporaryRightUrl,
+    setTemporaryRightUrl,
+    canSubmitValue,
+    temporaryReleaseA,
+    temporaryReleaseB,
+    alert,
+  ]);
 
-  const canSubmit =
-    (temporaryReleaseA !== releaseA ||
-      temporaryReleaseB !== releaseB ||
-      temporaryUrl !== url) &&
-    rightUrl.length > 0 &&
-    leftUrl.length > 0 &&
-    temporaryUrl.length > 0 && 
-    temporaryReleaseA.length > 0 &&
-    temporaryReleaseB.length > 0;
+  function slashValidation(url: string) {
+    if (url.startsWith('/') && url.endsWith('/')) {
+      return url;
+    } else if (url.startsWith('/') && !url.endsWith('/')) {
+      return `${url}/`;
+    } else if (!url.startsWith('/') && url.endsWith('/')) {
+      return `/${url}`;
+    } else {
+      return `/${url}/`;
+    }
+  }
+  function handleUrl(url: string) {
+    if (url.includes('.net')) {
+      return slashValidation(url.split(/.*.net/)[1]);
+    }
+    if (url.includes('.com')) {
+      return slashValidation(url.split(/.*.com/)[1]);
+    }
+    if (url.includes('localhost')) {
+      return slashValidation(url.split(/.*localhost:\d+/)[1]);
+    }
+  }
 
   function handleSubmit() {
-    setFormState({
-      releaseA: temporaryReleaseA,
-      releaseB: temporaryReleaseB,
-      url: temporaryUrl,
-    });
+    setLeftUrl(temporaryLeftUrl);
+    setRightUrl(temporaryRightUrl);
+    const leftRootUrl = handleUrl(temporaryLeftUrl);
+    const rightRootUrl = handleUrl(temporaryRightUrl);
+    if (leftRootUrl && rightRootUrl) {
+      setFormState({
+        releaseA: temporaryReleaseA ? temporaryReleaseA : '',
+        releaseB: temporaryReleaseB ? temporaryReleaseB : '',
+        url: leftRootUrl, //runs query on one of the urls since they're the same
+      });
+      setRootUrls({
+        leftUrl: leftRootUrl,
+        rightUrl: rightRootUrl,
+      });
+    } else setAlert(<Alert severity="error">The url </Alert>);
   }
-
-  if (isError || isLoading || !releases) {
-    return null;
-  }
-
-  const ReleaseMenuItem = releases
-    .sort((a, b) => {
-      if (a.name > b.name) {
-        return -1;
-      }
-      if (a.name < b.name) {
-        return 1;
-      }
-      return 0;
-    })
-    .map((release, key) => (
-      <MenuItem key={key} value={release.name}>
-        {release.name}
-      </MenuItem>
-    ));
 
   return (
     <Container>
       <Stack spacing={2} sx={{ py: '1rem' }}>
-        <FormControl sx={{ width: '450px', mr: 'auto' }}>
-          <InputLabel>Release A</InputLabel>
-          <Select
-            label="Release A to compare"
-            value={temporaryReleaseA}
-            onChange={(event: SelectChangeEvent) =>
-              setTemporaryReleaseA(event.target.value as string)
-            }
+        <FormControl sx={{ alignItems: 'center' }}>
+          <Stack
+            direction="row"
+            height="200px"
+            alignItems="center"
+            alignSelf="center"
           >
-            {ReleaseMenuItem}
-          </Select>
-        </FormControl>
-        <FormControl sx={{ width: '450px' }}>
-          <InputLabel>Release B</InputLabel>
-          <Select
-            label="Release B to compare"
-            value={temporaryReleaseB}
-            onChange={(event: SelectChangeEvent) =>
-              setTemporaryReleaseB(event.target.value as string)
-            }
-          >
-            {ReleaseMenuItem}
-          </Select>
-        </FormControl>
-        <FormControl sx={{ width: '450px', alignItems: 'center' }}>
-          <Stack direction="row" spacing={3} alignItems="center">
-            <Typography>/</Typography>
-            <TextField
-              label="Left URL"
-              value={leftUrl}
-              fullWidth
-              onChange={(event) => setLeftUrl(event.target.value as string)}
-            />
-            <Typography>/</Typography>
-            <Typography>version</Typography>
-            <Typography>/</Typography>
-            <TextField
-              label="Right URL"
-              value={rightUrl}
-              fullWidth
-              onChange={(event) => setRightUrl(event.target.value as string)}
-            />
-            <Typography>/</Typography>
+            <Stack padding={3}>
+              <TextField
+                label="First URL"
+                value={temporaryLeftUrl}
+                sx={{ width: '500px' }}
+                onChange={(event) =>
+                  setTemporaryLeftUrl(event.target.value as string)
+                }
+              />
+              <FormHelperText
+                sx={{ fontSize: '14px', height: '30px', maxWidth: '420px' }}
+              >
+                {leftWarningMessage}
+              </FormHelperText>
+            </Stack>
+            <Stack padding={3}>
+              <TextField
+                label="Second URL"
+                value={temporaryRightUrl}
+                sx={{ width: '500px' }}
+                onChange={(event) =>
+                  setTemporaryRightUrl(event.target.value as string)
+                }
+              />
+              <FormHelperText
+                sx={{ fontSize: '14px', height: '30px', maxWidth: '420px' }}
+              >
+                {rightWarningMessage}
+              </FormHelperText>
+            </Stack>
           </Stack>
-          <FormHelperText sx={{ fontSize: '14px' }}>
-            Example for url <b>/cloud/pc/202302/devsetup/</b>: <br />
-            left URL would be <b>cloud/pc</b> <br />
-            right URL would be <b>devsetup</b>
-          </FormHelperText>
+          <Stack sx={{ height: '60px' }}>{alert}</Stack>
           <Button
             variant="contained"
             sx={{ mt: '12px', width: '250px' }}
