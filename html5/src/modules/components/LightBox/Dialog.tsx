@@ -30,6 +30,7 @@ export default function Dialog({
         document.body.style.overflow = 'hidden';
         document.addEventListener('keydown', closeDialogWithEscapeButton);
         dialogRef.current.showModal();
+        dialogRef.current.scrollTop = 0;
       }
 
       return () => {
