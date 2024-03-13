@@ -12,7 +12,7 @@
         "subject": ["Best practices"],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
