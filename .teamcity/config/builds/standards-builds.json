@@ -71,7 +71,7 @@
       "srcId": "standardsmastersrc",
       "docId": "standardsmaster",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     }
   ]
 }
