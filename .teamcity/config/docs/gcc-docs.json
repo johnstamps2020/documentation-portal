@@ -12,7 +12,7 @@
         "subject": ["Best practices"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -151,7 +151,7 @@
         "version": ["latest"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -187,7 +187,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -205,7 +205,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -223,7 +223,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -241,7 +241,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -259,7 +259,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -277,7 +277,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -295,7 +295,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -313,7 +313,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -331,7 +331,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -349,7 +349,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -367,7 +367,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -385,7 +385,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -403,7 +403,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -421,7 +421,7 @@
         "subject": ["Development"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
