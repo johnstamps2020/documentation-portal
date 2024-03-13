@@ -8,7 +8,7 @@
       "srcId": "in20222",
       "docId": "in20222app",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
