@@ -143,5 +143,9 @@
   "navbar.printThisPage": {
     "message": "Wydrukuj tę stronę",
     "description": "Hover text over print button"
+  },
+  "chat.send": {
+    "message": "Wyślij",
+    "description": "The label for the button which the user clicks to send a chat message"
   }
 }

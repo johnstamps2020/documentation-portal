@@ -23,6 +23,7 @@ import PlatformAdminPage from 'components/AdminPage/PlatformAdminPage/PlatformAd
 import ProductAdminPage from 'components/AdminPage/ProductAdminPage/ProductAdminPage';
 import VersionAdminPage from 'components/AdminPage/VersionAdminPage/VersionAdminPage';
 import DeltaDocCompareToolPage from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
+import ChatPage from 'pages/ChatPage';
 
 const router = createBrowserRouter([
   {
@@ -110,7 +111,8 @@ const router = createBrowserRouter([
           },
         ],
       },
-      { path: 'delta-doc', element: <DeltaDocCompareToolPage />},
+      { path: 'delta-doc', element: <DeltaDocCompareToolPage /> },
+      { path: 'chat', element: <ChatPage /> },
     ],
   },
 ]);
