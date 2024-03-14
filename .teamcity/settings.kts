@@ -2380,6 +2380,7 @@ object User {
         object TranslationKitBuildType : BuildType({
             name = "Create translation kit"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+            buildNumberPattern = "%build.counter%: %env.DOC_ID%"
 
             params {
                 text(
