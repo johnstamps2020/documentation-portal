@@ -42,19 +42,11 @@ export default function DeltaDocUpperPanel() {
   const leftRootUrlNoSlash = /cloud\/.*/.exec(temporaryLeftUrl);
   const rightRootUrlNoSlash = /cloud\/.*/.exec(temporaryRightUrl);
 
-  const {
-    docData: leftDocData,
-    isError: leftIsError,
-    isLoading: leftIsLoading,
-  } = useDeltaDocValidator(
+  const { docData: leftDocData } = useDeltaDocValidator(
     leftRootUrlNoSlash ? leftRootUrlNoSlash[0].slice(0, -1) : ''
   );
 
-  const {
-    docData: rightDocData,
-    isError: rightIsError,
-    isLoading: rightLeftError,
-  } = useDeltaDocValidator(
+  const { docData: rightDocData } = useDeltaDocValidator(
     rightRootUrlNoSlash ? rightRootUrlNoSlash[0].slice(0, -1) : ''
   );
 

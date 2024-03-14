@@ -1,15 +1,13 @@
 import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
+import AdminAccess from 'components/AdminPage/AdminAccess';
 import { DeltaDocProvider } from 'components/DeltaDocCompareToolPage/DeltaDocContext';
 import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResultsPanel';
 import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
 import DeltaDocUpperPanel from 'components/DeltaDocCompareToolPage/DeltaDocUpperPanel';
 import { useEffect } from 'react';
-import AdminAccess from 'components/AdminPage/AdminAccess';
 
 export const fileDoesNotExistText = 'N/A - file does not exist';
 
