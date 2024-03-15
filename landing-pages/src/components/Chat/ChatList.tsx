@@ -27,7 +27,7 @@ export default function ChatList() {
           bottom: 10,
           width: boxWidth,
           left: `calc(100vw - ${boxWidth})`,
-          backgroundColor: 'white',
+          backgroundColor: 'rgba(255, 255, 255, 0.97)',
           padding: { xs: '0', md: '1rem' },
         }}
       >

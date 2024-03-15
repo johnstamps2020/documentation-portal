@@ -6,26 +6,34 @@ import { useEffect, useRef } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import './ChatMessage.css';
+import { useLayoutContext } from 'LayoutContext';
 
-export default function ChatMessage({ role, message }: ChatbotMessage) {
+function UserMessage({ message }: ChatbotMessage) {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const { setTitle } = useLayoutContext();
 
   useEffect(() => {
     if (wrapperRef.current) {
       wrapperRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, []);
 
+    setTitle(message);
+  }, [setTitle, message]);
+
+  return (
+    <Typography variant="h2" fontSize="30px" width="100%" ref={wrapperRef}>
+      {message}
+    </Typography>
+  );
+}
+
+export default function ChatMessage({ role, message }: ChatbotMessage) {
   if (role === 'user') {
-    return (
-      <Typography variant="h2" fontSize="30px" width="100%">
-        {message}
-      </Typography>
-    );
+    return <UserMessage message={message} />;
   }
 
   return (
-    <Box sx={{ width: '100%' }} ref={wrapperRef}>
+    <Box sx={{ width: '100%' }}>
       <Typography variant="h3">
         {translate({
           id: 'chat.answer',

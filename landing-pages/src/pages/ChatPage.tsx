@@ -1,3 +1,4 @@
+import { translate } from '@doctools/components';
 import Container from '@mui/material/Container';
 import { useLayoutContext } from 'LayoutContext';
 import AdminAccess from 'components/AdminPage/AdminAccess';
@@ -9,7 +10,7 @@ export default function ChatPage() {
   const { setTitle } = useLayoutContext();
 
   useEffect(() => {
-    setTitle("Let's chat!");
+    setTitle(translate({ id: 'chat.default-title', message: "Let's chat!" }));
   }, [setTitle]);
 
   return (

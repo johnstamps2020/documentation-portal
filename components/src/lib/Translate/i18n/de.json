@@ -144,6 +144,10 @@
     "message": "Drucke diese Seite",
     "description": "Hover text over print button"
   },
+  "chat.default-title": {
+    "message": "Let's chat",
+    "description": "The title of the chat window"
+  },
   "chat.send": {
     "message": "Send",
     "description": "The label for the button which the user clicks to send a chat message"
