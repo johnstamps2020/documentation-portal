@@ -123,5 +123,17 @@
   "footer.published": {
     "message": "Publicação:",
     "description": "Text preceding the date on which the page was published"
+  },
+  "chat.default-title": {
+    "message": "Let's chat",
+    "description": "The title of the chat window"
+  },
+  "chat.send": {
+    "message": "Send",
+    "description": "The label for the button which the user clicks to send a chat message"
+  },
+  "chat.answer": {
+    "message": "Answer",
+    "description": "The chatbot responds to a question. This is the label that indicates that the following text is the chatbot's answer"
   }
 }

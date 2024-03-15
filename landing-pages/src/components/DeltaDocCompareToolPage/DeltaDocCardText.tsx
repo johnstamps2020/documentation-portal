@@ -1,5 +1,4 @@
 import { DeltaLevenshteinReturnType } from '@doctools/server';
-import Alert, { AlertProps } from '@mui/material/Alert';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';

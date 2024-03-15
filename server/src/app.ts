@@ -134,6 +134,7 @@ const redirectRouter = require('./routes/redirect');
 const recommendationsRouter = require('./routes/recommendations');
 const passport = require('passport');
 const deltaDocRouter = require('./routes/delta-doc');
+const chatbotRouter = require('./routes/chatbot');
 
 // view engine setup
 app.set('views', join(__dirname, 'views'));
@@ -189,6 +190,7 @@ app.use('/envInformation', envRouter);
 app.use('/redirect', saveUserInfoToResLocals, redirectRouter);
 app.use('/search', saveUserInfoToResLocals, searchRouter);
 app.use('/delta', saveUserInfoToResLocals, deltaDocRouter);
+app.use('/chatbot', saveUserInfoToResLocals, chatbotRouter);
 
 // overwrite HTML received through proxy
 const { harmonRouter } = require('./routes/proxy-harmon-router');

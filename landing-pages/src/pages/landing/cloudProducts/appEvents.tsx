@@ -4,9 +4,8 @@ import ApplicationLayout, {
   ApplicationLayoutProps,
 } from 'components/LandingPage/Application/ApplicationLayout';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import workflowImage from '../img/ae-land-page-workflow.png';
 import appEventsDiagram from '../img/ae-arch-diagram.png';
-import { allSelectors } from 'pages/landing/selectors/allSelectors';
+import workflowImage from '../img/ae-land-page-workflow.png';
 
 const appEventsGuide: LandingPageItemProps = {
   label: 'App Events Guide',

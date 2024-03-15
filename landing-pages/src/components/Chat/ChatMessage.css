@@ -1,0 +1,17 @@
+table {
+  border-width: 0.5px;
+  border-style: solid;
+}
+
+th,
+td {
+  padding: 8px 1rem;
+}
+
+pre {
+  background-color: #fafafa;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  overflow-x: auto;
+}

@@ -3,7 +3,6 @@ import ProductFamilyLayout, {
 } from 'components/LandingPage/ProductFamily/ProductFamilyLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
-import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {
