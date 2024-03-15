@@ -66,6 +66,7 @@ export async function addItems(
             ...bucketParams,
             Body: file.data,
             Key: path.join(prefix, file.name),
+            CacheControl: 'no-cache, no-store, must-revalidate',
           },
         }).done()
       );
