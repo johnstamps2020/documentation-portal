@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 
 export default function ChatList() {
   const { messages } = useChat();
-  const boxWidth = '90vw';
+
   return (
     <>
       <Stack
