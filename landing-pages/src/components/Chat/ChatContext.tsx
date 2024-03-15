@@ -17,6 +17,10 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
 
   const sendPrompt = async (userPropmt: string) => {
     setIsProcessing(true);
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { role: 'user', message: userPropmt },
+    ]);
     const response = await fetch('/chatbot', {
       method: 'POST',
       body: JSON.stringify({
@@ -32,7 +36,6 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       const message = (await response.json()) as ChatbotResponse;
       setMessages((prevMessages) => [
         ...prevMessages,
-        { role: 'user', message: userPropmt },
         { role: 'bot', message: message.text },
       ]);
     }

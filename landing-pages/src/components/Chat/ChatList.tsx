@@ -17,7 +17,11 @@ export default function ChatList() {
       >
         <Stack sx={{ gap: 2, overflow: 'auto', width: '100%' }}>
           {messages.map((item, index) => (
-            <ChatMessage key={index} {...item} />
+            <ChatMessage
+              key={index}
+              isLast={index === messages.length - 1}
+              {...item}
+            />
           ))}
         </Stack>
       </Stack>
@@ -28,7 +32,7 @@ export default function ChatList() {
           width: boxWidth,
           left: `calc(100vw - ${boxWidth})`,
           backgroundColor: 'rgba(255, 255, 255, 0.97)',
-          padding: { xs: '0', md: '1rem' },
+          padding: { xs: '0', md: '0.3rem' },
         }}
       >
         <ChatInputBox />
