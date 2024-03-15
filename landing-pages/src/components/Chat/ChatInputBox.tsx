@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useChat } from './ChatContext';
+import ChatDebugControls from './ChatDebugControls';
 
 export default function ChatInputBox() {
   const { sendPrompt, isProcessing } = useChat();
@@ -21,30 +22,34 @@ export default function ChatInputBox() {
   }
 
   return (
-    <Stack
-      direction="row"
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{ width: '100%', padding: '2rem', gap: 2 }}
-    >
-      <TextField
-        hiddenLabel
-        fullWidth
-        autoComplete="off"
-        maxRows={5}
-        value={userPropmt}
-        onChange={handleChange}
-      />
-      <IconButton
-        disabled={isProcessing || userPropmt === ''}
-        aria-label={translate({
-          id: 'chat.send',
-          message: 'Send',
-        })}
-        type="submit"
+    <>
+      <Stack
+        direction="row"
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{ width: '100%', padding: '2rem', gap: 2 }}
       >
-        <SendIcon />
-      </IconButton>
-    </Stack>
+        <TextField
+          hiddenLabel
+          fullWidth
+          autoComplete="off"
+          maxRows={5}
+          value={userPropmt}
+          onChange={handleChange}
+          disabled={isProcessing}
+        />
+        <IconButton
+          disabled={isProcessing || userPropmt === ''}
+          aria-label={translate({
+            id: 'chat.send',
+            message: 'Send',
+          })}
+          type="submit"
+        >
+          <SendIcon />
+        </IconButton>
+      </Stack>
+      <ChatDebugControls />
+    </>
   );
 }

@@ -1,10 +1,12 @@
-import { ChatbotMessage } from '@doctools/server';
+import { ChatbotMessage, ChatbotResponse } from '@doctools/server';
 import { createContext, useContext, useState } from 'react';
+import { answer, question } from './chatDebug';
 
 interface ChatInterface {
   messages: ChatbotMessage[];
-  sendPrompt(userPrompt: string): void;
   isProcessing: boolean;
+  sendPrompt(userPrompt: string): void;
+  loadDebugMessages(): void;
 }
 
 export const ChatContext = createContext<ChatInterface | null>(null);
@@ -27,18 +29,28 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     });
 
     if (response.ok) {
-      const message = await response.json();
+      const message = (await response.json()) as ChatbotResponse;
       setMessages((prevMessages) => [
         ...prevMessages,
         { role: 'user', message: userPropmt },
-        message,
+        { role: 'bot', message: message.text },
       ]);
     }
     setIsProcessing(false);
   };
 
+  function loadDebugMessages() {
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { role: 'user', message: question },
+      { role: 'bot', message: answer },
+    ]);
+  }
+
   return (
-    <ChatContext.Provider value={{ messages, sendPrompt, isProcessing }}>
+    <ChatContext.Provider
+      value={{ messages, sendPrompt, loadDebugMessages, isProcessing }}
+    >
       {children}
     </ChatContext.Provider>
   );
