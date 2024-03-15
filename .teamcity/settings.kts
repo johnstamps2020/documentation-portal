@@ -894,7 +894,7 @@ object GwBuildSteps {
                 
                 $awsEnvVars
                 
-                aws s3 sync "$outputPath" s3://tenant-doctools-${atmosDeployEnv}-builds/${publishPath} --delete --metadata '{"Cache-Control":"no-store"}
+                aws s3 sync "$outputPath" s3://tenant-doctools-${atmosDeployEnv}-builds/${publishPath} --delete --metadata '{"Cache-Control":"no-store"}'
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
