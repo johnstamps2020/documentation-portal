@@ -21,7 +21,7 @@ const pageConfig: CategoryLayoutProps = {
       label: '5.1.0',
       items: [
         {
-          label: 'InsuranceSuite Configuration Upgrade Tools Guide',
+          label: 'Guía de herramientas de actualización de configuración',
           docId: 'isconfigupgradetools510es419',
         },
       ],
@@ -30,7 +30,7 @@ const pageConfig: CategoryLayoutProps = {
     label: '5.0.0',
     items: [
       {
-        label: 'InsuranceSuite Configuration Upgrade Tools Guide',
+        label: 'Guía de herramientas de actualización de configuración',
         docId: 'isconfigupgradetoolses419500',
       },
     ],
