@@ -11,6 +11,8 @@ Sed auctor, nunc nec tincidunt tincidunt, nunc nunc tincidunt nunc, nec tincidun
 
 Sed auctor, nunc nec tincidunt tincidunt, nunc nunc tincidunt nunc, nec tincidunt nunc nunc nec nunc.
 
+The followiwng table is just an example[^1]
+
 | Header One     | Header Two     | Header Three   |
 | :------------- | :------------- | :------------- |
 | Item One       | Item Two       | Item Three     |
@@ -18,4 +20,51 @@ Sed auctor, nunc nec tincidunt tincidunt, nunc nunc tincidunt nunc, nec tincidun
 | Item One       | Item Two       | Item Three     |
 | Item One       | Item Two       | Item Three     |
 
-Sed auctor, nunc nec tincidunt tincidunt, nunc nunc tincidunt nunc, nec tincidunt nunc nunc nec nunc.`;
+\`\`\`jsx
+import * as React from 'react';
+import { alpha, styled } from '@mui/material/styles';
+import { pink } from '@mui/material/colors';
+import Switch from '@mui/material/Switch';
+
+const PinkSwitch = styled(Switch)(({ theme }) => ({
+  '& .MuiSwitch-switchBase.Mui-checked': {
+    color: pink[600],
+    '&:hover': {
+      backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity), // this line will overflow because it's very long. some would say it's the best line ever. and the longest one, for sure
+    },
+  },
+  '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+    backgroundColor: pink[600],
+  },
+}));
+
+const label = { inputProps: { 'aria-label': 'Color switch demo' } };
+
+export default function ColorSwitches() {
+  return (
+    <div>
+      <Switch {...label} defaultChecked />
+      <Switch {...label} defaultChecked color="secondary" />
+      <Switch {...label} defaultChecked color="warning" />
+      <Switch {...label} defaultChecked color="default" />
+      <PinkSwitch {...label} defaultChecked />
+    </div>
+  );
+}
+\`\`\`
+
+Sed auctor, nunc nec tincidunt tincidunt, nunc nunc tincidunt nunc, nec tincidunt nunc nunc nec nunc.
+
+## Tasklist
+
+* [ ] eat breakfast
+* [x] exercise
+* [ ] eat lunch
+* [ ] eat dinner
+* [x] sleep
+
+## Autolink literals
+
+www.example.com, https://example.com, and contact@example.com.
+
+[^1]: The table examples is provided as-is. Any resemblance to actual tables, living or otherwise, is purely coincidental.`;
