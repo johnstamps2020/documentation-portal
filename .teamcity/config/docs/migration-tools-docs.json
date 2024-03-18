@@ -1,0 +1,67 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "billingmigrationtool",
+      "title": "Billing Migration Tool",
+      "url": "cloud/is/migration-tools/billing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Upgrade"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "policyhistorymigrationtool",
+      "title": "Policy History Migration Tool",
+      "url": "cloud/is/migration-tools/policy-history",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Upgrade"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    }
+  ]
+}
