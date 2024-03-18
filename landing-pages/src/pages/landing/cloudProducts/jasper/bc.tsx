@@ -69,6 +69,15 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
+        {
+          label: 'Billing Migration Tool',
+          docId: 'billingmigrationtool',
+          description: (
+            <>
+              Migrate legacy billing data to BillingCenter Cloud.
+            </>
+          ),
+        },
       ],
     },
     {
