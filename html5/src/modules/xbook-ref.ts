@@ -61,33 +61,31 @@ async function findDocLink(
       if (response.ok) {
         const docInfo = await response.json();
         if (docInfo.error) return;
-        let targetUrl = `/${docInfo.url}`;
+        let targetUrl = `/${docInfo.url}/`;
         link = document.createElement('a');
 
         if (contextid) {
-          let topicTitle;
-          let topicUrl = await getTopicUrl(docInfo.url, contextid);
+          let topic: Document;
+
+          let topicUrl = await getDITATopicUrl(docInfo.url, contextid);
           if (topicUrl) {
-            targetUrl = targetUrl.concat(`/${topicUrl}#${contextid}`);
-            topicTitle = await getTopicTitle(targetUrl);
+            targetUrl = targetUrl.concat(`${topicUrl}#${contextid}`);
+            topic = await getTopic(targetUrl);
           } else {
-            //TODO: The updated redirect causes a minor issue here. If the
-            // targetTestUrl is invalid but is within a doc, the root
-            // of the doc is returned and we append the contextid as a path.
-            // The redirect catches this again and does the right thing.
-            // However, the URL in the link is technically incorrect.
-            const targetTestUrl = targetUrl.concat(`/${contextid}`);
-            topicTitle = await getTopicTitle(targetTestUrl);
-            if (topicTitle) {
+            const targetTestUrl = targetUrl.concat(`${contextid}/`);
+            topic = await getTopic(targetTestUrl);
+            if (topic) {
               targetUrl = targetTestUrl;
+            } else {
+              topic = await getTopic(targetUrl);
             }
           }
 
-          if (topicTitle) {
+          if (topic.title) {
             if (document.documentElement.lang.toLowerCase().startsWith('en')) {
-              link.setAttribute('title', `"${topicTitle}" in ${docTitle}`);
+              link.setAttribute('title', `"${topic.title}" in ${docTitle}`);
             } else {
-              link.setAttribute('title', topicTitle);
+              link.setAttribute('title', topic.title);
             }
           }
         }
@@ -103,10 +101,14 @@ async function findDocLink(
   return link;
 }
 
-async function getTopicUrl(url: string, contextid: string) {
+async function getDITATopicUrl(url: string, contextid: string) {
   try {
     const response = await fetch(`/${url}/contextIds.json`);
     if (response.ok) {
+      const contentType = response.headers.get('Content-Type');
+      if (!contentType.includes('application/json')) {
+        return;
+      }
       const idInfo = await response.json();
       if (idInfo.error) return;
       const id = idInfo.contextIds.find((match: { ids: string | String[] }) =>
@@ -123,13 +125,16 @@ async function getTopicUrl(url: string, contextid: string) {
   return;
 }
 
-async function getTopicTitle(url: string) {
+async function getTopic(url: string) {
   try {
     const response = await fetch(url);
-    if (response.ok) {
+    if (response.ok && !response.redirected) {
       const responseText = await response.text();
       const doc = new DOMParser().parseFromString(responseText, 'text/html');
-      return doc.title;
+      if (doc) {
+        return doc;
+      }
+      return;
     }
   } catch (err) {
     console.error(err);
