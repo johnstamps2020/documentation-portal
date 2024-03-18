@@ -10,7 +10,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["5.0.0"],
-        "release": ["Innsbruck"],
+				"release": ["Hakuba", "Innsbruck"],
         "subject": ["Upgrade"],
         "language": "pt"
       },
