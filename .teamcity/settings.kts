@@ -836,7 +836,7 @@ object GwBuildSteps {
                 $awsEnvVarsProd
                 
                 echo "Uploading from Teamcity to prod"
-                aws s3 sync ${publishPath}/ s3://tenant-doctools-omega2-andromeda-builds/${publishPath} --delete --cache-control max-age=60'
+                aws s3 sync ${publishPath}/ s3://tenant-doctools-omega2-andromeda-builds/${publishPath} --delete --cache-control max-age=60
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
