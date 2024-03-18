@@ -22,6 +22,15 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "BusinessFunctions.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapinextsrc",
+      "docId": "businessfunctionsnext",
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "Webhooks.ditamap",
       "indexRedirect": true,
       "srcId": "restapinextsrc",

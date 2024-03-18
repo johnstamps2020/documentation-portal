@@ -70,6 +70,41 @@
       "earlyAccess": false
     },
     {
+      "id": "businessfunctionsnext",
+      "title": "Business Functions",
+      "url": "cloud/is/businessfunctions/next",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "App Events Webhooks"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.06"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Development",
+          "Integration"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "webhooksnext",
       "title": "Webhooks",
       "url": "cloud/is/webhooks/next",
