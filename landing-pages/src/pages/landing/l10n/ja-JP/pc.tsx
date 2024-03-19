@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: 'Data Masking',
+      items: [
+        {
+            label: 'Data Masking',
+            docId: 'datamaskingjaJP'
+        }
+      ],
+    },
+    {
       label: '2023.10 Innsbruck',
       items: [
         {

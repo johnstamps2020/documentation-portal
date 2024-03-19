@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: 'Data Masking',
+      items: [
+        {
+            label: 'Data Masking',
+            docId: 'datamaskingjaJP'
+        }
+      ],
+    },
+    {
       label: '2021.04 Cortina',
       items: [
         {

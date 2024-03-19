@@ -1,0 +1,25 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "datamaskingjaJP",
+      "title": "Data Masking ja",
+      "displayTitle": "Data Masking",
+      "url": "ja/cloud/is/datamasking",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "BillingCenter", "ClaimCenter", "PolicyCenter" ],
+        "version": [ "2023.10" ],
+        "release": [ "Innsbruck" ],
+        "subject": [ "Development" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    }
+  ]
+}
