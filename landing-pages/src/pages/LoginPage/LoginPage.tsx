@@ -19,6 +19,7 @@ export default function LoginPage() {
   useEffect(() => {
     setTitle('Guidewire Documentation | Log in');
     setBackgroundColor('hsl(0, 0%, 98%)');
+    // TODO why setHeaderOptions in dependency array?
   }, [setBackgroundColor, setHeaderOptions, setTitle]);
 
   if (!mounted) {

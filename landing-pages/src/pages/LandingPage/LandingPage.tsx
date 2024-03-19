@@ -16,6 +16,7 @@ export default function LandingPage() {
   const { pageData, isError } = usePageData();
   const { title, setTitle, setHeaderOptions, setPath } = useLayoutContext();
 
+  // TODO create useStorage hook(s)
   sessionStorage.setItem('latestLandingPagePath', pageData?.path || '');
 
   if (pageData?.searchFilters?.release) {

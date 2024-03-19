@@ -18,8 +18,6 @@ const commonProps = {
   padding: '2px 4px',
   display: 'flex',
   alignItems: 'center',
-  marginLeft: 'auto',
-  marginRight: 'auto',
   border: '1px solid hsl(214, 22%, 58%)',
 };
 
@@ -28,6 +26,8 @@ const bigSizeProps = {
   height: '45px',
   width: '100%',
   maxWidth: '760px',
+  marginLeft: 'auto',
+  marginRight: 'auto',
 };
 
 const regularSizeProps = {
@@ -35,6 +35,7 @@ const regularSizeProps = {
   height: '30px',
   width: '100%',
   maxWidth: '360px',
+  marginLeft: '0',
 };
 
 export default function SearchBox({ big = true }: SearchBoxProps) {

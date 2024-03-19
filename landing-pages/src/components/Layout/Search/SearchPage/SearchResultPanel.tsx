@@ -1,5 +1,5 @@
 import NotLoggedInAlert from './NotLoggedInAlert';
-import SearchBox from 'components/SearchBox/SearchBox';
+import SearchBox from 'components/Layout/Search/SearchBox/SearchBox';
 import LoadingSearchDataErrorAlert from './LoadingSearchDataErrorAlert';
 import SearchResultSection from './SearchResultSection';
 import Stack from '@mui/material/Stack';

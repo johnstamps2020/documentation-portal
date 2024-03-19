@@ -282,6 +282,22 @@ export function useProducts() {
   };
 }
 
+export function useProductsNoRevalidation() {
+  const { data, error, isLoading } = useSWR<Product[], ServerSearchError>(
+    '/safeConfig/entity/Product/all',
+    getter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    products: data,
+    isLoading,
+    isError: error,
+  };
+}
+
 export function useVersions() {
   const { data, error, isLoading } = useSWR<Version[], ServerSearchError>(
     '/safeConfig/entity/Version/all',

@@ -1,10 +1,10 @@
 import { StackProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import SearchBox from 'components/SearchBox/SearchBox';
 import HeaderDesktop from './Desktop/HeaderDesktop';
 import HeaderMobile from './Mobile/HeaderMobile';
 import HeaderMenuItems from './HeaderMenuItems';
+import SearchHeadWrapper from '../Search/SearchHeadWrapper';
 
 export const headerHeight = '68px';
 
@@ -28,7 +28,7 @@ export default function Header(headerOptions: HeaderOptions) {
       <HeaderMobile
         menuContents={
           <>
-            {!headerOptions?.hideSearchBox && <SearchBox big={false} />}
+            {!headerOptions?.hideSearchBox && <SearchHeadWrapper />}
             <HeaderMenuItems />
           </>
         }
@@ -38,7 +38,13 @@ export default function Header(headerOptions: HeaderOptions) {
 
   return (
     <HeaderDesktop
-      centerItems={!headerOptions?.hideSearchBox && <SearchBox big={false} />}
+      centerItems={
+        !headerOptions?.hideSearchBox && (
+          <>
+            <SearchHeadWrapper />
+          </>
+        )
+      }
       rightItems={<HeaderMenuItems />}
     />
   );
