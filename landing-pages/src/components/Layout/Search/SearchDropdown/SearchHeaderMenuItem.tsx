@@ -1,6 +1,5 @@
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 import Tooltip from '@mui/material/Tooltip';
 
 type SearchHeaderMenuItemProps = {
@@ -18,8 +17,6 @@ export default function SearchHeaderMenuItem({
   menuItemSx,
   handleClick,
 }: SearchHeaderMenuItemProps) {
-  const { isMenuExpanded } = useSearchHeaderLayoutContext();
-
   return (
     <>
       <Tooltip
@@ -41,7 +38,6 @@ export default function SearchHeaderMenuItem({
               fontSize: '0.875rem',
               textOverflow: 'ellipsis',
               overflow: 'hidden',
-              maxWidth: { isMenuExpanded } ? '500px' : '200px',
             }}
           >
             {itemLabel}

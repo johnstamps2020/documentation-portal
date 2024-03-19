@@ -12,34 +12,32 @@ type SearchHeaderMenuFilterSubGridProps = {
 export default function SearchHeaderMenuFilterSubGrid({
   filterType,
 }: SearchHeaderMenuFilterSubGridProps) {
-  const { searchFilters, setSearchFilters, allFilters } =
-    useSearchHeaderLayoutContext();
+  const { state, dispatch } = useSearchHeaderLayoutContext();
 
   function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.stopPropagation();
-    let newSearchFilterItems: string[] = searchFilters[filterType]
-      ? [...searchFilters[filterType]]
+    let newSearchFilterItems: string[] = state.searchFilters[filterType]
+      ? [...state.searchFilters[filterType]]
       : [];
-    if (searchFilters[filterType]?.includes(event.target.value)) {
-      newSearchFilterItems = searchFilters[filterType].filter((name) => {
+    if (state.searchFilters[filterType]?.includes(event.target.value)) {
+      newSearchFilterItems = state.searchFilters[filterType].filter((name) => {
         return name !== event.target.value;
       });
     } else {
       newSearchFilterItems.push(event.target.value);
     }
     const newSearchFilters = {
-      ...searchFilters,
+      ...state.searchFilters,
       [filterType]: newSearchFilterItems,
     };
-
-    setSearchFilters(newSearchFilters);
+    dispatch({ type: 'SET_SEARCH_FILTERS', payload: newSearchFilters });
   }
 
   const header = translate({
     id: `search.filter.menu.${filterType}`,
     message: filterType.toUpperCase(),
   });
-  const filters = allFilters![filterType];
+  const filters = state.allFilters![filterType];
 
   return (
     <Grid item xs={12} md={6} id="releases-grid">
@@ -67,7 +65,9 @@ export default function SearchHeaderMenuFilterSubGrid({
             control={
               <Checkbox
                 checked={
-                  searchFilters[filterType]?.includes(f.name) ? true : false
+                  state.searchFilters[filterType]?.includes(f.name)
+                    ? true
+                    : false
                 }
                 value={f.name}
                 onChange={handleCheckboxChange}

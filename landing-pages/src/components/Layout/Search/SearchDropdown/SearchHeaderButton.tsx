@@ -7,35 +7,33 @@ import { translate } from '@doctools/components';
 
 export default function SearchHeaderButton() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const {
-    isMenuExpanded,
-    setIsMenuExpanded,
-    setIsFiltersExpanded,
-    searchFilters,
-    defaultFilters,
-  } = useSearchHeaderLayoutContext();
+  const { state, dispatch } = useSearchHeaderLayoutContext();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
-    setIsMenuExpanded(!isMenuExpanded);
+    dispatch({ type: 'SET_MENU_EXPANDED', payload: !state.isMenuExpanded });
   };
 
   const handleClose = () => {
     setAnchorEl(null);
-    setIsMenuExpanded(!isMenuExpanded);
-    setIsFiltersExpanded(false);
+    dispatch({ type: 'SET_MENU_EXPANDED', payload: !state.isMenuExpanded });
+    dispatch({ type: 'SET_FILTERS_EXPANDED', payload: false });
   };
 
   let numFilters =
-    (searchFilters.release?.length ? searchFilters.release.length : 0) +
-    (searchFilters.product?.length ? searchFilters.product.length : 0);
+    (state.searchFilters.release?.length
+      ? state.searchFilters.release.length
+      : 0) +
+    (state.searchFilters.product?.length
+      ? state.searchFilters.product.length
+      : 0);
 
   const buttonText = translate({
     id: 'search.filter.menu.button',
     message: 'Filter',
   });
 
-  if (!defaultFilters.release) {
+  if (!state.defaultFilters.release) {
     return null;
   }
 
@@ -43,9 +41,9 @@ export default function SearchHeaderButton() {
     <Button
       id="search-menu-button"
       onClick={handleClick}
-      aria-controls={isMenuExpanded ? 'search-dropdown-menu' : undefined}
+      aria-controls={state.isMenuExpanded ? 'search-dropdown-menu' : undefined}
       aria-haspopup="true"
-      aria-expanded={isMenuExpanded ? 'true' : undefined}
+      aria-expanded={state.isMenuExpanded ? 'true' : undefined}
       variant="contained"
       disableElevation
       endIcon={<KeyboardArrowDownIcon />}

@@ -3,14 +3,14 @@ import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 import SearchHeaderMenuFilterSubGrid from './SearchHeaderMenuFilterSubGrid';
 
 export default function SearchHeaderMenuFilterGrid() {
-  const { allFilters } = useSearchHeaderLayoutContext();
+  const { state } = useSearchHeaderLayoutContext();
 
   return (
     <Grid container spacing={2} direction="row">
-      {allFilters?.release && (
+      {state.allFilters?.release && (
         <SearchHeaderMenuFilterSubGrid filterType="release" />
       )}
-      {allFilters?.product && (
+      {state.allFilters?.product && (
         <SearchHeaderMenuFilterSubGrid filterType="product" />
       )}
     </Grid>

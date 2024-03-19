@@ -1,3 +1,4 @@
+// TODO translate strings
 import Menu from '@mui/material/Menu';
 import MenuList from '@mui/material/MenuList';
 import Divider from '@mui/material/Divider';
@@ -14,13 +15,7 @@ export default function SearchHeaderMenu({
   anchorEl,
   onClose,
 }: SearchHeaderMenuProps) {
-  const {
-    isMenuExpanded,
-    isFiltersExpanded,
-    setIsFiltersExpanded,
-    defaultFilters,
-    setSearchFilters,
-  } = useSearchHeaderLayoutContext();
+  const { state, dispatch } = useSearchHeaderLayoutContext();
 
   return (
     <Menu
@@ -29,37 +24,45 @@ export default function SearchHeaderMenu({
       MenuListProps={{
         'aria-labelledby': 'search-menu-button',
       }}
-      open={isMenuExpanded}
+      open={state.isMenuExpanded}
       onClose={onClose}
       onClick={onClose}
       elevation={0}
       sx={{
-        maxWidth: isFiltersExpanded ? '515px' : '300px',
+        maxWidth: state.isFiltersExpanded ? '515px' : '300px',
       }}
     >
       {/* TODO pass type and let SearchHeaderMenuItem handle its own props */}
       <MenuList>
         <SearchHeaderMenuItem
           itemKey="release"
-          tooltipTitle={defaultFilters.release.toString().replaceAll(',', ', ')}
+          tooltipTitle={state.defaultFilters.release
+            .toString()
+            .replaceAll(',', ', ')}
           handleClick={() => {
-            const { product, ...filtersWithoutProduct } = defaultFilters;
-            setSearchFilters(filtersWithoutProduct);
+            const { product, ...filtersWithoutProduct } = state.defaultFilters;
+            dispatch({
+              type: 'SET_SEARCH_FILTERS',
+              payload: filtersWithoutProduct,
+            });
           }}
           itemLabel={`This release
-          (${defaultFilters.release.toString().replaceAll(',', ', ')})`}
+          (${state.defaultFilters.release.toString().replaceAll(',', ', ')})`}
         />
-        {defaultFilters.product && (
+        {state.defaultFilters.product && (
           <SearchHeaderMenuItem
             itemKey="product"
-            tooltipTitle={defaultFilters.product
+            tooltipTitle={state.defaultFilters.product
               .toString()
               .replaceAll(',', ', ')}
             handleClick={() => {
-              setSearchFilters(defaultFilters);
+              dispatch({
+                type: 'SET_SEARCH_FILTERS',
+                payload: state.defaultFilters,
+              });
             }}
             itemLabel={`This product 
-          (${defaultFilters.product.toString().replaceAll(',', ', ')})`}
+          (${state.defaultFilters.product.toString().replaceAll(',', ', ')})`}
           />
         )}
         <SearchHeaderMenuItem
@@ -67,29 +70,33 @@ export default function SearchHeaderMenu({
           tooltipTitle="Search entire site without filters"
           handleClick={() => {
             const { product, release, ...filtersWithoutProductOrRelease } =
-              defaultFilters;
-            setSearchFilters(filtersWithoutProductOrRelease);
+              state.defaultFilters;
+            dispatch({
+              type: 'SET_SEARCH_FILTERS',
+              payload: filtersWithoutProductOrRelease,
+            });
           }}
           itemLabel="Entire site"
         />
         <Divider />
-        {/* TODO translate */}
         <SearchHeaderMenuItem
           itemKey="expand-filters"
           tooltipTitle={
-            isFiltersExpanded
+            state.isFiltersExpanded
               ? 'Your filter selections will apply when you enter a search query'
               : 'Show selected filters and add or remove more filters'
           }
           handleClick={(event: Event): void => {
-            setIsFiltersExpanded(!isFiltersExpanded);
+            dispatch({
+              type: 'SET_FILTERS_EXPANDED',
+              payload: !state.isFiltersExpanded,
+            });
             event.stopPropagation();
           }}
-          itemLabel={isFiltersExpanded ? 'Hide filters' : 'Show filters'}
+          itemLabel={state.isFiltersExpanded ? 'Hide filters' : 'Show filters'}
           menuItemSx={{ color: 'hsl(196, 100%, 31%)' }}
         />
-
-        {isFiltersExpanded && <SearchHeaderMenuFilterGrid />}
+        {state.isFiltersExpanded && <SearchHeaderMenuFilterGrid />}
       </MenuList>
     </Menu>
   );
