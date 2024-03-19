@@ -37,7 +37,7 @@ export default function SearchHeaderMenu({
         maxWidth: isFiltersExpanded ? '515px' : '300px',
       }}
     >
-      {/* TODO DRY using Object.keys map? */}
+      {/* TODO pass type and let SearchHeaderMenuItem handle its own props */}
       <MenuList>
         <SearchHeaderMenuItem
           itemKey="release"
