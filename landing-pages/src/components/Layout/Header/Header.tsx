@@ -5,6 +5,8 @@ import HeaderDesktop from './Desktop/HeaderDesktop';
 import HeaderMobile from './Mobile/HeaderMobile';
 import HeaderMenuItems from './HeaderMenuItems';
 import SearchHeadWrapper from '../Search/SearchHeadWrapper';
+import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
+import { usePageData } from 'hooks/usePageData';
 
 export const headerHeight = '68px';
 
@@ -19,7 +21,9 @@ export type HeaderOptions = {
   hideSearchBox?: boolean;
 };
 
-export default function Header(headerOptions: HeaderOptions) {
+export default function Header() {
+  const { headerOptions, setHeaderOptions } = useHeaderContext();
+  const { pageData, isError } = usePageData();
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 

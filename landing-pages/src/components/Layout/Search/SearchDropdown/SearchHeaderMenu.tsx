@@ -29,6 +29,7 @@ export default function SearchHeaderMenu({
       onClick={onClose}
       elevation={0}
       sx={{
+        width: state.isFiltersExpanded ? '515px' : '300px',
         maxWidth: state.isFiltersExpanded ? '515px' : '300px',
       }}
     >

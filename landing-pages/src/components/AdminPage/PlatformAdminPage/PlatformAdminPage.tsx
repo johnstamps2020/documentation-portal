@@ -6,10 +6,10 @@ import PlatformSettingsForm from 'components/AdminPage/PlatformAdminPage/Platfor
 import { useEffect } from 'react';
 
 export default function PlatformAdminPage() {
-  const { title, setTitle, setHeaderOptions } = useLayoutContext();
+  const { title, setTitle } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage platforms');
-  }, [setHeaderOptions, setTitle]);
+  }, [setTitle]);
 
   return (
     <>

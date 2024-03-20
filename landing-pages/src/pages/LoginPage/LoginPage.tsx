@@ -2,6 +2,7 @@ import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
+import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -9,7 +10,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import LoginPageCards from '../../components/LoginPage/LoginPageCards';
 
 export default function LoginPage() {
-  const { setTitle, setHeaderOptions, setBackgroundColor } = useLayoutContext();
+  const { setTitle, setBackgroundColor } = useLayoutContext();
+  const { setHeaderOptions } = useHeaderContext();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

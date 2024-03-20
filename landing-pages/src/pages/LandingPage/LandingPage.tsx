@@ -6,6 +6,7 @@ import Alert from '@mui/material/Alert';
 import { usePageData } from 'hooks/usePageData';
 import { LandingPageProps } from './LandingPageTypes';
 import { useLayoutContext } from 'LayoutContext';
+//import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
 
 type LazyPageComponent = React.LazyExoticComponent<
   React.ComponentType<LandingPageProps>
@@ -14,7 +15,8 @@ type LazyPageComponent = React.LazyExoticComponent<
 export default function LandingPage() {
   const navigate = useNavigate();
   const { pageData, isError } = usePageData();
-  const { title, setTitle, setHeaderOptions, setPath } = useLayoutContext();
+  const { title, setTitle, setPath } = useLayoutContext();
+  //const { setHeaderOptions } = useHeaderContext();
 
   // TODO create useStorage hook(s)
   sessionStorage.setItem('latestLandingPagePath', pageData?.path || '');
@@ -42,13 +44,13 @@ export default function LandingPage() {
     if (pageData?.title) {
       setTitle(pageData.title);
     }
-    if (pageData?.searchFilters) {
-      setHeaderOptions({ searchFilters: pageData.searchFilters || undefined });
-    }
+    // if (pageData?.searchFilters) {
+    //   setHeaderOptions({ searchFilters: pageData.searchFilters || undefined });
+    // }
     if (pageData?.path) {
       setPath(pageData.path);
     }
-  }, [pageData, setHeaderOptions, setPath, setTitle]);
+  }, [pageData, setPath, setTitle]);
 
   if (!pageData) {
     return <></>;

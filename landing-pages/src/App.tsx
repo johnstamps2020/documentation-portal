@@ -24,6 +24,7 @@ import ProductAdminPage from 'components/AdminPage/ProductAdminPage/ProductAdmin
 import VersionAdminPage from 'components/AdminPage/VersionAdminPage/VersionAdminPage';
 import DeltaDocCompareToolPage from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import ChatPage from 'pages/ChatPage';
+import { HeaderContextProvider } from 'components/Layout/Header/HeaderContext';
 
 const router = createBrowserRouter([
   {
@@ -91,7 +92,11 @@ const router = createBrowserRouter([
 
       {
         path: 'search-results',
-        element: <SearchPage />,
+        element: (
+          <HeaderContextProvider>
+            <SearchPage />
+          </HeaderContextProvider>
+        ),
       },
       {
         path: 'gw-login',

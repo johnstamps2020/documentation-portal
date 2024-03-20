@@ -7,10 +7,12 @@ import FilterButton from 'components/Layout/Search/SearchPage/FilterButton';
 import { SearchLayoutContextProvider } from 'components/Layout/Search/SearchPage/SearchLayoutContext';
 import SearchFilterLayout from 'components/Layout/Search/SearchPage/SearchFilters/SearchFilterLayout';
 import { useLayoutContext } from 'LayoutContext';
+import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
 import { useEffect } from 'react';
 
 export default function SearchPage() {
-  const { setTitle, setHeaderOptions } = useLayoutContext();
+  const { setTitle } = useLayoutContext();
+  const { setHeaderOptions } = useHeaderContext();
 
   useEffect(() => {
     setTitle('Search results');

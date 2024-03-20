@@ -21,8 +21,8 @@ export default function SearchHeaderMenuItem({
     <>
       <Tooltip
         key={itemKey}
-        title={tooltipTitle}
-        placement="right"
+        title={<Typography>{tooltipTitle}</Typography>}
+        placement="left"
         enterDelay={500}
         arrow
       >

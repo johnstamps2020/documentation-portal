@@ -3,7 +3,7 @@
 // TODO Set focus on search box on close
 
 import { createContext, useContext, useEffect, useReducer } from 'react';
-import { useLayoutContext } from 'LayoutContext';
+import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
 import {
   useProductsNoRevalidation,
   useReleasesNoRevalidation,
@@ -77,7 +77,7 @@ export function SearchHeaderLayoutContextProvider({
   children: React.ReactNode;
 }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { setHeaderOptions } = useLayoutContext();
+  const { setHeaderOptions } = useHeaderContext();
   const { pageData } = usePageData();
   const { releases: allReleases } = useReleasesNoRevalidation();
   const { products: allProducts } = useProductsNoRevalidation();

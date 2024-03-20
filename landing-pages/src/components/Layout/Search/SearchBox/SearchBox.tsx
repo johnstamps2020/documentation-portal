@@ -3,6 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import Paper from '@mui/material/Paper';
 import { useLayoutContext } from 'LayoutContext';
+import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
 import { useSearchData } from 'hooks/useApi';
 import { useLocaleParams } from 'hooks/useLocale';
 import { useMobile } from 'hooks/useMobile';
@@ -44,7 +45,9 @@ export default function SearchBox({ big = true }: SearchBoxProps) {
   const { placeholder } = useLocaleParams();
   const { searchData } = useSearchData();
   const { isMobile } = useMobile();
-  const { setTitle, headerOptions } = useLayoutContext();
+  const { setTitle } = useLayoutContext();
+  const { headerOptions } = useHeaderContext();
+
   const [searchPhrase, setSearchPhrase] = useState<string>('');
 
   useEffect(() => {

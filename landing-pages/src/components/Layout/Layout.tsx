@@ -7,17 +7,20 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import { useLocation } from 'react-router-dom';
 import { NotificationProvider } from './NotificationContext';
+import { HeaderContextProvider } from './Header/HeaderContext';
 
 export const mainHeight = `calc(100vh - ${headerHeight})`;
 
 export default function Layout() {
   const location = useLocation();
-  const { title, headerOptions, backgroundColor, path } = useLayoutContext();
+  const { title, backgroundColor, path } = useLayoutContext();
   document.title = `${title} | Guidewire Documentation`;
 
   return (
     <NotificationProvider>
-      <Header {...headerOptions} />
+      <HeaderContextProvider>
+        <Header />
+      </HeaderContextProvider>
       <main style={{ backgroundColor }}>
         <Box
           sx={{
