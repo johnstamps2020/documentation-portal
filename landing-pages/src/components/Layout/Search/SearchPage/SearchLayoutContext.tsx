@@ -1,6 +1,4 @@
 import { createContext, useState, useContext } from 'react';
-import { usePageData } from 'hooks/usePageData';
-
 interface SearchLayoutContextInterface {
   isHelpExpanded: boolean;
   setIsHelpExpanded: React.Dispatch<React.SetStateAction<boolean>>;
