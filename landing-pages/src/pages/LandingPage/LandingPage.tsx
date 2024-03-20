@@ -44,9 +44,6 @@ export default function LandingPage() {
     if (pageData?.title) {
       setTitle(pageData.title);
     }
-    // if (pageData?.searchFilters) {
-    //   setHeaderOptions({ searchFilters: pageData.searchFilters || undefined });
-    // }
     if (pageData?.path) {
       setPath(pageData.path);
     }

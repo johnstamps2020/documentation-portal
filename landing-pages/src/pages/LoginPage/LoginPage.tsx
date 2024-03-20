@@ -2,7 +2,6 @@ import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
-import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -11,7 +10,6 @@ import LoginPageCards from '../../components/LoginPage/LoginPageCards';
 
 export default function LoginPage() {
   const { setTitle, setBackgroundColor } = useLayoutContext();
-  const { setHeaderOptions } = useHeaderContext();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,8 +19,7 @@ export default function LoginPage() {
   useEffect(() => {
     setTitle('Guidewire Documentation | Log in');
     setBackgroundColor('hsl(0, 0%, 98%)');
-    // TODO why setHeaderOptions in dependency array?
-  }, [setBackgroundColor, setHeaderOptions, setTitle]);
+  }, [setBackgroundColor, setTitle]);
 
   if (!mounted) {
     return (
