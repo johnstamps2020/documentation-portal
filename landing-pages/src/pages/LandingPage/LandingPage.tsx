@@ -6,7 +6,6 @@ import Alert from '@mui/material/Alert';
 import { usePageData } from 'hooks/usePageData';
 import { LandingPageProps } from './LandingPageTypes';
 import { useLayoutContext } from 'LayoutContext';
-//import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
 
 type LazyPageComponent = React.LazyExoticComponent<
   React.ComponentType<LandingPageProps>
@@ -16,7 +15,6 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const { pageData, isError } = usePageData();
   const { title, setTitle, setPath } = useLayoutContext();
-  //const { setHeaderOptions } = useHeaderContext();
 
   // TODO create useStorage hook(s)
   sessionStorage.setItem('latestLandingPagePath', pageData?.path || '');
