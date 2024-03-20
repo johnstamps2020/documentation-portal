@@ -6,11 +6,13 @@ router.get('/results', async function (req, res, next) {
   const releaseA = req.query.releaseA as string;
   const releaseB = req.query.releaseB as string;
   const url = req.query.url as string;
+  const version = req.query.version as unknown as boolean;
   if (releaseA && releaseB && url) {
     const { status, body } = await prepareDocs({
       releaseA,
       releaseB,
       url,
+      version,
     });
     return res.status(status).json(body);
   } else {

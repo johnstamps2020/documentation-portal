@@ -7,6 +7,7 @@ interface DeltaDocInterface {
   releaseA: DeltaDocInputType['releaseA'];
   releaseB: DeltaDocInputType['releaseB'];
   url: DeltaDocInputType['url'];
+  version: DeltaDocInputType['version'];
   setFormState: React.Dispatch<React.SetStateAction<DeltaDocInputType>>;
   setRootUrls: React.Dispatch<
     React.SetStateAction<{
@@ -30,19 +31,22 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     releaseA: '',
     releaseB: '',
     url: '',
+    version: false,
   });
   const [rootUrls, setRootUrls] = useState({ leftUrl: '', rightUrl: '' });
-  const { releaseA, releaseB, url } = formState;
+  const { releaseA, releaseB, url, version } = formState;
   const { deltaDocData, isError, isLoading } = useDeltaDocData({
     releaseA,
     releaseB,
     url,
+    version,
   });
 
   const value: DeltaDocInterface = {
     releaseA: formState.releaseA,
     releaseB: formState.releaseB,
     url: formState.url,
+    version: formState.version,
     setFormState,
     setRootUrls,
     rootUrls,
