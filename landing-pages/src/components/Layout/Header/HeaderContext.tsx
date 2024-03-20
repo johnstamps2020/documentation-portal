@@ -17,10 +17,6 @@ export function HeaderContextProvider({
   const [headerOptions, setHeaderOptions] = useState({});
   const { pageData } = usePageData();
 
-  // if (pageData?.searchFilters) {
-  //   setHeaderOptions({ searchFilters: pageData.searchFilters || undefined });
-  // }
-
   useEffect(() => {
     if (pageData?.searchFilters) {
       setHeaderOptions((prevHeaderOptions) => ({
