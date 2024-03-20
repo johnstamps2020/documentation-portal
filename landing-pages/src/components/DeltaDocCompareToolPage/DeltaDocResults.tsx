@@ -58,7 +58,7 @@ export default function DeltaDocResults() {
         Found {results.length} pages with differences
       </Typography>
       <TableContainer component={Paper} sx={{ mt: '30px', px: 2 }}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 650, borderWidth: 0 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell align="center">Change</TableCell>
