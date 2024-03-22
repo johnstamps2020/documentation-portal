@@ -36,11 +36,11 @@ export default function DocItem(props) {
     >
       <Head>
         {frontMatter.internal && (
-          <meta name={`${guidewireMetaPrefix}:internal`} content="true" />
+          <meta name={`${guidewireMetaPrefix}internal`} content="true" />
         )}
         {frontMatter.public !== undefined && (
           <meta
-            name={`${guidewireMetaPrefix}:public`}
+            name={`${guidewireMetaPrefix}public`}
             content={frontMatter.public}
           />
         )}
