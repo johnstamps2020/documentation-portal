@@ -1,0 +1,11 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "migrationtoolssrc",
+      "title": "Migration Tools",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/migration-tools.git",
+      "branch": "release/latest"
+    }
+  ]
+}

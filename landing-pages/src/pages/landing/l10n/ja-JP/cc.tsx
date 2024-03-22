@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: 'データマスク',
+      items: [
+        {
+            label: 'データマスク',
+            docId: 'datamaskingjaJP'
+        }
+      ],
+    },
+    {
       label: 'Gosu リファレンスガイド',
       items: [
         {

@@ -1,0 +1,37 @@
+html {
+  --loader-step-1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg%3E%3Cpolygon points='64,25.6 64,38.4 64,38.4 64,64 51.2,64 51.2,38.4 25.6,38.4 25.6,25.6 ' fill='none' /%3E%3Cpolygon points='64,12.8 64,0 12.8,0 0,0 0,12.8 0,51.2 0,64 0,64 12.8,64 12.8,64 38.4,64 38.4,51.2 12.8,51.2 12.8,12.8' fill='rgba(0, 115, 157, 0.5)' /%3E%3C/g%3E%3C/svg%3E");
+  --loader-step-2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg%3E%3Cpolygon points='64,25.6 64,38.4 64,38.4 64,64 51.2,64 51.2,38.4 25.6,38.4 25.6,25.6 ' fill='none' /%3E%3Cpolygon points='64,12.8 64,0 12.8,0 0,0 0,12.8 0,51.2 0,64 0,64 12.8,64 12.8,64 38.4,64 38.4,51.2 12.8,51.2 12.8,12.8' fill='rgba(0, 115, 157, 1)' /%3E%3C/g%3E%3C/svg%3E");
+  --loader-step-3: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg%3E%3Cpolygon points='64,25.6 64,38.4 64,38.4 64,64 51.2,64 51.2,38.4 25.6,38.4 25.6,25.6 ' fill='rgba(0, 115, 157, 0.5)' /%3E%3Cpolygon points='64,12.8 64,0 12.8,0 0,0 0,12.8 0,51.2 0,64 0,64 12.8,64 12.8,64 38.4,64 38.4,51.2 12.8,51.2 12.8,12.8' fill='rgba(0, 115, 157, 1)' /%3E%3C/g%3E%3C/svg%3E");
+  --loader-step-4: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg%3E%3Cpolygon points='64,25.6 64,38.4 64,38.4 64,64 51.2,64 51.2,38.4 25.6,38.4 25.6,25.6 ' fill='rgba(0, 115, 157, 1)' /%3E%3Cpolygon points='64,12.8 64,0 12.8,0 0,0 0,12.8 0,51.2 0,64 0,64 12.8,64 12.8,64 38.4,64 38.4,51.2 12.8,51.2 12.8,12.8' fill='rgba(0, 115, 157, 1)' /%3E%3C/g%3E%3C/svg%3E");
+  --loader-step-5: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg%3E%3Cpolygon points='64,25.6 64,38.4 64,38.4 64,64 51.2,64 51.2,38.4 25.6,38.4 25.6,25.6 ' fill='rgba(0, 115, 157, 0.5)' /%3E%3Cpolygon points='64,12.8 64,0 12.8,0 0,0 0,12.8 0,51.2 0,64 0,64 12.8,64 12.8,64 38.4,64 38.4,51.2 12.8,51.2 12.8,12.8' fill='rgba(0, 115, 157, 0.5)' /%3E%3C/g%3E%3C/svg%3E");
+}
+
+@keyframes loaderAnimation {
+  0% {
+    background-image: var(--loader-step-5);
+  }
+  20% {
+    background-image: none;
+  }
+  40% {
+    background-image: var(--loader-step-1);
+  }
+  60% {
+    background-image: var(--loader-step-2);
+  }
+  80% {
+    background-image: var(--loader-step-3);
+  }
+  100% {
+    background-image: var(--loader-step-4);
+  }
+}
+
+.guidewire-overlay-loader {
+  animation: loaderAnimation 1.5s ease-in-out 0s infinite normal forwards;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  height: 100vh;
+  width: 100vw;
+}

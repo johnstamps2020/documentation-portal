@@ -196,10 +196,15 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
   releaseA,
   releaseB,
   url,
+  version,
 }) => {
-  const response = await fetch(
-    `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}`
-  );
+  const response = version
+    ? await fetch(
+        `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}&version=${version}`
+      )
+    : await fetch(
+        `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}`
+      );
   const { status } = response;
   const jsonData = await response.json();
 
@@ -207,7 +212,9 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
     throw new Error(status, jsonData.message);
   }
 
-  const regexSearch = url.replace(/\d+/, '......');
+  const regexSearch = url.includes('cloud')
+    ? url.replace(/\d+.+\d/, '......')
+    : url.replace(/\d+.+\d\//, '......');
   const outputRegex = new RegExp(regexSearch, 'g');
   const stringifiedData = JSON.stringify(jsonData).replaceAll(outputRegex, '/');
   const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
@@ -226,9 +233,10 @@ export function useDeltaDocData({
   releaseA,
   releaseB,
   url,
+  version,
 }: DeltaDocInputType) {
   const { data, error, isLoading } = useSWR<DeltaDocData, Error>(
-    { releaseA, releaseB, url },
+    { releaseA, releaseB, url, version },
     deltaDocDataGetter,
     {
       revalidateOnFocus: false,

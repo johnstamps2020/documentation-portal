@@ -69,6 +69,15 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
+        {
+          label: 'Policy History Migration Tool',
+          docId: 'policyhistorymigrationtool',
+          description: (
+            <>
+              Migrate policies from any system of record to PolicyCenter Cloud.
+            </>
+          ),
+        },
       ],
     },
     {

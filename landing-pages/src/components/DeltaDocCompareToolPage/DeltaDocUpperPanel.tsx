@@ -12,18 +12,26 @@ import { useDeltaDocContext } from './DeltaDocContext';
 
 function validateUrl(
   data: Doc | undefined,
-  setRelease: (value: React.SetStateAction<string>) => void,
+  setVersionOrRelease: (value: React.SetStateAction<string>) => void,
   setHelperTextMessage: (value: React.SetStateAction<string>) => void
 ) {
-  const urlRelease = data?.releases;
-  if (urlRelease) {
-    setRelease(urlRelease[0].name);
-    setHelperTextMessage(
-      `This document belongs to release: ${urlRelease[0].name}.`
-    );
-  } else {
-    setHelperTextMessage('No doc matches this url.');
-  }
+  if (data) {
+    if (data.releases && data.releases.length !== 0) {
+      const urlRelease = data.releases[0].name;
+      setVersionOrRelease(urlRelease);
+      setHelperTextMessage(`This document belongs to release: ${urlRelease}.`);
+    } else if (
+      data.platformProductVersions &&
+      data.platformProductVersions[0].version
+    ) {
+      const urlVersion = data.platformProductVersions[0].version.name;
+      setVersionOrRelease(urlVersion);
+      setHelperTextMessage(`This document uses version: ${urlVersion}.`);
+    } else
+      setHelperTextMessage(
+        `This document doesn't match any release or version.`
+      );
+  } else setHelperTextMessage(`No doc matches this url.`);
 }
 
 export default function DeltaDocUpperPanel() {
@@ -31,16 +39,29 @@ export default function DeltaDocUpperPanel() {
   const [rightUrl, setRightUrl] = useState('');
   const [temporaryLeftUrl, setTemporaryLeftUrl] = useState('');
   const [temporaryRightUrl, setTemporaryRightUrl] = useState('');
-  const [temporaryReleaseA, setTemporaryReleaseA] = useState('');
-  const [temporaryReleaseB, setTemporaryReleaseB] = useState('');
+  const [temporaryReleaseOrVersionA, setTemporaryReleaseOrVersionA] =
+    useState('');
+  const [temporaryReleaseOrVersionB, setTemporaryReleaseOrVersionB] =
+    useState('');
   const [leftWarningMessage, setLeftWarningMessage] = useState('');
   const [rightWarningMessage, setRightWarningMessage] = useState('');
   const [canSubmit, setCanSubmit] = useState(false);
   const [submittingAlert, setSubmittingAlert] = useState(false);
   const [alert, setAlert] = useState<JSX.Element>();
   const { setFormState, setRootUrls } = useDeltaDocContext();
-  const leftRootUrlNoSlash = /cloud\/.*/.exec(temporaryLeftUrl);
-  const rightRootUrlNoSlash = /cloud\/.*/.exec(temporaryRightUrl);
+
+  function getUrlNoSlash(url: string) {
+    if (url.includes('/cloud/')) {
+      return /cloud\/.*/.exec(url);
+    } else if (url.includes('/jutro/')) {
+      return /jutro\/.*/.exec(url);
+    } else if (url.includes('/self-managed/')) {
+      return /self-managed\/.*/.exec(url);
+    } else return url;
+  }
+
+  const leftRootUrlNoSlash = getUrlNoSlash(temporaryLeftUrl);
+  const rightRootUrlNoSlash = getUrlNoSlash(temporaryRightUrl);
 
   const { docData: leftDocData } = useDeltaDocValidator(
     leftRootUrlNoSlash ? leftRootUrlNoSlash[0].slice(0, -1) : ''
@@ -52,12 +73,14 @@ export default function DeltaDocUpperPanel() {
 
   const urlIsNotEmpty =
     temporaryRightUrl.length !== 0 && temporaryLeftUrl.length !== 0;
+
   const urlValidation =
     temporaryLeftUrl !== temporaryRightUrl &&
     (temporaryLeftUrl !== leftUrl || temporaryRightUrl !== rightUrl);
 
   const releaseValidation =
-    temporaryReleaseA.length > 0 && temporaryReleaseB.length > 0;
+    temporaryReleaseOrVersionA.length > 0 &&
+    temporaryReleaseOrVersionB.length > 0;
 
   const docValidation = rightDocData !== undefined && leftDocData !== undefined;
 
@@ -65,15 +88,12 @@ export default function DeltaDocUpperPanel() {
     urlValidation && urlIsNotEmpty && releaseValidation && docValidation;
 
   function validateData(dataA: Doc | undefined, dataB: Doc | undefined) {
-    // TODO:
-    //   - validate jutro and self-managed docs, now works only on cloud/..
-
-    validateUrl(dataA, setTemporaryReleaseA, setLeftWarningMessage);
-    validateUrl(dataB, setTemporaryReleaseB, setRightWarningMessage);
+    validateUrl(dataA, setTemporaryReleaseOrVersionA, setLeftWarningMessage);
+    validateUrl(dataB, setTemporaryReleaseOrVersionB, setRightWarningMessage);
     if (
       dataA &&
       dataB &&
-      dataA.url.replace(/\d+/, '') !== dataB.url.replace(/\d+/, '')
+      dataA.url.replace(/\d+.+\d/, '') !== dataB.url.replace(/\d+.+\d/, '')
     ) {
       if (dataA.title !== dataB.title) {
         setAlert(
@@ -113,13 +133,35 @@ export default function DeltaDocUpperPanel() {
       leftDocData &&
       rightDocData &&
       leftDocData.releases &&
-      rightDocData.releases
+      rightDocData.releases &&
+      leftDocData.releases.length !== 0 &&
+      rightDocData.releases.length !== 0
     ) {
       setAlert(
         <Alert severity="info">
           You are comparing <b>{leftDocData.title}</b> in{' '}
           <b>{leftDocData?.releases[0].name}</b> and{' '}
           <b>{rightDocData?.releases[0].name}</b>
+        </Alert>
+      );
+      setSubmittingAlert(false);
+    } else if (
+      leftDocData &&
+      rightDocData &&
+      leftDocData.platformProductVersions[0].version &&
+      rightDocData.platformProductVersions[0].version
+    ) {
+      setTemporaryReleaseOrVersionA(
+        leftDocData.platformProductVersions[0].version.name
+      );
+      setTemporaryReleaseOrVersionB(
+        rightDocData.platformProductVersions[0].version.name
+      );
+      setAlert(
+        <Alert severity="info">
+          You are comparing <b>{leftDocData.title}</b> in version{' '}
+          <b>{leftDocData.platformProductVersions[0].version.name}</b> and{' '}
+          <b>{rightDocData.platformProductVersions[0].version.name}</b>
         </Alert>
       );
       setSubmittingAlert(false);
@@ -146,8 +188,8 @@ export default function DeltaDocUpperPanel() {
     temporaryRightUrl,
     setTemporaryRightUrl,
     canSubmitValue,
-    temporaryReleaseA,
-    temporaryReleaseB,
+    temporaryReleaseOrVersionA,
+    temporaryReleaseOrVersionB,
     alert,
   ]);
 
@@ -181,9 +223,14 @@ export default function DeltaDocUpperPanel() {
     const rightRootUrl = handleUrl(temporaryRightUrl);
     if (leftRootUrl && rightRootUrl) {
       setFormState({
-        releaseA: temporaryReleaseA ? temporaryReleaseA : '',
-        releaseB: temporaryReleaseB ? temporaryReleaseB : '',
+        releaseA: temporaryReleaseOrVersionA,
+        releaseB: temporaryReleaseOrVersionB,
         url: leftRootUrl, //runs query on one of the urls since they're the same
+        version:
+          /\d/.test(temporaryReleaseOrVersionA) &&
+          /\d/.test(temporaryReleaseOrVersionA)
+            ? true
+            : false,
       });
       setRootUrls({
         leftUrl: leftRootUrl,

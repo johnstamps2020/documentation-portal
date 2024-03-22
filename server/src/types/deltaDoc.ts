@@ -8,6 +8,7 @@ export type DeltaDocInputType = {
   releaseA: string;
   releaseB: string;
   url: string;
+  version?: boolean;
 };
 
 export type DeltaLevenshteinReturnType = {

@@ -18,11 +18,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20202rn',
         },
         {
-          label: 'Release Video',
-          url: 'https://www.brainshark.com/guidewire/vu?pi=zH9zTn2rKzM6iUz0',
-          videoIcon: true,
-        },
-        {
           label: 'Studio Release Notes',
           docId: 'in20202studiorn',
         },

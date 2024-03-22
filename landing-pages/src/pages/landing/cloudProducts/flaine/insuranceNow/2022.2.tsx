@@ -19,7 +19,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Release Video',
-          url: 'https://www.brainshark.com/guidewire/INFlaine',
+          url: 'https://youtu.be/KpCt0Y1EyjY',
           videoIcon: true,
         },
         {

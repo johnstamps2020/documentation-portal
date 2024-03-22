@@ -6,12 +6,20 @@
       "title": "Documentation Guide",
       "url": "docguide",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["DocTools"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "DocTools"
+        ],
+        "version": [
+          "latest"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -23,12 +31,20 @@
       "title": "DocTools Administration Guide",
       "url": "doctools/admin",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["DocTools"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "DocTools"
+        ],
+        "version": [
+          "latest"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -40,12 +56,20 @@
       "title": "Element Rendering",
       "url": "elementrendering",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["DocTools"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "DocTools"
+        ],
+        "version": [
+          "latest"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -57,29 +81,45 @@
       "title": "Docusaurus Guidewire",
       "url": "docusaurus/guidewire/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["DocTools"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "DocTools"
+        ],
+        "version": [
+          "latest"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "earlyAccess": false,
-      "internal": true,
-      "public": false
+      "internal": false,
+      "public": true
     },
     {
       "id": "learningindita",
       "title": "Learning in DITA",
       "url": "learning-in-dita",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["DocTools"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "DocTools"
+        ],
+        "version": [
+          "latest"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "earlyAccess": false,

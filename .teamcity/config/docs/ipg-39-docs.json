@@ -12,12 +12,20 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Self-managed"],
-        "version": ["3.9"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "3.9"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -35,12 +43,21 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Self-managed"],
-        "version": ["3.9"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "3.9"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -58,12 +75,20 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Self-managed"],
-        "version": ["3.9"],
-        "subject": ["Installation"],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "3.9"
+        ],
+        "subject": [
+          "Installation"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -81,12 +106,21 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Self-managed"],
-        "version": ["3.9"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "3.9"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -104,12 +138,21 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Self-managed"],
-        "version": ["3.9"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "3.9"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -127,12 +170,20 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Self-managed"],
-        "version": ["3.9"],
-        "subject": ["Glossary"],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "3.9"
+        ],
+        "subject": [
+          "Glossary"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -150,12 +201,21 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Self-managed"],
-        "version": ["3.9"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "3.9"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "de"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

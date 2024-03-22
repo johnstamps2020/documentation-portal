@@ -66,7 +66,7 @@ export async function addItems(
             ...bucketParams,
             Body: file.data,
             Key: path.join(prefix, file.name),
-            CacheControl: 'no-store',
+            CacheControl: 'max-age=60',
           },
         }).done()
       );

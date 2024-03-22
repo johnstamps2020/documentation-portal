@@ -27,7 +27,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -75,6 +76,41 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "businessfunctionsrelease",
+      "title": "Business Functions",
+      "url": "cloud/is/businessfunctions/release",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "App Events Webhooks"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Integration"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
     },
     {
       "id": "webhooksrelease",

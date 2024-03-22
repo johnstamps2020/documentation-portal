@@ -19,11 +19,19 @@ export default function DeltaDocResultTableRow({
   const { rootUrls, releaseA } = useDeltaDocContext();
 
   function getUrlValue(title: string, rootUrl: string) {
-    return title !== fileDoesNotExistText
-      ? result.URL.includes('cloud')
-        ? result.URL
-        : rootUrl.slice(0, -1) + result.URL
-      : '';
+    if (title !== fileDoesNotExistText) {
+      if (
+        result.URL.includes('cloud') ||
+        result.URL.includes('self-managed') ||
+        result.URL.includes('jutro')
+      ) {
+        return result.URL;
+      } else {
+        return rootUrl.slice(0, -1) + result.URL;
+      }
+    } else {
+      return '';
+    }
   }
   const leftLinkUrl = getUrlValue(result.docATitle, rootUrls.leftUrl);
   const rightLinkUrl = getUrlValue(result.docBTitle, rootUrls.rightUrl);

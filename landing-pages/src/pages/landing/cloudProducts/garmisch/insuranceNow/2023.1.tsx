@@ -19,7 +19,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Release Video',
-          url: 'https://www.brainshark.com/guidewire/InsuranceNowGarmisch',
+          url: 'https://youtu.be/bTxSWvLh1vE',
           videoIcon: true,
         },
         {
