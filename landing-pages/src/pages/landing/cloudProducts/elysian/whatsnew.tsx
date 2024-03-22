@@ -10,16 +10,6 @@ const pageConfig: SectionLayoutProps = {
   },
   sections: [
     {
-      label: 'Elysian Release Highlights',
-      items: [
-        {
-          label: 'Highlights Video',
-          url: 'https://www.brainshark.com/1/player/guidewire?pi=zISzx7slszM6iUz0&r3f1=&fb=0',
-          videoIcon: true,
-        },
-      ],
-    },
-    {
       label: 'InsuranceSuite',
       items: [
         {
@@ -42,11 +32,6 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Core Release Notes',
           docId: 'in20221rn',
-        },
-        {
-          label: 'Release Video',
-          url: 'https://www.brainshark.com/guidewire/vu?pi=zGCzZHe5LzcT3Fz0',
-          videoIcon: true,
         },
         {
           label: 'Studio Release Notes',
