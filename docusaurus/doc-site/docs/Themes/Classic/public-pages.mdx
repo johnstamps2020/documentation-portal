@@ -1,0 +1,31 @@
+---
+sidebar_position: 3
+public: true
+---
+
+# Public pages
+
+You can make any page public. Users will be able to see the page witohut logging
+in. In the MDX prolog, add the following prop:
+
+```yaml
+---
+public: true
+some_other_prop: value
+---
+```
+
+## Restricting a page in a public doc
+
+See [restricted pages](./restricted-pages.mdx).
+
+The entire doc will be public, but this page will be restricted.
+
+## Making part of a page restricted
+
+Unfortunately, you can't make part of a page restricted. If you need to do this,
+you'll need to create a new page and make it restricted.
+
+## Making part of a public page internal
+
+Use [internal content](./Components/Internal/internal-content.md).
