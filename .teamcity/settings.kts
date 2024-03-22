@@ -775,18 +775,20 @@ object GwBuildSteps {
             name = "Run the doc crawler in the $operationMode mode"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-            export OPERATION_MODE="$operationMode"
-            ${Helpers.setAwsEnvVars(deployEnv)}
-            export OKTA_ISSUER="$oktaIssuer"
-            export OKTA_SCOPES="$oktaScopes"
-            export ELASTICSEARCH_URLS="$elasticsearchUrls"
-            export APP_BASE_URL="$appBaseUrl"
-            export DOCS_INDEX_NAME="gw-docs"
-            
-            $additionalScriptContent
-            
-            doc_crawler
-        """.trimIndent()
+                #!/bin/bash
+                
+                export OPERATION_MODE="$operationMode"
+                ${Helpers.setAwsEnvVars(deployEnv)}
+                export OKTA_ISSUER="$oktaIssuer"
+                export OKTA_SCOPES="$oktaScopes"
+                export ELASTICSEARCH_URLS="$elasticsearchUrls"
+                export APP_BASE_URL="$appBaseUrl"
+                export DOCS_INDEX_NAME="gw-docs"
+                
+                $additionalScriptContent
+                
+                doc_crawler
+            """.trimIndent()
             dockerImage = GwDockerImages.DOC_CRAWLER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }

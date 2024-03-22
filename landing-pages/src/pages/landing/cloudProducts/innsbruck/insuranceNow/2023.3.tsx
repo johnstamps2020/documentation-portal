@@ -19,7 +19,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Release Video',
-          url: 'https://www.brainshark.com/guidewire/InsuranceNowInnsbruck',
+          url: 'https://www.youtube.com/watch?v=mss398Z1vY4',
           videoIcon: true,
         },
         {

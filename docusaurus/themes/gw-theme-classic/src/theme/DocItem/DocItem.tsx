@@ -13,37 +13,44 @@ interface DocItemContextProps {
 export const DocItemContext: React.Context<DocItemContextProps | null> =
   React.createContext(null);
 
+type DocItemWrapperProps = {
+  internal: boolean;
+  children: React.ReactNode;
+};
+
+function DocItemWrapper({ internal, children }: DocItemWrapperProps) {
+  if (internal) {
+    return <Internal showInfo>{children}</Internal>;
+  }
+
+  return <>{children}</>;
+}
+
 export default function DocItem(props) {
-  const { internal } = props.content.frontMatter;
+  const frontMatter = props.content.frontMatter;
   const [topicTitle, setTopicTitle] = useState(props.content.metadata.title);
 
-  function CustomizedDocItem() {
-    return (
-      <DocItemContext.Provider
-        value={{ title: topicTitle, setTitle: setTopicTitle }}
-      >
-        <EarlyAccess />
+  return (
+    <DocItemContext.Provider
+      value={{ title: topicTitle, setTitle: setTopicTitle }}
+    >
+      <Head>
+        {frontMatter.internal && (
+          <meta name={`${guidewireMetaPrefix}internal`} content="true" />
+        )}
+        {frontMatter.public !== undefined && (
+          <meta
+            name={`${guidewireMetaPrefix}public`}
+            content={frontMatter.public}
+          />
+        )}
+      </Head>
+      <EarlyAccess />
+      <DocItemWrapper internal={frontMatter.internal}>
         <InitialDocItem {...props} />
-      </DocItemContext.Provider>
-    );
-  }
-
-  if (internal) {
-    return (
-      <DocItemContext.Provider
-        value={{ title: topicTitle, setTitle: setTopicTitle }}
-      >
-        <Internal showInfo>
-          <Head>
-            <meta name={`${guidewireMetaPrefix}:internal`} content="true" />
-          </Head>
-          <CustomizedDocItem />
-        </Internal>
-      </DocItemContext.Provider>
-    );
-  }
-
-  return <CustomizedDocItem />;
+      </DocItemWrapper>
+    </DocItemContext.Provider>
+  );
 }
 
 export function useDocItemContext() {

@@ -18,11 +18,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20241rn',
         },
         {
-          label: 'Release Video',
-          url: 'https://www.brainshark.com/guidewire/InsuranceNowInnsbruck',
-          videoIcon: true,
-        },
-        {
           label: 'Studio Release Notes',
           docId: 'in20241studiorn',
         },

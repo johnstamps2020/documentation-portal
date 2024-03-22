@@ -28,14 +28,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Release Video',
-          videoIcon: true,
-          url: 'https://www.brainshark.com/guidewire/InsuranceNowInnsbruck',
-          description: (
-            <>Watch a video that describes and demonstrates new features.</>
-          ),
-        },
-        {
           label: 'Studio Release Notes',
           docId: 'in20241studiorn',
           description: (

@@ -42,7 +42,7 @@
       "srcId": "dm202209108src",
       "docId": "dh1080upgrade",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",

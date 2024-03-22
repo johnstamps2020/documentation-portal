@@ -42,7 +42,7 @@
       "srcId": "dm202209108src",
       "docId": "dhupgrade202209",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
