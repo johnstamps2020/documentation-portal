@@ -92,11 +92,7 @@ const router = createBrowserRouter([
 
       {
         path: 'search-results',
-        element: (
-          <HeaderContextProvider>
-            <SearchPage />
-          </HeaderContextProvider>
-        ),
+        element: <SearchPage />,
       },
       {
         path: 'gw-login',

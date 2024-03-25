@@ -1,24 +1,21 @@
 import Button from '@mui/material/Button';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import SearchHeaderMenu from './SearchHeaderMenu';
-import { useState } from 'react';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 import { translate } from '@doctools/components';
 
-export default function SearchHeaderButton() {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const { state, dispatch } = useSearchHeaderLayoutContext();
-
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-    dispatch({ type: 'SET_MENU_EXPANDED', payload: !state.isMenuExpanded });
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-    dispatch({ type: 'SET_MENU_EXPANDED', payload: !state.isMenuExpanded });
-    dispatch({ type: 'SET_FILTERS_EXPANDED', payload: false });
-  };
+type SearchHeaderButtonProps = {
+  searchBoxRef: React.RefObject<HTMLInputElement | undefined>;
+  focusSearchBox: () => void;
+  handleClick: (event: React.MouseEvent<HTMLElement>) => void;
+  children: any;
+};
+export default function SearchHeaderButton({
+  searchBoxRef,
+  focusSearchBox,
+  handleClick,
+  children,
+}: SearchHeaderButtonProps) {
+  const { state } = useSearchHeaderLayoutContext();
 
   let numFilters =
     (state.searchFilters.release?.length
@@ -44,19 +41,25 @@ export default function SearchHeaderButton() {
       aria-controls={state.isMenuExpanded ? 'search-dropdown-menu' : undefined}
       aria-haspopup="true"
       aria-expanded={state.isMenuExpanded ? 'true' : undefined}
-      variant="contained"
+      variant="outlined"
       disableElevation
-      endIcon={<KeyboardArrowDownIcon />}
+      endIcon={
+        <ArrowDropDownIcon
+          sx={{ color: 'rgba(0, 0, 0, 0.54)', fontSize: '24px !important' }}
+        />
+      }
       sx={{
         bgcolor: 'white',
-        fontSize: '0.875rem',
-        p: '2px 13px',
-        color: 'hsl(196, 100%, 31%)',
+        color: 'black',
+        textTransform: 'none',
+        p: '2px 4px 2px 13px',
         marginRight: '1rem',
+        '&:hover': {
+          bgcolor: '#E9E9E9', // TODO better way to approximate color? alphas don't work here
+        },
       }}
     >
-      {buttonText} ({numFilters})
-      <SearchHeaderMenu anchorEl={anchorEl} onClose={handleClose} />
+      {buttonText} ({numFilters}){children}
     </Button>
   );
 }

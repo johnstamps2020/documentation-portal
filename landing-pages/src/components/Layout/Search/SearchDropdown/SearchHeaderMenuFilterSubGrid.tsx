@@ -29,7 +29,7 @@ export default function SearchHeaderMenuFilterSubGrid({
   });
 
   return (
-    <Grid item xs={12} md={6} id="releases-grid">
+    <Grid item xs={12} md={filterType === 'release' ? 4 : 8} id="filters-grid">
       <Typography
         sx={{
           fontSize: '0.875rem',

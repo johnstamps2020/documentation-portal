@@ -30,7 +30,7 @@ export default function SearchHeaderMenuFilterSubGridItems({
       ...state.searchFilters,
       [filterType]: newSearchFilterItems,
     };
-    dispatch({ type: 'SET_SEARCH_FILTERS', payload: newSearchFilters });
+    dispatch({ type: 'SET_SELECTED_FILTERS', payload: newSearchFilters });
   }
 
   return (

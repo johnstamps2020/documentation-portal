@@ -5,8 +5,12 @@ import HeaderDesktop from './Desktop/HeaderDesktop';
 import HeaderMobile from './Mobile/HeaderMobile';
 import HeaderMenuItems from './HeaderMenuItems';
 import SearchHeadWrapper from '../Search/SearchHeadWrapper';
-import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
-import { usePageData } from 'hooks/usePageData';
+import { HeaderContextProvider } from 'components/Layout/Header/HeaderContext';
+import { useLocation } from 'react-router-dom';
+import {
+  SearchHeaderLayoutContextProvider,
+  Filters,
+} from '../Search/SearchDropdown/SearchHeaderLayoutContext';
 
 export const headerHeight = '68px';
 
@@ -17,39 +21,50 @@ export const headerStyles: StackProps['sx'] = {
 };
 
 export type HeaderOptions = {
-  searchFilters?: { [key: string]: string[] };
-  hideSearchBox?: boolean;
+  searchFilters?: Filters;
 };
 
 export default function Header() {
-  const { headerOptions, setHeaderOptions } = useHeaderContext();
-  const { pageData, isError } = usePageData();
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const location = useLocation();
+  const hideSearchBox = location.pathname === '/search-results';
 
   if (smallScreen) {
     return (
-      <HeaderMobile
-        menuContents={
-          <>
-            {!headerOptions?.hideSearchBox && <SearchHeadWrapper />}
-            <HeaderMenuItems />
-          </>
-        }
-      />
+      <>
+        <HeaderContextProvider>
+          <SearchHeaderLayoutContextProvider>
+            <HeaderMobile
+              menuContents={
+                <>
+                  {!hideSearchBox && <SearchHeadWrapper />}
+                  <HeaderMenuItems />
+                </>
+              }
+            />
+          </SearchHeaderLayoutContextProvider>
+        </HeaderContextProvider>
+      </>
     );
   }
 
   return (
-    <HeaderDesktop
-      centerItems={
-        !headerOptions?.hideSearchBox && (
-          <>
-            <SearchHeadWrapper />
-          </>
-        )
-      }
-      rightItems={<HeaderMenuItems />}
-    />
+    <>
+      <HeaderContextProvider>
+        <SearchHeaderLayoutContextProvider>
+          <HeaderDesktop
+            centerItems={
+              !hideSearchBox && (
+                <>
+                  <SearchHeadWrapper />
+                </>
+              )
+            }
+            rightItems={<HeaderMenuItems />}
+          />
+        </SearchHeaderLayoutContextProvider>
+      </HeaderContextProvider>
+    </>
   );
 }

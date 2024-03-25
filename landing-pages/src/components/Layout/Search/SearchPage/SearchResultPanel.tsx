@@ -12,12 +12,28 @@ import { useSearchLayoutContext } from './SearchLayoutContext';
 import { useTheme } from '@mui/material/styles';
 import ExactMatchHint from './ExactMatchHint';
 import SearchTypeSelector from './SearchTypeSelector';
-import { useEnvInfo } from 'hooks/useApi';
+import { useEnvInfo, useSearchData } from 'hooks/useApi';
+import { Filters } from '../SearchDropdown/SearchHeaderLayoutContext';
 
 export default function SearchResultPanel() {
   const { envInfo } = useEnvInfo();
   const { helpWidth, isHelpExpanded } = useSearchLayoutContext();
   const theme = useTheme();
+  const { searchData } = useSearchData();
+
+  const searchFilters: Filters = {};
+
+  if (searchData) {
+    searchData.filters.forEach((f) => {
+      const checkedValues = f.values.filter((v) => v.checked);
+
+      if (checkedValues.length > 0) {
+        searchFilters[f.name] = checkedValues
+          .filter(Boolean)
+          .map((v) => v.label);
+      }
+    });
+  }
 
   return (
     <Stack
@@ -42,7 +58,7 @@ export default function SearchResultPanel() {
         <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
           <NotLoggedInAlert />
           {envInfo?.name === 'dev' && <SearchTypeSelector />}
-          <SearchBox />
+          <SearchBox searchFilters={searchFilters} />
           <ExactMatchHint />
           <AdvancedSearchHelpButton />
         </Stack>

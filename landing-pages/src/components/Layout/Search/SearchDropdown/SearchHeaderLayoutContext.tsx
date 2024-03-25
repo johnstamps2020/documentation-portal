@@ -11,7 +11,7 @@ import {
 import { Release, Product } from '@doctools/server';
 import { usePageData } from 'hooks/usePageData';
 
-type Filters = { [key: string]: string[] };
+export type Filters = { [key: string]: string[] };
 
 interface SearchHeaderLayoutContextInterface {
   isMenuExpanded: boolean;
@@ -37,7 +37,7 @@ type Action =
   | { type: 'SET_MENU_EXPANDED'; payload: boolean }
   | { type: 'SET_FILTERS_EXPANDED'; payload: boolean }
   | { type: 'SET_DEFAULT_FILTERS'; payload: Filters }
-  | { type: 'SET_SEARCH_FILTERS'; payload: Filters }
+  | { type: 'SET_SELECTED_FILTERS'; payload: Filters }
   | {
       type: 'SET_ALL_FILTERS';
       payload: {
@@ -57,7 +57,7 @@ function reducer(
       return { ...state, isFiltersExpanded: action.payload };
     case 'SET_DEFAULT_FILTERS':
       return { ...state, defaultFilters: action.payload };
-    case 'SET_SEARCH_FILTERS':
+    case 'SET_SELECTED_FILTERS':
       return { ...state, searchFilters: action.payload };
     case 'SET_ALL_FILTERS':
       return { ...state, allFilters: action.payload };
@@ -120,7 +120,7 @@ export function SearchHeaderLayoutContextProvider({
   }, [state.searchFilters, setHeaderOptions]);
 
   useEffect(() => {
-    dispatch({ type: 'SET_SEARCH_FILTERS', payload: state.defaultFilters });
+    dispatch({ type: 'SET_SELECTED_FILTERS', payload: state.defaultFilters });
   }, [state.defaultFilters]);
 
   return (

@@ -18,9 +18,7 @@ export default function Layout() {
 
   return (
     <NotificationProvider>
-      <HeaderContextProvider>
-        <Header />
-      </HeaderContextProvider>
+      <Header />
       <main style={{ backgroundColor }}>
         <Box
           sx={{

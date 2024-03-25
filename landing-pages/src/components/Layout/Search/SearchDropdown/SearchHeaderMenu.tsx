@@ -28,22 +28,22 @@ export default function SearchHeaderMenu({
       onClose={onClose}
       onClick={onClose}
       elevation={0}
-      sx={{
-        width: state.isFiltersExpanded ? '515px' : '300px',
-        maxWidth: state.isFiltersExpanded ? '515px' : '300px',
-      }}
     >
       {/* TODO pass type and let SearchHeaderMenuItem handle its own props */}
-      <MenuList>
+      <MenuList
+        sx={{
+          width: state.isFiltersExpanded ? '460px' : '200px',
+        }}
+      >
         <SearchHeaderMenuItem
           itemKey="release"
-          tooltipTitle={state.defaultFilters.release
+          tooltipTitle={`Search within all products in ${state.defaultFilters.release
             .toString()
-            .replaceAll(',', ', ')}
+            .replaceAll(',', ', ')}`}
           handleClick={() => {
             const { product, ...filtersWithoutProduct } = state.defaultFilters;
             dispatch({
-              type: 'SET_SEARCH_FILTERS',
+              type: 'SET_SELECTED_FILTERS',
               payload: filtersWithoutProduct,
             });
           }}
@@ -53,12 +53,12 @@ export default function SearchHeaderMenu({
         {state.defaultFilters.product && (
           <SearchHeaderMenuItem
             itemKey="product"
-            tooltipTitle={state.defaultFilters.product
+            tooltipTitle={`Search within products on this page: ${state.defaultFilters.product
               .toString()
-              .replaceAll(',', ', ')}
+              .replaceAll(',', ', ')}`}
             handleClick={() => {
               dispatch({
-                type: 'SET_SEARCH_FILTERS',
+                type: 'SET_SELECTED_FILTERS',
                 payload: state.defaultFilters,
               });
             }}
@@ -73,7 +73,7 @@ export default function SearchHeaderMenu({
             const { product, release, ...filtersWithoutProductOrRelease } =
               state.defaultFilters;
             dispatch({
-              type: 'SET_SEARCH_FILTERS',
+              type: 'SET_SELECTED_FILTERS',
               payload: filtersWithoutProductOrRelease,
             });
           }}
