@@ -2,16 +2,13 @@ import Button from '@mui/material/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 import { translate } from '@doctools/components';
+import { ReactNode } from 'react';
 
 type SearchHeaderButtonProps = {
-  searchBoxRef: React.RefObject<HTMLInputElement | undefined>;
-  focusSearchBox: () => void;
   handleClick: (event: React.MouseEvent<HTMLElement>) => void;
-  children: any;
+  children: ReactNode;
 };
 export default function SearchHeaderButton({
-  searchBoxRef,
-  focusSearchBox,
   handleClick,
   children,
 }: SearchHeaderButtonProps) {

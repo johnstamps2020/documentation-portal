@@ -28,6 +28,7 @@ export default function SearchHeaderMenu({
       onClose={onClose}
       onClick={onClose}
       elevation={0}
+      sx={{ height: '60vh' }}
     >
       {/* TODO pass type and let SearchHeaderMenuItem handle its own props */}
       <MenuList

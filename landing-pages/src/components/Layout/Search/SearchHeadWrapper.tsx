@@ -28,11 +28,7 @@ export default function SearchHeadWrapper() {
 
   return (
     <>
-      <SearchHeaderButton
-        searchBoxRef={searchBoxRef}
-        focusSearchBox={focusSearchBox}
-        handleClick={handleClick}
-      >
+      <SearchHeaderButton handleClick={handleClick}>
         <SearchHeaderMenu anchorEl={anchorEl} onClose={handleClose} />
       </SearchHeaderButton>
       <SearchBox
