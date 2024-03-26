@@ -1,6 +1,5 @@
 // TODO save selected filters to sessionStorage if user changes them? Retrieve when returning to same landing page?
 // TODO move all translated strings to separate file and import?
-// TODO Set focus on search box on close
 
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
