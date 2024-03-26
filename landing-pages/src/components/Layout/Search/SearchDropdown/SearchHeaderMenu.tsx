@@ -28,35 +28,35 @@ export default function SearchHeaderMenu({
       onClose={onClose}
       onClick={onClose}
       elevation={0}
-      sx={{ height: '60vh' }}
+      sx={{ height: '60vh', marginBlockStart: '.5rem' }}
     >
-      {/* TODO pass type and let SearchHeaderMenuItem handle its own props */}
+      {/* TODO pass type and let SearchHeaderMenuItem handle its own props
+          TODO clean up selected logic
+      */}
       <MenuList
         sx={{
-          width: state.isFiltersExpanded ? '460px' : '200px',
+          width: state.isFiltersExpanded ? '455px' : '200px',
         }}
       >
-        <SearchHeaderMenuItem
-          itemKey="release"
-          tooltipTitle={`Search within all products in ${state.defaultFilters.release
-            .toString()
-            .replaceAll(',', ', ')}`}
-          handleClick={() => {
-            const { product, ...filtersWithoutProduct } = state.defaultFilters;
-            dispatch({
-              type: 'SET_SELECTED_FILTERS',
-              payload: filtersWithoutProduct,
-            });
-          }}
-          itemLabel={`This release
-          (${state.defaultFilters.release.toString().replaceAll(',', ', ')})`}
-        />
         {state.defaultFilters.product && (
           <SearchHeaderMenuItem
             itemKey="product"
             tooltipTitle={`Search within products on this page: ${state.defaultFilters.product
               .toString()
               .replaceAll(',', ', ')}`}
+            selected={
+              state.searchFilters.product?.length ===
+                state.defaultFilters.product.length &&
+              !state.searchFilters.product?.some(
+                (product) => !state.defaultFilters.product.includes(product)
+              ) &&
+              state.searchFilters.release.length ===
+                state.defaultFilters.release.length &&
+              !state.searchFilters.release?.some(
+                (release) => !state.defaultFilters.release?.includes(release)
+              ) &&
+              !state.searchFilters.platform
+            }
             handleClick={() => {
               dispatch({
                 type: 'SET_SELECTED_FILTERS',
@@ -68,8 +68,40 @@ export default function SearchHeaderMenu({
           />
         )}
         <SearchHeaderMenuItem
+          itemKey="release"
+          tooltipTitle={`Search within all products in ${state.defaultFilters.release
+            .toString()
+            .replaceAll(',', ', ')}`}
+          selected={
+            (!state.searchFilters.product ||
+              state.searchFilters.product.length === 0) &&
+            state.searchFilters.release?.length ===
+              state.defaultFilters.release?.length &&
+            !state.searchFilters.release?.some(
+              (release) => !state.defaultFilters.release?.includes(release)
+            ) &&
+            !state.searchFilters.platform
+          }
+          handleClick={() => {
+            const { product, ...filtersWithoutProduct } = state.defaultFilters;
+            dispatch({
+              type: 'SET_SELECTED_FILTERS',
+              payload: filtersWithoutProduct,
+            });
+          }}
+          itemLabel={`This release
+          (${state.defaultFilters.release.toString().replaceAll(',', ', ')})`}
+        />
+        <SearchHeaderMenuItem
           itemKey="entiresite"
           tooltipTitle="Search entire site without filters"
+          selected={
+            (!state.searchFilters.product ||
+              state.searchFilters.product.length === 0) &&
+            (!state.searchFilters.release ||
+              state.searchFilters.release.length === 0) &&
+            !state.searchFilters.platform
+          }
           handleClick={() => {
             const { product, release, ...filtersWithoutProductOrRelease } =
               state.defaultFilters;
@@ -88,6 +120,7 @@ export default function SearchHeaderMenu({
               ? 'Your filter selections will apply when you enter a search query'
               : 'Show selected filters and add or remove more filters'
           }
+          selected={false}
           handleClick={(event: Event): void => {
             dispatch({
               type: 'SET_FILTERS_EXPANDED',

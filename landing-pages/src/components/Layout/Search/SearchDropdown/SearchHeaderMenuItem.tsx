@@ -5,9 +5,10 @@ import Tooltip from '@mui/material/Tooltip';
 type SearchHeaderMenuItemProps = {
   itemKey: string;
   tooltipTitle: string;
-  handleClick: (() => void) | ((event: any) => void);
   itemLabel: string;
   menuItemSx?: {};
+  selected: boolean;
+  handleClick: (() => void) | ((event: any) => void);
 };
 
 export default function SearchHeaderMenuItem({
@@ -15,6 +16,7 @@ export default function SearchHeaderMenuItem({
   tooltipTitle,
   itemLabel,
   menuItemSx,
+  selected,
   handleClick,
 }: SearchHeaderMenuItemProps) {
   return (
@@ -32,6 +34,7 @@ export default function SearchHeaderMenuItem({
             ...menuItemSx,
           }}
           onClick={handleClick}
+          selected={selected}
         >
           <Typography
             sx={{
