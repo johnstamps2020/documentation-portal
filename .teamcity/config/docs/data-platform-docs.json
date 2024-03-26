@@ -113,7 +113,7 @@
         "subject": ["Features and functionality"],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
