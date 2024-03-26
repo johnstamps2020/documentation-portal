@@ -1,4 +1,7 @@
 import { translate } from '@doctools/components';
+import Checkbox from '@mui/material/Checkbox';
+import Divider from '@mui/material/Divider';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
@@ -11,7 +14,28 @@ type SearchHeaderMenuFilterSubGridProps = {
 export default function SearchHeaderMenuFilterSubGrid({
   filterType,
 }: SearchHeaderMenuFilterSubGridProps) {
-  const { state } = useSearchHeaderLayoutContext();
+  const { state, dispatch } = useSearchHeaderLayoutContext();
+
+  function handleSelfmanagedCheckboxChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
+    event.stopPropagation();
+    const { platform, ...filtersWithoutPlatform } = state.searchFilters;
+
+    state.searchFilters['platform']
+      ? dispatch({
+          type: 'SET_SELECTED_FILTERS',
+          payload: filtersWithoutPlatform,
+        })
+      : dispatch({
+          type: 'SET_SELECTED_FILTERS',
+          payload: {
+            ...state.searchFilters,
+            release: [],
+            platform: ['Self-managed'],
+          },
+        });
+  }
 
   const header = translate({
     id: `search.filter.menu.${filterType}`,
@@ -19,17 +43,19 @@ export default function SearchHeaderMenuFilterSubGrid({
   });
   const filters = state.allFilters![filterType];
   const selectedDefaultFilters = filters?.filter((f) => {
-    return (
-      state.defaultFilters[filterType]?.some((df) => df === f.name) &&
-      state.searchFilters[filterType]
-    );
+    return state.defaultFilters[filterType]?.some((df) => df === f.name);
   });
   const unselectedFilters = filters?.filter((f) => {
     return !state.defaultFilters[filterType]?.includes(f.name);
   });
 
   return (
-    <Grid item xs={12} md={filterType === 'release' ? 4 : 8} id="filters-grid">
+    <Grid
+      item
+      xs={12}
+      md={filterType === 'release' ? 5 : 7}
+      id={`${filterType}-grid`}
+    >
       <Typography
         sx={{
           fontSize: '0.875rem',
@@ -47,6 +73,37 @@ export default function SearchHeaderMenuFilterSubGrid({
         filters={unselectedFilters}
         filterType={filterType}
       />
+      {filterType === 'release' && (
+        <>
+          <Divider variant="middle" sx={{ marginBlock: '.5rem' }} />
+          <FormControlLabel
+            key="selfmanaged"
+            disableTypography={true}
+            onClick={(event) => event?.stopPropagation()}
+            sx={{
+              marginRight: '8px',
+              fontSize: '0.85rem',
+              p: '2px 13px',
+              width: '100%',
+            }}
+            control={
+              <Checkbox
+                checked={
+                  state.searchFilters['platform']?.includes('Self-managed')
+                    ? true
+                    : false
+                }
+                value="Self-managed"
+                onChange={handleSelfmanagedCheckboxChange}
+                sx={{
+                  height: '14px',
+                }}
+              />
+            }
+            label={'Self-managed'}
+          />
+        </>
+      )}
     </Grid>
   );
 }

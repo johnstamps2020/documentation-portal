@@ -19,17 +19,35 @@ export default function SearchHeaderMenuFilterSubGridItems({
     let newSearchFilterItems: string[] = state.searchFilters[filterType]
       ? [...state.searchFilters[filterType]]
       : [];
+
+    let newSearchFilters = {};
     if (state.searchFilters[filterType]?.includes(event.target.value)) {
       newSearchFilterItems = state.searchFilters[filterType].filter((name) => {
         return name !== event.target.value;
       });
+      newSearchFilters = {
+        ...state.searchFilters,
+        [filterType]: newSearchFilterItems,
+      };
     } else {
       newSearchFilterItems.push(event.target.value);
+      if (
+        filterType === 'release' &&
+        state.searchFilters.platform?.includes('Self-managed')
+      ) {
+        const { platform, ...filtersWithoutPlatform } = state.searchFilters;
+        newSearchFilters = {
+          ...filtersWithoutPlatform,
+          [filterType]: newSearchFilterItems,
+        };
+      } else {
+        newSearchFilters = {
+          ...state.searchFilters,
+          [filterType]: newSearchFilterItems,
+        };
+      }
     }
-    const newSearchFilters = {
-      ...state.searchFilters,
-      [filterType]: newSearchFilterItems,
-    };
+
     dispatch({ type: 'SET_SELECTED_FILTERS', payload: newSearchFilters });
   }
 
