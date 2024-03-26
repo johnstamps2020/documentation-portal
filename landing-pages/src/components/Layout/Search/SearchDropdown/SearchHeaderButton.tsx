@@ -14,13 +14,9 @@ export default function SearchHeaderButton({
 }: SearchHeaderButtonProps) {
   const { state } = useSearchHeaderLayoutContext();
 
-  let numFilters =
-    (state.searchFilters.release?.length
-      ? state.searchFilters.release.length
-      : 0) +
-    (state.searchFilters.product?.length
-      ? state.searchFilters.product.length
-      : 0);
+  const numFilters = Object.keys(state.searchFilters)
+    .filter((key) => key !== 'language')
+    .reduce((total, key) => total + state.searchFilters[key].length, 0);
 
   const buttonText = translate({
     id: 'search.filter.menu.button',
