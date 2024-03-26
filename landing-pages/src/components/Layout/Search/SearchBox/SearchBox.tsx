@@ -98,15 +98,20 @@ const SearchBox = forwardRef(
           onChange={(e) => setSearchPhrase(e.target.value)}
         />
         {searchFilters &&
-          Object.keys(searchFilters).map((k: string) => (
-            <InputBase
-              id={k.toLowerCase()}
-              key={k.toLowerCase()}
-              type="hidden"
-              name={k}
-              value={searchFilters[k].join(',')}
-            />
-          ))}
+          Object.keys(searchFilters).map((k: string) => {
+            if (searchFilters[k].length === 0) {
+              return null;
+            }
+            return (
+              <InputBase
+                id={k.toLowerCase()}
+                key={k.toLowerCase()}
+                type="hidden"
+                name={k}
+                value={searchFilters[k].join(',')}
+              />
+            );
+          })}
         {query.get(searchTypeQueryParameterName) && (
           <InputBase
             id={searchTypeQueryParameterName}
