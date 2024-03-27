@@ -19,13 +19,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/bc/2023.10",
-          "targetFolder": "extras/ReleaseNotes-files/bc/2023.10",
+          "sourceFolder": "ReleaseNotes-files/bc/2024.02",
+          "targetFolder": "extras/ReleaseNotes-files/bc/2024.02",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2023.10",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2023.10",
+          "sourceFolder": "ReleaseNotes-files/cm/2024.02",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2024.02",
           "srcId": "insurancesuiteextrassrc"
         }
       ],
@@ -148,13 +148,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/cc/2023.10",
-          "targetFolder": "extras/ReleaseNotes-files/cc/2023.10",
+          "sourceFolder": "ReleaseNotes-files/cc/2024.02",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2024.02",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2023.10",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2023.10",
+          "sourceFolder": "ReleaseNotes-files/cm/2024.02",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2024.02",
           "srcId": "insurancesuiteextrassrc"
         }
       ],
@@ -286,13 +286,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/pc/2023.10",
-          "targetFolder": "extras/ReleaseNotes-files/pc/2023.10",
+          "sourceFolder": "ReleaseNotes-files/pc/2024.02",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2024.02",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2023.10",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2023.10",
+          "sourceFolder": "ReleaseNotes-files/cm/2024.02",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2024.02",
           "srcId": "insurancesuiteextrassrc"
         }
       ],
