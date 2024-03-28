@@ -1,10 +1,53 @@
 // TODO translate strings
+import { useCallback } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuList from '@mui/material/MenuList';
 import Divider from '@mui/material/Divider';
-import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
+import {
+  Filters,
+  useSearchHeaderLayoutContext,
+} from './SearchHeaderLayoutContext';
 import SearchHeaderMenuItem from './SearchHeaderMenuItem';
 import SearchHeaderMenuFilterGrid from './SearchHeaderMenuFilterGrid';
+
+const isFiltersMatchingProductRelease = (
+  searchFilters: Filters,
+  defaultFilters: Filters
+): boolean => {
+  return (
+    searchFilters.product?.length === defaultFilters.product.length &&
+    !searchFilters.product?.some(
+      (product) => !defaultFilters.product.includes(product)
+    ) &&
+    searchFilters.release.length === defaultFilters.release.length &&
+    !searchFilters.release?.some(
+      (release) => !defaultFilters.release?.includes(release)
+    ) &&
+    !searchFilters.platform
+  );
+};
+
+const isFiltersMatchingReleaseOnly = (
+  searchFilters: Filters,
+  defaultFilters: Filters
+): boolean => {
+  return (
+    (!searchFilters.product || searchFilters.product.length === 0) &&
+    searchFilters.release?.length === defaultFilters.release?.length &&
+    !searchFilters.release?.some(
+      (release) => !defaultFilters.release?.includes(release)
+    ) &&
+    !searchFilters.platform
+  );
+};
+
+const isFiltersEmpty = (searchFilters: Filters): boolean => {
+  return (
+    (!searchFilters.product || searchFilters.product.length === 0) &&
+    (!searchFilters.release || searchFilters.release.length === 0) &&
+    (!searchFilters.platform || searchFilters.platform.length === 0)
+  );
+};
 
 type SearchHeaderMenuProps = {
   anchorEl: HTMLElement | null;
@@ -16,44 +59,6 @@ export default function SearchHeaderMenu({
   onClose,
 }: SearchHeaderMenuProps) {
   const { state, dispatch } = useSearchHeaderLayoutContext();
-
-  const isFiltersMatchingProductRelease = (): boolean => {
-    return (
-      state.searchFilters.product?.length ===
-        state.defaultFilters.product.length &&
-      !state.searchFilters.product?.some(
-        (product) => !state.defaultFilters.product.includes(product)
-      ) &&
-      state.searchFilters.release.length ===
-        state.defaultFilters.release.length &&
-      !state.searchFilters.release?.some(
-        (release) => !state.defaultFilters.release?.includes(release)
-      ) &&
-      !state.searchFilters.platform
-    );
-  };
-  const isFiltersMatchingReleaseOnly = (): boolean => {
-    return (
-      (!state.searchFilters.product ||
-        state.searchFilters.product.length === 0) &&
-      state.searchFilters.release?.length ===
-        state.defaultFilters.release?.length &&
-      !state.searchFilters.release?.some(
-        (release) => !state.defaultFilters.release?.includes(release)
-      ) &&
-      !state.searchFilters.platform
-    );
-  };
-  const isFiltersEmpty = (): boolean => {
-    return (
-      (!state.searchFilters.product ||
-        state.searchFilters.product.length === 0) &&
-      (!state.searchFilters.release ||
-        state.searchFilters.release.length === 0) &&
-      (!state.searchFilters.platform ||
-        state.searchFilters.platform.length === 0)
-    );
-  };
 
   return (
     <Menu
@@ -68,9 +73,7 @@ export default function SearchHeaderMenu({
       elevation={0}
       sx={{ height: '60vh', marginBlockStart: '.5rem' }}
     >
-      {/* TODO pass type and let SearchHeaderMenuItem handle its own props
-          TODO clean up selected logic
-      */}
+      {/* TODO pass type and let SearchHeaderMenuItem handle its own props */}
       <MenuList
         sx={{
           width: state.isFiltersExpanded ? '455px' : '200px',
@@ -82,7 +85,10 @@ export default function SearchHeaderMenu({
             tooltipTitle={`Search within products on this page: ${state.defaultFilters.product
               .toString()
               .replaceAll(',', ', ')}`}
-            selected={isFiltersMatchingProductRelease()}
+            selected={isFiltersMatchingProductRelease(
+              state.searchFilters,
+              state.defaultFilters
+            )}
             handleClick={() => {
               dispatch({
                 type: 'SET_SELECTED_FILTERS',
@@ -98,7 +104,10 @@ export default function SearchHeaderMenu({
           tooltipTitle={`Search within all products in ${state.defaultFilters.release
             .toString()
             .replaceAll(',', ', ')}`}
-          selected={isFiltersMatchingReleaseOnly()}
+          selected={isFiltersMatchingReleaseOnly(
+            state.searchFilters,
+            state.defaultFilters
+          )}
           handleClick={() => {
             const { product, ...filtersWithoutProduct } = state.defaultFilters;
             dispatch({
@@ -112,7 +121,7 @@ export default function SearchHeaderMenu({
         <SearchHeaderMenuItem
           itemKey="entiresite"
           tooltipTitle="Search entire site without filters"
-          selected={isFiltersEmpty()}
+          selected={isFiltersEmpty(state.searchFilters)}
           handleClick={() => {
             const { product, release, ...filtersWithoutProductOrRelease } =
               state.defaultFilters;
