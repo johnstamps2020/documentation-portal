@@ -2,10 +2,10 @@ import Category2Layout, {
   Category2LayoutProps,
 } from 'components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import innsbruckBackgroundImage from 'images/background-innsbruck.svg';
+import jasperBackgroundImage from 'images/background-jasper.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
-import innsbruckBadge from 'images/badge-innsbruck.svg';
+import jasperBadge from 'images/badge-jasper.svg';
 import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: Category2LayoutProps = {
@@ -14,7 +14,7 @@ const pageConfig: Category2LayoutProps = {
     backgroundImage: {
       xs: `url(${gradientBackgroundImage})`,
       sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
-  url(${innsbruckBackgroundImage}), 
+  url(${jasperBackgroundImage}), 
   linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },
@@ -179,7 +179,7 @@ const pageConfig: Category2LayoutProps = {
   ],
   whatsNew: {
     label: 'Jasper',
-    badge: innsbruckBadge,
+    badge: jasperBadge,
     item: { label: 'Learn more', docId: 'whatsnewjasper' },
     content: ['This card to be updated.'],
   },
