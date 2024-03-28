@@ -1,5 +1,4 @@
 // TODO translate strings
-import { useCallback } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuList from '@mui/material/MenuList';
 import Divider from '@mui/material/Divider';
