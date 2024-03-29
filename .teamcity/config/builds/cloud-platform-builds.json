@@ -1,0 +1,23 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "root": "CloudPlatform.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "indexRedirect": true,
+      "srcId": "cloudplatformsrc",
+      "docId": "cloudplatformrelease",
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "root": "Term.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "indexRedirect": true,
+      "srcId": "cloudplatformsrc",
+      "docId": "cloudplatformtermrelease",
+      "disabled": false
+    }
+  ]
+}

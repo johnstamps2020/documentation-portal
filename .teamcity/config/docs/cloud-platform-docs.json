@@ -6,9 +6,15 @@
       "title": "Authentication",
       "url": "cloud/auth/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
         "release": [
           "Cortina",
           "Dobson",
@@ -18,10 +24,16 @@
           "Hakuba",
           "Innsbruck"
         ],
-        "subject": ["Administration", "Configuration"],
+        "subject": [
+          "Administration",
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -33,9 +45,15 @@
       "title": "Network connectivity with Guidewire Cloud Platform",
       "url": "cloud/gwcp/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
         "release": [
           "Cortina",
           "Dobson",
@@ -45,10 +63,54 @@
           "Hakuba",
           "Innsbruck"
         ],
-        "subject": ["Integration"],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "cloudplatformtermrelease",
+      "title": "Terminology and Naming Conventions",
+      "url": "cloud/term/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform",
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -60,9 +122,15 @@
       "title": "Cloud Platform Release Notes",
       "url": "cloud/gwcprelnotes/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
         "release": [
           "Cortina",
           "Dobson",
@@ -72,10 +140,15 @@
           "Hakuba",
           "Innsbruck"
         ],
-        "subject": ["Release notes"],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

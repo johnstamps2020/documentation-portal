@@ -106,6 +106,15 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
+        {
+          label: 'Terminology and Naming Conventions',
+          docId: 'cloudplatformtermrelease',
+          description: (
+            <>
+              Terminology and naming conventions for Guidewire Cloud Platform resources.
+            </>
+          ),
+        },
       ],
     },
     {
