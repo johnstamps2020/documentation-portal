@@ -1,0 +1,25 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "testingframeworksjaJPrnjasper",
+      "title": "Guidewire Testing Framework Release Notes ja",
+      "displayTitle": "Testing Framework リリースノート",
+      "url": "ja/cloud/testing/202402/releasenotes",
+      "metadata": {
+        "product": [ "BillingCenter", "ClaimCenter", "PolicyCenter" ],
+        "platform": [ "Cloud" ],
+        "version": [ "2024.02" ],
+        "release": [ "jasper" ],
+        "subject": [ "Release notes" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
