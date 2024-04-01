@@ -28,6 +28,11 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Release Video',
+          url: 'https://youtu.be/ECG0VfS2VjU',
+          videoIcon: true,
+        },
+        {
           label: 'Studio Release Notes',
           docId: 'in20241studiorn',
           description: (
