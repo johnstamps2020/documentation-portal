@@ -81,15 +81,6 @@
       "srcId": "is202402jaJPeeupdatesrc",
       "docId": "ee202402jaJPupdate",
       "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
-      "srcId": "testingframeworks202402jaJPsrc",
-      "docId": "testingframeworksjaJPrnjasper",
-      "indexRedirect": true,
-      "disabled": false
     }
   ]
 }
