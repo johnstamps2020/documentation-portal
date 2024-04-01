@@ -34,6 +34,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.10 (Innsbruck)',
       items: [
         {
+          label: "Claimcenter - Guide de l'application",
+          docId: 'iscc202310frFRapp',
+        },
+        {
           label: 'ClaimCenter - Notes de version',
           docId: 'iscc202310frFRreleasenotes',
         },

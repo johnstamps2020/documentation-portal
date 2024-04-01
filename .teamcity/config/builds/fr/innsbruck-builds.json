@@ -162,6 +162,33 @@
       "docId": "datastudiofrFRrelease",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "BC-AppGuide.ditamap",
+      "srcId": "is202310frFRsrc",
+      "docId": "isbc202310frFRapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CC-AppGuide.ditamap",
+      "srcId": "is202310frFRsrc",
+      "docId": "iscc202310frFRapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "PC-AppGuide.ditamap",
+      "srcId": "is202310frFRsrc",
+      "docId": "ispc202310frFRapp",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
