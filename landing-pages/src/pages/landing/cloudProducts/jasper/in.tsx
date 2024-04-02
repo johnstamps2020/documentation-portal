@@ -31,6 +31,9 @@ const pageConfig: ApplicationLayoutProps = {
           label: 'Release Video',
           url: 'https://youtu.be/ECG0VfS2VjU',
           videoIcon: true,
+          description: (
+            <>Watch a video that describes and demonstrates new features.</>
+          )
         },
         {
           label: 'Studio Release Notes',
