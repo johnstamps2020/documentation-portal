@@ -1,10 +1,12 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
-import { Product, Release } from '@doctools/server';
+import {
+  useSearchHeaderLayoutContext,
+  Filters,
+} from './SearchHeaderLayoutContext';
 
 type SearchHeaderMenuFilterSubGridItemsProps = {
-  filters: Release[] | Product[] | undefined;
+  filters: string[];
   filterType: string;
 };
 
@@ -55,7 +57,7 @@ export default function SearchHeaderMenuFilterSubGridItems({
     <>
       {filters!.map((f) => (
         <FormControlLabel
-          key={f.name}
+          key={f}
           disableTypography={true}
           onClick={(event) => event?.stopPropagation()}
           sx={{
@@ -67,16 +69,16 @@ export default function SearchHeaderMenuFilterSubGridItems({
           control={
             <Checkbox
               checked={
-                state.searchFilters[filterType]?.includes(f.name) ? true : false
+                state.searchFilters[filterType]?.includes(f) ? true : false
               }
-              value={f.name}
+              value={f}
               onChange={handleCheckboxChange}
               sx={{
                 height: '14px',
               }}
             />
           }
-          label={f.name}
+          label={f}
         />
       ))}
     </>

@@ -43,10 +43,10 @@ export default function SearchHeaderMenuFilterSubGrid({
   });
   const filters = state.allFilters![filterType];
   const selectedDefaultFilters = filters?.filter((f) => {
-    return state.defaultFilters[filterType]?.some((df) => df === f.name);
+    return state.defaultFilters[filterType]?.some((df) => df === f);
   });
   const unselectedFilters = filters?.filter((f) => {
-    return !state.defaultFilters[filterType]?.includes(f.name);
+    return !state.defaultFilters[filterType]?.includes(f);
   });
 
   return (

@@ -1,12 +1,11 @@
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 import SearchHeaderMenuFilterSubGrid from './SearchHeaderMenuFilterSubGrid';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
 export default function SearchHeaderMenuFilterGrid() {
-  const { state, dispatch } = useSearchHeaderLayoutContext();
+  const { state } = useSearchHeaderLayoutContext();
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 

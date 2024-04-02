@@ -1,7 +1,13 @@
 // TODO save selected filters to sessionStorage if user changes them? Retrieve when returning to same landing page?
 // TODO move all translated strings to separate file and import?
 
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useMemo,
+} from 'react';
 import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
 import {
   useProductsNoRevalidation,
@@ -17,10 +23,7 @@ interface SearchHeaderLayoutContextInterface {
   isFiltersExpanded: boolean;
   defaultFilters: Filters;
   searchFilters: Filters;
-  allFilters:
-    | { release: Release[] | undefined; product: Product[] | undefined }
-    | undefined;
-  helpWidth: React.CSSProperties['width']; // currently unused
+  allFilters: Filters;
 }
 
 const initialState: SearchHeaderLayoutContextInterface = {
@@ -28,22 +31,13 @@ const initialState: SearchHeaderLayoutContextInterface = {
   isFiltersExpanded: false,
   defaultFilters: {},
   searchFilters: {},
-  allFilters: undefined,
-  helpWidth: '60ch', // not used
+  allFilters: {},
 };
 
 type Action =
   | { type: 'SET_MENU_EXPANDED'; payload: boolean }
   | { type: 'SET_FILTERS_EXPANDED'; payload: boolean }
-  | { type: 'SET_DEFAULT_FILTERS'; payload: Filters }
-  | { type: 'SET_SELECTED_FILTERS'; payload: Filters }
-  | {
-      type: 'SET_ALL_FILTERS';
-      payload: {
-        release: Release[] | undefined;
-        product: Product[] | undefined;
-      };
-    };
+  | { type: 'SET_SELECTED_FILTERS'; payload: Filters };
 
 function reducer(
   state: SearchHeaderLayoutContextInterface,
@@ -54,12 +48,8 @@ function reducer(
       return { ...state, isMenuExpanded: action.payload };
     case 'SET_FILTERS_EXPANDED':
       return { ...state, isFiltersExpanded: action.payload };
-    case 'SET_DEFAULT_FILTERS':
-      return { ...state, defaultFilters: action.payload };
     case 'SET_SELECTED_FILTERS':
       return { ...state, searchFilters: action.payload };
-    case 'SET_ALL_FILTERS':
-      return { ...state, allFilters: action.payload };
     default:
       return state;
   }
@@ -81,35 +71,32 @@ export function SearchHeaderLayoutContextProvider({
   const { releases: allReleases } = useReleasesNoRevalidation();
   const { products: allProducts } = useProductsNoRevalidation();
 
-  useEffect(() => {
-    if (allReleases) {
-      allReleases.sort((a: Release, b: Release) =>
-        b.name.localeCompare(a.name)
-      );
-    }
-    if (allProducts) {
-      allProducts.sort((a: Product, b: Product) =>
-        a.name.localeCompare(b.name)
-      );
-    }
-    dispatch({
-      type: 'SET_ALL_FILTERS',
-      payload: { release: allReleases, product: allProducts },
-    });
+  state.allFilters = useMemo(() => {
+    if (!allReleases || !allProducts) return { release: [], product: [] };
+    return {
+      release: allReleases
+        .sort((a: Release, b: Release) => b.name.localeCompare(a.name))
+        .map((r: Release) => r.name),
+      product: allProducts
+        .sort((a: Product, b: Product) => a.name.localeCompare(b.name))
+        .map((p: Product) => p.name),
+    };
   }, [allReleases, allProducts]);
 
-  useEffect(() => {
-    if (pageData?.searchFilters) {
-      const defaultFilters: Filters = {};
-      Object.keys(pageData?.searchFilters).forEach((k) => {
-        defaultFilters[k] = pageData?.searchFilters![k];
-      });
-      dispatch({
-        type: 'SET_DEFAULT_FILTERS',
-        payload: defaultFilters,
-      });
+  state.defaultFilters = useMemo(() => {
+    if (!pageData?.searchFilters) {
+      return {};
     }
+    const defaultFilters: Filters = {};
+    Object.keys(pageData?.searchFilters).forEach((k) => {
+      defaultFilters[k] = pageData?.searchFilters![k];
+    });
+    return defaultFilters;
   }, [pageData]);
+
+  useEffect(() => {
+    dispatch({ type: 'SET_SELECTED_FILTERS', payload: state.defaultFilters });
+  }, [state.defaultFilters]);
 
   useEffect(() => {
     setHeaderOptions((prevHeaderOptions) => ({
@@ -117,10 +104,6 @@ export function SearchHeaderLayoutContextProvider({
       searchFilters: state.searchFilters,
     }));
   }, [state.searchFilters, setHeaderOptions]);
-
-  useEffect(() => {
-    dispatch({ type: 'SET_SELECTED_FILTERS', payload: state.defaultFilters });
-  }, [state.defaultFilters]);
 
   return (
     <SearchHeaderLayoutContext.Provider value={{ state, dispatch }}>
