@@ -8,7 +8,7 @@
       "srcId": "ipacloudelysiansrc",
       "docId": "ipacloudelysianrn",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "ipacloudelysiansrc",
       "docId": "ipacloudelysianconfig",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "ipacloudelysiansrc",
       "docId": "ipacloudelysianapp",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     }
   ]
 }
