@@ -181,7 +181,16 @@ const pageConfig: Category2LayoutProps = {
     label: 'Jasper',
     badge: jasperBadge,
     item: { label: 'Learn more', docId: 'whatsnewjasper' },
-    content: ['This card to be updated.'],
+    content: [
+      'Layered coinsurance agreements in PolicyCenter and BillingCenter',
+      'Analytics Manager pre-integrated into PolicyCenter',
+      'Auto and driver schedule import for Submission Intake',
+      'Automated Quote Comparison in InsuranceNow',
+      'Jutro template for Personal Auto FNOL',
+      'Autopilot Workflow Service template for Auto Physical Damage',
+      'Predict Tune component (Early Access)',
+      'Cloud API updates',
+  ],
   },
   sidebar: implementationResourcesSidebar,
 };
