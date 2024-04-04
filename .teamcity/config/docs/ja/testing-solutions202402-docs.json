@@ -10,8 +10,8 @@
         "product": [ "BillingCenter", "ClaimCenter", "PolicyCenter" ],
         "platform": [ "Cloud" ],
         "version": [ "2024.02" ],
-        "release": [ "jasper" ],
-        "subject": [ "Release notes" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Release notes", "Testing" ],
         "language": "ja"
       },
       "environments": [ "staging" ],
