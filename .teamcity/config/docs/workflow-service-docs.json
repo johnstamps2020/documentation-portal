@@ -6,14 +6,29 @@
       "title": "Workflow Designer",
       "url": "cloud/workflow-service/designer",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Workflow Service"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
-        "release": ["Hakuba", "Innsbruck"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Workflow Service"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -25,14 +40,30 @@
       "title": "Workflow Administration",
       "url": "cloud/workflow-service/workflow-console",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Workflow Service"],
-        "version": ["latest"],
-        "subject": ["Administration"],
-        "release": ["Garmisch", "Hakuba", "Innsbruck"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Workflow Service"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Administration"
+        ],
+        "release": [
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -44,14 +75,30 @@
       "title": "Release Notes",
       "url": "cloud/workflow-service/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Workflow Service"],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": ["Garmisch", "Hakuba", "Innsbruck"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Workflow Service"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "release": [
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,

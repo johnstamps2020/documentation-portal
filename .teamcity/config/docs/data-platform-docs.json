@@ -6,14 +6,33 @@
       "title": "Data Platform",
       "url": "cloud/dataplatform",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Data Platform"],
-        "version": ["latest"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
-        "subject": ["Features and functionality", "Release notes"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Data Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
+        "subject": [
+          "Features and functionality",
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -25,14 +44,31 @@
       "title": "Data Studio",
       "url": "cloud/datastudio/app",
       "metadata": {
-        "product": ["Data Platform"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
-        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "product": [
+          "Data Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,22 +80,32 @@
       "title": "Application Guide",
       "url": "cloud/cda/guide/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Data Platform"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Data Platform"
+        ],
+        "version": [
+          "latest"
+        ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
-        "subject": ["Features and functionality"],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -71,22 +117,32 @@
       "title": "Release Notes",
       "url": "cloud/cda/rn/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Data Platform"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Data Platform"
+        ],
+        "version": [
+          "latest"
+        ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
-        "subject": ["Release notes"],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -98,22 +154,31 @@
       "title": "Cloud Data Access Internal",
       "url": "internal/cloud/cda/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Data Platform"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Data Platform"
+        ],
+        "version": [
+          "latest"
+        ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
-        "subject": ["Features and functionality"],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

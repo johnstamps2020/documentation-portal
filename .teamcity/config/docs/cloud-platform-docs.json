@@ -16,13 +16,12 @@
           "latest"
         ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "subject": [
           "Administration",
@@ -55,13 +54,12 @@
           "latest"
         ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "subject": [
           "Integration"
@@ -132,13 +130,12 @@
           "latest"
         ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "subject": [
           "Release notes"

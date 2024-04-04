@@ -6,13 +6,23 @@
       "title": "GCC Internal Template",
       "url": "internal/gcc-template/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Best practices"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Best practices"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -24,14 +34,31 @@
       "title": "Runtime Properties API",
       "url": "cloud/console/runtimepropertiesapi",
       "metadata": {
-        "product": ["Cloud Platform"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Development"],
-        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "product": [
+          "Cloud Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -43,14 +70,31 @@
       "title": "Repository Settings API",
       "url": "cloud/console/repositorysettingsapi",
       "metadata": {
-        "product": ["Cloud Platform"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Development"],
-        "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "product": [
+          "Cloud Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -62,14 +106,32 @@
       "title": "IS Deployments API",
       "url": "cloud/console/cloudconsoleapi",
       "metadata": {
-        "product": ["Cloud Platform"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Development"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "product": [
+          "Cloud Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -81,14 +143,30 @@
       "title": "Database API",
       "url": "cloud/console/dbserviceapi",
       "metadata": {
-        "product": ["Cloud Platform"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Development"],
-        "release": ["Garmisch", "Hakuba", "Innsbruck"],
+        "product": [
+          "Cloud Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -102,14 +180,32 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "public": true,
       "internal": false,
       "earlyAccess": false
@@ -119,21 +215,29 @@
       "title": "Cloud Platform",
       "url": "cloud/gcc-guide/insurer-developer/latest",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -146,12 +250,20 @@
       "url": "gcc/internal/latest",
       "displayOnLandingPages": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -163,12 +275,21 @@
       "url": "cloud/gcc-guide/gw-admin/latest",
       "displayOnLandingPages": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -181,13 +302,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -199,13 +330,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -217,13 +358,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -235,13 +386,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -253,13 +414,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -271,13 +442,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -289,13 +470,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -307,13 +498,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -325,13 +526,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -343,13 +554,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -361,13 +582,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -379,13 +610,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -397,13 +638,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -415,13 +666,23 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "public": false,
       "internal": true,
       "earlyAccess": false

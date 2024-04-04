@@ -19,6 +19,7 @@
           "Data Platform"
         ],
         "release": [
+          "Jasper",
           "Innsbruck",
           "Hakuba",
           "Garmisch"
@@ -111,13 +112,12 @@
           "latest"
         ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -147,7 +147,8 @@
         ],
         "release": [
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -175,13 +176,12 @@
           "latest"
         ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -236,18 +236,16 @@
           "latest"
         ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
       "environments": [
-        "dev",
         "staging",
         "prod"
       ],
@@ -414,13 +412,12 @@
           "latest"
         ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "subject": [
           "Glossary"
@@ -475,12 +472,12 @@
           "Cloud"
         ],
         "release": [
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "version": [
           "latest"
@@ -509,12 +506,12 @@
           "Cloud"
         ],
         "release": [
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "version": [
           "latest"
@@ -599,6 +596,7 @@
           "Data Platform"
         ],
         "release": [
+          "Jasper",
           "Innsbruck",
           "Hakuba",
           "Garmisch"
@@ -692,7 +690,13 @@
           "Cloud"
         ],
         "product": [
-          "Community Case Templates"
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
         ],
         "release": [
           "Innsbruck",
@@ -702,10 +706,12 @@
         "version": [
           "latest"
         ],
+        "subject": [
+          "Community Case Templates"
+        ],
         "language": "en"
       },
       "environments": [
-        "dev",
         "staging",
         "prod"
       ],
@@ -724,6 +730,7 @@
           "Cloud"
         ],
         "release": [
+          "Jasper",
           "Innsbruck",
           "Hakuba",
           "Garmisch",
@@ -746,7 +753,6 @@
         "language": "en"
       },
       "environments": [
-        "dev",
         "staging",
         "prod"
       ],

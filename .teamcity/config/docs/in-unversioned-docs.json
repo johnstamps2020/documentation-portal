@@ -48,7 +48,8 @@
           "2022.2",
           "2023.1",
           "2023.2",
-          "2023.3"
+          "2023.3",
+          "2024.1"
         ],
         "subject": [
           "Release notes"
@@ -58,7 +59,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -88,7 +90,8 @@
           "2022.2",
           "2023.1",
           "2023.2",
-          "2023.3"
+          "2023.3",
+          "2024.1"
         ],
         "subject": [
           "Release notes"
@@ -98,7 +101,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -135,7 +139,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -507,6 +512,7 @@
           "InsuranceNow"
         ],
         "version": [
+          "2024.1",
           "2023.3",
           "2023.2",
           "2023.1",
@@ -523,7 +529,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -549,6 +556,7 @@
           "InsuranceNow"
         ],
         "version": [
+          "2024.1",
           "2023.3",
           "2023.2",
           "2023.1",
@@ -566,7 +574,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -591,6 +600,7 @@
           "InsuranceNow"
         ],
         "version": [
+          "2024.1",
           "2023.3",
           "2023.2",
           "2023.1",
@@ -609,7 +619,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -646,7 +657,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -890,6 +902,7 @@
           "InsuranceNow"
         ],
         "version": [
+          "2024.1",
           "2023.3",
           "2023.2",
           "2023.1",
@@ -908,7 +921,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -944,7 +958,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -1188,6 +1203,7 @@
           "InsuranceNow"
         ],
         "version": [
+          "2024.1",
           "2023.3",
           "2023.2",
           "2023.1",
@@ -1206,7 +1222,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -1231,6 +1248,7 @@
           "InsuranceNow"
         ],
         "version": [
+          "2024.1",
           "2023.3",
           "2023.2",
           "2023.1",
@@ -1247,7 +1265,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -1273,6 +1292,7 @@
           "InsuranceNow"
         ],
         "version": [
+          "2024.1",
           "2023.3",
           "2023.2",
           "2023.1",
@@ -1289,7 +1309,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
@@ -1315,14 +1336,16 @@
         ],
         "version": [
           "2023.2",
-          "2023.3"
+          "2023.3",
+          "2024.1"
         ],
         "subject": [
           "Features and functionality"
         ],
         "release": [
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },

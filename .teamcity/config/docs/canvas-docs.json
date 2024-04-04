@@ -6,22 +6,33 @@
       "title": "Canvas",
       "url": "cloud/canvas/latest",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["Canvas"],
-        "version": ["latest"],
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "Canvas"
+        ],
+        "version": [
+          "latest"
+        ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
-        "subject": ["Features and functionality"],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
