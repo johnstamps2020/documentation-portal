@@ -15,12 +15,8 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
+        "platform": ["Cloud"],
+        "version": ["latest"],
         "release": [
           "Cortina",
           "Dobson",
@@ -28,19 +24,51 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "standards202404",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202404",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "InsuranceNow",
+          "Digital Reference Applications",
+          "Cloud Platform",
+          "Data Platform"
+        ],
+        "platform": ["Cloud"],
+        "version": ["2024.04"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
+        "subject": ["Cloud Standards"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -59,12 +87,8 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2024.01"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2024.01"],
         "release": [
           "Cortina",
           "Dobson",
@@ -74,14 +98,10 @@
           "Hakuba",
           "Innsbruck"
         ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -102,12 +122,8 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2023.12"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2023.12"],
         "release": [
           "Cortina",
           "Dobson",
@@ -116,14 +132,10 @@
           "Garmisch",
           "Hakuba"
         ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -144,12 +156,8 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2023.11"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2023.11"],
         "release": [
           "Cortina",
           "Dobson",
@@ -158,14 +166,10 @@
           "Garmisch",
           "Hakuba"
         ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -186,12 +190,8 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2023.10"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2023.10"],
         "release": [
           "Cortina",
           "Dobson",
@@ -200,14 +200,10 @@
           "Garmisch",
           "Hakuba"
         ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -228,26 +224,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2023.08"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2023.08"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -268,26 +251,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2023.03"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2023.03"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -308,26 +278,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2023.02"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -348,26 +305,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2023.01"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2023.01"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -388,26 +332,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.11"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.11"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -428,26 +359,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.10"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.10"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -468,25 +386,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.09"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Cortina", "Dobson", "Elysian"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -507,25 +413,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.07"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.07"],
+        "release": ["Cortina", "Dobson", "Elysian"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -546,25 +440,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.06"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson",
-          "Elysian"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.06"],
+        "release": ["Cortina", "Dobson", "Elysian"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -585,24 +467,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.05"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -623,24 +494,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.04"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.04"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -661,24 +521,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.03"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.03"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -699,24 +548,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.02"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.02"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -737,24 +575,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2022.01"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2022.01"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -775,24 +602,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.11"
-        ],
-        "release": [
-          "Cortina",
-          "Dobson"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -813,23 +629,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.10"
-        ],
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.10"],
+        "release": ["Cortina"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -850,23 +656,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.09"
-        ],
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.09"],
+        "release": ["Cortina"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -887,23 +683,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.08"
-        ],
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.08"],
+        "release": ["Cortina"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -924,23 +710,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.07"
-        ],
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.07"],
+        "release": ["Cortina"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -961,23 +737,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.06"
-        ],
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.06"],
+        "release": ["Cortina"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -998,23 +764,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.05"
-        ],
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.05"],
+        "release": ["Cortina"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1035,24 +791,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.04"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1073,24 +818,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.03"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.03"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1111,24 +845,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.02"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.02"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1149,24 +872,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2021.01"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2021.01"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1187,24 +899,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1225,24 +926,13 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2020.10"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["2020.10"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1263,20 +953,12 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "master"
-        ],
-        "subject": [
-          "Cloud Standards"
-        ],
+        "platform": ["Cloud"],
+        "version": ["master"],
+        "subject": ["Cloud Standards"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
