@@ -91,17 +91,14 @@ async function initializeAnalytics() {
       is_employee: isEmployee,
     });
 
-    if (cookieConsentDecision === 'allow') {
-      gtag('consent', 'update', {
-        ad_storage: 'granted',
-        analytics_storage: 'granted',
-      });
-    } else {
-      gtag('consent', 'update', {
-        ad_storage: 'denied',
-        analytics_storage: 'denied',
-      });
-    }
+    const consentValue =
+      cookieConsentDecision === 'allow' ? 'granted' : 'denied';
+    gtag('consent', 'update', {
+      ad_storage: consentValue,
+      analytics_storage: consentValue,
+      ad_user_data: consentValue,
+      ad_personalization: consentValue,
+    });
   }
 }
 

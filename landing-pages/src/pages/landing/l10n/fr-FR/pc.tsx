@@ -34,6 +34,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.10 (Innsbruck)',
       items: [
         {
+          label: "PolicyCenter - Guide de l'application",
+          docId: 'ispc202310frFRapp',
+        },
+        {
           label: 'PolicyCenter - Notes de version',
           docId: 'ispc202310frFRreleasenotes',
         },
