@@ -36,6 +36,12 @@
       "title": "IS 2024.02.0 eeupdate ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/ja-JP/2024.02.0"
+    },
+    {
+      "id": "testingframeworks202402jaJPsrc",
+      "title": "Testing Solutions 2024.02 ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
+      "branch": "release/ja-JP/2024.02"
     }
   ]
 }
