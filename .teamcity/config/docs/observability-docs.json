@@ -6,14 +6,33 @@
       "title": "InsuranceSuite Observability",
       "url": "cloud/observability",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2023.06", "2023.10"],
-        "subject": ["Administration"],
-        "release": ["Hakuba", "Innsbruck"],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2023.06",
+          "2023.10",
+          "2024.02"
+        ],
+        "subject": [
+          "Administration"
+        ],
+        "release": [
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

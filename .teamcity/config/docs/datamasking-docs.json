@@ -6,14 +6,34 @@
       "title": "Data Masking",
       "url": "cloud/is/datamasking",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05", "2022.09", "2023.02", "2023.06", "2023.10"],
-        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba", "Innsbruck"],
-        "subject": ["Development"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "indexForSearch": true,
       "public": false,
       "internal": false,

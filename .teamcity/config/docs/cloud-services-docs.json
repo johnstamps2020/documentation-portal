@@ -17,13 +17,15 @@
           "2022.09",
           "2023.02",
           "2023.06",
-          "2023.10"
+          "2023.10",
+          "2024.02"
         ],
         "release": [
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "subject": [
           "Configuration"
@@ -56,7 +58,8 @@
           "2022.09",
           "2023.02",
           "2023.06",
-          "2023.10"
+          "2023.10",
+          "2024.02"
         ],
         "release": [
           "Flaine",
@@ -95,12 +98,14 @@
         "version": [
           "2023.02",
           "2023.06",
-          "2023.10"
+          "2023.10",
+          "2024.02"
         ],
         "release": [
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "subject": [
           "Configuration"
@@ -133,13 +138,15 @@
           "2022.09",
           "2023.02",
           "2023.06",
-          "2023.10"
+          "2023.10",
+          "2024.02"
         ],
         "release": [
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "subject": [
           "Features and functionality"
@@ -174,7 +181,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "subject": [
           "Configuration"
@@ -206,7 +214,8 @@
           "latest"
         ],
         "release": [
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "subject": [
           "Configuration"
