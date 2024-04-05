@@ -156,6 +156,7 @@ export async function getDocByUrl(url: string): Promise<Doc | null> {
       'doc.url',
       'doc.id',
       'doc.public',
+      'doc.ignorePublicPropertyAndUseVariants',
       'doc.internal',
       'doc.isInProduction',
     ])
