@@ -20,33 +20,31 @@ export default function SearchHeaderMenuItem({
   handleClick,
 }: SearchHeaderMenuItemProps) {
   return (
-    <>
-      <Tooltip
-        key={itemKey}
-        title={<Typography>{tooltipTitle}</Typography>}
-        placement="left"
-        enterDelay={500}
-        arrow
+    <Tooltip
+      key={itemKey}
+      title={<Typography>{tooltipTitle}</Typography>}
+      placement="left"
+      enterDelay={500}
+      arrow
+    >
+      <MenuItem
+        sx={{
+          p: '2px 13px',
+          ...menuItemSx,
+        }}
+        onClick={handleClick}
+        selected={selected}
       >
-        <MenuItem
+        <Typography
           sx={{
-            p: '2px 13px',
-            ...menuItemSx,
+            fontSize: '0.875rem',
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
           }}
-          onClick={handleClick}
-          selected={selected}
         >
-          <Typography
-            sx={{
-              fontSize: '0.875rem',
-              textOverflow: 'ellipsis',
-              overflow: 'hidden',
-            }}
-          >
-            {itemLabel}
-          </Typography>
-        </MenuItem>
-      </Tooltip>
-    </>
+          {itemLabel}
+        </Typography>
+      </MenuItem>
+    </Tooltip>
   );
 }

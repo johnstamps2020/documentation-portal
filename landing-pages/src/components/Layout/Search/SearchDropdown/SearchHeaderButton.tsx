@@ -15,7 +15,7 @@ export default function SearchHeaderButton({
   const { state } = useSearchHeaderLayoutContext();
 
   const numFilters = Object.keys(state.searchFilters)
-    .filter((key) => key !== 'language')
+    .filter((key) => key !== 'language' && key !== 'subject')
     .reduce((total, key) => total + state.searchFilters[key].length, 0);
 
   const buttonText = translate({

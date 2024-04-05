@@ -61,7 +61,7 @@ export const SearchHeaderLayoutContext = createContext<{
 } | null>(null);
 
 export function SearchHeaderLayoutContextProvider({
-  children,
+  children, // add defaultFilters here due to different sources
 }: {
   children: React.ReactNode;
 }) {
@@ -71,6 +71,7 @@ export function SearchHeaderLayoutContextProvider({
   const { releases: allReleases } = useReleasesNoRevalidation();
   const { products: allProducts } = useProductsNoRevalidation();
 
+  // need setter?
   state.allFilters = useMemo(() => {
     if (!allReleases || !allProducts) return { release: [], product: [] };
     return {
@@ -83,6 +84,7 @@ export function SearchHeaderLayoutContextProvider({
     };
   }, [allReleases, allProducts]);
 
+  // need setter?
   state.defaultFilters = useMemo(() => {
     if (!pageData?.searchFilters) {
       return {};

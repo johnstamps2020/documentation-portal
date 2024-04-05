@@ -32,39 +32,35 @@ export default function Header() {
 
   if (smallScreen) {
     return (
-      <>
-        <HeaderContextProvider>
-          <SearchHeaderLayoutContextProvider>
-            <HeaderMobile
-              menuContents={
-                <>
-                  {!hideSearchBox && <SearchHeadWrapper />}
-                  <HeaderMenuItems />
-                </>
-              }
-            />
-          </SearchHeaderLayoutContextProvider>
-        </HeaderContextProvider>
-      </>
+      <HeaderContextProvider>
+        <SearchHeaderLayoutContextProvider>
+          <HeaderMobile
+            menuContents={
+              <>
+                {!hideSearchBox && <SearchHeadWrapper />}
+                <HeaderMenuItems />
+              </>
+            }
+          />
+        </SearchHeaderLayoutContextProvider>
+      </HeaderContextProvider>
     );
   }
 
   return (
-    <>
-      <HeaderContextProvider>
-        <SearchHeaderLayoutContextProvider>
-          <HeaderDesktop
-            centerItems={
-              !hideSearchBox && (
-                <>
-                  <SearchHeadWrapper />
-                </>
-              )
-            }
-            rightItems={<HeaderMenuItems />}
-          />
-        </SearchHeaderLayoutContextProvider>
-      </HeaderContextProvider>
-    </>
+    <HeaderContextProvider>
+      <SearchHeaderLayoutContextProvider>
+        <HeaderDesktop
+          centerItems={
+            !hideSearchBox && (
+              <>
+                <SearchHeadWrapper />
+              </>
+            )
+          }
+          rightItems={<HeaderMenuItems />}
+        />
+      </SearchHeaderLayoutContextProvider>
+    </HeaderContextProvider>
   );
 }
