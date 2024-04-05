@@ -51,11 +51,7 @@
     },
     "resource": {
       "additionalProperties": false,
-      "required": [
-        "targetFolder",
-        "sourceFolder",
-        "srcId"
-      ],
+      "required": ["targetFolder", "sourceFolder", "srcId"],
       "properties": {
         "targetFolder": {
           "description": "For resources, it is the path where we want to place the resource.",
@@ -75,22 +71,14 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": [
-          "dev",
-          "staging",
-          "prod"
-        ]
+        "enum": ["dev", "staging", "prod"]
       }
     },
     "metadata": {
       "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "product",
-        "platform",
-        "language"
-      ],
+      "required": ["product", "platform", "language"],
       "properties": {
         "product": {
           "$ref": "#/definitions/product"
@@ -100,20 +88,13 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "Self-managed",
-              "Cloud"
-            ]
+            "enum": ["Self-managed", "Cloud"]
           }
         },
         "version": {
           "description": "A version number, or a word like 'latest'",
           "type": "array",
-          "examples": [
-            "2023.02",
-            "10.2.2",
-            "latest"
-          ]
+          "examples": ["2023.02", "10.2.2", "latest"]
         },
         "release": {
           "description": "A major release",
@@ -181,12 +162,7 @@
       "description": "A Git source where the build retrieves files.",
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "id",
-        "title",
-        "gitUrl",
-        "branch"
-      ],
+      "required": ["id", "title", "gitUrl", "branch"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
@@ -201,10 +177,7 @@
         "branch": {
           "description": "The branch to use when checking out. Provide a bare branch name without specification like 'refs/heads', etc.",
           "type": "string",
-          "examples": [
-            "release/1.0",
-            "main"
-          ]
+          "examples": ["release/1.0", "main"]
         }
       }
     },
@@ -321,6 +294,10 @@
           "description": "If set to true, users do not have to authenticate to view the document. Defaults to false if not set.",
           "type": "boolean"
         },
+        "ignorePublicPropertyAndUseVariants": {
+          "description": "If set to true, the document is built in two variants - public and restricted. The user is redirected to the proper variant by the server based on their login info.",
+          "type": "boolean"
+        },
         "internal": {
           "description": "If set to true, the document is available to Guidewire employees only.",
           "type": "boolean"
@@ -340,22 +317,12 @@
     "build": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "buildType",
-        "docId",
-        "srcId"
-      ],
+      "required": ["buildType", "docId", "srcId"],
       "properties": {
         "buildType": {
           "description": "The build type to apply",
           "type": "string",
-          "enum": [
-            "dita",
-            "source-zip",
-            "storybook",
-            "yarn",
-            "just-copy"
-          ]
+          "enum": ["dita", "source-zip", "storybook", "yarn", "just-copy"]
         },
         "filter": {
           "description": "The name of the ditaval file from the common-gw/ditavals submodule to use in the build, including the extension",
@@ -368,18 +335,11 @@
         },
         "root": {
           "description": "The filename of the ditamap to use, including the extension",
-          "examples": [
-            "_superbook.ditamap",
-            "flowers.ditamap",
-            "webhelp.xml"
-          ]
+          "examples": ["_superbook.ditamap", "flowers.ditamap", "webhelp.xml"]
         },
         "workingDir": {
           "description": "The working folder where the build commands are executed",
-          "examples": [
-            "website",
-            "frontend"
-          ]
+          "examples": ["website", "frontend"]
         },
         "indexRedirect": {
           "description": "If set to true, add a script to the landing page that redirects the user to the first topic in the table of contents. Defaults to false if not set.",
