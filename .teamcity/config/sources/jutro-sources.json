@@ -446,6 +446,12 @@
       "branch": "release/10.0.0"
     },
     {
+      "id": "srcjutro1003",
+      "title": "Jutro Digital Platform 10.0.3",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/10.0.3"
+    },
+    {
       "id": "srcjutro1010",
       "title": "Jutro Digital Platform 10.1",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
