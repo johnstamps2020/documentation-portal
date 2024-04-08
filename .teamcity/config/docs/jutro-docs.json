@@ -727,6 +727,37 @@
       "earlyAccess": false
     },
     {
+      "id": "jutrosdkkufri",
+      "title": "Jutro SDK",
+      "url": "jutro/sdk/kufri",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Kufri"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutrorewards",
       "title": "Jutro Rewards",
       "url": "jutro/rewards",

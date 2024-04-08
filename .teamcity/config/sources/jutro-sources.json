@@ -200,6 +200,12 @@
       "branch": "release/jasper"
     },
     {
+      "id": "srcjutrosdkkufri",
+      "title": "Jutro SDK Kufri",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "release/kufri"
+    },
+    {
       "id": "srcjutrosbbizpatterns652",
       "title": "Jutro Storybook Business Patterns 6.5.2",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/storybook-business-patterns.git",
