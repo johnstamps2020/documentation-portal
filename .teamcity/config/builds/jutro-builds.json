@@ -329,6 +329,12 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutrosdkkufri",
+      "srcId": "srcjutrosdkkufri",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutronext",
       "srcId": "srcjutronext",
       "workingDir": "website",
