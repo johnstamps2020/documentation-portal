@@ -3470,6 +3470,38 @@
       "earlyAccess": false
     },
     {
+      "id": "storybook1003",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/10.0.3",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.0.3"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "jutro1010",
       "title": "Jutro Digital Platform",
       "url": "jutro/documentation/10.1",
