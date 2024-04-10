@@ -238,6 +238,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "solaris",
+      "title": "Solaris",
+      "url": "internal/solaris/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs", "Solaris"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
