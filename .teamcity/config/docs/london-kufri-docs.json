@@ -1,0 +1,141 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "londonkufriccapp",
+      "title": "ClaimCenter for London Market Application Guide",
+      "url": "london/kufri/ccapp",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonkufripcapp",
+      "title": "PolicyCenter for London Market Application Guide",
+      "url": "london/kufri/pcapp",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonkufriconfig",
+      "title": "London Market Configuration Guide",
+      "url": "london/kufri/config",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonkufrirn",
+      "title": "London Market Release Notes",
+      "url": "london/kufri/releasenotes",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
