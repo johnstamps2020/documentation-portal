@@ -16,6 +16,14 @@
       "command": "yarn dev:server",
       "request": "launch",
       "cwd": "${workspaceFolder}",
+      "type": "node-terminal",
+      "preLaunchTask": "Start Doc Portal Db"
+    },
+    {
+      "name": "Landing Pages DEV",
+      "command": "yarn dev:landing-pages",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
       "type": "node-terminal"
     },
     {
