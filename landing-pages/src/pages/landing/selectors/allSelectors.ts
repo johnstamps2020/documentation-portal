@@ -131,6 +131,7 @@ export const allSelectors = {
     { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
     { label: 'Innsbruck', pagePath: 'cloudProducts/innsbruck' },
     { label: 'Jasper', pagePath: 'cloudProducts/jasper' },
+    { label: 'Kufri', pagePath: 'cloudProducts/kufri' },
   ],
   s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {
@@ -274,6 +275,10 @@ export const allSelectors = {
     {
       label: 'Jasper (2024.02)',
       pagePath: 'cloudProducts/jasper/global-ref-apps',
+    },
+    {
+      label: 'Kufri (2024.07)',
+      pagePath: 'cloudProducts/kufri/global-ref-apps',
     },
   ],
   s06dcd02c361b9539495548fd0bfb3ad2: [

@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "lmkufrisrc",
+      "title": "London Markets Kufri",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/london-markets.git",
+      "branch": "release/kufri"
+    },
+    {
       "id": "lmjaspersrc",
       "title": "London Markets Jasper",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/london-markets.git",
