@@ -172,7 +172,8 @@
           "Workset Manager"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -208,7 +209,8 @@
           "Lifecycle Manager"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"

@@ -7,7 +7,7 @@
       "displayTitle": "Notas de la version de la Plataforma de Guidewire Cloud",
       "url": "es/cloud/gwcprelnotes/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": [ "Innsbruck" ],

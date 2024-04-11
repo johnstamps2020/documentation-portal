@@ -7,7 +7,7 @@
       "url": "um/latest/appreaderrn",
       "metadata": {
         "product": ["Underwriting Management"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
@@ -26,7 +26,7 @@
       "url": "um/latest/releasenotes",
       "metadata": {
         "product": ["Underwriting Management"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
@@ -45,7 +45,7 @@
       "url": "um/latest/agentuser",
       "metadata": {
         "product": ["Underwriting Management"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
@@ -64,7 +64,7 @@
       "url": "um/latest/outlook",
       "metadata": {
         "product": ["Underwriting Management"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
@@ -83,7 +83,7 @@
       "url": "um/latest/studio",
       "metadata": {
         "product": ["Underwriting Management"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
@@ -102,7 +102,7 @@
       "url": "um/latest/user",
       "metadata": {
         "product": ["Underwriting Management"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],

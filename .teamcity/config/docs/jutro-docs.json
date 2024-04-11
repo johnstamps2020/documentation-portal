@@ -3800,7 +3800,8 @@
           "Jutro Design System"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -3829,7 +3830,8 @@
           "DocTools"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -3857,7 +3859,8 @@
           "Jutro Digital Platform"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"

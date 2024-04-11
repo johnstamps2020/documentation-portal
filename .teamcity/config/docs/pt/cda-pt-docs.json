@@ -7,7 +7,7 @@
       "displayTitle": "Guia do aplicativo",
       "url": "pt/cloud/cda/guide/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Data Platform"],
         "version": ["latest"],
         "release": ["Cortina", "Dobson", "Flaine", "Garmisch", "Hakuba"],

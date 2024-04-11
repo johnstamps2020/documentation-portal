@@ -7,7 +7,8 @@
       "url": "internal/gcc-template/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -38,7 +39,8 @@
           "Cloud Platform"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -74,7 +76,8 @@
           "Cloud Platform"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -110,7 +113,8 @@
           "Cloud Platform"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -147,7 +151,8 @@
           "Cloud Platform"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -181,7 +186,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -216,7 +222,8 @@
       "url": "cloud/gcc-guide/insurer-developer/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -251,7 +258,8 @@
       "displayOnLandingPages": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -276,7 +284,8 @@
       "displayOnLandingPages": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -303,7 +312,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -331,7 +341,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -359,7 +370,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -387,7 +399,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -415,7 +428,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -443,7 +457,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -471,7 +486,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -499,7 +515,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -527,7 +544,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -555,7 +573,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -583,7 +602,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -611,7 +631,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -639,7 +660,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -667,7 +689,8 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"

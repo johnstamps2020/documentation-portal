@@ -6,7 +6,7 @@
       "title": "Release Notes",
       "url": "es/cloud/explore/relnotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Explore"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
@@ -26,7 +26,7 @@
       "displayTitle": "Guía de la aplicación",
       "url": "es/cloud/explore/app",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Explore"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
@@ -45,7 +45,7 @@
       "title": "Data Dictionaries",
       "url": "es/cloud/explore/datadict",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Explore"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],

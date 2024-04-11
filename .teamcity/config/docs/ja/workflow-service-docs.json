@@ -7,7 +7,7 @@
       "displayTitle": "Workflow Designer",
       "url": "ja/cloud/workflow-service/designer",
       "metadata": {
-        "platform": [ "Cloud" ],
+        "platform": [ "Cloud", "Self-managed" ],
         "product": [ "Workflow Service" ],
         "version": [ "latest" ],
         "subject": [ "Features and functionality" ],
@@ -27,7 +27,7 @@
       "displayTitle": "Workflow 管理",
       "url": "ja/cloud/workflow-service/workflow-console",
       "metadata": {
-        "platform": [ "Cloud" ],
+        "platform": [ "Cloud", "Self-managed" ],
         "product": [ "Workflow Service" ],
         "version": [ "latest" ],
         "subject": [ "Administration" ],
@@ -47,7 +47,7 @@
       "displayTitle": "リリースノート",
       "url": "ja/cloud/workflow-service/releasenotes",
       "metadata": {
-        "platform": [ "Cloud" ],
+        "platform": [ "Cloud", "Self-managed" ],
         "product": [ "Workflow Service" ],
         "version": [ "latest" ],
         "subject": [ "Release notes" ],

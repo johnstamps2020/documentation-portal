@@ -7,7 +7,8 @@
       "url": "cloud/auth/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -45,7 +46,8 @@
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"
@@ -82,7 +84,8 @@
       "url": "cloud/term/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform",
@@ -121,7 +124,8 @@
       "url": "cloud/gwcprelnotes/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Cloud Platform"

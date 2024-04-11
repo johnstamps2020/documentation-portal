@@ -44,7 +44,8 @@
       "url": "cloud/appreader/latest/guide",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Guidewire AppReader"

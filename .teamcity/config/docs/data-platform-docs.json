@@ -7,7 +7,8 @@
       "url": "cloud/dataplatform",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Data Platform"
@@ -48,7 +49,8 @@
           "Data Platform"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -81,7 +83,8 @@
       "url": "cloud/cda/guide/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Data Platform"
@@ -118,7 +121,8 @@
       "url": "cloud/cda/rn/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Data Platform"
@@ -155,7 +159,8 @@
       "url": "internal/cloud/cda/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Data Platform"

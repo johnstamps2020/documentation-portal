@@ -6,7 +6,7 @@
       "title": "Cloud Integration Basics",
       "url": "education/cloud-integration-basics/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["PolicyCenter", "BillingCenter", "ClaimCenter"],
         "version": ["latest"],
         "subject": ["Integration"],

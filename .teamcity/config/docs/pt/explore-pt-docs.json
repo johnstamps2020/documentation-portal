@@ -7,7 +7,7 @@
       "displayTitle": "Guia do aplicativo",
       "url": "pt/cloud/explore/app",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Explore"],
         "version": ["latest"],
         "release": ["Cortina", "Dobson", "Flaine", "Garmisch", "Hakuba"],

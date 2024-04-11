@@ -7,7 +7,8 @@
       "url": "security",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -48,7 +49,8 @@
       "url": "escrow",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -76,7 +78,8 @@
       "url": "l10n/pdfs",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -103,7 +106,8 @@
       "url": "cloud/predict/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Predict"
@@ -137,7 +141,8 @@
       "url": "cloud/predict/upgrade",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Predict"
@@ -167,7 +172,8 @@
       "url": "cloud/compare/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Compare"
@@ -201,7 +207,8 @@
       "url": "help/GCH-earlyaccess",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Guidewire Cloud Home"
@@ -227,7 +234,8 @@
       "url": "help/GCH",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Guidewire Cloud Home"
@@ -443,7 +451,8 @@
           "LRS"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -469,7 +478,8 @@
           "Cyence"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "release": [
           "Elysian",
@@ -503,7 +513,8 @@
           "HazardHub Casualty"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "release": [
           "Elysian",
@@ -537,7 +548,8 @@
           "Portfolio Assembly"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -559,7 +571,8 @@
       "url": "internal-docs",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Internal Docs"
@@ -584,7 +597,8 @@
       "url": "product-adoption-resources/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -625,7 +639,8 @@
       "url": "cds/docs",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -656,7 +671,8 @@
       "url": "doctools/s3-manager",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -687,7 +703,8 @@
       "url": "cloud/requests/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -728,7 +745,8 @@
       "url": "upgradediffs",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "release": [
           "Jasper",
@@ -769,7 +787,8 @@
       "url": "support-matrices",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",

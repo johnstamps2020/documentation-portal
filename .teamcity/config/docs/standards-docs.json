@@ -15,7 +15,7 @@
           "Cloud Platform",
           "Data Platform"
         ],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["latest"],
         "release": [
           "Cortina",

@@ -7,7 +7,7 @@
       "displayTitle": "Guidewire Cloud Home ヘルプ",
       "url": "ja/help/GCH",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"],
         "release": ["Innsbruck"],
@@ -25,7 +25,7 @@
       "title": "Guidewire Cloud Home Help ja - Early Access",
       "url": "ja/help/GCH-earlyaccess",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"],
         "language": "ja"

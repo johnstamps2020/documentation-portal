@@ -8,7 +8,7 @@
       "url": "fr/cloud/datastudio/app",
       "metadata": {
         "product": ["Data Platform"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "release": ["Innsbruck"],
