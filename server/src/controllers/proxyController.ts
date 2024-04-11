@@ -52,24 +52,19 @@ type ResourceStatusWithRedirectLink = [number, string | undefined];
 const publicSubPath = '/__public';
 const restrictedSubPath = '/__restricted';
 
-function checkIfPathNeedsTrailingSlash(reqPath: string) {
-  const lastSegment = reqPath.split('/').pop();
-  if (!lastSegment) {
+function checkIfPathNeedsTrailingSlash(reqPath: string, htmlRequest: boolean) {
+  if (!htmlRequest) {
     return false;
   }
-  const lastSegmentElements = lastSegment.split('.');
-  if (lastSegmentElements.length < 2) {
-    return true;
-  }
-  const lastSegmentExtension = lastSegmentElements.pop();
-  if (!lastSegmentExtension) {
+  if (['.html', '.htm', '/'].some((ext) => reqPath.endsWith(ext))) {
     return false;
   }
-  return /^[0-9]+$/.test(lastSegmentExtension);
+  return true;
 }
 
 async function getResourceStatusFromDatabase(
   requestedPath: string,
+  htmlRequest: boolean,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
   const dbEntity =
@@ -82,12 +77,13 @@ async function getResourceStatusFromDatabase(
 
   const dbEntityUrl = dbEntity.url;
   if (dbEntity instanceof Doc && dbEntity.ignorePublicPropertyAndUseVariants) {
-    let subPath = '';
     const cleanedRequestedPath = requestedPath
       .replace(publicSubPath, '')
       .replace(restrictedSubPath, '');
-    const requstedPathNeedsTrailingSlash =
-      checkIfPathNeedsTrailingSlash(cleanedRequestedPath);
+    const requstedPathNeedsTrailingSlash = checkIfPathNeedsTrailingSlash(
+      cleanedRequestedPath,
+      htmlRequest
+    );
 
     if (requestedPath !== cleanedRequestedPath) {
       requstedPathNeedsTrailingSlash
@@ -168,6 +164,7 @@ function isPrPreviewLink(requestedPath: string): boolean {
 
 async function getResourceStatus(
   requestedPath: string,
+  htmlRequest: boolean,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
   if (isPrPreviewLink(requestedPath)) {
@@ -177,7 +174,7 @@ async function getResourceStatus(
     ];
   }
 
-  return getResourceStatusFromDatabase(requestedPath, res);
+  return getResourceStatusFromDatabase(requestedPath, htmlRequest, res);
 }
 
 /*
@@ -189,12 +186,13 @@ async function getResourceStatus(
  */
 export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   const requestedPath: string = req.path;
+  const isHtmlRequest = req.headers['accept']?.includes('text/html') || false;
 
   const [resourceStatus, redirectPath] = await getResourceStatus(
     requestedPath,
+    isHtmlRequest,
     res
   );
-
   if (resourceStatus === 100) {
     return next();
   }
