@@ -13,31 +13,53 @@ const isFiltersMatchingProductRelease = (
   searchFilters: Filters,
   defaultFilters: Filters
 ): boolean => {
-  return (
-    searchFilters.product?.length === defaultFilters.product.length &&
-    !searchFilters.product?.some(
+  if (searchFilters.product?.length !== defaultFilters.product.length) {
+    return false;
+  }
+  if (searchFilters.release?.length !== defaultFilters.release.length) {
+    return false;
+  }
+  if (
+    searchFilters.product?.some(
       (product) => !defaultFilters.product.includes(product)
-    ) &&
-    searchFilters.release.length === defaultFilters.release.length &&
-    !searchFilters.release?.some(
+    )
+  ) {
+    return false;
+  }
+  if (
+    searchFilters.release?.some(
       (release) => !defaultFilters.release?.includes(release)
-    ) &&
-    !searchFilters.platform
-  );
+    )
+  ) {
+    return false;
+  }
+  if (searchFilters.platform) {
+    return false;
+  }
+  return true;
 };
 
 const isFiltersMatchingReleaseOnly = (
   searchFilters: Filters,
   defaultFilters: Filters
 ): boolean => {
-  return (
-    (!searchFilters.product || searchFilters.product.length === 0) &&
-    searchFilters.release?.length === defaultFilters.release?.length &&
-    !searchFilters.release?.some(
+  if (searchFilters.product && searchFilters.product.length !== 0) {
+    return false;
+  }
+  if (searchFilters.release?.length !== defaultFilters.release?.length) {
+    return false;
+  }
+  if (
+    searchFilters.release?.some(
       (release) => !defaultFilters.release?.includes(release)
-    ) &&
-    !searchFilters.platform
-  );
+    )
+  ) {
+    return false;
+  }
+  if (searchFilters.platform) {
+    return false;
+  }
+  return true;
 };
 
 const isFiltersEmpty = (searchFilters: Filters): boolean => {
