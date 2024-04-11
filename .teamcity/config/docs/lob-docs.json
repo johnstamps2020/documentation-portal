@@ -6,7 +6,7 @@
       "title": "LOB AU CW Cloud Release Notes",
       "url": "lob/au/cloud/cwreleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -42,7 +42,7 @@
       "title": "LOB AU State Cloud Release Notes",
       "url": "lob/au/cloud/statereleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -78,7 +78,7 @@
       "title": "LOB AU Cloud Guide",
       "url": "lob/au/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -114,7 +114,7 @@
       "title": "LOB BOP CW Cloud Release Notes",
       "url": "lob/bop/cloud/cwreleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -150,7 +150,7 @@
       "title": "LOB BOP Cloud Guide",
       "url": "lob/bop/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -186,7 +186,7 @@
       "title": "LOB BOP State Cloud Release Notes",
       "url": "lob/bop/cloud/statereleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -222,7 +222,7 @@
       "title": "LOB CA CW Cloud Release Notes",
       "url": "lob/ca/cloud/cwreleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -258,7 +258,7 @@
       "title": "LOB CA State Cloud Release Notes",
       "url": "lob/ca/cloud/statereleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -294,7 +294,7 @@
       "title": "LOB CA Cloud Guide",
       "url": "lob/ca/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -330,7 +330,7 @@
       "title": "LOB CP CW Cloud Release Notes",
       "url": "lob/cp/cloud/cwreleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -366,7 +366,7 @@
       "title": "LOB CP State Cloud Release Notes",
       "url": "lob/cp/cloud/statereleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -402,7 +402,7 @@
       "title": "LOB CP Cloud Guide",
       "url": "lob/cp/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -438,7 +438,7 @@
       "title": "LOB CPP Cloud Guide",
       "url": "lob/cpp/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -474,7 +474,7 @@
       "title": "LOB Crime CW Cloud Release Notes",
       "url": "lob/crime/cloud/cwreleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -510,7 +510,7 @@
       "title": "LOB Crime State Cloud Release Notes",
       "url": "lob/crime/cloud/statereleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -546,7 +546,7 @@
       "title": "LOB Crime Cloud Guide",
       "url": "lob/crime/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -582,7 +582,7 @@
       "title": "LOB GL CW Cloud Release Notes",
       "url": "lob/gl/cloud/cwreleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -618,7 +618,7 @@
       "title": "LOB GL State Cloud Release Notes",
       "url": "lob/gl/cloud/statereleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -654,7 +654,7 @@
       "title": "LOB GL Cloud Guide",
       "url": "lob/gl/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -690,7 +690,7 @@
       "title": "LOB HO Cloud Guide",
       "url": "lob/ho/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -726,7 +726,7 @@
       "title": "LOB PUP Cloud Guide",
       "url": "lob/pup/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -762,7 +762,7 @@
       "title": "LOB WC CW Cloud Release Notes",
       "url": "lob/wc/cloud/cwreleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -798,7 +798,7 @@
       "title": "LOB WC State Cloud Release Notes",
       "url": "lob/wc/cloud/statereleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -834,7 +834,7 @@
       "title": "LOB WC Cloud Guide",
       "url": "lob/wc/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -870,7 +870,7 @@
       "title": "LOB WC WCM CW Cloud Release Notes",
       "url": "lob/wcwcm/cloud/cwreleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -906,7 +906,7 @@
       "title": "LOB WC WCM State Cloud Release Notes",
       "url": "lob/wcwcm/cloud/statereleasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
@@ -942,7 +942,7 @@
       "title": "LOB WC WCM Cloud Guide",
       "url": "lob/wcwcm/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -978,7 +978,7 @@
       "title": "LOB PCA User Cloud Guide",
       "url": "lob/pca/cloud/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
@@ -1014,7 +1014,7 @@
       "title": "LOB PCA Cloud Release Notes",
       "url": "lob/pca/cloud/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Lines of Business"],
         "version": ["latest"],
         "subject": ["Release notes"],
