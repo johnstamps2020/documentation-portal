@@ -400,7 +400,8 @@
       "url": "glossary",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",

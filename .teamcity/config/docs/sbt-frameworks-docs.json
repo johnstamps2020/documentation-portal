@@ -6,7 +6,7 @@
       "title": "Standards-based Template Customization",
       "url": "sbtfw/latest/customization",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Global Content", "PolicyCenter"],
         "version": ["latest"],
         "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],
@@ -24,7 +24,7 @@
       "title": "Standards-based Template Framework Guide",
       "url": "sbtfw/latest/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Global Content", "PolicyCenter"],
         "version": ["latest"],
         "release": ["Flaine", "Garmisch", "Hakuba", "Innsbruck"],

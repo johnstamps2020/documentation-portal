@@ -7,7 +7,8 @@
       "url": "cloud/canvas/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Canvas"
