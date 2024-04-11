@@ -7,7 +7,7 @@
       "displayTitle": "Notas de versão da Cloud Platform",
       "url": "pt/cloud/gwcprelnotes/latest",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": [ "Innsbruck" ],

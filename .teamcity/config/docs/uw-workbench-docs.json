@@ -7,7 +7,7 @@
       "url": "cloud/underwriting-management",
       "metadata": {
         "product": ["Underwriting Workbench"],
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Innsbruck"],
         "subject": ["Features and functionality"],

@@ -7,8 +7,7 @@
       "url": "cloud/workflow-service/designer",
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "Workflow Service"
@@ -42,8 +41,7 @@
       "url": "cloud/workflow-service/workflow-console",
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "Workflow Service"
@@ -78,8 +76,7 @@
       "url": "cloud/workflow-service/releasenotes",
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "Workflow Service"

@@ -7,7 +7,7 @@
       "displayTitle": "Versionshinweise",
       "url": "de/cloud/gwcprelnotes/latest",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": [ "Innsbruck" ],

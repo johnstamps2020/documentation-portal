@@ -7,7 +7,7 @@
       "displayTitle": "Explore",
       "url": "de/cloud/explore/app",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
         "subject": ["Features and functionality"],

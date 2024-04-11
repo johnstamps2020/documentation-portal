@@ -39,8 +39,7 @@
           "Cloud Platform"
         ],
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "version": [
           "latest"
@@ -76,8 +75,7 @@
           "Cloud Platform"
         ],
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "version": [
           "latest"
@@ -113,8 +111,7 @@
           "Cloud Platform"
         ],
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "version": [
           "latest"
@@ -151,8 +148,7 @@
           "Cloud Platform"
         ],
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "version": [
           "latest"
@@ -186,8 +182,7 @@
       "indexForSearch": true,
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "Cloud Platform"
@@ -222,8 +217,7 @@
       "url": "cloud/gcc-guide/insurer-developer/latest",
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "Cloud Platform"

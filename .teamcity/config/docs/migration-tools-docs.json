@@ -7,8 +7,7 @@
       "url": "cloud/is/migration-tools/billing",
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "BillingCenter"
@@ -40,8 +39,7 @@
       "url": "cloud/is/migration-tools/policy-history",
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "PolicyCenter"

@@ -7,8 +7,7 @@
       "url": "cloud/explore/app",
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "Explore"

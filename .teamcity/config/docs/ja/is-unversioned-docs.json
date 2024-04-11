@@ -7,7 +7,7 @@
       "displayTitle": "コンフィギュレーションアップグレードツールの互換性",
       "url": "ja/isconfigupgradetools-compatibility",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["latest"],
         "subject": ["Upgrade"],

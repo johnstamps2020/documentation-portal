@@ -7,7 +7,7 @@
       "displayTitle": "Guidewire Identity Federation Hub を使用した認証",
       "url": "ja/cloud/auth/latest",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": [

@@ -7,7 +7,7 @@
       "displayTitle": "Autenticazione con Guidewire Identity Federation Hub",
       "url": "it/cloud/auth/latest",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": [

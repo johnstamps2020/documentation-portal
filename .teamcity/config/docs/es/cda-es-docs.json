@@ -7,7 +7,7 @@
       "displayTitle": "Guía de la aplicación",
       "url": "es/cloud/cda/guide/latest",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "product": ["Data Platform"],
         "version": ["latest"],
         "release": [
