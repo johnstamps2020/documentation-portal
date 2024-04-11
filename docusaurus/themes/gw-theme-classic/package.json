@@ -7,8 +7,7 @@
   "types": "src/gw-theme-classic.d.ts",
   "scripts": {
     "babel": "cross-env babel src -d lib --extensions \".jsx,.js,.tsx,.ts\" --copy-files",
-    "clear-lib": "yarn rimraf lib",
-    "build": "yarn clear-lib && yarn babel",
+    "build": "yarn babel",
     "dev": "yarn build && yarn babel --watch",
     "write-translations": "rimraf src/i18n/en.json && docusaurus write-translations && cp i18n/en/code.json src/i18n/en/code.json"
   },

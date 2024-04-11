@@ -4627,7 +4627,8 @@ object Admin {
 
                 arrayOf(
                     Pair("theme", "docusaurus/themes/gw-theme-classic"),
-                    Pair("plugin", "docusaurus/plugins/gw-plugin-redoc")
+                    Pair("plugin-redoc", "docusaurus/plugins/gw-plugin-redoc"),
+                    Pair("docusaurus-security", "docusaurus/plugins/docusaurus-security")
                 ).forEach {
                     buildType(createPublishNpmPackageBuildType(it.first, it.second))
                 }
