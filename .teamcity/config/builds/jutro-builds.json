@@ -274,6 +274,20 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro1060",
+      "srcId": "srcjutro1060",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook1060",
+      "srcId": "srcjutro1060",
+      "workingDir": "storybook",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutrodocsnext",
       "srcId": "jutrodocsnextsrc",
       "disabled": false
