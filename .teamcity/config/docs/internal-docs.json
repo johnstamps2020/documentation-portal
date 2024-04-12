@@ -255,6 +255,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "appevents",
+      "title": "AppEvents",
+      "url": "internal/appevents/latest",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Internal Docs", "AppEvents"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
