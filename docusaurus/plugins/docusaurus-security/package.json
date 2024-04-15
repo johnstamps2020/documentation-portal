@@ -1,12 +1,11 @@
 {
   "name": "@doctools/docusaurus-security",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "Guidewire plugin with security features",
   "main": "lib/index.js",
   "author": "doctools@gudiewire.com",
   "license": "UNLICENSED",
   "dependencies": {
-    "chalk": "^5.3.0",
     "gray-matter": "^4.0.3",
     "jsdom": "^24.0.0"
   },
@@ -21,6 +20,7 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.24.1",
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.0",

@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import { existsSync, readFileSync, rmSync } from 'fs';
 import jsdom from 'jsdom';
 import { extname, join, resolve } from 'path';
@@ -28,12 +27,12 @@ export function deleteRestrictedFiles(
     return;
   }
 
-  console.log(chalk.red('Deleting restricted files...'));
+  console.log('Deleting restricted files...');
   routesPaths.forEach((route) => {
     const routePath = join(outDir, route);
     const filePath = getHtmlFilePath(routePath);
     if (!filePath) {
-      console.error(chalk.yellow(`File not found: ${filePath}`));
+      console.error(`File not found: ${filePath}`);
       return;
     }
 
@@ -53,11 +52,11 @@ export function deleteRestrictedFiles(
     }
 
     try {
-      console.log(chalk.red(`Deleting ${routePath}`));
+      console.log(`Deleting ${routePath}`);
       rmSync(routePath, { recursive: true });
     } catch (error) {
-      console.error(chalk.yellow(`Failed to delete ${routePath}`));
-      console.error(chalk.red('ABORTING BUILD'));
+      console.error(`Failed to delete ${routePath}`);
+      console.error('ABORTING BUILD');
       process.exit(1);
     }
   });

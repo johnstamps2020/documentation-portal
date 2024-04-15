@@ -1,8 +1,7 @@
-import chalk from 'chalk';
 import { runCommand } from './runCommand';
 
 export async function buildVariants() {
-  console.log(chalk.blueBright('Building the restricted variant...'));
+  console.log('Building the restricted variant...');
   await runCommand(
     'docusaurus',
     ['build', '--out-dir', 'build/__restricted'],
@@ -12,7 +11,7 @@ export async function buildVariants() {
     }
   );
 
-  console.log(chalk.blueBright('Building the public variant...'));
+  console.log('Building the public variant...');
   await runCommand(
     'docusaurus',
     ['build', '--out-dir', 'build/__public'],
@@ -24,6 +23,6 @@ export async function buildVariants() {
 }
 
 export async function buildDefault() {
-  console.log(chalk.blueBright('Building the default variant...'));
+  console.log('Building the default variant...');
   await runCommand('docusaurus', ['build'], 'DEFAULT BUILD');
 }
