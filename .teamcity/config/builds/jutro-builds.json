@@ -318,9 +318,25 @@
     },
     {
       "buildType": "dita",
-      "docId": "agentquoteandbuypersonalautokufri",
+      "docId": "jutrotemplateskufriagentexperience",
       "srcId": "jutrodigitalcontentsrckufri",
-      "root": "AgentQuoteAndBuyPA.ditamap",
+      "root": "AgentExperienceTemplate.ditamap",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "docId": "jutrotemplateskufripersonalauto",
+      "srcId": "jutrodigitalcontentsrckufri",
+      "root": "PersonalAutoTemplate.ditamap",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "docId": "jutrotemplateskufripolicyholderexperience",
+      "srcId": "jutrodigitalcontentsrckufri",
+      "root": "PolicyholderExperienceTemplate.ditamap",
       "indexRedirect": true,
       "disabled": false
     },
