@@ -1261,6 +1261,7 @@ object GwBuildSteps {
         gwVersions: String,
         workingDir: String,
         customEnv: JSONArray?,
+        ignorePublicPropertyAndUseVariants: Boolean,
         validationMode: Boolean = false,
         exitCodeEnvVarName: String = "",
     ): ScriptBuildStep {
@@ -1302,7 +1303,7 @@ object GwBuildSteps {
             it as JSONObject
             customEnvExportVars += "export ${it.getString("name")}=\"${it.getString("value")}\" # Custom env from the build config file\n"
         }
-
+        
         return ScriptBuildStep {
             name = "Build the yarn project"
             id = Helpers.createIdStringFromName(this.name)
@@ -1315,6 +1316,7 @@ object GwBuildSteps {
                     export GW_PLATFORM="$gwPlatforms"
                     export GW_VERSION="$gwVersions"
                     export TARGET_URL="$targetUrl"
+                    export BUILD_VARIANTS="$ignorePublicPropertyAndUseVariants"
                     $customEnvExportVars
                     
                     cd "$workingDir"
@@ -1796,6 +1798,7 @@ object User {
             gwProducts: String,
             gwVersions: String,
             customEnv: JSONArray?,
+            ignorePublicPropertyAndUseVariants: Boolean,
         ): List<BuildType> {
             val yarnBuildTypes = mutableListOf<BuildType>()
             for (env in envNames) {
@@ -1824,7 +1827,8 @@ object User {
                         gwPlatforms,
                         gwVersions,
                         workingDir,
-                        customEnv
+                        customEnv,
+                        ignorePublicPropertyAndUseVariants
                     )
                     docBuildType.steps.step(yarnBuildStep)
                     docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
@@ -2248,6 +2252,7 @@ object User {
 
             val docProjectBuildTypes = mutableListOf<BuildType>()
             val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
+            val ignorePublicPropertyAndUseVariants = if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
             when (gwBuildType) {
                 GwBuildTypes.YARN.buildTypeName -> {
@@ -2268,7 +2273,8 @@ object User {
                         gwPlatformsString,
                         gwProductsString,
                         gwVersionsString,
-                        customEnv
+                        customEnv,
+                        ignorePublicPropertyAndUseVariants
                     )
                 }
 
@@ -2980,6 +2986,7 @@ object User {
                     val buildCommand =
                         if (buildConfig.has("yarnBuildCustomCommand")) buildConfig.getString("yarnBuildCustomCommand") else null
                     val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
+                    val ignorePublicPropertyAndUseVariants = if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
                     validationBuildType.artifactRules += """
                     ${workingDir}/*.log => $buildLogsDir
@@ -3000,6 +3007,7 @@ object User {
                                 gwVersionsString,
                                 workingDir,
                                 customEnv,
+                                ignorePublicPropertyAndUseVariants,
                                 validationMode = true,
                                 exitCodeEnvVarName = exitCodeEnvVarName
                             )
