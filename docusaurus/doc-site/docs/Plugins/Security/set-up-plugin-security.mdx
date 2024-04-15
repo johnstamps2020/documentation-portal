@@ -4,7 +4,7 @@ This works in tandem with out doc portal config for the doc. When set correctly,
 the site build will generate two versions of the static site, each saved in a
 separate subfolder.
 
-- `\__public`: the public version of the site. This is the default version that
+- `__public`: the public version of the site. This is the default version that
   users see without logging in. They cannot access any restricted content.
 - `__restricted`: users need to log in to see this version of the site. It
   includes all the public content plus any restricted content.
@@ -87,3 +87,28 @@ reach us:
 import ContactInfo from '@site/docs/_contact-info.mdx';
 
 <ContactInfo />
+
+## Testing locally
+
+To test the restricted version of the site locally, run the following command:
+
+```sh
+BUILD_VARIANTS=true yarn build
+```
+
+This created two output directories:
+
+- `build/__public`
+- `build/__restricted`
+
+To view the restricted version of the site, run the following command:
+
+```sh
+yarn serve --dir build/__restricted
+```
+
+Smililarly, to view the public version of the site, run the following command:
+
+```sh
+yarn serve --dir build/__public
+```
