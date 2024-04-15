@@ -3992,9 +3992,65 @@
       "earlyAccess": true
     },
     {
-      "id": "agentquoteandbuypersonalautokufri",
-      "title": "Agent Quote and Buy Personal Auto",
-      "url": "jutro/agent-quote-and-buy-pa/kufri",
+      "id": "jutrotemplateskufriagentexperience",
+      "title": "Jutro Templates - Agent Experience",
+      "url": "jutro/kufri/templates/agentexperience",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Kufri"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "jutrotemplateskufripersonalauto",
+      "title": "Jutro Templates - Personal Auto",
+      "url": "jutro/kufri/templates/personalauto",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Kufri"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "jutrotemplateskufripolicyholderexperience",
+      "title": "Jutro Templates - Policyholder Experience",
+      "url": "jutro/kufri/templates/policyholderexperience",
       "metadata": {
         "product": [
           "Jutro Digital Platform"
