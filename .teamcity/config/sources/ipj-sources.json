@@ -30,6 +30,12 @@
       "title": "InsuranceSuite Package for Japan Jasper",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipj.git",
       "branch": "release/jasper"
+    },
+    {
+      "id": "ipjkufrisrc",
+      "title": "InsuranceSuite Package for Japan Kufri",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipj.git",
+      "branch": "release/kufri"
     }
   ]
 }
