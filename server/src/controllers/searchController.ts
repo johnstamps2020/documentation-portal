@@ -790,12 +790,16 @@ function prepareVectorizedResultsToDisplay(
       subject: mainResult.subject || [],
       version: mainResult.version,
       score: mainResultScore,
+      ignorePublicPropertyAndUseVariants:
+        mainResult.ignorePublicPropertyAndUseVariants,
     });
   }
   return vectorizedSearchResultsToDisplay;
 }
 
 function prepareResultsToDisplay(
+  isAuthenticated: boolean,
+  hasGuidewireEmail: boolean,
   results: GuidewireSearchControllerSearchResults
 ): SearchData['searchResults'] {
   const searchResultsToDisplay: SearchData['searchResults'] = [];
@@ -804,7 +808,27 @@ function prepareResultsToDisplay(
     const allHits = [result, ...innerHits];
     const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
     const [topHit, ...otherHits] = allHitsSortedFromLatest;
-    const mainResult = topHit._source;
+    let mainResult;
+    const duplicates = allHits.filter(
+      (hit, index) =>
+        allHits.findIndex(
+          (item) => item._source?.href === hit._source?.href
+        ) !== index
+    );
+
+    if (duplicates.length > 1) {
+      if (isAuthenticated && hasGuidewireEmail) {
+        const foundHit = duplicates.find(
+          (hit) => hit._source?.public === false
+        );
+        mainResult = foundHit?._source;
+      } else {
+        const foundHit = duplicates.find((hit) => hit._source?.public === true);
+        mainResult = foundHit?._source;
+      }
+    } else {
+      mainResult = topHit._source;
+    }
 
     if (!mainResult) {
       continue;
@@ -896,8 +920,13 @@ function prepareResultsToDisplay(
       body: sanitizeTagNames(bodyExcerpt + '...'),
       bodyPlain: sanitizeTagNames(mainResultBodyFragment + '...'),
       keywords: sanitizeTagNames(keywordsText),
-      innerHits: otherHits?.map((r) => r._source as SearchResultSource) || [],
+      innerHits:
+        duplicates.length > 1
+          ? []
+          : otherHits?.map((r) => r._source as SearchResultSource) || [],
       uniqueHighlightTerms: uniqueHighlightTerms,
+      ignorePublicPropertyAndUseVariants:
+        mainResult.ignorePublicPropertyAndUseVariants,
     });
   }
 
@@ -1000,8 +1029,11 @@ export default async function searchController(
         resultsPerPage
       );
 
-      const keywordSearchResultsToDisplay =
-        prepareResultsToDisplay(keywordSearchResults);
+      const keywordSearchResultsToDisplay = prepareResultsToDisplay(
+        requestIsAuthenticated,
+        hasGuidewireEmail,
+        keywordSearchResults
+      );
 
       return rawJson
         ? {
@@ -1209,7 +1241,6 @@ export async function getAllDocsFromRelease(
     );
   }
 }
-
 
 export async function getAllDocsFromVersion(
   versionName: string,

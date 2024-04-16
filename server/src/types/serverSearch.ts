@@ -12,6 +12,7 @@ export type SearchData = {
 };
 
 export type SearchResultSource = {
+  ignorePublicPropertyAndUseVariants: boolean;
   product: string[];
   internal: boolean;
   release: string[] | null;
