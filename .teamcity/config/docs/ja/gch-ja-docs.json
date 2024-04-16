@@ -25,7 +25,7 @@
       "title": "Guidewire Cloud Home Help ja - Early Access",
       "url": "ja/help/GCH-earlyaccess",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"],
         "language": "ja"

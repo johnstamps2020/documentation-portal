@@ -48,7 +48,8 @@
       "url": "escrow",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -76,7 +77,8 @@
       "url": "l10n/pdfs",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -201,7 +203,8 @@
       "url": "help/GCH-earlyaccess",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Guidewire Cloud Home"
@@ -443,7 +446,8 @@
           "LRS"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -537,7 +541,8 @@
           "Portfolio Assembly"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -559,7 +564,8 @@
       "url": "internal-docs",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "Internal Docs"
@@ -625,7 +631,8 @@
       "url": "cds/docs",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -656,7 +663,8 @@
       "url": "doctools/s3-manager",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",
@@ -769,7 +777,8 @@
       "url": "support-matrices",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "BillingCenter",

@@ -727,6 +727,37 @@
       "earlyAccess": false
     },
     {
+      "id": "jutrosdkkufri",
+      "title": "Jutro SDK",
+      "url": "jutro/sdk/kufri",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Kufri"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutrorewards",
       "title": "Jutro Rewards",
       "url": "jutro/rewards",
@@ -3439,6 +3470,38 @@
       "earlyAccess": false
     },
     {
+      "id": "storybook1003",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/10.0.3",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.0.3"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "jutro1010",
       "title": "Jutro Digital Platform",
       "url": "jutro/documentation/10.1",
@@ -3458,8 +3521,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3487,8 +3549,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3516,8 +3577,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3545,8 +3605,7 @@
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3729,6 +3788,64 @@
       "earlyAccess": false
     },
     {
+      "id": "jutro1060",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/documentation/10.6",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.6"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook1060",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/10.6",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.6"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutroa11yapp",
       "title": "Jutro a11y app",
       "url": "jutro/a11y/latest",
@@ -3737,7 +3854,8 @@
           "Jutro Design System"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -3766,7 +3884,8 @@
           "DocTools"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -3794,7 +3913,8 @@
           "Jutro Digital Platform"
         ],
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "version": [
           "latest"
@@ -3872,9 +3992,65 @@
       "earlyAccess": true
     },
     {
-      "id": "agentquoteandbuypersonalautokufri",
-      "title": "Agent Quote and Buy Personal Auto",
-      "url": "jutro/agent-quote-and-buy-pa/kufri",
+      "id": "jutrotemplateskufriagentexperience",
+      "title": "Jutro Templates - Agent Experience",
+      "url": "jutro/kufri/templates/agentexperience",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Kufri"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "jutrotemplateskufripersonalauto",
+      "title": "Jutro Templates - Personal Auto",
+      "url": "jutro/kufri/templates/personalauto",
+      "metadata": {
+        "product": [
+          "Jutro Digital Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "Kufri"
+        ],
+        "subject": [
+          "Best practices"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "jutrotemplateskufripolicyholderexperience",
+      "title": "Jutro Templates - Policyholder Experience",
+      "url": "jutro/kufri/templates/policyholderexperience",
       "metadata": {
         "product": [
           "Jutro Digital Platform"

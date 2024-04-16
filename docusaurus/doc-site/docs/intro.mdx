@@ -6,11 +6,11 @@ sidebar_position: 1
 
 Deploying to docs.guidewire.com provides the following benefits:
 
-import Benefits from '@site/docs/\_benefits.md'
+import Benefits from '@site/docs/_benefits.mdx';
 
-<Benefits/>
+<Benefits />
 
-Not convinced? Look at [deploying to Atmos](./deploy-to-atmos.md) without using
+Not convinced? Look at [deploying to Atmos](./deploy-to-atmos.mdx) without using
 a Guidewire theme. You can still use the Redoc plugin.
 
 ## Install required tools
@@ -66,9 +66,9 @@ on your machine.
 
 ## Set up access to the @doctools scope in Artifactory (first time only)
 
-import Artifactory from './\_set-up-artifactory.md';
+import Artifactory from './_set-up-artifactory.mdx';
 
-<Artifactory/>
+<Artifactory />
 
 ## Create a new Docusaurus site
 
@@ -89,7 +89,7 @@ If you want to read more about creating Docusaurus sites, look at
 
 ### trailingSlash
 
-import { RightWrong, Right, Wrong } from "@theme/RightWrong";
+import { RightWrong, Right, Wrong } from '@theme/RightWrong';
 
 <RightWrong>
 <Right>
@@ -147,5 +147,6 @@ these approaches:
 
 Contact the ContentOps team for assistance:
 
-- Slack: [#ask-docs](https://guidewire.slack.com/archives/C2LUW57BL)
-- Email: [doctools@guidewire.com](mailto:doctools@guidewire.com)
+import ContactInfo from '@site/docs/_contact-info.mdx';
+
+<ContactInfo />

@@ -144,19 +144,19 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Integration Gateway',
-          docId: 'integgatewaydevnext',
+          docId: 'integgatewaydevlatest',
         },
         {
           label: 'App Events',
-          docId: 'appeventsdevnext',
+          docId: 'appeventsdev',
         },
         {
           label: 'Webhooks',
-          docId: 'webhooksnext',
+          docId: 'webhooksrelease',
         },
         {
           label: 'REST API Client',
-          docId: 'isrestapiclientguidenext',
+          docId: 'isrestapiclientguide',
         },
         {
           label: 'Jutro Digital Platform',

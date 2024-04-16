@@ -131,6 +131,7 @@ export const allSelectors = {
     { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
     { label: 'Innsbruck', pagePath: 'cloudProducts/innsbruck' },
     { label: 'Jasper', pagePath: 'cloudProducts/jasper' },
+    { label: 'Kufri', pagePath: 'cloudProducts/kufri' },
   ],
   s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {
@@ -275,6 +276,10 @@ export const allSelectors = {
       label: 'Jasper (2024.02)',
       pagePath: 'cloudProducts/jasper/global-ref-apps',
     },
+    {
+      label: 'Kufri (2024.07)',
+      pagePath: 'cloudProducts/kufri/global-ref-apps',
+    },
   ],
   s06dcd02c361b9539495548fd0bfb3ad2: [
     {
@@ -321,6 +326,7 @@ export const allSelectors = {
     { label: '3.7', pagePath: 'globalContent/ipg/3.7' },
     { label: '3.8', pagePath: 'globalContent/ipg/3.8' },
     { label: '3.9', pagePath: 'globalContent/ipg/3.9' },
+    { label: '3.10', pagePath: 'globalContent/ipg/3.10' },
   ],
   sabc928e21c4c1dfb2a841b6b2331c9db: [
     { label: 'Analytics', pagePath: 'l10n/de-DE/analytics' },

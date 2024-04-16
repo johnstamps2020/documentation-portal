@@ -97,6 +97,19 @@
       "srcId": "goldenimagesrc",
       "workingDir": "website",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "solaris",
+      "srcId": "solarissrc",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "appevents",
+      "srcId": "appeventssrc",
+      "workingDir": "website",
+      "disabled": false
     }
   ]
 }

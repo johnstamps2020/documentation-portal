@@ -197,6 +197,13 @@
     },
     {
       "buildType": "yarn",
+      "docId": "storybook1003",
+      "srcId": "srcjutro1003",
+      "workingDir": "storybook",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutro1010",
       "srcId": "srcjutro1010",
       "workingDir": "website",
@@ -267,6 +274,20 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro1060",
+      "srcId": "srcjutro1060",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook1060",
+      "srcId": "srcjutro1060",
+      "workingDir": "storybook",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutrodocsnext",
       "srcId": "jutrodocsnextsrc",
       "disabled": false
@@ -297,9 +318,25 @@
     },
     {
       "buildType": "dita",
-      "docId": "agentquoteandbuypersonalautokufri",
+      "docId": "jutrotemplateskufriagentexperience",
       "srcId": "jutrodigitalcontentsrckufri",
-      "root": "AgentQuoteAndBuyPA.ditamap",
+      "root": "AgentExperienceTemplate.ditamap",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "docId": "jutrotemplateskufripersonalauto",
+      "srcId": "jutrodigitalcontentsrckufri",
+      "root": "PersonalAutoTemplate.ditamap",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "docId": "jutrotemplateskufripolicyholderexperience",
+      "srcId": "jutrodigitalcontentsrckufri",
+      "root": "PolicyholderExperienceTemplate.ditamap",
       "indexRedirect": true,
       "disabled": false
     },
@@ -325,6 +362,12 @@
       "buildType": "yarn",
       "docId": "jutrosdkjasper",
       "srcId": "srcjutrosdkjasper",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutrosdkkufri",
+      "srcId": "srcjutrosdkkufri",
       "disabled": false
     },
     {

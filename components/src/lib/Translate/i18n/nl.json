@@ -1,139 +1,131 @@
 {
-  "docHighlighter.tooltip": {
-    "message": "Schakel markeren in/uit voor zoektermen",
-    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off. This is the tooltip for the button"
+  "docHighlighter.tooltip" : {
+    "message" : "Schakel markeren in/uit voor zoektermen"
   },
-  "docHighlighter.label": {
-    "message": "highlights inschakelen",
-    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
+  "docHighlighter.label" : {
+    "message" : "markeren inschakelen"
   },
-  "anonymous.positive": {
-    "message": "U bent anoniem,",
-    "description": "Tells the user their identity is not revealed to us"
+  "anonymous.positive" : {
+    "message" : "U bent anoniem,"
   },
-  "anonymous.shareEmail": {
-    "message": "klik hier om uw e-mail met ons te delen",
-    "description": "The button which the user can click to reveal their email to us"
+  "anonymous.shareEmail" : {
+    "message" : "klik hier om uw e-mail met ons te delen"
   },
-  "anonymous.enterEmail": {
-    "message": "Voer uw e-mailadres in,",
-    "description": "Asks the user to type in their email address"
+  "anonymous.enterEmail" : {
+    "message" : "Voer uw e-mailadres in,"
   },
-  "anonymous.becomeAnonymous": {
-    "message": "klik hier om anoniem te zijn"
+  "anonymous.becomeAnonymous" : {
+    "message" : "klik hier om anoniem te zijn"
   },
-  "privacy.warning": {
-    "message": "Door uw e-mailadres op te geven, stemt u ermee in dat Guidewire contact met u opneemt."
+  "privacy.warning" : {
+    "message" : "Door uw e-mailadres op te geven, stemt u ermee in dat Guidewire contact met u opneemt."
   },
-  "privacy.link": {
-    "message": "Het privacybeleid van Guidewire vindt u hier."
+  "privacy.link" : {
+    "message" : "Hier vindt u het privacybeleid van Guidewire."
   },
-  "rightWrong.positiveTitle": {
-    "message": "Doen"
+  "rightWrong.positiveTitle" : {
+    "message" : "Doen"
   },
-  "theme.rightWrong.negativeTitle": {
-    "message": "Niet doen"
+  "theme.rightWrong.negativeTitle" : {
+    "message" : "Niet doen"
   },
-  "anonymous.youAreSharing": {
-    "message": "U deelt uw e-mail met ons,",
-    "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
+  "anonymous.youAreSharing" : {
+    "message" : "U deelt uw e-mail met ons,"
   },
-  "feedback.helpful": {
-    "message": "Was deze pagina nuttig?"
+  "feedback.helpful" : {
+    "message" : "Was deze pagina nuttig?"
   },
-  "feedback.thumbsUp": {
-    "message": "Deze pagina was nuttig",
-    "description": "The description of the \"thumbs up\" icon which the user can click to share positive feedback"
+  "feedback.thumbsUp" : {
+    "message" : "Deze pagina was nuttig"
   },
-  "feedback.thumbsDown": {
-    "message": "Deze pagina moet worden verbeterd",
-    "description": "The description of the \"thumbs thumbs\" icon which the user can click to share constructive feedback"
+  "feedback.thumbsDown" : {
+    "message" : "Deze pagina moet worden verbeterd"
   },
-  "feedbackDialog.thanks": {
-    "message": "Bedankt!",
-    "description": "Appears ot thank the user for their feedback"
+  "feedbackDialog.thanks" : {
+    "message" : "Bedankt!"
   },
-  "feedbackDialog.followUp": {
-    "message": "Een lid van ons documentatieteam zal uw feedback bekijken. Als u uw e-mailadres heeft vermeld, kunnen we contact met u opnemen als we meer informatie nodig hebben.",
-    "description": "Explains how the support team will react to user feedback"
+  "feedbackDialog.followUp" : {
+    "message" : "Een lid van ons documentatieteam zal uw feedback bekijken. Als u uw e-mailadres hebt opgegeven, nemen we mogelijk contact met u op als we meer informatie nodig hebben."
   },
-  "feedbackDialog.anythingElse": {
-    "message": "Bedankt, we hebben uw stem geregistreerd. Heeft u ons verder nog iets te vertellen?",
-    "description": "Appears above the feedback form"
+  "feedbackDialog.anythingElse" : {
+    "message" : "Bedankt, we hebben uw stem geregistreerd. Hebt u nog andere opmerkingen voor ons?"
   },
-  "feedbackDialog.comment": {
-    "message": "Uw opmerking"
+  "feedbackDialog.comment" : {
+    "message" : "Uw opmerking"
   },
-  "feedbackDialog.email": {
-    "message": "Uw e-mail"
+  "feedbackDialog.email" : {
+    "message" : "Uw e-mail"
   },
-  "feedbackDialog.clearEmail": {
-    "message": "E-mail wissen"
+  "feedbackDialog.clearEmail" : {
+    "message" : "E-mail wissen"
   },
-  "feedbackDialog.validEmail": {
-    "message": "Geef een geldig e-mailadres op",
-    "description": "Appears under the email field asking the user to provide an email address which contains all the elements of an email address, such as the @ symbol and a domain"
+  "feedbackDialog.validEmail" : {
+    "message" : "Geef een geldig e-mailadres op"
   },
-  "feedbackDialog.cancel": {
-    "message": "Annuleren",
-    "description": "Cancel and do not send your feedback"
+  "feedbackDialog.cancel" : {
+    "message" : "Annuleren"
   },
-  "feedbackDialog.submit": {
-    "message": "Indienen",
-    "description": "Send your feedback, submit your feedback to us"
+  "feedbackDialog.submit" : {
+    "message" : "Indienen"
   },
-  "internal.employeesOnly": {
-    "message": "Deze inhoud is alleen beschikbaar voor werknemers van Guidewire"
+  "internal.employeesOnly" : {
+    "message" : "Deze inhoud is alleen beschikbaar voor werknemers van Guidewire"
   },
-  "internal.info.toView": {
-    "message": "Om deze pagina te bekijken, moet u inloggen met uw Guidewire-werknemersaccount. Als u meer hulp nodig hebt, neem dan contact op met uw Guidewire-vertegenwoordiger."
+  "internal.info.toView" : {
+    "message" : "Als u deze pagina wilt bekijken, meld u zich aan met uw werknemersaccount van Guidewire. Neem voor meer ondersteuning contact op met uw Guidewire-vertegenwoordiger."
   },
-  "internal.label": {
-    "message": "Deze inhoud is alleen intern beschikbaar voor werknemers van Guidewire"
+  "internal.label" : {
+    "message" : "Deze inhoud is alleen intern beschikbaar voor werknemers van Guidewire."
   },
-  "loginButton.out": {
-    "message": "Afmelden"
+  "loginButton.out" : {
+    "message" : "Afmelden"
   },
-  "loginButton.in": {
-    "message": "Aanmelden"
+  "loginButton.in" : {
+    "message" : "Aanmelden"
   },
-  "transcriptDownloadLink.label": {
-    "message": "Transcript downloaden"
+  "transcriptDownloadLink.label" : {
+    "message" : "Transcript downloaden"
   },
-  "theme.common.skipToMainContent": {
-    "message": "Doorgaan naar hoofdinhoud",
-    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  "theme.common.skipToMainContent" : {
+    "message" : "Doorgaan naar hoofdinhoud"
   },
-  "theme.tags.tagsPageTitle": {
-    "message": "Tags",
-    "description": "The title of the tag list page"
+  "theme.tags.tagsPageTitle" : {
+    "message" : "Tags"
   },
-  "gwSearchForm.placeholder": {
-    "message": "Zoeken",
-    "description": "Text which appears in the search box, placeholder"
+  "gwSearchForm.placeholder" : {
+    "message" : "Zoeken"
   },
-  "miniToc.heading": {
-    "message": "Op deze pagina",
-    "description": "Appears at the top of a list of links heading which the user can see on the page. Each item on the list is a link."
+  "miniToc.heading" : {
+    "message" : "Op deze pagina"
   },
-  "collapsible.title": {
-    "message": "Uitvouwen",
-    "description": "Describes an accordion that contains \"more content\" or \"additional information\""
+  "collapsible.title" : {
+    "message" : "Uitvouwen"
   },
-  "footer.published": {
-    "message": "Gepubliceerd:",
-    "description": "Text preceding the date on which the page was published"
+  "footer.published" : {
+    "message" : "Gepubliceerd:"
   },
-  "chat.default-title": {
-    "message": "Let's chat",
-    "description": "The title of the chat window"
+  "nav.scrollToTop" : {
+    "message" : "Omhoog scrollen"
   },
-  "chat.send": {
-    "message": "Send",
-    "description": "The label for the button which the user clicks to send a chat message"
+  "navbar.nextTopic" : {
+    "message" : "Volgende onderwerp"
   },
-  "chat.answer": {
-    "message": "Answer",
-    "description": "The chatbot responds to a question. This is the label that indicates that the following text is the chatbot's answer"
+  "navbar.prevTopic" : {
+    "message" : "Vorige onderwerp"
+  },
+  "navbar.noNextOrPrevTopic" : {
+    "message" : "Geen"
+  },
+  "navbar.printThisPage" : {
+    "message" : "Deze pagina afdrukken"
+  },
+  "chat.default-title" : {
+    "message" : "Chat met ons"
+  },
+  "chat.send" : {
+    "message" : "Versturen"
+  },
+  "chat.answer" : {
+    "message" : "Antwoord"
   }
 }

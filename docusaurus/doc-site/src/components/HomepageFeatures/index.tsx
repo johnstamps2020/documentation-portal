@@ -27,7 +27,7 @@ const FeatureList: FeatureItem[] = [
     link: 'docs/Themes/Classic/set-up-theme',
   },
   {
-    title: 'Plugin',
+    title: 'Redoc plugin',
     CodeBlock: <InstallationCodeBlock packageName="gw-plugin-redoc" />,
     description: (
       <>
@@ -35,6 +35,17 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
     link: 'docs/Plugins/Redoc/set-up-plugin',
+  },
+  {
+    title: 'Security plugin',
+    CodeBlock: <InstallationCodeBlock packageName="docusaurus-security" />,
+    description: (
+      <>
+        This plugin allows you to generate two variants of the site, one public,
+        and one restricted.
+      </>
+    ),
+    link: 'docs/Plugins/Security/set-up-plugin-security',
   },
 ];
 

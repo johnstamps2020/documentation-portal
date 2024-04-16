@@ -6,7 +6,7 @@
       "title": "Keti Cloud Common Auth",
       "url": "internal/keti/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Keti", "Internal Docs"],
         "version": ["latest"],
         "language": "en"
@@ -23,7 +23,7 @@
       "title": "DMA - Database migration to Aurora",
       "url": "internal/dma/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs"],
         "version": ["latest"],
         "language": "en"
@@ -40,7 +40,7 @@
       "title": "Guidewire Cloud Home",
       "url": "internal/gch/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs"],
         "version": ["latest"],
         "language": "en"
@@ -57,7 +57,7 @@
       "title": "Binary Repository",
       "url": "internal/binrepo/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "BinRepo"],
         "version": ["latest"],
         "language": "en"
@@ -74,7 +74,7 @@
       "title": "Nebula Atmos Persistence",
       "url": "internal/nebula/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "Nebula"],
         "version": ["latest"],
         "language": "en"
@@ -91,7 +91,7 @@
       "title": "Atlas",
       "url": "internal/atlas/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "Atlas"],
         "version": ["latest"],
         "language": "en"
@@ -108,7 +108,7 @@
       "title": "Helios",
       "url": "internal/helios/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "Helios"],
         "version": ["latest"],
         "language": "en"
@@ -125,7 +125,7 @@
       "title": "Helios Client",
       "url": "internal/heliosclient/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "Helios"],
         "version": ["latest"],
         "language": "en"
@@ -142,7 +142,7 @@
       "title": "Mithril",
       "url": "internal/mithril/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs"],
         "version": ["latest"],
         "language": "en"
@@ -159,7 +159,7 @@
       "title": "Nova",
       "url": "internal/nova/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "Nova"],
         "version": ["latest"],
         "language": "en"
@@ -176,7 +176,7 @@
       "title": "MSK",
       "url": "internal/msk/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "MSK"],
         "version": ["latest"],
         "language": "en"
@@ -193,7 +193,7 @@
       "title": "MSK Admin",
       "url": "internal/mskadmin/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "MSK Admin"],
         "version": ["latest"],
         "language": "en"
@@ -210,7 +210,7 @@
       "title": "SonarQube",
       "url": "internal/sonarqube/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "SonarQube"],
         "version": ["latest"],
         "language": "en"
@@ -227,8 +227,42 @@
       "title": "Golden Image",
       "url": "internal/goldenimage/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs", "Golden Image"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "solaris",
+      "title": "Solaris",
+      "url": "internal/solaris/latest",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Internal Docs", "Solaris"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "appevents",
+      "title": "AppEvents",
+      "url": "internal/appevents/latest",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Internal Docs", "AppEvents"],
         "version": ["latest"],
         "language": "en"
       },
