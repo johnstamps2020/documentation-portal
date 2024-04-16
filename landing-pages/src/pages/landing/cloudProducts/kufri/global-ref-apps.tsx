@@ -23,23 +23,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'ipajasperrn',
+          docId: 'ipakufrirn',
         },
         {
           label: 'Application Guide',
-          docId: 'ipajasperapp',
+          docId: 'ipakufriapp',
         },
         {
           label: 'Configuration',
-          docId: 'ipajasperconfig',
+          docId: 'ipakufriconfig',
         },
         {
           label: 'Installation',
-          docId: 'ipajasperinstall',
+          docId: 'ipakufriinstall',
         },
         {
           label: 'Upgrade',
-          docId: 'ipajasperupgrade',
+          docId: 'ipakufriupgrade',
         },
       ],
     },
@@ -69,19 +69,19 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'ipjjasperrn',
+          docId: 'ipjkufrirn',
         },
         {
           label: 'Application Guide',
-          docId: 'ipjjasperapp',
+          docId: 'ipjkufriapp',
         },
         {
           label: 'Configuration',
-          docId: 'ipjjasperconfig',
+          docId: 'ipjkufriconfig',
         },
         {
           label: 'Installation',
-          docId: 'ipjjasperinstall',
+          docId: 'ipjkufriinstall',
         },
       ],
     },
