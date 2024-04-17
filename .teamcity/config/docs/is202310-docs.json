@@ -6,14 +6,27 @@
       "title": "Advanced Product Designer in PolicyCenter",
       "url": "cloud/pc/202310/apd",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -25,14 +38,27 @@
       "title": "Release Notes",
       "url": "cloud/bc/202310/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,14 +70,27 @@
       "title": "Application Guide",
       "url": "cloud/bc/202310/app",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -63,14 +102,27 @@
       "title": "Administration",
       "url": "cloud/bc/202310/admin",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Administration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Administration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,14 +134,27 @@
       "title": "Configuration",
       "url": "cloud/bc/202310/config",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -101,14 +166,27 @@
       "title": "Data Archiving",
       "url": "cloud/bc/202310/dataarchiving",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Administration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Administration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -120,14 +198,27 @@
       "title": "Globalization",
       "url": "cloud/bc/202310/global",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -139,14 +230,27 @@
       "title": "Gosu Rules",
       "url": "cloud/bc/202310/rules",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -158,14 +262,27 @@
       "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
       "url": "cloud/bc/202310/integration",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -177,14 +294,27 @@
       "title": "Cloud API Consumer Guide",
       "url": "cloud/bc/202310/cloudapibf",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -196,14 +326,27 @@
       "title": "Cloud API Developer Guide",
       "url": "cloud/bc/202310/cloudapica",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -215,14 +358,27 @@
       "title": "ContactManager Cloud API Consumer Guide",
       "url": "cloud/bc/202310/cloudapicm",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -234,14 +390,27 @@
       "title": "REST API Framework",
       "url": "cloud/bc/202310/restapiframework",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -253,14 +422,27 @@
       "title": "Developer Setup",
       "url": "cloud/bc/202310/devsetup",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Installation"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Installation"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -272,14 +454,27 @@
       "title": "Release Notes",
       "url": "cloud/cc/202310/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -291,14 +486,27 @@
       "title": "Application Guide",
       "url": "cloud/cc/202310/app",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -310,14 +518,27 @@
       "title": "Administration",
       "url": "cloud/cc/202310/admin",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Administration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Administration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -329,14 +550,27 @@
       "title": "Configuration",
       "url": "cloud/cc/202310/config",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -348,14 +582,27 @@
       "title": "Data Archiving",
       "url": "cloud/cc/202310/dataarchiving",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Administration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Administration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -367,14 +614,27 @@
       "title": "Globalization",
       "url": "cloud/cc/202310/global",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -386,14 +646,27 @@
       "title": "Gosu Rules",
       "url": "cloud/cc/202310/rules",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -405,14 +678,27 @@
       "title": "Integration Data Manager",
       "url": "cloud/cc/202310/integdatamgr",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -424,14 +710,27 @@
       "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
       "url": "cloud/cc/202310/integration",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -443,14 +742,27 @@
       "title": "Cloud API Consumer Guide",
       "url": "cloud/cc/202310/cloudapibf",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -462,14 +774,27 @@
       "title": "Cloud API Developer Guide",
       "url": "cloud/cc/202310/cloudapica",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -481,14 +806,27 @@
       "title": "ContactManager Cloud API Consumer Guide",
       "url": "cloud/cc/202310/cloudapicm",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -500,14 +838,27 @@
       "title": "REST API Framework",
       "url": "cloud/cc/202310/restapiframework",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -519,14 +870,27 @@
       "title": "Developer Setup",
       "url": "cloud/cc/202310/devsetup",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Installation"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Installation"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -538,14 +902,27 @@
       "title": "Release Notes",
       "url": "cloud/pc/202310/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Release notes"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Release notes"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -557,14 +934,27 @@
       "title": "Application Guide",
       "url": "cloud/pc/202310/app",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -576,14 +966,27 @@
       "title": "Administration",
       "url": "cloud/pc/202310/admin",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Administration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Administration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -595,14 +998,27 @@
       "title": "Configuration",
       "url": "cloud/pc/202310/config",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -614,14 +1030,27 @@
       "title": "Data Archiving",
       "url": "cloud/pc/202310/dataarchiving",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Administration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Administration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -633,14 +1062,27 @@
       "title": "Globalization",
       "url": "cloud/pc/202310/global",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -652,14 +1094,27 @@
       "title": "Gosu Rules",
       "url": "cloud/pc/202310/rules",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -671,14 +1126,27 @@
       "title": "Product Designer",
       "url": "cloud/pc/202310/pd",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -690,14 +1158,27 @@
       "title": "Product Model",
       "url": "cloud/pc/202310/productmodel",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Configuration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Configuration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -709,14 +1190,27 @@
       "title": "Integration Data Manager",
       "url": "cloud/pc/202310/integdatamgr",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -728,14 +1222,27 @@
       "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
       "url": "cloud/pc/202310/integration",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -747,14 +1254,27 @@
       "title": "Cloud API Consumer Guide",
       "url": "cloud/pc/202310/cloudapibf",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -766,14 +1286,27 @@
       "title": "Cloud API Developer Guide",
       "url": "cloud/pc/202310/cloudapica",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -785,14 +1318,27 @@
       "title": "ContactManager Cloud API Consumer Guide",
       "url": "cloud/pc/202310/cloudapicm",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -804,14 +1350,27 @@
       "title": "REST API Framework",
       "url": "cloud/pc/202310/restapiframework",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -823,14 +1382,27 @@
       "title": "Developer Setup",
       "url": "cloud/pc/202310/devsetup",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Installation"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Installation"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -842,14 +1414,27 @@
       "title": "Rating App",
       "url": "cloud/pc/202310/ratingapp",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -861,14 +1446,29 @@
       "title": "Overview of Cloud Integration",
       "url": "cloud/202310/integoverview",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -880,33 +1480,29 @@
       "title": "Contact Management",
       "url": "cloud/is/202310/contact",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "is202310apisandbox",
-      "title": "API Sandbox",
-      "url": "cloud/202310/apisandbox",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter", "PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Development"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -918,14 +1514,27 @@
       "title": "Cloud API Reference",
       "url": "cloud/cc/202310/apiref",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -937,14 +1546,27 @@
       "title": "Cloud API Reference",
       "url": "cloud/bc/202310/apiref",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -956,14 +1578,27 @@
       "title": "Cloud API Reference",
       "url": "cloud/pc/202310/apiref",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.10"],
-        "release": ["Innsbruck"],
-        "subject": ["Integration"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.10"
+        ],
+        "release": [
+          "Innsbruck"
+        ],
+        "subject": [
+          "Integration"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,

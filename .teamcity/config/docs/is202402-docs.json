@@ -1510,39 +1510,6 @@
       "earlyAccess": false
     },
     {
-      "id": "is202402apisandbox",
-      "title": "API Sandbox",
-      "url": "cloud/202402/apisandbox",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "ClaimCenter",
-          "PolicyCenter"
-        ],
-        "version": [
-          "2024.02"
-        ],
-        "release": [
-          "Jasper"
-        ],
-        "subject": [
-          "Development"
-        ],
-        "language": "en"
-      },
-      "environments": [
-        "staging",
-        "prod"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "ccapirefjasper",
       "title": "Cloud API Reference",
       "url": "cloud/cc/202402/apiref",
