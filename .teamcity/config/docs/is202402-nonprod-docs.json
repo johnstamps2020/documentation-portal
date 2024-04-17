@@ -1,0 +1,37 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "is202402apisandbox",
+      "title": "API Sandbox",
+      "url": "cloud/202402/apisandbox",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
