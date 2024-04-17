@@ -103,7 +103,8 @@
       "indexForSearch": true,
       "earlyAccess": false,
       "internal": false,
-      "public": true
+      "public": true,
+      "ignorePublicPropertyAndUseVariants": true
     },
     {
       "id": "learningindita",
