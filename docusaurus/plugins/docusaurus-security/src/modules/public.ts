@@ -17,7 +17,6 @@ function itemCanBeShown(docId: string, docsDir: string): boolean {
   if (!existsSync(filePath)) {
     console.error(`File not found: ${filePath}`);
     return false;
-  } else {
   }
 
   const fileContents = readFileSync(filePath, 'utf8');
@@ -74,9 +73,12 @@ export function filterSidebarsByAccess(
   sidebars: SidebarsConfig,
   docsDir: string
 ) {
-  const canShowAllDocs = isPublicBuild();
+  const canShowAllDocs = !isPublicBuild();
   if (canShowAllDocs) {
+    console.log('Regular build, showing all docs');
     return sidebars;
+  } else {
+    console.log('Restricted build, filtering docs');
   }
   // Create a copy of the sidebars object
   const filteredSidebars: SidebarsConfig = { ...sidebars };

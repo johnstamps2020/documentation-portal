@@ -5,9 +5,9 @@ export async function buildVariants() {
   await runCommand(
     'docusaurus',
     ['build', '--out-dir', 'build/__restricted'],
-    'PUBLIC BUILD',
+    'RESTRICTED BUILD',
     {
-      RESTRICTED: 'true',
+      RESTRICTED: 'false',
     }
   );
 
@@ -15,14 +15,16 @@ export async function buildVariants() {
   await runCommand(
     'docusaurus',
     ['build', '--out-dir', 'build/__public'],
-    'RESTRICTED BUILD',
+    'PUBLIC BUILD',
     {
-      RESTRICTED: 'false',
+      RESTRICTED: 'true',
     }
   );
 }
 
 export async function buildDefault() {
   console.log('Building the default variant...');
-  await runCommand('docusaurus', ['build'], 'DEFAULT BUILD');
+  await runCommand('docusaurus', ['build'], 'DEFAULT BUILD', {
+    RESTRICTED: 'false',
+  });
 }

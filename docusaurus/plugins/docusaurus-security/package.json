@@ -1,6 +1,6 @@
 {
   "name": "@doctools/docusaurus-security",
-  "version": "1.0.7",
+  "version": "1.0.10",
   "description": "Guidewire plugin with security features",
   "main": "lib/index.js",
   "author": "doctools@gudiewire.com",
