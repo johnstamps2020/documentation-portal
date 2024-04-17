@@ -131,8 +131,8 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
-      "srcId": "isconfigupgradetools510frFRsrc",
-      "docId": "isconfigupgradetools510frFR",
+      "srcId": "isconfigupgradetools520frFRsrc",
+      "docId": "isconfigupgradetools520frFR",
       "indexRedirect": true,
       "disabled": false
     },
