@@ -797,7 +797,6 @@ function prepareVectorizedResultsToDisplay(
 
 function prepareResultsToDisplay(
   isAuthenticated: boolean,
-  hasGuidewireEmail: boolean,
   results: GuidewireSearchControllerSearchResults
 ): SearchData['searchResults'] {
   const searchResultsToDisplay: SearchData['searchResults'] = [];
@@ -1015,7 +1014,6 @@ export default async function searchController(
 
       const keywordSearchResultsToDisplay = prepareResultsToDisplay(
         requestIsAuthenticated,
-        hasGuidewireEmail,
         keywordSearchResults
       );
 
