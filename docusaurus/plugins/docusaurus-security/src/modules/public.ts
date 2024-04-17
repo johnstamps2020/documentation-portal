@@ -1,7 +1,6 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 import { existsSync, readFileSync } from 'fs';
 import { resolve } from 'path';
-import { isPublicBuild } from './helpers';
 const matter = require('gray-matter');
 
 function itemCanBeShown(docId: string, docsDir: string): boolean {
@@ -73,7 +72,7 @@ export function filterSidebarsByAccess(
   sidebars: SidebarsConfig,
   docsDir: string
 ) {
-  const canShowAllDocs = !isPublicBuild();
+  const canShowAllDocs = process.env.RESTRICTED !== 'true';
   if (canShowAllDocs) {
     console.log('Regular build, showing all docs');
     return sidebars;
