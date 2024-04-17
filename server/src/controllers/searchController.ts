@@ -790,8 +790,6 @@ function prepareVectorizedResultsToDisplay(
       subject: mainResult.subject || [],
       version: mainResult.version,
       score: mainResultScore,
-      ignorePublicPropertyAndUseVariants:
-        mainResult.ignorePublicPropertyAndUseVariants,
     });
   }
   return vectorizedSearchResultsToDisplay;
@@ -805,31 +803,22 @@ function prepareResultsToDisplay(
   const searchResultsToDisplay: SearchData['searchResults'] = [];
   for (const result of results.hits) {
     const innerHits = result.inner_hits?.same_title.hits.hits || [];
-    const allHits = [result, ...innerHits];
+    const unfilteredAllHits = [result, ...innerHits];
+    let allHits = structuredClone(unfilteredAllHits);
+    if (isAuthenticated) {
+      allHits = unfilteredAllHits.filter(
+        (hit) =>
+          unfilteredAllHits.find(
+            (h) =>
+              hit._source.href === h._source.href &&
+              hit._source.public !== h._source.public &&
+              hit._source.public === false
+          ) || true
+      );
+    }
     const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
     const [topHit, ...otherHits] = allHitsSortedFromLatest;
-    let mainResult;
-    const duplicates = allHits.filter(
-      (hit, index) =>
-        allHits.findIndex(
-          (item) => item._source?.href === hit._source?.href
-        ) !== index
-    );
-
-    if (duplicates.length > 1) {
-      if (isAuthenticated && hasGuidewireEmail) {
-        const foundHit = duplicates.find(
-          (hit) => hit._source?.public === false
-        );
-        mainResult = foundHit?._source;
-      } else {
-        const foundHit = duplicates.find((hit) => hit._source?.public === true);
-        mainResult = foundHit?._source;
-      }
-    } else {
-      mainResult = topHit._source;
-    }
-
+    const mainResult = topHit._source;
     if (!mainResult) {
       continue;
     }
@@ -920,13 +909,8 @@ function prepareResultsToDisplay(
       body: sanitizeTagNames(bodyExcerpt + '...'),
       bodyPlain: sanitizeTagNames(mainResultBodyFragment + '...'),
       keywords: sanitizeTagNames(keywordsText),
-      innerHits:
-        duplicates.length > 1
-          ? []
-          : otherHits?.map((r) => r._source as SearchResultSource) || [],
+      innerHits: otherHits?.map((r) => r._source as SearchResultSource) || [],
       uniqueHighlightTerms: uniqueHighlightTerms,
-      ignorePublicPropertyAndUseVariants:
-        mainResult.ignorePublicPropertyAndUseVariants,
     });
   }
 
