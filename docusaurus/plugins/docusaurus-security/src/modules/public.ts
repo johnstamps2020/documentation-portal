@@ -68,17 +68,7 @@ function filterItems(items: any[], docsDir: string): any[] {
   });
 }
 
-export function filterSidebarsByAccess(
-  sidebars: SidebarsConfig,
-  docsDir: string
-) {
-  const canShowAllDocs = process.env.RESTRICTED !== 'true';
-  if (canShowAllDocs) {
-    console.log('Regular build, showing all docs');
-    return sidebars;
-  } else {
-    console.log('Restricted build, filtering docs');
-  }
+function getFilteredSidebars(sidebars: SidebarsConfig, docsDir: string) {
   // Create a copy of the sidebars object
   const filteredSidebars: SidebarsConfig = { ...sidebars };
 
@@ -88,4 +78,22 @@ export function filterSidebarsByAccess(
   }
 
   return filteredSidebars;
+}
+
+export function filterSidebarsByAccess(
+  sidebars: SidebarsConfig,
+  docsDir: string
+) {
+  if (process.env.PUBLIC === 'true') {
+    console.log('Public variant, filtering sidebars');
+    return getFilteredSidebars(sidebars, docsDir);
+  }
+
+  if (process.env.PUBLIC === 'false') {
+    console.log('Restricted variant, using unfiltered sidebars');
+    return sidebars;
+  }
+
+  console.log('Regular build. Using unfiltered sidebars.');
+  return sidebars;
 }
