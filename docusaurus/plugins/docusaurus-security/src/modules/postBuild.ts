@@ -23,7 +23,7 @@ export function deleteRestrictedFiles(
   routesPaths: string[],
   outDir: string
 ): void {
-  if (isPublicBuild() || routesPaths.length === 0) {
+  if (!isPublicBuild() || routesPaths.length === 0) {
     return;
   }
 
