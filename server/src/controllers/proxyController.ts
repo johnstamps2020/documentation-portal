@@ -76,7 +76,12 @@ async function getResourceStatusFromDatabase(
   }
 
   const dbEntityUrl = dbEntity.url;
-  if (dbEntity instanceof Doc && dbEntity.ignorePublicPropertyAndUseVariants) {
+  // Check explicitly if the ignorePublicPropertyAndUseVariants property is set to True
+  // not to include any truthy values.
+  if (
+    dbEntity instanceof Doc &&
+    dbEntity.ignorePublicPropertyAndUseVariants === true
+  ) {
     const cleanedRequestedPath = requestedPath
       .replace(publicSubPath, '')
       .replace(restrictedSubPath, '');
