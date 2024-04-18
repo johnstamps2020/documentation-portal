@@ -3630,6 +3630,9 @@
         "subject": [
           "Best practices"
         ],
+        "release": [
+          "Jasper"
+        ],
         "language": "en"
       },
       "environments": [
@@ -3658,6 +3661,9 @@
         ],
         "subject": [
           "Development"
+        ],
+        "release": [
+          "Jasper"
         ],
         "language": "en"
       },
