@@ -191,19 +191,19 @@
       "id": "srcjutrosdkinnsbruck",
       "title": "Jutro SDK Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
-      "branch": "release/innsbruck"
+      "branch": "release/50.9"
     },
     {
       "id": "srcjutrosdkjasper",
       "title": "Jutro SDK Jasper",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
-      "branch": "release/jasper"
+      "branch": "release/50.10"
     },
     {
       "id": "srcjutrosdkkufri",
       "title": "Jutro SDK Kufri",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
-      "branch": "release/kufri"
+      "branch": "release/50.11"
     },
     {
       "id": "srcjutrosbbizpatterns652",
