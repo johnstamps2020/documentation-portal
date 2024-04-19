@@ -16,8 +16,7 @@ import Button from '@mui/material/Button';
 
 export default function DeltaDocResults() {
   const [page, setPage] = useState(1);
-  const [resultsPerPage, setResultsPerPage] = useState(9);
-  const { deltaDocData, releaseA, releaseB } = useDeltaDocContext();
+  const { deltaDocData, releaseA, releaseB, resultsPerPage, setResultsPerPage } = useDeltaDocContext();
   const paginationData = usePagination({
     data: deltaDocData?.results || [],
     itemsPerPage: resultsPerPage,

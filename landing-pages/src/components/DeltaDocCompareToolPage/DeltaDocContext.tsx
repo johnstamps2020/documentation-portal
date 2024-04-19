@@ -22,6 +22,8 @@ interface DeltaDocInterface {
   deltaDocData: DeltaDocData | undefined;
   isError: DocPortalEntityError | undefined;
   isLoading: boolean;
+  resultsPerPage: number;
+  setResultsPerPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const DeltaDocContext = createContext<DeltaDocInterface | null>(null);
@@ -33,6 +35,7 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     url: '',
     version: false,
   });
+  const [resultsPerPage, setResultsPerPage] = useState(9);
   const [rootUrls, setRootUrls] = useState({ leftUrl: '', rightUrl: '' });
   const { releaseA, releaseB, url, version } = formState;
   const { deltaDocData, isError, isLoading } = useDeltaDocData({
@@ -53,6 +56,8 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     deltaDocData,
     isError,
     isLoading,
+    resultsPerPage,
+    setResultsPerPage,
   };
 
   return (
