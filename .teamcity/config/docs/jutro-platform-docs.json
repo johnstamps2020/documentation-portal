@@ -2,15 +2,15 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "jutroplatformgarmisch",
+      "id": "jutroplatformhakuba",
       "title": "Jutro Digital Platform",
-      "url": "jutro/platform/garmisch",
+      "url": "jutro/platform/hakuba",
       "metadata": {
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
-        "version": ["Garmisch"],
+        "version": ["8.10"],
         "subject": ["Administration"],
-        "release": ["Garmisch"],
+        "release": ["Hakuba"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -21,15 +21,15 @@
       "earlyAccess": true
     },
     {
-      "id": "jutroplatformhakuba",
+      "id": "jutroplatformgarmisch",
       "title": "Jutro Digital Platform",
-      "url": "jutro/platform/hakuba",
+      "url": "jutro/platform/garmisch",
       "metadata": {
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
-        "version": ["Hakuba"],
+        "version": ["8.6.1"],
         "subject": ["Administration"],
-        "release": ["Hakuba"],
+        "release": ["Garmisch"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -46,7 +46,7 @@
       "metadata": {
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
-        "version": ["Flaine"],
+        "version": ["8.3.2"],
         "subject": ["Administration"],
         "release": ["Flaine"],
         "language": "en"
