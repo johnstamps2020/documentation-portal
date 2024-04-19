@@ -3,7 +3,11 @@ import { basename, dirname, extname, resolve } from 'path';
 const matter = require('gray-matter');
 
 export const renameRestoreListFilePath = 'rename-restore-list.json';
-const restrictedPageTemplate = `# Restricted page
+const restrictedPageTemplate = `---
+public: false
+---
+
+# Restricted page
 
 Sorry, you cannot access the contents of this page without logging in.
 `;
