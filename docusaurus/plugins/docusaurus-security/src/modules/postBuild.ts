@@ -1,11 +1,12 @@
 import { existsSync, readFileSync, renameSync, rmSync } from 'fs';
-import { RenameRestoreItem, renameRestoreListFilePath } from './filterSidebars';
-import { isPublicBuild } from './helpers';
+import { RenameRestoreItem, renameRestoreListFilePath } from './renameFiles';
 
 export function revertFileChanges(): void {
-  if (!isPublicBuild() || !existsSync(renameRestoreListFilePath)) {
+  if (!existsSync(renameRestoreListFilePath)) {
     return;
   }
+
+  console.log('Reverting file changes');
 
   const renameRestoreList = JSON.parse(
     readFileSync(renameRestoreListFilePath, 'utf-8')
