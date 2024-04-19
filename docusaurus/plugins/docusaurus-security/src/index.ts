@@ -1,7 +1,7 @@
 import { LoadContext, Plugin, PluginOptions } from '@docusaurus/types';
 import { buildDefault, buildVariants } from './modules/cli';
-import { deleteRestrictedFiles } from './modules/postBuild';
-export { filterSidebarsByAccess } from './modules/public';
+import { revertFileChanges } from './modules/postBuild';
+export { filterSidebarsByAccess } from './modules/filterSidebars';
 
 type PluginContent = {};
 
@@ -27,8 +27,8 @@ export default async function (
         });
     },
 
-    async postBuild({ baseUrl, routesPaths = [], outDir }) {
-      deleteRestrictedFiles(baseUrl, routesPaths, outDir);
+    async postBuild() {
+      revertFileChanges();
     },
   };
 }
