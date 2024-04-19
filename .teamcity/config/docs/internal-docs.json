@@ -272,6 +272,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "insuranceplatformoperator",
+      "title": "InsurancePlatform Operator",
+      "url": "internal/insuranceplatformoperator/latest",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Internal Docs", "InsurancePlatform Operator"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
