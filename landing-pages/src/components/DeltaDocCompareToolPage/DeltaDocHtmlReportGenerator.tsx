@@ -7,7 +7,7 @@ export default function DeltaDocHtmlReportGenerator() {
   const {
     releaseA,
     releaseB,
-    url: deltaUrl,
+    url,
     deltaDocData,
   } = useDeltaDocContext();
 
@@ -19,8 +19,7 @@ export default function DeltaDocHtmlReportGenerator() {
     const htmlContent = document.querySelector('table');
     const htmlTable = htmlContent ? htmlContent.outerHTML : '';
     const blob = new Blob([htmlTable], { type: 'text/html' });
-    saveAs(blob, `${releaseA}-${releaseB}-${deltaUrl}-report.html`);
-    // saveAs(blob, `${releaseA}-${releaseB}-${deltaUrl}-report.txt`);
+    saveAs(blob, `${releaseA}-${releaseB}-${url}-report.html`);
   }
   return (
     <Tooltip title="If you want to save whole table, click 'Show all results'.">
