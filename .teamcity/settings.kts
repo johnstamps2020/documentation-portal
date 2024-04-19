@@ -20,7 +20,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.*
 
-version = "2022.04"
+version = "2023.11"
 project {
     GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
