@@ -2,7 +2,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
-import AdminAccess from 'components/AdminPage/AdminAccess';
+import AccessControl from 'components/AccessControl/AccessControl';
 import { DeltaDocProvider } from 'components/DeltaDocCompareToolPage/DeltaDocContext';
 import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResultsPanel';
 import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
@@ -39,7 +39,11 @@ export default function DeltaDocCompareToolPage() {
   }, [setTitle]);
 
   return (
-    <AdminAccess pagePath={window.location.href}>
+    <AccessControl
+      pagePath={window.location.href}
+      checkAdminAccess={true}
+      checkPowerUserAccess={true}
+    >
       <DeltaDocProvider>
         <Grid
           sx={{
@@ -58,12 +62,36 @@ export default function DeltaDocCompareToolPage() {
             <Typography variant="h1" marginBottom="16px" textAlign="center">
               Compare documents between releases
             </Typography>
+            <Typography
+              variant="body1"
+              marginBottom="16px"
+              width="650px"
+              margin="auto"
+              textAlign="justify"
+            >
+              To compare documents, please provide the URLs (including the
+              domain) to the root of the corresponding documents you wish to
+              compare. Ensure that each URL includes a release.
+              <br /> Example: <br />
+              If you want to run comparison of{' '}
+              <b> ClaimCenter Application Guide</b> in <b>Garmisch</b> and{' '}
+              <b>Flaine</b>:
+              <br />
+              paste{' '}
+              <b>
+                https://docs.staging.ccs.guidewire.net/cloud/cc/202302/app/
+              </b>{' '}
+              as first URL (for Garmisch), <br /> paste{' '}
+              <b>https://docs.staging.ccs.guidewire.net/cloud/cc/202209/app/</b>{' '}
+              as second URL (for Flaine), <br />
+              click "See results" and enjoy!
+            </Typography>
             <DeltaDocUpperPanel />
             <DeltaDocStatistics />
             <DeltaDocResults />
           </Container>
         </Grid>
       </DeltaDocProvider>
-    </AdminAccess>
+    </AccessControl>
   );
 }

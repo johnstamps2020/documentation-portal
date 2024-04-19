@@ -7,4 +7,5 @@ export type UserInfo = {
   isLoggedIn: boolean;
   hasGuidewireEmail: boolean;
   isAdmin: boolean;
+  isPowerUser: boolean;
 };

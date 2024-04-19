@@ -12,10 +12,11 @@ import { useState } from 'react';
 import usePagination from '../../hooks/usePagination';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocResultTableRow from './DeltaDocResultTableRow';
+import Button from '@mui/material/Button';
 
 export default function DeltaDocResults() {
   const [page, setPage] = useState(1);
-  const resultsPerPage = 9;
+  const [resultsPerPage, setResultsPerPage] = useState(9);
   const { deltaDocData, releaseA, releaseB } = useDeltaDocContext();
   const paginationData = usePagination({
     data: deltaDocData?.results || [],
@@ -53,12 +54,26 @@ export default function DeltaDocResults() {
           page={page}
           onChange={(event, page) => handleChange(page)}
         />
+        <Button
+          onClick={() =>
+            resultsPerPage === results.length
+              ? setResultsPerPage(9)
+              : setResultsPerPage(results.length)
+          }
+        >
+          {resultsPerPage === results.length
+            ? 'Show pagination'
+            : 'Show all results'}
+        </Button>
       </Box>
       <Typography variant="h1" textAlign="center">
         Found {results.length} pages with differences
       </Typography>
       <TableContainer component={Paper} sx={{ mt: '30px', px: 2 }}>
-        <Table sx={{ minWidth: 650, borderWidth: 0 }} aria-label="simple table">
+        <Table
+          sx={{ minWidth: 650, borderWidth: 0 }}
+          aria-label="delta-doc-result-table"
+        >
           <TableHead>
             <TableRow>
               <TableCell align="center">Change</TableCell>
