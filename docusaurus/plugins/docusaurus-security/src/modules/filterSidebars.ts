@@ -28,8 +28,6 @@ function itemCanBeShown(docId: string, docsDir: string): boolean {
   if (docIsPublic === true) {
     return true;
   }
-
-  renameList.push(filePath);
   return false;
 }
 

@@ -1,6 +1,5 @@
 import { LoadContext, Plugin, PluginOptions } from '@docusaurus/types';
 import { buildDefault, buildVariants } from './modules/cli';
-import { revertFileChanges } from './modules/postBuild';
 export { filterSidebarsByAccess } from './modules/filterSidebars';
 
 type PluginContent = {};
@@ -25,10 +24,6 @@ export default async function (
             await buildDefault();
           }
         });
-    },
-
-    async postBuild() {
-      revertFileChanges();
     },
   };
 }
