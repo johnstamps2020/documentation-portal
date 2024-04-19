@@ -2,6 +2,7 @@ import { existsSync, readFileSync, rmSync } from 'fs';
 import jsdom from 'jsdom';
 import { extname, join, resolve } from 'path';
 import { isPublicBuild } from './helpers';
+
 const { JSDOM } = jsdom;
 
 function getHtmlFilePath(routePath: string): string | undefined {
@@ -20,6 +21,7 @@ function getHtmlFilePath(routePath: string): string | undefined {
 }
 
 export function deleteRestrictedFiles(
+  baseUrl: string,
   routesPaths: string[],
   outDir: string
 ): void {
@@ -29,10 +31,10 @@ export function deleteRestrictedFiles(
 
   console.log('Deleting restricted files...');
   routesPaths.forEach((route) => {
-    const routePath = join(outDir, route);
+    const routePath = join(outDir, route.replace(baseUrl, ''));
     const filePath = getHtmlFilePath(routePath);
     if (!filePath) {
-      console.error(`File not found: ${filePath}`);
+      console.error(`File not found for route ${routePath}`);
       return;
     }
 

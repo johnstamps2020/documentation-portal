@@ -27,8 +27,8 @@ export default async function (
         });
     },
 
-    async postBuild({ routesPaths = [], outDir }) {
-      deleteRestrictedFiles(routesPaths, outDir);
+    async postBuild({ baseUrl, routesPaths = [], outDir }) {
+      deleteRestrictedFiles(baseUrl, routesPaths, outDir);
     },
   };
 }
