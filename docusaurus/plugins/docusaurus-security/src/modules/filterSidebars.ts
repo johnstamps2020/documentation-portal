@@ -1,7 +1,10 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import { existsSync, readFileSync } from 'fs';
-import { resolve } from 'path';
+import { existsSync, readFileSync, renameSync, writeFileSync } from 'fs';
+import { basename, dirname, resolve } from 'path';
 const matter = require('gray-matter');
+
+export const renameRestoreListFilePath = 'rename-restore-list.json';
+const renameList: string[] = [];
 
 function itemCanBeShown(docId: string, docsDir: string): boolean {
   if (docId === undefined) {
@@ -67,6 +70,40 @@ function filterItems(items: any[], docsDir: string): any[] {
   });
 }
 
+const restrictedPageTemplate = `# Restricted page
+
+Sorry, you cannot access the contents of this page without logging in.
+`;
+
+export type RenameRestoreItem = {
+  oldPath: string;
+  newPath: string;
+};
+
+function renameFiles() {
+  if (renameList.length === 0) {
+    return;
+  }
+
+  const renameRestoreList: RenameRestoreItem[] = [];
+  for (const oldPath of renameList) {
+    const newPath = resolve(dirname(oldPath), '_' + basename(oldPath));
+    console.log('Renaming', oldPath, newPath);
+    renameSync(oldPath, newPath);
+    writeFileSync(oldPath, restrictedPageTemplate, 'utf-8');
+    renameRestoreList.push({
+      oldPath,
+      newPath,
+    });
+  }
+
+  writeFileSync(
+    renameRestoreListFilePath,
+    JSON.stringify(renameRestoreList),
+    'utf-8'
+  );
+}
+
 function getFilteredSidebars(sidebars: SidebarsConfig, docsDir: string) {
   // Create a copy of the sidebars object
   const filteredSidebars: SidebarsConfig = { ...sidebars };
@@ -76,6 +113,7 @@ function getFilteredSidebars(sidebars: SidebarsConfig, docsDir: string) {
     filteredSidebars[key] = filterItems(sidebars[key] as any[], docsDir);
   }
 
+  renameFiles();
   return filteredSidebars;
 }
 
