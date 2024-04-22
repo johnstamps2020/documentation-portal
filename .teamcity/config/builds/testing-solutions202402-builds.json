@@ -6,7 +6,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-API.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "testingframeworksapijasper",
+      "docId": "testing202402api",
       "indexRedirect": true,
       "disabled": false
     },
@@ -15,7 +15,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-UI.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "testingframeworksuijasper",
+      "docId": "testing202402ui",
       "indexRedirect": true,
       "disabled": false
     },
@@ -24,7 +24,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Load.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "testingframeworksloadjasper",
+      "docId": "testing202402load",
       "indexRedirect": true,
       "disabled": false
     },
@@ -33,7 +33,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Management.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "testingframeworksmgmtjasper",
+      "docId": "testing202402mgmt",
       "indexRedirect": true,
       "disabled": false
     },
@@ -42,7 +42,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Matrix.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "testingframeworksmatrixjasper",
+      "docId": "testing202402matrix",
       "indexRedirect": true,
       "disabled": false
     },
@@ -51,7 +51,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "testingframeworksrnjasper",
+      "docId": "testing202402rn",
       "indexRedirect": true,
       "disabled": false
     },
@@ -60,7 +60,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Framework-Installation.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "testingframeworksinstalljasper",
+      "docId": "testing202402frameworksinstall",
       "indexRedirect": true,
       "disabled": false
     },
@@ -69,7 +69,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "ISUnitTesting.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "is202402testing",
+      "docId": "testing202402istesting",
       "indexRedirect": true,
       "disabled": false
     },
@@ -97,6 +97,24 @@
       "root": "InsuranceSuite-Testing.ditamap",
       "srcId": "testingframeworks202402src",
       "docId": "testing202402istesting",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Standards-Code-Coverage.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testing202402codecoverage",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Standards-Load-and_Performance_Testing.ditamap",
+      "srcId": "testingframeworks202402src",
+      "docId": "testing202402loadandperf",
       "indexRedirect": true,
       "disabled": false
     }

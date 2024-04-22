@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "testingframeworksapijasper",
+      "id": "testing202402api",
       "title": "API Testing",
       "url": "cloud/testing/202402/api",
       "metadata": {
@@ -37,7 +37,7 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksuijasper",
+      "id": "testing202402ui",
       "title": "User Interface Testing",
       "url": "cloud/testing/202402/ui",
       "metadata": {
@@ -72,7 +72,7 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksmgmtjasper",
+      "id": "testing202402mgmt",
       "title": "Test Management",
       "url": "cloud/testing/202402/mgmt",
       "metadata": {
@@ -107,7 +107,7 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksrnjasper",
+      "id": "testing202402rn",
       "title": "Guidewire Testing Framework Release Notes",
       "url": "cloud/testing/202402/releasenotes",
       "metadata": {
@@ -142,7 +142,7 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksmatrixjasper",
+      "id": "testing202402matrix",
       "title": "Guidewire Testing Framework Supported Software Components",
       "url": "cloud/testing/202402/matrix",
       "metadata": {
@@ -177,7 +177,7 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksinstalljasper",
+      "id": "testing202402frameworksinstall",
       "title": "Guidewire Testing Framework Installation",
       "url": "cloud/testing/202402/install",
       "metadata": {
@@ -212,7 +212,7 @@
       "earlyAccess": false
     },
     {
-      "id": "is202402testing",
+      "id": "testing202402istesting",
       "title": "InsuranceSuite Unit Testing",
       "url": "cloud/testing/202402/isunittesting",
       "metadata": {
@@ -336,6 +336,76 @@
           "Jasper"
         ],
         "subject": [
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202402codecoverage",
+      "title": "Code Coverage",
+      "url": "cloud/testing/202402/codecoverage",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202402loadandperf",
+      "title": "Load and Performance Testing",
+      "url": "cloud/testing/202402/loadandperf",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
           "Testing"
         ],
         "language": "en"
