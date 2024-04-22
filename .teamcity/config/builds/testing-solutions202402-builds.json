@@ -112,7 +112,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "Standards-Load-and_Performance_Testing.ditamap",
+      "root": "Standards-Load-and-Performance-Testing.ditamap",
       "srcId": "testingframeworks202402src",
       "docId": "testing202402loadandperf",
       "indexRedirect": true,
