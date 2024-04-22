@@ -80,30 +80,6 @@ export type RenameRestoreItem = {
   newPath: string;
 };
 
-function renameFiles() {
-  if (renameList.length === 0) {
-    return;
-  }
-
-  const renameRestoreList: RenameRestoreItem[] = [];
-  for (const oldPath of renameList) {
-    const newPath = resolve(dirname(oldPath), '_' + basename(oldPath));
-    console.log('Renaming', oldPath, newPath);
-    renameSync(oldPath, newPath);
-    writeFileSync(oldPath, restrictedPageTemplate, 'utf-8');
-    renameRestoreList.push({
-      oldPath,
-      newPath,
-    });
-  }
-
-  writeFileSync(
-    renameRestoreListFilePath,
-    JSON.stringify(renameRestoreList),
-    'utf-8'
-  );
-}
-
 function getFilteredSidebars(sidebars: SidebarsConfig, docsDir: string) {
   // Create a copy of the sidebars object
   const filteredSidebars: SidebarsConfig = { ...sidebars };
@@ -113,7 +89,6 @@ function getFilteredSidebars(sidebars: SidebarsConfig, docsDir: string) {
     filteredSidebars[key] = filterItems(sidebars[key] as any[], docsDir);
   }
 
-  renameFiles();
   return filteredSidebars;
 }
 
