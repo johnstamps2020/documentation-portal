@@ -574,7 +574,7 @@ async function createVersionEntities(legacyDocConfig: LegacyDocConfig[]) {
 
 async function createReleaseEntities(legacyDocConfig: LegacyDocConfig[]) {
   const dbDocReleasesToSave: Release[] = [];
-  const nonProdReleases = ['Jasper'];
+  const nonProdReleases = ['Kufri'];
   for (const doc of legacyDocConfig) {
     const legacyDocReleases = doc.metadata.release;
     if (legacyDocReleases && legacyDocReleases.length > 0) {

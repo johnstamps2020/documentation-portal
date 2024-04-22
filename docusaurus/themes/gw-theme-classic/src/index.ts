@@ -59,46 +59,39 @@ function getAllFilesRecursively(rootDir: string): string[] {
 }
 
 function getInternalDocIds(docsDir: string): PluginContent['internalDocIds'] {
-  const allDocFiles = getAllFilesRecursively(docsDir).filter((filePath) =>
-    ['.md', '.mdx'].includes(extname(filePath))
-  );
+  try {
+    const allDocFiles = getAllFilesRecursively(docsDir).filter((filePath) =>
+      ['.md', '.mdx'].includes(extname(filePath))
+    );
 
-  const internalDocIds = [];
-  for (const docFilePath of allDocFiles) {
-    const fileContents = readFileSync(docFilePath, 'utf-8');
-    const frontMatter = matter(fileContents).data;
-    if (!frontMatter) {
-      continue;
+    const internalDocIds = [];
+    for (const docFilePath of allDocFiles) {
+      const fileContents = readFileSync(docFilePath, 'utf-8');
+      const frontMatter = matter(fileContents).data;
+      if (!frontMatter) {
+        continue;
+      }
+
+      const isInternal = frontMatter.internal === true;
+      if (isInternal) {
+        const removeExtensionRegExp = new RegExp(`${extname(docFilePath)}$`);
+        const docId =
+          frontMatter.id ||
+          relative(docsDir, docFilePath).replace(removeExtensionRegExp, '');
+        internalDocIds.push(docId);
+      }
     }
 
-    const isInternal = frontMatter.internal === true;
-    if (isInternal) {
-      const removeExtensionRegExp = new RegExp(`${extname(docFilePath)}$`);
-      const docId =
-        frontMatter.id ||
-        relative(docsDir, docFilePath).replace(removeExtensionRegExp, '');
-      internalDocIds.push(docId);
-    }
+    return internalDocIds;
+  } catch (e) {
+    console.error(e);
+    return [];
   }
-
-  return internalDocIds;
 }
 
 export default async function (
-  context: LoadContext,
-  options: PluginOptions
+  context: LoadContext
 ): Promise<Plugin<PluginContent>> {
-  const {
-    i18n: { currentLocale },
-  } = context;
-
-  const themeConfig = context.siteConfig.themeConfig as ThemeConfig;
-  if (themeConfig?.colorMode) {
-    (themeConfig.colorMode.disableSwitch = true),
-      (themeConfig.colorMode.defaultMode = 'light'),
-      (themeConfig.colorMode.respectPrefersColorScheme = false);
-  }
-
   return {
     name: PLUGIN_NAME,
 

@@ -1,5 +1,4 @@
 import { spawn } from 'child_process';
-import chalk from 'chalk';
 
 function logTheCommand(
   command: string,
@@ -11,11 +10,7 @@ function logTheCommand(
         .map(([key, value]) => `${key}=${value}`)
         .join(' ')
     : '';
-  console.log(
-    chalk.yellow(envString),
-    chalk.green(command),
-    chalk.yellow(commandLineArgs.join(' '))
-  );
+  console.log(envString, command, commandLineArgs.join(' '));
 }
 
 export async function runCommand(
@@ -30,46 +25,38 @@ export async function runCommand(
     const spawnedProcess = spawn(command, commandLineArgs, {
       stdio: 'inherit',
       env: { ...process.env, ...env },
+      shell: true,
     });
 
     spawnedProcess.on('close', (code) => {
       if (code === 0) {
-        console.log(
-          chalk.green(`${processLabel}: Successfully completed the process`)
-        );
+        console.log(`${processLabel}: Successfully completed the process`);
         resolve();
       } else {
-        console.error(
-          chalk.red(`Failed to execute "${processLabel}" with code`),
-          code
-        );
+        console.error(`Failed to execute "${processLabel}" with code`, code);
         reject();
       }
     });
 
     spawnedProcess.on('exit', (code) => {
       if (code === 0) {
-        console.log(
-          chalk.green(`${processLabel} EXIT: Successfully exited the process`)
-        );
+        console.log(`${processLabel} EXIT: Successfully exited the process`);
         resolve();
       } else {
         console.error(
-          chalk.red(`Exited with code ${code} while running "${processLabel}"`)
+          `Exited with code ${code} while running "${processLabel}"`
         );
         reject();
       }
     });
 
     spawnedProcess.on('disconnect', () => {
-      console.error(
-        chalk.red(`Disconnected from the "${processLabel}" process`)
-      );
+      console.error(`Disconnected from the "${processLabel}" process`);
       reject();
     });
 
     spawnedProcess.on('message', (message) => {
-      console.log(chalk.gray('MESSAGE'), message);
+      console.log('MESSAGE', message);
     });
   });
 }

@@ -41,6 +41,14 @@ function isAdminUser(userGroups: string[]) {
   );
 }
 
+function isPowerUser(userEmail: string | undefined) {
+  if (!userEmail) {
+    return false;
+  }
+  const powerUsers = process.env.POWER_USERS?.split(',') || [];
+  return powerUsers.length > 0 && powerUsers.includes(userEmail);
+}
+
 async function createOktaStrategies() {
   const oktaScopes = 'openid profile email';
   const oktaRedirectUris = [
@@ -82,6 +90,7 @@ async function createOktaStrategies() {
           // For some users, it was not possible to set the session cookie because it exceeded the maximum size
           // allowed by the browser (4096 bytes).
           delete profile.groups;
+          profile.isPowerUser = isPowerUser(profile.email);
           return done(null, profile);
         }
       );

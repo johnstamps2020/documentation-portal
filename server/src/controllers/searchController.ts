@@ -796,16 +796,28 @@ function prepareVectorizedResultsToDisplay(
 }
 
 function prepareResultsToDisplay(
+  isAuthenticated: boolean,
   results: GuidewireSearchControllerSearchResults
 ): SearchData['searchResults'] {
   const searchResultsToDisplay: SearchData['searchResults'] = [];
   for (const result of results.hits) {
     const innerHits = result.inner_hits?.same_title.hits.hits || [];
-    const allHits = [result, ...innerHits];
+    const unfilteredAllHits = [result, ...innerHits];
+    let allHits = structuredClone(unfilteredAllHits);
+    if (isAuthenticated) {
+      allHits = unfilteredAllHits.filter(
+        (hit) =>
+          unfilteredAllHits.find(
+            (h) =>
+              hit._source.href === h._source.href &&
+              hit._source.public !== h._source.public &&
+              hit._source.public === false
+          ) || true
+      );
+    }
     const allHitsSortedFromLatest = getUniqueResultsSortedByVersion(allHits);
     const [topHit, ...otherHits] = allHitsSortedFromLatest;
     const mainResult = topHit._source;
-
     if (!mainResult) {
       continue;
     }
@@ -1000,8 +1012,10 @@ export default async function searchController(
         resultsPerPage
       );
 
-      const keywordSearchResultsToDisplay =
-        prepareResultsToDisplay(keywordSearchResults);
+      const keywordSearchResultsToDisplay = prepareResultsToDisplay(
+        requestIsAuthenticated,
+        keywordSearchResults
+      );
 
       return rawJson
         ? {
@@ -1209,7 +1223,6 @@ export async function getAllDocsFromRelease(
     );
   }
 }
-
 
 export async function getAllDocsFromVersion(
   versionName: string,

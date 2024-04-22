@@ -9,6 +9,7 @@ export const internalMockUserData: UserInfo = {
   hasGuidewireEmail: true,
   locale: 'en-US',
   isAdmin: false,
+  isPowerUser: false,
 };
 
 export const externalMockUserData: UserInfo = {
@@ -20,4 +21,5 @@ export const externalMockUserData: UserInfo = {
   hasGuidewireEmail: false,
   locale: 'en-US',
   isAdmin: false,
+  isPowerUser: false,
 };

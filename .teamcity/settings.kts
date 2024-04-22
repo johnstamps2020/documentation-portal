@@ -20,7 +20,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.*
 
-version = "2022.04"
+version = "2023.11"
 project {
     GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
@@ -85,7 +85,6 @@ enum class GwConfigParams(val paramValue: String) {
     OKTA_SCOPES("NODE_Hawaii_Docs_Web.read"),
     OKTA_SCOPES_PROD("Documentation_portal.read"),
     OKTA_AUDIENCE("Guidewire"),
-    OKTA_ADMIN_GROUPS("doctools"),
     GW_COMMUNITY_CUSTOMER_IDP("0oau503zlhhFLwTqF0h7"),
     GW_COMMUNITY_CUSTOMER_IDP_PROD("0oa6c4x5z3fYXUWoE357"),
     GW_COMMUNITY_PARTNER_IDP("0oapv9i36yEMFLjxS0h7"),
@@ -423,7 +422,6 @@ object Helpers {
             export ENABLE_AUTH="yes"
             export DD_SERVICE_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export OKTA_AUDIENCE="${GwConfigParams.OKTA_AUDIENCE.paramValue}"
-            export OKTA_ADMIN_GROUPS="${GwConfigParams.OKTA_ADMIN_GROUPS.paramValue}"
             export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
             export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
             export PARTNERS_LOGIN_URL="$partnersLoginUrl"
@@ -5022,7 +5020,9 @@ object Admin {
                     export OKTA_ISSUER_APAC="issuerNotConfigured"
                     export OKTA_ISSUER_EMEA="issuerNotConfigured"
                     export OKTA_SCOPES=mock
+                    export OKTA_ADMIN_GROUPS=mock
                     export OKTA_AUDIENCE=mock
+                    export POWER_USERS=mock
                     export APP_BASE_URL=http://localhost:8081
                     export SESSION_KEY=mock
                     export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"

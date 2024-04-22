@@ -174,9 +174,17 @@ spec:
             - name: OKTA_SCOPES
               value: ${OKTA_SCOPES}
             - name: OKTA_ADMIN_GROUPS
-              value: ${OKTA_ADMIN_GROUPS}
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: okta_admin_groups
             - name: OKTA_AUDIENCE
               value: ${OKTA_AUDIENCE}
+            - name: POWER_USERS
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: power_users
             - name: APP_BASE_URL
               value: ${APP_BASE_URL}
             - name: SESSION_KEY

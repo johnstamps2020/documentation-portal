@@ -1,29 +1,32 @@
-import chalk from 'chalk';
+import { renameFiles } from './renameFiles';
 import { runCommand } from './runCommand';
+import { revertFileChanges } from './postBuild';
 
 export async function buildVariants() {
-  console.log(chalk.blueBright('Building the restricted variant...'));
+  console.log('Building the restricted variant...');
   await runCommand(
     'docusaurus',
     ['build', '--out-dir', 'build/__restricted'],
-    'PUBLIC BUILD',
+    'RESTRICTED BUILD',
     {
-      RESTRICTED: 'true',
+      PUBLIC: 'false',
     }
   );
 
-  console.log(chalk.blueBright('Building the public variant...'));
+  console.log('Building the public variant...');
+  renameFiles();
   await runCommand(
     'docusaurus',
     ['build', '--out-dir', 'build/__public'],
-    'RESTRICTED BUILD',
+    'PUBLIC BUILD',
     {
-      RESTRICTED: 'false',
+      PUBLIC: 'true',
     }
   );
+  revertFileChanges();
 }
 
 export async function buildDefault() {
-  console.log(chalk.blueBright('Building the default variant...'));
+  console.log('Building the default variant...');
   await runCommand('docusaurus', ['build'], 'DEFAULT BUILD');
 }

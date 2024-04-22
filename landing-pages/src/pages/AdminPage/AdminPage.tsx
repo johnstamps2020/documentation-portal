@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import AdminAccess from '../../components/AdminPage/AdminAccess';
+import AccessControl from '../../components/AccessControl/AccessControl';
 import { useEnvInfo } from '../../hooks/useApi';
 import { useEffect } from 'react';
 import { prodDeployEnv } from '../../vars';
@@ -68,7 +68,11 @@ export default function AdminPage() {
     return null;
   }
   return (
-    <AdminAccess pagePath={window.location.href}>
+    <AccessControl
+      pagePath={window.location.href}
+      checkAdminAccess={true}
+      checkPowerUserAccess={false}
+    >
       <Container sx={{ padding: '3rem 0' }}>
         <Stack direction="row" sx={{ pt: '2rem', justifyContent: 'center' }}>
           {links.map(({ title, path }) => (
@@ -100,6 +104,6 @@ export default function AdminPage() {
           <Outlet />
         </Stack>
       </Container>
-    </AdminAccess>
+    </AccessControl>
   );
 }

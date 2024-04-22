@@ -56,7 +56,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "indexForSearch": true,
       "public": false,

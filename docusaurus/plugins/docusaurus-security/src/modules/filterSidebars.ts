@@ -1,8 +1,10 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
-import { existsSync, readFileSync } from 'fs';
-import { resolve } from 'path';
-import { isPublicBuild } from './helpers';
+import { existsSync, readFileSync, renameSync, writeFileSync } from 'fs';
+import { basename, dirname, resolve } from 'path';
 const matter = require('gray-matter');
+
+export const renameRestoreListFilePath = 'rename-restore-list.json';
+const renameList: string[] = [];
 
 function itemCanBeShown(docId: string, docsDir: string): boolean {
   if (docId === undefined) {
@@ -17,7 +19,6 @@ function itemCanBeShown(docId: string, docsDir: string): boolean {
   if (!existsSync(filePath)) {
     console.error(`File not found: ${filePath}`);
     return false;
-  } else {
   }
 
   const fileContents = readFileSync(filePath, 'utf8');
@@ -27,7 +28,6 @@ function itemCanBeShown(docId: string, docsDir: string): boolean {
   if (docIsPublic === true) {
     return true;
   }
-
   return false;
 }
 
@@ -70,14 +70,17 @@ function filterItems(items: any[], docsDir: string): any[] {
   });
 }
 
-export function filterSidebarsByAccess(
-  sidebars: SidebarsConfig,
-  docsDir: string
-) {
-  const canShowAllDocs = isPublicBuild();
-  if (canShowAllDocs) {
-    return sidebars;
-  }
+const restrictedPageTemplate = `# Restricted page
+
+Sorry, you cannot access the contents of this page without logging in.
+`;
+
+export type RenameRestoreItem = {
+  oldPath: string;
+  newPath: string;
+};
+
+function getFilteredSidebars(sidebars: SidebarsConfig, docsDir: string) {
   // Create a copy of the sidebars object
   const filteredSidebars: SidebarsConfig = { ...sidebars };
 
@@ -87,4 +90,22 @@ export function filterSidebarsByAccess(
   }
 
   return filteredSidebars;
+}
+
+export function filterSidebarsByAccess(
+  sidebars: SidebarsConfig,
+  docsDir: string
+) {
+  if (process.env.PUBLIC === 'true') {
+    console.log('Public variant, filtering sidebars');
+    return getFilteredSidebars(sidebars, docsDir);
+  }
+
+  if (process.env.PUBLIC === 'false') {
+    console.log('Restricted variant, using unfiltered sidebars');
+    return sidebars;
+  }
+
+  console.log('Regular build. Using unfiltered sidebars.');
+  return sidebars;
 }

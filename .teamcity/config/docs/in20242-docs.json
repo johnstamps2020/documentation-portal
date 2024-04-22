@@ -1,0 +1,470 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "in20242app",
+      "title": "Application Guide",
+      "url": "cloud/in/20242/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242billref",
+      "title": "Billing Configuration Reference",
+      "url": "cloud/in/20242/billref",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242csalesp",
+      "title": "Consumer Sales Portal Features",
+      "url": "cloud/in/20242/csalesp",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242cservicep",
+      "title": "Consumer Service Portal Features",
+      "url": "cloud/in/20242/cservicep",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242appreaderinteg",
+      "title": "AppReader Integration",
+      "url": "cloud/in/20242/appreaderinteg",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242config",
+      "title": "Core Configuration",
+      "url": "cloud/in/20242/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242studio",
+      "title": "Studio Configuration Guide",
+      "url": "cloud/in/20242/studioconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242portaldev",
+      "title": "Portal Development",
+      "url": "cloud/in/20242/portaldev",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242prodattref",
+      "title": "Product Attribute Reference",
+      "url": "cloud/in/20242/prodattref",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242provportalinternal",
+      "title": "Provisioning Portal - Internal",
+      "url": "cloud/in/20242/provportalinternal",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": true
+    },
+    {
+      "id": "in20242uwconfig",
+      "title": "Underwriting Configuration Reference",
+      "url": "cloud/in/20242/uwconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242claimsconfig",
+      "title": "Claims Configuration Reference",
+      "url": "cloud/in/20242/claimsconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242apiref",
+      "title": "API Reference",
+      "url": "cloud/in/20242/apiref",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242xcsalespconfigdraft",
+      "title": "Consumer Sales Portal Configuration - Internal",
+      "url": "cloud/in/20242/csalespconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20242xcservicepconfigdraft",
+      "title": "Consumer Service Portal Configuration Guide - Internal",
+      "url": "cloud/in/20242/cservicepconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2024.2"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -110,6 +110,12 @@
       "srcId": "appeventssrc",
       "workingDir": "website",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "insuranceplatformoperator",
+      "srcId": "insuranceplatformoperatorsrc",
+      "disabled": false
     }
   ]
 }

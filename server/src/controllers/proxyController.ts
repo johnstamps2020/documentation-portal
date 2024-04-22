@@ -76,7 +76,12 @@ async function getResourceStatusFromDatabase(
   }
 
   const dbEntityUrl = dbEntity.url;
-  if (dbEntity instanceof Doc && dbEntity.ignorePublicPropertyAndUseVariants) {
+  // Check explicitly if the ignorePublicPropertyAndUseVariants property is set to True
+  // not to include any truthy values.
+  if (
+    dbEntity instanceof Doc &&
+    dbEntity.ignorePublicPropertyAndUseVariants === true
+  ) {
     const cleanedRequestedPath = requestedPath
       .replace(publicSubPath, '')
       .replace(restrictedSubPath, '');
@@ -226,7 +231,7 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
     res,
     {
       target: requestedPath.startsWith('/portal')
-        ? process.env.PORTAL2_S3_URL
+        ? `${process.env.PORTAL2_S3_URL}${requestedPath}`
         : `${process.env.DOC_S3_URL}${docPath}`,
       changeOrigin: true,
       ignorePath: true,

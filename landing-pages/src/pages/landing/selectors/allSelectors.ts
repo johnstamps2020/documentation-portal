@@ -174,6 +174,10 @@ export const allSelectors = {
       label: 'Jasper (2024.1)',
       pagePath: 'cloudProducts/jasper/in',
     },
+    {
+      label: 'Kufri (2024.2)',
+      pagePath: 'cloudProducts/kufri/in',
+    },
   ],
   s1793805ac84baf801d4eb31b00ab1ddf: [
     {

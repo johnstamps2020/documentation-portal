@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "in20242",
+      "title": "InsuranceNow 2024.2 Jasper",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2024.2KUFRI"
+    },
+    {
       "id": "in20241",
       "title": "InsuranceNow 2024.1 Jasper",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
@@ -60,6 +66,12 @@
       "title": "InsuranceNow 2020.1",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "branch": "release/2020.1ASPEN"
+    },
+    {
+      "id": "srcin20242apiref",
+      "title": "InsuranceNow API Reference Kufri",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "release/kufri"
     },
     {
       "id": "srcin20241apiref",
