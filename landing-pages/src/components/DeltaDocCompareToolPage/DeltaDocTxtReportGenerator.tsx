@@ -3,7 +3,7 @@ import { saveAs } from 'file-saver';
 import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
 
-export default function DeltaDocReportGenerator() {
+export default function DeltaDocTxtReportGenerator() {
   const { releaseA, releaseB, url, deltaDocData } = useDeltaDocContext();
 
   if (!deltaDocData) {

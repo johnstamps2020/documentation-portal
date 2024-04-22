@@ -2,7 +2,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { useDeltaDocContext } from './DeltaDocContext';
-import DeltaDocReportGenerator from './DeltaDocReportGenerator';
+import DeltaDocTxtReportGenerator from './DeltaDocTxtReportGenerator';
+import DeltaDocHtmlReportGenerator from './DeltaDocHtmlReportGenerator';
 import DeltaDocResults from './DeltaDocResults';
 
 export default function DeltaDocResultsPanel() {
@@ -39,7 +40,8 @@ export default function DeltaDocResultsPanel() {
         </>
       ) : (
         <>
-          <DeltaDocReportGenerator />
+          <DeltaDocTxtReportGenerator />
+          <DeltaDocHtmlReportGenerator />
           <DeltaDocResults />
         </>
       )}
