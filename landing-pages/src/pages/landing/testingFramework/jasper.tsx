@@ -85,7 +85,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Unit Testing InsuranceSuite with GUnit',
-          docId: 'testing202402istesting',
+          docId: 'testing202402isunittesting',
         },
       ],
     },

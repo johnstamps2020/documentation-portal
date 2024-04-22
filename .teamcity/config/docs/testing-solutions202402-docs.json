@@ -212,7 +212,7 @@
       "earlyAccess": false
     },
     {
-      "id": "testing202402istesting",
+      "id": "testing202402isunittesting",
       "title": "InsuranceSuite Unit Testing",
       "url": "cloud/testing/202402/isunittesting",
       "metadata": {

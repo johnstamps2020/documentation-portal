@@ -69,7 +69,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "ISUnitTesting.ditamap",
       "srcId": "testingframeworks202402src",
-      "docId": "testing202402istesting",
+      "docId": "testing202402isunittesting",
       "indexRedirect": true,
       "disabled": false
     },
