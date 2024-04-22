@@ -54,7 +54,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'testing202402mgmt',
         },
         {
-          label: 'GT: Load Testing (internal)',
+          label: 'GT: Load Testing',
           docId: 'testing202402load',
         },
       ],
