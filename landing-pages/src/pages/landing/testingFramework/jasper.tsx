@@ -54,7 +54,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'testing202402mgmt',
         },
         {
-          label: 'GT: Load Testing (internal)',
+          label: 'GT: Load Testing',
           docId: 'testing202402load',
         },
       ],
@@ -63,7 +63,7 @@ const pageConfig: SectionLayoutProps = {
       label: 'Meeting Cloud Standards for Testing',
       items: [
         {
-          label: 'Testing Standards',
+          label: 'Testing Best Practices',
           docId: 'testing202402testingstandards',
         },
         {
