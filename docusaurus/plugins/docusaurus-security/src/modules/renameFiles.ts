@@ -7,6 +7,10 @@ const restrictedPageTemplate = `---
 public: false
 ---
 
+<head>
+  <meta name="robots" content="noindex" />
+</head>
+
 # Restricted page
 
 Sorry, you cannot access the contents of this page without logging in.
