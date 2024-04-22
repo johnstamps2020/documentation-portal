@@ -69,22 +69,15 @@ export default function DeltaDocCompareToolPage() {
               margin="auto"
               textAlign="justify"
             >
-              To compare documents, please provide the URLs (including the
-              domain) to the root of the corresponding documents you wish to
-              compare. Ensure that each URL includes a release.
-              <br /> Example: <br />
-              If you want to run comparison of{' '}
-              <b> ClaimCenter Application Guide</b> in <b>Garmisch</b> and{' '}
-              <b>Flaine</b>:
-              <br />
-              paste{' '}
-              <b>
-                https://docs.staging.ccs.guidewire.net/cloud/cc/202302/app/
-              </b>{' '}
-              as first URL (for Garmisch), <br /> paste{' '}
+              Provide root URLs to the documents that you want to compare. Each
+              URL must include the domain and the release. <br />
+              Example: If you want to compare{' '}
+              <b>ClaimCenter Application Guide</b> in <b>Garmisch</b> with{' '}
+              <b>ClaimCenter Application Guide</b> in <b>Flaine</b>, provide{' '}
+              <b>https://docs.staging.ccs.guidewire.net/cloud/cc/202302/app/</b>{' '}
+              as the URL for Garmisch and{' '}
               <b>https://docs.staging.ccs.guidewire.net/cloud/cc/202209/app/</b>{' '}
-              as second URL (for Flaine), <br />
-              click "See results" and enjoy!
+              as the URL for Flaine, and then select "See results". Enjoy!
             </Typography>
             <DeltaDocUpperPanel />
             <DeltaDocStatistics />
