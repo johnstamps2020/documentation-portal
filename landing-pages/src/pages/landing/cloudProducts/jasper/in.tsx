@@ -29,7 +29,8 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Release Video',
-          url: 'https://youtu.be/ECG0VfS2VjU',
+          docId: 'in20241rn',
+          pathInDoc: '?contextid=core_release_notes',
           videoIcon: true,
           description: (
             <>Watch a video that describes and demonstrates new features.</>
