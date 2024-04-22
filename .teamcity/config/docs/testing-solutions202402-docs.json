@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "testing202402api",
-      "title": "API Testing",
+      "title": "GT: API Testing",
       "url": "cloud/testing/202402/api",
       "metadata": {
         "product": [
@@ -38,7 +38,7 @@
     },
     {
       "id": "testing202402ui",
-      "title": "User Interface Testing",
+      "title": "GT: UI Testing",
       "url": "cloud/testing/202402/ui",
       "metadata": {
         "product": [
@@ -73,7 +73,7 @@
     },
     {
       "id": "testing202402mgmt",
-      "title": "Test Management",
+      "title": "GT: Management",
       "url": "cloud/testing/202402/mgmt",
       "metadata": {
         "product": [
@@ -213,7 +213,7 @@
     },
     {
       "id": "testing202402isunittesting",
-      "title": "InsuranceSuite Unit Testing",
+      "title": "Unit Testing InsuranceSuite with GUnit",
       "url": "cloud/testing/202402/isunittesting",
       "metadata": {
         "platform": [
@@ -283,7 +283,7 @@
     },
     {
       "id": "testing202402testingstandards",
-      "title": "Testing Standards",
+      "title": "Testing Best Practices",
       "url": "cloud/testing/202402/testingstandards",
       "metadata": {
         "platform": [
@@ -318,7 +318,7 @@
     },
     {
       "id": "testing202402istesting",
-      "title": "InsuranceSuite Testing",
+      "title": "Configuring InsuranceSuite Apps and Data for Functional Testing",
       "url": "cloud/testing/202402/istesting",
       "metadata": {
         "platform": [

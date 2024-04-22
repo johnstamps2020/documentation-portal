@@ -63,7 +63,7 @@ const pageConfig: SectionLayoutProps = {
       label: 'Meeting Cloud Standards for Testing',
       items: [
         {
-          label: 'Testing Standards',
+          label: 'Testing Best Practices',
           docId: 'testing202402testingstandards',
         },
         {
