@@ -157,31 +157,6 @@ async function getResourceStatusFromDatabase(
   ];
 }
 
-function isPrPreviewLink(requestedPath: string): boolean {
-  const pathSegments = requestedPath.split('/');
-  return (
-    pathSegments.includes('preview') &&
-    pathSegments.includes('pull-requests') &&
-    pathSegments.includes('from') &&
-    pathSegments.includes('refs')
-  );
-}
-
-async function getResourceStatus(
-  requestedPath: string,
-  htmlRequest: boolean,
-  res: Response
-): Promise<ResourceStatusWithRedirectLink> {
-  if (isPrPreviewLink(requestedPath)) {
-    return [
-      isUserAllowedToAccessResource(res, false, true, false).status,
-      undefined,
-    ];
-  }
-
-  return getResourceStatusFromDatabase(requestedPath, htmlRequest, res);
-}
-
 /*
  The s3 proxy controller tries to find an external link first because external links are more specific than docs.
  If the function tries to find a doc by the requested URL first,
@@ -193,7 +168,7 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   const requestedPath: string = req.path;
   const isHtmlRequest = req.headers['accept']?.includes('text/html') || false;
 
-  const [resourceStatus, redirectPath] = await getResourceStatus(
+  const [resourceStatus, redirectPath] = await getResourceStatusFromDatabase(
     requestedPath,
     isHtmlRequest,
     res
