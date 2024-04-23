@@ -59,7 +59,12 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
   });
   const [page, setPage] = useState(1);
   const paginationData = usePagination({
-    data: deltaDocData?.results || [],
+    data:
+      deltaDocData?.results.sort(
+        (a, b) =>
+          a.docBTitle.localeCompare(b.docBTitle) ||
+          a.docATitle.localeCompare(b.docATitle)
+      ) || [],
     itemsPerPage: resultsPerPage,
   });
   function handleChange(page: number) {
