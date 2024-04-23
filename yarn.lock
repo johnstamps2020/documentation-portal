@@ -3141,6 +3141,7 @@ __metadata:
     "@doctools/server": "workspace:*"
     "@types/node": "npm:^18.14.6"
     dotenv: "npm:^16.4.5"
+    gray-matter: "npm:^4.0.3"
     ts-node: "npm:^10.9.1"
     typescript: "npm:^5.2.2"
   bin:
