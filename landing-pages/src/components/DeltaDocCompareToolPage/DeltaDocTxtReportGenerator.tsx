@@ -66,5 +66,5 @@ export default function DeltaDocTxtReportGenerator() {
     });
     saveAs(blob, `${releaseA}-${releaseB}-${url}-report.txt`);
   }
-  return <Button onClick={() => exportReport()}>Download report</Button>;
+  return <Button onClick={() => exportReport()}>Download report in TXT</Button>;
 }

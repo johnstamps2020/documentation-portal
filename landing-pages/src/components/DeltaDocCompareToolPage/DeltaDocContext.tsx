@@ -1,8 +1,11 @@
 import { DeltaDocData, useDeltaDocData } from 'hooks/useDeltaDocData';
 import React, { createContext, useContext, useState } from 'react';
 import { Error as DocPortalEntityError } from 'hooks/useEntitiesData';
-import { DeltaDocInputType } from '@doctools/server';
-
+import {
+  DeltaDocInputType,
+  DeltaLevenshteinReturnType,
+} from '@doctools/server';
+import usePagination from '../../hooks/usePagination';
 interface DeltaDocInterface {
   releaseA: DeltaDocInputType['releaseA'];
   releaseB: DeltaDocInputType['releaseB'];
@@ -24,6 +27,16 @@ interface DeltaDocInterface {
   isLoading: boolean;
   resultsPerPage: number;
   setResultsPerPage: React.Dispatch<React.SetStateAction<number>>;
+  paginationData: {
+    next: () => void;
+    prev: () => void;
+    jump: (page: number) => void;
+    currentData: () => DeltaLevenshteinReturnType[];
+    currentPage: number;
+    maxPage: number;
+  };
+  page: number;
+  handleChange: (page: number) => void;
 }
 
 export const DeltaDocContext = createContext<DeltaDocInterface | null>(null);
@@ -44,6 +57,15 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     url,
     version,
   });
+  const [page, setPage] = useState(1);
+  const paginationData = usePagination({
+    data: deltaDocData?.results || [],
+    itemsPerPage: resultsPerPage,
+  });
+  function handleChange(page: number) {
+    setPage(page);
+    paginationData.jump(page);
+  }
 
   const value: DeltaDocInterface = {
     releaseA: formState.releaseA,
@@ -58,6 +80,9 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     isLoading,
     resultsPerPage,
     setResultsPerPage,
+    paginationData,
+    page,
+    handleChange,
   };
 
   return (
