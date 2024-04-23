@@ -3,9 +3,50 @@ import {
   existsSync,
   lstatSync,
   mkdirSync,
-  readdirSync
+  readFileSync,
+  readdirSync,
 } from 'fs';
-import { join } from 'path';
+import { extname, join } from 'path';
+import matter = require('gray-matter');
+
+function isInternalMarkdownFile(filePath: string): boolean {
+  if (!['.md', '.mdx'].includes(extname(filePath))) {
+    return false;
+  }
+
+  const fileContents = readFileSync(filePath, 'utf-8');
+  const frontMatter = matter(fileContents).data;
+
+  if (frontMatter?.internal === true) {
+    console.log(
+      filePath,
+      'is internal and will not be included in translations'
+    );
+    return true;
+  }
+
+  return false;
+}
+
+function copyDocusaurusFiles(sourceDir: string, targetDir: string) {
+  const allPathsInDirectory = readdirSync(sourceDir);
+
+  for (const fileName of allPathsInDirectory) {
+    const sourceFile = join(sourceDir, fileName);
+
+    if (isInternalMarkdownFile(sourceFile)) {
+      continue;
+    }
+
+    const targetFile = join(targetDir, fileName);
+    if (lstatSync(sourceFile).isDirectory()) {
+      mkdirSync(targetFile, { recursive: true });
+      copyDocusaurusFiles(sourceFile, targetFile);
+    } else {
+      copyFileSync(sourceFile, targetFile);
+    }
+  }
+}
 
 export function copyDocusaurusTranslationFiles(
   sourceDir: string,
@@ -26,21 +67,7 @@ export function copyDocusaurusTranslationFiles(
     }
   });
 
-  // copy al files from the `docs` folder to the output folder
-  const copyFiles = (source: string, target: string) => {
-    readdirSync(source).forEach((name) => {
-      const sourceFile = join(source, name);
-      const targetFile = join(target, name);
-      if (lstatSync(sourceFile).isDirectory()) {
-        mkdirSync(targetFile, { recursive: true });
-        copyFiles(sourceFile, targetFile);
-      } else {
-        copyFileSync(sourceFile, targetFile);
-      }
-    });
-  };
-
-  copyFiles(i18nDir, i18nOutputDir);
-  copyFiles(docsDir, docsOutputDir);
+  copyDocusaurusFiles(i18nDir, i18nOutputDir);
+  copyDocusaurusFiles(docsDir, docsOutputDir);
   console.log('Docusaurus translation kit created successfully!');
 }
