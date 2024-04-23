@@ -4,8 +4,14 @@ import { saveAs } from 'file-saver';
 import { useDeltaDocContext } from './DeltaDocContext';
 
 export default function DeltaDocHtmlReportGenerator() {
-  const { releaseA, releaseB, url, deltaDocData, setResultsPerPage } =
-    useDeltaDocContext();
+  const {
+    releaseA,
+    releaseB,
+    url,
+    deltaDocData,
+    setResultsPerPage,
+    handleChange,
+  } = useDeltaDocContext();
 
   if (!deltaDocData) {
     return <></>;
@@ -50,13 +56,14 @@ export default function DeltaDocHtmlReportGenerator() {
   return (
     <Button
       onClick={async () => {
+        handleChange(1);
         setResultsPerPage(deltaDocData.results.length);
         await delay(500);
         exportReport();
         setResultsPerPage(9);
       }}
     >
-      Download HTML report
+      Download report in HTML
     </Button>
   );
 }

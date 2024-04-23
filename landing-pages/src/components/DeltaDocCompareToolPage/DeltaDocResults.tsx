@@ -8,32 +8,32 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableContainer from '@mui/material/TableContainer';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import usePagination from '../../hooks/usePagination';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocResultTableRow from './DeltaDocResultTableRow';
 import Button from '@mui/material/Button';
 
 export default function DeltaDocResults() {
-  const [page, setPage] = useState(1);
-  const { deltaDocData, releaseA, releaseB, resultsPerPage, setResultsPerPage } = useDeltaDocContext();
-  const paginationData = usePagination({
-    data: deltaDocData?.results || [],
-    itemsPerPage: resultsPerPage,
-  });
+  const {
+    deltaDocData,
+    releaseA,
+    releaseB,
+    resultsPerPage,
+    setResultsPerPage,
+    handleChange,
+    paginationData,
+    page,
+  } = useDeltaDocContext();
 
+  useEffect(() => (handleChange(1), setResultsPerPage(9)), [deltaDocData]);
+  
   if (!deltaDocData) {
     return <></>;
   }
 
   const { results } = deltaDocData;
   const count = Math.ceil(results.length / resultsPerPage);
-
-  function handleChange(page: number) {
-    setPage(page);
-    paginationData.jump(page);
-  }
-
   const higherRelease = releaseA > releaseB ? releaseA : releaseB;
   const lowerRelease = releaseA < releaseB ? releaseA : releaseB;
   return (
@@ -57,7 +57,7 @@ export default function DeltaDocResults() {
           onClick={() =>
             resultsPerPage === results.length
               ? setResultsPerPage(9)
-              : setResultsPerPage(results.length)
+              : (setResultsPerPage(results.length), handleChange(1))
           }
         >
           {resultsPerPage === results.length
