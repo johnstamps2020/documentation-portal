@@ -61,7 +61,7 @@ export function AvatarButtonWithMenu() {
         </ListItem>
         <Divider />
         {additionalLinks.map(({ href, label }, idx) => (
-          <MenuItem href={href} component="a">
+          <MenuItem href={href} component="a" key={idx}>
             {label}
           </MenuItem>
         ))}
