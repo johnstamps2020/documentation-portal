@@ -9,7 +9,7 @@ import {
   addPrecedingSlashToPath,
   s3BucketUrlExists,
 } from './redirectController';
-import { Doc } from '../model';
+import { Doc, ExternalLink } from '../model';
 
 const fetch = require('node-fetch-retry');
 
@@ -62,80 +62,73 @@ function checkIfPathNeedsTrailingSlash(reqPath: string, htmlRequest: boolean) {
   return true;
 }
 
-async function getResourceStatusFromDatabase(
+async function getResourceStatusForEntityWithVariants(
+  dbEntity: Doc | ExternalLink,
   requestedPath: string,
   htmlRequest: boolean,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
-  const dbEntity =
-    (await getExternalLinkByUrl(requestedPath)) ||
-    (await getDocByUrl(requestedPath));
-
-  if (!dbEntity) {
-    return [100, undefined];
-  }
-
   const dbEntityUrl = dbEntity.url;
-  // Check explicitly if the ignorePublicPropertyAndUseVariants property is set to True
-  // not to include any truthy values.
-  if (
-    dbEntity instanceof Doc &&
-    dbEntity.ignorePublicPropertyAndUseVariants === true
-  ) {
-    const cleanedRequestedPath = requestedPath
-      .replace(publicSubPath, '')
-      .replace(restrictedSubPath, '');
-    const requstedPathNeedsTrailingSlash = checkIfPathNeedsTrailingSlash(
-      cleanedRequestedPath,
-      htmlRequest
-    );
+  const cleanedRequestedPath = requestedPath
+    .replace(publicSubPath, '')
+    .replace(restrictedSubPath, '');
+  const requstedPathNeedsTrailingSlash = checkIfPathNeedsTrailingSlash(
+    cleanedRequestedPath,
+    htmlRequest
+  );
 
-    if (requestedPath !== cleanedRequestedPath) {
-      requstedPathNeedsTrailingSlash
-        ? res.redirect(`${cleanedRequestedPath}/`)
-        : res.redirect(cleanedRequestedPath);
-    }
-    if (requstedPathNeedsTrailingSlash) {
-      res.redirect(`${cleanedRequestedPath}/`);
-    }
-    const hasAccessToRestrictedDoc = isUserAllowedToAccessResource(
-      res,
-      false,
-      dbEntity.internal,
-      dbEntity.isInProduction
-    ).status;
+  if (requestedPath !== cleanedRequestedPath) {
+    requstedPathNeedsTrailingSlash
+      ? res.redirect(`${cleanedRequestedPath}/`)
+      : res.redirect(cleanedRequestedPath);
+  }
+  if (requstedPathNeedsTrailingSlash) {
+    res.redirect(`${cleanedRequestedPath}/`);
+  }
+  const hasAccessToRestrictedDoc = isUserAllowedToAccessResource(
+    res,
+    false,
+    dbEntity.internal,
+    dbEntity.isInProduction
+  ).status;
 
-    const requestedPathWithRestrictedSubPath = cleanedRequestedPath.replace(
-      dbEntityUrl,
-      `${dbEntityUrl}${restrictedSubPath}`
-    );
+  const requestedPathWithRestrictedSubPath = cleanedRequestedPath.replace(
+    dbEntityUrl,
+    `${dbEntityUrl}${restrictedSubPath}`
+  );
 
-    const requestedPathWithPublicSubPath = cleanedRequestedPath.replace(
-      dbEntityUrl,
-      `${dbEntityUrl}${publicSubPath}`
-    );
+  const requestedPathWithPublicSubPath = cleanedRequestedPath.replace(
+    dbEntityUrl,
+    `${dbEntityUrl}${publicSubPath}`
+  );
 
-    const restrictedDocExists = await s3BucketUrlExists(
-      requestedPathWithRestrictedSubPath
-    );
-    const publicDocExists = await s3BucketUrlExists(
-      requestedPathWithPublicSubPath
-    );
+  const restrictedDocExists = await s3BucketUrlExists(
+    requestedPathWithRestrictedSubPath
+  );
+  const publicDocExists = await s3BucketUrlExists(
+    requestedPathWithPublicSubPath
+  );
 
-    if (hasAccessToRestrictedDoc !== 200 && !publicDocExists) {
-      return [404, undefined];
-    }
-
-    if (hasAccessToRestrictedDoc !== 200 && publicDocExists) {
-      return [200, requestedPathWithPublicSubPath];
-    }
-
-    if (hasAccessToRestrictedDoc === 200 && restrictedDocExists) {
-      return [200, requestedPathWithRestrictedSubPath];
-    }
-    return [100, undefined];
+  if (hasAccessToRestrictedDoc !== 200 && !publicDocExists) {
+    return [404, undefined];
   }
 
+  if (hasAccessToRestrictedDoc !== 200 && publicDocExists) {
+    return [200, requestedPathWithPublicSubPath];
+  }
+
+  if (hasAccessToRestrictedDoc === 200 && restrictedDocExists) {
+    return [200, requestedPathWithRestrictedSubPath];
+  }
+  return [100, undefined];
+}
+
+async function getResourceStatusForEntity(
+  dbEntity: Doc | ExternalLink,
+  requestedPath: string,
+  res: Response
+): Promise<ResourceStatusWithRedirectLink> {
+  const dbEntityUrl = dbEntity.url;
   const requestedPathExists = await s3BucketUrlExists(requestedPath);
   if (!requestedPathExists) {
     const requestedEntityUrlExists = await s3BucketUrlExists(dbEntityUrl);
@@ -155,6 +148,67 @@ async function getResourceStatusFromDatabase(
     ).status,
     undefined,
   ];
+}
+
+async function getResourcesStatusForPreviewEntity(
+  dbEntity: Doc | ExternalLink,
+  requestedPath: string,
+  htmlRequest: boolean,
+  res: Response
+) {
+  const accessToEntity = await getResourceStatusForEntity(
+    dbEntity,
+    requestedPath,
+    res
+  );
+  if (accessToEntity[0] === 200) {
+    return accessToEntity;
+  }
+
+  return await getResourceStatusForEntityWithVariants(
+    dbEntity,
+    requestedPath,
+    htmlRequest,
+    res
+  );
+}
+
+async function getResourceStatusFromDatabase(
+  requestedPath: string,
+  htmlRequest: boolean,
+  res: Response
+): Promise<ResourceStatusWithRedirectLink> {
+  const dbEntity =
+    (await getExternalLinkByUrl(requestedPath)) ||
+    (await getDocByUrl(requestedPath));
+
+  if (!dbEntity) {
+    return [100, undefined];
+  }
+
+  if (dbEntity instanceof Doc && dbEntity.id === 'previews3folder') {
+    return await getResourcesStatusForPreviewEntity(
+      dbEntity,
+      requestedPath,
+      htmlRequest,
+      res
+    );
+  }
+  // Check explicitly if the ignorePublicPropertyAndUseVariants property is set to True
+  // not to include any truthy values.
+  if (
+    dbEntity instanceof Doc &&
+    dbEntity.ignorePublicPropertyAndUseVariants === true
+  ) {
+    return await getResourceStatusForEntityWithVariants(
+      dbEntity,
+      requestedPath,
+      htmlRequest,
+      res
+    );
+  }
+
+  return await getResourceStatusForEntity(dbEntity, requestedPath, res);
 }
 
 /*
