@@ -219,9 +219,17 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
   const stringifiedData = JSON.stringify(jsonData).replaceAll(outputRegex, '/');
   const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
   const deltaDocData = parsedData.map((releaseData) =>
-    releaseData.filter((element) => {
-      return element.id.replace(/[0-9]/g, '') !== url.replace(/[0-9]/g, '');
-    })
+    releaseData
+      .filter((element) => {
+        return element.id.replace(/[0-9]/g, '') !== url.replace(/[0-9]/g, '');
+      })
+      .map((element) => {
+        let newElementId = element.id;
+        if (element.id.includes('cloud')) {
+          newElementId = element.id.replace(/\/cloud\/.*\d+.+\d\//g, '');
+        }
+        return { ...element, id: newElementId };
+      })
   );
 
   const comparisonResult = compareDocs(deltaDocData);
@@ -249,7 +257,6 @@ export function useDeltaDocData({
     isError: error,
   };
 }
-
 
 const deltaDocValidator = async (docUrl: string) => {
   const response = await fetch(
