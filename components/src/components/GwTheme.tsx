@@ -1,5 +1,7 @@
-import { createTheme } from '@mui/material';
 import '@fontsource/source-sans-pro';
+import { createTheme, ThemeProvider } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import React from 'react';
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -86,3 +88,18 @@ export const appTheme = createTheme({
     },
   },
 });
+
+type GwThemeProviderProps = {
+  children: React.ReactNode;
+};
+
+export function GwThemeProvider({ children }: GwThemeProviderProps) {
+  const theme = createTheme(appTheme);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
+}

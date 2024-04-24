@@ -5,7 +5,6 @@ import { AvatarButtonWithMenu } from './AvatarButtonWithMenu';
 
 export function AvatarComponents() {
   const { userInfo } = useAvatar();
-  console.log('Rendering the avatar', userInfo);
 
   if (!userInfo?.isLoggedIn) {
     return <LoginButton />;

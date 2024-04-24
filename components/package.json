@@ -19,13 +19,13 @@
   "peerDependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@fontsource/source-sans-pro": "^5.0.8",
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@fontsource/source-sans-pro": "^5.0.8",
     "@types/mark.js": "^8.11.12",
     "mark.js": "^8.11.1"
   }

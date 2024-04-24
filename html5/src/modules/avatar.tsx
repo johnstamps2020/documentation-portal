@@ -1,4 +1,4 @@
-import { Avatar } from '@doctools/components';
+import { Avatar, GwThemeProvider } from '@doctools/components';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -9,12 +9,14 @@ export function addAvatar() {
     const avatarRoot = createRoot(avatarContainer);
 
     avatarRoot.render(
-      <Avatar
-        initialValue={{
-          userInfo: window.userInformation,
-          isProd: window.location.hostname === 'docs.guidewire.com',
-        }}
-      />
+      <GwThemeProvider>
+        <Avatar
+          initialValue={{
+            userInfo: window.userInformation,
+            isProd: window.location.hostname === 'docs.guidewire.com',
+          }}
+        />
+      </GwThemeProvider>
     );
   } catch (error) {
     console.error(error);
