@@ -11,7 +11,7 @@ import { getRedirectToPath } from '../../lib';
 import { useAvatar } from './AvatarContext';
 
 export function AvatarButtonWithMenu() {
-  const { userInfo, LinkComponent } = useAvatar();
+  const { userInfo, additionalLinks } = useAvatar();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -22,7 +22,6 @@ export function AvatarButtonWithMenu() {
   };
 
   const { name, preferred_username } = userInfo;
-  console.log({ LinkComponent }, typeof LinkComponent);
 
   return (
     <>
@@ -33,14 +32,11 @@ export function AvatarButtonWithMenu() {
         aria-expanded={open ? 'true' : undefined}
         sx={{
           color: 'white',
+          padding: 0,
         }}
         onClick={handleClick}
       >
-        <AccountCircleIcon
-          sx={{
-            fontSize: '120%',
-          }}
-        />
+        <AccountCircleIcon />
       </IconButton>
       <Menu
         open={open}
@@ -64,6 +60,11 @@ export function AvatarButtonWithMenu() {
           </Box>
         </ListItem>
         <Divider />
+        {additionalLinks.map(({ href, label }, idx) => (
+          <MenuItem href={href} component="a">
+            {label}
+          </MenuItem>
+        ))}
         <MenuItem
           href={`/gw-logout?redirectTo=${getRedirectToPath()}`}
           component={'a'}

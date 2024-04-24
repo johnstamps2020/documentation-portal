@@ -1,4 +1,5 @@
 import { Avatar } from '@doctools/components';
+import { useAdminLinks } from 'hooks/useAdminLinks';
 import { useEnvInfo, useUserInfo } from 'hooks/useApi';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ export default function UserProfile() {
     isLoading: isEnvInfoLoading,
     isError: isEnvInfoError,
   } = useEnvInfo();
+  const { adminLinks } = useAdminLinks();
 
   if (isEnvInfoLoading || isEnvInfoError) {
     return null;
@@ -29,6 +31,7 @@ export default function UserProfile() {
         userInfo,
         isProd: envInfo?.name === 'omega2-andromeda',
         LinkComponent: RouterLink,
+        additionalLinks: adminLinks || [],
       }}
     />
   );

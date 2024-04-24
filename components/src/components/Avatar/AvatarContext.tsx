@@ -8,12 +8,17 @@ export interface AvatarInterface {
   drawerOpen: boolean;
   setDrawerOpen: (isOpen: boolean) => void;
   LinkComponent: LinkProps['component'];
+  additionalLinks: {
+    href: string;
+    label: string;
+  }[];
 }
 
 export type AvatarInitialValue = {
   userInfo: AvatarInterface['userInfo'];
   isProd: AvatarInterface['isProd'];
   LinkComponent?: AvatarInterface['LinkComponent'];
+  additionalLinks?: AvatarInterface['additionalLinks'];
 };
 
 export const AvatarContext = createContext<AvatarInterface | null>(null);
@@ -39,6 +44,7 @@ export function AvatarProvider({
         drawerOpen,
         setDrawerOpen,
         LinkComponent: initialValue.LinkComponent || 'a',
+        additionalLinks: initialValue.additionalLinks || [],
       }}
     >
       {children}
