@@ -2879,9 +2879,15 @@ object User {
             )
             previewFileStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
+            val pullRequestCommentText = when (ignorePublicPropertyAndUseVariants) {
+                true -> "[DOC WITH VARIANTS] Hi, I created a preview for validation build %build.number%: $previewUrl"
+
+                else -> "Hi, I created a preview for validation build %build.number%: $previewUrl"
+            }
+
             val pullRequestCommentStep = GwBuildSteps.createAddPullRequestCommentStep(
                 "preview link",
-                "Hi, I created a preview for validation build %build.number%: $previewUrl",
+                pullRequestCommentText,
                 projectKey,
                 repoKey,
                 pullRequestId
