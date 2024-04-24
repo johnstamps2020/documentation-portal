@@ -909,8 +909,8 @@ object GwBuildSteps {
         val restrictedSubPath = "__restricted"
         val publicOutputPath = "${outputPath}/${publicSubPath}"
         val restrictedOutputPath = "${outputPath}/${restrictedSubPath}"
-        val publicPublishPath = publishPath.replace("preview", "preview/${publicSubPath}")
-        val restrictedPublishPath = publishPath.replace("preview", "preview/${restrictedSubPath}")
+        val publicPublishPath = publishPath.replaceFirst("preview", "preview/${publicSubPath}")
+        val restrictedPublishPath = publishPath.replaceFirst("preview", "preview/${restrictedSubPath}")
         return ScriptBuildStep {
             name = "Upload preview content with variants to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
