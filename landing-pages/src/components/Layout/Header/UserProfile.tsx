@@ -1,6 +1,6 @@
 import { Avatar } from '@doctools/components';
 import { useEnvInfo, useUserInfo } from 'hooks/useApi';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function UserProfile() {
   const { userInfo, isError, isLoading } = useUserInfo();
@@ -28,7 +28,7 @@ export default function UserProfile() {
       initialValue={{
         userInfo,
         isProd: envInfo?.name === 'omega2-andromeda',
-        LinkComponent: Link,
+        LinkComponent: RouterLink,
       }}
     />
   );

@@ -45,7 +45,7 @@ export function LoginButton() {
           <LoginButtonsInDrawer />
           <Link
             component={LinkComponent || 'a'}
-            to={`/gw-login?redirectTo-${getRedirectToPath()}`}
+            to={`/gw-login?redirectTo=${getRedirectToPath()}`}
           >
             Go to the login page
           </Link>

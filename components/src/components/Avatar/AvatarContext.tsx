@@ -7,7 +7,7 @@ export interface AvatarInterface {
   isProd: boolean;
   drawerOpen: boolean;
   setDrawerOpen: (isOpen: boolean) => void;
-  LinkComponent?: LinkProps['component'];
+  LinkComponent: LinkProps['component'];
 }
 
 export type AvatarInitialValue = {
@@ -38,6 +38,7 @@ export function AvatarProvider({
         ...initialValue,
         drawerOpen,
         setDrawerOpen,
+        LinkComponent: initialValue.LinkComponent || 'a',
       }}
     >
       {children}
