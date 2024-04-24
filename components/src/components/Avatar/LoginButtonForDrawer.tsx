@@ -1,10 +1,10 @@
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { getRedirectToPath } from '../../lib/navigationHelpers';
+import React, { useState } from 'react';
+import { LoginInProgress } from './LoginInProgress';
 import { LoginButtonConfig } from './loginOptionConfigs';
-import LoginInProgress from './LoginInProgress';
-import { getRedirectToPath } from 'helpers/navigationHelpers';
 
-export default function LoginButton({
+export function LoginButtonForDrawer({
   href,
   label,
   region,

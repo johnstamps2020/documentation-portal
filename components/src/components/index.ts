@@ -1,3 +1,4 @@
+export * from './Avatar';
 export * from './Feedback';
 export * from './GwBackdrop';
 export * from './HeadMeta';

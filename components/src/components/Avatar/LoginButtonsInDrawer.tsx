@@ -1,26 +1,17 @@
-import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { useEnvInfo } from 'hooks/useApi';
 import React, { Fragment } from 'react';
-import LoginButton from './LoginButton';
+import { GwEmployeeLoginText } from './GwEmployeeLoginText';
+import { LoginButtonForDrawer } from './LoginButtonForDrawer';
 import { loginOptions, loginOptionsProd } from './loginOptionConfigs';
-import GwEmployeeLoginText from './GwEmployeeLoginText';
+import { useAvatar } from './AvatarContext';
 
-export default function LoginButtonsInDrawer() {
-  const {
-    envInfo,
-    isLoading: isEnvInfoLoading,
-    isError: isEnvInfoError,
-  } = useEnvInfo();
-
-  if (isEnvInfoLoading || isEnvInfoError) {
-    return null;
-  }
-
+export function LoginButtonsInDrawer() {
+  const { isProd } = useAvatar();
   const loginOptionsToRender =
-    envInfo?.name === 'omega2-andromeda' ? loginOptionsProd : loginOptions;
+    isProd === true ? loginOptionsProd : loginOptions;
 
   return (
     <Stack gap={2}>
@@ -34,7 +25,7 @@ export default function LoginButtonsInDrawer() {
               arrow
             >
               <Box sx={{ display: 'flex' }}>
-                <LoginButton
+                <LoginButtonForDrawer
                   href={href}
                   label={[loginOption.label, label].join(' ')}
                   region={region}
