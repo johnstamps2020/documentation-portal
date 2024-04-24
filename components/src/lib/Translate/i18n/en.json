@@ -97,6 +97,9 @@
   "loginButton.in": {
     "message": "Log in"
   },
+  "loginDrawer.go": {
+    "message": "Go to the login page"
+  },
   "transcriptDownloadLink.label": {
     "message": "Download transcript"
   },

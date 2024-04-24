@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import React from 'react';
 import { LoginButtonsInDrawer } from './LoginButtonsInDrawer';
 import { useAvatar } from './AvatarContext';
-import { getRedirectToPath } from '../../lib';
+import { Translate, getRedirectToPath } from '../../lib';
 
 type LoginButtonProps = {};
 
@@ -27,7 +27,7 @@ export function LoginButton() {
   return (
     <>
       <Button onClick={toggleLoginDrawer(true)} variant="contained">
-        Log in
+        <Translate id="loginButton.in">Log in</Translate>
       </Button>
       <Drawer
         anchor="right"
@@ -47,7 +47,7 @@ export function LoginButton() {
             component={LinkComponent || 'a'}
             to={`/gw-login?redirectTo=${getRedirectToPath()}`}
           >
-            Go to the login page
+            <Translate id="loginDrawer.go">Go to the login page</Translate>
           </Link>
         </Stack>
       </Drawer>

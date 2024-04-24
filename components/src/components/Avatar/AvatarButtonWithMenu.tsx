@@ -7,7 +7,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
-import { getRedirectToPath } from '../../lib';
+import { Translate, getRedirectToPath } from '../../lib';
 import { useAvatar } from './AvatarContext';
 
 export function AvatarButtonWithMenu() {
@@ -69,7 +69,7 @@ export function AvatarButtonWithMenu() {
           href={`/gw-logout?redirectTo=${getRedirectToPath()}`}
           component={'a'}
         >
-          Log out
+          <Translate id="loginButton.out">Log out</Translate>
         </MenuItem>
       </Menu>
     </>
