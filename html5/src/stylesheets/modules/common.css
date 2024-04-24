@@ -172,7 +172,7 @@ a svg {
 }
 
 a:hover {
-  color: var(--GW-COLOR-BRAND-1-HOVER) !important;
+  color: var(--GW-COLOR-BRAND-1-HOVER);
 }
 
 a:hover svg {

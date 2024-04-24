@@ -29,7 +29,12 @@ export function LoginButtonsInDrawer() {
                   href={href}
                   label={[loginOption.label, label].join(' ')}
                   region={region}
-                  sx={{ flex: 1 }}
+                  sx={{
+                    flex: 1,
+                    '&:hover': {
+                      color: 'white',
+                    },
+                  }}
                 />
               </Box>
             </Tooltip>
