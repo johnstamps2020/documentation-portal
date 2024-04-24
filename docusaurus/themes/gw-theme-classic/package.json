@@ -1,6 +1,6 @@
 {
   "name": "@doctools/gw-theme-classic",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "main": "lib/index.js",
   "author": "doctools@guidewire.com",
   "license": "UNLICENSED",
@@ -29,7 +29,6 @@
     "@doctools/components": "workspace:*",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
-    "@fontsource/source-sans-pro": "^5.0.8",
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",
     "@types/lodash": "^4.14.190",

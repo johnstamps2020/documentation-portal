@@ -1,5 +1,9 @@
 export function getRedirectToPath() {
+  if (typeof window === 'undefined') {
+    return '/';
+  }
+
   return window.location.href
     ?.replace(window.location.origin, '')
-    ?.replaceAll('&', '%26');
+    ?.replace(/&/g, '%26');
 }

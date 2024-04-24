@@ -1,10 +1,9 @@
 import { ButtonProps } from '@mui/material/Button';
-import { OktaRegion } from '@doctools/server';
 
 export type LoginButtonConfig = {
   label?: string;
   href: string;
-  region?: OktaRegion;
+  region?: 'amer' | 'emea' | 'apac';
   sx?: ButtonProps['sx'];
   variant?: ButtonProps['variant'];
   color?: ButtonProps['color'];
