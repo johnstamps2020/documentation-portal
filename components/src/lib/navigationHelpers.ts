@@ -1,5 +1,5 @@
 export function getRedirectToPath() {
-  if (typeof window === undefined) {
+  if (typeof window === 'undefined') {
     return '/';
   }
 
