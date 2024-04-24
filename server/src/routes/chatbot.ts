@@ -7,9 +7,9 @@ const router = express.Router();
 router.post(
   '/',
   async function (req: Request, res: Response, next: NextFunction) {
-    const { text } = req.body as ChatbotRequest;
+    const chatbotRequest = req.body as ChatbotRequest;
 
-    if (!text) {
+    if (!chatbotRequest.prompt) {
       const result: ApiResponse = {
         status: 400,
         body: {
@@ -20,7 +20,7 @@ router.post(
       return res.status(result.status).json(result.body);
     }
 
-    const chatbotResponse = await sendChatPrompt(text);
+    const chatbotResponse = await sendChatPrompt(chatbotRequest);
 
     return res.status(200).json(chatbotResponse);
   }

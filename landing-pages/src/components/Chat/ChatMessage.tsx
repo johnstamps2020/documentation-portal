@@ -1,5 +1,4 @@
 import { translate } from '@doctools/components';
-import { ChatbotMessage } from '@doctools/server';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -7,14 +6,15 @@ import { useLayoutContext } from 'LayoutContext';
 import { useEffect, useRef } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { ChatMessageProps } from './ChatContext';
 import ChatLoader from './ChatLoader';
 import './ChatMessage.css';
 
-type ChatMessageProps = ChatbotMessage & {
+type ChatMessageDisplayProps = ChatMessageProps & {
   isLast: boolean;
 };
 
-function UserMessage({ message, isLast }: ChatMessageProps) {
+function UserMessage({ message, isLast }: ChatMessageDisplayProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const { setTitle } = useLayoutContext();
 
@@ -42,7 +42,7 @@ export default function ChatMessage({
   role,
   message,
   isLast,
-}: ChatMessageProps) {
+}: ChatMessageDisplayProps) {
   const responseRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

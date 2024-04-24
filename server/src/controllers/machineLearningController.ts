@@ -1,5 +1,8 @@
-import { ChatbotMessage } from '../types';
+import { ChatbotMessage, ChatbotRequest } from '../types';
 import { winstonLogger } from './loggerController';
+
+// TODO: consider moving this definition to an environment variable
+const chatbotUrl = 'https://gwgptapi.guidewire.com/doc_search/';
 
 export async function createVectorFromText(
   text: string
@@ -26,29 +29,31 @@ export async function createVectorFromText(
   }
 }
 
-export async function sendChatPrompt(text: string): Promise<ChatbotMessage> {
+export async function sendChatPrompt(
+  chatbotRequest: ChatbotRequest
+): Promise<ChatbotMessage> {
   try {
-    const response = await fetch(`${process.env.ML_TRANSFORMER_URL}/chatbot`, {
+    const response = await fetch(`${chatbotUrl}/chat`, {
       method: 'POST',
-      body: JSON.stringify({
-        text,
-      }),
+      body: JSON.stringify(chatbotRequest),
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
     });
 
+    console.log({ response });
     if (response.ok) {
       return await response.json();
     }
     return {
-      message: `Error! Could not complete chat transaction! ${JSON.stringify(
+      answer: `Error! Could not complete chat transaction! ${JSON.stringify(
         response
       )}`,
+      sources: [],
     };
   } catch (err) {
     winstonLogger.error(err);
-    return { message: `Error ${err}` };
+    return { answer: `Error ${err}`, sources: [] };
   }
 }
