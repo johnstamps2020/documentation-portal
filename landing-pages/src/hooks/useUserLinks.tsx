@@ -1,9 +1,9 @@
 import { useEnvInfo, useUserInfo } from 'hooks/useApi';
 import { prodDeployEnv } from 'vars';
 
-type AdminLinks = { adminLinks: { label: string; href: string }[] };
+type UserLinks = { userLinks: { label: string; href: string }[] };
 
-export function useAdminLinks(): AdminLinks {
+export function useUserLinks(): UserLinks {
   const {
     userInfo,
     isLoading: isUserInfoLoading,
@@ -16,7 +16,7 @@ export function useAdminLinks(): AdminLinks {
   } = useEnvInfo();
 
   if (isEnvInfoLoading || isEnvInfoError || envInfo?.name === prodDeployEnv) {
-    return { adminLinks: [] };
+    return { userLinks: [] };
   }
 
   if (
@@ -24,23 +24,23 @@ export function useAdminLinks(): AdminLinks {
     isUserInfoError ||
     (!userInfo?.isAdmin && !userInfo?.isPowerUser)
   ) {
-    return { adminLinks: [] };
+    return { userLinks: [] };
   }
 
-  if (userInfo.isPowerUser && !userInfo.isAdmin) {
-    return { adminLinks: [{ href: '/delta-doc', label: 'Delta tool' }] };
+  if (userInfo.isAdmin) {
+    return {
+      userLinks: [
+        {
+          href: '/admin-panel/page',
+          label: 'Admin panel',
+        },
+        {
+          href: '/delta-doc',
+          label: 'Delta tool',
+        },
+      ],
+    };
+  } else {
+    return { userLinks: [{ href: '/delta-doc', label: 'Delta tool' }] };
   }
-
-  return {
-    adminLinks: [
-      {
-        href: '/admin-panel/page',
-        label: 'Admin panel',
-      },
-      {
-        href: '/delta-doc',
-        label: 'Delta tool',
-      },
-    ],
-  };
 }
