@@ -1,21 +1,24 @@
+import React from 'react';
 import Button from '@mui/material/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
-import { translate } from '@doctools/components';
+import { translate } from '../../lib';
 import { ReactNode } from 'react';
 
 type SearchHeaderButtonProps = {
   handleClick: (event: React.MouseEvent<HTMLElement>) => void;
   children: ReactNode;
 };
-export default function SearchHeaderButton({
+export function SearchHeaderButton({
   handleClick,
   children,
 }: SearchHeaderButtonProps) {
   const { state } = useSearchHeaderLayoutContext();
 
   const numFilters = Object.keys(state.searchFilters)
-    .filter((key) => key !== 'language' && key !== 'subject')
+    .filter(
+      (key) => key !== 'language' && key !== 'subject' && key !== 'platform'
+    )
     .reduce((total, key) => total + state.searchFilters[key].length, 0);
 
   const buttonText = translate({

@@ -1,17 +1,18 @@
-import { translate } from '@doctools/components';
+import React from 'react';
+import { translate } from '../../lib';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
-import SearchHeaderMenuFilterSubGridItems from './SearchHeaderMenuFilterSubGridItems';
+import { SearchHeaderMenuFilterSubGridItems } from './SearchHeaderMenuFilterSubGridItems';
 
 type SearchHeaderMenuFilterSubGridProps = {
   filterType: 'product' | 'release';
 };
 
-export default function SearchHeaderMenuFilterSubGrid({
+export function SearchHeaderMenuFilterSubGrid({
   filterType,
 }: SearchHeaderMenuFilterSubGridProps) {
   const { state, dispatch } = useSearchHeaderLayoutContext();
@@ -73,7 +74,7 @@ export default function SearchHeaderMenuFilterSubGrid({
         filters={unselectedFilters}
         filterType={filterType}
       />
-      {filterType === 'release' && (
+      {filterType === 'release' && ( // separate component
         <>
           <Divider variant="middle" sx={{ marginBlock: '.5rem' }} />
           <FormControlLabel

@@ -1,10 +1,20 @@
+import React from 'react';
 import { useRef, useState } from 'react';
-import SearchBox from './SearchBox/SearchBox';
-import SearchHeaderButton from './SearchDropdown/SearchHeaderButton';
-import SearchHeaderMenu from './SearchDropdown/SearchHeaderMenu';
-import { useSearchHeaderLayoutContext } from './SearchDropdown/SearchHeaderLayoutContext';
+import { SearchBox } from '../SearchBox';
+import { SearchHeaderButton } from './SearchHeaderButton';
+import { SearchHeaderMenu } from './SearchHeaderMenu';
+import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 
-export default function SearchHeadWrapper() {
+type SearchHeadWrapperProps = {
+  placeholder: string;
+  isMobile: boolean;
+  searchTypeQueryParameterName: string;
+};
+export function SearchHeadWrapper({
+  placeholder,
+  isMobile,
+  searchTypeQueryParameterName,
+}: SearchHeadWrapperProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { state, dispatch } = useSearchHeaderLayoutContext();
   const searchBoxRef = useRef<HTMLInputElement | undefined>();
@@ -35,6 +45,9 @@ export default function SearchHeadWrapper() {
         ref={searchBoxRef}
         big={false}
         searchFilters={state.searchFilters}
+        placeholder={placeholder}
+        isMobile={isMobile}
+        searchTypeQueryParameterName={searchTypeQueryParameterName}
       />
     </>
   );

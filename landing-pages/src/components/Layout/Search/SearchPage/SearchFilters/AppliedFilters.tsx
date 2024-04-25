@@ -12,8 +12,8 @@ import { uiFilters } from './SearchFilterPanel';
 // not all of these filters can be checked but including the full list
 // in case the displayed filters changes
 const filterOrder = [
-  'release',
   'product',
+  'release',
   'version',
   'doc_title',
   'doc_display_title',

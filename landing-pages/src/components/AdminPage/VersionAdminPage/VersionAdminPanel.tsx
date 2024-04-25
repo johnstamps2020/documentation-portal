@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useVersions } from '../../../hooks/useApi';
+import { useVersions } from '@doctools/server';
 import DuplicateButton from './DuplicateButton';
 import VersionCardContents from './VersionCardContents';
 import VersionSettingsForm from './VersionSettingsForm';

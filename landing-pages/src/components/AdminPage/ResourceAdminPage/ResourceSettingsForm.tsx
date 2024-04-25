@@ -1,4 +1,4 @@
-import { Resource, Source } from '@doctools/server';
+import { Resource, Source, useSources } from '@doctools/server';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -12,7 +12,6 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
-import { useSources } from 'hooks/useApi';
 import { useResourceData } from 'hooks/useEntitiesData';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';

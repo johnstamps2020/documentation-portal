@@ -7,14 +7,26 @@ import FilterButton from 'components/Layout/Search/SearchPage/FilterButton';
 import { SearchLayoutContextProvider } from 'components/Layout/Search/SearchPage/SearchLayoutContext';
 import SearchFilterLayout from 'components/Layout/Search/SearchPage/SearchFilters/SearchFilterLayout';
 import { useLayoutContext } from 'LayoutContext';
+import { useSearchData } from 'hooks/useApi';
 import { useEffect } from 'react';
 
 export default function SearchPage() {
   const { setTitle } = useLayoutContext();
+  const { searchData } = useSearchData();
 
   useEffect(() => {
-    setTitle('Search results');
-  }, [setTitle]);
+    if (searchData?.searchPhrase) {
+      setTitle(
+        `${searchData.searchPhrase} | ${
+          searchData.totalNumOfResults > 0
+            ? `${searchData.totalNumOfResults} `
+            : ``
+        }search results`
+      );
+    } else {
+      setTitle('Search results');
+    }
+  }, [searchData, searchData?.searchPhrase, setTitle]);
 
   return (
     <SearchLayoutContextProvider>

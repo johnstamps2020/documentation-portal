@@ -1,4 +1,5 @@
 // TODO translate strings
+import React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuList from '@mui/material/MenuList';
 import Divider from '@mui/material/Divider';
@@ -6,8 +7,8 @@ import {
   Filters,
   useSearchHeaderLayoutContext,
 } from './SearchHeaderLayoutContext';
-import SearchHeaderMenuItem from './SearchHeaderMenuItem';
-import SearchHeaderMenuFilterGrid from './SearchHeaderMenuFilterGrid';
+import { SearchHeaderMenuItem } from './SearchHeaderMenuItem';
+import { SearchHeaderMenuFilterGrid } from './SearchHeaderMenuFilterGrid';
 
 const isFiltersMatchingProductRelease = (
   searchFilters: Filters,
@@ -75,10 +76,7 @@ type SearchHeaderMenuProps = {
   onClose: () => void;
 };
 
-export default function SearchHeaderMenu({
-  anchorEl,
-  onClose,
-}: SearchHeaderMenuProps) {
+export function SearchHeaderMenu({ anchorEl, onClose }: SearchHeaderMenuProps) {
   const { state, dispatch } = useSearchHeaderLayoutContext();
 
   return (
@@ -92,7 +90,14 @@ export default function SearchHeaderMenu({
       onClose={onClose}
       onClick={onClose}
       elevation={0}
-      sx={{ height: '60vh', marginBlockStart: '.5rem' }}
+      sx={{
+        height: '60vh',
+        marginBlockStart: '.5rem',
+        '& .MuiMenu-paper': {
+          border: 1,
+          borderColor: 'rgba(0, 0, 0, 0.12)',
+        },
+      }}
     >
       {/* TODO pass type and let SearchHeaderMenuItem handle its own props */}
       <MenuList
@@ -105,7 +110,7 @@ export default function SearchHeaderMenu({
             itemKey="product"
             tooltipTitle={`Search within products on this page: ${state.defaultFilters.product
               .toString()
-              .replaceAll(',', ', ')}`}
+              .replace(/,/g, ', ')}`}
             selected={isFiltersMatchingProductRelease(
               state.searchFilters,
               state.defaultFilters
@@ -117,14 +122,14 @@ export default function SearchHeaderMenu({
               });
             }}
             itemLabel={`This product 
-          (${state.defaultFilters.product.toString().replaceAll(',', ', ')})`}
+          (${state.defaultFilters.product.toString().replace(/,/g, ', ')})`}
           />
         )}
         <SearchHeaderMenuItem
           itemKey="release"
           tooltipTitle={`Search within all products in ${state.defaultFilters.release
             .toString()
-            .replaceAll(',', ', ')}`}
+            .replace(/,/g, ', ')}`}
           selected={isFiltersMatchingReleaseOnly(
             state.searchFilters,
             state.defaultFilters
@@ -137,7 +142,7 @@ export default function SearchHeaderMenu({
             });
           }}
           itemLabel={`This release
-          (${state.defaultFilters.release.toString().replaceAll(',', ', ')})`}
+          (${state.defaultFilters.release.toString().replace(/,/g, ', ')})`}
         />
         <SearchHeaderMenuItem
           itemKey="entiresite"

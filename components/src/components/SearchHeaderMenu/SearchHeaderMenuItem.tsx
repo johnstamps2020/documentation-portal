@@ -1,3 +1,4 @@
+import React from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
@@ -11,7 +12,7 @@ type SearchHeaderMenuItemProps = {
   handleClick: (() => void) | ((event: any) => void);
 };
 
-export default function SearchHeaderMenuItem({
+export function SearchHeaderMenuItem({
   itemKey,
   tooltipTitle,
   itemLabel,

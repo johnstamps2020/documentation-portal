@@ -1,5 +1,5 @@
 import NotLoggedInAlert from './NotLoggedInAlert';
-import SearchBox from 'components/Layout/Search/SearchBox/SearchBox';
+import { SearchBox, Filters } from '@doctools/components';
 import LoadingSearchDataErrorAlert from './LoadingSearchDataErrorAlert';
 import SearchResultSection from './SearchResultSection';
 import Stack from '@mui/material/Stack';
@@ -13,13 +13,17 @@ import { useTheme } from '@mui/material/styles';
 import ExactMatchHint from './ExactMatchHint';
 import SearchTypeSelector from './SearchTypeSelector';
 import { useEnvInfo, useSearchData } from 'hooks/useApi';
-import { Filters } from '../SearchDropdown/SearchHeaderLayoutContext';
+import { useLocaleParams } from 'hooks/useLocale';
+import { useMobile } from 'hooks/useMobile';
+import { searchTypeQueryParameterName } from 'vars';
 
 export default function SearchResultPanel() {
   const { envInfo } = useEnvInfo();
   const { helpWidth, isHelpExpanded } = useSearchLayoutContext();
   const theme = useTheme();
   const { searchData } = useSearchData();
+  const { placeholder } = useLocaleParams();
+  const { isMobile } = useMobile();
 
   const searchFilters: Filters = {};
 
@@ -58,7 +62,12 @@ export default function SearchResultPanel() {
         <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
           <NotLoggedInAlert />
           {envInfo?.name === 'dev' && <SearchTypeSelector />}
-          <SearchBox searchFilters={searchFilters} />
+          <SearchBox
+            searchFilters={searchFilters}
+            placeholder={placeholder}
+            isMobile={isMobile}
+            searchTypeQueryParameterName={searchTypeQueryParameterName}
+          />
           <ExactMatchHint />
           <AdvancedSearchHelpButton />
         </Stack>

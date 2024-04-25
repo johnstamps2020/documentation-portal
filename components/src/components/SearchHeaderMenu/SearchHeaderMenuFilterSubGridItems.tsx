@@ -1,3 +1,4 @@
+import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import {
@@ -10,7 +11,7 @@ type SearchHeaderMenuFilterSubGridItemsProps = {
   filterType: string;
 };
 
-export default function SearchHeaderMenuFilterSubGridItems({
+export function SearchHeaderMenuFilterSubGridItems({
   filters,
   filterType,
 }: SearchHeaderMenuFilterSubGridItemsProps) {

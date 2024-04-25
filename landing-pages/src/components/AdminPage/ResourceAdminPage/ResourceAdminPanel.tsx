@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useResources } from '../../../hooks/useApi';
+import { useResources } from '@doctools/server';
 import DuplicateButton from './DuplicateButton';
 import ResourceCardContents from './ResourceCardContents';
 import ResourceSettingsForm from './ResourceSettingsForm';

@@ -1,4 +1,5 @@
 import Header, { headerHeight } from './Header/Header';
+import { HeaderContextProvider } from 'components/Layout/Header/HeaderContext';
 import Footer from './Footer';
 import Box from '@mui/material/Box';
 import { useLayoutContext } from 'LayoutContext';
@@ -7,7 +8,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import { useLocation } from 'react-router-dom';
 import { NotificationProvider } from './NotificationContext';
-import { HeaderContextProvider } from './Header/HeaderContext';
 
 export const mainHeight = `calc(100vh - ${headerHeight})`;
 
@@ -18,7 +18,9 @@ export default function Layout() {
 
   return (
     <NotificationProvider>
-      <Header />
+      <HeaderContextProvider>
+        <Header />
+      </HeaderContextProvider>
       <main style={{ backgroundColor }}>
         <Box
           sx={{

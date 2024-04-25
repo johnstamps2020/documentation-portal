@@ -1,19 +1,17 @@
+import React from 'react';
+import { useState, forwardRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import InputBase, { InputBaseProps } from '@mui/material/InputBase';
 import Paper from '@mui/material/Paper';
-import { useLayoutContext } from 'LayoutContext';
-import { useSearchData } from 'hooks/useApi';
-import { useLocaleParams } from 'hooks/useLocale';
-import { useMobile } from 'hooks/useMobile';
-import { useEffect, useState, forwardRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { searchTypeQueryParameterName } from 'vars';
-import { Filters } from '../SearchDropdown/SearchHeaderLayoutContext';
 
 type SearchBoxProps = {
   big?: boolean;
-  searchFilters: Filters;
+  searchFilters: { [key: string]: string[] };
+  placeholder: string;
+  isMobile: boolean;
+  searchTypeQueryParameterName: string;
 } & InputBaseProps;
 
 const commonProps = {
@@ -40,31 +38,20 @@ const regularSizeProps = {
   marginLeft: '0',
 };
 
-const SearchBox = forwardRef(
-  ({ big = true, searchFilters }: SearchBoxProps, ref) => {
+export const SearchBox = forwardRef(
+  (
+    {
+      big = true,
+      searchFilters,
+      placeholder,
+      isMobile,
+      searchTypeQueryParameterName,
+    }: SearchBoxProps,
+    ref
+  ) => {
     const location = useLocation();
     const query = new URLSearchParams(location.search);
-    const { placeholder } = useLocaleParams();
-    const { searchData } = useSearchData();
-    const { isMobile } = useMobile();
-    const { setTitle } = useLayoutContext();
     const [searchPhrase, setSearchPhrase] = useState<string>('');
-
-    useEffect(() => {
-      if (searchData) {
-        setSearchPhrase(searchData.searchPhrase);
-
-        if (searchData.searchPhrase) {
-          setTitle(
-            `${searchData.searchPhrase} | ${
-              searchData.totalNumOfResults > 0
-                ? `${searchData.totalNumOfResults} `
-                : ``
-            }search results`
-          );
-        }
-      }
-    }, [searchData, searchData?.searchPhrase, setTitle]);
 
     const showBigSearchBox = isMobile ? false : big;
 
@@ -127,5 +114,3 @@ const SearchBox = forwardRef(
     );
   }
 );
-
-export default SearchBox;

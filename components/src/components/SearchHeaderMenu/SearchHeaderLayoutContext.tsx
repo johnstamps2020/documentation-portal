@@ -1,20 +1,13 @@
 // TODO save selected filters to sessionStorage if user changes them? Retrieve when returning to same landing page?
 // TODO move all translated strings to separate file and import?
-
+import React, { useMemo } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useMemo,
-} from 'react';
-import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
-import {
+  Release,
+  Product,
   useProductsNoRevalidation,
   useReleasesNoRevalidation,
-} from 'hooks/useApi';
-import { Release, Product } from '@doctools/server';
-import { usePageData } from 'hooks/usePageData';
+} from '@doctools/server';
 
 export type Filters = { [key: string]: string[] };
 
@@ -61,17 +54,20 @@ export const SearchHeaderLayoutContext = createContext<{
 } | null>(null);
 
 export function SearchHeaderLayoutContextProvider({
-  children, // add defaultFilters here due to different sources
+  children,
+  defaultFilters,
+  setFilters,
 }: {
   children: React.ReactNode;
+  defaultFilters: Filters;
+  setFilters: (searchFilters: Filters) => void;
 }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { setHeaderOptions } = useHeaderContext();
-  const { pageData } = usePageData();
+  state.defaultFilters = defaultFilters;
+
   const { releases: allReleases } = useReleasesNoRevalidation();
   const { products: allProducts } = useProductsNoRevalidation();
 
-  // need setter?
   state.allFilters = useMemo(() => {
     if (!allReleases || !allProducts) return { release: [], product: [] };
     return {
@@ -84,28 +80,13 @@ export function SearchHeaderLayoutContextProvider({
     };
   }, [allReleases, allProducts]);
 
-  // need setter?
-  state.defaultFilters = useMemo(() => {
-    if (!pageData?.searchFilters) {
-      return {};
-    }
-    const defaultFilters: Filters = {};
-    Object.keys(pageData?.searchFilters).forEach((k) => {
-      defaultFilters[k] = pageData?.searchFilters![k];
-    });
-    return defaultFilters;
-  }, [pageData]);
-
   useEffect(() => {
     dispatch({ type: 'SET_SELECTED_FILTERS', payload: state.defaultFilters });
   }, [state.defaultFilters]);
 
   useEffect(() => {
-    setHeaderOptions((prevHeaderOptions) => ({
-      ...prevHeaderOptions,
-      searchFilters: state.searchFilters,
-    }));
-  }, [state.searchFilters, setHeaderOptions]);
+    setFilters(state.searchFilters);
+  }, [state.searchFilters, setFilters]);
 
   return (
     <SearchHeaderLayoutContext.Provider value={{ state, dispatch }}>
