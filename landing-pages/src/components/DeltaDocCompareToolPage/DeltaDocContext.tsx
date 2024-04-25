@@ -36,10 +36,11 @@ interface DeltaDocInterface {
     maxPage: number;
   };
   page: number;
-  handleChange: (page: number) => void;
+  changePage: (page: number) => void;
 }
 
 export const DeltaDocContext = createContext<DeltaDocInterface | null>(null);
+export const resultsPerPageValue = 9;
 
 export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
   const [formState, setFormState] = useState<DeltaDocInputType>({
@@ -48,7 +49,8 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     url: '',
     version: false,
   });
-  const [resultsPerPage, setResultsPerPage] = useState(9);
+
+  const [resultsPerPage, setResultsPerPage] = useState(resultsPerPageValue);
   const [rootUrls, setRootUrls] = useState({ leftUrl: '', rightUrl: '' });
   const { releaseA, releaseB, url, version } = formState;
   const { deltaDocData, isError, isLoading } = useDeltaDocData({
@@ -60,14 +62,21 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
   const [page, setPage] = useState(1);
   const paginationData = usePagination({
     data:
-      deltaDocData?.results.sort(
-        (a, b) =>
-          a.docBTitle.localeCompare(b.docBTitle) ||
-          a.docATitle.localeCompare(b.docATitle)
-      ) || [],
+      deltaDocData?.results.sort((a, b) => {
+        const mainATitle =
+          a.docATitle !== 'N/A - file does not exist'
+            ? a.docATitle
+            : a.docBTitle;
+        const mainBTitle =
+          b.docATitle !== 'N/A - file does not exist'
+            ? b.docATitle
+            : b.docBTitle;
+
+        return mainATitle.localeCompare(mainBTitle);
+      }) || [],
     itemsPerPage: resultsPerPage,
   });
-  function handleChange(page: number) {
+  function changePage(page: number) {
     setPage(page);
     paginationData.jump(page);
   }
@@ -87,7 +96,7 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     setResultsPerPage,
     paginationData,
     page,
-    handleChange,
+    changePage,
   };
 
   return (

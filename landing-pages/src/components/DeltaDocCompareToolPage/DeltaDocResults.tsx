@@ -8,8 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableContainer from '@mui/material/TableContainer';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
-import usePagination from '../../hooks/usePagination';
+import { useEffect } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocResultTableRow from './DeltaDocResultTableRow';
 import Button from '@mui/material/Button';
@@ -21,13 +20,16 @@ export default function DeltaDocResults() {
     releaseB,
     resultsPerPage,
     setResultsPerPage,
-    handleChange,
+    changePage,
     paginationData,
     page,
   } = useDeltaDocContext();
 
-  useEffect(() => (handleChange(1), setResultsPerPage(9)), [deltaDocData]);
-  
+  useEffect(() => {
+    changePage(1);
+    setResultsPerPage(9);
+  }, [deltaDocData]);
+
   if (!deltaDocData) {
     return <></>;
   }
@@ -36,6 +38,8 @@ export default function DeltaDocResults() {
   const count = Math.ceil(results.length / resultsPerPage);
   const higherRelease = releaseA > releaseB ? releaseA : releaseB;
   const lowerRelease = releaseA < releaseB ? releaseA : releaseB;
+  const allResultsDisplayed = resultsPerPage === results.length;
+  
   return (
     <>
       <Box
@@ -51,18 +55,17 @@ export default function DeltaDocResults() {
           color="primary"
           count={count}
           page={page}
-          onChange={(event, page) => handleChange(page)}
+          onChange={(event, page) => changePage(page)}
         />
         <Button
           onClick={() =>
-            resultsPerPage === results.length
+            allResultsDisplayed
               ? setResultsPerPage(9)
-              : (setResultsPerPage(results.length), handleChange(1))
+              : (setResultsPerPage(results.length), changePage(1))
           }
+          disabled={count === 1 && !allResultsDisplayed}
         >
-          {resultsPerPage === results.length
-            ? 'Show pagination'
-            : 'Show all results'}
+          {allResultsDisplayed ? 'Show pagination' : 'Show all results'}
         </Button>
       </Box>
       <Typography variant="h1" textAlign="center">
