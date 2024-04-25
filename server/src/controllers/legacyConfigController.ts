@@ -574,7 +574,7 @@ async function createVersionEntities(legacyDocConfig: LegacyDocConfig[]) {
 
 async function createReleaseEntities(legacyDocConfig: LegacyDocConfig[]) {
   const dbDocReleasesToSave: Release[] = [];
-  const nonProdReleases = ['Jasper'];
+  const nonProdReleases = ['Kufri'];
   for (const doc of legacyDocConfig) {
     const legacyDocReleases = doc.metadata.release;
     if (legacyDocReleases && legacyDocReleases.length > 0) {
@@ -631,6 +631,7 @@ async function createLanguageEntities(legacyDocConfig: LegacyDocConfig[]) {
   const languages: { [key: string]: string } = {
     de: 'German (Germany)',
     en: 'English (United States)',
+    el: 'Greek (Greece)',
     es: 'Spanish (Latin America and Caribbean region)',
     'es-ES': 'Spanish (Spain)',
     fr: 'French (France)',
@@ -801,6 +802,8 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
         dbDoc.title = doc.title;
         dbDoc.displayTitle = doc.displayTitle || null;
         dbDoc.public = doc.public;
+        dbDoc.ignorePublicPropertyAndUseVariants =
+          doc.ignorePublicPropertyAndUseVariants || null;
         dbDoc.internal = doc.internal;
         dbDoc.earlyAccess = doc.earlyAccess;
         dbDoc.displayOnLandingPages = doc.displayOnLandingPages;

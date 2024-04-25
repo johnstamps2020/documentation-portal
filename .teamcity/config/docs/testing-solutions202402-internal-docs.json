@@ -2,8 +2,8 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "testingframeworksloadjasper",
-      "title": "Load and Performance Testing",
+      "id": "testing202402load",
+      "title": "GT: Load Testing",
       "url": "cloud/testing/202402/load",
       "metadata": {
         "product": [
@@ -27,7 +27,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,

@@ -20,7 +20,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.*
 
-version = "2022.04"
+version = "2023.11"
 project {
     GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
@@ -85,7 +85,6 @@ enum class GwConfigParams(val paramValue: String) {
     OKTA_SCOPES("NODE_Hawaii_Docs_Web.read"),
     OKTA_SCOPES_PROD("Documentation_portal.read"),
     OKTA_AUDIENCE("Guidewire"),
-    OKTA_ADMIN_GROUPS("doctools"),
     GW_COMMUNITY_CUSTOMER_IDP("0oau503zlhhFLwTqF0h7"),
     GW_COMMUNITY_CUSTOMER_IDP_PROD("0oa6c4x5z3fYXUWoE357"),
     GW_COMMUNITY_PARTNER_IDP("0oapv9i36yEMFLjxS0h7"),
@@ -423,7 +422,6 @@ object Helpers {
             export ENABLE_AUTH="yes"
             export DD_SERVICE_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export OKTA_AUDIENCE="${GwConfigParams.OKTA_AUDIENCE.paramValue}"
-            export OKTA_ADMIN_GROUPS="${GwConfigParams.OKTA_ADMIN_GROUPS.paramValue}"
             export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
             export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
             export PARTNERS_LOGIN_URL="$partnersLoginUrl"
@@ -904,6 +902,33 @@ object GwBuildSteps {
         }
     }
 
+    fun createUploadPreviewContentWithVariantsToS3BucketStep(outputPath: String, publishPath: String): ScriptBuildStep {
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
+        val publicSubPath = "__public"
+        val restrictedSubPath = "__restricted"
+        val publicOutputPath = "${outputPath}/${publicSubPath}"
+        val restrictedOutputPath = "${outputPath}/${restrictedSubPath}"
+        val publicPublishPath = publishPath.replaceFirst("preview", "preview/${publicSubPath}")
+        val restrictedPublishPath = publishPath.replaceFirst("preview", "preview/${restrictedSubPath}")
+        return ScriptBuildStep {
+            name = "Upload preview content with variants to the S3 bucket"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                                
+                $awsEnvVars
+                
+                aws s3 sync $publicOutputPath s3://tenant-doctools-${atmosDeployEnv}-builds/${publicPublishPath} --delete --cache-control max-age=60
+                aws s3 sync $restrictedOutputPath s3://tenant-doctools-${atmosDeployEnv}-builds/${restrictedPublishPath} --delete --cache-control max-age=60
+            """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
+
     fun createPreviewUrlFile(
         previewUrl: String, previewUrlFile: String,
     ): ScriptBuildStep {
@@ -1261,6 +1286,7 @@ object GwBuildSteps {
         gwVersions: String,
         workingDir: String,
         customEnv: JSONArray?,
+        ignorePublicPropertyAndUseVariants: Boolean,
         validationMode: Boolean = false,
         exitCodeEnvVarName: String = "",
     ): ScriptBuildStep {
@@ -1283,6 +1309,8 @@ object GwBuildSteps {
                     echo "VALIDATION FAILED: High severity issues found."
                     echo "Check "$logFile" in the build artifacts for more details."
                 fi
+                
+                
                 
                 echo "##teamcity[setParameter name='$exitCodeEnvVarName' value='${'$'}EXIT_CODE']"
                     
@@ -1315,6 +1343,7 @@ object GwBuildSteps {
                     export GW_PLATFORM="$gwPlatforms"
                     export GW_VERSION="$gwVersions"
                     export TARGET_URL="$targetUrl"
+                    export BUILD_VARIANTS="$ignorePublicPropertyAndUseVariants"
                     $customEnvExportVars
                     
                     cd "$workingDir"
@@ -1796,6 +1825,7 @@ object User {
             gwProducts: String,
             gwVersions: String,
             customEnv: JSONArray?,
+            ignorePublicPropertyAndUseVariants: Boolean,
         ): List<BuildType> {
             val yarnBuildTypes = mutableListOf<BuildType>()
             for (env in envNames) {
@@ -1824,7 +1854,8 @@ object User {
                         gwPlatforms,
                         gwVersions,
                         workingDir,
-                        customEnv
+                        customEnv,
+                        ignorePublicPropertyAndUseVariants
                     )
                     docBuildType.steps.step(yarnBuildStep)
                     docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
@@ -2248,6 +2279,8 @@ object User {
 
             val docProjectBuildTypes = mutableListOf<BuildType>()
             val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
+            val ignorePublicPropertyAndUseVariants =
+                if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
             when (gwBuildType) {
                 GwBuildTypes.YARN.buildTypeName -> {
@@ -2268,7 +2301,8 @@ object User {
                         gwPlatformsString,
                         gwProductsString,
                         gwVersionsString,
-                        customEnv
+                        customEnv,
+                        ignorePublicPropertyAndUseVariants
                     )
                 }
 
@@ -2766,6 +2800,8 @@ object User {
             val docId = buildConfig.getString("docId")
             val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
             val docTitle = docConfig.getString("title")
+            val ignorePublicPropertyAndUseVariants =
+                if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
             val workingDir = Helpers.getWorkingDir(buildConfig)
             val outputDir = when (buildConfig.has("outputPath")) {
@@ -2817,16 +2853,25 @@ object User {
             val repoKey = matchList[2]
             val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
 
-            val uploadStepOuputPath = when (gwBuildType) {
+            val uploadStepOutputPath = when (gwBuildType) {
                 GwBuildTypes.DITA.buildTypeName -> "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}"
                 else -> "${workingDir}/${outputDir}"
             }
 
-            val uploadStep = GwBuildSteps.createUploadContentToS3BucketStep(
-                GwDeployEnvs.STAGING.envName,
-                uploadStepOuputPath,
-                publishPath,
-            )
+            val uploadStep = when (ignorePublicPropertyAndUseVariants) {
+                true -> GwBuildSteps.createUploadPreviewContentWithVariantsToS3BucketStep(
+                    uploadStepOutputPath,
+                    publishPath
+                )
+
+                else -> GwBuildSteps.createUploadContentToS3BucketStep(
+                    GwDeployEnvs.STAGING.envName,
+                    uploadStepOutputPath,
+                    publishPath,
+                )
+            }
+
+
             uploadStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
             val previewFileStep = GwBuildSteps.createPreviewUrlFile(
@@ -2834,9 +2879,15 @@ object User {
             )
             previewFileStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
+            val pullRequestCommentText = when (ignorePublicPropertyAndUseVariants) {
+                true -> "[DOC WITH VARIANTS] Hi, I created a preview for validation build %build.number%: $previewUrl"
+
+                else -> "Hi, I created a preview for validation build %build.number%: $previewUrl"
+            }
+
             val pullRequestCommentStep = GwBuildSteps.createAddPullRequestCommentStep(
                 "preview link",
-                "Hi, I created a preview for validation build %build.number%: $previewUrl",
+                pullRequestCommentText,
                 projectKey,
                 repoKey,
                 pullRequestId
@@ -3000,6 +3051,7 @@ object User {
                                 gwVersionsString,
                                 workingDir,
                                 customEnv,
+                                ignorePublicPropertyAndUseVariants,
                                 validationMode = true,
                                 exitCodeEnvVarName = exitCodeEnvVarName
                             )
@@ -4627,7 +4679,8 @@ object Admin {
 
                 arrayOf(
                     Pair("theme", "docusaurus/themes/gw-theme-classic"),
-                    Pair("plugin", "docusaurus/plugins/gw-plugin-redoc")
+                    Pair("plugin-redoc", "docusaurus/plugins/gw-plugin-redoc"),
+                    Pair("docusaurus-security", "docusaurus/plugins/docusaurus-security")
                 ).forEach {
                     buildType(createPublishNpmPackageBuildType(it.first, it.second))
                 }
@@ -5013,7 +5066,9 @@ object Admin {
                     export OKTA_ISSUER_APAC="issuerNotConfigured"
                     export OKTA_ISSUER_EMEA="issuerNotConfigured"
                     export OKTA_SCOPES=mock
+                    export OKTA_ADMIN_GROUPS=mock
                     export OKTA_AUDIENCE=mock
+                    export POWER_USERS=mock
                     export APP_BASE_URL=http://localhost:8081
                     export SESSION_KEY=mock
                     export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"

@@ -1,0 +1,32 @@
+---
+sidebar_position: 3
+public: true
+---
+
+# Public pages
+
+When using the pluginVersions, you can make any of the pages public. Users will
+be able to see the page without logging in. In the MDX prolog, add the following
+prop:
+
+```yaml
+---
+public: true
+---
+```
+
+## Restricting a page in a public doc
+
+See [restricted pages](./restricted-pages.mdx).
+
+The entire doc will be public, but this page will be restricted.
+
+## Making part of a page restricted
+
+Unfortunately, you can't make part of a page restricted. If you need to do this,
+you'll need to create a new page and make it restricted.
+
+## Making part of a public page internal
+
+Use
+[internal content](../../Themes/Classic/Components/Internal/internal-content.mdx).

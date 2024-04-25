@@ -9,6 +9,7 @@ import {
   addPrecedingSlashToPath,
   s3BucketUrlExists,
 } from './redirectController';
+import { Doc, ExternalLink } from '../model';
 
 const fetch = require('node-fetch-retry');
 
@@ -48,64 +49,167 @@ export async function sitemapProxy(
 
 type ResourceStatusWithRedirectLink = [number, string | undefined];
 
-async function getResourceStatusFromDatabase(
+const publicSubPath = '/__public';
+const restrictedSubPath = '/__restricted';
+
+function checkIfPathNeedsTrailingSlash(reqPath: string, htmlRequest: boolean) {
+  if (!htmlRequest) {
+    return false;
+  }
+  if (['.html', '.htm', '/'].some((ext) => reqPath.endsWith(ext))) {
+    return false;
+  }
+  return true;
+}
+
+async function getResourceStatusForEntityWithVariants(
+  dbEntity: Doc | ExternalLink,
+  requestedPath: string,
+  htmlRequest: boolean,
+  res: Response
+): Promise<ResourceStatusWithRedirectLink> {
+  const dbEntityUrl = dbEntity.url;
+  const cleanedRequestedPath = requestedPath
+    .replace(publicSubPath, '')
+    .replace(restrictedSubPath, '');
+  const requstedPathNeedsTrailingSlash = checkIfPathNeedsTrailingSlash(
+    cleanedRequestedPath,
+    htmlRequest
+  );
+
+  if (requestedPath !== cleanedRequestedPath) {
+    if (requstedPathNeedsTrailingSlash) {
+      return [307, `${cleanedRequestedPath}/`];
+    }
+    return [307, cleanedRequestedPath];
+  }
+  if (requstedPathNeedsTrailingSlash) {
+    return [307, `${cleanedRequestedPath}/`];
+  }
+  const hasAccessToRestrictedDoc = isUserAllowedToAccessResource(
+    res,
+    false,
+    dbEntity.internal,
+    dbEntity.isInProduction
+  ).status;
+
+  const requestedPathWithRestrictedSubPath = cleanedRequestedPath.replace(
+    dbEntityUrl,
+    `${dbEntityUrl}${restrictedSubPath}`
+  );
+
+  const requestedPathWithPublicSubPath = cleanedRequestedPath.replace(
+    dbEntityUrl,
+    `${dbEntityUrl}${publicSubPath}`
+  );
+
+  const restrictedDocExists = await s3BucketUrlExists(
+    requestedPathWithRestrictedSubPath
+  );
+  const publicDocExists = await s3BucketUrlExists(
+    requestedPathWithPublicSubPath
+  );
+
+  if (hasAccessToRestrictedDoc !== 200 && !publicDocExists) {
+    return [404, undefined];
+  }
+
+  if (hasAccessToRestrictedDoc !== 200 && publicDocExists) {
+    return [200, requestedPathWithPublicSubPath];
+  }
+
+  if (hasAccessToRestrictedDoc === 200 && restrictedDocExists) {
+    return [200, requestedPathWithRestrictedSubPath];
+  }
+  return [100, undefined];
+}
+
+async function getResourceStatusForEntity(
+  dbEntity: Doc | ExternalLink,
   requestedPath: string,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
-  const requestedEntity =
-    (await getExternalLinkByUrl(requestedPath)) ||
-    (await getDocByUrl(requestedPath));
-
-  if (!requestedEntity) {
-    return [100, undefined];
-  }
-
-  const requestedEntityUrl = requestedEntity.url;
+  const dbEntityUrl = dbEntity.url;
   const requestedPathExists = await s3BucketUrlExists(requestedPath);
   if (!requestedPathExists) {
-    const requestedEntityUrlExists = await s3BucketUrlExists(
-      requestedEntityUrl
-    );
+    const requestedEntityUrlExists = await s3BucketUrlExists(dbEntityUrl);
     if (!requestedEntityUrlExists) {
       return [100, undefined];
     }
-    const redirectUrl = addPrecedingSlashToPath(requestedEntityUrl);
+    const redirectUrl = addPrecedingSlashToPath(dbEntityUrl);
     return [307, redirectUrl];
   }
 
   return [
     isUserAllowedToAccessResource(
       res,
-      requestedEntity.public,
-      requestedEntity.internal,
-      requestedEntity.isInProduction
+      dbEntity.public,
+      dbEntity.internal,
+      dbEntity.isInProduction
     ).status,
     undefined,
   ];
 }
 
-function isPrPreviewLink(requestedPath: string): boolean {
-  const pathSegments = requestedPath.split('/');
-  return (
-    pathSegments.includes('preview') &&
-    pathSegments.includes('pull-requests') &&
-    pathSegments.includes('from') &&
-    pathSegments.includes('refs')
+async function getResourcesStatusForPreviewEntity(
+  dbEntity: Doc | ExternalLink,
+  requestedPath: string,
+  htmlRequest: boolean,
+  res: Response
+) {
+  const accessToEntity = await getResourceStatusForEntity(
+    dbEntity,
+    requestedPath,
+    res
+  );
+  if (accessToEntity[0] !== 100) {
+    return accessToEntity;
+  }
+
+  return await getResourceStatusForEntityWithVariants(
+    dbEntity,
+    requestedPath,
+    htmlRequest,
+    res
   );
 }
 
-async function getResourceStatus(
+async function getResourceStatusFromDatabase(
   requestedPath: string,
+  htmlRequest: boolean,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
-  if (isPrPreviewLink(requestedPath)) {
-    return [
-      isUserAllowedToAccessResource(res, false, true, false).status,
-      undefined,
-    ];
+  const dbEntity =
+    (await getExternalLinkByUrl(requestedPath)) ||
+    (await getDocByUrl(requestedPath));
+
+  if (!dbEntity) {
+    return [100, undefined];
   }
 
-  return getResourceStatusFromDatabase(requestedPath, res);
+  if (dbEntity instanceof Doc && dbEntity.id === 'previews3folder') {
+    return await getResourcesStatusForPreviewEntity(
+      dbEntity,
+      requestedPath,
+      htmlRequest,
+      res
+    );
+  }
+  // Check explicitly if the ignorePublicPropertyAndUseVariants property is set to True
+  // not to include any truthy values.
+  if (
+    dbEntity instanceof Doc &&
+    dbEntity.ignorePublicPropertyAndUseVariants === true
+  ) {
+    return await getResourceStatusForEntityWithVariants(
+      dbEntity,
+      requestedPath,
+      htmlRequest,
+      res
+    );
+  }
+
+  return await getResourceStatusForEntity(dbEntity, requestedPath, res);
 }
 
 /*
@@ -117,12 +221,13 @@ async function getResourceStatus(
  */
 export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   const requestedPath: string = req.path;
+  const isHtmlRequest = req.headers['accept']?.includes('text/html') || false;
 
-  const [resourceStatus, redirectPath] = await getResourceStatus(
+  const [resourceStatus, redirectPath] = await getResourceStatusFromDatabase(
     requestedPath,
+    isHtmlRequest,
     res
   );
-
   if (resourceStatus === 100) {
     return next();
   }
@@ -147,6 +252,8 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
     );
   }
 
+  const docPath = redirectPath === undefined ? requestedPath : redirectPath;
+
   openRequestedUrl(req, res);
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   return proxy.web(
@@ -154,9 +261,10 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
     res,
     {
       target: requestedPath.startsWith('/portal')
-        ? process.env.PORTAL2_S3_URL
-        : process.env.DOC_S3_URL,
+        ? `${process.env.PORTAL2_S3_URL}${requestedPath}`
+        : `${process.env.DOC_S3_URL}${docPath}`,
       changeOrigin: true,
+      ignorePath: true,
     },
     next
   );

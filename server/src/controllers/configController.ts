@@ -156,6 +156,7 @@ export async function getDocByUrl(url: string): Promise<Doc | null> {
       'doc.url',
       'doc.id',
       'doc.public',
+      'doc.ignorePublicPropertyAndUseVariants',
       'doc.internal',
       'doc.isInProduction',
     ])
@@ -962,19 +963,37 @@ export async function getRootBreadcrumbs(
   }
 }
 
+function getPublicSettingFromUnionType(
+  item: Doc | Page | ExternalLink
+): boolean {
+  if (
+    'ignorePublicPropertyAndUseVariants' in item &&
+    item.ignorePublicPropertyAndUseVariants === true
+  ) {
+    // if ignorePublicPropertyAndUseVariants exists (meaning, it's a Doc type item)
+    // and the value is set to `true`, use this value
+    return true;
+  }
+
+  // otherwise, use the value of the `public` prop
+  return item.public;
+}
+
 function getAllowedResources(
   items: (Doc | Page | ExternalLink)[],
   res: Response
 ): (Doc | Page | ExternalLink)[] {
-  return items.filter(
-    (item) =>
+  return items.filter((item) => {
+    const isPublic = getPublicSettingFromUnionType(item);
+    return (
       isUserAllowedToAccessResource(
         res,
-        item.public,
+        isPublic,
         item.internal,
         item.isInProduction
       ).status === 200
-  );
+    );
+  });
 }
 
 export async function getPageItems(

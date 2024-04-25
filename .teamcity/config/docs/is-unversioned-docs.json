@@ -6,9 +6,19 @@
       "title": "InsuranceSuite Configuration Upgrade Tools Compatibility",
       "url": "isconfigupgradetools-compatibility",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "InsuranceSuite Configuration Upgrade Tools"
+        ],
         "version": [
+          "5.2.0",
+          "5.1.0",
+          "5.0.0",
+          "4.7.0",
+          "4.6.0",
           "4.5.0",
           "4.4.0",
           "4.3.0",
@@ -17,19 +27,23 @@
           "4.0.0",
           "3.3.0"
         ],
-        "subject": ["Upgrade"],
+        "subject": [
+          "Upgrade"
+        ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

@@ -18,15 +18,6 @@
     },
     {
       "buildType": "dita",
-      "root": "CloudPlatform.ditamap",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "indexRedirect": true,
-      "srcId": "cloudplatformsrc",
-      "docId": "cloudplatformrelease",
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
       "root": "GWCP-ReleaseNotes.ditamap",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,

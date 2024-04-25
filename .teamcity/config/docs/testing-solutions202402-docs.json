@@ -2,8 +2,8 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "testingframeworksapijasper",
-      "title": "API Testing",
+      "id": "testing202402api",
+      "title": "GT: API Testing",
       "url": "cloud/testing/202402/api",
       "metadata": {
         "product": [
@@ -27,7 +27,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -36,8 +37,8 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksuijasper",
-      "title": "User Interface Testing",
+      "id": "testing202402ui",
+      "title": "GT: UI Testing",
       "url": "cloud/testing/202402/ui",
       "metadata": {
         "product": [
@@ -61,7 +62,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -70,8 +72,8 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksmgmtjasper",
-      "title": "Test Management",
+      "id": "testing202402mgmt",
+      "title": "GT: Management",
       "url": "cloud/testing/202402/mgmt",
       "metadata": {
         "product": [
@@ -95,7 +97,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -104,7 +107,7 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksrnjasper",
+      "id": "testing202402rn",
       "title": "Guidewire Testing Framework Release Notes",
       "url": "cloud/testing/202402/releasenotes",
       "metadata": {
@@ -129,7 +132,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -138,7 +142,7 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksmatrixjasper",
+      "id": "testing202402matrix",
       "title": "Guidewire Testing Framework Supported Software Components",
       "url": "cloud/testing/202402/matrix",
       "metadata": {
@@ -163,7 +167,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -172,7 +177,7 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksinstalljasper",
+      "id": "testing202402frameworksinstall",
       "title": "Guidewire Testing Framework Installation",
       "url": "cloud/testing/202402/install",
       "metadata": {
@@ -197,7 +202,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -206,8 +212,8 @@
       "earlyAccess": false
     },
     {
-      "id": "is202402testing",
-      "title": "InsuranceSuite Unit Testing",
+      "id": "testing202402isunittesting",
+      "title": "Unit Testing InsuranceSuite with GUnit",
       "url": "cloud/testing/202402/isunittesting",
       "metadata": {
         "platform": [
@@ -231,7 +237,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -265,7 +272,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -275,7 +283,7 @@
     },
     {
       "id": "testing202402testingstandards",
-      "title": "Testing Standards",
+      "title": "Testing Best Practices",
       "url": "cloud/testing/202402/testingstandards",
       "metadata": {
         "platform": [
@@ -299,7 +307,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -309,7 +318,7 @@
     },
     {
       "id": "testing202402istesting",
-      "title": "InsuranceSuite Testing",
+      "title": "Configuring InsuranceSuite Apps and Data for Functional Testing",
       "url": "cloud/testing/202402/istesting",
       "metadata": {
         "platform": [
@@ -332,7 +341,78 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202402codecoverage",
+      "title": "Code Coverage",
+      "url": "cloud/testing/202402/codecoverage",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202402loadandperf",
+      "title": "Load and Performance Testing",
+      "url": "cloud/testing/202402/loadandperf",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "release": [
+          "Jasper"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,

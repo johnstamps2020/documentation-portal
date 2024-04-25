@@ -18,6 +18,11 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20232rn',
         },
         {
+          label: 'Release Video',
+          url: 'https://youtu.be/vR9tas-bUhg',
+          videoIcon: true
+        },
+        {
           label: 'Studio Release Notes',
           docId: 'in20232studiorn',
         },

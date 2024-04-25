@@ -1,0 +1,38 @@
+{
+  "name": "@doctools/docusaurus-security",
+  "version": "1.0.22",
+  "description": "Guidewire plugin with security features",
+  "main": "lib/index.js",
+  "author": "doctools@gudiewire.com",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "jsdom": "^24.0.0"
+  },
+  "scripts": {
+    "babel": "cross-env babel src -d lib --extensions \".jsx,.js,.tsx,.ts\" --copy-files",
+    "dev": "yarn babel --watch",
+    "build": "yarn babel"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.guidewire.com/api/npm/doctools-npm-dev/"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.24.1",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/node": "^20.12.7",
+    "cross-env": "^7.0.3"
+  },
+  "peerDependencies": {
+    "@docusaurus/core": "^3.1.0",
+    "@docusaurus/module-type-aliases": "^3.1.0",
+    "@docusaurus/preset-classic": "^3.1.0",
+    "@docusaurus/types": "^3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

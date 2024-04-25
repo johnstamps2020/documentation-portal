@@ -1,139 +1,131 @@
 {
-  "docHighlighter.tooltip": {
-    "message": "Attiva/disattiva evidenziazione per le frasi di ricerca",
-    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off. This is the tooltip for the button"
+  "docHighlighter.tooltip" : {
+    "message" : "Attiva/disattiva evidenziazione per le frasi di ricerca"
   },
-  "docHighlighter.label": {
-    "message": "attiva/disattiva evidenziazioni",
-    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
+  "docHighlighter.label" : {
+    "message" : "attiva/disattiva evidenziazioni"
   },
-  "anonymous.positive": {
-    "message": "Sei un utente anonimo,",
-    "description": "Tells the user their identity is not revealed to us"
+  "anonymous.positive" : {
+    "message" : "Sei un utente anonimo,"
   },
-  "anonymous.shareEmail": {
-    "message": "fai clic qui per condividere la tua e-mail con noi",
-    "description": "The button which the user can click to reveal their email to us"
+  "anonymous.shareEmail" : {
+    "message" : "fai clic qui per condividere la tua e-mail con noi"
   },
-  "anonymous.enterEmail": {
-    "message": "Inserisci il tuo indirizzo e-mail,",
-    "description": "Asks the user to type in their email address"
+  "anonymous.enterEmail" : {
+    "message" : "Inserisci il tuo indirizzo e-mail,"
   },
-  "anonymous.becomeAnonymous": {
-    "message": "fai clic qui per rimanere anonimo"
+  "anonymous.becomeAnonymous" : {
+    "message" : "fai clic qui per rimanere anonimo"
   },
-  "privacy.warning": {
-    "message": "Fornendo il tuo indirizzo e-mail, autorizzi Guidewire a contattarti."
+  "privacy.warning" : {
+    "message" : "Fornendo il tuo indirizzo e-mail, autorizzi Guidewire a contattarti."
   },
-  "privacy.link": {
-    "message": "L'informativa sulla privacy di Guidewire è disponibile qui."
+  "privacy.link" : {
+    "message" : "L'informativa sulla privacy di Guidewire è disponibile qui."
   },
-  "rightWrong.positiveTitle": {
-    "message": "Da fare"
+  "rightWrong.positiveTitle" : {
+    "message" : "Da fare"
   },
-  "theme.rightWrong.negativeTitle": {
-    "message": "Da non fare"
+  "theme.rightWrong.negativeTitle" : {
+    "message" : "Da non fare"
   },
-  "anonymous.youAreSharing": {
-    "message": "Stai condividendo la tua e-mail con noi,",
-    "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
+  "anonymous.youAreSharing" : {
+    "message" : "Stai condividendo la tua e-mail con noi,"
   },
-  "feedback.helpful": {
-    "message": "Questa pagina è stata utile?"
+  "feedback.helpful" : {
+    "message" : "Questa pagina è stata utile?"
   },
-  "feedback.thumbsUp": {
-    "message": "Questa pagina è stata utile",
-    "description": "The description of the \"thumbs up\" icon which the user can click to share positive feedback"
+  "feedback.thumbsUp" : {
+    "message" : "Questa pagina è stata utile"
   },
-  "feedback.thumbsDown": {
-    "message": "Questa pagina deve essere migliorata",
-    "description": "The description of the \"thumbs thumbs\" icon which the user can click to share constructive feedback"
+  "feedback.thumbsDown" : {
+    "message" : "Questa pagina deve essere migliorata"
   },
-  "feedbackDialog.thanks": {
-    "message": "Grazie!",
-    "description": "Appears ot thank the user for their feedback"
+  "feedbackDialog.thanks" : {
+    "message" : "Grazie!"
   },
-  "feedbackDialog.followUp": {
-    "message": "Un membro del nostro team responsabile della documentazione esaminerà il tuo feedback. Se hai inserito il tuo indirizzo e-mail, potremmo contattarti nel caso avessimo bisogno di ulteriori informazioni.",
-    "description": "Explains how the support team will react to user feedback"
+  "feedbackDialog.followUp" : {
+    "message" : "Un membro del nostro team responsabile della documentazione esaminerà il tuo feedback. Se hai inserito il tuo indirizzo e-mail, potremmo contattarti nel caso avessimo bisogno di ulteriori informazioni."
   },
-  "feedbackDialog.anythingElse": {
-    "message": "Grazie, abbiamo registrato il tuo voto. Ha qualcos'altro da dirci?",
-    "description": "Appears above the feedback form"
+  "feedbackDialog.anythingElse" : {
+    "message" : "Grazie, abbiamo registrato il tuo voto. Vuoi dirci qualcos'altro?"
   },
-  "feedbackDialog.comment": {
-    "message": "Il tuo commento"
+  "feedbackDialog.comment" : {
+    "message" : "Il tuo commento"
   },
-  "feedbackDialog.email": {
-    "message": "Il tuo indirizzo e-mail"
+  "feedbackDialog.email" : {
+    "message" : "Il tuo indirizzo e-mail"
   },
-  "feedbackDialog.clearEmail": {
-    "message": "Cancella indirizzo e-mail"
+  "feedbackDialog.clearEmail" : {
+    "message" : "Cancella indirizzo e-mail"
   },
-  "feedbackDialog.validEmail": {
-    "message": "Specifica un indirizzo e-mail valido",
-    "description": "Appears under the email field asking the user to provide an email address which contains all the elements of an email address, such as the @ symbol and a domain"
+  "feedbackDialog.validEmail" : {
+    "message" : "Specifica un indirizzo e-mail valido"
   },
-  "feedbackDialog.cancel": {
-    "message": "Annulla",
-    "description": "Cancel and do not send your feedback"
+  "feedbackDialog.cancel" : {
+    "message" : "Annulla"
   },
-  "feedbackDialog.submit": {
-    "message": "Invia",
-    "description": "Send your feedback, submit your feedback to us"
+  "feedbackDialog.submit" : {
+    "message" : "Invia"
   },
-  "internal.employeesOnly": {
-    "message": "Questo contenuto è disponibile solo per i dipendenti di Guidewire"
+  "internal.employeesOnly" : {
+    "message" : "Questo contenuto è disponibile solo per i dipendenti di Guidewire"
   },
-  "internal.info.toView": {
-    "message": "Per visualizzare questa pagina, devi accedere con il tuo account di dipendente Guidewire. Se hai bisogno di ulteriore assistenza, contatta il tuo referente Guidewire."
+  "internal.info.toView" : {
+    "message" : "Per visualizzare questa pagina, devi accedere con il tuo account di dipendente Guidewire. Se hai bisogno di ulteriore assistenza, contatta il tuo referente Guidewire."
   },
-  "internal.label": {
-    "message": "Questo contenuto è solo per uso interno ed è disponibile esclusivamente per i dipendenti di Guidewire."
+  "internal.label" : {
+    "message" : "Questo contenuto è solo per uso interno ed è disponibile esclusivamente per i dipendenti di Guidewire."
   },
-  "loginButton.out": {
-    "message": "Esci"
+  "loginButton.out" : {
+    "message" : "Esci"
   },
-  "loginButton.in": {
-    "message": "Accedi"
+  "loginButton.in" : {
+    "message" : "Accedi"
   },
-  "transcriptDownloadLink.label": {
-    "message": "Scarica trascrizione"
+  "transcriptDownloadLink.label" : {
+    "message" : "Scarica trascrizione"
   },
-  "theme.common.skipToMainContent": {
-    "message": "Vai al contenuto principale",
-    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  "theme.common.skipToMainContent" : {
+    "message" : "Vai al contenuto principale"
   },
-  "theme.tags.tagsPageTitle": {
-    "message": "Tag",
-    "description": "The title of the tag list page"
+  "theme.tags.tagsPageTitle" : {
+    "message" : "Tag"
   },
-  "gwSearchForm.placeholder": {
-    "message": "Cerca",
-    "description": "Text which appears in the search box, placeholder"
+  "gwSearchForm.placeholder" : {
+    "message" : "Cerca"
   },
-  "miniToc.heading": {
-    "message": "In questa pagina",
-    "description": "Appears at the top of a list of links heading which the user can see on the page. Each item on the list is a link."
+  "miniToc.heading" : {
+    "message" : "In questa pagina"
   },
-  "collapsible.title": {
-    "message": "Espandi",
-    "description": "Describes an accordion that contains \"more content\" or \"additional information\""
+  "collapsible.title" : {
+    "message" : "Espandi"
   },
-  "footer.published": {
-    "message": "Pubblicato:",
-    "description": "Text preceding the date on which the page was published"
+  "footer.published" : {
+    "message" : "Pubblicato:"
   },
-  "chat.default-title": {
-    "message": "Let's chat",
-    "description": "The title of the chat window"
+  "nav.scrollToTop" : {
+    "message" : "Torna all'inizio"
   },
-  "chat.send": {
-    "message": "Send",
-    "description": "The label for the button which the user clicks to send a chat message"
+  "navbar.nextTopic" : {
+    "message" : "Argomento successivo"
   },
-  "chat.answer": {
-    "message": "Answer",
-    "description": "The chatbot responds to a question. This is the label that indicates that the following text is the chatbot's answer"
+  "navbar.prevTopic" : {
+    "message" : "Argomento precedente"
+  },
+  "navbar.noNextOrPrevTopic" : {
+    "message" : "Nessuno"
+  },
+  "navbar.printThisPage" : {
+    "message" : "Stampa questa pagina"
+  },
+  "chat.default-title" : {
+    "message" : "Facciamo due chiacchiere"
+  },
+  "chat.send" : {
+    "message" : "Invia"
+  },
+  "chat.answer" : {
+    "message" : "Risposta"
   }
 }

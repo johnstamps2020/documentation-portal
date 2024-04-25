@@ -1,0 +1,152 @@
+---
+sidebar_position: 1
+---
+
+# Getting started
+
+Deploying to docs.guidewire.com provides the following benefits:
+
+import Benefits from '@site/docs/_benefits.mdx';
+
+<Benefits />
+
+Not convinced? Look at [deploying to Atmos](./deploy-to-atmos.mdx) without using
+a Guidewire theme. You can still use the Redoc plugin.
+
+## Install required tools
+
+### Node.js
+
+Node.js version 18.0 or above is required. Your current version of Node.js can
+be checked by running `node -v`. If this is your first time using Node.js, you
+can install it from [Node.js official website](https://nodejs.org/en/download/).
+
+### Yarn 3
+
+Builds for docs.guidewire.com use Yarn 3. Follow the steps below to set up Yarn
+on your machine.
+
+1. If you don't have Yarn, install it by following instructions in the
+   [official documentation](https://yarnpkg.com/getting-started/install).
+2. Set Yarn to version 3.
+
+   ```bash
+   yarn set version 3.6.4
+   ```
+
+   This adds the `.yarn` folder and `.yarnrc.yml` file to your repo.
+
+3. Add the recommended files to `.gitignore`:
+
+   ```git title=".gitignore"
+   .pnp.*
+   .yarn/*
+   !.yarn/patches
+   !.yarn/plugins
+   !.yarn/releases
+   !.yarn/sdks
+   !.yarn/versions
+   ```
+
+4. In your `.yarnrc.yml` file, after `yarnPath: .yarn/releases/yarn-3.X.X.cjs`,
+   add:
+
+   ```js yaml title=".yarnrc.yml"
+   nodeLinker: node-modules
+   npmAlwaysAuth: true
+   npmAuthToken: ${NPM_AUTH_TOKEN}
+   npmScopes:
+     doctools:
+       npmRegistryServer: https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
+   ```
+
+5. If you have a `yarn.lock` generated with a previous version of Yarn, **delete
+   it**.
+6. Run `yarn` to install dependencies and update `yarn.lock`.
+
+## Set up access to the @doctools scope in Artifactory (first time only)
+
+import Artifactory from './_set-up-artifactory.mdx';
+
+<Artifactory />
+
+## Create a new Docusaurus site
+
+Run this command to create a Docusaurus site:
+
+```bash
+yarn create docusaurus
+```
+
+If you want to read more about creating Docusaurus sites, look at
+[the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
+
+> :warning: Default package manager suggested by Docusaurus is `npx`. Do not run
+> commands in `npx` or `npm` since it can cause problems later on. Stick to the
+> `yarn` command provided above.
+
+## Configure your project
+
+### trailingSlash
+
+import { RightWrong, Right, Wrong } from '@theme/RightWrong';
+
+<RightWrong>
+<Right>
+
+```js title="docusaurus.config.js"
+trailingSlash: true,
+```
+
+</Right>
+<Wrong>
+
+```js title="docusaurus.config.js"
+trailingSlash: false,
+```
+
+</Wrong>
+</RightWrong>
+
+Do not use this setting when posting to docs.guidewire.com. It breaks S3 file
+hosting. Leave `trailingSlash` undefined, or set it to `true`. If
+`trailingSlash` is not defined in your settings, there is no need to add it, as
+it defaults to `true`.
+
+### Add Guidewire theme/plugin
+
+- [See set up instructions for the theme](./Themes/Classic/set-up-theme.mdx).
+- [See set up instructions for the plugin](./Plugins/Redoc/set-up-plugin.mdx).
+
+## Extend your build pipeline
+
+Deployments to docs.guidewire.com run the following commands:
+
+```sh
+yarn
+yarn build
+```
+
+And then they upload the generated files to an S3 bucket.
+
+If you want your site to perform complex steps before publishing, for example
+fetch data from an API or build docs from code, we suggest you follow one of
+these approaches:
+
+- Add steps to the build command. This means your custom steps run every time
+  the site is built. For example:
+  ```json title="package.json"
+  "my-build": "node someScript.js && python some_program.py",
+  "build": "yarn my-build && docusaurus build",
+  ```
+- Maintain your own pipeline of Teamcity builds which generate docs and commit
+  them into your documentation repo. You control when each build is run, for
+  example on release, or on various triggers from different repos.
+
+## Request deployment builds
+
+Contact the ContentOps team for assistance:
+
+import ContactInfo from '@site/docs/_contact-info.mdx';
+
+<ContactInfo />

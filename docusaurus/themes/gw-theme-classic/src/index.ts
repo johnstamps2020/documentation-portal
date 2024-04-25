@@ -1,11 +1,15 @@
-import type { LoadContext, Plugin } from '@docusaurus/types';
 import type { PluginOptions } from '@docusaurus/theme-classic';
 import type { ThemeConfig } from '@docusaurus/theme-common';
-import { resolve } from 'path';
+import type {
+  LoadContext,
+  Plugin,
+  TranslationFileContent,
+} from '@docusaurus/types';
+import { readFileSync, readdirSync, statSync } from 'fs';
+import { extname, relative, resolve } from 'path';
 import { PluginData } from './types';
 import { PLUGIN_NAME } from './types/constants';
-import type { TranslationFileContent } from '@docusaurus/types';
-import { readFileSync } from 'fs';
+const matter = require('gray-matter');
 
 export function readJsonFile(fileName: string): { [id: string]: string } {
   const translationData: TranslationFileContent = JSON.parse(
@@ -36,21 +40,58 @@ const siteMetadata = {
   appBaseUrl: getAppBaseUrl(),
 };
 
-export default async function (
-  context: LoadContext,
-  options: PluginOptions
-): Promise<Plugin<undefined>> {
-  const {
-    i18n: { currentLocale },
-  } = context;
+type PluginContent = {
+  internalDocIds: string[];
+};
 
-  const themeConfig = context.siteConfig.themeConfig as ThemeConfig;
-  if (themeConfig?.colorMode) {
-    (themeConfig.colorMode.disableSwitch = true),
-      (themeConfig.colorMode.defaultMode = 'light'),
-      (themeConfig.colorMode.respectPrefersColorScheme = false);
+function getAllFilesRecursively(rootDir: string): string[] {
+  const filesAndFolders = readdirSync(rootDir);
+  return filesAndFolders
+    .map((fileOrFolder) => {
+      const absolutePath = resolve(rootDir, fileOrFolder);
+      if (statSync(absolutePath).isDirectory()) {
+        return getAllFilesRecursively(absolutePath);
+      }
+
+      return absolutePath;
+    })
+    .flat();
+}
+
+function getInternalDocIds(docsDir: string): PluginContent['internalDocIds'] {
+  try {
+    const allDocFiles = getAllFilesRecursively(docsDir).filter((filePath) =>
+      ['.md', '.mdx'].includes(extname(filePath))
+    );
+
+    const internalDocIds = [];
+    for (const docFilePath of allDocFiles) {
+      const fileContents = readFileSync(docFilePath, 'utf-8');
+      const frontMatter = matter(fileContents).data;
+      if (!frontMatter) {
+        continue;
+      }
+
+      const isInternal = frontMatter.internal === true;
+      if (isInternal) {
+        const removeExtensionRegExp = new RegExp(`${extname(docFilePath)}$`);
+        const docId =
+          frontMatter.id ||
+          relative(docsDir, docFilePath).replace(removeExtensionRegExp, '');
+        internalDocIds.push(docId);
+      }
+    }
+
+    return internalDocIds;
+  } catch (e) {
+    console.error(e);
+    return [];
   }
+}
 
+export default async function (
+  context: LoadContext
+): Promise<Plugin<PluginContent>> {
   return {
     name: PLUGIN_NAME,
 
@@ -62,19 +103,16 @@ export default async function (
       return resolve(__dirname, '../src/theme');
     },
 
-    async contentLoaded({ actions, allContent }) {
-      const defaultContent: any =
-        allContent['docusaurus-plugin-content-docs'].default;
-      const topVersionContent = defaultContent.loadedVersions[0];
+    async loadContent() {
+      const internalDocIds = getInternalDocIds(
+        resolve(context.siteDir, 'docs')
+      );
+      return { internalDocIds };
+    },
 
-      // get internal docs
-      const docs = topVersionContent.docs;
-      const internalDocIds = docs
-        .map((d) => d.frontMatter.internal && d.unversionedId)
-        .filter(Boolean);
-
+    async contentLoaded({ actions, content }) {
       const pluginData: PluginData = {
-        internalDocIds,
+        internalDocIds: content.internalDocIds,
         ...siteMetadata,
       };
       const { setGlobalData } = actions;

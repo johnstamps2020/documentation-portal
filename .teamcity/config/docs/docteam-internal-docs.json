@@ -7,7 +7,8 @@
       "url": "docguide",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "DocTools"
@@ -32,7 +33,8 @@
       "url": "doctools/admin",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "DocTools"
@@ -57,7 +59,8 @@
       "url": "elementrendering",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "DocTools"
@@ -82,7 +85,8 @@
       "url": "docusaurus/guidewire/latest",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "DocTools"
@@ -99,7 +103,8 @@
       "indexForSearch": true,
       "earlyAccess": false,
       "internal": false,
-      "public": true
+      "public": true,
+      "ignorePublicPropertyAndUseVariants": true
     },
     {
       "id": "learningindita",
@@ -107,7 +112,8 @@
       "url": "learning-in-dita",
       "metadata": {
         "platform": [
-          "Cloud"
+          "Cloud",
+          "Self-managed"
         ],
         "product": [
           "DocTools"

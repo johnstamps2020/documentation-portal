@@ -12,13 +12,24 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "subject": ["Features and functionality"],
-        "release": ["Jasper"],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -36,13 +47,24 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "subject": ["Features and functionality"],
-        "release": ["Jasper"],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "release": [
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -60,13 +82,24 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "subject": ["Development"],
-        "release": ["Jasper"],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -84,13 +117,24 @@
           "PolicyCenter",
           "Global Content"
         ],
-        "platform": ["Cloud"],
-        "version": ["2024.02"],
-        "subject": ["Release notes"],
-        "release": ["Jasper"],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "release": [
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

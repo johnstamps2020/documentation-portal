@@ -6,14 +6,28 @@
       "title": "Analytics Manager",
       "url": "amst/latest/analyticsmanager",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -25,14 +39,27 @@
       "title": "AMST CC Counter Fraud",
       "url": "amst/latest/cccounterfraud",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,14 +71,27 @@
       "title": "AMST CC Customer Satisfaction",
       "url": "amst/latest/cccustomersatisfaction",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -63,14 +103,27 @@
       "title": "AMST CC Incident Damage",
       "url": "amst/latest/ccincidentdamage",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,14 +135,27 @@
       "title": "AMST CC Litigation",
       "url": "amst/latest/cclitigation",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -101,14 +167,27 @@
       "title": "AMST CC Segmentation",
       "url": "amst/latest/ccsegmentation",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -120,14 +199,27 @@
       "title": "AMST CC Severity Escalation",
       "url": "amst/latest/ccseverityescalation",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -139,14 +231,27 @@
       "title": "AMST CC Subrogation",
       "url": "amst/latest/ccsubrogation",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -158,14 +263,27 @@
       "title": "AMST CC Weather Alert",
       "url": "amst/latest/ccweatheralert",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -177,14 +295,27 @@
       "title": "AMST PC Automated Rate Adjustment",
       "url": "amst/latest/pcautomatedrateadjustment",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -196,14 +327,27 @@
       "title": "AMST PC Cyber Risk",
       "url": "amst/latest/pccyberrisk",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -215,14 +359,27 @@
       "title": "AMST PC HazardHub Casualty",
       "url": "amst/latest/pchazardhubcasualty",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -234,14 +391,27 @@
       "title": "AMST PC HazardHub Property",
       "url": "amst/latest/pchazardhubproperty",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -253,14 +423,27 @@
       "title": "AMST PC SMB Cyber Risk",
       "url": "amst/latest/pcsmbcyberrisk",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -272,14 +455,27 @@
       "title": "AMST PC Submission Prioritization",
       "url": "amst/latest/pcsubmissionprioritization",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -291,14 +487,27 @@
       "title": "AMST PC Underwriter Experience",
       "url": "amst/latest/pcunderwriterexperience",
       "metadata": {
-        "product": ["Analytics Manager Solution Templates"],
-        "platform": ["Cloud"],
-        "release": ["Innsbruck"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "product": [
+          "Analytics Manager Solution Templates"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Innsbruck",
+          "Jasper"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": [
+        "staging"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

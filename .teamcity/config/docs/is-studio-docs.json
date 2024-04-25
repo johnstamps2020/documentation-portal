@@ -6,14 +6,34 @@
       "title": "Studio Release Notes",
       "url": "studio/latest/releasenotes",
       "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2023.06", "2023.10"],
-        "subject": ["Installation"],
-        "release": ["Hakuba", "Innsbruck"],
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2023.06",
+          "2023.10",
+          "2024.02"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "release": [
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

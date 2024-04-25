@@ -22,7 +22,7 @@
           "2024.1"
         ],
         "release": [
-          "Innsbruck"
+          "Jasper"
         ],
         "subject": [
           "Release notes"
@@ -30,7 +30,8 @@
         "language": "en"
       },
       "environments": [
-        "staging"
+        "staging",
+        "prod"
       ],
       "indexForSearch": true,
       "public": false,

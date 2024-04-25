@@ -28,6 +28,15 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Release Video',
+          docId: 'in20241rn',
+          pathInDoc: '?contextid=core_release_notes',
+          videoIcon: true,
+          description: (
+            <>Watch a video that describes and demonstrates new features.</>
+          )
+        },
+        {
           label: 'Studio Release Notes',
           docId: 'in20241studiorn',
           description: (

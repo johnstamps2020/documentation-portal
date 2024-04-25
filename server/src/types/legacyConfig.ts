@@ -64,6 +64,7 @@ export type LegacyDocConfig = {
   displayOnLandingPages: boolean;
   indexForSearch: boolean;
   public: boolean;
+  ignorePublicPropertyAndUseVariants?: boolean;
   internal: boolean;
   earlyAccess: boolean;
 };

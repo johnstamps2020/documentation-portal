@@ -191,13 +191,19 @@
       "id": "srcjutrosdkinnsbruck",
       "title": "Jutro SDK Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
-      "branch": "release/innsbruck"
+      "branch": "release/50.9"
     },
     {
       "id": "srcjutrosdkjasper",
       "title": "Jutro SDK Jasper",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
-      "branch": "release/jasper"
+      "branch": "release/50.10"
+    },
+    {
+      "id": "srcjutrosdkkufri",
+      "title": "Jutro SDK Kufri",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "release/50.11"
     },
     {
       "id": "srcjutrosbbizpatterns652",
@@ -440,6 +446,12 @@
       "branch": "release/10.0.0"
     },
     {
+      "id": "srcjutro1003",
+      "title": "Jutro Digital Platform 10.0.3",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/10.0.3"
+    },
+    {
       "id": "srcjutro1010",
       "title": "Jutro Digital Platform 10.1",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
@@ -468,6 +480,12 @@
       "title": "Jutro Digital Platform 10.5",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/10.5.0"
+    },
+    {
+      "id": "srcjutro1060",
+      "title": "Jutro Digital Platform 10.6",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/10.6.0"
     },
     {
       "id": "srcjutroa11yapp",

@@ -18,10 +18,10 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: 'データマスク',
+      label: 'データマスキング',
       items: [
         {
-            label: 'データマスク',
+            label: 'データマスキング',
             docId: 'datamaskingjaJP'
         }
       ],

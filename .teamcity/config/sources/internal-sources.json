@@ -84,6 +84,24 @@
       "title": "Golden Image",
       "gitUrl": "ssh://git@stash.guidewire.com/re/cnb-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "solarissrc",
+      "title": "Solaris",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/solaris-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "appeventssrc",
+      "title": "AppEvents",
+      "gitUrl": "ssh://git@stash.guidewire.com/mde/appevents-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "insuranceplatformoperatorsrc",
+      "title": "InsurancePlatform Operator",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/insuranceplatform-operator-docs.git",
+      "branch": "master"
     }
   ]
 }

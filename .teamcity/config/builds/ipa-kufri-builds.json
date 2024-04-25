@@ -1,0 +1,50 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAReleaseNotes.ditamap",
+      "srcId": "ipakufrisrc",
+      "docId": "ipakufrirn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAConfigurationGuide.ditamap",
+      "srcId": "ipakufrisrc",
+      "docId": "ipakufriconfig",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAApplicationGuide.ditamap",
+      "srcId": "ipakufrisrc",
+      "docId": "ipakufriapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAUpgradeGuide.ditamap",
+      "srcId": "ipakufrisrc",
+      "docId": "ipakufriupgrade",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAInstallGuide.ditamap",
+      "srcId": "ipakufrisrc",
+      "docId": "ipakufriinstall",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

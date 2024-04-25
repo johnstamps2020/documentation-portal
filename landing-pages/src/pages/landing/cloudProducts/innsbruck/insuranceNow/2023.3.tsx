@@ -19,7 +19,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Release Video',
-          url: 'https://youtu.be/mss398Z1vY4',
+          url: 'https://www.youtube.com/watch?v=mss398Z1vY4',
           videoIcon: true,
         },
         {

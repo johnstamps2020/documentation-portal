@@ -1,0 +1,41 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJReleaseNotes.ditamap",
+      "srcId": "ipjkufrisrc",
+      "docId": "ipjkufrirn",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJConfigurationGuide.ditamap",
+      "srcId": "ipjkufrisrc",
+      "docId": "ipjkufriconfig",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJApplicationGuide.ditamap",
+      "srcId": "ipjkufrisrc",
+      "docId": "ipjkufriapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJInstallationGuide.ditamap",
+      "srcId": "ipjkufrisrc",
+      "docId": "ipjkufriinstall",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

@@ -6,22 +6,32 @@
       "title": "Explore",
       "url": "cloud/explore/app",
       "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Explore"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
         "release": [
-          "Cortina",
-          "Dobson",
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck"
+          "Innsbruck",
+          "Jasper"
         ],
         "language": "en"
       },
-      "environments": ["staging", "prod"],
+      "environments": [
+        "staging",
+        "prod"
+      ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

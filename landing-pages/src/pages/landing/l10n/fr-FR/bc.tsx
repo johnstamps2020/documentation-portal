@@ -34,6 +34,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.10 (Innsbruck)',
       items: [
         {
+          label: "BillingCenter - Guide de l'application",
+          docId: 'isbc202310frFRapp',
+        },
+        {
           label: 'BillingCenter - Notes de version',
           docId: 'isbc202310frFRreleasenotes',
         },
