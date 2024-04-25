@@ -5,12 +5,12 @@
       "id": "isconfigupgradetools520deDE",
       "title": "InsuranceSuite Configuration Upgrade Tools de",
       "displayTitle": "InsuranceSuite-Konfigurationsupgrade​-Tools",
-      "url": "de/isconfigupgradetools/510",
+      "url": "de/isconfigupgradetools/520",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": ["5.1.0"],
-				"release": ["Hakuba", "Innsbruck"],
+        "version": [ "5.2.0" ],
+        "release": [ "Hakuba", "Innsbruck", "jasper" ],
         "subject": ["Upgrade"],
         "language": "de"
       },
