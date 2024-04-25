@@ -29,7 +29,7 @@
       "id": "isunversionedjaJPsrc",
       "title": "InsuranceSuite Upgrade Compatibility ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/is-upgrade-compatibility.git",
-      "branch": "release/ja-JP/innsbruck"
+      "branch": "release/ja-JP/latest"
     },
     {
       "id": "testingframeworks202310jaJPsrc",
