@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import { saveAs } from 'file-saver';
-import { useDeltaDocContext } from './DeltaDocContext';
+import { resultsPerPageValue, useDeltaDocContext } from './DeltaDocContext';
 
 export default function DeltaDocHtmlReportGenerator() {
   const {
@@ -10,7 +9,8 @@ export default function DeltaDocHtmlReportGenerator() {
     url,
     deltaDocData,
     setResultsPerPage,
-    handleChange,
+    resultsPerPage,
+    changePage,
   } = useDeltaDocContext();
 
   if (!deltaDocData) {
@@ -53,14 +53,19 @@ export default function DeltaDocHtmlReportGenerator() {
     saveAs(blob, `${releaseA}-${releaseB}-${url}-report.html`);
   }
   const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+  const allResultsLength = deltaDocData.results.length;
   return (
     <Button
       onClick={async () => {
-        handleChange(1);
-        setResultsPerPage(deltaDocData.results.length);
-        await delay(500);
-        exportReport();
-        setResultsPerPage(9);
+        if (resultsPerPage !== allResultsLength) {
+          changePage(1);
+          setResultsPerPage(allResultsLength);
+          await delay(500);
+          exportReport();
+          setResultsPerPage(resultsPerPageValue);
+        } else {
+          exportReport();
+        }
       }}
     >
       Download report in HTML
