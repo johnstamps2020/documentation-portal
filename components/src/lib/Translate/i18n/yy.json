@@ -83,6 +83,9 @@
   "loginButton.in" : {
     "message" : "[2fDbgs_Log in]"
   },
+  "loginDrawer.go" : {
+    "message" : "[3ocVGQ_Go to the login page]"
+  },
   "transcriptDownloadLink.label" : {
     "message" : "[3XIDky_Download transcript]"
   },
@@ -127,5 +130,8 @@
   },
   "chat.answer" : {
     "message" : "[2IEZsY_Answer]"
+  },
+  "login.gwEmployeeHint" : {
+    "message" : "[U2AXx_Guidewire employee? Log in using the Guidewire Cloud option above.]"
   }
 }
