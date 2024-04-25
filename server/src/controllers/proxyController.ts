@@ -162,7 +162,7 @@ async function getResourcesStatusForPreviewEntity(
     requestedPath,
     res
   );
-  if (accessToEntity[0] === 200) {
+  if (accessToEntity[0] !== 100) {
     return accessToEntity;
   }
 
