@@ -19,8 +19,16 @@ export function useAdminLinks(): AdminLinks {
     return { adminLinks: [] };
   }
 
-  if (isUserInfoLoading || isUserInfoError || !userInfo?.isAdmin) {
+  if (
+    isUserInfoLoading ||
+    isUserInfoError ||
+    (!userInfo?.isAdmin && !userInfo?.isPowerUser)
+  ) {
     return { adminLinks: [] };
+  }
+
+  if (userInfo.isPowerUser && !userInfo.isAdmin) {
+    return { adminLinks: [{ href: '/delta-doc', label: 'Delta tool' }] };
   }
 
   return {
@@ -28,6 +36,10 @@ export function useAdminLinks(): AdminLinks {
       {
         href: '/admin-panel/page',
         label: 'Admin panel',
+      },
+      {
+        href: '/delta-doc',
+        label: 'Delta tool',
       },
     ],
   };
