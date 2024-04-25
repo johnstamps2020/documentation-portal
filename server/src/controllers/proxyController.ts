@@ -78,12 +78,13 @@ async function getResourceStatusForEntityWithVariants(
   );
 
   if (requestedPath !== cleanedRequestedPath) {
-    requstedPathNeedsTrailingSlash
-      ? res.redirect(`${cleanedRequestedPath}/`)
-      : res.redirect(cleanedRequestedPath);
+    if (requstedPathNeedsTrailingSlash) {
+      return [307, `${cleanedRequestedPath}/`];
+    }
+    return [307, cleanedRequestedPath];
   }
   if (requstedPathNeedsTrailingSlash) {
-    res.redirect(`${cleanedRequestedPath}/`);
+    return [307, `${cleanedRequestedPath}/`];
   }
   const hasAccessToRestrictedDoc = isUserAllowedToAccessResource(
     res,
