@@ -20,10 +20,10 @@
       "branch": "release/de-DE/2024.02.0"
     },
     {
-      "id": "isconfigupgradetools510deDEsrc",
-      "title": "InsuranceSuite Configuration Upgrade Tools 5.1.0 de",
+      "id": "isconfigupgradetools520deDEsrc",
+      "title": "InsuranceSuite Configuration Upgrade Tools 5.2.0 de",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
-      "branch": "release/de-DE/5.1.0"
+      "branch": "release/de-DE/5.2.0"
     },
     {
       "id": "whatsnewjasperdeDEsrc",

@@ -2,17 +2,17 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
-      "id": "isconfigupgradetools510frFR",
-      "title": "InsuranceSuite Configuration Upgrade Tools fr",
-      "displayTitle": "Guide des outils de mise à niveau de la configuration",
-      "url": "fr/isconfigupgradetools/510",
+      "id": "isconfigupgradetools520jaJP",
+      "title": "InsuranceSuite Configuration Upgrade Tools ja",
+      "displayTitle": "InsuranceSuite Configuration Upgrade Tools ガイド",
+      "url": "ja/isconfigupgradetools/520",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": ["5.1.0"],
-				"release": ["Hakuba", "Innsbruck"],
+        "version": [ "5.2.0" ],
+        "release": [ "Hakuba", "Innsbruck", "Jasper" ],
         "subject": ["Upgrade"],
-        "language": "fr"
+        "language": "ja"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
