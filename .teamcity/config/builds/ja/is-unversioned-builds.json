@@ -1,0 +1,14 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ISUpgradeCompatibility.ditamap",
+      "srcId": "isunversionedjaJPsrc",
+      "docId": "isjaJPupgradecompatibility",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}
