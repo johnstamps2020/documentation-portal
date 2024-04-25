@@ -28,6 +28,33 @@ type AvatarProviderProps = {
   children: React.ReactNode;
 };
 
+function handleLinks(userInfo: UserInformation, isProd: boolean) {
+  if (isProd) {
+    return { userLinks: [] };
+  }
+
+  if (!userInfo?.isAdmin && !userInfo?.isPowerUser) {
+    return { userLinks: [] };
+  }
+
+  if (userInfo.isAdmin) {
+    return {
+      userLinks: [
+        {
+          href: '/admin-panel/page',
+          label: 'Admin panel',
+        },
+        {
+          href: '/delta-doc',
+          label: 'Delta tool',
+        },
+      ],
+    };
+  } else {
+    return { userLinks: [{ href: '/delta-doc', label: 'Delta tool' }] };
+  }
+}
+
 export function AvatarProvider({
   children,
   initialValue,
@@ -36,6 +63,7 @@ export function AvatarProvider({
     initialValue.userInfo
   );
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { userLinks } = handleLinks(initialValue.userInfo, initialValue.isProd);
 
   return (
     <AvatarContext.Provider
@@ -44,7 +72,7 @@ export function AvatarProvider({
         drawerOpen,
         setDrawerOpen,
         LinkComponent: initialValue.LinkComponent || 'a',
-        additionalLinks: initialValue.additionalLinks || [],
+        additionalLinks: userLinks,
       }}
     >
       {children}

@@ -4,6 +4,8 @@ export type UserInformation = {
   preferred_username: string;
   name: string;
   error?: any;
+  isAdmin?: boolean;
+  isPowerUser: boolean;
 };
 
 export type SearchMeta = {
