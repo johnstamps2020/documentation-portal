@@ -30,8 +30,11 @@ header {
 }
 
 #headerCenter {
-  flex-grow: 0;
+  flex-grow: 1;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #headerRight {
