@@ -23,7 +23,6 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import SearchPage from 'pages/SearchPage/SearchPage';
 import SupportPage from 'pages/SupportPage/SupportPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HeaderContextProvider } from 'components/Layout/Header/HeaderContext';
 
 const router = createBrowserRouter([
   {

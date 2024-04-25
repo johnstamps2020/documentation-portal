@@ -21,10 +21,10 @@
   ],
   "scripts": {
     "audit:all": "yarn npm audit --all --severity high",
-    "build": "yarn build:components && yarn build:server && yarn build:landing-pages",
+    "build": "yarn build:server && yarn build:components && yarn build:landing-pages",
     "build:components": "yarn workspace @doctools/components build",
     "build:doc-site": "yarn build:docusaurus-security && yarn build:theme && yarn workspace doc-site build",
-    "build:html5": "yarn build:components && yarn workspace html5 build",
+    "build:html5": "yarn build:server && yarn build:components && yarn workspace html5 build",
     "build:html5-offline": "yarn build:components && yarn workspace html5 build-offline",
     "build:landing-pages": "yarn scripts:get-root-breadcrumbs && yarn workspace @doctools/landing-pages build",
     "build:plugin-redoc": "yarn build:components && yarn workspace @doctools/gw-plugin-redoc build",
