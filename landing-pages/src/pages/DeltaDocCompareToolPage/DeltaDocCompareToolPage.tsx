@@ -2,7 +2,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
-import AdminAccess from 'components/AdminPage/AdminAccess';
+import AccessControl from 'components/AccessControl/AccessControl';
 import { DeltaDocProvider } from 'components/DeltaDocCompareToolPage/DeltaDocContext';
 import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResultsPanel';
 import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
@@ -39,7 +39,11 @@ export default function DeltaDocCompareToolPage() {
   }, [setTitle]);
 
   return (
-    <AdminAccess pagePath={window.location.href}>
+    <AccessControl
+      pagePath={window.location.href}
+      checkAdminAccess={true}
+      checkPowerUserAccess={true}
+    >
       <DeltaDocProvider>
         <Grid
           sx={{
@@ -58,12 +62,29 @@ export default function DeltaDocCompareToolPage() {
             <Typography variant="h1" marginBottom="16px" textAlign="center">
               Compare documents between releases
             </Typography>
+            <Typography
+              variant="body1"
+              marginBottom="16px"
+              width="650px"
+              margin="auto"
+              textAlign="justify"
+            >
+              Provide root URLs to the documents that you want to compare. Each
+              URL must include the domain and the release. <br />
+              Example: If you want to compare{' '}
+              <b>ClaimCenter Application Guide</b> in <b>Garmisch</b> with{' '}
+              <b>ClaimCenter Application Guide</b> in <b>Flaine</b>, provide{' '}
+              <b>https://docs.staging.ccs.guidewire.net/cloud/cc/202302/app/</b>{' '}
+              as the URL for Garmisch and{' '}
+              <b>https://docs.staging.ccs.guidewire.net/cloud/cc/202209/app/</b>{' '}
+              as the URL for Flaine, and then select "See results". Enjoy!
+            </Typography>
             <DeltaDocUpperPanel />
             <DeltaDocStatistics />
             <DeltaDocResults />
           </Container>
         </Grid>
       </DeltaDocProvider>
-    </AdminAccess>
+    </AccessControl>
   );
 }

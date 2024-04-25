@@ -77,6 +77,7 @@ declare module '@theme/DocContext' {
     setSearchMeta: React.Dispatch<SearchMeta>;
     authors: string[];
     setAuthors: React.Dispatch<string[]>;
+    isProd: boolean;
   }
 
   export type DocContextProviderProps = {

@@ -6,6 +6,7 @@ import { RedirectResponse } from '../types/apiResponse';
 import { getEnvInfo } from './envController';
 import { winstonLogger } from './loggerController';
 import { isUserAllowedToAccessResource } from './authController';
+import { getDocByUrl, getExternalLinkByUrl } from './configController';
 
 const fetch = require('node-fetch-retry');
 
@@ -407,6 +408,19 @@ export async function getRedirectUrl(
           },
         };
       }
+    }
+    const dbEntity = await getDocByUrl(requestedPath);
+    // Check explicitly if the ignorePublicPropertyAndUseVariants property is set to True
+    // not to include any truthy values.
+    if (dbEntity?.ignorePublicPropertyAndUseVariants === true) {
+      return {
+        status: 200,
+        body: {
+          redirectStatusCode: 404,
+          redirectUrl: null,
+          message: 'Redirect URL is not supported for docs with variants',
+        },
+      };
     }
     if (requestedPath.includes('/latest')) {
       const pathExists = await s3BucketUrlExists(requestedPath);

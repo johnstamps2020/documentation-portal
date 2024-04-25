@@ -2,7 +2,7 @@ import {
   DocContextInterface,
   DocContextProviderProps,
 } from '@theme/DocContext';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const DocContext = React.createContext<DocContextInterface | null>(null);
 
@@ -18,6 +18,13 @@ export function DocContextProvider(props: DocContextProviderProps) {
   const [searchMeta, setSearchMeta] =
     useState<DocContextInterface['searchMeta']>(undefined);
   const [authors, setAuthors] = useState<DocContextInterface['authors']>([]);
+  const [isProd, setIsProd] = useState(false);
+
+  useEffect(() => {
+    if (window.location.hostname === 'docs.guidewire.com') {
+      setIsProd(true);
+    }
+  }, []);
 
   return (
     <DocContext.Provider
@@ -34,6 +41,7 @@ export function DocContextProvider(props: DocContextProviderProps) {
         setSearchMeta,
         authors,
         setAuthors,
+        isProd,
       }}
     >
       {props.children}

@@ -29,7 +29,8 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Release Video',
-          url: 'https://youtu.be/ECG0VfS2VjU',
+          docId: 'in20242rn',
+          pathInDoc: '?contextid=core_release_notes',
           videoIcon: true,
           description: (
             <>Watch a video that describes and demonstrates new features.</>
@@ -488,7 +489,7 @@ const pageConfig: ApplicationLayoutProps = {
     },
   ],
   selector: {
-    selectedItemLabel: 'Jasper (2024.1)',
+    selectedItemLabel: 'Kufri (2024.2)',
     items: allSelectors.s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1,
     labelColor: 'black',
   },

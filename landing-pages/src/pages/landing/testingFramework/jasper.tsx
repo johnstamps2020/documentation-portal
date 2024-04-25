@@ -17,82 +17,75 @@ const pageConfig: SectionLayoutProps = {
   },
   sections: [
     {
-      label: 'Release Documentation',
+      label: 'GT: Framework Release and Installation',
       items: [
         {
           label:
-            'Guidewire Testing Framework Supported Software Components (Support Matrix)',
-          docId: 'testingframeworksmatrixjasper',
+            'Supported Software Components (Support Matrix)',
+          docId: 'testing202402matrix',
         },
         {
-          label: 'Guidewire Testing Framework Release Notes',
-          docId: 'testingframeworksrnjasper',
+          label: 'Release Notes',
+          docId: 'testing202402rn',
+        },
+        {
+          label: 'Installation',
+          docId: 'testing202402frameworksinstall',
         },
       ],
     },
     {
-      label: 'Overview',
+      label: 'GT: Framework',
       items: [
         {
           label: 'Overview of GT: Framework',
           docId: 'testing202402overview',
         },
-      ],
-    },
-    {
-      label: 'Installation',
-      items: [
         {
-          label: 'Guidewire Testing Framework Installation',
-          docId: 'testingframeworksinstalljasper',
+          label: 'GT: API Testing',
+          docId: 'testing202402api',
+        },
+        {
+          label: 'GT: UI Testing',
+          docId: 'testing202402ui',
+        },
+        {
+          label: 'GT: Management',
+          docId: 'testing202402mgmt',
+        },
+        {
+          label: 'GT: Load Testing',
+          docId: 'testing202402load',
         },
       ],
     },
     {
-      label: 'Testing Practices',
+      label: 'Meeting Cloud Standards for Testing',
       items: [
         {
-          label: 'Testing Standards',
+          label: 'Testing Best Practices',
           docId: 'testing202402testingstandards',
         },
-      ],
-    },
-    {
-      label: 'Application-specific Capabilities',
-      items: [
         {
-          label: 'InsuranceSuite Testing',
-          docId: 'testing202402istesting',
-        },
-        {
-          label: 'InsuranceSuite Unit Testing',
-          docId: 'is202402testing',
-        },
-      ],
-    },
-    {
-      label: 'Test Process Capabilities',
-      items: [
-        {
-          label: 'Test Management',
-          docId: 'testingframeworksmgmtjasper',
-        },
-      ],
-    },
-    {
-      label: 'Cross-application Capabilities',
-      items: [
-        {
-          label: 'API Testing',
-          docId: 'testingframeworksapijasper',
+          label: 'Code Coverage',
+          docId: 'testing202402codecoverage',
         },
         {
           label: 'Load and Performance Testing',
-          docId: 'testingframeworksloadjasper',
+          docId: 'testing202402loadandperf',
+        },
+      ],
+    },
+    {
+      label: 'InsuranceSuite-specific Capabilities',
+      items: [
+        {
+          label: 'Configuring InsuranceSuite Apps and Data for Functional Testing',
+          docId: 'testing202402istesting',
         },
         {
-          label: 'User Interface Testing',
-          docId: 'testingframeworksuijasper',
+          label: 'Unit Testing InsuranceSuite with GUnit',
+          docId: 'testing202402isunittesting',
         },
       ],
     },

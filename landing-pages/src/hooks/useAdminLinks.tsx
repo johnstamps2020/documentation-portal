@@ -1,8 +1,7 @@
-import { HeaderMenuLinkProps } from 'components/Layout/StyledLayoutComponents';
 import { useEnvInfo, useUserInfo } from 'hooks/useApi';
 import { prodDeployEnv } from 'vars';
 
-type AdminLinks = { adminLinks: HeaderMenuLinkProps[] };
+type AdminLinks = { adminLinks: { label: string; href: string }[] };
 
 export function useAdminLinks(): AdminLinks {
   const {
@@ -28,7 +27,7 @@ export function useAdminLinks(): AdminLinks {
     adminLinks: [
       {
         href: '/admin-panel/page',
-        children: 'Admin panel',
+        label: 'Admin panel',
       },
     ],
   };

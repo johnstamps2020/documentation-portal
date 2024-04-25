@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.515.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "gray-matter": "^4.0.3"
   }
 }

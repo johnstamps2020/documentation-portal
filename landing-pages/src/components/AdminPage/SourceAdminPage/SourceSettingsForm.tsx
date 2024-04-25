@@ -1,18 +1,15 @@
-import Box from '@mui/material/Box';
+import { Source } from '@doctools/server';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
-import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
+import { useSourceData } from 'hooks/useEntitiesData';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
-import { useSourceData } from 'hooks/useEntitiesData';
-import { Source } from '@doctools/server';
+import AdminBooleanToggles from '../AdminBooleanToggles';
 
 type NewSource = Omit<Source, 'uuid'>;
 
@@ -236,36 +233,11 @@ export default function SourceSettingsForm({
         value={tmpSourceData.gitBranch}
         fullWidth
       />
-      <FormGroup>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-          }}
-        >
-          {['internal', 'public', 'earlyAccess', 'isInProduction'].map(
-            (key) => (
-              <FormControlLabel
-                disabled={editingDisabled}
-                key={key}
-                control={
-                  <Switch
-                    value={key}
-                    checked={
-                      tmpSourceData[key as keyof typeof sourceData] as boolean
-                    }
-                    onChange={(event) =>
-                      handleChange(key, event.target.checked)
-                    }
-                    inputProps={{ 'aria-label': 'controlled' }}
-                  />
-                }
-                label={key}
-              />
-            )
-          )}
-        </Box>
-      </FormGroup>
+      <AdminBooleanToggles
+        editingDisabled={editingDisabled}
+        entityProps={tmpSourceData}
+        handleChange={handleChange}
+      />
       <Stack direction="row" spacing={1}>
         <ButtonGroup disabled={disabled || !dataChanged}>
           <Button

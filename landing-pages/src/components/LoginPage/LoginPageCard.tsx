@@ -1,8 +1,7 @@
+import { LoginButtonConfig, LoginButtonForDrawer } from '@doctools/components';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import LoginButton from './LoginButton';
-import { LoginButtonConfig } from './loginOptionConfigs';
 
 type LoginPageCardProps = {
   label: string;
@@ -34,7 +33,7 @@ export default function LoginPageCard({
       <Typography>{description}</Typography>
       <Stack direction="row" spacing={1}>
         {buttons.map((button, idx) => (
-          <LoginButton {...button} key={idx} />
+          <LoginButtonForDrawer {...button} key={idx} />
         ))}
       </Stack>
     </Paper>
