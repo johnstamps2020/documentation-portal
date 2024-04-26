@@ -54,7 +54,7 @@
         "subject": [ "Features and functionality" ],
         "language": "fr"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -114,7 +114,7 @@
         "subject": [ "Features and functionality" ],
         "language": "fr"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -174,7 +174,7 @@
         "subject": [ "Features and functionality" ],
         "language": "fr"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

@@ -75,7 +75,7 @@
         "subject": ["Release notes"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": [ "staging", "prod" ],
       "indexForSearch": true,
       "public": false,
       "internal": false,
