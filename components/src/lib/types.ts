@@ -5,7 +5,7 @@ export type UserInformation = {
   name: string;
   error?: any;
   isAdmin?: boolean;
-  isPowerUser: boolean;
+  isPowerUser?: boolean;
 };
 
 export type SearchMeta = {
