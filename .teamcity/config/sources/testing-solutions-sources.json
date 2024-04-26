@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "testingframeworks202407src",
+      "title": "Testing Solutions 2024.07",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
+      "branch": "release/2024.07"
+    },
+    {
       "id": "testingframeworks202402src",
       "title": "Testing Solutions 2024.02",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",

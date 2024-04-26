@@ -1,0 +1,412 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "testing202407api",
+      "title": "GT: API Testing",
+      "url": "cloud/testing/202407/api",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407ui",
+      "title": "GT: UI Testing",
+      "url": "cloud/testing/202407/ui",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407mgmt",
+      "title": "GT: Management",
+      "url": "cloud/testing/202407/mgmt",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407rn",
+      "title": "Guidewire Testing Framework Release Notes",
+      "url": "cloud/testing/202407/releasenotes",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Release notes",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407matrix",
+      "title": "Guidewire Testing Framework Supported Software Components",
+      "url": "cloud/testing/202407/matrix",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407frameworksinstall",
+      "title": "Guidewire Testing Framework Installation",
+      "url": "cloud/testing/202407/install",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Installation",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407isunittesting",
+      "title": "Unit Testing InsuranceSuite with GUnit",
+      "url": "cloud/testing/202407/isunittesting",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407overview",
+      "title": "Overview of GT: Framework",
+      "url": "cloud/testing/202407/overview",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Features and functionality",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407testingstandards",
+      "title": "Testing Best Practices",
+      "url": "cloud/testing/202407/testingstandards",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Best practices",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407istesting",
+      "title": "Configuring InsuranceSuite Apps and Data for Functional Testing",
+      "url": "cloud/testing/202407/istesting",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407codecoverage",
+      "title": "Code Coverage",
+      "url": "cloud/testing/202407/codecoverage",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testing202407loadandperf",
+      "title": "Load and Performance Testing",
+      "url": "cloud/testing/202407/loadandperf",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
