@@ -1,9 +1,10 @@
+import ForumIcon from '@mui/icons-material/Forum';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import ForumIcon from '@mui/icons-material/Forum';
+import React from 'react';
 import { useChat } from './ChatContext';
 
-export default function ChatDebugControls() {
+export function ChatDebugControls() {
   const { loadDebugMessages } = useChat();
 
   return (

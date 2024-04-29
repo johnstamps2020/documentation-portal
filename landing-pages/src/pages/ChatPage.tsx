@@ -1,9 +1,9 @@
+import { ChatWrapper } from '@doctools/components';
+import { ChatProvider } from '@doctools/components';
 import { translate } from '@doctools/components';
 import Container from '@mui/material/Container';
 import { useLayoutContext } from 'LayoutContext';
 import AdminAccess from 'components/AccessControl/AccessControl';
-import { ChatProvider } from 'components/Chat/ChatContext';
-import ChatWrapper from 'components/Chat/ChatWrapper';
 import { useEffect } from 'react';
 
 export default function ChatPage() {

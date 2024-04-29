@@ -1,7 +1,8 @@
+import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useChat } from './ChatContext';
 
-export default function ChatLoader() {
+export function ChatLoader() {
   const { isProcessing } = useChat();
 
   if (!isProcessing) {

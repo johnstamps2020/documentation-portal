@@ -1,13 +1,14 @@
-import { translate } from '@doctools/components';
+import React from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useChat } from './ChatContext';
-import ChatDebugControls from './ChatDebugControls';
+import { ChatDebugControls } from './ChatDebugControls';
+import { translate } from '../../lib';
 
-export default function ChatInputBox() {
+export function ChatInputBox() {
   const { sendPrompt, isProcessing } = useChat();
   const [userPropmt, setUserPrompt] = useState('');
 

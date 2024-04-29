@@ -1,34 +1,13 @@
-import {
-  ChatbotRequest,
-  ChatbotResponse,
-  ChatbotDocumentMetadataFilters,
-} from '@doctools/server';
-import { createContext, useContext, useState } from 'react';
+import { ChatbotMessage, ChatbotResponse } from '@doctools/server';
+import React, { createContext, useContext, useState } from 'react';
 import { answer, question } from './chatDebug';
 
-export type ChatMessageProps = {
-  role?: 'user' | 'bot';
-  message: string;
-};
-
 interface ChatInterface {
-  messages: ChatMessageProps[];
+  messages: ChatbotMessage[];
   isProcessing: boolean;
   sendPrompt(userPrompt: string): void;
   loadDebugMessages(): void;
 }
-
-const defaultFilters: ChatbotDocumentMetadataFilters = {
-  platform: [],
-  product: [],
-  version: [],
-  release: [],
-  subject: [],
-  langauge: [],
-  internal: false,
-  public: false,
-  doc_title: '',
-};
 
 export const ChatContext = createContext<ChatInterface | null>(null);
 
@@ -42,13 +21,11 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       ...prevMessages,
       { role: 'user', message: userPropmt },
     ]);
-    const chatbotRequest: ChatbotRequest = {
-      prompt: userPropmt,
-      filters: defaultFilters,
-    };
     const response = await fetch('/chatbot', {
       method: 'POST',
-      body: JSON.stringify(chatbotRequest),
+      body: JSON.stringify({
+        text: userPropmt,
+      }),
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',

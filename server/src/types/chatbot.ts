@@ -32,16 +32,15 @@ export type ChatbotDocumentMetadataFilters = {
 };
 
 export type ChatbotRequest = {
-  prompt: string;
-  conversationId?: string;
-  conversationSoFar?: {
-    actor: 'bot' | 'user';
-    message: string;
-  }[];
-  filters: ChatbotDocumentMetadataFilters;
-};
-
-export type ChatbotSearch = {
   query: string;
-  filters: ChatbotDocumentMetadataFilters;
+  product: string;
+  platform: string;
+  version: string;
+  release: string;
+  subject: string;
+  language: string;
+  internal: boolean;
+  public: boolean;
+  doc_title: string;
+  opt_in: boolean;
 };

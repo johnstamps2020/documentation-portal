@@ -30,12 +30,14 @@ export async function createVectorFromText(
 }
 
 export async function sendChatPrompt(
-  chatbotRequest: ChatbotRequest
+  requestBody: ChatbotRequest
 ): Promise<ChatbotMessage> {
   try {
     const response = await fetch(`${chatbotUrl}/chat`, {
       method: 'POST',
-      body: JSON.stringify(chatbotRequest),
+      body: JSON.stringify({
+        requestBody,
+      }),
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',

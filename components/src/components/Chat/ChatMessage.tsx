@@ -1,32 +1,26 @@
-import { translate } from '@doctools/components';
+import { ChatbotMessage } from '@doctools/server';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useLayoutContext } from 'LayoutContext';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { ChatMessageProps } from './ChatContext';
-import ChatLoader from './ChatLoader';
+import { translate } from '../../lib';
+import { ChatLoader } from './ChatLoader';
 import './ChatMessage.css';
 
-type ChatMessageDisplayProps = ChatMessageProps & {
+type ChatMessageProps = ChatbotMessage & {
   isLast: boolean;
 };
 
-function UserMessage({ message, isLast }: ChatMessageDisplayProps) {
+function UserMessage({ message, isLast }: ChatMessageProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const { setTitle } = useLayoutContext();
 
   useEffect(() => {
     if (isLast && wrapperRef.current) {
       wrapperRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [isLast]);
-
-  useEffect(() => {
-    setTitle(message);
-  }, [setTitle, message]);
 
   return (
     <Stack direction="row" sx={{ gap: 2 }}>
@@ -38,11 +32,7 @@ function UserMessage({ message, isLast }: ChatMessageDisplayProps) {
   );
 }
 
-export default function ChatMessage({
-  role,
-  message,
-  isLast,
-}: ChatMessageDisplayProps) {
+export function ChatMessage({ role, message, isLast }: ChatMessageProps) {
   const responseRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

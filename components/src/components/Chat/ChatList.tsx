@@ -1,10 +1,11 @@
-import Stack from '@mui/material/Stack';
-import { useChat } from './ChatContext';
-import ChatInputBox from './ChatInputBox';
-import ChatMessage from './ChatMessage';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import React from 'react';
+import { useChat } from './ChatContext';
+import { ChatInputBox } from './ChatInputBox';
+import { ChatMessage } from './ChatMessage';
 
-export default function ChatList() {
+export function ChatList() {
   const { messages } = useChat();
 
   return (
