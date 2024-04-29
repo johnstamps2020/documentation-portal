@@ -10,6 +10,19 @@ import {
 import { SearchHeaderMenuItem } from './SearchHeaderMenuItem';
 import { SearchHeaderMenuFilterGrid } from './SearchHeaderMenuFilterGrid';
 
+const isFiltersMatchingProductReleaseOnly = (
+  searchFilters: Filters,
+  defaultFilters: Filters
+): boolean => {
+  if (!isFiltersMatchingProductRelease(searchFilters, defaultFilters)) {
+    return false;
+  }
+  if (isFiltersIncludeThisDoc(searchFilters)) {
+    return false;
+  }
+  return true;
+};
+
 const isFiltersMatchingProductRelease = (
   searchFilters: Filters,
   defaultFilters: Filters
@@ -34,7 +47,11 @@ const isFiltersMatchingProductRelease = (
   ) {
     return false;
   }
-  if (searchFilters.platform) {
+  if (
+    searchFilters.platform?.some(
+      (platform) => !defaultFilters.platform?.includes(platform)
+    )
+  ) {
     return false;
   }
   return true;
@@ -57,7 +74,18 @@ const isFiltersMatchingReleaseOnly = (
   ) {
     return false;
   }
-  if (searchFilters.platform) {
+  if (
+    searchFilters.platform?.some(
+      (platform) => !defaultFilters.platform?.includes(platform)
+    )
+  ) {
+    return false;
+  }
+  return true;
+};
+
+const isFiltersIncludeThisDoc = (searchFilters: Filters): boolean => {
+  if (!searchFilters.doc_title) {
     return false;
   }
   return true;
@@ -74,11 +102,15 @@ const isFiltersEmpty = (searchFilters: Filters): boolean => {
 type SearchHeaderMenuProps = {
   anchorEl: HTMLElement | null;
   onClose: () => void;
+  docTitle?: string;
 };
 
-export function SearchHeaderMenu({ anchorEl, onClose }: SearchHeaderMenuProps) {
+export function SearchHeaderMenu({
+  anchorEl,
+  onClose,
+  docTitle,
+}: SearchHeaderMenuProps) {
   const { state, dispatch } = useSearchHeaderLayoutContext();
-
   return (
     <Menu
       anchorEl={anchorEl}
@@ -111,7 +143,7 @@ export function SearchHeaderMenu({ anchorEl, onClose }: SearchHeaderMenuProps) {
             tooltipTitle={`Search within products on this page: ${state.defaultFilters.product
               .toString()
               .replace(/,/g, ', ')}`}
-            selected={isFiltersMatchingProductRelease(
+            selected={isFiltersMatchingProductReleaseOnly(
               state.searchFilters,
               state.defaultFilters
             )}
@@ -144,6 +176,23 @@ export function SearchHeaderMenu({ anchorEl, onClose }: SearchHeaderMenuProps) {
           itemLabel={`This release
           (${state.defaultFilters.release.toString().replace(/,/g, ', ')})`}
         />
+        {docTitle && (
+          <SearchHeaderMenuItem
+            itemKey="thisdoc"
+            tooltipTitle="Search within this document"
+            selected={isFiltersIncludeThisDoc(state.searchFilters)}
+            handleClick={() => {
+              dispatch({
+                type: 'SET_SELECTED_FILTERS',
+                payload: {
+                  ...state.defaultFilters,
+                  doc_title: [docTitle],
+                },
+              });
+            }}
+            itemLabel="This document"
+          />
+        )}
         <SearchHeaderMenuItem
           itemKey="entiresite"
           tooltipTitle="Search entire site without filters"

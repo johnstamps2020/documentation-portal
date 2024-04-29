@@ -12,10 +12,10 @@ import { uiFilters } from './SearchFilterPanel';
 // not all of these filters can be checked but including the full list
 // in case the displayed filters changes
 const filterOrder = [
+  'doc_title',
   'product',
   'release',
   'version',
-  'doc_title',
   'doc_display_title',
   'subject',
   'platform',
@@ -42,7 +42,8 @@ export default function AppliedFilters() {
               (uiFilter) =>
                 uiFilter.name === f.name ||
                 uiFilter.filters?.some((subFilter) => subFilter.name === f.name)
-            )
+            ) &&
+            f.name !== 'doc_title'
           ) {
             return null;
           }
@@ -77,7 +78,6 @@ export default function AppliedFilters() {
   const ListItem = styled('li')(() => ({
     margin: '0 4px 6px 0',
   }));
-
   const sortedFilters = checkedFilters.sort(customSort);
 
   return (

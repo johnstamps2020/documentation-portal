@@ -20,27 +20,30 @@ type SearchFilters = {
 };
 
 export default function OnlineSearch() {
-  //const defaultFilters: Filters = {};
+  const docId = document
+    .querySelector('[name="gw-doc-id"]')
+    ?.getAttribute('content');
   const placeholder = translate({
     id: 'gwSearchForm.placeholder',
     message: 'Search',
   });
   const defaultFilters = useMemo(() => {
     const df: Filters = {};
+    // TODO: see if there is sessionStorage of latestLandingPageReleases and use that
     // if (window.docPlatform) {
     //   df.platform = [window.docPlatform];
     // }
     if (window.docPlatform.includes('Cloud') && window.docRelease) {
-      df.release = [window.docRelease];
+      df.release = window.docRelease.split(',');
     }
     if (window.docPlatform.includes('Self-managed') && window.docVersion) {
-      df.version = [window.docVersion];
+      df.version = window.docVersion.split(',');
     }
     if (window.docProduct) {
-      df.product = [window.docProduct];
+      df.product = window.docProduct.split(',');
     }
     if (window.docLanguage) {
-      df.language = [window.docLanguage];
+      df.language = window.docLanguage.split(',');
     }
     return df;
   }, [
@@ -63,16 +66,11 @@ export default function OnlineSearch() {
       setFilters={setFilters}
     >
       <BrowserRouter>
-        {/* <SearchBox
-          searchFilters={searchFilters}
-          isMobile={false} // todo move logic for isMobile
-          placeholder={placeholder}
-          searchTypeQueryParameterName="searchType"
-        /> */}
         <SearchHeadWrapper
           isMobile={false}
           placeholder={placeholder}
           searchTypeQueryParameterName="searchType"
+          docTitle={window.docTitle}
         />
       </BrowserRouter>
     </SearchHeaderLayoutContextProvider>

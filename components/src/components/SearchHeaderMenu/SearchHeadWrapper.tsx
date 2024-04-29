@@ -9,11 +9,13 @@ type SearchHeadWrapperProps = {
   placeholder: string;
   isMobile: boolean;
   searchTypeQueryParameterName: string;
+  docTitle?: string;
 };
 export function SearchHeadWrapper({
   placeholder,
   isMobile,
   searchTypeQueryParameterName,
+  docTitle,
 }: SearchHeadWrapperProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { state, dispatch } = useSearchHeaderLayoutContext();
@@ -39,7 +41,11 @@ export function SearchHeadWrapper({
   return (
     <>
       <SearchHeaderButton handleClick={handleClick}>
-        <SearchHeaderMenu anchorEl={anchorEl} onClose={handleClose} />
+        <SearchHeaderMenu
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          docTitle={docTitle}
+        />
       </SearchHeaderButton>
       <SearchBox
         ref={searchBoxRef}
