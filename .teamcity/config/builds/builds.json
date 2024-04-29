@@ -61,6 +61,15 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "GuidewireHome.ditamap",
+      "srcId": "gchhelpsrc",
+      "docId": "gwhomerelease",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GuidewireCloud.ditamap",
       "srcId": "gchhelpsrc",
       "docId": "gchhelprelease",
