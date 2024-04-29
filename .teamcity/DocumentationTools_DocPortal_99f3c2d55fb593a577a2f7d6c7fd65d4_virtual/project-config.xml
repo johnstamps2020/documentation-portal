@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" parent-id="DocumentationTools_DocPortal_99f3c2d55fb593a577a2f7d6c7fd65d4" uuid="d061eace-3e1c-4cbb-b6c2-e65753c25648" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>Validation builds (auto-generated)</name>
+  <parameters>
+    <param name="teamcity.internal.project.virtual" value="true" />
+  </parameters>
+  <cleanup />
+</project>
+
