@@ -1,46 +1,27 @@
-export type ChatbotResponse = {
-  text: string;
-};
-
 export type ChatbotDocument = {
-  body: string;
-  doc_display_title?: string;
-  doc_id: string;
-  filters: ChatbotDocumentMetadataFilters;
-  href: string;
-  id: string;
-  indexed_date: Date;
+  document: string;
+  url: string;
   title: string;
-  titlePlain: string;
 };
 
-export type ChatbotMessage = {
-  answer: string;
-  sources: ChatbotDocument[];
+export type ChatbotResponse = {
+  response: string;
+  original_documents: ChatbotDocument[];
 };
 
-export type ChatbotDocumentMetadataFilters = {
-  platform?: string[];
-  product: string[];
-  version: string[];
-  release?: string[];
-  subject?: string[];
-  langauge: string[];
-  internal: boolean;
-  public: boolean;
+export type ChabotFilters = {
+  product?: string;
+  platform?: string;
+  version?: string;
+  release?: string;
+  subject?: string;
+  language?: string;
   doc_title?: string;
+  internal?: boolean;
+  public?: boolean;
 };
 
-export type ChatbotRequest = {
+export type ChatbotRequest = ChabotFilters & {
   query: string;
-  product: string;
-  platform: string;
-  version: string;
-  release: string;
-  subject: string;
-  language: string;
-  internal: boolean;
-  public: boolean;
-  doc_title: string;
   opt_in: boolean;
 };

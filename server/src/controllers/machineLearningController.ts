@@ -1,4 +1,4 @@
-import { ChatbotMessage, ChatbotRequest } from '../types';
+import { ChatbotRequest, ChatbotResponse } from '../types';
 import { winstonLogger } from './loggerController';
 
 // TODO: consider moving this definition to an environment variable
@@ -31,31 +31,31 @@ export async function createVectorFromText(
 
 export async function sendChatPrompt(
   requestBody: ChatbotRequest
-): Promise<ChatbotMessage> {
+): Promise<ChatbotResponse> {
   try {
-    const response = await fetch(`${chatbotUrl}/chat`, {
+    console.log('Requesting', { requestBody });
+    const response = await fetch(`${chatbotUrl}`, {
       method: 'POST',
-      body: JSON.stringify({
-        requestBody,
-      }),
+      body: JSON.stringify(requestBody),
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
     });
 
-    console.log({ response });
     if (response.ok) {
-      return await response.json();
+      const body = (await response.json()) as ChatbotResponse;
+      console.log({ body });
+      return body;
     }
     return {
-      answer: `Error! Could not complete chat transaction! ${JSON.stringify(
+      response: `Error! Could not complete chat transaction! ${JSON.stringify(
         response
       )}`,
-      sources: [],
+      original_documents: [],
     };
   } catch (err) {
     winstonLogger.error(err);
-    return { answer: `Error ${err}`, sources: [] };
+    return { response: `Error ${err}`, original_documents: [] };
   }
 }

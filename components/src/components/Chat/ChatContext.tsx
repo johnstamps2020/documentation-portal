@@ -1,6 +1,7 @@
-import { ChatbotMessage, ChatbotResponse } from '@doctools/server';
+import { ChatbotResponse, ChatbotRequest, UserInfo } from '@doctools/server';
 import React, { createContext, useContext, useState } from 'react';
 import { answer, question } from './chatDebug';
+import { ChatbotMessage } from './types';
 
 interface ChatInterface {
   messages: ChatbotMessage[];
@@ -11,7 +12,9 @@ interface ChatInterface {
 
 export const ChatContext = createContext<ChatInterface | null>(null);
 
-export function ChatProvider({ children }: { children: React.ReactNode }) {
+type ChatProviderProps = { children: React.ReactNode; userInfo: UserInfo };
+
+export function ChatProvider({ children, userInfo }: ChatProviderProps) {
   const [messages, setMessages] = useState<ChatInterface['messages']>([]);
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -21,22 +24,23 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       ...prevMessages,
       { role: 'user', message: userPropmt },
     ]);
+    const chatbotRequest: ChatbotRequest = {
+      query: userPropmt,
+      opt_in: true,
+    };
     const response = await fetch('/chatbot', {
       method: 'POST',
-      body: JSON.stringify({
-        text: userPropmt,
-      }),
+      body: JSON.stringify(chatbotRequest),
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
       },
     });
 
     if (response.ok) {
-      const message = (await response.json()) as ChatbotResponse;
+      const chatbotResponse = (await response.json()) as ChatbotResponse;
       setMessages((prevMessages) => [
         ...prevMessages,
-        { role: 'bot', message: message.text },
+        { role: 'bot', message: chatbotResponse.response },
       ]);
     }
     setIsProcessing(false);

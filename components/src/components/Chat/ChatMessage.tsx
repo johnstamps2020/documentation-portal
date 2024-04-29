@@ -1,4 +1,3 @@
-import { ChatbotMessage } from '@doctools/server';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -8,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { translate } from '../../lib';
 import { ChatLoader } from './ChatLoader';
 import './ChatMessage.css';
+import { ChatbotMessage } from './types';
 
 type ChatMessageProps = ChatbotMessage & {
   isLast: boolean;
@@ -42,7 +42,7 @@ export function ChatMessage({ role, message, isLast }: ChatMessageProps) {
   }, []);
 
   if (role === 'user') {
-    return <UserMessage message={message} isLast={isLast} />;
+    return <UserMessage message={message} isLast={isLast} role="user" />;
   }
 
   return (
