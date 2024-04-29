@@ -158,6 +158,10 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Cloud Home',
           docId: 'gchhelprelease',
         },
+        {
+          label: 'Guidewire Home',
+          docId: 'gwhomerelease'
+        },
       ],
       sections: [
         {
