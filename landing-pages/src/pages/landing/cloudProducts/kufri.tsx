@@ -164,7 +164,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Guidewire Testing',
-          pagePath: 'testingFramework/jasper',
+          pagePath: 'testingFramework/kufri',
         },
         {
           label: 'Lifecycle Manager',

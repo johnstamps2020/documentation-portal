@@ -1,3 +1,4 @@
+import { GwThemeProvider } from '@doctools/components';
 import Head from '@docusaurus/Head';
 import '@fontsource/source-sans-pro';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -5,7 +6,6 @@ import InitialRoot from '@theme-init/Root';
 import { DocContextProvider } from '@theme/DocContext';
 import InternalWrapper from '@theme/Internal/InternalWrapper';
 import React, { useEffect, useState } from 'react';
-import GwThemeProvider from './GwThemeProvider';
 import Init from './Init';
 import { NotificationProvider } from './NotificationContext/NotificationContext';
 import OverlayLoader from './OverlayLoader';

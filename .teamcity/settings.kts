@@ -902,6 +902,33 @@ object GwBuildSteps {
         }
     }
 
+    fun createUploadPreviewContentWithVariantsToS3BucketStep(outputPath: String, publishPath: String): ScriptBuildStep {
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
+        val publicSubPath = "__public"
+        val restrictedSubPath = "__restricted"
+        val publicOutputPath = "${outputPath}/${publicSubPath}"
+        val restrictedOutputPath = "${outputPath}/${restrictedSubPath}"
+        val publicPublishPath = publishPath.replaceFirst("preview", "preview/${publicSubPath}")
+        val restrictedPublishPath = publishPath.replaceFirst("preview", "preview/${restrictedSubPath}")
+        return ScriptBuildStep {
+            name = "Upload preview content with variants to the S3 bucket"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                                
+                $awsEnvVars
+                
+                aws s3 sync $publicOutputPath s3://tenant-doctools-${atmosDeployEnv}-builds/${publicPublishPath} --delete --cache-control max-age=60
+                aws s3 sync $restrictedOutputPath s3://tenant-doctools-${atmosDeployEnv}-builds/${restrictedPublishPath} --delete --cache-control max-age=60
+            """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
+
     fun createPreviewUrlFile(
         previewUrl: String, previewUrlFile: String,
     ): ScriptBuildStep {
@@ -1283,6 +1310,8 @@ object GwBuildSteps {
                     echo "Check "$logFile" in the build artifacts for more details."
                 fi
                 
+                
+                
                 echo "##teamcity[setParameter name='$exitCodeEnvVarName' value='${'$'}EXIT_CODE']"
                     
                 exit ${'$'}EXIT_CODE
@@ -1301,7 +1330,7 @@ object GwBuildSteps {
             it as JSONObject
             customEnvExportVars += "export ${it.getString("name")}=\"${it.getString("value")}\" # Custom env from the build config file\n"
         }
-        
+
         return ScriptBuildStep {
             name = "Build the yarn project"
             id = Helpers.createIdStringFromName(this.name)
@@ -2250,7 +2279,8 @@ object User {
 
             val docProjectBuildTypes = mutableListOf<BuildType>()
             val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
-            val ignorePublicPropertyAndUseVariants = if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
+            val ignorePublicPropertyAndUseVariants =
+                if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
             when (gwBuildType) {
                 GwBuildTypes.YARN.buildTypeName -> {
@@ -2770,6 +2800,8 @@ object User {
             val docId = buildConfig.getString("docId")
             val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
             val docTitle = docConfig.getString("title")
+            val ignorePublicPropertyAndUseVariants =
+                if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
             val workingDir = Helpers.getWorkingDir(buildConfig)
             val outputDir = when (buildConfig.has("outputPath")) {
@@ -2821,16 +2853,25 @@ object User {
             val repoKey = matchList[2]
             val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
 
-            val uploadStepOuputPath = when (gwBuildType) {
+            val uploadStepOutputPath = when (gwBuildType) {
                 GwBuildTypes.DITA.buildTypeName -> "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}"
                 else -> "${workingDir}/${outputDir}"
             }
 
-            val uploadStep = GwBuildSteps.createUploadContentToS3BucketStep(
-                GwDeployEnvs.STAGING.envName,
-                uploadStepOuputPath,
-                publishPath,
-            )
+            val uploadStep = when (ignorePublicPropertyAndUseVariants) {
+                true -> GwBuildSteps.createUploadPreviewContentWithVariantsToS3BucketStep(
+                    uploadStepOutputPath,
+                    publishPath
+                )
+
+                else -> GwBuildSteps.createUploadContentToS3BucketStep(
+                    GwDeployEnvs.STAGING.envName,
+                    uploadStepOutputPath,
+                    publishPath,
+                )
+            }
+
+
             uploadStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
             val previewFileStep = GwBuildSteps.createPreviewUrlFile(
@@ -2838,9 +2879,15 @@ object User {
             )
             previewFileStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
+            val pullRequestCommentText = when (ignorePublicPropertyAndUseVariants) {
+                true -> "[DOC WITH VARIANTS] Hi, I created a preview for validation build %build.number%: $previewUrl"
+
+                else -> "Hi, I created a preview for validation build %build.number%: $previewUrl"
+            }
+
             val pullRequestCommentStep = GwBuildSteps.createAddPullRequestCommentStep(
                 "preview link",
-                "Hi, I created a preview for validation build %build.number%: $previewUrl",
+                pullRequestCommentText,
                 projectKey,
                 repoKey,
                 pullRequestId
@@ -2984,7 +3031,6 @@ object User {
                     val buildCommand =
                         if (buildConfig.has("yarnBuildCustomCommand")) buildConfig.getString("yarnBuildCustomCommand") else null
                     val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
-                    val ignorePublicPropertyAndUseVariants = if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
                     validationBuildType.artifactRules += """
                     ${workingDir}/*.log => $buildLogsDir

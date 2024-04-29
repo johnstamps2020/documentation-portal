@@ -26,12 +26,6 @@
       "branch": "release/ja-JP/5.0.0"
     },
     {
-      "id": "isunversionedjaJPsrc",
-      "title": "InsuranceSuite Upgrade Compatibility ja",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/is-upgrade-compatibility.git",
-      "branch": "release/ja-JP/innsbruck"
-    },
-    {
       "id": "testingframeworks202310jaJPsrc",
       "title": "Testing Solutions 2023.10 ja",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",

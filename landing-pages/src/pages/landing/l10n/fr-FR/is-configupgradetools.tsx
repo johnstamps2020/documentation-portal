@@ -19,11 +19,11 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '5.1.0',
+      label: '5.2.0',
       items: [
         {
           label: 'Guide des outils de mise à niveau de la configuration',
-          docId: 'isconfigupgradetools510frFR',
+          docId: 'isconfigupgradetools520frFR',
         },
       ],
     },

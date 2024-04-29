@@ -1,0 +1,11 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "isunversionedjaJPsrc",
+      "title": "InsuranceSuite Upgrade Compatibility ja",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/is-upgrade-compatibility.git",
+      "branch": "release/ja-JP/latest"
+    }
+  ]
+}
