@@ -159,6 +159,10 @@
     "message": "Answer",
     "description": "The chatbot responds to a question. This is the label that indicates that the following text is the chatbot's answer"
   },
+  "chat.sources": {
+    "message": "Sources",
+    "description": "The chatbot responds refers to documents when answering a question. This is the header for the section which lists these documents."
+  },
   "login.gwEmployeeHint": {
     "message": "Guidewire employee? Log in using the Guidewire Cloud option above.",
     "description": "The text which helps a Guidewire employee know how to log in"

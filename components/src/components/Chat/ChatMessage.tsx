@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { translate } from '../../lib';
 import { ChatLoader } from './ChatLoader';
 import './ChatMessage.css';
+import ChatSources from './ChatSources';
 import { ChatbotMessage } from './types';
 
 type ChatMessageProps = ChatbotMessage & {
@@ -32,7 +33,12 @@ function UserMessage({ message, isLast }: ChatMessageProps) {
   );
 }
 
-export function ChatMessage({ role, message, isLast }: ChatMessageProps) {
+export function ChatMessage({
+  role,
+  message,
+  isLast,
+  sources,
+}: ChatMessageProps) {
   const responseRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -47,6 +53,7 @@ export function ChatMessage({ role, message, isLast }: ChatMessageProps) {
 
   return (
     <Box sx={{ width: '100%' }} ref={responseRef}>
+      <ChatSources sources={sources} />
       <Typography variant="h3">
         {translate({
           id: 'chat.answer',

@@ -33,7 +33,6 @@ export async function sendChatPrompt(
   requestBody: ChatbotRequest
 ): Promise<ChatbotResponse> {
   try {
-    console.log('Requesting', { requestBody });
     const response = await fetch(`${chatbotUrl}`, {
       method: 'POST',
       body: JSON.stringify(requestBody),
@@ -45,7 +44,6 @@ export async function sendChatPrompt(
 
     if (response.ok) {
       const body = (await response.json()) as ChatbotResponse;
-      console.log({ body });
       return body;
     }
     return {

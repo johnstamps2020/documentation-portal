@@ -7,7 +7,6 @@ interface ChatInterface {
   messages: ChatbotMessage[];
   isProcessing: boolean;
   sendPrompt(userPrompt: string): void;
-  loadDebugMessages(): void;
 }
 
 export const ChatContext = createContext<ChatInterface | null>(null);
@@ -40,24 +39,18 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
       const chatbotResponse = (await response.json()) as ChatbotResponse;
       setMessages((prevMessages) => [
         ...prevMessages,
-        { role: 'bot', message: chatbotResponse.response },
+        {
+          role: 'bot',
+          message: chatbotResponse.response,
+          sources: chatbotResponse.original_documents,
+        },
       ]);
     }
     setIsProcessing(false);
   };
 
-  function loadDebugMessages() {
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { role: 'user', message: question },
-      { role: 'bot', message: answer },
-    ]);
-  }
-
   return (
-    <ChatContext.Provider
-      value={{ messages, sendPrompt, loadDebugMessages, isProcessing }}
-    >
+    <ChatContext.Provider value={{ messages, sendPrompt, isProcessing }}>
       {children}
     </ChatContext.Provider>
   );

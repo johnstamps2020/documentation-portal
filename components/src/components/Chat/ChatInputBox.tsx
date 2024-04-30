@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useChat } from './ChatContext';
-import { ChatDebugControls } from './ChatDebugControls';
 import { translate } from '../../lib';
 
 export function ChatInputBox() {
@@ -50,7 +49,6 @@ export function ChatInputBox() {
           <SendIcon />
         </IconButton>
       </Stack>
-      <ChatDebugControls />
     </>
   );
 }
