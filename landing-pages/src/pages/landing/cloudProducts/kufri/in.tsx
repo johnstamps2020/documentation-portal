@@ -140,7 +140,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: <>Create quotes, applications, and policies.</>,
         },
         {
-          label: 'Loss notices and claims',
+          label: 'Claims',
           docId: 'in20242app',
           pathInDoc: '?contextid=c_Claims_overview',
           description: (
