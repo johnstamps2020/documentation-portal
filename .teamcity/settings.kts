@@ -1442,7 +1442,6 @@ object GwBuildSteps {
         gitUrl: String,
         gitBranch: String,
         teamcityBuildBranch: String,
-        teamcityPullRequestNumber: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Run the build manager"
@@ -1457,7 +1456,6 @@ object GwBuildSteps {
                 export GIT_URL="$gitUrl"
                 export GIT_BRANCH="$gitBranch"
                 export TEAMCITY_BUILD_BRANCH="$teamcityBuildBranch"
-                export TEAMCITY_PULL_REQUEST_NUMBER="$teamcityPullRequestNumber"
                                                         
                 build_manager
             """.trimIndent()
@@ -2674,7 +2672,6 @@ object User {
                                 gitUrl = gitUrl,
                                 gitBranch = gitBranch,
                                 teamcityBuildBranch = gitBranch,
-                                teamcityPullRequestNumber = "%teamcity.pullRequest.number%"
                             )
                         )
 
@@ -2781,7 +2778,6 @@ object User {
                         gitUrl = gitUrl,
                         gitBranch = Helpers.createFullGitBranchName(gitBranch),
                         teamcityBuildBranch = "%teamcity.build.branch%",
-                        teamcityPullRequestNumber = "%teamcity.pullRequest.number%"
                     )
                 )
 
