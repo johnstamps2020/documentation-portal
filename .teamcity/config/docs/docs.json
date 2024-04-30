@@ -229,7 +229,7 @@
     {
       "id": "gwhomerelease",
       "title": "Guidewire Home",
-      "url": "guidewire-home",
+      "url": "guidewire-home/release",
       "metadata": {
         "platform": [
           "Cloud"
