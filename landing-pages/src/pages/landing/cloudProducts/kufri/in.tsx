@@ -18,12 +18,11 @@ const pageConfig: ApplicationLayoutProps = {
       title: 'Get started',
       items: [
         {
-          label: 'Core Release Notes',
-          docId: 'in20242rn',
+          label: 'Application Guide',
+          docId: 'in20242app',
           description: (
             <>
-              Discover new features, recent improvements, and resolved issues in
-              InsuranceNow core.
+              Get started with the InsuranceNow user interface, functionality offered within the application, and features available for various user roles.
             </>
           ),
         },
@@ -91,14 +90,6 @@ const pageConfig: ApplicationLayoutProps = {
               Understand the tools and technology to deploy and operate
               InsuranceNow in the Guidewire Cloud.
             </>
-          ),
-        },
-        {
-          label: 'Get started with InsuranceNow',
-          docId: 'in20242app',
-          pathInDoc: '?contextid=c_applications-getting-started',
-          description: (
-            <>Get acquainted with the InsuranceNow interface and login steps.</>
           ),
         },
         {
