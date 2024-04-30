@@ -30,6 +30,12 @@
       "title": "Learning in DITA",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/learning-in-dita.git",
       "branch": "main"
+    },
+    {
+      "id": "styleguidesrc",
+      "title": "Style Guide",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/style-guide.git",
+      "branch": "main"
     }
   ]
 }
