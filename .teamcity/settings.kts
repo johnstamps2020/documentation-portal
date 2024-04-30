@@ -20,7 +20,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.*
 
-version = "2023.11"
+version = "2024.03"
 project {
     GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
@@ -1661,8 +1661,10 @@ object GwBuildFeatures {
     object GwCommitStatusPublisherBuildFeature : CommitStatusPublisher({
         publisher = bitbucketServer {
             url = "https://stash.guidewire.com"
-            userName = "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
-            password = "%env.BITBUCKET_ACCESS_TOKEN%"
+            authType = password {
+                userName = "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
+                password = "%env.BITBUCKET_ACCESS_TOKEN%"
+            }
         }
     })
 
@@ -3270,7 +3272,6 @@ object Admin {
             subProject(Frontend.rootProject)
             subProject(Server.rootProject)
             subProject(Content.rootProject)
-            subProject(Runners.rootProject)
         }
     }
 
@@ -5203,164 +5204,5 @@ object Admin {
 
             return deployServerBuildType
         }
-    }
-
-    object Runners {
-        val rootProject = createRootProjectForRunners()
-
-        private fun getDocConfigsFromBuildConfigsForEnv(deployEnv: String): List<JSONObject> {
-            val docConfigsForEnv = mutableListOf<JSONObject>()
-            Helpers.enabledBuildConfigs.forEach {
-                val docId = it.getString("docId")
-                val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
-                val docEnvironments = docConfig.getJSONArray("environments")
-                if (docEnvironments.contains(deployEnv)) {
-                    docConfigsForEnv.add(docConfig)
-                }
-            }
-            return docConfigsForEnv
-        }
-
-        private fun getDocIdsForProductAndVersion(
-            docConfigs: List<JSONObject>,
-            gwProduct: String,
-            gwVersion: String,
-        ): List<String> {
-            val matchingDocIds = mutableListOf<String>()
-            docConfigs.forEach {
-                val docId = it.getString("id")
-                val metadata = it.getJSONObject("metadata")
-                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
-                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
-                val docConfigMatchesProductAndVersion =
-                    gwProducts.any { p -> p == gwProduct } && gwVersions.any { v -> v == gwVersion }
-                if (docConfigMatchesProductAndVersion) {
-                    matchingDocIds.add(docId)
-                }
-            }
-            return matchingDocIds
-        }
-
-
-        private fun createRootProjectForRunners(): Project {
-            return Project {
-                name = "Runners"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                arrayOf(
-                    GwDeployEnvs.DEV.envName,
-                    GwDeployEnvs.STAGING.envName,
-                    GwDeployEnvs.PROD.envName
-                ).map {
-                    subProject(createRunnersProjectForEnv(it))
-                }
-            }
-        }
-
-        private fun createRunnersProjectForEnv(deployEnv: String): Project {
-            val docConfigsForEnv = getDocConfigsFromBuildConfigsForEnv(deployEnv)
-            val productProjects = generateProductProjects(deployEnv, docConfigsForEnv)
-            return Project {
-                name = "Runners for $deployEnv"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                productProjects.forEach { pp ->
-                    pp.subProjects.forEach { vp ->
-                        val gwProduct = pp.name
-                        val gwVersion = vp.name
-                        val matchingDocIds = getDocIdsForProductAndVersion(docConfigsForEnv, gwProduct, gwVersion)
-                        if (matchingDocIds.size > 1) {
-                            val publishAllDocsBuildType = createRunnerBuildType(
-                                deployEnv, matchingDocIds, "Publish all docs", gwProduct, gwVersion
-                            )
-                            vp.buildType(publishAllDocsBuildType)
-                        }
-                    }
-                    subProject(pp)
-                }
-            }
-        }
-
-        private fun generateProductProjects(deployEnv: String, docConfigs: List<JSONObject>): List<Project> {
-            val productProjects = mutableListOf<Project>()
-            for (docConfig in docConfigs) {
-                val docId = docConfig.getString("id")
-                val docTitle = docConfig.getString("title")
-                val metadata = docConfig.getJSONObject("metadata")
-                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
-                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
-                for (gwProduct in gwProducts) {
-                    val existingProductProject = productProjects.find { it.name == gwProduct }
-                    if (existingProductProject == null) {
-                        productProjects.add(Project {
-                            name = gwProduct
-                            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${deployEnv}"))
-
-                            gwVersions.forEach {
-                                subProject {
-                                    name = it
-                                    id =
-                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
-
-                                    buildType(createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, it))
-                                }
-                            }
-                        })
-                    } else {
-                        for (gwVersion in gwVersions) {
-                            val runnerBuildType =
-                                createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, gwVersion)
-                            val existingVersionSubproject =
-                                existingProductProject.subProjects.find { it.name == gwVersion }
-                            if (existingVersionSubproject == null) {
-                                existingProductProject.subProject {
-                                    name = gwVersion
-                                    id =
-                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
-
-                                    buildType(runnerBuildType)
-                                }
-                            } else {
-                                existingVersionSubproject.buildType(runnerBuildType)
-                            }
-                        }
-                    }
-                }
-            }
-            return productProjects
-        }
-
-        private fun createRunnerBuildType(
-            deployEnv: String,
-            docIds: List<String>,
-            docTitle: String,
-            gwProduct: String,
-            gwVersion: String,
-        ): BuildType {
-            return BuildType {
-                val uniqueId = Helpers.md5("${deployEnv}${gwProduct}${gwVersion}${docIds.joinToString()}")
-                name = "$docTitle (${uniqueId})"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                type = BuildTypeSettings.Type.COMPOSITE
-
-                dependencies {
-                    docIds.forEach {
-                        snapshot(Helpers.resolveRelativeIdFromIdString(Helpers.md5("Publish to ${deployEnv}${it}"))) {
-                            // Build runners reuse doc builds to avoid unnecessary build runs.
-                            // This feature can't be used in runners for prod doc builds because the prod doc builds
-                            // don’t use a VCS Root - they only copy from staging to prod.
-                            // Therefore, runners can’t discover any changes in the VCS Root from which the staging output
-                            // was built and as a result they don’t trigger the dependent doc build for prod.
-                            if (deployEnv == GwDeployEnvs.PROD.envName) {
-                                reuseBuilds = ReuseBuilds.NO
-                            }
-                            onDependencyFailure = FailureAction.FAIL_TO_START
-                        }
-                    }
-                }
-            }
-        }
-
     }
 }

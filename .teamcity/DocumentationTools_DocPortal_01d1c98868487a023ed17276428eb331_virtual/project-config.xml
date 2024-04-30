@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" parent-id="DocumentationTools_DocPortal_01d1c98868487a023ed17276428eb331" uuid="f508175d-8c3b-417d-9ffe-a643118d2c57" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
-  <name>2024.02 (auto-generated)</name>
-  <parameters>
-    <param name="teamcity.internal.project.virtual" value="true" />
-  </parameters>
-  <cleanup />
-</project>
-
