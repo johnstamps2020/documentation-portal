@@ -131,6 +131,30 @@
       "earlyAccess": false,
       "internal": true,
       "public": false
+    },
+    {
+      "id": "styleguide",
+      "title": "Guidewire Style Guide",
+      "url": "styleguide",
+      "metadata": {
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [],
+        "version": [
+          "latest"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     }
   ]
 }
