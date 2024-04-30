@@ -7,6 +7,7 @@ import { ChatMessage } from './ChatMessage';
 
 export function ChatList() {
   const { messages } = useChat();
+  const shadowColor = 'rgba(255, 255, 255, 0.97)';
 
   return (
     <>
@@ -32,8 +33,7 @@ export function ChatList() {
           bottom: 10,
           width: '100%',
           left: 0,
-          backgroundColor: 'rgba(255, 255, 255, 0.97)',
-          padding: { xs: '0', md: '0.3rem' },
+          backgroundColor: shadowColor,
         }}
       >
         <ChatInputBox />

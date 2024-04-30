@@ -6,10 +6,11 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useChat } from './ChatContext';
 import { translate } from '../../lib';
+import { ChatFilters } from './ChatFilters';
 
 export function ChatInputBox() {
   const { sendPrompt, isProcessing } = useChat();
-  const [userPropmt, setUserPrompt] = useState('');
+  const [userPrompt, setUserPrompt] = useState('');
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setUserPrompt(event.target.value);
@@ -17,7 +18,7 @@ export function ChatInputBox() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    sendPrompt(userPropmt);
+    sendPrompt(userPrompt);
     setUserPrompt('');
   }
 
@@ -34,12 +35,12 @@ export function ChatInputBox() {
           fullWidth
           autoComplete="off"
           maxRows={5}
-          value={userPropmt}
+          value={userPrompt}
           onChange={handleChange}
           disabled={isProcessing}
         />
         <IconButton
-          disabled={isProcessing || userPropmt === ''}
+          disabled={isProcessing || userPrompt === ''}
           aria-label={translate({
             id: 'chat.send',
             message: 'Send',
@@ -49,6 +50,7 @@ export function ChatInputBox() {
           <SendIcon />
         </IconButton>
       </Stack>
+      <ChatFilters />
     </>
   );
 }

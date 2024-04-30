@@ -9,7 +9,7 @@ export type ChatbotResponse = {
   original_documents: ChatbotDocument[];
 };
 
-export type ChabotFilters = {
+export type ChatbotFilters = {
   product?: string;
   platform?: string;
   version?: string;
@@ -17,11 +17,11 @@ export type ChabotFilters = {
   subject?: string;
   language?: string;
   doc_title?: string;
-  internal?: boolean;
-  public?: boolean;
+  internal?: string;
+  public?: string;
 };
 
-export type ChatbotRequest = ChabotFilters & {
+export type ChatbotRequest = ChatbotFilters & {
   query: string;
   opt_in: boolean;
 };

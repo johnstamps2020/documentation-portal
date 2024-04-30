@@ -1,12 +1,18 @@
-import { ChatbotResponse, ChatbotRequest, UserInfo } from '@doctools/server';
+import {
+  ChatbotResponse,
+  ChatbotRequest,
+  UserInfo,
+  ChatbotFilters,
+} from '@doctools/server';
 import React, { createContext, useContext, useState } from 'react';
-import { answer, question } from './chatDebug';
 import { ChatbotMessage } from './types';
 
 interface ChatInterface {
   messages: ChatbotMessage[];
   isProcessing: boolean;
   sendPrompt(userPrompt: string): void;
+  filters: ChatbotFilters;
+  updateFilters: (name: string, value: string) => void;
 }
 
 export const ChatContext = createContext<ChatInterface | null>(null);
@@ -14,17 +20,42 @@ export const ChatContext = createContext<ChatInterface | null>(null);
 type ChatProviderProps = { children: React.ReactNode; userInfo: UserInfo };
 
 export function ChatProvider({ children, userInfo }: ChatProviderProps) {
+  const defaultFilters: ChatbotFilters = {
+    doc_title: '',
+    internal: userInfo.hasGuidewireEmail ? 'true' : 'false',
+    public: userInfo.isLoggedIn ? undefined : 'true',
+    language: 'en',
+    platform: '',
+    product: '',
+    release: '',
+    subject: '',
+    version: '',
+  };
   const [messages, setMessages] = useState<ChatInterface['messages']>([]);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [filters, setFilters] =
+    useState<ChatInterface['filters']>(defaultFilters);
 
-  const sendPrompt = async (userPropmt: string) => {
+  const updateFilters: ChatInterface['updateFilters'] = (
+    name: string,
+    value: string
+  ) => {
+    setFilters((currentFilters) => {
+      return {
+        ...currentFilters,
+        [name]: value,
+      };
+    });
+  };
+
+  const sendPrompt = async (userPrompt: string) => {
     setIsProcessing(true);
     setMessages((prevMessages) => [
       ...prevMessages,
-      { role: 'user', message: userPropmt },
+      { role: 'user', message: userPrompt },
     ]);
     const chatbotRequest: ChatbotRequest = {
-      query: userPropmt,
+      query: userPrompt,
       opt_in: true,
     };
     const response = await fetch('/chatbot', {
@@ -50,7 +81,9 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
   };
 
   return (
-    <ChatContext.Provider value={{ messages, sendPrompt, isProcessing }}>
+    <ChatContext.Provider
+      value={{ messages, sendPrompt, isProcessing, filters, updateFilters }}
+    >
       {children}
     </ChatContext.Provider>
   );

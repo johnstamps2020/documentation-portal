@@ -72,7 +72,10 @@ export const appTheme = createTheme({
       padding: '0.5rem 0',
     },
     h4: {
-      fontSize: '0.2rem',
+      fontSize: '1.1rem',
+    },
+    h5: {
+      fontSize: '1rem',
     },
   },
   components: {
