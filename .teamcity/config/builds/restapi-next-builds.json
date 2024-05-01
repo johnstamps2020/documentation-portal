@@ -54,6 +54,24 @@
       "docId": "isrestapiclientguidenext",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IntegrationGatewayUI.ditamap",
+      "srcId": "restapinextsrc",
+      "docId": "integgatewayuinext",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IntegrationGatewayFramework.ditamap",
+      "srcId": "restapinextsrc",
+      "docId": "integgatewayfwnext",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
