@@ -424,6 +424,99 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "apdcreatingproductskufri",
+      "title": "Creating Products with APD App",
+      "url": "cloud/apd/kufri/create",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Advanced Product Designer"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "apdfinalizingproductskufri",
+      "title": "Integrating Products with PolicyCenter",
+      "url": "cloud/apd/kufri/finalize",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Advanced Product Designer"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "apdapprnkufri",
+      "title": "Advanced Product Designer Release Notes",
+      "url": "cloud/apd/kufri/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Advanced Product Designer"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Configuration"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

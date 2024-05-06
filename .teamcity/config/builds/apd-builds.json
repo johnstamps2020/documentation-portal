@@ -114,6 +114,33 @@
       "docId": "apdapprnjasper",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "CreatingProducts.ditamap",
+      "srcId": "apdappkufrisrc",
+      "docId": "apdcreatingproductskufri",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "FinalizingProducts.ditamap",
+      "srcId": "apdappkufrisrc",
+      "docId": "apdfinalizingproductskufri",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "AdvancedProductDesigner_Release_Notes.ditamap",
+      "srcId": "apdappkufrisrc",
+      "docId": "apdapprnkufri",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
