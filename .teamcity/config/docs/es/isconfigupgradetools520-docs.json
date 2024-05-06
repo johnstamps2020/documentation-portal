@@ -14,7 +14,7 @@
         "subject": ["Upgrade"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
