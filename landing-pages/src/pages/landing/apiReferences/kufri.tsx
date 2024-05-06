@@ -2,7 +2,7 @@ import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import backgroundImage from 'images/background-innsbruck.svg';
+import backgroundImage from 'images/background-jasper.svg';
 
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
@@ -19,7 +19,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Innsbruck',
+    selectedItemLabel: 'Kufri',
     items: allSelectors.s0f196c0b55cf55f2cdd1e05b1bf5e94e,
     labelColor: 'white',
   },
@@ -30,19 +30,19 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Cloud API Reference',
-          docId: 'bcapirefinnsbruck',
+          docId: 'bcapirefkufri',
         },
         {
           label: 'Cloud API Consumer Guide',
-          docId: 'isbc202310apibf',
+          docId: 'isbc202407apibf',
         },
         {
           label: 'Cloud API Developer Guide',
-          docId: 'isbc202310apica',
+          docId: 'isbc202407apica',
         },
         {
           label: 'Cloud API for ContactManager',
-          docId: 'isbc202310apicm',
+          docId: 'isbc202407apicm',
         },
       ],
     },
@@ -51,19 +51,19 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Cloud API Reference',
-          docId: 'ccapirefinnsbruck',
+          docId: 'ccapirefkufri',
         },
         {
           label: 'Cloud API Consumer Guide',
-          docId: 'iscc202310apibf',
+          docId: 'iscc202407apibf',
         },
         {
           label: 'Cloud API Developer Guide',
-          docId: 'iscc202310apica',
+          docId: 'iscc202407apica',
         },
         {
           label: 'Cloud API for ContactManager',
-          docId: 'iscc202310apicm',
+          docId: 'iscc202407apicm',
         },
       ],
     },
@@ -72,19 +72,19 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Cloud API Reference',
-          docId: 'pcapirefinnsbruck',
+          docId: 'pcapirefkufri',
         },
         {
           label: 'Cloud API Consumer Guide',
-          docId: 'ispc202310apibf',
+          docId: 'ispc202407apibf',
         },
         {
           label: 'Cloud API Developer Guide',
-          docId: 'ispc202310apica',
+          docId: 'ispc202407apica',
         },
         {
           label: 'Cloud API for ContactManager',
-          docId: 'ispc202310apicm',
+          docId: 'ispc202407apicm',
         },
       ],
     },
@@ -127,11 +127,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'API Reference',
-          docId: 'in20233apiref',
+          docId: 'in20242apiref',
         },
         {
           label: 'Portal Development Guide',
-          docId: 'in20233portaldev',
+          docId: 'in20242portaldev',
         },
       ],
     },
@@ -147,6 +147,6 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export default function Hakuba() {
+export default function Kufri() {
   return <CategoryLayout {...pageConfig} />;
 }

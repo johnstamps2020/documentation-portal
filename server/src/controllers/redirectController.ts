@@ -192,15 +192,15 @@ const permanentRedirectUrls = [
 const temporaryRedirectUrls = [
   {
     from: '',
-    to: isProd ? 'cloudProducts/jasper' : 'cloudProducts/jasper',
+    to: isProd ? 'cloudProducts/jasper' : 'cloudProducts/kufri',
   },
   {
     from: 'cloudProducts',
-    to: isProd ? 'cloudProducts/jasper' : 'cloudProducts/jasper',
+    to: isProd ? 'cloudProducts/jasper' : 'cloudProducts/kufri',
   },
   {
     from: 'apiReferences',
-    to: isProd ? 'apiReferences/jasper' : 'apiReferences/jasper',
+    to: isProd ? 'apiReferences/jasper' : 'apiReferences/kufri',
   },
 ];
 
