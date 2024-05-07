@@ -1,12 +1,11 @@
-import React from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
-import { useChat } from './ChatContext';
+import React, { useState } from 'react';
 import { translate } from '../../lib';
-import { ChatFilters } from './ChatFilters';
+import { useChat } from './ChatContext';
+import { ChatFiltersButton } from './ChatFiltersButton';
 
 export function ChatInputBox() {
   const { sendPrompt, isProcessing } = useChat();
@@ -23,34 +22,32 @@ export function ChatInputBox() {
   }
 
   return (
-    <>
-      <Stack
-        direction="row"
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{ width: '100%', padding: '2rem', gap: 2 }}
+    <Stack
+      direction="row"
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ width: '100%', padding: '2rem', gap: 2 }}
+    >
+      <TextField
+        hiddenLabel
+        fullWidth
+        autoComplete="off"
+        maxRows={5}
+        value={userPrompt}
+        onChange={handleChange}
+        disabled={isProcessing}
+      />
+      <IconButton
+        disabled={isProcessing || userPrompt === ''}
+        aria-label={translate({
+          id: 'chat.send',
+          message: 'Send',
+        })}
+        type="submit"
       >
-        <TextField
-          hiddenLabel
-          fullWidth
-          autoComplete="off"
-          maxRows={5}
-          value={userPrompt}
-          onChange={handleChange}
-          disabled={isProcessing}
-        />
-        <IconButton
-          disabled={isProcessing || userPrompt === ''}
-          aria-label={translate({
-            id: 'chat.send',
-            message: 'Send',
-          })}
-          type="submit"
-        >
-          <SendIcon />
-        </IconButton>
-      </Stack>
-      <ChatFilters />
-    </>
+        <SendIcon />
+      </IconButton>
+      <ChatFiltersButton />
+    </Stack>
   );
 }

@@ -163,8 +163,16 @@
     "message": "Sources",
     "description": "The chatbot responds refers to documents when answering a question. This is the header for the section which lists these documents."
   },
+  "chat.filters": {
+    "message": "Filters",
+    "description": "The chatbot uses filters. The user clicks this button to show the dialog box with filters."
+  },
   "login.gwEmployeeHint": {
     "message": "Guidewire employee? Log in using the Guidewire Cloud option above.",
     "description": "The text which helps a Guidewire employee know how to log in"
+  },
+  "button.close": {
+    "message": "Close",
+    "description": "This button closes a window, view, panel, or other UI element"
   }
 }

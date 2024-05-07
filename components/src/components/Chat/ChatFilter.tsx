@@ -15,7 +15,6 @@ export function ChatFilter({ label, name, values }: FilterConfig) {
   return (
     <Autocomplete
       multiple
-      disablePortal
       id="filter-combo-box"
       options={values}
       renderInput={(params) => <TextField {...params} label={label} />}
