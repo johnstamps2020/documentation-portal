@@ -21,6 +21,8 @@ export type ChatbotFilters = {
   public?: string;
 };
 
+export type FilterName = keyof ChatbotFilters;
+
 export type ChatbotRequest = ChatbotFilters & {
   query: string;
   opt_in: boolean;

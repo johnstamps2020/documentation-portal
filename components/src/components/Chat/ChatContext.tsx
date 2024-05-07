@@ -3,16 +3,19 @@ import {
   ChatbotRequest,
   UserInfo,
   ChatbotFilters,
+  FilterName,
 } from '@doctools/server';
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ChatbotMessage } from './types';
 
-interface ChatInterface {
+export interface ChatInterface {
   messages: ChatbotMessage[];
   isProcessing: boolean;
   sendPrompt(userPrompt: string): void;
   filters: ChatbotFilters;
-  updateFilters: (name: string, value: string) => void;
+  updateFilters: (name: FilterName, value: string[]) => void;
+  getFilterValues: (name: FilterName) => string[];
+  filterCount: number;
 }
 
 export const ChatContext = createContext<ChatInterface | null>(null);
@@ -33,19 +36,45 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
   };
   const [messages, setMessages] = useState<ChatInterface['messages']>([]);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [filterCount, setFilterCount] = useState(0);
   const [filters, setFilters] =
     useState<ChatInterface['filters']>(defaultFilters);
 
-  const updateFilters: ChatInterface['updateFilters'] = (
-    name: string,
-    value: string
-  ) => {
+  useEffect(() => {
+    const allFilters = [];
+    const filtersToCount: FilterName[] = [
+      'platform',
+      'product',
+      'release',
+      'subject',
+      'version',
+    ];
+    for (const filterName of filtersToCount) {
+      allFilters.push(...getFilterValues(filterName));
+    }
+
+    const numberOfFilters = allFilters.length;
+
+    if (filterCount !== numberOfFilters) {
+      setFilterCount(numberOfFilters);
+    }
+  }, [filters]);
+
+  const updateFilters: ChatInterface['updateFilters'] = (name, value) => {
     setFilters((currentFilters) => {
       return {
         ...currentFilters,
-        [name]: value,
+        [name]: value.join(','),
       };
     });
+  };
+
+  const getFilterValues: ChatInterface['getFilterValues'] = (name) => {
+    const splitValues = filters[name]
+      ?.split(',')
+      .filter((value) => value.length > 0);
+
+    return splitValues || [];
   };
 
   const sendPrompt = async (userPrompt: string) => {
@@ -82,7 +111,15 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
 
   return (
     <ChatContext.Provider
-      value={{ messages, sendPrompt, isProcessing, filters, updateFilters }}
+      value={{
+        messages,
+        sendPrompt,
+        isProcessing,
+        filters,
+        updateFilters,
+        getFilterValues,
+        filterCount,
+      }}
     >
       {children}
     </ChatContext.Provider>

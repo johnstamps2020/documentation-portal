@@ -14,7 +14,7 @@ export function ChatFilters() {
       }}
     >
       {filtersFromDb.map((filter) => (
-        <ChatFilter {...filter} />
+        <ChatFilter {...filter} key={filter.name} />
       ))}
     </Box>
   );

@@ -41,7 +41,7 @@ export const filtersFromDb: FilterConfig[] = [
   { label: 'Platform', name: 'platform', values: ['Self-managed', 'Cloud'] },
   {
     label: 'Version',
-    name: 'versions',
+    name: 'version',
     values: [
       '2023.2',
       '2023.06',
