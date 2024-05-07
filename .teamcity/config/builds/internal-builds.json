@@ -116,6 +116,13 @@
       "docId": "insuranceplatformoperator",
       "srcId": "insuranceplatformoperatorsrc",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "solr",
+      "srcId": "solrsrc",
+      "workingDir": "website",
+      "disabled": false
     }
   ]
 }

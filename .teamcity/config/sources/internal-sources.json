@@ -102,6 +102,12 @@
       "title": "InsurancePlatform Operator",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/insuranceplatform-operator-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "solrsrc",
+      "title": "Solr",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/solr-docs.git",
+      "branch": "main"
     }
   ]
 }
