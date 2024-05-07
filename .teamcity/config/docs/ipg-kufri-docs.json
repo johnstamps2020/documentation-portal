@@ -1,0 +1,243 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "midipgkufriapp",
+      "title": "InsuranceSuite Package for Germany Application Guide",
+      "url": "cloud/ipg/kufri/app",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgkufriappde",
+      "title": "InsuranceSuite Package for Germany Application Guide (German)",
+      "url": "de/cloud/ipg/kufri/app",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "de"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgkufriimpl",
+      "title": "InsuranceSuite Package for Germany Implementation",
+      "url": "cloud/ipg/kufri/impl",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Features and functionality"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgkufriinstall",
+      "title": "InsuranceSuite Package for Germany Installation",
+      "url": "cloud/ipg/kufri/install",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgkufrirnen",
+      "title": "InsuranceSuite Package for Germany Release Notes",
+      "url": "cloud/ipg/kufri/releasenotes",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgkufrirnde",
+      "title": "InsuranceSuite Package for Germany Release Notes (German)",
+      "url": "de/cloud/ipg/kufri/releasenotes",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Release notes"
+        ],
+        "language": "de"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgkufriglossary",
+      "title": "InsuranceSuite Package for Germany Glossary",
+      "url": "cloud/ipg/kufri/glossary",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Global Content"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Glossary"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

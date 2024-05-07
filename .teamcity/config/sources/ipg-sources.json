@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "midipgkufrisrc",
+      "title": "InsuranceSuite Package for Germany Kufri",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
+      "branch": "release/kufri"
+    },
+    {
       "id": "midipg310src",
       "title": "InsuranceSuite Package for Germany 3.10",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
