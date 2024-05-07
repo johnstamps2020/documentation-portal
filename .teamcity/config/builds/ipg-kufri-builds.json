@@ -1,0 +1,68 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ImplementationGuide.ditamap",
+      "srcId": "midipgkufrisrc",
+      "docId": "midipgkufriimpl",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGApplicationGuide.ditamap",
+      "srcId": "midipgkufrisrc",
+      "docId": "midipgkufriapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "midipgkufrisrc",
+      "docId": "midipgkufriinstall",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGGlossary.ditamap",
+      "srcId": "midipgkufrisrc",
+      "docId": "midipgkufriglossary",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGReleaseNotes.ditamap",
+      "srcId": "midipgkufrisrc",
+      "docId": "midipgkufrirnen",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGReleaseNotesDE.ditamap",
+      "srcId": "midipgkufrisrc",
+      "docId": "midipgkufrirnde",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGApplicationGuideDE.ditamap",
+      "srcId": "midipgkufrisrc",
+      "docId": "midipgkufriappde",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}
