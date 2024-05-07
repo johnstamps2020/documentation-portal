@@ -289,6 +289,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "solr",
+      "title": "Solr",
+      "url": "internal/solr/latest",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Internal Docs", "Solr"],
+        "version": ["latest"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
