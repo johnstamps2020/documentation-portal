@@ -17,7 +17,7 @@
       "srcId": "dxgwsf34",
       "docId": "dxdiinstall34",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "dxgwsf34",
       "docId": "dxdiadmin34",
       "indexRedirect": true,
-      "disabled": true
+      "disabled": false
     }
   ]
 }
