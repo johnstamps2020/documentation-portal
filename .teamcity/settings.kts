@@ -2777,7 +2777,7 @@ object User {
                         teamcityTemplate = GwTemplates.ValidationListenerTemplate.id.toString(),
                         gitUrl = gitUrl,
                         gitBranch = Helpers.createFullGitBranchName(gitBranch),
-                        teamcityBuildBranch = "%teamcity.build.branch%",
+                        teamcityBuildBranch = "%teamcity.build.vcs.branch.${teamcityGitRepoId}%",
                     )
                 )
 
