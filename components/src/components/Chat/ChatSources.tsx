@@ -15,8 +15,8 @@ export default function ChatSources({ sources }: ChatSourcesProps) {
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(30ch, 1fr))',
+        display: 'flex',
+        flexWrap: 'wrap',
         gap: 2,
         alignItems: 'center',
       }}
@@ -25,13 +25,7 @@ export default function ChatSources({ sources }: ChatSourcesProps) {
         <Translate id="chat.sources">Sources</Translate>
       </Typography>
       {sources?.map(({ title, url }, key) => (
-        <Link
-          sx={{ p: 2, maxWidth: '30ch', height: '100%' }}
-          key={key}
-          href={url}
-          target="_blank"
-          underline="always"
-        >
+        <Link key={key} href={url} target="_blank" underline="always">
           {title}
         </Link>
       ))}
