@@ -24,16 +24,13 @@ type ChatProviderProps = { children: React.ReactNode; userInfo: UserInfo };
 
 export function ChatProvider({ children, userInfo }: ChatProviderProps) {
   const defaultFilters: ChatbotFilters = {
-    doc_title: '',
-    internal: userInfo.hasGuidewireEmail ? 'true' : 'false',
-    public: userInfo.isLoggedIn ? undefined : 'true',
     language: 'en',
-    platform: '',
-    product: '',
-    release: '',
-    subject: '',
-    version: '',
   };
+
+  if (!userInfo.isLoggedIn) {
+    defaultFilters['public'] = 'true';
+  }
+
   const [messages, setMessages] = useState<ChatInterface['messages']>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [filterCount, setFilterCount] = useState(0);
@@ -62,6 +59,12 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
 
   const updateFilters: ChatInterface['updateFilters'] = (name, value) => {
     setFilters((currentFilters) => {
+      if (value.length === 0 && currentFilters[name] !== undefined) {
+        const copyOfCurrentFilters = { ...currentFilters };
+        delete copyOfCurrentFilters[name];
+
+        return copyOfCurrentFilters;
+      }
       return {
         ...currentFilters,
         [name]: value.join(','),
@@ -86,7 +89,9 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
     const chatbotRequest: ChatbotRequest = {
       query: userPrompt,
       opt_in: true,
+      ...filters,
     };
+    console.log({ chatbotRequest });
     const response = await fetch('/chatbot', {
       method: 'POST',
       body: JSON.stringify(chatbotRequest),
@@ -95,7 +100,9 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
       },
     });
 
-    if (response.ok) {
+    if (!response.ok) {
+      console.error({ response });
+    } else {
       const chatbotResponse = (await response.json()) as ChatbotResponse;
       setMessages((prevMessages) => [
         ...prevMessages,

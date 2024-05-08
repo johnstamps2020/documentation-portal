@@ -25,17 +25,15 @@ export default function ChatSources({ sources }: ChatSourcesProps) {
         <Translate id="chat.sources">Sources</Translate>
       </Typography>
       {sources?.map(({ title, url }, key) => (
-        <Card
+        <Link
           sx={{ p: 2, maxWidth: '30ch', height: '100%' }}
           key={key}
-          component={Link}
           href={url}
           target="_blank"
+          underline="always"
         >
-          <Typography variant="h5" component={Link}>
-            {title}
-          </Typography>
-        </Card>
+          {title}
+        </Link>
       ))}
     </Box>
   );

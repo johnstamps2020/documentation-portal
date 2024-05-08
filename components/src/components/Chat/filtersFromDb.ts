@@ -38,7 +38,6 @@ export const filtersFromDb: FilterConfig[] = [
       'Rules',
     ],
   },
-  { label: 'Platform', name: 'platform', values: ['Self-managed', 'Cloud'] },
   {
     label: 'Version',
     name: 'version',
@@ -107,4 +106,5 @@ export const filtersFromDb: FilterConfig[] = [
       'Installation',
     ],
   },
+  { label: 'Platform', name: 'platform', values: ['Self-managed', 'Cloud'] },
 ];
