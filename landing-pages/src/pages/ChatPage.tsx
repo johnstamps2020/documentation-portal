@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import { useLayoutContext } from 'LayoutContext';
-import AdminAccess from 'components/AccessControl/AccessControl';
+import AccessControl from 'components/AccessControl/AccessControl';
 import { useUserInfo } from 'hooks/useApi';
 import { useEffect } from 'react';
 
@@ -40,16 +40,17 @@ export default function ChatPage() {
   }
 
   return (
-    <AdminAccess
+    <AccessControl
       pagePath={window.location.href}
-      checkAdminAccess={true}
+      checkAdminAccess={false}
       checkPowerUserAccess={false}
+      allowedOnEnv="dev"
     >
       <Container>
         <ChatProvider userInfo={userInfo}>
           <ChatWrapper />
         </ChatProvider>
       </Container>
-    </AdminAccess>
+    </AccessControl>
   );
 }

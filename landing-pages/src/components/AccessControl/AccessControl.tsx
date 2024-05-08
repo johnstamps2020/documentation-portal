@@ -1,4 +1,5 @@
-import { useUserInfo } from 'hooks/useApi';
+import { EnvInfo } from '@doctools/server';
+import { useEnvInfo, useUserInfo } from 'hooks/useApi';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,19 +8,30 @@ type AccessControlProps = {
   checkAdminAccess: boolean;
   checkPowerUserAccess: boolean;
   children: JSX.Element[] | JSX.Element;
+  allowedOnEnv?: EnvInfo['name'];
 };
 export default function AccessControl({
   pagePath,
   children,
   checkAdminAccess,
   checkPowerUserAccess,
+  allowedOnEnv,
 }: AccessControlProps) {
+  const {
+    envInfo,
+    isError: envInfoError,
+    isLoading: envInfoLoading,
+  } = useEnvInfo();
   const { userInfo, isLoading, isError } = useUserInfo();
   const navigate = useNavigate();
   const [adminHasAccess, setAdminHasAccess] = useState<boolean>();
   const [powerUserHasAccess, setPowerUserHasAccess] = useState<boolean>();
+  const [pageAllowedOnThisEnv, setPageAllowedOnThisEnv] = useState<boolean>();
 
   useEffect(() => {
+    if (allowedOnEnv && envInfo && allowedOnEnv === envInfo.name) {
+      setPageAllowedOnThisEnv(true);
+    }
     if (!checkAdminAccess) {
       setAdminHasAccess(false);
     }
@@ -46,13 +58,19 @@ export default function AccessControl({
     pagePath,
     checkAdminAccess,
     checkPowerUserAccess,
+    envInfo,
+    allowedOnEnv,
   ]);
 
-  if (isLoading || isError) {
+  if (isLoading || isError || envInfoError || envInfoLoading) {
     return null;
   }
 
-  if (powerUserHasAccess === false && adminHasAccess === false) {
+  if (
+    pageAllowedOnThisEnv === false &&
+    powerUserHasAccess === false &&
+    adminHasAccess === false
+  ) {
     navigate(`/forbidden?unauthorized=${pagePath}`);
   }
 
