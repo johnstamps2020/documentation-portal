@@ -35,7 +35,7 @@ export async function prepareDocs({
         files.forEach((file) => {
           const idMatch = file._source?.id;
           const titleMatch = file._source?.title;
-          const bodyMatch = file._source?.body;
+          const bodyMatch = file._source?.body.trim();
           const langMatch = file._source?.language;
           if (idMatch && titleMatch && bodyMatch && langMatch) {
             var urlSliceArray = idMatch.split('/');
