@@ -291,6 +291,18 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Administering Integration Gateway Apps',
+          docId: 'integgatewayuirelease',
+          description: (
+            <>
+            Provides practical guidance on configuring access to the Integration Apps
+            user interface, creating new integration apps, managing the integrations
+            and their deployment to Guidewire Cloud. Offers information about
+            observability metrics for monitoring their performance.
+            </>
+          )
+        },
+        {
           label: 'Cloud API Developer Guide',
           docId: 'isbc202310apica',
           description: (
