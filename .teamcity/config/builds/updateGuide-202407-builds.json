@@ -6,36 +6,36 @@
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "UpdateGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "is202302src",
-      "docId": "isbc202302update",
-      "disabled": true
+      "srcId": "is202407src",
+      "docId": "isbc202407update",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "UpdateGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "is202302src",
-      "docId": "iscc202302update",
-      "disabled": true
+      "srcId": "is202407src",
+      "docId": "iscc202407update",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "UpdateGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "is202302src",
-      "docId": "ispc202302update",
-      "disabled": true
+      "srcId": "is202407src",
+      "docId": "ispc202407update",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "EE-Cloud-Release.ditaval",
       "root": "UpdateGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "is202302src",
-      "docId": "ee202302update",
-      "disabled": true
+      "srcId": "is202407src",
+      "docId": "ee202407update",
+      "disabled": false
     }
   ]
 }
