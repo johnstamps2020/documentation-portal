@@ -49,7 +49,7 @@ function checkIfPageIsAllowedOnThisEnv(
   currentEnvName: EnvName
 ): boolean {
   // no env name requested, so the page can be viewed on any nev
-  if (!requestedEnvNames) {
+  if (!requestedEnvNames || requestedEnvNames.length === 0) {
     return true;
   }
 
