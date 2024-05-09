@@ -24,7 +24,7 @@
       "srcId": "dm2023101011src",
       "docId": "dh10110product",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -33,7 +33,7 @@
       "srcId": "dm2023101011src",
       "docId": "dh10110install",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -42,7 +42,7 @@
       "srcId": "dm2023101011src",
       "docId": "dh10110upgrade",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -51,7 +51,7 @@
       "srcId": "dm2023101011src",
       "docId": "dh10110config",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -60,7 +60,7 @@
       "srcId": "dm2023101011src",
       "docId": "dh10110dataspec",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -69,7 +69,7 @@
       "srcId": "dm2023101011src",
       "docId": "dh10110admin",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -85,7 +85,7 @@
           "targetFolder": "extras/autoGenFiles/onPrem"
         }
       ],
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -110,7 +110,7 @@
       "srcId": "dm2023101011src",
       "docId": "ic10110product",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -119,7 +119,7 @@
       "srcId": "dm2023101011src",
       "docId": "ic10110install",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -128,7 +128,7 @@
       "srcId": "dm2023101011src",
       "docId": "ic10110upgrade",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -137,7 +137,7 @@
       "srcId": "dm2023101011src",
       "docId": "ic10110config",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -146,7 +146,7 @@
       "srcId": "dm2023101011src",
       "docId": "ic10110dataspec",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -155,7 +155,7 @@
       "srcId": "dm2023101011src",
       "docId": "ic10110admin",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -164,7 +164,7 @@
       "srcId": "dm2023101011src",
       "docId": "ic10110biapp",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -173,7 +173,7 @@
       "srcId": "dm2023101011src",
       "docId": "ic10110reports",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -189,7 +189,7 @@
           "targetFolder": "extras/autoGenFiles/onPrem"
         }
       ],
-      "disabled": false
+      "disabled": true
     }
   ]
 }
