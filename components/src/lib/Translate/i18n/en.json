@@ -171,8 +171,31 @@
     "message": "Save and close",
     "description": "The users selects some options. Clicking this button closes the dialog box an makes the app remember the selected options."
   },
+  "chat.notOptedIn": {
+    "message": "You did not opt in to receive messages from the chatbot.",
+    "description": "If they user did not agree to the terms of using a chatbot, message states that fact to them."
+  },
+  "chat.allow": {
+    "message": "Allow AI chatbot to answer questions",
+    "description": "This is the label on the button which enables responses coming from an LLM AI"
+  },
+  "chat.allow.learnMore": {
+    "message": "Read the terms and conditions"
+  },
+  "chat.termsAndConditions.title": {
+    "message": "Terms and conditions of using the chat",
+    "description": "The title of the 'terms and conditions' section"
+  },
+  "chat.termsAndConditions.close": {
+    "message": "Close the terms and conditions",
+    "description": "The button which closes the panel showing terms and conditions of using the chatbot"
+  },
   "login.gwEmployeeHint": {
     "message": "Guidewire employee? Log in using the Guidewire Cloud option above.",
     "description": "The text which helps a Guidewire employee know how to log in"
+  },
+  "consent.ai": {
+    "message": "Allow AI",
+    "description": "If the user consented to using AI, their decision is displayed next to thi label"
   }
 }

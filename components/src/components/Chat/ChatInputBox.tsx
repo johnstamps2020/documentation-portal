@@ -44,6 +44,7 @@ export function ChatInputBox() {
           message: 'Send',
         })}
         type="submit"
+        color="primary"
       >
         <SendIcon />
       </IconButton>

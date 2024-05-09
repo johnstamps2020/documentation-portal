@@ -3,8 +3,11 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { ChatInputBox } from './ChatInputBox';
 import { Translate } from '../../lib';
+import { useChat } from './ChatContext';
+import { NotOptedIn } from './NotOptedIn';
 
 export function EmptyChat() {
+  const { optedIn } = useChat();
   return (
     <Stack
       sx={{
@@ -20,6 +23,7 @@ export function EmptyChat() {
         </Translate>
       </Typography>
       <ChatInputBox />
+      {!optedIn && <NotOptedIn />}
     </Stack>
   );
 }

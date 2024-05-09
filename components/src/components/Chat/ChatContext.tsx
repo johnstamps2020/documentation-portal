@@ -8,7 +8,11 @@ import {
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ChatbotMessage } from './types';
 
+export const AI_OPT_IN_KEY_IN_LOCAL_STORAGE = 'ai-consent-decision';
+
 export interface ChatInterface {
+  optedIn: boolean;
+  applyOptedIn: (valueToApply: ChatInterface['optedIn']) => void;
   messages: ChatbotMessage[];
   isProcessing: boolean;
   sendPrompt(userPrompt: string): void;
@@ -22,6 +26,30 @@ export const ChatContext = createContext<ChatInterface | null>(null);
 
 type ChatProviderProps = { children: React.ReactNode; userInfo: UserInfo };
 
+export function checkAIOptInStatus(): ChatInterface['optedIn'] {
+  const valueInLocalStorage = localStorage.getItem(
+    AI_OPT_IN_KEY_IN_LOCAL_STORAGE
+  );
+
+  if (valueInLocalStorage) {
+    return valueInLocalStorage === 'true';
+  }
+  return false;
+}
+
+export function saveAIOptInStatus(valueToSave: ChatInterface['optedIn']): void {
+  const valueInLocalStorage = localStorage.getItem(
+    AI_OPT_IN_KEY_IN_LOCAL_STORAGE
+  );
+
+  if (valueInLocalStorage !== valueToSave.toString()) {
+    localStorage.setItem(
+      AI_OPT_IN_KEY_IN_LOCAL_STORAGE,
+      valueToSave.toString()
+    );
+  }
+}
+
 export function ChatProvider({ children, userInfo }: ChatProviderProps) {
   const defaultFilters: ChatbotFilters = {
     language: 'en',
@@ -31,6 +59,9 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
     defaultFilters['public'] = 'true';
   }
 
+  const [optedIn, setOptedIn] = useState<ChatInterface['optedIn']>(
+    checkAIOptInStatus()
+  );
   const [messages, setMessages] = useState<ChatInterface['messages']>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [filterCount, setFilterCount] = useState(0);
@@ -88,7 +119,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
     ]);
     const chatbotRequest: ChatbotRequest = {
       query: userPrompt,
-      opt_in: true,
+      opt_in: optedIn,
       ...filters,
     };
     console.log({ chatbotRequest });
@@ -104,16 +135,22 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
       console.error({ response });
     } else {
       const chatbotResponse = (await response.json()) as ChatbotResponse;
+      const responseFromBot = optedIn ? chatbotResponse.response : undefined;
       setMessages((prevMessages) => [
         ...prevMessages,
         {
           role: 'bot',
-          message: chatbotResponse.response,
+          message: responseFromBot,
           sources: chatbotResponse.original_documents,
         },
       ]);
     }
     setIsProcessing(false);
+  };
+
+  const applyOptedIn: ChatInterface['applyOptedIn'] = (valueToApply) => {
+    saveAIOptInStatus(valueToApply);
+    setOptedIn(valueToApply);
   };
 
   return (
@@ -126,6 +163,8 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
         updateFilters,
         getFilterValues,
         filterCount,
+        optedIn,
+        applyOptedIn,
       }}
     >
       {children}

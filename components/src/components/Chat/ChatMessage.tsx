@@ -4,11 +4,12 @@ import Typography from '@mui/material/Typography';
 import React, { useEffect, useRef } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { translate } from '../../lib';
+import { Translate, translate } from '../../lib';
 import { ChatLoader } from './ChatLoader';
 import './ChatMessage.css';
 import ChatSources from './ChatSources';
 import { ChatbotMessage } from './types';
+import { NotOptedIn } from './NotOptedIn';
 
 type ChatMessageProps = ChatbotMessage & {
   isLast: boolean;
@@ -33,6 +34,20 @@ function UserMessage({ message, isLast }: ChatMessageProps) {
   );
 }
 
+function Answer({ answer }: { answer: string }) {
+  return (
+    <>
+      <Typography variant="h3">
+        {translate({
+          id: 'chat.answer',
+          message: 'Answer',
+        })}
+      </Typography>
+      <Markdown remarkPlugins={[remarkGfm]}>{answer}</Markdown>
+    </>
+  );
+}
+
 export function ChatMessage({
   role,
   message,
@@ -54,13 +69,7 @@ export function ChatMessage({
   return (
     <Box sx={{ width: '100%' }} ref={responseRef}>
       <ChatSources sources={sources} />
-      <Typography variant="h3">
-        {translate({
-          id: 'chat.answer',
-          message: 'Answer',
-        })}
-      </Typography>
-      <Markdown remarkPlugins={[remarkGfm]}>{message}</Markdown>
+      {message ? <Answer answer={message} /> : <NotOptedIn />}
     </Box>
   );
 }

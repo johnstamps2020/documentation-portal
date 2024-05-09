@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { Translate, getRedirectToPath } from '../../lib';
 import { useAvatar } from './AvatarContext';
+import { AvatarConsent } from './AvatarConsent';
 
 export function AvatarButtonWithMenu() {
   const { userInfo, additionalLinks } = useAvatar();
@@ -65,6 +66,7 @@ export function AvatarButtonWithMenu() {
             {label}
           </MenuItem>
         ))}
+        <AvatarConsent />
         <MenuItem
           href={`/gw-logout?redirectTo=${getRedirectToPath()}`}
           component={'a'}
