@@ -1,16 +1,13 @@
+import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Switch from '@mui/material/Switch';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { translate } from '../../lib';
-import { checkAIOptInStatus, saveAIOptInStatus } from '../Chat/ChatContext';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import { useConsentStore } from './consentStore';
 
 export function AvatarConsent() {
-  const [aIConsented, setAIConsented] = useState(checkAIOptInStatus());
-
-  useEffect(() => {
-    saveAIOptInStatus(aIConsented);
-  }, [aIConsented]);
+  const aIConsented = useConsentStore((state) => state.aiConsented);
+  const setAIConsented = useConsentStore((state) => state.setAIConsented);
 
   const aiLabel = translate({
     id: 'consent.ai',
@@ -26,7 +23,6 @@ export function AvatarConsent() {
           onChange={() => {
             setAIConsented(!aIConsented);
           }}
-          disabled={aIConsented === false}
         />
       }
       label={aiLabel}

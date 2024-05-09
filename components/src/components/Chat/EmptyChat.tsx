@@ -1,13 +1,13 @@
-import React from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { ChatInputBox } from './ChatInputBox';
+import React from 'react';
 import { Translate } from '../../lib';
-import { useChat } from './ChatContext';
+import { useConsentStore } from '../Avatar/consentStore';
+import { ChatInputBox } from './ChatInputBox';
 import { NotOptedIn } from './NotOptedIn';
 
 export function EmptyChat() {
-  const { optedIn } = useChat();
+  const aiConsented = useConsentStore((state) => state.aiConsented);
   return (
     <Stack
       sx={{
@@ -23,7 +23,7 @@ export function EmptyChat() {
         </Translate>
       </Typography>
       <ChatInputBox />
-      {!optedIn && <NotOptedIn />}
+      {!aiConsented && <NotOptedIn />}
     </Stack>
   );
 }

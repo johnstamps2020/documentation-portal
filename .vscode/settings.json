@@ -117,7 +117,8 @@
     "workset",
     "xbook",
     "xmind",
-    "yarnbuild"
+    "yarnbuild",
+    "zustand"
   ],
   "cSpell.ignorePaths": [
     "package-lock.json",

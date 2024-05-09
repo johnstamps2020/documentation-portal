@@ -5,10 +5,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { TermsAndConditionsDialogBox } from './TermsAndConditionsDialogBox';
 import { useChat } from './ChatContext';
+import { useConsentStore } from '../Avatar/consentStore';
 
 export function NotOptedIn() {
   const [open, setOpen] = useState(false);
-  const { applyOptedIn } = useChat();
+  const setAIConsented = useConsentStore((state) => state.setAIConsented);
+
   return (
     <Box>
       <Typography sx={{ my: 2 }}>
@@ -19,7 +21,7 @@ export function NotOptedIn() {
       <Button
         variant="contained"
         onClick={() => {
-          applyOptedIn(true);
+          setAIConsented(true);
         }}
       >
         <Translate id="chat.allow">
