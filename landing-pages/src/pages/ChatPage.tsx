@@ -40,12 +40,7 @@ export default function ChatPage() {
   }
 
   return (
-    <AccessControl
-      pagePath={window.location.href}
-      checkAdminAccess={false}
-      checkPowerUserAccess={false}
-      allowedOnEnv="dev"
-    >
+    <AccessControl allowedOnEnvs={['dev']} accessLevel="everyone">
       <Container>
         <ChatProvider userInfo={userInfo}>
           <ChatWrapper />

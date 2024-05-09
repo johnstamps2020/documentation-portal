@@ -1,10 +1,9 @@
 import EditIcon from '@mui/icons-material/Edit';
 import Fab from '@mui/material/Fab';
+import AccessControl from 'components/AccessControl/AccessControl';
 import AdminDialog from 'components/AdminPage/AdminDialog';
 import PageSettingsForm from 'components/AdminPage/PageAdminPage/PageSettingsForm';
 import { useState } from 'react';
-import { useEnvInfo, useUserInfo } from '../../hooks/useApi';
-import { prodDeployEnv } from '../../vars';
 
 type EditPagePropsButtonProps = {
   pagePath: string;
@@ -12,25 +11,7 @@ type EditPagePropsButtonProps = {
 export default function EditPagePropsButton({
   pagePath,
 }: EditPagePropsButtonProps) {
-  const {
-    userInfo,
-    isLoading: isUserInfoLoading,
-    isError: isUserInfoError,
-  } = useUserInfo();
-  const {
-    envInfo,
-    isLoading: isEnvInfoLoading,
-    isError: isEnvInfoError,
-  } = useEnvInfo();
   const [isOpen, setIsOpen] = useState(false);
-
-  if (isEnvInfoLoading || isEnvInfoError || envInfo?.name === prodDeployEnv) {
-    return null;
-  }
-
-  if (isUserInfoLoading || isUserInfoError || !userInfo?.isAdmin) {
-    return null;
-  }
 
   function handleOpenEditor() {
     setIsOpen(true);
@@ -41,7 +22,7 @@ export default function EditPagePropsButton({
   }
 
   return (
-    <>
+    <AccessControl allowedOnEnvs={['dev', 'staging']} accessLevel="admin">
       <Fab
         variant="extended"
         color="warning"
@@ -61,6 +42,6 @@ export default function EditPagePropsButton({
       >
         <PageSettingsForm primaryKey={pagePath} />
       </AdminDialog>
-    </>
+    </AccessControl>
   );
 }

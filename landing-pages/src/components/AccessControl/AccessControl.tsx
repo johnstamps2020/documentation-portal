@@ -1,77 +1,105 @@
-import { EnvInfo } from '@doctools/server';
+import { EnvName, UserInfo } from '@doctools/server';
 import { useEnvInfo, useUserInfo } from 'hooks/useApi';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+type AccessLevel = 'admin' | 'power-user' | 'everyone';
+
 type AccessControlProps = {
-  pagePath: string;
-  checkAdminAccess: boolean;
-  checkPowerUserAccess: boolean;
+  accessLevel: AccessLevel;
+  allowedOnEnvs?: EnvName[];
   children: JSX.Element[] | JSX.Element;
-  allowedOnEnv?: EnvInfo['name'];
 };
+
+function checkIfUserCanAccess(
+  userInfo: UserInfo,
+  accessLevel: AccessLevel
+): boolean {
+  // page does no require special access rights,
+  // so it's okay for anyone to view it, even if they are not logged in
+  if (accessLevel === 'everyone') {
+    return true;
+  }
+
+  // since this page requires special rights to be accessed,
+  // user needs to be logged in to view it
+  if (!userInfo || !userInfo.isLoggedIn) {
+    return false;
+  }
+
+  // if page requires power user, the user needs to be a power user or an admin to view it
+  if (
+    accessLevel === 'power-user' &&
+    (userInfo.isPowerUser || userInfo.isAdmin)
+  ) {
+    return true;
+  }
+
+  // if page requires admin, the user needs to be an admin to view it
+  if (accessLevel === 'admin' && userInfo.isAdmin) {
+    return true;
+  }
+
+  // block access in all other cases:
+  return false;
+}
+
+function checkIfPageIsAllowedOnThisEnv(
+  requestedEnvNames: AccessControlProps['allowedOnEnvs'],
+  currentEnvName: EnvName
+): boolean {
+  // no env name requested, so the page can be viewed on any nev
+  if (!requestedEnvNames) {
+    return true;
+  }
+
+  // requested env name, so check if it matches
+  if (requestedEnvNames.includes(currentEnvName)) {
+    return true;
+  }
+
+  // block access in all other cases
+  return false;
+}
+
 export default function AccessControl({
-  pagePath,
   children,
-  checkAdminAccess,
-  checkPowerUserAccess,
-  allowedOnEnv,
+  accessLevel,
+  allowedOnEnvs,
 }: AccessControlProps) {
   const {
     envInfo,
     isError: envInfoError,
     isLoading: envInfoLoading,
   } = useEnvInfo();
-  const { userInfo, isLoading, isError } = useUserInfo();
+  const {
+    userInfo,
+    isLoading: userInfoLoading,
+    isError: userInfoError,
+  } = useUserInfo();
+
+  const pagePath = window.location.href;
   const navigate = useNavigate();
-  const [adminHasAccess, setAdminHasAccess] = useState<boolean>();
-  const [powerUserHasAccess, setPowerUserHasAccess] = useState<boolean>();
-  const [pageAllowedOnThisEnv, setPageAllowedOnThisEnv] = useState<boolean>();
 
   useEffect(() => {
-    if (allowedOnEnv && envInfo && allowedOnEnv === envInfo.name) {
-      setPageAllowedOnThisEnv(true);
-    }
-    if (!checkAdminAccess) {
-      setAdminHasAccess(false);
-    }
-    if (!checkPowerUserAccess) {
-      setPowerUserHasAccess(false);
-    }
-    if (userInfo) {
-      if (!userInfo.isLoggedIn) {
-        navigate(`/gw-login?redirectTo=${pagePath}`);
-      }
-      if (checkAdminAccess) {
-        setAdminHasAccess(userInfo.isAdmin);
-      }
-      if (checkPowerUserAccess) {
-        setPowerUserHasAccess(userInfo.isPowerUser);
-      }
-    }
-  }, [
-    navigate,
-    userInfo,
-    userInfo?.isLoggedIn,
-    userInfo?.isAdmin,
-    userInfo?.isPowerUser,
-    pagePath,
-    checkAdminAccess,
-    checkPowerUserAccess,
-    envInfo,
-    allowedOnEnv,
-  ]);
+    if (userInfo && envInfo && envInfo.name) {
+      const pageAllowedOnThisEnv = checkIfPageIsAllowedOnThisEnv(
+        allowedOnEnvs,
+        envInfo.name
+      );
+      const userAllowedToAccessPage = checkIfUserCanAccess(
+        userInfo,
+        accessLevel
+      );
 
-  if (isLoading || isError || envInfoError || envInfoLoading) {
+      if (!pageAllowedOnThisEnv || !userAllowedToAccessPage) {
+        navigate(`/forbidden?unauthorized=${pagePath}`);
+      }
+    }
+  }, [userInfo, envInfo, allowedOnEnvs, accessLevel, navigate, pagePath]);
+
+  if (userInfoLoading || userInfoError || envInfoLoading || envInfoError) {
     return null;
-  }
-
-  if (
-    pageAllowedOnThisEnv === false &&
-    powerUserHasAccess === false &&
-    adminHasAccess === false
-  ) {
-    navigate(`/forbidden?unauthorized=${pagePath}`);
   }
 
   return <>{children}</>;
