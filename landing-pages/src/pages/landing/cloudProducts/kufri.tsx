@@ -147,8 +147,12 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'apiReferences/kufri',
         },
         {
-          label: 'Integration Gateway',
-          docId: 'integgatewaydevnext',
+          label: 'Developing Integration Gateway Apps',
+          docId: 'integgatewayfwnext',
+        },
+        {
+          label: 'Administering Integration Gateway Apps',
+          docId: 'integgatewayuinext',
         },
         {
           label: 'App Events',

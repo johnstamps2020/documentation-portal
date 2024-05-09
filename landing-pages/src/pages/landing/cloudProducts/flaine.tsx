@@ -135,6 +135,10 @@ const pageConfig: Category2LayoutProps = {
           docId: 'integgatewaydevlatest',
         },
         {
+          label: 'Administering Integration Gateway Apps',
+          docId: 'integgatewayuirelease',
+        },
+        {
           label: 'App Events',
           docId: 'appeventsdev',
         },

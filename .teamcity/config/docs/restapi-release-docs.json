@@ -310,11 +310,6 @@
           "PolicyCenter"
         ],
         "version": [
-          "2022.05",
-          "2022.09",
-          "2023.02",
-          "2023.06",
-          "2023.10",
           "2024.02"
         ],
         "subject": [
@@ -323,11 +318,6 @@
           "Release notes"
         ],
         "release": [
-          "Elysian",
-          "Flaine",
-          "Garmisch",
-          "Hakuba",
-          "Innsbruck",
           "Jasper"
         ],
         "language": "en"

@@ -297,14 +297,26 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Integration Gateway',
-          docId: 'integgatewaydevlatest',
+          label: 'Developing Integration Gateway Apps',
+          docId: 'integgatewayfwnext',
           description: (
             <>
-              Use Integration Gateway to facilitate the process of creating new
-              integration projects, developing the project implementation
-              locally, and deploying projects to the Guidewire Cloud Platform
-              (GWCP).
+              Offers comprehensive guidance on leveraging the Integration Gateway
+              framework library components and utilities. Provides detailed
+              instructions and examples for creating new integration projects,
+              refining project implementation, and configuring security authentication.
+            </>
+          ),
+        },
+        {
+          label: 'Administering Integration Gateway Apps',
+          docId: 'integgatewayuinext',
+          description: (
+            <>
+              Provides practical guidance on configuring access to the Integration Apps
+              user interface, creating new integration apps, managing the integrations
+              and their deployment to Guidewire Cloud. Offers information about
+              observability metrics for monitoring their performance.
             </>
           ),
         },

@@ -181,15 +181,6 @@ const pageConfig: CategoryLayoutProps = {
             },
           ],
         },
-        {
-          label: 'Integration Framework',
-          items: [
-            {
-              label: 'Integration Gateway',
-              docId: 'integgatewaydevlatest',
-            },
-          ],
-        },
       ],
     },
     {
@@ -202,6 +193,10 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Integration Gateway',
           docId: 'integgatewaydevlatest',
+        },
+        {
+          label: 'Administering Integration Gateway Apps',
+          docId: 'integgatewayuirelease',
         },
         {
           label: 'REST API Client',

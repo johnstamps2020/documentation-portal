@@ -98,6 +98,7 @@ const pageConfig: SectionLayoutProps = {
           label: 'Integration Gateway',
           docId: 'integgatewaydevlatest',
         },
+        
         {
           label: 'Plugins, Prebuilt Integrations, and SOAP APIs',
           docId: 'isbc202205integ',
