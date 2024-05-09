@@ -27,7 +27,11 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   releaseBFiles.forEach(function (b) {
     if (
       releaseAFiles.some(function (a) {
-        return a.id === b.id && a.body === b.body && a.title === b.title;
+        return (
+          a.id === b.id &&
+          a.body.trimEnd() === b.body.trimEnd() &&
+          a.title === b.title
+        );
       })
     ) {
       unchangedFiles++;
@@ -61,13 +65,13 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   }
 
   function compareTwoDocs(docA: DeltaDocResultType, docB: DeltaDocResultType) {
-    const fileChangeAmount: number = difference(docA.body, docB.body);
+    const docABody = docA.body.trimEnd();
+    const docBBody = docB.body.trimEnd();
+    const fileChangeAmount: number = difference(docABody, docBBody);
     var percentageChange: number = Math.ceil(
       calculatePercentage(
         fileChangeAmount,
-        docB.body.length > docA.body.length
-          ? docB.body.length
-          : docA.body.length
+        docBBody.length > docABody.length ? docBBody.length : docABody.length
       )
     );
     if (percentageChange > 100) {
@@ -257,7 +261,6 @@ export function useDeltaDocData({
     isError: error,
   };
 }
-
 
 const deltaDocValidator = async (docUrl: string) => {
   const response = await fetch(
