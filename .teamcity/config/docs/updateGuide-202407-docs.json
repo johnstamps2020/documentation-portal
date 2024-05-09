@@ -1,0 +1,133 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc202407update",
+      "title": "Update",
+      "url": "cloud/bc/202407/update",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202407update",
+      "title": "Update",
+      "url": "cloud/cc/202407/update",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202407update",
+      "title": "Update",
+      "url": "cloud/pc/202407/update",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ee202407update",
+      "title": "Update",
+      "url": "cloud/ee/202407/update",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Digital Reference Applications"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Installation"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

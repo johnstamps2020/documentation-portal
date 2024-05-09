@@ -8,7 +8,7 @@
       "srcId": "testingframeworks202302src",
       "docId": "testingframeworksapigarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "testingframeworks202302src",
       "docId": "testingframeworksuigarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "testingframeworks202302src",
       "docId": "testingframeworksloadgarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "testingframeworks202302src",
       "docId": "testingframeworksmgmtgarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -44,7 +44,7 @@
       "srcId": "testingframeworks202302src",
       "docId": "testingframeworksmatrixgarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -53,7 +53,7 @@
       "srcId": "testingframeworks202302src",
       "docId": "testingframeworksrngarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -62,7 +62,7 @@
       "srcId": "testingframeworks202302src",
       "docId": "testingframeworksinstallgarmisch",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -71,7 +71,7 @@
       "srcId": "testingframeworks202302src",
       "docId": "is202302testing",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -80,7 +80,7 @@
       "srcId": "testingframeworks202302src",
       "docId": "is202302access",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }

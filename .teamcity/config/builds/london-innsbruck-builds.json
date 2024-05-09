@@ -8,7 +8,7 @@
       "srcId": "lminnsbrucksrc",
       "docId": "londonccappinnsbruck",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "srcId": "lminnsbrucksrc",
       "docId": "londonpcappinnsbruck",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "srcId": "lminnsbrucksrc",
       "docId": "londonconfiginnsbruck",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "srcId": "lminnsbrucksrc",
       "docId": "londonrninnsbruck",
       "indexRedirect": true,
-      "disabled": false
+      "disabled": true
     }
   ]
 }
