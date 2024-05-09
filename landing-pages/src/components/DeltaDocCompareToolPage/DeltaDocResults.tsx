@@ -39,7 +39,7 @@ export default function DeltaDocResults() {
   const higherRelease = releaseA > releaseB ? releaseA : releaseB;
   const lowerRelease = releaseA < releaseB ? releaseA : releaseB;
   const allResultsDisplayed = resultsPerPage === results.length;
-  
+
   return (
     <>
       <Box
@@ -69,7 +69,8 @@ export default function DeltaDocResults() {
         </Button>
       </Box>
       <Typography variant="h1" textAlign="center">
-        Found {results.length} pages with differences
+        Found {results.length} {results.length === 1 ? 'page' : 'pages'} with
+        differences
       </Typography>
       <TableContainer component={Paper} sx={{ mt: '30px', px: 2 }}>
         <Table

@@ -20,7 +20,13 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   const releaseBFiles = deltaDocData[1];
   let cumulativeFileChanges = 0;
   let unchangedFiles = 0;
-  const areReleasesIdentical = releaseAFiles === releaseBFiles;
+  const areReleasesIdentical =
+    JSON.stringify(
+      releaseAFiles.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0))
+    ) ===
+    JSON.stringify(
+      releaseBFiles.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0))
+    );
 
   // TODO: statistics:  left only entries: xx, right only entries: xx,
 
@@ -29,7 +35,7 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
       releaseAFiles.some(function (a) {
         return (
           a.id === b.id &&
-          a.body.trimEnd() === b.body.trimEnd() &&
+          a.body.trim() === b.body.trim() &&
           a.title === b.title
         );
       })
@@ -65,8 +71,8 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   }
 
   function compareTwoDocs(docA: DeltaDocResultType, docB: DeltaDocResultType) {
-    const docABody = docA.body.trimEnd();
-    const docBBody = docB.body.trimEnd();
+    const docABody = docA.body.trim();
+    const docBBody = docB.body.trim();
     const fileChangeAmount: number = difference(docABody, docBBody);
     var percentageChange: number = Math.ceil(
       calculatePercentage(

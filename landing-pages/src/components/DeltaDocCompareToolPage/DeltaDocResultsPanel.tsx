@@ -50,7 +50,7 @@ export default function DeltaDocResultsPanel() {
     <>
       <Typography variant="h2" textAlign="center">
         {areReleasesIdentical
-          ? ` The releases ${releaseA} and ${releaseB} are
+          ? ` Releases ${releaseA} and ${releaseB} are
         identical.`
           : `No results for ${url} in ${releaseA} and ${releaseB}.`}
       </Typography>
