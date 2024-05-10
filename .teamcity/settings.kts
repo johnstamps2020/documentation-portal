@@ -73,6 +73,7 @@ enum class GwConfigParams(val paramValue: String) {
         "json"
     ),
     BUILD_DATA_FILE("build-data.json"), COMMON_GW_DITAVALS_DIR("common_gw_ditavals"), BITBUCKET_SSH_KEY("svc-doc-bitbucket"),
+    GITHUB_SSH_KEY("svc-gh-doctools"),
     ECR_HOST("627188849628.dkr.ecr.us-west-2.amazonaws.com"),
     ECR_HOST_PROD("954920275956.dkr.ecr.us-east-1.amazonaws.com"),
     AWS_ROLE("arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"),
@@ -249,6 +250,8 @@ object Helpers {
     private val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
     val enabledBuildConfigs = buildConfigs.filter { !it.getBoolean("disabled") }
     val gitSources = getBuildSourceConfigs()
+    val bitbucketSources = gitSources.filter { it.getString("gitUrl").contains("stash") }
+    val gitHubSources = gitSources.filter { it.getString("gitUrl").contains("github") }
 
     fun getObjectById(objectList: List<JSONObject>, idName: String, idValue: String): JSONObject {
         return objectList.find { it.getString(idName) == idValue } ?: JSONObject()
@@ -1700,13 +1703,18 @@ object GwVcsRoots {
         defaultBranch: String,
         monitoredBranches: List<String> = emptyList(),
     ): GitVcsRoot {
+        val sshKey = if (Helpers.gitHubSources.any { it.getString("gitUrl").toString() == gitUrl }) {
+            GwConfigParams.GITHUB_SSH_KEY.paramValue
+        } else {
+            GwConfigParams.BITBUCKET_SSH_KEY.paramValue
+        }
         return GitVcsRoot {
             name = vcsRootId.toString()
             id = vcsRootId
             url = gitUrl
             branch = Helpers.createFullGitBranchName(defaultBranch)
             authMethod = uploadedKey {
-                uploadedKey = GwConfigParams.BITBUCKET_SSH_KEY.paramValue
+                uploadedKey = sshKey
             }
             checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
 
@@ -2702,7 +2710,7 @@ object User {
 
         private fun createValidationProjectsForSources(): List<Project> {
             val validationProjects = mutableListOf<Project>()
-            for (src in Helpers.gitSources) {
+            for (src in Helpers.bitbucketSources) {
                 val srcId = src.getString("id")
                 val gitUrl = src.getString("gitUrl")
                 val buildsRelatedToSrc = Helpers.enabledBuildConfigs.filter { it.getString("srcId") == srcId }

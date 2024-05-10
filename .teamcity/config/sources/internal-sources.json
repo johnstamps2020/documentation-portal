@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "oamsrc",
+      "title": "Open Application Model",
+      "gitUrl": "git@github.com:gwre-pdo/ccs-oam-docs.git",
+      "branch": "main"
+    },
+    {
       "id": "ketisrc",
       "title": "Keti Cloud Common Auth",
       "gitUrl": "ssh://git@stash.guidewire.com/ccs/keti-docs.git",

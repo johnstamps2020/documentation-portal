@@ -3,6 +3,13 @@
   "builds": [
     {
       "buildType": "yarn",
+      "docId": "oam",
+      "srcId": "oamsrc",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "keti",
       "srcId": "ketisrc",
       "workingDir": "website",
