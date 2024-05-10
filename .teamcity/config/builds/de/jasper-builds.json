@@ -76,6 +76,15 @@
 		{
 			"buildType": "dita",
 			"filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "BC-AppGuide.ditamap",
+      "srcId": "is202402deDEsrc",
+      "docId": "isbc202402deDEapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
 			"srcId": "is202402deDEsrc",
 			"docId": "isbc202402deDEreleasenotes",
@@ -93,7 +102,16 @@
 		},
 		{
 			"buildType": "dita",
-			"filter": "IS-CC-Cloud-Release.ditaval",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CC-AppGuide.ditamap",
+      "srcId": "is202402deDEsrc",
+      "docId": "iscc202402deDEapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
 			"srcId": "is202402deDEsrc",
 			"docId": "iscc202402deDEreleasenotes",
@@ -112,6 +130,15 @@
 		{
 			"buildType": "dita",
 			"filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "PC-AppGuide.ditamap",
+      "srcId": "is202402deDEsrc",
+      "docId": "ispc202402deDEapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
 			"root": "ReleaseNotes.ditamap",
 			"srcId": "is202402deDEsrc",
 			"docId": "ispc202402deDEreleasenotes",

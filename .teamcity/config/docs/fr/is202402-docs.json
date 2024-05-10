@@ -2,6 +2,26 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
+      "id": "isbc202402frFRapp",
+      "title": "Application Guide fr",
+      "displayTitle": "Guide de l'application",
+      "url": "fr/cloud/bc/202402/app",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "BillingCenter" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Features and functionality" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "isbc202402frFRreleasenotes",
       "title": "Release Notes fr",
       "displayTitle": "Notes sur la version",
@@ -42,6 +62,26 @@
       "earlyAccess": false
     },
     {
+      "id": "iscc202402frFRapp",
+      "title": "Application Guide fr",
+      "displayTitle": "Guide de l'application",
+      "url": "fr/cloud/cc/202402/app",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "ClaimCenter" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Features and functionality" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "iscc202402frFRreleasenotes",
       "title": "Release Notes fr",
       "displayTitle": "Notes sur la version",
@@ -75,6 +115,26 @@
         "language": "fr"
       },
       "environments": [ "staging", "prod" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202402frFRapp",
+      "title": "Application Guide fr",
+      "displayTitle": "Guide de l'application",
+      "url": "fr/cloud/pc/202402/app",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "PolicyCenter" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Features and functionality" ],
+        "language": "fr"
+      },
+      "environments": [ "staging" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
