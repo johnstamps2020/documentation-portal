@@ -1,15 +1,19 @@
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { Translate } from '../../lib';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import { TermsAndConditionsDialogBox } from './TermsAndConditionsDialogBox';
-import { useChat } from './ChatContext';
 import { useConsentStore } from '../Avatar/consentStore';
+import { TermsAndConditionsDialogBox } from './TermsAndConditionsDialogBox';
 
 export function NotOptedIn() {
   const [open, setOpen] = useState(false);
   const setAIConsented = useConsentStore((state) => state.setAIConsented);
+  const aiConsented = useConsentStore((state) => state.aiConsented);
+
+  if (aiConsented) {
+    return null;
+  }
 
   return (
     <Box>

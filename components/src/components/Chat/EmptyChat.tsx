@@ -7,7 +7,6 @@ import { ChatInputBox } from './ChatInputBox';
 import { NotOptedIn } from './NotOptedIn';
 
 export function EmptyChat() {
-  const aiConsented = useConsentStore((state) => state.aiConsented);
   return (
     <Stack
       sx={{
@@ -23,7 +22,7 @@ export function EmptyChat() {
         </Translate>
       </Typography>
       <ChatInputBox />
-      {!aiConsented && <NotOptedIn />}
+      <NotOptedIn />
     </Stack>
   );
 }

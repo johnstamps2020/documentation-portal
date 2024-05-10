@@ -95,7 +95,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
       opt_in: aiConsented,
       ...filters,
     };
-    console.log({ chatbotRequest });
+
     const response = await fetch('/chatbot', {
       method: 'POST',
       body: JSON.stringify(chatbotRequest),

@@ -10,7 +10,12 @@ export function ChatList() {
   const shadowColor = 'rgba(255, 255, 255, 0.97)';
 
   return (
-    <>
+    <Stack
+      sx={{
+        height: '100%',
+        justifyContent: 'space-between',
+      }}
+    >
       <Stack
         sx={{
           gap: 4,
@@ -29,15 +34,12 @@ export function ChatList() {
       </Stack>
       <Box
         sx={{
-          position: 'sticky',
-          bottom: 10,
           width: '100%',
-          left: 0,
           backgroundColor: shadowColor,
         }}
       >
         <ChatInputBox />
       </Box>
-    </>
+    </Stack>
   );
 }

@@ -10,6 +10,7 @@ import './ChatMessage.css';
 import ChatSources from './ChatSources';
 import { ChatbotMessage } from './types';
 import { NotOptedIn } from './NotOptedIn';
+import { useConsentStore } from '../Avatar/consentStore';
 
 type ChatMessageProps = ChatbotMessage & {
   isLast: boolean;
@@ -55,6 +56,7 @@ export function ChatMessage({
   sources,
 }: ChatMessageProps) {
   const responseRef = useRef<HTMLDivElement>(null);
+  const aiConsented = useConsentStore((state) => state.aiConsented);
 
   useEffect(() => {
     if (responseRef.current) {
@@ -69,7 +71,8 @@ export function ChatMessage({
   return (
     <Box sx={{ width: '100%' }} ref={responseRef}>
       <ChatSources sources={sources} />
-      {message ? <Answer answer={message} /> : <NotOptedIn />}
+      {message && aiConsented && <Answer answer={message} />}
+      <NotOptedIn />
     </Box>
   );
 }
