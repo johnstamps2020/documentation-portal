@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Translate } from '../../lib';
-import { useConsentStore } from '../Avatar/consentStore';
+import { useConsentStore } from '../../stores/consentStore';
 import { ChatInputBox } from './ChatInputBox';
 import { NotOptedIn } from './NotOptedIn';
 

@@ -3,7 +3,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Switch from '@mui/material/Switch';
 import React from 'react';
 import { translate } from '../../lib';
-import { useConsentStore } from './consentStore';
+import { useConsentStore } from '../../stores/consentStore';
 
 export function AvatarConsent() {
   const aIConsented = useConsentStore((state) => state.aiConsented);

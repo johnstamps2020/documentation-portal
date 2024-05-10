@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { Translate } from '../../lib';
-import { useConsentStore } from '../Avatar/consentStore';
+import { useConsentStore } from '../../stores/consentStore';
 import { TermsAndConditionsDialogBox } from './TermsAndConditionsDialogBox';
 
 export function NotOptedIn() {

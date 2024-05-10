@@ -4,13 +4,13 @@ import Typography from '@mui/material/Typography';
 import React, { useEffect, useRef } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Translate, translate } from '../../lib';
+import { translate } from '../../lib';
+import { useConsentStore } from '../../stores/consentStore';
 import { ChatLoader } from './ChatLoader';
 import './ChatMessage.css';
 import ChatSources from './ChatSources';
-import { ChatbotMessage } from './types';
 import { NotOptedIn } from './NotOptedIn';
-import { useConsentStore } from '../Avatar/consentStore';
+import { ChatbotMessage } from './types';
 
 type ChatMessageProps = ChatbotMessage & {
   isLast: boolean;
