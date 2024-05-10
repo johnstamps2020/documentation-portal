@@ -9,8 +9,6 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useConsentStore } from '../../stores/consentStore';
 import { ChatbotMessage } from './types';
 
-export const AI_OPT_IN_KEY_IN_LOCAL_STORAGE = 'ai-consent-decision';
-
 export interface ChatInterface {
   messages: ChatbotMessage[];
   isProcessing: boolean;
