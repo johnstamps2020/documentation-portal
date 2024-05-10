@@ -13,6 +13,7 @@ export type FilterConfig = {
 export function ChatFilter({ label, name, values }: FilterConfig) {
   const { updateFilters, getFilterValues } = useChat();
   const value = getFilterValues(name);
+  value.sort((a, b) => a.localeCompare(b));
 
   function handleChange(event: any, newValue: string[]): void {
     updateFilters(name, newValue);
@@ -22,7 +23,7 @@ export function ChatFilter({ label, name, values }: FilterConfig) {
     <Autocomplete
       multiple
       id="filter-combo-box"
-      options={values}
+      options={values.sort((a, b) => a.localeCompare(b))}
       renderInput={(params) => <TextField {...params} label={label} />}
       fullWidth
       value={value}
