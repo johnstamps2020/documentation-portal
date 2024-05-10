@@ -1,4 +1,8 @@
 {
+  "logo.label": {
+    "message": "Home",
+    "description": "This text describes the link to the home page"
+  },
   "docHighlighter.tooltip": {
     "message": "Toggle highlight for search phrases",
     "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off. This is the tooltip for the button"
@@ -197,5 +201,9 @@
   "consent.ai": {
     "message": "Allow AI",
     "description": "If the user consented to using AI, their decision is displayed next to thi label"
+  },
+  "avatar.iconButton": {
+    "message": "Expand the user menu",
+    "description": "Text on the avatar icon button. The user clicks the button to expand the menu with their personal options."
   }
 }

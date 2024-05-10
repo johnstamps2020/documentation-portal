@@ -1,4 +1,4 @@
-import { GwThemeProvider } from '@doctools/components';
+import { GwThemeProvider, Init } from '@doctools/components';
 import CssBaseline from '@mui/material/CssBaseline';
 import ExternalLinkAdminPage from 'components/AdminPage/ExternalLinkAdminPage/ExternalLinkAdminPage';
 import LanguageAdminPage from 'components/AdminPage/LanguageAdminPage/LanguageAdminPage';
@@ -119,6 +119,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <GwThemeProvider>
+      <Init />
       <LayoutContextProvider>
         <CssBaseline />
         <RouterProvider router={router} />

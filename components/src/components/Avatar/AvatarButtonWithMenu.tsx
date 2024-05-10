@@ -7,7 +7,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
-import { Translate, getRedirectToPath } from '../../lib';
+import { Translate, getRedirectToPath, translate } from '../../lib';
 import { useAvatar } from './AvatarContext';
 import { AvatarConsent } from './AvatarConsent';
 
@@ -28,6 +28,10 @@ export function AvatarButtonWithMenu() {
     <>
       <IconButton
         id="avatar-button"
+        aria-label={translate({
+          id: 'avatar.iconButton',
+          message: 'Expand the user menu',
+        })}
         aria-controls={open ? 'avatar-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}

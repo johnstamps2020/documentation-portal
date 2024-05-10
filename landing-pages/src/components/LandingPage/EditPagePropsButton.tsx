@@ -22,7 +22,11 @@ export default function EditPagePropsButton({
   }
 
   return (
-    <AccessControl allowedOnEnvs={['dev', 'staging']} accessLevel="admin">
+    <AccessControl
+      allowedOnEnvs={['dev', 'staging']}
+      accessLevel="admin"
+      doNotNavigate
+    >
       <Fab
         variant="extended"
         color="warning"

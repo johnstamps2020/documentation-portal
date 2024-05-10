@@ -1,6 +1,6 @@
 import { EnvName, UserInfo } from '@doctools/server';
 import { useEnvInfo, useUserInfo } from 'hooks/useApi';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type AccessLevel = 'admin' | 'power-user' | 'everyone';
@@ -8,6 +8,7 @@ type AccessLevel = 'admin' | 'power-user' | 'everyone';
 type AccessControlProps = {
   accessLevel: AccessLevel;
   allowedOnEnvs?: EnvName[];
+  doNotNavigate?: boolean;
   children: JSX.Element[] | JSX.Element;
 };
 
@@ -44,7 +45,7 @@ function checkIfUserCanAccess(
   return false;
 }
 
-function checkIfPageIsAllowedOnThisEnv(
+function checkIfElementIsAllowedOnThisEnv(
   requestedEnvNames: AccessControlProps['allowedOnEnvs'],
   currentEnvName: EnvName
 ): boolean {
@@ -66,7 +67,9 @@ export default function AccessControl({
   children,
   accessLevel,
   allowedOnEnvs,
+  doNotNavigate,
 }: AccessControlProps) {
+  const [allowedToSee, setAllowedToSee] = useState<boolean | undefined>();
   const {
     envInfo,
     isError: envInfoError,
@@ -83,7 +86,7 @@ export default function AccessControl({
 
   useEffect(() => {
     if (userInfo && envInfo && envInfo.name) {
-      const pageAllowedOnThisEnv = checkIfPageIsAllowedOnThisEnv(
+      const elementAllowedOnThisEnv = checkIfElementIsAllowedOnThisEnv(
         allowedOnEnvs,
         envInfo.name
       );
@@ -92,13 +95,29 @@ export default function AccessControl({
         accessLevel
       );
 
-      if (!pageAllowedOnThisEnv || !userAllowedToAccessPage) {
-        navigate(`/forbidden?unauthorized=${pagePath}`);
+      if (!elementAllowedOnThisEnv || !userAllowedToAccessPage) {
+        setAllowedToSee(false);
+
+        if (doNotNavigate !== true) {
+          navigate(`/forbidden?unauthorized=${pagePath}`);
+        }
       }
     }
-  }, [userInfo, envInfo, allowedOnEnvs, accessLevel, navigate, pagePath]);
+  }, [
+    userInfo,
+    envInfo,
+    allowedOnEnvs,
+    accessLevel,
+    navigate,
+    pagePath,
+    doNotNavigate,
+  ]);
 
   if (userInfoLoading || userInfoError || envInfoLoading || envInfoError) {
+    return null;
+  }
+
+  if (allowedToSee === false) {
     return null;
   }
 
