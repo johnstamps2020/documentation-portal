@@ -31,6 +31,7 @@
     "mark.js": "^8.11.1",
     "react-markdown": "^9.0.1",
     "remark-gfm": "^4.0.0",
+    "swr": "^2.2.5",
     "zustand": "^4.5.2"
   }
 }

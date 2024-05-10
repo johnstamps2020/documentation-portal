@@ -3005,6 +3005,7 @@ __metadata:
     react-markdown: "npm:^9.0.1"
     remark-gfm: "npm:^4.0.0"
     rimraf: "npm:^5.0.5"
+    swr: "npm:^2.2.5"
     typescript: "npm:^5.3.3"
     zustand: "npm:^4.5.2"
   peerDependencies:
@@ -22957,7 +22958,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swr@npm:^2.0.3":
+"swr@npm:^2.0.3, swr@npm:^2.2.5":
   version: 2.2.5
   resolution: "swr@npm:2.2.5"
   dependencies:
