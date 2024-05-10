@@ -21,17 +21,18 @@ export function AiConsentMenuItem() {
   }
 
   return (
-    <MenuItem
-      component={FormControlLabel}
-      control={
-        <Switch
-          checked={aIConsented}
-          onChange={() => {
-            setAIConsented(!aIConsented);
-          }}
-        />
-      }
-      label={aiLabel}
-    />
+    <MenuItem>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={aIConsented}
+            onChange={() => {
+              setAIConsented(!aIConsented);
+            }}
+          />
+        }
+        label={aiLabel}
+      />
+    </MenuItem>
   );
 }
