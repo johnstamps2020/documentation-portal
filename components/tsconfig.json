@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "es2016",
     "jsx": "react",
-    "module": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "outDir": "./dist",
     "declaration": true,
     "esModuleInterop": true,

@@ -1,17 +1,19 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import ChatInputBox from './ChatInputBox';
-import { Translate } from '@doctools/components';
-import { mainHeight } from 'components/Layout/Layout';
+import React from 'react';
+import { Translate } from '../../lib';
+import { useConsentStore } from '../../stores/consentStore';
+import { ChatInputBox } from './ChatInputBox';
+import { NotOptedIn } from './NotOptedIn';
 
-export default function EmptyChat() {
+export function EmptyChat() {
   return (
     <Stack
       sx={{
         justifyContent: 'center',
         alignItems: 'center',
         gap: 4,
-        minHeight: mainHeight,
+        minHeight: '100vh',
       }}
     >
       <Typography variant="h1" textAlign="center">
@@ -20,6 +22,7 @@ export default function EmptyChat() {
         </Translate>
       </Typography>
       <ChatInputBox />
+      <NotOptedIn />
     </Stack>
   );
 }

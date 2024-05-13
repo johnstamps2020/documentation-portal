@@ -12,25 +12,27 @@ export default function Logo() {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    <Link
-      component={RouterLink}
-      to="/"
-      aria-label="Return to the home page"
-      sx={{ display: 'contents' }}
-    >
-      {isLargeScreen ? (
-        <LogoLarge style={{ height: '32px', width: '292.67px' }} />
-      ) : (
-        <Stack direction="row" gap={2} alignItems="center">
-          <img alt="" src={smallLogo} />
-          <Typography
-            sx={{ color: 'white', lineHeight: 1, fontWeight: 600 }}
-            component="div"
-          >
-            Documentation
-          </Typography>
-        </Stack>
-      )}
-    </Link>
+    <>
+      <Link
+        component={RouterLink}
+        to="/"
+        aria-label="Return to the home page"
+        sx={{ display: 'contents' }}
+      >
+        {isLargeScreen ? (
+          <LogoLarge style={{ height: '32px', width: '292.67px' }} />
+        ) : (
+          <Stack direction="row" gap={2} alignItems="center">
+            <img alt="" src={smallLogo} />
+            <Typography
+              sx={{ color: 'white', lineHeight: 1, fontWeight: 600 }}
+              component="div"
+            >
+              Documentation
+            </Typography>
+          </Stack>
+        )}
+      </Link>
+    </>
   );
 }

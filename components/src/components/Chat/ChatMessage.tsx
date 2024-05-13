@@ -1,14 +1,16 @@
-import { translate } from '@doctools/components';
-import { ChatbotMessage } from '@doctools/server';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useLayoutContext } from 'LayoutContext';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import ChatLoader from './ChatLoader';
+import { translate } from '../../lib';
+import { useConsentStore } from '../../stores/consentStore';
+import { ChatLoader } from './ChatLoader';
 import './ChatMessage.css';
+import ChatSources from './ChatSources';
+import { NotOptedIn } from './NotOptedIn';
+import { ChatbotMessage } from './types';
 
 type ChatMessageProps = ChatbotMessage & {
   isLast: boolean;
@@ -16,17 +18,12 @@ type ChatMessageProps = ChatbotMessage & {
 
 function UserMessage({ message, isLast }: ChatMessageProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const { setTitle } = useLayoutContext();
 
   useEffect(() => {
     if (isLast && wrapperRef.current) {
       wrapperRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [isLast]);
-
-  useEffect(() => {
-    setTitle(message);
-  }, [setTitle, message]);
 
   return (
     <Stack direction="row" sx={{ gap: 2 }}>
@@ -38,12 +35,28 @@ function UserMessage({ message, isLast }: ChatMessageProps) {
   );
 }
 
-export default function ChatMessage({
+function Answer({ answer }: { answer: string }) {
+  return (
+    <>
+      <Typography variant="h3">
+        {translate({
+          id: 'chat.answer',
+          message: 'Answer',
+        })}
+      </Typography>
+      <Markdown remarkPlugins={[remarkGfm]}>{answer}</Markdown>
+    </>
+  );
+}
+
+export function ChatMessage({
   role,
   message,
   isLast,
+  sources,
 }: ChatMessageProps) {
   const responseRef = useRef<HTMLDivElement>(null);
+  const aiConsented = useConsentStore((state) => state.aiConsented);
 
   useEffect(() => {
     if (responseRef.current) {
@@ -52,18 +65,14 @@ export default function ChatMessage({
   }, []);
 
   if (role === 'user') {
-    return <UserMessage message={message} isLast={isLast} />;
+    return <UserMessage message={message} isLast={isLast} role="user" />;
   }
 
   return (
     <Box sx={{ width: '100%' }} ref={responseRef}>
-      <Typography variant="h3">
-        {translate({
-          id: 'chat.answer',
-          message: 'Answer',
-        })}
-      </Typography>
-      <Markdown remarkPlugins={[remarkGfm]}>{message}</Markdown>
+      <ChatSources sources={sources} />
+      {message && aiConsented && <Answer answer={message} />}
+      <NotOptedIn />
     </Box>
   );
 }
