@@ -1,4 +1,7 @@
 {
+  "logo.label" : {
+    "message" : "[14CnUM_Home]"
+  },
   "docHighlighter.tooltip" : {
     "message" : "[49EHsY_Toggle highlight for search phrases]"
   },
@@ -131,7 +134,37 @@
   "chat.answer" : {
     "message" : "[2IEZsY_Answer]"
   },
+  "chat.sources" : {
+    "message" : "[4t7owi_Sources]"
+  },
+  "chat.filters" : {
+    "message" : "[2OyosE_Filters]"
+  },
+  "chat.saveAndClose" : {
+    "message" : "[2o7Ja8_Save and close]"
+  },
+  "chat.notOptedIn" : {
+    "message" : "[2IL84X_You did not opt in to receive messages from the chatbot.]"
+  },
+  "chat.allow" : {
+    "message" : "[4q0yXq_Allow AI chatbot to answer questions]"
+  },
+  "chat.allow.learnMore" : {
+    "message" : "[UVJYC_Read the terms and conditions]"
+  },
+  "chat.termsAndConditions.title" : {
+    "message" : "[1F3DmD_Terms and conditions of using the chat]"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "[2MgfZz_Close the terms and conditions]"
+  },
   "login.gwEmployeeHint" : {
     "message" : "[U2AXx_Guidewire employee? Log in using the Guidewire Cloud option above.]"
+  },
+  "consent.ai" : {
+    "message" : "[42chzM_Allow AI]"
+  },
+  "avatar.iconButton" : {
+    "message" : "[3vM8yX_Expand the user menu]"
   }
 }

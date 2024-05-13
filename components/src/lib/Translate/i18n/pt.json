@@ -83,6 +83,9 @@
   "loginButton.in" : {
     "message" : "Fazer logon"
   },
+  "loginDrawer.go" : {
+    "message" : "Ir para a página de logon"
+  },
   "transcriptDownloadLink.label" : {
     "message" : "Baixar transcrição"
   },
@@ -127,5 +130,8 @@
   },
   "chat.answer" : {
     "message" : "Resposta"
+  },
+  "login.gwEmployeeHint" : {
+    "message" : "Caso seja funcionário da Guidewire, você pode fazer logon usando a opção da Guidewire Cloud acima."
   }
 }
