@@ -83,6 +83,9 @@
   "loginButton.in" : {
     "message" : "Iniciar sesión"
   },
+  "loginDrawer.go" : {
+    "message" : "Ir a la página de inicio de sesión"
+  },
   "transcriptDownloadLink.label" : {
     "message" : "Descargar la transcripción"
   },
@@ -127,5 +130,8 @@
   },
   "chat.answer" : {
     "message" : "Respuesta"
+  },
+  "login.gwEmployeeHint" : {
+    "message" : "¿Empleado Guidewire? Inicie sesión utilizando la opción Guidewire Cloud más arriba."
   }
 }
