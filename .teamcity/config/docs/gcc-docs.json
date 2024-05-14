@@ -175,6 +175,37 @@
       "earlyAccess": false
     },
     {
+      "id": "storageserviceapi",
+      "title": "Storage Service API",
+      "url": "cloud/console/storageserviceapi",
+      "metadata": {
+        "product": [
+          "Cloud Platform"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Development"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "cicdmanagerapiref",
       "title": "CI/CD Manager API",
       "url": "cloud/cicd-manager-api-ref/latest",
