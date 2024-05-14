@@ -32,6 +32,12 @@
       "branch": "main"
     },
     {
+      "id": "storageserviceapisrc",
+      "title": "Storage Service API",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/storage-service-api.git",
+      "branch": "main"
+    },
+    {
       "id": "guidewirecloudconsolelatestsrc",
       "title": "Guidewire Cloud Console",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",

@@ -1,3 +1,5 @@
+export type EnvName = 'omega2-andromeda' | 'dev' | 'staging';
+
 export type EnvInfo = {
-  name: string | null | undefined;
+  name: EnvName | null | undefined;
 };

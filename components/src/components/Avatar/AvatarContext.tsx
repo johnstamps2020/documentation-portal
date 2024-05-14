@@ -59,9 +59,6 @@ export function AvatarProvider({
   children,
   initialValue,
 }: AvatarProviderProps) {
-  const [userInfo, setUserInfo] = useState<AvatarInterface['userInfo']>(
-    initialValue.userInfo
-  );
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { userLinks } = handleLinks(initialValue.userInfo, initialValue.isProd);
 

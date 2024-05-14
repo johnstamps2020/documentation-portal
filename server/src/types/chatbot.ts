@@ -1,12 +1,29 @@
+export type ChatbotDocument = {
+  document: string;
+  url: string;
+  title: string;
+};
+
 export type ChatbotResponse = {
-  text: string;
+  response: string;
+  original_documents: ChatbotDocument[];
 };
 
-export type ChatbotMessage = {
-  role?: 'user' | 'bot';
-  message: string;
+export type ChatbotFilters = {
+  product?: string;
+  platform?: string;
+  version?: string;
+  release?: string;
+  subject?: string;
+  language?: string;
+  doc_title?: string;
+  internal?: string;
+  public?: string;
 };
 
-export type ChatbotRequest = {
-  text: string;
+export type FilterName = keyof ChatbotFilters;
+
+export type ChatbotRequest = ChatbotFilters & {
+  query: string;
+  opt_in: boolean;
 };

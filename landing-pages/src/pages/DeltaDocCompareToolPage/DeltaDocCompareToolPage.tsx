@@ -39,11 +39,7 @@ export default function DeltaDocCompareToolPage() {
   }, [setTitle]);
 
   return (
-    <AccessControl
-      pagePath={window.location.href}
-      checkAdminAccess={true}
-      checkPowerUserAccess={true}
-    >
+    <AccessControl accessLevel="power-user">
       <DeltaDocProvider>
         <Grid
           sx={{
