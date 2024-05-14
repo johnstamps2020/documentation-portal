@@ -83,6 +83,9 @@
   "loginButton.in" : {
     "message" : "Aanmelden"
   },
+  "loginDrawer.go" : {
+    "message" : "Ga naar de inlogpagina"
+  },
   "transcriptDownloadLink.label" : {
     "message" : "Transcript downloaden"
   },
@@ -127,5 +130,8 @@
   },
   "chat.answer" : {
     "message" : "Antwoord"
+  },
+  "login.gwEmployeeHint" : {
+    "message" : "Medewerker van Guidewire? Gebruik bij het inloggen de Guidewire Cloud-optie hierboven."
   }
 }
