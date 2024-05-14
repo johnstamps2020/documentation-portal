@@ -27,7 +27,16 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2021.04 Cortina',
+      label: '2024.02 (Jasper)',
+      items: [
+        {
+          label: 'BillingCenter アプリケーションガイド',
+          docId: 'isbc202402jaJPapp',
+        },
+      ],
+    },
+    {
+      label: '2021.04 (Cortina)',
       items: [
         {
           label: 'Gosu リファレンスガイド',
@@ -53,7 +62,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2020.11 Banff',
+      label: '2020.11 (Banff)',
       items: [
         {
           label: 'インストールガイド',
@@ -72,7 +81,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2020.05 Aspen',
+      label: '2020.05 (Aspen)',
       items: [
         {
           label: 'アプリケーションガイド',

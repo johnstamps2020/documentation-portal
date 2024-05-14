@@ -2,6 +2,46 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
+      "id": "isbc202402jaJPapp",
+      "title": "Application Guide ja",
+      "displayTitle": "アプリケーションガイド",
+      "url": "ja/cloud/bc/202402/app",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "BillingCenter" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Features and functionality" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202402jaJPapp",
+      "title": "Application Guide ja",
+      "displayTitle": "アプリケーションガイド",
+      "url": "ja/cloud/cc/202402/app",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "ClaimCenter" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Features and functionality" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "iscc202402jaJPreleasenotes",
       "title": "Release Notes ja",
       "displayTitle": "リリースノート",
@@ -35,6 +75,26 @@
         "language": "ja"
       },
       "environments": [ "staging", "prod" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202402jaJPapp",
+      "title": "Application Guide ja",
+      "displayTitle": "アプリケーションガイド",
+      "url": "ja/cloud/pc/202402/app",
+      "metadata": {
+        "platform": [ "Cloud" ],
+        "product": [ "PolicyCenter" ],
+        "version": [ "2024.02" ],
+        "release": [ "Jasper" ],
+        "subject": [ "Features and functionality" ],
+        "language": "ja"
+      },
+      "environments": [ "staging" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

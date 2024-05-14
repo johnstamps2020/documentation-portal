@@ -48,6 +48,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.02 (Jasper)',
       items: [
         {
+          label: 'ClaimCenter アプリケーションガイド',
+          docId: 'iscc202402jaJPapp',
+        },
+        {
           label: 'ClaimCenter リリースノート',
           docId: 'iscc202402jaJPreleasenotes',
         },
