@@ -51,6 +51,12 @@
     },
     {
       "buildType": "yarn",
+      "docId": "storageserviceapi",
+      "srcId": "storageserviceapisrc",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "databaseservice",
       "srcId": "databaseservicesrc",
       "disabled": false
