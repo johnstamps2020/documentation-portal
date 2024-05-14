@@ -27,3 +27,9 @@ export type ChatbotRequest = ChatbotFilters & {
   query: string;
   opt_in: boolean;
 };
+
+export type ChatbotMessage = {
+  message: string | undefined;
+  role: 'user' | 'bot';
+  sources?: ChatbotDocument[];
+};

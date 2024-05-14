@@ -1,4 +1,4 @@
-import { EnvInfo, EnvName } from '../types/env';
+import { EnvInfo, EnvName } from '@doctools/components';
 
 export function getEnvInfo(): EnvInfo {
   try {

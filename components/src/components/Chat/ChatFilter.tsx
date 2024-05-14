@@ -1,7 +1,7 @@
-import { FilterName } from '@doctools/server';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import React from 'react';
+import { FilterName } from '../../types/chatbot';
 import { useChat } from './ChatContext';
 
 export type FilterConfig = {

@@ -1,4 +1,4 @@
-import { ChatbotRequest, ChatbotResponse } from '../types';
+import { ChatbotRequest, ChatbotResponse } from '@doctools/components';
 import { winstonLogger } from './loggerController';
 
 // TODO: consider moving this definition to an environment variable

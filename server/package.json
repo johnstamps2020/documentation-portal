@@ -57,6 +57,7 @@
     "winston": "^3.7.2"
   },
   "devDependencies": {
+    "@doctools/components": "workspace:*",
     "@doctools/scripts": "workspace:*",
     "@types/harmon": "^1.4.1",
     "@types/jest": "^29.5.9",

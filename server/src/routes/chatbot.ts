@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 import { sendChatPrompt } from '../controllers/machineLearningController';
-import { ApiResponse, ChatbotRequest } from '../types';
+import { ApiResponse } from '../types';
+import { ChatbotRequest } from '@doctools/components';
 
 const router = express.Router();
 
