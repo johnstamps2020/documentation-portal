@@ -1,6 +1,6 @@
 {
   "name": "@doctools/components",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A collection of React components for Doctools",
   "license": "UNLICENSED",
   "main": "dist/index.js",
@@ -25,7 +25,6 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@doctools/server": "workspace:*",
     "@fontsource/source-sans-pro": "^5.0.8",
     "@types/mark.js": "^8.11.12",
     "mark.js": "^8.11.1",

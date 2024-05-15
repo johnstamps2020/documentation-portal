@@ -1,4 +1,4 @@
-import { EnvName, UserInfo } from '@doctools/server';
+import { EnvName, UserInfo } from '@doctools/components';
 import { useEnvInfo, useUserInfo } from 'hooks/useApi';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

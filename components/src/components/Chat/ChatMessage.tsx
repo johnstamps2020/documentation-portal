@@ -6,11 +6,11 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { translate } from '../../lib';
 import { useConsentStore } from '../../stores/consentStore';
+import { ChatbotMessage } from '../../types/chatbot';
 import { ChatLoader } from './ChatLoader';
 import './ChatMessage.css';
 import ChatSources from './ChatSources';
 import { NotOptedIn } from './NotOptedIn';
-import { ChatbotMessage } from './types';
 
 type ChatMessageProps = ChatbotMessage & {
   isLast: boolean;

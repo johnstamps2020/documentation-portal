@@ -1,11 +1,9 @@
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { ChatbotMessage } from './types';
-import Link from '@mui/material/Link';
 import { Translate } from '../../lib';
-import Box from '@mui/material/Box';
+import { ChatbotMessage } from '../../types/chatbot';
 
 type ChatSourcesProps = {
   sources: ChatbotMessage['sources'];

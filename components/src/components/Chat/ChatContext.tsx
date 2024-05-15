@@ -1,13 +1,13 @@
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useConsentStore } from '../../stores/consentStore';
 import {
   ChatbotFilters,
+  ChatbotMessage,
   ChatbotRequest,
   ChatbotResponse,
   FilterName,
-  UserInfo,
-} from '@doctools/server';
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useConsentStore } from '../../stores/consentStore';
-import { ChatbotMessage } from './types';
+} from '../../types/chatbot';
+import { UserInfo } from '../../types/user';
 
 export interface ChatInterface {
   messages: ChatbotMessage[];

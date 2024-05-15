@@ -1,5 +1,4 @@
 import { Request } from 'express';
-import { UserInfo } from '../types/user';
 import {
   externalMockUserData,
   internalMockUserData,
@@ -8,6 +7,7 @@ import {
 import { winstonLogger } from './loggerController';
 import { isLoggedInOrHasValidToken } from './authController';
 import { JwtPayload } from 'jsonwebtoken';
+import { UserInfo } from '@doctools/components';
 
 function belongsToGuidewire(email: string) {
   try {
