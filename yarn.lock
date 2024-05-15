@@ -3197,8 +3197,8 @@ __metadata:
     harmon: "npm:^1.4.4"
     http-errors: "npm:~1.6.3"
     http-proxy: "npm:^1.18.1"
-    jest: "npm:^29.1.1"
-    jest-environment-jsdom: "npm:^29.1.1"
+    jest: "npm:^29.7.0"
+    jest-environment-jsdom: "npm:^29.7.0"
     jest-watch-typeahead: "npm:^2.2.2"
     jsdom: "npm:^19.0.0"
     jsonwebtoken: "npm:^9.0.0"
@@ -3216,7 +3216,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     serve-favicon: "npm:^2.5.0"
     supertest: "npm:^6.2.3"
-    ts-jest: "npm:^29.0.2"
+    ts-jest: "npm:^29.1.2"
     ts-node: "npm:^10.9.1"
     typeorm: "npm:^0.3.9"
     typescript: "npm:^4.8.3"
@@ -15585,7 +15585,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-environment-jsdom@npm:^29.1.1":
+"jest-environment-jsdom@npm:^29.7.0":
   version: 29.7.0
   resolution: "jest-environment-jsdom@npm:29.7.0"
   dependencies:
@@ -16325,7 +16325,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:^29.1.1":
+"jest@npm:^29.7.0":
   version: 29.7.0
   resolution: "jest@npm:29.7.0"
   dependencies:
@@ -24175,7 +24175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^29.0.2":
+"ts-jest@npm:^29.1.2":
   version: 29.1.2
   resolution: "ts-jest@npm:29.1.2"
   dependencies:
