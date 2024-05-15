@@ -147,10 +147,6 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'apiReferences/jasper',
         },
         {
-          label: 'Integration Gateway',
-          docId: 'integgatewaydevlatest',
-        },
-        {
           label: 'Developing Integration Gateway Apps',
           docId: 'integgatewayfwrelease',
         },

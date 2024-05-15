@@ -297,18 +297,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Integration Gateway',
-          docId: 'integgatewaydevlatest',
-          description: (
-            <>
-              Use Integration Gateway to facilitate the process of creating new
-              integration projects, developing the project implementation
-              locally, and deploying projects to the Guidewire Cloud Platform
-              (GWCP).
-            </>
-          ),
-        },
-        {
           label: 'Developing Integration Gateway Apps',
           docId: 'integgatewayfwrelease',
           description: (
