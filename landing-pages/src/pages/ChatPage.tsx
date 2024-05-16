@@ -41,7 +41,7 @@ export default function ChatPage() {
   }
 
   return (
-    <AccessControl allowedOnEnvs={['dev']} accessLevel="everyone">
+    <AccessControl allowedOnEnvs={['dev', 'staging']} accessLevel="everyone">
       <Container sx={{ height: mainHeight, overflowY: 'scroll' }}>
         <ChatProvider userInfo={userInfo}>
           <ChatWrapper />
