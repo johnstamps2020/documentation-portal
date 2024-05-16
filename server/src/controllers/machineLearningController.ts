@@ -21,6 +21,10 @@ export async function createVectorFromText(
 
     if (response.ok) {
       return await response.json();
+    } else {
+      winstonLogger.error(
+        `CANNOT FETCH FROM gwgptapi ${response}, ${JSON.stringify(response)}`
+      );
     }
     return null;
   } catch (err) {
