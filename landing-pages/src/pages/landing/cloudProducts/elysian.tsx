@@ -195,10 +195,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'integgatewaydevlatest',
         },
         {
-          label: 'Administering Integration Gateway Apps',
-          docId: 'integgatewayuirelease',
-        },
-        {
           label: 'REST API Client',
           docId: 'isrestapiclientguide',
         },
