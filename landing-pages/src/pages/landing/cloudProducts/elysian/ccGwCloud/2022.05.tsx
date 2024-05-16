@@ -107,10 +107,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'integgatewaydevlatest',
         },
         {
-          label: 'Administering Integration Gateway Apps',
-          docId: 'integgatewayuirelease',
-        },
-        {
           label: 'Plugins, Prebuilt Integrations, and SOAP APIs',
           docId: 'iscc202205integ',
         },
