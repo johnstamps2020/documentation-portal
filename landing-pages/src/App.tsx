@@ -13,7 +13,6 @@ import VersionAdminPage from 'components/AdminPage/VersionAdminPage/VersionAdmin
 import Layout from 'components/Layout/Layout';
 import { LayoutContextProvider } from 'LayoutContext';
 import AdminPage from 'pages/AdminPage/AdminPage';
-import ChatPage from 'pages/ChatPage';
 import DeltaDocCompareToolPage from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import ForbiddenPage from 'pages/ForbiddenPage/ForbiddenPage';
 import FourOhFourPage from 'pages/FourOhFourPage/FourOhFourPage';
@@ -111,7 +110,6 @@ const router = createBrowserRouter([
         ],
       },
       { path: 'delta-doc', element: <DeltaDocCompareToolPage /> },
-      { path: 'chat', element: <ChatPage /> },
     ],
   },
 ]);
