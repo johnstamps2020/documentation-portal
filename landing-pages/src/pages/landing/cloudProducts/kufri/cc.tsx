@@ -67,6 +67,33 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
+        {
+          label: 'Claim Migration Tool',
+          docId: 'claimmigrationtool',
+          description: (
+            <>
+              Migrate claims from any system of record to ClaimCenter Cloud.
+            </>
+          ),
+        },
+        {
+          label: 'Contact and Vendor Migration Tool',
+          docId: 'contactvendormigrationtool',
+          description: (
+            <>
+              Migrate contacts from a legacy system of record to Guidewire ContactManager.
+            </>
+          ),
+        },
+        {
+          label: 'Data Upload Tool',
+          docId: 'datauploadtool',
+          description: (
+            <>
+              Migrate data from an on-premise Database Input Interface to Guidewire Cloud
+            </>
+          ),
+        },
       ],
     },
     {
