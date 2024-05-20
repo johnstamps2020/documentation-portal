@@ -23,8 +23,9 @@ export function LoginButtonForDrawer({
     setLoginInProgress(true);
   }
 
-  const computedHref = `${href}?${region ? `region=${region}&` : ''}
-  redirectTo=${redirectTo}`;
+  const computedHref = `${href}?${
+    region ? `region=${region}&` : ''
+  }redirectTo=${redirectTo}`;
 
   return (
     <>
