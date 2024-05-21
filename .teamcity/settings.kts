@@ -127,9 +127,6 @@ enum class GwDockerImages(val imageUrl: String) {
     BUILD_MANAGER_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/build-manager:latest"
     ),
-    RECOMMENDATION_ENGINE_LATEST(
-        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/recommendation-engine:latest"
-    ),
     SITEMAP_GENERATOR_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/sitemap-generator:latest"
     ),
@@ -1797,7 +1794,6 @@ object User {
 
             subProject(Docs.rootProject)
             subProject(Sources.rootProject)
-            subProject(Recommendations.rootProject)
             subProject(BuildListeners.rootProject)
             subProject(Custom.rootProject)
         }
@@ -3150,118 +3146,6 @@ object User {
             }
         }
 
-    }
-
-    object Recommendations {
-        val rootProject = createRootProjectForRecommendations()
-
-        private fun createRootProjectForRecommendations(): Project {
-            return Project {
-                name = "Recommendations"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                for (env in arrayOf(GwDeployEnvs.STAGING)) {
-                    val recommendationProject = createRecommendationProject(env.envName)
-                    subProject(recommendationProject)
-                }
-            }
-        }
-
-        private fun createRecommendationProject(deployEnv: String): Project {
-            val recommendationProjectBuildTypes = mutableListOf<BuildType>()
-            val allPlatformProductVersionCombinations = generatePlatformProductVersionCombinationsForAllDocs(deployEnv)
-            for (combination in allPlatformProductVersionCombinations) {
-                val (platform, product, version) = combination
-                val recommendationsForTopicsBuildTypeInt = createRecommendationsForTopicsBuildType(
-                    GwDeployEnvs.STAGING.envName, platform, product, version
-
-                )
-                recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
-            }
-            return Project {
-                name = "Recommendations for $deployEnv"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                recommendationProjectBuildTypes.forEach {
-                    buildType(it)
-                }
-            }
-        }
-
-        private fun generatePlatformProductVersionCombinationsForAllDocs(deployEnv: String): List<Triple<String, String, String>> {
-            val result = mutableListOf<Triple<String, String, String>>()
-            for (docConfig in Helpers.docConfigs) {
-                val docEnvironmentsLowercaseList =
-                    Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
-                if (docEnvironmentsLowercaseList.contains(deployEnv)) {
-                    val docMetadata = docConfig.getJSONObject("metadata")
-                    val docPlatforms = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("platform"))
-                    val docProducts = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("product"))
-                    val docVersions = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("version"))
-                    result += Helpers.generatePlatformProductVersionCombinations(docPlatforms, docProducts, docVersions)
-                }
-            }
-            return result.distinct()
-        }
-
-        private fun createRecommendationsForTopicsBuildType(
-            deployEnv: String,
-            gwPlatform: String,
-            gwProduct: String,
-            gwVersion: String,
-        ): BuildType {
-            val pretrainedModelFile = "GoogleNews-vectors-negative300.bin"
-            val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-            val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-            val elasticsearchUrl = Helpers.getElasticsearchUrl(deployEnv)
-
-            return BuildType {
-                name = "Generate recommendations for $gwProduct, $gwPlatform, $gwVersion"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                steps {
-                    script {
-                        name = "Download the pretrained model"
-                        id = Helpers.createIdStringFromName(this.name)
-                        scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            
-                            echo "Setting credentials to access int"
-                            $awsEnvVars
-                            
-                            echo "Downloading the pretrained model from the S3 bucket"
-                            aws s3 cp s3://tenant-doctools-${atmosDeployEnv}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
-                        """.trimIndent()
-                        dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                        dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                    }
-                    script {
-                        name = "Run the recommendation engine"
-                        id = Helpers.createIdStringFromName(this.name)
-                        scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        
-                        export PLATFORM="$gwPlatform"
-                        export PRODUCT="$gwProduct"
-                        export VERSION="$gwVersion"
-                        export ELASTICSEARCH_URL="$elasticsearchUrl"
-                        export DOCS_INDEX_NAME="gw-docs"
-                        export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
-                        export PRETRAINED_MODEL_FILE="$pretrainedModelFile"
-                                                                
-                        recommendation_engine
-                    """.trimIndent()
-                        dockerImage = GwDockerImages.RECOMMENDATION_ENGINE_LATEST.imageUrl
-                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    }
-                }
-
-                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
     }
 }
 
