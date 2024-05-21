@@ -709,5 +709,6 @@ docReady(async function () {
   configureSearch();
   addFeedbackElements();
   setFooter();
-  showTopicRecommendations();
+  // remove for DOCT-441
+  //showTopicRecommendations();
 });

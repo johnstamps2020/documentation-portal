@@ -11,7 +11,6 @@
       <module fileurl="file://$PROJECT_DIR$/apps/index_cleaner/index_cleaner.iml" filepath="$PROJECT_DIR$/apps/index_cleaner/index_cleaner.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/lion_page_builder/lion_page_builder.iml" filepath="$PROJECT_DIR$/apps/lion_page_builder/lion_page_builder.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/lion_pkg_builder/lion_pkg_builder.iml" filepath="$PROJECT_DIR$/apps/lion_pkg_builder/lion_pkg_builder.iml" />
-      <module fileurl="file://$PROJECT_DIR$/apps/recommendation_engine/recommendation_engine.iml" filepath="$PROJECT_DIR$/apps/recommendation_engine/recommendation_engine.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/sitemap_generator/sitemap_generator.iml" filepath="$PROJECT_DIR$/apps/sitemap_generator/sitemap_generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/strapi_converter/strapi_converter.iml" filepath="$PROJECT_DIR$/apps/strapi_converter/strapi_converter.iml" />
