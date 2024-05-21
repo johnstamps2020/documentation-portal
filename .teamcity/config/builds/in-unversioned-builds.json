@@ -4,6 +4,15 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "PerformanceWP.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inscalabilitystudywhitepaper",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "dataservicereleasenotes.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "indataservicereleasenotes",
