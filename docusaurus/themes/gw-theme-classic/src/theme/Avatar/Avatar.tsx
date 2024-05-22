@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDocContext } from '@theme/DocContext';
-import DropdownFrame from '../DropdownFrame';
-import Button from '@mui/material/Button';
-import AvatarDropdown from './AvatarDropdown';
-import AvatarButton from './AvatarButton';
+import { Avatar as DoctoolsAvatar } from '@doctools/components';
 
 export default function Avatar() {
   const docContext = useDocContext();
@@ -18,17 +15,12 @@ export default function Avatar() {
     [docContext]
   );
 
-  if (userInfo?.isLoggedIn) {
-    return (
-      <DropdownFrame button={<AvatarButton />}>
-        <AvatarDropdown />
-      </DropdownFrame>
-    );
-  }
-
   return (
-    <Button href="/gw-login" variant="contained">
-      Log in
-    </Button>
+    <DoctoolsAvatar
+      initialValue={{
+        userInfo,
+        isProd: docContext.isProd,
+      }}
+    />
   );
 }

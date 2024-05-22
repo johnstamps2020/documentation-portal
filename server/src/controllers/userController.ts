@@ -1,5 +1,4 @@
 import { Request } from 'express';
-import { UserInfo } from '../types/user';
 import {
   externalMockUserData,
   internalMockUserData,
@@ -8,6 +7,7 @@ import {
 import { winstonLogger } from './loggerController';
 import { isLoggedInOrHasValidToken } from './authController';
 import { JwtPayload } from 'jsonwebtoken';
+import { UserInfo } from '@doctools/components';
 
 function belongsToGuidewire(email: string) {
   try {
@@ -28,6 +28,7 @@ export type ReqUser = {
   email: string;
   locale: string;
   isAdmin: boolean;
+  isPowerUser: boolean;
   groups: string[];
 };
 
@@ -60,6 +61,7 @@ const unknownUserInfo: UserInfo = {
   hasGuidewireEmail: false,
   locale: 'en-US',
   isAdmin: false,
+  isPowerUser: false,
 };
 
 export async function getUserInfo(req: Request): Promise<UserInfo> {
@@ -99,6 +101,7 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
       hasGuidewireEmail: belongsToGuidewire(email),
       locale: user.locale,
       isAdmin: user.isAdmin,
+      isPowerUser: user.isPowerUser,
     };
   } catch (err) {
     winstonLogger.error(

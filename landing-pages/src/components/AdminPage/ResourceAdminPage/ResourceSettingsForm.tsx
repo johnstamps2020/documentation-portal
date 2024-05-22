@@ -1,18 +1,14 @@
 import { Resource, Source } from '@doctools/server';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';
 import Collapse from '@mui/material/Collapse';
 import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
-import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
@@ -20,6 +16,7 @@ import { useSources } from 'hooks/useApi';
 import { useResourceData } from 'hooks/useEntitiesData';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
+import AdminBooleanToggles from '../AdminBooleanToggles';
 import SourceTextFields from './SourceTextFields';
 
 type NewResourceWithRelations = Omit<Resource, 'uuid'>;
@@ -305,38 +302,11 @@ export default function ResourceSettingsForm({
           <SourceTextFields source={tmpResourceData.source} />
         )}
       </Collapse>
-      <FormGroup>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-          }}
-        >
-          {['internal', 'public', 'earlyAccess', 'isInProduction'].map(
-            (key) => (
-              <FormControlLabel
-                disabled={editingDisabled}
-                key={key}
-                control={
-                  <Switch
-                    value={key}
-                    checked={
-                      tmpResourceData[
-                        key as keyof typeof resourceData
-                      ] as boolean
-                    }
-                    onChange={(event) =>
-                      handleChange(key, event.target.checked)
-                    }
-                    inputProps={{ 'aria-label': 'controlled' }}
-                  />
-                }
-                label={key}
-              />
-            )
-          )}
-        </Box>
-      </FormGroup>
+      <AdminBooleanToggles
+        editingDisabled={editingDisabled}
+        entityProps={tmpResourceData}
+        handleChange={handleChange}
+      />
       <Stack direction="row" spacing={1}>
         <ButtonGroup disabled={disabled || !dataChanged}>
           <Button

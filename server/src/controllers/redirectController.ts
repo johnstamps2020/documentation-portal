@@ -6,7 +6,7 @@ import { RedirectResponse } from '../types/apiResponse';
 import { getEnvInfo } from './envController';
 import { winstonLogger } from './loggerController';
 import { isUserAllowedToAccessResource } from './authController';
-import { getDocByUrl, getExternalLinkByUrl } from './configController';
+import { findEntity, getDocByUrl } from './configController';
 
 const fetch = require('node-fetch-retry');
 
@@ -192,15 +192,15 @@ const permanentRedirectUrls = [
 const temporaryRedirectUrls = [
   {
     from: '',
-    to: isProd ? 'cloudProducts/jasper' : 'cloudProducts/jasper',
+    to: isProd ? 'cloudProducts/jasper' : 'cloudProducts/kufri',
   },
   {
     from: 'cloudProducts',
-    to: isProd ? 'cloudProducts/jasper' : 'cloudProducts/jasper',
+    to: isProd ? 'cloudProducts/jasper' : 'cloudProducts/kufri',
   },
   {
     from: 'apiReferences',
-    to: isProd ? 'apiReferences/jasper' : 'apiReferences/jasper',
+    to: isProd ? 'apiReferences/jasper' : 'apiReferences/kufri',
   },
 ];
 
@@ -239,6 +239,7 @@ async function findMatchingDocs(res: Response, urls: string[]) {
         'doc.url',
         'doc.id',
         'doc.public',
+        'doc.ignorePublicPropertyAndUseVariants',
         'doc.internal',
         'doc.isInProduction',
       ])
@@ -252,7 +253,7 @@ async function findMatchingDocs(res: Response, urls: string[]) {
         (m) =>
           isUserAllowedToAccessResource(
             res,
-            m.public,
+            m.ignorePublicPropertyAndUseVariants ? true : m.public,
             m.internal,
             m.isInProduction
           ).status === 200
@@ -337,11 +338,7 @@ export async function getLatestVersionUrl(
       const targetUrlSegments = Array.from(wildcardUrlSegments);
       targetUrlSegments[wildcardIndex] =
         urlWithHighestVersionSegments[wildcardIndex];
-      const targetUrl = targetUrlSegments.join('/');
-      const targetUrlExists = await s3BucketUrlExists(targetUrl);
-      return targetUrlExists
-        ? targetUrl
-        : urlWithHighestVersionSegments.join('/');
+      return targetUrlSegments.join('/');
     }
   } else {
     const sortedUrls = matchingDocs
@@ -352,11 +349,7 @@ export async function getLatestVersionUrl(
     const targetUrlSegments = Array.from(wildcardUrlSegments);
     targetUrlSegments[wildcardIndex] =
       urlWithHighestVersionSegments[wildcardIndex];
-    const targetUrl = targetUrlSegments.join('/');
-    const targetUrlExists = await s3BucketUrlExists(targetUrl);
-    return targetUrlExists
-      ? targetUrl
-      : urlWithHighestVersionSegments.join('/');
+    return targetUrlSegments.join('/');
   }
 }
 
@@ -372,7 +365,7 @@ export async function getRedirectUrl(
         body: {
           redirectStatusCode: 404,
           redirectUrl: null,
-          message: 'The cameFrom parameter was not provided',
+          message: 'The requestedPath parameter was not provided',
         },
       };
     }
@@ -409,22 +402,11 @@ export async function getRedirectUrl(
         };
       }
     }
-    const dbEntity = await getDocByUrl(requestedPath);
-    // Check explicitly if the ignorePublicPropertyAndUseVariants property is set to True
-    // not to include any truthy values.
-    if (dbEntity?.ignorePublicPropertyAndUseVariants === true) {
-      return {
-        status: 200,
-        body: {
-          redirectStatusCode: 404,
-          redirectUrl: null,
-          message: 'Redirect URL is not supported for docs with variants',
-        },
-      };
-    }
     if (requestedPath.includes('/latest')) {
-      const pathExists = await s3BucketUrlExists(requestedPath);
-      if (!pathExists) {
+      const dbEntity =
+        (await getDocByUrl(requestedPath)) ||
+        (await findEntity(Page.name, { path: normalizedPath }, false));
+      if (!dbEntity) {
         const latestVersionUrl = await getLatestVersionUrl(res, normalizedPath);
         if (!latestVersionUrl && !req.isAuthenticated()) {
           return {

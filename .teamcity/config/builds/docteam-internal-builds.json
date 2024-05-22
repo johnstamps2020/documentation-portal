@@ -44,6 +44,13 @@
       "docId": "learningindita",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "styleguidesrc",
+      "docId": "styleguide",
+      "workingDir": "website",
+      "disabled": false
     }
   ]
 }

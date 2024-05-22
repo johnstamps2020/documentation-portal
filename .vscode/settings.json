@@ -75,6 +75,7 @@
     "Gosu",
     "Guidewire",
     "GWCP",
+    "gwgptapi",
     "Hakuba",
     "indexterms",
     "Intelli",
@@ -82,6 +83,8 @@
     "ISBTF",
     "Italiano",
     "justcopybuild",
+    "Jutro",
+    "Kufri",
     "libpq",
     "Lightbox",
     "mbox",
@@ -116,7 +119,8 @@
     "workset",
     "xbook",
     "xmind",
-    "yarnbuild"
+    "yarnbuild",
+    "zustand"
   ],
   "cSpell.ignorePaths": [
     "package-lock.json",
@@ -127,7 +131,8 @@
     ".vscode",
     ".vscode-insiders",
     "docusaurus/themes/gw-theme-classic/src/i18n",
-    "webpack.config.ts"
+    "webpack.config.ts",
+    "components/src/lib/Translate/i18n/*.json"
   ],
   "cSpell.ignoreRegExpList": [
     "(docId|pagePath|url): [\"'][^\"']+[\"']",

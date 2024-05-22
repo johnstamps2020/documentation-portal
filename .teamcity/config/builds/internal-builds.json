@@ -3,6 +3,13 @@
   "builds": [
     {
       "buildType": "yarn",
+      "docId": "oam",
+      "srcId": "oamsrc",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "keti",
       "srcId": "ketisrc",
       "workingDir": "website",
@@ -108,6 +115,19 @@
       "buildType": "yarn",
       "docId": "appevents",
       "srcId": "appeventssrc",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "insuranceplatformoperator",
+      "srcId": "insuranceplatformoperatorsrc",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "solr",
+      "srcId": "solrsrc",
       "workingDir": "website",
       "disabled": false
     }

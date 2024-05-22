@@ -2,8 +2,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { useEnvInfo } from 'hooks/useApi';
 import LoginPageCard from './LoginPageCard';
-import { loginOptions, loginOptionsProd } from './loginOptionConfigs';
-import GwEmployeeLoginText from './GwEmployeeLoginText';
+import { GwEmployeeLoginText, loginOptions, loginOptionsProd } from '@doctools/components';
 
 export default function LoginPageCards() {
   const {

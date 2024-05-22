@@ -191,19 +191,19 @@
       "id": "srcjutrosdkinnsbruck",
       "title": "Jutro SDK Innsbruck",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
-      "branch": "release/innsbruck"
+      "branch": "release/50.9"
     },
     {
       "id": "srcjutrosdkjasper",
       "title": "Jutro SDK Jasper",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
-      "branch": "release/jasper"
+      "branch": "release/50.10"
     },
     {
       "id": "srcjutrosdkkufri",
       "title": "Jutro SDK Kufri",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
-      "branch": "release/kufri"
+      "branch": "release/50.11"
     },
     {
       "id": "srcjutrosbbizpatterns652",
@@ -438,6 +438,18 @@
       "title": "Jutro Design System 8.13.7",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/8.13.7"
+    },
+    {
+      "id": "srcjutro8138",
+      "title": "Jutro Design System 8.13.8",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.13.8"
+    },
+    {
+      "id": "srcjutro8139",
+      "title": "Jutro Design System 8.13.9",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.13.9"
     },
     {
       "id": "srcjutro1000",

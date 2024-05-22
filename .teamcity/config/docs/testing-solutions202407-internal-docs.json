@@ -1,0 +1,39 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "testing202407load",
+      "title": "GT: Load Testing",
+      "url": "cloud/testing/202407/load",
+      "metadata": {
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "subject": [
+          "Development",
+          "Testing"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }
+  ]
+}

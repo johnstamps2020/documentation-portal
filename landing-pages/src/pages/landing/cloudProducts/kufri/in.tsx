@@ -18,18 +18,18 @@ const pageConfig: ApplicationLayoutProps = {
       title: 'Get started',
       items: [
         {
-          label: 'Core Release Notes',
-          docId: 'in20242rn',
+          label: 'Application Guide',
+          docId: 'in20242app',
           description: (
             <>
-              Discover new features, recent improvements, and resolved issues in
-              InsuranceNow core.
+              Get started with the InsuranceNow user interface, functionality offered within the application, and features available for various user roles.
             </>
           ),
         },
         {
           label: 'Release Video',
-          url: 'https://youtu.be/ECG0VfS2VjU',
+          docId: 'in20242rn',
+          pathInDoc: '?contextid=core_release_notes',
           videoIcon: true,
           description: (
             <>Watch a video that describes and demonstrates new features.</>
@@ -93,14 +93,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Get started with InsuranceNow',
-          docId: 'in20242app',
-          pathInDoc: '?contextid=c_applications-getting-started',
-          description: (
-            <>Get acquainted with the InsuranceNow interface and login steps.</>
-          ),
-        },
-        {
           label: 'Developer Setup',
           docId: 'indevguidejava11ext',
           description: (
@@ -148,7 +140,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: <>Create quotes, applications, and policies.</>,
         },
         {
-          label: 'Loss notices and claims',
+          label: 'Claims',
           docId: 'in20242app',
           pathInDoc: '?contextid=c_Claims_overview',
           description: (
@@ -488,7 +480,7 @@ const pageConfig: ApplicationLayoutProps = {
     },
   ],
   selector: {
-    selectedItemLabel: 'Jasper (2024.1)',
+    selectedItemLabel: 'Kufri (2024.2)',
     items: allSelectors.s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1,
     labelColor: 'black',
   },

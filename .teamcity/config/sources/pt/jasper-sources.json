@@ -14,10 +14,10 @@
       "branch": "release/pt-BR/2024.02.0"
     },
     {
-      "id": "isconfigupgradetools510ptBRsrc",
-      "title": "InsuranceSuite Configuration Upgrade Tools 5.1.0 pt",
+      "id": "isconfigupgradetools520ptBRsrc",
+      "title": "InsuranceSuite Configuration Upgrade Tools 5.2.0 pt",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
-      "branch": "release/pt-BR/5.1.0"
+      "branch": "release/pt-BR/5.2.0"
     },
     {
       "id": "whatsnewjasperptBRsrc",

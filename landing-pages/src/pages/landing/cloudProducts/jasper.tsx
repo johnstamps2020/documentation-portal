@@ -38,6 +38,10 @@ const pageConfig: Category2LayoutProps = {
           docId: 'gchhelprelease',
         },
         {
+          label: 'Guidewire Home',
+          docId: 'gwhomerelease'
+        },
+        {
           label: 'Data Platform',
           pagePath: 'cloudProducts/dataPlatform',
         },
@@ -143,8 +147,12 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'apiReferences/jasper',
         },
         {
-          label: 'Integration Gateway',
-          docId: 'integgatewaydevlatest',
+          label: 'Developing Integration Gateway Apps',
+          docId: 'integgatewayfwrelease',
+        },
+        {
+          label: 'Administering Integration Gateway Apps',
+          docId: 'integgatewayuirelease',
         },
         {
           label: 'App Events',

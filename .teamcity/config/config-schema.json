@@ -172,7 +172,7 @@
         },
         "gitUrl": {
           "description": "An SSH url to a git repo containing source files for builds.",
-          "pattern": "^ssh://git@stash\\.guidewire\\.com/"
+          "pattern": "^(ssh://git|git)@(stash\\.guidewire\\.com/|github\\.com:).+"
         },
         "branch": {
           "description": "The branch to use when checking out. Provide a bare branch name without specification like 'refs/heads', etc.",
@@ -219,11 +219,13 @@
           "Guidewire AppReader",
           "Guidewire Cloud Home",
           "Guidewire for Salesforce",
+          "Guidewire Home",
           "HazardHub Casualty",
           "Helios",
           "InfoCenter",
           "InsuranceNow",
           "InsuranceNow Consumer Service Portal",
+          "InsurancePlatform Operator",
           "InsuranceSuite Configuration Upgrade Tools",
           "Internal Docs",
           "Jutro Design System",
@@ -236,11 +238,13 @@
           "MSK Admin",
           "Nebula",
           "Nova",
+          "Open Application Model",
           "PolicyCenter",
           "Portfolio Assembly",
           "Predict",
           "Rules",
           "Solaris",
+          "Solr",
           "SonarQube",
           "String Manager",
           "Submission Intake",

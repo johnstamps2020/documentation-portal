@@ -43,6 +43,35 @@
       "earlyAccess": false
     },
     {
+      "id": "previews3folder",
+      "title": "Preview S3 folder",
+      "url": "preview",
+      "metadata": {
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter",
+          "Cloud Platform"
+        ],
+        "version": [
+          "latest"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": true,
+      "earlyAccess": true
+    },
+    {
       "id": "l10nescrows3folder",
       "title": "L10N Escrow S3 folder",
       "url": "escrow",
@@ -196,6 +225,39 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "gwhomerelease",
+      "title": "Guidewire Home",
+      "url": "guidewire-home/release",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Home"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "gchhelpearlyaccess",

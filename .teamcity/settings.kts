@@ -20,7 +20,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.*
 
-version = "2022.04"
+version = "2024.03"
 project {
     GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
@@ -73,6 +73,7 @@ enum class GwConfigParams(val paramValue: String) {
         "json"
     ),
     BUILD_DATA_FILE("build-data.json"), COMMON_GW_DITAVALS_DIR("common_gw_ditavals"), BITBUCKET_SSH_KEY("svc-doc-bitbucket"),
+    GITHUB_SSH_KEY("svc-gh-doctools"),
     ECR_HOST("627188849628.dkr.ecr.us-west-2.amazonaws.com"),
     ECR_HOST_PROD("954920275956.dkr.ecr.us-east-1.amazonaws.com"),
     AWS_ROLE("arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"),
@@ -85,7 +86,6 @@ enum class GwConfigParams(val paramValue: String) {
     OKTA_SCOPES("NODE_Hawaii_Docs_Web.read"),
     OKTA_SCOPES_PROD("Documentation_portal.read"),
     OKTA_AUDIENCE("Guidewire"),
-    OKTA_ADMIN_GROUPS("doctools"),
     GW_COMMUNITY_CUSTOMER_IDP("0oau503zlhhFLwTqF0h7"),
     GW_COMMUNITY_CUSTOMER_IDP_PROD("0oa6c4x5z3fYXUWoE357"),
     GW_COMMUNITY_PARTNER_IDP("0oapv9i36yEMFLjxS0h7"),
@@ -250,6 +250,8 @@ object Helpers {
     private val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
     val enabledBuildConfigs = buildConfigs.filter { !it.getBoolean("disabled") }
     val gitSources = getBuildSourceConfigs()
+    val bitbucketSources = gitSources.filter { it.getString("gitUrl").contains("stash") }
+    val gitHubSources = gitSources.filter { it.getString("gitUrl").contains("github") }
 
     fun getObjectById(objectList: List<JSONObject>, idName: String, idValue: String): JSONObject {
         return objectList.find { it.getString(idName) == idValue } ?: JSONObject()
@@ -423,7 +425,6 @@ object Helpers {
             export ENABLE_AUTH="yes"
             export DD_SERVICE_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export OKTA_AUDIENCE="${GwConfigParams.OKTA_AUDIENCE.paramValue}"
-            export OKTA_ADMIN_GROUPS="${GwConfigParams.OKTA_ADMIN_GROUPS.paramValue}"
             export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
             export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
             export PARTNERS_LOGIN_URL="$partnersLoginUrl"
@@ -904,6 +905,33 @@ object GwBuildSteps {
         }
     }
 
+    fun createUploadPreviewContentWithVariantsToS3BucketStep(outputPath: String, publishPath: String): ScriptBuildStep {
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
+        val publicSubPath = "__public"
+        val restrictedSubPath = "__restricted"
+        val publicOutputPath = "${outputPath}/${publicSubPath}"
+        val restrictedOutputPath = "${outputPath}/${restrictedSubPath}"
+        val publicPublishPath = publishPath.replaceFirst("preview", "preview/${publicSubPath}")
+        val restrictedPublishPath = publishPath.replaceFirst("preview", "preview/${restrictedSubPath}")
+        return ScriptBuildStep {
+            name = "Upload preview content with variants to the S3 bucket"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                                
+                $awsEnvVars
+                
+                aws s3 sync $publicOutputPath s3://tenant-doctools-${atmosDeployEnv}-builds/${publicPublishPath} --delete --cache-control max-age=60
+                aws s3 sync $restrictedOutputPath s3://tenant-doctools-${atmosDeployEnv}-builds/${restrictedPublishPath} --delete --cache-control max-age=60
+            """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
+
     fun createPreviewUrlFile(
         previewUrl: String, previewUrlFile: String,
     ): ScriptBuildStep {
@@ -1285,6 +1313,8 @@ object GwBuildSteps {
                     echo "Check "$logFile" in the build artifacts for more details."
                 fi
                 
+                
+                
                 echo "##teamcity[setParameter name='$exitCodeEnvVarName' value='${'$'}EXIT_CODE']"
                     
                 exit ${'$'}EXIT_CODE
@@ -1303,7 +1333,7 @@ object GwBuildSteps {
             it as JSONObject
             customEnvExportVars += "export ${it.getString("name")}=\"${it.getString("value")}\" # Custom env from the build config file\n"
         }
-        
+
         return ScriptBuildStep {
             name = "Build the yarn project"
             id = Helpers.createIdStringFromName(this.name)
@@ -1634,8 +1664,10 @@ object GwBuildFeatures {
     object GwCommitStatusPublisherBuildFeature : CommitStatusPublisher({
         publisher = bitbucketServer {
             url = "https://stash.guidewire.com"
-            userName = "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
-            password = "%env.BITBUCKET_ACCESS_TOKEN%"
+            authType = password {
+                userName = "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
+                password = "%env.BITBUCKET_ACCESS_TOKEN%"
+            }
         }
     })
 
@@ -1671,13 +1703,18 @@ object GwVcsRoots {
         defaultBranch: String,
         monitoredBranches: List<String> = emptyList(),
     ): GitVcsRoot {
+        val sshKey = if (Helpers.gitHubSources.any { it.getString("gitUrl").toString() == gitUrl }) {
+            GwConfigParams.GITHUB_SSH_KEY.paramValue
+        } else {
+            GwConfigParams.BITBUCKET_SSH_KEY.paramValue
+        }
         return GitVcsRoot {
             name = vcsRootId.toString()
             id = vcsRootId
             url = gitUrl
             branch = Helpers.createFullGitBranchName(defaultBranch)
             authMethod = uploadedKey {
-                uploadedKey = GwConfigParams.BITBUCKET_SSH_KEY.paramValue
+                uploadedKey = sshKey
             }
             checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
 
@@ -2252,7 +2289,8 @@ object User {
 
             val docProjectBuildTypes = mutableListOf<BuildType>()
             val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
-            val ignorePublicPropertyAndUseVariants = if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
+            val ignorePublicPropertyAndUseVariants =
+                if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
             when (gwBuildType) {
                 GwBuildTypes.YARN.buildTypeName -> {
@@ -2637,11 +2675,11 @@ object User {
                         }
                         steps.step(
                             GwBuildSteps.createRunBuildManagerStep(
-                                Docs.rootProject.id.toString(),
-                                GwTemplates.BuildListenerTemplate.id.toString(),
-                                gitUrl,
+                                teamcityAffectedProject = Docs.rootProject.id.toString(),
+                                teamcityTemplate = GwTemplates.BuildListenerTemplate.id.toString(),
+                                gitUrl = gitUrl,
                                 gitBranch = gitBranch,
-                                teamcityBuildBranch = gitBranch
+                                teamcityBuildBranch = gitBranch,
                             )
                         )
 
@@ -2672,7 +2710,7 @@ object User {
 
         private fun createValidationProjectsForSources(): List<Project> {
             val validationProjects = mutableListOf<Project>()
-            for (src in Helpers.gitSources) {
+            for (src in Helpers.bitbucketSources) {
                 val srcId = src.getString("id")
                 val gitUrl = src.getString("gitUrl")
                 val buildsRelatedToSrc = Helpers.enabledBuildConfigs.filter { it.getString("srcId") == srcId }
@@ -2743,11 +2781,11 @@ object User {
                 }
                 steps.step(
                     GwBuildSteps.createRunBuildManagerStep(
-                        teamcityAffectedProjectId,
-                        GwTemplates.ValidationListenerTemplate.id.toString(),
-                        gitUrl,
-                        Helpers.createFullGitBranchName(gitBranch),
-                        "%teamcity.build.branch%"
+                        teamcityAffectedProject = teamcityAffectedProjectId,
+                        teamcityTemplate = GwTemplates.ValidationListenerTemplate.id.toString(),
+                        gitUrl = gitUrl,
+                        gitBranch = Helpers.createFullGitBranchName(gitBranch),
+                        teamcityBuildBranch = "%teamcity.build.branch%",
                     )
                 )
 
@@ -2772,6 +2810,8 @@ object User {
             val docId = buildConfig.getString("docId")
             val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
             val docTitle = docConfig.getString("title")
+            val ignorePublicPropertyAndUseVariants =
+                if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
             val workingDir = Helpers.getWorkingDir(buildConfig)
             val outputDir = when (buildConfig.has("outputPath")) {
@@ -2823,16 +2863,25 @@ object User {
             val repoKey = matchList[2]
             val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
 
-            val uploadStepOuputPath = when (gwBuildType) {
+            val uploadStepOutputPath = when (gwBuildType) {
                 GwBuildTypes.DITA.buildTypeName -> "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}"
                 else -> "${workingDir}/${outputDir}"
             }
 
-            val uploadStep = GwBuildSteps.createUploadContentToS3BucketStep(
-                GwDeployEnvs.STAGING.envName,
-                uploadStepOuputPath,
-                publishPath,
-            )
+            val uploadStep = when (ignorePublicPropertyAndUseVariants) {
+                true -> GwBuildSteps.createUploadPreviewContentWithVariantsToS3BucketStep(
+                    uploadStepOutputPath,
+                    publishPath
+                )
+
+                else -> GwBuildSteps.createUploadContentToS3BucketStep(
+                    GwDeployEnvs.STAGING.envName,
+                    uploadStepOutputPath,
+                    publishPath,
+                )
+            }
+
+
             uploadStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
             val previewFileStep = GwBuildSteps.createPreviewUrlFile(
@@ -2840,9 +2889,15 @@ object User {
             )
             previewFileStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
+            val pullRequestCommentText = when (ignorePublicPropertyAndUseVariants) {
+                true -> "[DOC WITH VARIANTS] Hi, I created a preview for validation build %build.number%: $previewUrl"
+
+                else -> "Hi, I created a preview for validation build %build.number%: $previewUrl"
+            }
+
             val pullRequestCommentStep = GwBuildSteps.createAddPullRequestCommentStep(
                 "preview link",
-                "Hi, I created a preview for validation build %build.number%: $previewUrl",
+                pullRequestCommentText,
                 projectKey,
                 repoKey,
                 pullRequestId
@@ -2986,7 +3041,6 @@ object User {
                     val buildCommand =
                         if (buildConfig.has("yarnBuildCustomCommand")) buildConfig.getString("yarnBuildCustomCommand") else null
                     val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
-                    val ignorePublicPropertyAndUseVariants = if (docConfig.has("ignorePublicPropertyAndUseVariants")) docConfig.getBoolean("ignorePublicPropertyAndUseVariants") else false
 
                     validationBuildType.artifactRules += """
                     ${workingDir}/*.log => $buildLogsDir
@@ -3226,7 +3280,6 @@ object Admin {
             subProject(Frontend.rootProject)
             subProject(Server.rootProject)
             subProject(Content.rootProject)
-            subProject(Runners.rootProject)
         }
     }
 
@@ -5022,7 +5075,9 @@ object Admin {
                     export OKTA_ISSUER_APAC="issuerNotConfigured"
                     export OKTA_ISSUER_EMEA="issuerNotConfigured"
                     export OKTA_SCOPES=mock
+                    export OKTA_ADMIN_GROUPS=mock
                     export OKTA_AUDIENCE=mock
+                    export POWER_USERS=mock
                     export APP_BASE_URL=http://localhost:8081
                     export SESSION_KEY=mock
                     export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
@@ -5157,164 +5212,5 @@ object Admin {
 
             return deployServerBuildType
         }
-    }
-
-    object Runners {
-        val rootProject = createRootProjectForRunners()
-
-        private fun getDocConfigsFromBuildConfigsForEnv(deployEnv: String): List<JSONObject> {
-            val docConfigsForEnv = mutableListOf<JSONObject>()
-            Helpers.enabledBuildConfigs.forEach {
-                val docId = it.getString("docId")
-                val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
-                val docEnvironments = docConfig.getJSONArray("environments")
-                if (docEnvironments.contains(deployEnv)) {
-                    docConfigsForEnv.add(docConfig)
-                }
-            }
-            return docConfigsForEnv
-        }
-
-        private fun getDocIdsForProductAndVersion(
-            docConfigs: List<JSONObject>,
-            gwProduct: String,
-            gwVersion: String,
-        ): List<String> {
-            val matchingDocIds = mutableListOf<String>()
-            docConfigs.forEach {
-                val docId = it.getString("id")
-                val metadata = it.getJSONObject("metadata")
-                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
-                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
-                val docConfigMatchesProductAndVersion =
-                    gwProducts.any { p -> p == gwProduct } && gwVersions.any { v -> v == gwVersion }
-                if (docConfigMatchesProductAndVersion) {
-                    matchingDocIds.add(docId)
-                }
-            }
-            return matchingDocIds
-        }
-
-
-        private fun createRootProjectForRunners(): Project {
-            return Project {
-                name = "Runners"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                arrayOf(
-                    GwDeployEnvs.DEV.envName,
-                    GwDeployEnvs.STAGING.envName,
-                    GwDeployEnvs.PROD.envName
-                ).map {
-                    subProject(createRunnersProjectForEnv(it))
-                }
-            }
-        }
-
-        private fun createRunnersProjectForEnv(deployEnv: String): Project {
-            val docConfigsForEnv = getDocConfigsFromBuildConfigsForEnv(deployEnv)
-            val productProjects = generateProductProjects(deployEnv, docConfigsForEnv)
-            return Project {
-                name = "Runners for $deployEnv"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                productProjects.forEach { pp ->
-                    pp.subProjects.forEach { vp ->
-                        val gwProduct = pp.name
-                        val gwVersion = vp.name
-                        val matchingDocIds = getDocIdsForProductAndVersion(docConfigsForEnv, gwProduct, gwVersion)
-                        if (matchingDocIds.size > 1) {
-                            val publishAllDocsBuildType = createRunnerBuildType(
-                                deployEnv, matchingDocIds, "Publish all docs", gwProduct, gwVersion
-                            )
-                            vp.buildType(publishAllDocsBuildType)
-                        }
-                    }
-                    subProject(pp)
-                }
-            }
-        }
-
-        private fun generateProductProjects(deployEnv: String, docConfigs: List<JSONObject>): List<Project> {
-            val productProjects = mutableListOf<Project>()
-            for (docConfig in docConfigs) {
-                val docId = docConfig.getString("id")
-                val docTitle = docConfig.getString("title")
-                val metadata = docConfig.getJSONObject("metadata")
-                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
-                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
-                for (gwProduct in gwProducts) {
-                    val existingProductProject = productProjects.find { it.name == gwProduct }
-                    if (existingProductProject == null) {
-                        productProjects.add(Project {
-                            name = gwProduct
-                            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${deployEnv}"))
-
-                            gwVersions.forEach {
-                                subProject {
-                                    name = it
-                                    id =
-                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
-
-                                    buildType(createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, it))
-                                }
-                            }
-                        })
-                    } else {
-                        for (gwVersion in gwVersions) {
-                            val runnerBuildType =
-                                createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, gwVersion)
-                            val existingVersionSubproject =
-                                existingProductProject.subProjects.find { it.name == gwVersion }
-                            if (existingVersionSubproject == null) {
-                                existingProductProject.subProject {
-                                    name = gwVersion
-                                    id =
-                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
-
-                                    buildType(runnerBuildType)
-                                }
-                            } else {
-                                existingVersionSubproject.buildType(runnerBuildType)
-                            }
-                        }
-                    }
-                }
-            }
-            return productProjects
-        }
-
-        private fun createRunnerBuildType(
-            deployEnv: String,
-            docIds: List<String>,
-            docTitle: String,
-            gwProduct: String,
-            gwVersion: String,
-        ): BuildType {
-            return BuildType {
-                val uniqueId = Helpers.md5("${deployEnv}${gwProduct}${gwVersion}${docIds.joinToString()}")
-                name = "$docTitle (${uniqueId})"
-                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-                type = BuildTypeSettings.Type.COMPOSITE
-
-                dependencies {
-                    docIds.forEach {
-                        snapshot(Helpers.resolveRelativeIdFromIdString(Helpers.md5("Publish to ${deployEnv}${it}"))) {
-                            // Build runners reuse doc builds to avoid unnecessary build runs.
-                            // This feature can't be used in runners for prod doc builds because the prod doc builds
-                            // don’t use a VCS Root - they only copy from staging to prod.
-                            // Therefore, runners can’t discover any changes in the VCS Root from which the staging output
-                            // was built and as a result they don’t trigger the dependent doc build for prod.
-                            if (deployEnv == GwDeployEnvs.PROD.envName) {
-                                reuseBuilds = ReuseBuilds.NO
-                            }
-                            onDependencyFailure = FailureAction.FAIL_TO_START
-                        }
-                    }
-                }
-            }
-        }
-
     }
 }

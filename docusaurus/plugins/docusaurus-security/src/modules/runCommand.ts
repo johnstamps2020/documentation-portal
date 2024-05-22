@@ -25,6 +25,7 @@ export async function runCommand(
     const spawnedProcess = spawn(command, commandLineArgs, {
       stdio: 'inherit',
       env: { ...process.env, ...env },
+      shell: true,
     });
 
     spawnedProcess.on('close', (code) => {

@@ -83,6 +83,9 @@
   "loginButton.in" : {
     "message" : "Connexion"
   },
+  "loginDrawer.go" : {
+    "message" : "Aller à la page de connexion"
+  },
   "transcriptDownloadLink.label" : {
     "message" : "Télécharger la transcription"
   },
@@ -127,5 +130,8 @@
   },
   "chat.answer" : {
     "message" : "Réponse"
+  },
+  "login.gwEmployeeHint" : {
+    "message" : "Employé Guidewire ? Connectez-vous à l'aide de l'option Guidewire Cloud ci-dessous."
   }
 }

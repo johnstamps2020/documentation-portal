@@ -14,10 +14,10 @@
       "branch": "release/es-419/2024.02.0"
     },
     {
-      "id": "isconfigupgradetools510es419src",
-      "title": "InsuranceSuite Configuration Upgrade Tools 5.1.0 es",
+      "id": "isconfigupgradetools520es419src",
+      "title": "InsuranceSuite Configuration Upgrade Tools 5.2.0 es",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
-      "branch": "release/es-419/5.1.0"
+      "branch": "release/es-419/5.2.0"
     },
     {
       "id": "whatsnewjasperes419src",

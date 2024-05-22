@@ -1,0 +1,25 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isconfigupgradetools520ptBR",
+      "title": "InsuranceSuite Configuration Upgrade Tools pt",
+      "displayTitle": "Ferramentas de atualização de configuração do Guidewire InsuranceSuite",
+      "url": "pt/isconfigupgradetools/520",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": [ "5.2.0" ],
+        "release": [ "Hakuba", "Innsbruck", "Jasper" ],
+        "subject": ["Upgrade"],
+        "language": "pt"
+      },
+      "environments": [ "staging", "prod" ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

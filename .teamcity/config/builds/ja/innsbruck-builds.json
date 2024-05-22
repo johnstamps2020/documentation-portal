@@ -67,15 +67,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ISUpgradeCompatibility.ditamap",
-      "srcId": "isunversionedjaJPsrc",
-      "docId": "isjaJPupgradecompatibility",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
       "srcId": "testingframeworks202310jaJPsrc",
       "docId": "testingframeworksjaJPrninnsbruck",

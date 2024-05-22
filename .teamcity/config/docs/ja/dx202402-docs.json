@@ -14,7 +14,7 @@
         "subject": [ "Release notes" ],
         "language": "ja"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -34,7 +34,7 @@
         "subject": [ "Release notes" ],
         "language": "ja"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -54,7 +54,7 @@
         "subject": [ "Release notes" ],
         "language": "ja"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -74,7 +74,7 @@
         "subject": [ "Installation" ],
         "language": "ja"
       },
-      "environments": [ "staging" ],
+      "environments": [ "staging", "prod" ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

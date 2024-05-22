@@ -1,29 +1,27 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
-import LandingPage from 'pages/LandingPage/LandingPage';
-import ForbiddenPage from 'pages/ForbiddenPage/ForbiddenPage';
-import FourOhFourPage from 'pages/FourOhFourPage/FourOhFourPage';
-import SearchPage from 'pages/SearchPage/SearchPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import { appTheme } from 'themes/appTheme';
+import { GwThemeProvider, Init } from '@doctools/components';
 import CssBaseline from '@mui/material/CssBaseline';
-import SupportPage from 'pages/SupportPage/SupportPage';
-import InternalPage from 'pages/InternalPage/InternalPage';
-import PageAdminPage from 'components/AdminPage/PageAdminPage/PageAdminPage';
-import AdminPage from 'pages/AdminPage/AdminPage';
-import { LayoutContextProvider } from 'LayoutContext';
-import Layout from 'components/Layout/Layout';
 import ExternalLinkAdminPage from 'components/AdminPage/ExternalLinkAdminPage/ExternalLinkAdminPage';
-import SourceAdminPage from 'components/AdminPage/SourceAdminPage/SourceAdminPage';
-import ResourceAdminPage from 'components/AdminPage/ResourceAdminPage/ResourceAdminPage';
-import ReleaseAdminPage from 'components/AdminPage/ReleaseAdminPage/ReleaseAdminPage';
-import SubjectAdminPage from 'components/AdminPage/SubjectAdminPage/SubjectAdminPage';
 import LanguageAdminPage from 'components/AdminPage/LanguageAdminPage/LanguageAdminPage';
+import PageAdminPage from 'components/AdminPage/PageAdminPage/PageAdminPage';
 import PlatformAdminPage from 'components/AdminPage/PlatformAdminPage/PlatformAdminPage';
 import ProductAdminPage from 'components/AdminPage/ProductAdminPage/ProductAdminPage';
+import ReleaseAdminPage from 'components/AdminPage/ReleaseAdminPage/ReleaseAdminPage';
+import ResourceAdminPage from 'components/AdminPage/ResourceAdminPage/ResourceAdminPage';
+import SourceAdminPage from 'components/AdminPage/SourceAdminPage/SourceAdminPage';
+import SubjectAdminPage from 'components/AdminPage/SubjectAdminPage/SubjectAdminPage';
 import VersionAdminPage from 'components/AdminPage/VersionAdminPage/VersionAdminPage';
+import Layout from 'components/Layout/Layout';
+import { LayoutContextProvider } from 'LayoutContext';
+import AdminPage from 'pages/AdminPage/AdminPage';
 import DeltaDocCompareToolPage from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
-import ChatPage from 'pages/ChatPage';
+import ForbiddenPage from 'pages/ForbiddenPage/ForbiddenPage';
+import FourOhFourPage from 'pages/FourOhFourPage/FourOhFourPage';
+import InternalPage from 'pages/InternalPage/InternalPage';
+import LandingPage from 'pages/LandingPage/LandingPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
+import SearchPage from 'pages/SearchPage/SearchPage';
+import SupportPage from 'pages/SupportPage/SupportPage';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
@@ -112,19 +110,19 @@ const router = createBrowserRouter([
         ],
       },
       { path: 'delta-doc', element: <DeltaDocCompareToolPage /> },
-      { path: 'chat', element: <ChatPage /> },
     ],
   },
 ]);
 
 function App() {
   return (
-    <ThemeProvider theme={appTheme}>
+    <GwThemeProvider>
+      <Init />
       <LayoutContextProvider>
         <CssBaseline />
         <RouterProvider router={router} />
       </LayoutContextProvider>
-    </ThemeProvider>
+    </GwThemeProvider>
   );
 }
 

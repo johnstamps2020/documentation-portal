@@ -8,19 +8,27 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableContainer from '@mui/material/TableContainer';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
-import usePagination from '../../hooks/usePagination';
+import { useEffect } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocResultTableRow from './DeltaDocResultTableRow';
+import Button from '@mui/material/Button';
 
 export default function DeltaDocResults() {
-  const [page, setPage] = useState(1);
-  const resultsPerPage = 9;
-  const { deltaDocData, releaseA, releaseB } = useDeltaDocContext();
-  const paginationData = usePagination({
-    data: deltaDocData?.results || [],
-    itemsPerPage: resultsPerPage,
-  });
+  const {
+    deltaDocData,
+    releaseA,
+    releaseB,
+    resultsPerPage,
+    setResultsPerPage,
+    changePage,
+    paginationData,
+    page,
+  } = useDeltaDocContext();
+
+  useEffect(() => {
+    changePage(1);
+    setResultsPerPage(9);
+  }, [deltaDocData]);
 
   if (!deltaDocData) {
     return <></>;
@@ -28,14 +36,10 @@ export default function DeltaDocResults() {
 
   const { results } = deltaDocData;
   const count = Math.ceil(results.length / resultsPerPage);
-
-  function handleChange(page: number) {
-    setPage(page);
-    paginationData.jump(page);
-  }
-
   const higherRelease = releaseA > releaseB ? releaseA : releaseB;
   const lowerRelease = releaseA < releaseB ? releaseA : releaseB;
+  const allResultsDisplayed = resultsPerPage === results.length;
+
   return (
     <>
       <Box
@@ -51,14 +55,28 @@ export default function DeltaDocResults() {
           color="primary"
           count={count}
           page={page}
-          onChange={(event, page) => handleChange(page)}
+          onChange={(event, page) => changePage(page)}
         />
+        <Button
+          onClick={() =>
+            allResultsDisplayed
+              ? setResultsPerPage(9)
+              : (setResultsPerPage(results.length), changePage(1))
+          }
+          disabled={count === 1 && !allResultsDisplayed}
+        >
+          {allResultsDisplayed ? 'Show pagination' : 'Show all results'}
+        </Button>
       </Box>
       <Typography variant="h1" textAlign="center">
-        Found {results.length} pages with differences
+        Found {results.length} {results.length === 1 ? 'page' : 'pages'} with
+        differences
       </Typography>
       <TableContainer component={Paper} sx={{ mt: '30px', px: 2 }}>
-        <Table sx={{ minWidth: 650, borderWidth: 0 }} aria-label="simple table">
+        <Table
+          sx={{ minWidth: 650, borderWidth: 0 }}
+          aria-label="delta-doc-result-table"
+        >
           <TableHead>
             <TableRow>
               <TableCell align="center">Change</TableCell>

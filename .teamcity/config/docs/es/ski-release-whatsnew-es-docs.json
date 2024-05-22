@@ -108,7 +108,7 @@
         "language": "es"
       },
       "environments": [
-        "staging"
+        "staging", "prod"
       ],
       "indexForSearch": true,
       "public": false,

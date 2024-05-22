@@ -133,7 +133,7 @@
           "2023.02",
           "2023.06",
           "2023.10",
-          "2024.04"
+          "2024.02"
         ],
         "release": [
           "Flaine",
@@ -175,16 +175,14 @@
           "2022.09",
           "2023.02",
           "2023.06",
-          "2023.10",
-          "2024.02"
+          "2023.10"
         ],
         "release": [
           "Elysian",
           "Flaine",
           "Garmisch",
           "Hakuba",
-          "Innsbruck",
-          "Jasper"
+          "Innsbruck"
         ],
         "subject": [
           "Integration"
@@ -218,8 +216,6 @@
         "version": [
           "10.2.1",
           "10.2.2",
-          "2021.04",
-          "2021.11",
           "2022.05",
           "2022.09",
           "2023.02",
@@ -236,6 +232,91 @@
           "Garmisch",
           "Hakuba",
           "Innsbruck",
+          "Jasper"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "integgatewayuirelease",
+      "title": "Administering Integration Gateway Apps",
+      "url": "is/integgatewayui/release",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2022.05",
+          "2022.09",
+          "2023.02",
+          "2023.06",
+          "2023.10",
+          "2024.02"
+        ],
+        "subject": [
+          "Administration",
+          "Configuration",
+          "Development",
+          "Integration",
+          "Release notes",
+          "Upgrade"
+        ],
+        "release": [
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba",
+          "Innsbruck",
+          "Jasper"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "integgatewayfwrelease",
+      "title": "Developing Integration Gateway Apps",
+      "url": "is/integgatewayfw/release",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.02"
+        ],
+        "subject": [
+          "Development",
+          "Integration",
+          "Release notes"
+        ],
+        "release": [
           "Jasper"
         ],
         "language": "en"

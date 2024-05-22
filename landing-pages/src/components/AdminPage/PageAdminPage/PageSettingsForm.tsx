@@ -1,18 +1,15 @@
 import { Page, SearchFilters } from '@doctools/server';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
-import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useNotification } from 'components/Layout/NotificationContext';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
 import { usePageData } from '../../../hooks/usePageData';
+import AdminBooleanToggles from '../AdminBooleanToggles';
 import { checkIfFileExists } from './PageValidationWarning';
 
 type NewPage = Omit<Page, 'uuid'> & { stringifiedSearchFilters?: string };
@@ -295,36 +292,11 @@ export default function PageSettingsForm({
         value={tmpPageData.title}
         fullWidth
       />
-      <FormGroup>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-          }}
-        >
-          {['internal', 'public', 'earlyAccess', 'isInProduction'].map(
-            (key) => (
-              <FormControlLabel
-                disabled={editingDisabled}
-                key={key}
-                control={
-                  <Switch
-                    value={key}
-                    checked={
-                      tmpPageData[key as keyof typeof pageData] as boolean
-                    }
-                    onChange={(event) =>
-                      handleChange(key, event.target.checked)
-                    }
-                    inputProps={{ 'aria-label': 'controlled' }}
-                  />
-                }
-                label={key}
-              />
-            )
-          )}
-        </Box>
-      </FormGroup>
+      <AdminBooleanToggles
+        editingDisabled={editingDisabled}
+        entityProps={tmpPageData}
+        handleChange={handleChange}
+      />
       <Stack spacing={1} sx={{ width: '100%' }}>
         <Typography variant="h3">Search filters</Typography>
         <Button

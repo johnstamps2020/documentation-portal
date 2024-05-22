@@ -1,11 +1,8 @@
 import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import AdminAccess from '../../components/AdminPage/AdminAccess';
-import { useEnvInfo } from '../../hooks/useApi';
-import { useEffect } from 'react';
-import { prodDeployEnv } from '../../vars';
 import Divider from '@mui/material/Divider';
+import Stack from '@mui/material/Stack';
+import { NavLink, Outlet } from 'react-router-dom';
+import AccessControl from '../../components/AccessControl/AccessControl';
 
 type AdminLink = {
   path: string;
@@ -56,19 +53,8 @@ const links: AdminLink[] = [
 ];
 
 export default function AdminPage() {
-  const { envInfo, isLoading, isError } = useEnvInfo();
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (envInfo && envInfo.name === prodDeployEnv) {
-      navigate(`/forbidden?unauthorized=/admin-panel`);
-    }
-  }, [envInfo, navigate]);
-
-  if (isLoading || isError) {
-    return null;
-  }
   return (
-    <AdminAccess pagePath={window.location.href}>
+    <AccessControl accessLevel="admin" allowedOnEnvs={['dev', 'staging']}>
       <Container sx={{ padding: '3rem 0' }}>
         <Stack direction="row" sx={{ pt: '2rem', justifyContent: 'center' }}>
           {links.map(({ title, path }) => (
@@ -100,6 +86,6 @@ export default function AdminPage() {
           <Outlet />
         </Stack>
       </Container>
-    </AdminAccess>
+    </AccessControl>
   );
 }

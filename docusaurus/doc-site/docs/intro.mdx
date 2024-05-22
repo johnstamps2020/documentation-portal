@@ -13,6 +13,24 @@ import Benefits from '@site/docs/_benefits.mdx';
 Not convinced? Look at [deploying to Atmos](./deploy-to-atmos.mdx) without using
 a Guidewire theme. You can still use the Redoc plugin.
 
+## Create a new Docusaurus site
+
+If you don't have a project set up yet, you can create a new Docusaurus site.
+Otherwise, you can skip this step.
+
+Run this command to create a Docusaurus site:
+
+```bash
+yarn create docusaurus
+```
+
+If you want to read more about creating Docusaurus sites, look at
+[the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
+
+> :warning: Default package manager suggested by Docusaurus is `npx`. Do not run
+> commands in `npx` or `npm` since it can cause problems later on. Stick to the
+> `yarn` command provided above.
+
 ## Install required tools
 
 ### Node.js
@@ -28,7 +46,7 @@ on your machine.
 
 1. If you don't have Yarn, install it by following instructions in the
    [official documentation](https://yarnpkg.com/getting-started/install).
-2. Set Yarn to version 3.
+2. Go to your working directory (e.q. `website` in Docusaurus) and set Yarn to version 3.
 
    ```bash
    yarn set version 3.6.4
@@ -69,21 +87,6 @@ on your machine.
 import Artifactory from './_set-up-artifactory.mdx';
 
 <Artifactory />
-
-## Create a new Docusaurus site
-
-Run this command to create a Docusaurus site:
-
-```bash
-yarn create docusaurus
-```
-
-If you want to read more about creating Docusaurus sites, look at
-[the instructions on the official Docusaurus site](https://docusaurus.io/docs/installation).
-
-> :warning: Default package manager suggested by Docusaurus is `npx`. Do not run
-> commands in `npx` or `npm` since it can cause problems later on. Stick to the
-> `yarn` command provided above.
 
 ## Configure your project
 

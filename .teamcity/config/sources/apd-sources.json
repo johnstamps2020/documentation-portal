@@ -36,6 +36,12 @@
       "title": "Advanced Product Designer App Jasper",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
       "branch": "release/app/jasper"
+    },
+    {
+      "id": "apdappkufrisrc",
+      "title": "Advanced Product Designer App Kufri",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/app/kufri"
     }
   ]
 }

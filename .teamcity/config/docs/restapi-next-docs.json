@@ -139,39 +139,6 @@
       "earlyAccess": false
     },
     {
-      "id": "integgatewaydevnext",
-      "title": "Integration Gateway",
-      "url": "cloud/is/integgateway/next",
-      "metadata": {
-        "product": [
-          "BillingCenter",
-          "ClaimCenter",
-          "PolicyCenter"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2024.07"
-        ],
-        "release": [
-          "Kufri"
-        ],
-        "subject": [
-          "Integration"
-        ],
-        "language": "en"
-      },
-      "environments": [
-        "staging"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "isrestapiclientguidenext",
       "title": "REST API Client",
       "url": "is/restapiclient/next/guide",
@@ -190,6 +157,79 @@
         ],
         "subject": [
           "Integration"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "integgatewayuinext",
+      "title": "Administering Integration Gateway Apps",
+      "url": "is/integgatewayui/next",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Administration",
+          "Configuration",
+          "Development",
+          "Integration",
+          "Release notes",
+          "Upgrade"
+        ],
+        "release": [
+          "Kufri"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "integgatewayfwnext",
+      "title": "Developing Integration Gateway Apps",
+      "url": "is/integgatewayfw/next",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
+        ],
+        "version": [
+          "2024.07"
+        ],
+        "subject": [
+          "Development",
+          "Integration",
+          "Release notes"
         ],
         "release": [
           "Kufri"

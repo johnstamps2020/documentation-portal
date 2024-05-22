@@ -2,7 +2,7 @@ import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import hakubaBackgroundImage from 'images/background-hakuba.svg';
+import backgroundImage from 'images/background-innsbruck.svg';
 
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
@@ -13,7 +13,7 @@ const pageConfig: CategoryLayoutProps = {
     backgroundImage: {
       xs: `url(${gradientBackgroundImage})`,
       sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
-  url(${hakubaBackgroundImage}), 
+  url(${backgroundImage}), 
   linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },

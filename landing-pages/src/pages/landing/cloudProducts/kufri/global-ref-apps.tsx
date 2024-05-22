@@ -44,23 +44,35 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: 'London Market',
+      label: 'Germany',
       items: [
         {
           label: 'Release Notes',
-          docId: 'londonkufrirn',
+          docId: 'midipgkufrirnen',
         },
         {
-          label: 'ClaimCenter for London Market Application Guide',
-          docId: 'londonkufriccapp',
+          label: 'Release Notes (German)',
+          docId: 'midipgkufrirnde',
         },
         {
-          label: 'PolicyCenter for London Market Application Guide',
-          docId: 'londonkufripcapp',
+          label: 'Application Guide',
+          docId: 'midipgkufriapp',
         },
         {
-          label: 'Configuration',
-          docId: 'londonkufriconfig',
+          label: 'Application Guide (German)',
+          docId: 'midipgkufriappde',
+        },
+        {
+          label: 'Implementation',
+          docId: 'midipgkufriimpl',
+        },
+        {
+          label: 'Installation',
+          docId: 'midipgkufriinstall',
+        },
+        {
+          label: 'Glossary',
+          docId: 'midipgkufriglossary',
         },
       ],
     },
@@ -82,6 +94,27 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Installation',
           docId: 'ipjkufriinstall',
+        },
+      ],
+    },
+    {
+      label: 'London Market',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'londonkufrirn',
+        },
+        {
+          label: 'ClaimCenter for London Market Application Guide',
+          docId: 'londonkufriccapp',
+        },
+        {
+          label: 'PolicyCenter for London Market Application Guide',
+          docId: 'londonkufripcapp',
+        },
+        {
+          label: 'Configuration',
+          docId: 'londonkufriconfig',
         },
       ],
     },

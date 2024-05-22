@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "oamsrc",
+      "title": "Open Application Model",
+      "gitUrl": "git@github.com:gwre-pdo/ccs-oam-docs.git",
+      "branch": "main"
+    },
+    {
       "id": "ketisrc",
       "title": "Keti Cloud Common Auth",
       "gitUrl": "ssh://git@stash.guidewire.com/ccs/keti-docs.git",
@@ -95,6 +101,18 @@
       "id": "appeventssrc",
       "title": "AppEvents",
       "gitUrl": "ssh://git@stash.guidewire.com/mde/appevents-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "insuranceplatformoperatorsrc",
+      "title": "InsurancePlatform Operator",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/insuranceplatform-operator-docs.git",
+      "branch": "master"
+    },
+    {
+      "id": "solrsrc",
+      "title": "Solr",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/solr-docs.git",
       "branch": "main"
     }
   ]

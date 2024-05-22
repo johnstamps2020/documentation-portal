@@ -40,18 +40,27 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "IntegrationGatewayForDevelopers.ditamap",
-      "indexRedirect": true,
+      "root": "RESTAPIClientGuide.ditamap",
       "srcId": "restapinextsrc",
-      "docId": "integgatewaydevnext",
+      "docId": "isrestapiclientguidenext",
+      "indexRedirect": true,
       "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
+      "root": "IntegrationGatewayUI.ditamap",
       "srcId": "restapinextsrc",
-      "docId": "isrestapiclientguidenext",
+      "docId": "integgatewayuinext",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IntegrationGatewayFramework.ditamap",
+      "srcId": "restapinextsrc",
+      "docId": "integgatewayfwnext",
       "indexRedirect": true,
       "disabled": false
     }

@@ -8,7 +8,7 @@
       "indexRedirect": true,
       "srcId": "is202302src",
       "docId": "isbc202302update",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -17,7 +17,7 @@
       "indexRedirect": true,
       "srcId": "is202302src",
       "docId": "iscc202302update",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -26,7 +26,7 @@
       "indexRedirect": true,
       "srcId": "is202302src",
       "docId": "ispc202302update",
-      "disabled": false
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -35,7 +35,7 @@
       "indexRedirect": true,
       "srcId": "is202302src",
       "docId": "ee202302update",
-      "disabled": false
+      "disabled": true
     }
   ]
 }

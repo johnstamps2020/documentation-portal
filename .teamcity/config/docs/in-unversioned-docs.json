@@ -2,30 +2,36 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "inscalabilitystudywhitepaper",
+      "title": "Guidewire InsuranceNow Scalability Study White Paper",
+      "url": "cloud/in/scalabilitystudywhitepaper",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceNow"],
+        "version": ["latest"],
+        "subject": ["Testing"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "indataservicereleasenotes",
       "title": "Data Service Release Notes",
       "url": "cloud/in/dataservicereleasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2024.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Jasper"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -37,23 +43,10 @@
       "title": "Custom API Development",
       "url": "cloud/in/apidevelopment",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2022.1",
-          "2022.2",
-          "2023.1",
-          "2023.2",
-          "2023.3",
-          "2024.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1", "2022.2", "2023.1", "2023.2", "2023.3", "2024.1"],
+        "subject": ["Release notes"],
         "release": [
           "Elysian",
           "Flaine",
@@ -64,10 +57,7 @@
         ],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -79,23 +69,10 @@
       "title": "API Modernization",
       "url": "cloud/in/apimodernization",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2022.1",
-          "2022.2",
-          "2023.1",
-          "2023.2",
-          "2023.3",
-          "2024.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1", "2022.2", "2023.1", "2023.2", "2023.3", "2024.1"],
+        "subject": ["Release notes"],
         "release": [
           "Elysian",
           "Flaine",
@@ -106,10 +83,7 @@
         ],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -121,26 +95,14 @@
       "title": "Consumer Service Portal 2024.2 Release Notes",
       "url": "cloud/in/csp20242rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2024.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Kufri"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.2"],
+        "subject": ["Release notes"],
+        "release": ["Kufri"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -152,27 +114,14 @@
       "title": "Consumer Service Portal 2024.1 Release Notes",
       "url": "cloud/in/csp20241rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2024.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Jasper"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -184,27 +133,14 @@
       "title": "Consumer Service Portal 2023.3 Release Notes",
       "url": "cloud/in/csp20233rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.3"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Innsbruck"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.3"],
+        "subject": ["Release notes"],
+        "release": ["Innsbruck"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -216,27 +152,14 @@
       "title": "Consumer Service Portal 2023.2 Release Notes",
       "url": "cloud/in/csp20232rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Hakuba"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.2"],
+        "subject": ["Release notes"],
+        "release": ["Hakuba"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -248,27 +171,14 @@
       "title": "Consumer Service Portal 2023.1 Release Notes",
       "url": "cloud/in/csp20231rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Garmisch"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.1"],
+        "subject": ["Release notes"],
+        "release": ["Garmisch"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -280,27 +190,14 @@
       "title": "Consumer Service Portal 2022.2 Release Notes",
       "url": "cloud/in/csp20222rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2022.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Flaine"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Release notes"],
+        "release": ["Flaine"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -312,27 +209,14 @@
       "title": "Consumer Service Portal 2022.1 Release Notes",
       "url": "cloud/in/csp20221rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2022.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Elysian"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -344,27 +228,14 @@
       "title": "Consumer Service Portal 2021.1 Release Notes",
       "url": "cloud/in/csp20211rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2021.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -376,27 +247,14 @@
       "title": "Consumer Service Portal 4 Release Notes",
       "url": "cloud/in/csp4rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2021.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Dobson"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release notes"],
+        "release": ["Dobson"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -408,27 +266,14 @@
       "title": "Consumer Service Portal 3.26 Release Notes",
       "url": "cloud/in/csp326rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow Consumer Service Portal"
-        ],
-        "version": [
-          "3.26"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.26"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -440,27 +285,14 @@
       "title": "Consumer Service Portal 3.25 Release Notes",
       "url": "cloud/in/csp325rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow Consumer Service Portal"
-        ],
-        "version": [
-          "3.25"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.25"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -472,27 +304,14 @@
       "title": "Consumer Service Portal 3.24 Release Notes",
       "url": "cloud/in/csp324rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow Consumer Service Portal"
-        ],
-        "version": [
-          "3.24"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.24"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -504,27 +323,14 @@
       "title": "Consumer Service Portal 3.23 Release Notes",
       "url": "cloud/in/csp323rn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow Consumer Service Portal"
-        ],
-        "version": [
-          "3.23"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.23"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -536,12 +342,8 @@
       "title": "Developer Setup",
       "url": "cloud/in/devsetupjava11ext",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
         "version": [
           "2024.1",
           "2023.3",
@@ -551,9 +353,7 @@
           "2022.1",
           "2021.2"
         ],
-        "subject": [
-          "Installation"
-        ],
+        "subject": ["Installation"],
         "release": [
           "Dobson",
           "Elysian",
@@ -565,10 +365,7 @@
         ],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -580,12 +377,8 @@
       "title": "Developer Setup - Internal",
       "url": "cloud/in/devsetupjava11",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
         "version": [
           "2024.1",
           "2023.3",
@@ -596,9 +389,7 @@
           "2021.2",
           "2021.1"
         ],
-        "subject": [
-          "Installation"
-        ],
+        "subject": ["Installation"],
         "release": [
           "Dobson",
           "Elysian",
@@ -610,9 +401,7 @@
         ],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -624,12 +413,8 @@
       "title": "Excel Designed Rating 3.0 for InsuranceNow",
       "url": "cloud/in/excelrating30",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
         "version": [
           "2024.1",
           "2023.3",
@@ -640,9 +425,7 @@
           "2021.2",
           "2021.1"
         ],
-        "subject": [
-          "Features and functionality"
-        ],
+        "subject": ["Features and functionality"],
         "release": [
           "Cortina",
           "Dobson",
@@ -655,10 +438,7 @@
         ],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -670,26 +450,14 @@
       "title": "Studio 2024.2 Release Notes",
       "url": "cloud/in/20242/studiorn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2024.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Kufri"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.2"],
+        "subject": ["Release notes"],
+        "release": ["Kufri"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -701,27 +469,14 @@
       "title": "Studio 2024.1 Release Notes",
       "url": "cloud/in/20241/studiorn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2024.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Jasper"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -733,27 +488,14 @@
       "title": "Studio 2023.3 Release Notes",
       "url": "cloud/in/20233/studiorn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.3"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Innsbruck"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.3"],
+        "subject": ["Release notes"],
+        "release": ["Innsbruck"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -765,27 +507,14 @@
       "title": "Studio 2023.2 Release Notes",
       "url": "cloud/in/20232/studiorn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Hakuba"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.2"],
+        "subject": ["Release notes"],
+        "release": ["Hakuba"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -797,27 +526,14 @@
       "title": "Studio 2023.1 Release Notes",
       "url": "cloud/in/20231/studiorn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Garmisch"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.1"],
+        "subject": ["Release notes"],
+        "release": ["Garmisch"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -829,27 +545,14 @@
       "title": "Studio 2022.2 Release Notes",
       "url": "cloud/in/20222/studiorn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2022.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Flaine"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Release notes"],
+        "release": ["Flaine"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -861,27 +564,14 @@
       "title": "Studio 2022.1 Release Notes",
       "url": "cloud/in/20221/studiorn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2022.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Elysian"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -893,27 +583,14 @@
       "title": "Studio 2021.2 Release Notes",
       "url": "cloud/in/20212/studiorn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2021.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Dobson"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release notes"],
+        "release": ["Dobson"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -925,27 +602,14 @@
       "title": "Studio 2021.1 Release Notes",
       "url": "cloud/in/20211/studiorn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2021.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -957,12 +621,8 @@
       "title": "Install Assist - Internal",
       "url": "cloud/in/installassist",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
         "version": [
           "2024.1",
           "2023.3",
@@ -973,9 +633,7 @@
           "2021.2",
           "2021.1"
         ],
-        "subject": [
-          "Installation"
-        ],
+        "subject": ["Installation"],
         "release": [
           "Cortina",
           "Dobson",
@@ -988,9 +646,7 @@
         ],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1002,26 +658,14 @@
       "title": "Core Release Notes",
       "url": "cloud/in/20242/releasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2024.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Kufri"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.2"],
+        "subject": ["Release notes"],
+        "release": ["Kufri"],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1033,27 +677,14 @@
       "title": "Core Release Notes",
       "url": "cloud/in/20241/releasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2024.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Jasper"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1"],
+        "subject": ["Release notes"],
+        "release": ["Jasper"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1065,27 +696,14 @@
       "title": "Core Release Notes",
       "url": "cloud/in/20233/releasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.3"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Innsbruck"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.3"],
+        "subject": ["Release notes"],
+        "release": ["Innsbruck"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1097,27 +715,14 @@
       "title": "Core Release Notes",
       "url": "cloud/in/20232/releasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Hakuba"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.2"],
+        "subject": ["Release notes"],
+        "release": ["Hakuba"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1129,27 +734,14 @@
       "title": "Core Release Notes",
       "url": "cloud/in/20231/releasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Garmisch"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.1"],
+        "subject": ["Release notes"],
+        "release": ["Garmisch"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1161,27 +753,14 @@
       "title": "Core Release Notes",
       "url": "cloud/in/20222/releasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2022.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Flaine"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Release notes"],
+        "release": ["Flaine"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1193,27 +772,14 @@
       "title": "Core Release Notes",
       "url": "cloud/in/20221/releasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2022.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Elysian"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1225,27 +791,14 @@
       "title": "Core Release Notes",
       "url": "cloud/in/20212/releasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2021.2"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Dobson"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release notes"],
+        "release": ["Dobson"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1257,27 +810,14 @@
       "title": "Core Release Notes",
       "url": "cloud/in/20211/releasenotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2021.1"
-        ],
-        "subject": [
-          "Release notes"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1289,12 +829,8 @@
       "title": "Upgrade Tools - Internal",
       "url": "cloud/in/upgrade",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
         "version": [
           "2024.1",
           "2023.3",
@@ -1305,9 +841,7 @@
           "2021.2",
           "2021.1"
         ],
-        "subject": [
-          "Upgrade"
-        ],
+        "subject": ["Upgrade"],
         "release": [
           "Cortina",
           "Dobson",
@@ -1320,9 +854,7 @@
         ],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1334,12 +866,8 @@
       "title": "GWCP Operations for InsuranceNow",
       "url": "cloud/in/gwcp-ops",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
         "version": [
           "2024.1",
           "2023.3",
@@ -1349,9 +877,7 @@
           "2022.1",
           "2021.2"
         ],
-        "subject": [
-          "Installation"
-        ],
+        "subject": ["Installation"],
         "release": [
           "Dobson",
           "Elysian",
@@ -1363,10 +889,7 @@
         ],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1378,12 +901,8 @@
       "title": "InsuranceNow as an IdP",
       "url": "cloud/in/inow-idp",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
         "version": [
           "2024.1",
           "2023.3",
@@ -1393,9 +912,7 @@
           "2022.1",
           "2021.2"
         ],
-        "subject": [
-          "Installation"
-        ],
+        "subject": ["Installation"],
         "release": [
           "Dobson",
           "Elysian",
@@ -1407,9 +924,7 @@
         ],
         "language": "en"
       },
-      "environments": [
-        "staging"
-      ],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -1421,31 +936,14 @@
       "title": "Data Service for InsuranceNow",
       "url": "cloud/in/data-service",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2023.2",
-          "2023.3",
-          "2024.1"
-        ],
-        "subject": [
-          "Features and functionality"
-        ],
-        "release": [
-          "Hakuba",
-          "Innsbruck",
-          "Jasper"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.2", "2023.3", "2024.1"],
+        "subject": ["Features and functionality"],
+        "release": ["Hakuba", "Innsbruck", "Jasper"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1457,33 +955,14 @@
       "title": "Programming Standards",
       "url": "cloud/in/inprogstandards",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2024.1",
-          "2023.3",
-          "2023.2",
-          "2023.1"
-        ],
-        "subject": [
-          "Development"
-        ],
-        "release": [
-          "Jasper",
-          "Innsbruck",
-          "Hakuba",
-          "Garmisch"
-        ],
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2024.1", "2023.3", "2023.2", "2023.1"],
+        "subject": ["Development"],
+        "release": ["Jasper", "Innsbruck", "Hakuba", "Garmisch"],
         "language": "en"
       },
-      "environments": [
-        "staging",
-        "prod"
-      ],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

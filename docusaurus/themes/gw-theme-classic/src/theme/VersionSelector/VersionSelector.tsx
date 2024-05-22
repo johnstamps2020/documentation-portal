@@ -4,8 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { ThemeProvider } from '@mui/material/styles';
-import { versionSelectorTheme } from './VersionSelectorTheme';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { VersionSelectorProps } from '@theme/VersionSelector';
 
 function arrayMoveToTop(arr: VersionSelectorProps[], phrase: string) {
@@ -63,7 +62,17 @@ function VersionSelector() {
   const selectedVersion = availableVersions.find((v) => v.currentlySelected);
 
   return (
-    <ThemeProvider theme={versionSelectorTheme}>
+    <ThemeProvider
+      theme={createTheme({
+        palette: {
+          paleBackground: {
+            main: 'white',
+          },
+          darkBlue: { main: 'darkblue' },
+          mode: 'dark',
+        },
+      })}
+    >
       <FormControl size="small">
         <InputLabel id="version-selector-label">versions</InputLabel>
         <Select

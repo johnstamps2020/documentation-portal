@@ -6,14 +6,9 @@ export async function runInOs(
   processLabel: string
 ): Promise<void> {
   return new Promise<void>((resolve, reject) => {
-    const cloneProcess = spawn(command, commandLineArgs);
-
-    cloneProcess.stdout.on('data', (data) => {
-      console.log(`${processLabel} LOG:`, data.toString());
-    });
-
-    cloneProcess.stderr.on('data', (data) => {
-      console.error(data.toString());
+    const cloneProcess = spawn(command, commandLineArgs, {
+      stdio: 'inherit',
+      shell: true,
     });
 
     cloneProcess.on('close', (code) => {

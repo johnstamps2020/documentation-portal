@@ -20,14 +20,24 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   const releaseBFiles = deltaDocData[1];
   let cumulativeFileChanges = 0;
   let unchangedFiles = 0;
-  const areReleasesIdentical = releaseAFiles === releaseBFiles;
+  const areReleasesIdentical =
+    JSON.stringify(
+      releaseAFiles.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0))
+    ) ===
+    JSON.stringify(
+      releaseBFiles.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0))
+    );
 
   // TODO: statistics:  left only entries: xx, right only entries: xx,
 
   releaseBFiles.forEach(function (b) {
     if (
       releaseAFiles.some(function (a) {
-        return a.id === b.id && a.body === b.body && a.title === b.title;
+        return (
+          a.id === b.id &&
+          a.body.trim() === b.body.trim() &&
+          a.title === b.title
+        );
       })
     ) {
       unchangedFiles++;
@@ -61,13 +71,13 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   }
 
   function compareTwoDocs(docA: DeltaDocResultType, docB: DeltaDocResultType) {
-    const fileChangeAmount: number = difference(docA.body, docB.body);
+    const docABody = docA.body.trim();
+    const docBBody = docB.body.trim();
+    const fileChangeAmount: number = difference(docABody, docBBody);
     var percentageChange: number = Math.ceil(
       calculatePercentage(
         fileChangeAmount,
-        docB.body.length > docA.body.length
-          ? docB.body.length
-          : docA.body.length
+        docBBody.length > docABody.length ? docBBody.length : docABody.length
       )
     );
     if (percentageChange > 100) {
@@ -219,9 +229,17 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
   const stringifiedData = JSON.stringify(jsonData).replaceAll(outputRegex, '/');
   const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
   const deltaDocData = parsedData.map((releaseData) =>
-    releaseData.filter((element) => {
-      return element.id.replace(/[0-9]/g, '') !== url.replace(/[0-9]/g, '');
-    })
+    releaseData
+      .filter((element) => {
+        return element.id.replace(/[0-9]/g, '') !== url.replace(/[0-9]/g, '');
+      })
+      .map((element) => {
+        let newElementId = element.id;
+        if (element.id.includes('cloud')) {
+          newElementId = element.id.replace(/\/cloud\/.*\d+.+\d\//g, '');
+        }
+        return { ...element, id: newElementId };
+      })
   );
 
   const comparisonResult = compareDocs(deltaDocData);
@@ -249,7 +267,6 @@ export function useDeltaDocData({
     isError: error,
   };
 }
-
 
 const deltaDocValidator = async (docUrl: string) => {
   const response = await fetch(

@@ -54,6 +54,24 @@
       "docId": "isrestapiclientguide",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IntegrationGatewayUI.ditamap",
+      "srcId": "restapisrc",
+      "docId": "integgatewayuirelease",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IntegrationGatewayFramework.ditamap",
+      "srcId": "restapisrc",
+      "docId": "integgatewayfwrelease",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
