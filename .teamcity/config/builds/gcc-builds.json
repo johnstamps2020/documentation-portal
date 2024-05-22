@@ -3,6 +3,12 @@
   "builds": [
     {
       "buildType": "yarn",
+      "docId": "eedeploymentsapi",
+      "srcId": "eedeploymentsapisrc",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "gccinternaltemplate",
       "srcId": "gccinternaltemplatesrc",
       "disabled": false

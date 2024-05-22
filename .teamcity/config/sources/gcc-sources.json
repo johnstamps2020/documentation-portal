@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "eedeploymentsapisrc",
+      "title": "EnterpriseEngage Deployments API",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ee-deployments-api-doc.git",
+      "branch": "main"
+    },
+    {
       "id": "gccinternaltemplatesrc",
       "title": "GCC Internal Template",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-internal-docs-template.git",
