@@ -2,8 +2,6 @@
 @import 'modules/common.css';
 @import 'modules/avatar.css';
 @import 'modules/feedback.css';
-/* removing for DOCT-441 */
-/* @import 'modules/recommendations.css'; */
 @import 'modules/earlyAccess.module.css';
 
 @media only screen and (max-width: 580px) {

@@ -14,35 +14,6 @@ let docInternal = undefined;
 let docEarlyAccess = undefined;
 let docRelease = undefined;
 let docLanguage = 'en';
-const topicId = window.location.pathname;
-
-async function showTopicRecommendations() {
-  const response = await fetch(`/recommendations?topicId=${topicId}`);
-  if (response.ok) {
-    const json = await response.json();
-    const recommendedTopics = json.recommendations;
-    const recommendationsContainer = document.createElement('div');
-    recommendationsContainer.setAttribute('class', 'recommendations');
-    recommendationsContainer.innerHTML = `
-    <span>Recommended topics</span>
-    <ul id="recommendedTopics"></ul>
-    `;
-
-    const topicBody = document.getElementById('wh_topic_body');
-    if (topicBody) {
-      topicBody.appendChild(recommendationsContainer);
-    }
-    const recommendedTopicsList = document.getElementById('recommendedTopics');
-    for (const topic of recommendedTopics) {
-      const recommendedTopicListItem = document.createElement('li');
-      const recommendedTopicLink = document.createElement('a');
-      recommendedTopicLink.setAttribute('href', topic.id);
-      recommendedTopicLink.innerText = topic.title;
-      recommendedTopicListItem.appendChild(recommendedTopicLink);
-      recommendedTopicsList.appendChild(recommendedTopicListItem);
-    }
-  }
-}
 
 async function fetchMetadata() {
   if (!docId) {
@@ -677,25 +648,6 @@ function setFooter() {
   resizeObserver.observe(whTopicBody);
 }
 
-function scramble(phrase) {
-  var hash = 0,
-    i,
-    chr;
-  if (phrase.length === 0) return hash;
-  for (i = 0; i < phrase.length; i++) {
-    chr = phrase.charCodeAt(i);
-    hash = (hash << 5) - hash + chr;
-    hash |= 0;
-  }
-  return hash;
-}
-
-function getScrambledEmail(email) {
-  const parts = email.split('@');
-  const scrambledLogin = scramble(parts[0]);
-  return `${scrambledLogin}@${parts[1]}`;
-}
-
 docReady(async function () {
   metadataIsAvailable = await fetchMetadata();
   await createContainerForCustomHeaderElements();
@@ -709,6 +661,4 @@ docReady(async function () {
   configureSearch();
   addFeedbackElements();
   setFooter();
-  // remove for DOCT-441
-  //showTopicRecommendations();
 });

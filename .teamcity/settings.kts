@@ -212,20 +212,6 @@ object Helpers {
         return convertListToLowercase(convertJsonArrayWithStringsToList(jsonArray))
     }
 
-    fun generatePlatformProductVersionCombinations(
-        gwPlatforms: List<String>, gwProducts: List<String>, gwVersions: List<String>,
-    ): List<Triple<String, String, String>> {
-        val result = mutableListOf<Triple<String, String, String>>()
-        gwPlatforms.forEach { a ->
-            gwProducts.forEach { b ->
-                gwVersions.forEach { c ->
-                    result.add(Triple(a, b, c))
-                }
-            }
-        }
-        return result
-    }
-
     private fun getObjectsFromAllConfigFiles(srcDir: String, objectName: String): List<JSONObject> {
         val allConfigObjects = mutableListOf<JSONObject>()
         val jsonFiles = File(srcDir).walk().filter { File(it.toString()).extension == "json" }

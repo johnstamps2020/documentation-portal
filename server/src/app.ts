@@ -131,8 +131,6 @@ const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
 const lrsRouter = require('./routes/lrs');
 const redirectRouter = require('./routes/redirect');
-// removing for DOCT-441
-// const recommendationsRouter = require('./routes/recommendations');
 const passport = require('passport');
 const deltaDocRouter = require('./routes/delta-doc');
 const chatbotRouter = require('./routes/chatbot');
@@ -185,8 +183,6 @@ app.use('/safeConfig', saveUserInfoToResLocals, configRouter);
 app.use('/lrs', saveUserInfoToResLocals, isAllowedToAccessRoute, lrsRouter);
 app.use('/s3', saveUserInfoToResLocals, isAllowedToAccessRoute, s3Router);
 // Open routes
-// removing for DOCT-441
-//app.use('/recommendations', saveUserInfoToResLocals, recommendationsRouter);
 app.use('/userInformation', userRouter);
 app.use('/envInformation', envRouter);
 app.use('/redirect', saveUserInfoToResLocals, redirectRouter);
