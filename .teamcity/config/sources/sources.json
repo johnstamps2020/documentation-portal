@@ -216,6 +216,12 @@
       "title": "Support Matrices",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/support-matrices.git",
       "branch": "main"
+    },
+    {
+      "id": "courseexamplesrc",
+      "title": "Education Course Prototype Demo (src)",
+      "gitUrl": "ssh://git@stash.guidewire.com/~pkowaluk/course-example.git",
+      "branch": "main"
     }
   ]
 }
