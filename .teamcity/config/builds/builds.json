@@ -196,6 +196,12 @@
       "srcId": "supportmatricessrc",
       "docId": "supportmatrices",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "courseexamplesrc",
+      "docId": "courseexample",
+      "disabled": false
     }
   ]
 }

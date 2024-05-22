@@ -863,6 +863,31 @@
       "earlyAccess": false,
       "internal": false,
       "public": false
+    },
+    {
+      "id": "courseexample",
+      "title": "Education Course Prototype Demo",
+      "url": "education/course/demo",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Workflow Service"
+        ],
+        "version": [
+          "latest"
+        ],
+        "language": "en"
+      },
+      "environments": [
+        "staging"
+      ],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "earlyAccess": false,
+      "internal": false,
+      "public": false
     }
   ]
 }
