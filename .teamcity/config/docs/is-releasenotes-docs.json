@@ -2,13 +2,12 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "isstudiolatestrn",
-      "title": "Studio Release Notes",
-      "url": "studio/latest/releasenotes",
+      "id": "isrnlatest",
+      "title": "Release Notes",
+      "url": "is/latest/releasenotes",
       "metadata": {
         "platform": [
-          "Cloud",
-          "Self-managed"
+          "Cloud"
         ],
         "product": [
           "BillingCenter",
@@ -16,24 +15,19 @@
           "PolicyCenter"
         ],
         "version": [
-          "2023.06",
-          "2023.10",
-          "2024.02"
+          "2024.07"
         ],
         "subject": [
           "Installation",
           "Release notes"
         ],
         "release": [
-          "Hakuba",
-          "Innsbruck",
-          "Jasper"
+          "Kufri"
         ],
         "language": "en"
       },
       "environments": [
-        "staging",
-        "prod"
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
