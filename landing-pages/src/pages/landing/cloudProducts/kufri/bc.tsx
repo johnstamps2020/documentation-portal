@@ -7,7 +7,7 @@ const pageConfig: ApplicationLayoutProps = {
   title: 'BillingCenter for Guidewire Cloud 2024.07',
   buttonProps: {
     label: 'Release notes',
-    docId: 'isbc202407releasenotes',
+    docId: 'isrnlatest',
   },
   heroDescription:
     'Guidewire BillingCenter manages billing, payment, and delinquency operations for policies.',
@@ -19,7 +19,7 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'BillingCenter Release Notes',
-          docId: 'isbc202407releasenotes',
+          docId: 'isrnlatest',
           description: (
             <>Learn about changes in this release of BillingCenter.</>
           ),
@@ -72,18 +72,15 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Billing Migration Tool',
           docId: 'billingmigrationtool',
-          description: (
-            <>
-              Migrate legacy billing data to BillingCenter Cloud.
-            </>
-          ),
+          description: <>Migrate legacy billing data to BillingCenter Cloud.</>,
         },
         {
           label: 'Contact and Vendor Migration Tool',
           docId: 'contactvendormigrationtool',
           description: (
             <>
-              Migrate contacts from a legacy system of record to Guidewire ContactManager.
+              Migrate contacts from a legacy system of record to Guidewire
+              ContactManager.
             </>
           ),
         },
@@ -92,7 +89,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'datauploadtool',
           description: (
             <>
-              Migrate data from an on-premise Database Input Interface to Guidewire Cloud
+              Migrate data from an on-premise Database Input Interface to
+              Guidewire Cloud
             </>
           ),
         },
@@ -129,7 +127,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'cloudplatformtermrelease',
           description: (
             <>
-              Terminology and naming conventions for Guidewire Cloud Platform resources.
+              Terminology and naming conventions for Guidewire Cloud Platform
+              resources.
             </>
           ),
         },
@@ -319,10 +318,11 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'integgatewayfwnext',
           description: (
             <>
-              Offers comprehensive guidance on leveraging the Integration Gateway
-              framework library components and utilities. Provides detailed
-              instructions and examples for creating new integration projects,
-              refining project implementation, and configuring security authentication.
+              Offers comprehensive guidance on leveraging the Integration
+              Gateway framework library components and utilities. Provides
+              detailed instructions and examples for creating new integration
+              projects, refining project implementation, and configuring
+              security authentication.
             </>
           ),
         },
@@ -331,10 +331,11 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'integgatewayuinext',
           description: (
             <>
-              Provides practical guidance on configuring access to the Integration Apps
-              user interface, creating new integration apps, managing the integrations
-              and their deployment to Guidewire Cloud. Offers information about
-              observability metrics for monitoring their performance.
+              Provides practical guidance on configuring access to the
+              Integration Apps user interface, creating new integration apps,
+              managing the integrations and their deployment to Guidewire Cloud.
+              Offers information about observability metrics for monitoring
+              their performance.
             </>
           ),
         },
