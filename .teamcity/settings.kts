@@ -1611,12 +1611,13 @@ object Content {
 object Database {
     // Test builds for config files are configured in settings.kts in the documentation-portal-config repo.
     // If you change the build IDs here, you also have to update them in the test builds.
+    private const val ABSOLUTE_ID_PREFIX = "DocumentationTools_DocPortal_"
     private val testConfigDocsBuildType =
-        AbsoluteId(Helpers.md5("Test ${GwConfigTypes.DOCS.typeName} config files"))
+        AbsoluteId(ABSOLUTE_ID_PREFIX + Helpers.md5("Test ${GwConfigTypes.DOCS.typeName} config files"))
     private val testConfigSourcesBuildType =
-        AbsoluteId(Helpers.md5("Test ${GwConfigTypes.SOURCES.typeName} config files"))
+        AbsoluteId(ABSOLUTE_ID_PREFIX + Helpers.md5("Test ${GwConfigTypes.SOURCES.typeName} config files"))
     private val testConfigBuildsBuildType =
-        AbsoluteId(Helpers.md5("Test ${GwConfigTypes.BUILDS.typeName} config files"))
+        AbsoluteId(ABSOLUTE_ID_PREFIX + Helpers.md5("Test ${GwConfigTypes.BUILDS.typeName} config files"))
     private val validateDbDeploymentBuildTypeDev = createValidateDbDeploymentBuildType(GwDeployEnvs.DEV.envName)
     private val validateDbDeploymentBuildTypeStaging =
         createValidateDbDeploymentBuildType(GwDeployEnvs.STAGING.envName)
