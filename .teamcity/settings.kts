@@ -18,6 +18,7 @@ import java.util.*
 version = "2024.03"
 project {
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
+    vcsRoot(GwVcsRoots.DocumentationPortalConfigGitVcsRoot)
     vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
     subProject(Database.rootProject)
     subProject(DocPortal.rootProject)
@@ -33,13 +34,14 @@ enum class GwDeployEnvs(val envName: String) {
 }
 
 enum class GwConfigParams(val paramValue: String) {
-    CONFIG_FILES_ROOT_DIR("%teamcity.build.checkoutDir%/.teamcity/config"), BUILDS_CONFIG_FILES_DIR(
-        "${CONFIG_FILES_ROOT_DIR.paramValue}/builds"
-    ),
-    DOCS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/docs"), SOURCES_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/sources"),
-    DOCS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/out/docs"), BUILDS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/out/builds"), SOURCES_CONFIG_FILES_OUT_DIR(
-        "${CONFIG_FILES_ROOT_DIR.paramValue}/out/sources"
-    ),
+    DOCUMENTATION_PORTAL_CONFIG_CHECKOUT_DIR("documentation-portal-config"),
+    CONFIG_FILES_ROOT_DIR("%teamcity.build.checkoutDir%/${DOCUMENTATION_PORTAL_CONFIG_CHECKOUT_DIR.paramValue}/.teamcity/config"),
+    BUILDS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/builds"),
+    DOCS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/docs"),
+    SOURCES_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/sources"),
+    BUILDS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/out/builds"),
+    DOCS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/out/docs"),
+    SOURCES_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.paramValue}/out/sources"),
     BITBUCKET_SSH_KEY("svc-doc-bitbucket"),
     ECR_HOST("627188849628.dkr.ecr.us-west-2.amazonaws.com"),
     ECR_HOST_PROD("954920275956.dkr.ecr.us-east-1.amazonaws.com"),
@@ -1035,6 +1037,12 @@ object GwVcsRoots {
         "main",
     )
 
+    val DocumentationPortalConfigGitVcsRoot = createGitVcsRoot(
+        Helpers.resolveRelativeIdFromIdString(Helpers.md5("Documentation Portal Config git repo")),
+        "ssh://git@stash.guidewire.com/doctools/documentation-portal-config.git",
+        "main",
+    )
+
     val DitaOtPluginsVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString(Helpers.md5("DITA OT plugins repo")),
         "ssh://git@stash.guidewire.com/doctools/dita-ot-plugins.git",
@@ -1992,9 +2000,8 @@ object Database {
         maxRunningBuilds = 1
 
         vcs {
-            root(
-                GwVcsRoots.DocumentationPortalGitVcsRoot
-            )
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(GwVcsRoots.DocumentationPortalConfigGitVcsRoot, "+:.=> ${GwConfigParams.DOCUMENTATION_PORTAL_CONFIG_CHECKOUT_DIR.paramValue}")
             cleanCheckout = true
         }
 
