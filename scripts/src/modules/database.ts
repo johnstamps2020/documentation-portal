@@ -49,12 +49,13 @@ export type DocInfo = {
 export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
   const accessToken = await getAccessToken();
 
-  const doc: DocInfo['doc'] = await getEntityByAttribute(
-    'Doc',
-    'id',
-    docId,
-    accessToken
-  );
+  let doc: DocInfo['doc'];
+  try {
+    doc = await getEntityByAttribute('Doc', 'id', docId, accessToken);
+  } catch (err) {
+    console.error(`Could not find a document with id ${docId}`);
+    process.exit(1);
+  }
 
   let build: DocInfo['build'];
   try {
