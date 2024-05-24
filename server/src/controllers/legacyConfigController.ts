@@ -357,7 +357,7 @@ async function putSourceConfigsInDatabase(): Promise<ApiResponse> {
     let localSourcesConfigDir: string;
     if (isDevMode) {
       localSourcesConfigDir = resolve(
-        `${__dirname}/../../../.teamcity/config/sources`
+        `${__dirname}/../../../../documentation-portal-config/.teamcity/config/sources`
       );
     } else {
       localSourcesConfigDir = resolve(`${__dirname}/../legacyConfig/sources`);
@@ -758,8 +758,9 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
     let localDocsConfigDir: string;
     if (isDevMode) {
       localDocsConfigDir = resolve(
-        `${__dirname}/../../../.teamcity/config/docs`
+        `${__dirname}/../../../../documentation-portal-config/.teamcity/config/docs`
       );
+      console.log(localDocsConfigDir);
     } else {
       localDocsConfigDir = resolve(`${__dirname}/../legacyConfig/docs`);
       const docsConfigS3Path = 'legacy-config/docs.json';
@@ -878,7 +879,7 @@ async function putBuildConfigsInDatabase(): Promise<ApiResponse> {
     let localBuildsConfigDir: string;
     if (isDevMode) {
       localBuildsConfigDir = resolve(
-        `${__dirname}/../../../.teamcity/config/builds`
+        `${__dirname}/../../../../documentation-portal-config/.teamcity/config/builds`
       );
     } else {
       localBuildsConfigDir = resolve(`${__dirname}/../legacyConfig/builds`);

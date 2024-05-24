@@ -10,7 +10,11 @@
 
 ### Added manually ###
 
-.teamcity/target/
+.teamcity/target
+.teamcity/config/**
+!.teamcity/config/README.md
+.teamcity/archive
+.teamcity/config/config-schema.json
 
 ### Local dev env
 .dev/volumes/**
@@ -138,14 +142,5 @@ venv/
 .venv/
 .env
 *.log
-
-# Yarn 3
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
 
 node_modules
