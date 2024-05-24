@@ -18,7 +18,6 @@ import java.util.*
 version = "2024.03"
 project {
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
-    vcsRoot(GwVcsRoots.DocumentationPortalConfigGitVcsRoot)
     vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
     subProject(Database.rootProject)
     subProject(DocPortal.rootProject)
@@ -27,9 +26,6 @@ project {
     subProject(Content.rootProject)
     buildType(TestSettingsKts)
     buildType(AuditNpmPackages)
-    features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
-    features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
-    features.feature(GwProjectFeatures.GwBuildListenerLimitProjectFeature)
 }
 
 enum class GwDeployEnvs(val envName: String) {
@@ -997,32 +993,6 @@ object GwBuildSteps {
     }
 }
 
-object GwProjectFeatures {
-    object GwOxygenWebhelpLicenseProjectFeature : ProjectFeature({
-        type = "JetBrains.SharedResources"
-        id = "GW_OXYGEN_WEBHELP_LICENSE"
-        param("quota", "3")
-        param("name", "OxygenWebhelpLicense")
-        param("type", "quoted")
-    })
-
-    object GwAntennaHouseFormatterServerProjectFeature : ProjectFeature({
-        type = "JetBrains.SharedResources"
-        id = "GW_ANTENNA_HOUSE_FORMATTER_SERVER"
-        param("quota", "3")
-        param("name", "AntennaHouseFormatterServer")
-        param("type", "quoted")
-    })
-
-    object GwBuildListenerLimitProjectFeature : ProjectFeature({
-        type = "JetBrains.SharedResources"
-        id = "GW_BUILD_LISTENER_LIMIT"
-        param("quota", "5")
-        param("name", "BuildListenerLimit")
-        param("type", "quoted")
-    })
-}
-
 object GwBuildFeatures {
     object GwDockerSupportBuildFeature : DockerSupportFeature({
         id = "GW_DOCKER_SUPPORT"
@@ -1062,12 +1032,6 @@ object GwVcsRoots {
     val DocumentationPortalGitVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString(Helpers.md5("Documentation Portal git repo")),
         "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
-        "main",
-    )
-
-    val DocumentationPortalConfigGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString(Helpers.md5("Documentation Portal Config git repo")),
-        "ssh://git@stash.guidewire.com/doctools/documentation-portal-config.git",
         "main",
     )
 
