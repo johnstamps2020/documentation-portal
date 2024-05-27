@@ -633,7 +633,12 @@ object GwBuildTypes {
 
             when (deployEnv) {
                 GwDeployEnvs.DEV.envName -> {
-                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(triggerPath)))
+                    triggers.trigger(
+                        GwVcsTriggers.createGitVcsTrigger(
+                            GwVcsRoots.DocumentationPortalGitVcsRoot,
+                            listOf(triggerPath)
+                        )
+                    )
                 }
             }
         }
@@ -1076,21 +1081,21 @@ object GwVcsRoots {
 }
 
 object GwVcsTriggers {
-
-    fun createDocPortalVcsTrigger(
+    fun createGitVcsTrigger(
+        gitVcsRoot: GitVcsRoot,
         includedTriggerPaths: List<String>? = null,
         excludedTriggerPaths: List<String>? = null,
     ): VcsTrigger {
-        val docPortalVcsTrigger = VcsTrigger {
+        val gitVcsTrigger = VcsTrigger {
             triggerRules = ""
         }
         includedTriggerPaths?.forEach {
-            docPortalVcsTrigger.triggerRules += "+:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${it}\n"
+            gitVcsTrigger.triggerRules += "+:root=${gitVcsRoot.id}:${it}\n"
         }
         excludedTriggerPaths?.forEach {
-            docPortalVcsTrigger.triggerRules += "-:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${it}\n"
+            gitVcsTrigger.triggerRules += "-:root=${gitVcsRoot.id}:${it}\n"
         }
-        return docPortalVcsTrigger
+        return gitVcsTrigger
     }
 }
 
@@ -1122,7 +1127,8 @@ object AuditNpmPackages : BuildType({
 
     triggers {
         trigger(
-            GwVcsTriggers.createDocPortalVcsTrigger(
+            GwVcsTriggers.createGitVcsTrigger(
+                GwVcsRoots.DocumentationPortalGitVcsRoot,
                 listOf(
                     GwTriggerPaths.PACKAGE_JSON.pathValue,
                     GwTriggerPaths.YARN_LOCK.pathValue,
@@ -1164,7 +1170,8 @@ object TestSettingsKts : BuildType({
     // therefore we want to run it on changes in the default branch as well.
     triggers {
         trigger(
-            GwVcsTriggers.createDocPortalVcsTrigger(
+            GwVcsTriggers.createGitVcsTrigger(
+                GwVcsRoots.DocumentationPortalGitVcsRoot,
                 listOf(
                     GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
                     GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue,
@@ -1438,7 +1445,8 @@ object Content {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 deployContentStorageBuildType.triggers.trigger(
-                    GwVcsTriggers.createDocPortalVcsTrigger(
+                    GwVcsTriggers.createGitVcsTrigger(
+                        GwVcsRoots.DocumentationPortalGitVcsRoot,
                         listOf(GwTriggerPaths.AWS_S3_KUBE.pathValue)
                     )
                 )
@@ -1673,7 +1681,8 @@ object Database {
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
                 validateDbDeploymentBuildType.triggers.trigger(
-                    GwVcsTriggers.createDocPortalVcsTrigger(
+                    GwVcsTriggers.createGitVcsTrigger(
+                        GwVcsRoots.DocumentationPortalGitVcsRoot,
                         listOf(
                             GwTriggerPaths.DB.pathValue
                         )
@@ -1778,7 +1787,8 @@ object Database {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 deployDatabaseBuildType.triggers.trigger(
-                    GwVcsTriggers.createDocPortalVcsTrigger(
+                    GwVcsTriggers.createGitVcsTrigger(
+                        GwVcsRoots.DocumentationPortalGitVcsRoot,
                         listOf(
                             GwTriggerPaths.DB.pathValue
                         )
@@ -1810,6 +1820,13 @@ object Database {
         maxRunningBuilds = 1
 
         artifactRules = GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue
+
+        // The VCS Root isn't used in build steps but it's linked here to support revision synchronization
+        // in snapshot dependencies.
+        vcs {
+            root(GwVcsRoots.DocumentationPortalConfigGitVcsRoot)
+            cleanCheckout = true
+        }
 
         steps {
             script {
@@ -1894,7 +1911,7 @@ object Database {
             maxRunningBuilds = 1
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalConfigGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -1975,7 +1992,12 @@ object Database {
 
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                syncDbDataBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.TEAMCITY_CONFIG.pathValue)))
+                syncDbDataBuildType.triggers.trigger(
+                    GwVcsTriggers.createGitVcsTrigger(
+                        GwVcsRoots.DocumentationPortalConfigGitVcsRoot,
+                        listOf(GwTriggerPaths.TEAMCITY_CONFIG.pathValue)
+                    )
+                )
                 syncDbDataBuildType.triggers.finishBuildTrigger {
                     buildType = DocPortal.deployDocPortalDev.id.toString()
                     successfulOnly = true
@@ -2001,7 +2023,10 @@ object Database {
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            root(GwVcsRoots.DocumentationPortalConfigGitVcsRoot, "+:.=> ${GwConfigParams.DOCUMENTATION_PORTAL_CONFIG_CHECKOUT_DIR.paramValue}")
+            root(
+                GwVcsRoots.DocumentationPortalConfigGitVcsRoot,
+                "+:.=> ${GwConfigParams.DOCUMENTATION_PORTAL_CONFIG_CHECKOUT_DIR.paramValue}"
+            )
             cleanCheckout = true
         }
 
@@ -2290,7 +2315,8 @@ object Frontend {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 deployReactLandingPagesBuildType.triggers.trigger(
-                    GwVcsTriggers.createDocPortalVcsTrigger(
+                    GwVcsTriggers.createGitVcsTrigger(
+                        GwVcsRoots.DocumentationPortalGitVcsRoot,
                         listOf(
                             GwTriggerPaths.LANDING_PAGES.pathValue,
                             GwTriggerPaths.SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
@@ -2354,7 +2380,8 @@ object Frontend {
 
         triggers {
             trigger(
-                GwVcsTriggers.createDocPortalVcsTrigger(
+                GwVcsTriggers.createGitVcsTrigger(
+                    GwVcsRoots.DocumentationPortalGitVcsRoot,
                     listOf(
                         GwTriggerPaths.LANDING_PAGES.pathValue,
                         GwTriggerPaths.SHIMS.pathValue,
@@ -2387,7 +2414,12 @@ object Frontend {
             // Supposedly, the build is triggered only on changes in package.json to publish a new package
             // only when its version changes, not on every change in the code.
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf("${packagePath}/package.json")))
+                trigger(
+                    GwVcsTriggers.createGitVcsTrigger(
+                        GwVcsRoots.DocumentationPortalGitVcsRoot,
+                        listOf("${packagePath}/package.json")
+                    )
+                )
             }
 
             features {
@@ -2421,7 +2453,12 @@ object Frontend {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.HTML5.pathValue)))
+                trigger(
+                    GwVcsTriggers.createGitVcsTrigger(
+                        GwVcsRoots.DocumentationPortalGitVcsRoot,
+                        listOf(GwTriggerPaths.HTML5.pathValue)
+                    )
+                )
             }
 
             features {
@@ -2448,7 +2485,12 @@ object Frontend {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.HTML5.pathValue)))
+                trigger(
+                    GwVcsTriggers.createGitVcsTrigger(
+                        GwVcsRoots.DocumentationPortalGitVcsRoot,
+                        listOf(GwTriggerPaths.HTML5.pathValue)
+                    )
+                )
             }
 
             features {
@@ -2529,7 +2571,8 @@ object Server {
 
         triggers {
             trigger(
-                GwVcsTriggers.createDocPortalVcsTrigger(
+                GwVcsTriggers.createGitVcsTrigger(
+                    GwVcsRoots.DocumentationPortalGitVcsRoot,
                     listOf(
                         GwTriggerPaths.HTML5.pathValue,
                         GwTriggerPaths.DOCUSAURUS_THEMES.pathValue
@@ -2604,7 +2647,8 @@ object Server {
 
         triggers {
             trigger(
-                GwVcsTriggers.createDocPortalVcsTrigger(
+                GwVcsTriggers.createGitVcsTrigger(
+                    GwVcsRoots.DocumentationPortalGitVcsRoot,
                     listOf(GwTriggerPaths.SERVER.pathValue),
                     listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
                 )
@@ -2681,7 +2725,12 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployServerBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.SERVER.pathValue)))
+                deployServerBuildType.triggers.trigger(
+                    GwVcsTriggers.createGitVcsTrigger(
+                        GwVcsRoots.DocumentationPortalGitVcsRoot,
+                        listOf(GwTriggerPaths.SERVER.pathValue)
+                    )
+                )
             }
 
             GwDeployEnvs.STAGING.envName -> {
