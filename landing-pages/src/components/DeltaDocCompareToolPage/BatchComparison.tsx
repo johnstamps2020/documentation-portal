@@ -13,7 +13,7 @@ export default function BatchComparison() {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   return (
     <Container>
-      <Stack alignItems="center" maxWidth="650px" margin="24px auto">
+      <Stack alignItems="center" maxWidth="500px" margin="24px auto">
         <FormControlLabel
           control={<Switch defaultChecked={false} />}
           label={
@@ -29,15 +29,17 @@ export default function BatchComparison() {
           More info on batch comparison
         </Button>
         <Collapse in={showMoreInfo}>
-          <Typography textAlign="center">
-            Selecting batch comparison enables running comparison on whole
-            product within releases. <br />
-            To compare <b>ClaimCenter</b> between <b>Jasper</b> and{' '}
-            <b>Innsbruck</b>, select <b>ClaimCenter</b>, <b>Jasper</b> and{' '}
-            <b>Innsbruck</b> from selectors and download a report when it's
-            ready. <br />
-            Warning! Running comparison on products with big number of documents
-            can take more time.
+          <Typography textAlign="justify">
+            The batch option compares all documents for a product between
+            releases. For example, to compare all <b>ClaimCenter</b> documents
+            between <b>Jasper</b> and <b>Innsbruck</b>, use these settings and
+            click <b>Compare</b>: <br />
+            <li>Product: ClaimCenter</li>
+            <li>First release: Jasper</li>
+            <li>Second release: Innsbruck</li> <br />
+            You can download the report when it's ready. <br />
+            <b>Important!</b> Running batch comparison on a product with a large
+            number of documents can take a long time.
           </Typography>
         </Collapse>
       </Stack>

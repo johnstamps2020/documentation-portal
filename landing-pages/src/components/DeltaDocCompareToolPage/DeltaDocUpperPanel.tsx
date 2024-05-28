@@ -32,7 +32,8 @@ export default function DeltaDocUpperPanel() {
     isLoading: isLoadingProducts,
     isError: isErrorProducts,
   } = useProductsNoRevalidation();
-  const { setFormState, batchComparison, setRootUrl } = useDeltaDocContext();
+  const { setFormState, batchComparison, setRootUrl, setBatchProduct } =
+    useDeltaDocContext();
 
   useEffect(() => {
     setCanSubmit(docUrl !== '' && firstRelease !== '' && secondRelease !== '');
@@ -72,6 +73,7 @@ export default function DeltaDocUpperPanel() {
       url: `/${docUrl}/`,
     });
     setCanSubmit(false);
+    setBatchProduct(productName);
   }
 
   const filteredDocs = docs.filter((doc) => {

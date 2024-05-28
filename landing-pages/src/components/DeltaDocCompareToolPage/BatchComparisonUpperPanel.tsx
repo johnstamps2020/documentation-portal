@@ -23,7 +23,7 @@ export default function BatchComparisonUpperPanel() {
     releaseA,
     releaseB,
   } = useDeltaDocContext();
-  const [productName, setProductName] = useState<string>('');
+  const [productName, setProductName] = useState<string>(batchProduct);
   const [firstRelease, setFirstRelease] = useState<string>(releaseA);
   const [secondRelease, setSecondRelease] = useState<string>(releaseB);
   const [canSubmit, setCanSubmit] = useState(false);
