@@ -155,12 +155,8 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
-          label: 'Cloud Home',
-          docId: 'gchhelprelease',
-        },
-        {
           label: 'Guidewire Home',
-          docId: 'gwhomerelease'
+          docId: 'gwhomerelease',
         },
       ],
       sections: [

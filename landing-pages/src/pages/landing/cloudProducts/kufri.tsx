@@ -34,12 +34,8 @@ const pageConfig: Category2LayoutProps = {
           docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
-          label: 'Cloud Home',
-          docId: 'gchhelprelease',
-        },
-        {
           label: 'Guidewire Home',
-          docId: 'gwhomerelease'
+          docId: 'gwhomerelease',
         },
         {
           label: 'Data Platform',
@@ -189,10 +185,7 @@ const pageConfig: Category2LayoutProps = {
     label: 'Kufri',
     badge: jasperBadge,
     item: { label: 'Learn more', docId: 'whatsnewjasper' },
-    content: [
-      'Coming soon',
-      'Many links yet to be updated'
-  ],
+    content: ['Coming soon', 'Many links yet to be updated'],
   },
   sidebar: implementationResourcesSidebar,
 };
