@@ -221,9 +221,7 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
     throw new Error(status, jsonData.message);
   }
 
-  const regexSearch = url.includes('cloud')
-    ? url.replace(/\d+.+\d/, '......')
-    : url.replace(/\d+.+\d\//, '......');
+  const regexSearch = url.replace(/\d+.+\d/, '');
   const outputRegex = new RegExp(regexSearch, 'g');
   const stringifiedData = JSON.stringify(jsonData).replaceAll(outputRegex, '/');
   const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
@@ -323,9 +321,7 @@ const batchDeltaDocDataGetter: Fetcher<
       console.error(status, await jsonData.message);
     }
 
-    const regexSearch = url.includes('cloud')
-      ? url.replace(/\d+.+\d/, '......')
-      : url.replace(/\d+.+\d\//, '......');
+    const regexSearch = url.replace(/\d+.+\d\//, '');
     const outputRegex = new RegExp(regexSearch, 'g');
     const stringifiedData = JSON.stringify(jsonData).replaceAll(
       outputRegex,
