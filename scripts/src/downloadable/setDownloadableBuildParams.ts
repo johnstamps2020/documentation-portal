@@ -19,23 +19,23 @@ async function setDownloadableBuildParams() {
   }
 
   process.stdout.write(
-    `##teamcity[setParameter name=env.ROOT_MAP value=${docInfo.build.root}]` +
+    `##teamcity[setParameter name='env.ROOT_MAP' value='${docInfo.build.root}']` +
       os.EOL
   );
   process.stdout.write(
-    `##teamcity[setParameter name=env.FILTER value=${docInfo.build.filter}]` +
+    `##teamcity[setParameter name='env.FILTER' value='${docInfo.build.filter}']` +
       os.EOL
   );
   process.stdout.write(
-    `##teamcity[setParameter name=env.INDEX_REDIRECT value=${docInfo.build.indexRedirect}]` +
+    `##teamcity[setParameter name='env.INDEX_REDIRECT' value='${docInfo.build.indexRedirect}']` +
       os.EOL
   );
   process.stdout.write(
-    `##teamcity[setParameter name=env.GIT_URL value=${docInfo.source.gitUrl}]` +
+    `##teamcity[setParameter name='env.GIT_URL' value='${docInfo.source.gitUrl}']` +
       os.EOL
   );
   process.stdout.write(
-    `##teamcity[setParameter name=env.GIT_BRANCH value=${docInfo.source.gitBranch}]` +
+    `##teamcity[setParameter name='env.GIT_BRANCH' value='${docInfo.source.gitBranch}']` +
       os.EOL
   );
 }
