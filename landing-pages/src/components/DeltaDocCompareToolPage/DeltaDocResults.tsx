@@ -28,7 +28,7 @@ export default function DeltaDocResults() {
   useEffect(() => {
     changePage(1);
     setResultsPerPage(9);
-  }, [deltaDocData]);
+  }, [deltaDocData, setResultsPerPage]);
 
   if (!deltaDocData) {
     return <></>;

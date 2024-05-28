@@ -1,4 +1,5 @@
 import {
+  Doc,
   ExternalLink,
   Language,
   Page,
@@ -271,7 +272,23 @@ export function useProducts() {
     getter,
     {
       keepPreviousData: true,
-      refreshInterval: 1000,
+      refreshInterval: 10000,
+    }
+  );
+
+  return {
+    products: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useProductsNoRevalidation() {
+  const { data, error, isLoading } = useSWR<Product[], ServerSearchError>(
+    '/safeConfig/entity/Product/all',
+    getter,
+    {
+      revalidateOnFocus: false,
     }
   );
 
@@ -294,6 +311,23 @@ export function useVersions() {
 
   return {
     versions: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+
+export function useDocsNoRevalidation() {
+  const { data, error, isLoading } = useSWR<Doc[], ServerSearchError>(
+    '/safeConfig/entity/Doc/all/relations',
+    getter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    docs: data,
     isLoading,
     isError: error,
   };

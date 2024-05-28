@@ -1,8 +1,5 @@
 import { DeltaDocInputType, DeltaDocResultType } from './../types/deltaDoc';
-import {
-  getAllDocsFromRelease,
-  getAllDocsFromVersion,
-} from './searchController';
+import { getAllDocsFromRelease } from './searchController';
 
 function capitalizeLetters(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -12,7 +9,6 @@ export async function prepareDocs({
   releaseA,
   releaseB,
   url,
-  version,
 }: DeltaDocInputType) {
   const releasesToCompare: string[] = [];
   releasesToCompare.push(
@@ -21,14 +17,15 @@ export async function prepareDocs({
   );
 
   const replacementRegex = '.*';
-  const regexSearch = url.replace(/\d+.+\d\//, replacementRegex);
+  const regexSearch = url.replace(/\d+.+\d/, replacementRegex);
   var outputRegex: string = regexSearch.concat(replacementRegex);
 
   const resultArray = await Promise.all(
     releasesToCompare.map(async (release) => {
-      const allDocsFromRelease = version
-        ? await getAllDocsFromVersion(release, outputRegex)
-        : await getAllDocsFromRelease(release, outputRegex);
+      const allDocsFromRelease = await getAllDocsFromRelease(
+        release,
+        outputRegex
+      );
       const files = allDocsFromRelease?.hits.hits;
       const releaseObject: DeltaDocResultType[] = [];
       if (files) {
@@ -64,6 +61,3 @@ export async function prepareDocs({
   );
   return { status: 200, body: resultArray };
 }
-
-
-

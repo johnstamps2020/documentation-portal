@@ -1,4 +1,4 @@
-import { DeltaLevenshteinReturnType } from '@doctools/server';
+import { DeltaLevenshteinReturnType, Doc } from '@doctools/server';
 import Link from '@mui/material/Link';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -6,6 +6,7 @@ import { useDeltaDocContext } from './DeltaDocContext';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { Typography } from '@mui/material';
 import DeltaDocCardText from './DeltaDocCardText';
+import { useDocsNoRevalidation } from 'hooks/useApi';
 
 export default function DeltaDocResultTableRow({
   result,
@@ -16,25 +17,48 @@ export default function DeltaDocResultTableRow({
   index: number;
   releases: { lowerRelease: string; higherRelease: string };
 }) {
-  const { rootUrls, releaseA } = useDeltaDocContext();
+  const { rootUrl, releaseA } = useDeltaDocContext();
+  const { docs, isLoading, isError } = useDocsNoRevalidation();
 
-  function getUrlValue(title: string, rootUrl: string) {
+  if (!docs || isError || isLoading) {
+    return null;
+  }
+
+  const isReleaseALower = releases.lowerRelease === releaseA;
+
+  function getUrlValue(
+    title: string,
+    rootUrl: string,
+    docs: Doc[],
+    releaseName: string
+  ) {
     if (title !== fileDoesNotExistText) {
-      if (
-        result.URL.includes('cloud') ||
-        result.URL.includes('self-managed') ||
-        result.URL.includes('jutro')
-      ) {
-        return result.URL;
+      const docObject = docs.find(
+        (doc) =>
+          doc.url.replace(/\d+.+\d/, '') === rootUrl.replace(/\d+.+\d/, '') &&
+          doc.releases?.some((release) => release.name === releaseName)
+      );
+      if (docObject) {
+        return `${docObject.url}${result.URL}`;
       } else {
-        return rootUrl.slice(0, -1) + result.URL;
+        return '';
       }
     } else {
       return '';
     }
   }
-  const leftLinkUrl = getUrlValue(result.docATitle, rootUrls.leftUrl);
-  const rightLinkUrl = getUrlValue(result.docBTitle, rootUrls.rightUrl);
+  const lowerReleaseUrl = getUrlValue(
+    result.docATitle,
+    rootUrl,
+    docs,
+    isReleaseALower ? releases.lowerRelease : releases.higherRelease
+  );
+  const higherReleaseUrl = getUrlValue(
+    result.docBTitle,
+    rootUrl,
+    docs,
+    isReleaseALower ? releases.higherRelease : releases.lowerRelease
+  );
 
   function getLink(url: string) {
     return url ? (
@@ -66,10 +90,16 @@ export default function DeltaDocResultTableRow({
         <TableCell sx={{ maxWidth: '200px' }}>
           {getLink(input.secondLink)}
         </TableCell>
-        <TableCell align="center" sx={{ maxWidth: '200px' }}>
+        <TableCell
+          align="center"
+          sx={{ maxWidth: '200px', wordWrap: 'break-word' }}
+        >
           {input.firstTitle === fileDoesNotExistText ? '-' : input.firstTitle}
         </TableCell>
-        <TableCell align="center" sx={{ maxWidth: '200px' }}>
+        <TableCell
+          align="center"
+          sx={{ maxWidth: '200px', wordWrap: 'break-word' }}
+        >
           {input.secondTitle === fileDoesNotExistText ? '-' : input.secondTitle}
         </TableCell>
       </>
@@ -79,11 +109,11 @@ export default function DeltaDocResultTableRow({
   return (
     <TableRow>
       <TableCell align="center">{index}</TableCell>
-      {releases.lowerRelease === releaseA ? (
+      {isReleaseALower ? (
         <ReleaseCells
           input={{
-            firstLink: leftLinkUrl,
-            secondLink: rightLinkUrl,
+            firstLink: lowerReleaseUrl,
+            secondLink: higherReleaseUrl,
             firstTitle: result.docATitle,
             secondTitle: result.docBTitle,
           }}
@@ -91,8 +121,8 @@ export default function DeltaDocResultTableRow({
       ) : (
         <ReleaseCells
           input={{
-            firstLink: rightLinkUrl,
-            secondLink: leftLinkUrl,
+            firstLink: higherReleaseUrl,
+            secondLink: lowerReleaseUrl,
             firstTitle: result.docBTitle,
             secondTitle: result.docATitle,
           }}
