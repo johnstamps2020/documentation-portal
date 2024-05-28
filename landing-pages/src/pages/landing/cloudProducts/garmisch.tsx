@@ -34,12 +34,8 @@ const pageConfig: Category2LayoutProps = {
           docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
-          label: 'Cloud Home',
-          docId: 'gchhelprelease',
-        },
-        {
           label: 'Guidewire Home',
-          docId: 'gwhomerelease'
+          docId: 'gwhomerelease',
         },
         {
           label: 'Data Platform',
