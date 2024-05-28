@@ -27,7 +27,16 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2023.10 Innsbruck',
+      label: '2024.02 (Jasper)',
+      items: [
+        {
+          label: 'PolicyCenter アプリケーションガイド',
+          docId: 'ispc202402jaJPapp',
+        },
+      ],
+    },
+    {
+      label: '2023.10 (Innsbruck)',
       items: [
         {
           label: 'Advanced Product Designer in PolicyCenter ガイド',
@@ -54,7 +63,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2021.04 Cortina',
+      label: '2021.04 (Cortina)',
       items: [
         {
           label: 'ルールガイド',
@@ -73,7 +82,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2020.11 Banff',
+      label: '2020.11 (Banff)',
       items: [
         {
           label: 'インストールガイド',
@@ -99,7 +108,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2020.05 Aspen',
+      label: '2020.05 (Aspen)',
       items: [
         {
           label: 'Guidewire 連絡先管理ガイド',

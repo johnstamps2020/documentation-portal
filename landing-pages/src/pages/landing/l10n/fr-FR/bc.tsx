@@ -21,6 +21,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.02 (Jasper)',
       items: [
         {
+          label: "Guide de l'application",
+          docId: 'isbc202402frFRapp',
+        },
+        {
           label: 'BillingCenter - Notes de version',
           docId: 'isbc202402frFRreleasenotes',
         },
