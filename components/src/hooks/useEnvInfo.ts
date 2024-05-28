@@ -1,5 +1,5 @@
-import { EnvInfo } from '@doctools/server';
 import useSWRImmutable from 'swr/immutable';
+import { EnvInfo } from '../types/env';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 

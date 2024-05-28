@@ -1,0 +1,11 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "isrnlatestsrc",
+      "title": "InsuranceSuite Release Notes",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-release-notes.git",
+      "branch": "main"
+    }
+  ]
+}

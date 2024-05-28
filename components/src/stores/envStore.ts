@@ -1,5 +1,5 @@
-import { EnvName } from '@doctools/server';
 import { create } from 'zustand';
+import { EnvName } from '../types/env';
 
 interface EnvState {
   envName: EnvName | undefined;

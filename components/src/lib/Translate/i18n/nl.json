@@ -1,4 +1,7 @@
 {
+  "logo.label" : {
+    "message" : "Startpagina"
+  },
   "docHighlighter.tooltip" : {
     "message" : "Schakel markeren in/uit voor zoektermen"
   },
@@ -83,6 +86,9 @@
   "loginButton.in" : {
     "message" : "Aanmelden"
   },
+  "loginDrawer.go" : {
+    "message" : "Ga naar de inlogpagina"
+  },
   "transcriptDownloadLink.label" : {
     "message" : "Transcript downloaden"
   },
@@ -127,5 +133,38 @@
   },
   "chat.answer" : {
     "message" : "Antwoord"
+  },
+  "chat.sources" : {
+    "message" : "Bronnen"
+  },
+  "chat.filters" : {
+    "message" : "Filters"
+  },
+  "chat.saveAndClose" : {
+    "message" : "Opslaan en afsluiten"
+  },
+  "chat.notOptedIn" : {
+    "message" : "U heeft gekozen om geen berichten van de chatbot te ontvangen."
+  },
+  "chat.allow" : {
+    "message" : "Toestaan dat de AI chatbot vragen beantwoordt"
+  },
+  "chat.allow.learnMore" : {
+    "message" : "Lees de Algemene voorwaarden"
+  },
+  "chat.termsAndConditions.title" : {
+    "message" : "Algemene voorwaarden bij gebruik van de chat"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "Algemene voorwaarden sluiten"
+  },
+  "login.gwEmployeeHint" : {
+    "message" : "Medewerker van Guidewire? Gebruik bij het inloggen de Guidewire Cloud-optie hierboven."
+  },
+  "consent.ai" : {
+    "message" : "AI toestaan"
+  },
+  "avatar.iconButton" : {
+    "message" : "Gebruikersmenu uitvouwen"
   }
 }

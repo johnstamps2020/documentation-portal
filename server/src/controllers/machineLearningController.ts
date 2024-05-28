@@ -1,4 +1,4 @@
-import { ChatbotRequest, ChatbotResponse } from '../types';
+import { ChatbotRequest, ChatbotResponse } from '@doctools/components';
 import { winstonLogger } from './loggerController';
 
 // TODO: consider moving this definition to an environment variable
@@ -21,6 +21,10 @@ export async function createVectorFromText(
 
     if (response.ok) {
       return await response.json();
+    } else {
+      winstonLogger.error(
+        `CANNOT FETCH FROM gwgptapi ${response}, ${JSON.stringify(response)}`
+      );
     }
     return null;
   } catch (err) {

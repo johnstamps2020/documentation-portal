@@ -1,4 +1,7 @@
 {
+  "logo.label" : {
+    "message" : "Startseite"
+  },
   "docHighlighter.tooltip" : {
     "message" : "Suchphrasen hervorheben umschalten"
   },
@@ -131,7 +134,37 @@
   "chat.answer" : {
     "message" : "Antworten"
   },
+  "chat.sources" : {
+    "message" : "Quellen"
+  },
+  "chat.filters" : {
+    "message" : "Filter"
+  },
+  "chat.saveAndClose" : {
+    "message" : "Speichern und schließen"
+  },
+  "chat.notOptedIn" : {
+    "message" : "Sie haben sich dafür entschieden, keine Nachrichten vom Chatbot zu erhalten."
+  },
+  "chat.allow" : {
+    "message" : "KI-Chatbot erlauben, Fragen zu beantworten"
+  },
+  "chat.allow.learnMore" : {
+    "message" : "Geschäftsbedingungen lesen"
+  },
+  "chat.termsAndConditions.title" : {
+    "message" : "Geschäftsbedingungen für die Nutzung des Chats"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "Geschäftsbedingungen schließen"
+  },
   "login.gwEmployeeHint" : {
     "message" : "Mitarbeiter von Guidewire? Melden Sie sich mit der oben genannten Guidewire Cloud-Option an."
+  },
+  "consent.ai" : {
+    "message" : "KI erlauben"
+  },
+  "avatar.iconButton" : {
+    "message" : "Benutzermenü erweitern"
   }
 }

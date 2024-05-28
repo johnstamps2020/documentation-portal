@@ -7,7 +7,7 @@ const pageConfig: ApplicationLayoutProps = {
   title: 'ClaimCenter for Guidewire Cloud 2024.07',
   buttonProps: {
     label: 'Release notes',
-    docId: 'iscc202407releasenotes',
+    docId: 'isrnlatest',
   },
   heroDescription:
     'Guidewire ClaimCenter manages the process of reporting, verifying, and making payments on claims against policies.',
@@ -19,7 +19,7 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'ClaimCenter Release Notes',
-          docId: 'iscc202407releasenotes',
+          docId: 'isrnlatest',
           description: <>Learn about changes in this release of ClaimCenter.</>,
         },
         {
@@ -67,6 +67,33 @@ const pageConfig: ApplicationLayoutProps = {
             </>
           ),
         },
+        {
+          label: 'Claim Migration Tool',
+          docId: 'claimmigrationtool',
+          description: (
+            <>Migrate claims from any system of record to ClaimCenter Cloud.</>
+          ),
+        },
+        {
+          label: 'Contact and Vendor Migration Tool',
+          docId: 'contactvendormigrationtool',
+          description: (
+            <>
+              Migrate contacts from a legacy system of record to Guidewire
+              ContactManager.
+            </>
+          ),
+        },
+        {
+          label: 'Data Upload Tool',
+          docId: 'datauploadtool',
+          description: (
+            <>
+              Migrate data from an on-premise Database Input Interface to
+              Guidewire Cloud
+            </>
+          ),
+        },
       ],
     },
     {
@@ -100,7 +127,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'cloudplatformtermrelease',
           description: (
             <>
-              Terminology and naming conventions for Guidewire Cloud Platform resources.
+              Terminology and naming conventions for Guidewire Cloud Platform
+              resources.
             </>
           ),
         },
@@ -316,10 +344,11 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'integgatewayfwnext',
           description: (
             <>
-              Offers comprehensive guidance on leveraging the Integration Gateway
-              framework library components and utilities. Provides detailed
-              instructions and examples for creating new integration projects,
-              refining project implementation, and configuring security authentication.
+              Offers comprehensive guidance on leveraging the Integration
+              Gateway framework library components and utilities. Provides
+              detailed instructions and examples for creating new integration
+              projects, refining project implementation, and configuring
+              security authentication.
             </>
           ),
         },
@@ -328,10 +357,11 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'integgatewayuinext',
           description: (
             <>
-              Provides practical guidance on configuring access to the Integration Apps
-              user interface, creating new integration apps, managing the integrations
-              and their deployment to Guidewire Cloud. Offers information about
-              observability metrics for monitoring their performance.
+              Provides practical guidance on configuring access to the
+              Integration Apps user interface, creating new integration apps,
+              managing the integrations and their deployment to Guidewire Cloud.
+              Offers information about observability metrics for monitoring
+              their performance.
             </>
           ),
         },

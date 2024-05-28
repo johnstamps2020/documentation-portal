@@ -34,12 +34,8 @@ const pageConfig: Category2LayoutProps = {
           docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
-          label: 'Cloud Home',
-          docId: 'gchhelprelease',
-        },
-        {
           label: 'Guidewire Home',
-          docId: 'gwhomerelease'
+          docId: 'gwhomerelease',
         },
         {
           label: 'Data Platform',
@@ -149,10 +145,6 @@ const pageConfig: Category2LayoutProps = {
         {
           label: 'Integration Gateway',
           docId: 'integgatewaydevlatest',
-        },
-        {
-          label: 'Administering Integration Gateway Apps',
-          docId: 'integgatewayuirelease',
         },
         {
           label: 'App Events',

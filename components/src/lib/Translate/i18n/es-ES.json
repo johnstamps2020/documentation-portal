@@ -1,4 +1,7 @@
 {
+  "logo.label" : {
+    "message" : "Inicio"
+  },
   "docHighlighter.tooltip" : {
     "message" : "Alternar resaltado para frases de búsqueda"
   },
@@ -131,7 +134,37 @@
   "chat.answer" : {
     "message" : "Respuesta"
   },
+  "chat.sources" : {
+    "message" : "Fuentes"
+  },
+  "chat.filters" : {
+    "message" : "Filtros"
+  },
+  "chat.saveAndClose" : {
+    "message" : "Guardar y cerrar"
+  },
+  "chat.notOptedIn" : {
+    "message" : "No has aceptado recibir mensajes del chatbot."
+  },
+  "chat.allow" : {
+    "message" : "Permitir que el chatbot de IA responda a las preguntas"
+  },
+  "chat.allow.learnMore" : {
+    "message" : "Lea los términos y condiciones"
+  },
+  "chat.termsAndConditions.title" : {
+    "message" : "Términos y condiciones de uso del chat"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "Cierre los términos y condiciones"
+  },
   "login.gwEmployeeHint" : {
     "message" : "¿Empleado Guidewire? Inicie sesión utilizando la opción Guidewire Cloud más arriba."
+  },
+  "consent.ai" : {
+    "message" : "Permitir IA"
+  },
+  "avatar.iconButton" : {
+    "message" : "Expandir el menú de usuario"
   }
 }

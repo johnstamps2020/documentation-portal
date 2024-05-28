@@ -155,12 +155,8 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
-          label: 'Cloud Home',
-          docId: 'gchhelprelease',
-        },
-        {
           label: 'Guidewire Home',
-          docId: 'gwhomerelease'
+          docId: 'gwhomerelease',
         },
       ],
       sections: [
@@ -193,10 +189,6 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Integration Gateway',
           docId: 'integgatewaydevlatest',
-        },
-        {
-          label: 'Administering Integration Gateway Apps',
-          docId: 'integgatewayuirelease',
         },
         {
           label: 'REST API Client',
