@@ -307,9 +307,9 @@ const batchDeltaDocDataGetter: Fetcher<
     releaseA: string;
     releaseB: string;
   })[] = [];
-  inputArray.forEach(async ({ url, releaseA, releaseB }) => {
+  for (const { url, releaseA, releaseB } of inputArray) {
     if (!url || !releaseA || !releaseB) {
-      return;
+      continue;
     }
     const response = await fetch(
       `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}`
@@ -349,7 +349,7 @@ const batchDeltaDocDataGetter: Fetcher<
       releaseA,
       releaseB,
     });
-  });
+  }
 
   return comparisonResultArray;
 };
