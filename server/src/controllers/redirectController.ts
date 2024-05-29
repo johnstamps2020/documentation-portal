@@ -188,6 +188,10 @@ const permanentRedirectUrls = [
     from: 'cloudProducts/jasper/insuranceNow/2024.1',
     to: 'cloudProducts/jasper/in',
   },
+  {
+    from: 'help/GCH',
+    to: 'guidewire-home/release',
+  },
 ];
 const temporaryRedirectUrls = [
   {
