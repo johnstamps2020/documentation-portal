@@ -2,7 +2,9 @@ import { ChatbotRequest, ChatbotResponse } from '@doctools/components';
 import { winstonLogger } from './loggerController';
 
 // TODO: consider moving this definition to an environment variable
-const chatbotUrl = 'https://gwgptapi.guidewire.com/doc_search/';
+const gwChatbotDomain = 'https://gwgptapi.guidewire.com';
+const chatbotUrl = `${gwChatbotDomain}/doc_search/`;
+const chatbotTokenUrl = `${gwChatbotDomain}/generate_token/`;
 
 export async function createVectorFromText(
   text: string
@@ -33,16 +35,50 @@ export async function createVectorFromText(
   }
 }
 
+async function getChatbotToken() {
+  try {
+    const clientId = process.env.GW_GPT_CLIENT_ID || '';
+    const clientSecret = process.env.GW_GPT_CLIENT_SECRET || '';
+
+    const response = await fetch(chatbotTokenUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'client-id': clientId,
+        'client-secret': clientSecret,
+      },
+    });
+
+    if (response.ok) {
+      const responseBody = await response.json();
+
+      return responseBody.access_token;
+    } else {
+      winstonLogger.error(
+        `Cannot fetch TOKEN from gwgptapi ${response}, ${JSON.stringify(
+          response
+        )}`
+      );
+    }
+    return null;
+  } catch (error) {
+    winstonLogger.error(error);
+  }
+}
+
 export async function sendChatPrompt(
   requestBody: ChatbotRequest
 ): Promise<ChatbotResponse> {
   try {
-    const response = await fetch(`${chatbotUrl}`, {
+    const token = await getChatbotToken();
+    const response = await fetch(chatbotUrl, {
       method: 'POST',
       body: JSON.stringify(requestBody),
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
+        token,
       },
     });
 
