@@ -130,8 +130,8 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'in20242apiref',
         },
         {
-          label: 'Portal Development Guide',
-          docId: 'in20242portaldev',
+          label: 'API Usage Scenarios',
+          docId: 'in20242apiusage',
         },
       ],
     },
