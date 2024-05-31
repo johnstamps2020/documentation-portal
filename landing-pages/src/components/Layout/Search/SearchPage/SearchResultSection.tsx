@@ -36,7 +36,7 @@ export default function SearchResultSection() {
       >
         <Stack spacing={1}>
           <AppliedFilters />
-          {/* <AppliedFiltersAutocomplete /> */}
+          <AppliedFiltersAutocomplete />
           <SearchResultsZero />
         </Stack>
         <PaginationSelector />

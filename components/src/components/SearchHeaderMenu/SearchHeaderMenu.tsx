@@ -134,7 +134,7 @@ export function SearchHeaderMenu({
       {/* TODO pass type and let SearchHeaderMenuItem handle its own props */}
       <MenuList
         sx={{
-          width: state.isFiltersExpanded ? '455px' : '200px',
+          width: state.isFiltersExpanded ? '455px' : '300px',
         }}
       >
         {state.defaultFilters.product && (
@@ -179,7 +179,7 @@ export function SearchHeaderMenu({
         {docTitle && (
           <SearchHeaderMenuItem
             itemKey="thisdoc"
-            tooltipTitle="Search within this document"
+            tooltipTitle={`Search within this document: ${docTitle}`}
             selected={isFiltersIncludeThisDoc(state.searchFilters)}
             handleClick={() => {
               dispatch({
@@ -190,7 +190,7 @@ export function SearchHeaderMenu({
                 },
               });
             }}
-            itemLabel="This document"
+            itemLabel={`This document (${docTitle})`}
           />
         )}
         <SearchHeaderMenuItem
