@@ -11,6 +11,18 @@ type HighlightButtonProps = {
   inactiveColor: string;
 };
 
+function getBodyElement(): HTMLElement | null {
+  const ditaArticle = document.querySelector(
+    'main[role="main"]'
+  ) as HTMLElement;
+  const docusaurusArticle = document.querySelector(
+    'main article'
+  ) as HTMLElement;
+  const fallbackArticle = document.querySelector('body') as HTMLElement;
+
+  return ditaArticle || docusaurusArticle || fallbackArticle;
+}
+
 export function HighlightButton({
   words,
   activeColor,
@@ -19,7 +31,7 @@ export function HighlightButton({
   const [wordsToHighlight, setWordsToHighlight] = useState<string[]>(words);
 
   useEffect(() => {
-    const bodyElement = document.querySelector('body');
+    const bodyElement = getBodyElement();
     if (!bodyElement) {
       return;
     }

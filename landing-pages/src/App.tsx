@@ -1,4 +1,4 @@
-import { GwThemeProvider } from '@doctools/components';
+import { GwThemeProvider, Init } from '@doctools/components';
 import CssBaseline from '@mui/material/CssBaseline';
 import ExternalLinkAdminPage from 'components/AdminPage/ExternalLinkAdminPage/ExternalLinkAdminPage';
 import LanguageAdminPage from 'components/AdminPage/LanguageAdminPage/LanguageAdminPage';
@@ -13,7 +13,6 @@ import VersionAdminPage from 'components/AdminPage/VersionAdminPage/VersionAdmin
 import Layout from 'components/Layout/Layout';
 import { LayoutContextProvider } from 'LayoutContext';
 import AdminPage from 'pages/AdminPage/AdminPage';
-import ChatPage from 'pages/ChatPage';
 import DeltaDocCompareToolPage from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import ForbiddenPage from 'pages/ForbiddenPage/ForbiddenPage';
 import FourOhFourPage from 'pages/FourOhFourPage/FourOhFourPage';
@@ -111,7 +110,6 @@ const router = createBrowserRouter([
         ],
       },
       { path: 'delta-doc', element: <DeltaDocCompareToolPage /> },
-      { path: 'chat', element: <ChatPage /> },
     ],
   },
 ]);
@@ -119,6 +117,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <GwThemeProvider>
+      <Init />
       <LayoutContextProvider>
         <CssBaseline />
         <RouterProvider router={router} />

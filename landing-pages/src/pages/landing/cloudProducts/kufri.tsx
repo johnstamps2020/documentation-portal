@@ -34,8 +34,8 @@ const pageConfig: Category2LayoutProps = {
           docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
-          label: 'Cloud Home',
-          docId: 'gchhelprelease',
+          label: 'Guidewire Home',
+          docId: 'gwhomerelease',
         },
         {
           label: 'Data Platform',
@@ -52,15 +52,15 @@ const pageConfig: Category2LayoutProps = {
       items: [
         {
           label: 'PolicyCenter',
-          pagePath: 'cloudProducts/jasper/pc',
+          pagePath: 'cloudProducts/kufri/pc',
         },
         {
           label: 'ClaimCenter',
-          pagePath: 'cloudProducts/jasper/cc',
+          pagePath: 'cloudProducts/kufri/cc',
         },
         {
           label: 'BillingCenter',
-          pagePath: 'cloudProducts/jasper/bc',
+          pagePath: 'cloudProducts/kufri/bc',
         },
         {
           label: 'InsuranceNow',
@@ -136,15 +136,19 @@ const pageConfig: Category2LayoutProps = {
       items: [
         {
           label: 'Advanced Product Designer App',
-          pagePath: 'cloudProducts/jasper/apd',
+          pagePath: 'cloudProducts/kufri/apd',
         },
         {
           label: 'API References',
-          pagePath: 'apiReferences/jasper',
+          pagePath: 'apiReferences/kufri',
         },
         {
-          label: 'Integration Gateway',
-          docId: 'integgatewaydevnext',
+          label: 'Developing Integration Gateway Apps',
+          docId: 'integgatewayfwnext',
+        },
+        {
+          label: 'Administering Integration Gateway Apps',
+          docId: 'integgatewayuinext',
         },
         {
           label: 'App Events',
@@ -164,7 +168,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Guidewire Testing',
-          pagePath: 'testingFramework/jasper',
+          pagePath: 'testingFramework/kufri',
         },
         {
           label: 'Lifecycle Manager',
@@ -181,10 +185,7 @@ const pageConfig: Category2LayoutProps = {
     label: 'Kufri',
     badge: jasperBadge,
     item: { label: 'Learn more', docId: 'whatsnewjasper' },
-    content: [
-      'Coming soon',
-      'Many links yet to be updated'
-  ],
+    content: ['Coming soon', 'Many links yet to be updated'],
   },
   sidebar: implementationResourcesSidebar,
 };

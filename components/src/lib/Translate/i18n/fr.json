@@ -1,4 +1,7 @@
 {
+  "logo.label" : {
+    "message" : "Domicile"
+  },
   "docHighlighter.tooltip" : {
     "message" : "Activer/désactiver la mise en surbrillance des expressions de recherche"
   },
@@ -83,6 +86,9 @@
   "loginButton.in" : {
     "message" : "Connexion"
   },
+  "loginDrawer.go" : {
+    "message" : "Aller à la page de connexion"
+  },
   "transcriptDownloadLink.label" : {
     "message" : "Télécharger la transcription"
   },
@@ -127,5 +133,38 @@
   },
   "chat.answer" : {
     "message" : "Réponse"
+  },
+  "chat.sources" : {
+    "message" : "Sources"
+  },
+  "chat.filters" : {
+    "message" : "Filtres"
+  },
+  "chat.saveAndClose" : {
+    "message" : "Enregistrer et fermer"
+  },
+  "chat.notOptedIn" : {
+    "message" : "Vous n'avez pas accepté de recevoir des messages du chatbot."
+  },
+  "chat.allow" : {
+    "message" : "Autoriser le chatbot IA de répondre aux questions"
+  },
+  "chat.allow.learnMore" : {
+    "message" : "Lire les conditions générales"
+  },
+  "chat.termsAndConditions.title" : {
+    "message" : "Conditions générales d'utilisation du chat"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "Fermer les conditions générales"
+  },
+  "login.gwEmployeeHint" : {
+    "message" : "Employé Guidewire ? Connectez-vous à l'aide de l'option Guidewire Cloud ci-dessous."
+  },
+  "consent.ai" : {
+    "message" : "Autoriser l'IA"
+  },
+  "avatar.iconButton" : {
+    "message" : "Développer le menu utilisateur"
   }
 }

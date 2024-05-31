@@ -1,4 +1,7 @@
 {
+  "logo.label" : {
+    "message" : "Inicio"
+  },
   "docHighlighter.tooltip" : {
     "message" : "Alternar resaltado de frases de búsqueda"
   },
@@ -83,6 +86,9 @@
   "loginButton.in" : {
     "message" : "Iniciar sesión"
   },
+  "loginDrawer.go" : {
+    "message" : "Ir a la página de inicio de sesión"
+  },
   "transcriptDownloadLink.label" : {
     "message" : "Descargar la transcripción"
   },
@@ -127,5 +133,38 @@
   },
   "chat.answer" : {
     "message" : "Respuesta"
+  },
+  "chat.sources" : {
+    "message" : "Fuentes"
+  },
+  "chat.filters" : {
+    "message" : "Filtros"
+  },
+  "chat.saveAndClose" : {
+    "message" : "Guardar y cerrar"
+  },
+  "chat.notOptedIn" : {
+    "message" : "No ha optado por recibir mensajes del chatbot."
+  },
+  "chat.allow" : {
+    "message" : "Permitir que el chatbot de IA responda a las preguntas"
+  },
+  "chat.allow.learnMore" : {
+    "message" : "Lea los términos y condiciones"
+  },
+  "chat.termsAndConditions.title" : {
+    "message" : "Términos y condiciones de uso del chat"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "Cierre los términos y condiciones"
+  },
+  "login.gwEmployeeHint" : {
+    "message" : "Guidewire ¿Empleado? Inicie la sesión utilizando la opción Guidewire Cloud anterior."
+  },
+  "consent.ai" : {
+    "message" : "Permitir IA"
+  },
+  "avatar.iconButton" : {
+    "message" : "Ampliar el menú de usuario"
   }
 }

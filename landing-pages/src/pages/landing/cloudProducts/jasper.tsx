@@ -34,8 +34,8 @@ const pageConfig: Category2LayoutProps = {
           docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
-          label: 'Cloud Home',
-          docId: 'gchhelprelease',
+          label: 'Guidewire Home',
+          docId: 'gwhomerelease',
         },
         {
           label: 'Data Platform',
@@ -143,8 +143,12 @@ const pageConfig: Category2LayoutProps = {
           pagePath: 'apiReferences/jasper',
         },
         {
-          label: 'Integration Gateway',
-          docId: 'integgatewaydevlatest',
+          label: 'Developing Integration Gateway Apps',
+          docId: 'integgatewayfwrelease',
+        },
+        {
+          label: 'Administering Integration Gateway Apps',
+          docId: 'integgatewayuirelease',
         },
         {
           label: 'App Events',
@@ -190,7 +194,7 @@ const pageConfig: Category2LayoutProps = {
       'Autopilot Workflow Service template for Auto Physical Damage',
       'Predict Tune component (Early Access)',
       'Cloud API updates',
-  ],
+    ],
   },
   sidebar: implementationResourcesSidebar,
 };

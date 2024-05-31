@@ -155,8 +155,8 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
-          label: 'Cloud Home',
-          docId: 'gchhelprelease',
+          label: 'Guidewire Home',
+          docId: 'gwhomerelease',
         },
       ],
       sections: [
@@ -174,15 +174,6 @@ const pageConfig: CategoryLayoutProps = {
             {
               label: 'Network Connectivity',
               docId: 'cloudplatformrelease',
-            },
-          ],
-        },
-        {
-          label: 'Integration Framework',
-          items: [
-            {
-              label: 'Integration Gateway',
-              docId: 'integgatewaydevlatest',
             },
           ],
         },

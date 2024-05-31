@@ -11,6 +11,10 @@ export const allSelectors = {
       label: 'Jasper (2024.02)',
       pagePath: 'cloudProducts/jasper/apd',
     },
+    {
+      label: 'Kufri (2024.07)',
+      pagePath: 'cloudProducts/kufri/apd',
+    },
   ],
   testingFrameworkSelector: [
     { label: 'Elysian (2022.05)', pagePath: 'testingFramework/elysian' },
@@ -19,6 +23,7 @@ export const allSelectors = {
     { label: 'Hakuba (2023.06)', pagePath: 'testingFramework/hakuba' },
     { label: 'Innsbruck (2023.10)', pagePath: 'testingFramework/innsbruck' },
     { label: 'Jasper (2024.02)', pagePath: 'testingFramework/jasper' },
+    { label: 'Kufri (2024.07)', pagePath: 'testingFramework/kufri' },
   ],
   s0f196c0b55cf55f2cdd1e05b1bf5e94e: [
     { label: 'Cortina', pagePath: 'apiReferences/cortina' },
@@ -29,6 +34,7 @@ export const allSelectors = {
     { label: 'Hakuba', pagePath: 'apiReferences/hakuba' },
     { label: 'Innsbruck', pagePath: 'apiReferences/innsbruck' },
     { label: 'Jasper', pagePath: 'apiReferences/jasper' },
+    { label: 'Kufri', pagePath: 'apiReferences/kufri' },
   ],
   s344cd6ac814e55dd2f6e1bddf2c969db: [
     {
@@ -62,6 +68,10 @@ export const allSelectors = {
     {
       label: 'Jasper (2024.02)',
       pagePath: 'cloudProducts/jasper/bc',
+    },
+    {
+      label: 'Kufri (2024.07)',
+      pagePath: 'cloudProducts/kufri/bc',
     },
   ],
   sb1572a4ac17ba705fdfb0f9ebe00d8e1: [
@@ -110,6 +120,10 @@ export const allSelectors = {
     {
       label: 'Jasper (2024.02)',
       pagePath: 'cloudProducts/jasper/cc',
+    },
+    {
+      label: 'Kufri (2024.07)',
+      pagePath: 'cloudProducts/kufri/cc',
     },
   ],
   sb8b6bf6e1344485406813caca67c4038: [
@@ -211,6 +225,10 @@ export const allSelectors = {
     {
       label: 'Jasper (2024.02)',
       pagePath: 'cloudProducts/jasper/pc',
+    },
+    {
+      label: 'Kufri (2024.07)',
+      pagePath: 'cloudProducts/kufri/pc',
     },
   ],
   se7d12fdd8fa65284de1403b37a585252: [

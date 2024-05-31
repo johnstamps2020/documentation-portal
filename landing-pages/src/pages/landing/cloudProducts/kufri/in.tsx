@@ -18,12 +18,13 @@ const pageConfig: ApplicationLayoutProps = {
       title: 'Get started',
       items: [
         {
-          label: 'Core Release Notes',
-          docId: 'in20242rn',
+          label: 'Application Guide',
+          docId: 'in20242app',
           description: (
             <>
-              Discover new features, recent improvements, and resolved issues in
-              InsuranceNow core.
+              Get started with the InsuranceNow user interface, functionality
+              offered within the application, and features available for various
+              user roles.
             </>
           ),
         },
@@ -34,7 +35,7 @@ const pageConfig: ApplicationLayoutProps = {
           videoIcon: true,
           description: (
             <>Watch a video that describes and demonstrates new features.</>
-          )
+          ),
         },
         {
           label: 'Studio Release Notes',
@@ -94,14 +95,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Get started with InsuranceNow',
-          docId: 'in20242app',
-          pathInDoc: '?contextid=c_applications-getting-started',
-          description: (
-            <>Get acquainted with the InsuranceNow interface and login steps.</>
-          ),
-        },
-        {
           label: 'Developer Setup',
           docId: 'indevguidejava11ext',
           description: (
@@ -149,7 +142,7 @@ const pageConfig: ApplicationLayoutProps = {
           description: <>Create quotes, applications, and policies.</>,
         },
         {
-          label: 'Loss notices and claims',
+          label: 'Claims',
           docId: 'in20242app',
           pathInDoc: '?contextid=c_Claims_overview',
           description: (
@@ -373,22 +366,22 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Service Portal authentication',
-          docId: 'in20242portaldev',
+          docId: 'in20242apiusage',
           pathInDoc: '?contextid=c_Consumer_Service_Portal_Authentication',
           description: <>Set up authentication for Service Portal users.</>,
         },
         {
           label: 'API authentication',
-          docId: 'in20242portaldev',
+          docId: 'in20242apiusage',
           pathInDoc: '?contextid=c_v5-authentication',
           description: <>Set up authentication to use APIs.</>,
         },
         {
-          label: 'Portal development',
-          docId: 'in20242portaldev',
+          label: 'API usage scenarios',
+          docId: 'in20242apiusage',
           pathInDoc: '?contextid=c_overview_portal_development',
           description: (
-            <>Develop a sales, service, or agent portal using API endpoints.</>
+            <>Understand use cases for specific API endpoints. Develop a sales, service, or agent portal using these API endpoints.</>
           ),
         },
         {
