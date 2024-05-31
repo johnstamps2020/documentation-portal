@@ -377,11 +377,11 @@ const pageConfig: ApplicationLayoutProps = {
           description: <>Set up authentication to use APIs.</>,
         },
         {
-          label: 'Portal development',
+          label: 'API usage scenarios',
           docId: 'in20242apiusage',
           pathInDoc: '?contextid=c_overview_portal_development',
           description: (
-            <>Develop a sales, service, or agent portal using API endpoints.</>
+            <>Understand use cases for specific API endpoints. Develop a sales, service, or agent portal using these API endpoints.</>
           ),
         },
         {
