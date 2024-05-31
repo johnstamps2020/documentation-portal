@@ -33,6 +33,12 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'apdjaJPfinalizingproductsinnsbruck',
         },
         {
+          label: 'Advanced Product Designer ガイドブック',
+          docId: 'l10npdfss3folder',
+          pathInDoc: 'ja/cloud/apd/innsbruck/Guidebook_AdvancedProductDesigner.pdf',
+          videoIcon: false,
+        },
+        {
           label: 'APD API リファレンス',
           docId: 'apdmaindoc',
           pathInDoc: 'ja'
