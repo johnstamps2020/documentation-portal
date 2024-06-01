@@ -35,7 +35,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Advanced Product Designer ガイドブック',
           docId: 'l10npdfss3folder',
-          pathInDoc: 'ja/cloud/apd/innsbruck/Guidebook_AdvancedProductDesigner.pdf',
+          pathInDoc: 'ja-JP/apd/innsbruck/Guidebook_AdvancedProductDesigner.pdf',
           videoIcon: false,
         },
         {
