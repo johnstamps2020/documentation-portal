@@ -1,4 +1,4 @@
-import { Version } from '../model/entity/Version';
+import { Version } from '@doctools/components';
 
 export type LegacyVersionObject = {
   versions: string[] | Version[];

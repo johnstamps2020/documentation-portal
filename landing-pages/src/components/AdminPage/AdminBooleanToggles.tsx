@@ -1,4 +1,4 @@
-import { GwEntity } from '@doctools/server';
+import { GwEntity } from '@doctools/components';
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';

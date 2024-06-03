@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "audit:all": "yarn npm audit --all --severity high",
-    "build": "yarn build:server && yarn build:components && yarn build:landing-pages",
+    "build": "yarn build:components && yarn build:server && yarn build:landing-pages",
     "build:components": "yarn workspace @doctools/components build",
     "build:doc-site": "yarn build:docusaurus-security && yarn build:theme && yarn workspace doc-site build",
     "build:html5": "yarn build:components && yarn build:server && yarn workspace html5 build",

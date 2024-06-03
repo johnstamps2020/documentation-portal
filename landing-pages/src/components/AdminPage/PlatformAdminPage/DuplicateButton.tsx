@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { usePlatformData } from 'hooks/useEntitiesData';
-import { Platform } from '@doctools/server';
+import { Platform } from '@doctools/components';
 import PlatformSettingsForm from './PlatformSettingsForm';
 
 type DuplicateButtonProps = {

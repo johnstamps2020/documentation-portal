@@ -9,12 +9,14 @@ import {
   ObjectLiteral,
 } from 'typeorm';
 import { AppDataSource } from '../model/connection';
-import { Doc } from '../model/entity/Doc';
-import { ExternalLink } from '../model/entity/ExternalLink';
-import { Page } from '../model/entity/Page';
-import { PlatformProductVersion } from '../model/entity/PlatformProductVersion';
-import { Release } from '../model/entity/Release';
-import { Subject } from '../model/entity/Subject';
+import {
+  Doc,
+  ExternalLink,
+  Page,
+  PlatformProductVersion,
+  Release,
+  Subject,
+} from '@doctools/components';
 import { ApiResponse } from '../types/apiResponse';
 import { PageItemsRequestBody, PageItemsResponse } from '../types/config';
 import { LegacyVersionObject } from '../types/legacyConfig';

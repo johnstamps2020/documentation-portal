@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { AppDataSource } from '../model/connection';
-import { Doc } from '../model/entity/Doc';
-import { Page } from '../model/entity/Page';
+import { Doc, Page } from '@doctools/components';
 import { RedirectResponse } from '../types/apiResponse';
 import { getEnvInfo } from './envController';
 import { winstonLogger } from './loggerController';

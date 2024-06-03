@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useSources } from '@doctools/server';
+import { useSources } from '@doctools/components';
 import DuplicateButton from './DuplicateButton';
 import SourceCardContents from './SourceCardContents';
 import SourceSettingsForm from './SourceSettingsForm';

@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useSubjectData } from 'hooks/useEntitiesData';
-import { Subject } from '@doctools/server';
+import { Subject } from '@doctools/components';
 import SubjectSettingsForm from './SubjectSettingsForm';
 
 type DuplicateButtonProps = {

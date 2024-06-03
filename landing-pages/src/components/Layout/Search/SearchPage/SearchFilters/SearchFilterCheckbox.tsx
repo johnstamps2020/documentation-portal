@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Chip from '@mui/material/Chip';
-import { ServerSearchFilterValue } from '@doctools/server';
+import { ServerSearchFilterValue } from '@doctools/components';
 import { useQueryParameters } from 'hooks/useQueryParameters';
 import { languageLabels } from '../../../../../vars';
 

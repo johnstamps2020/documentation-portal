@@ -1,4 +1,4 @@
-import { Subject } from '@doctools/server';
+import { Subject } from '@doctools/components';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';

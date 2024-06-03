@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useExternalLinkData } from 'hooks/useEntitiesData';
-import { ExternalLink } from '@doctools/server';
+import { ExternalLink } from '@doctools/components';
 import ExternalLinkSettingsForm from './ExternalLinkSettingsForm';
 
 type DuplicateButtonProps = {

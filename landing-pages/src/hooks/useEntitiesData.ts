@@ -8,7 +8,7 @@ import {
   Source,
   Subject,
   Version,
-} from '@doctools/server';
+} from '@doctools/components';
 import useSWR from 'swr';
 
 export class Error {

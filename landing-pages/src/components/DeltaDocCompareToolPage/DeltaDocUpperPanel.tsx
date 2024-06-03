@@ -1,4 +1,4 @@
-import { Doc } from '@doctools/server';
+import { Doc } from '@doctools/components';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';

@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useVersionData } from 'hooks/useEntitiesData';
-import { Version } from '@doctools/server';
+import { Version } from '@doctools/components';
 import VersionSettingsForm from './VersionSettingsForm';
 
 type DuplicateButtonProps = {

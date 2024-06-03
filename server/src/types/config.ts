@@ -1,6 +1,4 @@
-import { Doc } from '../model/entity/Doc';
-import { Page } from '../model/entity/Page';
-import { ExternalLink } from '../model/entity/ExternalLink';
+import { Doc, Page, ExternalLink } from '@doctools/components';
 
 export type PageItemsRequestBody = {
   docIds: string[];

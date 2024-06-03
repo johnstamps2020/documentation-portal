@@ -3014,6 +3014,7 @@ __metadata:
     remark-gfm: "npm:^4.0.0"
     rimraf: "npm:^5.0.5"
     swr: "npm:^2.2.5"
+    typeorm: "npm:^0.3.9"
     typescript: "npm:^5.3.3"
     zustand: "npm:^4.5.2"
   peerDependencies:

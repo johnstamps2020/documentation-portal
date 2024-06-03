@@ -1,9 +1,20 @@
 import { findAllEntities, findEntity, saveEntities } from './configController';
-import { Doc } from '../model/entity/Doc';
-import { PlatformProductVersion } from '../model/entity/PlatformProductVersion';
-import { Release } from '../model/entity/Release';
-import { Resource } from '../model/entity/Resource';
-import { Source } from '../model/entity/Source';
+import {
+  DitaBuild,
+  Doc,
+  JustCopyBuild,
+  Language,
+  Platform,
+  PlatformProductVersion,
+  Product,
+  Release,
+  Resource,
+  Source,
+  SourceZipBuild,
+  Subject,
+  Version,
+  YarnBuild,
+} from '@doctools/components';
 import { join, resolve } from 'path';
 import {
   LegacyBuildConfig,
@@ -18,18 +29,9 @@ import {
 import { lstatSync, readdirSync, readFileSync } from 'fs';
 import { getConfigFile } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
-import { Subject } from '../model/entity/Subject';
 import { Request } from 'express';
 import { ApiResponse } from '../types/apiResponse';
 import { FindOptionsWhere, ObjectLiteral } from 'typeorm';
-import { Product } from '../model/entity/Product';
-import { Platform } from '../model/entity/Platform';
-import { Version } from '../model/entity/Version';
-import { Language } from '../model/entity/Language';
-import { DitaBuild } from '../model/entity/DitaBuild';
-import { YarnBuild } from '../model/entity/YarnBuild';
-import { SourceZipBuild } from '../model/entity/SourceZipBuild';
-import { JustCopyBuild } from '../model/entity/JustCopyBuild';
 
 export async function getLegacyConfigs(req: Request): Promise<ApiResponse> {
   const { configType } = req.params;

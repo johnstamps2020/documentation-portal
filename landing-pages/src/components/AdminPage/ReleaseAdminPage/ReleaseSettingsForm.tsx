@@ -1,4 +1,4 @@
-import { Release } from '@doctools/server';
+import { Release } from '@doctools/components';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';

@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useSubjects } from '@doctools/server';
+import { useSubjects } from '@doctools/components';
 import DuplicateButton from './DuplicateButton';
 import SubjectCardContents from './SubjectCardContents';
 import SubjectSettingsForm from './SubjectSettingsForm';

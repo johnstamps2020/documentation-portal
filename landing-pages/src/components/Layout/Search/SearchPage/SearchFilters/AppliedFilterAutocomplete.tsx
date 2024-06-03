@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 //import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { ServerSearchFilter } from '@doctools/server';
+import { ServerSearchFilter } from '@doctools/components';
 import { useQueryParameters } from 'hooks/useQueryParameters';
 import { useSearchData } from 'hooks/useApi';
 

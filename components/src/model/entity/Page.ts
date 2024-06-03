@@ -1,6 +1,6 @@
 import { Column, Entity, Unique } from 'typeorm';
 import { GwEntity } from './GwEntity';
-import { SearchFilters } from '../../types/config';
+import { SearchFilters } from '../../types/serverSearch';
 
 @Entity()
 @Unique(['path'])

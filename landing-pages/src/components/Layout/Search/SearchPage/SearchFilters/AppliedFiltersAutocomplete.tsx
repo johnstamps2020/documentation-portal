@@ -1,29 +1,24 @@
-import { ServerSearchFilter } from '@doctools/server';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 import { useSearchData } from 'hooks/useApi';
-import {
-  useLanguagesNoRevalidation,
-  usePlatformsNoRevalidation,
-  useProductsNoRevalidation,
-  useReleasesNoRevalidation,
-  useSubjectsNoRevalidation,
-} from '@doctools/server';
-import AppliedFiltersSkeleton from '../AppliedFiltersSkeleton';
-import { useEffect, useMemo, useState } from 'react';
-import AppliedFilterControl from './AppliedFilterControl';
-import { uiFilters } from './SearchFilterPanel';
-import AppliedFilterAutocomplete from './AppliedFilterAutocomplete';
 import {
   Language,
   Platform,
   Product,
   Release,
   Subject,
-} from '@doctools/server';
+  ServerSearchFilter,
+  useLanguagesNoRevalidation,
+  usePlatformsNoRevalidation,
+  useProductsNoRevalidation,
+  useReleasesNoRevalidation,
+  useSubjectsNoRevalidation,
+} from '@doctools/components';
+import AppliedFiltersSkeleton from '../AppliedFiltersSkeleton';
+import { useEffect, useMemo, useState } from 'react';
+import { uiFilters } from './SearchFilterPanel';
+import AppliedFilterAutocomplete from './AppliedFilterAutocomplete';
 
 // not all of these filters can be checked but including the full list
 // in case the displayed filters changes

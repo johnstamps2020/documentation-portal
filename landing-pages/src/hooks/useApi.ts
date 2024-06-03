@@ -1,11 +1,15 @@
-import { Page, SearchData, ServerSearchError } from '@doctools/server';
+import {
+  EnvInfo,
+  Page,
+  SearchData,
+  ServerSearchError,
+  UserInfo,
+} from '@doctools/components';
 import { useParams, useSearchParams } from 'react-router-dom';
 import useSWR from 'swr';
 import useSWRImmutable from 'swr/immutable';
 import { TranslatedPage } from '../components/Layout/Header/TranslatedPages';
 import { PageError } from './usePageData';
-import { UserInfo } from '@doctools/components';
-import { EnvInfo } from '@doctools/components';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 
