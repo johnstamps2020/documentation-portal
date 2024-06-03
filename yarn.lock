@@ -3006,7 +3006,6 @@ __metadata:
   resolution: "@doctools/components@workspace:components"
   dependencies:
     "@doctools/scripts": "workspace:*"
-    "@doctools/server": "workspace:*"
     "@fontsource/source-sans-pro": "npm:^5.0.8"
     "@types/mark.js": "npm:^8.11.12"
     mark.js: "npm:^8.11.1"
