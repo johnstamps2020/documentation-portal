@@ -74,6 +74,9 @@ CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/cu
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_REGION=us-west-2
+
+GW_GPT_CLIENT_ID=
+GW_GPT_CLIENT_SECRET=
 ```
 
 ## Step 4: Start the services
