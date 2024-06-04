@@ -284,6 +284,16 @@ spec:
               value: ${AWS_REGION}
             - name: ML_TRANSFORMER_URL
               value: ${ML_TRANSFORMER_URL}
+            - name: GW_GPT_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: gw_gpt_client_id
+            - name: GW_GPT_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: gw_gpt_client_secret
           resources:
             requests:
               memory: \"${REQUESTS_MEMORY}\"
