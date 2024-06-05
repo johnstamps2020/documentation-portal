@@ -8,6 +8,7 @@ import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResultsP
 import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
 import DeltaDocUpperPanel from 'components/DeltaDocCompareToolPage/DeltaDocUpperPanel';
 import { useEffect } from 'react';
+import BatchComparing from 'components/DeltaDocCompareToolPage/BatchComparison';
 
 export const fileDoesNotExistText = 'N/A - file does not exist';
 
@@ -65,16 +66,15 @@ export default function DeltaDocCompareToolPage() {
               margin="auto"
               textAlign="justify"
             >
-              Provide root URLs to the documents that you want to compare. Each
-              URL must include the domain and the release. <br />
-              Example: If you want to compare{' '}
-              <b>ClaimCenter Application Guide</b> in <b>Garmisch</b> with{' '}
-              <b>ClaimCenter Application Guide</b> in <b>Flaine</b>, provide{' '}
-              <b>https://docs.staging.ccs.guidewire.net/cloud/cc/202302/app/</b>{' '}
-              as the URL for Garmisch and{' '}
-              <b>https://docs.staging.ccs.guidewire.net/cloud/cc/202209/app/</b>{' '}
-              as the URL for Flaine, and then select "See results". Enjoy!
+              Select a product associated with the document you need to compare.
+              Then select a document and both releases. Selecting a product is
+              optional but advised. If you are not sure to which product your
+              document belongs, you can expand Document list and select from all
+              documents (be advised that the performance time might be worse).
+              You can also run batch comparison for whole products by switching
+              to "Batch comparison" mode.
             </Typography>
+            <BatchComparing />
             <DeltaDocUpperPanel />
             <DeltaDocStatistics />
             <DeltaDocResults />
