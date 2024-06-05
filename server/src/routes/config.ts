@@ -5,6 +5,7 @@ import {
   getDocIdByUrl,
   getDocumentMetadataById,
   getDocUrlByMetadata,
+  getEntities,
   getEntity,
   getPageItems,
   getRootBreadcrumbs,
@@ -42,6 +43,11 @@ router.get('/entity/:repo', async function (req, res) {
 
 router.get('/entity/:repo/relations', async function (req, res) {
   const { status, body } = await getEntity(req, res, true);
+  return res.status(status).json(body);
+});
+
+router.get('/entity/:repo/many/relations', async function (req, res) {
+  const { status, body } = await getEntities(req, res, true);
   return res.status(status).json(body);
 });
 
