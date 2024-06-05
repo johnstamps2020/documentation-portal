@@ -18,7 +18,7 @@ import DeltaDocLoading from './DeltaDocLoading';
 import FormHelperText from '@mui/material/FormHelperText';
 
 export const releaseNumberRegex = new RegExp(
-  /(\/\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/
+  /((\/|_)\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/
 );
 
 export function getReleaseNameRegex(releases: Release[]) {
