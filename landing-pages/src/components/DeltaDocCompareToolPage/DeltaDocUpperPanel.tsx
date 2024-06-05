@@ -1,3 +1,4 @@
+import { Doc } from '@doctools/server';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
@@ -14,7 +15,32 @@ import { useEffect, useState } from 'react';
 import BatchComparisonUpperPanel from './BatchComparisonUpperPanel';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocLoading from './DeltaDocLoading';
+import FormHelperText from '@mui/material/FormHelperText';
 
+export const releaseNumberRegex = new RegExp(
+  /(\/\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/
+);
+
+export function removeDuplicates(
+  docs: Doc[],
+  releaseNames: string[],
+  releaseNumberRegex: RegExp
+) {
+  const releaseNameRegex = new RegExp('(' + releaseNames.join('|') + ')');
+
+  return docs.filter(
+    (doc, i, arr) =>
+      arr.findIndex(
+        (d) =>
+          d.url
+            .replace(releaseNumberRegex, '')
+            .replace(releaseNameRegex, '') ===
+            doc.url
+              .replace(releaseNumberRegex, '')
+              .replace(releaseNameRegex, '') && d.title === doc.title
+      ) === i
+  );
+}
 export default function DeltaDocUpperPanel() {
   const [canSubmit, setCanSubmit] = useState(false);
   const [docUrl, setDocUrl] = useState<string>('');
@@ -37,7 +63,14 @@ export default function DeltaDocUpperPanel() {
 
   useEffect(() => {
     setCanSubmit(docUrl !== '' && firstRelease !== '' && secondRelease !== '');
-  }, [docUrl, firstRelease, secondRelease, productName, setCanSubmit]);
+  }, [
+    docUrl,
+    firstRelease,
+    secondRelease,
+    productName,
+    setCanSubmit,
+    batchComparison,
+  ]);
 
   if (batchComparison) {
     return <BatchComparisonUpperPanel />;
@@ -61,6 +94,7 @@ export default function DeltaDocUpperPanel() {
     return <></>;
   }
 
+  const releaseNames = releases.map((release) => release.name.toLowerCase());
   const sortedReleases = releases.sort(function (a, b) {
     return a.name < b.name ? 1 : b.name < a.name ? -1 : 0;
   });
@@ -81,6 +115,11 @@ export default function DeltaDocUpperPanel() {
       return ppv.product.name === productName;
     });
   });
+  const docsNoDuplicates = removeDuplicates(
+    filteredDocs,
+    releaseNames,
+    releaseNumberRegex
+  );
 
   return (
     <Container>
@@ -115,6 +154,7 @@ export default function DeltaDocUpperPanel() {
                       </MenuItem>
                     ))}
                 </Select>
+                <FormHelperText> </FormHelperText>
               </FormControl>
             </Stack>
             <Stack padding={1}>
@@ -125,17 +165,33 @@ export default function DeltaDocUpperPanel() {
                   value={docUrl}
                   onChange={(event) => setDocUrl(event.target.value)}
                   sx={{ width: '300px' }}
+                  disabled={!!productName && docsNoDuplicates.length === 0}
                 >
-                  {(productName ? filteredDocs : docs)
+                  {(productName ? docsNoDuplicates : docs)
                     .sort((a, b) => {
                       return a.title > b.title ? 1 : b.title > a.title ? -1 : 0;
                     })
                     .map((d) => (
                       <MenuItem value={d.url} key={d.id}>
-                        {d.title} ({d.url})
+                        {d.title} (
+                        {d.url
+                          .replace(
+                            new RegExp('(' + releaseNames.join('|') + ')'),
+                            '<release>'
+                          )
+                          .replace(
+                            /(\/\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/,
+                            '/<release>'
+                          )}
+                        )
                       </MenuItem>
                     ))}
                 </Select>
+                <FormHelperText>
+                  {!!productName && docsNoDuplicates.length === 0
+                    ? 'There are no documents in this product.'
+                    : ' '}
+                </FormHelperText>
               </FormControl>
             </Stack>
             <Stack padding={1}>
@@ -157,6 +213,7 @@ export default function DeltaDocUpperPanel() {
                     </MenuItem>
                   ))}
                 </Select>
+                <FormHelperText> </FormHelperText>
               </FormControl>
             </Stack>
             <Stack padding={1}>
@@ -178,6 +235,7 @@ export default function DeltaDocUpperPanel() {
                     </MenuItem>
                   ))}
                 </Select>
+                <FormHelperText> </FormHelperText>
               </FormControl>
             </Stack>
           </Stack>

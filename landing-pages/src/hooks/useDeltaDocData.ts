@@ -137,27 +137,6 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     return comparisonResults;
   }
 
-  function scanFileCount(
-    filesA: DeltaDocResultType[],
-    filesB: DeltaDocResultType[]
-  ) {
-    const filesAFileCount = filesA.length;
-    const filesBFileCount = filesB.length;
-    if (filesAFileCount !== filesBFileCount) {
-      if (filesAFileCount > filesBFileCount) {
-        return (
-          filesAFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount)
-        );
-      } else {
-        return (
-          filesBFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount)
-        );
-      }
-    } else {
-      return filesAFileCount;
-    }
-  }
-
   function docBasePercentageTotal(
     totalFilesScanned: number,
     differentFiles: number
@@ -176,7 +155,7 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     return [percentageNumber.toFixed(2), docBasePercentageChange.toFixed(2)];
   }
 
-  const totalFilesScanned = scanFileCount(releaseAFiles, releaseBFiles);
+  const totalFilesScanned = releaseAFiles.length + releaseBFiles.length;
   const results = compareAllDocs();
   const [docBaseFileChanges, docBaseFilePercentageChanges] =
     docBasePercentageTotal(totalFilesScanned, differentFiles.length);
@@ -235,6 +214,9 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
         if (element.id.includes('cloud')) {
           newElementId = element.id.replace(/\/cloud\/.*\d+.+\d\//g, '');
         }
+        if (element.id.includes('jutro')) {
+          newElementId = element.id.replace(/\/jutro\/.*\d+.+\d/g, '');
+        }
         return { ...element, id: newElementId };
       })
   );
@@ -249,8 +231,9 @@ export function useDeltaDocData({
   releaseB,
   url,
 }: DeltaDocInputType) {
+  const shouldFetch = releaseA && releaseB && url;
   const { data, error, isLoading } = useSWR<DeltaDocData, Error>(
-    { releaseA, releaseB, url },
+    shouldFetch ? { releaseA, releaseB, url } : null,
     deltaDocDataGetter,
     {
       revalidateOnFocus: false,

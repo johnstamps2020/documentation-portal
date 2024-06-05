@@ -6,12 +6,16 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
-import { useProductsNoRevalidation, useReleasesNoRevalidation } from 'hooks/useApi';
+import {
+  useProductsNoRevalidation,
+  useReleasesNoRevalidation,
+} from 'hooks/useApi';
 import { useDocsByProduct } from 'hooks/useDeltaDocData';
 import { useEffect, useState } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocLoading from './DeltaDocLoading';
 import Alert from '@mui/material/Alert';
+import { releaseNumberRegex, removeDuplicates } from './DeltaDocUpperPanel';
 
 export default function BatchComparisonUpperPanel() {
   const {
@@ -42,6 +46,15 @@ export default function BatchComparisonUpperPanel() {
     isError: isErrorReleases,
   } = useReleasesNoRevalidation();
 
+  const filteredDocs =
+    docs && releases
+      ? removeDuplicates(
+          docs,
+          releases.map((release) => release.name.toLowerCase()),
+          releaseNumberRegex
+        )
+      : docs;
+
   useEffect(() => {
     if (productName && firstRelease && secondRelease) {
       if (isErrorDocs || isErrorReleases || isError) {
@@ -50,7 +63,7 @@ export default function BatchComparisonUpperPanel() {
         setCanSubmit(true);
       }
     }
-    setTmpDocsLength(docs ? docs.length : 0);
+    setTmpDocsLength(filteredDocs?.length);
   }, [
     productName,
     firstRelease,
@@ -62,6 +75,7 @@ export default function BatchComparisonUpperPanel() {
     isError,
     setCanSubmit,
     setNumberOfDocsInProduct,
+    filteredDocs?.length,
   ]);
 
   useEffect(() => {
@@ -81,10 +95,10 @@ export default function BatchComparisonUpperPanel() {
   }
 
   function handleSubmit() {
-    if (!docs || !firstRelease || !secondRelease) {
+    if (!filteredDocs || !firstRelease || !secondRelease) {
       return;
     }
-    const batch = docs.map((doc) => {
+    const batch = filteredDocs.map((doc) => {
       return {
         url: `/${doc.url}/`,
         releaseA: firstRelease,
@@ -130,7 +144,7 @@ export default function BatchComparisonUpperPanel() {
                   ))}
                 </Select>
                 <FormHelperText>
-                  {productName
+                  {productName && tmpDocsLength
                     ? `This product includes ${tmpDocsLength} 
                       ${tmpDocsLength === 1 ? 'doc' : 'docs'}.`
                     : ' '}
