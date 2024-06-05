@@ -46,7 +46,7 @@ router.get('/entity/:repo/relations', async function (req, res) {
   return res.status(status).json(body);
 });
 
-router.get('/entity/many/:repo/relations', async function (req, res) {
+router.get('/entity/:repo/many/relations', async function (req, res) {
   const { status, body } = await getEntities(req, res, true);
   return res.status(status).json(body);
 });

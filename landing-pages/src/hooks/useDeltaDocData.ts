@@ -249,7 +249,7 @@ export function useDeltaDocData({
 
 const docsByProductGetter = async (productName: string) => {
   const response = await fetch(
-    `/safeConfig/entity/many/Doc/relations?platformProductVersions[product][name]=${productName}`
+    `/safeConfig/entity/Doc/many/relations?platformProductVersions[product][name]=${productName}`
   );
 
   const { status } = response;

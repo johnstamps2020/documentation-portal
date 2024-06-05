@@ -1,4 +1,4 @@
-import { Doc } from '@doctools/server';
+import { Doc, Release } from '@doctools/server';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
@@ -21,13 +21,17 @@ export const releaseNumberRegex = new RegExp(
   /(\/\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/
 );
 
+export function getReleaseNameRegex(releases: Release[]) {
+  return new RegExp(
+    '(' + releases.map((release) => release.name.toLowerCase()).join('|') + ')'
+  );
+}
+
 export function removeDuplicates(
   docs: Doc[],
-  releaseNames: string[],
-  releaseNumberRegex: RegExp
+  releaseNumberRegex: RegExp,
+  releaseNameRegex: RegExp
 ) {
-  const releaseNameRegex = new RegExp('(' + releaseNames.join('|') + ')');
-
   return docs.filter(
     (doc, i, arr) =>
       arr.findIndex(
@@ -94,7 +98,6 @@ export default function DeltaDocUpperPanel() {
     return <></>;
   }
 
-  const releaseNames = releases.map((release) => release.name.toLowerCase());
   const sortedReleases = releases.sort(function (a, b) {
     return a.name < b.name ? 1 : b.name < a.name ? -1 : 0;
   });
@@ -115,10 +118,11 @@ export default function DeltaDocUpperPanel() {
       return ppv.product.name === productName;
     });
   });
+  const releaseNameRegex = getReleaseNameRegex(releases);
   const docsNoDuplicates = removeDuplicates(
     filteredDocs,
-    releaseNames,
-    releaseNumberRegex
+    releaseNumberRegex,
+    releaseNameRegex
   );
 
   return (
@@ -175,14 +179,8 @@ export default function DeltaDocUpperPanel() {
                       <MenuItem value={d.url} key={d.id}>
                         {d.title} (
                         {d.url
-                          .replace(
-                            new RegExp('(' + releaseNames.join('|') + ')'),
-                            '<release>'
-                          )
-                          .replace(
-                            /(\/\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/,
-                            '/<release>'
-                          )}
+                          .replace(releaseNameRegex, '<release>')
+                          .replace(releaseNumberRegex, '/<release>')}
                         )
                       </MenuItem>
                     ))}

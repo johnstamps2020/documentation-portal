@@ -15,7 +15,11 @@ import { useEffect, useState } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocLoading from './DeltaDocLoading';
 import Alert from '@mui/material/Alert';
-import { releaseNumberRegex, removeDuplicates } from './DeltaDocUpperPanel';
+import {
+  getReleaseNameRegex,
+  releaseNumberRegex,
+  removeDuplicates,
+} from './DeltaDocUpperPanel';
 
 export default function BatchComparisonUpperPanel() {
   const {
@@ -50,8 +54,8 @@ export default function BatchComparisonUpperPanel() {
     docs && releases
       ? removeDuplicates(
           docs,
-          releases.map((release) => release.name.toLowerCase()),
-          releaseNumberRegex
+          releaseNumberRegex,
+          getReleaseNameRegex(releases)
         )
       : docs;
 
