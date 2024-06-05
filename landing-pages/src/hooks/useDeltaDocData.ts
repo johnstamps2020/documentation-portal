@@ -155,8 +155,8 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     return [percentageNumber.toFixed(2), docBasePercentageChange.toFixed(2)];
   }
 
-  const totalFilesScanned = releaseAFiles.length + releaseBFiles.length;
   const results = compareAllDocs();
+  const totalFilesScanned = results.length + unchangedFiles;
   const [docBaseFileChanges, docBaseFilePercentageChanges] =
     docBasePercentageTotal(totalFilesScanned, differentFiles.length);
   const releaseALength = releaseAFiles.length;
