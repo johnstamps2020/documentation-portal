@@ -3126,10 +3126,12 @@ __metadata:
     "@types/react": "npm:^18.0.0"
     "@types/react-dom": "npm:^18.0.0"
     "@types/tinycolor2": "npm:^1.4.4"
+    customize-cra: "npm:^1.0.0"
     file-saver: "npm:^2.0.5"
     js-levenshtein: "npm:^1.1.6"
     lodash: "npm:^4.17.21"
     react: "npm:^18.2.0"
+    react-app-rewired: "npm:^2.2.1"
     react-dom: "npm:^18.2.0"
     react-error-boundary: "npm:^4.0.10"
     react-native-sqlite-storage: "file:../shims/react-native-sqlite-storage"
@@ -11028,6 +11030,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"customize-cra@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "customize-cra@npm:1.0.0"
+  dependencies:
+    lodash.flow: "npm:^3.5.0"
+  checksum: 10/978acd4fa5be592813dc1cba3bad25fd41bc09d12893639c20ac1b24e29ec1bd932223510dca4977cdedc85d84a7ab5762b66f887396ba60f77aa525225e23e0
+  languageName: node
+  linkType: hard
+
 "damerau-levenshtein@npm:^1.0.8":
   version: 1.0.8
   resolution: "damerau-levenshtein@npm:1.0.8"
@@ -16959,6 +16970,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.flow@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "lodash.flow@npm:3.5.0"
+  checksum: 10/da39497f388971e1949607882e608d5b2306f025f0b5cc3953f2c25fca7db5a8dba23bd3ddeaed4b0dbd2d44c5aaa6f6f12016b5511b08a3d61de1e1c1f59eb7
+  languageName: node
+  linkType: hard
+
 "lodash.includes@npm:^4.3.0":
   version: 4.3.0
   resolution: "lodash.includes@npm:4.3.0"
@@ -21280,6 +21298,19 @@ __metadata:
     regenerator-runtime: "npm:^0.13.9"
     whatwg-fetch: "npm:^3.6.2"
   checksum: 10/c544a1d9f5b3e4df1f51a01ceaa21d1350016520d0caf67549239ce112ea00b6014612f756e576609b986abe6eca1bb4f2625608bb9ae4501b74ca4398874be3
+  languageName: node
+  linkType: hard
+
+"react-app-rewired@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "react-app-rewired@npm:2.2.1"
+  dependencies:
+    semver: "npm:^5.6.0"
+  peerDependencies:
+    react-scripts: ">=2.1.3"
+  bin:
+    react-app-rewired: bin/index.js
+  checksum: 10/4ce0b5ea9537b8d2e123146ac023295a68e3952bc63b90426a1f95fc777b0c15067ec5f382962d30bb957d30c5928ae90f3499d5911d03a2202253fd84e55fb2
   languageName: node
   linkType: hard
 

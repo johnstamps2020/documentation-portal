@@ -17,7 +17,11 @@
     "jsx": "react-jsx",
     "downlevelIteration": true,
     "strictPropertyInitialization": false,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "paths": {
+      "@doctools/components": ["../components/dist/*"],
+      "@doctools/server": ["../server/dist/*"]
+    }
   },
   "include": ["src"]
 }
