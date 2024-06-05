@@ -21,10 +21,6 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.10 (Innsbruck)',
       items: [
         {
-          label: 'Advanced Product Designer リリースノート',
-          docId: 'apdjaJPapprninnsbruck',
-        },
-        {
           label: 'APD アプリを使用した保険商品の作成',
           docId: 'apdjaJPcreatingproductsinnsbruck',
         },
@@ -37,11 +33,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'l10npdfss3folder',
           pathInDoc: 'ja-JP/apd/innsbruck/Guidebook_AdvancedProductDesigner.pdf',
           videoIcon: false,
-        },
-        {
-          label: 'APD API リファレンス',
-          docId: 'apdmaindoc',
-          pathInDoc: 'ja'
         },
       ],
     },
