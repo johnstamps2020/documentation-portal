@@ -21,6 +21,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2023.10 (Innsbruck)',
       items: [
         {
+          label: 'Advanced Product Designer リリースノート',
+          docId: 'apdjaJPapprninnsbruck',
+        },
+        {
           label: 'APD アプリを使用した保険商品の作成',
           docId: 'apdjaJPcreatingproductsinnsbruck',
         },
