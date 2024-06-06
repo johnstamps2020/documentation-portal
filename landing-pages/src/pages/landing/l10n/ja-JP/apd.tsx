@@ -38,11 +38,6 @@ const pageConfig: CategoryLayoutProps = {
           pathInDoc: 'ja-JP/apd/innsbruck/Guidebook_AdvancedProductDesigner.pdf',
           videoIcon: false,
         },
-        {
-          label: 'APD API リファレンス',
-          docId: 'apdmaindoc',
-          pathInDoc: 'ja'
-        },
       ],
     },
   ],
