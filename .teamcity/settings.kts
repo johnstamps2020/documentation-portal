@@ -331,10 +331,10 @@ object Helpers {
                 export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES_PROD.paramValue}"
                 export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
                 export CONFIG_DB_HOST="${GwConfigParams.CONFIG_DB_HOST_PROD.paramValue}" 
-                export REQUESTS_MEMORY="1G"
-                export REQUESTS_CPU="200m"
-                export LIMITS_MEMORY="4G"
-                export LIMITS_CPU="2"
+                export REQUESTS_MEMORY="2G"
+                export REQUESTS_CPU="400m"
+                export LIMITS_MEMORY="8G"
+                export LIMITS_CPU="4"
             """.trimIndent()
 
             else -> """
@@ -356,10 +356,10 @@ object Helpers {
                     else -> ""
                 }
             }"
-                export REQUESTS_MEMORY="500M"
-                export REQUESTS_CPU="100m"
-                export LIMITS_MEMORY="2G"
-                export LIMITS_CPU="1"
+                export REQUESTS_MEMORY="1G"
+                export REQUESTS_CPU="200m"
+                export LIMITS_MEMORY="4G"
+                export LIMITS_CPU="2"
             """.trimIndent()
         }
     }
