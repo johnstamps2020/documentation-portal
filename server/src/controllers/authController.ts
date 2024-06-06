@@ -138,7 +138,8 @@ function getAvailableOktaIssuers(): AvailableOktaIssuers {
 function createOktaJwtVerifier(
   token: string,
   availableIssuers: AvailableOktaIssuers,
-  requestedUrl: string
+  requestedUrl: string,
+  requestIp: string
 ): OktaJwtVerifier | null {
   try {
     const decodedJwt = decode(token, {}) as JwtPayload;
@@ -156,13 +157,13 @@ function createOktaJwtVerifier(
       });
     } else {
       winstonLogger.warning(
-        `Requested URL: ${requestedUrl}, WARNING: Invalid JSON Web Token in the Authorization header`
+        `Requested URL: ${requestedUrl}, From IP: ${requestIp}, WARNING: Invalid JSON Web Token in the Authorization header`
       );
       return null;
     }
   } catch (err) {
     winstonLogger.error(
-      `Problem creating OKTA JWT verifier, Requested URL: ${requestedUrl}, ERROR: ${err}`
+      `Problem creating OKTA JWT verifier, Requested URL: ${requestedUrl}, From IP: ${requestIp}, ERROR: ${err}`
     );
     return null;
   }
@@ -171,7 +172,8 @@ function createOktaJwtVerifier(
 async function checkTokenInOkta(
   token: any,
   jwtVerifierInstance: OktaJwtVerifier,
-  requestedUrl: string
+  requestedUrl: string,
+  requestIp: string
 ) {
   try {
     const jwt = await jwtVerifierInstance.verifyAccessToken(
@@ -180,13 +182,16 @@ async function checkTokenInOkta(
     );
     return jwt;
   } catch (err) {
-    winstonLogger.error(`Requested URL: ${requestedUrl}, ERROR: ${err}`);
+    winstonLogger.error(
+      `Requested URL: ${requestedUrl}, From IP: ${requestIp}, ERROR: ${err}`
+    );
     return null;
   }
 }
 
 async function verifyToken(req: Request) {
   const reqOriginalUrl = req.originalUrl;
+  const reqIp = req.ip || 'undefined';
   try {
     const bearerToken = getTokenFromRequestHeader(req);
     if (bearerToken) {
@@ -194,13 +199,15 @@ async function verifyToken(req: Request) {
       const oktaJwtVerifier = createOktaJwtVerifier(
         bearerToken,
         oktaIssuers,
-        reqOriginalUrl
+        reqOriginalUrl,
+        reqIp
       );
       if (oktaJwtVerifier) {
         const verifiedToken = await checkTokenInOkta(
           bearerToken,
           oktaJwtVerifier,
-          reqOriginalUrl
+          reqOriginalUrl,
+          reqIp
         );
         req.accessToken = verifiedToken
           ? decode(verifiedToken.toString(), {})
@@ -211,13 +218,13 @@ async function verifyToken(req: Request) {
       }
     } else {
       winstonLogger.info(
-        `Requested URL: ${reqOriginalUrl}, INFO: The request does not contain the "Authorization: Bearer" header.`
+        `Requested URL: ${reqOriginalUrl}, From IP: ${reqIp}, INFO: The request does not contain the "Authorization: Bearer" header.`
       );
       return null;
     }
   } catch (err) {
     winstonLogger.error(
-      `Problem verifying token, Requested URL: ${reqOriginalUrl}, ERROR: ${err}`
+      `Problem verifying token, Requested URL: ${reqOriginalUrl}, From IP: ${reqIp}, ERROR: ${err}`
     );
     return null;
   }
@@ -231,7 +238,7 @@ export async function isLoggedInOrHasValidToken(req: Request) {
     return requestIsAuthenticated || !!(await verifyToken(req));
   } catch (err) {
     winstonLogger.error(
-      `Problem verifying auth status, Requested URL: ${req.originalUrl}, ERROR: ${err}`
+      `Problem verifying auth status, Requested URL: ${req.originalUrl}, From IP: ${req.ip}, ERROR: ${err}`
     );
     return false;
   }
