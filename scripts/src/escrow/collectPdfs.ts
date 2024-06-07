@@ -34,6 +34,12 @@ async function collectPdfs() {
       type: 'string',
       description: 'Environment. Either "staging" or "prod".',
     })
+    .option('out', {
+      alias: 'o',
+      type: 'string',
+      description:
+        'Output directory. If not specified, output is placed in an /out directory relative to where script is run.',
+    })
     .help().argv;
 
   // TBD: allow release + product as a combo?
@@ -93,7 +99,7 @@ async function collectPdfs() {
   //   );
   // }
 
-  const outdir = 'out';
+  const outdir = argv.out ? argv.out : 'out';
   const execPromise = promisify(exec);
 
   docs.forEach(async (doc) => {
