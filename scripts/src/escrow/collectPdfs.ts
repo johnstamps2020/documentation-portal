@@ -1,11 +1,14 @@
 import { getAllDocs, getMatchingDocs } from '../modules/database';
 import { Doc } from '@doctools/server';
 import { exec } from 'child_process';
+import { promisify } from 'util';
+import * as dotenv from 'dotenv';
+
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 
-// TODO update to get buildType for each doc and only get PDFs for DITA builds
-// TODO add documentation
+// TODO update to get buildType for each doc and only get PDFs for DITA builds.
+// TODO add documentation.
 
 async function collectPdfs() {
   // Parsing command line arguments
@@ -25,6 +28,11 @@ async function collectPdfs() {
       alias: 'v',
       type: 'string',
       description: 'Version number, such as "10.2.3"',
+    })
+    .option('env', {
+      alias: 'e',
+      type: 'string',
+      description: 'Environment. Either "staging" or "prod".',
     })
     .help().argv;
 
@@ -58,7 +66,12 @@ async function collectPdfs() {
 
   try {
     //docs = await getAllDocs();
-    docs = await getMatchingDocs(argv.release, argv.product, argv.version);
+    docs = await getMatchingDocs(
+      argv.release,
+      argv.product,
+      argv.version,
+      argv.env
+    );
   } catch (err) {
     console.log(err);
     process.exit(1);
@@ -80,11 +93,10 @@ async function collectPdfs() {
   //   );
   // }
 
-  // console.log('AWS_ACCESS_KEY_ID:', process.env.AWS_ACCESS_KEY_ID);
-  // console.log('AWS_SECRET_ACCESS_KEY:', process.env.AWS_SECRET_ACCESS_KEY);
-  // console.log('AWS_DEFAULT_REGION:', process.env.AWS_DEFAULT_REGION);
   const outdir = 'out';
-  docs.forEach((doc) => {
+  const execPromise = promisify(exec);
+
+  docs.forEach(async (doc) => {
     const docId = doc.id;
     const releaseNames = doc.releases?.reduce((acc, currentRelease) => {
       return acc + currentRelease.name + ' ';
@@ -100,22 +112,27 @@ async function collectPdfs() {
       `ID: ${doc.id} -- URL: ${doc.url} -- Releases: ${releaseNames} -- Products: ${productNames}
       `
     );
+    // TODO allow for staging or prod env
+    const s3Url =
+      argv.env === 'prod'
+        ? 'tenant-doctools-omega2-andromeda-builds'
+        : 'tenant-doctools-staging-builds';
+    const awsCliCommand = `aws s3 cp s3://${s3Url}/${doc.url} ${outdir}/${doc.url} --recursive --exclude "*" --include "*.pdf"`;
 
-    const awsCliCommand = `aws s3 cp s3://tenant-doctools-omega2-andromeda-builds/${doc.url} ${outdir}/${doc.url} --recursive --exclude "*" --include "*.pdf"`;
-
-    exec(awsCliCommand, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing command: ${error.message}`);
-        return;
+    const runAwsCliCommand = async () => {
+      try {
+        const { stdout, stderr } = await execPromise(awsCliCommand);
+        if (stderr) {
+          console.error(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`);
+      } catch (err) {
+        console.error(`Error executing command: ${err}`);
       }
+    };
 
-      if (stderr) {
-        console.error(`stderr: ${stderr}`);
-        return;
-      }
-
-      console.log(`stdout: ${stdout}`);
-    });
+    runAwsCliCommand();
   });
   //console.log(docs);
 }

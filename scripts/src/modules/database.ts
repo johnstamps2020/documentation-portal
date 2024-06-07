@@ -129,7 +129,8 @@ async function getAllEntities(
 export async function getMatchingDocs(
   release?: string,
   product?: string,
-  version?: string
+  version?: string,
+  env: string = 'prod'
 ): Promise<any> {
   console.log(`Retrieving doc configuration entities with metadata`);
   console.log(`product: ${product}`);
@@ -140,18 +141,24 @@ export async function getMatchingDocs(
   let queryString = release ? 'releases[name]=' + release + '&' : '';
   if (product) {
     queryString = queryString.concat(
-      `platformProductVersions[product][name]=${product}`,
-      version ? '&' : ''
+      queryString.length > 0 ? '&' : '',
+      `platformProductVersions[product][name]=${product}`
     );
   }
 
   if (version) {
     queryString = queryString.concat(
+      queryString.length > 0 ? '&' : '',
       `platformProductVersions[version][name]=${version}`
     );
   }
 
-  console.log(`queryString: ${queryString}`);
+  if (env === 'prod') {
+    queryString = queryString.concat(
+      queryString.length > 0 ? '&' : '',
+      `isInProduction=true`
+    );
+  }
 
   const configResponse = await fetch(
     `https://docs.staging.ccs.guidewire.net/safeConfig/entity/Doc/many/relations?${queryString}`,
