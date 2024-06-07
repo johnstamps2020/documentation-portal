@@ -1,5 +1,4 @@
-import { getAllDocs, getMatchingDocs } from '../modules/database';
-import { Doc } from '@doctools/server';
+import { getMatchingDocs, DocInfo } from '../modules/database';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import * as dotenv from 'dotenv';
@@ -7,11 +6,10 @@ import * as dotenv from 'dotenv';
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 
-// TODO update to get buildType for each doc and only get PDFs for DITA builds.
+// TODO add --language
 // TODO add documentation.
 
 async function collectPdfs() {
-  // Parsing command line arguments
   const argv = yargs(hideBin(process.argv))
     .version(false)
     .option('release', {
@@ -47,10 +45,7 @@ async function collectPdfs() {
     console.error('Must specify a release or a product and version.');
     process.exit(1);
   }
-  console.log('Collecting doc configuration information for docs with...');
-  if (argv.release) {
-    console.log(`Release: ${argv.release}`);
-  }
+  console.log('Collecting doc configuration information.');
 
   // if (argv.product) {
   //   console.log(`Product: ${argv.product}`);
@@ -68,10 +63,9 @@ async function collectPdfs() {
   //   }
   // }
 
-  let docs: Doc[];
+  let docs: DocInfo[];
 
   try {
-    //docs = await getAllDocs();
     docs = await getMatchingDocs(
       argv.release,
       argv.product,
@@ -83,47 +77,23 @@ async function collectPdfs() {
     process.exit(1);
   }
 
-  // approach if fetching all doc configs
-  // if (argv.release) {
-  //   docs = docs.filter((doc) =>
-  //     doc.releases?.some((release) => release.name === argv.release)
-  //   );
-  // }
-
-  // if (argv.product && argv.version) {
-  //   docs = docs.filter((doc) =>
-  //     doc.platformProductVersions?.some(
-  //       (ppv) =>
-  //         ppv.product.name === argv.product && ppv.version.name === argv.version
-  //     )
-  //   );
-  // }
-
   const outdir = argv.out ? argv.out : 'out';
   const execPromise = promisify(exec);
 
-  docs.forEach(async (doc) => {
-    const docId = doc.id;
-    const releaseNames = doc.releases?.reduce((acc, currentRelease) => {
-      return acc + currentRelease.name + ' ';
-    }, '');
-    const productNames = doc.platformProductVersions?.reduce(
-      (acc, currentPPV) => {
-        return acc + currentPPV.product.name + ' ';
-      },
-      ''
-    );
+  docs.forEach(async (docInfo) => {
+    const docId = docInfo.doc.id;
 
-    console.log(
-      `ID: ${doc.id} -- URL: ${doc.url} -- Releases: ${releaseNames} -- Products: ${productNames}
-      `
-    );
-    // TODO allow for staging or prod env
+    if (!docInfo.isDita) {
+      console.log(
+        `Non-DITA build for document ${docInfo.doc.id} found. Skipping...`
+      );
+      return;
+    }
     const s3Url =
       argv.env === 'prod'
         ? 'tenant-doctools-omega2-andromeda-builds'
         : 'tenant-doctools-staging-builds';
-    const awsCliCommand = `aws s3 cp s3://${s3Url}/${doc.url} ${outdir}/${doc.url} --recursive --exclude "*" --include "*.pdf"`;
+    const awsCliCommand = `aws s3 cp s3://${s3Url}/${docInfo.doc.url} ${outdir}/${docInfo.doc.url} --recursive --exclude "*" --include "*.pdf"`;
 
     const runAwsCliCommand = async () => {
       try {
@@ -140,7 +110,6 @@ async function collectPdfs() {
 
     runAwsCliCommand();
   });
-  //console.log(docs);
 }
 
 collectPdfs();

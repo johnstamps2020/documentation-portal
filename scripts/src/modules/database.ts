@@ -57,28 +57,10 @@ export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
     process.exit(1);
   }
 
+  // TODO move to getBuildInfoByDocId function for reuse
   let build: DocInfo['build'];
-  try {
-    build = await getEntityByAttribute(
-      'DitaBuild',
-      'doc.uuid',
-      doc.uuid,
-      accessToken,
-      true
-    );
-  } catch (err) {
-    console.log(
-      'Could not fetch DITA build configuration from the database. Trying to fetch a yarn build instead of a dita build'
-    );
-    build = await getEntityByAttribute(
-      'YarnBuild',
-      'doc.uuid',
-      doc.uuid,
-      accessToken,
-      true
-    );
-  }
 
+  build = await getBuildInfoByDocUuid(doc.uuid, accessToken);
   if (!build) {
     console.error('UNEXPECTED ERROR: The build is somehow not available!');
     process.exit(1);
@@ -90,6 +72,40 @@ export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
     source: build.source,
     isDita: build.root !== undefined,
   };
+}
+
+async function getBuildInfoByDocUuid(
+  docUuid: string,
+  accessToken: string
+): Promise<DitaBuild & YarnBuild> {
+  let build: DocInfo['build'];
+  try {
+    build = await getEntityByAttribute(
+      'DitaBuild',
+      'doc.uuid',
+      docUuid,
+      accessToken,
+      true
+    );
+  } catch (err) {
+    console.log(
+      'Could not fetch DITA build configuration from the database. Trying to fetch a yarn build instead of a dita build'
+    );
+    build = await getEntityByAttribute(
+      'YarnBuild',
+      'doc.uuid',
+      docUuid,
+      accessToken,
+      true
+    );
+  }
+
+  if (!build) {
+    console.error('UNEXPECTED ERROR: The build is somehow not available!');
+    process.exit(1);
+  }
+
+  return build;
 }
 
 async function getAllEntities(
@@ -133,8 +149,6 @@ export async function getMatchingDocs(
   env: string = 'prod'
 ): Promise<any> {
   console.log(`Retrieving doc configuration entities with metadata`);
-  console.log(`product: ${product}`);
-  console.log(`version: ${version}`);
 
   const accessToken = await getAccessToken();
 
@@ -181,9 +195,25 @@ export async function getMatchingDocs(
   }
 
   const responseJson = await configResponse.json();
-  console.log('Retrieved database entities information.');
+  let matchingDocs: DocInfo[] = [];
+  const processDocs = async () => {
+    const promises = responseJson.map(async (doc: Doc) => {
+      let build: DitaBuild & YarnBuild;
+      build = await getBuildInfoByDocUuid(doc.uuid, accessToken);
+      matchingDocs.push({
+        doc,
+        build,
+        source: build.source,
+        isDita: build.root !== undefined,
+      });
+    });
 
-  return responseJson;
+    await Promise.all(promises);
+  };
+  await processDocs();
+
+  console.log('Retrieved matching docs information.');
+  return matchingDocs;
 }
 
 export async function getAllDocs() {
