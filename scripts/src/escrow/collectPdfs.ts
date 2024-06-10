@@ -3,7 +3,6 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs';
 import path from 'path';
-import * as dotenv from 'dotenv';
 
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
