@@ -155,7 +155,6 @@ function parseArgs(): ParsedArguments {
 
 async function movePdfFilesAndDeleteDir(dir: string) {
   // Read the contents of the directory
-  console.log(dir);
   fs.readdir(dir, { withFileTypes: true }, (err, files) => {
     if (err) {
       console.error(`Error reading directory ${dir}: ${err.message}`);
@@ -166,7 +165,6 @@ async function movePdfFilesAndDeleteDir(dir: string) {
       const fullPath = path.join(dir, file.name);
 
       if (file.isDirectory()) {
-        // If the directory is named 'pdf'
         if (file.name === 'pdf') {
           fs.readdir(fullPath, (err, pdfFiles) => {
             if (err) {
