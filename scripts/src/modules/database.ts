@@ -142,32 +142,43 @@ async function getAllEntities(
   return responseJson;
 }
 
-export async function getMatchingDocs(
-  release?: string,
-  product?: string,
-  version?: string,
-  env: string = 'prod'
-): Promise<any> {
+export type DocQueryOptions = {
+  release?: string;
+  product?: string;
+  version?: string;
+  language?: string;
+  env: string;
+};
+export async function getMatchingDocs(query: DocQueryOptions): Promise<any> {
   console.log(`Retrieving doc configuration entities with metadata`);
 
   const accessToken = await getAccessToken();
 
-  let queryString = release ? 'releases[name]=' + release + '&' : '';
-  if (product) {
+  let queryString = query.release
+    ? 'releases[name]=' + query.release + '&'
+    : '';
+
+  if (query.product) {
     queryString = queryString.concat(
       queryString.length > 0 ? '&' : '',
-      `platformProductVersions[product][name]=${product}`
+      `platformProductVersions[product][name]=${query.product}`
     );
   }
 
-  if (version) {
+  if (query.version) {
     queryString = queryString.concat(
       queryString.length > 0 ? '&' : '',
-      `platformProductVersions[version][name]=${version}`
+      `platformProductVersions[version][name]=${query.version}`
     );
   }
 
-  if (env === 'prod') {
+  if (query.language) {
+    queryString = queryString.concat(
+      queryString.length > 0 ? '&' : '',
+      `language[code]=${query.language}`
+    );
+  }
+  if (query.env === 'prod') {
     queryString = queryString.concat(
       queryString.length > 0 ? '&' : '',
       `isInProduction=true`
