@@ -81,7 +81,7 @@ async function copyPdfsFromS3(argv: ParsedArguments) {
     }
 
     const s3Url =
-      argv.env === 'prod'
+      query.env === 'prod'
         ? 'tenant-doctools-omega2-andromeda-builds'
         : 'tenant-doctools-staging-builds';
     const awsCliCommand = `aws s3 cp s3://${s3Url}/${docInfo.doc.url} ${outdir}/${docInfo.doc.url} --recursive --exclude "*" --include "*.pdf"`;
