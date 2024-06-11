@@ -10,6 +10,12 @@ export async function saveUserInfoToResLocals(
   res: Response,
   next: NextFunction
 ) {
+  // A temporary block for the Glean test crawler.
+  // Reason: The crawler generates a very high number of "JWT is expired" errors.
+  // The errors make the server run out of memory and restart in Atmos.
+  if (req.ip == '104.154.208.189') {
+    res.send('IP blocked').status(403);
+  }
   res.locals.userInfo = await getUserInfo(req);
   return next();
 }
