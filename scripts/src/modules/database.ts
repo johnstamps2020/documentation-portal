@@ -210,9 +210,11 @@ export async function getMatchingDocs(
   query: DocQueryOptions,
   accessToken: string
 ): Promise<any> {
-  console.log(`Retrieving doc configuration entities with metadata`);
+  console.log(
+    `Retrieving doc configuration entities with metadata from ${query.env}`
+  );
   let docPortalUrl =
-    query.env == 'prod'
+    query.env === 'prod'
       ? 'docs.guidewire.com'
       : 'docs.staging.ccs.guidewire.net';
 
@@ -247,6 +249,9 @@ export async function getMatchingDocs(
     );
   }
 
+  console.log(
+    `Fetching https://${docPortalUrl}/safeConfig/entity/Doc/many/relations?${queryString}`
+  );
   const configResponse = await fetch(
     `https://${docPortalUrl}/safeConfig/entity/Doc/many/relations?${queryString}`,
     {
