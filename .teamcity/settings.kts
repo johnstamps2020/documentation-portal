@@ -331,9 +331,9 @@ object Helpers {
                 export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES_PROD.paramValue}"
                 export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
                 export CONFIG_DB_HOST="${GwConfigParams.CONFIG_DB_HOST_PROD.paramValue}" 
-                export REQUESTS_MEMORY="2G"
-                export REQUESTS_CPU="400m"
-                export LIMITS_MEMORY="8G"
+                export REQUESTS_MEMORY="16G"
+                export REQUESTS_CPU="2"
+                export LIMITS_MEMORY="32G"
                 export LIMITS_CPU="4"
             """.trimIndent()
 

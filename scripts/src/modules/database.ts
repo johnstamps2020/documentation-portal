@@ -1,5 +1,4 @@
 import { DitaBuild, Doc, Source, YarnBuild } from '@doctools/server';
-import { getAccessToken } from './auth';
 
 async function getEntityByAttribute(
   entityName: string,
@@ -39,6 +38,48 @@ async function getEntityByAttribute(
   return responseJson;
 }
 
+export async function deleteEntityById(
+  repo: string,
+  id: string,
+  accessToken: string,
+  host: string
+) {
+  console.log(`Attempting to delete entity from ${repo} with ID: ${id}`);
+
+  const endpoint = host + '/admin/entity/' + repo;
+  const deleteResponse = await fetch(endpoint, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  });
+
+  if (!deleteResponse.ok) {
+    if (deleteResponse.status === 404) {
+      return console.log('404: Not found', { repo, id, host });
+    }
+
+    console.log(
+      'DELETE response is not OK',
+      endpoint,
+      deleteResponse.status,
+      deleteResponse.statusText
+    );
+    throw new Error(
+      `Failed to delete!',\n\n${JSON.stringify(deleteResponse, null, 2)}`
+    );
+  }
+
+  const responseBody = await deleteResponse.json();
+  console.log(
+    `DELETE operation result: ${JSON.stringify(responseBody, null, 2)}`
+  );
+}
+
 export type DocInfo = {
   doc: Doc;
   build: DitaBuild & YarnBuild;
@@ -46,10 +87,12 @@ export type DocInfo = {
   isDita: boolean;
 };
 
-export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
-  const accessToken = await getAccessToken();
-
+export async function getDocInfoByDocId(
+  docId: string,
+  accessToken: string
+): Promise<DocInfo> {
   let doc: DocInfo['doc'];
+
   try {
     doc = await getEntityByAttribute('Doc', 'id', docId, accessToken);
   } catch (err) {
@@ -57,7 +100,6 @@ export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
     process.exit(1);
   }
 
-  // TODO move to getBuildInfoByDocId function for reuse
   let build: DocInfo['build'];
 
   build = await getBuildInfoByDocUuid(doc.uuid, accessToken);
@@ -79,6 +121,7 @@ async function getBuildInfoByDocUuid(
   accessToken: string
 ): Promise<DitaBuild & YarnBuild> {
   let build: DocInfo['build'];
+  console.log(`Retrieving build information for doc.uuid: ${docUuid}`);
   try {
     build = await getEntityByAttribute(
       'DitaBuild',
@@ -100,6 +143,8 @@ async function getBuildInfoByDocUuid(
     );
   }
 
+  // TODO: just return null instead of erroring out? There are docs with no build configured.
+  // Update calling functions to handle that case as needed.
   if (!build) {
     console.error('UNEXPECTED ERROR: The build is somehow not available!');
     process.exit(1);
@@ -149,10 +194,11 @@ export type DocQueryOptions = {
   language?: string;
   env: string;
 };
-export async function getMatchingDocs(query: DocQueryOptions): Promise<any> {
+export async function getMatchingDocs(
+  query: DocQueryOptions,
+  accessToken: string
+): Promise<any> {
   console.log(`Retrieving doc configuration entities with metadata`);
-
-  const accessToken = await getAccessToken();
 
   let queryString = query.release
     ? 'releases[name]=' + query.release + '&'
@@ -227,9 +273,7 @@ export async function getMatchingDocs(query: DocQueryOptions): Promise<any> {
   return matchingDocs;
 }
 
-export async function getAllDocs() {
-  const accessToken = await getAccessToken();
-
+export async function getAllDocs(accessToken: string) {
   let docs: Doc[];
 
   try {

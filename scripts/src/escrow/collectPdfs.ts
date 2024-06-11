@@ -1,4 +1,5 @@
 import { getMatchingDocs, DocInfo, DocQueryOptions } from '../modules/database';
+import { getAccessToken } from '../modules/auth';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs';
@@ -51,6 +52,7 @@ async function collectPdfs() {
 }
 
 async function copyPdfsFromS3(argv: ParsedArguments) {
+  const accessToken = await getAccessToken();
   let query: DocQueryOptions = { env: 'prod' };
   argv.release && (query.release = argv.release);
   argv.product && (query.product = argv.product);
@@ -61,7 +63,7 @@ async function copyPdfsFromS3(argv: ParsedArguments) {
   let docs: DocInfo[];
 
   try {
-    docs = await getMatchingDocs(query);
+    docs = await getMatchingDocs(query, accessToken);
   } catch (err) {
     console.log(err);
     process.exit(1);
@@ -219,5 +221,19 @@ collectPdfs().catch((err) => {
   process.exit(1);
 });
 
-// Example command:
-// yarn scripts:collect-pdfs
+// Example commands:
+// To collect all Kufri PDFs from prod, all products, versions, and languages
+// yarn scripts:collect-pdfs --release="Kufri"
+//
+// To collect all PolicyCenter 10.2.3 PDFs from prod for English only:
+// yarn scripts:collect-pdfs --product="PolicyCenter" --version="10.2.3" --language="en"
+//
+// To collect all PolicyCenter 10.2.3 PDFs from staging for English only (for testing):
+// yarn scripts:collect-pdfs --product="PolicyCenter" --version="10.2.3" --language="en" --env="staging"
+//
+// Arguments can be shortened:
+// --r for --release
+// --p for --product
+// --v for --version
+// --l for --language
+// --e for --env
