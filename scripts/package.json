@@ -7,7 +7,8 @@
     "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts",
     "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts",
     "create-translation-kit": "ts-node src/translations/createTranslationKit.ts",
-    "set-downloadable-build-params": "ts-node src/downloadable/setDownloadableBuildParams.ts"
+    "set-downloadable-build-params": "ts-node src/downloadable/setDownloadableBuildParams.ts",
+    "delete-doc": "ts-node src/docs/deleteDoc.ts"
   },
   "bin": {
     "copy-non-tx-files": "src/filesystem/copyNonTxFiles.mjs"

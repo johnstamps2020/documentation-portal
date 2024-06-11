@@ -1,5 +1,4 @@
 import { DitaBuild, Doc, Source, YarnBuild } from '@doctools/server';
-import { getAccessToken } from './auth';
 
 async function getEntityByAttribute(
   entityName: string,
@@ -39,6 +38,48 @@ async function getEntityByAttribute(
   return responseJson;
 }
 
+export async function deleteEntityById(
+  repo: string,
+  id: string,
+  accessToken: string,
+  host: string
+) {
+  console.log(`Attempting to delete entity from ${repo} with ID: ${id}`);
+
+  const endpoint = host + '/admin/entity/' + repo;
+  const deleteResponse = await fetch(endpoint, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  });
+
+  if (!deleteResponse.ok) {
+    if (deleteResponse.status === 404) {
+      return console.log('404: Not found', { repo, id, host });
+    }
+
+    console.log(
+      'DELETE response is not OK',
+      endpoint,
+      deleteResponse.status,
+      deleteResponse.statusText
+    );
+    throw new Error(
+      `Failed to delete!',\n\n${JSON.stringify(deleteResponse, null, 2)}`
+    );
+  }
+
+  const responseBody = await deleteResponse.json();
+  console.log(
+    `DELETE operation result: ${JSON.stringify(responseBody, null, 2)}`
+  );
+}
+
 export type DocInfo = {
   doc: Doc;
   build: DitaBuild & YarnBuild;
@@ -46,10 +87,12 @@ export type DocInfo = {
   isDita: boolean;
 };
 
-export async function getDocInfoByDocId(docId: string): Promise<DocInfo> {
-  const accessToken = await getAccessToken();
-
+export async function getDocInfoByDocId(
+  docId: string,
+  accessToken: string
+): Promise<DocInfo> {
   let doc: DocInfo['doc'];
+
   try {
     doc = await getEntityByAttribute('Doc', 'id', docId, accessToken);
   } catch (err) {
