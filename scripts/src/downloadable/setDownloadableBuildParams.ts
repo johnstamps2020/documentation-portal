@@ -11,7 +11,7 @@ async function setDownloadableBuildParams() {
   }
 
   const accessToken = await getAccessToken();
-  const docInfo = await getDocInfoByDocId(docId, accessToken);
+  const docInfo = await getDocInfoByDocId(docId, 'staging', accessToken);
 
   if (!docInfo.isDita) {
     console.error(

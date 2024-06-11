@@ -223,16 +223,16 @@ collectPdfs().catch((err) => {
 
 // Example commands:
 // To collect all Kufri PDFs from prod, all products, versions, and languages
-// yarn scripts:collect-pdfs --release "Kufri"
+// yarn scripts:collect-pdfs --release Kufri
 //
 // To collect all PolicyCenter 10.2.3 PDFs from prod for English only:
-// yarn scripts:collect-pdfs --product "PolicyCenter" --version "10.2.3" --language "en"
+// yarn scripts:collect-pdfs --product PolicyCenter --version 10.2.3 --language en
 //
 // To collect all PolicyCenter 10.2.3 PDFs from staging for English only (for testing):
-// yarn scripts:collect-pdfs --product="PolicyCenter" --version "10.2.3" --language "en" --env "staging"
+// yarn scripts:collect-pdfs --product=PolicyCenter --version 10.2.3 --language en --env staging
 //
 // To collect all PolicyCenter 10.2.3 PDFs from staging for English only and output to /foo:
-// yarn scripts:collect-pdfs --product="PolicyCenter" --version "10.2.3" --language "en" --env "staging" --out "foo"
+// yarn scripts:collect-pdfs --product=PolicyCenter --version 10.2.3 --language en --env staging --out foo
 //
 // Arguments can be shortened:
 // --r for --release

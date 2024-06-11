@@ -51,7 +51,7 @@ async function createTranslationKit() {
     prepareTranslationKitOutputDirectories();
 
   const accessToken = await getAccessToken();
-  const docInfo = await getDocInfoByDocId(docId, accessToken);
+  const docInfo = await getDocInfoByDocId(docId, 'staging', accessToken);
 
   const translationKitType: TranslationKitType = docInfo.isDita
     ? 'dita'
