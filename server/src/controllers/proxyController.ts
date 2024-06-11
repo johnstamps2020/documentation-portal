@@ -72,18 +72,18 @@ async function getResourceStatusForEntityWithVariants(
   const cleanedRequestedPath = requestedPath
     .replace(publicSubPath, '')
     .replace(restrictedSubPath, '');
-  const requstedPathNeedsTrailingSlash = checkIfPathNeedsTrailingSlash(
+  const requestedPathNeedsTrailingSlash = checkIfPathNeedsTrailingSlash(
     cleanedRequestedPath,
     htmlRequest
   );
 
   if (requestedPath !== cleanedRequestedPath) {
-    if (requstedPathNeedsTrailingSlash) {
+    if (requestedPathNeedsTrailingSlash) {
       return [307, `${cleanedRequestedPath}/`];
     }
     return [307, cleanedRequestedPath];
   }
-  if (requstedPathNeedsTrailingSlash) {
+  if (requestedPathNeedsTrailingSlash) {
     return [307, `${cleanedRequestedPath}/`];
   }
   const hasAccessToRestrictedDoc = isUserAllowedToAccessResource(
@@ -233,7 +233,7 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   }
 
   if (resourceStatus === 401) {
-    return redirectToLoginPage(req, res);
+    return redirectToLoginPage(req, res, next);
   }
 
   if (resourceStatus == 403) {

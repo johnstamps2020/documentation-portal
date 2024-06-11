@@ -1,9 +1,9 @@
 import OktaJwtVerifier from '@okta/jwt-verifier';
 import { NextFunction, Request, Response } from 'express';
-import { decode, JwtPayload } from 'jsonwebtoken';
+import { JwtPayload } from 'jsonwebtoken';
+import { ApiResponse } from '../types/apiResponse';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
-import { ApiResponse } from '../types/apiResponse';
 
 export async function saveUserInfoToResLocals(
   req: Request,
@@ -110,10 +110,15 @@ export function isUserAllowedToAccessResource(
   };
 }
 
-function getTokenFromRequestHeader(req: Request) {
+export function getTokenFromRequestHeader(req: Request): string | null {
   try {
     const authorizationHeader = req.headers?.authorization;
-    return authorizationHeader ? authorizationHeader.split(' ')[1] : null;
+
+    if (!authorizationHeader) {
+      return null;
+    }
+
+    return authorizationHeader.split(' ')[1];
   } catch (err) {
     winstonLogger.error(
       `Problem getting token from request header 
@@ -127,7 +132,7 @@ type AvailableOktaIssuers = {
   [x: string]: string | undefined;
 };
 
-function getAvailableOktaIssuers(): AvailableOktaIssuers {
+export function getAvailableOktaIssuers(): AvailableOktaIssuers {
   const issuers = {
     [process.env.OKTA_ISSUER as string]: process.env.OKTA_CLIENT_ID,
   };
@@ -141,32 +146,24 @@ function getAvailableOktaIssuers(): AvailableOktaIssuers {
   return issuers;
 }
 
-function createOktaJwtVerifier(
-  token: string,
+export function createOktaJwtVerifier(
+  token: JwtPayload,
   availableIssuers: AvailableOktaIssuers,
   requestedUrl: string,
   requestIp: string
 ): OktaJwtVerifier | null {
   try {
-    const decodedJwt = decode(token, {}) as JwtPayload;
-    if (decodedJwt) {
-      const jwtIssuer = decodedJwt.iss;
-      const issuer = Object.entries(availableIssuers).find(
-        (iss) => iss[0] === jwtIssuer
-      );
-      return new OktaJwtVerifier({
-        issuer: issuer![0],
-        clientId: issuer![1],
-        assertClaims: {
-          'scp.includes': process.env.OKTA_SCOPES,
-        },
-      });
-    } else {
-      winstonLogger.warning(
-        `Requested URL: ${requestedUrl}, From IP: ${requestIp}, WARNING: Invalid JSON Web Token in the Authorization header`
-      );
-      return null;
-    }
+    const jwtIssuer = token.iss;
+    const issuer = Object.entries(availableIssuers).find(
+      (iss) => iss[0] === jwtIssuer
+    );
+    return new OktaJwtVerifier({
+      issuer: issuer![0],
+      clientId: issuer![1],
+      assertClaims: {
+        'scp.includes': process.env.OKTA_SCOPES,
+      },
+    });
   } catch (err) {
     winstonLogger.error(
       `Problem creating OKTA JWT verifier, Requested URL: ${requestedUrl}, From IP: ${requestIp}, ERROR: ${err}`
@@ -175,73 +172,12 @@ function createOktaJwtVerifier(
   }
 }
 
-async function checkTokenInOkta(
-  token: any,
-  jwtVerifierInstance: OktaJwtVerifier,
-  requestedUrl: string,
-  requestIp: string
-) {
-  try {
-    const jwt = await jwtVerifierInstance.verifyAccessToken(
-      token,
-      process.env.OKTA_AUDIENCE as string
-    );
-    return jwt;
-  } catch (err) {
-    winstonLogger.error(
-      `Requested URL: ${requestedUrl}, From IP: ${requestIp}, ERROR: ${err}`
-    );
-    return null;
-  }
-}
-
-async function verifyToken(req: Request) {
-  const reqOriginalUrl = req.originalUrl;
-  const reqIp = req.ip || 'undefined';
-  try {
-    const bearerToken = getTokenFromRequestHeader(req);
-    if (bearerToken) {
-      const oktaIssuers = getAvailableOktaIssuers();
-      const oktaJwtVerifier = createOktaJwtVerifier(
-        bearerToken,
-        oktaIssuers,
-        reqOriginalUrl,
-        reqIp
-      );
-      if (oktaJwtVerifier) {
-        const verifiedToken = await checkTokenInOkta(
-          bearerToken,
-          oktaJwtVerifier,
-          reqOriginalUrl,
-          reqIp
-        );
-        req.accessToken = verifiedToken
-          ? decode(verifiedToken.toString(), {})
-          : null;
-        return verifiedToken;
-      } else {
-        return oktaJwtVerifier;
-      }
-    } else {
-      winstonLogger.info(
-        `Requested URL: ${reqOriginalUrl}, From IP: ${reqIp}, INFO: The request does not contain the "Authorization: Bearer" header.`
-      );
-      return null;
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem verifying token, Requested URL: ${reqOriginalUrl}, From IP: ${reqIp}, ERROR: ${err}`
-    );
-    return null;
-  }
-}
-
-export async function isLoggedInOrHasValidToken(req: Request) {
+export function isUserLoggedIn(req: Request): boolean {
   try {
     const requestIsAuthenticated = req.isAuthenticated
       ? req.isAuthenticated()
       : false;
-    return requestIsAuthenticated || !!(await verifyToken(req));
+    return requestIsAuthenticated;
   } catch (err) {
     winstonLogger.error(
       `Problem verifying auth status, Requested URL: ${req.originalUrl}, From IP: ${req.ip}, ERROR: ${err}`
@@ -257,8 +193,17 @@ export function saveRedirectUrlToSession(req: Request) {
   }
 }
 
-export function redirectToLoginPage(req: Request, res: Response) {
+export function redirectToLoginPage(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
+    const tokenFromHeader = getTokenFromRequestHeader(req);
+    if (tokenFromHeader) {
+      return next();
+    }
+
     const redirectTo = req.originalUrl;
     if (req.query.authSource === 'guidewire-customer') {
       return res.redirect(`/customers-login?redirectTo=${redirectTo}`);
