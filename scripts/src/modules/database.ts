@@ -4,14 +4,17 @@ async function getEntityByAttribute(
   entityName: string,
   attributeName: string,
   attributeValue: string,
+  env: string,
   accessToken: string,
   getRelations: boolean = false
 ): Promise<any> {
   console.log(
     `Retrieving information for ${attributeName}: "${attributeValue}"`
   );
+  let docPortalUrl =
+    env == 'prod' ? 'docs.guidewire.com' : 'docs.staging.ccs.guidewire.net';
   const configResponse = await fetch(
-    `https://docs.staging.ccs.guidewire.net/safeConfig/entity/${entityName}${
+    `https://${docPortalUrl}/safeConfig/entity/${entityName}${
       getRelations ? `/relations` : ''
     }?${attributeName}=${attributeValue}`,
     {
@@ -89,12 +92,13 @@ export type DocInfo = {
 
 export async function getDocInfoByDocId(
   docId: string,
+  env: string,
   accessToken: string
 ): Promise<DocInfo> {
   let doc: DocInfo['doc'];
 
   try {
-    doc = await getEntityByAttribute('Doc', 'id', docId, accessToken);
+    doc = await getEntityByAttribute('Doc', 'id', docId, env, accessToken);
   } catch (err) {
     console.error(`Could not find a document with id ${docId}`);
     process.exit(1);
@@ -102,7 +106,7 @@ export async function getDocInfoByDocId(
 
   let build: DocInfo['build'];
 
-  build = await getBuildInfoByDocUuid(doc.uuid, accessToken);
+  build = await getBuildInfoByDocUuid(doc.uuid, env, accessToken);
   if (!build) {
     console.error('UNEXPECTED ERROR: The build is somehow not available!');
     process.exit(1);
@@ -118,6 +122,7 @@ export async function getDocInfoByDocId(
 
 async function getBuildInfoByDocUuid(
   docUuid: string,
+  env: string,
   accessToken: string
 ): Promise<DitaBuild & YarnBuild> {
   let build: DocInfo['build'];
@@ -127,6 +132,7 @@ async function getBuildInfoByDocUuid(
       'DitaBuild',
       'doc.uuid',
       docUuid,
+      env,
       accessToken,
       true
     );
@@ -138,6 +144,7 @@ async function getBuildInfoByDocUuid(
       'YarnBuild',
       'doc.uuid',
       docUuid,
+      env,
       accessToken,
       true
     );
@@ -155,12 +162,17 @@ async function getBuildInfoByDocUuid(
 
 async function getAllEntities(
   entityName: string,
+  env: string,
   accessToken: string,
   getRelations: boolean = false
 ): Promise<any> {
   console.log(`Retrieving information for all ${entityName} entities.`);
+
+  let docPortalUrl =
+    env == 'prod' ? 'docs.guidewire.com' : 'docs.staging.ccs.guidewire.net';
+
   const configResponse = await fetch(
-    `https://docs.staging.ccs.guidewire.net/safeConfig/entity/${entityName}/all${
+    `https://${docPortalUrl}/safeConfig/entity/${entityName}/all${
       getRelations ? `/relations` : ''
     }`,
     {
@@ -199,6 +211,10 @@ export async function getMatchingDocs(
   accessToken: string
 ): Promise<any> {
   console.log(`Retrieving doc configuration entities with metadata`);
+  let docPortalUrl =
+    query.env == 'prod'
+      ? 'docs.guidewire.com'
+      : 'docs.staging.ccs.guidewire.net';
 
   let queryString = query.release
     ? 'releases[name]=' + query.release + '&'
@@ -232,7 +248,7 @@ export async function getMatchingDocs(
   }
 
   const configResponse = await fetch(
-    `https://docs.staging.ccs.guidewire.net/safeConfig/entity/Doc/many/relations?${queryString}`,
+    `https://${docPortalUrl}/safeConfig/entity/Doc/many/relations?${queryString}`,
     {
       method: 'GET',
       headers: {
@@ -256,7 +272,7 @@ export async function getMatchingDocs(
   const processDocs = async () => {
     const promises = responseJson.map(async (doc: Doc) => {
       let build: DitaBuild & YarnBuild;
-      build = await getBuildInfoByDocUuid(doc.uuid, accessToken);
+      build = await getBuildInfoByDocUuid(doc.uuid, query.env, accessToken);
       matchingDocs.push({
         doc,
         build,
@@ -273,11 +289,11 @@ export async function getMatchingDocs(
   return matchingDocs;
 }
 
-export async function getAllDocs(accessToken: string) {
+export async function getAllDocs(env: string, accessToken: string) {
   let docs: Doc[];
 
   try {
-    docs = await getAllEntities('Doc', accessToken, true);
+    docs = await getAllEntities('Doc', env, accessToken, true);
   } catch (err) {
     console.log('Could not fetch all docs configurations from database.');
     process.exit(1);

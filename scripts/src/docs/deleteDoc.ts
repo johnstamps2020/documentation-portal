@@ -19,7 +19,7 @@ async function deleteDoc() {
   }
 
   const accessToken = await getAccessToken();
-  const docInfo = await getDocInfoByDocId(docId, accessToken);
+  const docInfo = await getDocInfoByDocId(docId, 'staging', accessToken);
   console.log({ docInfo });
 
   const buildId = docInfo.build.id;
