@@ -53,7 +53,7 @@ async function collectPdfs() {
 
 async function copyPdfsFromS3(argv: ParsedArguments) {
   const accessToken = await getAccessToken();
-  let query: DocQueryOptions = { env: 'prod' };
+  let query: DocQueryOptions = { env: 'staging' };
   argv.release && (query.release = argv.release);
   argv.product && (query.product = argv.product);
   argv.version && (query.version = argv.version);
