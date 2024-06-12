@@ -109,6 +109,13 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
     }
 
     const decodedToken = decode(tokenFromHeader, {}) as JwtPayload;
+    if (decodedToken === null) {
+      winstonLogger.warning(
+        `Invalid JSON Web Token (JWT) in the authorization header, Requested URL: ${requestedUrl}, From IP: ${ipAddress}`
+      );
+
+      return unknownUserInfo;
+    }
 
     const oktaIssuers = getAvailableOktaIssuers();
     const oktaJwtVerifier = createOktaJwtVerifier(

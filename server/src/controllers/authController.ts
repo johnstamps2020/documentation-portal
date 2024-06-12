@@ -112,7 +112,18 @@ export function getTokenFromRequestHeader(req: Request): string | null {
       return null;
     }
 
-    return authorizationHeader.split(' ')[1];
+    const [fieldName, authorizationHeaderValue] =
+      authorizationHeader.split(' ');
+
+    if (fieldName !== 'Bearer') {
+      return null;
+    }
+
+    if (!authorizationHeaderValue) {
+      return null;
+    }
+
+    return authorizationHeaderValue;
   } catch (err) {
     winstonLogger.error(
       `Problem getting token from request header 
@@ -187,17 +198,8 @@ export function saveRedirectUrlToSession(req: Request) {
   }
 }
 
-export function redirectToLoginPage(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function redirectToLoginPage(req: Request, res: Response) {
   try {
-    const tokenFromHeader = getTokenFromRequestHeader(req);
-    if (tokenFromHeader) {
-      return next();
-    }
-
     const redirectTo = req.originalUrl;
     if (req.query.authSource === 'guidewire-customer') {
       return res.redirect(`/customers-login?redirectTo=${redirectTo}`);

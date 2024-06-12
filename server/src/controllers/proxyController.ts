@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import {
+  getTokenFromRequestHeader,
   isUserAllowedToAccessResource,
   openRequestedUrl,
   redirectToLoginPage,
@@ -228,15 +229,30 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
     isHtmlRequest,
     res
   );
+
+  const tokenFromHeader = getTokenFromRequestHeader(req);
+
   if (resourceStatus === 100) {
     return next();
   }
 
   if (resourceStatus === 401) {
+    if (tokenFromHeader) {
+      return res
+        .status(resourceStatus)
+        .send({ message: 'Unauthorized', token: tokenFromHeader });
+    }
+
     return redirectToLoginPage(req, res, next);
   }
 
   if (resourceStatus == 403) {
+    if (tokenFromHeader) {
+      return res
+        .status(resourceStatus)
+        .send({ message: 'Forbidden', token: tokenFromHeader });
+    }
+
     return res.redirect(
       `${internalRoute}${req.url ? `?restricted=${req.originalUrl}` : ''}`
     );
@@ -247,6 +263,12 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   }
 
   if ([404, 406].includes(resourceStatus)) {
+    if (tokenFromHeader) {
+      return res
+        .status(404)
+        .send({ message: 'Resource not found', requestedUrl: req.originalUrl });
+    }
+
     return res.redirect(
       `${fourOhFourRoute}${req.url ? `?notFound=${req.originalUrl}` : ''}`
     );
