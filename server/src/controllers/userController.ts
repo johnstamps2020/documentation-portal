@@ -4,10 +4,15 @@ import {
   internalMockUserData,
 } from './utils/mockUserData';
 
-import { winstonLogger } from './loggerController';
-import { isLoggedInOrHasValidToken } from './authController';
-import { JwtPayload } from 'jsonwebtoken';
 import { UserInfo } from '@doctools/components';
+import { JwtPayload, decode } from 'jsonwebtoken';
+import {
+  createOktaJwtVerifier,
+  getAvailableOktaIssuers,
+  getTokenFromRequestHeader,
+  isUserLoggedIn,
+} from './authController';
+import { winstonLogger } from './loggerController';
 
 function belongsToGuidewire(email: string) {
   try {
@@ -65,6 +70,8 @@ const unknownUserInfo: UserInfo = {
 };
 
 export async function getUserInfo(req: Request): Promise<UserInfo> {
+  const requestedUrl = req.originalUrl;
+  const ipAddress: string = req.ip || 'undefined';
   try {
     if (process.env.ENABLE_AUTH === 'no') {
       if (process.env.PRETEND_TO_BE_EXTERNAL === 'yes') {
@@ -72,41 +79,80 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
       }
       return internalMockUserData;
     }
-    const isLoggedIn = await isLoggedInOrHasValidToken(req);
-    const user = req.user;
-    if (!user) {
-      if (isLoggedIn) {
-        const accessToken = req.accessToken as JwtPayload;
-        const adminAccessToken = isAdminAccessToken(accessToken);
-        return {
-          ...unknownUserInfo,
-          isLoggedIn: isLoggedIn,
-          // Only GW apps have access to the doc portal through JWT, but we don't know who logs into these apps
-          // and if they are GW employees.
-          // Therefore, only apps with admin access are treated as GW employees to limit access to internal resources.
-          hasGuidewireEmail: adminAccessToken,
-          isAdmin: adminAccessToken,
-        };
+    const isLoggedIn = isUserLoggedIn(req);
+
+    if (isLoggedIn) {
+      const user = req.user;
+
+      if (!user) {
+        return { ...unknownUserInfo, isLoggedIn };
       }
+
+      const email = user.email?.toLowerCase() || 'no email';
+
+      return {
+        isLoggedIn,
+        name: getUserName(user),
+        email: email,
+        preferred_username: email,
+        id: user.sub,
+        hasGuidewireEmail: belongsToGuidewire(email),
+        locale: user.locale,
+        isAdmin: user.isAdmin,
+        isPowerUser: user.isPowerUser,
+      };
+    }
+
+    const tokenFromHeader = getTokenFromRequestHeader(req);
+    if (!tokenFromHeader) {
       return unknownUserInfo;
     }
-    const email = user.email?.toLowerCase() || 'no email';
 
+    const decodedToken = decode(tokenFromHeader, {}) as JwtPayload;
+    if (decodedToken === null) {
+      winstonLogger.warning(
+        `Invalid JSON Web Token (JWT) in the authorization header, Requested URL: ${requestedUrl}, From IP: ${ipAddress}`
+      );
+
+      return unknownUserInfo;
+    }
+
+    const oktaIssuers = getAvailableOktaIssuers();
+    const oktaJwtVerifier = createOktaJwtVerifier(
+      decodedToken,
+      oktaIssuers,
+      requestedUrl,
+      ipAddress
+    );
+    if (!oktaJwtVerifier) {
+      return unknownUserInfo;
+    }
+
+    try {
+      await oktaJwtVerifier.verifyAccessToken(
+        tokenFromHeader,
+        process.env.OKTA_AUDIENCE as string
+      );
+    } catch (oktaError) {
+      winstonLogger.error(
+        `Problem verifying access token in Okta; REQUESTED URL: ${requestedUrl}, FROM IP: ${ipAddress}, ERROR: ${oktaError}`
+      );
+      return unknownUserInfo;
+    }
+
+    const adminAccessToken = isAdminAccessToken(decodedToken);
     return {
-      isLoggedIn: isLoggedIn,
-      name: getUserName(user),
-      email: email,
-      preferred_username: email,
-      id: user.sub,
-      hasGuidewireEmail: belongsToGuidewire(email),
-      locale: user.locale,
-      isAdmin: user.isAdmin,
-      isPowerUser: user.isPowerUser,
+      ...unknownUserInfo,
+      isLoggedIn: true,
+      // Only GW apps have access to the doc portal through JWT, but we don't know who logs into these apps
+      // and if they are GW employees.
+      // Therefore, only apps with admin access are treated as GW employees to limit access to internal resources.
+      hasGuidewireEmail: adminAccessToken,
+      isAdmin: adminAccessToken,
     };
   } catch (err) {
     winstonLogger.error(
-      `Problem getting user info
-          ERROR: ${err}`
+      `Problem getting user info; REQUESTED URL: ${requestedUrl}, FROM IP: ${ipAddress}, ERROR: ${err}`
     );
     return unknownUserInfo;
   }

@@ -54,7 +54,6 @@ DOC_S3_URL=https://docportal-content.staging.ccs.guidewire.net
 PORTAL2_S3_URL=https://portal2-content.omega2-andromeda.guidewire.net
 ELASTIC_SEARCH_URL=https://docsearch-doctools.staging.ccs.guidewire.net
 DEPLOY_ENV=staging
-LOCAL_CONFIG=no
 ENABLE_AUTH=yes
 PRETEND_TO_BE_EXTERNAL=no
 ALLOW_PUBLIC_DOCS=yes

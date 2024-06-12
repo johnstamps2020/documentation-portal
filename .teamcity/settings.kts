@@ -2620,7 +2620,6 @@ object Server {
                     export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
                     export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
                     export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
-                    export LOCAL_CONFIG=yes
                     export ENABLE_AUTH=no
                     export PRETEND_TO_BE_EXTERNAL=no
                     export ALLOW_PUBLIC_DOCS=yes
