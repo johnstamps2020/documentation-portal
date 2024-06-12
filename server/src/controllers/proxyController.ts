@@ -243,7 +243,7 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
         .send({ message: 'Unauthorized', token: tokenFromHeader });
     }
 
-    return redirectToLoginPage(req, res, next);
+    return redirectToLoginPage(req, res);
   }
 
   if (resourceStatus == 403) {
