@@ -8,6 +8,7 @@
     "replace-url-with-doc-id": "ts-node src/pages/replaceUrlWithDocId.ts",
     "create-translation-kit": "ts-node src/translations/createTranslationKit.ts",
     "set-downloadable-build-params": "ts-node src/downloadable/setDownloadableBuildParams.ts",
+    "collect-pdfs": "ts-node src/escrow/collectPdfs.ts",
     "delete-doc": "ts-node src/docs/deleteDoc.ts"
   },
   "bin": {
@@ -23,6 +24,7 @@
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.515.0",
     "dotenv": "^16.4.5",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "yargs": "^17.7.2"
   }
 }

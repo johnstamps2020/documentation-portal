@@ -1,6 +1,6 @@
 {
   "name": "documentation-portal-monorepo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "repository": "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
   "license": "UNLICENSED",
@@ -52,6 +52,7 @@
     "publish:theme": "yarn workspace @doctools/gw-theme-classic npm publish --tolerate-republish",
     "scripts:create-translation-kit": "yarn workspace @doctools/scripts create-translation-kit",
     "scripts:set-downloadable-build-params": "yarn workspace @doctools/scripts set-downloadable-build-params",
+    "scripts:collect-pdfs": "yarn workspace @doctools/scripts collect-pdfs",
     "scripts:get-root-breadcrumbs": "yarn workspace @doctools/scripts get-root-breadcrumbs",
     "scripts:migrate-pages": "yarn workspace @doctools/scripts migrate-pages && yarn prettier:landing-pages",
     "scripts:replace-url-with-doc-id": "yarn workspace @doctools/scripts replace-url-with-doc-id && yarn prettier:landing-pages",
