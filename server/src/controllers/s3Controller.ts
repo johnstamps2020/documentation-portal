@@ -1,5 +1,6 @@
-import { Upload } from '@aws-sdk/lib-storage';
 import { S3 } from '@aws-sdk/client-s3';
+import { Upload } from '@aws-sdk/lib-storage';
+import 'dotenv/config';
 import { FileArray, UploadedFile } from 'express-fileupload';
 import fs from 'fs';
 import path from 'path';
