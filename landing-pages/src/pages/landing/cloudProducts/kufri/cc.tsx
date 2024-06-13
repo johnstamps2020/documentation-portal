@@ -499,6 +499,19 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'gosureflatest',
           description: <>A reference for the Gosu programming language. </>,
         },
+        {
+          label: 'Business Functions (Early Access)',
+          docId: 'businessfunctionsnext',
+          description: (
+            <>
+              A modern approach to implementing stateless, single-transaction
+              business logic that caters to specific business needs. Positioned
+              as a replacement for Gosu for coding business logic across various
+              use cases, it prioritizes facilitating Experience APIs for the
+              Jutro Digital Platform (JDP).
+            </>
+          ),
+        },
       ],
     },
     {

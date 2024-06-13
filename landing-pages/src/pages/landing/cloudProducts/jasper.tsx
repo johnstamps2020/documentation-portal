@@ -178,6 +178,10 @@ const pageConfig: Category2LayoutProps = {
           label: 'Workset Manager',
           docId: 'worksetmgr',
         },
+        {
+          label: 'Business Functions (Early Access)',
+          docId: 'businessfunctionsrelease',
+        },
       ],
     },
   ],
