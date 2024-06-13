@@ -1,9 +1,13 @@
 import { getMatchingDocs, DocInfo, DocQueryOptions } from '../modules/database';
 import { getAccessToken } from '../modules/auth';
-import { exec } from 'child_process';
-import { promisify } from 'util';
 import fs from 'fs';
 import path from 'path';
+import {
+  S3Client,
+  ListObjectsV2Command,
+  GetObjectCommand,
+} from '@aws-sdk/client-s3';
+import { Readable } from 'stream';
 
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
@@ -51,9 +55,17 @@ async function collectPdfs() {
   movePdfFilesAndDeleteDir(outdir);
 }
 
+async function streamToBuffer(stream: Readable): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    const chunks: Buffer[] = [];
+    stream.on('data', (chunk) => chunks.push(chunk));
+    stream.on('error', (err) => reject(err));
+    stream.on('end', () => resolve(Buffer.concat(chunks)));
+  });
+}
+
 async function copyPdfsFromS3(argv: ParsedArguments) {
-  const accessToken = await getAccessToken('prod');
-  let query: DocQueryOptions = { env: 'prod' };
+  let query: DocQueryOptions = { env: 'staging' };
   argv.release && (query.release = argv.release);
   argv.product && (query.product = argv.product);
   argv.version && (query.version = argv.version);
@@ -61,6 +73,7 @@ async function copyPdfsFromS3(argv: ParsedArguments) {
   argv.env && (query.env = argv.env);
 
   let docs: DocInfo[];
+  const accessToken = await getAccessToken(query.env);
 
   try {
     docs = await getMatchingDocs(query, accessToken);
@@ -70,35 +83,65 @@ async function copyPdfsFromS3(argv: ParsedArguments) {
   }
 
   const outdir = argv.out ? argv.out : 'out';
-  const execPromise = promisify(exec);
+  const s3region = query.env === 'prod' ? 'us-east-1' : 'us-west-2';
+  const s3Client = new S3Client({
+    region: s3region,
+    endpoint: `https://s3.${s3region}.amazonaws.com`,
+  });
 
-  const copyCommands = docs.map((docInfo) => {
+  for (const docInfo of docs) {
     if (!docInfo.isDita) {
       console.log(
         `Non-DITA build for document ${docInfo.doc.id} found. Skipping...`
       );
-      return Promise.resolve(); // Skip this doc
+      return;
     }
 
-    const s3Url =
+    const bucketName =
       query.env === 'prod'
         ? 'tenant-doctools-omega2-andromeda-builds'
         : 'tenant-doctools-staging-builds';
-    const awsCliCommand = `aws s3 cp s3://${s3Url}/${docInfo.doc.url} ${outdir}/${docInfo.doc.url} --recursive --exclude "*" --include "*.pdf"`;
+    const objectKey = docInfo.doc.url + '/pdf';
 
-    return execPromise(awsCliCommand)
-      .then(({ stdout, stderr }) => {
-        if (stderr) {
-          console.error(`stderr: ${stderr}`);
-        }
-        console.log(`stdout: ${stdout}`);
-      })
-      .catch((err) => {
-        console.error(`Error executing command: ${err}`);
+    try {
+      const listCommand = new ListObjectsV2Command({
+        Bucket: bucketName,
+        Prefix: objectKey,
       });
-  });
 
-  await Promise.all(copyCommands);
+      const listResponse = await s3Client.send(listCommand);
+
+      if (!listResponse.Contents) {
+        console.error(`No objects found for prefix ${objectKey}`);
+        return;
+      }
+
+      for (const item of listResponse.Contents) {
+        if (item.Key && item.Key.endsWith('.pdf')) {
+          const getCommand = new GetObjectCommand({
+            Bucket: bucketName,
+            Key: item.Key,
+          });
+
+          const getResponse = await s3Client.send(getCommand);
+
+          if (getResponse.Body) {
+            const stream = getResponse.Body as Readable;
+            const buffer = await streamToBuffer(stream);
+            const filePath = path.join(
+              outdir,
+              docInfo.doc.url,
+              path.basename(item.Key)
+            );
+            fs.writeFileSync(filePath, buffer);
+            console.log(`Downloaded ${item.Key} to ${filePath}`);
+          }
+        }
+      }
+    } catch (err) {
+      console.error(`Error downloading ${objectKey}: ${err}`);
+    }
+  }
 }
 
 function parseArgs(): ParsedArguments {
@@ -156,7 +199,6 @@ function parseArgs(): ParsedArguments {
 }
 
 async function movePdfFilesAndDeleteDir(dir: string) {
-  // Read the contents of the directory
   fs.readdir(dir, { withFileTypes: true }, (err, files) => {
     if (err) {
       console.error(`Error reading directory ${dir}: ${err.message}`);
