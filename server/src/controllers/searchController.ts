@@ -6,7 +6,7 @@ import {
   SearchHighlight,
   SearchHit,
 } from '@elastic/elasticsearch/lib/api/types';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import { NextFunction, Request, Response } from 'express';
 import { Version } from '../model/entity/Version';
 import {
@@ -25,7 +25,6 @@ type UrlFilters = {
   [x: string]: string[];
 };
 
-dotenv.config();
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
 const fragmentSize = 300;

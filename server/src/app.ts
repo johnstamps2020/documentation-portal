@@ -1,30 +1,27 @@
-import * as dotenv from 'dotenv';
-//IMPORTANT: Don't move this line. Be careful with optimizing imports.
-dotenv.config();
-//
-import 'reflect-metadata';
-import {
-  expressWinstonErrorLogger,
-  expressWinstonLogger,
-  winstonLogger,
-} from './controllers/loggerController';
-import express, { Request, Response } from 'express';
-import { join } from 'path';
 import cookieParser from 'cookie-parser';
-import favicon from 'serve-favicon';
 import session from 'cookie-session';
+import 'dotenv/config';
+import express, { Request, Response } from 'express';
 import httpContext from 'express-http-context';
-import { AppDataSource } from './model/connection';
-import { runningInDevMode } from './controllers/utils/serverUtils';
-import { ReqUser } from './controllers/userController';
+import { JwtPayload } from 'jsonwebtoken';
+import { join } from 'path';
+import 'reflect-metadata';
+import favicon from 'serve-favicon';
 import {
   isAllowedToAccessRestrictedRoute,
   isAllowedToAccessRoute,
   saveUserInfoToResLocals,
 } from './controllers/authController';
+import {
+  expressWinstonErrorLogger,
+  expressWinstonLogger,
+  winstonLogger,
+} from './controllers/loggerController';
 import { fourOhFourRoute } from './controllers/proxyController';
-import { JwtPayload } from 'jsonwebtoken';
+import { ReqUser } from './controllers/userController';
+import { runningInDevMode } from './controllers/utils/serverUtils';
 import { redirect } from './middlewares/redirectMiddleware';
+import { AppDataSource } from './model/connection';
 
 declare global {
   namespace Express {

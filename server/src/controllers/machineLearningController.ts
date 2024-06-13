@@ -1,4 +1,5 @@
 import { ChatbotRequest, ChatbotResponse } from '@doctools/components';
+import 'dotenv/config';
 import { winstonLogger } from './loggerController';
 
 // TODO: consider moving this definition to an environment variable

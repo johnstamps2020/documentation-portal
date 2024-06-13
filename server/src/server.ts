@@ -1,6 +1,7 @@
+import 'dotenv/config';
+import http from 'http';
 import app from './app';
 import { winstonLogger } from './controllers/loggerController';
-import http from 'http';
 
 function normalizePort(val: string) {
   const port = parseInt(val, 10);

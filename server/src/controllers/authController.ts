@@ -1,4 +1,5 @@
 import OktaJwtVerifier from '@okta/jwt-verifier';
+import 'dotenv/config';
 import { NextFunction, Request, Response } from 'express';
 import { JwtPayload } from 'jsonwebtoken';
 import { ApiResponse } from '../types/apiResponse';

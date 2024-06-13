@@ -1,4 +1,6 @@
+import 'dotenv/config';
 import { NextFunction, Request, Response } from 'express';
+import { Doc, ExternalLink } from '../model';
 import {
   getTokenFromRequestHeader,
   isUserAllowedToAccessResource,
@@ -10,7 +12,6 @@ import {
   addPrecedingSlashToPath,
   s3BucketUrlExists,
 } from './redirectController';
-import { Doc, ExternalLink } from '../model';
 
 const fetch = require('node-fetch-retry');
 
