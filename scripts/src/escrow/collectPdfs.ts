@@ -65,7 +65,7 @@ async function streamToBuffer(stream: Readable): Promise<Buffer> {
 }
 
 async function copyPdfsFromS3(argv: ParsedArguments) {
-  let query: DocQueryOptions = { env: 'staging' };
+  let query: DocQueryOptions = { env: 'prod' };
   argv.release && (query.release = argv.release);
   argv.product && (query.product = argv.product);
   argv.version && (query.version = argv.version);
