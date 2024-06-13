@@ -192,6 +192,18 @@ const permanentRedirectUrls = [
     from: 'help/GCH',
     to: 'guidewire-home/release',
   },
+  {
+    from: 'jutro/documentation/10.1',
+    to: 'jutro/documentation/10.0',
+  },
+  {
+    from: 'jutro/documentation/10.2',
+    to: 'jutro/documentation/10.0',
+  },
+  {
+    from: 'jutro/documentation/10.4',
+    to: 'jutro/documentation/10.3',
+  },
 ];
 const temporaryRedirectUrls = [
   {
