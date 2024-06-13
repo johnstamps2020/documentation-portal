@@ -133,6 +133,10 @@ async function copyPdfsFromS3(argv: ParsedArguments) {
               docInfo.doc.url,
               path.basename(item.Key)
             );
+            const dirPath = path.dirname(filePath);
+
+            fs.mkdirSync(dirPath, { recursive: true });
+
             fs.writeFileSync(filePath, buffer);
             console.log(`Downloaded ${item.Key} to ${filePath}`);
           }
