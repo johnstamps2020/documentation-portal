@@ -204,7 +204,7 @@ export type DocQueryOptions = {
   product?: string;
   version?: string;
   language?: string;
-  env: string;
+  env: 'staging' | 'prod';
 };
 export async function getMatchingDocs(
   query: DocQueryOptions,
@@ -261,6 +261,7 @@ export async function getMatchingDocs(
       },
     }
   );
+  console.log(configResponse);
 
   if (!configResponse.ok) {
     throw new Error(
@@ -268,7 +269,7 @@ export async function getMatchingDocs(
         configResponse,
         null,
         2
-      )}`
+      )}\n\n${configResponse}`
     );
   }
 
