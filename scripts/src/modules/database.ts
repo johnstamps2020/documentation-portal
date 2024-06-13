@@ -261,7 +261,6 @@ export async function getMatchingDocs(
       },
     }
   );
-  console.log(configResponse);
 
   if (!configResponse.ok) {
     throw new Error(
