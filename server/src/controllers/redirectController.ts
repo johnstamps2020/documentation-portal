@@ -205,6 +205,10 @@ const permanentRedirectUrls = [
     from: 'jutro/documentation/10.4',
     to: 'jutro/documentation/10.3',
   },
+  {
+    from: 'jutro/documentation/10.5',
+    to: 'jutro/documentation/10.3',
+  },
 ];
 const temporaryRedirectUrls = [
   {
