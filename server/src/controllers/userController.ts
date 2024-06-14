@@ -135,8 +135,8 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
         process.env.OKTA_AUDIENCE as string
       );
     } catch (oktaError) {
-      winstonLogger.error(
-        `Problem verifying access token in Okta; REQUESTED URL: ${requestedUrl}, FROM IP: ${ipAddress}, ERROR: ${oktaError}`
+      winstonLogger.info(
+        `Okta token verification was not successful; REQUESTED URL: ${requestedUrl}, FROM IP: ${ipAddress}, ERROR: ${oktaError}`
       );
       return unknownUserInfo;
     }
