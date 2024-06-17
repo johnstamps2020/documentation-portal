@@ -10,6 +10,7 @@ import { allSelectors } from 'pages/landing/selectors/allSelectors';
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
+    backgroundAttachment: 'scroll',
     backgroundImage: {
       xs: `url(${gradientBackgroundImage})`,
       sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
