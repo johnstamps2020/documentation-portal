@@ -11,6 +11,7 @@ import { implementationResourcesSidebar } from '../common/sidebars';
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
+    backgroundAttachment: 'scroll',
     backgroundImage: {
       xs: `url(${gradientBackgroundImage})`,
       sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
