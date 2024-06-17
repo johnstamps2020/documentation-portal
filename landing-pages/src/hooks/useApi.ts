@@ -1,4 +1,4 @@
-import { Page, SearchData, ServerSearchError } from '@doctools/server';
+import { Doc, Page, SearchData, ServerSearchError } from '@doctools/server';
 import { useParams, useSearchParams } from 'react-router-dom';
 import useSWR from 'swr';
 import useSWRImmutable from 'swr/immutable';
@@ -112,6 +112,22 @@ export function useTranslatedPages(items: TranslatedPage[]) {
 
   return {
     pages: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useDocsNoRevalidation() {
+  const { data, error, isLoading } = useSWR<Doc[], ServerSearchError>(
+    '/safeConfig/entity/Doc/all/relations',
+    getter,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  return {
+    docs: data,
     isLoading,
     isError: error,
   };

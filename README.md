@@ -54,7 +54,6 @@ DOC_S3_URL=https://docportal-content.staging.ccs.guidewire.net
 PORTAL2_S3_URL=https://portal2-content.omega2-andromeda.guidewire.net
 ELASTIC_SEARCH_URL=https://docsearch-doctools.staging.ccs.guidewire.net
 DEPLOY_ENV=staging
-LOCAL_CONFIG=no
 ENABLE_AUTH=yes
 PRETEND_TO_BE_EXTERNAL=no
 ALLOW_PUBLIC_DOCS=yes
@@ -125,7 +124,7 @@ use the terminal, run this command in the root folder of the project:
 ## Step 5: Import a database dump
 
 1. From Teamcity, download the latest database dump from the
-   [Dump database data from staging](https://gwre-devexp-ci-production-devci.gwre-devops.net/buildConfiguration/DocumentationTools_DocPortal_1678b85abfaa4085ab3305d599569c26#all-projects)
+   [Dump database data from staging](https://gwre-devexp-ci-production-devci.gwre-devops.net/buildConfiguration/DocumentationTools_DocPortal_e3afed0047b08059d0fada10f400c1e5_1678b85abfaa4085ab3305d599569c26#all-projects)
    build. It's in the **Artifacts** tab.
 1. Unzip the dump. On macOS, if you simply double-click the downloaded ZIP file,
    it will be extracted into a folder named `docportalconfig`.

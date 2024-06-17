@@ -111,7 +111,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'cloudplatformtermrelease',
           description: (
             <>
-              Terminology and naming conventions for Guidewire Cloud Platform resources.
+              Terminology and naming conventions for Guidewire Cloud Platform
+              resources.
             </>
           ),
         },
@@ -360,24 +361,26 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'integgatewayfwrelease',
           description: (
             <>
-              Offers comprehensive guidance on leveraging the Integration Gateway
-              framework library components and utilities. Provides detailed
-              instructions and examples for creating new integration projects,
-              refining project implementation, and configuring security authentication.
+              Offers comprehensive guidance on leveraging the Integration
+              Gateway framework library components and utilities. Provides
+              detailed instructions and examples for creating new integration
+              projects, refining project implementation, and configuring
+              security authentication.
             </>
-          )
+          ),
         },
         {
           label: 'Administering Integration Gateway Apps',
           docId: 'integgatewayuirelease',
           description: (
             <>
-              Provides practical guidance on configuring access to the Integration Apps
-              user interface, creating new integration apps, managing the integrations
-              and their deployment to Guidewire Cloud. Offers information about
-              observability metrics for monitoring their performance.
+              Provides practical guidance on configuring access to the
+              Integration Apps user interface, creating new integration apps,
+              managing the integrations and their deployment to Guidewire Cloud.
+              Offers information about observability metrics for monitoring
+              their performance.
             </>
-          )
+          ),
         },
         {
           label: 'Cloud API Developer Guide',
@@ -523,6 +526,19 @@ const pageConfig: ApplicationLayoutProps = {
           label: 'Gosu reference',
           docId: 'gosureflatest',
           description: <>A reference for the Gosu programming language. </>,
+        },
+        {
+          label: 'Business Functions (Early Access)',
+          docId: 'businessfunctionsrelease',
+          description: (
+            <>
+              A modern approach to implementing stateless, single-transaction
+              business logic that caters to specific business needs. Positioned
+              as a replacement for Gosu for coding business logic across various
+              use cases, it prioritizes facilitating Experience APIs for the
+              Jutro Digital Platform (JDP).
+            </>
+          ),
         },
       ],
     },

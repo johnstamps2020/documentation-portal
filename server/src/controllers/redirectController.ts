@@ -1,12 +1,13 @@
+import 'dotenv/config';
 import { Request, Response } from 'express';
 import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { Page } from '../model/entity/Page';
 import { RedirectResponse } from '../types/apiResponse';
-import { getEnvInfo } from './envController';
-import { winstonLogger } from './loggerController';
 import { isUserAllowedToAccessResource } from './authController';
 import { findEntity, getDocByUrl } from './configController';
+import { getEnvInfo } from './envController';
+import { winstonLogger } from './loggerController';
 
 const fetch = require('node-fetch-retry');
 
@@ -191,6 +192,18 @@ const permanentRedirectUrls = [
   {
     from: 'help/GCH',
     to: 'guidewire-home/release',
+  },
+  {
+    from: 'jutro/documentation/10.1',
+    to: 'jutro/documentation/10.0',
+  },
+  {
+    from: 'jutro/documentation/10.2',
+    to: 'jutro/documentation/10.0',
+  },
+  {
+    from: 'jutro/documentation/10.4',
+    to: 'jutro/documentation/10.3',
   },
 ];
 const temporaryRedirectUrls = [

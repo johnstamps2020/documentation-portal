@@ -116,14 +116,13 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Frequently Asked Questions',
-          docId: 'cdsdocss3folder',
-          pathInDoc:
-            'FAQ_AdvancedProductDesignerForGuidewireImplementations.pdf',
+          docId: 'surepathmethodologymain',
+          pathInDoc: 'general-guidance/lob',
         },
         {
-          label: 'Product Adoption',
-          docId: 'cdsdocss3folder',
-          pathInDoc: 'Guidebook_AdvancedProductDesigner.pdf',
+          label: 'Guidebook',
+          docId: 'surepathmethodologymain',
+          pathInDoc: 'general-guidance/lob',
         },
       ],
     },

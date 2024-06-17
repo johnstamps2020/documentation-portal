@@ -1,3 +1,4 @@
+import { getAccessToken } from '../modules/auth';
 import { getDocInfoByDocId } from '../modules/database';
 //import shelljs = require('shelljs');
 let os = require('os');
@@ -9,7 +10,8 @@ async function setDownloadableBuildParams() {
     process.exit(1);
   }
 
-  const docInfo = await getDocInfoByDocId(docId);
+  const accessToken = await getAccessToken();
+  const docInfo = await getDocInfoByDocId(docId, 'staging', accessToken);
 
   if (!docInfo.isDita) {
     console.error(

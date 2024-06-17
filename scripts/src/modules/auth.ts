@@ -35,7 +35,9 @@ async function getOktaCredentialsFromSecretsManager(): Promise<any> {
   }
 }
 
-export async function getAccessToken(): Promise<string> {
+export async function getAccessToken(
+  env: 'staging' | 'prod' = 'staging'
+): Promise<string> {
   for (const envVar of requiredEnvVars) {
     if (envVar in process.env) {
       console.log(`${envVar} is set`);
@@ -50,7 +52,12 @@ export async function getAccessToken(): Promise<string> {
 
   const timerName = 'Time needed to get access token from Okta';
   console.time(timerName);
-  const oktaScopes = `${process.env.OKTA_SCOPES} NODE_Hawaii_Docs_Web.admin`;
+  // TODO set differently for prod
+  const oktaScopesStaging = `${process.env.OKTA_SCOPES} NODE_Hawaii_Docs_Web.admin`;
+  const oktaScopesProd = `${process.env.OKTA_SCOPES} Documentation_portal.read`;
+
+  const oktaScopes = env === 'prod' ? oktaScopesProd : oktaScopesStaging;
+
   const { oktaClientId, oktaClientSecret } =
     await getOktaCredentialsFromSecretsManager();
   const base64ClientCreds = Buffer.from(

@@ -1,14 +1,15 @@
-import { Issuer, Strategy, TokenSet, UserinfoResponse } from 'openid-client';
-import { Router } from 'express';
-import passport from 'passport';
-import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import { winstonLogger } from '../controllers/loggerController';
+import cookieParser from 'cookie-parser';
+import 'dotenv/config';
+import { Router } from 'express';
+import fetch from 'node-fetch';
+import { Issuer, Strategy, TokenSet, UserinfoResponse } from 'openid-client';
+import passport from 'passport';
 import {
   resolveRequestedUrl,
   saveRedirectUrlToSession,
 } from '../controllers/authController';
-import fetch from 'node-fetch';
+import { winstonLogger } from '../controllers/loggerController';
 import { OktaInstance, OktaStrategy } from '../types/auth';
 
 const router = Router();

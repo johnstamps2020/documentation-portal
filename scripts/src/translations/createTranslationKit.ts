@@ -7,6 +7,7 @@ import {
 } from '../modules/dita';
 import { copyDocusaurusTranslationFiles } from '../modules/docusaurus';
 import { cloneRepositoryForDoc } from '../modules/git';
+import { getAccessToken } from '../modules/auth';
 
 type TranslationKitOutputDirectoryConfig = {
   buildDir: string;
@@ -49,7 +50,8 @@ async function createTranslationKit() {
   const { cloneDir, kitDir, buildDir } =
     prepareTranslationKitOutputDirectories();
 
-  const docInfo = await getDocInfoByDocId(docId);
+  const accessToken = await getAccessToken();
+  const docInfo = await getDocInfoByDocId(docId, 'staging', accessToken);
 
   const translationKitType: TranslationKitType = docInfo.isDita
     ? 'dita'

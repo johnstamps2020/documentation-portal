@@ -18,11 +18,15 @@ router.get(
       return next('Nothing retrieved from search controller for: ' + req.query);
     }
 
-    const redirectUrl =
-      '/search-results?' +
-      removeQuotesFromLegacySearchParams(req.originalUrl.split('?')[1]);
-
-    res.redirect(redirectUrl);
+    const searchResultsPagePath = '/search-results';
+    const searchParams = req.originalUrl.split('?')[1];
+    if (!searchParams) {
+      return res.redirect(searchResultsPagePath);
+    }
+    const redirectUrl = `${searchResultsPagePath}?${removeQuotesFromLegacySearchParams(
+      searchParams
+    )}`;
+    return res.redirect(redirectUrl);
   }
 );
 

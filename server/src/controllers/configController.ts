@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Request, Response } from 'express';
 import fetch from 'node-fetch';
 import {
@@ -244,6 +245,21 @@ export async function findEntity(
   return await AppDataSource.manager.findOne(entityName, findOptions);
 }
 
+export async function findEntities(
+  entityName: string,
+  where: FindOptionsWhere<ObjectLiteral>,
+  loadRelations: boolean = true
+): Promise<ObjectLiteral[] | null> {
+  let findOptions: FindOneOptions<ObjectLiteral> = { where: where };
+  if (loadRelations) {
+    const relations = getRelationOptionsForEntity(entityName);
+    if (relations) {
+      findOptions.relations = relations;
+    }
+  }
+  return await AppDataSource.manager.find(entityName, findOptions);
+}
+
 export async function findAllEntities(
   entityName: string,
   loadRelations: boolean = true
@@ -373,6 +389,67 @@ export async function getEntity(
       };
     }
     return isUserAllowedToAccessResourceResult;
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${err}` },
+    };
+  }
+}
+
+export async function getEntities(
+  req: Request,
+  res: Response,
+  loadRelations: boolean = false
+): Promise<ApiResponse> {
+  const options: FindOptionsWhere<any> = req.query;
+  const { repo } = req.params;
+  if (!optionsAreValid(options)) {
+    return {
+      status: 400,
+      body: {
+        message: 'Invalid request. Provide query parameters in the URL.',
+      },
+    };
+  }
+  try {
+    const findAllEntitiesResult = await findEntities(
+      repo,
+      options,
+      loadRelations
+    );
+    if (!findAllEntitiesResult || findAllEntitiesResult.length === 0) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find entities in ${repo}`,
+        },
+      };
+    }
+    const availableEntities = [];
+    for (const entity of findAllEntitiesResult) {
+      const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
+        res,
+        entity.public,
+        entity.internal,
+        entity.isInProduction
+      );
+      if (isUserAllowedToAccessResourceResult.status === 200) {
+        availableEntities.push(entity);
+      }
+    }
+    if (availableEntities.length === 0) {
+      return {
+        status: 403,
+        body: {
+          message: 'Not authorized to view entities',
+        },
+      };
+    }
+    return {
+      status: 200,
+      body: availableEntities,
+    };
   } catch (err) {
     return {
       status: 500,

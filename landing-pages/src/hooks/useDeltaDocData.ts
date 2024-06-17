@@ -74,12 +74,17 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     const docABody = docA.body.trim();
     const docBBody = docB.body.trim();
     const fileChangeAmount: number = difference(docABody, docBBody);
-    var percentageChange: number = Math.ceil(
-      calculatePercentage(
-        fileChangeAmount,
-        docBBody.length > docABody.length ? docBBody.length : docABody.length
-      )
-    );
+    var percentageChange: number =
+      fileChangeAmount !== 0
+        ? Math.ceil(
+            calculatePercentage(
+              fileChangeAmount,
+              docBBody.length > docABody.length
+                ? docBBody.length
+                : docABody.length
+            )
+          )
+        : 0;
     if (percentageChange > 100) {
       percentageChange = 100;
     }
@@ -101,16 +106,15 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   }
 
   function compareAllDocs() {
-    const dirCompareResults = differentFiles;
     const comparisonResults = [];
-    for (const dirCompareResult of dirCompareResults) {
+    for (const differentFile of differentFiles) {
       var fileA: DeltaDocResultType;
       var fileB: DeltaDocResultType;
       const releaseAFind = releaseAFiles.find(
-        (file) => file.id === dirCompareResult.id
+        (file) => file.id === differentFile.id
       );
       const releaseBFind = releaseBFiles.find(
-        (file) => file.id === dirCompareResult.id
+        (file) => file.id === differentFile.id
       );
       const emptyReleaseObject: DeltaDocResultType = {
         id: '',
@@ -133,27 +137,6 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     return comparisonResults;
   }
 
-  function scanFileCount(
-    filesA: DeltaDocResultType[],
-    filesB: DeltaDocResultType[]
-  ) {
-    const filesAFileCount = filesA.length;
-    const filesBFileCount = filesB.length;
-    if (filesAFileCount !== filesBFileCount) {
-      if (filesAFileCount > filesBFileCount) {
-        return (
-          filesAFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount)
-        );
-      } else {
-        return (
-          filesBFileCount - 1 + Math.abs(filesAFileCount - filesBFileCount)
-        );
-      }
-    } else {
-      return filesAFileCount;
-    }
-  }
-
   function docBasePercentageTotal(
     totalFilesScanned: number,
     differentFiles: number
@@ -172,8 +155,8 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     return [percentageNumber.toFixed(2), docBasePercentageChange.toFixed(2)];
   }
 
-  const totalFilesScanned = scanFileCount(releaseAFiles, releaseBFiles);
   const results = compareAllDocs();
+  const totalFilesScanned = results.length + unchangedFiles;
   const [docBaseFileChanges, docBaseFilePercentageChanges] =
     docBasePercentageTotal(totalFilesScanned, differentFiles.length);
   const releaseALength = releaseAFiles.length;
@@ -206,15 +189,10 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
   releaseA,
   releaseB,
   url,
-  version,
 }) => {
-  const response = version
-    ? await fetch(
-        `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}&version=${version}`
-      )
-    : await fetch(
-        `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}`
-      );
+  const response = await fetch(
+    `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}`
+  );
   const { status } = response;
   const jsonData = await response.json();
 
@@ -222,9 +200,7 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
     throw new Error(status, jsonData.message);
   }
 
-  const regexSearch = url.includes('cloud')
-    ? url.replace(/\d+.+\d/, '......')
-    : url.replace(/\d+.+\d\//, '......');
+  const regexSearch = url.replace(/\d+.+\d/, '');
   const outputRegex = new RegExp(regexSearch, 'g');
   const stringifiedData = JSON.stringify(jsonData).replaceAll(outputRegex, '/');
   const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
@@ -237,6 +213,9 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
         let newElementId = element.id;
         if (element.id.includes('cloud')) {
           newElementId = element.id.replace(/\/cloud\/.*\d+.+\d\//g, '');
+        }
+        if (element.id.includes('jutro')) {
+          newElementId = element.id.replace(/\/jutro\/.*\d+.+\d/g, '');
         }
         return { ...element, id: newElementId };
       })
@@ -251,10 +230,10 @@ export function useDeltaDocData({
   releaseA,
   releaseB,
   url,
-  version,
 }: DeltaDocInputType) {
+  const shouldFetch = releaseA && releaseB && url;
   const { data, error, isLoading } = useSWR<DeltaDocData, Error>(
-    { releaseA, releaseB, url, version },
+    shouldFetch ? { releaseA, releaseB, url } : null,
     deltaDocDataGetter,
     {
       revalidateOnFocus: false,
@@ -268,10 +247,11 @@ export function useDeltaDocData({
   };
 }
 
-const deltaDocValidator = async (docUrl: string) => {
+const docsByProductGetter = async (productName: string) => {
   const response = await fetch(
-    `/safeConfig/entity/Doc/relations?url=${docUrl}`
+    `/safeConfig/entity/Doc/many/relations?platformProductVersions[product][name]=${productName}`
   );
+
   const { status } = response;
   const jsonData = await response.json();
 
@@ -282,17 +262,95 @@ const deltaDocValidator = async (docUrl: string) => {
   return jsonData;
 };
 
-export function useDeltaDocValidator(docUrl?: string) {
-  const { data, error, isLoading } = useSWR<Doc, Error>(
+export function useDocsByProduct(docUrl?: string) {
+  const { data, error, isLoading } = useSWR<Doc[], Error>(
     docUrl,
-    deltaDocValidator,
+    docsByProductGetter,
     {
-      revalidateOnFocus: true,
+      revalidateOnFocus: false,
     }
   );
+  return {
+    docs: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+const batchDeltaDocDataGetter: Fetcher<
+  (DeltaDocData & {
+    url: string;
+    releaseA: string;
+    releaseB: string;
+  })[],
+  DeltaDocInputType[]
+> = async (inputArray) => {
+  const comparisonResultArray: (DeltaDocData & {
+    url: string;
+    releaseA: string;
+    releaseB: string;
+  })[] = [];
+  for (const { url, releaseA, releaseB } of inputArray) {
+    if (!url || !releaseA || !releaseB) {
+      continue;
+    }
+    const response = await fetch(
+      `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}`
+    );
+    const { status } = response;
+    const jsonData = await response.json();
+
+    if (!response.ok) {
+      console.error(status, await jsonData.message);
+    }
+
+    const regexSearch = url.replace(/\d+.+\d\//, '');
+    const outputRegex = new RegExp(regexSearch, 'g');
+    const stringifiedData = JSON.stringify(jsonData).replaceAll(
+      outputRegex,
+      '/'
+    );
+    const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
+    const deltaDocData = parsedData.map((releaseData) =>
+      releaseData
+        .filter((element) => {
+          return element.id.replace(/[0-9]/g, '') !== url.replace(/[0-9]/g, '');
+        })
+        .map((element) => {
+          let newElementId = element.id;
+          if (element.id.includes('cloud')) {
+            newElementId = element.id.replace(/\/cloud\/.*\d+.+\d\//g, '');
+          }
+          return { ...element, id: newElementId };
+        })
+    );
+
+    const comparisonResult = compareDocs(deltaDocData);
+    comparisonResultArray.push({
+      ...comparisonResult,
+      url,
+      releaseA,
+      releaseB,
+    });
+  }
+
+  return comparisonResultArray;
+};
+
+export function useBatchDeltaDocData(inputArray: DeltaDocInputType[]) {
+  const { data, error, isLoading } = useSWR<
+    (DeltaDocData & {
+      url: string;
+      releaseA: string;
+      releaseB: string;
+    })[],
+    Error
+  >(inputArray, batchDeltaDocDataGetter, {
+    revalidateOnFocus: false,
+  });
 
   return {
-    docData: data,
+    deltaDocBatchData: data,
     isLoading,
     isError: error,
   };
