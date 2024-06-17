@@ -8,14 +8,14 @@ import {
 } from '@elastic/elasticsearch/lib/api/types';
 import dotenv from 'dotenv';
 import { NextFunction, Request, Response } from 'express';
+import { Version } from '../model/entity/Version';
 import {
   SearchData,
   SearchResultSource,
   SearchType,
   ServerSearchFilter,
   ServerSearchFilterValue,
-  Version,
-} from '@doctools/components';
+} from '../types/serverSearch';
 import { getAllEntities } from './configController';
 import { winstonLogger } from './loggerController';
 

@@ -9,7 +9,7 @@ import {
   addPrecedingSlashToPath,
   s3BucketUrlExists,
 } from './redirectController';
-import { Doc, ExternalLink } from '@doctools/components';
+import { Doc, ExternalLink } from '../model';
 
 const fetch = require('node-fetch-retry');
 

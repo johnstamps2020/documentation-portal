@@ -1,4 +1,4 @@
-import { Language } from '@doctools/components';
+import { Language } from '@doctools/server';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';

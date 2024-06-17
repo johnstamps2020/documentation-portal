@@ -2,8 +2,8 @@ import {
   DeltaDocInputType,
   DeltaDocResultType,
   DeltaLevenshteinReturnType,
+  Doc,
 } from '@doctools/server';
-import { Doc } from '@doctools/components';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import useSWR, { Fetcher } from 'swr';
 import { Error } from './useEntitiesData';

@@ -8,10 +8,8 @@
     "declaration": true,
     "declarationDir": "./dist/types-declarations",
     "esModuleInterop": true,
-    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "strictPropertyInitialization": false,
     "skipLibCheck": true,
     "resolveJsonModule": true
   },

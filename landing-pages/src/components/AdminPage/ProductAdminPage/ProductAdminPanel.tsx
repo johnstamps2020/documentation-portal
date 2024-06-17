@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useProducts } from '@doctools/components';
+import { useProducts } from '@doctools/server';
 import DuplicateButton from './DuplicateButton';
 import ProductCardContents from './ProductCardContents';
 import ProductSettingsForm from './ProductSettingsForm';

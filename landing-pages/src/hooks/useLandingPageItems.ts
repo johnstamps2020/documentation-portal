@@ -1,5 +1,10 @@
-import { Doc, ExternalLink, Page } from '@doctools/components';
-import { PageItemsRequestBody, PageItemsResponse } from '@doctools/server';
+import {
+  Doc,
+  ExternalLink,
+  Page,
+  PageItemsRequestBody,
+  PageItemsResponse,
+} from '@doctools/server';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import useSWR from 'swr';
 import { PageError } from './usePageData';

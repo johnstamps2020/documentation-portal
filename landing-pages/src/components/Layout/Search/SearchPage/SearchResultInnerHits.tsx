@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack';
-import { SearchResultSource, ServerSearchResult } from '@doctools/components';
+import { SearchResultSource, ServerSearchResult } from '@doctools/server';
 import {
   StyledAccordion,
   StyledAccordionDetails,

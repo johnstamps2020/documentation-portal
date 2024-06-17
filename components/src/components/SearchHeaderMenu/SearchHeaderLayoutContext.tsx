@@ -2,11 +2,12 @@
 // TODO move all translated strings to separate file and import?
 import React, { useMemo } from 'react';
 import { createContext, useContext, useEffect, useReducer } from 'react';
-import { Release, Product } from '../../model/entity';
 import {
+  Release,
+  Product,
   useProductsNoRevalidation,
   useReleasesNoRevalidation,
-} from '../../hooks/useEntityApi';
+} from '@doctools/server';
 
 export type Filters = { [key: string]: string[] };
 

@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { SearchResultSource, ServerSearchResult } from '@doctools/components';
+import { SearchResultSource, ServerSearchResult } from '@doctools/server';
 import SearchResultInnerHits from './SearchResultInnerHits';
 import SearchResultTags from './SearchResultTags';
 import { StyledHeading2, StyledLink } from './StyledSearchComponents';

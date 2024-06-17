@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { usePlatforms } from '@doctools/components';
+import { usePlatforms } from '@doctools/server';
 import DuplicateButton from './DuplicateButton';
 import PlatformCardContents from './PlatformCardContents';
 import PlatformSettingsForm from './PlatformSettingsForm';

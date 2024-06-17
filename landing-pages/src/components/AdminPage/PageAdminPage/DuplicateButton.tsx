@@ -1,4 +1,4 @@
-import { Page } from '@doctools/components';
+import { Page } from '@doctools/server';
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import PageSettingsForm from 'components/AdminPage/PageAdminPage/PageSettingsForm';
 import { usePageData } from 'hooks/usePageData';

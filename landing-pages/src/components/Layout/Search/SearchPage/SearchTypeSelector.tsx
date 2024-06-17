@@ -8,7 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Stack from '@mui/material/Stack';
 import { capitalizeFirstLetter } from 'helpers/landingPageHelpers';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { SearchType } from '@doctools/components';
+import { SearchType } from '@doctools/server';
 import { searchTypeQueryParameterName } from 'vars';
 
 const searchTypes: SearchType[] = ['keyword', 'semantic', 'hybrid'];

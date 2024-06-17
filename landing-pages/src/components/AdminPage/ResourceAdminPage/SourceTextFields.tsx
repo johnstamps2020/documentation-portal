@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import { Source } from '@doctools/components';
+import { Source } from '@doctools/server';
 
 type SourceTextFieldsProps = {
   source: Source;

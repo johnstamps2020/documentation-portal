@@ -1,24 +1,22 @@
 import { DataSource } from 'typeorm';
 import { winstonLogger } from '../controllers/loggerController';
-import {
-  DitaBuild,
-  Doc,
-  ExternalLink,
-  JustCopyBuild,
-  Language,
-  Page,
-  Platform,
-  PlatformProductVersion,
-  Product,
-  Release,
-  Resource,
-  Source,
-  SourceZipBuild,
-  Subject,
-  Version,
-  YarnBuild,
-} from '@doctools/components';
+import { Doc } from './entity/Doc';
+import { PlatformProductVersion } from './entity/PlatformProductVersion';
 import { runningInDevMode } from '../controllers/utils/serverUtils';
+import { Release } from './entity/Release';
+import { Resource } from './entity/Resource';
+import { Source } from './entity/Source';
+import { Page } from './entity/Page';
+import { Subject } from './entity/Subject';
+import { ExternalLink } from './entity/ExternalLink';
+import { Language } from './entity/Language';
+import { Platform } from './entity/Platform';
+import { Product } from './entity/Product';
+import { Version } from './entity/Version';
+import { DitaBuild } from './entity/DitaBuild';
+import { YarnBuild } from './entity/YarnBuild';
+import { JustCopyBuild } from './entity/JustCopyBuild';
+import { SourceZipBuild } from './entity/SourceZipBuild';
 
 const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();

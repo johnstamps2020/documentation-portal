@@ -70,7 +70,3 @@ export type ServerSearchError = {
 };
 
 export type SearchType = 'keyword' | 'semantic' | 'hybrid';
-
-export type SearchFilters = {
-  [key: string]: string[];
-};

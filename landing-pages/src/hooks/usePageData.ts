@@ -1,5 +1,4 @@
-import { Page } from '@doctools/components';
-import { RedirectResponseBody } from '@doctools/server';
+import { Page, RedirectResponseBody } from '@doctools/server';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 

@@ -1,6 +1,6 @@
 import AdminDuplicateButton from 'components/AdminPage/AdminDuplicateButton';
 import { useReleaseData } from 'hooks/useEntitiesData';
-import { Release } from '@doctools/components';
+import { Release } from '@doctools/server';
 import ReleaseSettingsForm from './ReleaseSettingsForm';
 
 type DuplicateButtonProps = {

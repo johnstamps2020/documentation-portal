@@ -1,4 +1,4 @@
-import { Platform } from '@doctools/components';
+import { Platform } from '@doctools/server';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';
