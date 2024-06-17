@@ -23,7 +23,8 @@ export function SearchHeaderButton({
         (key !== 'platform' ||
           (key === 'platform' &&
             state.searchFilters[key].includes('Self-managed'))) &&
-        key !== 'version'
+        key !== 'version' &&
+        key !== 'doc_title'
       );
     })
     .reduce((total, key) => total + state.searchFilters[key].length, 0);

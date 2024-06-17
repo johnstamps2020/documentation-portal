@@ -1,5 +1,4 @@
 import AppliedFilters from './SearchFilters/AppliedFilters';
-import AppliedFiltersAutocomplete from './SearchFilters/AppliedFiltersAutocomplete';
 import PaginationSelector from './PaginationSelector';
 import Stack from '@mui/material/Stack';
 import Highlighter from './Highlighter';
@@ -36,7 +35,6 @@ export default function SearchResultSection() {
       >
         <Stack spacing={1}>
           <AppliedFilters />
-          <AppliedFiltersAutocomplete />
           <SearchResultsZero />
         </Stack>
         <PaginationSelector />
