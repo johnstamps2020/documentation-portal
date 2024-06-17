@@ -36,13 +36,11 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@types/tinycolor2": "^1.4.4",
-    "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.2.1"
+    "@types/tinycolor2": "^1.4.4"
   },
   "scripts": {
     "start": "BROWSER=none PORT=6006 DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
-    "build": "react-app-rewired build",
+    "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@mui)/\"",
     "eject": "react-scripts eject"
   },

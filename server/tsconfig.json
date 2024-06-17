@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "outDir": "./dist/",
-    "module": "ES2022",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
@@ -20,5 +20,5 @@
     "esModuleInterop": true
   },
   "include": ["src/**/*"],
-  "exclude": ["**/*.spec.ts", "build"]
+  "exclude": ["node_modules", "**/*.spec.ts", "build"]
 }

@@ -1,3 +1,5 @@
+// TODO: Move to doctools/components/hooks
+
 import {
   ExternalLink,
   Language,
@@ -11,6 +13,7 @@ import {
 } from '../model/entity';
 import { ServerSearchError } from '../types/serverSearch';
 import useSWR from 'swr';
+import useSWRImmutable from 'swr/immutable';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 

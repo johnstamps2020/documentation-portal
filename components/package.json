@@ -3,15 +3,13 @@
   "version": "1.0.15",
   "description": "A collection of React components for Doctools",
   "license": "UNLICENSED",
-  "main": "dist/index.mjs",
-  "types": "dist/types-declarations/index.d.ts",
+  "main": "dist/index.js",
   "publishConfig": {
     "registry": "https://artifactory.guidewire.com/api/npm/doctools-npm-dev/"
   },
   "scripts": {
-    "build": "rimraf dist && tsc --build --verbose && copy-non-tx-files && yarn rename-js-to-mjs",
-    "dev": "yarn build && tsc --watch",
-    "rename-js-to-mjs": "find dist -name '*.js' -exec bash -c 'mv \"$0\" \"${0%.js}.mjs\"' {} \\;"
+    "build": "rimraf dist && tsc --build --verbose && copy-non-tx-files",
+    "dev": "yarn build && tsc --watch"
   },
   "devDependencies": {
     "@doctools/scripts": "workspace:*",
