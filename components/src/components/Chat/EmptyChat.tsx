@@ -12,6 +12,7 @@ export function EmptyChat() {
         justifyContent: 'center',
         alignItems: 'center',
         gap: 4,
+        paddingTop: 8,
       }}
     >
       <Typography variant="h1" textAlign="center">
