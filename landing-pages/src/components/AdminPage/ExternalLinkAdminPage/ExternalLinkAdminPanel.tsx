@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useExternalLinks } from '@doctools/server';
+import { useExternalLinks } from 'hooks/useApi';
 import DuplicateButton from './DuplicateButton';
 import ExternalLinkCardContents from './ExternalLinkCardContents';
 import ExternalLinkSettingsForm from './ExternalLinkSettingsForm';

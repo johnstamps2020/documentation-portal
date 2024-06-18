@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useReleases } from '@doctools/server';
+import { useReleases } from 'hooks/useApi';
 import DuplicateButton from './DuplicateButton';
 import ReleaseCardContents from './ReleaseCardContents';
 import ReleaseSettingsForm from './ReleaseSettingsForm';

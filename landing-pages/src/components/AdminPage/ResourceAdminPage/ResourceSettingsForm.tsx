@@ -1,4 +1,5 @@
-import { Resource, Source, useSources } from '@doctools/server';
+import { Resource, Source } from '@doctools/server';
+import { useSources } from 'hooks/useApi';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CircularProgress from '@mui/material/CircularProgress';

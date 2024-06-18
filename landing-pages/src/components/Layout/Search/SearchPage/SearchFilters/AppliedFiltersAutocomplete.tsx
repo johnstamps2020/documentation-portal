@@ -11,7 +11,7 @@ import {
   useProductsNoRevalidation,
   useReleasesNoRevalidation,
   useSubjectsNoRevalidation,
-} from '@doctools/server';
+} from 'hooks/useApi';
 import AppliedFiltersSkeleton from '../AppliedFiltersSkeleton';
 import { useEffect, useMemo, useState } from 'react';
 import AppliedFilterControl from './AppliedFilterControl';
