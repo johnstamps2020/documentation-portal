@@ -22,6 +22,7 @@ import { ReqUser } from './controllers/userController';
 import { runningInDevMode } from './controllers/utils/serverUtils';
 import { redirect } from './middlewares/redirectMiddleware';
 import { AppDataSource } from './model/connection';
+import chatbotCommentRouter from './routes/chatbotComments';
 
 declare global {
   namespace Express {
@@ -178,6 +179,12 @@ app.use(
 );
 app.use('/safeConfig', saveUserInfoToResLocals, configRouter);
 app.use('/lrs', saveUserInfoToResLocals, isAllowedToAccessRoute, lrsRouter);
+app.use(
+  '/chatbot-comments',
+  saveUserInfoToResLocals,
+  isAllowedToAccessRoute,
+  chatbotCommentRouter
+);
 app.use('/s3', saveUserInfoToResLocals, isAllowedToAccessRoute, s3Router);
 // Open routes
 app.use('/userInformation', userRouter);
