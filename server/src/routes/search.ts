@@ -9,7 +9,7 @@ router.get(
   '/',
   async function (req: Request, res: Response, next: NextFunction) {
     if (req.query.getData === 'true' || req.query.rawJSON === 'true') {
-      const result = await searchController(req, res, next);
+      const result = await searchController(req, res);
       if (result) {
         const { status, body } = result;
         return res.status(status).json(body);

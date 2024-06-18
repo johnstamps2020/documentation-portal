@@ -2,7 +2,6 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Translate } from '../../lib';
-import { useConsentStore } from '../../stores/consentStore';
 import { ChatInputBox } from './ChatInputBox';
 import { NotOptedIn } from './NotOptedIn';
 
@@ -13,7 +12,7 @@ export function EmptyChat() {
         justifyContent: 'center',
         alignItems: 'center',
         gap: 4,
-        minHeight: '100vh',
+        paddingTop: 8,
       }}
     >
       <Typography variant="h1" textAlign="center">

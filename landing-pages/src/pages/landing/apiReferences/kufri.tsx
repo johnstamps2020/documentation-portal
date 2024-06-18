@@ -2,7 +2,7 @@ import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import backgroundImage from 'images/background-jasper.svg';
+import backgroundImage from 'images/background-kufri.svg';
 
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
@@ -10,6 +10,7 @@ import { allSelectors } from 'pages/landing/selectors/allSelectors';
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
+    backgroundAttachment: 'scroll',
     backgroundImage: {
       xs: `url(${gradientBackgroundImage})`,
       sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 

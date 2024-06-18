@@ -7,22 +7,16 @@ import { ChatMessage } from './ChatMessage';
 
 export function ChatList() {
   const { messages } = useChat();
-  const shadowColor = 'rgba(255, 255, 255, 0.97)';
 
   return (
-    <Stack
-      sx={{
-        height: '100%',
-        justifyContent: 'space-between',
-      }}
-    >
+    <>
       <Stack
         sx={{
           gap: 4,
           paddingTop: '2rem',
         }}
       >
-        <Stack sx={{ gap: 2, overflow: 'auto', width: '100%' }}>
+        <Stack sx={{ gap: 2, width: '100%' }}>
           {messages.map((item, index) => (
             <ChatMessage
               key={index}
@@ -35,11 +29,10 @@ export function ChatList() {
       <Box
         sx={{
           width: '100%',
-          backgroundColor: shadowColor,
         }}
       >
         <ChatInputBox />
       </Box>
-    </Stack>
+    </>
   );
 }

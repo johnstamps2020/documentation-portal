@@ -2,19 +2,20 @@ import Category2Layout, {
   Category2LayoutProps,
 } from 'components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import jasperBackgroundImage from 'images/background-jasper.svg';
+import backgroundImage from 'images/background-kufri.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
-import jasperBadge from 'images/badge-jasper.svg';
+import skiReleaseBadge from 'images/badge-kufri.svg';
 import { implementationResourcesSidebar } from '../common/sidebars';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
+    backgroundAttachment: 'scroll',
     backgroundImage: {
       xs: `url(${gradientBackgroundImage})`,
       sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
-  url(${jasperBackgroundImage}), 
+  url(${backgroundImage}), 
   linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },
@@ -187,8 +188,8 @@ const pageConfig: Category2LayoutProps = {
   ],
   whatsNew: {
     label: 'Kufri',
-    badge: jasperBadge,
-    item: { label: 'Learn more', docId: 'whatsnewjasper' },
+    badge: skiReleaseBadge,
+    item: { label: 'Learn more', docId: 'whatsnewkufri' },
     content: ['Coming soon', 'Many links yet to be updated'],
   },
   sidebar: implementationResourcesSidebar,
