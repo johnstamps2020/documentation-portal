@@ -26,7 +26,7 @@ export function ChatInputBox() {
       direction="row"
       component="form"
       onSubmit={handleSubmit}
-      sx={{ width: '100%', padding: '2rem', gap: 2 }}
+      sx={{ width: '100%', py: '2rem', gap: 2 }}
     >
       <TextField
         hiddenLabel
