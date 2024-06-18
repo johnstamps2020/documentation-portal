@@ -5,7 +5,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import { useLayoutContext } from 'LayoutContext';
 import AccessControl from 'components/AccessControl/AccessControl';
-import { mainHeight } from 'components/Layout/Layout';
 import { useUserInfo } from 'hooks/useApi';
 import { useEffect } from 'react';
 
@@ -42,7 +41,7 @@ export default function ChatPage() {
 
   return (
     <AccessControl allowedOnEnvs={['dev']} accessLevel="everyone">
-      <Container sx={{ height: mainHeight, overflowY: 'scroll' }}>
+      <Container>
         <ChatProvider userInfo={userInfo}>
           <ChatWrapper />
         </ChatProvider>
