@@ -54,7 +54,7 @@ export default function SearchTypeSelector() {
           ))}
         </RadioGroup>
       </FormControl>
-      {(selectedType as SearchType) !== 'keyword' ? (
+      {['semantic', 'hybrid'].includes(selectedType as SearchType) ? (
         <Alert severity="warning">
           <strong>Warning:</strong> {capitalizeFirstLetter(selectedType)} search
           is experimental. Search results are not necessarily accurate.
