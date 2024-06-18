@@ -827,37 +827,43 @@ function prepareResultsToDisplay(
     const mainResultBody = mainResult.body;
     const mainResultBodyFragment = mainResultBody.substring(0, fragmentSize);
     const mainResultKeywords = mainResult.keywords || '';
-    // The title field in the highlighter matches results from the title and title.exact fields.
-    const highlightTitleKey = Object.getOwnPropertyNames(
-      mainResultHighlight
-    ).find((k) => k === 'title');
+    let titleText = mainResultTitle;
+    let bodyText = mainResultBody;
+    let keywordsText = mainResultKeywords;
+    // Get the highlighted body fragment with the highest score to display it on the search results page.
+    // Use the first 300 characters of the body
+    let bodyExcerpt = mainResultBodyFragment;
+    if (mainResultHighlight) {
+      // The title field in the highlighter matches results from the title and title.exact fields.
+      const highlightTitleKey = Object.getOwnPropertyNames(
+        mainResultHighlight
+      ).find((k) => k === 'title');
 
-    // The body field in the highlighter matches results from the body and body.exact fields.
-    const highlightBodyKey = Object.getOwnPropertyNames(
-      mainResultHighlight
-    ).find((k) => k === 'body');
+      // The body field in the highlighter matches results from the body and body.exact fields.
+      const highlightBodyKey = Object.getOwnPropertyNames(
+        mainResultHighlight
+      ).find((k) => k === 'body');
 
-    const highlightKeywordsKey = Object.getOwnPropertyNames(
-      mainResultHighlight
-    ).find((k) => k === 'keywords');
+      const highlightKeywordsKey = Object.getOwnPropertyNames(
+        mainResultHighlight
+      ).find((k) => k === 'keywords');
 
-    // The "number_of_fragments" parameter is set to "0' for the title and keywords fields.
-    // So no fragments are produced, instead the whole content of the field is returned
-    // as the first element of the array, and matches are highlighted.
-    const titleText =
-      highlightTitleKey && mainResultHighlight
-        ? mainResultHighlight[highlightTitleKey][0]
-        : mainResultTitle;
-    // If there are highlights in the body, join all fragments to get a complete list of highlighted terms
-    const bodyText =
-      highlightBodyKey && mainResultHighlight
-        ? mainResultHighlight[highlightBodyKey].join(' ')
-        : mainResultBodyFragment;
+      // The "number_of_fragments" parameter is set to "0' for the title and keywords fields.
+      // So no fragments are produced, instead the whole content of the field is returned
+      // as the first element of the array, and matches are highlighted.
+      if (highlightTitleKey) {
+        titleText = mainResultHighlight[highlightTitleKey][0];
+      }
+      // If there are highlights in the body, join all fragments to get a complete list of highlighted terms
+      if (highlightBodyKey) {
+        bodyText = mainResultHighlight[highlightBodyKey].join(' ');
+        bodyExcerpt = mainResultHighlight[highlightBodyKey][0];
+      }
 
-    const keywordsText =
-      highlightKeywordsKey && mainResultHighlight
-        ? mainResultHighlight[highlightKeywordsKey][0]
-        : mainResultKeywords;
+      if (highlightKeywordsKey) {
+        keywordsText = mainResultHighlight[highlightKeywordsKey][0];
+      }
+    }
 
     const allText: string = titleText + bodyText + keywordsText;
     const regExp = new RegExp(
@@ -872,16 +878,6 @@ function prepareResultsToDisplay(
         return b.length - a.length;
       })
       .join(',');
-
-    // Get the highlighted body fragment with the highest score to display it on the search results page.
-    // If not available, use the first 300 characters of the body
-    const bodyExcerpt = (
-      highlightBodyKey && mainResultHighlight
-        ? mainResultHighlight[highlightBodyKey][0]
-        : mainResultBodyFragment
-    )
-      .replace(titleText, '')
-      .replaceAll(/\s{2,}/gm, '');
 
     searchResultsToDisplay.push({
       product: mainResult.product || [],
@@ -904,7 +900,9 @@ function prepareResultsToDisplay(
       score: mainResultScore,
       title: sanitizeTagNames(titleText),
       titlePlain: sanitizeTagNames(mainResultTitle),
-      body: sanitizeTagNames(bodyExcerpt + '...'),
+      body: sanitizeTagNames(
+        bodyExcerpt.replace(titleText, '').replaceAll(/\s{2,}/gm, '') + '...'
+      ),
       bodyPlain: sanitizeTagNames(mainResultBodyFragment + '...'),
       keywords: sanitizeTagNames(keywordsText),
       innerHits: otherHits?.map((r) => r._source as SearchResultSource) || [],
