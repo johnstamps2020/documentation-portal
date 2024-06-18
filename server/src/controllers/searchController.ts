@@ -947,11 +947,26 @@ type SearchControllerResponse = {
 
 const searchTypeQueryParameterName = 'searchType';
 
+const errorResponse: SearchControllerResponse = {
+  status: 500,
+  body: {
+    searchPhrase: '',
+    currentPage: 1,
+    resultsPerPage: 10,
+    filtersFromUrl: [],
+    requestIsAuthenticated: false,
+    searchResults: [],
+    totalNumOfResults: 0,
+    totalNumOfCollapsedResults: 0,
+    pages: 0,
+    filters: [],
+  },
+};
+
 export default async function searchController(
   req: SearchRequestExpress,
-  res: Response,
-  next: NextFunction
-): Promise<SearchControllerResponse | void> {
+  res: Response
+): Promise<SearchControllerResponse> {
   try {
     const urlQueryParameters = req.query;
     const searchType =
@@ -1173,13 +1188,15 @@ export default async function searchController(
             },
           };
     }
+
+    return errorResponse;
   } catch (err) {
     winstonLogger.error(
       `Problem performing search
           QUERY: ${JSON.stringify(req.query)}
           ERROR: ${JSON.stringify(err)}`
     );
-    next(err);
+    return errorResponse;
   }
 }
 
