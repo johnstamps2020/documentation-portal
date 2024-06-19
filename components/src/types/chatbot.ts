@@ -33,3 +33,18 @@ export type ChatbotMessage = {
   role: 'user' | 'bot';
   sources?: ChatbotDocument[];
 };
+
+export type ChatbotComment = {
+  id: string;
+  status: 'active' | 'archived';
+  context: {
+    chatbotRequest: ChatbotRequest;
+    chatbotMessage: ChatbotMessage;
+    date: number;
+  };
+  user: {
+    reaction: 'positive' | 'negative';
+    comment?: string;
+    email?: string;
+  };
+};
