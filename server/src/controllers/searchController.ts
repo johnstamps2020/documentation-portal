@@ -7,7 +7,7 @@ import {
   SearchHit,
 } from '@elastic/elasticsearch/lib/api/types';
 import 'dotenv/config';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { Version } from '../model/entity/Version';
 import {
   SearchData,
@@ -945,39 +945,38 @@ type SearchControllerResponse = {
 
 const searchTypeQueryParameterName = 'searchType';
 
-const errorResponse: SearchControllerResponse = {
-  status: 500,
-  body: {
-    searchPhrase: '',
-    currentPage: 1,
-    resultsPerPage: 10,
-    filtersFromUrl: [],
-    requestIsAuthenticated: false,
-    searchResults: [],
-    totalNumOfResults: 0,
-    totalNumOfCollapsedResults: 0,
-    pages: 0,
-    filters: [],
-  },
-};
-
 export default async function searchController(
   req: SearchRequestExpress,
   res: Response
 ): Promise<SearchControllerResponse> {
+  const urlQueryParameters = req.query;
+  const searchPhrase = urlQueryParameters.q
+    ? decodeURI(urlQueryParameters.q)
+    : '';
+  const userInfo = res.locals.userInfo;
+  const requestIsAuthenticated = userInfo.isLoggedIn;
+  const errorResponse: SearchControllerResponse = {
+    status: 500,
+    body: {
+      searchPhrase: searchPhrase,
+      currentPage: 1,
+      resultsPerPage: 10,
+      filtersFromUrl: {},
+      requestIsAuthenticated: requestIsAuthenticated,
+      searchResults: [],
+      totalNumOfResults: 0,
+      totalNumOfCollapsedResults: 0,
+      pages: 0,
+      filters: [],
+    },
+  };
   try {
-    const urlQueryParameters = req.query;
     const searchType =
       urlQueryParameters[searchTypeQueryParameterName] || 'keyword';
     const rawJson = urlQueryParameters.rawJSON === 'true';
-    const searchPhrase = urlQueryParameters.q
-      ? decodeURI(urlQueryParameters.q)
-      : '';
     const resultsPerPage = parseInt(urlQueryParameters.pagination || '10');
     const currentPage = parseInt(urlQueryParameters.page || '1');
     const startIndex = resultsPerPage * (currentPage - 1);
-    const userInfo = res.locals.userInfo;
-    const requestIsAuthenticated = userInfo.isLoggedIn;
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     const keywordFields = await getKeywordFields();
     const filtersFromUrl = getFiltersFromUrl(keywordFields, urlQueryParameters);
@@ -1060,10 +1059,7 @@ export default async function searchController(
 
     const vectorizedSearchPhrase = await createVectorFromText(searchPhrase);
     if (!vectorizedSearchPhrase) {
-      return {
-        status: 500,
-        body: [],
-      };
+      return errorResponse;
     }
     const numberOfCandidates = 50;
     const k = 10;

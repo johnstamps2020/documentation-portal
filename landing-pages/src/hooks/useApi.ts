@@ -87,8 +87,10 @@ export function useBreadcrumbs() {
 
 export function useSearchData() {
   const [searchParams] = useSearchParams();
+  const encodedSearchParams = new URLSearchParams(searchParams.toString());
+  encodedSearchParams.set('q', encodeURI(searchParams.get('q') || ''));
   const { data, error, isLoading } = useSWR<SearchData, ServerSearchError>(
-    `/search?${searchParams.toString()}&getData=true`,
+    `/search?${encodedSearchParams.toString()}&getData=true`,
     getter,
     { revalidateOnFocus: false }
   );
@@ -315,7 +317,6 @@ export function useVersions() {
     isError: error,
   };
 }
-
 
 export function useDocsNoRevalidation() {
   const { data, error, isLoading } = useSWR<Doc[], ServerSearchError>(
