@@ -194,6 +194,26 @@
     "message": "Close the terms and conditions",
     "description": "The button which closes the panel showing terms and conditions of using the chatbot"
   },
+  "chatbot.feedback.thumbsUp": {
+    "message": "This chatbot response is great",
+    "description": "The label for the thumbs up button. The user clicks this button to give positive feedback on a chat response"
+  },
+  "chatbot.feedback.thumbsDown": {
+    "message": "This chatbot response needs improvement",
+    "description": "The label for the thumbs down button. The user clicks this button to give negative feedback on a chat response"
+  },
+  "chatbot.feedback.dialog.title": {
+    "message": "Would you like to leave a comment?",
+    "description": "The header of the dialog box which allows the user to leave a comment about how they like the chatbot"
+  },
+  "chatbot.feedback.dialog.send": {
+    "message": "Send",
+    "description": "This is part of a feedback dialog box. The user clicks this button to send their comment."
+  },
+  "chatbot.feedback.dialog.cancel": {
+    "message": "Cancel",
+    "description": "This is part of a feedback dialog box. The user clicks this button to close the dialog box and not their comment."
+  },
   "login.gwEmployeeHint": {
     "message": "Guidewire employee? Log in using the Guidewire Cloud option above.",
     "description": "The text which helps a Guidewire employee know how to log in"
