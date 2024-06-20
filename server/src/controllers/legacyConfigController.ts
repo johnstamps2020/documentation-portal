@@ -1,4 +1,9 @@
-import { findAllEntities, findEntity, saveEntities } from './configController';
+import {
+  findAllEntities,
+  findEntities,
+  findEntity,
+  saveEntities,
+} from './configController';
 import { Doc } from '../model/entity/Doc';
 import { PlatformProductVersion } from '../model/entity/PlatformProductVersion';
 import { Release } from '../model/entity/Release';
@@ -527,6 +532,80 @@ async function updateNonProdPlatformProductVersionEntities() {
   await saveEntities(updatedNonProdPpvs);
 }
 
+async function updateNonProdProductEntities() {
+  const nonProdProducts: Product[] = [];
+  const inProdPpvs = (await findEntities(
+    PlatformProductVersion.name,
+    {
+      isInProduction: true,
+    },
+    true
+  )) as PlatformProductVersion[];
+
+  const allProducts = (await findAllEntities(Product.name, true)) as Product[];
+
+  if (!inProdPpvs || !allProducts) {
+    return;
+  }
+
+  const inProdProducts: Product[] = [];
+  const inProdProductNames = new Set<string>();
+  for (const ppv of inProdPpvs) {
+    if (!inProdProductNames.has(ppv.product.name)) {
+      inProdProductNames.add(ppv.product.name);
+      inProdProducts.push(ppv.product);
+    }
+  }
+
+  for (const product of allProducts) {
+    if (!inProdProductNames.has(product.name)) {
+      nonProdProducts.push(product);
+    }
+  }
+  const updatedNonProdProducts = nonProdProducts.map((product) => {
+    product.isInProduction = false;
+    return product;
+  });
+  await saveEntities(updatedNonProdProducts);
+}
+
+async function updateNonProdVersionEntities() {
+  const nonProdVersions: Version[] = [];
+  const inProdPpvs = (await findEntities(
+    PlatformProductVersion.name,
+    {
+      isInProduction: true,
+    },
+    true
+  )) as PlatformProductVersion[];
+
+  const allVersions = (await findAllEntities(Version.name, true)) as Version[];
+
+  if (!inProdPpvs || !allVersions) {
+    return;
+  }
+
+  const inProdVersions: Version[] = [];
+  const inProdVersionNames = new Set<string>();
+  for (const ppv of inProdPpvs) {
+    if (!inProdVersionNames.has(ppv.version.name)) {
+      inProdVersionNames.add(ppv.version.name);
+      inProdVersions.push(ppv.version);
+    }
+  }
+
+  for (const version of allVersions) {
+    if (!inProdVersionNames.has(version.name)) {
+      nonProdVersions.push(version);
+    }
+  }
+  const updatedNonProdVersions = nonProdVersions.map((version) => {
+    version.isInProduction = false;
+    return version;
+  });
+  await saveEntities(updatedNonProdVersions);
+}
+
 async function createPlatformEntities(legacyDocConfig: LegacyDocConfig[]) {
   const dbDocPlatformsToSave: Platform[] = [];
   for (const doc of legacyDocConfig) {
@@ -862,6 +941,8 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
     }
     const dbDocConfigsSaveResult = await saveEntities(dbDocConfigsToSave);
     await updateNonProdPlatformProductVersionEntities();
+    await updateNonProdProductEntities();
+    await updateNonProdVersionEntities();
     return {
       status: 200,
       body: {
