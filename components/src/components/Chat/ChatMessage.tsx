@@ -2,16 +2,14 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useRef } from 'react';
-import Markdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import { translate } from '../../lib';
 import { useConsentStore } from '../../stores/consentStore';
 import { ChatItem } from './ChatContext';
 import { ChatLoader } from './ChatLoader';
-import './ChatMessage.css';
-import { ChatMessageFeedbackButtons } from './ChatMessageFeedbackButtons';
+import { ChatMessageFeedbackButtons } from './ChatFeedback/Widget/ChatMessageFeedbackButtons';
 import ChatSources from './ChatSources';
 import { NotOptedIn } from './NotOptedIn';
+import { Markdown } from './Markdown';
 
 type ChatMessageProps = ChatItem & {
   isLast: boolean;
@@ -50,7 +48,7 @@ function Answer({ answer }: { answer: string }) {
           message: 'Answer',
         })}
       </Typography>
-      <Markdown remarkPlugins={[remarkGfm]}>{answer}</Markdown>
+      <Markdown contents={answer} />
     </>
   );
 }

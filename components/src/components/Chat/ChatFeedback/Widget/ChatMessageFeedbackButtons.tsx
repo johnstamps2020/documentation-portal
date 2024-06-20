@@ -1,10 +1,13 @@
 import Box from '@mui/material/Box';
 import React, { useState } from 'react';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { ThumbUpIcon, ThumbDownIcon } from '../icons';
 import IconButton from '@mui/material/IconButton';
-import { translate } from '../../lib';
-import { ChatbotComment, ChatbotMessage, ChatbotRequest } from '../../types';
+import { translate } from '../../../../lib';
+import {
+  ChatbotComment,
+  ChatbotMessage,
+  ChatbotRequest,
+} from '../../../../types';
 import { ChatMessageFeedbackDialog } from './ChatMessageFeedbackDialog';
 
 type ChatMessageFeedbackButtonsProps = {

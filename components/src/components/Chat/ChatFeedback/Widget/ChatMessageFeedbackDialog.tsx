@@ -1,15 +1,19 @@
 import Dialog from '@mui/material/Dialog';
 import React, { useState } from 'react';
-import { ChatbotComment, ChatbotMessage, ChatbotRequest } from '../../types';
+import {
+  ChatbotComment,
+  ChatbotMessage,
+  ChatbotRequest,
+} from '../../../../types';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Translate } from '../../lib';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { Translate } from '../../../../lib';
+import { ThumbUpIcon, ThumbDownIcon } from '../icons';
 import DialogContent from '@mui/material/DialogContent';
 import TextField from '@mui/material/TextField';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
+import { postComment } from '../api';
 
 type ChatMessageFeedbackDialogProps = {
   open: boolean;
@@ -72,18 +76,10 @@ export function ChatMessageFeedbackDialog({
         },
       };
 
-      const response = await fetch('/chatbot-comments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(commentData),
-      });
+      const problem = await postComment(commentData);
 
-      const apiResponse: { message: string } = await response.json();
-
-      if (!response.ok) {
-        setError(apiResponse.message);
+      if (problem) {
+        setError(problem);
       }
 
       onClose();
