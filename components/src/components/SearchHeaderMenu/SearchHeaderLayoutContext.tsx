@@ -4,9 +4,11 @@ import React, { useMemo } from 'react';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { Release, Product } from '../../model/entity';
 import {
+  useProductsInProdNoRevalidation,
   useProductsNoRevalidation,
   useReleasesNoRevalidation,
 } from '../../hooks/useEntityApi';
+import { useEnvInfo } from '../../hooks/useEnvInfo';
 
 export type Filters = { [key: string]: string[] };
 
@@ -64,8 +66,16 @@ export function SearchHeaderLayoutContextProvider({
   const [state, dispatch] = useReducer(reducer, initialState);
   state.defaultFilters = defaultFilters;
 
+  const { envInfo, isError, isLoading } = useEnvInfo();
+
   const { releases: allReleases } = useReleasesNoRevalidation();
-  const { products: allProducts } = useProductsNoRevalidation();
+
+  let allProducts: Product[] | undefined = [];
+  if (envInfo?.name === 'omega2-andromeda') {
+    allProducts = useProductsInProdNoRevalidation().products;
+  } else {
+    allProducts = useProductsNoRevalidation().products;
+  }
 
   state.allFilters = useMemo(() => {
     if (!allReleases || !allProducts) return { release: [], product: [] };
