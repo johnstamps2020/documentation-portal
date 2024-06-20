@@ -9,8 +9,13 @@ import {
 } from '../../types/chatbot';
 import { UserInfo } from '../../types/user';
 
+export type ChatItem = {
+  chatRequest: ChatbotRequest;
+  chatResponse: ChatbotMessage;
+};
+
 export interface ChatInterface {
-  messages: ChatbotMessage[];
+  items: ChatItem[];
   isProcessing: boolean;
   sendPrompt(userPrompt: string): void;
   filters: ChatbotFilters;
@@ -33,7 +38,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
   }
 
   const aiConsented = useConsentStore((state) => state.aiConsented);
-  const [messages, setMessages] = useState<ChatInterface['messages']>([]);
+  const [items, setItems] = useState<ChatInterface['items']>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [filterCount, setFilterCount] = useState(0);
   const [filters, setFilters] =
@@ -84,15 +89,23 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
 
   const sendPrompt = async (userPrompt: string) => {
     setIsProcessing(true);
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { role: 'user', message: userPrompt },
-    ]);
+
     const chatbotRequest: ChatbotRequest = {
       query: userPrompt,
       opt_in: aiConsented,
       ...filters,
     };
+
+    setItems((prevItems) => [
+      ...prevItems,
+      {
+        chatRequest: chatbotRequest,
+        chatResponse: {
+          message: undefined,
+          role: 'bot',
+        },
+      },
+    ]);
 
     const response = await fetch('/chatbot', {
       method: 'POST',
@@ -109,12 +122,15 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
       const responseFromBot = aiConsented
         ? chatbotResponse.response
         : undefined;
-      setMessages((prevMessages) => [
-        ...prevMessages,
+      setItems((prevItems) => [
+        ...prevItems.slice(0, -1),
         {
-          role: 'bot',
-          message: responseFromBot,
-          sources: chatbotResponse.original_documents,
+          chatRequest: chatbotRequest,
+          chatResponse: {
+            role: 'bot',
+            message: responseFromBot,
+            sources: chatbotResponse.original_documents,
+          },
         },
       ]);
     }
@@ -124,7 +140,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
   return (
     <ChatContext.Provider
       value={{
-        messages,
+        items,
         sendPrompt,
         isProcessing,
         filters,
