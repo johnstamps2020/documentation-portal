@@ -9,11 +9,12 @@ import { ChatResponseAccordion } from './ChatResponseAccordion';
 import { UserQueryAccordion } from './UserQueryAccordion';
 import { UserInfoBox } from './UserInfoBox';
 import { ArchiveButton } from './ArchiveButton';
+import { DateDisplay } from './DateDisplay';
 
 type ChatFeedbackItemProps = ChatbotComment;
 
 export function ChatFeedbackItem(props: ChatFeedbackItemProps) {
-  const { id, context, status, user } = props;
+  const { context, status, user } = props;
 
   return (
     <Card
@@ -30,10 +31,13 @@ export function ChatFeedbackItem(props: ChatFeedbackItemProps) {
           {user.comment && user.comment.length > 300 ? '...' : ''}
         </Typography>
       </Box>
-      <Chip
-        color={status === 'active' ? 'success' : 'default'}
-        label={status}
-      />
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Chip
+          color={status === 'active' ? 'success' : 'default'}
+          label={status}
+        />
+        <DateDisplay milliseconds={context.date} />
+      </Box>
       <Box
         sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, mt: 2 }}
       >
