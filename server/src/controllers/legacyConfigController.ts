@@ -548,12 +548,10 @@ async function updateNonProdProductEntities() {
     return;
   }
 
-  const inProdProducts: Product[] = [];
   const inProdProductNames = new Set<string>();
   for (const ppv of inProdPpvs) {
     if (!inProdProductNames.has(ppv.product.name)) {
       inProdProductNames.add(ppv.product.name);
-      inProdProducts.push(ppv.product);
     }
   }
 
@@ -585,12 +583,10 @@ async function updateNonProdVersionEntities() {
     return;
   }
 
-  const inProdVersions: Version[] = [];
   const inProdVersionNames = new Set<string>();
   for (const ppv of inProdPpvs) {
     if (!inProdVersionNames.has(ppv.version.name)) {
       inProdVersionNames.add(ppv.version.name);
-      inProdVersions.push(ppv.version);
     }
   }
 
