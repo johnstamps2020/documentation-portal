@@ -2,21 +2,25 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useRef } from 'react';
-import Markdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import { translate } from '../../lib';
 import { useConsentStore } from '../../stores/consentStore';
-import { ChatbotMessage } from '../../types/chatbot';
+import { ChatItem } from './ChatContext';
 import { ChatLoader } from './ChatLoader';
-import './ChatMessage.css';
+import { ChatMessageFeedbackButtons } from './ChatFeedback/Widget/ChatMessageFeedbackButtons';
 import ChatSources from './ChatSources';
 import { NotOptedIn } from './NotOptedIn';
+import { Markdown } from './Markdown';
 
-type ChatMessageProps = ChatbotMessage & {
+type ChatMessageProps = ChatItem & {
   isLast: boolean;
 };
 
-function UserMessage({ message, isLast }: ChatMessageProps) {
+type UserPromptProps = {
+  prompt: string;
+  isLast: boolean;
+};
+
+function UserPrompt({ prompt, isLast }: UserPromptProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,7 +33,7 @@ function UserMessage({ message, isLast }: ChatMessageProps) {
     <Stack direction="row" sx={{ gap: 2 }}>
       {isLast && <ChatLoader />}
       <Typography variant="h2" fontSize="30px" width="100%" ref={wrapperRef}>
-        {message}
+        {prompt}
       </Typography>
     </Stack>
   );
@@ -44,17 +48,18 @@ function Answer({ answer }: { answer: string }) {
           message: 'Answer',
         })}
       </Typography>
-      <Markdown remarkPlugins={[remarkGfm]}>{answer}</Markdown>
+      <Markdown contents={answer} />
     </>
   );
 }
 
 export function ChatMessage({
-  role,
-  message,
+  chatRequest,
+  chatResponse,
   isLast,
-  sources,
 }: ChatMessageProps) {
+  const { message, role, sources } = chatResponse;
+  const { query } = chatRequest;
   const responseRef = useRef<HTMLDivElement>(null);
   const aiConsented = useConsentStore((state) => state.aiConsented);
 
@@ -65,13 +70,24 @@ export function ChatMessage({
   }, []);
 
   if (role === 'user') {
-    return <UserMessage message={message} isLast={isLast} role="user" />;
+    return;
   }
 
   return (
     <Box sx={{ width: '100%' }} ref={responseRef}>
-      <ChatSources sources={sources} />
+      <UserPrompt prompt={query} isLast={isLast} />
+      {sources && <ChatSources sources={sources} />}
       {message && aiConsented && <Answer answer={message} />}
+      {message && (
+        <ChatMessageFeedbackButtons
+          chatbotMessage={{
+            message,
+            role,
+            sources,
+          }}
+          chatbotRequest={chatRequest}
+        />
+      )}
       <NotOptedIn />
     </Box>
   );

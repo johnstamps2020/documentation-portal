@@ -4,9 +4,9 @@ import { ChatList } from './ChatList';
 import { EmptyChat } from './EmptyChat';
 
 export function ChatWrapper() {
-  const { messages } = useChat();
+  const { items, isProcessing } = useChat();
 
-  if (messages.length === 0) {
+  if (items.length === 0 && !isProcessing) {
     return <EmptyChat />;
   }
 

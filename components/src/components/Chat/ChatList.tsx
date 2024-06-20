@@ -6,7 +6,7 @@ import { ChatInputBox } from './ChatInputBox';
 import { ChatMessage } from './ChatMessage';
 
 export function ChatList() {
-  const { messages } = useChat();
+  const { items } = useChat();
 
   return (
     <>
@@ -17,10 +17,10 @@ export function ChatList() {
         }}
       >
         <Stack sx={{ gap: 2, width: '100%' }}>
-          {messages.map((item, index) => (
+          {items.map((item, index) => (
             <ChatMessage
               key={index}
-              isLast={index === messages.length - 1}
+              isLast={index === items.length - 1}
               {...item}
             />
           ))}
