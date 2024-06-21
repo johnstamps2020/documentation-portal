@@ -1,6 +1,7 @@
 import {
   DeltaDocInputType,
-  DeltaDocResultType,
+  DeltaDocReturnType,
+  DeltaDocTopicType,
   DeltaLevenshteinReturnType,
   Doc,
 } from '@doctools/server';
@@ -15,28 +16,33 @@ function calculatePercentage(fileChangeAmount: number, docLength: number) {
   return percentageNumber;
 }
 
-export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
-  const releaseAFiles = deltaDocData[0];
-  const releaseBFiles = deltaDocData[1];
+function removeReleaseIdentifier(id: string, baseUrl: string) {
+  return id.replace(baseUrl, '');
+}
+
+export function compareDocs(deltaDocData: DeltaDocReturnType['body']) {
+  const firstDocTopics = deltaDocData.firstDoc.topics;
+  const secondDocTopics = deltaDocData.secondDoc.topics;
+  const firstDocBaseUrl = `${deltaDocData.firstDoc.base_url}/`;
+  const secondDocBaseUrl = `${deltaDocData.secondDoc.base_url}/`;
   let cumulativeFileChanges = 0;
   let unchangedFiles = 0;
   const areReleasesIdentical =
     JSON.stringify(
-      releaseAFiles.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0))
+      firstDocTopics.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0))
     ) ===
     JSON.stringify(
-      releaseBFiles.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0))
+      secondDocTopics.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0))
     );
 
-  // TODO: statistics:  left only entries: xx, right only entries: xx,
-
-  releaseBFiles.forEach(function (b) {
+  secondDocTopics.forEach(function (topicB) {
     if (
-      releaseAFiles.some(function (a) {
+      firstDocTopics.some(function (topicA) {
         return (
-          a.id === b.id &&
-          a.body.trim() === b.body.trim() &&
-          a.title === b.title
+          removeReleaseIdentifier(topicA.id, firstDocBaseUrl) ===
+            removeReleaseIdentifier(topicB.id, secondDocBaseUrl) &&
+          topicA.body === topicB.body &&
+          topicA.title === topicB.title
         );
       })
     ) {
@@ -44,35 +50,55 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     }
   });
 
-  const differentFiles: DeltaDocResultType[] = [];
+  const differentFiles: DeltaDocTopicType[] = [];
   if (areReleasesIdentical === false) {
-    const releaseADocIds: string[] = releaseAFiles.map((file) => {
-      return file.id;
+    const releaseADocIds: string[] = firstDocTopics.map((topicA) => {
+      return removeReleaseIdentifier(topicA.id, firstDocBaseUrl);
     });
-    const releaseBDocIds: string[] = releaseBFiles.map((file) => {
-      return file.id;
+    const releaseBDocIds: string[] = secondDocTopics.map((topicB) => {
+      return removeReleaseIdentifier(topicB.id, secondDocBaseUrl);
     });
-    releaseBFiles.forEach(function (b) {
+    secondDocTopics.forEach(function (topicB) {
       if (
-        releaseAFiles.some((a) => {
+        firstDocTopics.some((topicA) => {
           // file exists in both releases and is different
-          return a.id === b.id && JSON.stringify(a) !== JSON.stringify(b);
+          const topicANoRelease = {
+            ...topicA,
+            id: removeReleaseIdentifier(topicA.id, firstDocBaseUrl),
+          };
+          const topicBNoRelease = {
+            ...topicB,
+            id: removeReleaseIdentifier(topicB.id, secondDocBaseUrl),
+          };
+          return (
+            topicANoRelease.id === topicBNoRelease.id &&
+            JSON.stringify(topicANoRelease) !== JSON.stringify(topicBNoRelease)
+          );
         }) ||
-        !releaseADocIds.includes(b.id) // file exists in B but doesn't exist in A
+        !releaseADocIds.includes(
+          removeReleaseIdentifier(topicB.id, secondDocBaseUrl)
+        ) // file exists in B but doesn't exist in A
       ) {
-        differentFiles.push(b);
+        differentFiles.push(topicB);
       }
     });
-    releaseAFiles.forEach(function (a) {
-      if (!releaseBDocIds.includes(a.id)) {
-        differentFiles.push(a);
+    firstDocTopics.forEach(function (topicA) {
+      if (
+        !releaseBDocIds.includes(
+          removeReleaseIdentifier(topicA.id, firstDocBaseUrl)
+        )
+      ) {
+        differentFiles.push(topicA);
       }
     });
   }
 
-  function compareTwoDocs(docA: DeltaDocResultType, docB: DeltaDocResultType) {
-    const docABody = docA.body.trim();
-    const docBBody = docB.body.trim();
+  function compareTwoDocs(
+    topicA: DeltaDocTopicType,
+    topicB: DeltaDocTopicType
+  ) {
+    const docABody = topicA.body.trim();
+    const docBBody = topicB.body.trim();
     const fileChangeAmount: number = difference(docABody, docBBody);
     var percentageChange: number =
       fileChangeAmount !== 0
@@ -88,16 +114,12 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
     if (percentageChange > 100) {
       percentageChange = 100;
     }
-    var docURL;
-    if (!docA.id) {
-      docURL = docB.id;
-    } else {
-      docURL = docA.id;
-    }
+
     const output: DeltaLevenshteinReturnType = {
-      URL: docURL,
-      docATitle: docA.title,
-      docBTitle: docB.title,
+      docAUrl: topicA.id,
+      docBUrl: topicB.id,
+      docATitle: topicA.title,
+      docBTitle: topicB.title,
       changes: fileChangeAmount,
       percentage: percentageChange,
     };
@@ -108,30 +130,40 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   function compareAllDocs() {
     const comparisonResults = [];
     for (const differentFile of differentFiles) {
-      var fileA: DeltaDocResultType;
-      var fileB: DeltaDocResultType;
-      const releaseAFind = releaseAFiles.find(
-        (file) => file.id === differentFile.id
+      var topicA: DeltaDocTopicType;
+      var topicB: DeltaDocTopicType;
+      const firstDocFoundTopic = firstDocTopics.find(
+        (firstTopic) =>
+          removeReleaseIdentifier(firstTopic.id, firstDocBaseUrl) ===
+          removeReleaseIdentifier(
+            removeReleaseIdentifier(differentFile.id, firstDocBaseUrl),
+            secondDocBaseUrl
+          )
       );
-      const releaseBFind = releaseBFiles.find(
-        (file) => file.id === differentFile.id
+      const secondDocFoundTopic = secondDocTopics.find(
+        (secondTopic) =>
+          removeReleaseIdentifier(secondTopic.id, secondDocBaseUrl) ===
+          removeReleaseIdentifier(
+            removeReleaseIdentifier(differentFile.id, firstDocBaseUrl),
+            secondDocBaseUrl
+          )
       );
-      const emptyReleaseObject: DeltaDocResultType = {
+      const emptyReleaseObject: DeltaDocTopicType = {
         id: '',
         title: `${fileDoesNotExistText}`,
         body: ' ',
       };
-      if (releaseAFind) {
-        fileA = releaseAFind;
+      if (firstDocFoundTopic) {
+        topicA = firstDocFoundTopic;
       } else {
-        fileA = emptyReleaseObject;
+        topicA = emptyReleaseObject;
       }
-      if (releaseBFind) {
-        fileB = releaseBFind;
+      if (secondDocFoundTopic) {
+        topicB = secondDocFoundTopic;
       } else {
-        fileB = emptyReleaseObject;
+        topicB = emptyReleaseObject;
       }
-      const levenshteinResult = compareTwoDocs(fileA, fileB);
+      const levenshteinResult = compareTwoDocs(topicA, topicB);
       comparisonResults.push(levenshteinResult);
     }
     return comparisonResults;
@@ -159,8 +191,8 @@ export function compareDocs(deltaDocData: DeltaDocResultType[][]) {
   const totalFilesScanned = results.length + unchangedFiles;
   const [docBaseFileChanges, docBaseFilePercentageChanges] =
     docBasePercentageTotal(totalFilesScanned, differentFiles.length);
-  const releaseALength = releaseAFiles.length;
-  const releaseBLength = releaseBFiles.length;
+  const releaseALength = firstDocTopics.length;
+  const releaseBLength = secondDocTopics.length;
 
   return {
     results,
@@ -186,12 +218,11 @@ export type DeltaDocData = {
 };
 
 const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
-  releaseA,
-  releaseB,
-  url,
+  firstDocId,
+  secondDocId,
 }) => {
   const response = await fetch(
-    `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}`
+    `/delta/results?firstDocId=${firstDocId}&secondDocId=${secondDocId}`
   );
   const { status } = response;
   const jsonData = await response.json();
@@ -199,41 +230,17 @@ const deltaDocDataGetter: Fetcher<DeltaDocData, DeltaDocInputType> = async ({
   if (!response.ok) {
     throw new Error(status, jsonData.message);
   }
-
-  const regexSearch = url.replace(/\d+.+\d/, '');
-  const outputRegex = new RegExp(regexSearch, 'g');
-  const stringifiedData = JSON.stringify(jsonData).replaceAll(outputRegex, '/');
-  const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
-  const deltaDocData = parsedData.map((releaseData) =>
-    releaseData
-      .filter((element) => {
-        return element.id.replace(/[0-9]/g, '') !== url.replace(/[0-9]/g, '');
-      })
-      .map((element) => {
-        let newElementId = element.id;
-        if (element.id.includes('cloud')) {
-          newElementId = element.id.replace(/\/cloud\/.*\d+.+\d\//g, '');
-        }
-        if (element.id.includes('jutro')) {
-          newElementId = element.id.replace(/\/jutro\/.*\d+.+\d/g, '');
-        }
-        return { ...element, id: newElementId };
-      })
-  );
-
-  const comparisonResult = compareDocs(deltaDocData);
-
+  const comparisonResult = compareDocs(jsonData);
   return comparisonResult;
 };
 
 export function useDeltaDocData({
-  releaseA,
-  releaseB,
-  url,
+  firstDocId,
+  secondDocId,
 }: DeltaDocInputType) {
-  const shouldFetch = releaseA && releaseB && url;
+  const shouldFetch = firstDocId && secondDocId;
   const { data, error, isLoading } = useSWR<DeltaDocData, Error>(
-    shouldFetch ? { releaseA, releaseB, url } : null,
+    shouldFetch ? { firstDocId, secondDocId } : null,
     deltaDocDataGetter,
     {
       revalidateOnFocus: false,
@@ -279,23 +286,21 @@ export function useDocsByProduct(docUrl?: string) {
 
 const batchDeltaDocDataGetter: Fetcher<
   (DeltaDocData & {
-    url: string;
-    releaseA: string;
-    releaseB: string;
+    firstDocId: string;
+    secondDocId: string;
   })[],
   DeltaDocInputType[]
 > = async (inputArray) => {
   const comparisonResultArray: (DeltaDocData & {
-    url: string;
-    releaseA: string;
-    releaseB: string;
+    firstDocId: string;
+    secondDocId: string;
   })[] = [];
-  for (const { url, releaseA, releaseB } of inputArray) {
-    if (!url || !releaseA || !releaseB) {
+  for (const { firstDocId, secondDocId } of inputArray) {
+    if (!firstDocId || !secondDocId) {
       continue;
     }
     const response = await fetch(
-      `/delta/results?releaseA=${releaseA}&releaseB=${releaseB}&url=${url}`
+      `/delta/results?firstDocId=${firstDocId}&secondDocId=${secondDocId}`
     );
     const { status } = response;
     const jsonData = await response.json();
@@ -304,33 +309,11 @@ const batchDeltaDocDataGetter: Fetcher<
       console.error(status, await jsonData.message);
     }
 
-    const regexSearch = url.replace(/\d+.+\d\//, '');
-    const outputRegex = new RegExp(regexSearch, 'g');
-    const stringifiedData = JSON.stringify(jsonData).replaceAll(
-      outputRegex,
-      '/'
-    );
-    const parsedData: DeltaDocResultType[][] = JSON.parse(stringifiedData);
-    const deltaDocData = parsedData.map((releaseData) =>
-      releaseData
-        .filter((element) => {
-          return element.id.replace(/[0-9]/g, '') !== url.replace(/[0-9]/g, '');
-        })
-        .map((element) => {
-          let newElementId = element.id;
-          if (element.id.includes('cloud')) {
-            newElementId = element.id.replace(/\/cloud\/.*\d+.+\d\//g, '');
-          }
-          return { ...element, id: newElementId };
-        })
-    );
-
-    const comparisonResult = compareDocs(deltaDocData);
+    const comparisonResult = compareDocs(jsonData);
     comparisonResultArray.push({
       ...comparisonResult,
-      url,
-      releaseA,
-      releaseB,
+      firstDocId,
+      secondDocId,
     });
   }
 
@@ -340,9 +323,8 @@ const batchDeltaDocDataGetter: Fetcher<
 export function useBatchDeltaDocData(inputArray: DeltaDocInputType[]) {
   const { data, error, isLoading } = useSWR<
     (DeltaDocData & {
-      url: string;
-      releaseA: string;
-      releaseB: string;
+      firstDocId: string;
+      secondDocId: string;
     })[],
     Error
   >(inputArray, batchDeltaDocDataGetter, {

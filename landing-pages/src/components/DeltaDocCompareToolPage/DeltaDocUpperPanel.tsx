@@ -17,21 +17,18 @@ import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocLoading from './DeltaDocLoading';
 import FormHelperText from '@mui/material/FormHelperText';
 
-export const releaseNumberRegex = new RegExp(
-  /((\/|_)\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/
-);
-
-export function getReleaseNameRegex(releases: Release[]) {
-  return new RegExp(
-    '(' + releases.map((release) => release.name.toLowerCase()).join('|') + ')'
-  );
+export function getReleaseRegex(releases: Release[]) {
+  return {
+    releaseNameRegex: new RegExp(
+      '(' +
+        releases.map((release) => release.name.toLowerCase()).join('|') +
+        ')'
+    ),
+    releaseNumberRegex: new RegExp(/((\/|_)\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/),
+  };
 }
-
-export function removeDuplicates(
-  docs: Doc[],
-  releaseNumberRegex: RegExp,
-  releaseNameRegex: RegExp
-) {
+export function removeDuplicates(docs: Doc[], releases: Release[]) {
+  const { releaseNumberRegex, releaseNameRegex } = getReleaseRegex(releases);
   return docs.filter(
     (doc, i, arr) =>
       arr.findIndex(
@@ -47,10 +44,14 @@ export function removeDuplicates(
 }
 export default function DeltaDocUpperPanel() {
   const [canSubmit, setCanSubmit] = useState(false);
-  const [docUrl, setDocUrl] = useState<string>('');
-  const [productName, setProductName] = useState<string>('');
-  const [firstRelease, setFirstRelease] = useState<string>('');
-  const [secondRelease, setSecondRelease] = useState<string>('');
+  const [selectedDoc, setSelectedDoc] = useState<Doc>();
+  const [selectedDocSet, setSelectedDocSet] = useState<Doc[]>([]);
+  const [leftDoc, setLeftDoc] = useState<Doc>();
+  const [rightDoc, setRightDoc] = useState<Doc>();
+  const [tmpFirstRelease, setTmpFirstRelease] = useState<Release>();
+  const [tmpFirstReleaseSet, setTmpFirstReleaseSet] = useState<Release[]>();
+  const [tmpSecondRelease, setTmpSecondRelease] = useState<Release>();
+  const [tmpSecondReleaseSet, setTmpSecondReleaseSet] = useState<Release[]>();
   const { docs, isLoading, isError } = useDocsNoRevalidation();
   const {
     releases,
@@ -62,18 +63,55 @@ export default function DeltaDocUpperPanel() {
     isLoading: isLoadingProducts,
     isError: isErrorProducts,
   } = useProductsNoRevalidation();
-  const { setFormState, batchComparison, setRootUrl, setBatchProduct } =
-    useDeltaDocContext();
-
+  const {
+    setFormState,
+    batchComparison,
+    setBatchProduct,
+    setReleaseA,
+    setReleaseB,
+    setFirstDoc,
+    setSecondDoc,
+    batchProduct,
+  } = useDeltaDocContext();
+  const [productName, setProductName] = useState<string>(batchProduct);
   useEffect(() => {
-    setCanSubmit(docUrl !== '' && firstRelease !== '' && secondRelease !== '');
+    setCanSubmit(!!selectedDoc && !!tmpFirstRelease && !!tmpSecondRelease);
   }, [
-    docUrl,
-    firstRelease,
-    secondRelease,
+    selectedDoc,
+    tmpFirstRelease,
+    tmpSecondRelease,
     productName,
     setCanSubmit,
     batchComparison,
+  ]);
+
+  useEffect(() => {
+    setTmpFirstReleaseSet(leftDoc && leftDoc.releases ? leftDoc.releases : []);
+    setTmpSecondReleaseSet(
+      rightDoc && rightDoc.releases ? rightDoc.releases : []
+    );
+    setLeftDoc(
+      selectedDocSet.find((doc) => {
+        if (doc.releases && doc.releases.length > 0) {
+          return doc.releases.some((r) => r.name === tmpFirstRelease?.name);
+        } else return false;
+      })
+    );
+    setRightDoc(
+      selectedDocSet.find((doc) => {
+        if (doc.releases && doc.releases.length > 0) {
+          return doc.releases.some((r) => r.name === tmpSecondRelease?.name);
+        } else return false;
+      })
+    );
+  }, [
+    tmpFirstRelease,
+    tmpSecondRelease,
+    leftDoc,
+    rightDoc,
+    setTmpFirstReleaseSet,
+    setTmpSecondReleaseSet,
+    selectedDocSet,
   ]);
 
   if (batchComparison) {
@@ -103,28 +141,54 @@ export default function DeltaDocUpperPanel() {
   });
 
   function handleSubmit() {
-    setRootUrl(docUrl);
     setFormState({
-      releaseA: firstRelease,
-      releaseB: secondRelease,
-      url: `/${docUrl}/`,
+      firstDocId: leftDoc ? leftDoc.id : '',
+      secondDocId: rightDoc ? rightDoc.id : '',
     });
+    setReleaseA(
+      leftDoc && leftDoc.releases ? leftDoc.releases.map((r) => r.name) : []
+    );
+    setReleaseB(
+      rightDoc && rightDoc.releases ? rightDoc.releases.map((r) => r.name) : []
+    );
+    setFirstDoc(leftDoc);
+    setSecondDoc(rightDoc);
     setCanSubmit(false);
     setBatchProduct(productName);
   }
-
   const filteredDocs = docs.filter((doc) => {
     return doc.platformProductVersions?.find((ppv) => {
       return ppv.product.name === productName;
     });
   });
-  const releaseNameRegex = getReleaseNameRegex(releases);
-  const docsNoDuplicates = removeDuplicates(
-    filteredDocs,
-    releaseNumberRegex,
-    releaseNameRegex
+
+  const allCorrespondingDocs = filteredDocs.filter(
+    (doc) => doc.title === selectedDoc?.title
   );
 
+  const filteredReleases = releases.filter((release) => {
+    return allCorrespondingDocs.some((doc) =>
+      doc.releases?.some((r) => r.name === release.name)
+    );
+  });
+
+  const docsNoDuplicates = removeDuplicates(filteredDocs, releases);
+
+  const docsAvailableToCompare = allCorrespondingDocs.filter(
+    (doc) => doc.releases && doc.releases.length > 0
+  ).length;
+
+  const disabledReleases =
+    filteredReleases.length === 0 || docsAvailableToCompare < 2;
+
+  const disabledDocument = !!productName && docsNoDuplicates.length === 0;
+
+  function resetReleases() {
+    setTmpFirstRelease(undefined);
+    setTmpSecondRelease(undefined);
+    setTmpFirstReleaseSet([]);
+    setTmpSecondReleaseSet([]);
+  }
   return (
     <Container>
       <Stack spacing={2} sx={{ py: '1rem' }}>
@@ -144,7 +208,8 @@ export default function DeltaDocUpperPanel() {
                   value={productName}
                   onChange={(event) => {
                     setProductName(event.target.value);
-                    setDocUrl('');
+                    setSelectedDoc(undefined);
+                    resetReleases();
                   }}
                   sx={{ width: '300px' }}
                 >
@@ -166,28 +231,45 @@ export default function DeltaDocUpperPanel() {
                 <InputLabel>Document</InputLabel>
                 <Select
                   label="Document"
-                  value={docUrl}
-                  onChange={(event) => setDocUrl(event.target.value)}
+                  value={selectedDoc ? selectedDoc : ''}
+                  onChange={(event) => {
+                    setSelectedDocSet(
+                      filteredDocs.filter(
+                        (doc) => doc.title === (event.target.value as Doc).title
+                      )
+                    );
+                    setSelectedDoc(event.target.value as Doc);
+                    resetReleases();
+                  }}
                   sx={{ width: '300px' }}
-                  disabled={!!productName && docsNoDuplicates.length === 0}
+                  disabled={disabledDocument}
                 >
                   {(productName ? docsNoDuplicates : docs)
                     .sort((a, b) => {
                       return a.title > b.title ? 1 : b.title > a.title ? -1 : 0;
                     })
                     .map((d) => (
-                      <MenuItem value={d.url} key={d.id}>
+                      //@ts-ignore - necessary to load object into value
+                      <MenuItem value={d} key={d.id}>
                         {d.title} (
                         {d.url
-                          .replace(releaseNameRegex, '<release>')
-                          .replace(releaseNumberRegex, '/<release>')}
+                          .replace(
+                            getReleaseRegex(releases).releaseNameRegex,
+                            '<release>'
+                          )
+                          .replace(
+                            getReleaseRegex(releases).releaseNumberRegex,
+                            '/<release>'
+                          )}
                         )
                       </MenuItem>
                     ))}
                 </Select>
                 <FormHelperText>
-                  {!!productName && docsNoDuplicates.length === 0
+                  {disabledDocument
                     ? 'There are no documents in this product.'
+                    : selectedDoc && docsAvailableToCompare < 2
+                    ? "This document doesn't exist in at least two releases."
                     : ' '}
                 </FormHelperText>
               </FormControl>
@@ -197,14 +279,25 @@ export default function DeltaDocUpperPanel() {
                 <InputLabel>First release</InputLabel>
                 <Select
                   label="First release"
-                  value={firstRelease}
-                  onChange={(event) => setFirstRelease(event.target.value)}
+                  value={tmpFirstRelease ? tmpFirstRelease : ''}
+                  onChange={(event) => {
+                    setTmpFirstRelease(event.target.value as Release);
+                  }}
                   sx={{ width: '300px' }}
+                  disabled={disabledReleases}
                 >
                   {sortedReleases.map((r) => (
+                    //@ts-ignore - necessary to load object into value
                     <MenuItem
-                      value={r.name}
-                      disabled={r.name === secondRelease}
+                      value={r}
+                      disabled={
+                        r === tmpSecondRelease ||
+                        !filteredReleases.includes(r) ||
+                        rightDoc?.releases?.includes(r) ||
+                        tmpSecondReleaseSet?.some(
+                          (release) => release.name === r.name
+                        )
+                      }
                       key={r.name}
                     >
                       {r.name}
@@ -219,14 +312,25 @@ export default function DeltaDocUpperPanel() {
                 <InputLabel>Second release</InputLabel>
                 <Select
                   label="Second release"
-                  value={secondRelease}
-                  onChange={(event) => setSecondRelease(event.target.value)}
+                  value={tmpSecondRelease ? tmpSecondRelease : ''}
+                  onChange={(event) => {
+                    setTmpSecondRelease(event.target.value as Release);
+                  }}
                   sx={{ width: '300px' }}
+                  disabled={disabledReleases}
                 >
                   {sortedReleases.map((r) => (
+                    //@ts-ignore - necessary to load object into value
                     <MenuItem
-                      value={r.name}
-                      disabled={r.name === firstRelease}
+                      value={r}
+                      disabled={
+                        r === tmpFirstRelease ||
+                        !filteredReleases.includes(r) ||
+                        leftDoc?.releases?.includes(r) ||
+                        tmpFirstReleaseSet?.some(
+                          (release) => release.name === r.name
+                        )
+                      }
                       key={r.name}
                     >
                       {r.name}

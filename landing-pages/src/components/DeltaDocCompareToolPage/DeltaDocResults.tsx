@@ -28,7 +28,7 @@ export default function DeltaDocResults() {
   useEffect(() => {
     changePage(1);
     setResultsPerPage(9);
-  }, [deltaDocData, setResultsPerPage]);
+  }, []);
 
   if (!deltaDocData) {
     return <></>;
@@ -36,9 +36,20 @@ export default function DeltaDocResults() {
 
   const { results } = deltaDocData;
   const count = Math.ceil(results.length / resultsPerPage);
-  const higherRelease = releaseA > releaseB ? releaseA : releaseB;
-  const lowerRelease = releaseA < releaseB ? releaseA : releaseB;
   const allResultsDisplayed = resultsPerPage === results.length;
+
+  const sortedReleasesA = releaseA.sort((a, b) => b.localeCompare(a));
+  const sortedReleasesB = releaseB.sort((a, b) => b.localeCompare(a));
+  const releases =
+    sortedReleasesA[0] > sortedReleasesB[0]
+      ? {
+          higherRelease: { releases: sortedReleasesA[0], source: 'A' },
+          lowerRelease: { releases: sortedReleasesB[0], source: 'B' },
+        }
+      : {
+          higherRelease: { releases: sortedReleasesB[0], source: 'B' },
+          lowerRelease: { releases: sortedReleasesA[0], source: 'A' },
+        };
 
   return (
     <>
@@ -80,10 +91,18 @@ export default function DeltaDocResults() {
           <TableHead>
             <TableRow>
               <TableCell align="center">Change</TableCell>
-              <TableCell align="center">URL in {lowerRelease}</TableCell>
-              <TableCell align="center">URL in {higherRelease}</TableCell>
-              <TableCell align="center">Title in {lowerRelease}</TableCell>
-              <TableCell align="center">Title in {higherRelease}</TableCell>
+              <TableCell align="center">
+                URL in {releases.lowerRelease.releases}
+              </TableCell>
+              <TableCell align="center">
+                URL in {releases.higherRelease.releases}
+              </TableCell>
+              <TableCell align="center">
+                Title in {releases.lowerRelease.releases}
+              </TableCell>
+              <TableCell align="center">
+                Title in {releases.higherRelease.releases}
+              </TableCell>
               <TableCell align="center">Number of changes</TableCell>
               <TableCell align="center">Percentage</TableCell>
             </TableRow>
@@ -93,7 +112,7 @@ export default function DeltaDocResults() {
               <DeltaDocResultTableRow
                 result={result}
                 index={index + (page - 1) * resultsPerPage + 1}
-                releases={{ lowerRelease, higherRelease }}
+                releases={releases}
                 key={index}
               />
             ))}

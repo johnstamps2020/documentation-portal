@@ -15,29 +15,22 @@ import { useEffect, useState } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocLoading from './DeltaDocLoading';
 import Alert from '@mui/material/Alert';
-import {
-  getReleaseNameRegex,
-  releaseNumberRegex,
-  removeDuplicates,
-} from './DeltaDocUpperPanel';
+import { removeDuplicates } from './DeltaDocUpperPanel';
+import { DeltaDocInputType, Release } from '@doctools/server';
 
 export default function BatchComparisonUpperPanel() {
   const {
     setBatchFormState,
     setBatchProduct,
     setFormState,
-    setNumberOfDocsInProduct,
     batchProduct,
     releaseA,
     releaseB,
+    setReleaseA,
+    setReleaseB,
   } = useDeltaDocContext();
   const [productName, setProductName] = useState<string>(batchProduct);
-  const [firstRelease, setFirstRelease] = useState<string>(releaseA);
-  const [secondRelease, setSecondRelease] = useState<string>(releaseB);
   const [canSubmit, setCanSubmit] = useState(false);
-  const [tmpDocsLength, setTmpDocsLength] = useState<number>();
-  const [tmpReleaseB, setTmpReleaseB] = useState('');
-  const [tmpReleaseA, setTmpReleaseA] = useState('');
   const { products, isLoading, isError } = useProductsNoRevalidation();
   const {
     docs,
@@ -49,43 +42,41 @@ export default function BatchComparisonUpperPanel() {
     isLoading: isLoadingReleases,
     isError: isErrorReleases,
   } = useReleasesNoRevalidation();
-
+  const [tmpFirstRelease, setTmpFirstRelease] = useState<Release | undefined>(
+    () =>
+      releases?.find(
+        (r) => r.name === releaseA.sort((a, b) => b.localeCompare(a))[0]
+      )
+  );
+  const [tmpSecondRelease, setTmpSecondRelease] = useState<Release | undefined>(
+    () =>
+      releases?.find(
+        (r) => r.name === releaseB.sort((a, b) => b.localeCompare(a))[0]
+      )
+  );
   const filteredDocs =
-    docs && releases
-      ? removeDuplicates(
-          docs,
-          releaseNumberRegex,
-          getReleaseNameRegex(releases)
-        )
-      : docs;
+    docs && releases ? removeDuplicates(docs, releases) : docs;
 
   useEffect(() => {
-    if (productName && firstRelease && secondRelease) {
+    if (productName && tmpFirstRelease && tmpSecondRelease) {
       if (isErrorDocs || isErrorReleases || isError) {
         setCanSubmit(false);
       } else {
         setCanSubmit(true);
       }
     }
-    setTmpDocsLength(filteredDocs?.length);
   }, [
     productName,
-    firstRelease,
-    secondRelease,
+    tmpFirstRelease,
+    tmpSecondRelease,
     setProductName,
     docs,
     isErrorDocs,
     isErrorReleases,
     isError,
     setCanSubmit,
-    setNumberOfDocsInProduct,
     filteredDocs?.length,
   ]);
-
-  useEffect(() => {
-    setTmpReleaseA(firstRelease ? firstRelease : releaseA);
-    setTmpReleaseB(secondRelease ? secondRelease : releaseB);
-  }, [releaseA, firstRelease, releaseB, secondRelease]);
 
   if (
     (!releases || !products) &&
@@ -99,24 +90,56 @@ export default function BatchComparisonUpperPanel() {
   }
 
   function handleSubmit() {
-    if (!filteredDocs || !firstRelease || !secondRelease) {
+    if (
+      !docs ||
+      !filteredDocs ||
+      !tmpFirstRelease ||
+      !tmpSecondRelease ||
+      !releases
+    ) {
       return;
     }
-    const batch = filteredDocs.map((doc) => {
-      return {
-        url: `/${doc.url}/`,
-        releaseA: firstRelease,
-        releaseB: secondRelease,
-      };
-    });
+
+    const batch: DeltaDocInputType[] = filteredDocs.reduce(
+      (acc: DeltaDocInputType[], doc) => {
+        const firstDoc = docs.find(
+          (d) =>
+            d.title === doc.title &&
+            d.releases?.some(
+              (r) =>
+                tmpFirstRelease.name === r.name &&
+                tmpSecondRelease.name !== r.name
+            )
+        );
+        const secondDoc = docs.find(
+          (d) =>
+            d.title === doc.title &&
+            d.releases?.some(
+              (r) =>
+                tmpSecondRelease.name === r.name &&
+                tmpFirstRelease.name !== r.name
+            )
+        );
+
+        if (firstDoc && secondDoc) {
+          acc.push({
+            firstDocId: firstDoc.id,
+            secondDocId: secondDoc.id,
+          });
+        }
+
+        return acc;
+      },
+      []
+    );
     setFormState({
-      releaseA: firstRelease,
-      releaseB: secondRelease,
-      url: '',
+      firstDocId: '',
+      secondDocId: '',
     });
+    setReleaseA([tmpFirstRelease.name]);
+    setReleaseB([tmpSecondRelease.name]);
     setBatchFormState(batch);
     setBatchProduct(productName);
-    setNumberOfDocsInProduct(tmpDocsLength);
     setCanSubmit(false);
   }
 
@@ -147,12 +170,7 @@ export default function BatchComparisonUpperPanel() {
                     </MenuItem>
                   ))}
                 </Select>
-                <FormHelperText>
-                  {productName && tmpDocsLength
-                    ? `This product includes ${tmpDocsLength} 
-                      ${tmpDocsLength === 1 ? 'doc' : 'docs'}.`
-                    : ' '}
-                </FormHelperText>
+                <FormHelperText> </FormHelperText>
               </FormControl>
             </Stack>
             <Stack padding={3}>
@@ -160,14 +178,17 @@ export default function BatchComparisonUpperPanel() {
                 <InputLabel>First release</InputLabel>
                 <Select
                   label="First release"
-                  value={tmpReleaseA}
-                  onChange={(event) => setFirstRelease(event.target.value)}
+                  value={tmpFirstRelease ? tmpFirstRelease : ''}
+                  onChange={(event) =>
+                    setTmpFirstRelease(event.target.value as Release)
+                  }
                   sx={{ width: '300px' }}
                 >
                   {releases.map((r) => (
+                    //@ts-ignore - necessary to load object into value
                     <MenuItem
-                      value={r.name}
-                      disabled={r.name === secondRelease}
+                      value={r}
+                      disabled={r === tmpSecondRelease}
                       key={r.name}
                     >
                       {r.name}
@@ -183,14 +204,17 @@ export default function BatchComparisonUpperPanel() {
                 <InputLabel>Second release</InputLabel>
                 <Select
                   label="Second release"
-                  value={tmpReleaseB}
-                  onChange={(event) => setSecondRelease(event.target.value)}
+                  value={tmpSecondRelease ? tmpSecondRelease : ''}
+                  onChange={(event) =>
+                    setTmpSecondRelease(event.target.value as Release)
+                  }
                   sx={{ width: '300px' }}
                 >
                   {releases.map((r) => (
+                    //@ts-ignore - necessary to load object into value
                     <MenuItem
-                      value={r.name}
-                      disabled={r.name === firstRelease}
+                      value={r}
+                      disabled={r === tmpFirstRelease}
                       key={r.name}
                     >
                       {r.name}

@@ -9,16 +9,15 @@ export default function BatchComparisonResultsPanel() {
     deltaDocBatchData,
     deltaDocData,
     isBatchError,
+    isBatchLoading,
     releaseA,
     releaseB,
-    numberOfDocsInProduct,
   } = useDeltaDocContext();
 
   if (
-    (!deltaDocBatchData ||
-      deltaDocBatchData.length !== numberOfDocsInProduct) &&
-    releaseA &&
-    releaseB &&
+    (!deltaDocBatchData || isBatchLoading) &&
+    releaseA.length !== 0 &&
+    releaseB.length !== 0 &&
     !deltaDocData
   ) {
     return <DeltaDocLoading />;

@@ -11,7 +11,9 @@ export default function DeltaDocResultsPanel() {
   const {
     releaseA,
     releaseB,
-    url,
+    firstDocId,
+    secondDocId,
+    firstDoc,
     deltaDocData,
     isError,
     isLoading,
@@ -22,7 +24,7 @@ export default function DeltaDocResultsPanel() {
     return <BatchComparisonResultsPanel />;
   }
 
-  if ((!deltaDocData && !url) || isError) {
+  if ((!deltaDocData && !firstDocId && !secondDocId) || isError) {
     return <></>;
   }
 
@@ -61,9 +63,9 @@ export default function DeltaDocResultsPanel() {
   ) : (
     <Typography variant="h2" textAlign="center">
       {areReleasesIdentical
-        ? ` Releases ${releaseA} and ${releaseB} are
+        ? ` Releases ${releaseA.join(', ')} and ${releaseB.join(', ')} are
         identical.`
-        : `No differences found for ${url} in ${releaseA} and ${releaseB}.`}
+        : `No differences found for ${firstDoc?.title} in ${releaseA} and ${releaseB}.`}
     </Typography>
   );
 }

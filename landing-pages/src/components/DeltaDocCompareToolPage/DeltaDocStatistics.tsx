@@ -50,8 +50,8 @@ export default function DeltaDocStatistics() {
                   {stat.text.includes('ReleaseA') ||
                   stat.text.includes('ReleaseB')
                     ? stat.text
-                        .replace('ReleaseA', releaseA)
-                        .replace('ReleaseB', releaseB)
+                        .replace('ReleaseA', releaseA.join(', '))
+                        .replace('ReleaseB', releaseB.join(', '))
                     : stat.text}
                   {stat.value}
                   {typeof stat.value == 'string' ? '%' : ''}
