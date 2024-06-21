@@ -937,8 +937,10 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
     }
     const dbDocConfigsSaveResult = await saveEntities(dbDocConfigsToSave);
     await updateNonProdPlatformProductVersionEntities();
-    await updateNonProdProductEntities();
-    await updateNonProdVersionEntities();
+    await Promise.all([
+      updateNonProdProductEntities(),
+      updateNonProdVersionEntities(),
+    ]);
     return {
       status: 200,
       body: {
