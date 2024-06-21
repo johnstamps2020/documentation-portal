@@ -2,9 +2,9 @@ import Button from '@mui/material/Button';
 import FormHelperText from '@mui/material/FormHelperText';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import {
   useProductsNoRevalidation,
@@ -14,7 +14,6 @@ import { useDocsByProduct } from 'hooks/useDeltaDocData';
 import { useEffect, useState } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocLoading from './DeltaDocLoading';
-import Alert from '@mui/material/Alert';
 import { removeDuplicates } from './DeltaDocUpperPanel';
 import { DeltaDocInputType, Release } from '@doctools/server';
 
@@ -143,6 +142,12 @@ export default function BatchComparisonUpperPanel() {
     setCanSubmit(false);
   }
 
+  const selectedProduct = productName
+    ? products.find((p) => p.name === productName)
+    : batchProduct
+    ? products.find((p) => p.name === batchProduct)
+    : null;
+
   return (
     <Container>
       <Stack spacing={2} sx={{ py: '1rem' }}>
@@ -157,70 +162,54 @@ export default function BatchComparisonUpperPanel() {
           >
             <Stack padding={3}>
               <FormControl>
-                <InputLabel>Product</InputLabel>
-                <Select
-                  label="Product"
-                  value={productName ? productName : batchProduct}
-                  onChange={(event) => setProductName(event.target.value)}
+                <Autocomplete
+                  options={products}
+                  getOptionLabel={(option) => option.name}
+                  value={selectedProduct}
+                  onChange={(event, newValue) =>
+                    setProductName(
+                      newValue ? newValue.name : batchProduct || ''
+                    )
+                  }
+                  renderInput={(params) => (
+                    <TextField {...params} label="Product" />
+                  )}
                   sx={{ width: '300px' }}
-                >
-                  {products.map((p) => (
-                    <MenuItem value={p.name} key={p.name}>
-                      {p.name}
-                    </MenuItem>
-                  ))}
-                </Select>
+                />
                 <FormHelperText> </FormHelperText>
               </FormControl>
             </Stack>
             <Stack padding={3}>
               <FormControl>
-                <InputLabel>First release</InputLabel>
-                <Select
-                  label="First release"
-                  value={tmpFirstRelease ? tmpFirstRelease : ''}
-                  onChange={(event) =>
-                    setTmpFirstRelease(event.target.value as Release)
+                <Autocomplete
+                  options={releases}
+                  getOptionLabel={(option) => option.name}
+                  value={tmpFirstRelease || null}
+                  onChange={(event, newValue) =>
+                    setTmpFirstRelease(newValue ? newValue : undefined)
                   }
+                  renderInput={(params) => (
+                    <TextField {...params} label="First release" />
+                  )}
                   sx={{ width: '300px' }}
-                >
-                  {releases.map((r) => (
-                    //@ts-ignore - necessary to load object into value
-                    <MenuItem
-                      value={r}
-                      disabled={r === tmpSecondRelease}
-                      key={r.name}
-                    >
-                      {r.name}
-                    </MenuItem>
-                  ))}
-                </Select>
+                />
                 <FormHelperText> </FormHelperText>
-                {/* essential to have consistent layout (otherwise selectors will be lower then the first one)*/}
               </FormControl>
             </Stack>
             <Stack padding={3}>
               <FormControl>
-                <InputLabel>Second release</InputLabel>
-                <Select
-                  label="Second release"
-                  value={tmpSecondRelease ? tmpSecondRelease : ''}
-                  onChange={(event) =>
-                    setTmpSecondRelease(event.target.value as Release)
+                <Autocomplete
+                  options={releases}
+                  getOptionLabel={(option) => option.name}
+                  value={tmpSecondRelease || null}
+                  onChange={(event, newValue) =>
+                    setTmpSecondRelease(newValue ? newValue : undefined)
                   }
+                  renderInput={(params) => (
+                    <TextField {...params} label="Second release" />
+                  )}
                   sx={{ width: '300px' }}
-                >
-                  {releases.map((r) => (
-                    //@ts-ignore - necessary to load object into value
-                    <MenuItem
-                      value={r}
-                      disabled={r === tmpFirstRelease}
-                      key={r.name}
-                    >
-                      {r.name}
-                    </MenuItem>
-                  ))}
-                </Select>
+                />
                 <FormHelperText> </FormHelperText>
               </FormControl>
             </Stack>
