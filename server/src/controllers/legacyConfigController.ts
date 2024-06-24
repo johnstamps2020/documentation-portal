@@ -1,9 +1,4 @@
-import {
-  findAllEntities,
-  findEntities,
-  findEntity,
-  saveEntities,
-} from './configController';
+import { findAllEntities, findEntity, saveEntities } from './configController';
 import { Doc } from '../model/entity/Doc';
 import { PlatformProductVersion } from '../model/entity/PlatformProductVersion';
 import { Release } from '../model/entity/Release';
@@ -534,32 +529,24 @@ async function updateNonProdPlatformProductVersionEntities() {
 
 async function updateNonProdProductEntities() {
   const nonProdProducts: Product[] = [];
-  const inProdPpvs = (await findEntities(
-    PlatformProductVersion.name,
-    {
-      isInProduction: true,
-    },
-    true
-  )) as PlatformProductVersion[];
-
   const allProducts = (await findAllEntities(Product.name, true)) as Product[];
 
-  if (!inProdPpvs || !allProducts) {
+  if (!allProducts) {
     return;
   }
 
-  const inProdProductNames = new Set<string>();
-  for (const ppv of inProdPpvs) {
-    if (!inProdProductNames.has(ppv.product.name)) {
-      inProdProductNames.add(ppv.product.name);
-    }
-  }
-
   for (const product of allProducts) {
-    if (!inProdProductNames.has(product.name)) {
+    const prodPpvForProduct = await findEntity(PlatformProductVersion.name, {
+      isInProduction: true,
+      product: {
+        name: product.name,
+      },
+    });
+    if (!prodPpvForProduct) {
       nonProdProducts.push(product);
     }
   }
+
   const updatedNonProdProducts = nonProdProducts.map((product) => {
     product.isInProduction = false;
     return product;
@@ -569,29 +556,20 @@ async function updateNonProdProductEntities() {
 
 async function updateNonProdVersionEntities() {
   const nonProdVersions: Version[] = [];
-  const inProdPpvs = (await findEntities(
-    PlatformProductVersion.name,
-    {
-      isInProduction: true,
-    },
-    true
-  )) as PlatformProductVersion[];
-
   const allVersions = (await findAllEntities(Version.name, true)) as Version[];
 
-  if (!inProdPpvs || !allVersions) {
+  if (!allVersions) {
     return;
   }
 
-  const inProdVersionNames = new Set<string>();
-  for (const ppv of inProdPpvs) {
-    if (!inProdVersionNames.has(ppv.version.name)) {
-      inProdVersionNames.add(ppv.version.name);
-    }
-  }
-
   for (const version of allVersions) {
-    if (!inProdVersionNames.has(version.name)) {
+    const prodPpvForVersion = await findEntity(PlatformProductVersion.name, {
+      isInProduction: true,
+      version: {
+        name: version.name,
+      },
+    });
+    if (!prodPpvForVersion) {
       nonProdVersions.push(version);
     }
   }
