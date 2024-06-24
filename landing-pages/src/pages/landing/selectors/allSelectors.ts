@@ -276,6 +276,10 @@ export const allSelectors = {
       label: 'Jasper (2024.02)',
       pagePath: 'cloudProducts/jasper/dx-ref-apps',
     },
+    {
+      label: 'Kufri (2024.07)',
+      pagePath: 'cloudProducts/kufri/dx-ref-apps',
+    },
   ],
   sfc2c6edff3f08e7f4db564282c6812c7: [
     {

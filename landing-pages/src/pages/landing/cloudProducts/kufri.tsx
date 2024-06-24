@@ -69,7 +69,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Digital Reference Applications',
-          pagePath: 'cloudProducts/jasper/dx-ref-apps',
+          pagePath: 'cloudProducts/kufri/dx-ref-apps',
         },
         {
           label: 'Global Content Reference Applications',
