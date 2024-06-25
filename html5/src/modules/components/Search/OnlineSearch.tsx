@@ -1,23 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import HiddenInput from './HiddenInput';
-import SearchInput from './SearchInput';
-import { SearchBox } from '@doctools/components';
 import { translate } from '@doctools/components';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import {
   SearchHeaderLayoutContextProvider,
   SearchHeadWrapper,
   Filters,
 } from '@doctools/components';
-
-type SearchFilters = {
-  release?: string[];
-  version?: string[];
-  platform?: string[];
-  product?: string[];
-  language?: string[];
-};
 
 export default function OnlineSearch() {
   const docId = document
