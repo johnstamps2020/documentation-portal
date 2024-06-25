@@ -19,13 +19,12 @@ import DeltaDocLoading from './DeltaDocLoading';
 export function getReleaseRegex(releases: Release[]) {
   return {
     releaseNameRegex: new RegExp(
-      '(' +
-        releases.map((release) => release.name.toLowerCase()).join('|') +
-        ')'
+      `(${releases.map((release) => release.name.toLowerCase()).join('|')})`
     ),
     releaseNumberRegex: new RegExp(/((\/|_)\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/),
   };
 }
+
 export function removeDuplicates(docs: Doc[], releases: Release[]) {
   const { releaseNumberRegex, releaseNameRegex } = getReleaseRegex(releases);
   return docs.filter(
@@ -48,9 +47,9 @@ export default function DeltaDocUpperPanel() {
   const [leftDoc, setLeftDoc] = useState<Doc>();
   const [rightDoc, setRightDoc] = useState<Doc>();
   const [tmpFirstRelease, setTmpFirstRelease] = useState<Release>();
-  const [tmpFirstReleaseSet, setTmpFirstReleaseSet] = useState<Release[]>();
+  const [tmpFirstReleaseSet, setTmpFirstReleaseSet] = useState<Release[]>([]);
   const [tmpSecondRelease, setTmpSecondRelease] = useState<Release>();
-  const [tmpSecondReleaseSet, setTmpSecondReleaseSet] = useState<Release[]>();
+  const [tmpSecondReleaseSet, setTmpSecondReleaseSet] = useState<Release[]>([]);
   const { docs, isLoading, isError } = useDocsNoRevalidation();
   const {
     releases,
@@ -80,38 +79,38 @@ export default function DeltaDocUpperPanel() {
     tmpFirstRelease,
     tmpSecondRelease,
     productName,
-    setCanSubmit,
     batchComparison,
   ]);
 
   useEffect(() => {
-    setTmpFirstReleaseSet(leftDoc && leftDoc.releases ? leftDoc.releases : []);
-    setTmpSecondReleaseSet(
-      rightDoc && rightDoc.releases ? rightDoc.releases : []
-    );
-    setLeftDoc(
-      selectedDocSet.find((doc) => {
-        if (doc.releases && doc.releases.length > 0) {
-          return doc.releases.some((r) => r.name === tmpFirstRelease?.name);
-        } else return false;
-      })
-    );
-    setRightDoc(
-      selectedDocSet.find((doc) => {
-        if (doc.releases && doc.releases.length > 0) {
-          return doc.releases.some((r) => r.name === tmpSecondRelease?.name);
-        } else return false;
-      })
-    );
-  }, [
-    tmpFirstRelease,
-    tmpSecondRelease,
-    leftDoc,
-    rightDoc,
-    setTmpFirstReleaseSet,
-    setTmpSecondReleaseSet,
-    selectedDocSet,
-  ]);
+    const getReleases = (doc: Doc | undefined) => doc?.releases || [];
+
+    setTmpFirstReleaseSet(getReleases(leftDoc));
+    setTmpSecondReleaseSet(getReleases(rightDoc));
+
+    const findDocByRelease = (release: Release | undefined) =>
+      selectedDocSet.find((doc) =>
+        doc.releases?.some((r) => r.name === release?.name)
+      );
+
+    setLeftDoc(findDocByRelease(tmpFirstRelease));
+    setRightDoc(findDocByRelease(tmpSecondRelease));
+  }, [tmpFirstRelease, tmpSecondRelease, leftDoc, rightDoc, selectedDocSet]);
+
+  useEffect(() => {
+    if (selectedDoc && productName === '') {
+      setProductName(selectedDoc.platformProductVersions[0].product.name);
+    }
+    if (selectedDoc && docs && releases) {
+      const filteredDocs = docs.filter(
+        (doc) =>
+          doc.platformProductVersions?.some(
+            (ppv) => ppv.product.name === productName
+          ) && doc.title === selectedDoc.title
+      );
+      setSelectedDocSet(filteredDocs);
+    }
+  }, [selectedDoc, productName, docs, releases]);
 
   if (batchComparison) {
     return <BatchComparisonUpperPanel />;
@@ -141,15 +140,11 @@ export default function DeltaDocUpperPanel() {
 
   function handleSubmit() {
     setFormState({
-      firstDocId: leftDoc ? leftDoc.id : '',
-      secondDocId: rightDoc ? rightDoc.id : '',
+      firstDocId: leftDoc?.id || '',
+      secondDocId: rightDoc?.id || '',
     });
-    setReleaseA(
-      leftDoc && leftDoc.releases ? leftDoc.releases.map((r) => r.name) : []
-    );
-    setReleaseB(
-      rightDoc && rightDoc.releases ? rightDoc.releases.map((r) => r.name) : []
-    );
+    setReleaseA(leftDoc?.releases?.map((r) => r.name) || []);
+    setReleaseB(rightDoc?.releases?.map((r) => r.name) || []);
     setFirstDoc(leftDoc);
     setSecondDoc(rightDoc);
     setCanSubmit(false);
@@ -182,7 +177,9 @@ export default function DeltaDocUpperPanel() {
 
   const disabledDocument = !!productName && docsNoDuplicates.length === 0;
 
-  const docOptions = productName ? docsNoDuplicates : docs;
+  const docOptions = productName
+    ? docsNoDuplicates
+    : removeDuplicates(docs, releases);
 
   function resetReleases() {
     setTmpFirstRelease(undefined);
@@ -210,12 +207,12 @@ export default function DeltaDocUpperPanel() {
                   )}
                   getOptionLabel={(option) => option.name}
                   value={
-                    products.find((p) => p.name === productName)
-                      ? products.find((p) => p.name === productName)
-                      : null
+                    products.find((p) => p.name === productName) ??
+                    selectedDoc?.platformProductVersions[0]?.product ??
+                    null
                   }
                   onChange={(event, newValue) => {
-                    setProductName(newValue ? newValue.name : '');
+                    setProductName(newValue?.name ?? '');
                     setSelectedDoc(undefined);
                     resetReleases();
                   }}
@@ -302,36 +299,28 @@ export default function DeltaDocUpperPanel() {
                   isOptionEqualToValue={(option, value) =>
                     option.name === value.name
                   }
-                  renderOption={(props, option) => (
-                    <li
-                      {...props}
-                      key={option.name}
-                      style={{
-                        pointerEvents:
-                          option === tmpSecondRelease ||
-                          !filteredReleases.includes(option) ||
-                          (rightDoc?.releases?.includes(option) ?? false) ||
-                          (tmpSecondReleaseSet?.some(
-                            (release) => release.name === option.name
-                          ) ??
-                            false)
-                            ? 'none'
-                            : 'auto',
-                        opacity:
-                          option === tmpSecondRelease ||
-                          !filteredReleases.includes(option) ||
-                          (rightDoc?.releases?.includes(option) ?? false) ||
-                          (tmpSecondReleaseSet?.some(
-                            (release) => release.name === option.name
-                          ) ??
-                            false)
-                            ? 0.5
-                            : 1,
-                      }}
-                    >
-                      {option.name}
-                    </li>
-                  )}
+                  renderOption={(props, option) => {
+                    const isDisabled =
+                      option === tmpSecondRelease ||
+                      !filteredReleases.includes(option) ||
+                      (rightDoc?.releases?.includes(option) ?? false) ||
+                      tmpSecondReleaseSet.some(
+                        (release) => release.name === option.name
+                      );
+
+                    return (
+                      <li
+                        {...props}
+                        key={option.name}
+                        style={{
+                          pointerEvents: isDisabled ? 'none' : 'auto',
+                          opacity: isDisabled ? 0.5 : 1,
+                        }}
+                      >
+                        {option.name}
+                      </li>
+                    );
+                  }}
                   renderInput={(params) => (
                     <TextField {...params} label="First release" />
                   )}
