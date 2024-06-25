@@ -150,92 +150,82 @@ export default function BatchComparisonUpperPanel() {
 
   return (
     <Container>
-      <Stack spacing={2} sx={{ py: '1rem' }}>
-        <FormControl sx={{ alignItems: 'center' }}>
-          <Stack
-            direction="row"
-            height="200px"
-            alignItems="center"
-            alignSelf="center"
-            spacing={3}
-            padding={3}
+      <Stack spacing={2} sx={{ py: '2rem', alignItems: 'center' }}>
+        <Stack
+          direction="row"
+          sx={{
+            height: 'auto',
+            alignItems: 'center',
+            alignSelf: 'center',
+          }}
+          spacing={1}
+        >
+          <FormControl>
+            <Autocomplete
+              options={products}
+              getOptionLabel={(option) => option.name}
+              value={selectedProduct}
+              onChange={(event, newValue) =>
+                setProductName(newValue ? newValue.name : batchProduct || '')
+              }
+              renderInput={(params) => (
+                <TextField {...params} label="Product" />
+              )}
+              sx={{ width: '300px' }}
+            />
+            <FormHelperText> </FormHelperText>
+          </FormControl>
+          <FormControl>
+            <Autocomplete
+              options={releases}
+              getOptionLabel={(option) => option.name}
+              value={tmpFirstRelease || null}
+              onChange={(event, newValue) =>
+                setTmpFirstRelease(newValue ? newValue : undefined)
+              }
+              renderInput={(params) => (
+                <TextField {...params} label="First release" />
+              )}
+              sx={{ width: '300px' }}
+            />
+            <FormHelperText> </FormHelperText>
+          </FormControl>
+          <FormControl>
+            <Autocomplete
+              options={releases}
+              getOptionLabel={(option) => option.name}
+              value={tmpSecondRelease || null}
+              onChange={(event, newValue) =>
+                setTmpSecondRelease(newValue ? newValue : undefined)
+              }
+              renderInput={(params) => (
+                <TextField {...params} label="Second release" />
+              )}
+              sx={{ width: '300px' }}
+            />
+            <FormHelperText> </FormHelperText>
+          </FormControl>
+        </Stack>
+        {(isErrorDocs || isErrorReleases || isError) && (
+          <Alert
+            severity="error"
+            variant="outlined"
+            sx={{ m: 'auto', width: 'fit-content' }}
           >
-            <Stack padding={3}>
-              <FormControl>
-                <Autocomplete
-                  options={products}
-                  getOptionLabel={(option) => option.name}
-                  value={selectedProduct}
-                  onChange={(event, newValue) =>
-                    setProductName(
-                      newValue ? newValue.name : batchProduct || ''
-                    )
-                  }
-                  renderInput={(params) => (
-                    <TextField {...params} label="Product" />
-                  )}
-                  sx={{ width: '300px' }}
-                />
-                <FormHelperText> </FormHelperText>
-              </FormControl>
-            </Stack>
-            <Stack padding={3}>
-              <FormControl>
-                <Autocomplete
-                  options={releases}
-                  getOptionLabel={(option) => option.name}
-                  value={tmpFirstRelease || null}
-                  onChange={(event, newValue) =>
-                    setTmpFirstRelease(newValue ? newValue : undefined)
-                  }
-                  renderInput={(params) => (
-                    <TextField {...params} label="First release" />
-                  )}
-                  sx={{ width: '300px' }}
-                />
-                <FormHelperText> </FormHelperText>
-              </FormControl>
-            </Stack>
-            <Stack padding={3}>
-              <FormControl>
-                <Autocomplete
-                  options={releases}
-                  getOptionLabel={(option) => option.name}
-                  value={tmpSecondRelease || null}
-                  onChange={(event, newValue) =>
-                    setTmpSecondRelease(newValue ? newValue : undefined)
-                  }
-                  renderInput={(params) => (
-                    <TextField {...params} label="Second release" />
-                  )}
-                  sx={{ width: '300px' }}
-                />
-                <FormHelperText> </FormHelperText>
-              </FormControl>
-            </Stack>
-          </Stack>
-          {(isErrorDocs || isErrorReleases || isError) && (
-            <Alert
-              severity="error"
-              variant="outlined"
-              sx={{ m: 'auto', width: 'fit-content' }}
-            >
-              A problem occurred{' '}
-              {isErrorDocs && 'while getting one of the docs'}
-              {isError && 'with this product'}
-              {isErrorReleases && 'with one of the releases'}. Choose different
-              value.
-            </Alert>
-          )}
-          <Button
-            variant="contained"
-            sx={{ mt: '12px', width: '250px' }}
-            onClick={handleSubmit}
-            disabled={!canSubmit}
-          >
-            Compare
-          </Button>
-        </FormControl>
+            A problem occurred {isErrorDocs && 'while getting one of the docs'}
+            {isError && 'with this product'}
+            {isErrorReleases && 'with one of the releases'}. Choose different
+            value.
+          </Alert>
+        )}
+        <Button
+          variant="contained"
+          sx={{ width: '250px' }}
+          onClick={handleSubmit}
+          disabled={!canSubmit}
+        >
+          Compare
+        </Button>
       </Stack>
     </Container>
   );

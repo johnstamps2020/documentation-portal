@@ -40,6 +40,7 @@ export function removeDuplicates(docs: Doc[], releases: Release[]) {
       ) === i
   );
 }
+
 export default function DeltaDocUpperPanel() {
   const [canSubmit, setCanSubmit] = useState(false);
   const [selectedDoc, setSelectedDoc] = useState<Doc>();
@@ -150,6 +151,7 @@ export default function DeltaDocUpperPanel() {
     setCanSubmit(false);
     setBatchProduct(productName);
   }
+
   const filteredDocs = docs.filter((doc) => {
     return doc.platformProductVersions?.find((ppv) => {
       return ppv.product.name === productName;
@@ -190,200 +192,186 @@ export default function DeltaDocUpperPanel() {
 
   return (
     <Container>
-      <Stack spacing={2} sx={{ py: '1rem' }}>
-        <FormControl sx={{ alignItems: 'center' }}>
-          <Stack
-            direction="row"
-            height="200px"
-            alignItems="center"
-            alignSelf="center"
-            spacing={1}
-          >
-            <Stack padding={1}>
-              <FormControl>
-                <Autocomplete
-                  options={products.sort((a, b) =>
-                    a.name.localeCompare(b.name)
-                  )}
-                  getOptionLabel={(option) => option.name}
-                  value={
-                    products.find((p) => p.name === productName) ??
-                    selectedDoc?.platformProductVersions[0]?.product ??
-                    null
-                  }
-                  onChange={(event, newValue) => {
-                    setProductName(newValue?.name ?? '');
-                    setSelectedDoc(undefined);
-                    resetReleases();
-                  }}
-                  isOptionEqualToValue={(option, value) =>
-                    option.name === value.name
-                  }
-                  renderInput={(params) => (
-                    <TextField {...params} label="Product" />
-                  )}
-                  sx={{ width: '300px' }}
-                />
-                <FormHelperText> </FormHelperText>
-              </FormControl>
-            </Stack>
-            <Stack padding={1}>
-              <FormControl>
-                <Autocomplete
-                  options={docOptions.sort((a, b) =>
-                    a.title.localeCompare(b.title)
-                  )}
-                  getOptionLabel={(option) =>
-                    `${option.title} (${option.url
-                      .replace(
-                        getReleaseRegex(releases).releaseNameRegex,
-                        '<release>'
-                      )
-                      .replace(
-                        getReleaseRegex(releases).releaseNumberRegex,
-                        '/<release>'
-                      )})`
-                  }
-                  value={selectedDoc || null}
-                  onChange={(event, newValue) => {
-                    setSelectedDocSet(
-                      newValue
-                        ? filteredDocs.filter(
-                            (doc) => doc.title === newValue.title
-                          )
-                        : []
-                    );
-                    setSelectedDoc(newValue ? newValue : undefined);
-                    resetReleases();
-                  }}
-                  isOptionEqualToValue={(option, value) =>
-                    option.id === value.id
-                  }
-                  renderOption={(props, option) => (
-                    <li {...props} key={option.id}>
-                      {`${option.title} (${option.url
-                        .replace(
-                          getReleaseRegex(releases).releaseNameRegex,
-                          '<release>'
-                        )
-                        .replace(
-                          getReleaseRegex(releases).releaseNumberRegex,
-                          '/<release>'
-                        )})`}
-                    </li>
-                  )}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Document" />
-                  )}
-                  sx={{ width: '300px' }}
-                  disabled={disabledDocument}
-                />
-                <FormHelperText>
-                  {disabledDocument
-                    ? 'There are no documents in this product.'
-                    : selectedDoc && docsAvailableToCompare < 2
-                    ? "This document doesn't exist in at least two releases."
-                    : ' '}
-                </FormHelperText>
-              </FormControl>
-            </Stack>
-            <Stack padding={1}>
-              <FormControl>
-                <Autocomplete
-                  options={sortedReleases}
-                  getOptionLabel={(option) => option.name}
-                  value={tmpFirstRelease || null}
-                  onChange={(event, newValue) => {
-                    setTmpFirstRelease(newValue ? newValue : undefined);
-                  }}
-                  isOptionEqualToValue={(option, value) =>
-                    option.name === value.name
-                  }
-                  renderOption={(props, option) => {
-                    const isDisabled =
-                      option === tmpSecondRelease ||
-                      !filteredReleases.includes(option) ||
-                      (rightDoc?.releases?.includes(option) ?? false) ||
-                      tmpSecondReleaseSet.some(
-                        (release) => release.name === option.name
-                      );
+      <Stack spacing={2} sx={{ py: '2rem', alignItems: 'center' }}>
+        <Stack
+          direction="row"
+          sx={{
+            height: 'auto',
+            alignItems: 'center',
+            alignSelf: 'center',
+          }}
+          spacing={1}
+        >
+          <FormControl>
+            <Autocomplete
+              options={products.sort((a, b) => a.name.localeCompare(b.name))}
+              getOptionLabel={(option) => option.name}
+              value={
+                products.find((p) => p.name === productName) ??
+                selectedDoc?.platformProductVersions[0]?.product ??
+                null
+              }
+              onChange={(event, newValue) => {
+                setProductName(newValue?.name ?? '');
+                setSelectedDoc(undefined);
+                resetReleases();
+              }}
+              isOptionEqualToValue={(option, value) =>
+                option.name === value.name
+              }
+              renderInput={(params) => (
+                <TextField {...params} label="Product" />
+              )}
+              sx={{ width: '300px' }}
+            />
+            <FormHelperText> </FormHelperText>
+          </FormControl>
+          <FormControl>
+            <Autocomplete
+              options={docOptions.sort((a, b) =>
+                a.title.localeCompare(b.title)
+              )}
+              getOptionLabel={(option) =>
+                `${option.title} (${option.url
+                  .replace(
+                    getReleaseRegex(releases).releaseNameRegex,
+                    '<release>'
+                  )
+                  .replace(
+                    getReleaseRegex(releases).releaseNumberRegex,
+                    '/<release>'
+                  )})`
+              }
+              value={selectedDoc || null}
+              onChange={(event, newValue) => {
+                setSelectedDocSet(
+                  newValue
+                    ? filteredDocs.filter((doc) => doc.title === newValue.title)
+                    : []
+                );
+                setSelectedDoc(newValue ? newValue : undefined);
+                resetReleases();
+              }}
+              isOptionEqualToValue={(option, value) => option.id === value.id}
+              renderOption={(props, option) => (
+                <li {...props} key={option.id}>
+                  {`${option.title} (${option.url
+                    .replace(
+                      getReleaseRegex(releases).releaseNameRegex,
+                      '<release>'
+                    )
+                    .replace(
+                      getReleaseRegex(releases).releaseNumberRegex,
+                      '/<release>'
+                    )})`}
+                </li>
+              )}
+              renderInput={(params) => (
+                <TextField {...params} label="Document" />
+              )}
+              sx={{ width: '300px' }}
+              disabled={disabledDocument}
+            />
+            <FormHelperText>
+              {disabledDocument
+                ? 'There are no documents in this product.'
+                : selectedDoc && docsAvailableToCompare < 2
+                ? "This document doesn't exist in at least two releases."
+                : ' '}
+            </FormHelperText>
+          </FormControl>
+          <FormControl>
+            <Autocomplete
+              options={sortedReleases}
+              getOptionLabel={(option) => option.name}
+              value={tmpFirstRelease || null}
+              onChange={(event, newValue) => {
+                setTmpFirstRelease(newValue ? newValue : undefined);
+              }}
+              isOptionEqualToValue={(option, value) =>
+                option.name === value.name
+              }
+              renderOption={(props, option) => {
+                const isDisabled =
+                  option === tmpSecondRelease ||
+                  !filteredReleases.includes(option) ||
+                  (rightDoc?.releases?.includes(option) ?? false) ||
+                  tmpSecondReleaseSet.some(
+                    (release) => release.name === option.name
+                  );
 
-                    return (
-                      <li
-                        {...props}
-                        key={option.name}
-                        style={{
-                          pointerEvents: isDisabled ? 'none' : 'auto',
-                          opacity: isDisabled ? 0.5 : 1,
-                        }}
-                      >
-                        {option.name}
-                      </li>
-                    );
-                  }}
-                  renderInput={(params) => (
-                    <TextField {...params} label="First release" />
-                  )}
-                  sx={{ width: '300px' }}
-                  disabled={disabledReleases}
-                />
-                <FormHelperText> </FormHelperText>
-              </FormControl>
-            </Stack>
-            <Stack padding={1}>
-              <FormControl>
-                <Autocomplete
-                  options={sortedReleases}
-                  getOptionLabel={(option) => option.name}
-                  value={tmpSecondRelease || null}
-                  onChange={(event, newValue) => {
-                    setTmpSecondRelease(newValue ? newValue : undefined);
-                  }}
-                  isOptionEqualToValue={(option, value) =>
-                    option.name === value.name
-                  }
-                  renderOption={(props, option) => {
-                    const isDisabled =
-                      option === tmpFirstRelease ||
-                      !filteredReleases.includes(option) ||
-                      (leftDoc?.releases?.includes(option) ?? false) ||
-                      (tmpFirstReleaseSet?.some(
-                        (release) => release.name === option.name
-                      ) ??
-                        false);
+                return (
+                  <li
+                    {...props}
+                    key={option.name}
+                    style={{
+                      pointerEvents: isDisabled ? 'none' : 'auto',
+                      opacity: isDisabled ? 0.5 : 1,
+                    }}
+                  >
+                    {option.name}
+                  </li>
+                );
+              }}
+              renderInput={(params) => (
+                <TextField {...params} label="First release" />
+              )}
+              sx={{ width: '300px' }}
+              disabled={disabledReleases}
+            />
+            <FormHelperText> </FormHelperText>
+          </FormControl>
+          <FormControl>
+            <Autocomplete
+              options={sortedReleases}
+              getOptionLabel={(option) => option.name}
+              value={tmpSecondRelease || null}
+              onChange={(event, newValue) => {
+                setTmpSecondRelease(newValue ? newValue : undefined);
+              }}
+              isOptionEqualToValue={(option, value) =>
+                option.name === value.name
+              }
+              renderOption={(props, option) => {
+                const isDisabled =
+                  option === tmpFirstRelease ||
+                  !filteredReleases.includes(option) ||
+                  (leftDoc?.releases?.includes(option) ?? false) ||
+                  (tmpFirstReleaseSet?.some(
+                    (release) => release.name === option.name
+                  ) ??
+                    false);
 
-                    return (
-                      <li
-                        {...props}
-                        key={option.name}
-                        style={{
-                          pointerEvents: isDisabled ? 'none' : 'auto',
-                          opacity: isDisabled ? 0.5 : 1,
-                        }}
-                      >
-                        {option.name}
-                      </li>
-                    );
-                  }}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Second release" />
-                  )}
-                  sx={{ width: '300px' }}
-                  disabled={disabledReleases}
-                />
-                <FormHelperText> </FormHelperText>
-              </FormControl>
-            </Stack>
-          </Stack>
-          <Button
-            variant="contained"
-            sx={{ mt: '12px', width: '250px' }}
-            onClick={handleSubmit}
-            disabled={!canSubmit}
-          >
-            Compare
-          </Button>
-        </FormControl>
+                return (
+                  <li
+                    {...props}
+                    key={option.name}
+                    style={{
+                      pointerEvents: isDisabled ? 'none' : 'auto',
+                      opacity: isDisabled ? 0.5 : 1,
+                    }}
+                  >
+                    {option.name}
+                  </li>
+                );
+              }}
+              renderInput={(params) => (
+                <TextField {...params} label="Second release" />
+              )}
+              sx={{ width: '300px' }}
+              disabled={disabledReleases}
+            />
+            <FormHelperText> </FormHelperText>
+          </FormControl>
+        </Stack>
+        <Button
+          variant="contained"
+          sx={{ width: '250px' }}
+          onClick={handleSubmit}
+          disabled={!canSubmit}
+        >
+          Compare
+        </Button>
       </Stack>
     </Container>
   );

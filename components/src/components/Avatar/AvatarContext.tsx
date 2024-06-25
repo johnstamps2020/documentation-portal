@@ -46,7 +46,7 @@ function handleLinks(userInfo: UserInformation, isProd: boolean) {
         },
         {
           href: '/delta-doc',
-          label: 'Delta tool',
+          label: 'Doc Delta Tool',
         },
       ],
     };
