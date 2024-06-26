@@ -12,8 +12,6 @@ import { Readable } from 'stream';
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 
-// TODO add documentation.
-
 interface ParsedArguments {
   release?: string;
   product?: string;
@@ -94,7 +92,7 @@ async function copyPdfsFromS3(argv: ParsedArguments) {
       console.log(
         `Non-DITA build for document ${docInfo.doc.id} found. Skipping...`
       );
-      return;
+      continue;
     }
 
     const bucketName =
@@ -113,7 +111,7 @@ async function copyPdfsFromS3(argv: ParsedArguments) {
 
       if (!listResponse.Contents) {
         console.error(`No objects found for prefix ${objectKey}`);
-        return;
+        continue;
       }
 
       for (const item of listResponse.Contents) {
@@ -144,6 +142,7 @@ async function copyPdfsFromS3(argv: ParsedArguments) {
       }
     } catch (err) {
       console.error(`Error downloading ${objectKey}: ${err}`);
+      continue;
     }
   }
 }
