@@ -22,8 +22,20 @@ function appendToSelectedItem(node: any, str: string) {
     readStream.on('end', function () {
       writeStream.end(str);
     });
+
+    // Handle stream errors
+    readStream.on('error', function (err: Error) {
+      winstonLogger.error(`Reading stream error in Harmon 
+      ERROR: ${JSON.stringify(err)}
+      MESSAGE: ${err})`);
+    });
+    writeStream.on('error', function (err: Error) {
+      winstonLogger.error(`Writing stream error in Harmon 
+      ERROR: ${JSON.stringify(err)}
+      MESSAGE: ${err})`);
+    });
   } catch (err) {
-    winstonLogger.error(`ERROR overwriting response using Harmon: 
+    winstonLogger.error(`Response overwriting error in Harmon: 
           ERROR: ${JSON.stringify(err)}
           MESSAGE: ${err}`);
   }
