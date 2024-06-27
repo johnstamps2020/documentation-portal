@@ -181,9 +181,7 @@ export default function DeltaDocUpperPanel() {
 
   const disabledDocument = !!productName && docsNoDuplicates.length === 0;
 
-  const docOptions = productName
-    ? docsNoDuplicates
-    : removeDuplicates(docs, releases);
+  const docOptions = productName ? docsNoDuplicates : docs;
 
   function resetReleases() {
     setTmpFirstRelease(undefined);

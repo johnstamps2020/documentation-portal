@@ -1,5 +1,6 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { useEffect } from 'react';
 import BatchComparisonTxtReportGenerator from './BatchComparisonTxtReportGenerator';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocLoading from './DeltaDocLoading';
@@ -13,7 +14,13 @@ export default function BatchComparisonResultsPanel() {
     releaseA,
     releaseB,
     batchProduct,
+    batchComparison,
+    setBatchFormState,
   } = useDeltaDocContext();
+
+  useEffect(() => {
+    setBatchFormState([]);
+  }, [batchComparison]);
 
   if (
     isBatchLoading &&
