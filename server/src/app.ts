@@ -133,10 +133,6 @@ const passport = require('passport');
 const deltaDocRouter = require('./routes/delta-doc');
 const chatbotRouter = require('./routes/chatbot');
 
-// view engine setup
-app.set('views', join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
 app.use('/alive', (req, res) => {
   res.sendStatus(200);
 });
