@@ -12,10 +12,11 @@ export default function BatchComparisonResultsPanel() {
     isBatchLoading,
     releaseA,
     releaseB,
+    batchProduct,
   } = useDeltaDocContext();
 
   if (
-    (!deltaDocBatchData || isBatchLoading) &&
+    isBatchLoading &&
     releaseA.length !== 0 &&
     releaseB.length !== 0 &&
     !deltaDocData
@@ -30,7 +31,8 @@ export default function BatchComparisonResultsPanel() {
   return (
     <Stack alignItems="center">
       <Typography textAlign="center" variant="h3" sx={{ my: '16px' }}>
-        Your results are ready. Click below to download a report.
+        Your results for {batchProduct} in {releaseA} and {releaseB} are ready.
+        Click below to download a report.
       </Typography>
       <BatchComparisonTxtReportGenerator />
     </Stack>

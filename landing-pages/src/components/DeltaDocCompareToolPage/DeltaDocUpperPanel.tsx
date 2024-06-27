@@ -41,6 +41,12 @@ export function removeDuplicates(docs: Doc[], releases: Release[]) {
   );
 }
 
+function filterDocs(docs: Doc[], productName: string) {
+  return docs.filter((doc) =>
+    doc.platformProductVersions?.some((ppv) => ppv.product.name === productName)
+  );
+}
+
 export default function DeltaDocUpperPanel() {
   const [canSubmit, setCanSubmit] = useState(false);
   const [selectedDoc, setSelectedDoc] = useState<Doc>();
@@ -71,6 +77,7 @@ export default function DeltaDocUpperPanel() {
     setFirstDoc,
     setSecondDoc,
     batchProduct,
+    isLoading: isLoadingResults,
   } = useDeltaDocContext();
   const [productName, setProductName] = useState<string>(batchProduct);
   useEffect(() => {
@@ -82,6 +89,10 @@ export default function DeltaDocUpperPanel() {
     productName,
     batchComparison,
   ]);
+
+  useEffect(() => {
+    resetReleases();
+  }, [batchComparison]);
 
   useEffect(() => {
     const getReleases = (doc: Doc | undefined) => doc?.releases || [];
@@ -103,13 +114,10 @@ export default function DeltaDocUpperPanel() {
       setProductName(selectedDoc.platformProductVersions[0].product.name);
     }
     if (selectedDoc && docs && releases) {
-      const filteredDocs = docs.filter(
-        (doc) =>
-          doc.platformProductVersions?.some(
-            (ppv) => ppv.product.name === productName
-          ) && doc.title === selectedDoc.title
+      const docsFilteredByTitle = filterDocs(docs, productName).filter(
+        (doc) => doc.title === selectedDoc.title
       );
-      setSelectedDocSet(filteredDocs);
+      setSelectedDocSet(docsFilteredByTitle);
     }
   }, [selectedDoc, productName, docs, releases]);
 
@@ -152,30 +160,24 @@ export default function DeltaDocUpperPanel() {
     setBatchProduct(productName);
   }
 
-  const filteredDocs = docs.filter((doc) => {
-    return doc.platformProductVersions?.find((ppv) => {
-      return ppv.product.name === productName;
-    });
-  });
-
-  const allCorrespondingDocs = filteredDocs.filter(
-    (doc) => doc.title === selectedDoc?.title
-  );
+  const filteredDocs = filterDocs(docs, productName);
 
   const filteredReleases = releases.filter((release) => {
-    return allCorrespondingDocs.some((doc) =>
+    return selectedDocSet.some((doc) =>
       doc.releases?.some((r) => r.name === release.name)
     );
   });
 
   const docsNoDuplicates = removeDuplicates(filteredDocs, releases);
 
-  const docsAvailableToCompare = allCorrespondingDocs.filter(
+  const docsAvailableToCompare = selectedDocSet.filter(
     (doc) => doc.releases && doc.releases.length > 0
   ).length;
 
   const disabledReleases =
-    filteredReleases.length === 0 || docsAvailableToCompare < 2;
+    filteredReleases.length === 0 ||
+    docsAvailableToCompare < 2 ||
+    isLoadingResults;
 
   const disabledDocument = !!productName && docsNoDuplicates.length === 0;
 
@@ -223,6 +225,7 @@ export default function DeltaDocUpperPanel() {
                 <TextField {...params} label="Product" />
               )}
               sx={{ width: '300px' }}
+              disabled={isLoadingResults}
             />
             <FormHelperText> </FormHelperText>
           </FormControl>
@@ -270,7 +273,7 @@ export default function DeltaDocUpperPanel() {
                 <TextField {...params} label="Document" />
               )}
               sx={{ width: '300px' }}
-              disabled={disabledDocument}
+              disabled={disabledDocument || isLoadingResults}
             />
             <FormHelperText>
               {disabledDocument
