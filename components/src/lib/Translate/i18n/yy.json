@@ -158,6 +158,21 @@
   "chat.termsAndConditions.close" : {
     "message" : "[2MgfZz_Close the terms and conditions]"
   },
+  "chatbot.feedback.thumbsUp" : {
+    "message" : "[2q6Wvv_This chatbot response is great]"
+  },
+  "chatbot.feedback.thumbsDown" : {
+    "message" : "[15Viyn_This chatbot response needs improvement]"
+  },
+  "chatbot.feedback.dialog.title" : {
+    "message" : "[4vl05f_Would you like to leave a comment?]"
+  },
+  "chatbot.feedback.dialog.send" : {
+    "message" : "[1vuuv6_Send]"
+  },
+  "chatbot.feedback.dialog.cancel" : {
+    "message" : "[UZEpd_Cancel]"
+  },
   "login.gwEmployeeHint" : {
     "message" : "[U2AXx_Guidewire employee? Log in using the Guidewire Cloud option above.]"
   },
