@@ -21,7 +21,8 @@ function makeHash(message: string) {
 export async function postNewComment(
   chatbotRequest: ChatbotRequest,
   chatbotMessage: ChatbotMessage,
-  reaction: ChatbotComment['user']['reaction']
+  reaction: ChatbotComment['user']['reaction'],
+  userEmail?: string
 ): Promise<{
   postedComment: ChatbotComment | undefined;
   problem: string | undefined;
@@ -41,7 +42,7 @@ export async function postNewComment(
       status: 'active',
       user: {
         reaction,
-        email: 'coming soon!',
+        email: userEmail,
       },
     };
 

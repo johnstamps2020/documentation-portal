@@ -10,6 +10,7 @@ import {
 } from '../../../../types';
 import { ChatMessageFeedbackDialog } from './ChatMessageFeedbackDialog';
 import { postNewComment } from '../api';
+import { useChat } from '../../ChatContext';
 
 type ChatMessageFeedbackButtonsProps = {
   chatbotRequest: ChatbotRequest;
@@ -26,6 +27,7 @@ export function ChatMessageFeedbackButtons({
   const [commentAlreadyPosted, setCommentAlreadyPosted] = useState<
     ChatbotComment | undefined
   >(undefined);
+  const { userInfo } = useChat();
 
   async function handleClick(
     clickReaction: ChatbotComment['user']['reaction']
@@ -34,7 +36,10 @@ export function ChatMessageFeedbackButtons({
     const { postedComment } = await postNewComment(
       chatbotRequest,
       chatbotMessage,
-      clickReaction
+      clickReaction,
+      userInfo.hasGuidewireEmail
+        ? userInfo.email
+        : 'not an employee, email not stored'
     );
     setCommentAlreadyPosted(postedComment);
     setOpen(true);

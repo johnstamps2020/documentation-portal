@@ -7,11 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 import { Translate } from '../../../../lib';
-import {
-  ChatbotComment,
-  ChatbotMessage,
-  ChatbotRequest,
-} from '../../../../types';
+import { ChatbotComment } from '../../../../types';
 import { postComment } from '../api';
 import { ThumbDownIcon, ThumbUpIcon } from '../icons';
 

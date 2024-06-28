@@ -22,6 +22,7 @@ export interface ChatInterface {
   updateFilters: (name: FilterName, value: string[]) => void;
   getFilterValues: (name: FilterName) => string[];
   filterCount: number;
+  userInfo: UserInfo;
 }
 
 export const ChatContext = createContext<ChatInterface | null>(null);
@@ -147,6 +148,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
         updateFilters,
         getFilterValues,
         filterCount,
+        userInfo,
       }}
     >
       {children}
