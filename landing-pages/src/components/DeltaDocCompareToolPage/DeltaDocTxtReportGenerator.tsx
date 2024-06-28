@@ -44,7 +44,10 @@ export function createReport(
     .replaceAll('docATitle:', `${releaseA} title: `)
     .replaceAll('docBTitle:', `${releaseB} title: `)
     .replaceAll('changes:', 'Number of changes: ')
-    .replaceAll('percentage:', 'Percentage of the file changed: ')
+    .replaceAll(
+      /percentage:\s*(\d+)/g,
+      (match, p1) => `Percentage of the file changed: ${p1}%`
+    )
     .replaceAll('docAUrl:', `${releaseA} URL: `)
     .replaceAll('docBUrl:', `${releaseB} URL: `);
   const report =
