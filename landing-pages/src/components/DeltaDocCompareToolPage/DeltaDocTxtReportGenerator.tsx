@@ -5,13 +5,17 @@ import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPag
 import { useDeltaDocContext } from './DeltaDocContext';
 
 export function createReport(
-  url: string,
-  releaseA: string,
-  releaseB: string,
+  firstDocTitle: string,
+  releaseA: string[],
+  releaseB: string[],
   statValues: (number | string)[],
   results: DeltaLevenshteinReturnType[]
 ) {
-  const reportText = `Comparing ${url} in ${releaseA} and ${releaseB}\nComparison run: ${new Date()}\n\n`;
+  const reportText = `Comparing "${firstDocTitle}" in ${
+    releaseA.length > 2 ? `${(releaseA[0], releaseA[1])}` : releaseA.join(', ')
+  } and ${
+    releaseB.length > 2 ? `${(releaseB[0], releaseB[1])}` : releaseB.join(', ')
+  }\nComparison run: ${new Date()}\n\n`;
   const statisticsText = statistics
     .map((stat, index) => {
       if (statValues[index] !== undefined) {
@@ -19,8 +23,8 @@ export function createReport(
         return `${
           stat.text.includes('ReleaseA') || stat.text.includes('ReleaseB')
             ? stat.text
-                .replace('ReleaseA', releaseA)
-                .replace('ReleaseB', releaseB)
+                .replace('ReleaseA', releaseA.join())
+                .replace('ReleaseB', releaseB.join())
             : stat.text
         }${stat.value}${typeof stat.value == 'string' ? '%' : ''}\n`;
       }
@@ -40,8 +44,12 @@ export function createReport(
     .replaceAll('docATitle:', `${releaseA} title: `)
     .replaceAll('docBTitle:', `${releaseB} title: `)
     .replaceAll('changes:', 'Number of changes: ')
-    .replaceAll('percentage:', 'Percentage of the file changed: ')
-    .replaceAll('URL:', 'URL: ');
+    .replaceAll(
+      /percentage:\s*(\d+)/g,
+      (match, p1) => `Percentage of the file changed: ${p1}%`
+    )
+    .replaceAll('docAUrl:', `${releaseA} URL: `)
+    .replaceAll('docBUrl:', `${releaseB} URL: `);
   const report =
     reportText +
     statisticsText +
@@ -52,8 +60,8 @@ export function createReport(
 
 export function exportReport(
   report: string,
-  releaseA: string,
-  releaseB: string,
+  releaseA: string | string[],
+  releaseB: string | string[],
   identifier: string
 ) {
   var blob = new Blob([report], {
@@ -63,24 +71,25 @@ export function exportReport(
 }
 
 function handleReport(
-  url: string,
-  releaseA: string,
-  releaseB: string,
+  firstDocTitle: string,
+  releaseA: string[],
+  releaseB: string[],
   statValues: (number | string)[],
   results: DeltaLevenshteinReturnType[]
 ) {
   const reportContent = createReport(
-    url,
+    firstDocTitle,
     releaseA,
     releaseB,
     statValues,
     results
   );
-  exportReport(reportContent, releaseA, releaseB, url);
+  exportReport(reportContent, releaseA, releaseB, firstDocTitle);
 }
 
 export default function DeltaDocTxtReportGenerator() {
-  const { releaseA, releaseB, url, deltaDocData } = useDeltaDocContext();
+  const { releaseA, releaseB, firstDoc, firstDocId, deltaDocData } =
+    useDeltaDocContext();
 
   if (!deltaDocData) {
     return <></>;
@@ -107,7 +116,15 @@ export default function DeltaDocTxtReportGenerator() {
 
   return (
     <Button
-      onClick={() => handleReport(url, releaseA, releaseB, statValues, results)}
+      onClick={() =>
+        handleReport(
+          firstDoc ? firstDoc.title : firstDocId,
+          releaseA,
+          releaseB,
+          statValues,
+          results
+        )
+      }
     >
       Download report in TXT
     </Button>

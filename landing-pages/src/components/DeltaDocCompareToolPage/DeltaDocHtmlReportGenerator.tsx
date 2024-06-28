@@ -6,8 +6,8 @@ export default function DeltaDocHtmlReportGenerator() {
   const {
     releaseA,
     releaseB,
-    url,
     deltaDocData,
+    firstDoc,
     setResultsPerPage,
     resultsPerPage,
     changePage,
@@ -25,9 +25,8 @@ export default function DeltaDocHtmlReportGenerator() {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>${releaseA} ${releaseB} ${url} Table</title>
+      <title>${releaseA} ${releaseB} ${firstDoc?.title} Table Report</title>
       <style>
-        /* Add CSS styles here */
         table {
           border-collapse: collapse;
           width: 100%;
@@ -41,7 +40,6 @@ export default function DeltaDocHtmlReportGenerator() {
         th {
           background-color: #f2f2f2;
         }
-        /* Add more styles as needed */
       </style>
     </head>
     <body>
@@ -50,7 +48,7 @@ export default function DeltaDocHtmlReportGenerator() {
     </html>`
       : '';
     const blob = new Blob([htmlTable], { type: 'text/html' });
-    saveAs(blob, `${releaseA}-${releaseB}-${url}-report.html`);
+    saveAs(blob, `${releaseA}-${releaseB}-${firstDoc?.title}-report.html`);
   }
   const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
   const allResultsLength = deltaDocData.results.length;

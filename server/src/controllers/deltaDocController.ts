@@ -1,63 +1,48 @@
-import { DeltaDocInputType, DeltaDocResultType } from './../types/deltaDoc';
-import { getAllDocsFromRelease } from './searchController';
-
-function capitalizeLetters(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
+import {
+  DeltaDocInputType,
+  DeltaDocReturnType,
+  DeltaDocTopicType,
+} from './../types/deltaDoc';
+import { findEntity } from './configController';
+import { getAllTopicsFromDoc } from './searchController';
 
 export async function prepareDocs({
-  releaseA,
-  releaseB,
-  url,
-}: DeltaDocInputType) {
-  const releasesToCompare: string[] = [];
-  releasesToCompare.push(
-    capitalizeLetters(releaseA),
-    capitalizeLetters(releaseB)
-  );
+  firstDocId,
+  secondDocId,
+}: DeltaDocInputType): Promise<DeltaDocReturnType> {
+  const docIds = [];
+  docIds.push(firstDocId, secondDocId);
 
-  const replacementRegex = '.*';
-  const regexSearch = url.replace(/\d+.+\d/, replacementRegex);
-  var outputRegex: string = regexSearch.concat(replacementRegex);
-
-  const resultArray = await Promise.all(
-    releasesToCompare.map(async (release) => {
-      const allDocsFromRelease = await getAllDocsFromRelease(
-        release,
-        outputRegex
-      );
-      const files = allDocsFromRelease?.hits.hits;
-      const releaseObject: DeltaDocResultType[] = [];
-      if (files) {
-        files.forEach((file) => {
-          const idMatch = file._source?.id;
-          const titleMatch = file._source?.title;
-          const bodyMatch = file._source?.body.trim();
-          const langMatch = file._source?.language;
+  const result = await Promise.all(
+    docIds.map(async (docId, index) => {
+      const allTopicsFromDoc = await getAllTopicsFromDoc(docId);
+      const docEntity = await findEntity('Doc', { id: docId }, false);
+      const docBaseUrl = docEntity?.url;
+      const topics = allTopicsFromDoc?.hits.hits;
+      let formattedTopics: DeltaDocTopicType[] = [];
+      if (topics) {
+        topics.forEach((topic) => {
+          const idMatch = topic._source?.id;
+          const titleMatch = topic._source?.title;
+          const bodyMatch = topic._source?.body.trim();
+          const langMatch = topic._source?.language;
           if (idMatch && titleMatch && bodyMatch && langMatch) {
-            var urlSliceArray = idMatch.split('/');
-            var arrayDuplicates = (urlSliceArray: string[]) =>
-              urlSliceArray.filter(
-                (item, index) => urlSliceArray.indexOf(item) !== index
-              );
-            var duplicateElements = arrayDuplicates(urlSliceArray);
-            var regexSearch = new RegExp(
-              `.*\/\\d+\/${duplicateElements[0]}\/${duplicateElements[0]}\/`
-            );
-            var duplicateRegex = `/${duplicateElements[0]}/`;
-            const id = idMatch.replace(regexSearch, duplicateRegex);
+            const id = idMatch;
             const title = titleMatch;
             const body = bodyMatch;
-            releaseObject.push({ id, title, body });
-            return;
+            formattedTopics.push({ id, title, body });
           }
         });
-        return releaseObject;
-      } else {
-        console.log(`No hits for release ${release} and query ${outputRegex}`);
-        return releaseObject;
       }
+      const nameArray = ['first', 'second'];
+      return {
+        [`${nameArray[index]}Doc`]: {
+          base_url: docBaseUrl,
+          topics: formattedTopics,
+        },
+      };
     })
   );
-  return { status: 200, body: resultArray };
+  const finalResult = result.reduce((acc, cur) => ({ ...acc, ...cur }), {});
+  return { status: 200, body: finalResult };
 }

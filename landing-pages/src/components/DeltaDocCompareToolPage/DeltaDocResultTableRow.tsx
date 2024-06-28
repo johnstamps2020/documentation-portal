@@ -1,12 +1,10 @@
-import { DeltaLevenshteinReturnType, Doc } from '@doctools/server';
+import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Link from '@mui/material/Link';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { useDeltaDocContext } from './DeltaDocContext';
 import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { Typography } from '@mui/material';
 import DeltaDocCardText from './DeltaDocCardText';
-import { useDocsNoRevalidation } from 'hooks/useApi';
 
 export default function DeltaDocResultTableRow({
   result,
@@ -15,51 +13,11 @@ export default function DeltaDocResultTableRow({
 }: {
   result: DeltaLevenshteinReturnType;
   index: number;
-  releases: { lowerRelease: string; higherRelease: string };
+  releases: {
+    lowerRelease: { source: string; releases: string };
+    higherRelease: { source: string; releases: string };
+  };
 }) {
-  const { rootUrl, releaseA } = useDeltaDocContext();
-  const { docs, isLoading, isError } = useDocsNoRevalidation();
-
-  if (!docs || isError || isLoading) {
-    return null;
-  }
-
-  const isReleaseALower = releases.lowerRelease === releaseA;
-
-  function getUrlValue(
-    title: string,
-    rootUrl: string,
-    docs: Doc[],
-    releaseName: string
-  ) {
-    if (title !== fileDoesNotExistText) {
-      const docObject = docs.find(
-        (doc) =>
-          doc.url.replace(/\d+.+\d/, '') === rootUrl.replace(/\d+.+\d/, '') &&
-          doc.releases?.some((release) => release.name === releaseName)
-      );
-      if (docObject) {
-        return `${docObject.url}${result.URL}`;
-      } else {
-        return '';
-      }
-    } else {
-      return '';
-    }
-  }
-  const lowerReleaseUrl = getUrlValue(
-    result.docATitle,
-    rootUrl,
-    docs,
-    isReleaseALower ? releases.lowerRelease : releases.higherRelease
-  );
-  const higherReleaseUrl = getUrlValue(
-    result.docBTitle,
-    rootUrl,
-    docs,
-    isReleaseALower ? releases.higherRelease : releases.lowerRelease
-  );
-
   function getLink(url: string) {
     return url ? (
       <Link sx={{ wordWrap: 'break-word' }} target="_blank" href={url}>
@@ -109,11 +67,11 @@ export default function DeltaDocResultTableRow({
   return (
     <TableRow>
       <TableCell align="center">{index}</TableCell>
-      {isReleaseALower ? (
+      {releases.lowerRelease.source === 'A' ? (
         <ReleaseCells
           input={{
-            firstLink: lowerReleaseUrl,
-            secondLink: higherReleaseUrl,
+            firstLink: result.docAUrl,
+            secondLink: result.docBUrl,
             firstTitle: result.docATitle,
             secondTitle: result.docBTitle,
           }}
@@ -121,8 +79,8 @@ export default function DeltaDocResultTableRow({
       ) : (
         <ReleaseCells
           input={{
-            firstLink: higherReleaseUrl,
-            secondLink: lowerReleaseUrl,
+            firstLink: result.docBUrl,
+            secondLink: result.docAUrl,
             firstTitle: result.docBTitle,
             secondTitle: result.docATitle,
           }}

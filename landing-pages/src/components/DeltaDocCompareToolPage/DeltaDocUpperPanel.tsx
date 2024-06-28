@@ -2,9 +2,9 @@ import { Doc, Release } from '@doctools/server';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import FormHelperText from '@mui/material/FormHelperText';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import {
   useDocsNoRevalidation,
@@ -15,23 +15,18 @@ import { useEffect, useState } from 'react';
 import BatchComparisonUpperPanel from './BatchComparisonUpperPanel';
 import { useDeltaDocContext } from './DeltaDocContext';
 import DeltaDocLoading from './DeltaDocLoading';
-import FormHelperText from '@mui/material/FormHelperText';
 
-export const releaseNumberRegex = new RegExp(
-  /((\/|_)\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/
-);
-
-export function getReleaseNameRegex(releases: Release[]) {
-  return new RegExp(
-    '(' + releases.map((release) => release.name.toLowerCase()).join('|') + ')'
-  );
+export function getReleaseRegex(releases: Release[]) {
+  return {
+    releaseNameRegex: new RegExp(
+      `(${releases.map((release) => release.name.toLowerCase()).join('|')})`
+    ),
+    releaseNumberRegex: new RegExp(/((\/|_)\d+\.\d+\.\d+|\/\d+\.\d+|\/\d+)/),
+  };
 }
 
-export function removeDuplicates(
-  docs: Doc[],
-  releaseNumberRegex: RegExp,
-  releaseNameRegex: RegExp
-) {
+export function removeDuplicates(docs: Doc[], releases: Release[]) {
+  const { releaseNumberRegex, releaseNameRegex } = getReleaseRegex(releases);
   return docs.filter(
     (doc, i, arr) =>
       arr.findIndex(
@@ -45,12 +40,23 @@ export function removeDuplicates(
       ) === i
   );
 }
+
+function filterDocs(docs: Doc[], productName: string) {
+  return docs.filter((doc) =>
+    doc.platformProductVersions?.some((ppv) => ppv.product.name === productName)
+  );
+}
+
 export default function DeltaDocUpperPanel() {
   const [canSubmit, setCanSubmit] = useState(false);
-  const [docUrl, setDocUrl] = useState<string>('');
-  const [productName, setProductName] = useState<string>('');
-  const [firstRelease, setFirstRelease] = useState<string>('');
-  const [secondRelease, setSecondRelease] = useState<string>('');
+  const [selectedDoc, setSelectedDoc] = useState<Doc>();
+  const [selectedDocSet, setSelectedDocSet] = useState<Doc[]>([]);
+  const [leftDoc, setLeftDoc] = useState<Doc>();
+  const [rightDoc, setRightDoc] = useState<Doc>();
+  const [tmpFirstRelease, setTmpFirstRelease] = useState<Release>();
+  const [tmpFirstReleaseSet, setTmpFirstReleaseSet] = useState<Release[]>([]);
+  const [tmpSecondRelease, setTmpSecondRelease] = useState<Release>();
+  const [tmpSecondReleaseSet, setTmpSecondReleaseSet] = useState<Release[]>([]);
   const { docs, isLoading, isError } = useDocsNoRevalidation();
   const {
     releases,
@@ -62,19 +68,58 @@ export default function DeltaDocUpperPanel() {
     isLoading: isLoadingProducts,
     isError: isErrorProducts,
   } = useProductsNoRevalidation();
-  const { setFormState, batchComparison, setRootUrl, setBatchProduct } =
-    useDeltaDocContext();
-
+  const {
+    setFormState,
+    batchComparison,
+    setBatchProduct,
+    setReleaseA,
+    setReleaseB,
+    setFirstDoc,
+    setSecondDoc,
+    batchProduct,
+    isLoading: isLoadingResults,
+  } = useDeltaDocContext();
+  const [productName, setProductName] = useState<string>(batchProduct);
   useEffect(() => {
-    setCanSubmit(docUrl !== '' && firstRelease !== '' && secondRelease !== '');
+    setCanSubmit(!!selectedDoc && !!tmpFirstRelease && !!tmpSecondRelease);
   }, [
-    docUrl,
-    firstRelease,
-    secondRelease,
+    selectedDoc,
+    tmpFirstRelease,
+    tmpSecondRelease,
     productName,
-    setCanSubmit,
     batchComparison,
   ]);
+
+  useEffect(() => {
+    resetReleases();
+  }, [batchComparison]);
+
+  useEffect(() => {
+    const getReleases = (doc: Doc | undefined) => doc?.releases || [];
+
+    setTmpFirstReleaseSet(getReleases(leftDoc));
+    setTmpSecondReleaseSet(getReleases(rightDoc));
+
+    const findDocByRelease = (release: Release | undefined) =>
+      selectedDocSet.find((doc) =>
+        doc.releases?.some((r) => r.name === release?.name)
+      );
+
+    setLeftDoc(findDocByRelease(tmpFirstRelease));
+    setRightDoc(findDocByRelease(tmpSecondRelease));
+  }, [tmpFirstRelease, tmpSecondRelease, leftDoc, rightDoc, selectedDocSet]);
+
+  useEffect(() => {
+    if (selectedDoc && productName === '') {
+      setProductName(selectedDoc.platformProductVersions[0].product.name);
+    }
+    if (selectedDoc && docs && releases) {
+      const docsFilteredByTitle = filterDocs(docs, productName).filter(
+        (doc) => doc.title === selectedDoc.title
+      );
+      setSelectedDocSet(docsFilteredByTitle);
+    }
+  }, [selectedDoc, productName, docs, releases]);
 
   if (batchComparison) {
     return <BatchComparisonUpperPanel />;
@@ -103,149 +148,231 @@ export default function DeltaDocUpperPanel() {
   });
 
   function handleSubmit() {
-    setRootUrl(docUrl);
     setFormState({
-      releaseA: firstRelease,
-      releaseB: secondRelease,
-      url: `/${docUrl}/`,
+      firstDocId: leftDoc?.id || '',
+      secondDocId: rightDoc?.id || '',
     });
+    setReleaseA(leftDoc?.releases?.map((r) => r.name) || []);
+    setReleaseB(rightDoc?.releases?.map((r) => r.name) || []);
+    setFirstDoc(leftDoc);
+    setSecondDoc(rightDoc);
     setCanSubmit(false);
     setBatchProduct(productName);
   }
 
-  const filteredDocs = docs.filter((doc) => {
-    return doc.platformProductVersions?.find((ppv) => {
-      return ppv.product.name === productName;
-    });
+  const filteredDocs = filterDocs(docs, productName);
+
+  const filteredReleases = releases.filter((release) => {
+    return selectedDocSet.some((doc) =>
+      doc.releases?.some((r) => r.name === release.name)
+    );
   });
-  const releaseNameRegex = getReleaseNameRegex(releases);
-  const docsNoDuplicates = removeDuplicates(
-    filteredDocs,
-    releaseNumberRegex,
-    releaseNameRegex
-  );
+
+  const docsNoDuplicates = removeDuplicates(filteredDocs, releases);
+
+  const docsAvailableToCompare = selectedDocSet.filter(
+    (doc) => doc.releases && doc.releases.length > 0
+  ).length;
+
+  const disabledReleases =
+    filteredReleases.length === 0 ||
+    docsAvailableToCompare < 2 ||
+    isLoadingResults;
+
+  const disabledDocument = !!productName && docsNoDuplicates.length === 0;
+
+  const docOptions = productName ? docsNoDuplicates : docs;
+
+  function resetReleases() {
+    setTmpFirstRelease(undefined);
+    setTmpSecondRelease(undefined);
+    setTmpFirstReleaseSet([]);
+    setTmpSecondReleaseSet([]);
+  }
 
   return (
     <Container>
-      <Stack spacing={2} sx={{ py: '1rem' }}>
-        <FormControl sx={{ alignItems: 'center' }}>
-          <Stack
-            direction="row"
-            height="200px"
-            alignItems="center"
-            alignSelf="center"
-            spacing={1}
-          >
-            <Stack padding={1}>
-              <FormControl>
-                <InputLabel>Product</InputLabel>
-                <Select
-                  label="Product"
-                  value={productName}
-                  onChange={(event) => {
-                    setProductName(event.target.value);
-                    setDocUrl('');
-                  }}
-                  sx={{ width: '300px' }}
-                >
-                  {products
-                    .sort(function (a, b) {
-                      return a.name > b.name ? 1 : b.name > a.name ? -1 : 0;
-                    })
-                    .map((p) => (
-                      <MenuItem value={p.name} key={p.name}>
-                        {p.name}
-                      </MenuItem>
-                    ))}
-                </Select>
-                <FormHelperText> </FormHelperText>
-              </FormControl>
-            </Stack>
-            <Stack padding={1}>
-              <FormControl>
-                <InputLabel>Document</InputLabel>
-                <Select
-                  label="Document"
-                  value={docUrl}
-                  onChange={(event) => setDocUrl(event.target.value)}
-                  sx={{ width: '300px' }}
-                  disabled={!!productName && docsNoDuplicates.length === 0}
-                >
-                  {(productName ? docsNoDuplicates : docs)
-                    .sort((a, b) => {
-                      return a.title > b.title ? 1 : b.title > a.title ? -1 : 0;
-                    })
-                    .map((d) => (
-                      <MenuItem value={d.url} key={d.id}>
-                        {d.title} (
-                        {d.url
-                          .replace(releaseNameRegex, '<release>')
-                          .replace(releaseNumberRegex, '/<release>')}
-                        )
-                      </MenuItem>
-                    ))}
-                </Select>
-                <FormHelperText>
-                  {!!productName && docsNoDuplicates.length === 0
-                    ? 'There are no documents in this product.'
-                    : ' '}
-                </FormHelperText>
-              </FormControl>
-            </Stack>
-            <Stack padding={1}>
-              <FormControl>
-                <InputLabel>First release</InputLabel>
-                <Select
-                  label="First release"
-                  value={firstRelease}
-                  onChange={(event) => setFirstRelease(event.target.value)}
-                  sx={{ width: '300px' }}
-                >
-                  {sortedReleases.map((r) => (
-                    <MenuItem
-                      value={r.name}
-                      disabled={r.name === secondRelease}
-                      key={r.name}
-                    >
-                      {r.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-                <FormHelperText> </FormHelperText>
-              </FormControl>
-            </Stack>
-            <Stack padding={1}>
-              <FormControl>
-                <InputLabel>Second release</InputLabel>
-                <Select
-                  label="Second release"
-                  value={secondRelease}
-                  onChange={(event) => setSecondRelease(event.target.value)}
-                  sx={{ width: '300px' }}
-                >
-                  {sortedReleases.map((r) => (
-                    <MenuItem
-                      value={r.name}
-                      disabled={r.name === firstRelease}
-                      key={r.name}
-                    >
-                      {r.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-                <FormHelperText> </FormHelperText>
-              </FormControl>
-            </Stack>
-          </Stack>
-          <Button
-            variant="contained"
-            sx={{ mt: '12px', width: '250px' }}
-            onClick={handleSubmit}
-            disabled={!canSubmit}
-          >
-            Compare
-          </Button>
-        </FormControl>
+      <Stack spacing={2} sx={{ py: '2rem', alignItems: 'center' }}>
+        <Stack
+          direction="row"
+          sx={{
+            height: 'auto',
+            alignItems: 'center',
+            alignSelf: 'center',
+          }}
+          spacing={1}
+        >
+          <FormControl>
+            <Autocomplete
+              options={products.sort((a, b) => a.name.localeCompare(b.name))}
+              getOptionLabel={(option) => option.name}
+              value={
+                products.find((p) => p.name === productName) ??
+                selectedDoc?.platformProductVersions[0]?.product ??
+                null
+              }
+              onChange={(event, newValue) => {
+                setProductName(newValue?.name ?? '');
+                setSelectedDoc(undefined);
+                resetReleases();
+              }}
+              isOptionEqualToValue={(option, value) =>
+                option.name === value.name
+              }
+              renderInput={(params) => (
+                <TextField {...params} label="Product" />
+              )}
+              sx={{ width: '300px' }}
+              disabled={isLoadingResults}
+            />
+            <FormHelperText> </FormHelperText>
+          </FormControl>
+          <FormControl>
+            <Autocomplete
+              options={docOptions.sort((a, b) =>
+                a.title.localeCompare(b.title)
+              )}
+              getOptionLabel={(option) =>
+                `${option.title} (${option.url
+                  .replace(
+                    getReleaseRegex(releases).releaseNameRegex,
+                    '<release>'
+                  )
+                  .replace(
+                    getReleaseRegex(releases).releaseNumberRegex,
+                    '/<release>'
+                  )})`
+              }
+              value={selectedDoc || null}
+              onChange={(event, newValue) => {
+                setSelectedDocSet(
+                  newValue
+                    ? filteredDocs.filter((doc) => doc.title === newValue.title)
+                    : []
+                );
+                setSelectedDoc(newValue ? newValue : undefined);
+                resetReleases();
+              }}
+              isOptionEqualToValue={(option, value) => option.id === value.id}
+              renderOption={(props, option) => (
+                <li {...props} key={option.id}>
+                  {`${option.title} (${option.url
+                    .replace(
+                      getReleaseRegex(releases).releaseNameRegex,
+                      '<release>'
+                    )
+                    .replace(
+                      getReleaseRegex(releases).releaseNumberRegex,
+                      '/<release>'
+                    )})`}
+                </li>
+              )}
+              renderInput={(params) => (
+                <TextField {...params} label="Document" />
+              )}
+              sx={{ width: '300px' }}
+              disabled={disabledDocument || isLoadingResults}
+            />
+            <FormHelperText>
+              {disabledDocument
+                ? 'There are no documents in this product.'
+                : selectedDoc && docsAvailableToCompare < 2
+                ? "This document doesn't exist in at least two releases."
+                : ' '}
+            </FormHelperText>
+          </FormControl>
+          <FormControl>
+            <Autocomplete
+              options={sortedReleases}
+              getOptionLabel={(option) => option.name}
+              value={tmpFirstRelease || null}
+              onChange={(event, newValue) => {
+                setTmpFirstRelease(newValue ? newValue : undefined);
+              }}
+              isOptionEqualToValue={(option, value) =>
+                option.name === value.name
+              }
+              renderOption={(props, option) => {
+                const isDisabled =
+                  option === tmpSecondRelease ||
+                  !filteredReleases.includes(option) ||
+                  (rightDoc?.releases?.includes(option) ?? false) ||
+                  tmpSecondReleaseSet.some(
+                    (release) => release.name === option.name
+                  );
+
+                return (
+                  <li
+                    {...props}
+                    key={option.name}
+                    style={{
+                      pointerEvents: isDisabled ? 'none' : 'auto',
+                      opacity: isDisabled ? 0.5 : 1,
+                    }}
+                  >
+                    {option.name}
+                  </li>
+                );
+              }}
+              renderInput={(params) => (
+                <TextField {...params} label="First release" />
+              )}
+              sx={{ width: '300px' }}
+              disabled={disabledReleases}
+            />
+            <FormHelperText> </FormHelperText>
+          </FormControl>
+          <FormControl>
+            <Autocomplete
+              options={sortedReleases}
+              getOptionLabel={(option) => option.name}
+              value={tmpSecondRelease || null}
+              onChange={(event, newValue) => {
+                setTmpSecondRelease(newValue ? newValue : undefined);
+              }}
+              isOptionEqualToValue={(option, value) =>
+                option.name === value.name
+              }
+              renderOption={(props, option) => {
+                const isDisabled =
+                  option === tmpFirstRelease ||
+                  !filteredReleases.includes(option) ||
+                  (leftDoc?.releases?.includes(option) ?? false) ||
+                  (tmpFirstReleaseSet?.some(
+                    (release) => release.name === option.name
+                  ) ??
+                    false);
+
+                return (
+                  <li
+                    {...props}
+                    key={option.name}
+                    style={{
+                      pointerEvents: isDisabled ? 'none' : 'auto',
+                      opacity: isDisabled ? 0.5 : 1,
+                    }}
+                  >
+                    {option.name}
+                  </li>
+                );
+              }}
+              renderInput={(params) => (
+                <TextField {...params} label="Second release" />
+              )}
+              sx={{ width: '300px' }}
+              disabled={disabledReleases}
+            />
+            <FormHelperText> </FormHelperText>
+          </FormControl>
+        </Stack>
+        <Button
+          variant="contained"
+          sx={{ width: '250px' }}
+          onClick={handleSubmit}
+          disabled={!canSubmit}
+        >
+          Compare
+        </Button>
       </Stack>
     </Container>
   );
