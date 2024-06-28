@@ -7,6 +7,7 @@ import {
   useProductsInProdNoRevalidation,
   useProductsNoRevalidation,
   useReleasesNoRevalidation,
+  useReleasesInProdNoRevalidation,
 } from '../../hooks/useEntityApi';
 import { useEnvInfo } from '../../hooks/useEnvInfo';
 
@@ -68,7 +69,12 @@ export function SearchHeaderLayoutContextProvider({
 
   const { envInfo, isError, isLoading } = useEnvInfo();
 
-  const { releases: allReleases } = useReleasesNoRevalidation();
+  let allReleases: Release[] | undefined = [];
+  if (envInfo?.name === 'omega2-andromeda') {
+    allReleases = useReleasesInProdNoRevalidation().releases;
+  } else {
+    allReleases = useReleasesNoRevalidation().releases;
+  }
 
   let allProducts: Product[] | undefined = [];
   if (envInfo?.name === 'omega2-andromeda') {
