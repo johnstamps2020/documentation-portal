@@ -503,7 +503,13 @@ async function updateNonProdEntities(
     | 'Version'
     | 'Language',
   relatedEntityName: 'Doc' | 'PlatformProductVersion',
-  relationName: string
+  relationName:
+    | 'platformProductVersions'
+    | 'releases'
+    | 'subjects'
+    | 'product'
+    | 'version'
+    | 'language'
 ) {
   const nonProdEntities = [];
   const allEntities = await findAllEntities(entityName, true);
@@ -880,7 +886,7 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
       updateNonProdPlatformProductVersionEntities(),
       updateNonProdEntities('Release', 'Doc', 'releases'),
       updateNonProdEntities('Subject', 'Doc', 'subjects'),
-      updateNonProdEntities('Language', 'Doc', 'languages'),
+      updateNonProdEntities('Language', 'Doc', 'language'),
     ]);
     return {
       status: 200,
