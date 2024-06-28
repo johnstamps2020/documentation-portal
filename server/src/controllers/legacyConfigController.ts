@@ -580,6 +580,93 @@ async function updateNonProdVersionEntities() {
   await saveEntities(updatedNonProdVersions);
 }
 
+async function updateNonProdReleaseEntities() {
+  const nonProdReleases: Release[] = [];
+  const allReleases = (await findAllEntities(Release.name, true)) as Release[];
+
+  if (!allReleases) {
+    return;
+  }
+
+  for (const release of allReleases) {
+    const prodDocForRelease = await findEntity(
+      Doc.name,
+      {
+        isInProduction: true,
+        releases: { uuid: release.uuid },
+      },
+      true
+    );
+    if (!prodDocForRelease) {
+      nonProdReleases.push(release);
+    }
+  }
+  const updatedNonProdReleases = nonProdReleases.map((release) => {
+    release.isInProduction = false;
+    return release;
+  });
+  await saveEntities(updatedNonProdReleases);
+}
+
+async function updateNonProdSubjectEntities() {
+  const nonProdSubjects: Subject[] = [];
+  const allSubjects = (await findAllEntities(Subject.name, true)) as Subject[];
+
+  if (!allSubjects) {
+    return;
+  }
+
+  for (const subject of allSubjects) {
+    const prodDocForSubject = await findEntity(
+      Doc.name,
+      {
+        isInProduction: true,
+        subjects: { uuid: subject.uuid },
+      },
+      true
+    );
+    if (!prodDocForSubject) {
+      nonProdSubjects.push(subject);
+    }
+  }
+  const updatedNonProdSubjects = nonProdSubjects.map((subject) => {
+    subject.isInProduction = false;
+    return subject;
+  });
+  await saveEntities(updatedNonProdSubjects);
+}
+
+async function updateNonProdLanguageEntities() {
+  const nonProdLanguages: Language[] = [];
+  const allLanguages = (await findAllEntities(
+    Language.name,
+    true
+  )) as Language[];
+
+  if (!allLanguages) {
+    return;
+  }
+
+  for (const language of allLanguages) {
+    const prodDocForLanguage = await findEntity(
+      Doc.name,
+      {
+        isInProduction: true,
+        language: { uuid: language.uuid },
+      },
+      true
+    );
+    if (!prodDocForLanguage) {
+      nonProdLanguages.push(language);
+    }
+  }
+  const updatedNonProdLanguages = nonProdLanguages.map((language) => {
+    language.isInProduction = false;
+    return language;
+  });
+  await saveEntities(updatedNonProdLanguages);
+}
+
 async function createPlatformEntities(legacyDocConfig: LegacyDocConfig[]) {
   const dbDocPlatformsToSave: Platform[] = [];
   for (const doc of legacyDocConfig) {
@@ -660,7 +747,6 @@ async function createVersionEntities(legacyDocConfig: LegacyDocConfig[]) {
 
 async function createReleaseEntities(legacyDocConfig: LegacyDocConfig[]) {
   const dbDocReleasesToSave: Release[] = [];
-  const nonProdReleases = ['Kufri'];
   for (const doc of legacyDocConfig) {
     const legacyDocReleases = doc.metadata.release;
     if (legacyDocReleases && legacyDocReleases.length > 0) {
@@ -672,8 +758,6 @@ async function createReleaseEntities(legacyDocConfig: LegacyDocConfig[]) {
         ) {
           const dbDocRelease = new Release();
           dbDocRelease.name = legacyDocRelease;
-          dbDocRelease.isInProduction =
-            !nonProdReleases.includes(legacyDocRelease);
           const dbDocReleaseToSave = await addUuidIfEntityExists(
             Release.name,
             { name: dbDocRelease.name },
@@ -918,6 +1002,9 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
     await Promise.all([
       updateNonProdProductEntities(),
       updateNonProdVersionEntities(),
+      updateNonProdReleaseEntities(),
+      updateNonProdSubjectEntities(),
+      updateNonProdLanguageEntities(),
     ]);
     return {
       status: 200,
