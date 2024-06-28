@@ -494,177 +494,55 @@ async function createPlatformProductVersionEntities(
   await saveEntities(dbDocPlatformProductVersionsToSave);
 }
 
+async function updateNonProdEntities(
+  entityName:
+    | 'PlatformProductVersion'
+    | 'Release'
+    | 'Subject'
+    | 'Product'
+    | 'Version'
+    | 'Language',
+  relatedEntityName: 'Doc' | 'PlatformProductVersion',
+  relationName: string
+) {
+  const nonProdEntities = [];
+  const allEntities = await findAllEntities(entityName, true);
+
+  if (!allEntities) {
+    return;
+  }
+
+  for (const entity of allEntities) {
+    const prodDocForEntity = await findEntity(
+      relatedEntityName,
+      {
+        isInProduction: true,
+        [relationName]: {
+          uuid: entity.uuid,
+        },
+      },
+      true
+    );
+    if (!prodDocForEntity) {
+      nonProdEntities.push(entity);
+    }
+  }
+  const updatedNonProdEntities = nonProdEntities.map((entity) => {
+    entity.isInProduction = false;
+    return entity;
+  });
+  await saveEntities(updatedNonProdEntities);
+}
+
 async function updateNonProdPlatformProductVersionEntities() {
-  const nonProdPpvs: PlatformProductVersion[] = [];
-  const allPpvs = (await findAllEntities(
-    PlatformProductVersion.name,
-    true
-  )) as PlatformProductVersion[];
-
-  if (!allPpvs) {
-    return;
-  }
-
-  for (const ppv of allPpvs) {
-    const prodDocForPpv = await findEntity(
-      Doc.name,
-      {
-        isInProduction: true,
-        platformProductVersions: { uuid: ppv.uuid },
-      },
-      true
-    );
-    // If the platformProductVersion isn't related to any production Doc, its isInProduction property must be set to
-    // false
-    if (!prodDocForPpv) {
-      nonProdPpvs.push(ppv);
-    }
-  }
-  const updatedNonProdPpvs = nonProdPpvs.map((ppv) => {
-    ppv.isInProduction = false;
-    return ppv;
-  });
-  await saveEntities(updatedNonProdPpvs);
-}
-
-async function updateNonProdProductEntities() {
-  const nonProdProducts: Product[] = [];
-  const allProducts = (await findAllEntities(Product.name, true)) as Product[];
-
-  if (!allProducts) {
-    return;
-  }
-
-  for (const product of allProducts) {
-    const prodPpvForProduct = await findEntity(PlatformProductVersion.name, {
-      isInProduction: true,
-      product: {
-        name: product.name,
-      },
-    });
-    if (!prodPpvForProduct) {
-      nonProdProducts.push(product);
-    }
-  }
-
-  const updatedNonProdProducts = nonProdProducts.map((product) => {
-    product.isInProduction = false;
-    return product;
-  });
-  await saveEntities(updatedNonProdProducts);
-}
-
-async function updateNonProdVersionEntities() {
-  const nonProdVersions: Version[] = [];
-  const allVersions = (await findAllEntities(Version.name, true)) as Version[];
-
-  if (!allVersions) {
-    return;
-  }
-
-  for (const version of allVersions) {
-    const prodPpvForVersion = await findEntity(PlatformProductVersion.name, {
-      isInProduction: true,
-      version: {
-        name: version.name,
-      },
-    });
-    if (!prodPpvForVersion) {
-      nonProdVersions.push(version);
-    }
-  }
-  const updatedNonProdVersions = nonProdVersions.map((version) => {
-    version.isInProduction = false;
-    return version;
-  });
-  await saveEntities(updatedNonProdVersions);
-}
-
-async function updateNonProdReleaseEntities() {
-  const nonProdReleases: Release[] = [];
-  const allReleases = (await findAllEntities(Release.name, true)) as Release[];
-
-  if (!allReleases) {
-    return;
-  }
-
-  for (const release of allReleases) {
-    const prodDocForRelease = await findEntity(
-      Doc.name,
-      {
-        isInProduction: true,
-        releases: { uuid: release.uuid },
-      },
-      true
-    );
-    if (!prodDocForRelease) {
-      nonProdReleases.push(release);
-    }
-  }
-  const updatedNonProdReleases = nonProdReleases.map((release) => {
-    release.isInProduction = false;
-    return release;
-  });
-  await saveEntities(updatedNonProdReleases);
-}
-
-async function updateNonProdSubjectEntities() {
-  const nonProdSubjects: Subject[] = [];
-  const allSubjects = (await findAllEntities(Subject.name, true)) as Subject[];
-
-  if (!allSubjects) {
-    return;
-  }
-
-  for (const subject of allSubjects) {
-    const prodDocForSubject = await findEntity(
-      Doc.name,
-      {
-        isInProduction: true,
-        subjects: { uuid: subject.uuid },
-      },
-      true
-    );
-    if (!prodDocForSubject) {
-      nonProdSubjects.push(subject);
-    }
-  }
-  const updatedNonProdSubjects = nonProdSubjects.map((subject) => {
-    subject.isInProduction = false;
-    return subject;
-  });
-  await saveEntities(updatedNonProdSubjects);
-}
-
-async function updateNonProdLanguageEntities() {
-  const nonProdLanguages: Language[] = [];
-  const allLanguages = (await findAllEntities(
-    Language.name,
-    true
-  )) as Language[];
-
-  if (!allLanguages) {
-    return;
-  }
-
-  for (const language of allLanguages) {
-    const prodDocForLanguage = await findEntity(
-      Doc.name,
-      {
-        isInProduction: true,
-        language: { uuid: language.uuid },
-      },
-      true
-    );
-    if (!prodDocForLanguage) {
-      nonProdLanguages.push(language);
-    }
-  }
-  const updatedNonProdLanguages = nonProdLanguages.map((language) => {
-    language.isInProduction = false;
-    return language;
-  });
-  await saveEntities(updatedNonProdLanguages);
+  // These three functions have to be run in this order
+  await updateNonProdEntities(
+    'PlatformProductVersion',
+    'Doc',
+    'platformProductVersions'
+  );
+  await updateNonProdEntities('Product', 'PlatformProductVersion', 'product');
+  await updateNonProdEntities('Version', 'PlatformProductVersion', 'version');
 }
 
 async function createPlatformEntities(legacyDocConfig: LegacyDocConfig[]) {
@@ -998,13 +876,11 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
       }
     }
     const dbDocConfigsSaveResult = await saveEntities(dbDocConfigsToSave);
-    await updateNonProdPlatformProductVersionEntities();
     await Promise.all([
-      updateNonProdProductEntities(),
-      updateNonProdVersionEntities(),
-      updateNonProdReleaseEntities(),
-      updateNonProdSubjectEntities(),
-      updateNonProdLanguageEntities(),
+      updateNonProdPlatformProductVersionEntities(),
+      updateNonProdEntities('Release', 'Doc', 'releases'),
+      updateNonProdEntities('Subject', 'Doc', 'subjects'),
+      updateNonProdEntities('Language', 'Doc', 'languages'),
     ]);
     return {
       status: 200,
