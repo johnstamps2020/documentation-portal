@@ -158,6 +158,21 @@
   "chat.termsAndConditions.close" : {
     "message" : "Algemene voorwaarden sluiten"
   },
+  "chatbot.feedback.thumbsUp" : {
+    "message" : "Dit antwoord van de chatbot is naar wens"
+  },
+  "chatbot.feedback.thumbsDown" : {
+    "message" : "Dit antwoord van de chatbot moet worden verbeterd"
+  },
+  "chatbot.feedback.dialog.title" : {
+    "message" : "Wilt u een reactie achterlaten?"
+  },
+  "chatbot.feedback.dialog.send" : {
+    "message" : "Versturen"
+  },
+  "chatbot.feedback.dialog.cancel" : {
+    "message" : "Annuleren"
+  },
   "login.gwEmployeeHint" : {
     "message" : "Medewerker van Guidewire? Gebruik bij het inloggen de Guidewire Cloud-optie hierboven."
   },
