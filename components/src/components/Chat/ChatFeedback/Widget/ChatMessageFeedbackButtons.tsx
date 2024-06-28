@@ -9,6 +9,7 @@ import {
   ChatbotRequest,
 } from '../../../../types';
 import { ChatMessageFeedbackDialog } from './ChatMessageFeedbackDialog';
+import { postNewComment } from '../api';
 
 type ChatMessageFeedbackButtonsProps = {
   chatbotRequest: ChatbotRequest;
@@ -22,9 +23,20 @@ export function ChatMessageFeedbackButtons({
   const [isOpen, setOpen] = useState(false);
   const [reaction, setReaction] =
     useState<ChatbotComment['user']['reaction']>('positive');
+  const [commentAlreadyPosted, setCommentAlreadyPosted] = useState<
+    ChatbotComment | undefined
+  >(undefined);
 
-  function handleClick(clickReaction: ChatbotComment['user']['reaction']) {
+  async function handleClick(
+    clickReaction: ChatbotComment['user']['reaction']
+  ) {
     setReaction(clickReaction);
+    const { postedComment } = await postNewComment(
+      chatbotRequest,
+      chatbotMessage,
+      clickReaction
+    );
+    setCommentAlreadyPosted(postedComment);
     setOpen(true);
   }
 
@@ -58,8 +70,7 @@ export function ChatMessageFeedbackButtons({
         open={isOpen}
         onClose={handleClose}
         reaction={reaction}
-        chatbotMessage={chatbotMessage}
-        chatbotRequest={chatbotRequest}
+        chatbotComment={commentAlreadyPosted}
       />
     </Box>
   );

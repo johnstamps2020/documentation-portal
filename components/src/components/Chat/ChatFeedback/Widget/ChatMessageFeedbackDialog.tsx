@@ -1,52 +1,32 @@
+import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
+import { Translate } from '../../../../lib';
 import {
   ChatbotComment,
   ChatbotMessage,
   ChatbotRequest,
 } from '../../../../types';
-import DialogTitle from '@mui/material/DialogTitle';
-import { Translate } from '../../../../lib';
-import { ThumbUpIcon, ThumbDownIcon } from '../icons';
-import DialogContent from '@mui/material/DialogContent';
-import TextField from '@mui/material/TextField';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
-import Alert from '@mui/material/Alert';
 import { postComment } from '../api';
+import { ThumbDownIcon, ThumbUpIcon } from '../icons';
 
 type ChatMessageFeedbackDialogProps = {
   open: boolean;
   onClose: () => void;
   reaction: ChatbotComment['user']['reaction'];
-  chatbotRequest: ChatbotRequest;
-  chatbotMessage: ChatbotMessage;
+  chatbotComment: ChatbotComment | undefined;
 };
-
-function makeHash(message: string) {
-  var hash = 0,
-    i,
-    chr;
-  if (message.length === 0) return hash;
-  for (i = 0; i < message.length; i++) {
-    chr = message.charCodeAt(i);
-    hash = (hash << 5) - hash + chr;
-    hash |= 0; // Convert to 32bit integer
-  }
-
-  if (hash < 0) {
-    return hash * -1;
-  }
-
-  return hash;
-}
 
 export function ChatMessageFeedbackDialog({
   open,
   onClose,
   reaction,
-  chatbotMessage,
-  chatbotRequest,
+  chatbotComment,
 }: ChatMessageFeedbackDialogProps) {
   const [userComment, setUserComment] = useState('');
   const [sending, setSending] = useState(false);
@@ -57,22 +37,15 @@ export function ChatMessageFeedbackDialog({
     setSending(true);
 
     try {
-      const currentMillisecondsFromEpoch = new Date().getTime();
-      const id = `${currentMillisecondsFromEpoch}-${Math.floor(
-        Math.random() * 1000
-      )}-${makeHash(chatbotRequest.query)}`;
+      if (!chatbotComment) {
+        return;
+      }
+
       const commentData: ChatbotComment = {
-        context: {
-          chatbotMessage,
-          chatbotRequest,
-          date: currentMillisecondsFromEpoch,
-        },
-        id,
-        status: 'active',
+        ...chatbotComment,
         user: {
-          reaction,
+          ...chatbotComment.user,
           comment: userComment,
-          email: 'coming soon!',
         },
       };
 
@@ -122,7 +95,7 @@ export function ChatMessageFeedbackDialog({
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             setUserComment(event.target.value);
           }}
-          disabled={sending}
+          disabled={sending || !chatbotComment}
         />
         {error.length > 0 && <Alert severity="error">{error}</Alert>}
       </DialogContent>
@@ -130,11 +103,15 @@ export function ChatMessageFeedbackDialog({
         <Button
           variant="contained"
           onClick={handleSubmit}
-          disabled={userComment.length === 0 || sending}
+          disabled={sending || !chatbotComment}
         >
           <Translate id="chatbot.feedback.dialog.send">Send</Translate>
         </Button>
-        <Button variant="outlined" onClick={onClose} disabled={sending}>
+        <Button
+          variant="outlined"
+          onClick={onClose}
+          disabled={sending || !chatbotComment}
+        >
           <Translate id="chatbot.feedback.dialog.cancel">Cancel</Translate>
         </Button>
       </DialogActions>

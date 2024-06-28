@@ -18,7 +18,7 @@ export function UserInfoBox({ reaction, comment, email }: UserInfoBoxProps) {
         </Typography>
       </Box>
       <Typography variant="h3">Detailed comment</Typography>
-      <Typography>{comment}</Typography>
+      <Typography>{comment || '<No comment added by user>'}</Typography>
     </Box>
   );
 }
