@@ -40,13 +40,15 @@ export function SearchHeadWrapper({
 
   return (
     <>
-      <SearchHeaderButton handleClick={handleClick}>
-        <SearchHeaderMenu
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          docTitle={docTitle}
-        />
-      </SearchHeaderButton>
+      {!isMobile && (
+        <SearchHeaderButton handleClick={handleClick}>
+          <SearchHeaderMenu
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            docTitle={docTitle}
+          />
+        </SearchHeaderButton>
+      )}
       <SearchBox
         ref={searchBoxRef}
         big={false}
