@@ -31,7 +31,7 @@ export async function createVectorFromText(
     }
     return null;
   } catch (err) {
-    winstonLogger.error(err);
+    winstonLogger.error(`Error while trying to fetch from gwgptapi ${err}`);
     return null;
   }
 }
@@ -64,7 +64,9 @@ async function getChatbotToken() {
     }
     return null;
   } catch (error) {
-    winstonLogger.error(error);
+    winstonLogger.error(
+      `Error while getting chatbot token from gwgptapi ${error}`
+    );
   }
 }
 
@@ -87,14 +89,21 @@ export async function sendChatPrompt(
       const body = (await response.json()) as ChatbotResponse;
       return body;
     }
+
+    const problemMessage = `Error! Could not complete chat transaction! ${JSON.stringify(
+      response
+    )}`;
+    winstonLogger.error(problemMessage);
     return {
-      response: `Error! Could not complete chat transaction! ${JSON.stringify(
-        response
-      )}`,
+      response: problemMessage,
       original_documents: [],
     };
   } catch (err) {
-    winstonLogger.error(err);
-    return { response: `Error ${err}`, original_documents: [] };
+    const errorMessage = `Fatal error while attempting a chat transaction! Chatbot Error: ${err}`;
+    winstonLogger.error(errorMessage);
+    return {
+      response: errorMessage,
+      original_documents: [],
+    };
   }
 }
