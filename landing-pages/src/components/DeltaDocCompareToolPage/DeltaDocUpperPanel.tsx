@@ -255,8 +255,14 @@ export default function DeltaDocUpperPanel() {
               }}
               isOptionEqualToValue={(option, value) => option.id === value.id}
               renderOption={(props, option) => (
-                <li {...props} key={option.id}>
-                  {`${option.title} (${option.url
+                <li
+                  {...props}
+                  key={option.id}
+                  style={{ wordBreak: 'break-word' }}
+                >
+                  {option.title}
+                  <br />(
+                  {option.url
                     .replace(
                       getReleaseRegex(releases).releaseNameRegex,
                       '<release>'
@@ -264,7 +270,8 @@ export default function DeltaDocUpperPanel() {
                     .replace(
                       getReleaseRegex(releases).releaseNumberRegex,
                       '/<release>'
-                    )})`}
+                    )}
+                  )
                 </li>
               )}
               renderInput={(params) => (
