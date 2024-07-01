@@ -26,11 +26,17 @@ There is some Markdown here.
 ## An example with a CodeBlock
 
 <CodeBlock language="jsx">{`<Collapsible title="Expand to see a code sample">
- 
-${'```'}jsx
+${'```jsx'}
 const MyButton = () => {
-    return <button type="button>Save some time</button>
+    return <button type="button">Save some time</button>
 }
 ${'```'}
- 
 </Collapsible>`}</CodeBlock>
+
+<Collapsible title="Expand to see a code sample">
+  <CodeBlock language="jsx">
+    {`const MyButton = () => {
+  return <button type="button">Save some time</button>;
+}`}
+  </CodeBlock>
+</Collapsible>

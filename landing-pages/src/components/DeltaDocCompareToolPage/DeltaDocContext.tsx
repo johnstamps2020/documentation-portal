@@ -8,15 +8,21 @@ import { Error as DocPortalEntityError } from 'hooks/useEntitiesData';
 import {
   DeltaDocInputType,
   DeltaLevenshteinReturnType,
+  Doc,
 } from '@doctools/server';
 import usePagination from '../../hooks/usePagination';
 interface DeltaDocInterface {
-  releaseA: DeltaDocInputType['releaseA'];
-  releaseB: DeltaDocInputType['releaseB'];
-  url: DeltaDocInputType['url'];
+  firstDocId: DeltaDocInputType['firstDocId'];
+  secondDocId: DeltaDocInputType['secondDocId'];
+  firstDoc: Doc | undefined;
+  secondDoc: Doc | undefined;
+  setFirstDoc: React.Dispatch<React.SetStateAction<Doc | undefined>>;
+  setSecondDoc: React.Dispatch<React.SetStateAction<Doc | undefined>>;
+  releaseA: string[];
+  releaseB: string[];
+  setReleaseA: React.Dispatch<React.SetStateAction<string[]>>;
+  setReleaseB: React.Dispatch<React.SetStateAction<string[]>>;
   setFormState: React.Dispatch<React.SetStateAction<DeltaDocInputType>>;
-  setRootUrl: React.Dispatch<React.SetStateAction<string>>;
-  rootUrl: string;
   deltaDocData: DeltaDocData | undefined;
   isError: DocPortalEntityError | undefined;
   isLoading: boolean;
@@ -34,23 +40,13 @@ interface DeltaDocInterface {
   changePage: (page: number) => void;
   batchComparison: boolean;
   setBatchComparison: React.Dispatch<React.SetStateAction<boolean>>;
-  deltaDocBatchData:
-    | (DeltaDocData & {
-        url: string;
-        releaseA: string;
-        releaseB: string;
-      })[]
-    | undefined;
+  deltaDocBatchData: (DeltaDocData & DeltaDocInputType)[] | undefined;
   isBatchError: DocPortalEntityError | undefined;
   isBatchLoading: boolean;
   setBatchFormState: React.Dispatch<React.SetStateAction<DeltaDocInputType[]>>;
   batchFormState: DeltaDocInputType[];
   batchProduct: string;
   setBatchProduct: React.Dispatch<React.SetStateAction<string>>;
-  numberOfDocsInProduct: number | undefined;
-  setNumberOfDocsInProduct: React.Dispatch<
-    React.SetStateAction<number | undefined>
-  >;
 }
 
 export const DeltaDocContext = createContext<DeltaDocInterface | null>(null);
@@ -58,35 +54,28 @@ export const resultsPerPageValue = 9;
 
 export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
   const [formState, setFormState] = useState<DeltaDocInputType>({
-    releaseA: '',
-    releaseB: '',
-    url: '',
+    firstDocId: '',
+    secondDocId: '',
   });
   const [batchFormState, setBatchFormState] = useState<DeltaDocInputType[]>([
     {
-      releaseA: '',
-      releaseB: '',
-      url: '',
+      firstDocId: '',
+      secondDocId: '',
     },
   ]);
+  const [firstDoc, setFirstDoc] = useState<Doc>();
+  const [secondDoc, setSecondDoc] = useState<Doc>();
   const [batchProduct, setBatchProduct] = useState('');
-  const [numberOfDocsInProduct, setNumberOfDocsInProduct] = useState<number>();
   const [resultsPerPage, setResultsPerPage] = useState(resultsPerPageValue);
-  const [rootUrl, setRootUrl] = useState('');
   const [batchComparison, setBatchComparison] = useState(false);
-  const { releaseA, releaseB, url } = formState;
-  const { deltaDocData, isError, isLoading } = useDeltaDocData({
-    releaseA,
-    releaseB,
-    url,
-  });
-
+  const { deltaDocData, isError, isLoading } = useDeltaDocData(formState);
   const {
     deltaDocBatchData,
     isError: isBatchError,
     isLoading: isBatchLoading,
   } = useBatchDeltaDocData(batchFormState);
-
+  const [releaseA, setReleaseA] = useState<string[]>([]);
+  const [releaseB, setReleaseB] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const paginationData = usePagination({
     data:
@@ -110,12 +99,17 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
   }
 
   const value: DeltaDocInterface = {
-    releaseA: formState.releaseA,
-    releaseB: formState.releaseB,
-    url: formState.url,
+    firstDocId: formState.firstDocId,
+    secondDocId: formState.secondDocId,
+    setSecondDoc,
+    setFirstDoc,
+    firstDoc,
+    secondDoc,
+    releaseA,
+    releaseB,
+    setReleaseA,
+    setReleaseB,
     setFormState,
-    setRootUrl,
-    rootUrl,
     deltaDocData,
     isError,
     isLoading,
@@ -133,8 +127,6 @@ export function DeltaDocProvider({ children }: { children: React.ReactNode }) {
     setBatchFormState,
     batchProduct,
     setBatchProduct,
-    numberOfDocsInProduct,
-    setNumberOfDocsInProduct,
   };
 
   return (

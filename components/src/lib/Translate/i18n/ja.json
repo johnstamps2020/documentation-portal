@@ -158,6 +158,21 @@
   "chat.termsAndConditions.close" : {
     "message" : "利用規約を閉じる"
   },
+  "chatbot.feedback.thumbsUp" : {
+    "message" : "このチャットボットの対応は良いです"
+  },
+  "chatbot.feedback.thumbsDown" : {
+    "message" : "このチャットボットの対応は向上の余地があります"
+  },
+  "chatbot.feedback.dialog.title" : {
+    "message" : "コメントをいただけますか？"
+  },
+  "chatbot.feedback.dialog.send" : {
+    "message" : "送信"
+  },
+  "chatbot.feedback.dialog.cancel" : {
+    "message" : "キャンセル"
+  },
   "login.gwEmployeeHint" : {
     "message" : "Guidewire の社員は、上記の Guidewire Cloud オプションを使用してログインしてください。"
   },

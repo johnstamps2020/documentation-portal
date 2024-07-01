@@ -9,6 +9,7 @@ import {
 } from '../../../../hooks/useChatbotFeedback';
 import { ChatFeedbackItem } from './ChatFeedbackItem';
 import { LoaderBackdrop } from './LoaderBackdrop';
+import { Tally } from './Tally';
 
 export function ChatFeedbackPage() {
   const [filters, setFilters] = useState<FeedbackFilters>({
@@ -52,10 +53,11 @@ export function ChatFeedbackPage() {
     <>
       {isLoading && <LoaderBackdrop />}
       <h1>Feedback about the chatbot</h1>
+      <Tally />
       <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', m: 2 }}>
         <FormControlLabel
           control={<Checkbox />}
-          label="Show archived items"
+          label="Include archived items"
           checked={filters.status?.includes('archived')}
           onChange={toggleArchived}
         />

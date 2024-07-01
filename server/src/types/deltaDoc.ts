@@ -1,17 +1,27 @@
-export type DeltaDocResultType = {
+export type DeltaDocTopicType = {
   id: string;
   title: string;
   body: string;
 };
 
+export type DeltaDocReturnType = {
+  status: number;
+  body: {
+      [x: string]: {
+          base_url: any;
+          topics: DeltaDocTopicType[];
+      };
+  };
+};
+
 export type DeltaDocInputType = {
-  releaseA: string;
-  releaseB: string;
-  url: string;
+  firstDocId: string;
+  secondDocId: string;
 };
 
 export type DeltaLevenshteinReturnType = {
-  URL: string;
+  docAUrl: string;
+  docBUrl: string;
   docATitle: string;
   docBTitle: string;
   changes: number;

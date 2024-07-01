@@ -46,12 +46,12 @@ function handleLinks(userInfo: UserInformation, isProd: boolean) {
         },
         {
           href: '/delta-doc',
-          label: 'Delta tool',
+          label: 'Doc Delta Tool',
         },
       ],
     };
   } else {
-    return { userLinks: [{ href: '/delta-doc', label: 'Delta tool' }] };
+    return { userLinks: [{ href: '/delta-doc', label: 'Doc Delta Tool' }] };
   }
 }
 

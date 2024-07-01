@@ -35,7 +35,11 @@ export default function ForbiddenPage() {
               overflowX: 'scroll',
             }}
           >
-            <pre>{`${window.location.origin}${unauthorizedParam}`}</pre>
+            <pre>
+              {unauthorizedParam.includes(window.location.origin)
+                ? unauthorizedParam
+                : `${window.location.origin}${unauthorizedParam}`}
+            </pre>
           </Container>
         ) : (
           <Typography>

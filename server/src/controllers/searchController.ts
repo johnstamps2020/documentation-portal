@@ -1196,10 +1196,7 @@ export default async function searchController(
 
 // Delta doc functionality
 
-export async function getAllDocsFromRelease(
-  releaseName: string,
-  urlRegex: string
-) {
+export async function getAllTopicsFromDoc(docId: string) {
   try {
     const result = await elasticClient.search<SearchResultSource>({
       index: searchIndexName,
@@ -1209,17 +1206,9 @@ export async function getAllDocsFromRelease(
           bool: {
             must: [
               {
-                term: { release: { value: releaseName } },
-              },
-              {
-                regexp: {
-                  id: {
-                    value: urlRegex,
-                  },
-                },
+                term: { doc_id: { value: docId } },
               },
             ],
-            should: { term: { language: { value: 'en' } } },
           },
         },
       },

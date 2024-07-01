@@ -13,6 +13,10 @@ export function UserQueryAccordion({
   opt_in,
   ...filters
 }: UserQueryAccordionProps) {
+  const filtersToDisplay = Object.entries(filters).filter(
+    (item) => item[1].length > 0
+  );
+
   return (
     <Accordion>
       <AccordionSummary
@@ -26,11 +30,16 @@ export function UserQueryAccordion({
         <Typography variant="h3">Question</Typography>
         <Typography>{query}</Typography>
         <Typography variant="h3">Filters</Typography>
-        {Object.entries(filters).map(([key, value]) => (
-          <Typography key={key} sx={{ display: 'block', mt: 1 }}>
-            <strong>{key}:</strong> {value}
-          </Typography>
-        ))}
+        {filtersToDisplay.length === 0
+          ? 'No filters selected'
+          : filtersToDisplay.map(
+              ([key, value]) =>
+                value.length > 0 && (
+                  <Typography key={key} sx={{ display: 'block', mt: 1 }}>
+                    <strong>{key}:</strong> {value}
+                  </Typography>
+                )
+            )}
       </AccordionDetails>
     </Accordion>
   );

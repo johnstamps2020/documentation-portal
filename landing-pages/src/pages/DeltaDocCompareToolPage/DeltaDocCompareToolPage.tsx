@@ -1,5 +1,4 @@
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
 import AccessControl from 'components/AccessControl/AccessControl';
@@ -7,8 +6,11 @@ import { DeltaDocProvider } from 'components/DeltaDocCompareToolPage/DeltaDocCon
 import DeltaDocResults from 'components/DeltaDocCompareToolPage/DeltaDocResultsPanel';
 import DeltaDocStatistics from 'components/DeltaDocCompareToolPage/DeltaDocStatistics';
 import DeltaDocUpperPanel from 'components/DeltaDocCompareToolPage/DeltaDocUpperPanel';
-import { useEffect } from 'react';
-import BatchComparing from 'components/DeltaDocCompareToolPage/BatchComparison';
+import { useEffect, useState } from 'react';
+import BatchComparison from 'components/DeltaDocCompareToolPage/BatchComparison';
+import Button from '@mui/material/Button';
+import Collapse from '@mui/material/Collapse';
+import Stack from '@mui/material/Stack';
 
 export const fileDoesNotExistText = 'N/A - file does not exist';
 
@@ -38,48 +40,93 @@ export default function DeltaDocCompareToolPage() {
   useEffect(() => {
     setTitle('Delta Doc Comparison Tool');
   }, [setTitle]);
+  const [showMoreInfo, setShowMoreInfo] = useState(false);
 
   return (
     <AccessControl accessLevel="power-user">
       <DeltaDocProvider>
-        <Grid
+        <Container
           sx={{
             display: 'flex',
-            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            height: 'fit-content',
+            flexDirection: 'column',
+            maxWidth: '800px',
+            width: '800px',
+            gap: 2,
           }}
         >
-          <Container
+          <Stack
+            direction={'column'}
             sx={{
-              padding: '3rem 0',
+              textAlign: 'center',
+              alignItems: 'center',
+              margin: 'auto',
+              marginTop: 4,
             }}
+            spacing={1.5}
           >
-            <Typography variant="h1" marginBottom="16px" textAlign="center">
-              Compare documents between releases
+            <Typography variant="h1">Doc Delta Tool</Typography>
+            <Typography variant="body1">
+              Check what has changed in documents between releases. You can
+              compare a single document or all documents for a product.
             </Typography>
-            <Typography
-              variant="body1"
-              marginBottom="16px"
-              width="650px"
-              margin="auto"
-              textAlign="justify"
-            >
-              Select a product associated with the document you need to compare.
-              Then select a document and both releases. Selecting a product is
-              optional but advised. If you are not sure to which product your
-              document belongs, you can expand Document list and select from all
-              documents (be advised that the performance time might be worse).
-              You can also run batch comparison for whole products by switching
-              to "Batch comparison" mode.
-            </Typography>
-            <BatchComparing />
-            <DeltaDocUpperPanel />
-            <DeltaDocStatistics />
-            <DeltaDocResults />
-          </Container>
-        </Grid>
+            <Button onClick={() => setShowMoreInfo(!showMoreInfo)}>
+              Read more
+            </Button>
+            <Collapse in={showMoreInfo}>
+              <Typography textAlign="left" component="div">
+                <p>
+                  To compare a single document, select a product, a document and
+                  releases.
+                </p>
+                <p>
+                  For example, to compare
+                  <b>BillingCenter Administration Guide</b> for Cloud between
+                  <b>Garmisch</b> and <b>Jasper</b>, use these settings and
+                  select <b>Compare</b>:
+                </p>
+                <ul>
+                  <li>Product: BillingCenter</li>
+                  <li>
+                    Document: Administration (cloud/bc/&lt;release&gt;/admin)
+                  </li>
+                  <li>First release: Garmisch</li>
+                  <li>Second release: Jasper</li>
+                </ul>
+                <p>
+                  To compare all documents for a product, enable the{' '}
+                  <b>Compare all documents</b> option and then select a product
+                  and releases.
+                </p>
+                <p>
+                  For example, to compare all <b>ClaimCenter</b> documents
+                  between <b>Jasper</b> and <b>Innsbruck</b>, use these settings
+                  and click <b>Compare</b>:
+                </p>
+                <ul>
+                  <li>Product: ClaimCenter</li>
+                  <li>First release: Jasper</li>
+                  <li>Second release: Innsbruck</li>
+                </ul>
+                <p>
+                  When the comparison results are ready, you can download them
+                  as a TXT report.
+                </p>
+                <p>
+                  <b>Important!</b> Running batch comparison on a product with a
+                  large number of documents can take a long time.
+                </p>
+              </Typography>
+            </Collapse>
+          </Stack>
+          <BatchComparison />
+        </Container>
+        <Container>
+          <DeltaDocUpperPanel />
+          <DeltaDocStatistics />
+          <DeltaDocResults />
+        </Container>
       </DeltaDocProvider>
     </AccessControl>
   );

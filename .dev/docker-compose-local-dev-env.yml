@@ -3,7 +3,7 @@ services:
   server:
     networks:
       - docportal_network
-    image: artifactory.guidewire.com/hub-docker-remote/node:18.18.2
+    image: artifactory.guidewire.com/hub-docker-remote/node:20.15.0
     container_name: server
     restart: always
     environment:
@@ -20,7 +20,7 @@ services:
   landing-pages:
     networks:
       - docportal_network
-    image: artifactory.guidewire.com/hub-docker-remote/node:18.18.2
+    image: artifactory.guidewire.com/hub-docker-remote/node:20.15.0
     container_name: landing-pages
     restart: always
     environment:

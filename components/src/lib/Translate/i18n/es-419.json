@@ -158,6 +158,21 @@
   "chat.termsAndConditions.close" : {
     "message" : "Cierre los términos y condiciones"
   },
+  "chatbot.feedback.thumbsUp" : {
+    "message" : "La respuesta de este chatbot es genial"
+  },
+  "chatbot.feedback.thumbsDown" : {
+    "message" : "La respuesta de este chatbot necesita mejoras"
+  },
+  "chatbot.feedback.dialog.title" : {
+    "message" : "¿Desea dejar un comentario?"
+  },
+  "chatbot.feedback.dialog.send" : {
+    "message" : "Enviar"
+  },
+  "chatbot.feedback.dialog.cancel" : {
+    "message" : "Cancelar"
+  },
   "login.gwEmployeeHint" : {
     "message" : "Guidewire ¿Empleado? Inicie la sesión utilizando la opción Guidewire Cloud anterior."
   },
