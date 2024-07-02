@@ -120,6 +120,10 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Database API',
           docId: 'dbserviceapi',
         },
+        {
+          label: 'EnterpriseEngage Deployments API',
+          docId: 'eedeploymentsapi',
+        },
       ],
     },
     {
