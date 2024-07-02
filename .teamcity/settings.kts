@@ -87,6 +87,9 @@ enum class GwDockerImages(val imageUrl: String) {
     ATMOS_DEPLOY_2_6_0(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/devex-docker-dev/atmosdeploy:2.6.0"
     ),
+    ATMOS_DEPLOY_4_3_0(
+        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/devex-docker-dev/atmosdeploy:4.3.0"
+    ),
     CONFIG_DEPLOYER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/config-deployer:latest"), DOC_CRAWLER_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-crawler:latest"
     ),
@@ -1663,7 +1666,7 @@ object Database {
                         -input=false
                     terraform validate
                     """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_4_3_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
 
@@ -1769,7 +1772,7 @@ object Database {
                         -input=false \
                         -auto-approve
                     """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_4_3_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
