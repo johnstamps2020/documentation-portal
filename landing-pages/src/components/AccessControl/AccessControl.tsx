@@ -69,7 +69,7 @@ export default function AccessControl({
   allowedOnEnvs,
   doNotNavigate,
 }: AccessControlProps) {
-  const [allowedToSee, setAllowedToSee] = useState<boolean | undefined>();
+  const [allowedToSee, setAllowedToSee] = useState<boolean>(false);
   const {
     envInfo,
     isError: envInfoError,
@@ -95,12 +95,13 @@ export default function AccessControl({
         accessLevel
       );
 
-      if (!elementAllowedOnThisEnv || !userAllowedToAccessPage) {
-        setAllowedToSee(false);
-
-        if (doNotNavigate !== true) {
-          navigate(`/forbidden?unauthorized=${pagePath}`);
-        }
+      if (elementAllowedOnThisEnv && userAllowedToAccessPage) {
+        setAllowedToSee(true);
+      }
+    } else {
+      setAllowedToSee(false);
+      if (doNotNavigate !== true) {
+        navigate(`/forbidden?unauthorized=${pagePath}`);
       }
     }
   }, [

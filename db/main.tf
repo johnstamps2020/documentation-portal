@@ -39,7 +39,7 @@ data "aws_secretsmanager_secret_version" "database_password" {
 }
 
 module "aurora_db" {
-  source = "git::ssh://git@stash.guidewire.com/ccs/atmos-tfmodule-aurora.git?ref=v6.0.0"
+  source = "git::ssh://git@stash.guidewire.com/ccs/atmos-tfmodule-aurora.git?ref=v8.2.2"
 
   name = local.aurora_db_name
   atmos_cluster_name = local.atmos_cluster_name
@@ -56,9 +56,9 @@ module "aurora_db" {
   instance_type = "db.r6g.large"
 
   enable_datadog_subscription_filter = false
-  enable_sumologic_subscription_filter = false
   skip_final_snapshot = true
-  auto_minor_version_upgrade = true
+  engine_version = "13.12"
+  auto_minor_version_upgrade = false
   allow_major_version_upgrade = true
   apply_immediately = true
   deletion_protection = true
