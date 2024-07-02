@@ -494,7 +494,7 @@ async function createPlatformProductVersionEntities(
   await saveEntities(dbDocPlatformProductVersionsToSave);
 }
 
-async function updateNonProdEntities(
+async function updateIsInProductionPropertyInEntities(
   entityName:
     | 'PlatformProductVersion'
     | 'Release'
@@ -511,7 +511,7 @@ async function updateNonProdEntities(
     | 'version'
     | 'language'
 ) {
-  const nonProdEntities = [];
+  const updatedEntities = [];
   const allEntities = await findAllEntities(entityName, true);
 
   if (!allEntities) {
@@ -519,7 +519,7 @@ async function updateNonProdEntities(
   }
 
   for (const entity of allEntities) {
-    const prodDocForEntity = await findEntity(
+    const relatedProdEntity = await findEntity(
       relatedEntityName,
       {
         isInProduction: true,
@@ -529,26 +529,29 @@ async function updateNonProdEntities(
       },
       true
     );
-    if (!prodDocForEntity) {
-      nonProdEntities.push(entity);
-    }
+    entity.isInProduction = !!relatedProdEntity;
+    updatedEntities.push(entity);
   }
-  const updatedNonProdEntities = nonProdEntities.map((entity) => {
-    entity.isInProduction = false;
-    return entity;
-  });
-  await saveEntities(updatedNonProdEntities);
+  await saveEntities(updatedEntities);
 }
 
 async function updateNonProdPlatformProductVersionEntities() {
   // These three functions have to be run in this order
-  await updateNonProdEntities(
+  await updateIsInProductionPropertyInEntities(
     'PlatformProductVersion',
     'Doc',
     'platformProductVersions'
   );
-  await updateNonProdEntities('Product', 'PlatformProductVersion', 'product');
-  await updateNonProdEntities('Version', 'PlatformProductVersion', 'version');
+  await updateIsInProductionPropertyInEntities(
+    'Product',
+    'PlatformProductVersion',
+    'product'
+  );
+  await updateIsInProductionPropertyInEntities(
+    'Version',
+    'PlatformProductVersion',
+    'version'
+  );
 }
 
 async function createPlatformEntities(legacyDocConfig: LegacyDocConfig[]) {
@@ -884,9 +887,9 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
     const dbDocConfigsSaveResult = await saveEntities(dbDocConfigsToSave);
     await Promise.all([
       updateNonProdPlatformProductVersionEntities(),
-      updateNonProdEntities('Release', 'Doc', 'releases'),
-      updateNonProdEntities('Subject', 'Doc', 'subjects'),
-      updateNonProdEntities('Language', 'Doc', 'language'),
+      updateIsInProductionPropertyInEntities('Release', 'Doc', 'releases'),
+      updateIsInProductionPropertyInEntities('Subject', 'Doc', 'subjects'),
+      updateIsInProductionPropertyInEntities('Language', 'Doc', 'language'),
     ]);
     return {
       status: 200,
