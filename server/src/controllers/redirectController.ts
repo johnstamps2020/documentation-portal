@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { Request, Response } from 'express';
+import { PlatformProductVersion, Version } from '../model';
 import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { Page } from '../model/entity/Page';
@@ -256,14 +257,14 @@ async function findMatchingDocs(res: Response, urls: string[]) {
     const matches: Doc[] = await AppDataSource.getRepository(Doc)
       .createQueryBuilder('doc')
       .useIndex('docUrl-idx')
-      .select([
-        'doc.url',
-        'doc.id',
-        'doc.public',
-        'doc.ignorePublicPropertyAndUseVariants',
-        'doc.internal',
-        'doc.isInProduction',
-      ])
+      .leftJoinAndSelect(
+        'doc.platformProductVersions',
+        'docPlatformProductVersions'
+      )
+      .leftJoinAndSelect(
+        'docPlatformProductVersions.version',
+        'docPlatformProductVersionsVersion'
+      )
       .where(
         "doc.url LIKE :urlPattern AND doc.url NOT LIKE :excludedUrlPattern AND doc.url NOT LIKE '%next%'",
         { urlPattern: u, excludedUrlPattern: u.replace('%', '%/%') }
@@ -329,6 +330,44 @@ export function sortUrlsByVersion(
   });
 }
 
+function compareVersions(a: Version, b: Version) {
+  return a.name.localeCompare(b.name, undefined, {
+    numeric: true,
+    sensitivity: 'base',
+  });
+}
+
+function getHighestPlatformProductVersion(
+  platformProductVersions: PlatformProductVersion[]
+) {
+  const platformProductVersionsToSort = [...platformProductVersions];
+  platformProductVersionsToSort
+    .sort((a, b) => compareVersions(a.version, b.version))
+    .reverse();
+  return platformProductVersionsToSort[0];
+}
+
+function getHighestDocUrlSegments(docs: Doc[]): string[] {
+  const docsToSort = [...docs];
+  docsToSort
+    .sort((a, b) => {
+      const maxPlatformProductVersionA = getHighestPlatformProductVersion(
+        a.platformProductVersions
+      );
+      const maxPlatformProductVersionB = getHighestPlatformProductVersion(
+        b.platformProductVersions
+      );
+
+      return compareVersions(
+        maxPlatformProductVersionA.version,
+        maxPlatformProductVersionB.version
+      );
+    })
+    .reverse();
+
+  return docsToSort[0].url.split('/');
+}
+
 export async function getLatestVersionUrl(
   res: Response,
   pathname: string
@@ -346,32 +385,27 @@ export async function getLatestVersionUrl(
   const wildcardIndex = wildcardUrlSegments.indexOf('%');
 
   const matchingDocs = await findMatchingDocs(res, urlsToCheck);
-  if (matchingDocs.length === 0) {
-    const matchingPages = await findMatchingPages(res, urlsToCheck);
-    if (matchingPages.length === 0) {
-      return null;
-    } else {
-      const sortedUrls = matchingPages
-        .map((d) => d.path.split('/'))
-        .sort((a, b) => sortUrlsByVersion(a, b, wildcardIndex))
-        .reverse();
-      const urlWithHighestVersionSegments = sortedUrls[0];
-      const targetUrlSegments = Array.from(wildcardUrlSegments);
-      targetUrlSegments[wildcardIndex] =
-        urlWithHighestVersionSegments[wildcardIndex];
-      return targetUrlSegments.join('/');
-    }
-  } else {
-    const sortedUrls = matchingDocs
-      .map((d) => d.url.split('/'))
-      .sort((a, b) => sortUrlsByVersion(a, b, wildcardIndex))
-      .reverse();
-    const urlWithHighestVersionSegments = sortedUrls[0];
+  if (matchingDocs.length > 0) {
+    const highestDocUrlSegments = getHighestDocUrlSegments(matchingDocs);
     const targetUrlSegments = Array.from(wildcardUrlSegments);
-    targetUrlSegments[wildcardIndex] =
-      urlWithHighestVersionSegments[wildcardIndex];
+    targetUrlSegments[wildcardIndex] = highestDocUrlSegments[wildcardIndex];
     return targetUrlSegments.join('/');
   }
+
+  const matchingPages = await findMatchingPages(res, urlsToCheck);
+  if (matchingPages.length === 0) {
+    return null;
+  }
+
+  const sortedUrls = matchingPages
+    .map((d) => d.path.split('/'))
+    .sort((a, b) => sortUrlsByVersion(a, b, wildcardIndex))
+    .reverse();
+  const urlWithHighestVersionSegments = sortedUrls[0];
+  const targetUrlSegments = Array.from(wildcardUrlSegments);
+  targetUrlSegments[wildcardIndex] =
+    urlWithHighestVersionSegments[wildcardIndex];
+  return targetUrlSegments.join('/');
 }
 
 export async function getRedirectUrl(
