@@ -14,7 +14,7 @@ import { Tally } from './Tally';
 export function ChatFeedbackPage() {
   const [filters, setFilters] = useState<FeedbackFilters>({
     status: ['active'],
-    userReaction: ['positive', 'negative'],
+    userReaction: ['positive', 'negative', 'unset'],
   });
 
   const { isError, isLoading, feedbackItems } = useChatbotFeedback(filters);

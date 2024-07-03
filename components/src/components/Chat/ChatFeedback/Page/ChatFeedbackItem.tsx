@@ -4,7 +4,7 @@ import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import { ChatbotComment } from '../../../../types';
-import { ThumbDownIcon, ThumbUpIcon } from '../icons';
+import { ThumbDownIcon, ThumbUpIcon, HourglassBottomIcon } from '../icons';
 import { ChatResponseAccordion } from './ChatResponseAccordion';
 import { UserQueryAccordion } from './UserQueryAccordion';
 import { UserInfoBox } from './UserInfoBox';
@@ -25,10 +25,13 @@ export function ChatFeedbackItem(props: ChatFeedbackItemProps) {
       elevation={6}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, pb: 2 }}>
-        {user.reaction === 'positive' ? <ThumbUpIcon /> : <ThumbDownIcon />}
+        {user.reaction === 'positive' && <ThumbUpIcon />}
+        {user.reaction === 'negative' && <ThumbDownIcon />}
+        {user.reaction === 'unset' && <HourglassBottomIcon />}
         <Typography variant="h2" sx={{ p: 0 }}>
-          {user.comment?.slice(0, 300)}
-          {user.comment && user.comment.length > 300 ? '...' : ''}
+          {user.reaction === 'unset' && '<no user reaction>'}
+          {user.comment?.slice(0, 100)}
+          {user.comment && user.comment.length > 100 ? '...' : ''}
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>

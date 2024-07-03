@@ -5,11 +5,11 @@ import React, { useEffect, useRef } from 'react';
 import { translate } from '../../lib';
 import { useConsentStore } from '../../stores/consentStore';
 import { ChatItem } from './ChatContext';
-import { ChatLoader } from './ChatLoader';
 import { ChatMessageFeedbackButtons } from './ChatFeedback/Widget/ChatMessageFeedbackButtons';
+import { ChatLoader } from './ChatLoader';
 import ChatSources from './ChatSources';
-import { NotOptedIn } from './NotOptedIn';
 import { Markdown } from './Markdown';
+import { NotOptedIn } from './NotOptedIn';
 
 type ChatMessageProps = ChatItem & {
   isLast: boolean;

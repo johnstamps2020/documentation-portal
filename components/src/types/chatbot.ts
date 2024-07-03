@@ -44,7 +44,7 @@ export type ChatbotComment = {
     date: number;
   };
   user: {
-    reaction: 'positive' | 'negative';
+    reaction: 'positive' | 'negative' | 'unset';
     comment?: string;
     email?: string;
   };
