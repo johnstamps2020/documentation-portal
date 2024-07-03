@@ -9,39 +9,39 @@ import React, { useState } from 'react';
 import { Translate } from '../../../../lib';
 import { ChatbotComment } from '../../../../types';
 import { postComment } from '../api';
-import { ThumbDownIcon, ThumbUpIcon } from '../icons';
+import { useChatFeedback } from './ChatFeedbackContext';
 
 type ChatMessageFeedbackDialogProps = {
   open: boolean;
   onClose: () => void;
-  reaction: ChatbotComment['user']['reaction'];
-  chatbotComment: ChatbotComment | undefined;
+  reactionToSave: ChatbotComment['user']['reaction'];
 };
 
 export function ChatMessageFeedbackDialog({
   open,
   onClose,
-  reaction,
-  chatbotComment,
+  reactionToSave,
 }: ChatMessageFeedbackDialogProps) {
   const [userComment, setUserComment] = useState('');
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
+  const { chatComment } = useChatFeedback();
 
   async function handleSubmit() {
     setError('');
     setSending(true);
 
     try {
-      if (!chatbotComment) {
+      if (!chatComment) {
         return;
       }
 
       const commentData: ChatbotComment = {
-        ...chatbotComment,
+        ...chatComment,
         user: {
-          ...chatbotComment.user,
+          ...chatComment.user,
           comment: userComment,
+          reaction: reactionToSave,
         },
       };
 
@@ -76,7 +76,6 @@ export function ChatMessageFeedbackDialog({
           gap: 2,
         }}
       >
-        {reaction === 'positive' ? <ThumbUpIcon /> : <ThumbDownIcon />}
         <Translate id="chatbot.feedback.dialog.title">
           Would you like to leave a comment?
         </Translate>
@@ -91,7 +90,7 @@ export function ChatMessageFeedbackDialog({
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             setUserComment(event.target.value);
           }}
-          disabled={sending || !chatbotComment}
+          disabled={sending || !chatComment}
         />
         {error.length > 0 && <Alert severity="error">{error}</Alert>}
       </DialogContent>
@@ -99,14 +98,14 @@ export function ChatMessageFeedbackDialog({
         <Button
           variant="contained"
           onClick={handleSubmit}
-          disabled={sending || !chatbotComment}
+          disabled={sending || !chatComment}
         >
           <Translate id="chatbot.feedback.dialog.send">Send</Translate>
         </Button>
         <Button
           variant="outlined"
           onClick={onClose}
-          disabled={sending || !chatbotComment}
+          disabled={sending || !chatComment}
         >
           <Translate id="chatbot.feedback.dialog.cancel">Cancel</Translate>
         </Button>

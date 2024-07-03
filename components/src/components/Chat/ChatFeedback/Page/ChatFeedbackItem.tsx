@@ -29,7 +29,7 @@ export function ChatFeedbackItem(props: ChatFeedbackItemProps) {
         {user.reaction === 'negative' && <ThumbDownIcon />}
         {user.reaction === 'unset' && <HourglassBottomIcon />}
         <Typography variant="h2" sx={{ p: 0 }}>
-          {user.reaction === 'unset' && '<no user reaction>'}
+          {!user.comment && '<no user reaction>'}
           {user.comment?.slice(0, 100)}
           {user.comment && user.comment.length > 100 ? '...' : ''}
         </Typography>

@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react';
 import { translate } from '../../lib';
 import { useConsentStore } from '../../stores/consentStore';
 import { ChatItem } from './ChatContext';
+import { ChatFeedbackProvider } from './ChatFeedback/Widget/ChatFeedbackContext';
 import { ChatMessageFeedbackButtons } from './ChatFeedback/Widget/ChatMessageFeedbackButtons';
 import { ChatLoader } from './ChatLoader';
 import ChatSources from './ChatSources';
@@ -56,6 +57,7 @@ function Answer({ answer }: { answer: string }) {
 export function ChatMessage({
   chatRequest,
   chatResponse,
+  chatComment,
   isLast,
 }: ChatMessageProps) {
   const { message, role, sources, millisecondsItTook } = chatResponse;
@@ -78,12 +80,11 @@ export function ChatMessage({
       <UserPrompt prompt={query} isLast={isLast} />
       {sources && <ChatSources sources={sources} />}
       {message && aiConsented && <Answer answer={message} />}
-      {message && (
+      {message && chatComment && (
         <>
-          <ChatMessageFeedbackButtons
-            chatbotMessage={chatResponse}
-            chatbotRequest={chatRequest}
-          />
+          <ChatFeedbackProvider chatComment={chatComment}>
+            <ChatMessageFeedbackButtons />
+          </ChatFeedbackProvider>
           <Box sx={{ textAlign: 'right' }}>
             Response received after {millisecondsItTook / 1000}s
           </Box>

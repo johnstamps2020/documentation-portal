@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useConsentStore } from '../../stores/consentStore';
 import {
+  ChatbotComment,
   ChatbotFilters,
   ChatbotMessage,
   ChatbotRequest,
@@ -8,10 +9,12 @@ import {
   FilterName,
 } from '../../types/chatbot';
 import { UserInfo } from '../../types/user';
+import { postNewComment } from './ChatFeedback/api';
 
 export type ChatItem = {
   chatRequest: ChatbotRequest;
   chatResponse: ChatbotMessage;
+  chatComment?: ChatbotComment;
 };
 
 export interface ChatInterface {
@@ -121,21 +124,33 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
     if (!response.ok) {
       console.error({ response });
     } else {
-      const chatbotResponse = (await response.json()) as ChatbotResponse;
+      const responseFromChatbotAPI = (await response.json()) as ChatbotResponse;
       const endTime = new Date().getTime();
       const responseFromBot = aiConsented
-        ? chatbotResponse.response
+        ? responseFromChatbotAPI.response
         : undefined;
+
+      const chatbotMessage: ChatbotMessage = {
+        role: 'bot',
+        message: responseFromBot,
+        sources: responseFromChatbotAPI.original_documents,
+        millisecondsItTook: endTime - startTime,
+      };
+      const { postedComment } = await postNewComment(
+        chatbotRequest,
+        chatbotMessage,
+        'unset',
+        userInfo.hasGuidewireEmail
+          ? userInfo.email
+          : 'not an employee, email not stored'
+      );
+
       setItems((prevItems) => [
         ...prevItems.slice(0, -1),
         {
           chatRequest: chatbotRequest,
-          chatResponse: {
-            role: 'bot',
-            message: responseFromBot,
-            sources: chatbotResponse.original_documents,
-            millisecondsItTook: endTime - startTime,
-          },
+          chatResponse: chatbotMessage,
+          chatComment: postedComment,
         },
       ]);
     }
