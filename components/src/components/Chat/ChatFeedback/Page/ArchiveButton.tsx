@@ -12,7 +12,10 @@ type ArchiveButtonProps = {
 
 export function ArchiveButton({ item }: ArchiveButtonProps) {
   const [error, setError] = useState('');
+  const [processing, setProcessing] = useState(false);
+
   async function handleArchiveStatus(value: ChatbotComment['status']) {
+    setProcessing(true);
     setError('');
     const updatedComment: ChatbotComment = {
       ...item,
@@ -24,6 +27,8 @@ export function ArchiveButton({ item }: ArchiveButtonProps) {
     if (problem) {
       setError(problem);
     }
+
+    setProcessing(false);
   }
 
   if (item.status === 'archived') {
@@ -33,6 +38,7 @@ export function ArchiveButton({ item }: ArchiveButtonProps) {
         onClick={() => {
           handleArchiveStatus('active');
         }}
+        disabled={processing}
       >
         Unarchive
       </Button>
@@ -46,6 +52,7 @@ export function ArchiveButton({ item }: ArchiveButtonProps) {
         onClick={() => {
           handleArchiveStatus('archived');
         }}
+        disabled={processing}
       >
         Archive this comment
       </Button>

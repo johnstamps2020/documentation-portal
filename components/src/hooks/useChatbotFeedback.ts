@@ -44,6 +44,8 @@ const feedbackGetter = async (
       }
     );
 
+    filteredItems.sort((a, b) => (a.context.date > b.context.date ? -1 : 1));
+
     return filteredItems;
   } catch (err) {
     console.error(err);

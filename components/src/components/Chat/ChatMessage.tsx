@@ -5,11 +5,12 @@ import React, { useEffect, useRef } from 'react';
 import { translate } from '../../lib';
 import { useConsentStore } from '../../stores/consentStore';
 import { ChatItem } from './ChatContext';
-import { ChatLoader } from './ChatLoader';
+import { ChatFeedbackProvider } from './ChatFeedback/Widget/ChatFeedbackContext';
 import { ChatMessageFeedbackButtons } from './ChatFeedback/Widget/ChatMessageFeedbackButtons';
+import { ChatLoader } from './ChatLoader';
 import ChatSources from './ChatSources';
-import { NotOptedIn } from './NotOptedIn';
 import { Markdown } from './Markdown';
+import { NotOptedIn } from './NotOptedIn';
 
 type ChatMessageProps = ChatItem & {
   isLast: boolean;
@@ -56,9 +57,10 @@ function Answer({ answer }: { answer: string }) {
 export function ChatMessage({
   chatRequest,
   chatResponse,
+  chatComment,
   isLast,
 }: ChatMessageProps) {
-  const { message, role, sources } = chatResponse;
+  const { message, role, sources, millisecondsItTook } = chatResponse;
   const { query } = chatRequest;
   const responseRef = useRef<HTMLDivElement>(null);
   const aiConsented = useConsentStore((state) => state.aiConsented);
@@ -78,15 +80,15 @@ export function ChatMessage({
       <UserPrompt prompt={query} isLast={isLast} />
       {sources && <ChatSources sources={sources} />}
       {message && aiConsented && <Answer answer={message} />}
-      {message && (
-        <ChatMessageFeedbackButtons
-          chatbotMessage={{
-            message,
-            role,
-            sources,
-          }}
-          chatbotRequest={chatRequest}
-        />
+      {message && chatComment && (
+        <>
+          <ChatFeedbackProvider chatComment={chatComment}>
+            <ChatMessageFeedbackButtons />
+          </ChatFeedbackProvider>
+          <Box sx={{ textAlign: 'right' }}>
+            Response received after {millisecondsItTook / 1000}s
+          </Box>
+        </>
       )}
       <NotOptedIn />
     </Box>

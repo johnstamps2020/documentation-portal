@@ -1,47 +1,33 @@
 import Box from '@mui/material/Box';
-import React, { useState } from 'react';
-import { ThumbUpIcon, ThumbDownIcon } from '../icons';
 import IconButton from '@mui/material/IconButton';
+import React, { useState } from 'react';
 import { translate } from '../../../../lib';
-import {
-  ChatbotComment,
-  ChatbotMessage,
-  ChatbotRequest,
-} from '../../../../types';
+import { ChatbotComment } from '../../../../types';
+import { postComment } from '../api';
+import { ThumbDownIcon, ThumbUpIcon } from '../icons';
+import { useChatFeedback } from './ChatFeedbackContext';
 import { ChatMessageFeedbackDialog } from './ChatMessageFeedbackDialog';
-import { postNewComment } from '../api';
-import { useChat } from '../../ChatContext';
 
-type ChatMessageFeedbackButtonsProps = {
-  chatbotRequest: ChatbotRequest;
-  chatbotMessage: ChatbotMessage;
-};
-
-export function ChatMessageFeedbackButtons({
-  chatbotMessage,
-  chatbotRequest,
-}: ChatMessageFeedbackButtonsProps) {
+export function ChatMessageFeedbackButtons() {
   const [isOpen, setOpen] = useState(false);
-  const [reaction, setReaction] =
-    useState<ChatbotComment['user']['reaction']>('positive');
-  const [commentAlreadyPosted, setCommentAlreadyPosted] = useState<
-    ChatbotComment | undefined
-  >(undefined);
-  const { userInfo } = useChat();
+  const { chatComment } = useChatFeedback();
+  const [selectedReaction, setSelectedReaction] = useState(
+    chatComment.user.reaction
+  );
 
   async function handleClick(
     clickReaction: ChatbotComment['user']['reaction']
   ) {
-    setReaction(clickReaction);
-    const { postedComment } = await postNewComment(
-      chatbotRequest,
-      chatbotMessage,
-      clickReaction,
-      userInfo.hasGuidewireEmail
-        ? userInfo.email
-        : 'not an employee, email not stored'
-    );
-    setCommentAlreadyPosted(postedComment);
+    setSelectedReaction(clickReaction);
+    const commentToPost: ChatbotComment = {
+      ...chatComment,
+      user: {
+        ...chatComment?.user,
+        reaction: clickReaction,
+      },
+    };
+
+    await postComment(commentToPost);
     setOpen(true);
   }
 
@@ -74,8 +60,7 @@ export function ChatMessageFeedbackButtons({
       <ChatMessageFeedbackDialog
         open={isOpen}
         onClose={handleClose}
-        reaction={reaction}
-        chatbotComment={commentAlreadyPosted}
+        reactionToSave={selectedReaction}
       />
     </Box>
   );
