@@ -14,7 +14,7 @@ import { Tally } from './Tally';
 export function ChatFeedbackPage() {
   const [filters, setFilters] = useState<FeedbackFilters>({
     status: ['active'],
-    userReaction: ['positive', 'negative', 'unset'],
+    userReaction: ['positive', 'negative'],
   });
 
   const { isError, isLoading, feedbackItems } = useChatbotFeedback(filters);
@@ -49,6 +49,30 @@ export function ChatFeedbackPage() {
     });
   }
 
+  function toggleUnset() {
+    setFilters((currentFilters) => {
+      if (currentFilters.userReaction?.includes('unset')) {
+        const filteredReaction = currentFilters.userReaction.filter(
+          (r) => r !== 'unset'
+        );
+        return {
+          ...currentFilters,
+          userReaction: [...filteredReaction],
+        };
+      }
+
+      const copyOfReactions = currentFilters.userReaction || [];
+      const extendedReactions: FeedbackFilters['userReaction'] = [
+        ...copyOfReactions,
+        'unset',
+      ];
+      return {
+        ...currentFilters,
+        userReaction: extendedReactions,
+      };
+    });
+  }
+
   return (
     <>
       {isLoading && <LoaderBackdrop />}
@@ -60,6 +84,12 @@ export function ChatFeedbackPage() {
           label="Include archived items"
           checked={filters.status?.includes('archived')}
           onChange={toggleArchived}
+        />
+        <FormControlLabel
+          control={<Checkbox />}
+          label="Include items without user reaction"
+          checked={filters.userReaction?.includes('unset')}
+          onChange={toggleUnset}
         />
       </Box>
       {feedbackItems?.map((item) => (
