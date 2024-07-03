@@ -10,6 +10,7 @@ import {
 import { ChatFeedbackItem } from './ChatFeedbackItem';
 import { LoaderBackdrop } from './LoaderBackdrop';
 import { Tally } from './Tally';
+import { DownloadButton } from './DownloadButton';
 
 export function ChatFeedbackPage() {
   const [filters, setFilters] = useState<FeedbackFilters>({
@@ -91,6 +92,7 @@ export function ChatFeedbackPage() {
           checked={filters.userReaction?.includes('unset')}
           onChange={toggleUnset}
         />
+        <DownloadButton items={feedbackItems || []} />
       </Box>
       {feedbackItems?.map((item) => (
         <ChatFeedbackItem {...item} key={item.id} />
