@@ -58,7 +58,7 @@ export function ChatMessage({
   chatResponse,
   isLast,
 }: ChatMessageProps) {
-  const { message, role, sources } = chatResponse;
+  const { message, role, sources, millisecondsItTook } = chatResponse;
   const { query } = chatRequest;
   const responseRef = useRef<HTMLDivElement>(null);
   const aiConsented = useConsentStore((state) => state.aiConsented);
@@ -79,14 +79,15 @@ export function ChatMessage({
       {sources && <ChatSources sources={sources} />}
       {message && aiConsented && <Answer answer={message} />}
       {message && (
-        <ChatMessageFeedbackButtons
-          chatbotMessage={{
-            message,
-            role,
-            sources,
-          }}
-          chatbotRequest={chatRequest}
-        />
+        <>
+          <ChatMessageFeedbackButtons
+            chatbotMessage={chatResponse}
+            chatbotRequest={chatRequest}
+          />
+          <Box sx={{ textAlign: 'right' }}>
+            Response received after {millisecondsItTook / 1000}s
+          </Box>
+        </>
       )}
       <NotOptedIn />
     </Box>

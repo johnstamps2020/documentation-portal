@@ -37,6 +37,11 @@ export function ChatFeedbackItem(props: ChatFeedbackItemProps) {
           label={status}
         />
         <DateDisplay milliseconds={context.date} />
+        {context.chatbotMessage.millisecondsItTook && (
+          <Typography>
+            Elapsed time: {context.chatbotMessage.millisecondsItTook / 1000}s
+          </Typography>
+        )}
       </Box>
       <Box
         sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, mt: 2 }}
@@ -49,7 +54,7 @@ export function ChatFeedbackItem(props: ChatFeedbackItemProps) {
         </Box>
       </Box>
       <UserInfoBox {...user} />
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
         <ArchiveButton item={props} />
       </Box>
     </Card>

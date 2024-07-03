@@ -89,6 +89,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
   };
 
   const sendPrompt = async (userPrompt: string) => {
+    const startTime = new Date().getTime();
     setIsProcessing(true);
 
     const chatbotRequest: ChatbotRequest = {
@@ -104,6 +105,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
         chatResponse: {
           message: undefined,
           role: 'bot',
+          millisecondsItTook: 0,
         },
       },
     ]);
@@ -120,6 +122,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
       console.error({ response });
     } else {
       const chatbotResponse = (await response.json()) as ChatbotResponse;
+      const endTime = new Date().getTime();
       const responseFromBot = aiConsented
         ? chatbotResponse.response
         : undefined;
@@ -131,6 +134,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
             role: 'bot',
             message: responseFromBot,
             sources: chatbotResponse.original_documents,
+            millisecondsItTook: endTime - startTime,
           },
         },
       ]);

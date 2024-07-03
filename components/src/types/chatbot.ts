@@ -32,6 +32,7 @@ export type ChatbotMessage = {
   message: string | undefined;
   role: 'user' | 'bot';
   sources?: ChatbotDocument[];
+  millisecondsItTook: number;
 };
 
 export type ChatbotComment = {
