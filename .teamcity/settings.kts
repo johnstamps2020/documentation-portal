@@ -96,8 +96,8 @@ enum class GwDockerImages(val imageUrl: String) {
     SITEMAP_GENERATOR_LATEST(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/sitemap-generator:latest"
     ),
-    NODE_LTS_VERSION(
-        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:20.15.0"
+    NODE_18_18_2(
+        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:18.18.2"
     ),
 }
 
@@ -727,7 +727,7 @@ object GwBuildSteps {
                 yarn publish:$packageHandle
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerImage = GwDockerImages.NODE_LTS_VERSION.imageUrl
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
         }
     }
 
@@ -886,7 +886,7 @@ object GwBuildSteps {
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
-            dockerImage = GwDockerImages.NODE_LTS_VERSION.imageUrl
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
         }
@@ -907,7 +907,7 @@ object GwBuildSteps {
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
-            dockerImage = GwDockerImages.NODE_LTS_VERSION.imageUrl
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
         }
@@ -1119,7 +1119,7 @@ object AuditNpmPackages : BuildType({
             shellScript = """
                     yarn && yarn audit:all
                 """.trimIndent()
-            dockerImage = GwDockerImages.NODE_LTS_VERSION.imageUrl
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
         }
     }
 
@@ -1582,7 +1582,7 @@ object Content {
                     
                     node ci/reindexFromStagingToDev.mjs
                     """.trimIndent()
-                dockerImage = GwDockerImages.NODE_LTS_VERSION.imageUrl
+                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             }
         }
 
@@ -2053,7 +2053,7 @@ object Database {
                         yarn
                         node uploadLegacyConfigsToDb.mjs
                         """.trimIndent()
-                dockerImage = GwDockerImages.NODE_LTS_VERSION.imageUrl
+                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             }
         }
 
@@ -2371,7 +2371,7 @@ object Frontend {
                     CI=true yarn test:landing-pages
                     yarn build
                 """.trimIndent()
-                dockerImage = GwDockerImages.NODE_LTS_VERSION.imageUrl
+                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             }
         }
 
@@ -2637,7 +2637,7 @@ object Server {
                     yarn
                     yarn test:server
                 """.trimIndent()
-                dockerImage = GwDockerImages.NODE_LTS_VERSION.imageUrl
+                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             }
         }
 
