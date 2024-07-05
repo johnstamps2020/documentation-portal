@@ -766,6 +766,7 @@ object GwBuildSteps {
     fun createRunSitemapGeneratorStep(deployEnv: String, outputDir: String): ScriptBuildStep {
         val appBaseUrl = Helpers.getTargetUrl(deployEnv)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
+        val s3BucketUrl = Helpers.getS3BucketUrl(deployEnv)
         return ScriptBuildStep {
             name = "Run the sitemap generator"
             id = Helpers.createIdStringFromName(this.name)
@@ -776,6 +777,7 @@ object GwBuildSteps {
                 export OUTPUT_DIR="$outputDir"
                 export APP_BASE_URL="$appBaseUrl"
                 export ELASTICSEARCH_URLS="$elasticsearchUrls"
+                export DOC_S3_URL="$s3BucketUrl"
                 
                 sitemap_generator
             """.trimIndent()
