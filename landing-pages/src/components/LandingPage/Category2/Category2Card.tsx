@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import { useCategory2Context } from './Category2Context';
 import Category2Item from './Category2Item';
+import { findMatchingPageItemData } from 'helpers/landingPageHelpers';
 
 export type Category2CardProps = {
   label: string;
@@ -26,21 +27,10 @@ export default function Category2Card({ label, items }: Category2CardProps) {
       <Divider />
       <Stack gap={2} py={2} sx={{}}>
         {items.map((categoryItem, idx) => {
-          const matchingItemData = allAvailableItems.find((item) => {
-            if (categoryItem.docId && categoryItem.docId === item.id) {
-              return true;
-            }
-
-            if (categoryItem.pagePath && categoryItem.pagePath === item.path) {
-              return true;
-            }
-
-            if (categoryItem.url && categoryItem.url === item.path) {
-              return true;
-            }
-
-            return false;
-          });
+          const matchingItemData = findMatchingPageItemData(
+            allAvailableItems,
+            categoryItem
+          );
 
           if (!matchingItemData) {
             return null;

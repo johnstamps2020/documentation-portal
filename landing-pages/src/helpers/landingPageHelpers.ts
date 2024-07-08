@@ -37,3 +37,24 @@ export function capitalizeFirstLetter(text: string) {
     return string.toUpperCase();
   });
 }
+
+export function findMatchingPageItemData(
+  allAvailableItems: LandingPageItemData[],
+  itemToMatch: LandingPageItemProps
+): LandingPageItemData | undefined {
+  return allAvailableItems.find((item) => {
+    if (itemToMatch.docId && itemToMatch.docId === item.id) {
+      return true;
+    }
+
+    if (itemToMatch.pagePath && itemToMatch.pagePath === item.path) {
+      return true;
+    }
+
+    if (itemToMatch.url && itemToMatch.url === item.path) {
+      return true;
+    }
+
+    return false;
+  });
+}

@@ -1,10 +1,10 @@
 import Paper from '@mui/material/Paper';
-import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { useCategory2Context } from './Category2/Category2Context';
 import { LandingPageButton } from './LandingPageLink';
+import { findMatchingPageItemData } from 'helpers/landingPageHelpers';
 
 export type WhatsNewProps = {
   label: string;
@@ -19,20 +19,10 @@ export default function WhatsNew({
   item,
   content,
 }: WhatsNewProps) {
-  const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
-
-  if (isError || !landingPageItems) {
-    return null;
-  }
-
-  if (isLoading) {
-    return (
-      <Skeleton
-        variant="rectangular"
-        sx={{ width: '300px', height: '600px' }}
-      />
-    );
-  }
+  const { allAvailableItems } = useCategory2Context();
+  const matchingItem = findMatchingPageItemData(allAvailableItems, item);
+  console.log({ item, allAvailableItems, matchingItem });
+  console.log(allAvailableItems);
 
   return (
     <Paper
@@ -108,7 +98,7 @@ export default function WhatsNew({
             })}
           </ul>
         )}
-        {landingPageItems[0] && (
+        {matchingItem && (
           <LandingPageButton
             variant="contained"
             sx={{
@@ -116,7 +106,7 @@ export default function WhatsNew({
               margin: '10px auto 10px auto',
               padding: '4px',
             }}
-            landingPageItem={landingPageItems[0]}
+            landingPageItem={matchingItem}
           />
         )}
       </Stack>

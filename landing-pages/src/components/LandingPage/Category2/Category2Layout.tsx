@@ -33,7 +33,10 @@ export default function Category2Layout({
   whatsNew,
   isRelease,
 }: Category2LayoutProps) {
-  const allPageItems = cards.map((card) => card.items).flat();
+  const allPageItems = [
+    ...cards.map((card) => card.items).flat(),
+    whatsNew.item,
+  ];
   const { pageData, isLoading, isError } = usePageData();
   const {
     landingPageItems: cardItems,
