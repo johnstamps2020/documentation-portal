@@ -86,11 +86,11 @@ const pageConfig: Category2LayoutProps = {
       items: [
         {
           label: 'DataHub',
-          pagePath: 'cloudProducts/jasper/dh',
+          pagePath: 'cloudProducts/kufri/dh',
         },
         {
           label: 'InfoCenter',
-          pagePath: 'cloudProducts/jasper/ic',
+          pagePath: 'cloudProducts/kufri/ic',
         },
         {
           label: 'Analytics Manager',

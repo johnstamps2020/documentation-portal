@@ -347,6 +347,16 @@ export const allSelectors = {
       pagePath: 'cloudProducts/jasper/ic',
     },
   ],
+  dhic202407: [
+    {
+      label: 'DataHub for Guidewire Cloud 2024.07',
+      pagePath: 'cloudProducts/kufri/dh',
+    },
+    {
+      label: 'InfoCenter for Guidewire Cloud 2024.07',
+      pagePath: 'cloudProducts/kufri/ic',
+    },
+  ],
   scf866456342474178729593fa394b976: [
     { label: '3.6', pagePath: 'globalContent/ipg/3.6' },
     { label: '3.7', pagePath: 'globalContent/ipg/3.7' },
