@@ -347,6 +347,16 @@ export const allSelectors = {
       pagePath: 'cloudProducts/jasper/ic',
     },
   ],
+  dhic202407: [
+    {
+      label: 'DataHub for Guidewire Cloud 2024.07',
+      pagePath: 'cloudProducts/kufri/dh',
+    },
+    {
+      label: 'InfoCenter for Guidewire Cloud 2024.07',
+      pagePath: 'cloudProducts/kufri/ic',
+    },
+  ],
   scf866456342474178729593fa394b976: [
     { label: '3.6', pagePath: 'globalContent/ipg/3.6' },
     { label: '3.7', pagePath: 'globalContent/ipg/3.7' },
@@ -821,6 +831,7 @@ export const allSelectors = {
     { label: '10.10.0', pagePath: 'selfManagedProducts/dh/10.10.0' },
     { label: '10.11.0', pagePath: 'selfManagedProducts/dh/10.11.0' },
     { label: '10.12.0', pagePath: 'selfManagedProducts/dh/10.12.0' },
+    { label: '10.13.0', pagePath: 'selfManagedProducts/dh/10.13.0' },
     { label: '8.1.0', docId: 'dh810' },
     { label: '8.1.1', docId: 'dh811' },
     { label: '8.2.0', docId: 'dh820' },
@@ -844,6 +855,7 @@ export const allSelectors = {
     { label: '10.10.0', pagePath: 'selfManagedProducts/ic/10.10.0' },
     { label: '10.11.0', pagePath: 'selfManagedProducts/ic/10.11.0' },
     { label: '10.12.0', pagePath: 'selfManagedProducts/ic/10.12.0' },
+    { label: '10.13.0', pagePath: 'selfManagedProducts/ic/10.13.0' },
     { label: '8.1.0', docId: 'ic810' },
     { label: '8.1.1', docId: 'ic811' },
     { label: '8.2.0', docId: 'ic820' },
