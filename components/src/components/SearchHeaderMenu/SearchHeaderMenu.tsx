@@ -132,25 +132,33 @@ export function SearchHeaderMenu({
     message: 'Search entire site without filters',
   });
 
-  const productLabelText = `${translate({
-    id: 'search.filter.menu.product.label',
-    message: 'This product',
-  })} (${state.defaultFilters.product.toString().replace(/,/g, ', ')})`;
+  const productLabelText = state.defaultFilters.product
+    ? `${translate({
+        id: 'search.filter.menu.product.label',
+        message: 'This product',
+      })} (${state.defaultFilters.product.toString().replace(/,/g, ', ')})`
+    : '';
 
-  const productTooltipText = `${translate({
-    id: 'search.filter.menu.product.tooltip',
-    message: 'Search within products on this page:',
-  })} ${state.defaultFilters.product.toString().replace(/,/g, ', ')}`;
+  const productTooltipText = state.defaultFilters.product
+    ? `${translate({
+        id: 'search.filter.menu.product.tooltip',
+        message: 'Search within products on this page:',
+      })} ${state.defaultFilters.product.toString().replace(/,/g, ', ')}`
+    : '';
 
-  const releaseLabelText = `${translate({
-    id: 'search.filter.menu.release.label',
-    message: 'This release',
-  })} (${state.defaultFilters.release.toString().replace(/,/g, ', ')})`;
+  const releaseLabelText = state.defaultFilters.release
+    ? `${translate({
+        id: 'search.filter.menu.release.label',
+        message: 'This release',
+      })} (${state.defaultFilters.release.toString().replace(/,/g, ', ')})`
+    : '';
 
-  const releaseTooltipText = `${translate({
-    id: 'search.filter.menu.release.tooltip',
-    message: 'Search within all products in this release:',
-  })} ${state.defaultFilters.release.toString().replace(/,/g, ', ')}`;
+  const releaseTooltipText = state.defaultFilters.release
+    ? `${translate({
+        id: 'search.filter.menu.release.tooltip',
+        message: 'Search within all products in this release:',
+      })} ${state.defaultFilters.release.toString().replace(/,/g, ', ')}`
+    : '';
 
   const showFiltersLabelClosedText = translate({
     id: 'search.filter.menu.showfilters.label.closed',
