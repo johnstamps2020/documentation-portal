@@ -209,6 +209,14 @@ const permanentRedirectUrls = [
     from: 'jutro/documentation/10.5',
     to: 'jutro/documentation/10.3',
   },
+  {
+    from: 'cloud/workflow-service/workflow-console',
+    to: 'cloud/workflow-service/administration',
+  },
+  {
+    from: '/cloud/workflow-service/workflow-console/common/topics/workflow-service.html',
+    to: '/cloud/workflow-service/administration',
+  },
 ];
 const temporaryRedirectUrls = [
   {
