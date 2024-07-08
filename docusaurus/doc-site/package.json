@@ -38,7 +38,7 @@
     "@docusaurus/tsconfig": "3.2.1",
     "@docusaurus/types": "3.2.1",
     "@types/react": "^18.2.29",
-    "typescript": "~5.2.2"
+    "typescript": "^5.5.3"
   },
   "browserslist": {
     "production": [
@@ -53,6 +53,6 @@
     ]
   },
   "engines": {
-    "node": ">=20.0"
+    "node": ">=18.0"
   }
 }

@@ -1,4 +1,4 @@
-FROM artifactory.guidewire.com/hub-docker-remote/node:20.15.0-alpine as app-builder
+FROM artifactory.guidewire.com/hub-docker-remote/node:18-alpine as app-builder
 
 WORKDIR /usr/app
 

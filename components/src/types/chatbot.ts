@@ -32,6 +32,7 @@ export type ChatbotMessage = {
   message: string | undefined;
   role: 'user' | 'bot';
   sources?: ChatbotDocument[];
+  millisecondsItTook: number;
 };
 
 export type ChatbotComment = {
@@ -43,7 +44,7 @@ export type ChatbotComment = {
     date: number;
   };
   user: {
-    reaction: 'positive' | 'negative';
+    reaction: 'positive' | 'negative' | 'unset';
     comment?: string;
     email?: string;
   };

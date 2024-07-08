@@ -10,6 +10,7 @@ import {
 import { ChatFeedbackItem } from './ChatFeedbackItem';
 import { LoaderBackdrop } from './LoaderBackdrop';
 import { Tally } from './Tally';
+import { DownloadButton } from './DownloadButton';
 
 export function ChatFeedbackPage() {
   const [filters, setFilters] = useState<FeedbackFilters>({
@@ -49,6 +50,30 @@ export function ChatFeedbackPage() {
     });
   }
 
+  function toggleUnset() {
+    setFilters((currentFilters) => {
+      if (currentFilters.userReaction?.includes('unset')) {
+        const filteredReaction = currentFilters.userReaction.filter(
+          (r) => r !== 'unset'
+        );
+        return {
+          ...currentFilters,
+          userReaction: [...filteredReaction],
+        };
+      }
+
+      const copyOfReactions = currentFilters.userReaction || [];
+      const extendedReactions: FeedbackFilters['userReaction'] = [
+        ...copyOfReactions,
+        'unset',
+      ];
+      return {
+        ...currentFilters,
+        userReaction: extendedReactions,
+      };
+    });
+  }
+
   return (
     <>
       {isLoading && <LoaderBackdrop />}
@@ -61,6 +86,13 @@ export function ChatFeedbackPage() {
           checked={filters.status?.includes('archived')}
           onChange={toggleArchived}
         />
+        <FormControlLabel
+          control={<Checkbox />}
+          label="Include items without user reaction"
+          checked={filters.userReaction?.includes('unset')}
+          onChange={toggleUnset}
+        />
+        <DownloadButton items={feedbackItems || []} />
       </Box>
       {feedbackItems?.map((item) => (
         <ChatFeedbackItem {...item} key={item.id} />

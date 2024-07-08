@@ -24,7 +24,8 @@ export function UserQueryAccordion({
         aria-controls="user-panel-content"
         id="user-panel-header"
       >
-        User query
+        {query.slice(0, 40)}
+        {query.length > 39 ? '...' : ''}
       </AccordionSummary>
       <AccordionDetails>
         <Typography variant="h3">Question</Typography>
