@@ -1,10 +1,7 @@
 import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {
-  useSearchHeaderLayoutContext,
-  Filters,
-} from './SearchHeaderLayoutContext';
+import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 
 type SearchHeaderMenuFilterSubGridItemsProps = {
   filters: string[];

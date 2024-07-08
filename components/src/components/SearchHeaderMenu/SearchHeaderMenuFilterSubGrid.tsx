@@ -1,5 +1,4 @@
 import React from 'react';
-import { translate } from '../../lib';
 import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -7,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 import { SearchHeaderMenuFilterSubGridItems } from './SearchHeaderMenuFilterSubGridItems';
+import { translate } from '../../lib';
 
 type SearchHeaderMenuFilterSubGridProps = {
   filterType: 'product' | 'release';

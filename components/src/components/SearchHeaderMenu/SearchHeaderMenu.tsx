@@ -1,14 +1,14 @@
-// TODO translate strings
 import React from 'react';
+import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
 import MenuList from '@mui/material/MenuList';
-import Divider from '@mui/material/Divider';
 import {
   Filters,
   useSearchHeaderLayoutContext,
 } from './SearchHeaderLayoutContext';
 import { SearchHeaderMenuItem } from './SearchHeaderMenuItem';
 import { SearchHeaderMenuFilterGrid } from './SearchHeaderMenuFilterGrid';
+import { translate } from '../../lib';
 
 const isFiltersMatchingProductReleaseOnly = (
   searchFilters: Filters,
@@ -111,6 +111,67 @@ export function SearchHeaderMenu({
   docTitle,
 }: SearchHeaderMenuProps) {
   const { state, dispatch } = useSearchHeaderLayoutContext();
+
+  const thisDocLabelText = `${translate({
+    id: 'search.filter.menu.thisdoc.label',
+    message: 'This document',
+  })} (${docTitle})`;
+
+  const thisDocTooltipText = `${translate({
+    id: 'search.filter.menu.thisdoc.tooltip',
+    message: 'Search within this document:',
+  })} ${docTitle}`;
+
+  const entireSiteLabelText = translate({
+    id: 'search.filter.menu.entiresite.label',
+    message: 'Entire site',
+  });
+
+  const entireSiteTooltipText = translate({
+    id: 'search.filter.menu.entiresite.tooltip',
+    message: 'Search entire site without filters',
+  });
+
+  const productLabelText = `${translate({
+    id: 'search.filter.menu.product.label',
+    message: 'This product',
+  })} (${state.defaultFilters.product.toString().replace(/,/g, ', ')})`;
+
+  const productTooltipText = `${translate({
+    id: 'search.filter.menu.product.tooltip',
+    message: 'Search within products on this page:',
+  })} ${state.defaultFilters.product.toString().replace(/,/g, ', ')}`;
+
+  const releaseLabelText = `${translate({
+    id: 'search.filter.menu.release.label',
+    message: 'This release',
+  })} (${state.defaultFilters.release.toString().replace(/,/g, ', ')})`;
+
+  const releaseTooltipText = `${translate({
+    id: 'search.filter.menu.release.tooltip',
+    message: 'Search within all products in this release:',
+  })} ${state.defaultFilters.release.toString().replace(/,/g, ', ')}`;
+
+  const showFiltersLabelClosedText = translate({
+    id: 'search.filter.menu.showfilters.label.closed',
+    message: 'Show filters',
+  });
+
+  const showFiltersLabelExpandedText = translate({
+    id: 'search.filter.menu.showfilters.label.expanded',
+    message: 'Hide filters',
+  });
+
+  const showFiltersTooltipClosedText = translate({
+    id: 'search.filter.menu.showfilters.tooltip.closed',
+    message: 'Show selected filters and add or remove more filters',
+  });
+
+  const showFiltersTooltipExpandedText = translate({
+    id: 'search.filter.menu.showfilters.tooltip.expanded',
+    message: 'Your filter selections will apply when you enter a search query',
+  });
+
   return (
     <Menu
       anchorEl={anchorEl}
@@ -140,9 +201,7 @@ export function SearchHeaderMenu({
         {state.defaultFilters.product && (
           <SearchHeaderMenuItem
             itemKey="product"
-            tooltipTitle={`Search within products on this page: ${state.defaultFilters.product
-              .toString()
-              .replace(/,/g, ', ')}`}
+            tooltipTitle={productTooltipText}
             selected={isFiltersMatchingProductReleaseOnly(
               state.searchFilters,
               state.defaultFilters
@@ -153,15 +212,12 @@ export function SearchHeaderMenu({
                 payload: state.defaultFilters,
               });
             }}
-            itemLabel={`This product 
-          (${state.defaultFilters.product.toString().replace(/,/g, ', ')})`}
+            itemLabel={productLabelText}
           />
         )}
         <SearchHeaderMenuItem
           itemKey="release"
-          tooltipTitle={`Search within all products in ${state.defaultFilters.release
-            .toString()
-            .replace(/,/g, ', ')}`}
+          tooltipTitle={releaseTooltipText}
           selected={isFiltersMatchingReleaseOnly(
             state.searchFilters,
             state.defaultFilters
@@ -173,13 +229,12 @@ export function SearchHeaderMenu({
               payload: filtersWithoutProduct,
             });
           }}
-          itemLabel={`This release
-          (${state.defaultFilters.release.toString().replace(/,/g, ', ')})`}
+          itemLabel={releaseLabelText}
         />
         {docTitle && (
           <SearchHeaderMenuItem
             itemKey="thisdoc"
-            tooltipTitle={`Search within this document: ${docTitle}`}
+            tooltipTitle={thisDocTooltipText}
             selected={isFiltersIncludeThisDoc(state.searchFilters)}
             handleClick={() => {
               dispatch({
@@ -190,12 +245,12 @@ export function SearchHeaderMenu({
                 },
               });
             }}
-            itemLabel={`This document (${docTitle})`}
+            itemLabel={thisDocLabelText}
           />
         )}
         <SearchHeaderMenuItem
           itemKey="entiresite"
-          tooltipTitle="Search entire site without filters"
+          tooltipTitle={entireSiteTooltipText}
           selected={isFiltersEmpty(state.searchFilters)}
           handleClick={() => {
             const { product, release, ...filtersWithoutProductOrRelease } =
@@ -205,15 +260,15 @@ export function SearchHeaderMenu({
               payload: filtersWithoutProductOrRelease,
             });
           }}
-          itemLabel="Entire site"
+          itemLabel={entireSiteLabelText}
         />
         <Divider />
         <SearchHeaderMenuItem
           itemKey="expand-filters"
           tooltipTitle={
             state.isFiltersExpanded
-              ? 'Your filter selections will apply when you enter a search query'
-              : 'Show selected filters and add or remove more filters'
+              ? showFiltersTooltipExpandedText
+              : showFiltersTooltipClosedText
           }
           selected={false}
           handleClick={(event: Event): void => {
@@ -223,7 +278,11 @@ export function SearchHeaderMenu({
             });
             event.stopPropagation();
           }}
-          itemLabel={state.isFiltersExpanded ? 'Hide filters' : 'Show filters'}
+          itemLabel={
+            state.isFiltersExpanded
+              ? showFiltersLabelExpandedText
+              : showFiltersLabelClosedText
+          }
           menuItemSx={{ color: 'hsl(196, 100%, 31%)' }}
         />
         {state.isFiltersExpanded && <SearchHeaderMenuFilterGrid />}
