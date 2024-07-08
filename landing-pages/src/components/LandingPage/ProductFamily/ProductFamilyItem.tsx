@@ -1,5 +1,5 @@
-import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import LandingPageLink from 'components/LandingPage/LandingPageLink';
+import { LandingPageItemData } from 'hooks/hookTypes';
 
 export default function FamilyProductItem(
   landingPageItem: LandingPageItemData

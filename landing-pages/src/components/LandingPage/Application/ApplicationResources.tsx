@@ -3,15 +3,13 @@ import Container from '@mui/material/Container';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { arrangeItems } from 'helpers/landingPageHelpers';
-import {
-  LandingPageItemData,
-  useLandingPageItems,
-} from 'hooks/useLandingPageItems';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageItemRenderer from '../LandingPageItemRenderer';
 import LandingPageLink from '../LandingPageLink';
 import ApplicationDivider from './ApplicationDivider';
 import { narrowWidth } from './ApplicationNarrowTwoColumnLayout';
+import { LandingPageItemData } from 'hooks/hookTypes';
 
 function chunkArray(array: any[], chunkSize: number): any[] {
   var results = [];

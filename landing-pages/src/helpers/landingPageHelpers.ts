@@ -1,4 +1,4 @@
-import { LandingPageItemData } from 'hooks/useLandingPageItems';
+import { LandingPageItemData } from 'hooks/hookTypes';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 
 type ArrangedItem = LandingPageItemData & { description?: React.ReactNode };

@@ -1,7 +1,7 @@
 import LandingPageLink, {
   LandingPageLinkProps,
 } from 'components/LandingPage/LandingPageLink';
-import { LandingPageItemData } from '../../../hooks/useLandingPageItems';
+import { LandingPageItemData } from 'hooks/hookTypes';
 
 export default function Category2Item(landingPageItem: LandingPageItemData) {
   const sx: LandingPageLinkProps['sx'] = {

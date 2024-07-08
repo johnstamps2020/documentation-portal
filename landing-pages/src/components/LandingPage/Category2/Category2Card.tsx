@@ -1,12 +1,9 @@
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
-import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { arrangeItems } from 'helpers/landingPageHelpers';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import LandingPageItemRenderer from '../LandingPageItemRenderer';
+import { useCategory2Context } from './Category2Context';
 import Category2Item from './Category2Item';
 
 export type Category2CardProps = {
@@ -14,9 +11,9 @@ export type Category2CardProps = {
   items: LandingPageItemProps[];
 };
 export default function Category2Card({ label, items }: Category2CardProps) {
-  const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
-  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
-  const category2CardItem = (
+  const { allAvailableItems } = useCategory2Context();
+
+  return (
     <Paper
       sx={{
         width: { sm: '288px', xs: '100%' },
@@ -28,31 +25,38 @@ export default function Category2Card({ label, items }: Category2CardProps) {
       </Typography>
       <Divider />
       <Stack gap={2} py={2} sx={{}}>
-        {arrangedLandingPageItems?.map((categoryItem) => (
-          <Category2Item
-            {...categoryItem}
-            key={`${categoryItem.label}_${categoryItem.internal}`}
-          />
-        ))}
+        {items.map((categoryItem, idx) => {
+          const matchingItemData = allAvailableItems.find((item) => {
+            if (categoryItem.docId && categoryItem.docId === item.id) {
+              return true;
+            }
+
+            if (categoryItem.pagePath && categoryItem.pagePath === item.path) {
+              return true;
+            }
+
+            if (categoryItem.url && categoryItem.url === item.path) {
+              return true;
+            }
+
+            return false;
+          });
+
+          if (!matchingItemData) {
+            return null;
+          }
+
+          return (
+            <Category2Item
+              key={idx}
+              earlyAccess={matchingItemData.earlyAccess}
+              internal={matchingItemData.internal}
+              isInProduction={matchingItemData.isInProduction}
+              {...categoryItem}
+            />
+          );
+        })}
       </Stack>
     </Paper>
-  );
-  const category2CardSkeleton = (
-    <Skeleton
-      variant="rectangular"
-      sx={{
-        width: { sm: '288px', xs: '100%' },
-        height: '300px',
-      }}
-    />
-  );
-  return (
-    <LandingPageItemRenderer
-      landingPageItems={arrangedLandingPageItems}
-      isError={isError}
-      isLoading={isLoading}
-      skeleton={category2CardSkeleton}
-      item={category2CardItem}
-    />
   );
 }

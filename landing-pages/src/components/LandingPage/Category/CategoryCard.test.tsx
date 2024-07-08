@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import LandingPageItem from './CategoryItem';
 import LandingPageItemRenderer, {
   LandingPageItemRendererProps,
@@ -8,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
+import { LandingPageItemData } from 'hooks/hookTypes';
 
 const bikeLandingPageItemData: LandingPageItemData[] = [
   {

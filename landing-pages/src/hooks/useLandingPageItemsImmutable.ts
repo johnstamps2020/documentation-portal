@@ -6,9 +6,9 @@ import {
   PageItemsResponse,
 } from '@doctools/server';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import useSWR from 'swr';
-import { PageError } from './usePageData';
+import useSWRImmutable from 'swr/immutable';
 import { LandingPageItemData } from './hookTypes';
+import { PageError } from './usePageData';
 
 function getPropValuesByKey(
   items: LandingPageItemProps[],
@@ -114,14 +114,16 @@ const landingPageItemGetter = async (
   }
 };
 
-export function useLandingPageItems(items: LandingPageItemProps[]) {
+export function useLandingPageItemsImmutable(items: LandingPageItemProps[]) {
   const {
     data: landingPageItems,
     error,
     isLoading,
-  } = useSWR<LandingPageItemData[], PageError>(items, landingPageItemGetter, {
-    revalidateOnFocus: false,
-  });
+  } = useSWRImmutable<LandingPageItemData[], PageError>(
+    items,
+    landingPageItemGetter,
+    {}
+  );
 
   return {
     landingPageItems,
