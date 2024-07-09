@@ -33,10 +33,12 @@ export default function Category2Layout({
   isRelease,
 }: Category2LayoutProps) {
   const selectorItems = selector?.items || [];
+  const sidebarItems = sidebar?.items || [];
   const allPageItems = [
     ...cards.map((card) => card.items).flat(),
     whatsNew.item,
     ...selectorItems,
+    ...sidebarItems,
   ];
   const { pageData, isLoading, isError } = usePageData();
   const {

@@ -60,3 +60,29 @@ export function findMatchingPageItemData(
   }
   return undefined;
 }
+
+export function getListOfItemsToDisplayOnLandingPage(
+  landingPageItems: LandingPageItemProps[],
+  allAvailableItems: PageItemsResponse
+): LandingPageItemData[] {
+  return landingPageItems
+    .map((item) => {
+      const matchingItem = findMatchingPageItemData(allAvailableItems, item);
+
+      if (!matchingItem) {
+        return null;
+      }
+
+      const returnItem: LandingPageItemData = {
+        ...item,
+        internal: matchingItem.internal,
+        isInProduction: matchingItem.isInProduction,
+        earlyAccess: matchingItem.earlyAccess,
+        path: matchingItem.path,
+        url: matchingItem.url,
+      };
+
+      return returnItem;
+    })
+    .filter((item) => item !== null);
+}
