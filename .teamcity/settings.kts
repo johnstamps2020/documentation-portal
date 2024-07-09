@@ -102,9 +102,12 @@ enum class GwDockerImages(val imageUrl: String) {
 }
 
 enum class GwStaticFilesModes(val modeName: String) {
-    LANDING_PAGES("landing_pages"), LOCALIZED_PAGES("localized_pages"), UPGRADE_DIFFS("upgrade_diffs"), SITEMAP("sitemap"), HTML5(
-        "html5"
-    )
+    LANDING_PAGES("landing_pages"),
+    LOCALIZED_PAGES("localized_pages"),
+    UPGRADE_DIFFS("upgrade_diffs"),
+    SITEMAP("sitemap"),
+    S3_SITEMAP("s3_sitemap"),
+    HTML5("html5")
 }
 
 enum class GwConfigTypes(val typeName: String) {
@@ -962,13 +965,17 @@ object GwBuildSteps {
             }
 
             GwStaticFilesModes.SITEMAP.modeName -> targetDir = "sitemap"
+            GwStaticFilesModes.S3_SITEMAP.modeName -> {
+                sourceDir = "s3_sitemap"
+                targetDir = "s3_sitemap"
+            }
             GwStaticFilesModes.HTML5.modeName -> targetDir = "html5"
         }
         val deployCommand =
             "aws s3 sync \"$sourceDir\" s3://tenant-doctools-${atmosDeployEnv}-builds/${targetDir} --delete $excludedPatterns".trim()
 
         return ScriptBuildStep {
-            name = "Deploy static files to the S3 bucket"
+            name = "Deploy static files to the S3 bucket $deploymentMode"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash 
@@ -1248,6 +1255,11 @@ object Content {
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
                         deployEnv, GwStaticFilesModes.SITEMAP.modeName, outputDir
+                    )
+                )
+                step(
+                    GwBuildSteps.createDeployStaticFilesStep(
+                        deployEnv, GwStaticFilesModes.S3_SITEMAP.modeName, outputDir
                     )
                 )
             }
