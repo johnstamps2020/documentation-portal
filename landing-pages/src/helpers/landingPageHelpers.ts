@@ -1,3 +1,4 @@
+import { PageItemsResponse } from '@doctools/server';
 import { LandingPageItemData } from 'hooks/hookTypes';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 
@@ -39,22 +40,23 @@ export function capitalizeFirstLetter(text: string) {
 }
 
 export function findMatchingPageItemData(
-  allAvailableItems: LandingPageItemData[],
+  allAvailableItems: PageItemsResponse,
   itemToMatch: LandingPageItemProps
 ): LandingPageItemData | undefined {
-  return allAvailableItems.find((item) => {
-    if (itemToMatch.docId && itemToMatch.docId === item.id) {
-      return true;
-    }
+  if (itemToMatch.docId) {
+    return allAvailableItems.docs.find((doc) => doc.id === itemToMatch.docId);
+  }
 
-    if (itemToMatch.pagePath && itemToMatch.pagePath === item.path) {
-      return true;
-    }
+  if (itemToMatch.pagePath) {
+    return allAvailableItems.pages.find(
+      (page) => page.path === itemToMatch.pagePath
+    );
+  }
 
-    if (itemToMatch.url && itemToMatch.url === item.path) {
-      return true;
-    }
-
-    return false;
-  });
+  if (itemToMatch.url) {
+    return allAvailableItems.externalLinks.find(
+      (link) => link.url === itemToMatch.url
+    );
+  }
+  return undefined;
 }

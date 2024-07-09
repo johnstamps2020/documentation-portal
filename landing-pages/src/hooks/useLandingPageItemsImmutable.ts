@@ -1,13 +1,9 @@
 import {
-  Doc,
-  ExternalLink,
-  Page,
   PageItemsRequestBody,
-  PageItemsResponse,
+  PageItemsResponse
 } from '@doctools/server';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import useSWRImmutable from 'swr/immutable';
-import { LandingPageItemData } from './hookTypes';
 import { PageError } from './usePageData';
 
 function getPropValuesByKey(
@@ -25,67 +21,11 @@ function getPropValuesByKey(
   return values;
 }
 
-function mapDbItemsOntoPageItems(
-  pageItems: LandingPageItemProps[],
-  dbResponse: PageItemsResponse
-): LandingPageItemData[] {
-  const result: LandingPageItemData[] = [];
-
-  dbResponse.docs.forEach((doc: Doc) => {
-    const matchingPageItems = pageItems.filter(
-      (pageItem) => pageItem.docId === doc.id
-    );
-
-    if (matchingPageItems.length > 0) {
-      result.push(
-        ...matchingPageItems.map((pageItem) => ({
-          ...doc,
-          label: pageItem.label || doc.displayTitle || doc.title,
-          url: pageItem.pathInDoc
-            ? doc.url + '/' + pageItem.pathInDoc
-            : doc.url,
-          videoIcon: pageItem.videoIcon,
-        }))
-      );
-    }
-  });
-
-  dbResponse.pages.forEach((page: Page) => {
-    const matchingPageItem = pageItems.find(
-      (pageItem) => pageItem.pagePath === page.path
-    );
-
-    if (matchingPageItem) {
-      result.push({
-        ...page,
-        label: matchingPageItem.label || page.title,
-        videoIcon: matchingPageItem.videoIcon,
-      });
-    }
-  });
-
-  dbResponse.externalLinks.forEach((externalLink: ExternalLink) => {
-    const matchingPageItem = pageItems.find(
-      (pageItem) => pageItem.url === externalLink.url
-    );
-
-    if (matchingPageItem) {
-      result.push({
-        ...externalLink,
-        label: matchingPageItem.label || externalLink.label,
-        videoIcon: matchingPageItem.videoIcon,
-      });
-    }
-  });
-
-  return result;
-}
-
 const landingPageItemGetter = async (
   items: LandingPageItemProps[]
-): Promise<LandingPageItemData[]> => {
+): Promise<PageItemsResponse | undefined> => {
   if (items.length === 0) {
-    return [];
+    return undefined;
   }
   try {
     const requestBody: PageItemsRequestBody = {
@@ -105,12 +45,12 @@ const landingPageItemGetter = async (
 
     if (response.ok) {
       const jsonData: PageItemsResponse = await response.json();
-      return mapDbItemsOntoPageItems(items, jsonData);
+      return jsonData;
     }
-    return [];
+    return undefined;
   } catch (err) {
     console.error(err);
-    return [];
+    return undefined;
   }
 };
 
@@ -119,7 +59,7 @@ export function useLandingPageItemsImmutable(items: LandingPageItemProps[]) {
     data: landingPageItems,
     error,
     isLoading,
-  } = useSWRImmutable<LandingPageItemData[], PageError>(
+  } = useSWRImmutable<PageItemsResponse | undefined, PageError>(
     items,
     landingPageItemGetter,
     {}

@@ -4,19 +4,18 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
 import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
-import LandingPageSelector, {
-  LandingPageSelectorProps,
-} from 'components/LandingPage/LandingPageSelector';
+import { LandingPageSelectorProps } from 'components/LandingPage/LandingPageSelector';
 import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import WhatsNew, { WhatsNewProps } from 'components/LandingPage/WhatsNew';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
+import { useLandingPageItemsImmutable } from 'hooks/useLandingPageItemsImmutable';
 import { usePageData } from 'hooks/usePageData';
 import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
 import EditPagePropsButton from '../EditPagePropsButton';
+import LandingPageSelectorInContext from '../LandingPageSelectorInContext';
 import Category2Card, { Category2CardProps } from './Category2Card';
+import { LandingPageItemsProvider } from '../LandingPageItemsContext';
 import Category2Sidebar from './Category2Sidebar';
-import { useLandingPageItemsImmutable } from 'hooks/useLandingPageItemsImmutable';
-import { Category2Provider } from './Category2Context';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
   cards: Category2CardProps[];
@@ -33,9 +32,11 @@ export default function Category2Layout({
   whatsNew,
   isRelease,
 }: Category2LayoutProps) {
+  const selectorItems = selector?.items || [];
   const allPageItems = [
     ...cards.map((card) => card.items).flat(),
     whatsNew.item,
+    ...selectorItems,
   ];
   const { pageData, isLoading, isError } = usePageData();
   const {
@@ -73,7 +74,7 @@ export default function Category2Layout({
   };
 
   return (
-    <Category2Provider allAvailableItems={cardItems}>
+    <LandingPageItemsProvider allAvailableItems={cardItems}>
       <Box sx={backgroundProps}>
         <Stack
           sx={{
@@ -91,7 +92,7 @@ export default function Category2Layout({
                   <Breadcrumbs />
                 </Container>
                 {selector && (
-                  <LandingPageSelector
+                  <LandingPageSelectorInContext
                     {...selector}
                     sx={{ width: '300px !important' }}
                   />
@@ -163,6 +164,6 @@ export default function Category2Layout({
           </Grid>
         </Stack>
       </Box>
-    </Category2Provider>
+    </LandingPageItemsProvider>
   );
 }

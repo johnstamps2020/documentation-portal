@@ -2,7 +2,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import { useCategory2Context } from './Category2/Category2Context';
+import { useLandingPageItemsContext } from './LandingPageItemsContext';
 import { LandingPageButton } from './LandingPageLink';
 import { findMatchingPageItemData } from 'helpers/landingPageHelpers';
 
@@ -19,10 +19,13 @@ export default function WhatsNew({
   item,
   content,
 }: WhatsNewProps) {
-  const { allAvailableItems } = useCategory2Context();
+  const { allAvailableItems } = useLandingPageItemsContext();
+
+  if (!allAvailableItems) {
+    return null;
+  }
+
   const matchingItem = findMatchingPageItemData(allAvailableItems, item);
-  console.log({ item, allAvailableItems, matchingItem });
-  console.log(allAvailableItems);
 
   return (
     <Paper
@@ -106,7 +109,7 @@ export default function WhatsNew({
               margin: '10px auto 10px auto',
               padding: '4px',
             }}
-            landingPageItem={matchingItem}
+            landingPageItem={{ ...matchingItem, label: item.label }}
           />
         )}
       </Stack>

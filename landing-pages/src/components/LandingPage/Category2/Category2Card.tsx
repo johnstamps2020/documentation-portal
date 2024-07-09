@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import { useCategory2Context } from './Category2Context';
+import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import Category2Item from './Category2Item';
 import { findMatchingPageItemData } from 'helpers/landingPageHelpers';
 
@@ -12,7 +12,11 @@ export type Category2CardProps = {
   items: LandingPageItemProps[];
 };
 export default function Category2Card({ label, items }: Category2CardProps) {
-  const { allAvailableItems } = useCategory2Context();
+  const { allAvailableItems } = useLandingPageItemsContext();
+
+  if (!allAvailableItems) {
+    return null;
+  }
 
   return (
     <Paper
