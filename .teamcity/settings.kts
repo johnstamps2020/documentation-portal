@@ -965,7 +965,10 @@ object GwBuildSteps {
             }
 
             GwStaticFilesModes.SITEMAP.modeName -> targetDir = "sitemap"
-            GwStaticFilesModes.S3_SITEMAP.modeName -> targetDir = "s3_sitemap"
+            GwStaticFilesModes.S3_SITEMAP.modeName -> {
+                sourceDir = "s3_sitemap"
+                targetDir = "s3_sitemap"
+            }
             GwStaticFilesModes.HTML5.modeName -> targetDir = "html5"
         }
         val deployCommand =
