@@ -85,16 +85,20 @@ export default function AccessControl({
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (envInfoLoading || userInfoLoading) {
+      return;
+    }
     if (userInfo && envInfo && envInfo.name) {
       const elementAllowedOnThisEnv = checkIfElementIsAllowedOnThisEnv(
         allowedOnEnvs,
         envInfo.name
       );
+      console.log(elementAllowedOnThisEnv);
       const userAllowedToAccessPage = checkIfUserCanAccess(
         userInfo,
         accessLevel
       );
-
+      console.log(userAllowedToAccessPage);
       if (elementAllowedOnThisEnv && userAllowedToAccessPage) {
         setAllowedToSee(true);
       }
@@ -106,7 +110,9 @@ export default function AccessControl({
     }
   }, [
     userInfo,
+    userInfoLoading,
     envInfo,
+    envInfoLoading,
     allowedOnEnvs,
     accessLevel,
     navigate,
