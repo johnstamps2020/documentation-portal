@@ -93,12 +93,10 @@ export default function AccessControl({
         allowedOnEnvs,
         envInfo.name
       );
-      console.log(elementAllowedOnThisEnv);
       const userAllowedToAccessPage = checkIfUserCanAccess(
         userInfo,
         accessLevel
       );
-      console.log(userAllowedToAccessPage);
       if (elementAllowedOnThisEnv && userAllowedToAccessPage) {
         setAllowedToSee(true);
       }
