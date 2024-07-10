@@ -121,7 +121,6 @@ export default function AccessControl({
   ]);
 
   if (userInfoLoading || userInfoError || envInfoLoading || envInfoError) {
-    return null;
 
   if (allowedToSee === false) {
     return null;
