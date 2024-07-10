@@ -23,12 +23,14 @@ export default function HeaderDesktop({
         height: headerHeight,
         zIndex: theme.zIndex.drawer + 1,
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
+        gridTemplateColumns: '1fr 2fr 1fr',
         alignItems: 'center',
       }}
     >
       <Logo />
-      <Box>{centerItems}</Box>
+      <Stack direction="row" alignItems="center" justifyContent="center">
+        {centerItems}
+      </Stack>
       <Stack
         direction="row"
         alignItems="center"

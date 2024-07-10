@@ -4,7 +4,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Chip from '@mui/material/Chip';
 import { ServerSearchFilterValue } from '@doctools/server';
 import { useQueryParameters } from 'hooks/useQueryParameters';
-import { languageLabels } from '../../../vars';
+import { languageLabels } from '../../../../../vars';
 
 type SearchFilterCheckboxProps = {
   name: string;

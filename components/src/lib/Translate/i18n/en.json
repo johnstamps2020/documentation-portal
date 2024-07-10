@@ -225,5 +225,73 @@
   "avatar.iconButton": {
     "message": "Expand the user menu",
     "description": "Text on the avatar icon button. The user clicks the button to expand the menu with their personal options."
+  },
+  "search.filter.menu.entiresite.tooltip": {
+    "message": "Search entire site without filters",
+    "description": "Tooltip for menu item to search entire site without filters."
+  },
+  "search.filter.menu.entiresite.label": {
+    "message": "Entire site",
+    "description": "Label for menu item to search entire site without filters."
+  },
+  "search.filter.menu.product.tooltip": {
+    "message": "Search within products on this page:",
+    "description": "Tooltip for menu item to search within products for docs on page. This text is followed by the product names."
+  },
+  "search.filter.menu.product.label": {
+    "message": "This product",
+    "description": "Label for menu item to search within products for docs on page. This text is followed by the product names."
+  },
+  "search.filter.menu.release.tooltip": {
+    "message": "Search within all products in this release:",
+    "description": "Tooltip for menu item to search within products within a release for docs on page. This text is followed by the release name."
+  },
+  "search.filter.menu.release.label": {
+    "message": "This release",
+    "description": "Label for menu item to search within products within a release for docs on page. This text is followed by the release name."
+  },
+  "search.filter.menu.showfilters.label.closed": {
+    "message": "Show filters",
+    "description": "Label for header search menu item show/hide filters when filters are closed."
+  },
+  "search.filter.menu.showfilters.label.expanded": {
+    "message": "Hide filters",
+    "description": "Tooltip for header search menu item show/hide filters when filters are expanded."
+  },
+  "search.filter.menu.showfilters.tooltip.closed": {
+    "message": "Show selected filters and add or remove more filters",
+    "description": "Tooltip for header search menu item show/hide filters when filters are closed."
+  },
+  "search.filter.menu.showfilters.tooltip.expanded": {
+    "message": "Your filter selections will apply when you enter a search query",
+    "description": "Tooltip for header search menu item show/hide filters when filters are expanded."
+  },
+  "search.filter.menu.thisdoc.tooltip": {
+    "message": "Search within this document:",
+    "description": "Tooltip for menu item to search within the currently viewed document. This text is followed by the document title."
+  },
+  "search.filter.menu.thisdoc.label": {
+    "message": "This document",
+    "description": "Label for menu item to search within products for docs on page. This text is followed by the document title."
+  },
+  "search.filter.menu.button": {
+    "message": "Filter",
+    "description": "Text on button that opens header search filter selection. This text is followed by the number of search filters set."
+  },
+  "search.filter.menu.language": {
+    "message": "Language",
+    "description": "Label for release search filter."
+  },
+  "search.filter.menu.product": {
+    "message": "Product",
+    "description": "Label for product search filter."
+  },
+  "search.filter.menu.release": {
+    "message": "Release",
+    "description": "Label for release search filter."
+  },
+  "search.filter.menu.subject": {
+    "message": "Subject",
+    "description": "Label for subject search filter."
   }
 }
