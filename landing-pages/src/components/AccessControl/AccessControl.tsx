@@ -85,7 +85,7 @@ export default function AccessControl({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (envInfoLoading || userInfoLoading) {
+    if (userInfoLoading || userInfoError || envInfoLoading || envInfoError) {
       return;
     }
     if (userInfo && envInfo && envInfo.name) {
