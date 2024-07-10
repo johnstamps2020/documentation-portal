@@ -1,5 +1,5 @@
 import NotLoggedInAlert from './NotLoggedInAlert';
-import { SearchBox, Filters } from '@doctools/components';
+import SearchBox from 'components/SearchBox/SearchBox';
 import LoadingSearchDataErrorAlert from './LoadingSearchDataErrorAlert';
 import SearchResultSection from './SearchResultSection';
 import Stack from '@mui/material/Stack';
@@ -12,32 +12,12 @@ import { useSearchLayoutContext } from './SearchLayoutContext';
 import { useTheme } from '@mui/material/styles';
 import ExactMatchHint from './ExactMatchHint';
 import SearchTypeSelector from './SearchTypeSelector';
-import { useEnvInfo, useSearchData } from 'hooks/useApi';
-import { useLocaleParams } from 'hooks/useLocale';
-import { useMobile } from 'hooks/useMobile';
-import { searchTypeQueryParameterName } from 'vars';
+import { useEnvInfo } from 'hooks/useApi';
 
 export default function SearchResultPanel() {
   const { envInfo } = useEnvInfo();
   const { helpWidth, isHelpExpanded } = useSearchLayoutContext();
   const theme = useTheme();
-  const { searchData } = useSearchData();
-  const { placeholder } = useLocaleParams();
-  const { isMobile } = useMobile();
-
-  const searchFilters: Filters = {};
-
-  if (searchData) {
-    searchData.filters.forEach((f) => {
-      const checkedValues = f.values.filter((v) => v.checked);
-
-      if (checkedValues.length > 0) {
-        searchFilters[f.name] = checkedValues
-          .filter(Boolean)
-          .map((v) => v.label);
-      }
-    });
-  }
 
   return (
     <Stack
@@ -62,12 +42,7 @@ export default function SearchResultPanel() {
         <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
           <NotLoggedInAlert />
           {envInfo?.name === 'dev' && <SearchTypeSelector />}
-          <SearchBox
-            searchFilters={searchFilters}
-            placeholder={placeholder}
-            isMobile={isMobile}
-            searchTypeQueryParameterName={searchTypeQueryParameterName}
-          />
+          <SearchBox />
           <ExactMatchHint />
           <AdvancedSearchHelpButton />
         </Stack>

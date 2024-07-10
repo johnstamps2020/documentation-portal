@@ -6,10 +6,10 @@ import SubjectSettingsForm from 'components/AdminPage/SubjectAdminPage/SubjectSe
 import { useEffect } from 'react';
 
 export default function SubjectAdminPage() {
-  const { title, setTitle } = useLayoutContext();
+  const { title, setTitle, setHeaderOptions } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage subjects');
-  }, [setTitle]);
+  }, [setHeaderOptions, setTitle]);
 
   return (
     <>
