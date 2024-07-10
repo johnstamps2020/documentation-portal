@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, forwardRef } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
@@ -10,6 +10,7 @@ type SearchBoxProps = {
   big?: boolean;
   searchFilters: { [key: string]: string[] };
   placeholder: string;
+  phrase?: string;
   isMobile: boolean;
   searchTypeQueryParameterName: string;
 } & InputBaseProps;
@@ -44,6 +45,7 @@ export const SearchBox = forwardRef(
       big = true,
       searchFilters,
       placeholder,
+      phrase,
       isMobile,
       searchTypeQueryParameterName,
     }: SearchBoxProps,
@@ -51,9 +53,13 @@ export const SearchBox = forwardRef(
   ) => {
     const location = useLocation();
     const query = new URLSearchParams(location.search);
-    const [searchPhrase, setSearchPhrase] = useState<string>('');
+    const [searchPhrase, setSearchPhrase] = useState<string>(phrase || '');
 
     const showBigSearchBox = isMobile ? false : big;
+
+    useEffect(() => {
+      setSearchPhrase(phrase || '');
+    }, [phrase]);
 
     return (
       <Paper
