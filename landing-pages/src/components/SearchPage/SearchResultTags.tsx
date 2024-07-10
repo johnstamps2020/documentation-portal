@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import { SearchResultSource, ServerSearchResult } from '@doctools/server';
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
-import { languageLabels } from '../../../../vars';
+import { languageLabels } from '../../vars';
 
 export function createSearchResultTags(
   searchResult: ServerSearchResult | SearchResultSource

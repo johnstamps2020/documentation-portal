@@ -6,10 +6,10 @@ import SourceSettingsForm from 'components/AdminPage/SourceAdminPage/SourceSetti
 import { useEffect } from 'react';
 
 export default function SourceAdminPage() {
-  const { title, setTitle } = useLayoutContext();
+  const { title, setTitle, setHeaderOptions } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage sources');
-  }, [setTitle]);
+  }, [setHeaderOptions, setTitle]);
 
   return (
     <>

@@ -6,10 +6,10 @@ import ReleaseSettingsForm from 'components/AdminPage/ReleaseAdminPage/ReleaseSe
 import { useEffect } from 'react';
 
 export default function ReleaseAdminPage() {
-  const { title, setTitle } = useLayoutContext();
+  const { title, setTitle, setHeaderOptions } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage releases');
-  }, [setTitle]);
+  }, [setHeaderOptions, setTitle]);
 
   return (
     <>

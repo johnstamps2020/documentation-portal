@@ -9,7 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import LoginPageCards from '../../components/LoginPage/LoginPageCards';
 
 export default function LoginPage() {
-  const { setTitle, setBackgroundColor } = useLayoutContext();
+  const { setTitle, setHeaderOptions, setBackgroundColor } = useLayoutContext();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function LoginPage() {
   useEffect(() => {
     setTitle('Guidewire Documentation | Log in');
     setBackgroundColor('hsl(0, 0%, 98%)');
-  }, [setBackgroundColor, setTitle]);
+  }, [setBackgroundColor, setHeaderOptions, setTitle]);
 
   if (!mounted) {
     return (

@@ -2,16 +2,16 @@ import {
   Doc,
   ExternalLink,
   Language,
+  Page,
   Platform,
   Product,
   Release,
   Resource,
+  SearchData,
+  ServerSearchError,
   Source,
   Subject,
   Version,
-  Page,
-  SearchData,
-  ServerSearchError,
 } from '@doctools/server';
 import { useParams, useSearchParams } from 'react-router-dom';
 import useSWR from 'swr';
@@ -133,22 +133,6 @@ export function useTranslatedPages(items: TranslatedPage[]) {
   };
 }
 
-export function useDocsNoRevalidation() {
-  const { data, error, isLoading } = useSWR<Doc[], ServerSearchError>(
-    '/safeConfig/entity/Doc/all/relations',
-    getter,
-    {
-      revalidateOnFocus: false,
-    }
-  );
-
-  return {
-    docs: data,
-    isLoading,
-    isError: error,
-  };
-}
-
 export function useExternalLinks() {
   const { data, error, isLoading } = useSWR<ExternalLink[], ServerSearchError>(
     '/safeConfig/entity/ExternalLink/all',
@@ -250,22 +234,6 @@ export function useSubjects() {
   };
 }
 
-export function useSubjectsNoRevalidation() {
-  const { data, error, isLoading } = useSWR<Subject[], ServerSearchError>(
-    '/safeConfig/entity/Subject/all',
-    getter,
-    {
-      revalidateOnFocus: false,
-    }
-  );
-
-  return {
-    subjects: data,
-    isLoading,
-    isError: error,
-  };
-}
-
 export function useLanguages() {
   const { data, error, isLoading } = useSWR<Language[], ServerSearchError>(
     '/safeConfig/entity/Language/all',
@@ -273,22 +241,6 @@ export function useLanguages() {
     {
       keepPreviousData: true,
       refreshInterval: 1000,
-    }
-  );
-
-  return {
-    languages: data,
-    isLoading,
-    isError: error,
-  };
-}
-
-export function useLanguagesNoRevalidation() {
-  const { data, error, isLoading } = useSWR<Language[], ServerSearchError>(
-    '/safeConfig/entity/Language/all',
-    getter,
-    {
-      revalidateOnFocus: false,
     }
   );
 
@@ -316,29 +268,13 @@ export function usePlatforms() {
   };
 }
 
-export function usePlatformsNoRevalidation() {
-  const { data, error, isLoading } = useSWR<Platform[], ServerSearchError>(
-    '/safeConfig/entity/Platform/all',
-    getter,
-    {
-      revalidateOnFocus: false,
-    }
-  );
-
-  return {
-    platforms: data,
-    isLoading,
-    isError: error,
-  };
-}
-
 export function useProducts() {
   const { data, error, isLoading } = useSWR<Product[], ServerSearchError>(
     '/safeConfig/entity/Product/all',
     getter,
     {
       keepPreviousData: true,
-      refreshInterval: 1000,
+      refreshInterval: 10000,
     }
   );
 
@@ -381,9 +317,10 @@ export function useVersions() {
     isError: error,
   };
 }
-export function useVersionsNoRevalidation() {
-  const { data, error, isLoading } = useSWR<Version[], ServerSearchError>(
-    '/safeConfig/entity/Version/all',
+
+export function useDocsNoRevalidation() {
+  const { data, error, isLoading } = useSWR<Doc[], ServerSearchError>(
+    '/safeConfig/entity/Doc/all/relations',
     getter,
     {
       revalidateOnFocus: false,
@@ -391,7 +328,7 @@ export function useVersionsNoRevalidation() {
   );
 
   return {
-    versions: data,
+    docs: data,
     isLoading,
     isError: error,
   };

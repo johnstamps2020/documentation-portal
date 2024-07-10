@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useLanguages } from 'hooks/useApi';
+import { useLanguages } from '../../../hooks/useApi';
 import DuplicateButton from './DuplicateButton';
 import LanguageCardContents from './LanguageCardContents';
 import LanguageSettingsForm from './LanguageSettingsForm';

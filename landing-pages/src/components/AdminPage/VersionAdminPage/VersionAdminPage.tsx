@@ -6,10 +6,10 @@ import VersionSettingsForm from 'components/AdminPage/VersionAdminPage/VersionSe
 import { useEffect } from 'react';
 
 export default function VersionAdminPage() {
-  const { title, setTitle } = useLayoutContext();
+  const { title, setTitle, setHeaderOptions } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage versions');
-  }, [setTitle]);
+  }, [setHeaderOptions, setTitle]);
 
   return (
     <>

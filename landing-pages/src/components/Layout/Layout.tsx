@@ -1,5 +1,4 @@
 import Header, { headerHeight } from './Header/Header';
-import { HeaderContextProvider } from 'components/Layout/Header/HeaderContext';
 import Footer from './Footer';
 import Box from '@mui/material/Box';
 import { useLayoutContext } from 'LayoutContext';
@@ -13,14 +12,12 @@ export const mainHeight = `calc(100vh - ${headerHeight})`;
 
 export default function Layout() {
   const location = useLocation();
-  const { title, backgroundColor, path } = useLayoutContext();
+  const { title, headerOptions, backgroundColor, path } = useLayoutContext();
   document.title = `${title} | Guidewire Documentation`;
 
   return (
     <NotificationProvider>
-      <HeaderContextProvider>
-        <Header />
-      </HeaderContextProvider>
+      <Header {...headerOptions} />
       <main style={{ backgroundColor }}>
         <Box
           sx={{
