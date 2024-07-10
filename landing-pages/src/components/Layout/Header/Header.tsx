@@ -1,10 +1,21 @@
+import { useCallback, useMemo } from 'react';
 import { StackProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import SearchBox from 'components/SearchBox/SearchBox';
 import HeaderDesktop from './Desktop/HeaderDesktop';
 import HeaderMobile from './Mobile/HeaderMobile';
 import HeaderMenuItems from './HeaderMenuItems';
+import { SearchHeadWrapper } from '@doctools/components';
+import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
+import { useLocation } from 'react-router-dom';
+import {
+  SearchHeaderLayoutContextProvider,
+  Filters,
+} from '@doctools/components';
+import { usePageData } from 'hooks/usePageData';
+import { useLocaleParams } from 'hooks/useLocale';
+import { useMobile } from 'hooks/useMobile';
+import { searchTypeQueryParameterName } from 'vars';
 
 export const headerHeight = '68px';
 
@@ -15,31 +26,84 @@ export const headerStyles: StackProps['sx'] = {
 };
 
 export type HeaderOptions = {
-  searchFilters?: { [key: string]: string[] };
-  hideSearchBox?: boolean;
+  searchFilters?: Filters;
 };
 
-export default function Header(headerOptions: HeaderOptions) {
+export default function Header() {
   const theme = useTheme();
+  const { placeholder } = useLocaleParams();
+  const { isMobile } = useMobile();
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const location = useLocation();
+  const { pageData } = usePageData();
+  const hideSearchBox = location.pathname === '/search-results';
+
+  const defaultFilters = useMemo(() => {
+    if (!pageData?.searchFilters) {
+      return {};
+    }
+    const defaultFilters: Filters = {};
+    Object.keys(pageData?.searchFilters).forEach((k) => {
+      defaultFilters[k] = pageData?.searchFilters![k];
+    });
+    return defaultFilters;
+  }, [pageData]);
+
+  const { setHeaderOptions } = useHeaderContext();
+
+  const updateHeaderOptions = useCallback(
+    (searchFilters: Filters) => {
+      setHeaderOptions((prevHeaderOptions) => ({
+        ...prevHeaderOptions,
+        searchFilters: searchFilters,
+      }));
+    },
+    [setHeaderOptions]
+  );
 
   if (smallScreen) {
     return (
-      <HeaderMobile
-        menuContents={
-          <>
-            {!headerOptions?.hideSearchBox && <SearchBox big={false} />}
-            <HeaderMenuItems />
-          </>
-        }
-      />
+      <SearchHeaderLayoutContextProvider
+        defaultFilters={defaultFilters}
+        setFilters={updateHeaderOptions}
+      >
+        <HeaderMobile
+          menuContents={
+            <>
+              {!hideSearchBox && (
+                <SearchHeadWrapper
+                  placeholder={placeholder}
+                  isMobile={isMobile}
+                  searchTypeQueryParameterName={searchTypeQueryParameterName}
+                />
+              )}
+              <HeaderMenuItems />
+            </>
+          }
+        />
+      </SearchHeaderLayoutContextProvider>
     );
   }
 
   return (
-    <HeaderDesktop
-      centerItems={!headerOptions?.hideSearchBox && <SearchBox big={false} />}
-      rightItems={<HeaderMenuItems />}
-    />
+    <SearchHeaderLayoutContextProvider
+      defaultFilters={defaultFilters}
+      setFilters={updateHeaderOptions}
+    >
+      <HeaderDesktop
+        centerItems={
+          !hideSearchBox && (
+            <>
+              <SearchHeadWrapper
+                placeholder={placeholder}
+                isMobile={isMobile}
+                searchTypeQueryParameterName={searchTypeQueryParameterName}
+              />
+            </>
+          )
+        }
+        rightItems={<HeaderMenuItems />}
+      />
+    </SearchHeaderLayoutContextProvider>
   );
 }

@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { useSources } from '../../../hooks/useApi';
+import { useSources } from 'hooks/useApi';
 import DuplicateButton from './DuplicateButton';
 import SourceCardContents from './SourceCardContents';
 import SourceSettingsForm from './SourceSettingsForm';

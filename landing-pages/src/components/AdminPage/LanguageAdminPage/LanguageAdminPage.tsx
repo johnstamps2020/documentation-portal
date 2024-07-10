@@ -6,10 +6,10 @@ import LanguageSettingsForm from 'components/AdminPage/LanguageAdminPage/Languag
 import { useEffect } from 'react';
 
 export default function LanguageAdminPage() {
-  const { title, setTitle, setHeaderOptions } = useLayoutContext();
+  const { title, setTitle } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage languages');
-  }, [setHeaderOptions, setTitle]);
+  }, [setTitle]);
 
   return (
     <>

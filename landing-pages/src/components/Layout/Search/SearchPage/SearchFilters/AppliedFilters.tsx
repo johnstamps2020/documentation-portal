@@ -9,6 +9,24 @@ import { useEffect, useState } from 'react';
 import AppliedFilterControl from './AppliedFilterControl';
 import { uiFilters } from './SearchFilterPanel';
 
+// not all of these filters can be checked but including the full list
+// in case the displayed filters changes
+const filterOrder = [
+  'doc_title',
+  'product',
+  'release',
+  'version',
+  'doc_display_title',
+  'subject',
+  'platform',
+  'language',
+];
+const customSort = (a: ServerSearchFilter, b: ServerSearchFilter) => {
+  const indexA = filterOrder.indexOf(a.name);
+  const indexB = filterOrder.indexOf(b.name);
+  return indexA - indexB;
+};
+
 export default function AppliedFilters() {
   const { searchData, isLoading, isError } = useSearchData();
   const [checkedFilters, setCheckedFilters] = useState<ServerSearchFilter[]>();
@@ -24,7 +42,8 @@ export default function AppliedFilters() {
               (uiFilter) =>
                 uiFilter.name === f.name ||
                 uiFilter.filters?.some((subFilter) => subFilter.name === f.name)
-            )
+            ) &&
+            f.name !== 'doc_title'
           ) {
             return null;
           }
@@ -59,6 +78,7 @@ export default function AppliedFilters() {
   const ListItem = styled('li')(() => ({
     margin: '0 4px 6px 0',
   }));
+  const sortedFilters = checkedFilters.sort(customSort);
 
   return (
     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} gap={2}>
@@ -77,7 +97,7 @@ export default function AppliedFilters() {
         component="ul"
         elevation={0}
       >
-        {checkedFilters.map((f) =>
+        {sortedFilters.map((f) =>
           f.values.map((v) => (
             <ListItem key={v.label}>
               <AppliedFilterControl name={f.name} value={v.label} />
