@@ -120,7 +120,6 @@ export default function AccessControl({
     doNotNavigate,
   ]);
 
-  if (userInfoLoading || userInfoError || envInfoLoading || envInfoError) {
 
   if (allowedToSee === false) {
     return null;
