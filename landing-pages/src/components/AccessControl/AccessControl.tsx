@@ -111,6 +111,7 @@ export default function AccessControl({
     userInfoLoading,
     envInfo,
     envInfoLoading,
+    envInfoError,
     allowedOnEnvs,
     accessLevel,
     navigate,
