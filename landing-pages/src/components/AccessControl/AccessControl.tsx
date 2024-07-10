@@ -109,6 +109,7 @@ export default function AccessControl({
   }, [
     userInfo,
     userInfoLoading,
+    userInfoError,
     envInfo,
     envInfoLoading,
     envInfoError,
