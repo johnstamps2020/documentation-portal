@@ -271,6 +271,10 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+            - name: DD_ENTITY_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
             - name: DD_PROPAGATION_STYLE_INJECT
               value: 'Datadog,B3'
             - name: CONFIG_DB_HOST
