@@ -7,7 +7,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
-import { LandingPageItemData } from 'hooks/hookTypes';
+import { LandingPageItemData } from 'helpers/landingPageHelpers';
 
 const bikeLandingPageItemData: LandingPageItemData[] = [
   {

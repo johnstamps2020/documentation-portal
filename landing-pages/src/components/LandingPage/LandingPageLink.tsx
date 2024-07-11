@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import { Link as RouterLink } from 'react-router-dom';
 import InternalTooltip from './InternalTooltip';
 import VideoIcon from './VideoIcon';
-import { LandingPageItemData } from 'hooks/hookTypes';
+import { LandingPageItemData } from 'helpers/landingPageHelpers';
 
 export type LandingPageLinkProps = {
   landingPageItem: LandingPageItemData;

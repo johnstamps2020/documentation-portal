@@ -9,7 +9,7 @@ import LandingPageItemRenderer from '../LandingPageItemRenderer';
 import LandingPageLink from '../LandingPageLink';
 import ApplicationDivider from './ApplicationDivider';
 import { narrowWidth } from './ApplicationNarrowTwoColumnLayout';
-import { LandingPageItemData } from 'hooks/hookTypes';
+import { LandingPageItemData } from 'helpers/landingPageHelpers';
 
 function chunkArray(array: any[], chunkSize: number): any[] {
   var results = [];

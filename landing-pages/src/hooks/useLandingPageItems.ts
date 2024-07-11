@@ -5,10 +5,10 @@ import {
   PageItemsRequestBody,
   PageItemsResponse,
 } from '@doctools/server';
+import { LandingPageItemData } from 'helpers/landingPageHelpers';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import useSWR from 'swr';
 import { PageError } from './usePageData';
-import { LandingPageItemData } from './hookTypes';
 
 function getPropValuesByKey(
   items: LandingPageItemProps[],

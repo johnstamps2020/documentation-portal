@@ -40,21 +40,11 @@ export default function Category2Layout({
     ...selectorItems,
     ...sidebarItems,
   ];
-  const { pageData, isLoading, isError } = usePageData();
-  const {
-    landingPageItems: cardItems,
-    isError: landingPageItemsError,
-    isLoading: landingPageItemsLoading,
-  } = useLandingPageItemsImmutable(allPageItems);
+  const { pageData } = usePageData();
+  const { landingPageItems: cardItems } =
+    useLandingPageItemsImmutable(allPageItems);
 
-  if (
-    isLoading ||
-    isError ||
-    !pageData ||
-    landingPageItemsError ||
-    landingPageItemsLoading ||
-    !cardItems
-  ) {
+  if (!pageData || !cardItems) {
     return null;
   }
 
