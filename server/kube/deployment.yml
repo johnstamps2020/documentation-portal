@@ -263,8 +263,6 @@ spec:
               value: 'true'
             - name: DD_DOGSTATSD_PORT
               value: '8125'
-            - name: DD_DOGSTATSD_HOSTNAME
-              value: 'localhost'
             - name: DD_RUNTIME_METRICS_ENABLED
               value: 'true'
             - name: DD_AGENT_HOST
