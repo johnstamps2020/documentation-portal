@@ -25,7 +25,7 @@ function getNodeByTitle() {
       : document.querySelectorAll('nav.toc a');
   for (let i = 0, len = navLinks.length; i < len; i++) {
     const a = navLinks[i];
-    if (a.textContent.trim() === pageTitle) {
+    if (a.textContent.trim() === pageTitle && a.href === window.location.href) {
       return a;
     }
   }
