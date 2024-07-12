@@ -135,7 +135,7 @@ export function FeedbackDialog({
           <p>
             <Translate
               id="feedbackDialog.thanks"
-              description="Appears ot thank the user for their feedback"
+              description="Appears to thank the user for their feedback"
             >
               Thank you!
             </Translate>

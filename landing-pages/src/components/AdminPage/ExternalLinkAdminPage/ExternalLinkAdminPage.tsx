@@ -6,10 +6,10 @@ import ExternalLinkSettingsForm from 'components/AdminPage/ExternalLinkAdminPage
 import { useEffect } from 'react';
 
 export default function ExternalLinkAdminPage() {
-  const { title, setTitle, setHeaderOptions } = useLayoutContext();
+  const { title, setTitle } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage external links');
-  }, [setHeaderOptions, setTitle]);
+  }, [setTitle]);
 
   return (
     <>

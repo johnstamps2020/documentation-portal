@@ -1,5 +1,5 @@
 import EntityListWithFilters from 'components/AdminPage/EntityListWithFilters';
-import { usePlatforms } from '../../../hooks/useApi';
+import { usePlatforms } from 'hooks/useApi';
 import DuplicateButton from './DuplicateButton';
 import PlatformCardContents from './PlatformCardContents';
 import PlatformSettingsForm from './PlatformSettingsForm';

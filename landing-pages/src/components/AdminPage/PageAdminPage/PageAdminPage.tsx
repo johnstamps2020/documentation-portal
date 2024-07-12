@@ -6,10 +6,10 @@ import PageSettingsForm from 'components/AdminPage/PageAdminPage/PageSettingsFor
 import { useEffect } from 'react';
 
 export default function PageAdminPage() {
-  const { title, setTitle, setHeaderOptions } = useLayoutContext();
+  const { title, setTitle } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage pages');
-  }, [setHeaderOptions, setTitle]);
+  }, [setTitle]);
 
   return (
     <>

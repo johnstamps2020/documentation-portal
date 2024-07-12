@@ -12,7 +12,6 @@ import indicator from './indicator.svg';
 
 function a11yProps(index: number) {
   return {
-    id: `doc-tab-${index}`,
     'aria-controls': `doc-tabpanel-${index}`,
   };
 }
@@ -73,9 +72,10 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
           }}
           centered
         >
-          {tabs.map(({ icon, title }, index) => (
+          {tabs.map(({ icon, title, id }, index) => (
             <Tab
               key={index}
+              id={id}
               label={title}
               {...a11yProps(index)}
               icon={<ApplicationTabIcon icon={icon} />}
