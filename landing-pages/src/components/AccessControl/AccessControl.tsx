@@ -1,5 +1,5 @@
-import { EnvName, UserInfo } from '@doctools/components';
-import { useEnvInfo, useUserInfo } from 'hooks/useApi';
+import { EnvName, useEnvStore, UserInfo } from '@doctools/components';
+import { useUserInfo } from 'hooks/useApi';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -70,11 +70,7 @@ export default function AccessControl({
   doNotNavigate,
 }: AccessControlProps) {
   const [allowedToSee, setAllowedToSee] = useState<boolean>(false);
-  const {
-    envInfo,
-    isError: envInfoError,
-    isLoading: envInfoLoading,
-  } = useEnvInfo();
+  const envName = useEnvStore((state) => state.envName);
   const {
     userInfo,
     isLoading: userInfoLoading,
@@ -85,10 +81,13 @@ export default function AccessControl({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userInfo && envInfo && envInfo.name) {
+    if (userInfoLoading || userInfoError) {
+      return;
+    }
+    if (userInfo && envName) {
       const elementAllowedOnThisEnv = checkIfElementIsAllowedOnThisEnv(
         allowedOnEnvs,
-        envInfo.name
+        envName
       );
       const userAllowedToAccessPage = checkIfUserCanAccess(
         userInfo,
@@ -106,17 +105,15 @@ export default function AccessControl({
     }
   }, [
     userInfo,
-    envInfo,
+    envName,
     allowedOnEnvs,
     accessLevel,
     navigate,
     pagePath,
     doNotNavigate,
+    userInfoLoading,
+    userInfoError,
   ]);
-
-  if (userInfoLoading || userInfoError || envInfoLoading || envInfoError) {
-    return null;
-  }
 
   if (allowedToSee === false) {
     return null;
