@@ -1,29 +1,37 @@
+import { useEffect } from 'react';
 import { useEnvStore } from '../stores/envStore';
-import { EnvName } from '../types';
-
-function getEnvNameFromHostname(): EnvName {
-  const { hostname } = window.location;
-
-  if (hostname.includes('.staging.')) {
-    return 'staging';
-  }
-
-  if (hostname.includes('.dev.')) {
-    return 'dev';
-  }
-
-  if (hostname === 'localhost') {
-    return 'dev';
-  }
-
-  return 'omega2-andromeda';
-}
 
 export function Init() {
-  const envName = getEnvNameFromHostname();
   const initializeEnv = useEnvStore((state) => state.initializeEnv);
 
-  initializeEnv(envName);
+  useEffect(() => {
+    async function setEnvNameFromServer() {
+      const response = await fetch('/envInformation');
+      if (response.ok) {
+        const envInfo = await response.json();
+        const envNameFromServer = envInfo.name;
+        if (envNameFromServer) {
+          initializeEnv(envNameFromServer);
+        }
+      }
+    }
+
+    const { hostname } = window.location;
+
+    if (hostname.includes('.staging.')) {
+      initializeEnv('staging');
+    }
+
+    if (hostname.includes('.dev.')) {
+      initializeEnv('dev');
+    }
+
+    if (hostname === 'localhost') {
+      setEnvNameFromServer();
+    }
+
+    initializeEnv('omega2-andromeda');
+  }, []);
 
   return null;
 }
