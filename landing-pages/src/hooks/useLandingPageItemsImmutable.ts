@@ -1,7 +1,4 @@
-import {
-  PageItemsRequestBody,
-  PageItemsResponse
-} from '@doctools/server';
+import { PageItemsRequestBody, PageItemsResponse } from '@doctools/server';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import useSWRImmutable from 'swr/immutable';
 import { PageError } from './usePageData';

@@ -4,6 +4,8 @@ import {
   ExternalLink,
   Language,
   Page,
+  PageItemsRequestBody,
+  PageItemsResponse,
   Platform,
   Product,
   Release,
@@ -16,6 +18,7 @@ import {
 } from '@doctools/server';
 import { useParams, useSearchParams } from 'react-router-dom';
 import useSWR from 'swr';
+import useSWRImmutable from 'swr/immutable';
 import { TranslatedPage } from '../components/Layout/Header/TranslatedPages';
 import { PageError } from './usePageData';
 
@@ -24,14 +27,27 @@ const getter = (url: string) => fetch(url).then((r) => r.json());
 const translatedPagesGetter = async (
   pages: TranslatedPage[]
 ): Promise<TranslatedPage[]> => {
-  const availablePages: TranslatedPage[] = [];
-  for (const page of pages) {
-    const response = await fetch(`/safeConfig/entity/Page?path=${page.path}`);
-    if (response.ok) {
-      availablePages.push(page);
-    }
+  const requestBody: PageItemsRequestBody = {
+    docIds: [],
+    pagePaths: pages.map((page) => page.path),
+    externalLinkUrls: [],
+  };
+  const response = await fetch('/safeConfig/pageItems', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(requestBody),
+  });
+
+  if (response.ok) {
+    const pageItems: PageItemsResponse = await response.json();
+    const { pages } = pageItems;
+    return pages.map((page) => ({ path: page.path, title: page.title }));
   }
-  return availablePages;
+
+  return [];
 };
 
 type BreadcrumbItem = {
@@ -105,10 +121,10 @@ export function usePages() {
 }
 
 export function useTranslatedPages(items: TranslatedPage[]) {
-  const { data, error, isLoading } = useSWR<TranslatedPage[]>(
+  const { data, error, isLoading } = useSWRImmutable<TranslatedPage[]>(
     items,
     translatedPagesGetter,
-    { revalidateOnFocus: false }
+    {}
   );
 
   return {

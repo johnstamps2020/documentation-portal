@@ -7,10 +7,10 @@ import LandingPageSelector from 'components/LandingPage/LandingPageSelector';
 import { useLayoutContext } from 'LayoutContext';
 
 export default function HeaderMenuItems() {
-  const { userInfo, isError, isLoading } = useUserInfo();
+  const { userInfo } = useUserInfo();
   const { selector } = useLayoutContext();
 
-  if (isError || isLoading || !userInfo) {
+  if (!userInfo) {
     return null;
   }
 
