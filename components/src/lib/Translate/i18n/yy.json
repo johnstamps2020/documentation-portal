@@ -181,5 +181,56 @@
   },
   "avatar.iconButton" : {
     "message" : "[3vM8yX_Expand the user menu]"
+  },
+  "search.filter.menu.entiresite.tooltip" : {
+    "message" : "[JE6Kj_Search entire site without filters]"
+  },
+  "search.filter.menu.entiresite.label" : {
+    "message" : "[4B4CoA_Entire site]"
+  },
+  "search.filter.menu.product.tooltip" : {
+    "message" : "[16MUP8_Search within products on this page:]"
+  },
+  "search.filter.menu.product.label" : {
+    "message" : "[3ohchh_This product]"
+  },
+  "search.filter.menu.release.tooltip" : {
+    "message" : "[43fBw6_Search within all products in this release:]"
+  },
+  "search.filter.menu.release.label" : {
+    "message" : "[GGMVj_This release]"
+  },
+  "search.filter.menu.showfilters.label.closed" : {
+    "message" : "[4B9L4V_Show filters]"
+  },
+  "search.filter.menu.showfilters.label.expanded" : {
+    "message" : "[4AeIsz_Hide filters]"
+  },
+  "search.filter.menu.showfilters.tooltip.closed" : {
+    "message" : "[1idWiX_Show selected filters and add or remove more filters]"
+  },
+  "search.filter.menu.showfilters.tooltip.expanded" : {
+    "message" : "[1XU7s0_Your filter selections will apply when you enter a search query]"
+  },
+  "search.filter.menu.thisdoc.tooltip" : {
+    "message" : "[3pD0bm_Search within this document:]"
+  },
+  "search.filter.menu.thisdoc.label" : {
+    "message" : "[f4wkI_This document]"
+  },
+  "search.filter.menu.button" : {
+    "message" : "[E4df3_Filter]"
+  },
+  "search.filter.menu.language" : {
+    "message" : "[3QWAcm_Language]"
+  },
+  "search.filter.menu.product" : {
+    "message" : "[27zTWu_Product]"
+  },
+  "search.filter.menu.release" : {
+    "message" : "[2o632R_Release]"
+  },
+  "search.filter.menu.subject" : {
+    "message" : "[29nZra_Subject]"
   }
 }
