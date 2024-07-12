@@ -8,10 +8,10 @@ import ResourceSettingsForm from './ResourceSettingsForm';
 import { useEffect } from 'react';
 
 export default function ResourceAdminPage() {
-  const { title, setTitle, setHeaderOptions } = useLayoutContext();
+  const { title, setTitle } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage Resources');
-  }, [setHeaderOptions, setTitle]);
+  }, [setTitle]);
 
   return (
     <Container>

@@ -1,5 +1,4 @@
 import { createContext, useState, useContext } from 'react';
-
 interface SearchLayoutContextInterface {
   isHelpExpanded: boolean;
   setIsHelpExpanded: React.Dispatch<React.SetStateAction<boolean>>;

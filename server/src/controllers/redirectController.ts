@@ -209,6 +209,22 @@ const permanentRedirectUrls = [
     from: 'jutro/documentation/10.5',
     to: 'jutro/documentation/10.3',
   },
+  {
+    from: 'cloud/workflow-service/workflow-console',
+    to: 'cloud/workflow-service/administration',
+  },
+  {
+    from: '/cloud/workflow-service/workflow-console/common/topics/workflow-service.html',
+    to: '/cloud/workflow-service/administration',
+  },
+  {
+    from: 'cloud/workflow-service/workflow-console/workflow-console/topics/problem-determination.html#filtering-datadog-logs',
+    to: 'cloud/workflow-service/administration/administration/topics/problem-determination.html#filtering-datadog-logs',
+  },
+  {
+    from: 'cloud/workflow-service/workflow-console/workflow-console/topics/workflow-retry-logic.html',
+    to: 'cloud/workflow-service/administration/administration/topics/workflow-retry-logic.html',
+  },
 ];
 const temporaryRedirectUrls = [
   {

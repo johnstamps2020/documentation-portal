@@ -6,10 +6,10 @@ import ProductSettingsForm from 'components/AdminPage/ProductAdminPage/ProductSe
 import { useEffect } from 'react';
 
 export default function ProductAdminPage() {
-  const { title, setTitle, setHeaderOptions } = useLayoutContext();
+  const { title, setTitle } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage products');
-  }, [setHeaderOptions, setTitle]);
+  }, [setTitle]);
 
   return (
     <>

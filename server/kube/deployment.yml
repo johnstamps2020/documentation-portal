@@ -263,14 +263,16 @@ spec:
               value: 'true'
             - name: DD_DOGSTATSD_PORT
               value: '8125'
-            - name: DD_DOGSTATSD_HOSTNAME
-              value: 'localhost'
             - name: DD_RUNTIME_METRICS_ENABLED
               value: 'true'
             - name: DD_AGENT_HOST
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+            - name: DD_ENTITY_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
             - name: DD_PROPAGATION_STYLE_INJECT
               value: 'Datadog,B3'
             - name: CONFIG_DB_HOST

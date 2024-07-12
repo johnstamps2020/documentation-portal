@@ -14,8 +14,9 @@ type LazyPageComponent = React.LazyExoticComponent<
 export default function LandingPage() {
   const navigate = useNavigate();
   const { pageData, isError } = usePageData();
-  const { title, setTitle, setHeaderOptions, setPath } = useLayoutContext();
+  const { title, setTitle, setPath } = useLayoutContext();
 
+  // TODO create useStorage hook(s)
   sessionStorage.setItem('latestLandingPagePath', pageData?.path || '');
 
   if (pageData?.searchFilters?.release) {
@@ -41,13 +42,10 @@ export default function LandingPage() {
     if (pageData?.title) {
       setTitle(pageData.title);
     }
-    if (pageData?.searchFilters) {
-      setHeaderOptions({ searchFilters: pageData.searchFilters || undefined });
-    }
     if (pageData?.path) {
       setPath(pageData.path);
     }
-  }, [pageData, setHeaderOptions, setPath, setTitle]);
+  }, [pageData, setPath, setTitle]);
 
   if (!pageData) {
     return <></>;
