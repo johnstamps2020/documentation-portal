@@ -104,8 +104,6 @@ export default function AccessControl({
     }
   }, [
     userInfo,
-    userInfoLoading,
-    userInfoError,
     envName,
     allowedOnEnvs,
     accessLevel,
