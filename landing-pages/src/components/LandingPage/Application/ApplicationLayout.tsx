@@ -1,9 +1,8 @@
 import Stack from '@mui/material/Stack';
 import { useLayoutContext } from 'LayoutContext';
 import { useLandingPageItemsImmutable } from 'hooks/useLandingPageItemsImmutable';
-import { useEffect } from 'react';
 import { LandingPageItemsProvider } from '../LandingPageItemsContext';
-import { LandingPageSelectorProps } from '../LandingPageSelector';
+import { LandingPageSelectorInContextProps } from '../LandingPageSelectorInContext';
 import { ApplicationCardProps } from './ApplicationCard';
 import ApplicationCardSection from './ApplicationCardSection';
 import ApplicationFeatureSection, {
@@ -13,6 +12,7 @@ import ApplicationHero, { ApplicationHeroProps } from './ApplicationHero';
 import ApplicationResources, {
   ApplicationResourcesProps,
 } from './ApplicationResources';
+import ApplicationSelectorSetter from './ApplicationSelectorSetter';
 import ApplicationTabWrapper from './ApplicationTabWrapper';
 import { ApplicationTabItemProps } from './ApplicationTabs';
 import ApplicationVideoSection, {
@@ -26,7 +26,7 @@ export type ApplicationLayoutProps = ApplicationHeroProps & {
   cards?: ApplicationCardProps[];
   featureSections?: ApplicationFeatureSectionProps[];
   resources?: ApplicationResourcesProps;
-  selector?: LandingPageSelectorProps;
+  selector?: LandingPageSelectorInContextProps;
 };
 
 export default function ApplicationLayout({
@@ -56,18 +56,9 @@ export default function ApplicationLayout({
   ];
   const { landingPageItems } = useLandingPageItemsImmutable(allItems);
 
-  useEffect(() => {
-    if (selector) {
-      setSelector(selector);
-    }
-
-    return () => {
-      setSelector(undefined);
-    };
-  }, [selector, setSelector]);
-
   return (
     <LandingPageItemsProvider allAvailableItems={landingPageItems}>
+      <ApplicationSelectorSetter selector={selector} />
       <Stack>
         <ApplicationHero
           buttonProps={buttonProps}

@@ -1,10 +1,10 @@
 import InternalBadge from 'components/LandingPage/InternalBadge';
+import LandingPageSelectorInContext from 'components/LandingPage/LandingPageSelectorInContext';
+import { useUserInfo } from 'hooks/useApi';
+import { useLayoutContext } from 'LayoutContext';
 import ExternalSites from './ExternalSites';
 import Glossary from './Glossary';
 import TranslatedPages from './TranslatedPages';
-import { useUserInfo } from 'hooks/useApi';
-import LandingPageSelector from 'components/LandingPage/LandingPageSelector';
-import { useLayoutContext } from 'LayoutContext';
 
 export default function HeaderMenuItems() {
   const { userInfo } = useUserInfo();
@@ -16,7 +16,7 @@ export default function HeaderMenuItems() {
 
   return (
     <>
-      {selector && <LandingPageSelector {...selector} />}
+      {selector && <LandingPageSelectorInContext {...selector} />}
       <InternalBadge />
       <ExternalSites />
       <TranslatedPages />

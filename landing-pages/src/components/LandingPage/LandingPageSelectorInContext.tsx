@@ -1,3 +1,4 @@
+import { PageItemsResponse } from '@doctools/server';
 import FormControl from '@mui/material/FormControl';
 import InputBase from '@mui/material/InputBase';
 import InputLabel from '@mui/material/InputLabel';
@@ -16,11 +17,12 @@ export type PageSelectorItem = {
   isDoc: boolean;
 };
 
-export type LandingPageSelectorProps = {
+export type LandingPageSelectorInContextProps = {
   label?: string;
   selectedItemLabel: string;
   items: LandingPageItemProps[];
   labelColor?: string;
+  predefinedAvailableItems?: PageItemsResponse;
   sx?: SelectProps['sx'];
 };
 
@@ -60,16 +62,16 @@ const PageSelectorInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function LandingPageSelectorInContext({
+function LandingPageSelectorPredefined({
   items,
+  predefinedAvailableItems,
   label,
   selectedItemLabel,
   labelColor,
   sx,
-}: LandingPageSelectorProps) {
+}: LandingPageSelectorInContextProps) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const { allAvailableItems } = useLandingPageItemsContext();
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -81,12 +83,13 @@ export default function LandingPageSelectorInContext({
     };
   }, []);
 
-  if (!allAvailableItems) {
+  if (!predefinedAvailableItems) {
     return null;
   }
 
   const allowedItems = items.filter(
-    (item) => findMatchingPageItemData(allAvailableItems, item) !== undefined
+    (item) =>
+      findMatchingPageItemData(predefinedAvailableItems, item) !== undefined
   );
 
   const pageSelectorItems: PageSelectorItem[] = allowedItems
@@ -186,4 +189,31 @@ export default function LandingPageSelectorInContext({
       </Select>
     </FormControl>
   );
+}
+
+function LandingPageSelectorInContextWrapper(
+  props: LandingPageSelectorInContextProps
+) {
+  const { allAvailableItems } = useLandingPageItemsContext();
+
+  if (!allAvailableItems) {
+    return null;
+  }
+
+  return (
+    <LandingPageSelectorPredefined
+      {...props}
+      predefinedAvailableItems={allAvailableItems}
+    />
+  );
+}
+
+export default function LandingPageSelectorInContext(
+  props: LandingPageSelectorInContextProps
+) {
+  if (props.predefinedAvailableItems) {
+    return <LandingPageSelectorPredefined {...props} />;
+  }
+
+  return <LandingPageSelectorInContextWrapper {...props} />;
 }

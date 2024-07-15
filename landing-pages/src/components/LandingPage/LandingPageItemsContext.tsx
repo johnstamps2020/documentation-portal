@@ -31,7 +31,9 @@ export function LandingPageItemsProvider({
 export function useLandingPageItemsContext() {
   const context = useContext(LandingPageItemsContext);
   if (!context) {
-    throw new Error('useLandingPageItems must be used within a ChatProvider');
+    throw new Error(
+      'useLandingPageItems must be used within a LandingPageItemsProvider'
+    );
   }
   return context;
 }
