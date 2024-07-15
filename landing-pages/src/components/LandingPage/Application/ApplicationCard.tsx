@@ -28,6 +28,10 @@ export default function ApplicationCard({
     allAvailableItems
   );
 
+  if (itemsToDisplay.length === 0) {
+    return null;
+  }
+
   return (
     <Card
       sx={{
