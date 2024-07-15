@@ -93,7 +93,6 @@ export default function AccessControl({
         userInfo,
         accessLevel
       );
-
       if (elementAllowedOnThisEnv && userAllowedToAccessPage) {
         setAllowedToSee(true);
       }
@@ -105,6 +104,8 @@ export default function AccessControl({
     }
   }, [
     userInfo,
+    userInfoLoading,
+    userInfoError,
     envName,
     allowedOnEnvs,
     accessLevel,
