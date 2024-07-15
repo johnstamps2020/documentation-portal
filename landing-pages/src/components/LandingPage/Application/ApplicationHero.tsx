@@ -32,20 +32,17 @@ export default function ApplicationHero({
     setTitle(title);
   }, [setTitle, title]);
 
-  if (!allAvailableItems) {
-    return null;
-  }
+  const matchingItem = allAvailableItems
+    ? findMatchingPageItemData(allAvailableItems, buttonProps)
+    : undefined;
 
-  const matchingItem = findMatchingPageItemData(allAvailableItems, buttonProps);
-  if (!matchingItem) {
-    return null;
-  }
-
-  const heroButtonItem = {
-    ...matchingItem,
-    label: buttonProps.label,
-    internal: matchingItem.internal,
-  };
+  const heroButtonItem = matchingItem
+    ? {
+        ...matchingItem,
+        label: buttonProps.label,
+        internal: matchingItem?.internal || false,
+      }
+    : undefined;
 
   return (
     <Box

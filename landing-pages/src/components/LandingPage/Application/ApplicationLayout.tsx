@@ -1,5 +1,4 @@
 import Stack from '@mui/material/Stack';
-import { useLayoutContext } from 'LayoutContext';
 import { useLandingPageItemsImmutable } from 'hooks/useLandingPageItemsImmutable';
 import { LandingPageItemsProvider } from '../LandingPageItemsContext';
 import { LandingPageSelectorInContextProps } from '../LandingPageSelectorInContext';
@@ -41,8 +40,6 @@ export default function ApplicationLayout({
   resources,
   selector,
 }: ApplicationLayoutProps) {
-  const { setSelector } = useLayoutContext();
-
   const itemsFromTabs = tabs?.map((tab) => tab.items).flat() || [];
   const itemsFromCards = cards?.map((card) => card.items).flat() || [];
   const itemsFromResources = resources?.items || [];
