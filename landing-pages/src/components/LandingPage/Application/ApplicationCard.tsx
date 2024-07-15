@@ -1,11 +1,9 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+import { getListOfItemsToDisplayOnLandingPage } from 'helpers/landingPageHelpers';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import LandingPageItemRenderer from '../LandingPageItemRenderer';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
-import { arrangeItems } from 'helpers/landingPageHelpers';
-import Skeleton from '@mui/material/Skeleton';
+import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import LandingPageLink from '../LandingPageLink';
 
 export type ApplicationCardProps = {
@@ -19,8 +17,16 @@ export default function ApplicationCard({
   cardTitle,
   items,
 }: ApplicationCardProps) {
-  const { isError, isLoading, landingPageItems } = useLandingPageItems(items);
-  const arrangedItems = arrangeItems(items, landingPageItems);
+  const { allAvailableItems } = useLandingPageItemsContext();
+
+  if (!allAvailableItems) {
+    return null;
+  }
+
+  const itemsToDisplay = getListOfItemsToDisplayOnLandingPage(
+    items,
+    allAvailableItems
+  );
 
   return (
     <Card
@@ -49,19 +55,11 @@ export default function ApplicationCard({
           my: '6px',
         }}
       />
-      {arrangedItems.map((item, idx) => (
-        <LandingPageItemRenderer
+      {itemsToDisplay.map((item, idx) => (
+        <LandingPageLink
+          landingPageItem={item}
+          sx={{ fontSize: '14px', lineHeight: '150%', color: '00739D' }}
           key={idx}
-          isError={isError}
-          isLoading={isLoading}
-          landingPageItems={landingPageItems}
-          skeleton={<Skeleton />}
-          item={
-            <LandingPageLink
-              landingPageItem={item}
-              sx={{ fontSize: '14px', lineHeight: '150%', color: '00739D' }}
-            />
-          }
         />
       ))}
     </Card>

@@ -1,4 +1,9 @@
 import Stack from '@mui/material/Stack';
+import { useLayoutContext } from 'LayoutContext';
+import { useLandingPageItemsImmutable } from 'hooks/useLandingPageItemsImmutable';
+import { useEffect } from 'react';
+import { LandingPageItemsProvider } from '../LandingPageItemsContext';
+import { LandingPageSelectorProps } from '../LandingPageSelector';
 import { ApplicationCardProps } from './ApplicationCard';
 import ApplicationCardSection from './ApplicationCardSection';
 import ApplicationFeatureSection, {
@@ -8,13 +13,11 @@ import ApplicationHero, { ApplicationHeroProps } from './ApplicationHero';
 import ApplicationResources, {
   ApplicationResourcesProps,
 } from './ApplicationResources';
-import ApplicationTabs, { ApplicationTabItemProps } from './ApplicationTabs';
+import ApplicationTabWrapper from './ApplicationTabWrapper';
+import { ApplicationTabItemProps } from './ApplicationTabs';
 import ApplicationVideoSection, {
   ApplicationVideoSectionProps,
 } from './ApplicationVideoSection';
-import { LandingPageSelectorProps } from '../LandingPageSelector';
-import { useEffect } from 'react';
-import { useLayoutContext } from 'LayoutContext';
 
 export type ApplicationLayoutProps = ApplicationHeroProps & {
   tabs?: ApplicationTabItemProps[];
@@ -40,6 +43,19 @@ export default function ApplicationLayout({
 }: ApplicationLayoutProps) {
   const { setSelector } = useLayoutContext();
 
+  const itemsFromTabs = tabs?.map((tab) => tab.items).flat() || [];
+  const itemsFromCards = cards?.map((card) => card.items).flat() || [];
+  const itemsFromResources = resources?.items || [];
+  const itemsFromSelector = selector?.items || [];
+  const allItems = [
+    ...itemsFromTabs,
+    ...itemsFromCards,
+    ...itemsFromResources,
+    ...itemsFromSelector,
+    buttonProps,
+  ];
+  const { landingPageItems } = useLandingPageItemsImmutable(allItems);
+
   useEffect(() => {
     if (selector) {
       setSelector(selector);
@@ -51,23 +67,27 @@ export default function ApplicationLayout({
   }, [selector, setSelector]);
 
   return (
-    <Stack>
-      <ApplicationHero
-        buttonProps={buttonProps}
-        title={title}
-        heroDescription={heroDescription}
-      />
-      {introFeatureSectionProps && (
-        <ApplicationFeatureSection {...introFeatureSectionProps} />
-      )}
-      {videoSectionProps && <ApplicationVideoSection {...videoSectionProps} />}
-      {tabs && <ApplicationTabs tabs={tabs} />}
-      {cards && <ApplicationCardSection items={cards} />}
-      {featureSections &&
-        featureSections.map((featureSection, idx) => (
-          <ApplicationFeatureSection key={idx} {...featureSection} />
-        ))}
-      {resources && <ApplicationResources {...resources} />}
-    </Stack>
+    <LandingPageItemsProvider allAvailableItems={landingPageItems}>
+      <Stack>
+        <ApplicationHero
+          buttonProps={buttonProps}
+          title={title}
+          heroDescription={heroDescription}
+        />
+        {introFeatureSectionProps && (
+          <ApplicationFeatureSection {...introFeatureSectionProps} />
+        )}
+        {videoSectionProps && (
+          <ApplicationVideoSection {...videoSectionProps} />
+        )}
+        {tabs && <ApplicationTabWrapper tabs={tabs} />}
+        {cards && <ApplicationCardSection items={cards} />}
+        {featureSections &&
+          featureSections.map((featureSection, idx) => (
+            <ApplicationFeatureSection key={idx} {...featureSection} />
+          ))}
+        {resources && <ApplicationResources {...resources} />}
+      </Stack>
+    </LandingPageItemsProvider>
   );
 }

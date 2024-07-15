@@ -1,15 +1,15 @@
 import Box, { BoxProps } from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
-import { arrangeItems } from 'helpers/landingPageHelpers';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import {
+  getListOfItemsToDisplayOnLandingPage,
+  LandingPageItemData,
+} from 'helpers/landingPageHelpers';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import LandingPageItemRenderer from '../LandingPageItemRenderer';
+import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import LandingPageLink from '../LandingPageLink';
 import ApplicationDivider from './ApplicationDivider';
 import { narrowWidth } from './ApplicationNarrowTwoColumnLayout';
-import { LandingPageItemData } from 'helpers/landingPageHelpers';
 
 function chunkArray(array: any[], chunkSize: number): any[] {
   var results = [];
@@ -28,14 +28,22 @@ export default function ApplicationResources({
   title,
   items,
 }: ApplicationResourcesProps) {
-  const { isError, isLoading, landingPageItems } = useLandingPageItems(items);
-  const arrangedItems = arrangeItems(items, landingPageItems);
+  const { allAvailableItems } = useLandingPageItemsContext();
 
   const narrowContainerProps: BoxProps['sx'] = {
     width: '100%',
     maxWidth: narrowWidth,
     mx: 'auto',
   };
+
+  if (!allAvailableItems) {
+    return null;
+  }
+
+  const itemsToDisplay = getListOfItemsToDisplayOnLandingPage(
+    items,
+    allAvailableItems
+  );
 
   return (
     <Box
@@ -67,31 +75,23 @@ export default function ApplicationResources({
           gap: { xs: '8px', sm: '12px' },
         }}
       >
-        {chunkArray(arrangedItems, 4).map(
+        {chunkArray(itemsToDisplay, 4).map(
           (chunk: LandingPageItemData[], idx) => (
             <Box
               sx={{ flex: { xs: 1, sm: '0 0 50%', md: '0 0 33%' } }}
               key={idx}
             >
               {chunk.map((item, idx) => (
-                <LandingPageItemRenderer
+                <LandingPageLink
+                  landingPageItem={item}
+                  sx={{
+                    color: 'white',
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    lineHeight: '21px',
+                  }}
+                  showExternalIcon={item?.url?.startsWith('http')}
                   key={idx}
-                  isError={isError}
-                  isLoading={isLoading}
-                  landingPageItems={landingPageItems}
-                  skeleton={<Skeleton sx={{ height: '14px', width: '60ch' }} />}
-                  item={
-                    <LandingPageLink
-                      landingPageItem={item}
-                      sx={{
-                        color: 'white',
-                        fontSize: '14px',
-                        fontWeight: 700,
-                        lineHeight: '21px',
-                      }}
-                      showExternalIcon={item?.url?.startsWith('http')}
-                    />
-                  }
                 />
               ))}
             </Box>
