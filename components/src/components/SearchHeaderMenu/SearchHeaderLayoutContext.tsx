@@ -3,13 +3,16 @@
 import React, { useMemo } from 'react';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { Release, Product } from '../../model/entity';
-import {
-  useProductsInProdNoRevalidation,
-  useProductsNoRevalidation,
-  useReleasesNoRevalidation,
-  useReleasesInProdNoRevalidation,
-} from '../../hooks/useEntityApi';
+// import {
+//   useProductsInProdNoRevalidation,
+//   useProductsNoRevalidation,
+//   useReleasesNoRevalidation,
+//   useReleasesInProdNoRevalidation,
+// } from '../../hooks/useEntityApi';
 import { useEnvStore } from '../../stores/envStore';
+import { useAllProductsStore } from '../../stores/allProductsStore';
+import { useAllReleasesStore } from '../../stores/allReleasesStore';
+import { useAllVersionsStore } from '../../stores/allVersionsStore';
 
 export type Filters = { [key: string]: string[] };
 
@@ -69,19 +72,9 @@ export function SearchHeaderLayoutContextProvider({
 
   const envName = useEnvStore((state) => state.envName);
 
-  let allReleases: Release[] | undefined = [];
-  if (envName === 'omega2-andromeda') {
-    allReleases = useReleasesInProdNoRevalidation().releases;
-  } else {
-    allReleases = useReleasesNoRevalidation().releases;
-  }
-
-  let allProducts: Product[] | undefined = [];
-  if (envName === 'omega2-andromeda') {
-    allProducts = useProductsInProdNoRevalidation().products;
-  } else {
-    allProducts = useProductsNoRevalidation().products;
-  }
+  const allProducts = useAllProductsStore((state) => state.allProducts);
+  const allReleases = useAllReleasesStore((state) => state.allReleases);
+  const allVersions = useAllVersionsStore((state) => state.allVersions);
 
   state.allFilters = useMemo(() => {
     if (!allReleases || !allProducts) return { release: [], product: [] };
