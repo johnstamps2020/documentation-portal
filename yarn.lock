@@ -3758,13 +3758,12 @@ __metadata:
     "@types/passport": "npm:^1.0.12"
     "@types/serve-favicon": "npm:^2.5.3"
     "@types/supertest": "npm:^2.0.12"
-    axios: "npm:^0.21.4"
     body-parser: "npm:^1.20.0"
     cookie-parser: "npm:~1.4.6"
     cookie-session: "npm:^2.0.0"
     cors: "npm:^2.8.5"
     dd-trace: "npm:^5.3.0"
-    debug: "npm:~4.3.4"
+    debug: "npm:^4.3.5"
     dotenv: "npm:^8.2.0"
     express: "npm:^4.18.2"
     express-fileupload: "npm:^1.4.0"
@@ -3794,7 +3793,7 @@ __metadata:
     supertest: "npm:^6.2.3"
     ts-jest: "npm:^29.1.2"
     ts-node: "npm:^10.9.1"
-    typeorm: "npm:^0.3.9"
+    typeorm: "npm:^0.3.20"
     typescript: "npm:^5.5.3"
     winston: "npm:^3.7.2"
   languageName: unknown
@@ -9809,7 +9808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.1, axios@npm:^0.21.4":
+"axios@npm:^0.21.1":
   version: 0.21.4
   resolution: "axios@npm:0.21.4"
   dependencies:
@@ -12082,7 +12081,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.4, debug@npm:~4.3.4":
+"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -12091,6 +12090,18 @@ __metadata:
     supports-color:
       optional: true
   checksum: 10/0073c3bcbd9cb7d71dd5f6b55be8701af42df3e56e911186dfa46fac3a5b9eb7ce7f377dd1d3be6db8977221f8eb333d945216f645cf56f6b688cd484837d255
+  languageName: node
+  linkType: hard
+
+"debug@npm:^4.3.5":
+  version: 4.3.5
+  resolution: "debug@npm:4.3.5"
+  dependencies:
+    ms: "npm:2.1.2"
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 10/cb6eab424c410e07813ca1392888589972ce9a32b8829c6508f5e1f25f3c3e70a76731610ae55b4bbe58d1a2fffa1424b30e97fa8d394e49cd2656a9643aedd2
   languageName: node
   linkType: hard
 
@@ -25325,7 +25336,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typeorm@npm:^0.3.9":
+"typeorm@npm:^0.3.20":
   version: 0.3.20
   resolution: "typeorm@npm:0.3.20"
   dependencies:

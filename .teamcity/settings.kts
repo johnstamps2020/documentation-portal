@@ -326,6 +326,7 @@ object Helpers {
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> """
                 $commonEnvVars
+                export NODE_ENV="production"
                 export AWS_ROLE="${GwConfigParams.AWS_ROLE_PROD.paramValue}"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_PROD.imageUrl}"
                 export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP_PROD.paramValue}"
@@ -345,6 +346,7 @@ object Helpers {
 
             else -> """
                 $commonEnvVars
+                export NODE_ENV="development"
                 export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.imageUrl}"
                 export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
@@ -2620,6 +2622,7 @@ object Server {
                 scriptContent = """
                     #!/bin/sh
                     set -e
+                    export NODE_ENV="development"
                     export OKTA_CLIENT_ID=mock
                     export OKTA_CLIENT_SECRET=mock
                     export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
