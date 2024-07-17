@@ -306,6 +306,7 @@ object Helpers {
         val portal2S3Url = getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)
         val mlTransformerUrl = getMlTransformerUrl(deployEnv)
         val commonEnvVars = """
+            export NODE_ENV="production"
             export APP_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
             export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
@@ -326,7 +327,6 @@ object Helpers {
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> """
                 $commonEnvVars
-                export NODE_ENV="production"
                 export AWS_ROLE="${GwConfigParams.AWS_ROLE_PROD.paramValue}"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_PROD.imageUrl}"
                 export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP_PROD.paramValue}"
@@ -346,7 +346,6 @@ object Helpers {
 
             else -> """
                 $commonEnvVars
-                export NODE_ENV="development"
                 export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.imageUrl}"
                 export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
@@ -2622,7 +2621,7 @@ object Server {
                 scriptContent = """
                     #!/bin/sh
                     set -e
-                    export NODE_ENV="development"
+                    export NODE_ENV="production"
                     export OKTA_CLIENT_ID=mock
                     export OKTA_CLIENT_SECRET=mock
                     export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
