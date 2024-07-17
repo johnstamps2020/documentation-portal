@@ -36,8 +36,6 @@ const EXCLUDED_PRODUCTS = [
   'VendorEngage',
 ];
 
-//const getter = (url: string) => fetch(url).then((r) => r.json());
-
 const getter = (url: string) =>
   fetch(url).then((r) => {
     if (!r.ok) {
