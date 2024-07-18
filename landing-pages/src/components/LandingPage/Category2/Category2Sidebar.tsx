@@ -2,17 +2,32 @@ import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import {
+  arrangeItems,
+  getListOfItemsToDisplayOnLandingPage,
+} from 'helpers/landingPageHelpers';
+import { LandingPageItemData } from 'helpers/landingPageHelpers';
 import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
-import SidebarSkeleton from '../SidebarSkeleton';
+import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import Category2Item from './Category2Item';
-import { arrangeItems } from 'helpers/landingPageHelpers';
-import LandingPageItemRenderer from '../LandingPageItemRenderer';
 
 export default function Category2Sidebar({ label, items }: SidebarProps) {
-  const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
-  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
-  const category2SidebarItem = (
+  const { allAvailableItems } = useLandingPageItemsContext();
+
+  if (!allAvailableItems) {
+    return null;
+  }
+
+  const itemsToDisplay: LandingPageItemData[] =
+    getListOfItemsToDisplayOnLandingPage(items, allAvailableItems);
+
+  if (itemsToDisplay.length === 0) {
+    return null;
+  }
+
+  const arrangedLandingPageItems = arrangeItems(items, itemsToDisplay);
+
+  return (
     <Paper
       sx={{
         height: 'fit-content',
@@ -35,15 +50,5 @@ export default function Category2Sidebar({ label, items }: SidebarProps) {
         ))}
       </Stack>
     </Paper>
-  );
-
-  return (
-    <LandingPageItemRenderer
-      item={category2SidebarItem}
-      skeleton={<SidebarSkeleton />}
-      landingPageItems={arrangedLandingPageItems}
-      isLoading={isLoading}
-      isError={isError}
-    />
   );
 }
