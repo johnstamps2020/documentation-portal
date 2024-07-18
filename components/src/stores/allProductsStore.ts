@@ -13,6 +13,6 @@ export const useAllProductsStore = create<AllProductsState>()(
       allProducts: undefined,
       initializeAllProducts: (products) => set({ allProducts: products }),
     }),
-    { name: 'all-products' }
+    { name: 'all-products', getStorage: () => sessionStorage }
   )
 );
