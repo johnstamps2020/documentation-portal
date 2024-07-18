@@ -3,7 +3,6 @@
 import React, { useMemo } from 'react';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { Release, Product } from '../../model/entity';
-import { useEnvStore } from '../../stores/envStore';
 import { useAllProductsStore } from '../../stores/allProductsStore';
 import { useAllReleasesStore } from '../../stores/allReleasesStore';
 import { useAllVersionsStore } from '../../stores/allVersionsStore';
