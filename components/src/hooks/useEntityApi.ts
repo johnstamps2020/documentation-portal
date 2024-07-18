@@ -62,8 +62,10 @@ export function useProductsNoRevalidation() {
   useEffect(() => {
     const sessionData = window.sessionStorage.getItem('all-products');
     if (sessionData) {
-      const parsedData: Product[] = JSON.parse(sessionData);
-      initializeAllProducts(parsedData);
+      const parsedData = JSON.parse(sessionData);
+      if (parsedData && parsedData.state && parsedData.state.allProducts) {
+        initializeAllProducts(parsedData.state.allProducts);
+      }
     }
   }, [initializeAllProducts]);
 
@@ -107,8 +109,10 @@ export function useReleasesNoRevalidation() {
   useEffect(() => {
     const sessionData = window.sessionStorage.getItem('all-releases');
     if (sessionData) {
-      const parsedData: Release[] = JSON.parse(sessionData);
-      initializeAllReleases(parsedData);
+      const parsedData = JSON.parse(sessionData);
+      if (parsedData && parsedData.state && parsedData.state.allReleases) {
+        initializeAllReleases(parsedData.state.allReleases);
+      }
     }
   }, [initializeAllReleases]);
 
@@ -144,8 +148,10 @@ export function useVersionsNoRevalidation() {
   useEffect(() => {
     const sessionData = window.sessionStorage.getItem('all-versions');
     if (sessionData) {
-      const parsedData: Version[] = JSON.parse(sessionData);
-      initializeAllVersions(parsedData);
+      const parsedData = JSON.parse(sessionData);
+      if (parsedData && parsedData.state && parsedData.state.allVersions) {
+        initializeAllVersions(parsedData.state.allVersions);
+      }
     }
   }, [initializeAllVersions]);
 
