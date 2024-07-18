@@ -3,7 +3,6 @@
 import React, { useMemo } from 'react';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { Release, Product } from '../../model/entity';
-import { useEnvStore } from '../../stores/envStore';
 import { useAllProductsStore } from '../../stores/allProductsStore';
 import { useAllReleasesStore } from '../../stores/allReleasesStore';
 import { useAllVersionsStore } from '../../stores/allVersionsStore';
@@ -64,13 +63,12 @@ export function SearchHeaderLayoutContextProvider({
   const [state, dispatch] = useReducer(reducer, initialState);
   state.defaultFilters = defaultFilters;
 
-  const envName = useEnvStore((state) => state.envName);
-
   const allProducts = useAllProductsStore((state) => state.allProducts);
   const allReleases = useAllReleasesStore((state) => state.allReleases);
   const allVersions = useAllVersionsStore((state) => state.allVersions);
 
   state.allFilters = useMemo(() => {
+    console.log('allReleases', allReleases);
     if (!allReleases || !allProducts) return { release: [], product: [] };
     return {
       release: allReleases
