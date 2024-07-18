@@ -21,6 +21,10 @@ export default function Category2Sidebar({ label, items }: SidebarProps) {
   const itemsToDisplay: LandingPageItemData[] =
     getListOfItemsToDisplayOnLandingPage(items, allAvailableItems);
 
+  if (itemsToDisplay.length === 0) {
+    return null;
+  }
+
   const arrangedLandingPageItems = arrangeItems(items, itemsToDisplay);
 
   return (

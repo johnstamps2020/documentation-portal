@@ -19,10 +19,14 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
     return null;
   }
 
-  const itemsToDisplay: LandingPageItemData[] =
+  const cardItemsToDisplay: LandingPageItemData[] =
     getListOfItemsToDisplayOnLandingPage([item], allAvailableItems);
 
-  const arrangedLandingPageItems = arrangeItems([item], itemsToDisplay);
+  if (cardItemsToDisplay.length === 0) {
+    return null;
+  }
+
+  const arrangedLandingPageItems = arrangeItems([item], cardItemsToDisplay);
   return (
     <Paper
       sx={{
