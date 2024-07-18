@@ -15,6 +15,6 @@ export const useAllReleasesStore = create<AllReleasesState>()(
         set({ allReleases: releases });
       },
     }),
-    { name: 'all-releases' }
+    { name: 'all-releases', getStorage: () => sessionStorage }
   )
 );

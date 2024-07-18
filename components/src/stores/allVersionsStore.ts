@@ -13,6 +13,6 @@ export const useAllVersionsStore = create<AllVersionsState>()(
       allVersions: undefined,
       initializeAllVersions: (versions) => set({ allVersions: versions }),
     }),
-    { name: 'all-versions' }
+    { name: 'all-versions', getStorage: () => sessionStorage }
   )
 );
