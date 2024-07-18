@@ -69,7 +69,8 @@ const responseSelectors = [
       // Webhelp -> header.wh_header
       // Docusaurus -> div#__docusaurus
       // Storybook -> div[style="position: static !important;"]
-      'div.footerContents, header.wh_header, div#__docusaurus, div[style="position: static !important;"]',
+      // falback -> footer
+      'div.footerContents, header.wh_header, div#__docusaurus, div[style="position: static !important;"], footer',
     func: function (node: any) {
       appendToSelectedItem(node, bodyScriptsForAnalytics);
     },
