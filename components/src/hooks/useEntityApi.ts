@@ -59,7 +59,7 @@ export function useProductsNoRevalidation() {
     }
   );
 
-  if (!allProducts) {
+  if (typeof window !== 'undefined' && !allProducts) {
     const sessionData = window.sessionStorage.getItem('all-products');
     if (sessionData) {
       const parsedData = JSON.parse(sessionData);
@@ -106,7 +106,7 @@ export function useReleasesNoRevalidation() {
     }
   );
 
-  if (!allReleases) {
+  if (typeof window !== 'undefined' && !allReleases) {
     const sessionData = window.sessionStorage.getItem('all-releases');
     if (sessionData) {
       const parsedData = JSON.parse(sessionData);
@@ -145,7 +145,7 @@ export function useVersionsNoRevalidation() {
     }
   );
 
-  if (!allVersions) {
+  if (typeof window !== 'undefined' && !allVersions) {
     const sessionData = window.sessionStorage.getItem('all-versions');
     if (sessionData) {
       const parsedData = JSON.parse(sessionData);
