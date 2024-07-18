@@ -3,9 +3,9 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
-import LandingPageSelector, {
-  LandingPageSelectorProps,
-} from 'components/LandingPage/LandingPageSelector';
+import LandingPageSelectorInContext, {
+  LandingPageSelectorInContextProps,
+} from '../LandingPageSelectorInContext';
 import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
 import { usePageData } from 'hooks/usePageData';
@@ -21,7 +21,7 @@ import { LandingPageItemsProvider } from '../LandingPageItemsContext';
 
 export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
-  selector?: LandingPageSelectorProps;
+  selector?: LandingPageSelectorInContextProps;
   isRelease?: boolean;
 };
 
@@ -77,7 +77,10 @@ export default function ProductFamilyLayout({
               styles={{ color: variableColor, borderColor: '#B2B5BD' }}
             />
             {selector && (
-              <LandingPageSelector {...selector} sx={{ width: '300px' }} />
+              <LandingPageSelectorInContext
+                {...selector}
+                sx={{ width: '300px' }}
+              />
             )}
           </Stack>
         </Grid>

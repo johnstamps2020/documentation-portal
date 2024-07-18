@@ -4,7 +4,6 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
 import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
-import { LandingPageSelectorProps } from 'components/LandingPage/LandingPageSelector';
 import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import WhatsNew, { WhatsNewProps } from 'components/LandingPage/WhatsNew';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
@@ -12,14 +11,16 @@ import { useLandingPageItemsImmutable } from 'hooks/useLandingPageItemsImmutable
 import { usePageData } from 'hooks/usePageData';
 import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
 import EditPagePropsButton from '../EditPagePropsButton';
-import LandingPageSelectorInContext from '../LandingPageSelectorInContext';
+import LandingPageSelectorInContext, {
+  LandingPageSelectorInContextProps,
+} from '../LandingPageSelectorInContext';
 import Category2Card, { Category2CardProps } from './Category2Card';
 import { LandingPageItemsProvider } from '../LandingPageItemsContext';
 import Category2Sidebar from './Category2Sidebar';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
   cards: Category2CardProps[];
-  selector?: LandingPageSelectorProps;
+  selector?: LandingPageSelectorInContextProps;
   whatsNew: WhatsNewProps;
   isRelease?: boolean;
 };

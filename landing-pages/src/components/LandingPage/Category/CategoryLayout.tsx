@@ -11,9 +11,9 @@ import Link from '@mui/material/Link';
 import { usePageData } from 'hooks/usePageData';
 import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
 import CategorySidebar from './CategorySidebar';
-import LandingPageSelector, {
-  LandingPageSelectorProps,
-} from 'components/LandingPage/LandingPageSelector';
+import LandingPageSelectorInContext, {
+  LandingPageSelectorInContextProps,
+} from '../LandingPageSelectorInContext';
 import EditPagePropsButton from '../EditPagePropsButton';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
 import { LandingPageItemsProvider } from '../LandingPageItemsContext';
@@ -21,7 +21,7 @@ import { useLandingPageItemsImmutable } from '../../../hooks/useLandingPageItems
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
-  selector?: LandingPageSelectorProps;
+  selector?: LandingPageSelectorInContextProps;
   isRelease?: boolean;
   description?: JSX.Element;
 };
@@ -100,7 +100,10 @@ export default function CategoryLayout({
               styles={{ color: variableColor, borderColor: '#B2B5BD' }}
             />
             {selector && (
-              <LandingPageSelector {...selector} sx={{ width: '300px' }} />
+              <LandingPageSelectorInContext
+                {...selector}
+                sx={{ width: '300px' }}
+              />
             )}
           </Stack>
           {pageData.path.includes('cloudProducts/elysian') && (

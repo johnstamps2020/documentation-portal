@@ -4,9 +4,9 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
-import LandingPageSelector, {
-  LandingPageSelectorProps,
-} from 'components/LandingPage/LandingPageSelector';
+import LandingPageSelectorInContext, {
+  LandingPageSelectorInContextProps,
+} from '../LandingPageSelectorInContext';
 import { mainHeight } from 'components/Layout/Layout';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
 import { usePageData } from 'hooks/usePageData';
@@ -18,7 +18,7 @@ import { LandingPageItemsProvider } from '../LandingPageItemsContext';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];
-  selector?: LandingPageSelectorProps;
+  selector?: LandingPageSelectorInContextProps;
 };
 
 export default function SectionLayout({
@@ -69,7 +69,7 @@ export default function SectionLayout({
             </Typography>
             <NotLoggedInInfo />
             {selector && (
-              <LandingPageSelector
+              <LandingPageSelectorInContext
                 key={selector.label}
                 {...selector}
                 sx={{ width: '300px' }}
