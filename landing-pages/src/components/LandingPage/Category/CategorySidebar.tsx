@@ -3,15 +3,26 @@ import CategoryItem from './CategoryItem';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
-import SidebarSkeleton from '../SidebarSkeleton';
-import { arrangeItems } from 'helpers/landingPageHelpers';
-import LandingPageItemRenderer from '../LandingPageItemRenderer';
+import {
+  arrangeItems,
+  getListOfItemsToDisplayOnLandingPage,
+  LandingPageItemData,
+} from 'helpers/landingPageHelpers';
+import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 
 export default function CategorySidebar({ label, items }: SidebarProps) {
-  const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
-  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
-  const categorySidebarItem = (
+  const { allAvailableItems } = useLandingPageItemsContext();
+
+  if (!allAvailableItems) {
+    return null;
+  }
+
+  const itemsToDisplay: LandingPageItemData[] =
+    getListOfItemsToDisplayOnLandingPage(items, allAvailableItems);
+
+  const arrangedLandingPageItems = arrangeItems(items, itemsToDisplay);
+
+  return (
     <Paper
       sx={{
         height: 'fit-content',
@@ -31,15 +42,5 @@ export default function CategorySidebar({ label, items }: SidebarProps) {
         ))}
       </Stack>
     </Paper>
-  );
-
-  return (
-    <LandingPageItemRenderer
-      item={categorySidebarItem}
-      skeleton={<SidebarSkeleton />}
-      landingPageItems={arrangedLandingPageItems}
-      isLoading={isLoading}
-      isError={isError}
-    />
   );
 }

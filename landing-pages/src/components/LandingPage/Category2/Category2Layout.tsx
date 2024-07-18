@@ -34,17 +34,17 @@ export default function Category2Layout({
 }: Category2LayoutProps) {
   const selectorItems = selector?.items || [];
   const sidebarItems = sidebar?.items || [];
+  const cardItems = cards.map((card) => card.items).flat();
   const allPageItems = [
-    ...cards.map((card) => card.items).flat(),
+    ...cardItems,
     whatsNew.item,
     ...selectorItems,
     ...sidebarItems,
   ];
   const { pageData } = usePageData();
-  const { landingPageItems: cardItems } =
-    useLandingPageItemsImmutable(allPageItems);
+  const { landingPageItems } = useLandingPageItemsImmutable(allPageItems);
 
-  if (!pageData || !cardItems) {
+  if (!pageData || !landingPageItems) {
     return null;
   }
 
@@ -66,7 +66,7 @@ export default function Category2Layout({
   };
 
   return (
-    <LandingPageItemsProvider allAvailableItems={cardItems}>
+    <LandingPageItemsProvider allAvailableItems={landingPageItems}>
       <Box sx={backgroundProps}>
         <Stack
           sx={{
