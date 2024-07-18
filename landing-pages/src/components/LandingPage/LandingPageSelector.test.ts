@@ -1,7 +1,4 @@
-import {
-  PageSelectorItem,
-  sortPageSelectorItems,
-} from './LandingPageSelectorInContext';
+import { PageSelectorItem, sortPageSelectorItems } from './LandingPageSelector';
 
 describe('LandingPageSelector', () => {
   describe('should sort versions correctly', () => {

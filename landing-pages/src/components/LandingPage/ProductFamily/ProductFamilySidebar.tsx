@@ -2,30 +2,15 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import FamilyProductItem from './ProductFamilyItem';
-import {
-  arrangeItems,
-  getListOfItemsToDisplayOnLandingPage,
-  LandingPageItemData,
-} from 'helpers/landingPageHelpers';
-import { useLandingPageItemsContext } from '../LandingPageItemsContext';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import SidebarSkeleton from '../SidebarSkeleton';
+import { arrangeItems } from 'helpers/landingPageHelpers';
+import LandingPageItemRenderer from '../LandingPageItemRenderer';
 
 export default function ProductFamilySidebar({ label, items }: SidebarProps) {
-  const { allAvailableItems } = useLandingPageItemsContext();
-  console.log(allAvailableItems);
-  if (!allAvailableItems) {
-    return null;
-  }
-
-  const itemsToDisplay: LandingPageItemData[] =
-    getListOfItemsToDisplayOnLandingPage(items, allAvailableItems);
-
-  if (itemsToDisplay.length === 0) {
-    return null;
-  }
-
-  const arrangedLandingPageItems = arrangeItems(items, itemsToDisplay);
-
-  return (
+  const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
+  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
+  const productFamilySidebarItem = (
     <Paper
       sx={{
         height: 'fit-content',
@@ -45,5 +30,15 @@ export default function ProductFamilySidebar({ label, items }: SidebarProps) {
         ))}
       </>
     </Paper>
+  );
+
+  return (
+    <LandingPageItemRenderer
+      item={productFamilySidebarItem}
+      skeleton={<SidebarSkeleton />}
+      landingPageItems={arrangedLandingPageItems}
+      isLoading={isLoading}
+      isError={isError}
+    />
   );
 }

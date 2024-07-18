@@ -1,18 +1,22 @@
-import {
-  GwEmployeeLoginText,
-  loginOptions,
-  loginOptionsProd,
-  useEnvStore,
-} from '@doctools/components';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import { useEnvInfo } from 'hooks/useApi';
 import LoginPageCard from './LoginPageCard';
+import { GwEmployeeLoginText, loginOptions, loginOptionsProd } from '@doctools/components';
 
 export default function LoginPageCards() {
-  const envName = useEnvStore((state) => state.envName);
+  const {
+    envInfo,
+    isLoading: isEnvInfoLoading,
+    isError: isEnvInfoError,
+  } = useEnvInfo();
+
+  if (isEnvInfoLoading || isEnvInfoError) {
+    return null;
+  }
 
   const loginPageCardsToRender =
-    envName === 'omega2-andromeda' ? loginOptionsProd : loginOptions;
+    envInfo?.name === 'omega2-andromeda' ? loginOptionsProd : loginOptions;
 
   return (
     <Stack gap={2}>

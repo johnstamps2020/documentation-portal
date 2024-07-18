@@ -1,14 +1,12 @@
+import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import SectionItem from './SectionItem';
 import SectionIcon from './SectionIcon';
-import {
-  arrangeItems,
-  getListOfItemsToDisplayOnLandingPage,
-  LandingPageItemData,
-} from 'helpers/landingPageHelpers';
-import { useLandingPageItemsContext } from '../LandingPageItemsContext';
+import LandingPageItemRenderer from '../LandingPageItemRenderer';
+import { arrangeItems } from 'helpers/landingPageHelpers';
 
 export type SectionProps = {
   label: string;
@@ -16,22 +14,9 @@ export type SectionProps = {
 };
 
 export default function Section({ label, items }: SectionProps) {
-  const { allAvailableItems } = useLandingPageItemsContext();
-
-  if (!allAvailableItems) {
-    return null;
-  }
-
-  const itemsToDisplay: LandingPageItemData[] =
-    getListOfItemsToDisplayOnLandingPage(items, allAvailableItems);
-
-  if (itemsToDisplay.length === 0) {
-    return null;
-  }
-
-  const arrangedLandingPageItems = arrangeItems(items, itemsToDisplay);
-
-  return (
+  const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
+  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
+  const sectionItem = (
     <Stack
       spacing={2}
       sx={{
@@ -62,5 +47,24 @@ export default function Section({ label, items }: SectionProps) {
         ))}
       </Stack>
     </Stack>
+  );
+  const sectionSkeleton = (
+    <Skeleton
+      variant="rectangular"
+      sx={{
+        width: { sm: '450px', xs: '100%' },
+        height: '200px',
+        margin: '0 0 32px 16px',
+      }}
+    />
+  );
+  return (
+    <LandingPageItemRenderer
+      isError={isError}
+      isLoading={isLoading}
+      landingPageItems={arrangedLandingPageItems}
+      skeleton={sectionSkeleton}
+      item={sectionItem}
+    />
   );
 }

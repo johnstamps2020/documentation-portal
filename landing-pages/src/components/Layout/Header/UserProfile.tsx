@@ -1,10 +1,18 @@
-import { Avatar, useEnvStore } from '@doctools/components';
-import { useUserInfo } from 'hooks/useApi';
+import { Avatar } from '@doctools/components';
+import { useEnvInfo, useUserInfo } from 'hooks/useApi';
 import { Link as RouterLink } from 'react-router-dom';
 
 export default function UserProfile() {
   const { userInfo, isError, isLoading } = useUserInfo();
-  const envName = useEnvStore((state) => state.envName);
+  const {
+    envInfo,
+    isLoading: isEnvInfoLoading,
+    isError: isEnvInfoError,
+  } = useEnvInfo();
+
+  if (isEnvInfoLoading || isEnvInfoError) {
+    return null;
+  }
 
   if (
     isError ||
@@ -19,8 +27,8 @@ export default function UserProfile() {
     <Avatar
       initialValue={{
         userInfo,
-        isProd: envName === 'omega2-andromeda',
-        LinkComponent: RouterLink,
+        isProd: envInfo?.name === 'omega2-andromeda',
+        LinkComponent: RouterLink
       }}
     />
   );
