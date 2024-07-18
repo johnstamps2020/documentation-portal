@@ -68,7 +68,6 @@ export function SearchHeaderLayoutContextProvider({
   const allVersions = useAllVersionsStore((state) => state.allVersions);
 
   state.allFilters = useMemo(() => {
-    console.log('allReleases', allReleases);
     if (!allReleases || !allProducts) return { release: [], product: [] };
     return {
       release: allReleases
