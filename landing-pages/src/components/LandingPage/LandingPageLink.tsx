@@ -3,10 +3,10 @@ import Box from '@mui/material/Box';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Link, { LinkProps } from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
+import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import { Link as RouterLink } from 'react-router-dom';
 import InternalTooltip from './InternalTooltip';
 import VideoIcon from './VideoIcon';
-import { LandingPageItemData } from 'helpers/landingPageHelpers';
 
 export type LandingPageLinkProps = {
   landingPageItem: LandingPageItemData;

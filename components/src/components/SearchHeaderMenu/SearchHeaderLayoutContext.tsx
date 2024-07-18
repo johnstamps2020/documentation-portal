@@ -1,14 +1,15 @@
 // TODO save selected filters to sessionStorage if user changes them? Retrieve when returning to same landing page?
 // TODO move all translated strings to separate file and import?
-import React, { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
+import React, { useMemo } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
+import { Release, Product } from '../../model/entity';
 import {
   useProductsInProdNoRevalidation,
   useProductsNoRevalidation,
-  useReleasesInProdNoRevalidation,
   useReleasesNoRevalidation,
+  useReleasesInProdNoRevalidation,
 } from '../../hooks/useEntityApi';
-import { Product, Release } from '../../model/entity';
-import { useEnvStore } from '../../stores/envStore';
+import { useEnvInfo } from '../../hooks/useEnvInfo';
 
 export type Filters = { [key: string]: string[] };
 
@@ -66,17 +67,17 @@ export function SearchHeaderLayoutContextProvider({
   const [state, dispatch] = useReducer(reducer, initialState);
   state.defaultFilters = defaultFilters;
 
-  const envName = useEnvStore((state) => state.envName);
+  const { envInfo, isError, isLoading } = useEnvInfo();
 
   let allReleases: Release[] | undefined = [];
-  if (envName === 'omega2-andromeda') {
+  if (envInfo?.name === 'omega2-andromeda') {
     allReleases = useReleasesInProdNoRevalidation().releases;
   } else {
     allReleases = useReleasesNoRevalidation().releases;
   }
 
   let allProducts: Product[] | undefined = [];
-  if (envName === 'omega2-andromeda') {
+  if (envInfo?.name === 'omega2-andromeda') {
     allProducts = useProductsInProdNoRevalidation().products;
   } else {
     allProducts = useProductsNoRevalidation().products;

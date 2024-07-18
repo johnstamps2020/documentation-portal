@@ -1,15 +1,14 @@
-import { PageItemsResponse } from '@doctools/server';
 import FormControl from '@mui/material/FormControl';
 import InputBase from '@mui/material/InputBase';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem/MenuItem';
 import Select, { SelectChangeEvent, SelectProps } from '@mui/material/Select';
+import Skeleton from '@mui/material/Skeleton';
 import { styled } from '@mui/material/styles';
-import { findMatchingPageItemData } from 'helpers/landingPageHelpers';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useLandingPageItemsContext } from './LandingPageItemsContext';
 
 export type PageSelectorItem = {
   label: string;
@@ -17,12 +16,11 @@ export type PageSelectorItem = {
   isDoc: boolean;
 };
 
-export type LandingPageSelectorInContextProps = {
+export type LandingPageSelectorProps = {
   label?: string;
   selectedItemLabel: string;
   items: LandingPageItemProps[];
   labelColor?: string;
-  predefinedAvailableItems?: PageItemsResponse;
   sx?: SelectProps['sx'];
 };
 
@@ -62,15 +60,15 @@ const PageSelectorInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function LandingPageSelectorPredefined({
+export default function LandingPageSelector({
   items,
-  predefinedAvailableItems,
   label,
   selectedItemLabel,
   labelColor,
   sx,
-}: LandingPageSelectorInContextProps) {
+}: LandingPageSelectorProps) {
   const navigate = useNavigate();
+  const { landingPageItems, isError, isLoading } = useLandingPageItems(items);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -83,19 +81,20 @@ function LandingPageSelectorPredefined({
     };
   }, []);
 
-  if (!predefinedAvailableItems) {
+  if (isLoading || (isLoading && !landingPageItems)) {
+    return (
+      <Skeleton variant="rectangular" sx={{ width: '300px', height: '55px' }} />
+    );
+  }
+
+  if (isError || !landingPageItems) {
     return null;
   }
 
-  const allowedItems = items.filter(
-    (item) =>
-      findMatchingPageItemData(predefinedAvailableItems, item) !== undefined
-  );
-
-  const pageSelectorItems: PageSelectorItem[] = allowedItems
+  const pageSelectorItems: PageSelectorItem[] = landingPageItems
     .map((item) => {
-      const label = item.label || '';
-      const itemHref = item.pagePath || item.url || '';
+      const label = item.label || item.title || '';
+      const itemHref = item.path || item.url || '';
       const href = itemHref !== '' ? `/${itemHref}` : itemHref;
       const isDoc = item.url ? true : false;
       return {
@@ -189,31 +188,4 @@ function LandingPageSelectorPredefined({
       </Select>
     </FormControl>
   );
-}
-
-function LandingPageSelectorInContextWrapper(
-  props: LandingPageSelectorInContextProps
-) {
-  const { allAvailableItems } = useLandingPageItemsContext();
-
-  if (!allAvailableItems) {
-    return null;
-  }
-
-  return (
-    <LandingPageSelectorPredefined
-      {...props}
-      predefinedAvailableItems={allAvailableItems}
-    />
-  );
-}
-
-export default function LandingPageSelectorInContext(
-  props: LandingPageSelectorInContextProps
-) {
-  if (props.predefinedAvailableItems) {
-    return <LandingPageSelectorPredefined {...props} />;
-  }
-
-  return <LandingPageSelectorInContextWrapper {...props} />;
 }

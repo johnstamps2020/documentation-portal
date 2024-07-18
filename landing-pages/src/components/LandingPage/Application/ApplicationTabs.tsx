@@ -3,13 +3,11 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { getListOfItemsToDisplayOnLandingPage } from 'helpers/landingPageHelpers';
 import { useState } from 'react';
-import { useLandingPageItemsContext } from '../LandingPageItemsContext';
+import ApplicationLinkList, { TabPanelProps } from './ApplicationTabLinkList';
 import ApplicationTabIcon, {
   ApplicationTabIconProps,
 } from './ApplicationTabIcon';
-import ApplicationLinkList, { TabPanelProps } from './ApplicationTabLinkList';
 import indicator from './indicator.svg';
 
 function a11yProps(index: number) {
@@ -24,19 +22,10 @@ export type ApplicationTabItemProps = {
   items: TabPanelProps['items'];
 } & ApplicationTabIconProps;
 
-export type ApplicationTabsProps = {
-  tabs: ApplicationTabItemProps[];
-  initiallySelectedTab?: number;
-};
+type ApplicationTabsProps = { tabs: ApplicationTabItemProps[] };
 
-const tabHeight = '42px';
-
-export default function ApplicationTabs({
-  tabs,
-  initiallySelectedTab,
-}: ApplicationTabsProps) {
-  const [value, setValue] = useState(initiallySelectedTab || 0);
-  const { allAvailableItems } = useLandingPageItemsContext();
+export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
+  const [value, setValue] = useState(0);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -46,9 +35,7 @@ export default function ApplicationTabs({
 
   const triangleSize = 15;
 
-  if (!allAvailableItems) {
-    return null;
-  }
+  const tabHeight = '42px';
 
   return (
     <Box sx={{ width: '100%', my: { xs: '40px', sm: '40px', md: '75px' } }}>
@@ -85,7 +72,7 @@ export default function ApplicationTabs({
           }}
           centered
         >
-          {tabs.map(({ icon, title, id, items }, index) => (
+          {tabs.map(({ icon, title, id }, index) => (
             <Tab
               key={index}
               id={id}
@@ -94,10 +81,6 @@ export default function ApplicationTabs({
               icon={<ApplicationTabIcon icon={icon} />}
               iconPosition="start"
               disableRipple
-              disabled={
-                getListOfItemsToDisplayOnLandingPage(items, allAvailableItems)
-                  .length === 0
-              }
               sx={{
                 minHeight: tabHeight,
                 height: tabHeight,

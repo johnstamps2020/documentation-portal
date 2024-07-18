@@ -1,5 +1,5 @@
+import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import LandingPageLink from 'components/LandingPage/LandingPageLink';
-import { LandingPageItemData } from 'helpers/landingPageHelpers';
 
 export default function CategoryItem(landingPageItem: LandingPageItemData) {
   const sx = {
