@@ -59,7 +59,7 @@ export function useProductsNoRevalidation() {
     }
   );
 
-  useEffect(() => {
+  if (!allProducts) {
     const sessionData = window.sessionStorage.getItem('all-products');
     if (sessionData) {
       const parsedData = JSON.parse(sessionData);
@@ -67,7 +67,7 @@ export function useProductsNoRevalidation() {
         initializeAllProducts(parsedData.state.allProducts);
       }
     }
-  }, [initializeAllProducts]);
+  }
 
   useEffect(() => {
     if (data) {
@@ -106,7 +106,7 @@ export function useReleasesNoRevalidation() {
     }
   );
 
-  useEffect(() => {
+  if (!allReleases) {
     const sessionData = window.sessionStorage.getItem('all-releases');
     if (sessionData) {
       const parsedData = JSON.parse(sessionData);
@@ -114,7 +114,7 @@ export function useReleasesNoRevalidation() {
         initializeAllReleases(parsedData.state.allReleases);
       }
     }
-  }, [initializeAllReleases]);
+  }
 
   useEffect(() => {
     if (data) {
@@ -145,7 +145,7 @@ export function useVersionsNoRevalidation() {
     }
   );
 
-  useEffect(() => {
+  if (!allVersions) {
     const sessionData = window.sessionStorage.getItem('all-versions');
     if (sessionData) {
       const parsedData = JSON.parse(sessionData);
@@ -153,7 +153,7 @@ export function useVersionsNoRevalidation() {
         initializeAllVersions(parsedData.state.allVersions);
       }
     }
-  }, [initializeAllVersions]);
+  }
 
   useEffect(() => {
     if (data) {
