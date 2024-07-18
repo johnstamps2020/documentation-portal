@@ -60,6 +60,14 @@ export function useProductsNoRevalidation() {
   );
 
   useEffect(() => {
+    const sessionData = window.sessionStorage.getItem('all-products');
+    if (sessionData) {
+      const parsedData: Product[] = JSON.parse(sessionData);
+      initializeAllProducts(parsedData);
+    }
+  }, [initializeAllProducts]);
+
+  useEffect(() => {
     if (data) {
       const filteredData = trimList(data, EXCLUDED_PRODUCTS);
       initializeAllProducts(filteredData);
@@ -97,6 +105,14 @@ export function useReleasesNoRevalidation() {
   );
 
   useEffect(() => {
+    const sessionData = window.sessionStorage.getItem('all-releases');
+    if (sessionData) {
+      const parsedData: Release[] = JSON.parse(sessionData);
+      initializeAllReleases(parsedData);
+    }
+  }, [initializeAllReleases]);
+
+  useEffect(() => {
     if (data) {
       initializeAllReleases(data);
     }
@@ -124,6 +140,14 @@ export function useVersionsNoRevalidation() {
       revalidateOnFocus: false,
     }
   );
+
+  useEffect(() => {
+    const sessionData = window.sessionStorage.getItem('all-versions');
+    if (sessionData) {
+      const parsedData: Version[] = JSON.parse(sessionData);
+      initializeAllVersions(parsedData);
+    }
+  }, [initializeAllVersions]);
 
   useEffect(() => {
     if (data) {
