@@ -8,7 +8,6 @@ import {
 } from '../hooks/useEntityApi';
 
 export function Init() {
-  const { envInfo, isError, isLoading } = useEnvInfo();
   const initializeEnv = useEnvStore((state) => state.initializeEnv);
 
   const {
@@ -61,6 +60,35 @@ export function Init() {
     versionsIsError,
     versionsIsLoading,
   ]);
+
+  useEffect(() => {
+    async function setEnvNameFromServer() {
+      const response = await fetch('/envInformation');
+      if (response.ok) {
+        const envInfo = await response.json();
+        const envNameFromServer = envInfo.name;
+        if (envNameFromServer) {
+          initializeEnv(envNameFromServer);
+        }
+      }
+    }
+
+    const { hostname } = window.location;
+
+    if (hostname.includes('.staging.')) {
+      initializeEnv('staging');
+    }
+
+    if (hostname.includes('.dev.')) {
+      initializeEnv('dev');
+    }
+
+    if (hostname === 'localhost') {
+      setEnvNameFromServer();
+    }
+
+    initializeEnv('omega2-andromeda');
+  }, []);
 
   return null;
 }

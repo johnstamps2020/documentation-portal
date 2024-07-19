@@ -1,12 +1,12 @@
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
-import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { arrangeItems } from 'helpers/landingPageHelpers';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import {
+  getListOfItemsToDisplayOnLandingPage
+} from 'helpers/landingPageHelpers';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
-import LandingPageItemRenderer from '../LandingPageItemRenderer';
+import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import Category2Item from './Category2Item';
 
 export type Category2CardProps = {
@@ -14,9 +14,22 @@ export type Category2CardProps = {
   items: LandingPageItemProps[];
 };
 export default function Category2Card({ label, items }: Category2CardProps) {
-  const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
-  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
-  const category2CardItem = (
+  const { allAvailableItems } = useLandingPageItemsContext();
+
+  if (!allAvailableItems) {
+    return null;
+  }
+
+  const cardItemsToDisplay = getListOfItemsToDisplayOnLandingPage(
+    items,
+    allAvailableItems
+  );
+
+  if (cardItemsToDisplay.length === 0) {
+    return null;
+  }
+
+  return (
     <Paper
       sx={{
         width: { sm: '288px', xs: '100%' },
@@ -28,31 +41,16 @@ export default function Category2Card({ label, items }: Category2CardProps) {
       </Typography>
       <Divider />
       <Stack gap={2} py={2} sx={{}}>
-        {arrangedLandingPageItems?.map((categoryItem) => (
+        {cardItemsToDisplay.map((item, idx) => (
           <Category2Item
-            {...categoryItem}
-            key={`${categoryItem.label}_${categoryItem.internal}`}
+            key={idx}
+            {...item}
+            internal={item?.internal || false}
+            earlyAccess={item?.earlyAccess || false}
+            isInProduction={item?.isInProduction || false}
           />
         ))}
       </Stack>
     </Paper>
-  );
-  const category2CardSkeleton = (
-    <Skeleton
-      variant="rectangular"
-      sx={{
-        width: { sm: '288px', xs: '100%' },
-        height: '300px',
-      }}
-    />
-  );
-  return (
-    <LandingPageItemRenderer
-      landingPageItems={arrangedLandingPageItems}
-      isError={isError}
-      isLoading={isLoading}
-      skeleton={category2CardSkeleton}
-      item={category2CardItem}
-    />
   );
 }

@@ -1,11 +1,11 @@
 // TODO save selected filters to sessionStorage if user changes them? Retrieve when returning to same landing page?
 // TODO move all translated strings to separate file and import?
-import React, { useMemo } from 'react';
-import { createContext, useContext, useEffect, useReducer } from 'react';
-import { Release, Product } from '../../model/entity';
+import React, { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
+import { Product, Release } from '../../model/entity';
 import { useAllProductsStore } from '../../stores/allProductsStore';
 import { useAllReleasesStore } from '../../stores/allReleasesStore';
 import { useAllVersionsStore } from '../../stores/allVersionsStore';
+import { useEnvStore } from '../../stores/envStore';
 
 export type Filters = { [key: string]: string[] };
 
@@ -63,6 +63,7 @@ export function SearchHeaderLayoutContextProvider({
   const [state, dispatch] = useReducer(reducer, initialState);
   state.defaultFilters = defaultFilters;
 
+  const envName = useEnvStore((state) => state.envName);
   const allProducts = useAllProductsStore((state) => state.allProducts);
   const allReleases = useAllReleasesStore((state) => state.allReleases);
   const allVersions = useAllVersionsStore((state) => state.allVersions);

@@ -27,9 +27,9 @@ export const translatedPages: TranslatedPage[] = [
 export default function TranslatedPages() {
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const { pages, isError, isLoading } = useTranslatedPages(translatedPages);
+  const { pages } = useTranslatedPages(translatedPages);
 
-  if (!pages || isError || isLoading) {
+  if (!pages) {
     return null;
   }
 

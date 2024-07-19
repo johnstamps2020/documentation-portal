@@ -1,4 +1,4 @@
-import { LandingPageItemData } from 'hooks/useLandingPageItems';
+import { LandingPageItemData } from 'helpers/landingPageHelpers';
 import { PageError } from 'hooks/usePageData';
 
 export type LandingPageItemRendererProps = {

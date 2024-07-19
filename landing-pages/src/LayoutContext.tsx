@@ -1,4 +1,4 @@
-import { LandingPageSelectorProps } from 'components/LandingPage/LandingPageSelector';
+import { LandingPageSelectorInContextProps } from 'components/LandingPage/LandingPageSelectorInContext';
 import { createContext, useState, useContext } from 'react';
 
 interface LayoutContextInterface {
@@ -8,9 +8,9 @@ interface LayoutContextInterface {
   setPath: React.Dispatch<React.SetStateAction<string>>;
   backgroundColor: React.CSSProperties['backgroundColor'];
   setBackgroundColor: React.Dispatch<React.SetStateAction<string>>;
-  selector?: LandingPageSelectorProps;
+  selector?: LandingPageSelectorInContextProps;
   setSelector: React.Dispatch<
-    React.SetStateAction<LandingPageSelectorProps | undefined>
+    React.SetStateAction<LandingPageSelectorInContextProps | undefined>
   >;
 }
 
@@ -25,7 +25,7 @@ export function LayoutContextProvider({
   const [backgroundColor, setBackgroundColor] = useState('');
   const [path, setPath] = useState('');
   const [selector, setSelector] = useState<
-    LandingPageSelectorProps | undefined
+    LandingPageSelectorInContextProps | undefined
   >(undefined);
 
   return (
