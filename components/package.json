@@ -1,6 +1,6 @@
 {
   "name": "@doctools/components",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "A collection of React components for Doctools",
   "license": "UNLICENSED",
   "main": "dist/index.js",

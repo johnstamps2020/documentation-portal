@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
-import { useEnvInfo } from '../hooks/useEnvInfo';
-import { useEnvStore } from '../stores/envStore';
 import {
   useProductsNoRevalidation,
   useReleasesNoRevalidation,
   useVersionsNoRevalidation,
 } from '../hooks/useEntityApi';
+import { useEnvStore } from '../stores/envStore';
 
 export function Init() {
-  const { envInfo, isError, isLoading } = useEnvInfo();
   const initializeEnv = useEnvStore((state) => state.initializeEnv);
 
   const {
@@ -30,27 +28,16 @@ export function Init() {
   } = useVersionsNoRevalidation();
 
   useEffect(() => {
-    if (isError) {
-      console.error('Cannot get environment!', isError);
+    if (productsIsError) {
+      console.error('Cannot get products', productsIsError);
     }
-    if (!isError && !isLoading && envInfo?.name) {
-      initializeEnv(envInfo.name);
-
-      if (productsIsError) {
-        console.error('Cannot get products', productsIsError);
-      }
-      if (releasesIsError) {
-        console.error('Cannot get releases', releasesIsError);
-      }
-      if (versionsIsError) {
-        console.error('Cannot get versions', versionsIsError);
-      }
+    if (releasesIsError) {
+      console.error('Cannot get releases', releasesIsError);
+    }
+    if (versionsIsError) {
+      console.error('Cannot get versions', versionsIsError);
     }
   }, [
-    envInfo,
-    isError,
-    isLoading,
-    initializeEnv,
     products,
     productsIsError,
     productsIsLoading,
@@ -61,6 +48,31 @@ export function Init() {
     versionsIsError,
     versionsIsLoading,
   ]);
+
+  useEffect(() => {
+    async function setEnvNameFromServer() {
+      const response = await fetch('/envInformation');
+      if (response.ok) {
+        const envInfo = await response.json();
+        const envNameFromServer = envInfo.name;
+        if (envNameFromServer) {
+          initializeEnv(envNameFromServer);
+        }
+      }
+    }
+
+    const { hostname } = window.location;
+
+    if (hostname.includes('.staging.')) {
+      initializeEnv('staging');
+    } else if (hostname.includes('.dev.')) {
+      initializeEnv('dev');
+    } else if (hostname === 'localhost') {
+      setEnvNameFromServer();
+    } else {
+      initializeEnv('omega2-andromeda');
+    }
+  }, []);
 
   return null;
 }

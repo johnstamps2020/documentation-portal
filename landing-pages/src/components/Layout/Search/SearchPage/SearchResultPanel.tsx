@@ -1,24 +1,24 @@
-import NotLoggedInAlert from './NotLoggedInAlert';
-import { SearchBox, Filters } from '@doctools/components';
-import LoadingSearchDataErrorAlert from './LoadingSearchDataErrorAlert';
-import SearchResultSection from './SearchResultSection';
-import Stack from '@mui/material/Stack';
-import PaginationControl from './PaginationControl';
-import AdvancedSearchHelpButton from './AdvancedSearchHelpButton';
-import AdvancedSearchHelpSection from './AdvancedSearchHelpSection';
+import { Filters, SearchBox, useEnvStore } from '@doctools/components';
 import Container from '@mui/material/Container';
-import { mainHeight } from 'components/Layout/Layout';
-import { useSearchLayoutContext } from './SearchLayoutContext';
+import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
-import ExactMatchHint from './ExactMatchHint';
-import SearchTypeSelector from './SearchTypeSelector';
-import { useEnvInfo, useSearchData } from 'hooks/useApi';
+import { mainHeight } from 'components/Layout/Layout';
+import { useSearchData } from 'hooks/useApi';
 import { useLocaleParams } from 'hooks/useLocale';
 import { useMobile } from 'hooks/useMobile';
 import { searchTypeQueryParameterName } from 'vars';
+import AdvancedSearchHelpButton from './AdvancedSearchHelpButton';
+import AdvancedSearchHelpSection from './AdvancedSearchHelpSection';
+import ExactMatchHint from './ExactMatchHint';
+import LoadingSearchDataErrorAlert from './LoadingSearchDataErrorAlert';
+import NotLoggedInAlert from './NotLoggedInAlert';
+import PaginationControl from './PaginationControl';
+import { useSearchLayoutContext } from './SearchLayoutContext';
+import SearchResultSection from './SearchResultSection';
+import SearchTypeSelector from './SearchTypeSelector';
 
 export default function SearchResultPanel() {
-  const { envInfo } = useEnvInfo();
+  const envName = useEnvStore((state) => state.envName);
   const { helpWidth, isHelpExpanded } = useSearchLayoutContext();
   const theme = useTheme();
   const { searchData } = useSearchData();
@@ -61,7 +61,7 @@ export default function SearchResultPanel() {
       >
         <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
           <NotLoggedInAlert />
-          {envInfo?.name === 'dev' && <SearchTypeSelector />}
+          {envName === 'dev' && <SearchTypeSelector />}
           <SearchBox
             searchFilters={searchFilters}
             placeholder={placeholder}

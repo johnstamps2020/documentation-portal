@@ -4,10 +4,8 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import CategorySection, { CategorySectionProps } from './CategorySection';
-import { useLandingPageItems } from 'hooks/useLandingPageItems';
-import Skeleton from '@mui/material/Skeleton';
-import { arrangeItems } from 'helpers/landingPageHelpers';
-import LandingPageItemRenderer from '../LandingPageItemRenderer';
+import { getListOfItemsToDisplayOnLandingPage } from 'helpers/landingPageHelpers';
+import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 
 export type CategoryCardProps = {
   label: string;
@@ -20,29 +18,22 @@ export default function CategoryCard({
   items,
   sections,
 }: CategoryCardProps) {
-  const { landingPageItems, isError, isLoading } = useLandingPageItems(
-    items || []
-  );
-  const itemsInSections =
-    sections?.map((section) => section.items).flat() || [];
+  const { allAvailableItems } = useLandingPageItemsContext();
 
-  const {
-    landingPageItems: landingPageSectionsItems,
-    isError: isErrorSections,
-    isLoading: isLoadingSections,
-  } = useLandingPageItems(itemsInSections);
-
-  const arrangedLandingPageItems = arrangeItems(items, landingPageItems);
-  const arrangedLandingPageSectionsItems = arrangeItems(
-    itemsInSections,
-    landingPageSectionsItems
-  );
-
-  if (items === undefined && sections === undefined) {
+  if (!allAvailableItems) {
     return null;
   }
 
-  const categoryCardItem = (
+  const cardItemsToDisplay = getListOfItemsToDisplayOnLandingPage(
+    items || [],
+    allAvailableItems
+  );
+
+  if (cardItemsToDisplay.length === 0 && sections?.length === 0) {
+    return null;
+  }
+
+  return (
     <Paper
       sx={{
         width: {
@@ -61,35 +52,13 @@ export default function CategoryCard({
         </Typography>
       )}
       <Stack sx={{ fontSize: '0.875rem', color: 'black', gap: 1 }}>
-        {arrangedLandingPageItems?.map((categoryItem, idx) => (
-          <LandingPageItem {...categoryItem} key={idx} />
+        {cardItemsToDisplay?.map((item, idx) => (
+          <LandingPageItem {...item} key={idx} />
         ))}
         {sections?.map((section, idx) => (
           <CategorySection {...section} key={idx} />
         ))}
       </Stack>
     </Paper>
-  );
-
-  const categoryCardSkeleton = (
-    <Skeleton
-      variant="rectangular"
-      sx={{
-        width: { sm: '300px', xs: '100%' },
-        height: '450px',
-      }}
-    />
-  );
-  return (
-    <LandingPageItemRenderer
-      landingPageItems={arrangedLandingPageItems}
-      landingPageSectionsItems={arrangedLandingPageSectionsItems}
-      isLoading={isLoading}
-      isLoadingSections={isLoadingSections}
-      isError={isError}
-      isErrorSections={isErrorSections}
-      skeleton={categoryCardSkeleton}
-      item={categoryCardItem}
-    />
   );
 }
