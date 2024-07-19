@@ -65,17 +65,13 @@ export function Init() {
 
     if (hostname.includes('.staging.')) {
       initializeEnv('staging');
-    }
-
-    if (hostname.includes('.dev.')) {
+    } else if (hostname.includes('.dev.')) {
       initializeEnv('dev');
-    }
-
-    if (hostname === 'localhost') {
+    } else if (hostname === 'localhost') {
       setEnvNameFromServer();
+    } else {
+      initializeEnv('omega2-andromeda');
     }
-
-    initializeEnv('omega2-andromeda');
   }, []);
 
   return null;
