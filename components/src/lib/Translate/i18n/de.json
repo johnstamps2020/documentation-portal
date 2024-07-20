@@ -181,5 +181,56 @@
   },
   "avatar.iconButton" : {
     "message" : "Benutzermenü erweitern"
+  },
+  "search.filter.menu.entiresite.tooltip" : {
+    "message" : "Gesamte Website ohne Filter durchsuchen"
+  },
+  "search.filter.menu.entiresite.label" : {
+    "message" : "Gesamte Website"
+  },
+  "search.filter.menu.product.tooltip" : {
+    "message" : "In Produkten auf dieser Seite suchen:"
+  },
+  "search.filter.menu.product.label" : {
+    "message" : "Dieses Produkt"
+  },
+  "search.filter.menu.release.tooltip" : {
+    "message" : "In allen Produkten in diesem Release suchen:"
+  },
+  "search.filter.menu.release.label" : {
+    "message" : "Dieses Release"
+  },
+  "search.filter.menu.showfilters.label.closed" : {
+    "message" : "Filter anzeigen"
+  },
+  "search.filter.menu.showfilters.label.expanded" : {
+    "message" : "Filter verbergen"
+  },
+  "search.filter.menu.showfilters.tooltip.closed" : {
+    "message" : "Zeigt ausgewählte Filter an und fügt weitere Filter hinzu bzw. entfernt Filter."
+  },
+  "search.filter.menu.showfilters.tooltip.expanded" : {
+    "message" : "Ihre Filterauswahl wird bei Eingabe einer Suchabfrage angewendet."
+  },
+  "search.filter.menu.thisdoc.tooltip" : {
+    "message" : "Sucht in diesem Dokument:"
+  },
+  "search.filter.menu.thisdoc.label" : {
+    "message" : "Dieses Dokument"
+  },
+  "search.filter.menu.button" : {
+    "message" : "Filter"
+  },
+  "search.filter.menu.language" : {
+    "message" : "Sprache"
+  },
+  "search.filter.menu.product" : {
+    "message" : "Produkt"
+  },
+  "search.filter.menu.release" : {
+    "message" : "Freigabe"
+  },
+  "search.filter.menu.subject" : {
+    "message" : "Betreff"
   }
 }

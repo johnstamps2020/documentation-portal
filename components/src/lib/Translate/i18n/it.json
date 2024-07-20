@@ -181,5 +181,56 @@
   },
   "avatar.iconButton" : {
     "message" : "Espandi menu utente"
+  },
+  "search.filter.menu.entiresite.tooltip" : {
+    "message" : "Cerca nel sito intero senza filtri"
+  },
+  "search.filter.menu.entiresite.label" : {
+    "message" : "Sito intero"
+  },
+  "search.filter.menu.product.tooltip" : {
+    "message" : "Cerca tra i prodotti in questa pagina:"
+  },
+  "search.filter.menu.product.label" : {
+    "message" : "Questo prodotto"
+  },
+  "search.filter.menu.release.tooltip" : {
+    "message" : "Cerca tra tutti i prodotti in questa release:"
+  },
+  "search.filter.menu.release.label" : {
+    "message" : "Questa release"
+  },
+  "search.filter.menu.showfilters.label.closed" : {
+    "message" : "Mostra filtri"
+  },
+  "search.filter.menu.showfilters.label.expanded" : {
+    "message" : "Nascondi filtri"
+  },
+  "search.filter.menu.showfilters.tooltip.closed" : {
+    "message" : "Mostra i filtri selezionati e aggiungi o rimuovi i filtri"
+  },
+  "search.filter.menu.showfilters.tooltip.expanded" : {
+    "message" : "I filtri selezionati verranno applicati quando si inserisce una query di ricerca"
+  },
+  "search.filter.menu.thisdoc.tooltip" : {
+    "message" : "Cerca in questo documento:"
+  },
+  "search.filter.menu.thisdoc.label" : {
+    "message" : "Questo documento"
+  },
+  "search.filter.menu.button" : {
+    "message" : "Filtro"
+  },
+  "search.filter.menu.language" : {
+    "message" : "Lingua"
+  },
+  "search.filter.menu.product" : {
+    "message" : "Prodotto"
+  },
+  "search.filter.menu.release" : {
+    "message" : "Release"
+  },
+  "search.filter.menu.subject" : {
+    "message" : "Argomento"
   }
 }

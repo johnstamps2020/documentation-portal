@@ -181,5 +181,56 @@
   },
   "avatar.iconButton" : {
     "message" : "Gebruikersmenu uitvouwen"
+  },
+  "search.filter.menu.entiresite.tooltip" : {
+    "message" : "Volledige site doorzoeken zonder filters"
+  },
+  "search.filter.menu.entiresite.label" : {
+    "message" : "Volledige site"
+  },
+  "search.filter.menu.product.tooltip" : {
+    "message" : "Zoeken binnen producten op deze pagina:"
+  },
+  "search.filter.menu.product.label" : {
+    "message" : "Dit product"
+  },
+  "search.filter.menu.release.tooltip" : {
+    "message" : "Zoeken binnen alle producten in deze vrijgave:"
+  },
+  "search.filter.menu.release.label" : {
+    "message" : "Deze vrijgave"
+  },
+  "search.filter.menu.showfilters.label.closed" : {
+    "message" : "Filters weergeven"
+  },
+  "search.filter.menu.showfilters.label.expanded" : {
+    "message" : "Filters verbergen"
+  },
+  "search.filter.menu.showfilters.tooltip.closed" : {
+    "message" : "Geselecteerde filters weergeven en meer filters toevoegen of verwijderen"
+  },
+  "search.filter.menu.showfilters.tooltip.expanded" : {
+    "message" : "Uw geselecteerde filters worden toegepast bij het invoeren van een zoekterm"
+  },
+  "search.filter.menu.thisdoc.tooltip" : {
+    "message" : "Binnen dit document zoeken:"
+  },
+  "search.filter.menu.thisdoc.label" : {
+    "message" : "Dit document"
+  },
+  "search.filter.menu.button" : {
+    "message" : "Filter"
+  },
+  "search.filter.menu.language" : {
+    "message" : "Taal"
+  },
+  "search.filter.menu.product" : {
+    "message" : "Product"
+  },
+  "search.filter.menu.release" : {
+    "message" : "Vrijgave"
+  },
+  "search.filter.menu.subject" : {
+    "message" : "Onderwerp"
   }
 }
