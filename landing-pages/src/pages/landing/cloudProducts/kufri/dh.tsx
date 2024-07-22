@@ -43,7 +43,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'dhinstall202407',
         },
         {
-          label: 'Upgrade Guide',
+          label: 'Update Guide',
           docId: 'dhupgrade202407',
         },
       ],
