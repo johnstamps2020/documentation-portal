@@ -2,21 +2,31 @@ import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import React, { useState } from 'react';
+import Pagination from '@mui/material/Pagination';
+import React, { useEffect, useState } from 'react';
 import {
   FeedbackFilters,
   useChatbotFeedback,
 } from '../../../../hooks/useChatbotFeedback';
 import { ChatFeedbackItem } from './ChatFeedbackItem';
+import { DownloadButton } from './DownloadButton';
 import { LoaderBackdrop } from './LoaderBackdrop';
 import { Tally } from './Tally';
-import { DownloadButton } from './DownloadButton';
 
 export function ChatFeedbackPage() {
+  const [page, setPage] = React.useState(1);
   const [filters, setFilters] = useState<FeedbackFilters>({
     status: ['active'],
     userReaction: ['positive', 'negative'],
   });
+
+  useEffect(() => {
+    setPage(1);
+  }, [filters]);
+
+  function handleChange(event: React.ChangeEvent<unknown>, value: number) {
+    setPage(value);
+  }
 
   const { isError, isLoading, feedbackItems } = useChatbotFeedback(filters);
 
@@ -33,6 +43,15 @@ export function ChatFeedbackPage() {
   if (isLoading) {
     return <LoaderBackdrop />;
   }
+
+  if (!feedbackItems) {
+    return <div>No feedback</div>;
+  }
+
+  const pageLength = 10
+  const pageCount = Math.ceil((feedbackItems.length || 0) / pageLength);
+  const start = (page - 1) * pageLength;
+  const end = start + pageLength;
 
   function toggleArchived() {
     setFilters((currentFilters) => {
@@ -94,9 +113,25 @@ export function ChatFeedbackPage() {
         />
         <DownloadButton items={feedbackItems || []} />
       </Box>
-      {feedbackItems?.map((item) => (
-        <ChatFeedbackItem {...item} key={item.id} />
-      ))}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          alignItems: 'center',
+          my: 4,
+        }}
+      >
+        {feedbackItems && pageCount > 1 && (
+          <Pagination count={pageCount} page={page} onChange={handleChange} />
+        )}
+        {feedbackItems?.slice(start, end).map((item) => (
+          <ChatFeedbackItem {...item} key={item.id} />
+        ))}
+        {feedbackItems && pageCount > 1 && (
+          <Pagination count={pageCount} page={page} onChange={handleChange} />
+        )}
+      </Box>
     </>
   );
 }
