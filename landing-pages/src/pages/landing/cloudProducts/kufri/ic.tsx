@@ -51,7 +51,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'icinstall202407',
         },
         {
-          label: 'Upgrade Guide',
+          label: 'Update Guide',
           docId: 'icupgrade202407',
         },
       ],
