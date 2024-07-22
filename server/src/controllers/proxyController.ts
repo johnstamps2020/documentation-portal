@@ -12,6 +12,7 @@ import {
   addPrecedingSlashToPath,
   s3BucketUrlExists,
 } from './redirectController';
+import { winstonLogger } from './loggerController';
 
 const fetch = require('node-fetch-retry');
 
@@ -278,6 +279,12 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   const docPath = redirectPath === undefined ? requestedPath : redirectPath;
 
   openRequestedUrl(req, res);
+  proxy.on('econnreset', (err: any) => {
+    winstonLogger.error(`S3 proxy ECONNRESET error: ${err}`);
+  });
+  proxy.on('error', (err: any) => {
+    winstonLogger.error(`S3 proxy error: ${err}`);
+  });
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   return proxy.web(
     req,
