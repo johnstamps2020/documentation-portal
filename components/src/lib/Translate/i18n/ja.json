@@ -181,5 +181,56 @@
   },
   "avatar.iconButton" : {
     "message" : "ユーザーメニューの拡張"
+  },
+  "search.filter.menu.entiresite.tooltip" : {
+    "message" : "フィルタなしでサイト全体を検索します"
+  },
+  "search.filter.menu.entiresite.label" : {
+    "message" : "サイト全体"
+  },
+  "search.filter.menu.product.tooltip" : {
+    "message" : "このページの保険商品内で検索："
+  },
+  "search.filter.menu.product.label" : {
+    "message" : "保険商品"
+  },
+  "search.filter.menu.release.tooltip" : {
+    "message" : "リリースのすべての保険商品内で検索："
+  },
+  "search.filter.menu.release.label" : {
+    "message" : "リリース"
+  },
+  "search.filter.menu.showfilters.label.closed" : {
+    "message" : "フィルタの表示"
+  },
+  "search.filter.menu.showfilters.label.expanded" : {
+    "message" : "フィルタの非表示"
+  },
+  "search.filter.menu.showfilters.tooltip.closed" : {
+    "message" : "選択されているフィルタを表示し、フィルタをさらに追加または削除します"
+  },
+  "search.filter.menu.showfilters.tooltip.expanded" : {
+    "message" : "選択したフィルタは、検索クエリを入力したときに適用されます"
+  },
+  "search.filter.menu.thisdoc.tooltip" : {
+    "message" : "ドキュメント内で検索："
+  },
+  "search.filter.menu.thisdoc.label" : {
+    "message" : "ドキュメント"
+  },
+  "search.filter.menu.button" : {
+    "message" : "フィルタ"
+  },
+  "search.filter.menu.language" : {
+    "message" : "言語"
+  },
+  "search.filter.menu.product" : {
+    "message" : "保険商品"
+  },
+  "search.filter.menu.release" : {
+    "message" : "リリース"
+  },
+  "search.filter.menu.subject" : {
+    "message" : "件名"
   }
 }
