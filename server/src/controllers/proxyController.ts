@@ -28,15 +28,17 @@ function setProxyResCacheControlHeader(proxyRes: any) {
   }
 }
 
-proxy.on('error', function (err: any, next: NextFunction) {
-  next(err);
-});
-
 export async function sitemapProxy(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
+  proxy.on('econnreset', (err: any) => {
+    winstonLogger.error(`Sitemap proxy ECONNRESET error: ${err}`);
+  });
+  proxy.on('error', (err: any) => {
+    winstonLogger.error(`Sitemap proxy error: ${err}`);
+  });
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   proxy.web(
     req,
@@ -301,6 +303,12 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
 }
 
 export function html5Proxy(req: Request, res: Response, next: NextFunction) {
+  proxy.on('econnreset', (err: any) => {
+    winstonLogger.error(`HTML5 proxy ECONNRESET error: ${err}`);
+  });
+  proxy.on('error', (err: any) => {
+    winstonLogger.error(`HTML5 proxy error: ${err}`);
+  });
   proxy.web(
     req,
     res,
@@ -321,5 +329,11 @@ export async function reactAppProxy(
     target: process.env.FRONTEND_URL,
     changeOrigin: true,
   };
+  proxy.on('econnreset', (err: any) => {
+    winstonLogger.error(`React App proxy ECONNRESET error: ${err}`);
+  });
+  proxy.on('error', (err: any) => {
+    winstonLogger.error(`React App proxy error: ${err}`);
+  });
   return proxy.web(req, res, proxyOptions, next);
 }
