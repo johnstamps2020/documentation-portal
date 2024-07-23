@@ -73,7 +73,7 @@ async function getPlatformBreadcrumb() {
   const platform = window.docPlatform.split(valueSeparator);
 
   if (platform.includes('Cloud')) {
-    const release = window.docRelease.split(valueSeparator) || [];
+    const release = window.docRelease?.split(valueSeparator) || [];
 
     const latestPageReleases =
       sessionStorage
@@ -419,6 +419,9 @@ function addScrollToTop() {
       return;
     }
     const miniToc = document.querySelector('nav.miniToc');
+    if (!miniToc) {
+      return;
+    }
     const links = Array.from(hashLinks);
     let closestToTop = links.reduce((prev, curr) => {
       return Math.abs(prev.getBoundingClientRect().top) <
