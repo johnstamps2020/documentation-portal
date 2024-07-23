@@ -8,13 +8,8 @@ import {
   redirectToLoginPage,
 } from './authController';
 import { getDocByUrl, getExternalLinkByUrl } from './configController';
-import {
-  addPrecedingSlashToPath,
-  s3BucketUrlExists,
-} from './redirectController';
+import { s3BucketUrlExists } from './redirectController';
 import { winstonLogger } from './loggerController';
-
-const fetch = require('node-fetch-retry');
 
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
@@ -22,34 +17,15 @@ const proxy = new HttpProxy();
 export const fourOhFourRoute = '/404';
 export const internalRoute = '/internal';
 
+function handleProxyError(label: string, error: any, requestedUrl: string) {
+  const errorMessage = `${label} error: ${error}, requested URL: ${requestedUrl}`;
+  winstonLogger.error(errorMessage);
+}
+
 function setProxyResCacheControlHeader(proxyRes: any) {
   if (proxyRes.headers['content-type']?.includes('html')) {
     proxyRes.headers['Cache-Control'] = 'no-store';
   }
-}
-
-export async function sitemapProxy(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  proxy.on('econnreset', (err: any) => {
-    winstonLogger.error(`Sitemap proxy ECONNRESET error: ${err}`);
-  });
-  proxy.on('error', (err: any) => {
-    winstonLogger.error(`Sitemap proxy error: ${err}`);
-  });
-  proxy.on('proxyRes', setProxyResCacheControlHeader);
-  proxy.web(
-    req,
-    res,
-    {
-      target: `${process.env.DOC_S3_URL}/sitemap/${req.originalUrl}`,
-      changeOrigin: true,
-      ignorePath: true,
-    },
-    next
-  );
 }
 
 type ResourceStatusWithRedirectLink = [number, string | undefined];
@@ -131,20 +107,8 @@ async function getResourceStatusForEntityWithVariants(
 
 async function getResourceStatusForEntity(
   dbEntity: Doc | ExternalLink,
-  requestedPath: string,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
-  const dbEntityUrl = dbEntity.url;
-  const requestedPathExists = await s3BucketUrlExists(requestedPath);
-  if (!requestedPathExists) {
-    const requestedEntityUrlExists = await s3BucketUrlExists(dbEntityUrl);
-    if (!requestedEntityUrlExists) {
-      return [100, undefined];
-    }
-    const redirectUrl = addPrecedingSlashToPath(dbEntityUrl);
-    return [307, redirectUrl];
-  }
-
   return [
     isUserAllowedToAccessResource(
       res,
@@ -162,11 +126,7 @@ async function getResourcesStatusForPreviewEntity(
   htmlRequest: boolean,
   res: Response
 ) {
-  const accessToEntity = await getResourceStatusForEntity(
-    dbEntity,
-    requestedPath,
-    res
-  );
+  const accessToEntity = await getResourceStatusForEntity(dbEntity, res);
   if (accessToEntity[0] !== 100) {
     return accessToEntity;
   }
@@ -214,7 +174,32 @@ async function getResourceStatusFromDatabase(
     );
   }
 
-  return await getResourceStatusForEntity(dbEntity, requestedPath, res);
+  return await getResourceStatusForEntity(dbEntity, res);
+}
+
+export async function sitemapProxy(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const requestedUrl = req.originalUrl;
+  proxy.on('econnreset', (err: any) => {
+    return handleProxyError('Sitemap proxy ECONNRESET', err, requestedUrl);
+  });
+  proxy.on('error', (err: any) => {
+    return handleProxyError('Sitemap proxy', err, requestedUrl);
+  });
+  proxy.on('proxyRes', setProxyResCacheControlHeader);
+  return proxy.web(
+    req,
+    res,
+    {
+      target: `${process.env.DOC_S3_URL}/sitemap/${req.originalUrl}`,
+      changeOrigin: true,
+      ignorePath: true,
+    },
+    next
+  );
 }
 
 /*
@@ -280,12 +265,13 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
 
   const docPath = redirectPath === undefined ? requestedPath : redirectPath;
 
+  const reqOriginalUrl = req.originalUrl;
   openRequestedUrl(req, res);
   proxy.on('econnreset', (err: any) => {
-    winstonLogger.error(`S3 proxy ECONNRESET error: ${err}`);
+    return handleProxyError('S3 proxy ECONNRESET', err, reqOriginalUrl);
   });
   proxy.on('error', (err: any) => {
-    winstonLogger.error(`S3 proxy error: ${err}`);
+    return handleProxyError('S3 proxy', err, reqOriginalUrl);
   });
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   return proxy.web(
@@ -303,13 +289,14 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
 }
 
 export function html5Proxy(req: Request, res: Response, next: NextFunction) {
+  const reqOriginalUrl = req.originalUrl;
   proxy.on('econnreset', (err: any) => {
-    winstonLogger.error(`HTML5 proxy ECONNRESET error: ${err}`);
+    return handleProxyError('HTML5 proxy ECONNRESET', err, reqOriginalUrl);
   });
   proxy.on('error', (err: any) => {
-    winstonLogger.error(`HTML5 proxy error: ${err}`);
+    return handleProxyError('HTML5 proxy', err, reqOriginalUrl);
   });
-  proxy.web(
+  return proxy.web(
     req,
     res,
     {
@@ -329,11 +316,12 @@ export async function reactAppProxy(
     target: process.env.FRONTEND_URL,
     changeOrigin: true,
   };
+  const reqOriginalUrl = req.originalUrl;
   proxy.on('econnreset', (err: any) => {
-    winstonLogger.error(`React App proxy ECONNRESET error: ${err}`);
+    return handleProxyError('React App proxy ECONNRESET', err, reqOriginalUrl);
   });
   proxy.on('error', (err: any) => {
-    winstonLogger.error(`React App proxy error: ${err}`);
+    return handleProxyError('React App proxy', err, reqOriginalUrl);
   });
   return proxy.web(req, res, proxyOptions, next);
 }
