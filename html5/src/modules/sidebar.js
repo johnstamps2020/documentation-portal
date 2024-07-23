@@ -17,15 +17,21 @@ function bubbleUpExpanded(element) {
   }
 }
 
-function getNodeByTitle() {
+function getActiveNode() {
   const pageTitle = document.querySelector('title').textContent;
   const navLinks =
     document.querySelectorAll("nav[role='toc'] a").length > 0
       ? document.querySelectorAll("nav[role='toc'] a")
       : document.querySelectorAll('nav.toc a');
+
+  // Get the current URL without the anchor tag
+  const currentUrl = new URL(window.location.href);
+  currentUrl.hash = '';
+  const cleanUrl = currentUrl.toString();
+
   for (let i = 0, len = navLinks.length; i < len; i++) {
     const a = navLinks[i];
-    if (a.textContent.trim() === pageTitle && a.href === window.location.href) {
+    if (a.textContent.trim() === pageTitle && a.href === cleanUrl) {
       return a;
     }
   }
@@ -52,7 +58,7 @@ function expandCurrent() {
     document.querySelector(filenameQuery) ||
     document.querySelector(fullPathQuery371) ||
     document.querySelector(filenameQuery371) ||
-    getNodeByTitle() ||
+    getActiveNode() ||
     document.querySelector('.active a');
 
   if (currentNode) {
