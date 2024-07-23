@@ -598,7 +598,7 @@ export async function addPageNavigators(isOffline: boolean) {
 
   // add minitoc only if hash links have been added
   const hashLinks = document.querySelectorAll('.hashLink');
-  if (hashLinks.length > 1) {
+  if (hashLinks.length > 0) {
     addMiniToc(Array.from(hashLinks));
     //showPlaceInMiniToc(hashLinks);
   }
