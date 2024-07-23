@@ -59,7 +59,7 @@ metadata:
     gwcp.guidewire.com/version: ${TAG_VERSION}
     gwcp.guidewire.com/app-name: ${APP_NAME}
 spec:
-  minAvailable: 1
+  minAvailable: ${PDB_MIN_AVAILABLE}
   selector:
     matchLabels:
       app: ${APP_NAME}
@@ -85,7 +85,7 @@ spec:
     matchLabels:
       app: ${APP_NAME}
   # If you change the number of replicas, you have to update the step for checking pod status in settings.kts.
-  replicas: 2
+  replicas: ${NUMBER_OF_REPLICAS}
   strategy:
     type: RollingUpdate
     rollingUpdate:

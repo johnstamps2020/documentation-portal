@@ -342,6 +342,8 @@ object Helpers {
                 export REQUESTS_CPU="2"
                 export LIMITS_MEMORY="32G"
                 export LIMITS_CPU="4"
+                export NUMBER_OF_REPLICAS="4"
+                export PDB_MIN_AVAILABLE="2"
             """.trimIndent()
 
             else -> """
@@ -367,6 +369,8 @@ object Helpers {
                 export REQUESTS_CPU="200m"
                 export LIMITS_MEMORY="4G"
                 export LIMITS_CPU="2"
+                export NUMBER_OF_REPLICAS="2"
+                export PDB_MIN_AVAILABLE="1"
             """.trimIndent()
         }
     }
@@ -671,6 +675,11 @@ object GwBuildSteps {
 
     fun createCheckPodsStatusStep(envVars: String, deployEnv: String, appName: String): ScriptBuildStep {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+        val numberOfPods = when (deployEnv) {
+            GwDeployEnvs.PROD.name -> 4
+            else -> 2
+        }
+
         return ScriptBuildStep {
             name = "Check pods status"
             id = Helpers.createIdStringFromName(this.name)
@@ -696,7 +705,7 @@ object GwBuildSteps {
                   fi
                   NUMBER_OF_PODS=${'$'}(echo "${'$'}PODS" | wc -l | tr -d " ")
                   NUMBER_OF_RUNNING_PODS=${'$'}(echo "${'$'}PODS" | grep Running | wc -l | tr -d " ")
-                  if [[ "${'$'}NUMBER_OF_PODS" -eq 2 && "${'$'}NUMBER_OF_RUNNING_PODS" -eq 2 ]]; then
+                  if [[ "${'$'}NUMBER_OF_PODS" -eq $numberOfPods && "${'$'}NUMBER_OF_RUNNING_PODS" -eq $numberOfPods ]]; then
                     echo "Rolling update completed."
                     echo "Running pods: ${'$'}{NUMBER_OF_RUNNING_PODS}/${'$'}{NUMBER_OF_PODS}"
                     break
