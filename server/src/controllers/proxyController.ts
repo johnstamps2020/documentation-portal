@@ -17,9 +17,15 @@ const proxy = new HttpProxy();
 export const fourOhFourRoute = '/404';
 export const internalRoute = '/internal';
 
-function handleProxyError(label: string, error: any, requestedUrl: string) {
-  const errorMessage = `${label} error: ${error}, requested URL: ${requestedUrl}`;
+function handleProxyError(
+  label: string,
+  error: any,
+  request: Request,
+  response: Response
+) {
+  const errorMessage = `${label} error: ${error}, requested URL: ${request.originalUrl}`;
   winstonLogger.error(errorMessage);
+  response.end(errorMessage);
 }
 
 function setProxyResCacheControlHeader(proxyRes: any) {
@@ -144,6 +150,7 @@ async function getResourceStatusFromDatabase(
   htmlRequest: boolean,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
+  const startTime = new Date().getTime();
   const dbEntity =
     (await getExternalLinkByUrl(requestedPath)) ||
     (await getDocByUrl(requestedPath));
@@ -166,6 +173,7 @@ async function getResourceStatusFromDatabase(
     dbEntity instanceof Doc &&
     dbEntity.ignorePublicPropertyAndUseVariants === true
   ) {
+    const endTime = new Date().getTime();
     return await getResourceStatusForEntityWithVariants(
       dbEntity,
       requestedPath,
@@ -174,6 +182,7 @@ async function getResourceStatusFromDatabase(
     );
   }
 
+  const endTime = new Date().getTime();
   return await getResourceStatusForEntity(dbEntity, res);
 }
 
@@ -182,12 +191,11 @@ export async function sitemapProxy(
   res: Response,
   next: NextFunction
 ) {
-  const requestedUrl = req.originalUrl;
   proxy.on('econnreset', (err: any) => {
-    return handleProxyError('Sitemap proxy ECONNRESET', err, requestedUrl);
+    return handleProxyError('Sitemap proxy ECONNRESET', err, req, res);
   });
   proxy.on('error', (err: any) => {
-    return handleProxyError('Sitemap proxy', err, requestedUrl);
+    return handleProxyError('Sitemap proxy', err, req, res);
   });
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   return proxy.web(
@@ -265,13 +273,12 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
 
   const docPath = redirectPath === undefined ? requestedPath : redirectPath;
 
-  const reqOriginalUrl = req.originalUrl;
   openRequestedUrl(req, res);
   proxy.on('econnreset', (err: any) => {
-    return handleProxyError('S3 proxy ECONNRESET', err, reqOriginalUrl);
+    return handleProxyError('S3 proxy ECONNRESET', err, req, res);
   });
   proxy.on('error', (err: any) => {
-    return handleProxyError('S3 proxy', err, reqOriginalUrl);
+    return handleProxyError('S3 proxy', err, req, res);
   });
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   return proxy.web(
@@ -283,18 +290,19 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
         : `${process.env.DOC_S3_URL}${docPath}`,
       changeOrigin: true,
       ignorePath: true,
+      proxyTimeout: 30000,
+      timeout: 30000,
     },
     next
   );
 }
 
 export function html5Proxy(req: Request, res: Response, next: NextFunction) {
-  const reqOriginalUrl = req.originalUrl;
   proxy.on('econnreset', (err: any) => {
-    return handleProxyError('HTML5 proxy ECONNRESET', err, reqOriginalUrl);
+    return handleProxyError('HTML5 proxy ECONNRESET', err, req, res);
   });
   proxy.on('error', (err: any) => {
-    return handleProxyError('HTML5 proxy', err, reqOriginalUrl);
+    return handleProxyError('HTML5 proxy', err, req, res);
   });
   return proxy.web(
     req,
@@ -316,12 +324,11 @@ export async function reactAppProxy(
     target: process.env.FRONTEND_URL,
     changeOrigin: true,
   };
-  const reqOriginalUrl = req.originalUrl;
   proxy.on('econnreset', (err: any) => {
-    return handleProxyError('React App proxy ECONNRESET', err, reqOriginalUrl);
+    return handleProxyError('React App proxy ECONNRESET', err, req, res);
   });
   proxy.on('error', (err: any) => {
-    return handleProxyError('React App proxy', err, reqOriginalUrl);
+    return handleProxyError('React App proxy', err, req, res);
   });
   return proxy.web(req, res, proxyOptions, next);
 }
