@@ -24,7 +24,8 @@ export async function addHashLinks() {
     if (
       !isHidden(title as HTMLElement) &&
       index !== 0 &&
-      !title.parentElement.parentElement.classList.contains('landingpage')
+      !title.parentElement.parentElement.classList.contains('landingpage') &&
+      !title.parentElement.parentElement.classList.contains('table')
     ) {
       const id = generateId(title, idsInDoc);
       if (!document.getElementById(id)) {
