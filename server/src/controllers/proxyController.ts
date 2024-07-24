@@ -150,7 +150,6 @@ async function getResourceStatusFromDatabase(
   htmlRequest: boolean,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
-  const startTime = new Date().getTime();
   const dbEntity =
     (await getExternalLinkByUrl(requestedPath)) ||
     (await getDocByUrl(requestedPath));
@@ -173,7 +172,6 @@ async function getResourceStatusFromDatabase(
     dbEntity instanceof Doc &&
     dbEntity.ignorePublicPropertyAndUseVariants === true
   ) {
-    const endTime = new Date().getTime();
     return await getResourceStatusForEntityWithVariants(
       dbEntity,
       requestedPath,
@@ -182,7 +180,6 @@ async function getResourceStatusFromDatabase(
     );
   }
 
-  const endTime = new Date().getTime();
   return await getResourceStatusForEntity(dbEntity, res);
 }
 

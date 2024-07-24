@@ -110,7 +110,6 @@ export async function getDocUrlByMetadata(
           productVersions: versions.split(','),
         }
       )
-      .cache(true)
       .getOne();
     if (!doc) {
       return {
@@ -165,7 +164,6 @@ export async function getDocByUrl(url: string): Promise<Doc | null> {
     .where(":urlToCheck LIKE concat(doc.url, '%')", {
       urlToCheck: urlWithoutPrecedingSlash,
     })
-    .cache(true)
     .getMany();
   return matchingDocs.sort((a, b) => b.url.length - a.url.length)[0];
 }
@@ -186,7 +184,6 @@ export async function getExternalLinkByUrl(
     .where(":urlToCheck LIKE concat(externalLink.url, '%')", {
       urlToCheck: urlWithoutTrailingSlash,
     })
-    .cache(true)
     .getMany();
   return matchingExternalLinks.sort((a, b) => b.url.length - a.url.length)[0];
 }
@@ -238,7 +235,6 @@ export async function findEntity(
 ): Promise<ObjectLiteral | null> {
   let findOptions: FindOneOptions<ObjectLiteral> = {
     where: where,
-    cache: true,
   };
   if (loadRelations) {
     const relations = getRelationOptionsForEntity(entityName);
@@ -254,10 +250,7 @@ export async function findEntities(
   where: FindOptionsWhere<ObjectLiteral>,
   loadRelations: boolean = true
 ): Promise<ObjectLiteral[] | null> {
-  let findOptions: FindOneOptions<ObjectLiteral> = {
-    where: where,
-    cache: true,
-  };
+  let findOptions: FindOneOptions<ObjectLiteral> = { where: where };
   if (loadRelations) {
     const relations = getRelationOptionsForEntity(entityName);
     if (relations) {
@@ -271,9 +264,7 @@ export async function findAllEntities(
   entityName: string,
   loadRelations: boolean = true
 ): Promise<ObjectLiteral[] | null> {
-  let findOptions: FindOneOptions<ObjectLiteral> = {
-    cache: true,
-  };
+  let findOptions: FindOneOptions<ObjectLiteral> = {};
   if (loadRelations) {
     const relations = getRelationOptionsForEntity(entityName);
     if (relations) {
@@ -672,7 +663,6 @@ export async function getDocumentMetadataById(
     }
     const docInfo = (await AppDataSource.manager.findOne(Doc.name, {
       where: { id: id } as ObjectLiteral,
-      cache: true,
       relations: {
         platformProductVersions: {
           platform: true,
@@ -868,7 +858,6 @@ export async function getVersionSelector(
         'docPlatformProductVersionsVersion'
       )
       .where({ id: docId })
-      .cache(true)
       .getOne();
     if (docResponse) {
       const useReleaseForLabel = docResponse.releases?.length === 1;
@@ -902,7 +891,6 @@ export async function getVersionSelector(
         .andWhere('docLanguage.code = :languageCode', {
           languageCode: docResponse.language.code,
         })
-        .cache(true)
         .getMany();
 
       const availableDocsWithTheSameTitle = [];
@@ -1101,7 +1089,6 @@ export async function getPageItems(
     if (docIds.length > 0) {
       const findDocsResult: Doc[] = await AppDataSource.manager.find(Doc, {
         where: { id: In(docIds) },
-        cache: true,
       });
       if (findDocsResult.length > 0) {
         pageItemsResult.docs = getAllowedResources(
@@ -1113,7 +1100,6 @@ export async function getPageItems(
     if (pagePaths.length > 0) {
       const findPagesResult: Page[] = await AppDataSource.manager.find(Page, {
         where: { path: In(pagePaths) },
-        cache: true,
       });
       if (findPagesResult.length > 0) {
         pageItemsResult.pages = getAllowedResources(
@@ -1126,7 +1112,6 @@ export async function getPageItems(
       const findExternalLinksResult: ExternalLink[] =
         await AppDataSource.manager.find(ExternalLink, {
           where: { url: In(externalLinkUrls) },
-          cache: true,
         });
       if (findExternalLinksResult.length > 0) {
         pageItemsResult.externalLinks = getAllowedResources(
