@@ -235,7 +235,6 @@ export async function findEntity(
 ): Promise<ObjectLiteral | null> {
   let findOptions: FindOneOptions<ObjectLiteral> = {
     where: where,
-    cache: true,
   };
   if (loadRelations) {
     const relations = getRelationOptionsForEntity(entityName);
@@ -251,10 +250,7 @@ export async function findEntities(
   where: FindOptionsWhere<ObjectLiteral>,
   loadRelations: boolean = true
 ): Promise<ObjectLiteral[] | null> {
-  let findOptions: FindOneOptions<ObjectLiteral> = {
-    where: where,
-    cache: true,
-  };
+  let findOptions: FindOneOptions<ObjectLiteral> = { where: where };
   if (loadRelations) {
     const relations = getRelationOptionsForEntity(entityName);
     if (relations) {
@@ -268,9 +264,7 @@ export async function findAllEntities(
   entityName: string,
   loadRelations: boolean = true
 ): Promise<ObjectLiteral[] | null> {
-  let findOptions: FindOneOptions<ObjectLiteral> = {
-    cache: true,
-  };
+  let findOptions: FindOneOptions<ObjectLiteral> = {};
   if (loadRelations) {
     const relations = getRelationOptionsForEntity(entityName);
     if (relations) {
