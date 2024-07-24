@@ -596,10 +596,14 @@ function addMiniToc(hashLinks: Element[]) {
 export async function addPageNavigators(isOffline: boolean) {
   await addHashLinks();
 
-  // add minitoc only if hash links have been added
+  // add minitoc only if hash links have been added and at least one is not flagged minitoc(no) - DOCT-604
   const hashLinks = document.querySelectorAll('.hashLink');
-  if (hashLinks.length > 0) {
-    addMiniToc(Array.from(hashLinks));
+  const filteredHashLinks = Array.from(hashLinks).filter((link) => {
+    const parent = link.parentElement;
+    return !parent.classList.contains('minitoc(no)');
+  });
+  if (filteredHashLinks.length > 0) {
+    addMiniToc(Array.from(filteredHashLinks));
     //showPlaceInMiniToc(hashLinks);
   }
 
