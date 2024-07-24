@@ -285,6 +285,7 @@ async function findMatchingDocs(res: Response, urls: string[]) {
         "doc.url LIKE :urlPattern AND doc.url NOT LIKE :excludedUrlPattern AND doc.url NOT LIKE '%next%'",
         { urlPattern: u, excludedUrlPattern: u.replace('%', '%/%') }
       )
+      .cache(true)
       .getMany();
     if (matches.length > 0) {
       return matches.filter(
@@ -315,6 +316,7 @@ async function findMatchingPages(res: Response, urls: string[]) {
         "page.path LIKE :urlPattern AND page.path NOT LIKE :excludedUrlPattern AND page.path NOT LIKE '%next%'",
         { urlPattern: u, excludedUrlPattern: u.replace('%', '%/%') }
       )
+      .cache(true)
       .getMany();
     if (matches.length > 0) {
       return matches.filter(

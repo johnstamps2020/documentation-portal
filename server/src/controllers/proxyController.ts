@@ -8,13 +8,8 @@ import {
   redirectToLoginPage,
 } from './authController';
 import { getDocByUrl, getExternalLinkByUrl } from './configController';
-import {
-  addPrecedingSlashToPath,
-  s3BucketUrlExists,
-} from './redirectController';
+import { s3BucketUrlExists } from './redirectController';
 import { winstonLogger } from './loggerController';
-
-const fetch = require('node-fetch-retry');
 
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
@@ -22,34 +17,21 @@ const proxy = new HttpProxy();
 export const fourOhFourRoute = '/404';
 export const internalRoute = '/internal';
 
+function handleProxyError(
+  label: string,
+  error: any,
+  request: Request,
+  response: Response
+) {
+  const errorMessage = `${label} error: ${error}, requested URL: ${request.originalUrl}`;
+  winstonLogger.error(errorMessage);
+  response.end(errorMessage);
+}
+
 function setProxyResCacheControlHeader(proxyRes: any) {
   if (proxyRes.headers['content-type']?.includes('html')) {
     proxyRes.headers['Cache-Control'] = 'no-store';
   }
-}
-
-export async function sitemapProxy(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  proxy.on('econnreset', (err: any) => {
-    winstonLogger.error(`Sitemap proxy ECONNRESET error: ${err}`);
-  });
-  proxy.on('error', (err: any) => {
-    winstonLogger.error(`Sitemap proxy error: ${err}`);
-  });
-  proxy.on('proxyRes', setProxyResCacheControlHeader);
-  proxy.web(
-    req,
-    res,
-    {
-      target: `${process.env.DOC_S3_URL}/sitemap/${req.originalUrl}`,
-      changeOrigin: true,
-      ignorePath: true,
-    },
-    next
-  );
 }
 
 type ResourceStatusWithRedirectLink = [number, string | undefined];
@@ -131,20 +113,8 @@ async function getResourceStatusForEntityWithVariants(
 
 async function getResourceStatusForEntity(
   dbEntity: Doc | ExternalLink,
-  requestedPath: string,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
-  const dbEntityUrl = dbEntity.url;
-  const requestedPathExists = await s3BucketUrlExists(requestedPath);
-  if (!requestedPathExists) {
-    const requestedEntityUrlExists = await s3BucketUrlExists(dbEntityUrl);
-    if (!requestedEntityUrlExists) {
-      return [100, undefined];
-    }
-    const redirectUrl = addPrecedingSlashToPath(dbEntityUrl);
-    return [307, redirectUrl];
-  }
-
   return [
     isUserAllowedToAccessResource(
       res,
@@ -162,11 +132,7 @@ async function getResourcesStatusForPreviewEntity(
   htmlRequest: boolean,
   res: Response
 ) {
-  const accessToEntity = await getResourceStatusForEntity(
-    dbEntity,
-    requestedPath,
-    res
-  );
+  const accessToEntity = await getResourceStatusForEntity(dbEntity, res);
   if (accessToEntity[0] !== 100) {
     return accessToEntity;
   }
@@ -184,6 +150,7 @@ async function getResourceStatusFromDatabase(
   htmlRequest: boolean,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
+  const startTime = new Date().getTime();
   const dbEntity =
     (await getExternalLinkByUrl(requestedPath)) ||
     (await getDocByUrl(requestedPath));
@@ -206,6 +173,7 @@ async function getResourceStatusFromDatabase(
     dbEntity instanceof Doc &&
     dbEntity.ignorePublicPropertyAndUseVariants === true
   ) {
+    const endTime = new Date().getTime();
     return await getResourceStatusForEntityWithVariants(
       dbEntity,
       requestedPath,
@@ -214,7 +182,32 @@ async function getResourceStatusFromDatabase(
     );
   }
 
-  return await getResourceStatusForEntity(dbEntity, requestedPath, res);
+  const endTime = new Date().getTime();
+  return await getResourceStatusForEntity(dbEntity, res);
+}
+
+export async function sitemapProxy(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  proxy.on('econnreset', (err: any) => {
+    return handleProxyError('Sitemap proxy ECONNRESET', err, req, res);
+  });
+  proxy.on('error', (err: any) => {
+    return handleProxyError('Sitemap proxy', err, req, res);
+  });
+  proxy.on('proxyRes', setProxyResCacheControlHeader);
+  return proxy.web(
+    req,
+    res,
+    {
+      target: `${process.env.DOC_S3_URL}/sitemap/${req.originalUrl}`,
+      changeOrigin: true,
+      ignorePath: true,
+    },
+    next
+  );
 }
 
 /*
@@ -282,10 +275,10 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
 
   openRequestedUrl(req, res);
   proxy.on('econnreset', (err: any) => {
-    winstonLogger.error(`S3 proxy ECONNRESET error: ${err}`);
+    return handleProxyError('S3 proxy ECONNRESET', err, req, res);
   });
   proxy.on('error', (err: any) => {
-    winstonLogger.error(`S3 proxy error: ${err}`);
+    return handleProxyError('S3 proxy', err, req, res);
   });
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   return proxy.web(
@@ -297,6 +290,8 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
         : `${process.env.DOC_S3_URL}${docPath}`,
       changeOrigin: true,
       ignorePath: true,
+      proxyTimeout: 30000,
+      timeout: 30000,
     },
     next
   );
@@ -304,12 +299,12 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
 
 export function html5Proxy(req: Request, res: Response, next: NextFunction) {
   proxy.on('econnreset', (err: any) => {
-    winstonLogger.error(`HTML5 proxy ECONNRESET error: ${err}`);
+    return handleProxyError('HTML5 proxy ECONNRESET', err, req, res);
   });
   proxy.on('error', (err: any) => {
-    winstonLogger.error(`HTML5 proxy error: ${err}`);
+    return handleProxyError('HTML5 proxy', err, req, res);
   });
-  proxy.web(
+  return proxy.web(
     req,
     res,
     {
@@ -330,10 +325,10 @@ export async function reactAppProxy(
     changeOrigin: true,
   };
   proxy.on('econnreset', (err: any) => {
-    winstonLogger.error(`React App proxy ECONNRESET error: ${err}`);
+    return handleProxyError('React App proxy ECONNRESET', err, req, res);
   });
   proxy.on('error', (err: any) => {
-    winstonLogger.error(`React App proxy error: ${err}`);
+    return handleProxyError('React App proxy', err, req, res);
   });
   return proxy.web(req, res, proxyOptions, next);
 }

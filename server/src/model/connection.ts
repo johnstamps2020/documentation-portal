@@ -55,7 +55,9 @@ export const AppDataSource = new DataSource({
   ],
   migrations: ['model/migration/*.js'],
   synchronize: isDevMode,
+  poolSize: 10,
+  maxQueryExecutionTime: 5000,
   cache: {
-    duration: 3000, // 3 seconds
+    duration: 900000, // 15 minutes
   },
 });
