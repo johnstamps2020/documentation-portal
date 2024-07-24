@@ -16,11 +16,7 @@ export default function VersionAdminPanel() {
       entityName="Version"
       entityDatabaseName="Version"
       entityPrimaryKeyName="name"
-      entities={versions.map(({ name, ...rest }) => ({
-        label: name,
-        name: name,
-        ...rest,
-      }))}
+      entities={versions.sort((a, b) => a.name.localeCompare(b.name))}
       DuplicateButton={DuplicateButton}
       FormComponent={VersionSettingsForm}
       EntityCardContents={VersionCardContents}

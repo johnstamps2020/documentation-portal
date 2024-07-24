@@ -16,11 +16,7 @@ export default function ProductAdminPanel() {
       entityName="product"
       entityDatabaseName="Product"
       entityPrimaryKeyName="name"
-      entities={products.map(({ name, ...rest }) => ({
-        label: name,
-        name: name,
-        ...rest,
-      }))}
+      entities={products.sort((a, b) => a.name.localeCompare(b.name))}
       DuplicateButton={DuplicateButton}
       FormComponent={ProductSettingsForm}
       EntityCardContents={ProductCardContents}

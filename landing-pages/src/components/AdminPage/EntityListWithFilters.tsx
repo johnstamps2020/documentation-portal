@@ -179,7 +179,7 @@ export default function EntityListWithFilters({
           .map((entity, idx) => (
             <EntityCard
               key={idx}
-              title={entity.label || entity.title}
+              title={entity.label || entity.title || entity.name || entity.id}
               entity={entity}
               cardContents={<EntityCardContents {...entity} />}
               cardButtons={

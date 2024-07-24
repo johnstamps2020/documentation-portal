@@ -16,11 +16,7 @@ export default function SubjectAdminPanel() {
       entityName="Subject"
       entityDatabaseName="Subject"
       entityPrimaryKeyName="name"
-      entities={subjects.map(({ name, ...rest }) => ({
-        label: name,
-        name: name,
-        ...rest,
-      }))}
+      entities={subjects.sort((a, b) => a.name.localeCompare(b.name))}
       DuplicateButton={DuplicateButton}
       FormComponent={SubjectSettingsForm}
       EntityCardContents={SubjectCardContents}
