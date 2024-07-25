@@ -152,7 +152,7 @@ export async function getDocByUrl(url: string): Promise<Doc | null> {
   const urlWithoutPrecedingSlash = url.replace(/^\//g, '');
   const matchingDocs = await AppDataSource.getRepository(Doc)
     .createQueryBuilder('doc')
-    .useIndex('docUrl-idx')
+    .useIndex('docUrls-idx')
     .select([
       'doc.url',
       'doc.id',
