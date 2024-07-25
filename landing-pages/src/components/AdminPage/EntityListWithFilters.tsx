@@ -61,8 +61,16 @@ function getEmptyFilters(
 
 function sortEntities(entities: Entity[]) {
   return entities.sort((a, b) => {
-    const aTitle = a.label?.toLowerCase() || a.title?.toLowerCase();
-    const bTitle = b.label?.toLowerCase() || b.title?.toLowerCase();
+    const aTitle =
+      a.label?.toLowerCase() ||
+      a.title?.toLowerCase() ||
+      a.name?.toLowerCase() ||
+      a.id.toLowerCase();
+    const bTitle =
+      b.label?.toLowerCase() ||
+      b.title?.toLowerCase() ||
+      b.name?.toLowerCase() ||
+      b.id.toLowerCase();
     let result = 0;
     if (aTitle > bTitle) {
       result = 1;

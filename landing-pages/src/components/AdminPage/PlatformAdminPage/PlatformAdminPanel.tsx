@@ -16,7 +16,7 @@ export default function PlatformAdminPanel() {
       entityName="platform"
       entityDatabaseName="Platform"
       entityPrimaryKeyName="name"
-      entities={platforms.sort((a, b) => a.name.localeCompare(b.name))}
+      entities={platforms}
       DuplicateButton={DuplicateButton}
       FormComponent={PlatformSettingsForm}
       EntityCardContents={PlatformCardContents}

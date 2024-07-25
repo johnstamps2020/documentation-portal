@@ -16,7 +16,7 @@ export default function SourceAdminPanel() {
       entityName="source"
       entityDatabaseName="Source"
       entityPrimaryKeyName="id"
-      entities={sources.sort((a, b) => a.id.localeCompare(b.id))}
+      entities={sources}
       DuplicateButton={DuplicateButton}
       FormComponent={SourceSettingsForm}
       EntityCardContents={SourceCardContents}

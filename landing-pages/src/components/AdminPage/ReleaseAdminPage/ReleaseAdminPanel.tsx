@@ -16,7 +16,7 @@ export default function ReleaseAdminPanel() {
       entityName="release"
       entityDatabaseName="Release"
       entityPrimaryKeyName="name"
-      entities={releases.sort((a, b) => a.name.localeCompare(b.name))}
+      entities={releases}
       DuplicateButton={DuplicateButton}
       FormComponent={ReleaseSettingsForm}
       EntityCardContents={ReleaseCardContents}

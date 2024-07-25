@@ -16,7 +16,7 @@ export default function ResourceAdminPanel() {
       entityName="resource"
       entityDatabaseName="Resource"
       entityPrimaryKeyName="id"
-      entities={resources.sort((a, b) => a.id.localeCompare(b.id))}
+      entities={resources}
       DuplicateButton={DuplicateButton}
       FormComponent={ResourceSettingsForm}
       EntityCardContents={ResourceCardContents}
