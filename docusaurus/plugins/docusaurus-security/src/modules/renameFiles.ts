@@ -3,18 +3,6 @@ import { basename, dirname, extname, resolve } from 'path';
 const matter = require('gray-matter');
 
 export const renameRestoreListFilePath = 'rename-restore-list.json';
-const restrictedPageTemplate = `---
-public: false
----
-
-<head>
-  <meta name="robots" content="noindex" />
-</head>
-
-# Restricted page
-
-Sorry, you cannot access the contents of this page without logging in.
-`;
 
 function getAllDocFilesRecursively(dirPath: string) {
   const dirList = readdirSync(dirPath, { recursive: true });
@@ -56,6 +44,17 @@ export function renameFiles() {
   for (const oldPath of renameList) {
     const newPath = resolve(dirname(oldPath), '_' + basename(oldPath));
     console.log('Renaming', oldPath, newPath);
+    const restrictedPageTemplate = `---
+public: false
+---
+
+import React from 'react';
+import RestrictedPage from '@theme/RestrictedPage';
+
+# Restricted page - log in required
+
+<RestrictedPage />
+`;
     renameSync(oldPath, newPath);
     writeFileSync(oldPath, restrictedPageTemplate, 'utf-8');
     renameRestoreList.push({

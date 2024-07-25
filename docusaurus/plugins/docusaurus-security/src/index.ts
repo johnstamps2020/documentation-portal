@@ -1,6 +1,7 @@
 import { LoadContext, Plugin, PluginOptions } from '@docusaurus/types';
 import { buildDefault, buildVariants } from './modules/cli';
 export { filterSidebarsByAccess } from './modules/filterSidebars';
+import { resolve } from 'path';
 
 type PluginContent = {};
 
@@ -24,6 +25,9 @@ export default async function (
             await buildDefault();
           }
         });
+    },
+    getThemePath() {
+      return resolve(__dirname, './theme');
     },
   };
 }
