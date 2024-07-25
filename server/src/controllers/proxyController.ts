@@ -8,7 +8,10 @@ import {
   redirectToLoginPage,
 } from './authController';
 import { getDocByUrl, getExternalLinkByUrl } from './configController';
-import { s3BucketUrlExists } from './redirectController';
+import {
+  addPrecedingSlashToPath,
+  s3BucketUrlExists,
+} from './redirectController';
 import { winstonLogger } from './loggerController';
 
 const HttpProxy = require('http-proxy');
@@ -113,8 +116,20 @@ async function getResourceStatusForEntityWithVariants(
 
 async function getResourceStatusForEntity(
   dbEntity: Doc | ExternalLink,
+  requestedPath: string,
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
+  const dbEntityUrl = dbEntity.url;
+  const requestedPathExists = await s3BucketUrlExists(requestedPath);
+  if (!requestedPathExists) {
+    const requestedEntityUrlExists = await s3BucketUrlExists(dbEntityUrl);
+    if (!requestedEntityUrlExists) {
+      return [100, undefined];
+    }
+    const redirectUrl = addPrecedingSlashToPath(dbEntityUrl);
+    return [307, redirectUrl];
+  }
+
   return [
     isUserAllowedToAccessResource(
       res,
@@ -132,7 +147,11 @@ async function getResourcesStatusForPreviewEntity(
   htmlRequest: boolean,
   res: Response
 ) {
-  const accessToEntity = await getResourceStatusForEntity(dbEntity, res);
+  const accessToEntity = await getResourceStatusForEntity(
+    dbEntity,
+    requestedPath,
+    res
+  );
   if (accessToEntity[0] !== 100) {
     return accessToEntity;
   }
@@ -180,7 +199,7 @@ async function getResourceStatusFromDatabase(
     );
   }
 
-  return await getResourceStatusForEntity(dbEntity, res);
+  return await getResourceStatusForEntity(dbEntity, requestedPath, res);
 }
 
 export async function sitemapProxy(
