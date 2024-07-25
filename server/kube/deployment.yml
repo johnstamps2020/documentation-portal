@@ -124,16 +124,16 @@ spec:
             httpGet:
               path: /alive
               port: 8081
-            initialDelaySeconds: 60
-            periodSeconds: 45
-            timeoutSeconds: 5
+            initialDelaySeconds: 300
+            periodSeconds: 120
+            timeoutSeconds: 10
           readinessProbe:
             httpGet:
               path: /alive
               port: 8081
-            initialDelaySeconds: 150
-            periodSeconds: 45
-            timeoutSeconds: 5
+            initialDelaySeconds: 300
+            periodSeconds: 120
+            timeoutSeconds: 10
           env:
             - name: REFRESH_IMAGE
               value: 'BUILD_TIME'
