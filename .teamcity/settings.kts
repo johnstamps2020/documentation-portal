@@ -340,7 +340,7 @@ object Helpers {
                 export CONFIG_DB_HOST="${GwConfigParams.CONFIG_DB_HOST_PROD.paramValue}" 
                 export REQUESTS_MEMORY="16G"
                 export REQUESTS_CPU="2"
-                export LIMITS_MEMORY="32G"
+                export LIMITS_MEMORY="16G"
                 export LIMITS_CPU="4"
                 export NUMBER_OF_REPLICAS="4"
                 export PDB_MIN_AVAILABLE="2"
