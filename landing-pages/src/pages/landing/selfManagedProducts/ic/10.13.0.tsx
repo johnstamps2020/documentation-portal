@@ -20,7 +20,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Support Matrix',
           docId: 'supportmatrices',
-          pathInDoc: 'data-management/data-management-10.12-support-matrix.pdf',
+          pathInDoc: 'data-management/data-management-10.13.0-support-matrix.pdf',
           videoIcon: false,
         },
       ],

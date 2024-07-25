@@ -21,7 +21,7 @@ const pageConfig: SectionLayoutProps = {
           label: 'Support Matrix',
           docId: 'supportmatrices',
           pathInDoc:
-            'data-management/data-management-2024.02-jasper-support-matrix.pdf',
+            'data-management/data-management-2024.07-kufri-support-matrix.pdf',
           videoIcon: false,
         },
       ],
