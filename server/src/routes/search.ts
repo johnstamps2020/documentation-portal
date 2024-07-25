@@ -30,4 +30,9 @@ router.get(
   }
 );
 
+router.get(
+  '/availableProducts',
+  async function (req: Request, res: Response, next: NextFunction) {}
+);
+
 module.exports = router;
