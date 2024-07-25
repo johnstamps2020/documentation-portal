@@ -16,11 +16,7 @@ export default function ResourceAdminPanel() {
       entityName="resource"
       entityDatabaseName="Resource"
       entityPrimaryKeyName="id"
-      entities={resources.map(({ id, ...rest }) => ({
-        label: id,
-        id: id,
-        ...rest,
-      }))}
+      entities={resources}
       DuplicateButton={DuplicateButton}
       FormComponent={ResourceSettingsForm}
       EntityCardContents={ResourceCardContents}

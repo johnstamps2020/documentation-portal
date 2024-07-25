@@ -16,10 +16,7 @@ export default function SourceAdminPanel() {
       entityName="source"
       entityDatabaseName="Source"
       entityPrimaryKeyName="id"
-      entities={sources.map(({ name, ...rest }) => ({
-        label: name,
-        ...rest,
-      }))}
+      entities={sources}
       DuplicateButton={DuplicateButton}
       FormComponent={SourceSettingsForm}
       EntityCardContents={SourceCardContents}

@@ -16,11 +16,7 @@ export default function ReleaseAdminPanel() {
       entityName="release"
       entityDatabaseName="Release"
       entityPrimaryKeyName="name"
-      entities={releases.map(({ name, ...rest }) => ({
-        label: name,
-        name: name,
-        ...rest,
-      }))}
+      entities={releases}
       DuplicateButton={DuplicateButton}
       FormComponent={ReleaseSettingsForm}
       EntityCardContents={ReleaseCardContents}
