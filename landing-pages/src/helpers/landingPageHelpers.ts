@@ -88,11 +88,13 @@ export function getListOfItemsToDisplayOnLandingPage(
 
       const returnItem: LandingPageItemData = {
         ...item,
+        url: item.pathInDoc
+          ? matchingItem.url + '/' + item.pathInDoc
+          : matchingItem.url,
         internal: matchingItem.internal,
         isInProduction: matchingItem.isInProduction,
         earlyAccess: matchingItem.earlyAccess,
         path: matchingItem.path,
-        url: matchingItem.url,
       };
 
       return returnItem;
