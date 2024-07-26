@@ -1,11 +1,12 @@
 {
   "name": "@doctools/docusaurus-security",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "Guidewire plugin with security features",
   "main": "lib/index.js",
   "author": "doctools@gudiewire.com",
   "license": "UNLICENSED",
   "dependencies": {
+    "@doctools/components": "workspace:*",
     "gray-matter": "^4.0.3",
     "jsdom": "^24.0.0"
   },
