@@ -1,3 +1,5 @@
+// noinspection RedundantIfStatementJS
+
 import 'dotenv/config';
 import { NextFunction, Request, Response } from 'express';
 import { Doc, ExternalLink } from '../model';
@@ -13,23 +15,20 @@ import {
   s3BucketUrlExists,
 } from './redirectController';
 import { winstonLogger } from './loggerController';
+import HttpProxy from 'http-proxy';
 
-const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
+winstonLogger.notice('Proxy created');
+proxy.on('econnreset', (err: any) => {
+  winstonLogger.error(err);
+});
+proxy.on('error', (err: any) => {
+  winstonLogger.error(err);
+});
+proxy.on('proxyRes', setProxyResCacheControlHeader);
 
 export const fourOhFourRoute = '/404';
 export const internalRoute = '/internal';
-
-function handleProxyError(
-  label: string,
-  error: any,
-  request: Request,
-  response: Response
-) {
-  const errorMessage = `${label} error: ${error}, requested URL: ${request.originalUrl}`;
-  winstonLogger.error(errorMessage);
-  response.end(errorMessage);
-}
 
 function setProxyResCacheControlHeader(proxyRes: any) {
   if (proxyRes.headers['content-type']?.includes('html')) {
@@ -202,28 +201,12 @@ async function getResourceStatusFromDatabase(
   return await getResourceStatusForEntity(dbEntity, requestedPath, res);
 }
 
-export async function sitemapProxy(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  proxy.on('econnreset', (err: any) => {
-    return handleProxyError('Sitemap proxy ECONNRESET', err, req, res);
+export async function sitemapProxy(req: Request, res: Response) {
+  return proxy.web(req, res, {
+    target: `${process.env.DOC_S3_URL}/sitemap/${req.originalUrl}`,
+    changeOrigin: true,
+    ignorePath: true,
   });
-  proxy.on('error', (err: any) => {
-    return handleProxyError('Sitemap proxy', err, req, res);
-  });
-  proxy.on('proxyRes', setProxyResCacheControlHeader);
-  return proxy.web(
-    req,
-    res,
-    {
-      target: `${process.env.DOC_S3_URL}/sitemap/${req.originalUrl}`,
-      changeOrigin: true,
-      ignorePath: true,
-    },
-    next
-  );
 }
 
 /*
@@ -290,59 +273,25 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   const docPath = redirectPath === undefined ? requestedPath : redirectPath;
 
   openRequestedUrl(req, res);
-  proxy.on('econnreset', (err: any) => {
-    return handleProxyError('S3 proxy ECONNRESET', err, req, res);
+  proxy.web(req, res, {
+    target: requestedPath.startsWith('/portal')
+      ? `${process.env.PORTAL2_S3_URL}${requestedPath}`
+      : `${process.env.DOC_S3_URL}${docPath}`,
+    changeOrigin: true,
+    ignorePath: true,
   });
-  proxy.on('error', (err: any) => {
-    return handleProxyError('S3 proxy', err, req, res);
-  });
-  proxy.on('proxyRes', setProxyResCacheControlHeader);
-  return proxy.web(
-    req,
-    res,
-    {
-      target: requestedPath.startsWith('/portal')
-        ? `${process.env.PORTAL2_S3_URL}${requestedPath}`
-        : `${process.env.DOC_S3_URL}${docPath}`,
-      changeOrigin: true,
-      ignorePath: true,
-    },
-    next
-  );
 }
 
-export function html5Proxy(req: Request, res: Response, next: NextFunction) {
-  proxy.on('econnreset', (err: any) => {
-    return handleProxyError('HTML5 proxy ECONNRESET', err, req, res);
+export function html5Proxy(req: Request, res: Response) {
+  return proxy.web(req, res, {
+    target: `${process.env.DOC_S3_URL}/html5/scripts`,
+    changeOrigin: true,
   });
-  proxy.on('error', (err: any) => {
-    return handleProxyError('HTML5 proxy', err, req, res);
-  });
-  return proxy.web(
-    req,
-    res,
-    {
-      target: `${process.env.DOC_S3_URL}/html5/scripts`,
-      changeOrigin: true,
-    },
-    next
-  );
 }
 
-export async function reactAppProxy(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  const proxyOptions = {
+export async function reactAppProxy(req: Request, res: Response) {
+  return proxy.web(req, res, {
     target: process.env.FRONTEND_URL,
     changeOrigin: true,
-  };
-  proxy.on('econnreset', (err: any) => {
-    return handleProxyError('React App proxy ECONNRESET', err, req, res);
   });
-  proxy.on('error', (err: any) => {
-    return handleProxyError('React App proxy', err, req, res);
-  });
-  return proxy.web(req, res, proxyOptions, next);
 }
