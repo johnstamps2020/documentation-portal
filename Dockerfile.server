@@ -39,4 +39,4 @@ LABEL "org.opencontainers.image.title"="docportal" \
       "org.opencontainers.image.vendor"="guidewire" \
       "com.guidewire.dept"="$DEPT_CODE"
 
-CMD [ "node", "--max-old-space-size=4096", "server.js" ]
+CMD [ "node", "server.js" ]
