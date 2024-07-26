@@ -1233,12 +1233,8 @@ export async function getTopicTitleByHref(href: string): Promise<ApiResponse> {
       _source: ['title', 'id'],
       body: {
         query: {
-          bool: {
-            must: [
-              {
-                term: { id: { value: href } },
-              },
-            ],
+          match: {
+            id: href,
           },
         },
       },
