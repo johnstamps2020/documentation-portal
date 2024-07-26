@@ -546,7 +546,7 @@ function MiniToc({ hashLinks }: MiniTocProps) {
           aria-controls="mobileLinkList"
           aria-expanded={expanded}
           id="miniTocButton"
-          className={expanded && 'expanded'}
+          className={expanded ? 'expanded' : undefined}
           onClick={() => setExpanded(!expanded)}
         >
           {miniTocTitle}

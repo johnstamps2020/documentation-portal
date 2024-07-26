@@ -184,16 +184,14 @@ export function FeedbackDialog({
   }
 
   function handleChangeEmail(event: React.ChangeEvent<HTMLInputElement>) {
-    setEmail(event.target.value);
+    const newEmail = event.target.value;
+    setEmail(newEmail);
+    setEmailIsError(!isValidEmail(newEmail));
   }
 
-  function handleValidateEmail() {
-    if (email.length === 0) {
-      setEmailIsError(false);
-    } else {
-      const match = email.match(/.+@.+\..+/);
-      setEmailIsError(match === null);
-    }
+  function isValidEmail(email: string) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
   }
 
   function handleClearEmail() {
@@ -202,10 +200,6 @@ export function FeedbackDialog({
   }
 
   function handleSubmit() {
-    handleValidateEmail();
-    if (emailIsError) {
-      return;
-    }
     submitFeedback();
   }
 
@@ -259,7 +253,6 @@ export function FeedbackDialog({
                 id: 'feedbackDialog.validEmail',
                 message: 'Provide a valid email address',
               })}
-              onBlur={handleValidateEmail}
               variant="outlined"
               type="email"
               InputProps={{
