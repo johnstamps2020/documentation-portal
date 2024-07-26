@@ -70,11 +70,6 @@ function filterItems(items: any[], docsDir: string): any[] {
   });
 }
 
-const restrictedPageTemplate = `# Restricted page
-
-Sorry, you cannot access the contents of this page without logging in.
-`;
-
 export type RenameRestoreItem = {
   oldPath: string;
   newPath: string;

@@ -293,5 +293,13 @@
   "search.filter.menu.subject": {
     "message": "Subject",
     "description": "Label for subject search filter."
+  },
+  "restricted.page.info": {
+    "message": "You have to be logged in to view this page.",
+    "description": "Appears on a restricted page which the user cannot see unless they log in."
+  },
+  "restricted.page.action": {
+    "message": "Click here to log in.",
+    "description": "If the user clicks this link, they will be redirected to the login page."
   }
 }
