@@ -306,8 +306,6 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
         : `${process.env.DOC_S3_URL}${docPath}`,
       changeOrigin: true,
       ignorePath: true,
-      proxyTimeout: 30000,
-      timeout: 30000,
     },
     next
   );
