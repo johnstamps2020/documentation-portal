@@ -12,6 +12,7 @@ import {
   getVersionSelector,
   splitLegacyValueByCommaAndReturnUnique,
 } from '../controllers/configController';
+import { getTopicTitleByHref } from '../controllers/searchController';
 
 const router = Router();
 
@@ -108,6 +109,13 @@ router.get('/entity/doc/id', async function (req, res) {
 
 router.get('/entity/page/breadcrumbs', async function (req, res) {
   const { status, body } = await getBreadcrumbs(req, res);
+  return res.status(status).json(body);
+});
+
+router.get('/getTopicTitleByHref/:href', async function (req, res) {
+  const href = req.params.href;
+  const decodedHref = decodeURIComponent(href);
+  const { status, body } = await getTopicTitleByHref(decodedHref);
   return res.status(status).json(body);
 });
 

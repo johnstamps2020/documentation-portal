@@ -16,6 +16,7 @@ import {
   ServerSearchFilter,
   ServerSearchFilterValue,
 } from '../types/serverSearch';
+import { ApiResponse } from '../types/apiResponse';
 import { getAllEntities } from './configController';
 import { winstonLogger } from './loggerController';
 
@@ -1195,7 +1196,6 @@ export default async function searchController(
 }
 
 // Delta doc functionality
-
 export async function getAllTopicsFromDoc(docId: string) {
   try {
     const result = await elasticClient.search<SearchResultSource>({
@@ -1221,4 +1221,45 @@ export async function getAllTopicsFromDoc(docId: string) {
       ERROR: ${JSON.stringify(err)}`
     );
   }
+}
+
+// Retrieves a topic title by the href. However, we are actually using the id field in Elastic, which
+// is the relative URL (e.g. /docguide/topics/t_xbook-links.html)
+export async function getTopicTitleByHref(href: string): Promise<ApiResponse> {
+  try {
+    const queryBody = {
+      index: searchIndexName,
+      size: 1,
+      _source: ['title', 'id'],
+      body: {
+        query: {
+          match: {
+            id: href,
+          },
+        },
+      },
+    };
+
+    const result = await elasticClient.search<SearchResultSource>(queryBody);
+
+    const hits = result.hits.hits;
+    if (hits.length > 0) {
+      const hit = hits[0];
+      return {
+        status: 200,
+        body: { title: hit._source?.title, href: hit._source?.id },
+      };
+    }
+
+    return {
+      status: 404,
+      body: { message: `Could not locate search record for ${href}` },
+    };
+  } catch (err) {
+    winstonLogger.error(
+      `Problem retrieving topic title
+      ERROR: ${JSON.stringify(err)}`
+    );
+  }
+  return { status: 500, body: { message: `Internal server error` } };
 }

@@ -65,27 +65,27 @@ async function findDocLink(
         link = document.createElement('a');
 
         if (contextid) {
-          let topic: Document;
+          let topicTitle: string;
 
           let topicUrl = await getDITATopicUrl(docInfo.url, contextid);
           if (topicUrl) {
             targetUrl = targetUrl.concat(`${topicUrl}#${contextid}`);
-            topic = await getTopic(targetUrl);
+            topicTitle = await getTopicTitle(targetUrl);
           } else {
             const targetTestUrl = targetUrl.concat(`${contextid}/`);
-            topic = await getTopic(targetTestUrl);
-            if (topic) {
+            topicTitle = await getTopicTitle(targetTestUrl);
+            if (topicTitle) {
               targetUrl = targetTestUrl;
             } else {
-              topic = await getTopic(targetUrl);
+              topicTitle = await getTopicTitle(targetUrl);
             }
           }
 
-          if (topic.title) {
+          if (topicTitle) {
             if (document.documentElement.lang.toLowerCase().startsWith('en')) {
-              link.setAttribute('title', `"${topic.title}" in ${docTitle}`);
+              link.setAttribute('title', `"${topicTitle}" in ${docTitle}`);
             } else {
-              link.setAttribute('title', topic.title);
+              link.setAttribute('title', topicTitle);
             }
           }
         }
@@ -95,23 +95,37 @@ async function findDocLink(
         return link;
       }
     } catch (err) {
-      console.error(err);
+      if (window.location.hostname === 'localhost') {
+        console.error(err);
+      }
     }
   }
   return link;
 }
 
-async function getDITATopicUrl(url: string, contextid: string) {
+interface ContextIdMatch {
+  ids: string[];
+  file: string;
+}
+
+interface IdInfo {
+  contextIds: ContextIdMatch[];
+  error?: string;
+}
+
+const contextIdCache: { [url: string]: IdInfo } = {};
+
+async function getDITATopicUrl(
+  url: string,
+  contextid: string
+): Promise<string | undefined> {
   try {
-    const response = await fetch(`/${url}/contextIds.json`);
-    if (response.ok) {
-      const contentType = response.headers.get('Content-Type');
-      if (!contentType.includes('application/json')) {
+    if (contextIdCache[url] !== undefined) {
+      const idInfo = contextIdCache[url];
+      if (idInfo === null) {
         return;
       }
-      const idInfo = await response.json();
-      if (idInfo.error) return;
-      const id = idInfo.contextIds.find((match: { ids: string | String[] }) =>
+      const id = idInfo.contextIds.find((match) =>
         match.ids.includes(contextid)
       );
       if (id) {
@@ -119,8 +133,29 @@ async function getDITATopicUrl(url: string, contextid: string) {
       }
       return;
     }
+    const response = await fetch(`/${url}/contextIds.json`);
+    if (response.ok) {
+      const contentType = response.headers.get('Content-Type');
+      if (!contentType.includes('application/json')) {
+        return;
+      }
+      const idInfo: IdInfo = await response.json();
+      if (idInfo.error) return;
+      contextIdCache[url] = idInfo;
+      const id = idInfo.contextIds.find((match: { ids: string | String[] }) =>
+        match.ids.includes(contextid)
+      );
+      if (id) {
+        return id.file;
+      }
+      return;
+    } else if (response.status === 404) {
+      contextIdCache[url] = null;
+    }
   } catch (err) {
-    console.error(err);
+    if (window.location.hostname === 'localhost') {
+      console.error(err);
+    }
   }
   return;
 }
@@ -137,7 +172,40 @@ async function getTopic(url: string) {
       return;
     }
   } catch (err) {
-    console.error(err);
+    if (window.location.hostname === 'localhost') {
+      console.error(err);
+    }
   }
   return;
+}
+
+async function getTopicTitle(url: string): Promise<string | undefined> {
+  try {
+    const urlWithoutAnchor = url.split('#')[0];
+    const encodedUrl = encodeURIComponent(urlWithoutAnchor);
+
+    const response = await fetch(
+      `/safeConfig/getTopicTitleByHref/${encodedUrl}`
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data.title) {
+        return data.title;
+      } else {
+        throw new Error('Title not found in the response');
+      }
+    } else if (response.status === 404) {
+      const topic: Document = await getTopic(url);
+      if (topic?.title) {
+        return topic.title;
+      }
+    }
+  } catch (err) {
+    if (window.location.hostname === 'localhost') {
+      console.error(err);
+    }
+  }
+
+  return undefined;
 }
