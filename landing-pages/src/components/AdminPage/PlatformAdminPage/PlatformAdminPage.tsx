@@ -1,8 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
-import AddButton from 'components/AdminPage/AddButton';
 import PlatformAdminPanel from 'components/AdminPage/PlatformAdminPage/PlatformAdminPanel';
-import PlatformSettingsForm from 'components/AdminPage/PlatformAdminPage/PlatformSettingsForm';
 import { useEffect } from 'react';
 
 export default function PlatformAdminPage() {
@@ -13,11 +11,6 @@ export default function PlatformAdminPage() {
 
   return (
     <>
-      <AddButton
-        buttonLabel="Add platform"
-        dialogTitle="Create a new platform"
-        formComponent={<PlatformSettingsForm />}
-      />
       <Typography variant="h1" sx={{ color: 'black' }}>
         {title}
       </Typography>

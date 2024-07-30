@@ -3,6 +3,7 @@ import { useSources } from 'hooks/useApi';
 import DuplicateButton from './DuplicateButton';
 import SourceCardContents from './SourceCardContents';
 import SourceSettingsForm from './SourceSettingsForm';
+import AddButton from '../AddButton';
 
 export default function SourceAdminPanel() {
   const { sources, isLoading, isError } = useSources();
@@ -11,15 +12,26 @@ export default function SourceAdminPanel() {
     return null;
   }
 
+  const disabled = true;
+
   return (
-    <EntityListWithFilters
-      entityName="source"
-      entityDatabaseName="Source"
-      entityPrimaryKeyName="id"
-      entities={sources}
-      DuplicateButton={DuplicateButton}
-      FormComponent={SourceSettingsForm}
-      EntityCardContents={SourceCardContents}
-    />
+    <>
+      <AddButton
+        buttonLabel="Add source"
+        dialogTitle="Create a new source"
+        formComponent={<SourceSettingsForm />}
+        disabled={disabled}
+      />
+      <EntityListWithFilters
+        entityName="source"
+        entityDatabaseName="Source"
+        entityPrimaryKeyName="id"
+        entities={sources}
+        DuplicateButton={DuplicateButton}
+        FormComponent={SourceSettingsForm}
+        EntityCardContents={SourceCardContents}
+        disabled={disabled}
+      />
+    </>
   );
 }
