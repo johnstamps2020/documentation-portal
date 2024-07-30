@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from './SearchBar.module.css';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import Avatar from '@theme/Avatar';
-import VersionSelector from '@theme/VersionSelector';
+import DocHighlighter from '@theme/DocHighlighter/DocHighlighter';
 import GwSearchForm from '@theme/GwSearchForm/';
 import InternalBadge from '@theme/InternalBadge/InternalBadge';
-import BrowserOnly from '@docusaurus/BrowserOnly';
-import DocHighlighter from '@theme/DocHighlighter/DocHighlighter';
+import VersionSelector from '@theme/VersionSelector';
+import React from 'react';
 import useIsMobile from '../../hooks/useIsMobile';
+import styles from './SearchBar.module.css';
 
 export default function SearchBar() {
   const isMobile = useIsMobile();
