@@ -22,6 +22,10 @@ const pageConfig: CategoryLayoutProps = {
       label: 'Australia',
       items: [
         {
+          label: 'Getting Started with InsuranceSuite Package for Australia',
+          docId: 'ipakufrigetstarted',
+        },
+        {
           label: 'Release Notes',
           docId: 'ipakufrirn',
         },
