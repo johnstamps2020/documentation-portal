@@ -19,6 +19,12 @@ import HttpProxy from 'http-proxy';
 
 const proxy = new HttpProxy();
 winstonLogger.notice('Proxy created');
+proxy.on('econnreset', (err: any) => {
+  winstonLogger.error(`Proxy ECONNRESET error: ${err}`);
+});
+proxy.on('error', (err: any) => {
+  winstonLogger.error(`Proxy error: ${err}`);
+});
 proxy.on('proxyRes', setProxyResCacheControlHeader);
 
 export const fourOhFourRoute = '/404';
