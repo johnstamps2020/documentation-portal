@@ -9,6 +9,8 @@ import EntityFilters from './EntityFilters';
 import EntityListCount from './EntityListCount';
 import EntityListPagination from './EntityListPagination';
 import { MultipleOperationMode } from './EditMultiple/MultipleButton';
+import ViewSwitcher from './ViewSwitcher';
+import Box from '@mui/material/Box';
 
 export type Entity = {
   [x: string]: string | boolean | any;
@@ -28,6 +30,7 @@ type EntityListWithFiltersProps = {
   FormComponent: React.ElementType;
   DuplicateButton: React.ElementType;
   EntityCardContents: React.ElementType;
+  disabled: boolean;
   CardWarning?: React.ElementType;
   additionalFilters?: AdditionalFilter[];
 };
@@ -91,10 +94,10 @@ export default function EntityListWithFilters({
   EntityCardContents,
   CardWarning,
   additionalFilters,
+  disabled,
 }: EntityListWithFiltersProps) {
   const emptyFilters = getEmptyFilters(entities, additionalFilters);
   const [filters, setFilters] = useState<Entity>(emptyFilters);
-
   const [page, setPage] = useState(1);
   const [resultsPerPage, setResultsPerPage] = useState(12);
   const [listView, setListView] = useState(true);
@@ -146,7 +149,7 @@ export default function EntityListWithFilters({
     }
     const filteredEntities = filterEntities();
     if (filteredEntities) {
-      setFilteredEntities(sortEntities(filteredEntities));
+      setFilteredEntities(filteredEntities);
     }
   }, [additionalFilters, entities, filters]);
 
@@ -180,9 +183,15 @@ export default function EntityListWithFilters({
       <EntityFilters />
       <EntityListCount totalEntities={entities.length} />
       <EntityListPagination />
-      <ActionBar />
+      {!disabled ? (
+        <ActionBar />
+      ) : (
+        <Box sx={{ display: 'flex', alignSelf: 'end' }}>
+          <ViewSwitcher />
+        </Box>
+      )}
       <AdminViewWrapper>
-        {filteredEntities
+        {sortEntities(filteredEntities)
           .slice(resultsOffset, resultsOffset + resultsPerPage)
           .map((entity, idx) => (
             <EntityCard
@@ -191,19 +200,23 @@ export default function EntityListWithFilters({
               entity={entity}
               cardContents={<EntityCardContents {...entity} />}
               cardButtons={
-                <>
-                  <EditButton
-                    buttonLabel={`Open ${entityName} editor`}
-                    dialogTitle={`Update ${entityName} settings`}
-                    formComponent={
-                      <FormComponent
-                        primaryKey={entity[entityPrimaryKeyName]}
-                      />
-                    }
-                  />
-                  <DuplicateButton primaryKey={entity[entityPrimaryKeyName]} />
-                  <DeleteButton primaryKey={entity[entityPrimaryKeyName]} />
-                </>
+                !disabled ? (
+                  <>
+                    <EditButton
+                      buttonLabel={`Open ${entityName} editor`}
+                      dialogTitle={`Update ${entityName} settings`}
+                      formComponent={
+                        <FormComponent
+                          primaryKey={entity[entityPrimaryKeyName]}
+                        />
+                      }
+                    />
+                    <DuplicateButton
+                      primaryKey={entity[entityPrimaryKeyName]}
+                    />
+                    <DeleteButton primaryKey={entity[entityPrimaryKeyName]} />
+                  </>
+                ) : undefined
               }
               cardWarning={CardWarning && <CardWarning {...entity} />}
             />

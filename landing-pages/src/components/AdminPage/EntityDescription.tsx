@@ -10,7 +10,13 @@ export default function EntityDescription({
   return (
     <>
       {propList.map((prop) => (
-        <Typography variant="subtitle1" component="div" key={prop.key}>
+        <Typography
+          variant="subtitle1"
+          component="div"
+          minWidth="200px"
+          maxWidth="300px"
+          key={prop.key}
+        >
           <b>{prop.key}</b>: {prop.value}
         </Typography>
       ))}

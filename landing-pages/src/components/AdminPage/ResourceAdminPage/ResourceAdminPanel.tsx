@@ -3,6 +3,7 @@ import { useResources } from 'hooks/useApi';
 import DuplicateButton from './DuplicateButton';
 import ResourceCardContents from './ResourceCardContents';
 import ResourceSettingsForm from './ResourceSettingsForm';
+import AddButton from '../AddButton';
 
 export default function ResourceAdminPanel() {
   const { resources, isLoading, isError } = useResources();
@@ -11,15 +12,26 @@ export default function ResourceAdminPanel() {
     return null;
   }
 
+  const disabled = true;
+
   return (
-    <EntityListWithFilters
-      entityName="resource"
-      entityDatabaseName="Resource"
-      entityPrimaryKeyName="id"
-      entities={resources}
-      DuplicateButton={DuplicateButton}
-      FormComponent={ResourceSettingsForm}
-      EntityCardContents={ResourceCardContents}
-    />
+    <>
+      <AddButton
+        buttonLabel="Add resource"
+        dialogTitle="Create a new resource"
+        formComponent={<ResourceSettingsForm />}
+        disabled={disabled}
+      />
+      <EntityListWithFilters
+        entityName="resource"
+        entityDatabaseName="Resource"
+        entityPrimaryKeyName="id"
+        entities={resources}
+        DuplicateButton={DuplicateButton}
+        FormComponent={ResourceSettingsForm}
+        EntityCardContents={ResourceCardContents}
+        disabled={disabled}
+      />
+    </>
   );
 }

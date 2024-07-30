@@ -11,7 +11,7 @@ type EntityCardProps = {
   title: string;
   entity: Entity;
   cardContents: JSX.Element;
-  cardButtons: JSX.Element;
+  cardButtons?: JSX.Element;
   cardWarning?: JSX.Element;
 };
 
@@ -53,11 +53,11 @@ export default function EntityCard({
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            {listView && <EntityCheckbox entity={entity} />}
+            {listView && cardButtons && <EntityCheckbox entity={entity} />}
             {cardWarning}
           </Box>
-          <Typography variant="h2" sx={{ pb: 0 }}>
-            {!listView && <EntityCheckbox entity={entity} />}
+          <Typography variant="h2" sx={{ pb: 0, width: '350px' }}>
+            {!listView && cardButtons && <EntityCheckbox entity={entity} />}
             {title}
           </Typography>
           {cardContents}

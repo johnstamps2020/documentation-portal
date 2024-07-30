@@ -7,14 +7,20 @@ type AddButtonProps = {
   formComponent: JSX.Element;
   buttonLabel: string;
   dialogTitle: string;
+  disabled: boolean;
 };
 
 export default function AddButton({
   formComponent,
   dialogTitle,
   buttonLabel,
+  disabled,
 }: AddButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  if (disabled) {
+    return <></>;
+  }
 
   function handleOpenEditor() {
     setIsOpen(true);

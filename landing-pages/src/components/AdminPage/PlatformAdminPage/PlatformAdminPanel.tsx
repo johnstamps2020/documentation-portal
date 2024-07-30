@@ -3,6 +3,7 @@ import { usePlatforms } from 'hooks/useApi';
 import DuplicateButton from './DuplicateButton';
 import PlatformCardContents from './PlatformCardContents';
 import PlatformSettingsForm from './PlatformSettingsForm';
+import AddButton from '../AddButton';
 
 export default function PlatformAdminPanel() {
   const { platforms, isLoading, isError } = usePlatforms();
@@ -11,15 +12,26 @@ export default function PlatformAdminPanel() {
     return null;
   }
 
+  const disabled = true;
+
   return (
-    <EntityListWithFilters
-      entityName="platform"
-      entityDatabaseName="Platform"
-      entityPrimaryKeyName="name"
-      entities={platforms}
-      DuplicateButton={DuplicateButton}
-      FormComponent={PlatformSettingsForm}
-      EntityCardContents={PlatformCardContents}
-    />
+    <>
+      <AddButton
+        buttonLabel="Add platform"
+        dialogTitle="Create a new platform"
+        formComponent={<PlatformSettingsForm />}
+        disabled={disabled}
+      />
+      <EntityListWithFilters
+        entityName="platform"
+        entityDatabaseName="Platform"
+        entityPrimaryKeyName="name"
+        entities={platforms}
+        DuplicateButton={DuplicateButton}
+        FormComponent={PlatformSettingsForm}
+        EntityCardContents={PlatformCardContents}
+        disabled={disabled}
+      />
+    </>
   );
 }
