@@ -8,6 +8,7 @@ import Head from '@docusaurus/Head';
 interface DocItemContextProps {
   title: string;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
+  isPublic: boolean;
 }
 
 export const DocItemContext: React.Context<DocItemContextProps | null> =
@@ -32,7 +33,11 @@ export default function DocItem(props) {
 
   return (
     <DocItemContext.Provider
-      value={{ title: topicTitle, setTitle: setTopicTitle }}
+      value={{
+        title: topicTitle,
+        setTitle: setTopicTitle,
+        isPublic: frontMatter.public !== undefined ? frontMatter.public : false,
+      }}
     >
       <Head>
         {frontMatter.internal && (
