@@ -226,6 +226,10 @@ const permanentRedirectUrls = [
     from: 'cloud/workflow-service/workflow-console/workflow-console/topics/workflow-retry-logic.html',
     to: 'cloud/workflow-service/administration/administration/topics/workflow-retry-logic.html',
   },
+  {
+    from: 'cloud/gcc-guide/insurer-developer/latest/blue-green-deployment/',
+    to: 'cloud/deployis/latest/blue-green-deployment',
+  },
 ];
 const temporaryRedirectUrls = [
   {
