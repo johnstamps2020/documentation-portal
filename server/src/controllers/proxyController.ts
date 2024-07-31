@@ -2,6 +2,7 @@
 
 import 'dotenv/config';
 import { NextFunction, Request, Response } from 'express';
+import HttpProxy from 'http-proxy';
 import { Doc, ExternalLink } from '../model';
 import {
   getTokenFromRequestHeader,
@@ -10,21 +11,24 @@ import {
   redirectToLoginPage,
 } from './authController';
 import { getDocByUrl, getExternalLinkByUrl } from './configController';
+import { winstonLogger } from './loggerController';
 import {
   addPrecedingSlashToPath,
   s3BucketUrlExists,
 } from './redirectController';
-import { winstonLogger } from './loggerController';
-import HttpProxy from 'http-proxy';
 
 const proxy = new HttpProxy();
 winstonLogger.notice('Proxy created');
-proxy.on('econnreset', (err: any) => {
+
+proxy.on('econnreset', (err: any, req, res, target) => {
   winstonLogger.error(`Proxy ECONNRESET error: ${err}`);
+  res.end();
 });
-proxy.on('error', (err: any) => {
+proxy.on('error', (err: any, req, res, target) => {
   winstonLogger.error(`Proxy error: ${err}`);
+  res.end();
 });
+
 proxy.on('proxyRes', setProxyResCacheControlHeader);
 
 export const fourOhFourRoute = '/404';
@@ -273,7 +277,7 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   const docPath = redirectPath === undefined ? requestedPath : redirectPath;
 
   openRequestedUrl(req, res);
-  proxy.web(req, res, {
+  return proxy.web(req, res, {
     target: requestedPath.startsWith('/portal')
       ? `${process.env.PORTAL2_S3_URL}${requestedPath}`
       : `${process.env.DOC_S3_URL}${docPath}`,
