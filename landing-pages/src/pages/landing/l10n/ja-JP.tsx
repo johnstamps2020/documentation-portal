@@ -43,7 +43,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'App Events',
-      docId: 'appeventsdevjaJP',
+      docId: 'appeventsjaJPdev',
     },
     {
       label: 'BillingCenter',
