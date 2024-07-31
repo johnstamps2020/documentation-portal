@@ -456,7 +456,7 @@ object GwBuildTypes {
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters =
-                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro -v ${'$'}HOME/.docker:/root/.docker"
                 }
             }
 
@@ -512,7 +512,7 @@ object GwBuildTypes {
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters =
-                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro -v ${'$'}HOME/.docker:/root/.docker"
                 }
             }
 
@@ -632,7 +632,7 @@ object GwBuildTypes {
                     """.trimIndent()
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
                 }
             }
 
@@ -719,7 +719,7 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
         }
     }
 
@@ -772,7 +772,7 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
         }
     }
 
@@ -997,7 +997,7 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
         }
     }
 
@@ -1017,7 +1017,7 @@ object GwBuildSteps {
                 """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
         }
     }
 }
@@ -1458,7 +1458,7 @@ object Content {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
                 }
             }
 
@@ -1552,7 +1552,7 @@ object Content {
                 """.trimIndent()
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
             }
             script {
                 name = "Upload the ZIP archive to S3"
@@ -1569,7 +1569,7 @@ object Content {
             """.trimIndent()
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
             }
         }
 
@@ -1692,7 +1692,7 @@ object Database {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_4_3_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
 
                 }
             }
@@ -1798,7 +1798,7 @@ object Database {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_4_3_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
                 }
             }
 
@@ -1895,7 +1895,7 @@ object Database {
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
             }
         }
 
@@ -1981,7 +1981,7 @@ object Database {
                     """.trimIndent()
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
                 }
             }
 
@@ -2319,7 +2319,7 @@ object Frontend {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
                 }
                 step(
                     GwBuildSteps.createCheckPodsStatusStep(
@@ -2730,7 +2730,7 @@ object Server {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
                 }
                 step(
                     GwBuildSteps.createCheckPodsStatusStep(
