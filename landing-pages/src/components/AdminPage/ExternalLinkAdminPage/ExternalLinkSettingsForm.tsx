@@ -10,6 +10,7 @@ import { useExternalLinkData } from 'hooks/useEntitiesData';
 import { useEffect, useState } from 'react';
 import useSWRMutation from 'swr/mutation';
 import AdminBooleanToggles from '../AdminBooleanToggles';
+import { useSWRConfig } from 'swr';
 
 type NewExternalLink = Omit<ExternalLink, 'uuid'>;
 
@@ -58,6 +59,7 @@ export default function ExternalLinkSettingsForm({
     '/admin/entity/ExternalLink',
     sendRequest
   );
+  const { mutate } = useSWRConfig();
   const [tmpExternalLinkData, setTmpExternalLinkData] = useState(
     generateTmpExternalLinkData(initialExternalLinkData)
   );
@@ -189,6 +191,7 @@ export default function ExternalLinkSettingsForm({
         showMessage('External link saved successfully', 'success');
         setExternalLinkUrl(tmpExternalLinkData.url);
         setDataChanged(false);
+        mutate('/safeConfig/entity/ExternalLink/all');
       } else if (response) {
         const jsonError = await response.json();
         throw new Error(jsonError.message);

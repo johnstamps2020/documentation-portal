@@ -2,15 +2,13 @@ import { ServerSearchFilter } from '@doctools/server';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 import { useSearchData } from 'hooks/useApi';
 import {
-  useLanguagesNoRevalidation,
-  usePlatformsNoRevalidation,
-  useProductsNoRevalidation,
-  useReleasesNoRevalidation,
-  useSubjectsNoRevalidation,
+  useLanguages,
+  usePlatforms,
+  useProducts,
+  useReleases,
+  useSubjects,
 } from 'hooks/useApi';
 import AppliedFiltersSkeleton from '../AppliedFiltersSkeleton';
 import { useEffect, useMemo, useState } from 'react';
@@ -47,11 +45,11 @@ export default function AppliedFilters() {
   const { searchData, isLoading, isError } = useSearchData();
   const [checkedFilters, setCheckedFilters] = useState<ServerSearchFilter[]>();
 
-  const { languages: allLanguages } = useLanguagesNoRevalidation();
-  const { platforms: allPlatforms } = usePlatformsNoRevalidation();
-  const { products: allProducts } = useProductsNoRevalidation();
-  const { releases: allReleases } = useReleasesNoRevalidation();
-  const { subjects: allSubjects } = useSubjectsNoRevalidation();
+  const { languages: allLanguages } = useLanguages();
+  const { platforms: allPlatforms } = usePlatforms();
+  const { products: allProducts } = useProducts();
+  const { releases: allReleases } = useReleases();
+  const { subjects: allSubjects } = useSubjects();
 
   const allFilters = useMemo(() => {
     if (

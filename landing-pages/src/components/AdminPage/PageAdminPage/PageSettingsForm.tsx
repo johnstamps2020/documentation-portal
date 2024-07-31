@@ -11,6 +11,7 @@ import useSWRMutation from 'swr/mutation';
 import { usePageData } from '../../../hooks/usePageData';
 import AdminBooleanToggles from '../AdminBooleanToggles';
 import { checkIfFileExists } from './PageValidationWarning';
+import { useSWRConfig } from 'swr';
 
 type NewPage = Omit<Page, 'uuid'> & { stringifiedSearchFilters?: string };
 
@@ -67,6 +68,7 @@ export default function PageSettingsForm({
     '/admin/entity/Page',
     sendRequest
   );
+  const { mutate } = useSWRConfig();
   const [tmpPageData, setTmpPageData] = useState(
     generateTmpPageData(initialPageData)
   );
@@ -236,6 +238,7 @@ export default function PageSettingsForm({
         showMessage('Page saved successfully', 'success');
         setPagePath(tmpPageData.path);
         setDataChanged(false);
+        mutate('/safeConfig/entity/Page/all');
       } else if (response) {
         const jsonError = await response.json();
         throw new Error(jsonError.message);

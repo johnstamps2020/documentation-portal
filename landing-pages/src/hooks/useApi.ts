@@ -108,8 +108,7 @@ export function usePages() {
     '/safeConfig/entity/Page/all',
     getter,
     {
-      keepPreviousData: true,
-      refreshInterval: 1000,
+      revalidateOnFocus: false,
     }
   );
 
@@ -155,8 +154,7 @@ export function useExternalLinks() {
     '/safeConfig/entity/ExternalLink/all',
     getter,
     {
-      keepPreviousData: true,
-      refreshInterval: 1000,
+      revalidateOnFocus: false,
     }
   );
 
@@ -172,8 +170,7 @@ export function useSources() {
     '/safeConfig/entity/Source/all',
     getter,
     {
-      keepPreviousData: true,
-      refreshInterval: 1000,
+      revalidateOnFocus: false,
     }
   );
 
@@ -189,8 +186,7 @@ export function useResources() {
     '/safeConfig/entity/Resource/all/relations',
     getter,
     {
-      keepPreviousData: true,
-      refreshInterval: 1000,
+      revalidateOnFocus: false,
     }
   );
 
@@ -202,23 +198,6 @@ export function useResources() {
 }
 
 export function useReleases() {
-  const { data, error, isLoading } = useSWR<Release[], ServerSearchError>(
-    '/safeConfig/entity/Release/all',
-    getter,
-    {
-      keepPreviousData: true,
-      refreshInterval: 1000,
-    }
-  );
-
-  return {
-    releases: data,
-    isLoading,
-    isError: error,
-  };
-}
-
-export function useReleasesNoRevalidation() {
   const { data, error, isLoading } = useSWR<Release[], ServerSearchError>(
     '/safeConfig/entity/Release/all',
     getter,
@@ -239,23 +218,6 @@ export function useSubjects() {
     '/safeConfig/entity/Subject/all',
     getter,
     {
-      keepPreviousData: true,
-      refreshInterval: 1000,
-    }
-  );
-
-  return {
-    subjects: data,
-    isLoading,
-    isError: error,
-  };
-}
-
-export function useSubjectsNoRevalidation() {
-  const { data, error, isLoading } = useSWR<Subject[], ServerSearchError>(
-    '/safeConfig/entity/Subject/all',
-    getter,
-    {
       revalidateOnFocus: false,
     }
   );
@@ -268,23 +230,6 @@ export function useSubjectsNoRevalidation() {
 }
 
 export function useLanguages() {
-  const { data, error, isLoading } = useSWR<Language[], ServerSearchError>(
-    '/safeConfig/entity/Language/all',
-    getter,
-    {
-      keepPreviousData: true,
-      refreshInterval: 1000,
-    }
-  );
-
-  return {
-    languages: data,
-    isLoading,
-    isError: error,
-  };
-}
-
-export function useLanguagesNoRevalidation() {
   const { data, error, isLoading } = useSWR<Language[], ServerSearchError>(
     '/safeConfig/entity/Language/all',
     getter,
@@ -305,23 +250,6 @@ export function usePlatforms() {
     '/safeConfig/entity/Platform/all',
     getter,
     {
-      keepPreviousData: true,
-      refreshInterval: 1000,
-    }
-  );
-
-  return {
-    platforms: data,
-    isLoading,
-    isError: error,
-  };
-}
-
-export function usePlatformsNoRevalidation() {
-  const { data, error, isLoading } = useSWR<Platform[], ServerSearchError>(
-    '/safeConfig/entity/Platform/all',
-    getter,
-    {
       revalidateOnFocus: false,
     }
   );
@@ -338,23 +266,6 @@ export function useProducts() {
     '/safeConfig/entity/Product/all',
     getter,
     {
-      keepPreviousData: true,
-      refreshInterval: 1000,
-    }
-  );
-
-  return {
-    products: data,
-    isLoading,
-    isError: error,
-  };
-}
-
-export function useProductsNoRevalidation() {
-  const { data, error, isLoading } = useSWR<Product[], ServerSearchError>(
-    '/safeConfig/entity/Product/all',
-    getter,
-    {
       revalidateOnFocus: false,
     }
   );
@@ -367,22 +278,6 @@ export function useProductsNoRevalidation() {
 }
 
 export function useVersions() {
-  const { data, error, isLoading } = useSWR<Version[], ServerSearchError>(
-    '/safeConfig/entity/Version/all',
-    getter,
-    {
-      keepPreviousData: true,
-      refreshInterval: 1000,
-    }
-  );
-
-  return {
-    versions: data,
-    isLoading,
-    isError: error,
-  };
-}
-export function useVersionsNoRevalidation() {
   const { data, error, isLoading } = useSWR<Version[], ServerSearchError>(
     '/safeConfig/entity/Version/all',
     getter,

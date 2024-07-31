@@ -6,10 +6,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import {
-  useProductsNoRevalidation,
-  useReleasesNoRevalidation,
-} from 'hooks/useApi';
+import { useProducts, useReleases } from 'hooks/useApi';
 import { useDocsByProduct } from 'hooks/useDeltaDocData';
 import { useEffect, useState } from 'react';
 import { useDeltaDocContext } from './DeltaDocContext';
@@ -32,7 +29,7 @@ export default function BatchComparisonUpperPanel() {
   const [productName, setProductName] = useState<string>(batchProduct);
   const [canSubmit, setCanSubmit] = useState(false);
   const [batchError, setBatchError] = useState(false);
-  const { products, isLoading, isError } = useProductsNoRevalidation();
+  const { products, isLoading, isError } = useProducts();
   const {
     docs,
     isLoading: isLoadingDocs,
@@ -42,7 +39,7 @@ export default function BatchComparisonUpperPanel() {
     releases,
     isLoading: isLoadingReleases,
     isError: isErrorReleases,
-  } = useReleasesNoRevalidation();
+  } = useReleases();
   const [tmpFirstRelease, setTmpFirstRelease] = useState<Release | undefined>(
     () =>
       releases?.find(

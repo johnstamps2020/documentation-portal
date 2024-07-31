@@ -6,11 +6,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import {
-  useDocsNoRevalidation,
-  useProductsNoRevalidation,
-  useReleasesNoRevalidation,
-} from 'hooks/useApi';
+import { useDocsNoRevalidation, useProducts, useReleases } from 'hooks/useApi';
 import { useEffect, useState } from 'react';
 import BatchComparisonUpperPanel from './BatchComparisonUpperPanel';
 import { useDeltaDocContext } from './DeltaDocContext';
@@ -62,12 +58,12 @@ export default function DeltaDocUpperPanel() {
     releases,
     isLoading: isLoadingReleases,
     isError: isErrorReleases,
-  } = useReleasesNoRevalidation();
+  } = useReleases();
   const {
     products,
     isLoading: isLoadingProducts,
     isError: isErrorProducts,
-  } = useProductsNoRevalidation();
+  } = useProducts();
   const {
     setFormState,
     batchComparison,
