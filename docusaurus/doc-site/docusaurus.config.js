@@ -1,6 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+import { resolve } from 'path';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Docusaurus Guidewire',
@@ -61,6 +63,7 @@ const config = {
   themes: ['@doctools/gw-theme-classic', '@docusaurus/theme-live-codeblock'],
   plugins: [
     require.resolve('docusaurus-plugin-image-zoom'),
+    resolve(__dirname, 'plugins/webpack'),
     '@doctools/docusaurus-security',
   ],
 };
