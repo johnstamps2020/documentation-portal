@@ -118,6 +118,7 @@ export const allSelectors = {
     { label: 'Innsbruck', pagePath: 'cloudProducts/innsbruck' },
     { label: 'Jasper', pagePath: 'cloudProducts/jasper' },
     { label: 'Kufri', pagePath: 'cloudProducts/kufri' },
+    { label: 'Las Leñas', pagePath: 'cloudProducts/laslenas' },
   ],
   s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {
