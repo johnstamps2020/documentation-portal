@@ -17,7 +17,6 @@ export const allSelectors = {
     },
   ],
   testingFrameworkSelector: [
-    { label: 'Elysian (2022.05)', pagePath: 'testingFramework/elysian' },
     { label: 'Flaine (2022.09)', pagePath: 'testingFramework/flaine' },
     { label: 'Garmisch (2023.02)', pagePath: 'testingFramework/garmisch' },
     { label: 'Hakuba (2023.06)', pagePath: 'testingFramework/hakuba' },
@@ -37,18 +36,6 @@ export const allSelectors = {
     { label: 'Kufri', pagePath: 'apiReferences/kufri' },
   ],
   s344cd6ac814e55dd2f6e1bddf2c969db: [
-    {
-      label: 'Cortina (2021.04)',
-      pagePath: 'cloudProducts/cortina/billingCenterCloud/bcGwCloud/2021.04',
-    },
-    {
-      label: 'Dobson (2021.11)',
-      pagePath: 'cloudProducts/dobson/bcGwCloud/2021.11',
-    },
-    {
-      label: 'Elysian (2022.05)',
-      pagePath: 'cloudProducts/elysian/bcGwCloud/2022.05',
-    },
     {
       label: 'Flaine (2022.09)',
       pagePath: 'cloudProducts/flaine/bcGwCloud/2022.09',
@@ -90,18 +77,6 @@ export const allSelectors = {
   ],
   seab31eee2944c2607a774b9dd9cda0ad: [
     {
-      label: 'Cortina (2021.04)',
-      pagePath: 'cloudProducts/cortina/claimCenterCloud/ccGwCloud/2021.04',
-    },
-    {
-      label: 'Dobson (2021.11)',
-      pagePath: 'cloudProducts/dobson/ccGwCloud/2021.11',
-    },
-    {
-      label: 'Elysian (2022.05)',
-      pagePath: 'cloudProducts/elysian/ccGwCloud/2022.05',
-    },
-    {
       label: 'Flaine (2022.09)',
       pagePath: 'cloudProducts/flaine/ccGwCloud/2022.09',
     },
@@ -137,9 +112,6 @@ export const allSelectors = {
     },
   ],
   sb372c5e3c1cec5d40289c85a78eaef30: [
-    { label: 'Cortina', pagePath: 'cloudProducts/cortina' },
-    { label: 'Dobson', pagePath: 'cloudProducts/dobson' },
-    { label: 'Elysian', pagePath: 'cloudProducts/elysian' },
     { label: 'Flaine', pagePath: 'cloudProducts/flaine' },
     { label: 'Garmisch', pagePath: 'cloudProducts/garmisch' },
     { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
@@ -194,18 +166,6 @@ export const allSelectors = {
     },
   ],
   s1793805ac84baf801d4eb31b00ab1ddf: [
-    {
-      label: 'Cortina (2021.04)',
-      pagePath: 'cloudProducts/cortina/policyCenterCloud/pcGwCloud/2021.04',
-    },
-    {
-      label: 'Dobson (2021.11)',
-      pagePath: 'cloudProducts/dobson/pcGwCloud/2021.11',
-    },
-    {
-      label: 'Elysian (2022.05)',
-      pagePath: 'cloudProducts/elysian/pcGwCloud/2022.05',
-    },
     {
       label: 'Flaine (2022.09)',
       pagePath: 'cloudProducts/flaine/pcGwCloud/2022.09',
