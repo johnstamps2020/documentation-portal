@@ -18,7 +18,7 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2024.07 (Jasper)',
+      label: '2024.07 (Kufri)',
       items: [
         {
           label: 'Versionshinweise für ClaimCenter',
