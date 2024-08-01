@@ -383,7 +383,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Developing Integration Gateway Apps',
-          docId: 'integgatewayfwnext',
+          docId: 'integgatewayfwrelease',
           description: (
             <>
               Offers comprehensive guidance on leveraging the Integration
@@ -396,7 +396,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Administering Integration Gateway Apps',
-          docId: 'integgatewayuinext',
+          docId: 'integgatewayuirelease',
           description: (
             <>
               Provides practical guidance on configuring access to the
@@ -554,7 +554,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Business Functions (Early Access)',
-          docId: 'businessfunctionsnext',
+          docId: 'businessfunctionsrelease',
           description: (
             <>
               A modern approach to implementing stateless, single-transaction

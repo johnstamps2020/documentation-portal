@@ -145,23 +145,23 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Developing Integration Gateway Apps',
-          docId: 'integgatewayfwnext',
+          docId: 'integgatewayfwrelease',
         },
         {
           label: 'Administering Integration Gateway Apps',
-          docId: 'integgatewayuinext',
+          docId: 'integgatewayuirelease',
         },
         {
           label: 'App Events',
-          docId: 'appeventsdevnext',
+          docId: 'appeventsdev',
         },
         {
           label: 'Webhooks',
-          docId: 'webhooksnext',
+          docId: 'webhooksrelease',
         },
         {
           label: 'REST API Client',
-          docId: 'isrestapiclientguidenext',
+          docId: 'isrestapiclientguide',
         },
         {
           label: 'Jutro Digital Platform',
@@ -181,7 +181,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Business Functions (Early Access)',
-          docId: 'businessfunctionsnext',
+          docId: 'businessfunctionsrelease',
         },
       ],
     },
@@ -190,7 +190,8 @@ const pageConfig: Category2LayoutProps = {
     label: 'Kufri',
     badge: skiReleaseBadge,
     item: { label: 'Learn more', docId: 'whatsnewkufri' },
-    content: ['Guidewire Home',
+    content: [
+      'Guidewire Home',
       'Add-your-own testing and quality gates',
       'Self-service deployment for EnterpriseEngage apps',
       'Manual pricing in PolicyCenter',
