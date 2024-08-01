@@ -2,18 +2,15 @@ import { Router } from 'express';
 import { winstonLogger } from '../controllers/loggerController';
 // @ts-ignore
 import harmon from 'harmon';
-
-import {
-  tagManagerHeadScript,
-  pendoInstallScript,
-  tagManagerBody,
-  getAnalyticsInitializeScript,
-} from '../controllers/analyticsController';
+import { bodyScripts, headScripts } from '../controllers/analyticsController';
 
 function appendToSelectedItem(node: any, str: string) {
+  let readStream: any = null;
+  let writeStream: any = null;
+
   try {
-    const readStream = node.createReadStream();
-    const writeStream = node.createWriteStream();
+    readStream = node.createReadStream();
+    writeStream = node.createWriteStream();
 
     // read, but do not end the stream
     readStream.pipe(writeStream, { end: false });
@@ -21,6 +18,7 @@ function appendToSelectedItem(node: any, str: string) {
     // when the stream has ended, attach
     readStream.on('end', function () {
       writeStream.end(str);
+      readStream = null;
     });
 
     // Handle stream errors
@@ -29,6 +27,7 @@ function appendToSelectedItem(node: any, str: string) {
       ERROR: ${JSON.stringify(err)}
       MESSAGE: ${err})`);
     });
+
     writeStream.on('error', function (err: Error) {
       winstonLogger.error(`Writing stream error in Harmon 
       ERROR: ${JSON.stringify(err)}
@@ -41,26 +40,11 @@ function appendToSelectedItem(node: any, str: string) {
   }
 }
 
-const analyticsInitializeScript = getAnalyticsInitializeScript();
-const bodyScriptsForAnalytics = `<!-- Google tag manager no-script -->
-      <noscript>${tagManagerBody}</noscript>
-      <!-- Analytics initialize -->
-      <script>${analyticsInitializeScript}</script>
-`;
-
-const responseSelectors = [
+const responseSelectors: harmon.Select[] = [
   {
     query: 'head',
-    func: function (node: any) {
-      appendToSelectedItem(
-        node,
-        `
-    <!-- Google tag manager -->
-    <script>${tagManagerHeadScript}</script>
-    <!-- Pendo install -->
-    <script>${pendoInstallScript}</script>
-    `
-      );
+    func: function (node) {
+      appendToSelectedItem(node, headScripts);
     },
   },
   {
@@ -71,8 +55,8 @@ const responseSelectors = [
       // Storybook -> div[style="position: static !important;"]
       // DevConnect -> footer[class="section bg-gray pb-0"]
       'div.footerContents, header.wh_header, div#__docusaurus, div[style="position: static !important;"], footer[class="section bg-gray pb-0"]',
-    func: function (node: any) {
-      appendToSelectedItem(node, bodyScriptsForAnalytics);
+    func: function (node) {
+      appendToSelectedItem(node, bodyScripts);
     },
   },
 ];
