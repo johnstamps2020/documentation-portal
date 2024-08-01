@@ -18,110 +18,77 @@ const pageConfig: CategoryLayoutProps = {
   },
 
   cards: [
-    {
-      label: 'Australia',
-      items: [
-        {
-          label: 'Getting Started with InsuranceSuite Package for Australia',
-          docId: 'ipakufrigetstarted',
-        },
-        {
-          label: 'Release Notes',
-          docId: 'ipakufrirn',
-        },
-        {
-          label: 'Application Guide',
-          docId: 'ipakufriapp',
-        },
-        {
-          label: 'Configuration',
-          docId: 'ipakufriconfig',
-        },
-        {
-          label: 'Installation',
-          docId: 'ipakufriinstall',
-        },
-        {
-          label: 'Upgrade',
-          docId: 'ipakufriupgrade',
-        },
-      ],
-    },
-    {
-      label: 'Germany',
-      items: [
-        {
-          label: 'Release Notes',
-          docId: 'midipgkufrirnen',
-        },
-        {
-          label: 'Release Notes (German)',
-          docId: 'midipgkufrirnde',
-        },
-        {
-          label: 'Application Guide',
-          docId: 'midipgkufriapp',
-        },
-        {
-          label: 'Application Guide (German)',
-          docId: 'midipgkufriappde',
-        },
-        {
-          label: 'Implementation',
-          docId: 'midipgkufriimpl',
-        },
-        {
-          label: 'Installation',
-          docId: 'midipgkufriinstall',
-        },
-        {
-          label: 'Glossary',
-          docId: 'midipgkufriglossary',
-        },
-      ],
-    },
-    {
-      label: 'Japan',
-      items: [
-        {
-          label: 'Release Notes',
-          docId: 'ipjkufrirn',
-        },
-        {
-          label: 'Application Guide',
-          docId: 'ipjkufriapp',
-        },
-        {
-          label: 'Configuration',
-          docId: 'ipjkufriconfig',
-        },
-        {
-          label: 'Installation',
-          docId: 'ipjkufriinstall',
-        },
-      ],
-    },
-    {
-      label: 'London Market',
-      items: [
-        {
-          label: 'Release Notes',
-          docId: 'londonkufrirn',
-        },
-        {
-          label: 'ClaimCenter for London Market Application Guide',
-          docId: 'londonkufriccapp',
-        },
-        {
-          label: 'PolicyCenter for London Market Application Guide',
-          docId: 'londonkufripcapp',
-        },
-        {
-          label: 'Configuration',
-          docId: 'londonkufriconfig',
-        },
-      ],
-    },
+    // {
+    //   label: 'Australia',
+    //   items: [
+    //     {
+    //       label: 'Getting Started with InsuranceSuite Package for Australia',
+    //       docId: 'ipakufrigetstarted',
+    //     },
+    //     {
+    //       label: 'Release Notes',
+    //       docId: 'ipakufrirn',
+    //     },
+    //     {
+    //       label: 'Application Guide',
+    //       docId: 'ipakufriapp',
+    //     },
+    //     {
+    //       label: 'Configuration',
+    //       docId: 'ipakufriconfig',
+    //     },
+    //     {
+    //       label: 'Installation',
+    //       docId: 'ipakufriinstall',
+    //     },
+    //     {
+    //       label: 'Upgrade',
+    //       docId: 'ipakufriupgrade',
+    //     },
+    //   ],
+    // },
+    // {
+    //   label: 'Japan',
+    //   items: [
+    //     {
+    //       label: 'Release Notes',
+    //       docId: 'ipjkufrirn',
+    //     },
+    //     {
+    //       label: 'Application Guide',
+    //       docId: 'ipjkufriapp',
+    //     },
+    //     {
+    //       label: 'Configuration',
+    //       docId: 'ipjkufriconfig',
+    //     },
+    //     {
+    //       label: 'Installation',
+    //       docId: 'ipjkufriinstall',
+    //     },
+    //   ],
+    // },
+    // {
+    //   label: 'London Market',
+    //   items: [
+    //     {
+    //       label: 'Release Notes',
+    //       docId: 'londonkufrirn',
+    //     },
+    //     {
+    //       label: 'ClaimCenter for London Market Application Guide',
+    //       docId: 'londonkufriccapp',
+    //     },
+    //     {
+    //       label: 'PolicyCenter for London Market Application Guide',
+    //       docId: 'londonkufripcapp',
+    //     },
+    //     {
+    //       label: 'Configuration',
+    //       docId: 'londonkufriconfig',
+    //     },
+    //   ],
+    // },
     {
       label: 'US Standards-based Template Framework',
       items: [
