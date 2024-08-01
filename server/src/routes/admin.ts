@@ -6,6 +6,7 @@ import {
   deleteEntity,
 } from '../controllers/configController';
 import {
+  deleteObsoleteEntitiesFromDb,
   getLegacyConfigs,
   putConfigsInDatabase,
 } from '../controllers/legacyConfigController';
@@ -44,6 +45,10 @@ router.put('/entities/:repo', async function (req, res) {
 
 router.delete('/entities/:repo', async function (req, res) {
   return runRequest(req, res, deleteEntities);
+});
+
+router.get('/entities/clean', async function (req, res) {
+  return runRequest(req, res, deleteObsoleteEntitiesFromDb);
 });
 
 router.get('/entity/legacy/:configType', async function (req, res) {

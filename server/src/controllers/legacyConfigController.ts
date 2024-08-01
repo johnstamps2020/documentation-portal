@@ -30,6 +30,7 @@ import { DitaBuild } from '../model/entity/DitaBuild';
 import { YarnBuild } from '../model/entity/YarnBuild';
 import { SourceZipBuild } from '../model/entity/SourceZipBuild';
 import { JustCopyBuild } from '../model/entity/JustCopyBuild';
+import { AppDataSource } from '../model/connection';
 
 export async function getLegacyConfigs(req: Request): Promise<ApiResponse> {
   const { configType } = req.params;
@@ -351,33 +352,83 @@ export async function putConfigsInDatabase(req: Request): Promise<ApiResponse> {
   };
 }
 
+type ConfigType = 'doc' | 'source' | 'build';
+
+type ConfigTypeParams = {
+  localConfigPath: string;
+  localS3ConfigPath: string;
+  localS3ConfigFileName: string;
+  remoteS3ConfigPath: string;
+  readLocalConfigFunc: (
+    path: string
+  ) => LegacyDocConfig[] | LegacySourceConfig[] | LegacyBuildConfig[];
+  dbEntities: ObjectLiteral[];
+};
+
+type ConfigTypeParamMap = {
+  [key in ConfigType]: ConfigTypeParams;
+};
+
+const configTypeParamMap: ConfigTypeParamMap = {
+  doc: {
+    localConfigPath: `${__dirname}/../../../../documentation-portal-config/.teamcity/config/docs`,
+    localS3ConfigPath: `${__dirname}/../legacyConfig/docs`,
+    localS3ConfigFileName: 'docs.json',
+    remoteS3ConfigPath: 'legacy-config/docs.json',
+    readLocalConfigFunc: readLocalDocConfigs,
+    dbEntities: [Doc],
+  },
+  source: {
+    localConfigPath: `${__dirname}/../../../../documentation-portal-config/.teamcity/config/sources`,
+    localS3ConfigPath: `${__dirname}/../legacyConfig/sources`,
+    localS3ConfigFileName: 'legacy-config/sources.json',
+    remoteS3ConfigPath: 'sources.json',
+    readLocalConfigFunc: readLocalSourceConfigs,
+    dbEntities: [Source],
+  },
+  build: {
+    localConfigPath: `${__dirname}/../../../../documentation-portal-config/.teamcity/config/builds`,
+    localS3ConfigPath: `${__dirname}/../legacyConfig/builds`,
+    localS3ConfigFileName: 'builds.json',
+    remoteS3ConfigPath: 'legacy-config/builds.json',
+    readLocalConfigFunc: readLocalBuildConfigs,
+    dbEntities: [DitaBuild, YarnBuild, JustCopyBuild, SourceZipBuild],
+  },
+};
+
+async function getConfigs(
+  configType: ConfigType
+): Promise<LegacyDocConfig[] | LegacySourceConfig[] | LegacyBuildConfig[]> {
+  const isDevMode = runningInDevMode();
+  const configParamsItem: ConfigTypeParams = configTypeParamMap[configType];
+  const configParamsItemFunc = configParamsItem.readLocalConfigFunc;
+  if (isDevMode) {
+    return configParamsItemFunc(resolve(configParamsItem.localConfigPath));
+  }
+  const getDocsConfigResult = await getConfigFile(
+    resolve(configParamsItem.localS3ConfigPath),
+    configParamsItem.localS3ConfigFileName,
+    configParamsItem.remoteS3ConfigPath
+  );
+  if (getDocsConfigResult !== 'success') {
+    return [];
+  }
+  return configParamsItemFunc(resolve(configParamsItem.localS3ConfigPath));
+}
+
 async function putSourceConfigsInDatabase(): Promise<ApiResponse> {
   try {
-    const isDevMode = runningInDevMode();
-    let localSourcesConfigDir: string;
-    if (isDevMode) {
-      localSourcesConfigDir = resolve(
-        `${__dirname}/../../../../documentation-portal-config/.teamcity/config/sources`
-      );
-    } else {
-      localSourcesConfigDir = resolve(`${__dirname}/../legacyConfig/sources`);
-      const sourcesConfigS3Path = 'legacy-config/sources.json';
-      const getSourcesConfigResult = await getConfigFile(
-        localSourcesConfigDir,
-        'sources.json',
-        sourcesConfigS3Path
-      );
-      if (getSourcesConfigResult !== 'success') {
-        return {
-          status: 500,
-          body: {
-            message: `Unable to get ${sourcesConfigS3Path} from S3`,
-          },
-        };
-      }
+    const localSourcesConfig = (await getConfigs(
+      'source'
+    )) as LegacySourceConfig[];
+    if (localSourcesConfig.length === 0) {
+      return {
+        status: 500,
+        body: {
+          message: `Unable to get source configs from S3`,
+        },
+      };
     }
-
-    const localSourcesConfig = readLocalSourceConfigs(localSourcesConfigDir);
     const dbSourceConfigsToSave: Source[] = [];
     for await (const source of localSourcesConfig) {
       const sourceId = source.id;
@@ -1037,6 +1088,129 @@ async function putBuildConfigsInDatabase(): Promise<ApiResponse> {
       status: 500,
       body: {
         message: `Cannot save Build entities to the database: ${err}`,
+      },
+    };
+  }
+}
+
+async function deleteObsoleteConfigsFromDb(
+  configType: ConfigType
+): Promise<ApiResponse> {
+  try {
+    const legacyConfigs = await getConfigs(configType);
+    if (legacyConfigs.length === 0) {
+      return {
+        status: 500,
+        body: {
+          message: `Unable to get configs for ${configType}`,
+          numberOfEntitiesDeletedFromDb: 0,
+        },
+      };
+    }
+    const allDbEntities: ObjectLiteral[] = [];
+    for (const entity of configTypeParamMap[configType].dbEntities) {
+      const dbEntities = await findAllEntities(entity.name, false);
+      if (dbEntities) {
+        allDbEntities.push(...dbEntities);
+      }
+    }
+    const dbEntitiesNotInConfigs: ObjectLiteral[] = allDbEntities.filter(
+      (dbEntity) => {
+        return !legacyConfigs.some((config) => {
+          if (configType === 'build') {
+            return (
+              `${(config as LegacyBuildConfig).srcId}${
+                (config as LegacyBuildConfig).docId
+              }` === dbEntity.id
+            );
+          }
+          return (
+            (config as LegacyDocConfig | LegacySourceConfig).id === dbEntity.id
+          );
+        });
+      }
+    );
+
+    if (dbEntitiesNotInConfigs.length === 0) {
+      return {
+        status: 404,
+        body: {
+          message: `No entities to delete from the database for "${configType}"`,
+          numberOfEntitiesDeletedFromDb: 0,
+        },
+      };
+    }
+
+    let dbEntityDeleteCount = 0;
+    for (const entity of configTypeParamMap[configType].dbEntities) {
+      const dbEntityDeleteResult = await AppDataSource.manager.delete(
+        entity.name,
+        dbEntitiesNotInConfigs
+      );
+      dbEntityDeleteCount += dbEntityDeleteResult.affected || 0;
+    }
+
+    return {
+      status: 200,
+      body: {
+        numberOfEntitiesDeletedFromDb: dbEntityDeleteCount,
+      },
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: {
+        message: `Cannot delete entities for "${configType}" from the database: ${err}`,
+        numberOfEntitiesDeletedFromDb: 0,
+      },
+    };
+  }
+}
+
+export async function deleteObsoleteEntitiesFromDb(
+  req: Request
+): Promise<ApiResponse> {
+  let deleteObsoleteEntitiesCompletedWithErrors = false;
+  try {
+    const deleteBuildConfigsResponse = await deleteObsoleteConfigsFromDb(
+      'build'
+    );
+    const deleteSourceConfigsResponse = await deleteObsoleteConfigsFromDb(
+      'source'
+    );
+    const deleteDocConfigsResponse = await deleteObsoleteConfigsFromDb('doc');
+    if (
+      [
+        deleteBuildConfigsResponse,
+        deleteSourceConfigsResponse,
+        deleteDocConfigsResponse,
+      ].some((response) => response.status === 500)
+    ) {
+      return {
+        status: 500,
+        body: {
+          message:
+            'Deleting obsolete entities from the database completed with errors',
+        },
+      };
+    }
+
+    return {
+      status: 200,
+      body: {
+        numberOfBuildEntitiesDeletedFromDb:
+          deleteBuildConfigsResponse.body.numberOfEntitiesDeletedFromDb,
+        numberOfSourceEntitiesDeletedFromDb:
+          deleteSourceConfigsResponse.body.numberOfEntitiesDeletedFromDb,
+        numberOfDocEntitiesDeletedFromDb:
+          deleteDocConfigsResponse.body.numberOfEntitiesDeletedFromDb,
+      },
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: {
+        message: `Error deleting obsolete entities from the database: ${err}`,
       },
     };
   }
