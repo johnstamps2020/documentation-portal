@@ -10,8 +10,6 @@ import { findEntity, getDocByUrl } from './configController';
 import { getEnvInfo } from './envController';
 import { winstonLogger } from './loggerController';
 
-const fetch = require('node-fetch-retry');
-
 const isProd = getEnvInfo()?.name === 'omega2-andromeda';
 const permanentRedirectUrls = [
   {

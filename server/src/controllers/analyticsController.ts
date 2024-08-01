@@ -52,8 +52,22 @@ function getFileContents(filePath: string) {
   }
 }
 
-export function getAnalyticsInitializeScript() {
+function getAnalyticsInitializeScript() {
   return getFileContents(
     join(__dirname, 'utils', 'analyticsInitializeScript.js')
   );
 }
+
+export const headScripts = `
+<!-- Google tag manager -->
+<script>${tagManagerHeadScript}</script>
+<!-- Pendo install -->
+<script>${pendoInstallScript}</script>
+`;
+
+const analyticsInitializeScript = getAnalyticsInitializeScript();
+export const bodyScripts = `<!-- Google tag manager no-script -->
+      <noscript>${tagManagerBody}</noscript>
+      <!-- Analytics initialize -->
+      <script>${analyticsInitializeScript}</script>
+`;

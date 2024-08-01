@@ -9,6 +9,7 @@
   "scripts": {
     "build": "echo \"🥐 Building Croissant server\" && rimraf -r dist && tsc && copy-non-tx-files",
     "start": "node dist/server.js",
+    "inspect": "node --inspect dist/server.js",
     "db": "./start_docportal_db_container.sh",
     "dev": "NODE_ENV=development nodemon src/server.ts -e ts,tsx,js,ejs,css,html,jpg,png,svg",
     "test": "jest"
@@ -24,7 +25,6 @@
     "@types/express-fileupload": "^1.4.1",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/node": "^18.11.18",
-    "@types/node-fetch": "^2.6.2",
     "@types/serve-favicon": "^2.5.3",
     "body-parser": "^1.20.0",
     "cookie-parser": "~1.4.6",
@@ -42,8 +42,6 @@
     "jest-watch-typeahead": "^2.2.2",
     "jsdom": "^19.0.0",
     "jsonwebtoken": "^9.0.0",
-    "node-fetch": "^2.6.7",
-    "node-fetch-retry": "^2.0.0",
     "openid-client": "^5.4.0",
     "passport": "~0.6.0",
     "passport-saml": "3.2.2",
