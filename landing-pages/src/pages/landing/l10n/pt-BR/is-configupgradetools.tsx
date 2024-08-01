@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '5.3.0',
+      items: [
+        {
+          label: 'Ferramentas de atualização de configuração do Guidewire InsuranceSuite',
+          docId: 'isconfigupgradetools530ptBR',
+        },
+      ],
+    },
+    {
       label: '5.2.0',
       items: [
         {

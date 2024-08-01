@@ -18,6 +18,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Kufri (2024.07) の新機能',
+      docId: 'whatsnewkufrijaJP',
+    },
+    {
       label: 'Jasper (2024.02) の新機能',
       docId: 'whatsnewjasperjaJP',
     },
@@ -105,6 +109,10 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'ProducerEngage',
       pagePath: 'l10n/ja-JP/pe',
+    },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/ja-JP/pe-claims',
     },
     {
       label: 'ServiceRepEngage',

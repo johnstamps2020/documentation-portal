@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07 (Kufri)',
+      items: [
+        {
+          label: 'Versionshinweise für PolicyCenter',
+          docId: 'ispc202407deDEreleasenotes',
+        },
+        {
+          label: 'PolicyCenter - Update-Handbuch',
+          docId: 'ispc202407deDEupdate',
+        },
+      ],
+    },
+    {
       label: '2024.02 (Jasper)',
       items: [
         {

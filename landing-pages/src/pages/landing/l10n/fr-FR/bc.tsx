@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07 (Kufri)',
+      items: [
+        {
+          label: 'BillingCenter - Notes de version',
+          docId: 'isbc202407frFRreleasenotes',
+        },
+        {
+          label: 'BillingCenter - Guide de mise à jour',
+          docId: 'isbc202407frFRupdate',
+        },
+      ],
+    },
+    {
       label: '2024.02 (Jasper)',
       items: [
         {

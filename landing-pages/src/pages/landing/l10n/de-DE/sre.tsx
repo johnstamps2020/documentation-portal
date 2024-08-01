@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07 (Kufri)',
+      items: [
+        {
+          label: 'Versionshinweise',
+          docId: 'dx202407deDEsrerelnotes',
+        },
+        {
+          label: 'EnterpriseEngage - Update-Handbuch',
+          docId: 'ee202407deDEupdate',
+        },
+      ],
+    },    
+    {
       label: '2024.02 (Jasper)',
       items: [
         {
@@ -29,7 +42,8 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'ee202402deDEupdate',
         },
       ],
-    },    {
+    },    
+    {
       label: '2023.10 (Innsbruck)',
       items: [
         {

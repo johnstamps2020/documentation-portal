@@ -18,6 +18,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Was ist neu in Kufri',
+      docId: 'whatsnewkufrideDE',
+    },
+    {
       label: 'Was ist neu in Jasper',
       docId: 'whatsnewjasperdeDE',
     },

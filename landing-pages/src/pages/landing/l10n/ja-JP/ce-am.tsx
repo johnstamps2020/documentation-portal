@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07 (Kufri)',
+      items: [
+        {
+          label: 'CustomerEngage Account Management リリースノート',
+          docId: 'dx202407jaJPceamrelnotes',
+        },
+        {
+          label: 'EnterpriseEngage アップデートガイド',
+          docId: 'ee202407jaJPupdate',
+        },
+      ],
+    },
+    {
       label: '11.1',
       items: [
         {

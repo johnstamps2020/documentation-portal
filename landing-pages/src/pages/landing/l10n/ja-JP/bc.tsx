@@ -27,6 +27,19 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
+      label: '2024.07 (Kufri)',
+      items: [
+        {
+          label: 'BillingCenter リリースノート',
+          docId: 'isbc202407jaJPreleasenotes',
+        },
+        {
+          label: 'BillingCenter アップデート',
+          docId: 'isbc202407jaJPupdate',
+        },
+      ],
+    },
+    {
       label: '2024.02 (Jasper)',
       items: [
         {
