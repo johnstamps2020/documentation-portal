@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import { Request, Response } from 'express';
-import fetch from 'node-fetch';
 import {
   FindOneAndDeleteOptions,
   FindOneOptions,

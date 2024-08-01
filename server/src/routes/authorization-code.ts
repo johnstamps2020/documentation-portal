@@ -2,7 +2,6 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import 'dotenv/config';
 import { Router } from 'express';
-import fetch from 'node-fetch';
 import { Issuer, Strategy, TokenSet, UserinfoResponse } from 'openid-client';
 import passport from 'passport';
 import {

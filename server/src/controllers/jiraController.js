@@ -1,5 +1,4 @@
 require('dotenv').config();
-const fetch = require('node-fetch');
 const { winstonLogger } = require('./loggerController');
 
 function makeSafe(string) {
