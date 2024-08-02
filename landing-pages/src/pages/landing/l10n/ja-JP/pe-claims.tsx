@@ -33,6 +33,6 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export default function Ve() {
+export default function Peclaims() {
   return <CategoryLayout {...pageConfig} />;
 }
