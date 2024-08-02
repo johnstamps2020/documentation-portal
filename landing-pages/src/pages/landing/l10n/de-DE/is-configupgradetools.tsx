@@ -18,15 +18,6 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '5.3.0',
-      items: [
-        {
-          label: 'InsuranceSuite-Konfigurationsupgrade​-Tools',
-          docId: 'isconfigupgradetools530deDE',
-        },
-      ],
-    },
-    {
       label: '5.2.0',
       items: [
         {

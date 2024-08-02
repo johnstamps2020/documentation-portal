@@ -26,15 +26,6 @@ const pageConfig: CategoryLayoutProps = {
         },
       ],
     },
-	  {
-      label: '5.3.0',
-      items: [
-        {
-          label: 'InsuranceSuite Configuration Upgrade Tools ガイド',
-          docId: 'isconfigupgradetools530jaJP',
-        },
-      ],
-    },
     {
       label: '5.2.0',
       items: [
