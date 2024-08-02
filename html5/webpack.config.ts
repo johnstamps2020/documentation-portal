@@ -47,6 +47,14 @@ const config: Configuration = {
       import: './src/html5home/html5skip.ts',
       filename: 'html5skip.js',
     },
+    analyticsInstall: {
+      import: './src/analyticsInstall.js',
+      filename: 'analyticsInstall.js',
+    },
+    analyticsInitialize: {
+      import: './src/analyticsInitialize.js',
+      filename: 'analyticsInitialize.js',
+    },
   },
   optimization: {
     minimize: true,
