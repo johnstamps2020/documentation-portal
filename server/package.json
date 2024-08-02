@@ -36,7 +36,6 @@
     "express-fileupload": "^1.4.0",
     "express-http-context": "^1.2.3",
     "express-winston": "^4.2.0",
-    "harmon": "^1.4.4",
     "http-errors": "~1.6.3",
     "http-proxy": "^1.18.1",
     "jest-watch-typeahead": "^2.2.2",
@@ -55,7 +54,6 @@
   "devDependencies": {
     "@doctools/components": "workspace:*",
     "@doctools/scripts": "workspace:*",
-    "@types/harmon": "^1.4.1",
     "@types/jest": "^29.5.9",
     "@types/jsdom": "^20.0.0",
     "@types/passport": "^1.0.12",

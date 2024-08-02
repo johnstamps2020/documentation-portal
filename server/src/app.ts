@@ -190,10 +190,6 @@ app.use('/search', saveUserInfoToResLocals, searchRouter);
 app.use('/delta', saveUserInfoToResLocals, deltaDocRouter);
 app.use('/chatbot', saveUserInfoToResLocals, chatbotRouter);
 
-// overwrite HTML received through proxy
-const { harmonRouter } = require('./routes/proxy-harmon-router');
-app.use(harmonRouter);
-
 // set up proxies
 const {
   sitemapProxy,
