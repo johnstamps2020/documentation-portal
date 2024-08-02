@@ -31,6 +31,7 @@ import { YarnBuild } from '../model/entity/YarnBuild';
 import { SourceZipBuild } from '../model/entity/SourceZipBuild';
 import { JustCopyBuild } from '../model/entity/JustCopyBuild';
 import { AppDataSource } from '../model/connection';
+import { winstonLogger } from './loggerController';
 
 export async function getLegacyConfigs(req: Request): Promise<ApiResponse> {
   const { configType } = req.params;
@@ -243,63 +244,34 @@ async function getLegacySourceConfigs(): Promise<LegacySourceConfig[]> {
   return legacySources;
 }
 
-export function readLocalDocConfigs(dirPath: string): LegacyDocConfig[] {
+export function readLocalConfigs(
+  configType: ConfigType,
+  dirPath: string
+): LegacyBuildConfig[] | LegacySourceConfig[] | LegacyDocConfig[] {
   try {
-    const localConfig: LegacyDocConfig[] = [];
+    const pathsOfEmptyConfigs: string[] = [];
+    const configParamsItem: ConfigTypeParams = configTypeParamMap[configType];
+    const localConfig = [];
+
     const itemsInDir = readdirSync(dirPath);
     for (const item of itemsInDir) {
       const itemPath = join(dirPath, item);
       if (lstatSync(itemPath).isDirectory()) {
-        localConfig.push(...readLocalDocConfigs(itemPath));
+        localConfig.push(...readLocalConfigs(configType, itemPath));
       } else {
         const config = readFileSync(itemPath, 'utf-8');
-        const json: LegacyDocsConfigFile = JSON.parse(config);
-        localConfig.push(...json.docs);
+        const json = JSON.parse(config);
+        const configItems = json[configParamsItem.legacyConfigRootNode];
+        if (configItems.length === 0) {
+          pathsOfEmptyConfigs.push(itemPath);
+        }
+        localConfig.push(...configItems);
       }
     }
-    return localConfig;
-  } catch (funcErr) {
-    throw new Error(
-      `Cannot read local config file from path: ${dirPath}: ${funcErr}`
-    );
-  }
-}
-
-export function readLocalBuildConfigs(dirPath: string): LegacyBuildConfig[] {
-  try {
-    const localConfig: LegacyBuildConfig[] = [];
-    const itemsInDir = readdirSync(dirPath);
-    for (const item of itemsInDir) {
-      const itemPath = join(dirPath, item);
-      if (lstatSync(itemPath).isDirectory()) {
-        localConfig.push(...readLocalBuildConfigs(itemPath));
-      } else {
-        const config = readFileSync(itemPath, 'utf-8');
-        const json: LegacyBuildsConfigFile = JSON.parse(config);
-        localConfig.push(...json.builds);
-      }
-    }
-    return localConfig;
-  } catch (funcErr) {
-    throw new Error(
-      `Cannot read local config file from path: ${dirPath}: ${funcErr}`
-    );
-  }
-}
-
-export function readLocalSourceConfigs(dirPath: string): LegacySourceConfig[] {
-  try {
-    const localConfig: LegacySourceConfig[] = [];
-    const itemsInDir = readdirSync(dirPath);
-    for (const item of itemsInDir) {
-      const itemPath = join(dirPath, item);
-      if (lstatSync(itemPath).isDirectory()) {
-        localConfig.push(...readLocalSourceConfigs(itemPath));
-      } else {
-        const config = readFileSync(itemPath, 'utf-8');
-        const json: LegacySourcesConfigFile = JSON.parse(config);
-        localConfig.push(...json.sources);
-      }
+    if (pathsOfEmptyConfigs.length > 0) {
+      winstonLogger.warning(
+        `Found empty legacy config files: ${pathsOfEmptyConfigs.join(', ')}`
+      );
     }
     return localConfig;
   } catch (funcErr) {
@@ -359,10 +331,11 @@ type ConfigTypeParams = {
   localS3ConfigPath: string;
   localS3ConfigFileName: string;
   remoteS3ConfigPath: string;
-  readLocalConfigFunc: (
-    path: string
-  ) => LegacyDocConfig[] | LegacySourceConfig[] | LegacyBuildConfig[];
   dbEntities: ObjectLiteral[];
+  legacyConfigRootNode:
+    | keyof LegacyDocsConfigFile
+    | keyof LegacySourcesConfigFile
+    | keyof LegacyBuildsConfigFile;
 };
 
 type ConfigTypeParamMap = {
@@ -375,24 +348,24 @@ const configTypeParamMap: ConfigTypeParamMap = {
     localS3ConfigPath: `${__dirname}/../legacyConfig/docs`,
     localS3ConfigFileName: 'docs.json',
     remoteS3ConfigPath: 'legacy-config/docs.json',
-    readLocalConfigFunc: readLocalDocConfigs,
     dbEntities: [Doc],
+    legacyConfigRootNode: 'docs',
   },
   source: {
     localConfigPath: `${__dirname}/../../../../documentation-portal-config/.teamcity/config/sources`,
     localS3ConfigPath: `${__dirname}/../legacyConfig/sources`,
     localS3ConfigFileName: 'legacy-config/sources.json',
     remoteS3ConfigPath: 'sources.json',
-    readLocalConfigFunc: readLocalSourceConfigs,
     dbEntities: [Source],
+    legacyConfigRootNode: 'sources',
   },
   build: {
     localConfigPath: `${__dirname}/../../../../documentation-portal-config/.teamcity/config/builds`,
     localS3ConfigPath: `${__dirname}/../legacyConfig/builds`,
     localS3ConfigFileName: 'builds.json',
     remoteS3ConfigPath: 'legacy-config/builds.json',
-    readLocalConfigFunc: readLocalBuildConfigs,
     dbEntities: [DitaBuild, YarnBuild, JustCopyBuild, SourceZipBuild],
+    legacyConfigRootNode: 'builds',
   },
 };
 
@@ -401,9 +374,11 @@ async function getConfigs(
 ): Promise<LegacyDocConfig[] | LegacySourceConfig[] | LegacyBuildConfig[]> {
   const isDevMode = runningInDevMode();
   const configParamsItem: ConfigTypeParams = configTypeParamMap[configType];
-  const configParamsItemFunc = configParamsItem.readLocalConfigFunc;
   if (isDevMode) {
-    return configParamsItemFunc(resolve(configParamsItem.localConfigPath));
+    return readLocalConfigs(
+      configType,
+      resolve(configParamsItem.localConfigPath)
+    );
   }
   const getDocsConfigResult = await getConfigFile(
     resolve(configParamsItem.localS3ConfigPath),
@@ -413,7 +388,10 @@ async function getConfigs(
   if (getDocsConfigResult !== 'success') {
     return [];
   }
-  return configParamsItemFunc(resolve(configParamsItem.localS3ConfigPath));
+  return readLocalConfigs(
+    configType,
+    resolve(configParamsItem.localS3ConfigPath)
+  );
 }
 
 async function putSourceConfigsInDatabase(): Promise<ApiResponse> {
@@ -425,7 +403,7 @@ async function putSourceConfigsInDatabase(): Promise<ApiResponse> {
       return {
         status: 500,
         body: {
-          message: `Unable to get source configs from S3`,
+          message: `Unable to get source configs`,
         },
       };
     }
@@ -862,32 +840,15 @@ async function addPlatformProductVersions(
 
 async function putDocConfigsInDatabase(): Promise<ApiResponse> {
   try {
-    const isDevMode = runningInDevMode();
-    let localDocsConfigDir: string;
-    if (isDevMode) {
-      localDocsConfigDir = resolve(
-        `${__dirname}/../../../../documentation-portal-config/.teamcity/config/docs`
-      );
-      console.log(localDocsConfigDir);
-    } else {
-      localDocsConfigDir = resolve(`${__dirname}/../legacyConfig/docs`);
-      const docsConfigS3Path = 'legacy-config/docs.json';
-      const getDocsConfigResult = await getConfigFile(
-        localDocsConfigDir,
-        'docs.json',
-        docsConfigS3Path
-      );
-      if (getDocsConfigResult !== 'success') {
-        return {
-          status: 500,
-          body: {
-            message: `Unable to get ${docsConfigS3Path} from S3`,
-          },
-        };
-      }
+    const localDocsConfig = (await getConfigs('doc')) as LegacyDocConfig[];
+    if (localDocsConfig.length === 0) {
+      return {
+        status: 500,
+        body: {
+          message: `Unable to get doc configs`,
+        },
+      };
     }
-
-    const localDocsConfig = readLocalDocConfigs(localDocsConfigDir);
 
     await createSubjectEntities(localDocsConfig);
     await createReleaseEntities(localDocsConfig);
@@ -989,31 +950,17 @@ function createBuildObject(
 
 async function putBuildConfigsInDatabase(): Promise<ApiResponse> {
   try {
-    const isDevMode = runningInDevMode();
-    let localBuildsConfigDir: string;
-    if (isDevMode) {
-      localBuildsConfigDir = resolve(
-        `${__dirname}/../../../../documentation-portal-config/.teamcity/config/builds`
-      );
-    } else {
-      localBuildsConfigDir = resolve(`${__dirname}/../legacyConfig/builds`);
-      const buildsConfigS3Path = 'legacy-config/builds.json';
-      const getBuildsConfigResult = await getConfigFile(
-        localBuildsConfigDir,
-        'builds.json',
-        buildsConfigS3Path
-      );
-      if (getBuildsConfigResult !== 'success') {
-        return {
-          status: 500,
-          body: {
-            message: `Unable to get ${buildsConfigS3Path} from S3`,
-          },
-        };
-      }
+    const localBuildsConfig = (await getConfigs(
+      'build'
+    )) as LegacyBuildConfig[];
+    if (localBuildsConfig.length === 0) {
+      return {
+        status: 500,
+        body: {
+          message: `Unable to get build configs`,
+        },
+      };
     }
-
-    const localBuildsConfig = readLocalBuildConfigs(localBuildsConfigDir);
     const dbBuildConfigsToSave: any[] = [];
     for await (const build of localBuildsConfig) {
       const buildId = `${build.srcId}${build.docId}`;
@@ -1170,7 +1117,6 @@ async function deleteObsoleteConfigsFromDb(
 export async function deleteObsoleteEntitiesFromDb(
   req: Request
 ): Promise<ApiResponse> {
-  let deleteObsoleteEntitiesCompletedWithErrors = false;
   try {
     const deleteBuildConfigsResponse = await deleteObsoleteConfigsFromDb(
       'build'
