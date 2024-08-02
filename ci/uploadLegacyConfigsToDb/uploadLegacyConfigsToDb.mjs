@@ -14,11 +14,10 @@ function validateEnvironment() {
     'AWS_REGION',
   ];
   for (const envVar of requiredEnvVars) {
-    if (envVar in process.env) {
-      console.log(`${envVar} is set`);
-    } else {
+    if (!(envVar in process.env)) {
       throw new Error(`${envVar} is not set`);
     }
+    console.log(`${envVar} is set`);
   }
   console.log('Environment set correctly.');
 }
