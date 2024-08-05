@@ -99,6 +99,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/is-configupgradetools',
     },
     {
+      label: 'InsuranceSuite リリースノート',
+      docId: 'isrnjaJPlatest',
+    },
+    {
       label: 'Integration Gateway',
       docId: 'integgatewaydevlatestjaJP',
     },

@@ -21,10 +21,6 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
-          label: 'Versionshinweise für BillingCenter',
-          docId: 'isbc202407deDEreleasenotes',
-        },
-        {
           label: 'BillingCenter - Update-Handbuch',
           docId: 'isbc202407deDEupdate',
         },

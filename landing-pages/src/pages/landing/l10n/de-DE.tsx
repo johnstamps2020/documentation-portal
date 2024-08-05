@@ -70,6 +70,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/de-DE/is-configupgradetools',
     },
     {
+      label: 'Versionshinweise für InsuranceSuite',
+      docId: 'isrndeDElatest',
+    },
+    {
       label: 'PolicyCenter',
       pagePath: 'l10n/de-DE/pc',
     },

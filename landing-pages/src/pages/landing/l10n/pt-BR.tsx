@@ -74,6 +74,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/pt-BR/is-configupgradetools',
     },
     {
+      label: 'InsuranceSuite - Notas de versão',
+      docId: 'isrnptBRlatest',
+    },
+    {
       label: 'Guidewire Cloud Console',
       docId: 'guidewirecloudconsolerootinsurerdevptBR',
     },

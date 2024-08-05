@@ -21,10 +21,6 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
-          label: 'Notas de la versión',
-          docId: 'isbc202407es419releasenotes',
-        },
-        {
           label: 'Guía de renovación',
           docId: 'isbc202407es419update',
         },

@@ -82,6 +82,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/es-419/is-configupgradetools',
     },
     {
+      label: 'InsuranceSuite Notas de la versión',
+      docId: 'isrnes419latest',
+    },
+    {
       label: 'Plantillas de Community Case',
       docId: 'cloudtickettemplates',
       pathInDoc: 'es-419',

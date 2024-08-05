@@ -21,10 +21,6 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
-          label: 'PolicyCenter Notas de la versión',
-          docId: 'ispc202407es419releasenotes',
-        },
-        {
           label: 'PolicyCenter Guía de renovación',
           docId: 'ispc202407es419update',
         },
