@@ -354,8 +354,8 @@ const configTypeParamMap: ConfigTypeParamMap = {
   source: {
     localConfigPath: `${__dirname}/../../../../documentation-portal-config/.teamcity/config/sources`,
     localS3ConfigPath: `${__dirname}/../legacyConfig/sources`,
-    localS3ConfigFileName: 'legacy-config/sources.json',
-    remoteS3ConfigPath: 'sources.json',
+    localS3ConfigFileName: 'sources.json',
+    remoteS3ConfigPath: 'legacy-config/sources.json',
     dbEntities: [Source],
     legacyConfigRootNode: 'sources',
   },
