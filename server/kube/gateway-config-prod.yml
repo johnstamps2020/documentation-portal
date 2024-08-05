@@ -20,7 +20,7 @@ spec:
             - Content-Security-Policy:frame-ancestors https://*.guidewire.net https://*.guidewire.com
             - X-Frame-Options:SAMEORIGIN
             - Access-Control-Allow-Origin:*
-            - Access-Control-Allow-Methods:GET, OPTIONS
+            - Access-Control-Allow-Methods:GET, HEAD, OPTIONS
             - Access-Control-Allow-Headers:*
   path_configs:
     - name: Default
