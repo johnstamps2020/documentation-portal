@@ -314,7 +314,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Developing Integration Gateway Apps',
-          docId: 'integgatewayfwrelease',
+          docId: 'integgatewayfwjasperrelease',
           description: (
             <>
               Offers comprehensive guidance on leveraging the Integration
