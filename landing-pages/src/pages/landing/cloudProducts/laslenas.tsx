@@ -167,10 +167,10 @@ const pageConfig: Category2LayoutProps = {
           label: 'Jutro Digital Platform',
           docId: 'jutro1070',
         },
-        // {
-        //   label: 'Guidewire Testing',
-        //   pagePath: 'testingFramework/kufri',
-        // },
+        {
+          label: 'Guidewire Testing',
+          pagePath: 'testingFramework/laslenas',
+        },
         {
           label: 'Lifecycle Manager',
           docId: 'lifecyclemgr',
