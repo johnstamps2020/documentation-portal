@@ -144,7 +144,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Developing Integration Gateway Apps',
-          docId: 'integgatewayfwrelease',
+          docId: 'integgatewayfwjasperrelease',
         },
         {
           label: 'Administering Integration Gateway Apps',
