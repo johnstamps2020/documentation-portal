@@ -55,7 +55,7 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Set the working context',
           docId: 'apdfinalizingproductskufri',
-          pathInDoc: 'topics/c_select-workset.html',
+          pathInDoc: 'topics/c_global-header.html#c_working_location',
         },
         {
           label: 'Add Guidewire markers',
