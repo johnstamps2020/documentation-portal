@@ -54,7 +54,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Set the working context',
-          docId: 'apdfinalizingproductskufri',
+          docId: 'gwhomerelease',
           pathInDoc: 'topics/c_global-header.html#c_working_location',
         },
         {
