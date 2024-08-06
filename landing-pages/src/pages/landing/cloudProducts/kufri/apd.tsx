@@ -53,9 +53,9 @@ const pageConfig: ApplicationLayoutProps = {
           pathInDoc: 'topics/c_request-enable-apd-app.html',
         },
         {
-          label: 'Select a workset',
+          label: 'Set the working context',
           docId: 'apdfinalizingproductskufri',
-          pathInDoc: 'topics/c_select-workset.html',
+          pathInDoc: 'topics/c_global-header.html#c_working_location',
         },
         {
           label: 'Add Guidewire markers',
