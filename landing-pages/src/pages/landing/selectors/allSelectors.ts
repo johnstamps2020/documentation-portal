@@ -23,6 +23,7 @@ export const allSelectors = {
     { label: 'Innsbruck (2023.10)', pagePath: 'testingFramework/innsbruck' },
     { label: 'Jasper (2024.02)', pagePath: 'testingFramework/jasper' },
     { label: 'Kufri (2024.07)', pagePath: 'testingFramework/kufri' },
+    { label: 'Las Leñas (2024.11)', pagePath: 'testingFramework/laslenas' },
   ],
   s0f196c0b55cf55f2cdd1e05b1bf5e94e: [
     { label: 'Cortina', pagePath: 'apiReferences/cortina' },
