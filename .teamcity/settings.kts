@@ -1320,16 +1320,16 @@ object Content {
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
-            triggers {
-                schedule {
-                    schedulingPolicy = daily {
-                        hour = 1
-                        minute = 1
-                    }
-                    triggerBuild = always()
-                    withPendingChangesOnly = false
-                }
-            }
+            // triggers {
+            //     schedule {
+            //         schedulingPolicy = daily {
+            //             hour = 1
+            //             minute = 1
+            //         }
+            //         triggerBuild = always()
+            //         withPendingChangesOnly = false
+            //     }
+            // }
         }
     }
 
