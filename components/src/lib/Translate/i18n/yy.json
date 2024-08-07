@@ -232,5 +232,11 @@
   },
   "search.filter.menu.subject" : {
     "message" : "[29nZra_Subject]"
+  },
+  "restricted.page.info" : {
+    "message" : "[49WzpU_You have to be logged in to view this page.]"
+  },
+  "restricted.page.action" : {
+    "message" : "[4txW0_Click here to log in.]"
   }
 }
