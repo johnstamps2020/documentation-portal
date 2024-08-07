@@ -63,18 +63,18 @@ const pageConfig: Category2LayoutProps = {
         //   label: 'BillingCenter',
         //   pagePath: 'cloudProducts/kufri/bc',
         // },
-        // {
-        //   label: 'InsuranceNow',
-        //   pagePath: 'cloudProducts/kufri/in',
-        // },
+        {
+          label: 'InsuranceNow',
+          pagePath: 'cloudProducts/laslenas/in',
+        },
         // {
         //   label: 'Digital Reference Applications',
         //   pagePath: 'cloudProducts/kufri/dx-ref-apps',
         // },
-        // {
-        //   label: 'Global Content Reference Applications',
-        //   pagePath: 'cloudProducts/kufri/global-ref-apps',
-        // },
+        {
+          label: 'Global Content Reference Applications',
+          pagePath: 'cloudProducts/laslenas/global-ref-apps',
+        },
         {
           label: 'Underwriting Workbench (Early Access)',
           docId: 'uwworkbench',
