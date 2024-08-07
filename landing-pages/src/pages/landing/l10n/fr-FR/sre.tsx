@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07 (Kufri)',
+      items: [
+        {
+          label: 'Notes sur la version',
+          docId: 'dx202407frFRsrerelnotes',
+        },
+        {
+          label: 'Guide de mise à jour',
+          docId: 'ee202407frFRupdate',
+        },
+      ],
+    },
+    {
       label: '2024.02 (Jasper)',
       items: [
         {

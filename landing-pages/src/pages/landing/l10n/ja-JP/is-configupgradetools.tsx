@@ -26,7 +26,7 @@ const pageConfig: CategoryLayoutProps = {
         },
       ],
     },
-	  {
+    {
       label: '5.2.0',
       items: [
         {

@@ -18,6 +18,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Novidades na Kufri',
+      docId: 'whatsnewkufriptBR',
+    },
+    {
       label: 'Novidades na Jaspser',
       docId: 'whatsnewjasperptBR',
     },
@@ -68,6 +72,10 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
       pagePath: 'l10n/pt-BR/is-configupgradetools',
+    },
+    {
+      label: 'InsuranceSuite - Notas de versão',
+      docId: 'isrnptBRlatest',
     },
     {
       label: 'Guidewire Cloud Console',

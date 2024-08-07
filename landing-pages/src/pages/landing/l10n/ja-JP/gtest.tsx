@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07 (Kufri)',
+      items: [
+        {
+          label: 'Testing Framework リリースノート',
+          docId: 'testingframeworksjaJPrnkufri',
+        }
+      ]
+    },
+    {
       label: '2024.02 (Jasper)',
       items: [
         {

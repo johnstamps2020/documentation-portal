@@ -18,6 +18,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Novedades de Kufri',
+      docId: 'whatsnewkufries419',
+    },
+    {
       label: 'Novedades de Jasper',
       docId: 'whatsnewjasperes419',
     },
@@ -76,6 +80,10 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
       pagePath: 'l10n/es-419/is-configupgradetools',
+    },
+    {
+      label: 'InsuranceSuite Notas de la versión',
+      docId: 'isrnes419latest',
     },
     {
       label: 'Plantillas de Community Case',

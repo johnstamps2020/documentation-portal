@@ -504,6 +504,7 @@ export const allSelectors = {
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/ja-JP/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/ja-JP/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/ja-JP/pe' },
+    { label: 'ProducerEngage for ClaimCenter', pagePath: 'l10n/ja-JP/pe-claims' },
     { label: 'ServiceRepEngage', pagePath: 'l10n/ja-JP/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/ja-JP/ve' },
   ],

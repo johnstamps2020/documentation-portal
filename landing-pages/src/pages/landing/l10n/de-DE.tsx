@@ -18,6 +18,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Was ist neu in Kufri',
+      docId: 'whatsnewkufrideDE',
+    },
+    {
       label: 'Was ist neu in Jasper',
       docId: 'whatsnewjasperdeDE',
     },
@@ -64,6 +68,10 @@ const pageConfig: ProductFamilyLayoutProps = {
     {
       label: 'InsuranceSuite Configuration Upgrade Tools',
       pagePath: 'l10n/de-DE/is-configupgradetools',
+    },
+    {
+      label: 'Versionshinweise für InsuranceSuite',
+      docId: 'isrndeDElatest',
     },
     {
       label: 'PolicyCenter',

@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07 (Kufri)',
+      items: [
+        {
+          label: 'Guía de renovación',
+          docId: 'isbc202407es419update',
+        },
+      ],
+    },
+    {
       label: '2024.02 (Jasper)',
       items: [
         {
