@@ -166,6 +166,10 @@ export const allSelectors = {
       label: 'Kufri (2024.2)',
       pagePath: 'cloudProducts/kufri/in',
     },
+    {
+      label: 'Las Leñas (2024.3)',
+      pagePath: 'cloudProducts/laslenas/in',
+    },
   ],
   s1793805ac84baf801d4eb31b00ab1ddf: [
     {
