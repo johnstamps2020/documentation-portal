@@ -1,4 +1,4 @@
-async function checkTaskStatus(taskId, elapsedTime = 0, reindexTaskResponse) {
+async function checkTaskStatus(taskId, elapsedTime = 0) {
   const statusCheckTimeout = 120000;
   console.log(`Checking status of reindexing task ${taskId}`);
   const taskStatus = await fetch(`${elasticsearchDevUrl}/_tasks/${taskId}`, {
@@ -10,20 +10,20 @@ async function checkTaskStatus(taskId, elapsedTime = 0, reindexTaskResponse) {
     );
   }
   if (taskStatus.cancelled) {
-    throw new Error('The reindexing task was cancelled');
+    throw new Error('Reindexing task cancelled');
   }
   if (taskStatus.completed) {
     console.log('Reindexing task completed');
-    console.log(JSON.stringify(reindexTaskResponse, null, 2));
+    console.log(JSON.stringify(taskStatus, null, 2));
     return;
   }
-  console.log('Reindexing task is still running. Checking again in 2 minutes');
+  console.log('Reindexing task is still running');
+  console.log(
+    `Reindexed entries: ${taskStatus.task.status.created}/${taskStatus.task.status.total}`
+  );
+  console.log('Checking again in 2 minutes');
   setTimeout(async () => {
-    await checkTaskStatus(
-      taskId,
-      elapsedTime + statusCheckTimeout,
-      reindexTaskResponse
-    );
+    await checkTaskStatus(taskId, elapsedTime + statusCheckTimeout);
   }, statusCheckTimeout);
 }
 
