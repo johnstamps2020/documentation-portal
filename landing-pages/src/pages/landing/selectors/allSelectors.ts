@@ -325,6 +325,7 @@ export const allSelectors = {
     { label: '3.8', pagePath: 'globalContent/ipg/3.8' },
     { label: '3.9', pagePath: 'globalContent/ipg/3.9' },
     { label: '3.10', pagePath: 'globalContent/ipg/3.10' },
+    { label: '3.11', pagePath: 'globalContent/ipg/3.11' },
   ],
   sabc928e21c4c1dfb2a841b6b2331c9db: [
     { label: 'Analytics', pagePath: 'l10n/de-DE/analytics' },
@@ -504,7 +505,10 @@ export const allSelectors = {
     { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/ja-JP/cm' },
     { label: 'PolicyCenter', pagePath: 'l10n/ja-JP/pc' },
     { label: 'ProducerEngage', pagePath: 'l10n/ja-JP/pe' },
-    { label: 'ProducerEngage for ClaimCenter', pagePath: 'l10n/ja-JP/pe-claims' },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/ja-JP/pe-claims',
+    },
     { label: 'ServiceRepEngage', pagePath: 'l10n/ja-JP/sre' },
     { label: 'VendorEngage', pagePath: 'l10n/ja-JP/ve' },
   ],
