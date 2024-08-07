@@ -18,35 +18,35 @@ const pageConfig: CategoryLayoutProps = {
   },
 
   cards: [
-    // {
-    //   label: 'Australia',
-    //   items: [
-    //     {
-    //       label: 'Getting Started with InsuranceSuite Package for Australia',
-    //       docId: 'ipakufrigetstarted',
-    //     },
-    //     {
-    //       label: 'Release Notes',
-    //       docId: 'ipakufrirn',
-    //     },
-    //     {
-    //       label: 'Application Guide',
-    //       docId: 'ipakufriapp',
-    //     },
-    //     {
-    //       label: 'Configuration',
-    //       docId: 'ipakufriconfig',
-    //     },
-    //     {
-    //       label: 'Installation',
-    //       docId: 'ipakufriinstall',
-    //     },
-    //     {
-    //       label: 'Upgrade',
-    //       docId: 'ipakufriupgrade',
-    //     },
-    //   ],
-    // },
+    {
+      label: 'Australia',
+      items: [
+        {
+          label: 'Getting Started with InsuranceSuite Package for Australia',
+          docId: 'ipakufrigetstarted',
+        },
+        {
+          label: 'Release Notes',
+          docId: 'ipakufrirn',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'ipakufriapp',
+        },
+        {
+          label: 'Configuration',
+          docId: 'ipakufriconfig',
+        },
+        {
+          label: 'Installation',
+          docId: 'ipakufriinstall',
+        },
+        {
+          label: 'Upgrade',
+          docId: 'ipakufriupgrade',
+        },
+      ],
+    },
     // {
     //   label: 'Japan',
     //   items: [
