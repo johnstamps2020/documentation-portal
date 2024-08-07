@@ -42,6 +42,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/analytics',
     },
     {
+      label: 'App Events',
+      docId: 'appeventsjaJPdev',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n/ja-JP/bc',
     },
