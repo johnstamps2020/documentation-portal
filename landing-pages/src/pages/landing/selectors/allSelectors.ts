@@ -268,6 +268,10 @@ export const allSelectors = {
       label: 'Kufri (2024.07)',
       pagePath: 'cloudProducts/kufri/global-ref-apps',
     },
+    {
+      label: 'Las Leñas (2024.11)',
+      pagePath: 'cloudProducts/laslenas/global-ref-apps',
+    },
   ],
   s06dcd02c361b9539495548fd0bfb3ad2: [
     {
