@@ -25,6 +25,7 @@ project {
     subProject(Frontend.rootProject)
     subProject(Server.rootProject)
     subProject(Content.rootProject)
+    buildType(TestCodeFormat)
     buildType(TestSettingsKts)
     buildType(AuditNpmPackages)
 }
@@ -979,6 +980,7 @@ object GwBuildSteps {
                 sourceDir = "s3_sitemap"
                 targetDir = "s3_sitemap"
             }
+
             GwStaticFilesModes.HTML5.modeName -> targetDir = "html5"
         }
         val deployCommand =
@@ -1156,6 +1158,51 @@ object AuditNpmPackages : BuildType({
                     GwTriggerPaths.YARN_LOCK.pathValue,
                     GwTriggerPaths.SUBDIRS_PACKAGE_JSON.pathValue
                 )
+            )
+        )
+    }
+})
+
+object TestCodeFormat : BuildType({
+    name = "Test code format"
+    id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+    vcs {
+        root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run prettier and fail if it makes changes"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash 
+                set -e
+                
+                yarn
+                yarn prettier
+                
+                if [[ -n "${'$'}(git status --porcelain)" ]]; then
+                    echo "Running Prettier would have updated your code. Run prettier locally and commit your changes."
+                    exit 1
+                else
+                    echo "Test successful! Running Prettier does not change the code."
+                    exit 0
+                fi
+            """.trimIndent()
+        }
+    }
+
+    features {
+        feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+        feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+    }
+
+    triggers {
+        trigger(
+            GwVcsTriggers.createGitVcsTrigger(
+                GwVcsRoots.DocumentationPortalGitVcsRoot
             )
         )
     }
