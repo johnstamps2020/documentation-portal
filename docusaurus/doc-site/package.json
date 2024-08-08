@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "dev": "docusaurus start",
+    "dev": "GW_DOC_ID=docusaurusgwdocslatest docusaurus start",
     "build": "docusaurus build-variants",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

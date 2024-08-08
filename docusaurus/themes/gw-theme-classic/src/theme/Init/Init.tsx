@@ -2,11 +2,9 @@ import { SearchMeta } from '@doctools/components';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import { useDocContext } from '@theme/DocContext';
-import { PluginData } from '../../types';
-import mockUserData from '@theme/mockUserData';
 import React, { useEffect } from 'react';
+import { PluginData } from '../../types';
 import { PLUGIN_NAME } from '../../types/constants';
-import { versionSelectorMockup } from './versionSelectorMockup';
 
 export default function Init(props) {
   const {
@@ -22,29 +20,10 @@ export default function Init(props) {
   const configuredAuthors =
     (siteConfig.customFields?.authors as string[]) || [];
   const { gwDocId } = usePluginData(PLUGIN_NAME) as PluginData;
-  const isDevelopment = process.env.NODE_ENV === 'development';
-
-  function mockSetup() {
-    setUserInformation(mockUserData.internal);
-    setIsInternal(false);
-    setIsEarlyAccess(false);
-    setSearchMeta({
-      docTitle: 'Webhooks API Reference',
-      docInternal: false,
-      docEarlyAccess: true,
-      product: ['BillingCenter', 'ClaimCenter', 'PolicyCenter'],
-      platform: ['Cloud'],
-      version: ['latest'],
-      release: ['Elysian'],
-      subject: ['Integration'],
-    });
-    setAvailableVersions(versionSelectorMockup);
-    setAuthors(configuredAuthors);
-  }
 
   async function fetchUserInformation() {
     try {
-      const userResponse = await fetch('/userInformation');
+      const userResponse = await fetch(`/userInformation`);
       if (userResponse.ok) {
         const userJson = await userResponse.json();
         setUserInformation(userJson);
@@ -105,14 +84,10 @@ export default function Init(props) {
   }
 
   async function doSetup() {
-    if (isDevelopment) {
-      mockSetup();
-    } else {
-      fetchUserInformation();
-      fetchAvailableVersions();
-      fetchDocMetadata();
-      setAuthors(configuredAuthors);
-    }
+    fetchUserInformation();
+    fetchAvailableVersions();
+    fetchDocMetadata();
+    setAuthors(configuredAuthors);
   }
 
   useEffect(function () {
