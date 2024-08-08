@@ -7,10 +7,10 @@ export type DeltaDocTopicType = {
 export type DeltaDocReturnType = {
   status: number;
   body: {
-      [x: string]: {
-          base_url: any;
-          topics: DeltaDocTopicType[];
-      };
+    [x: string]: {
+      base_url: any;
+      topics: DeltaDocTopicType[];
+    };
   };
 };
 

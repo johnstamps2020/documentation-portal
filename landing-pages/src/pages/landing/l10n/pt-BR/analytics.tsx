@@ -17,16 +17,16 @@ const pageConfig: CategoryLayoutProps = {
   },
 
   cards: [
-		{
-			label: 'Explore',
+    {
+      label: 'Explore',
       items: [
         {
           label: 'Guia do aplicativo',
           docId: 'exploreptBRusingrelease',
         },
       ],
-		},
-		{
+    },
+    {
       label: 'DataHub 10.0.0',
       items: [
         {

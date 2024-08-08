@@ -21,9 +21,9 @@ const pageConfig: CategoryLayoutProps = {
       label: 'データマスキング',
       items: [
         {
-            label: 'データマスキング',
-            docId: 'datamaskingjaJP'
-        }
+          label: 'データマスキング',
+          docId: 'datamaskingjaJP',
+        },
       ],
     },
     {

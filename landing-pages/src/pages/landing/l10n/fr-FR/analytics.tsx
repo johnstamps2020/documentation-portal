@@ -17,7 +17,7 @@ const pageConfig: CategoryLayoutProps = {
   },
 
   cards: [
-		{
+    {
       label: 'Explore',
       items: [
         {
@@ -34,8 +34,8 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'datastudiofrFRrelease',
         },
       ],
-    },    
-		{
+    },
+    {
       label: 'DataHub 10.0.0',
       items: [
         {
@@ -69,7 +69,7 @@ const pageConfig: CategoryLayoutProps = {
           videoIcon: false,
         },
       ],
-     },
+    },
     {
       label: 'InfoCenter 10.0.0',
       items: [

@@ -22,7 +22,9 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'in20241app',
           description: (
             <>
-              Get started with the InsuranceNow user interface, functionality offered within the application, and features available for various user roles.
+              Get started with the InsuranceNow user interface, functionality
+              offered within the application, and features available for various
+              user roles.
             </>
           ),
         },
@@ -33,7 +35,7 @@ const pageConfig: ApplicationLayoutProps = {
           videoIcon: true,
           description: (
             <>Watch a video that describes and demonstrates new features.</>
-          )
+          ),
         },
         {
           label: 'Studio Release Notes',

@@ -20,8 +20,7 @@ const pageConfig: SectionLayoutProps = {
       label: 'GT: Framework Release and Installation',
       items: [
         {
-          label:
-            'Supported Software Components (Support Matrix)',
+          label: 'Supported Software Components (Support Matrix)',
           docId: 'testing202402matrix',
         },
         {
@@ -80,7 +79,8 @@ const pageConfig: SectionLayoutProps = {
       label: 'InsuranceSuite-specific Capabilities',
       items: [
         {
-          label: 'Configuring InsuranceSuite Apps and Data for Functional Testing',
+          label:
+            'Configuring InsuranceSuite Apps and Data for Functional Testing',
           docId: 'testing202402istesting',
         },
         {

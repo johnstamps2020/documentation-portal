@@ -17,7 +17,7 @@ const pageConfig: CategoryLayoutProps = {
   },
 
   cards: [
-		{
+    {
       label: 'DataHub 10.0.0',
       items: [
         {
