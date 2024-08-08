@@ -38,10 +38,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'ipakufriconfig',
         },
         {
-          label: 'Installation',
-          docId: 'ipakufriinstall',
-        },
-        {
           label: 'Upgrade',
           docId: 'ipakufriupgrade',
         },
