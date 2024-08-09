@@ -23,8 +23,8 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Testing Framework リリースノート',
           docId: 'testingframeworksjaJPrnkufri',
-        }
-      ]
+        },
+      ],
     },
     {
       label: '2024.02 (Jasper)',
@@ -32,8 +32,8 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Testing Framework リリースノート',
           docId: 'testingframeworksjaJPrnjasper',
-        }
-      ]
+        },
+      ],
     },
     {
       label: '2023.10 (Innsbruck)',

@@ -21,7 +21,8 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
-          label: 'CustomerEngage Account Management for ClaimCenter リリースノート',
+          label:
+            'CustomerEngage Account Management for ClaimCenter リリースノート',
           docId: 'dx202407jaJPceclaimsrelnotes',
         },
         {

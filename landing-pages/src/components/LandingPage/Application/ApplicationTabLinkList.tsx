@@ -2,9 +2,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import LandingPageLink from 'components/LandingPage/LandingPageLink';
-import {
-  getListOfItemsToDisplayOnLandingPage
-} from 'helpers/landingPageHelpers';
+import { getListOfItemsToDisplayOnLandingPage } from 'helpers/landingPageHelpers';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 

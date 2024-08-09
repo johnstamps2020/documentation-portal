@@ -25,7 +25,7 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'exploreusingdeDErelease',
         },
       ],
-    },    
+    },
     {
       label: 'Data Studio',
       items: [
@@ -34,8 +34,8 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'datastudiodeDErelease',
         },
       ],
-    },    
-		{
+    },
+    {
       label: 'DataHub 10.0.0',
       items: [
         {
@@ -129,7 +129,6 @@ const pageConfig: CategoryLayoutProps = {
         },
       ],
     },
-
   ],
 };
 

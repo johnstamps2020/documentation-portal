@@ -83,7 +83,7 @@ export default function DeltaDocResults() {
         Found {results.length} {results.length === 1 ? 'page' : 'pages'} with
         differences
       </Typography>
-      <TableContainer component={Paper} sx={{ mt: '30px', mb:'50px', px: 2 }}>
+      <TableContainer component={Paper} sx={{ mt: '30px', mb: '50px', px: 2 }}>
         <Table
           sx={{ minWidth: 650, borderWidth: 0 }}
           aria-label="delta-doc-result-table"

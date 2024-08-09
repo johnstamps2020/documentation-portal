@@ -48,7 +48,7 @@ export function ChatFeedbackPage() {
     return <div>No feedback</div>;
   }
 
-  const pageLength = 10
+  const pageLength = 10;
   const pageCount = Math.ceil((feedbackItems.length || 0) / pageLength);
   const start = (page - 1) * pageLength;
   const end = start + pageLength;

@@ -381,7 +381,10 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'in20242apiusage',
           pathInDoc: '?contextid=c_overview_portal_development',
           description: (
-            <>Understand use cases for specific API endpoints. Develop a sales, service, or agent portal using these API endpoints.</>
+            <>
+              Understand use cases for specific API endpoints. Develop a sales,
+              service, or agent portal using these API endpoints.
+            </>
           ),
         },
         {

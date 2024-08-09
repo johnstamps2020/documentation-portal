@@ -2,9 +2,7 @@ import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import {
-  getListOfItemsToDisplayOnLandingPage
-} from 'helpers/landingPageHelpers';
+import { getListOfItemsToDisplayOnLandingPage } from 'helpers/landingPageHelpers';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import Category2Item from './Category2Item';

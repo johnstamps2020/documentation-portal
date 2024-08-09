@@ -20,7 +20,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Release Video',
           url: 'https://youtu.be/vR9tas-bUhg',
-          videoIcon: true
+          videoIcon: true,
         },
         {
           label: 'Studio Release Notes',

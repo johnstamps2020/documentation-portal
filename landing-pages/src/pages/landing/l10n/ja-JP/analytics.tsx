@@ -25,7 +25,7 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'exploreusingjaJPrelease',
         },
       ],
-    },    
+    },
     {
       label: 'Data Studio',
       items: [
@@ -34,9 +34,7 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'datastudiojaJPrelease',
         },
       ],
-    },    
-
-
+    },
   ],
 };
 

@@ -27,14 +27,14 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-    label: '5.0.0',
-    items: [
-      {
-        label: 'InsuranceSuite-Konfigurationsupgrade​-Tools',
-        docId: 'isconfigupgradetoolsdeDE500',
-      },
-    ],
-  },
+      label: '5.0.0',
+      items: [
+        {
+          label: 'InsuranceSuite-Konfigurationsupgrade​-Tools',
+          docId: 'isconfigupgradetoolsdeDE500',
+        },
+      ],
+    },
   ],
 };
 

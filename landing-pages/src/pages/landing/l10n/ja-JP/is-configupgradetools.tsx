@@ -36,15 +36,15 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-    label: '5.0.0',
-    items: [
-      {
-        label: 'InsuranceSuite Configuration Upgrade Tools ガイド',
-        docId: 'isconfigupgradetoolsjaJP500',
-      },
-    ],
-  },
-  {
+      label: '5.0.0',
+      items: [
+        {
+          label: 'InsuranceSuite Configuration Upgrade Tools ガイド',
+          docId: 'isconfigupgradetoolsjaJP500',
+        },
+      ],
+    },
+    {
       label: '4.6.0',
       items: [
         {

@@ -27,14 +27,14 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-    label: '5.0.0',
-    items: [
-      {
-        label: 'Guía de herramientas de actualización de configuración',
-        docId: 'isconfigupgradetoolses419500',
-      },
-    ],
-  },
+      label: '5.0.0',
+      items: [
+        {
+          label: 'Guía de herramientas de actualización de configuración',
+          docId: 'isconfigupgradetoolses419500',
+        },
+      ],
+    },
   ],
 };
 
