@@ -87,17 +87,24 @@ function LandingPageSelectorPredefined({
     return null;
   }
 
-  const allowedItems = items.filter(
-    (item) =>
-      findMatchingPageItemData(predefinedAvailableItems, item) !== undefined
-  );
+  const allowedItems = items.reduce((acc: LandingPageItemProps[], item) => {
+    const foundItem = findMatchingPageItemData(predefinedAvailableItems, item);
+    if (foundItem !== undefined) {
+      if (foundItem.url) {
+        acc.push({ ...item, url: foundItem.url });
+      } else {
+        acc.push(item);
+      }
+    }
+    return acc;
+  }, []);
 
   const pageSelectorItems: PageSelectorItem[] = allowedItems
     .map((item) => {
       const label = item.label || '';
       const itemHref = item.pagePath || item.url || '';
       const href = itemHref !== '' ? `/${itemHref}` : itemHref;
-      const isDoc = item.url ? true : false;
+      const isDoc = item.docId ? true : false;
       return {
         label,
         href,
