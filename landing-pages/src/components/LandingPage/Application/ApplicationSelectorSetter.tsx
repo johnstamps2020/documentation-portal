@@ -22,6 +22,10 @@ export default function ApplicationSelectorSetter({
       };
       setSelector(selectorPropsInContext);
     }
+
+    return () => {
+      setSelector(undefined);
+    };
   }, [allAvailableItems, selector, setSelector]);
 
   return null;
