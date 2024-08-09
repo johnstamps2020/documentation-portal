@@ -63,12 +63,10 @@
   "resolutions": {
     "@xmldom/xmldom": "0.8.6",
     "got": "11.8.5",
-    "html-select": "2.3.24",
     "json5": "^2.2.2",
     "jsonwebtoken": "^9.0.0",
     "minimist": "^1.2.6",
-    "terser": "5.14.2",
-    "trim": "1.0.1"
+    "terser": "5.14.2"
   },
   "dependencies": {
     "concurrently": "7.4.0"

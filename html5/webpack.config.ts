@@ -32,22 +32,35 @@ const postCss = {
   },
 };
 
+const baseEntries = {
+  html5help: {
+    import: './src/html5help/html5.ts',
+    filename: 'html5.js',
+  },
+  html5Home: {
+    import: './src/html5home/html5home.ts',
+    filename: 'html5home.js',
+  },
+  html5Skip: {
+    import: './src/html5home/html5skip.ts',
+    filename: 'html5skip.js',
+  },
+};
+
+const analyticsEntries = {
+  analyticsInstall: {
+    import: './src/analyticsInstall.js',
+    filename: 'analyticsInstall.js',
+  },
+  analyticsInitialize: {
+    import: './src/analyticsInitialize.js',
+    filename: 'analyticsInitialize.js',
+  },
+};
+
 const config: Configuration = {
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-  entry: {
-    html5help: {
-      import: './src/html5help/html5.ts',
-      filename: 'html5.js',
-    },
-    html5Home: {
-      import: './src/html5home/html5home.ts',
-      filename: 'html5home.js',
-    },
-    html5Skip: {
-      import: './src/html5home/html5skip.ts',
-      filename: 'html5skip.js',
-    },
-  },
+  entry: isOffline ? baseEntries : { ...baseEntries, ...analyticsEntries },
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
