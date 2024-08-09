@@ -1184,13 +1184,14 @@ object TestCodeFormat : BuildType({
                 yarn prettier
                 
                 if [[ -n "${'$'}(git status --porcelain)" ]]; then
-                    echo "Running Prettier would have updated your code. Run prettier locally and commit your changes."
+                    echo "Running Prettier would have updated your code. Run `yarn prettier` locally and commit your changes."
                     exit 1
                 else
                     echo "Test successful! Running Prettier does not change the code."
                     exit 0
                 fi
             """.trimIndent()
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
         }
     }
 
