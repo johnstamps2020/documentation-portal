@@ -1,242 +1,242 @@
 {
-  "logo.label": {
-    "message": "[14CnUM_Home]"
+  "logo.label" : {
+    "message" : "[14CnUM_Home]"
   },
-  "docHighlighter.tooltip": {
-    "message": "[49EHsY_Toggle highlight for search phrases]"
+  "docHighlighter.tooltip" : {
+    "message" : "[49EHsY_Toggle highlight for search phrases]"
   },
-  "docHighlighter.label": {
-    "message": "[V5oxa_toggle highlights]"
+  "docHighlighter.label" : {
+    "message" : "[V5oxa_toggle highlights]"
   },
-  "anonymous.positive": {
-    "message": "[35wBT0_You are anonymous,]"
+  "anonymous.positive" : {
+    "message" : "[35wBT0_You are anonymous,]"
   },
-  "anonymous.shareEmail": {
-    "message": "[17Axjy_click here to share your email with us]"
+  "anonymous.shareEmail" : {
+    "message" : "[17Axjy_click here to share your email with us]"
   },
-  "anonymous.enterEmail": {
-    "message": "[QksUV_Enter your email address,]"
+  "anonymous.enterEmail" : {
+    "message" : "[QksUV_Enter your email address,]"
   },
-  "anonymous.becomeAnonymous": {
-    "message": "[4ujZi_click here to be anonymous]"
+  "anonymous.becomeAnonymous" : {
+    "message" : "[4ujZi_click here to be anonymous]"
   },
-  "privacy.warning": {
-    "message": "[1H9O2b_By providing your e-mail address, you consent to being contacted by Guidewire.]"
+  "privacy.warning" : {
+    "message" : "[1H9O2b_By providing your e-mail address, you consent to being contacted by Guidewire.]"
   },
-  "privacy.link": {
-    "message": "[pi82T_Guidewire's Privacy Policy can be found here.]"
+  "privacy.link" : {
+    "message" : "[pi82T_Guidewire's Privacy Policy can be found here.]"
   },
-  "rightWrong.positiveTitle": {
-    "message": "[1Umz2q_Do]"
+  "rightWrong.positiveTitle" : {
+    "message" : "[1Umz2q_Do]"
   },
-  "theme.rightWrong.negativeTitle": {
-    "message": "[B4BSy_Don't]"
+  "theme.rightWrong.negativeTitle" : {
+    "message" : "[B4BSy_Don't]"
   },
-  "anonymous.youAreSharing": {
-    "message": "[2FEg44_You are sharing your email with us,]"
+  "anonymous.youAreSharing" : {
+    "message" : "[2FEg44_You are sharing your email with us,]"
   },
-  "feedback.helpful": {
-    "message": "[4nPcST_Was this page helpful?]"
+  "feedback.helpful" : {
+    "message" : "[4nPcST_Was this page helpful?]"
   },
-  "feedback.thumbsUp": {
-    "message": "[3zmUs0_This page was helpful]"
+  "feedback.thumbsUp" : {
+    "message" : "[3zmUs0_This page was helpful]"
   },
-  "feedback.thumbsDown": {
-    "message": "[4oqnS1_This page needs improvement]"
+  "feedback.thumbsDown" : {
+    "message" : "[4oqnS1_This page needs improvement]"
   },
-  "feedbackDialog.thanks": {
-    "message": "[38P5Nu_Thank you!]"
+  "feedbackDialog.thanks" : {
+    "message" : "[38P5Nu_Thank you!]"
   },
-  "feedbackDialog.followUp": {
-    "message": "[35hUDB_A member of our documentation team will review your feedback. If you included your email address, we might contact you if we need more information.]"
+  "feedbackDialog.followUp" : {
+    "message" : "[35hUDB_A member of our documentation team will review your feedback. If you included your email address, we might contact you if we need more information.]"
   },
-  "feedbackDialog.anythingElse": {
-    "message": "[4uC8JL_Thanks, we have recorded your vote. Do you have anything else to tell us?]"
+  "feedbackDialog.anythingElse" : {
+    "message" : "[4uC8JL_Thanks, we have recorded your vote. Do you have anything else to tell us?]"
   },
-  "feedbackDialog.comment": {
-    "message": "[85tDh_Your comment]"
+  "feedbackDialog.comment" : {
+    "message" : "[85tDh_Your comment]"
   },
-  "feedbackDialog.email": {
-    "message": "[2Hq91M_Your email]"
+  "feedbackDialog.email" : {
+    "message" : "[2Hq91M_Your email]"
   },
-  "feedbackDialog.clearEmail": {
-    "message": "[qEXkG_Clear email]"
+  "feedbackDialog.clearEmail" : {
+    "message" : "[qEXkG_Clear email]"
   },
-  "feedbackDialog.validEmail": {
-    "message": "[3kVzNy_Provide a valid email address]"
+  "feedbackDialog.validEmail" : {
+    "message" : "[3kVzNy_Provide a valid email address]"
   },
-  "feedbackDialog.cancel": {
-    "message": "[2VGPQe_Cancel]"
+  "feedbackDialog.cancel" : {
+    "message" : "[2VGPQe_Cancel]"
   },
-  "feedbackDialog.submit": {
-    "message": "[3ofo9u_Submit]"
+  "feedbackDialog.submit" : {
+    "message" : "[3ofo9u_Submit]"
   },
-  "internal.employeesOnly": {
-    "message": "[18urtr_This content is available to Guidewire employees only]"
+  "internal.employeesOnly" : {
+    "message" : "[18urtr_This content is available to Guidewire employees only]"
   },
-  "internal.info.toView": {
-    "message": "[1ioZaU_To view this page, you must log in with your Guidewire employee account. If you need further help, please contact your Guidewire representative.]"
+  "internal.info.toView" : {
+    "message" : "[1ioZaU_To view this page, you must log in with your Guidewire employee account. If you need further help, please contact your Guidewire representative.]"
   },
-  "internal.label": {
-    "message": "[3GroVM_This content is internal and available to Guidewire employees only.]"
+  "internal.label" : {
+    "message" : "[3GroVM_This content is internal and available to Guidewire employees only.]"
   },
-  "loginButton.out": {
-    "message": "[ggFpT_Log out]"
+  "loginButton.out" : {
+    "message" : "[ggFpT_Log out]"
   },
-  "loginButton.in": {
-    "message": "[2fDbgs_Log in]"
+  "loginButton.in" : {
+    "message" : "[2fDbgs_Log in]"
   },
-  "loginDrawer.go": {
-    "message": "[3ocVGQ_Go to the login page]"
+  "loginDrawer.go" : {
+    "message" : "[3ocVGQ_Go to the login page]"
   },
-  "transcriptDownloadLink.label": {
-    "message": "[3XIDky_Download transcript]"
+  "transcriptDownloadLink.label" : {
+    "message" : "[3XIDky_Download transcript]"
   },
-  "theme.common.skipToMainContent": {
-    "message": "[3dzDXi_Skip to main content]"
+  "theme.common.skipToMainContent" : {
+    "message" : "[3dzDXi_Skip to main content]"
   },
-  "theme.tags.tagsPageTitle": {
-    "message": "[4BG6Bf_Tags]"
+  "theme.tags.tagsPageTitle" : {
+    "message" : "[4BG6Bf_Tags]"
   },
-  "gwSearchForm.placeholder": {
-    "message": "[3xG4Q3_Search]"
+  "gwSearchForm.placeholder" : {
+    "message" : "[3xG4Q3_Search]"
   },
-  "miniToc.heading": {
-    "message": "[4vbbSB_On this page]"
+  "miniToc.heading" : {
+    "message" : "[4vbbSB_On this page]"
   },
-  "collapsible.title": {
-    "message": "[3YZ9CJ_Expand]"
+  "collapsible.title" : {
+    "message" : "[3YZ9CJ_Expand]"
   },
-  "footer.published": {
-    "message": "[4kq2Io_Published:]"
+  "footer.published" : {
+    "message" : "[4kq2Io_Published:]"
   },
-  "nav.scrollToTop": {
-    "message": "[4BmhKV_Scroll to top]"
+  "nav.scrollToTop" : {
+    "message" : "[4BmhKV_Scroll to top]"
   },
-  "navbar.nextTopic": {
-    "message": "[1veEHQ_Next topic]"
+  "navbar.nextTopic" : {
+    "message" : "[1veEHQ_Next topic]"
   },
-  "navbar.prevTopic": {
-    "message": "[4gAYkf_Previous topic]"
+  "navbar.prevTopic" : {
+    "message" : "[4gAYkf_Previous topic]"
   },
-  "navbar.noNextOrPrevTopic": {
-    "message": "[3Vmd1h_None]"
+  "navbar.noNextOrPrevTopic" : {
+    "message" : "[3Vmd1h_None]"
   },
-  "navbar.printThisPage": {
-    "message": "[LFJp9_Print this page]"
+  "navbar.printThisPage" : {
+    "message" : "[LFJp9_Print this page]"
   },
-  "chat.default-title": {
-    "message": "[2rY6tA_Let's chat]"
+  "chat.default-title" : {
+    "message" : "[2rY6tA_Let's chat]"
   },
-  "chat.send": {
-    "message": "[4nnqx0_Send]"
+  "chat.send" : {
+    "message" : "[4nnqx0_Send]"
   },
-  "chat.answer": {
-    "message": "[2IEZsY_Answer]"
+  "chat.answer" : {
+    "message" : "[2IEZsY_Answer]"
   },
-  "chat.sources": {
-    "message": "[4t7owi_Sources]"
+  "chat.sources" : {
+    "message" : "[4t7owi_Sources]"
   },
-  "chat.filters": {
-    "message": "[2OyosE_Filters]"
+  "chat.filters" : {
+    "message" : "[2OyosE_Filters]"
   },
-  "chat.saveAndClose": {
-    "message": "[2o7Ja8_Save and close]"
+  "chat.saveAndClose" : {
+    "message" : "[2o7Ja8_Save and close]"
   },
-  "chat.notOptedIn": {
-    "message": "[2IL84X_You did not opt in to receive messages from the chatbot.]"
+  "chat.notOptedIn" : {
+    "message" : "[2IL84X_You did not opt in to receive messages from the chatbot.]"
   },
-  "chat.allow": {
-    "message": "[4q0yXq_Allow AI chatbot to answer questions]"
+  "chat.allow" : {
+    "message" : "[4q0yXq_Allow AI chatbot to answer questions]"
   },
-  "chat.allow.learnMore": {
-    "message": "[UVJYC_Read the terms and conditions]"
+  "chat.allow.learnMore" : {
+    "message" : "[UVJYC_Read the terms and conditions]"
   },
-  "chat.termsAndConditions.title": {
-    "message": "[1F3DmD_Terms and conditions of using the chat]"
+  "chat.termsAndConditions.title" : {
+    "message" : "[1F3DmD_Terms and conditions of using the chat]"
   },
-  "chat.termsAndConditions.close": {
-    "message": "[2MgfZz_Close the terms and conditions]"
+  "chat.termsAndConditions.close" : {
+    "message" : "[2MgfZz_Close the terms and conditions]"
   },
-  "chatbot.feedback.thumbsUp": {
-    "message": "[2q6Wvv_This chatbot response is great]"
+  "chatbot.feedback.thumbsUp" : {
+    "message" : "[2q6Wvv_This chatbot response is great]"
   },
-  "chatbot.feedback.thumbsDown": {
-    "message": "[15Viyn_This chatbot response needs improvement]"
+  "chatbot.feedback.thumbsDown" : {
+    "message" : "[15Viyn_This chatbot response needs improvement]"
   },
-  "chatbot.feedback.dialog.title": {
-    "message": "[4vl05f_Would you like to leave a comment?]"
+  "chatbot.feedback.dialog.title" : {
+    "message" : "[4vl05f_Would you like to leave a comment?]"
   },
-  "chatbot.feedback.dialog.send": {
-    "message": "[1vuuv6_Send]"
+  "chatbot.feedback.dialog.send" : {
+    "message" : "[1vuuv6_Send]"
   },
-  "chatbot.feedback.dialog.cancel": {
-    "message": "[UZEpd_Cancel]"
+  "chatbot.feedback.dialog.cancel" : {
+    "message" : "[UZEpd_Cancel]"
   },
-  "login.gwEmployeeHint": {
-    "message": "[U2AXx_Guidewire employee? Log in using the Guidewire Cloud option above.]"
+  "login.gwEmployeeHint" : {
+    "message" : "[U2AXx_Guidewire employee? Log in using the Guidewire Cloud option above.]"
   },
-  "consent.ai": {
-    "message": "[42chzM_Allow AI]"
+  "consent.ai" : {
+    "message" : "[42chzM_Allow AI]"
   },
-  "avatar.iconButton": {
-    "message": "[3vM8yX_Expand the user menu]"
+  "avatar.iconButton" : {
+    "message" : "[3vM8yX_Expand the user menu]"
   },
-  "search.filter.menu.entiresite.tooltip": {
-    "message": "[JE6Kj_Search entire site without filters]"
+  "search.filter.menu.entiresite.tooltip" : {
+    "message" : "[JE6Kj_Search entire site without filters]"
   },
-  "search.filter.menu.entiresite.label": {
-    "message": "[4B4CoA_Entire site]"
+  "search.filter.menu.entiresite.label" : {
+    "message" : "[4B4CoA_Entire site]"
   },
-  "search.filter.menu.product.tooltip": {
-    "message": "[16MUP8_Search within products on this page:]"
+  "search.filter.menu.product.tooltip" : {
+    "message" : "[16MUP8_Search within products on this page:]"
   },
-  "search.filter.menu.product.label": {
-    "message": "[3ohchh_This product]"
+  "search.filter.menu.product.label" : {
+    "message" : "[3ohchh_This product]"
   },
-  "search.filter.menu.release.tooltip": {
-    "message": "[43fBw6_Search within all products in this release:]"
+  "search.filter.menu.release.tooltip" : {
+    "message" : "[43fBw6_Search within all products in this release:]"
   },
-  "search.filter.menu.release.label": {
-    "message": "[GGMVj_This release]"
+  "search.filter.menu.release.label" : {
+    "message" : "[GGMVj_This release]"
   },
-  "search.filter.menu.showfilters.label.closed": {
-    "message": "[4B9L4V_Show filters]"
+  "search.filter.menu.showfilters.label.closed" : {
+    "message" : "[4B9L4V_Show filters]"
   },
-  "search.filter.menu.showfilters.label.expanded": {
-    "message": "[4AeIsz_Hide filters]"
+  "search.filter.menu.showfilters.label.expanded" : {
+    "message" : "[4AeIsz_Hide filters]"
   },
-  "search.filter.menu.showfilters.tooltip.closed": {
-    "message": "[1idWiX_Show selected filters and add or remove more filters]"
+  "search.filter.menu.showfilters.tooltip.closed" : {
+    "message" : "[1idWiX_Show selected filters and add or remove more filters]"
   },
-  "search.filter.menu.showfilters.tooltip.expanded": {
-    "message": "[1XU7s0_Your filter selections will apply when you enter a search query]"
+  "search.filter.menu.showfilters.tooltip.expanded" : {
+    "message" : "[1XU7s0_Your filter selections will apply when you enter a search query]"
   },
-  "search.filter.menu.thisdoc.tooltip": {
-    "message": "[3pD0bm_Search within this document:]"
+  "search.filter.menu.thisdoc.tooltip" : {
+    "message" : "[3pD0bm_Search within this document:]"
   },
-  "search.filter.menu.thisdoc.label": {
-    "message": "[f4wkI_This document]"
+  "search.filter.menu.thisdoc.label" : {
+    "message" : "[f4wkI_This document]"
   },
-  "search.filter.menu.button": {
-    "message": "[E4df3_Filter]"
+  "search.filter.menu.button" : {
+    "message" : "[E4df3_Filter]"
   },
-  "search.filter.menu.language": {
-    "message": "[3QWAcm_Language]"
+  "search.filter.menu.language" : {
+    "message" : "[3QWAcm_Language]"
   },
-  "search.filter.menu.product": {
-    "message": "[27zTWu_Product]"
+  "search.filter.menu.product" : {
+    "message" : "[27zTWu_Product]"
   },
-  "search.filter.menu.release": {
-    "message": "[2o632R_Release]"
+  "search.filter.menu.release" : {
+    "message" : "[2o632R_Release]"
   },
-  "search.filter.menu.subject": {
-    "message": "[29nZra_Subject]"
+  "search.filter.menu.subject" : {
+    "message" : "[29nZra_Subject]"
   },
-  "restricted.page.info": {
-    "message": "[49WzpU_You have to be logged in to view this page.]"
+  "restricted.page.info" : {
+    "message" : "[49WzpU_You have to be logged in to view this page.]"
   },
-  "restricted.page.action": {
-    "message": "[4txW0_Click here to log in.]"
+  "restricted.page.action" : {
+    "message" : "[4txW0_Click here to log in.]"
   }
 }
