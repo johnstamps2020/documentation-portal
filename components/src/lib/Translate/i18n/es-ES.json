@@ -1,236 +1,242 @@
 {
-  "logo.label": {
-    "message": "Inicio"
+  "logo.label" : {
+    "message" : "Inicio"
   },
-  "docHighlighter.tooltip": {
-    "message": "Alternar resaltado para frases de búsqueda"
+  "docHighlighter.tooltip" : {
+    "message" : "Alternar resaltado para frases de búsqueda"
   },
-  "docHighlighter.label": {
-    "message": "activar y desactivar destacados"
+  "docHighlighter.label" : {
+    "message" : "activar y desactivar destacados"
   },
-  "anonymous.positive": {
-    "message": "Es un usuario anónimo,"
+  "anonymous.positive" : {
+    "message" : "Es un usuario anónimo,"
   },
-  "anonymous.shareEmail": {
-    "message": "haga clic aquí para compartir su correo electrónico con nosotros"
+  "anonymous.shareEmail" : {
+    "message" : "haga clic aquí para compartir su correo electrónico con nosotros"
   },
-  "anonymous.enterEmail": {
-    "message": "Introduzca su dirección de correo electrónico,"
+  "anonymous.enterEmail" : {
+    "message" : "Introduzca su dirección de correo electrónico,"
   },
-  "anonymous.becomeAnonymous": {
-    "message": "haga clic aquí para ser un usuario anónimo"
+  "anonymous.becomeAnonymous" : {
+    "message" : "haga clic aquí para ser un usuario anónimo"
   },
-  "privacy.warning": {
-    "message": "Al proporcionar su dirección de correo electrónico, acepta que Guidewire se ponga en contacto con usted."
+  "privacy.warning" : {
+    "message" : "Al proporcionar su dirección de correo electrónico, acepta que Guidewire se ponga en contacto con usted."
   },
-  "privacy.link": {
-    "message": "Podrá encontrar la Política de privacidad de Guidewire aquí."
+  "privacy.link" : {
+    "message" : "Podrá encontrar la Política de privacidad de Guidewire aquí."
   },
-  "rightWrong.positiveTitle": {
-    "message": "Sí"
+  "rightWrong.positiveTitle" : {
+    "message" : "Sí"
   },
-  "theme.rightWrong.negativeTitle": {
-    "message": "No"
+  "theme.rightWrong.negativeTitle" : {
+    "message" : "No"
   },
-  "anonymous.youAreSharing": {
-    "message": "Está compartiendo su correo electrónico con nosotros,"
+  "anonymous.youAreSharing" : {
+    "message" : "Está compartiendo su correo electrónico con nosotros,"
   },
-  "feedback.helpful": {
-    "message": "¿Le ha resultado útil esta página?"
+  "feedback.helpful" : {
+    "message" : "¿Le ha resultado útil esta página?"
   },
-  "feedback.thumbsUp": {
-    "message": "Esta página me ha resultado útil"
+  "feedback.thumbsUp" : {
+    "message" : "Esta página me ha resultado útil"
   },
-  "feedback.thumbsDown": {
-    "message": "Esta página necesita mejoras"
+  "feedback.thumbsDown" : {
+    "message" : "Esta página necesita mejoras"
   },
-  "feedbackDialog.thanks": {
-    "message": "¡Gracias!"
+  "feedbackDialog.thanks" : {
+    "message" : "¡Gracias!"
   },
-  "feedbackDialog.followUp": {
-    "message": "Un miembro del equipo de documentación revisará su feedback. Si ha facilitado su dirección de correo electrónico, nos podríamos poner en contacto con usted en caso de que necesitemos más información."
+  "feedbackDialog.followUp" : {
+    "message" : "Un miembro del equipo de documentación revisará su feedback. Si ha facilitado su dirección de correo electrónico, nos podríamos poner en contacto con usted en caso de que necesitemos más información."
   },
-  "feedbackDialog.anythingElse": {
-    "message": "Gracias, hemos registrado su voto. ¿Quiere contarnos algo más?"
+  "feedbackDialog.anythingElse" : {
+    "message" : "Gracias, hemos registrado su voto. ¿Quiere contarnos algo más?"
   },
-  "feedbackDialog.comment": {
-    "message": "Su comentario"
+  "feedbackDialog.comment" : {
+    "message" : "Su comentario"
   },
-  "feedbackDialog.email": {
-    "message": "Su correo electrónico"
+  "feedbackDialog.email" : {
+    "message" : "Su correo electrónico"
   },
-  "feedbackDialog.clearEmail": {
-    "message": "Borrar correo electrónico"
+  "feedbackDialog.clearEmail" : {
+    "message" : "Borrar correo electrónico"
   },
-  "feedbackDialog.validEmail": {
-    "message": "Proporcione una dirección de correo electrónico válida"
+  "feedbackDialog.validEmail" : {
+    "message" : "Proporcione una dirección de correo electrónico válida"
   },
-  "feedbackDialog.cancel": {
-    "message": "Cancelar"
+  "feedbackDialog.cancel" : {
+    "message" : "Cancelar"
   },
-  "feedbackDialog.submit": {
-    "message": "Enviar"
+  "feedbackDialog.submit" : {
+    "message" : "Enviar"
   },
-  "internal.employeesOnly": {
-    "message": "Este contenido solo está disponible para empleados de Guidewire"
+  "internal.employeesOnly" : {
+    "message" : "Este contenido solo está disponible para empleados de Guidewire"
   },
-  "internal.info.toView": {
-    "message": "Para ver esta página, tiene que iniciar sesión con su cuenta de empleado de Guidewire. Si necesita más ayuda, póngase en contacto con su representante de Guidewire."
+  "internal.info.toView" : {
+    "message" : "Para ver esta página, tiene que iniciar sesión con su cuenta de empleado de Guidewire. Si necesita más ayuda, póngase en contacto con su representante de Guidewire."
   },
-  "internal.label": {
-    "message": "Este contenido es interno y solo está disponible para empleados de Guidewire."
+  "internal.label" : {
+    "message" : "Este contenido es interno y solo está disponible para empleados de Guidewire."
   },
-  "loginButton.out": {
-    "message": "Cerrar sesión"
+  "loginButton.out" : {
+    "message" : "Cerrar sesión"
   },
-  "loginButton.in": {
-    "message": "Iniciar sesión"
+  "loginButton.in" : {
+    "message" : "Iniciar sesión"
   },
-  "loginDrawer.go": {
-    "message": "Ir a la página de inicio de sesión"
+  "loginDrawer.go" : {
+    "message" : "Ir a la página de inicio de sesión"
   },
-  "transcriptDownloadLink.label": {
-    "message": "Descargar la transcripción"
+  "transcriptDownloadLink.label" : {
+    "message" : "Descargar la transcripción"
   },
-  "theme.common.skipToMainContent": {
-    "message": "Saltar al contenido principal"
+  "theme.common.skipToMainContent" : {
+    "message" : "Saltar al contenido principal"
   },
-  "theme.tags.tagsPageTitle": {
-    "message": "Etiquetas"
+  "theme.tags.tagsPageTitle" : {
+    "message" : "Etiquetas"
   },
-  "gwSearchForm.placeholder": {
-    "message": "Buscar"
+  "gwSearchForm.placeholder" : {
+    "message" : "Buscar"
   },
-  "miniToc.heading": {
-    "message": "En esta página"
+  "miniToc.heading" : {
+    "message" : "En esta página"
   },
-  "collapsible.title": {
-    "message": "Expandir"
+  "collapsible.title" : {
+    "message" : "Expandir"
   },
-  "footer.published": {
-    "message": "Publicado:"
+  "footer.published" : {
+    "message" : "Publicado:"
   },
-  "nav.scrollToTop": {
-    "message": "Desplazarse hacia arriba"
+  "nav.scrollToTop" : {
+    "message" : "Desplazarse hacia arriba"
   },
-  "navbar.nextTopic": {
-    "message": "Siguiente tema"
+  "navbar.nextTopic" : {
+    "message" : "Siguiente tema"
   },
-  "navbar.prevTopic": {
-    "message": "Tema anterior"
+  "navbar.prevTopic" : {
+    "message" : "Tema anterior"
   },
-  "navbar.noNextOrPrevTopic": {
-    "message": "Ninguno"
+  "navbar.noNextOrPrevTopic" : {
+    "message" : "Ninguno"
   },
-  "navbar.printThisPage": {
-    "message": "Imprimir esta página"
+  "navbar.printThisPage" : {
+    "message" : "Imprimir esta página"
   },
-  "chat.default-title": {
-    "message": "Hablemos"
+  "chat.default-title" : {
+    "message" : "Hablemos"
   },
-  "chat.send": {
-    "message": "Enviar"
+  "chat.send" : {
+    "message" : "Enviar"
   },
-  "chat.answer": {
-    "message": "Respuesta"
+  "chat.answer" : {
+    "message" : "Respuesta"
   },
-  "chat.sources": {
-    "message": "Fuentes"
+  "chat.sources" : {
+    "message" : "Fuentes"
   },
-  "chat.filters": {
-    "message": "Filtros"
+  "chat.filters" : {
+    "message" : "Filtros"
   },
-  "chat.saveAndClose": {
-    "message": "Guardar y cerrar"
+  "chat.saveAndClose" : {
+    "message" : "Guardar y cerrar"
   },
-  "chat.notOptedIn": {
-    "message": "No has aceptado recibir mensajes del chatbot."
+  "chat.notOptedIn" : {
+    "message" : "No has aceptado recibir mensajes del chatbot."
   },
-  "chat.allow": {
-    "message": "Permitir que el chatbot de IA responda a las preguntas"
+  "chat.allow" : {
+    "message" : "Permitir que el chatbot de IA responda a las preguntas"
   },
-  "chat.allow.learnMore": {
-    "message": "Lea los términos y condiciones"
+  "chat.allow.learnMore" : {
+    "message" : "Lea los términos y condiciones"
   },
-  "chat.termsAndConditions.title": {
-    "message": "Términos y condiciones de uso del chat"
+  "chat.termsAndConditions.title" : {
+    "message" : "Términos y condiciones de uso del chat"
   },
-  "chat.termsAndConditions.close": {
-    "message": "Cierre los términos y condiciones"
+  "chat.termsAndConditions.close" : {
+    "message" : "Cierre los términos y condiciones"
   },
-  "chatbot.feedback.thumbsUp": {
-    "message": "La respuesta de este chatbot está muy bien"
+  "chatbot.feedback.thumbsUp" : {
+    "message" : "La respuesta de este chatbot está muy bien"
   },
-  "chatbot.feedback.thumbsDown": {
-    "message": "La respuesta de este chatbot necesita mejorar"
+  "chatbot.feedback.thumbsDown" : {
+    "message" : "La respuesta de este chatbot necesita mejorar"
   },
-  "chatbot.feedback.dialog.title": {
-    "message": "¿Le gustaría dejar un comentario?"
+  "chatbot.feedback.dialog.title" : {
+    "message" : "¿Le gustaría dejar un comentario?"
   },
-  "chatbot.feedback.dialog.send": {
-    "message": "Enviar"
+  "chatbot.feedback.dialog.send" : {
+    "message" : "Enviar"
   },
-  "chatbot.feedback.dialog.cancel": {
-    "message": "Cancelar"
+  "chatbot.feedback.dialog.cancel" : {
+    "message" : "Cancelar"
   },
-  "login.gwEmployeeHint": {
-    "message": "¿Empleado Guidewire? Inicie sesión utilizando la opción Guidewire Cloud más arriba."
+  "login.gwEmployeeHint" : {
+    "message" : "¿Empleado Guidewire? Inicie sesión utilizando la opción Guidewire Cloud más arriba."
   },
-  "consent.ai": {
-    "message": "Permitir IA"
+  "consent.ai" : {
+    "message" : "Permitir IA"
   },
-  "avatar.iconButton": {
-    "message": "Expandir el menú de usuario"
+  "avatar.iconButton" : {
+    "message" : "Expandir el menú de usuario"
   },
-  "search.filter.menu.entiresite.tooltip": {
-    "message": "Buscar en todo el sitio sin filtros"
+  "search.filter.menu.entiresite.tooltip" : {
+    "message" : "Buscar en todo el sitio sin filtros"
   },
-  "search.filter.menu.entiresite.label": {
-    "message": "Todo el sitio"
+  "search.filter.menu.entiresite.label" : {
+    "message" : "Todo el sitio"
   },
-  "search.filter.menu.product.tooltip": {
-    "message": "Buscar en los productos de esta página:"
+  "search.filter.menu.product.tooltip" : {
+    "message" : "Buscar en los productos de esta página:"
   },
-  "search.filter.menu.product.label": {
-    "message": "Este producto"
+  "search.filter.menu.product.label" : {
+    "message" : "Este producto"
   },
-  "search.filter.menu.release.tooltip": {
-    "message": "Buscar en todos los productos de esta versión:"
+  "search.filter.menu.release.tooltip" : {
+    "message" : "Buscar en todos los productos de esta versión:"
   },
-  "search.filter.menu.release.label": {
-    "message": "Esta versión"
+  "search.filter.menu.release.label" : {
+    "message" : "Esta versión"
   },
-  "search.filter.menu.showfilters.label.closed": {
-    "message": "Mostrar filtros"
+  "search.filter.menu.showfilters.label.closed" : {
+    "message" : "Mostrar filtros"
   },
-  "search.filter.menu.showfilters.label.expanded": {
-    "message": "Ocultar filtros"
+  "search.filter.menu.showfilters.label.expanded" : {
+    "message" : "Ocultar filtros"
   },
-  "search.filter.menu.showfilters.tooltip.closed": {
-    "message": "Mostrar filtros seleccionados y añadir o eliminar más filtros"
+  "search.filter.menu.showfilters.tooltip.closed" : {
+    "message" : "Mostrar filtros seleccionados y añadir o eliminar más filtros"
   },
-  "search.filter.menu.showfilters.tooltip.expanded": {
-    "message": "Sus selecciones de filtro se aplicarán cuando introduzca una consulta de búsqueda"
+  "search.filter.menu.showfilters.tooltip.expanded" : {
+    "message" : "Sus selecciones de filtro se aplicarán cuando introduzca una consulta de búsqueda"
   },
-  "search.filter.menu.thisdoc.tooltip": {
-    "message": "Buscar en este documento:"
+  "search.filter.menu.thisdoc.tooltip" : {
+    "message" : "Buscar en este documento:"
   },
-  "search.filter.menu.thisdoc.label": {
-    "message": "Este documento"
+  "search.filter.menu.thisdoc.label" : {
+    "message" : "Este documento"
   },
-  "search.filter.menu.button": {
-    "message": "Filtrar"
+  "search.filter.menu.button" : {
+    "message" : "Filtrar"
   },
-  "search.filter.menu.language": {
-    "message": "Idioma"
+  "search.filter.menu.language" : {
+    "message" : "Idioma"
   },
-  "search.filter.menu.product": {
-    "message": "Producto"
+  "search.filter.menu.product" : {
+    "message" : "Producto"
   },
-  "search.filter.menu.release": {
-    "message": "Versión"
+  "search.filter.menu.release" : {
+    "message" : "Versión"
   },
-  "search.filter.menu.subject": {
-    "message": "Asunto"
+  "search.filter.menu.subject" : {
+    "message" : "Asunto"
+  },
+  "restricted.page.info" : {
+    "message" : "Debe iniciar sesión para ver esta página."
+  },
+  "restricted.page.action" : {
+    "message" : "Haga clic aquí para iniciar sesión."
   }
 }
