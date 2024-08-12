@@ -99,7 +99,10 @@ export function FeedbackDialog({
           URL: url,
           'Feedback type': positive ? 'Kudos' : 'Critique',
           Comment: comment,
-          'Reported by': email.length > 0 && !anonymous ? email : 'anonymous',
+          'Reported by':
+            email.length > 0 && !anonymous
+              ? `${email} (${email.replace('@', ' at ')})`
+              : 'anonymous',
           'Possible contacts': possibleContacts,
         },
         feedbackType: positive ? 'positive' : 'negative',
