@@ -26,9 +26,6 @@ export const allSelectors = {
     { label: 'Las Leñas (2024.11)', pagePath: 'testingFramework/laslenas' },
   ],
   s0f196c0b55cf55f2cdd1e05b1bf5e94e: [
-    { label: 'Cortina', pagePath: 'apiReferences/cortina' },
-    { label: 'Dobson', pagePath: 'apiReferences/dobson' },
-    { label: 'Elysian', pagePath: 'apiReferences/elysian' },
     { label: 'Flaine', pagePath: 'apiReferences/flaine' },
     { label: 'Garmisch', pagePath: 'apiReferences/garmisch' },
     { label: 'Hakuba', pagePath: 'apiReferences/hakuba' },
@@ -62,20 +59,6 @@ export const allSelectors = {
       pagePath: 'cloudProducts/kufri/bc',
     },
   ],
-  sb1572a4ac17ba705fdfb0f9ebe00d8e1: [
-    {
-      label: 'BillingCenter Cloud',
-      pagePath: 'cloudProducts/cortina/billingCenterCloud',
-    },
-    {
-      label: 'ClaimCenter Cloud',
-      pagePath: 'cloudProducts/cortina/claimCenterCloud',
-    },
-    {
-      label: 'PolicyCenter Cloud',
-      pagePath: 'cloudProducts/cortina/policyCenterCloud',
-    },
-  ],
   seab31eee2944c2607a774b9dd9cda0ad: [
     {
       label: 'Flaine (2022.09)',
@@ -100,16 +83,6 @@ export const allSelectors = {
     {
       label: 'Kufri (2024.07)',
       pagePath: 'cloudProducts/kufri/cc',
-    },
-  ],
-  sb8b6bf6e1344485406813caca67c4038: [
-    {
-      label: 'DataHub for Guidewire Cloud 2021.04',
-      pagePath: 'cloudProducts/cortina/dhGwCloud/2021.04',
-    },
-    {
-      label: 'InfoCenter for Guidewire Cloud 2021.04',
-      pagePath: 'cloudProducts/cortina/icGwCloud/2021.04',
     },
   ],
   sb372c5e3c1cec5d40289c85a78eaef30: [
@@ -195,26 +168,6 @@ export const allSelectors = {
     {
       label: 'Kufri (2024.07)',
       pagePath: 'cloudProducts/kufri/pc',
-    },
-  ],
-  se7d12fdd8fa65284de1403b37a585252: [
-    {
-      label: 'DataHub for Guidewire Cloud 2021.11',
-      pagePath: 'cloudProducts/dobson/dhGwCloud/2021.11',
-    },
-    {
-      label: 'InfoCenter for Guidewire Cloud 2021.11',
-      pagePath: 'cloudProducts/dobson/icGwCloud/2021.11',
-    },
-  ],
-  s4858c06c81117f2dc4e39f487f8c532f: [
-    {
-      label: 'DataHub for Guidewire Cloud 2022.05',
-      pagePath: 'cloudProducts/elysian/dhGwCloud/2022.05',
-    },
-    {
-      label: 'InfoCenter for Guidewire Cloud 2022.05',
-      pagePath: 'cloudProducts/elysian/icGwCloud/2022.05',
     },
   ],
   sfed7994657143200653022090cd6c022: [
