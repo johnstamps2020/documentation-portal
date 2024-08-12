@@ -29,7 +29,7 @@ function getLabelFromVersionObject(
   versionObject: VersionSelectorProps
 ): string {
   if (versionObject.releases?.length > 0) {
-    return `${versionObject.versions} (${versionObject.releases})`;
+    return `${versionObject.releases} (${versionObject.versions})`;
   }
 
   return versionObject.label;
