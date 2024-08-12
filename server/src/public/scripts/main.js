@@ -100,28 +100,8 @@ function setSearchFilterCSS() {
   }
 }
 
-function addElysianNotice() {
-  if (
-    window.location.pathname != '/cloudProducts/elysian' &&
-    window.location.pathname != '/cloudProducts/elysian/'
-  ) {
-    return;
-  }
-  const content = document.querySelector('.content');
-  const link = document.createElement('a');
-  link.classList.add('notice', 'cardShadow');
-  link.textContent = "What's new in Elysian";
-  link.setAttribute('href', '/cloudProducts/elysian/whatsnew');
-  content.prepend(link);
-}
-
-function addNotices() {
-  addElysianNotice();
-}
-
 window.onload = async function () {
   addReleaseBadge();
-  addNotices();
   setSearchFilterCSS();
   await setMetadata();
 };

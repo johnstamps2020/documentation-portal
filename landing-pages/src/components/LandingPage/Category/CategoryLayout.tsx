@@ -106,28 +106,6 @@ export default function CategoryLayout({
               />
             )}
           </Stack>
-          {pageData.path.includes('cloudProducts/elysian') && (
-            <Link
-              component={RouterLink}
-              to="/cloudProducts/elysian/whatsnew"
-              sx={{
-                fontSize: '1.2rem',
-                fontWeight: 600,
-              }}
-            >
-              <Paper
-                sx={{
-                  maxWidth: { md: '932px', sm: '100%' },
-                  marginTop: '32px',
-                  padding: '16px',
-                  textAlign: 'center',
-                  color: 'hsl(196, 100%, 31%);',
-                }}
-              >
-                What's new in Elysian
-              </Paper>
-            </Link>
-          )}
         </Grid>
         <Grid container maxWidth="1330px" width="100%" gap={6}>
           <Grid
