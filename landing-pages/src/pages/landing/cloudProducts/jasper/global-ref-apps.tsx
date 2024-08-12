@@ -22,6 +22,10 @@ const pageConfig: CategoryLayoutProps = {
       label: 'Australia',
       items: [
         {
+          label: 'Getting Started with InsuranceSuite Package for Australia',
+          docId: 'ipajaspergetstarted',
+        },
+        {
           label: 'Release Notes',
           docId: 'ipajasperrn',
         },
@@ -32,10 +36,6 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Configuration',
           docId: 'ipajasperconfig',
-        },
-        {
-          label: 'Installation',
-          docId: 'ipajasperinstall',
         },
         {
           label: 'Upgrade',
