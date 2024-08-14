@@ -64,27 +64,27 @@ const pageConfig: CategoryLayoutProps = {
     //     },
     //   ],
     // },
-    // {
-    //   label: 'London Market',
-    //   items: [
-    //     {
-    //       label: 'Release Notes',
-    //       docId: 'londonkufrirn',
-    //     },
-    //     {
-    //       label: 'ClaimCenter for London Market Application Guide',
-    //       docId: 'londonkufriccapp',
-    //     },
-    //     {
-    //       label: 'PolicyCenter for London Market Application Guide',
-    //       docId: 'londonkufripcapp',
-    //     },
-    //     {
-    //       label: 'Configuration',
-    //       docId: 'londonkufriconfig',
-    //     },
-    //   ],
-    // },
+    {
+      label: 'London Market',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'londonkufrirn',
+        },
+        {
+          label: 'ClaimCenter for London Market Application Guide',
+          docId: 'londonkufriccapp',
+        },
+        {
+          label: 'PolicyCenter for London Market Application Guide',
+          docId: 'londonkufripcapp',
+        },
+        {
+          label: 'Configuration',
+          docId: 'londonkufriconfig',
+        },
+      ],
+    },
     {
       label: 'US Standards-based Template Framework',
       items: [
