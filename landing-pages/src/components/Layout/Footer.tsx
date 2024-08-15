@@ -1,6 +1,8 @@
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
+import kufriBadge from 'images/badge-kufri.svg';
+import jasperBadge from 'images/badge-jasper.svg';
 import innsbruckBadge from 'images/badge-innsbruck.svg';
 import hakubaBadge from 'images/badge-hakuba.svg';
 import garmischBadge from 'images/badge-garmisch.svg';
@@ -12,6 +14,7 @@ import banffBadge from 'images/badge-banff.svg';
 import aspenBadge from 'images/badge-aspen.svg';
 import { FooterText } from './StyledLayoutComponents';
 import { useTheme } from '@mui/material/styles';
+import { translate } from '@doctools/components';
 
 export const footerHeight = '55px';
 
@@ -22,32 +25,71 @@ export default function Footer({ path }: FooterProps) {
   const theme = useTheme();
   const releaseInfo = { label: '', badge: '' };
 
-  if (path?.includes('innsbruck')) {
-    releaseInfo.label = 'Innsbruck Release';
+  if (path?.includes('kufri')) {
+    releaseInfo.label = translate({
+      id: 'footer.release.label.kufri',
+      message: 'Kufri Release',
+    });
+    releaseInfo.badge = kufriBadge;
+  } else if (path?.includes('jasper')) {
+    releaseInfo.label = translate({
+      id: 'footer.release.label.jasper',
+      message: 'Jasper Release',
+    });
+    releaseInfo.badge = jasperBadge;
+  } else if (path?.includes('innsbruck')) {
+    releaseInfo.label = translate({
+      id: 'footer.release.label.innsbruck',
+      message: 'Innsbruck Release',
+    });
     releaseInfo.badge = innsbruckBadge;
   } else if (path?.includes('hakuba')) {
-    releaseInfo.label = 'Hakuba Release';
+    releaseInfo.label = translate({
+      id: 'footer.release.label.hakuba',
+      message: 'Hakuba Release',
+    });
     releaseInfo.badge = hakubaBadge;
   } else if (path?.includes('garmisch')) {
-    releaseInfo.label = 'Garmisch Release';
+    releaseInfo.label = translate({
+      id: 'footer.release.label.garmisch',
+      message: 'Garmisch Release',
+    });
     releaseInfo.badge = garmischBadge;
   } else if (path?.includes('flaine')) {
-    releaseInfo.label = 'Flaine Release';
+    releaseInfo.label = translate({
+      id: 'footer.release.label.flaine',
+      message: 'Flaine Release',
+    });
     releaseInfo.badge = flaineBadge;
   } else if (path?.includes('elysian')) {
-    releaseInfo.label = 'Elysian Release';
+    releaseInfo.label = translate({
+      id: 'footer.release.label.elysian',
+      message: 'Elysian Release',
+    });
     releaseInfo.badge = elysianBadge;
   } else if (path?.includes('dobson')) {
-    releaseInfo.label = 'Dobson Release';
+    releaseInfo.label = translate({
+      id: 'footer.release.label.dobson',
+      message: 'Dobson Release',
+    });
     releaseInfo.badge = dobsonBadge;
   } else if (path?.includes('cortina')) {
-    releaseInfo.label = 'Cortina Release';
+    releaseInfo.label = translate({
+      id: 'footer.release.label.cortina',
+      message: 'Cortina Release',
+    });
     releaseInfo.badge = cortinaBadge;
   } else if (path?.includes('banff')) {
-    releaseInfo.label = 'Banff Release';
+    releaseInfo.label = translate({
+      id: 'footer.release.label.banff',
+      message: 'Banff Release',
+    });
     releaseInfo.badge = banffBadge;
   } else if (path?.includes('aspen')) {
-    releaseInfo.label = 'Aspen Release';
+    releaseInfo.label = translate({
+      id: 'footer.release.label.aspen',
+      message: 'Aspen Release',
+    });
     releaseInfo.badge = aspenBadge;
   }
 
