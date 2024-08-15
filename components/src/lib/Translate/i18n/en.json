@@ -86,6 +86,54 @@
     "message": "Submit",
     "description": "Send your feedback, submit your feedback to us"
   },
+  "footer.release.label.laslenas": {
+    "message": "Las Leñas Release",
+    "description": "Label next to release badge image in footer for release Las Leñas"
+  },
+  "footer.release.label.kufri": {
+    "message": "Kufri Release",
+    "description": "Label next to release badge image in footer for release Kufri"
+  },
+  "footer.release.label.jasper": {
+    "message": "Jasper Release",
+    "description": "Label next to release badge image in footer for release Jasper"
+  },
+  "footer.release.label.innsbruck": {
+    "message": "Innsbruck Release",
+    "description": "Label next to release badge image in footer for release Innsbruck"
+  },
+  "footer.release.label.hakuba": {
+    "message": "Hakuba Release",
+    "description": "Label next to release badge image in footer for release Hakuba"
+  },
+  "footer.release.label.garmisch": {
+    "message": "Garmisch Release",
+    "description": "Label next to release badge image in footer for release Garmisch"
+  },
+  "footer.release.label.flaine": {
+    "message": "Flaine Release",
+    "description": "Label next to release badge image in footer for release Flaine"
+  },
+  "footer.release.label.elysian": {
+    "message": "Elysian Release",
+    "description": "Label next to release badge image in footer for release Elysian"
+  },
+  "footer.release.label.dobson": {
+    "message": "Dobson Release",
+    "description": "Label next to release badge image in footer for release Dobson"
+  },
+  "footer.release.label.cortina": {
+    "message": "Cortina Release",
+    "description": "Label next to release badge image in footer for release Cortina"
+  },
+  "footer.release.label.banff": {
+    "message": "Banff Release",
+    "description": "Label next to release badge image in footer for release Banff"
+  },
+  "footer.release.label.aspen": {
+    "message": "Aspen Release",
+    "description": "Label next to release badge image in footer for release Aspen"
+  },
   "internal.employeesOnly": {
     "message": "This content is available to Guidewire employees only"
   },
