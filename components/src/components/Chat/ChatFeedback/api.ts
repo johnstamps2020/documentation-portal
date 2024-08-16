@@ -22,6 +22,7 @@ export async function postNewComment(
   chatbotRequest: ChatbotRequest,
   chatbotMessage: ChatbotMessage,
   reaction: ChatbotComment['user']['reaction'],
+  conversationId: ChatbotComment['conversationId'],
   userEmail?: string
 ): Promise<{
   postedComment: ChatbotComment | undefined;
@@ -39,6 +40,7 @@ export async function postNewComment(
         date: currentMillisecondsFromEpoch,
       },
       id,
+      conversationId,
       status: 'active',
       user: {
         reaction,

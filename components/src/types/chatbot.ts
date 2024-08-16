@@ -45,6 +45,7 @@ export type ChatbotMessage = {
 
 export type ChatbotComment = {
   id: string;
+  conversationId: string;
   status: 'active' | 'archived';
   context: {
     chatbotRequest: ChatbotRequest;

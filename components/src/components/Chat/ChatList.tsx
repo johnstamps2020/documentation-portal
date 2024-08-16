@@ -4,6 +4,7 @@ import React from 'react';
 import { useChat } from './ChatContext';
 import { ChatInputBox } from './ChatInputBox';
 import { ChatMessage } from './ChatMessage';
+import { ChatReset } from './ChatReset';
 
 export function ChatList() {
   const { items } = useChat();
@@ -32,6 +33,15 @@ export function ChatList() {
         }}
       >
         <ChatInputBox />
+      </Box>
+      <Box
+        sx={{
+          pb: 4,
+          marginLeft: 'auto',
+          width: 'fit-content',
+        }}
+      >
+        <ChatReset />
       </Box>
     </>
   );
