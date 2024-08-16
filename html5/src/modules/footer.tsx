@@ -22,7 +22,11 @@ export function addFooterContents(isOffline: boolean) {
     id: 'footer.legal.linktext',
     message: 'Legal and support information',
   });
-  const footerTemplate = `<div>
+  const footerLeftTemplate = `<div class="footerCopyright">
+  Copyright ©${new Date().getFullYear()}
+  Guidewire Software, Inc.
+</div>`;
+  const footerRightTemplate = `<div>
         <div class="footerLinks">
             <span class="footerLink">
                 <a href="${
@@ -32,14 +36,12 @@ export function addFooterContents(isOffline: boolean) {
   }>${footerLegalText}</a>
             </span>
         </div>
-        <div class="footerCopyright">
-            Copyright ©${new Date().getFullYear()}
-            Guidewire Software, Inc.
-        </div>
     </div>`;
 
+  const footerLeft = document.getElementById('footerLeft');
+  footerLeft.innerHTML = footerLeftTemplate;
   const footerRight = document.getElementById('footerRight');
-  footerRight.innerHTML = footerTemplate;
+  footerRight.innerHTML = footerRightTemplate;
 
   const footerCenter = document.getElementById('footerCenter');
   const pubDate = footerCenter.innerText.match(/Published: (.*)/)[1];
