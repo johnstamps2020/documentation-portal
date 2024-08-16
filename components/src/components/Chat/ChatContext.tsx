@@ -26,6 +26,10 @@ export interface ChatInterface {
   getFilterValues: (name: FilterName) => string[];
   filterCount: number;
   userInfo: UserInfo;
+  conversationMeta: {
+    id: string;
+  };
+  startNewConversation: () => void;
 }
 
 export const ChatContext = createContext<ChatInterface | null>(null);
@@ -37,6 +41,10 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
     language: 'en',
   };
 
+  const defaultMeta = {
+    id: `${userInfo.id}-${new Date().getTime()}`,
+  };
+
   if (!userInfo.isLoggedIn) {
     defaultFilters['public'] = 'true';
   }
@@ -45,6 +53,8 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
   const [items, setItems] = useState<ChatInterface['items']>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [filterCount, setFilterCount] = useState(0);
+  const [conversationMeta, setConversationMeta] =
+    useState<ChatInterface['conversationMeta']>(defaultMeta);
   const [filters, setFilters] =
     useState<ChatInterface['filters']>(defaultFilters);
 
@@ -67,6 +77,11 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
       setFilterCount(numberOfFilters);
     }
   }, [filters]);
+
+  function startNewConversation() {
+    setItems([]);
+    setConversationMeta(defaultMeta);
+  }
 
   const updateFilters: ChatInterface['updateFilters'] = (name, value) => {
     setFilters((currentFilters) => {
@@ -95,10 +110,27 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
     const startTime = new Date().getTime();
     setIsProcessing(true);
 
+    const conversation_history = items
+      .map(({ chatRequest, chatResponse }) => {
+        const question = chatRequest.query;
+        const answer = chatResponse.message;
+
+        if (!question || !answer) {
+          return undefined;
+        }
+
+        return {
+          question,
+          answer,
+        };
+      })
+      .filter((item) => item !== undefined);
+
     const chatbotRequest: ChatbotRequest = {
       query: userPrompt,
       opt_in: aiConsented,
       ...filters,
+      conversation_history,
     };
 
     setItems((prevItems) => [
@@ -140,6 +172,7 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
         chatbotRequest,
         chatbotMessage,
         'unset',
+        conversationMeta.id,
         userInfo.hasGuidewireEmail
           ? userInfo.email
           : 'not an employee, email not stored'
@@ -168,6 +201,8 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
         getFilterValues,
         filterCount,
         userInfo,
+        conversationMeta,
+        startNewConversation,
       }}
     >
       {children}
