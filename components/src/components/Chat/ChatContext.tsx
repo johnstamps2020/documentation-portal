@@ -95,10 +95,27 @@ export function ChatProvider({ children, userInfo }: ChatProviderProps) {
     const startTime = new Date().getTime();
     setIsProcessing(true);
 
+    const conversation_history = items
+      .map(({ chatRequest, chatResponse }) => {
+        const question = chatRequest.query;
+        const answer = chatResponse.message;
+
+        if (!question || !answer) {
+          return undefined;
+        }
+
+        return {
+          question,
+          answer,
+        };
+      })
+      .filter((item) => item !== undefined);
+
     const chatbotRequest: ChatbotRequest = {
       query: userPrompt,
       opt_in: aiConsented,
       ...filters,
+      conversation_history,
     };
 
     setItems((prevItems) => [

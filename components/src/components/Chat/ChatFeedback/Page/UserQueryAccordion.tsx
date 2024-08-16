@@ -11,6 +11,7 @@ type UserQueryAccordionProps = ChatbotComment['context']['chatbotRequest'];
 export function UserQueryAccordion({
   query,
   opt_in,
+  conversation_history,
   ...filters
 }: UserQueryAccordionProps) {
   const filtersToDisplay = Object.entries(filters).filter(

@@ -21,12 +21,20 @@ export type ChatbotFilters = {
   public?: string;
 };
 
+export type ChatbotConversationHistory = {
+  conversation_history: {
+    question: string;
+    answer: string;
+  }[];
+};
+
 export type FilterName = keyof ChatbotFilters;
 
-export type ChatbotRequest = ChatbotFilters & {
-  query: string;
-  opt_in: boolean;
-};
+export type ChatbotRequest = ChatbotFilters &
+  ChatbotConversationHistory & {
+    query: string;
+    opt_in: boolean;
+  };
 
 export type ChatbotMessage = {
   message: string | undefined;
