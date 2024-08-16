@@ -3,13 +3,15 @@ footer {
   height: var(--footer-height);
   background-color: var(--clr-GW-HEADER-FOOTER-BKG);
   color: white;
-  padding: 16px 32px;
-  font-size: 0.9rem;
+  padding: 0px 30px;
+  font-size: 0.6875rem;
+  font-weight: 600;
   z-index: 2;
 }
 
 .footerContents {
   display: flex;
+  margin-block-start: 22px;
 }
 
 #footerLeft {
@@ -34,11 +36,9 @@ footer {
 }
 
 footer a {
+  color: white;
   display: block;
-  font-size: 0.875rem;
-  color: hsl(0, 0%, 100%);
-  font-weight: 600;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 footer a:hover {

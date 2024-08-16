@@ -1,4 +1,4 @@
-import { Translate } from '@doctools/components';
+import { Translate, translate } from '@doctools/components';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import '../stylesheets/modules/footer.css';
@@ -18,6 +18,10 @@ function FooterPublicationDate({
 }
 
 export function addFooterContents(isOffline: boolean) {
+  const footerLegalText = translate({
+    id: 'footer.legal.linktext',
+    message: 'Legal and support information',
+  });
   const footerTemplate = `<div>
         <div class="footerLinks">
             <span class="footerLink">
@@ -25,7 +29,7 @@ export function addFooterContents(isOffline: boolean) {
                   isOffline ? 'https://docs.guidewire.com' : ''
                 }/support" ${
     isOffline ? 'target="__blank" rel="noopener noreferrer"' : ''
-  }>Legal and Support Information</a>
+  }>${footerLegalText}</a>
             </span>
         </div>
         <div class="footerCopyright">
