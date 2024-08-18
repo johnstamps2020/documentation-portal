@@ -107,6 +107,9 @@
   "collapsible.title" : {
     "message" : "[3YZ9CJ_Expand]"
   },
+  "footer.legal.linktext" : {
+    "message" : "[3J0CPM_Legal and support information]"
+  },
   "footer.published" : {
     "message" : "[4kq2Io_Published:]"
   },
