@@ -13,8 +13,6 @@
 .teamcity/target
 .teamcity/config/**
 !.teamcity/config/README.md
-.teamcity/archive
-.teamcity/config/config-schema.json
 
 ### Local dev env
 .dev/volumes/**
@@ -134,8 +132,6 @@ fabric.properties
 # Edit at https://www.gitignore.io/?templates=python
 
 # End of https://www.gitignore.io/api/python
-server/config-schema.json
-
 build
 
 venv/
