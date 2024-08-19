@@ -43,27 +43,27 @@ const pageConfig: CategoryLayoutProps = {
         },
       ],
     },
-    // {
-    //   label: 'Japan',
-    //   items: [
-    //     {
-    //       label: 'Release Notes',
-    //       docId: 'ipjkufrirn',
-    //     },
-    //     {
-    //       label: 'Application Guide',
-    //       docId: 'ipjkufriapp',
-    //     },
-    //     {
-    //       label: 'Configuration',
-    //       docId: 'ipjkufriconfig',
-    //     },
-    //     {
-    //       label: 'Installation',
-    //       docId: 'ipjkufriinstall',
-    //     },
-    //   ],
-    // },
+    {
+      label: 'Japan',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'ipjkufrirn',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'ipjkufriapp',
+        },
+        {
+          label: 'Configuration',
+          docId: 'ipjkufriconfig',
+        },
+        {
+          label: 'Installation',
+          docId: 'ipjkufriinstall',
+        },
+      ],
+    },
     {
       label: 'London Market',
       items: [
