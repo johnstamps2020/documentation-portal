@@ -95,7 +95,10 @@ async function getPlatformBreadcrumb() {
       if (latestPageReleases.length === 1) {
         return {
           text: latestPageReleases[0],
-          href: `/cloudProducts/${latestPageReleases[0].toLowerCase()}`,
+          href: `/cloudProducts/${latestPageReleases[0]
+            .toLowerCase()
+            .replace(' ', '')
+            .replace('ñ', 'n')}`,
         };
       }
       if (platform.includes('Self-managed')) {
@@ -109,7 +112,10 @@ async function getPlatformBreadcrumb() {
     if (release.length === 1) {
       return {
         text: release[0],
-        href: `/cloudProducts/${release[0].toLowerCase()}`,
+        href: `/cloudProducts/${release[0]
+          .toLowerCase()
+          .replace(' ', '')
+          .replace('ñ', 'n')}`,
       };
     }
   }
@@ -445,6 +451,7 @@ function addScrollToTop() {
     const matchingMiniTocLink = miniToc.querySelector(
       `[href='${href}'], .miniTocLink`
     );
+
     matchingMiniTocLink.classList.add('current');
 
     if (!prefersReducedMotion || prefersReducedMotion.matches) {
