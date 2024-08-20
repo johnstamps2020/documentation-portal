@@ -63,12 +63,12 @@ CONFIG_DB_NAME=postgres
 CONFIG_DB_USERNAME=postgres
 CONFIG_DB_PASSWORD=testtesttest
 CONFIG_DB_HOST=0.0.0.0
-PARTNERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect
+PARTNERS_LOGIN_URL=https://guidewire--qaint.sandbox.my.site.com/partner/idp/endpoint/HttpRedirect
 PARTNERS_LOGIN_CERT=
-PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/partners-login
-CUSTOMERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect
+PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.dev.ccs.guidewire.net/partners-login
+CUSTOMERS_LOGIN_URL=https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect
 CUSTOMERS_LOGIN_CERT=
-CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
+CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.dev.ccs.guidewire.net/customers-login
 
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
