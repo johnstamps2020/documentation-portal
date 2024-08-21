@@ -86,6 +86,10 @@
     "message": "Submit",
     "description": "Send your feedback, submit your feedback to us"
   },
+  "internal.page.badge.tooltip": {
+    "message": "This page is available only to people with a Guidewire email. Do not share the link with external stakeholders because they will not be able to see the contents.",
+    "description": "Text for tooltip that appears for Guidewire employees when viewing an internal-only page."
+  },
   "internal.employeesOnly": {
     "message": "This content is available to Guidewire employees only"
   },
