@@ -416,7 +416,6 @@ function addScrollToTop() {
       scrollToTopButton.classList.remove('visible');
     }
 
-    // update miniToc to highlight current section and keep in view
     const hashLinks = document.querySelectorAll('.hashLink');
     if (
       hashLinks.length < 1 ||
@@ -424,21 +423,14 @@ function addScrollToTop() {
     ) {
       return;
     }
-    const miniToc = document.querySelector('nav.miniToc');
-    if (!miniToc) {
-      return;
-    }
     const links = Array.from(hashLinks);
-    console.log('hashLinks: ' + JSON.stringify(hashLinks));
 
-    console.log('links: ' + links);
     let closestToTop = links.reduce((prev, curr) => {
       return Math.abs(prev.getBoundingClientRect().top) <
         Math.abs(curr.getBoundingClientRect().top)
         ? prev
         : curr;
     });
-    console.log('closestToTop: ' + closestToTop);
 
     if (
       closestToTop.getBoundingClientRect().top >
@@ -448,37 +440,38 @@ function addScrollToTop() {
       closestToTop = links[links.indexOf(closestToTop) - 1];
     }
     const href = closestToTop.getAttribute('href');
-    console.log('href: ' + href);
+
+    const miniToc = document.querySelector('nav.miniToc');
+    if (!miniToc) {
+      return;
+    }
     const prevMiniTocLink = miniToc.querySelector('.miniTocLink.current');
     if (prevMiniTocLink) {
       prevMiniTocLink.classList.remove('current');
     }
-    console.log('prevMiniTocLink: ' + prevMiniTocLink);
     const matchingMiniTocLink = miniToc.querySelector(
-      `[href='${href}'], .miniTocLink`
+      `a.miniTocLink[href='${href}']`
     );
-    console.log('matchingMiniTocLink: ' + matchingMiniTocLink);
-
     matchingMiniTocLink.classList.add('current');
 
-    // if (!prefersReducedMotion || prefersReducedMotion.matches) {
-    //   matchingMiniTocLink.scrollIntoView({
-    //     behavior: 'auto',
-    //     block: 'nearest',
-    //     inline: 'start',
-    //   });
-    // } else {
-    //   matchingMiniTocLink.scrollIntoView({
-    //     behavior: 'smooth',
-    //     block: 'nearest',
-    //     inline: 'start',
-    //   });
-    // }
+    if (!prefersReducedMotion || prefersReducedMotion.matches) {
+      matchingMiniTocLink.scrollIntoView({
+        behavior: 'auto',
+        block: 'nearest',
+        inline: 'start',
+      });
+    } else {
+      matchingMiniTocLink.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start',
+      });
+    }
   }
 
   function debounce<F extends (...params: any[]) => void>(
     fn: F,
-    delay: number = 1000
+    delay: number = 200
   ) {
     let timeoutID: number = null;
     return function (this: any, ...args: any[]) {
