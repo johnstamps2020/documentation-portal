@@ -39,7 +39,7 @@
   --estimated-header-height: 68px;
   --login-page-hero-graphic-height: 400px;
   --body-height: calc(100vh - var(--estimated-header-height));
-  --footer-height: 74px;
+  --footer-height: 55px;
   --items-width: 950px;
   --sidebar-width: 350px;
   --search-filter-width: 300px;
