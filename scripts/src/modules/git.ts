@@ -7,13 +7,22 @@ export async function cloneRepositoryForDoc(
 ) {
   const { gitUrl, gitBranch } = docInfo.source;
 
+  const gitHubServiceAccountUsername =
+    process.env.GITHUB_SERVICE_ACCOUNT_USERNAME;
+  const gitHubServiceAccountPersonalAccessToken =
+    process.env.GITHUB_SERVICE_ACCOUNT_PERSONAL_ACCESS_TOKEN;
+  const gitUrlWithCredentials = gitUrl.replace(
+    'github.com/',
+    `${gitHubServiceAccountUsername}:${gitHubServiceAccountPersonalAccessToken}@github.com/`
+  );
+
   const gitCommand = `git`;
   const gitArgs = [
     'clone',
     '--single-branch',
     '--branch',
     gitBranch,
-    gitUrl,
+    gitUrl.includes('github.com') ? gitUrlWithCredentials : gitUrl,
     cloneDir,
     '--recurse-submodules',
   ];
