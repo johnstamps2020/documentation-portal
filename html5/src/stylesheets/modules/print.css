@@ -43,7 +43,7 @@
   }
 
   main[role='main']::before {
-    content: 'Copyright © Guidewire Software, Inc., confidential and proprietary. Latest documentation at docs.guidewire.com.';
+    content: '© Guidewire Software, Inc. Latest documentation at docs.guidewire.com.';
     margin-bottom: 16px;
   }
 

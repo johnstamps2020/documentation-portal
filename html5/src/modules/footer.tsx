@@ -23,7 +23,7 @@ export function addFooterContents(isOffline: boolean) {
     message: 'Legal and support information',
   });
   const footerLeftTemplate = `<div class="footerCopyright">
-  Copyright ©${new Date().getFullYear()}
+  © ${new Date().getFullYear()}
   Guidewire Software, Inc.
 </div>`;
   const footerRightTemplate = `<div>
