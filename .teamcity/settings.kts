@@ -247,13 +247,13 @@ object Helpers {
         val customersLoginUrl: String
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partner/idp/endpoint/HttpRedirect"
+                partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
                 customersLoginUrl =
                     "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
             }
 
             GwDeployEnvs.STAGING.envName -> {
-                partnersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/partner/idp/endpoint/HttpRedirect"
+                partnersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
                 customersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
             }
 
