@@ -51,7 +51,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Upgrade tools',
-          docId: 'isconfigupgradetools520',
+          docId: 'isconfigupgradetools530',
           description: (
             <>
               Learn about the Guidewire InsuranceSuite configuration upgrade
