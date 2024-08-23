@@ -7,7 +7,7 @@ const pageConfig: ApplicationLayoutProps = {
   title: 'ClaimCenter for Guidewire Cloud 2024.02',
   buttonProps: {
     label: 'Release notes',
-    docId: 'iscc202402releasenotes',
+    docId: 'isrnlatest',
   },
   heroDescription:
     'Guidewire ClaimCenter manages the process of reporting, verifying, and making payments on claims against policies.',
@@ -19,7 +19,7 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'ClaimCenter Release Notes',
-          docId: 'iscc202402releasenotes',
+          docId: 'isrnlatest',
           description: <>Learn about changes in this release of ClaimCenter.</>,
         },
         {
