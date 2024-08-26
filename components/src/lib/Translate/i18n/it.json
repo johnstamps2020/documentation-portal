@@ -107,6 +107,9 @@
   "collapsible.title" : {
     "message" : "Espandi"
   },
+  "footer.legal.linktext" : {
+    "message" : "Informazioni legali e di supporto"
+  },
   "footer.published" : {
     "message" : "Pubblicato:"
   },
