@@ -107,6 +107,9 @@
   "collapsible.title" : {
     "message" : "展開"
   },
+  "footer.legal.linktext" : {
+    "message" : "法関連およびサポート情報"
+  },
   "footer.published" : {
     "message" : "公開日："
   },
