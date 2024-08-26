@@ -107,6 +107,9 @@
   "collapsible.title" : {
     "message" : "Expandir"
   },
+  "footer.legal.linktext" : {
+    "message" : "Informações legais e de suporte"
+  },
   "footer.published" : {
     "message" : "Publicação:"
   },
