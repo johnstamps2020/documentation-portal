@@ -1,11 +1,19 @@
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import internalLogo from 'images/internal_document_icon.svg';
+import { translate } from '@doctools/components';
 
 export default function InternalTooltip() {
   return (
     <Tooltip
-      title={<Typography>Guidewire internal content</Typography>}
+      title={
+        <Typography>
+          {translate({
+            id: 'internal.item.tooltip',
+            message: 'Guidewire internal content',
+          })}
+        </Typography>
+      }
       placement="right"
       arrow
     >

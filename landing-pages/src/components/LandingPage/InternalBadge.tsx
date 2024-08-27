@@ -2,6 +2,7 @@ import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { usePageData } from '../../hooks/usePageData';
+import { translate } from '@doctools/components';
 
 export default function InternalBadge() {
   const { pageData, isLoading, isError } = usePageData();
@@ -13,9 +14,11 @@ export default function InternalBadge() {
     <Tooltip
       title={
         <Typography>
-          This page is available only to people with a Guidewire email. Do not
-          share the link with external stakeholders because they will not be
-          able to see the contents.
+          {translate({
+            id: 'internal.page.badge.tooltip',
+            message:
+              'This page is available only to people with a Guidewire email. Do not share the link with external stakeholders because they will not be able to see the contents.',
+          })}
         </Typography>
       }
       placement="right"

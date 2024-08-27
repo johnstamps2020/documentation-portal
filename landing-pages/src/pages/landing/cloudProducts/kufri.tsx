@@ -2,7 +2,7 @@ import Category2Layout, {
   Category2LayoutProps,
 } from 'components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import backgroundImage from 'images/background-kufri.svg';
+import backgroundImage from 'images/background-kufri.png';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
 import skiReleaseBadge from 'images/badge-kufri.svg';

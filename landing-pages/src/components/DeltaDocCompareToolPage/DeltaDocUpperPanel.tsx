@@ -74,6 +74,7 @@ export default function DeltaDocUpperPanel() {
     setSecondDoc,
     batchProduct,
     isLoading: isLoadingResults,
+    changePage,
   } = useDeltaDocContext();
   const [productName, setProductName] = useState<string>(batchProduct);
   useEffect(() => {
@@ -154,6 +155,7 @@ export default function DeltaDocUpperPanel() {
     setSecondDoc(rightDoc);
     setCanSubmit(false);
     setBatchProduct(productName);
+    changePage(1);
   }
 
   const filteredDocs = filterDocs(docs, productName);
