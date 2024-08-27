@@ -81,10 +81,11 @@ export default function AccessControl({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userInfoLoading || userInfoError) {
+    if (userInfoLoading || userInfoError || !envName) {
       return;
     }
-    if (userInfo && envName) {
+
+    if (userInfo) {
       const elementAllowedOnThisEnv = checkIfElementIsAllowedOnThisEnv(
         allowedOnEnvs,
         envName

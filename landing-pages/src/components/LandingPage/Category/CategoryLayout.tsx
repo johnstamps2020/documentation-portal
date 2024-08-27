@@ -1,23 +1,20 @@
-import Grid from '@mui/material/Unstable_Grid2';
-import CategoryCard, { CategoryCardProps } from './CategoryCard';
-import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Unstable_Grid2';
+import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
 import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
-import Paper from '@mui/material/Paper';
-import { Link as RouterLink } from 'react-router-dom';
-import Link from '@mui/material/Link';
+import NotLoggedInInfo from 'components/NotLoggedInInfo';
 import { usePageData } from 'hooks/usePageData';
 import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
-import CategorySidebar from './CategorySidebar';
+import { useLandingPageItemsImmutable } from '../../../hooks/useLandingPageItemsImmutable';
+import EditPagePropsButton from '../EditPagePropsButton';
+import { LandingPageItemsProvider } from '../LandingPageItemsContext';
 import LandingPageSelectorInContext, {
   LandingPageSelectorInContextProps,
 } from '../LandingPageSelectorInContext';
-import EditPagePropsButton from '../EditPagePropsButton';
-import NotLoggedInInfo from 'components/NotLoggedInInfo';
-import { LandingPageItemsProvider } from '../LandingPageItemsContext';
-import { useLandingPageItemsImmutable } from '../../../hooks/useLandingPageItemsImmutable';
+import CategoryCard, { CategoryCardProps } from './CategoryCard';
+import CategorySidebar from './CategorySidebar';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
