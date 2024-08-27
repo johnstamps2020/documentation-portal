@@ -481,6 +481,17 @@ const pageConfig: ApplicationLayoutProps = {
           pathInDoc: '?contextid=c_BatchJobs',
           description: <>Run and view the status of batch jobs.</>,
         },
+        {
+          label: 'Automated Feature Testing (AFT) Framework',
+          docId: 'inautomatedfeaturetestingframework',
+          description: (
+            <>
+              Set up automated feature testing (AFT) for InsuranceNow using
+              tests created for the InsuranceNow GO products in your GWCP
+              environment.
+            </>
+          ),
+        },
       ],
     },
   ],
