@@ -107,6 +107,9 @@
   "collapsible.title" : {
     "message" : "Uitvouwen"
   },
+  "footer.legal.linktext" : {
+    "message" : "Juridische en ondersteuningsinformatie (alleen in het Engels beschikbaar)"
+  },
   "footer.published" : {
     "message" : "Gepubliceerd:"
   },

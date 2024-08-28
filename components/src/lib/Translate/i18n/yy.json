@@ -71,6 +71,12 @@
   "feedbackDialog.submit" : {
     "message" : "[3ofo9u_Submit]"
   },
+  "internal.item.tooltip" : {
+    "message" : "[12m9aL_Guidewire internal content]"
+  },
+  "internal.page.badge.tooltip" : {
+    "message" : "[4DcGAH_This page is available only to people with a Guidewire email. Do not share the link with external stakeholders because they will not be able to see the contents.]"
+  },
   "internal.employeesOnly" : {
     "message" : "[18urtr_This content is available to Guidewire employees only]"
   },
