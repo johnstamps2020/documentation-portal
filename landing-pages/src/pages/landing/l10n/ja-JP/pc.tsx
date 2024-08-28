@@ -54,16 +54,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '',
-      items: [
-        {
-          label: 'Gosu リファレンスガイド',
-          docId: 'gosureflatestjaJP',
-        },
-      ],
-    },
-    {
-      label: '',
+      label: 'Integration Gateway',
       items: [
         {
           label: 'Integration Gateway',

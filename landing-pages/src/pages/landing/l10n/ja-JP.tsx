@@ -79,10 +79,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/ce-qb',
     },
     {
-      label: 'Gosu リファレンスガイド',
-      docId: 'gosureflatestjaJP',
-    },
-    {
       label: 'Guidewire for Salesforce',
       pagePath: 'l10n/ja-JP/gwsf',
     },

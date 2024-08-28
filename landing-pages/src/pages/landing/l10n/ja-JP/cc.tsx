@@ -27,15 +27,6 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: 'Gosu リファレンスガイド',
-      items: [
-        {
-          label: 'Gosu リファレンスガイド',
-          docId: 'gosureflatestjaJP',
-        },
-      ],
-    },
-    {
       label: 'Integration Gateway',
       items: [
         {
