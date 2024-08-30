@@ -9,6 +9,8 @@ type MarkdownProps = {
 
 export function Markdown({ contents }: MarkdownProps) {
   return (
-    <MarkdownWrapper remarkPlugins={[remarkGfm]}>{contents}</MarkdownWrapper>
+    <MarkdownWrapper remarkPlugins={[remarkGfm]} className="markdown-wrapper">
+      {contents}
+    </MarkdownWrapper>
   );
 }
