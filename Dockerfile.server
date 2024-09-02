@@ -27,6 +27,7 @@ FROM artifactory.guidewire.com/hub-docker-remote/node:18.18.2-alpine
 WORKDIR /usr/app
 
 COPY --from=app-builder /usr/app/node_modules/ node_modules/
+COPY --from=app-builder /usr/app/server/node_modules/typeorm node_modules/typeorm
 COPY --from=app-builder /usr/app/server/dist/ .
 
 EXPOSE 8081
