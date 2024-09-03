@@ -1,10 +1,22 @@
 import { GwThemeProvider, Init } from '@doctools/components';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import FourOhFourPage from 'components/FourOhFourPage';
 import Layout from 'components/Layout/Layout';
 import { LayoutContextProvider } from 'LayoutContext';
+import { lazy, Suspense } from 'react';
+
+const TanStackRouterDevtools =
+  process.env.NODE_ENV === 'production'
+    ? () => null // Render nothing in production
+    : lazy(() =>
+        // Lazy load in development
+        import('@tanstack/router-devtools').then((res) => ({
+          default: res.TanStackRouterDevtools,
+          // For Embedded Mode
+          // default: res.TanStackRouterDevtoolsPanel
+        }))
+      );
 
 function AppRoot() {
   return (
@@ -15,7 +27,9 @@ function AppRoot() {
         <Layout>
           <Outlet />
         </Layout>
-        <TanStackRouterDevtools />
+        <Suspense>
+          <TanStackRouterDevtools />
+        </Suspense>
       </LayoutContextProvider>
     </GwThemeProvider>
   );
