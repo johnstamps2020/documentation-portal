@@ -76,9 +76,16 @@ export default function AccessControl({
     isError: userInfoError,
   } = useUserInfo();
 
-  const pagePath = window.location.href;
+  const pagePath = window.location.pathname;
 
   useEffect(() => {
+    function doNotAllow() {
+      setAllowedToSee(false);
+      if (doNotNavigate !== true) {
+        window.location.replace(`/forbidden?unauthorized=${pagePath}`);
+      }
+    }
+
     if (userInfoLoading || userInfoError || !envName) {
       return;
     }
@@ -94,12 +101,11 @@ export default function AccessControl({
       );
       if (elementAllowedOnThisEnv && userAllowedToAccessPage) {
         setAllowedToSee(true);
+      } else {
+        doNotAllow();
       }
     } else {
-      setAllowedToSee(false);
-      if (doNotNavigate !== true) {
-        window.location.replace(`/forbidden?unauthorized=${pagePath}`);
-      }
+      doNotAllow();
     }
   }, [
     userInfo,
