@@ -2,9 +2,9 @@ import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Link from '@mui/material/Link';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { Typography } from '@mui/material';
 import DeltaDocCardText from './DeltaDocCardText';
+import { fileDoesNotExistText } from 'pages/delta-doc';
 
 export default function DeltaDocResultTableRow({
   result,

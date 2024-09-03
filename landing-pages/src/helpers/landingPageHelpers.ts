@@ -1,5 +1,5 @@
 import { PageItemsResponse } from '@doctools/server';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import { ReactNode } from 'react';
 
 type ArrangedItem = LandingPageItemData & { description?: React.ReactNode };

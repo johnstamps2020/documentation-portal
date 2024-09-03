@@ -16,7 +16,7 @@ import {
   Subject,
   Version,
 } from '@doctools/server';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useLocation } from '@tanstack/react-router';
 import useSWR from 'swr';
 import useSWRImmutable from 'swr/immutable';
 import { TranslatedPage } from '../components/Layout/Header/TranslatedPages';
@@ -71,8 +71,8 @@ export function useUserInfo() {
 }
 
 export function useBreadcrumbs() {
-  const reactRouterParams = useParams();
-  const pagePath = reactRouterParams['*'];
+  const location = useLocation();
+  const pagePath = location.pathname.replace('/', '');
   const { data, error, isLoading } = useSWR<BreadcrumbItem[]>(
     `/safeConfig/entity/page/breadcrumbs?path=${pagePath}`,
     getter,
@@ -87,9 +87,8 @@ export function useBreadcrumbs() {
 }
 
 export function useSearchData() {
-  const [searchParams] = useSearchParams();
-  const encodedSearchParams = new URLSearchParams(searchParams.toString());
-  encodedSearchParams.set('q', encodeURI(searchParams.get('q') || ''));
+  const encodedSearchParams = new URLSearchParams(window.location.search);
+  encodedSearchParams.set('q', encodeURI(encodedSearchParams.get('q') || ''));
   const { data, error, isLoading } = useSWR<SearchData, ServerSearchError>(
     `/search?${encodedSearchParams.toString()}&getData=true`,
     getter,

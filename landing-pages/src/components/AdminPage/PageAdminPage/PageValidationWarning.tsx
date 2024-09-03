@@ -3,7 +3,7 @@ import { Entity } from 'components/AdminPage/EntityListWithFilters';
 
 export function checkIfFileExists(entity: Entity) {
   try {
-    require(`../../../pages/landing/${entity.path}.tsx`);
+    require(`../../../pages/${entity.path}.tsx`);
     return true;
   } catch (err) {
     return false;

@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from '@tanstack/react-router';
 
 type selfManagedProps = {
   pagePath: string;

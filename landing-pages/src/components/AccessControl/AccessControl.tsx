@@ -1,7 +1,6 @@
 import { EnvName, useEnvStore, UserInfo } from '@doctools/components';
 import { useUserInfo } from 'hooks/useApi';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 type AccessLevel = 'admin' | 'power-user' | 'everyone';
 
@@ -78,7 +77,6 @@ export default function AccessControl({
   } = useUserInfo();
 
   const pagePath = window.location.href;
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (userInfoLoading || userInfoError || !envName) {
@@ -100,7 +98,7 @@ export default function AccessControl({
     } else {
       setAllowedToSee(false);
       if (doNotNavigate !== true) {
-        navigate(`/forbidden?unauthorized=${pagePath}`);
+        window.location.replace(`/forbidden?unauthorized=${pagePath}`);
       }
     }
   }, [
@@ -108,7 +106,6 @@ export default function AccessControl({
     envName,
     allowedOnEnvs,
     accessLevel,
-    navigate,
     pagePath,
     doNotNavigate,
     userInfoLoading,

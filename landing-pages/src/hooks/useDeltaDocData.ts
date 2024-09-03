@@ -5,10 +5,10 @@ import {
   DeltaLevenshteinReturnType,
   Doc,
 } from '@doctools/server';
-import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import useSWR, { Fetcher } from 'swr';
 import { Error } from './useEntitiesData';
-const difference = require('js-levenshtein');
+import difference from 'js-levenshtein';
+import { fileDoesNotExistText } from 'pages/delta-doc';
 
 function calculatePercentage(fileChangeAmount: number, docLength: number) {
   const fractionNumber = fileChangeAmount / docLength;

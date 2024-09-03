@@ -36,6 +36,7 @@
     "**/static/html5/**": true
   },
   "cSpell.words": [
+    "ACORD",
     "aggs",
     "AMST",
     "apac",
@@ -88,13 +89,18 @@
     "Jutro",
     "Kufri",
     "Las Leñas",
+    "laslenas",
+    "Lenas",
+    "Leñas",
     "libpq",
     "Lightbox",
+    "linktext",
     "mbox",
     "minitoc",
     "multilineproducts",
     "nameid",
     "Nederlands",
+    "nocheck",
     "OIDC",
     "Overridable",
     "pdflink",
@@ -110,7 +116,10 @@
     "relpath",
     "sourcezipbuild",
     "startable",
+    "subflows",
     "superbook",
+    "svgr",
+    "tanstack",
     "testtesttest",
     "tinycolor",
     "topicref",
@@ -136,12 +145,16 @@
     ".vscode-insiders",
     "docusaurus/themes/gw-theme-classic/src/i18n",
     "webpack.config.ts",
-    "components/src/lib/Translate/i18n/*.json"
+    "components/src/lib/Translate/i18n/*.json",
+    "routeTree.gen.ts"
   ],
   "cSpell.ignoreRegExpList": [
     "(docId|pagePath|url): [\"'][^\"']+[\"']",
     "\"(id|docId|srcId)\": \"[a-zA-Z0-9]+\"",
     "\"(url|root|filter|targetFolder|gitUrl|zipFilename)\": \"[^\"]+\"",
-    "gtag([^)]+)"
+    "gtag([^)]+)",
+    "url(.*)",
+    "pathInDoc:.*",
+    "allSelectors.*"
   ]
 }

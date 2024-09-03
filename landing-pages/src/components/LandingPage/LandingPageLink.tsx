@@ -3,10 +3,10 @@ import Box from '@mui/material/Box';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Link, { LinkProps } from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from '@tanstack/react-router';
+import { LandingPageItemData } from 'helpers/landingPageHelpers';
 import InternalTooltip from './InternalTooltip';
 import VideoIcon from './VideoIcon';
-import { LandingPageItemData } from 'helpers/landingPageHelpers';
 
 export type LandingPageLinkProps = {
   landingPageItem: LandingPageItemData;
@@ -75,7 +75,6 @@ export default function LandingPageLink({
         >
           <Stack direction="row" alignItems="center" spacing={1}>
             <Box>{landingPageItem?.label}</Box>
-
             {showExternalIcon && (
               <Box
                 sx={{

@@ -1,9 +1,9 @@
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
-import Stack from '@mui/material/Stack';
-import { FooterText } from './StyledLayoutComponents';
-import { useTheme } from '@mui/material/styles';
 import { translate } from '@doctools/components';
+import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
+import { useTheme } from '@mui/material/styles';
+import { Link as RouterLink } from '@tanstack/react-router';
+import { FooterText } from './StyledLayoutComponents';
 
 export const footerHeight = '55px';
 

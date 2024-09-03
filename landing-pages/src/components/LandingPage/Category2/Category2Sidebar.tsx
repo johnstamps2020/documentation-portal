@@ -7,7 +7,7 @@ import {
   getListOfItemsToDisplayOnLandingPage,
 } from 'helpers/landingPageHelpers';
 import { LandingPageItemData } from 'helpers/landingPageHelpers';
-import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
+import { SidebarProps } from 'components/LandingPage/LandingPageTypes';
 import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import Category2Item from './Category2Item';
 

@@ -3,7 +3,7 @@ import Box, { BoxProps } from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { useUserInfo } from 'hooks/useApi';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from '@tanstack/react-router';
 
 type NotLoggedInInfoProps = {
   styles?: BoxProps['sx'];

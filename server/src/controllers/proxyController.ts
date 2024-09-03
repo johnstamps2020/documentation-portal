@@ -297,5 +297,6 @@ export async function reactAppProxy(req: Request, res: Response) {
   return proxy.web(req, res, {
     target: process.env.FRONTEND_URL,
     changeOrigin: true,
+    ws: true,
   });
 }

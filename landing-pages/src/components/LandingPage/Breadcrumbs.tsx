@@ -1,9 +1,9 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
+import { Link as RouterLink } from '@tanstack/react-router';
 import { useBreadcrumbs } from 'hooks/useApi';
 import { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import tinycolor from 'tinycolor2';
 
 const breadcrumbLinkClassName = 'breadcrumbLink';

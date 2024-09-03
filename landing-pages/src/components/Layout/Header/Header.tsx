@@ -1,21 +1,17 @@
-import { useCallback, useMemo } from 'react';
+import { Filters, SearchHeaderLayoutContextProvider, SearchHeadWrapper } from '@doctools/components';
 import { StackProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import HeaderDesktop from './Desktop/HeaderDesktop';
-import HeaderMobile from './Mobile/HeaderMobile';
-import HeaderMenuItems from './HeaderMenuItems';
-import { SearchHeadWrapper } from '@doctools/components';
+import { useLocation } from '@tanstack/react-router';
 import { useHeaderContext } from 'components/Layout/Header/HeaderContext';
-import { useLocation } from 'react-router-dom';
-import {
-  SearchHeaderLayoutContextProvider,
-  Filters,
-} from '@doctools/components';
-import { usePageData } from 'hooks/usePageData';
 import { useLocaleParams } from 'hooks/useLocale';
 import { useMobile } from 'hooks/useMobile';
+import { usePageData } from 'hooks/usePageData';
+import { useCallback, useMemo } from 'react';
 import { searchTypeQueryParameterName } from 'vars';
+import HeaderDesktop from './Desktop/HeaderDesktop';
+import HeaderMenuItems from './HeaderMenuItems';
+import HeaderMobile from './Mobile/HeaderMobile';
 
 export const headerHeight = '68px';
 

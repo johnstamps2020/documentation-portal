@@ -2,10 +2,10 @@ import Avatar, { AvatarProps } from '@mui/material/Avatar';
 import Divider, { DividerProps } from '@mui/material/Divider';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Link, { LinkProps } from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import { styled } from '@mui/material/styles';
 import Typography, { TypographyProps } from '@mui/material/Typography';
+import { Link as RouterLink } from '@tanstack/react-router';
 import { forwardRef } from 'react';
 
 type HeaderAvatarProps = AvatarProps & {

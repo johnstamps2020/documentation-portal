@@ -1,7 +1,7 @@
 import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Badge, { BadgeProps } from '@mui/material/Badge';
-import { fileDoesNotExistText } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
+import { fileDoesNotExistText } from 'pages/delta-doc';
 
 export default function DeltaDocCardText({
   result,

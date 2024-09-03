@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import { getListOfItemsToDisplayOnLandingPage } from 'helpers/landingPageHelpers';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import LandingPageLink from '../LandingPageLink';
 

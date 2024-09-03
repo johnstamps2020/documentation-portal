@@ -44,7 +44,7 @@
     "dev:theme": "NODE_ENV=development yarn workspace @doctools/gw-theme-classic dev",
     "pages:test-site": "yarn build:plugin-redoc && yarn workspace test-site pages",
     "prettier": "prettier --write .",
-    "prettier:landing-pages": "prettier landing-pages/src/pages/landing --write",
+    "prettier:landing-pages": "prettier landing-pages/src/pages --write",
     "profile:html5": "yarn build:theme && yarn workspace html5 profile",
     "publish:components": "yarn workspace @doctools/components npm publish --tolerate-republish",
     "publish:plugin-redoc": "yarn workspace @doctools/gw-plugin-redoc npm publish --tolerate-republish",

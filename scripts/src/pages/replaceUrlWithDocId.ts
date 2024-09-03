@@ -9,10 +9,7 @@ type DocConfig = {
 };
 
 const docConfigFolder = resolve(__dirname, '../../../.teamcity/config/docs');
-const pagesFolder = resolve(
-  __dirname,
-  '../../../landing-pages/src/pages/landing'
-);
+const pagesFolder = resolve(__dirname, '../../../landing-pages/src/pages');
 const pageUrlRegex = /url:[\n ]*'\/([^']+)',/g;
 
 function getDocIdAndPathFromConfigFile(configFile: string): DocConfig[] {
