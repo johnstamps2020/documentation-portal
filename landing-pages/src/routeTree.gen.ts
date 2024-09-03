@@ -235,6 +235,7 @@ import { Route as SelfManagedProductsGwsfVodVersionImport } from './pages/selfMa
 import { Route as SelfManagedProductsGwsfEdVersionImport } from './pages/selfManagedProducts/gwsf/ed/$version'
 import { Route as SelfManagedProductsGwsfDiVersionImport } from './pages/selfManagedProducts/gwsf/di/$version'
 import { Route as L10nJaJPCloudProductsAutopilotworkflowserviceImport } from './pages/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
+import { Route as CloudProductsInnsbruckPcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/pcGwCloud/$version'
 import { Route as CloudProductsInnsbruckInsuranceNowVersionImport } from './pages/cloudProducts/innsbruck/insuranceNow/$version'
 import { Route as CloudProductsInnsbruckIcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/icGwCloud/$version'
 import { Route as CloudProductsInnsbruckDhGwCloudVersionImport } from './pages/cloudProducts/innsbruck/dhGwCloud/$version'
@@ -1444,6 +1445,12 @@ const L10nJaJPCloudProductsAutopilotworkflowserviceRoute =
   L10nJaJPCloudProductsAutopilotworkflowserviceImport.update({
     path: '/cloudProducts/autopilotworkflowservice',
     getParentRoute: () => L10nJaJPRoute,
+  } as any)
+
+const CloudProductsInnsbruckPcGwCloudVersionRoute =
+  CloudProductsInnsbruckPcGwCloudVersionImport.update({
+    path: '/cloudProducts/innsbruck/pcGwCloud/$version',
+    getParentRoute: () => rootRoute,
   } as any)
 
 const CloudProductsInnsbruckInsuranceNowVersionRoute =
@@ -3368,6 +3375,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CloudProductsInnsbruckInsuranceNowVersionImport
       parentRoute: typeof rootRoute
     }
+    '/cloudProducts/innsbruck/pcGwCloud/$version': {
+      id: '/cloudProducts/innsbruck/pcGwCloud/$version'
+      path: '/cloudProducts/innsbruck/pcGwCloud/$version'
+      fullPath: '/cloudProducts/innsbruck/pcGwCloud/$version'
+      preLoaderRoute: typeof CloudProductsInnsbruckPcGwCloudVersionImport
+      parentRoute: typeof rootRoute
+    }
     '/l10n/ja-JP/cloudProducts/autopilotworkflowservice': {
       id: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
       path: '/cloudProducts/autopilotworkflowservice'
@@ -3661,6 +3675,7 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsInnsbruckDhGwCloudVersionRoute,
   CloudProductsInnsbruckIcGwCloudVersionRoute,
   CloudProductsInnsbruckInsuranceNowVersionRoute,
+  CloudProductsInnsbruckPcGwCloudVersionRoute,
   SelfManagedProductsGwsfDiVersionRoute,
   SelfManagedProductsGwsfEdVersionRoute,
   SelfManagedProductsGwsfVodVersionRoute,
@@ -3799,6 +3814,7 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/innsbruck/dhGwCloud/$version",
         "/cloudProducts/innsbruck/icGwCloud/$version",
         "/cloudProducts/innsbruck/insuranceNow/$version",
+        "/cloudProducts/innsbruck/pcGwCloud/$version",
         "/selfManagedProducts/gwsf/di/$version",
         "/selfManagedProducts/gwsf/ed/$version",
         "/selfManagedProducts/gwsf/vod/$version"
@@ -4824,6 +4840,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/cloudProducts/innsbruck/insuranceNow/$version": {
       "filePath": "cloudProducts/innsbruck/insuranceNow/$version.tsx"
+    },
+    "/cloudProducts/innsbruck/pcGwCloud/$version": {
+      "filePath": "cloudProducts/innsbruck/pcGwCloud/$version.tsx"
     },
     "/l10n/ja-JP/cloudProducts/autopilotworkflowservice": {
       "filePath": "l10n/ja-JP/cloudProducts/autopilotworkflowservice.tsx",
