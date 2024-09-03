@@ -112,7 +112,9 @@ export default function DeltaDocUpperPanel() {
     }
     if (selectedDoc && docs && releases) {
       const docsFilteredByTitle = filterDocs(docs, productName).filter(
-        (doc) => doc.title === selectedDoc.title
+        (doc) =>
+          doc.title === selectedDoc.title &&
+          doc.displayTitle === selectedDoc.displayTitle
       );
       setSelectedDocSet(docsFilteredByTitle);
     }
