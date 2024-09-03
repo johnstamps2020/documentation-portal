@@ -74,7 +74,7 @@ const pageConfig: Category2LayoutProps = {
         // },
         {
           label: 'Global Content Reference Applications',
-          pagePath: 'cloudProducts/laslenas/global-ref-apps',
+          pagePath: 'cloudProducts/laslenas/globalRefApps',
         },
         {
           label: 'Underwriting Workbench (Early Access)',

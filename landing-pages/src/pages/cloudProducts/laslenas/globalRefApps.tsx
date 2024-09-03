@@ -135,7 +135,7 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/cloudProducts/laslenas/global-ref-apps')(
+export const Route = createFileRoute('/cloudProducts/laslenas/globalRefApps')(
   {
     component: Globalrefapps,
   }
