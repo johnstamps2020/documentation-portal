@@ -2,7 +2,7 @@
 
 import 'dotenv/config';
 import { NextFunction, Request, Response } from 'express';
-import HttpProxy from 'http-proxy';
+import HttpProxy from 'http-proxy-node16';
 import { Doc, ExternalLink } from '../model';
 import {
   getTokenFromRequestHeader,

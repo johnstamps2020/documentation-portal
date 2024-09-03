@@ -3990,7 +3990,7 @@ __metadata:
     express-http-context: "npm:^1.2.3"
     express-winston: "npm:^4.2.0"
     http-errors: "npm:~1.6.3"
-    http-proxy: "npm:^1.18.1"
+    http-proxy-node16: "npm:^1.0.5"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     jest-watch-typeahead: "npm:^2.2.2"
@@ -15738,6 +15738,17 @@ __metadata:
     "@types/express":
       optional: true
   checksum: 10/768e7ae5a422bbf4b866b64105b4c2d1f468916b7b0e9c96750551c7732383069b411aa7753eb7b34eab113e4f77fb770122cb7fb9c8ec87d138d5ddaafda891
+  languageName: node
+  linkType: hard
+
+"http-proxy-node16@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "http-proxy-node16@npm:1.0.5"
+  dependencies:
+    eventemitter3: "npm:^4.0.0"
+    follow-redirects: "npm:^1.0.0"
+    requires-port: "npm:^1.0.0"
+  checksum: 10/8fdbf2690e8a1967d37162a7fc5f22e23dedf6cc52a285c7b437fdf95f367e5098f004b3e021b2728f2c604c1d2d544f64d628cb8038c4701e17f73197aa07ab
   languageName: node
   linkType: hard
 
