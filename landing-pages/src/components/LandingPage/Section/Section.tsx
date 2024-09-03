@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import SectionItem from './SectionItem';
 import SectionIcon from './SectionIcon';
 import {

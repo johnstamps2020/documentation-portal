@@ -1,245 +1,245 @@
 {
-  "logo.label" : {
-    "message" : "ホーム"
+  "logo.label": {
+    "message": "ホーム"
   },
-  "docHighlighter.tooltip" : {
-    "message" : "検索フレーズのハイライトを切り替える"
+  "docHighlighter.tooltip": {
+    "message": "検索フレーズのハイライトを切り替える"
   },
-  "docHighlighter.label" : {
-    "message" : "検索キーワード強調表示"
+  "docHighlighter.label": {
+    "message": "検索キーワード強調表示"
   },
-  "anonymous.positive" : {
-    "message" : "メールアドレス非公開です。"
+  "anonymous.positive": {
+    "message": "メールアドレス非公開です。"
   },
-  "anonymous.shareEmail" : {
-    "message" : "公開するにはここをクリック"
+  "anonymous.shareEmail": {
+    "message": "公開するにはここをクリック"
   },
-  "anonymous.enterEmail" : {
-    "message" : "メールアドレスを入力してください"
+  "anonymous.enterEmail": {
+    "message": "メールアドレスを入力してください"
   },
-  "anonymous.becomeAnonymous" : {
-    "message" : "非公開にするにはここをクリック"
+  "anonymous.becomeAnonymous": {
+    "message": "非公開にするにはここをクリック"
   },
-  "privacy.warning" : {
-    "message" : "メールアドレスを入力することにより、お客様は Guidewire からこのメールアドレスへ連絡することを許可したものとみなされます。"
+  "privacy.warning": {
+    "message": "メールアドレスを入力することにより、お客様は Guidewire からこのメールアドレスへ連絡することを許可したものとみなされます。"
   },
-  "privacy.link" : {
-    "message" : "Guidewire のプライバシーポリシーについてはこちらをご覧ください。"
+  "privacy.link": {
+    "message": "Guidewire のプライバシーポリシーについてはこちらをご覧ください。"
   },
-  "rightWrong.positiveTitle" : {
-    "message" : "する"
+  "rightWrong.positiveTitle": {
+    "message": "する"
   },
-  "theme.rightWrong.negativeTitle" : {
-    "message" : "しない"
+  "theme.rightWrong.negativeTitle": {
+    "message": "しない"
   },
-  "anonymous.youAreSharing" : {
-    "message" : "メールアドレスが送信されます。"
+  "anonymous.youAreSharing": {
+    "message": "メールアドレスが送信されます。"
   },
-  "feedback.helpful" : {
-    "message" : "このページの情報は役立ちましたか？"
+  "feedback.helpful": {
+    "message": "このページの情報は役立ちましたか？"
   },
-  "feedback.thumbsUp" : {
-    "message" : "役に立った"
+  "feedback.thumbsUp": {
+    "message": "役に立った"
   },
-  "feedback.thumbsDown" : {
-    "message" : "改善が必要"
+  "feedback.thumbsDown": {
+    "message": "改善が必要"
   },
-  "feedbackDialog.thanks" : {
-    "message" : "ご協力ありがとうございます。"
+  "feedbackDialog.thanks": {
+    "message": "ご協力ありがとうございます。"
   },
-  "feedbackDialog.followUp" : {
-    "message" : "フィードバック情報はドキュメントチームで共有させていただきます。メールアドレス情報を送信いただければ、詳細な情報が必要になった場合に連絡をお送りします。"
+  "feedbackDialog.followUp": {
+    "message": "フィードバック情報はドキュメントチームで共有させていただきます。メールアドレス情報を送信いただければ、詳細な情報が必要になった場合に連絡をお送りします。"
   },
-  "feedbackDialog.anythingElse" : {
-    "message" : "ご意見ありがとうございます。さらに詳しい情報の提供にご協力ください。"
+  "feedbackDialog.anythingElse": {
+    "message": "ご意見ありがとうございます。さらに詳しい情報の提供にご協力ください。"
   },
-  "feedbackDialog.comment" : {
-    "message" : "あなたのコメント"
+  "feedbackDialog.comment": {
+    "message": "あなたのコメント"
   },
-  "feedbackDialog.email" : {
-    "message" : "メールアドレス"
+  "feedbackDialog.email": {
+    "message": "メールアドレス"
   },
-  "feedbackDialog.clearEmail" : {
-    "message" : "メールアドレスをクリア"
+  "feedbackDialog.clearEmail": {
+    "message": "メールアドレスをクリア"
   },
-  "feedbackDialog.validEmail" : {
-    "message" : "有効なメールアドレスを入力してください"
+  "feedbackDialog.validEmail": {
+    "message": "有効なメールアドレスを入力してください"
   },
-  "feedbackDialog.cancel" : {
-    "message" : "キャンセル"
+  "feedbackDialog.cancel": {
+    "message": "キャンセル"
   },
-  "feedbackDialog.submit" : {
-    "message" : "送信"
+  "feedbackDialog.submit": {
+    "message": "送信"
   },
-  "internal.employeesOnly" : {
-    "message" : "お送りいただいた内容は Guidewire 社内でのみ共有させていただきます。"
+  "internal.employeesOnly": {
+    "message": "お送りいただいた内容は Guidewire 社内でのみ共有させていただきます。"
   },
-  "internal.info.toView" : {
-    "message" : "表示には Guidewire 社内アカウントが必要です。詳しくは Guidewire の担当者へご確認ください。"
+  "internal.info.toView": {
+    "message": "表示には Guidewire 社内アカウントが必要です。詳しくは Guidewire の担当者へご確認ください。"
   },
-  "internal.label" : {
-    "message" : "このコンテンツは Guidewire 社内限定の情報を含みます。"
+  "internal.label": {
+    "message": "このコンテンツは Guidewire 社内限定の情報を含みます。"
   },
-  "loginButton.out" : {
-    "message" : "ログアウト"
+  "loginButton.out": {
+    "message": "ログアウト"
   },
-  "loginButton.in" : {
-    "message" : "ログイン"
+  "loginButton.in": {
+    "message": "ログイン"
   },
-  "loginDrawer.go" : {
-    "message" : "ログインページに移動"
+  "loginDrawer.go": {
+    "message": "ログインページに移動"
   },
-  "transcriptDownloadLink.label" : {
-    "message" : "内容をダウンロード"
+  "transcriptDownloadLink.label": {
+    "message": "内容をダウンロード"
   },
-  "theme.common.skipToMainContent" : {
-    "message" : "メインコンテンツへ移動"
+  "theme.common.skipToMainContent": {
+    "message": "メインコンテンツへ移動"
   },
-  "theme.tags.tagsPageTitle" : {
-    "message" : "タグ"
+  "theme.tags.tagsPageTitle": {
+    "message": "タグ"
   },
-  "gwSearchForm.placeholder" : {
-    "message" : "検索"
+  "gwSearchForm.placeholder": {
+    "message": "検索"
   },
-  "miniToc.heading" : {
-    "message" : "このページの内容"
+  "miniToc.heading": {
+    "message": "このページの内容"
   },
-  "collapsible.title" : {
-    "message" : "展開"
+  "collapsible.title": {
+    "message": "展開"
   },
-  "footer.legal.linktext" : {
-    "message" : "法関連およびサポート情報"
+  "footer.legal.linktext": {
+    "message": "法関連およびサポート情報"
   },
-  "footer.published" : {
-    "message" : "公開日："
+  "footer.published": {
+    "message": "公開日："
   },
-  "nav.scrollToTop" : {
-    "message" : "先頭へスクロール"
+  "nav.scrollToTop": {
+    "message": "先頭へスクロール"
   },
-  "navbar.nextTopic" : {
-    "message" : "次のトピック"
+  "navbar.nextTopic": {
+    "message": "次のトピック"
   },
-  "navbar.prevTopic" : {
-    "message" : "前のトピック"
+  "navbar.prevTopic": {
+    "message": "前のトピック"
   },
-  "navbar.noNextOrPrevTopic" : {
-    "message" : "なし"
+  "navbar.noNextOrPrevTopic": {
+    "message": "なし"
   },
-  "navbar.printThisPage" : {
-    "message" : "このページを印刷"
+  "navbar.printThisPage": {
+    "message": "このページを印刷"
   },
-  "chat.default-title" : {
-    "message" : "チャットを始めましょう"
+  "chat.default-title": {
+    "message": "チャットを始めましょう"
   },
-  "chat.send" : {
-    "message" : "送信"
+  "chat.send": {
+    "message": "送信"
   },
-  "chat.answer" : {
-    "message" : "回答"
+  "chat.answer": {
+    "message": "回答"
   },
-  "chat.sources" : {
-    "message" : "ソース"
+  "chat.sources": {
+    "message": "ソース"
   },
-  "chat.filters" : {
-    "message" : "フィルタ"
+  "chat.filters": {
+    "message": "フィルタ"
   },
-  "chat.saveAndClose" : {
-    "message" : "保存して閉じる"
+  "chat.saveAndClose": {
+    "message": "保存して閉じる"
   },
-  "chat.notOptedIn" : {
-    "message" : "チャットボットからメッセージを受け取るオプションを選択しませんでした。"
+  "chat.notOptedIn": {
+    "message": "チャットボットからメッセージを受け取るオプションを選択しませんでした。"
   },
-  "chat.allow" : {
-    "message" : "AI チャットボットから質問の答えを受け取ることを許可する"
+  "chat.allow": {
+    "message": "AI チャットボットから質問の答えを受け取ることを許可する"
   },
-  "chat.allow.learnMore" : {
-    "message" : "利用規約を読む"
+  "chat.allow.learnMore": {
+    "message": "利用規約を読む"
   },
-  "chat.termsAndConditions.title" : {
-    "message" : "チャットで使用される利用規約"
+  "chat.termsAndConditions.title": {
+    "message": "チャットで使用される利用規約"
   },
-  "chat.termsAndConditions.close" : {
-    "message" : "利用規約を閉じる"
+  "chat.termsAndConditions.close": {
+    "message": "利用規約を閉じる"
   },
-  "chatbot.feedback.thumbsUp" : {
-    "message" : "このチャットボットの対応は良いです"
+  "chatbot.feedback.thumbsUp": {
+    "message": "このチャットボットの対応は良いです"
   },
-  "chatbot.feedback.thumbsDown" : {
-    "message" : "このチャットボットの対応は向上の余地があります"
+  "chatbot.feedback.thumbsDown": {
+    "message": "このチャットボットの対応は向上の余地があります"
   },
-  "chatbot.feedback.dialog.title" : {
-    "message" : "コメントをいただけますか？"
+  "chatbot.feedback.dialog.title": {
+    "message": "コメントをいただけますか？"
   },
-  "chatbot.feedback.dialog.send" : {
-    "message" : "送信"
+  "chatbot.feedback.dialog.send": {
+    "message": "送信"
   },
-  "chatbot.feedback.dialog.cancel" : {
-    "message" : "キャンセル"
+  "chatbot.feedback.dialog.cancel": {
+    "message": "キャンセル"
   },
-  "login.gwEmployeeHint" : {
-    "message" : "Guidewire の社員は、上記の Guidewire Cloud オプションを使用してログインしてください。"
+  "login.gwEmployeeHint": {
+    "message": "Guidewire の社員は、上記の Guidewire Cloud オプションを使用してログインしてください。"
   },
-  "consent.ai" : {
-    "message" : "AI を許可"
+  "consent.ai": {
+    "message": "AI を許可"
   },
-  "avatar.iconButton" : {
-    "message" : "ユーザーメニューの拡張"
+  "avatar.iconButton": {
+    "message": "ユーザーメニューの拡張"
   },
-  "search.filter.menu.entiresite.tooltip" : {
-    "message" : "フィルタなしでサイト全体を検索します"
+  "search.filter.menu.entiresite.tooltip": {
+    "message": "フィルタなしでサイト全体を検索します"
   },
-  "search.filter.menu.entiresite.label" : {
-    "message" : "サイト全体"
+  "search.filter.menu.entiresite.label": {
+    "message": "サイト全体"
   },
-  "search.filter.menu.product.tooltip" : {
-    "message" : "このページの保険商品内で検索："
+  "search.filter.menu.product.tooltip": {
+    "message": "このページの保険商品内で検索："
   },
-  "search.filter.menu.product.label" : {
-    "message" : "保険商品"
+  "search.filter.menu.product.label": {
+    "message": "保険商品"
   },
-  "search.filter.menu.release.tooltip" : {
-    "message" : "リリースのすべての保険商品内で検索："
+  "search.filter.menu.release.tooltip": {
+    "message": "リリースのすべての保険商品内で検索："
   },
-  "search.filter.menu.release.label" : {
-    "message" : "リリース"
+  "search.filter.menu.release.label": {
+    "message": "リリース"
   },
-  "search.filter.menu.showfilters.label.closed" : {
-    "message" : "フィルタの表示"
+  "search.filter.menu.showfilters.label.closed": {
+    "message": "フィルタの表示"
   },
-  "search.filter.menu.showfilters.label.expanded" : {
-    "message" : "フィルタの非表示"
+  "search.filter.menu.showfilters.label.expanded": {
+    "message": "フィルタの非表示"
   },
-  "search.filter.menu.showfilters.tooltip.closed" : {
-    "message" : "選択されているフィルタを表示し、フィルタをさらに追加または削除します"
+  "search.filter.menu.showfilters.tooltip.closed": {
+    "message": "選択されているフィルタを表示し、フィルタをさらに追加または削除します"
   },
-  "search.filter.menu.showfilters.tooltip.expanded" : {
-    "message" : "選択したフィルタは、検索クエリを入力したときに適用されます"
+  "search.filter.menu.showfilters.tooltip.expanded": {
+    "message": "選択したフィルタは、検索クエリを入力したときに適用されます"
   },
-  "search.filter.menu.thisdoc.tooltip" : {
-    "message" : "ドキュメント内で検索："
+  "search.filter.menu.thisdoc.tooltip": {
+    "message": "ドキュメント内で検索："
   },
-  "search.filter.menu.thisdoc.label" : {
-    "message" : "ドキュメント"
+  "search.filter.menu.thisdoc.label": {
+    "message": "ドキュメント"
   },
-  "search.filter.menu.button" : {
-    "message" : "フィルタ"
+  "search.filter.menu.button": {
+    "message": "フィルタ"
   },
-  "search.filter.menu.language" : {
-    "message" : "言語"
+  "search.filter.menu.language": {
+    "message": "言語"
   },
-  "search.filter.menu.product" : {
-    "message" : "保険商品"
+  "search.filter.menu.product": {
+    "message": "保険商品"
   },
-  "search.filter.menu.release" : {
-    "message" : "リリース"
+  "search.filter.menu.release": {
+    "message": "リリース"
   },
-  "search.filter.menu.subject" : {
-    "message" : "件名"
+  "search.filter.menu.subject": {
+    "message": "件名"
   },
-  "restricted.page.info" : {
-    "message" : "このページを表示するにはログインする必要があります。"
+  "restricted.page.info": {
+    "message": "このページを表示するにはログインする必要があります。"
   },
-  "restricted.page.action" : {
-    "message" : "ログインするにはここをクリックしてください。"
+  "restricted.page.action": {
+    "message": "ログインするにはここをクリックしてください。"
   }
 }

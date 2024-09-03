@@ -5,10 +5,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem/MenuItem';
 import Select, { SelectChangeEvent, SelectProps } from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
+import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import { findMatchingPageItemData } from 'helpers/landingPageHelpers';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useLandingPageItemsContext } from './LandingPageItemsContext';
 
 export type PageSelectorItem = {
@@ -70,7 +69,6 @@ function LandingPageSelectorPredefined({
   labelColor,
   sx,
 }: LandingPageSelectorInContextProps) {
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -123,11 +121,7 @@ function LandingPageSelectorPredefined({
       return null;
     }
 
-    if (selectedItem.href.startsWith('http') || selectedItem.isDoc) {
-      return (window.location.href = selectedItem.href);
-    }
-
-    return navigate(selectedItem.href);
+    return (window.location.href = selectedItem.href);
   };
 
   return (

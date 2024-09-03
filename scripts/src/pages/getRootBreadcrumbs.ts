@@ -8,7 +8,7 @@ type DocRootPages = {
 };
 const landingPagesSourceDir = resolve(
   __dirname,
-  '../../../landing-pages/src/pages/landing'
+  '../../../landing-pages/src/pages'
 );
 const targetFile = resolve(
   __dirname,

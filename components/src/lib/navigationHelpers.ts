@@ -7,3 +7,10 @@ export function getRedirectToPath() {
     ?.replace(window.location.origin, '')
     ?.replace(/&/g, '%26');
 }
+
+export function navigateWithUpdatedParams(updatedParams: URLSearchParams) {
+  const updatedUrl = new URL(window.location.href);
+
+  updatedUrl.search = updatedParams.toString();
+  window.location.href = updatedUrl.toString();
+}

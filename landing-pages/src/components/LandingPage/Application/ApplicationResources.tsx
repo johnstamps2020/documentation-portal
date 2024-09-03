@@ -5,7 +5,7 @@ import {
   getListOfItemsToDisplayOnLandingPage,
   LandingPageItemData,
 } from 'helpers/landingPageHelpers';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import LandingPageLink from '../LandingPageLink';
 import ApplicationDivider from './ApplicationDivider';

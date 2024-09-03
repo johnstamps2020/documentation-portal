@@ -1,7 +1,7 @@
 import CategoryItem from './CategoryItem';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import { getListOfItemsToDisplayOnLandingPage } from '../../../helpers/landingPageHelpers';
 

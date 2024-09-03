@@ -1,9 +1,7 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { navigateWithUpdatedParams } from '@doctools/components';
 
 export function useQueryParameters() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
+  const query = new URLSearchParams(window.location.search);
 
   function modifyFilterValue(
     filterName: string,
@@ -24,10 +22,7 @@ export function useQueryParameters() {
       : query.delete(filterName);
 
     query.delete('page');
-    navigate({
-      pathname: `${location.pathname}`,
-      search: query && `?${query.toString()}`,
-    });
+    navigateWithUpdatedParams(query);
   }
 
   return { modifyFilterValue };

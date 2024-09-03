@@ -1,8 +1,8 @@
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
+import { statistics } from 'pages/delta-doc';
 
 export default function DeltaDocStatistics() {
   const { releaseA, releaseB, deltaDocData, batchComparison } =

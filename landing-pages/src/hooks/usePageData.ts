@@ -1,5 +1,5 @@
 import { Page, RedirectResponseBody } from '@doctools/server';
-import { useParams } from 'react-router-dom';
+import { useLocation } from '@tanstack/react-router';
 import useSWR from 'swr';
 
 export class PageError {
@@ -75,16 +75,27 @@ const pageGetter = async (pagePath: string) => {
   return jsonData;
 };
 
-export function usePageData(pagePath?: string) {
-  const reactRouterParams = useParams();
-  const currentPagePath = reactRouterParams['*'] || '/';
-  const targetPagePath = pagePath || currentPagePath;
+function getTargetPagePathWithoutTrailingSlash(targetPagePath: string): string {
   const targetPagePathWithoutTrailingSlash = targetPagePath.replace(
     /(.)\/$/,
     '$1'
   );
+
+  if (targetPagePathWithoutTrailingSlash === '') {
+    return '/';
+  }
+
+  return targetPagePathWithoutTrailingSlash;
+}
+
+export function usePageData(pagePath?: string) {
+  const location = useLocation();
+  const targetPagePath = getTargetPagePathWithoutTrailingSlash(
+    pagePath || location.pathname.replace('/', '')
+  );
+
   const { data, error, isLoading } = useSWR<Page, PageError>(
-    targetPagePathWithoutTrailingSlash,
+    targetPagePath,
     pageGetter,
     {
       revalidateOnFocus: false,

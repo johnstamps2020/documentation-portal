@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import LandingPageLink from 'components/LandingPage/LandingPageLink';
 import {
   arrangeItems,

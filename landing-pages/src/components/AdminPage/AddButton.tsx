@@ -39,7 +39,7 @@ export default function AddButton({
         title="Open page editor"
         onClick={handleOpenEditor}
         size="medium"
-        sx={{ width: 'fit-content', margin: '8px', display: 'flex', gap: 1 }}
+        sx={{ width: 'fit-content', display: 'flex', gap: 1 }}
       >
         <AddIcon />
         {buttonLabel}

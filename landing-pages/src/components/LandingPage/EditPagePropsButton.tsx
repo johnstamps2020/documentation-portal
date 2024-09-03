@@ -1,17 +1,18 @@
 import EditIcon from '@mui/icons-material/Edit';
 import Fab from '@mui/material/Fab';
-import AccessControl from 'components/AccessControl/AccessControl';
+import Typography from '@mui/material/Typography';
 import AdminDialog from 'components/AdminPage/AdminDialog';
 import PageSettingsForm from 'components/AdminPage/PageAdminPage/PageSettingsForm';
+import { usePageData } from 'hooks/usePageData';
 import { useState } from 'react';
 
-type EditPagePropsButtonProps = {
-  pagePath: string;
-};
-export default function EditPagePropsButton({
-  pagePath,
-}: EditPagePropsButtonProps) {
+export default function EditPagePropsButton() {
   const [isOpen, setIsOpen] = useState(false);
+  const { pageData } = usePageData();
+
+  if (!pageData) {
+    return null;
+  }
 
   function handleOpenEditor() {
     setIsOpen(true);
@@ -22,11 +23,7 @@ export default function EditPagePropsButton({
   }
 
   return (
-    <AccessControl
-      allowedOnEnvs={['dev', 'staging']}
-      accessLevel="admin"
-      doNotNavigate
-    >
+    <>
       <Fab
         variant="extended"
         color="warning"
@@ -34,18 +31,18 @@ export default function EditPagePropsButton({
         title="Open page editor"
         onClick={handleOpenEditor}
         size="medium"
-        sx={{ width: 'fit-content' }}
+        sx={{ width: 'fit-content', display: 'flex', gap: 1 }}
       >
-        <EditIcon sx={{ mr: 1 }} />
-        Edit page
+        <EditIcon />
+        <Typography>Edit page</Typography>
       </Fab>
       <AdminDialog
         label="Update page settings"
         isOpen={isOpen}
         onClose={handleCloseEditor}
       >
-        <PageSettingsForm primaryKey={pagePath} />
+        <PageSettingsForm primaryKey={pageData.path} />
       </AdminDialog>
-    </AccessControl>
+    </>
   );
 }

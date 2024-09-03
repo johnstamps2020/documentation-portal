@@ -1,3 +1,5 @@
+import { navigateWithUpdatedParams } from '@doctools/components';
+import { SearchType } from '@doctools/server';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
@@ -7,26 +9,19 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import Stack from '@mui/material/Stack';
 import { capitalizeFirstLetter } from 'helpers/landingPageHelpers';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { SearchType } from '@doctools/server';
 import { searchTypeQueryParameterName } from 'vars';
 
 const searchTypes: SearchType[] = ['keyword', 'semantic', 'hybrid'];
 
 export default function SearchTypeSelector() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
+  const query = new URLSearchParams(window.location.search);
   const selectedType =
     query.get(searchTypeQueryParameterName) || searchTypes[0];
 
   function handleTypeChange(event: React.ChangeEvent<HTMLInputElement>) {
     query.set(searchTypeQueryParameterName, event.target.value);
     query.delete('page');
-    navigate({
-      pathname: location.pathname,
-      search: `?${query.toString()}`,
-    });
+    navigateWithUpdatedParams(query);
   }
 
   return (

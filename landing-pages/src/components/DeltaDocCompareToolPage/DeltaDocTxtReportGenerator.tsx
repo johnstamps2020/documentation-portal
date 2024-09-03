@@ -1,8 +1,8 @@
 import { DeltaLevenshteinReturnType } from '@doctools/server';
 import Button from '@mui/material/Button';
 import { saveAs } from 'file-saver';
-import { statistics } from 'pages/DeltaDocCompareToolPage/DeltaDocCompareToolPage';
 import { useDeltaDocContext } from './DeltaDocContext';
+import { statistics } from 'pages/delta-doc';
 
 export function createReport(
   firstDocTitle: string,

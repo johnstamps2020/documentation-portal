@@ -65,7 +65,6 @@ export default function SearchResultPanel() {
           <SearchBox
             searchFilters={searchFilters}
             placeholder={placeholder}
-            phrase={searchData?.searchPhrase || ''}
             isMobile={isMobile}
             searchTypeQueryParameterName={searchTypeQueryParameterName}
           />

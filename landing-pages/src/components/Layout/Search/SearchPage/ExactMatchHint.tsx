@@ -1,13 +1,13 @@
 import Link from '@mui/material/Link';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
+import { Link as RouterLink, useLocation } from '@tanstack/react-router';
 import { useSearchData } from 'hooks/useApi';
-import { Link as RouterLink } from 'react-router-dom';
 
 export default function ExactMatchHint() {
   const { searchData, isLoading } = useSearchData();
-  const queryParams = window.location.search;
-  const query = new URLSearchParams(queryParams);
+  const location = useLocation();
+  const query = new URLSearchParams(window.location.search);
 
   if (isLoading || !searchData) {
     return (
@@ -28,8 +28,8 @@ export default function ExactMatchHint() {
         Looking for an exact match?{' '}
         <Link
           component={RouterLink}
+          from={location.pathname}
           to={`/search-results${exactQueryParams}`}
-          relative="path"
         >
           Click here to search for "{searchData.searchPhrase}"
         </Link>

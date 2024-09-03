@@ -10,7 +10,7 @@ import {
 } from '../../../../hooks/useChatbotFeedback';
 import { ChatFeedbackItem } from './ChatFeedbackItem';
 import { DownloadButton } from './DownloadButton';
-import { LoaderBackdrop } from './LoaderBackdrop';
+import { LoaderBackdrop } from '../../../LoaderBackdrop';
 import { Tally } from './Tally';
 
 export function ChatFeedbackPage() {

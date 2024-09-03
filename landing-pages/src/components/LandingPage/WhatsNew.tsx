@@ -1,7 +1,7 @@
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import { useLandingPageItemsContext } from './LandingPageItemsContext';
 import { LandingPageButton } from './LandingPageLink';
 import { findMatchingPageItemData } from 'helpers/landingPageHelpers';

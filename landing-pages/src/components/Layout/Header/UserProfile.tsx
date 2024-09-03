@@ -1,6 +1,6 @@
 import { Avatar, useEnvStore } from '@doctools/components';
+import { Link as RouterLink } from '@tanstack/react-router';
 import { useUserInfo } from 'hooks/useApi';
-import { Link as RouterLink } from 'react-router-dom';
 
 export default function UserProfile() {
   const { userInfo, isError, isLoading } = useUserInfo();

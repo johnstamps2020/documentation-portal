@@ -1,22 +1,17 @@
-import * as React from 'react';
+import { navigateWithUpdatedParams } from '@doctools/components';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useSearchData } from 'hooks/useApi';
+import * as React from 'react';
 
 export default function PaginationControl() {
   const { searchData } = useSearchData();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
+  const query = new URLSearchParams(window.location.search);
   const page = parseInt(query.get('page') || '1');
 
   function handleChange(event: React.ChangeEvent<unknown>, value: number) {
     query.set('page', value.toString());
-    navigate({
-      pathname: location.pathname,
-      search: `?${query.toString()}`,
-    });
+    navigateWithUpdatedParams(query);
   }
 
   if (!searchData || searchData.pages <= 1) {

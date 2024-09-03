@@ -51,6 +51,7 @@ export default function ApplicationLayout({
     ...itemsFromSelector,
     buttonProps,
   ];
+
   const { landingPageItems } = useLandingPageItemsImmutable(allItems);
 
   return (

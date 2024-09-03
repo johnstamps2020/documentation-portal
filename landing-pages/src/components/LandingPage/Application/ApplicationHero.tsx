@@ -3,15 +3,14 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
-import EditPagePropsButton from 'components/LandingPage/EditPagePropsButton';
+import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
 import { findMatchingPageItemData } from 'helpers/landingPageHelpers';
-import { usePageData } from 'hooks/usePageData';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import React, { useEffect } from 'react';
+import AdminControls from '../AdminControls';
 import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 import LandingPageLink from '../LandingPageLink';
-import { ReactComponent as HeroImage } from './application-hero-image.svg';
+import heroImage from './application-hero-image.svg';
 
 export type ApplicationHeroProps = {
   buttonProps: LandingPageItemProps;
@@ -26,7 +25,6 @@ export default function ApplicationHero({
 }: ApplicationHeroProps) {
   const { setTitle } = useLayoutContext();
   const { allAvailableItems } = useLandingPageItemsContext();
-  const { pageData } = usePageData();
 
   useEffect(() => {
     setTitle(title);
@@ -56,7 +54,7 @@ export default function ApplicationHero({
       id="application-hero"
     >
       <Container>
-        {pageData && <EditPagePropsButton pagePath={pageData.path} />}
+        <AdminControls />
         <Box
           sx={{
             display: 'flex',
@@ -123,7 +121,7 @@ export default function ApplicationHero({
               height: '100%',
             }}
           >
-            <HeroImage height={170} />
+            <img alt="" src={heroImage} height={170} />
           </Box>
         </Box>
       </Container>
