@@ -37,7 +37,7 @@
     "express-http-context": "^1.2.3",
     "express-winston": "^4.2.0",
     "http-errors": "~1.6.3",
-    "http-proxy": "^1.18.1",
+    "http-proxy-node16": "^1.0.5",
     "jest-watch-typeahead": "^2.2.2",
     "jsdom": "^19.0.0",
     "jsonwebtoken": "^9.0.0",
