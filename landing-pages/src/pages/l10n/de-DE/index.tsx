@@ -97,7 +97,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/l10n/de-DE/inde')({
+export const Route = createFileRoute('/l10n/de-DE/')({
   component: DeDE,
 });
 
