@@ -1,9 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { baseBackgroundProps } from 'components/LandingPage/LandingPageTypes';
 import ProductFamilyLayout, {
   ProductFamilyLayoutProps,
 } from 'components/LandingPage/ProductFamily/ProductFamilyLayout';
-import { baseBackgroundProps } from 'components/LandingPage/LandingPageTypes';
-import { implementationResourcesSidebar } from '../components/sidebars';
+import { implementationResourcesSidebar } from 'components/sidebars';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {
@@ -48,7 +48,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   sidebar: implementationResourcesSidebar,
 };
 
-export const Route = createFileRoute('/l10n')({
+export const Route = createFileRoute('/l10n/')({
   component: L10n,
 });
 
