@@ -12,7 +12,6 @@ import { Route as rootRoute } from './pages/__root'
 import { Route as SupportImport } from './pages/support'
 import { Route as SearchResultsImport } from './pages/search-results'
 import { Route as LobsImport } from './pages/lobs'
-import { Route as L10nImport } from './pages/l10n'
 import { Route as InternalImport } from './pages/internal'
 import { Route as GwLoginImport } from './pages/gw-login'
 import { Route as ForbiddenImport } from './pages/forbidden'
@@ -22,6 +21,7 @@ import { Route as ChatImport } from './pages/chat'
 import { Route as AdminPanelImport } from './pages/admin-panel'
 import { Route as IndexImport } from './pages/index'
 import { Route as SelfManagedProductsIndexImport } from './pages/selfManagedProducts/index'
+import { Route as L10nIndexImport } from './pages/l10n/index'
 import { Route as TestingFrameworkLaslenasImport } from './pages/testingFramework/laslenas'
 import { Route as TestingFrameworkKufriImport } from './pages/testingFramework/kufri'
 import { Route as TestingFrameworkJasperImport } from './pages/testingFramework/jasper'
@@ -282,11 +282,6 @@ const LobsRoute = LobsImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const L10nRoute = L10nImport.update({
-  path: '/l10n',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const InternalRoute = InternalImport.update({
   path: '/internal',
   getParentRoute: () => rootRoute,
@@ -332,6 +327,11 @@ const SelfManagedProductsIndexRoute = SelfManagedProductsIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const L10nIndexRoute = L10nIndexImport.update({
+  path: '/l10n/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const TestingFrameworkLaslenasRoute = TestingFrameworkLaslenasImport.update({
   path: '/testingFramework/laslenas',
   getParentRoute: () => rootRoute,
@@ -373,43 +373,43 @@ const TestingFrameworkElysianRoute = TestingFrameworkElysianImport.update({
 } as any)
 
 const L10nPtBRRoute = L10nPtBRImport.update({
-  path: '/pt-BR',
-  getParentRoute: () => L10nRoute,
+  path: '/l10n/pt-BR',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nNlNLRoute = L10nNlNLImport.update({
-  path: '/nl-NL',
-  getParentRoute: () => L10nRoute,
+  path: '/l10n/nl-NL',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPRoute = L10nJaJPImport.update({
-  path: '/ja-JP',
-  getParentRoute: () => L10nRoute,
+  path: '/l10n/ja-JP',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITRoute = L10nItITImport.update({
-  path: '/it-IT',
-  getParentRoute: () => L10nRoute,
+  path: '/l10n/it-IT',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRRoute = L10nFrFRImport.update({
-  path: '/fr-FR',
-  getParentRoute: () => L10nRoute,
+  path: '/l10n/fr-FR',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESRoute = L10nEsESImport.update({
-  path: '/es-ES',
-  getParentRoute: () => L10nRoute,
+  path: '/l10n/es-ES',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419Route = L10nEs419Import.update({
-  path: '/es-419',
-  getParentRoute: () => L10nRoute,
+  path: '/l10n/es-419',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDERoute = L10nDeDEImport.update({
-  path: '/de-DE',
-  getParentRoute: () => L10nRoute,
+  path: '/l10n/de-DE',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const JutroDesignSystemVersionRoute = JutroDesignSystemVersionImport.update({
@@ -1681,13 +1681,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InternalImport
       parentRoute: typeof rootRoute
     }
-    '/l10n': {
-      id: '/l10n'
-      path: '/l10n'
-      fullPath: '/l10n'
-      preLoaderRoute: typeof L10nImport
-      parentRoute: typeof rootRoute
-    }
     '/lobs': {
       id: '/lobs'
       path: '/lobs'
@@ -1879,59 +1872,59 @@ declare module '@tanstack/react-router' {
     }
     '/l10n/de-DE': {
       id: '/l10n/de-DE'
-      path: '/de-DE'
+      path: '/l10n/de-DE'
       fullPath: '/l10n/de-DE'
       preLoaderRoute: typeof L10nDeDEImport
-      parentRoute: typeof L10nImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419': {
       id: '/l10n/es-419'
-      path: '/es-419'
+      path: '/l10n/es-419'
       fullPath: '/l10n/es-419'
       preLoaderRoute: typeof L10nEs419Import
-      parentRoute: typeof L10nImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES': {
       id: '/l10n/es-ES'
-      path: '/es-ES'
+      path: '/l10n/es-ES'
       fullPath: '/l10n/es-ES'
       preLoaderRoute: typeof L10nEsESImport
-      parentRoute: typeof L10nImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR': {
       id: '/l10n/fr-FR'
-      path: '/fr-FR'
+      path: '/l10n/fr-FR'
       fullPath: '/l10n/fr-FR'
       preLoaderRoute: typeof L10nFrFRImport
-      parentRoute: typeof L10nImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT': {
       id: '/l10n/it-IT'
-      path: '/it-IT'
+      path: '/l10n/it-IT'
       fullPath: '/l10n/it-IT'
       preLoaderRoute: typeof L10nItITImport
-      parentRoute: typeof L10nImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP': {
       id: '/l10n/ja-JP'
-      path: '/ja-JP'
+      path: '/l10n/ja-JP'
       fullPath: '/l10n/ja-JP'
       preLoaderRoute: typeof L10nJaJPImport
-      parentRoute: typeof L10nImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/nl-NL': {
       id: '/l10n/nl-NL'
-      path: '/nl-NL'
+      path: '/l10n/nl-NL'
       fullPath: '/l10n/nl-NL'
       preLoaderRoute: typeof L10nNlNLImport
-      parentRoute: typeof L10nImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR': {
       id: '/l10n/pt-BR'
-      path: '/pt-BR'
+      path: '/l10n/pt-BR'
       fullPath: '/l10n/pt-BR'
       preLoaderRoute: typeof L10nPtBRImport
-      parentRoute: typeof L10nImport
+      parentRoute: typeof rootRoute
     }
     '/testingFramework/elysian': {
       id: '/testingFramework/elysian'
@@ -1987,6 +1980,13 @@ declare module '@tanstack/react-router' {
       path: '/testingFramework/laslenas'
       fullPath: '/testingFramework/laslenas'
       preLoaderRoute: typeof TestingFrameworkLaslenasImport
+      parentRoute: typeof rootRoute
+    }
+    '/l10n/': {
+      id: '/l10n/'
+      path: '/l10n'
+      fullPath: '/l10n'
+      preLoaderRoute: typeof L10nIndexImport
       parentRoute: typeof rootRoute
     }
     '/selfManagedProducts/': {
@@ -3435,130 +3435,6 @@ export const routeTree = rootRoute.addChildren({
   ForbiddenRoute,
   GwLoginRoute,
   InternalRoute,
-  L10nRoute: L10nRoute.addChildren({
-    L10nDeDERoute: L10nDeDERoute.addChildren({
-      L10nDeDEAnalyticsRoute,
-      L10nDeDEBcRoute,
-      L10nDeDECcRoute,
-      L10nDeDECeAmRoute,
-      L10nDeDECeClaimsRoute,
-      L10nDeDECeQbRoute,
-      L10nDeDECmRoute,
-      L10nDeDECpRoute,
-      L10nDeDEIsConfigupgradetoolsRoute,
-      L10nDeDEPcRoute,
-      L10nDeDEPeRoute,
-      L10nDeDEPeClaimsRoute,
-      L10nDeDESreRoute,
-      L10nDeDEVeRoute,
-    }),
-    L10nEs419Route: L10nEs419Route.addChildren({
-      L10nEs419AnalyticsRoute,
-      L10nEs419ApdRoute,
-      L10nEs419BcRoute,
-      L10nEs419CcRoute,
-      L10nEs419CdaRoute,
-      L10nEs419CeAmRoute,
-      L10nEs419CeClaimsRoute,
-      L10nEs419CeQbRoute,
-      L10nEs419CmRoute,
-      L10nEs419CpRoute,
-      L10nEs419GccRoute,
-      L10nEs419IsConfigupgradetoolsRoute,
-      L10nEs419PcRoute,
-      L10nEs419PeRoute,
-      L10nEs419PeClaimsRoute,
-      L10nEs419SreRoute,
-      L10nEs419VeRoute,
-    }),
-    L10nEsESRoute: L10nEsESRoute.addChildren({
-      L10nEsESBcRoute,
-      L10nEsESCcRoute,
-      L10nEsESCeAmRoute,
-      L10nEsESCeClaimsRoute,
-      L10nEsESCeQbRoute,
-      L10nEsESCmRoute,
-      L10nEsESPcRoute,
-      L10nEsESPeRoute,
-      L10nEsESPeClaimsRoute,
-      L10nEsESSreRoute,
-      L10nEsESVeRoute,
-    }),
-    L10nFrFRRoute: L10nFrFRRoute.addChildren({
-      L10nFrFRAnalyticsRoute,
-      L10nFrFRBcRoute,
-      L10nFrFRCcRoute,
-      L10nFrFRCeAmRoute,
-      L10nFrFRCeClaimsRoute,
-      L10nFrFRCeQbRoute,
-      L10nFrFRCmRoute,
-      L10nFrFRCpRoute,
-      L10nFrFRIsConfigupgradetoolsRoute,
-      L10nFrFRPcRoute,
-      L10nFrFRPeRoute,
-      L10nFrFRPeClaimsRoute,
-      L10nFrFRSreRoute,
-      L10nFrFRVeRoute,
-    }),
-    L10nItITRoute: L10nItITRoute.addChildren({
-      L10nItITAnalyticsRoute,
-      L10nItITBcRoute,
-      L10nItITCcRoute,
-      L10nItITCdaRoute,
-      L10nItITCeAmRoute,
-      L10nItITCeClaimsRoute,
-      L10nItITCeQbRoute,
-      L10nItITGccRoute,
-      L10nItITGwidRoute,
-      L10nItITPcRoute,
-      L10nItITPeRoute,
-      L10nItITPeClaimsRoute,
-      L10nItITSreRoute,
-      L10nItITVeRoute,
-    }),
-    L10nJaJPRoute: L10nJaJPRoute.addChildren({
-      L10nJaJP202302garmischwhatsnewRoute,
-      L10nJaJP202306hakubawhatsnewRoute,
-      L10nJaJPAnalyticsRoute,
-      L10nJaJPApdRoute,
-      L10nJaJPBcRoute,
-      L10nJaJPCcRoute,
-      L10nJaJPCeAmRoute,
-      L10nJaJPCeClaimsRoute,
-      L10nJaJPCeQbRoute,
-      L10nJaJPCmRoute,
-      L10nJaJPCpRoute,
-      L10nJaJPGtestRoute,
-      L10nJaJPGwidRoute,
-      L10nJaJPGwsfRoute,
-      L10nJaJPIsConfigupgradetoolsRoute,
-      L10nJaJPPcRoute,
-      L10nJaJPPeRoute,
-      L10nJaJPPeClaimsRoute,
-      L10nJaJPSreRoute,
-      L10nJaJPVeRoute,
-      L10nJaJPCloudProductsAutopilotworkflowserviceRoute,
-    }),
-    L10nNlNLRoute: L10nNlNLRoute.addChildren({ L10nNlNLCcRoute }),
-    L10nPtBRRoute: L10nPtBRRoute.addChildren({
-      L10nPtBRAnalyticsRoute,
-      L10nPtBRBcRoute,
-      L10nPtBRCcRoute,
-      L10nPtBRCdaRoute,
-      L10nPtBRCeAmRoute,
-      L10nPtBRCeClaimsRoute,
-      L10nPtBRCeQbRoute,
-      L10nPtBRCmRoute,
-      L10nPtBRCpRoute,
-      L10nPtBRGccRoute,
-      L10nPtBRIsConfigupgradetoolsRoute,
-      L10nPtBRPcRoute,
-      L10nPtBRPeRoute,
-      L10nPtBRPeClaimsRoute,
-      L10nPtBRSreRoute,
-      L10nPtBRVeRoute,
-    }),
-  }),
   LobsRoute,
   SearchResultsRoute,
   SupportRoute,
@@ -3576,6 +3452,128 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsMigrationToolsRoute,
   GlobalContentSbtRoute,
   JutroDesignSystemVersionRoute,
+  L10nDeDERoute: L10nDeDERoute.addChildren({
+    L10nDeDEAnalyticsRoute,
+    L10nDeDEBcRoute,
+    L10nDeDECcRoute,
+    L10nDeDECeAmRoute,
+    L10nDeDECeClaimsRoute,
+    L10nDeDECeQbRoute,
+    L10nDeDECmRoute,
+    L10nDeDECpRoute,
+    L10nDeDEIsConfigupgradetoolsRoute,
+    L10nDeDEPcRoute,
+    L10nDeDEPeRoute,
+    L10nDeDEPeClaimsRoute,
+    L10nDeDESreRoute,
+    L10nDeDEVeRoute,
+  }),
+  L10nEs419Route: L10nEs419Route.addChildren({
+    L10nEs419AnalyticsRoute,
+    L10nEs419ApdRoute,
+    L10nEs419BcRoute,
+    L10nEs419CcRoute,
+    L10nEs419CdaRoute,
+    L10nEs419CeAmRoute,
+    L10nEs419CeClaimsRoute,
+    L10nEs419CeQbRoute,
+    L10nEs419CmRoute,
+    L10nEs419CpRoute,
+    L10nEs419GccRoute,
+    L10nEs419IsConfigupgradetoolsRoute,
+    L10nEs419PcRoute,
+    L10nEs419PeRoute,
+    L10nEs419PeClaimsRoute,
+    L10nEs419SreRoute,
+    L10nEs419VeRoute,
+  }),
+  L10nEsESRoute: L10nEsESRoute.addChildren({
+    L10nEsESBcRoute,
+    L10nEsESCcRoute,
+    L10nEsESCeAmRoute,
+    L10nEsESCeClaimsRoute,
+    L10nEsESCeQbRoute,
+    L10nEsESCmRoute,
+    L10nEsESPcRoute,
+    L10nEsESPeRoute,
+    L10nEsESPeClaimsRoute,
+    L10nEsESSreRoute,
+    L10nEsESVeRoute,
+  }),
+  L10nFrFRRoute: L10nFrFRRoute.addChildren({
+    L10nFrFRAnalyticsRoute,
+    L10nFrFRBcRoute,
+    L10nFrFRCcRoute,
+    L10nFrFRCeAmRoute,
+    L10nFrFRCeClaimsRoute,
+    L10nFrFRCeQbRoute,
+    L10nFrFRCmRoute,
+    L10nFrFRCpRoute,
+    L10nFrFRIsConfigupgradetoolsRoute,
+    L10nFrFRPcRoute,
+    L10nFrFRPeRoute,
+    L10nFrFRPeClaimsRoute,
+    L10nFrFRSreRoute,
+    L10nFrFRVeRoute,
+  }),
+  L10nItITRoute: L10nItITRoute.addChildren({
+    L10nItITAnalyticsRoute,
+    L10nItITBcRoute,
+    L10nItITCcRoute,
+    L10nItITCdaRoute,
+    L10nItITCeAmRoute,
+    L10nItITCeClaimsRoute,
+    L10nItITCeQbRoute,
+    L10nItITGccRoute,
+    L10nItITGwidRoute,
+    L10nItITPcRoute,
+    L10nItITPeRoute,
+    L10nItITPeClaimsRoute,
+    L10nItITSreRoute,
+    L10nItITVeRoute,
+  }),
+  L10nJaJPRoute: L10nJaJPRoute.addChildren({
+    L10nJaJP202302garmischwhatsnewRoute,
+    L10nJaJP202306hakubawhatsnewRoute,
+    L10nJaJPAnalyticsRoute,
+    L10nJaJPApdRoute,
+    L10nJaJPBcRoute,
+    L10nJaJPCcRoute,
+    L10nJaJPCeAmRoute,
+    L10nJaJPCeClaimsRoute,
+    L10nJaJPCeQbRoute,
+    L10nJaJPCmRoute,
+    L10nJaJPCpRoute,
+    L10nJaJPGtestRoute,
+    L10nJaJPGwidRoute,
+    L10nJaJPGwsfRoute,
+    L10nJaJPIsConfigupgradetoolsRoute,
+    L10nJaJPPcRoute,
+    L10nJaJPPeRoute,
+    L10nJaJPPeClaimsRoute,
+    L10nJaJPSreRoute,
+    L10nJaJPVeRoute,
+    L10nJaJPCloudProductsAutopilotworkflowserviceRoute,
+  }),
+  L10nNlNLRoute: L10nNlNLRoute.addChildren({ L10nNlNLCcRoute }),
+  L10nPtBRRoute: L10nPtBRRoute.addChildren({
+    L10nPtBRAnalyticsRoute,
+    L10nPtBRBcRoute,
+    L10nPtBRCcRoute,
+    L10nPtBRCdaRoute,
+    L10nPtBRCeAmRoute,
+    L10nPtBRCeClaimsRoute,
+    L10nPtBRCeQbRoute,
+    L10nPtBRCmRoute,
+    L10nPtBRCpRoute,
+    L10nPtBRGccRoute,
+    L10nPtBRIsConfigupgradetoolsRoute,
+    L10nPtBRPcRoute,
+    L10nPtBRPeRoute,
+    L10nPtBRPeClaimsRoute,
+    L10nPtBRSreRoute,
+    L10nPtBRVeRoute,
+  }),
   TestingFrameworkElysianRoute,
   TestingFrameworkFlaineRoute,
   TestingFrameworkGarmischRoute,
@@ -3584,6 +3582,7 @@ export const routeTree = rootRoute.addChildren({
   TestingFrameworkJasperRoute,
   TestingFrameworkKufriRoute,
   TestingFrameworkLaslenasRoute,
+  L10nIndexRoute,
   SelfManagedProductsIndexRoute,
   CloudProductsExploreEs419Route,
   CloudProductsFlaineApdRoute,
@@ -3697,7 +3696,6 @@ export const routeTree = rootRoute.addChildren({
         "/forbidden",
         "/gw-login",
         "/internal",
-        "/l10n",
         "/lobs",
         "/search-results",
         "/support",
@@ -3715,6 +3713,14 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/migrationTools",
         "/globalContent/sbt",
         "/jutroDesignSystem/$version",
+        "/l10n/de-DE",
+        "/l10n/es-419",
+        "/l10n/es-ES",
+        "/l10n/fr-FR",
+        "/l10n/it-IT",
+        "/l10n/ja-JP",
+        "/l10n/nl-NL",
+        "/l10n/pt-BR",
         "/testingFramework/elysian",
         "/testingFramework/flaine",
         "/testingFramework/garmisch",
@@ -3723,6 +3729,7 @@ export const routeTree = rootRoute.addChildren({
         "/testingFramework/jasper",
         "/testingFramework/kufri",
         "/testingFramework/laslenas",
+        "/l10n/",
         "/selfManagedProducts/",
         "/cloudProducts/explore/es-419",
         "/cloudProducts/flaine/apd",
@@ -3856,19 +3863,6 @@ export const routeTree = rootRoute.addChildren({
     "/internal": {
       "filePath": "internal.tsx"
     },
-    "/l10n": {
-      "filePath": "l10n.tsx",
-      "children": [
-        "/l10n/de-DE",
-        "/l10n/es-419",
-        "/l10n/es-ES",
-        "/l10n/fr-FR",
-        "/l10n/it-IT",
-        "/l10n/ja-JP",
-        "/l10n/nl-NL",
-        "/l10n/pt-BR"
-      ]
-    },
     "/lobs": {
       "filePath": "lobs.tsx"
     },
@@ -3962,7 +3956,6 @@ export const routeTree = rootRoute.addChildren({
     },
     "/l10n/de-DE": {
       "filePath": "l10n/de-DE.tsx",
-      "parent": "/l10n",
       "children": [
         "/l10n/de-DE/analytics",
         "/l10n/de-DE/bc",
@@ -3982,7 +3975,6 @@ export const routeTree = rootRoute.addChildren({
     },
     "/l10n/es-419": {
       "filePath": "l10n/es-419.tsx",
-      "parent": "/l10n",
       "children": [
         "/l10n/es-419/analytics",
         "/l10n/es-419/apd",
@@ -4005,7 +3997,6 @@ export const routeTree = rootRoute.addChildren({
     },
     "/l10n/es-ES": {
       "filePath": "l10n/es-ES.tsx",
-      "parent": "/l10n",
       "children": [
         "/l10n/es-ES/bc",
         "/l10n/es-ES/cc",
@@ -4022,7 +4013,6 @@ export const routeTree = rootRoute.addChildren({
     },
     "/l10n/fr-FR": {
       "filePath": "l10n/fr-FR.tsx",
-      "parent": "/l10n",
       "children": [
         "/l10n/fr-FR/analytics",
         "/l10n/fr-FR/bc",
@@ -4042,7 +4032,6 @@ export const routeTree = rootRoute.addChildren({
     },
     "/l10n/it-IT": {
       "filePath": "l10n/it-IT.tsx",
-      "parent": "/l10n",
       "children": [
         "/l10n/it-IT/analytics",
         "/l10n/it-IT/bc",
@@ -4062,7 +4051,6 @@ export const routeTree = rootRoute.addChildren({
     },
     "/l10n/ja-JP": {
       "filePath": "l10n/ja-JP.tsx",
-      "parent": "/l10n",
       "children": [
         "/l10n/ja-JP/202302garmischwhatsnew",
         "/l10n/ja-JP/202306hakubawhatsnew",
@@ -4089,14 +4077,12 @@ export const routeTree = rootRoute.addChildren({
     },
     "/l10n/nl-NL": {
       "filePath": "l10n/nl-NL.tsx",
-      "parent": "/l10n",
       "children": [
         "/l10n/nl-NL/cc"
       ]
     },
     "/l10n/pt-BR": {
       "filePath": "l10n/pt-BR.tsx",
-      "parent": "/l10n",
       "children": [
         "/l10n/pt-BR/analytics",
         "/l10n/pt-BR/bc",
@@ -4139,6 +4125,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/testingFramework/laslenas": {
       "filePath": "testingFramework/laslenas.tsx"
+    },
+    "/l10n/": {
+      "filePath": "l10n/index.tsx"
     },
     "/selfManagedProducts/": {
       "filePath": "selfManagedProducts/index.tsx"
