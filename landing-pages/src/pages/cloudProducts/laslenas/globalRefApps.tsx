@@ -9,7 +9,7 @@ import { allSelectors } from 'components/allSelectors';
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundImage: `url(${gradientBackgroundImage})`,
+    backgroundImage: `url("${gradientBackgroundImage}")`,
   },
   selector: {
     label: 'Select cloud release',
@@ -135,11 +135,9 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/cloudProducts/laslenas/globalRefApps')(
-  {
-    component: Globalrefapps,
-  }
-);
+export const Route = createFileRoute('/cloudProducts/laslenas/globalRefApps')({
+  component: Globalrefapps,
+});
 
 function Globalrefapps() {
   return <CategoryLayout {...pageConfig} />;
