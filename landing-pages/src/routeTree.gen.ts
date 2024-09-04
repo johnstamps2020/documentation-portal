@@ -30,14 +30,6 @@ import { Route as TestingFrameworkHakubaImport } from './pages/testingFramework/
 import { Route as TestingFrameworkGarmischImport } from './pages/testingFramework/garmisch'
 import { Route as TestingFrameworkFlaineImport } from './pages/testingFramework/flaine'
 import { Route as TestingFrameworkElysianImport } from './pages/testingFramework/elysian'
-import { Route as L10nPtBRImport } from './pages/l10n/pt-BR'
-import { Route as L10nNlNLImport } from './pages/l10n/nl-NL'
-import { Route as L10nJaJPImport } from './pages/l10n/ja-JP'
-import { Route as L10nItITImport } from './pages/l10n/it-IT'
-import { Route as L10nFrFRImport } from './pages/l10n/fr-FR'
-import { Route as L10nEsESImport } from './pages/l10n/es-ES'
-import { Route as L10nEs419Import } from './pages/l10n/es-419'
-import { Route as L10nDeDEImport } from './pages/l10n/de-DE'
 import { Route as JutroDesignSystemVersionImport } from './pages/jutroDesignSystem/$version'
 import { Route as GlobalContentSbtImport } from './pages/globalContent/sbt'
 import { Route as CloudProductsMigrationToolsImport } from './pages/cloudProducts/migrationTools'
@@ -62,6 +54,13 @@ import { Route as AdminPanelPlatformImport } from './pages/admin-panel/platform'
 import { Route as AdminPanelPageImport } from './pages/admin-panel/page'
 import { Route as AdminPanelLanguageImport } from './pages/admin-panel/language'
 import { Route as AdminPanelExternalLinkImport } from './pages/admin-panel/external-link'
+import { Route as L10nPtBRIndexImport } from './pages/l10n/pt-BR/index'
+import { Route as L10nNlNLIndexImport } from './pages/l10n/nl-NL/index'
+import { Route as L10nJaJPIndexImport } from './pages/l10n/ja-JP/index'
+import { Route as L10nItITIndexImport } from './pages/l10n/it-IT/index'
+import { Route as L10nFrFRIndexImport } from './pages/l10n/fr-FR/index'
+import { Route as L10nEsESIndexImport } from './pages/l10n/es-ES/index'
+import { Route as L10nEs419IndexImport } from './pages/l10n/es-419/index'
 import { Route as CloudProductsLaslenasIndexImport } from './pages/cloudProducts/laslenas/index'
 import { Route as CloudProductsKufriIndexImport } from './pages/cloudProducts/kufri/index'
 import { Route as CloudProductsJasperIndexImport } from './pages/cloudProducts/jasper/index'
@@ -180,6 +179,7 @@ import { Route as L10nDeDEPeClaimsImport } from './pages/l10n/de-DE/pe-claims'
 import { Route as L10nDeDEPeImport } from './pages/l10n/de-DE/pe'
 import { Route as L10nDeDEPcImport } from './pages/l10n/de-DE/pc'
 import { Route as L10nDeDEIsConfigupgradetoolsImport } from './pages/l10n/de-DE/is-configupgradetools'
+import { Route as L10nDeDEIndeImport } from './pages/l10n/de-DE/inde'
 import { Route as L10nDeDECpImport } from './pages/l10n/de-DE/cp'
 import { Route as L10nDeDECmImport } from './pages/l10n/de-DE/cm'
 import { Route as L10nDeDECeQbImport } from './pages/l10n/de-DE/ce-qb'
@@ -372,46 +372,6 @@ const TestingFrameworkElysianRoute = TestingFrameworkElysianImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const L10nPtBRRoute = L10nPtBRImport.update({
-  path: '/l10n/pt-BR',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const L10nNlNLRoute = L10nNlNLImport.update({
-  path: '/l10n/nl-NL',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const L10nJaJPRoute = L10nJaJPImport.update({
-  path: '/l10n/ja-JP',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const L10nItITRoute = L10nItITImport.update({
-  path: '/l10n/it-IT',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const L10nFrFRRoute = L10nFrFRImport.update({
-  path: '/l10n/fr-FR',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const L10nEsESRoute = L10nEsESImport.update({
-  path: '/l10n/es-ES',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const L10nEs419Route = L10nEs419Import.update({
-  path: '/l10n/es-419',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const L10nDeDERoute = L10nDeDEImport.update({
-  path: '/l10n/de-DE',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const JutroDesignSystemVersionRoute = JutroDesignSystemVersionImport.update({
   path: '/jutroDesignSystem/$version',
   getParentRoute: () => rootRoute,
@@ -535,6 +495,41 @@ const AdminPanelExternalLinkRoute = AdminPanelExternalLinkImport.update({
   getParentRoute: () => AdminPanelRoute,
 } as any)
 
+const L10nPtBRIndexRoute = L10nPtBRIndexImport.update({
+  path: '/l10n/pt-BR/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const L10nNlNLIndexRoute = L10nNlNLIndexImport.update({
+  path: '/l10n/nl-NL/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const L10nJaJPIndexRoute = L10nJaJPIndexImport.update({
+  path: '/l10n/ja-JP/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const L10nItITIndexRoute = L10nItITIndexImport.update({
+  path: '/l10n/it-IT/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const L10nFrFRIndexRoute = L10nFrFRIndexImport.update({
+  path: '/l10n/fr-FR/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const L10nEsESIndexRoute = L10nEsESIndexImport.update({
+  path: '/l10n/es-ES/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const L10nEs419IndexRoute = L10nEs419IndexImport.update({
+  path: '/l10n/es-419/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const CloudProductsLaslenasIndexRoute = CloudProductsLaslenasIndexImport.update(
   {
     path: '/cloudProducts/laslenas/',
@@ -648,545 +643,550 @@ const SelfManagedProductsBcVersionRoute =
   } as any)
 
 const L10nPtBRVeRoute = L10nPtBRVeImport.update({
-  path: '/ve',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/ve',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRSreRoute = L10nPtBRSreImport.update({
-  path: '/sre',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/sre',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRPeClaimsRoute = L10nPtBRPeClaimsImport.update({
-  path: '/pe-claims',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/pe-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRPeRoute = L10nPtBRPeImport.update({
-  path: '/pe',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/pe',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRPcRoute = L10nPtBRPcImport.update({
-  path: '/pc',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/pc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRIsConfigupgradetoolsRoute =
   L10nPtBRIsConfigupgradetoolsImport.update({
-    path: '/is-configupgradetools',
-    getParentRoute: () => L10nPtBRRoute,
+    path: '/l10n/pt-BR/is-configupgradetools',
+    getParentRoute: () => rootRoute,
   } as any)
 
 const L10nPtBRGccRoute = L10nPtBRGccImport.update({
-  path: '/gcc',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/gcc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRCpRoute = L10nPtBRCpImport.update({
-  path: '/cp',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/cp',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRCmRoute = L10nPtBRCmImport.update({
-  path: '/cm',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/cm',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRCeQbRoute = L10nPtBRCeQbImport.update({
-  path: '/ce-qb',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/ce-qb',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRCeClaimsRoute = L10nPtBRCeClaimsImport.update({
-  path: '/ce-claims',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/ce-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRCeAmRoute = L10nPtBRCeAmImport.update({
-  path: '/ce-am',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/ce-am',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRCdaRoute = L10nPtBRCdaImport.update({
-  path: '/cda',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/cda',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRCcRoute = L10nPtBRCcImport.update({
-  path: '/cc',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/cc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRBcRoute = L10nPtBRBcImport.update({
-  path: '/bc',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/bc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nPtBRAnalyticsRoute = L10nPtBRAnalyticsImport.update({
-  path: '/analytics',
-  getParentRoute: () => L10nPtBRRoute,
+  path: '/l10n/pt-BR/analytics',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nNlNLCcRoute = L10nNlNLCcImport.update({
-  path: '/cc',
-  getParentRoute: () => L10nNlNLRoute,
+  path: '/l10n/nl-NL/cc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPVeRoute = L10nJaJPVeImport.update({
-  path: '/ve',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/ve',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPSreRoute = L10nJaJPSreImport.update({
-  path: '/sre',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/sre',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPPeClaimsRoute = L10nJaJPPeClaimsImport.update({
-  path: '/pe-claims',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/pe-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPPeRoute = L10nJaJPPeImport.update({
-  path: '/pe',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/pe',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPPcRoute = L10nJaJPPcImport.update({
-  path: '/pc',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/pc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPIsConfigupgradetoolsRoute =
   L10nJaJPIsConfigupgradetoolsImport.update({
-    path: '/is-configupgradetools',
-    getParentRoute: () => L10nJaJPRoute,
+    path: '/l10n/ja-JP/is-configupgradetools',
+    getParentRoute: () => rootRoute,
   } as any)
 
 const L10nJaJPGwsfRoute = L10nJaJPGwsfImport.update({
-  path: '/gwsf',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/gwsf',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPGwidRoute = L10nJaJPGwidImport.update({
-  path: '/gwid',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/gwid',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPGtestRoute = L10nJaJPGtestImport.update({
-  path: '/gtest',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/gtest',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPCpRoute = L10nJaJPCpImport.update({
-  path: '/cp',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/cp',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPCmRoute = L10nJaJPCmImport.update({
-  path: '/cm',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/cm',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPCeQbRoute = L10nJaJPCeQbImport.update({
-  path: '/ce-qb',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/ce-qb',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPCeClaimsRoute = L10nJaJPCeClaimsImport.update({
-  path: '/ce-claims',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/ce-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPCeAmRoute = L10nJaJPCeAmImport.update({
-  path: '/ce-am',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/ce-am',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPCcRoute = L10nJaJPCcImport.update({
-  path: '/cc',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/cc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPBcRoute = L10nJaJPBcImport.update({
-  path: '/bc',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/bc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPApdRoute = L10nJaJPApdImport.update({
-  path: '/apd',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/apd',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJPAnalyticsRoute = L10nJaJPAnalyticsImport.update({
-  path: '/analytics',
-  getParentRoute: () => L10nJaJPRoute,
+  path: '/l10n/ja-JP/analytics',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nJaJP202306hakubawhatsnewRoute =
   L10nJaJP202306hakubawhatsnewImport.update({
-    path: '/202306hakubawhatsnew',
-    getParentRoute: () => L10nJaJPRoute,
+    path: '/l10n/ja-JP/202306hakubawhatsnew',
+    getParentRoute: () => rootRoute,
   } as any)
 
 const L10nJaJP202302garmischwhatsnewRoute =
   L10nJaJP202302garmischwhatsnewImport.update({
-    path: '/202302garmischwhatsnew',
-    getParentRoute: () => L10nJaJPRoute,
+    path: '/l10n/ja-JP/202302garmischwhatsnew',
+    getParentRoute: () => rootRoute,
   } as any)
 
 const L10nItITVeRoute = L10nItITVeImport.update({
-  path: '/ve',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/ve',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITSreRoute = L10nItITSreImport.update({
-  path: '/sre',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/sre',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITPeClaimsRoute = L10nItITPeClaimsImport.update({
-  path: '/pe-claims',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/pe-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITPeRoute = L10nItITPeImport.update({
-  path: '/pe',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/pe',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITPcRoute = L10nItITPcImport.update({
-  path: '/pc',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/pc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITGwidRoute = L10nItITGwidImport.update({
-  path: '/gwid',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/gwid',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITGccRoute = L10nItITGccImport.update({
-  path: '/gcc',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/gcc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITCeQbRoute = L10nItITCeQbImport.update({
-  path: '/ce-qb',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/ce-qb',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITCeClaimsRoute = L10nItITCeClaimsImport.update({
-  path: '/ce-claims',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/ce-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITCeAmRoute = L10nItITCeAmImport.update({
-  path: '/ce-am',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/ce-am',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITCdaRoute = L10nItITCdaImport.update({
-  path: '/cda',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/cda',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITCcRoute = L10nItITCcImport.update({
-  path: '/cc',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/cc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITBcRoute = L10nItITBcImport.update({
-  path: '/bc',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/bc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nItITAnalyticsRoute = L10nItITAnalyticsImport.update({
-  path: '/analytics',
-  getParentRoute: () => L10nItITRoute,
+  path: '/l10n/it-IT/analytics',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRVeRoute = L10nFrFRVeImport.update({
-  path: '/ve',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/ve',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRSreRoute = L10nFrFRSreImport.update({
-  path: '/sre',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/sre',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRPeClaimsRoute = L10nFrFRPeClaimsImport.update({
-  path: '/pe-claims',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/pe-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRPeRoute = L10nFrFRPeImport.update({
-  path: '/pe',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/pe',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRPcRoute = L10nFrFRPcImport.update({
-  path: '/pc',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/pc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRIsConfigupgradetoolsRoute =
   L10nFrFRIsConfigupgradetoolsImport.update({
-    path: '/is-configupgradetools',
-    getParentRoute: () => L10nFrFRRoute,
+    path: '/l10n/fr-FR/is-configupgradetools',
+    getParentRoute: () => rootRoute,
   } as any)
 
 const L10nFrFRCpRoute = L10nFrFRCpImport.update({
-  path: '/cp',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/cp',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRCmRoute = L10nFrFRCmImport.update({
-  path: '/cm',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/cm',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRCeQbRoute = L10nFrFRCeQbImport.update({
-  path: '/ce-qb',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/ce-qb',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRCeClaimsRoute = L10nFrFRCeClaimsImport.update({
-  path: '/ce-claims',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/ce-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRCeAmRoute = L10nFrFRCeAmImport.update({
-  path: '/ce-am',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/ce-am',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRCcRoute = L10nFrFRCcImport.update({
-  path: '/cc',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/cc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRBcRoute = L10nFrFRBcImport.update({
-  path: '/bc',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/bc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nFrFRAnalyticsRoute = L10nFrFRAnalyticsImport.update({
-  path: '/analytics',
-  getParentRoute: () => L10nFrFRRoute,
+  path: '/l10n/fr-FR/analytics',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESVeRoute = L10nEsESVeImport.update({
-  path: '/ve',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/ve',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESSreRoute = L10nEsESSreImport.update({
-  path: '/sre',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/sre',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESPeClaimsRoute = L10nEsESPeClaimsImport.update({
-  path: '/pe-claims',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/pe-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESPeRoute = L10nEsESPeImport.update({
-  path: '/pe',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/pe',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESPcRoute = L10nEsESPcImport.update({
-  path: '/pc',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/pc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESCmRoute = L10nEsESCmImport.update({
-  path: '/cm',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/cm',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESCeQbRoute = L10nEsESCeQbImport.update({
-  path: '/ce-qb',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/ce-qb',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESCeClaimsRoute = L10nEsESCeClaimsImport.update({
-  path: '/ce-claims',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/ce-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESCeAmRoute = L10nEsESCeAmImport.update({
-  path: '/ce-am',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/ce-am',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESCcRoute = L10nEsESCcImport.update({
-  path: '/cc',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/cc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEsESBcRoute = L10nEsESBcImport.update({
-  path: '/bc',
-  getParentRoute: () => L10nEsESRoute,
+  path: '/l10n/es-ES/bc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419VeRoute = L10nEs419VeImport.update({
-  path: '/ve',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/ve',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419SreRoute = L10nEs419SreImport.update({
-  path: '/sre',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/sre',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419PeClaimsRoute = L10nEs419PeClaimsImport.update({
-  path: '/pe-claims',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/pe-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419PeRoute = L10nEs419PeImport.update({
-  path: '/pe',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/pe',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419PcRoute = L10nEs419PcImport.update({
-  path: '/pc',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/pc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419IsConfigupgradetoolsRoute =
   L10nEs419IsConfigupgradetoolsImport.update({
-    path: '/is-configupgradetools',
-    getParentRoute: () => L10nEs419Route,
+    path: '/l10n/es-419/is-configupgradetools',
+    getParentRoute: () => rootRoute,
   } as any)
 
 const L10nEs419GccRoute = L10nEs419GccImport.update({
-  path: '/gcc',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/gcc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419CpRoute = L10nEs419CpImport.update({
-  path: '/cp',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/cp',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419CmRoute = L10nEs419CmImport.update({
-  path: '/cm',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/cm',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419CeQbRoute = L10nEs419CeQbImport.update({
-  path: '/ce-qb',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/ce-qb',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419CeClaimsRoute = L10nEs419CeClaimsImport.update({
-  path: '/ce-claims',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/ce-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419CeAmRoute = L10nEs419CeAmImport.update({
-  path: '/ce-am',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/ce-am',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419CdaRoute = L10nEs419CdaImport.update({
-  path: '/cda',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/cda',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419CcRoute = L10nEs419CcImport.update({
-  path: '/cc',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/cc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419BcRoute = L10nEs419BcImport.update({
-  path: '/bc',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/bc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419ApdRoute = L10nEs419ApdImport.update({
-  path: '/apd',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/apd',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nEs419AnalyticsRoute = L10nEs419AnalyticsImport.update({
-  path: '/analytics',
-  getParentRoute: () => L10nEs419Route,
+  path: '/l10n/es-419/analytics',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDEVeRoute = L10nDeDEVeImport.update({
-  path: '/ve',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/ve',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDESreRoute = L10nDeDESreImport.update({
-  path: '/sre',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/sre',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDEPeClaimsRoute = L10nDeDEPeClaimsImport.update({
-  path: '/pe-claims',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/pe-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDEPeRoute = L10nDeDEPeImport.update({
-  path: '/pe',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/pe',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDEPcRoute = L10nDeDEPcImport.update({
-  path: '/pc',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/pc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDEIsConfigupgradetoolsRoute =
   L10nDeDEIsConfigupgradetoolsImport.update({
-    path: '/is-configupgradetools',
-    getParentRoute: () => L10nDeDERoute,
+    path: '/l10n/de-DE/is-configupgradetools',
+    getParentRoute: () => rootRoute,
   } as any)
 
+const L10nDeDEIndeRoute = L10nDeDEIndeImport.update({
+  path: '/l10n/de-DE/inde',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const L10nDeDECpRoute = L10nDeDECpImport.update({
-  path: '/cp',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/cp',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDECmRoute = L10nDeDECmImport.update({
-  path: '/cm',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/cm',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDECeQbRoute = L10nDeDECeQbImport.update({
-  path: '/ce-qb',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/ce-qb',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDECeClaimsRoute = L10nDeDECeClaimsImport.update({
-  path: '/ce-claims',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/ce-claims',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDECeAmRoute = L10nDeDECeAmImport.update({
-  path: '/ce-am',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/ce-am',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDECcRoute = L10nDeDECcImport.update({
-  path: '/cc',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/cc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDEBcRoute = L10nDeDEBcImport.update({
-  path: '/bc',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/bc',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const L10nDeDEAnalyticsRoute = L10nDeDEAnalyticsImport.update({
-  path: '/analytics',
-  getParentRoute: () => L10nDeDERoute,
+  path: '/l10n/de-DE/analytics',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const GlobalContentMessageStoreVersionRoute =
@@ -1443,8 +1443,8 @@ const SelfManagedProductsGwsfDiVersionRoute =
 
 const L10nJaJPCloudProductsAutopilotworkflowserviceRoute =
   L10nJaJPCloudProductsAutopilotworkflowserviceImport.update({
-    path: '/cloudProducts/autopilotworkflowservice',
-    getParentRoute: () => L10nJaJPRoute,
+    path: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice',
+    getParentRoute: () => rootRoute,
   } as any)
 
 const CloudProductsInnsbruckPcGwCloudVersionRoute =
@@ -1870,62 +1870,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JutroDesignSystemVersionImport
       parentRoute: typeof rootRoute
     }
-    '/l10n/de-DE': {
-      id: '/l10n/de-DE'
-      path: '/l10n/de-DE'
-      fullPath: '/l10n/de-DE'
-      preLoaderRoute: typeof L10nDeDEImport
-      parentRoute: typeof rootRoute
-    }
-    '/l10n/es-419': {
-      id: '/l10n/es-419'
-      path: '/l10n/es-419'
-      fullPath: '/l10n/es-419'
-      preLoaderRoute: typeof L10nEs419Import
-      parentRoute: typeof rootRoute
-    }
-    '/l10n/es-ES': {
-      id: '/l10n/es-ES'
-      path: '/l10n/es-ES'
-      fullPath: '/l10n/es-ES'
-      preLoaderRoute: typeof L10nEsESImport
-      parentRoute: typeof rootRoute
-    }
-    '/l10n/fr-FR': {
-      id: '/l10n/fr-FR'
-      path: '/l10n/fr-FR'
-      fullPath: '/l10n/fr-FR'
-      preLoaderRoute: typeof L10nFrFRImport
-      parentRoute: typeof rootRoute
-    }
-    '/l10n/it-IT': {
-      id: '/l10n/it-IT'
-      path: '/l10n/it-IT'
-      fullPath: '/l10n/it-IT'
-      preLoaderRoute: typeof L10nItITImport
-      parentRoute: typeof rootRoute
-    }
-    '/l10n/ja-JP': {
-      id: '/l10n/ja-JP'
-      path: '/l10n/ja-JP'
-      fullPath: '/l10n/ja-JP'
-      preLoaderRoute: typeof L10nJaJPImport
-      parentRoute: typeof rootRoute
-    }
-    '/l10n/nl-NL': {
-      id: '/l10n/nl-NL'
-      path: '/l10n/nl-NL'
-      fullPath: '/l10n/nl-NL'
-      preLoaderRoute: typeof L10nNlNLImport
-      parentRoute: typeof rootRoute
-    }
-    '/l10n/pt-BR': {
-      id: '/l10n/pt-BR'
-      path: '/l10n/pt-BR'
-      fullPath: '/l10n/pt-BR'
-      preLoaderRoute: typeof L10nPtBRImport
-      parentRoute: typeof rootRoute
-    }
     '/testingFramework/elysian': {
       id: '/testingFramework/elysian'
       path: '/testingFramework/elysian'
@@ -2299,752 +2243,759 @@ declare module '@tanstack/react-router' {
     }
     '/l10n/de-DE/analytics': {
       id: '/l10n/de-DE/analytics'
-      path: '/analytics'
+      path: '/l10n/de-DE/analytics'
       fullPath: '/l10n/de-DE/analytics'
       preLoaderRoute: typeof L10nDeDEAnalyticsImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/bc': {
       id: '/l10n/de-DE/bc'
-      path: '/bc'
+      path: '/l10n/de-DE/bc'
       fullPath: '/l10n/de-DE/bc'
       preLoaderRoute: typeof L10nDeDEBcImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/cc': {
       id: '/l10n/de-DE/cc'
-      path: '/cc'
+      path: '/l10n/de-DE/cc'
       fullPath: '/l10n/de-DE/cc'
       preLoaderRoute: typeof L10nDeDECcImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/ce-am': {
       id: '/l10n/de-DE/ce-am'
-      path: '/ce-am'
+      path: '/l10n/de-DE/ce-am'
       fullPath: '/l10n/de-DE/ce-am'
       preLoaderRoute: typeof L10nDeDECeAmImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/ce-claims': {
       id: '/l10n/de-DE/ce-claims'
-      path: '/ce-claims'
+      path: '/l10n/de-DE/ce-claims'
       fullPath: '/l10n/de-DE/ce-claims'
       preLoaderRoute: typeof L10nDeDECeClaimsImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/ce-qb': {
       id: '/l10n/de-DE/ce-qb'
-      path: '/ce-qb'
+      path: '/l10n/de-DE/ce-qb'
       fullPath: '/l10n/de-DE/ce-qb'
       preLoaderRoute: typeof L10nDeDECeQbImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/cm': {
       id: '/l10n/de-DE/cm'
-      path: '/cm'
+      path: '/l10n/de-DE/cm'
       fullPath: '/l10n/de-DE/cm'
       preLoaderRoute: typeof L10nDeDECmImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/cp': {
       id: '/l10n/de-DE/cp'
-      path: '/cp'
+      path: '/l10n/de-DE/cp'
       fullPath: '/l10n/de-DE/cp'
       preLoaderRoute: typeof L10nDeDECpImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
+    }
+    '/l10n/de-DE/inde': {
+      id: '/l10n/de-DE/inde'
+      path: '/l10n/de-DE/inde'
+      fullPath: '/l10n/de-DE/inde'
+      preLoaderRoute: typeof L10nDeDEIndeImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/is-configupgradetools': {
       id: '/l10n/de-DE/is-configupgradetools'
-      path: '/is-configupgradetools'
+      path: '/l10n/de-DE/is-configupgradetools'
       fullPath: '/l10n/de-DE/is-configupgradetools'
       preLoaderRoute: typeof L10nDeDEIsConfigupgradetoolsImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/pc': {
       id: '/l10n/de-DE/pc'
-      path: '/pc'
+      path: '/l10n/de-DE/pc'
       fullPath: '/l10n/de-DE/pc'
       preLoaderRoute: typeof L10nDeDEPcImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/pe': {
       id: '/l10n/de-DE/pe'
-      path: '/pe'
+      path: '/l10n/de-DE/pe'
       fullPath: '/l10n/de-DE/pe'
       preLoaderRoute: typeof L10nDeDEPeImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/pe-claims': {
       id: '/l10n/de-DE/pe-claims'
-      path: '/pe-claims'
+      path: '/l10n/de-DE/pe-claims'
       fullPath: '/l10n/de-DE/pe-claims'
       preLoaderRoute: typeof L10nDeDEPeClaimsImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/sre': {
       id: '/l10n/de-DE/sre'
-      path: '/sre'
+      path: '/l10n/de-DE/sre'
       fullPath: '/l10n/de-DE/sre'
       preLoaderRoute: typeof L10nDeDESreImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/de-DE/ve': {
       id: '/l10n/de-DE/ve'
-      path: '/ve'
+      path: '/l10n/de-DE/ve'
       fullPath: '/l10n/de-DE/ve'
       preLoaderRoute: typeof L10nDeDEVeImport
-      parentRoute: typeof L10nDeDEImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/analytics': {
       id: '/l10n/es-419/analytics'
-      path: '/analytics'
+      path: '/l10n/es-419/analytics'
       fullPath: '/l10n/es-419/analytics'
       preLoaderRoute: typeof L10nEs419AnalyticsImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/apd': {
       id: '/l10n/es-419/apd'
-      path: '/apd'
+      path: '/l10n/es-419/apd'
       fullPath: '/l10n/es-419/apd'
       preLoaderRoute: typeof L10nEs419ApdImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/bc': {
       id: '/l10n/es-419/bc'
-      path: '/bc'
+      path: '/l10n/es-419/bc'
       fullPath: '/l10n/es-419/bc'
       preLoaderRoute: typeof L10nEs419BcImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/cc': {
       id: '/l10n/es-419/cc'
-      path: '/cc'
+      path: '/l10n/es-419/cc'
       fullPath: '/l10n/es-419/cc'
       preLoaderRoute: typeof L10nEs419CcImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/cda': {
       id: '/l10n/es-419/cda'
-      path: '/cda'
+      path: '/l10n/es-419/cda'
       fullPath: '/l10n/es-419/cda'
       preLoaderRoute: typeof L10nEs419CdaImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/ce-am': {
       id: '/l10n/es-419/ce-am'
-      path: '/ce-am'
+      path: '/l10n/es-419/ce-am'
       fullPath: '/l10n/es-419/ce-am'
       preLoaderRoute: typeof L10nEs419CeAmImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/ce-claims': {
       id: '/l10n/es-419/ce-claims'
-      path: '/ce-claims'
+      path: '/l10n/es-419/ce-claims'
       fullPath: '/l10n/es-419/ce-claims'
       preLoaderRoute: typeof L10nEs419CeClaimsImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/ce-qb': {
       id: '/l10n/es-419/ce-qb'
-      path: '/ce-qb'
+      path: '/l10n/es-419/ce-qb'
       fullPath: '/l10n/es-419/ce-qb'
       preLoaderRoute: typeof L10nEs419CeQbImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/cm': {
       id: '/l10n/es-419/cm'
-      path: '/cm'
+      path: '/l10n/es-419/cm'
       fullPath: '/l10n/es-419/cm'
       preLoaderRoute: typeof L10nEs419CmImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/cp': {
       id: '/l10n/es-419/cp'
-      path: '/cp'
+      path: '/l10n/es-419/cp'
       fullPath: '/l10n/es-419/cp'
       preLoaderRoute: typeof L10nEs419CpImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/gcc': {
       id: '/l10n/es-419/gcc'
-      path: '/gcc'
+      path: '/l10n/es-419/gcc'
       fullPath: '/l10n/es-419/gcc'
       preLoaderRoute: typeof L10nEs419GccImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/is-configupgradetools': {
       id: '/l10n/es-419/is-configupgradetools'
-      path: '/is-configupgradetools'
+      path: '/l10n/es-419/is-configupgradetools'
       fullPath: '/l10n/es-419/is-configupgradetools'
       preLoaderRoute: typeof L10nEs419IsConfigupgradetoolsImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/pc': {
       id: '/l10n/es-419/pc'
-      path: '/pc'
+      path: '/l10n/es-419/pc'
       fullPath: '/l10n/es-419/pc'
       preLoaderRoute: typeof L10nEs419PcImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/pe': {
       id: '/l10n/es-419/pe'
-      path: '/pe'
+      path: '/l10n/es-419/pe'
       fullPath: '/l10n/es-419/pe'
       preLoaderRoute: typeof L10nEs419PeImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/pe-claims': {
       id: '/l10n/es-419/pe-claims'
-      path: '/pe-claims'
+      path: '/l10n/es-419/pe-claims'
       fullPath: '/l10n/es-419/pe-claims'
       preLoaderRoute: typeof L10nEs419PeClaimsImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/sre': {
       id: '/l10n/es-419/sre'
-      path: '/sre'
+      path: '/l10n/es-419/sre'
       fullPath: '/l10n/es-419/sre'
       preLoaderRoute: typeof L10nEs419SreImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-419/ve': {
       id: '/l10n/es-419/ve'
-      path: '/ve'
+      path: '/l10n/es-419/ve'
       fullPath: '/l10n/es-419/ve'
       preLoaderRoute: typeof L10nEs419VeImport
-      parentRoute: typeof L10nEs419Import
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/bc': {
       id: '/l10n/es-ES/bc'
-      path: '/bc'
+      path: '/l10n/es-ES/bc'
       fullPath: '/l10n/es-ES/bc'
       preLoaderRoute: typeof L10nEsESBcImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/cc': {
       id: '/l10n/es-ES/cc'
-      path: '/cc'
+      path: '/l10n/es-ES/cc'
       fullPath: '/l10n/es-ES/cc'
       preLoaderRoute: typeof L10nEsESCcImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/ce-am': {
       id: '/l10n/es-ES/ce-am'
-      path: '/ce-am'
+      path: '/l10n/es-ES/ce-am'
       fullPath: '/l10n/es-ES/ce-am'
       preLoaderRoute: typeof L10nEsESCeAmImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/ce-claims': {
       id: '/l10n/es-ES/ce-claims'
-      path: '/ce-claims'
+      path: '/l10n/es-ES/ce-claims'
       fullPath: '/l10n/es-ES/ce-claims'
       preLoaderRoute: typeof L10nEsESCeClaimsImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/ce-qb': {
       id: '/l10n/es-ES/ce-qb'
-      path: '/ce-qb'
+      path: '/l10n/es-ES/ce-qb'
       fullPath: '/l10n/es-ES/ce-qb'
       preLoaderRoute: typeof L10nEsESCeQbImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/cm': {
       id: '/l10n/es-ES/cm'
-      path: '/cm'
+      path: '/l10n/es-ES/cm'
       fullPath: '/l10n/es-ES/cm'
       preLoaderRoute: typeof L10nEsESCmImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/pc': {
       id: '/l10n/es-ES/pc'
-      path: '/pc'
+      path: '/l10n/es-ES/pc'
       fullPath: '/l10n/es-ES/pc'
       preLoaderRoute: typeof L10nEsESPcImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/pe': {
       id: '/l10n/es-ES/pe'
-      path: '/pe'
+      path: '/l10n/es-ES/pe'
       fullPath: '/l10n/es-ES/pe'
       preLoaderRoute: typeof L10nEsESPeImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/pe-claims': {
       id: '/l10n/es-ES/pe-claims'
-      path: '/pe-claims'
+      path: '/l10n/es-ES/pe-claims'
       fullPath: '/l10n/es-ES/pe-claims'
       preLoaderRoute: typeof L10nEsESPeClaimsImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/sre': {
       id: '/l10n/es-ES/sre'
-      path: '/sre'
+      path: '/l10n/es-ES/sre'
       fullPath: '/l10n/es-ES/sre'
       preLoaderRoute: typeof L10nEsESSreImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/es-ES/ve': {
       id: '/l10n/es-ES/ve'
-      path: '/ve'
+      path: '/l10n/es-ES/ve'
       fullPath: '/l10n/es-ES/ve'
       preLoaderRoute: typeof L10nEsESVeImport
-      parentRoute: typeof L10nEsESImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/analytics': {
       id: '/l10n/fr-FR/analytics'
-      path: '/analytics'
+      path: '/l10n/fr-FR/analytics'
       fullPath: '/l10n/fr-FR/analytics'
       preLoaderRoute: typeof L10nFrFRAnalyticsImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/bc': {
       id: '/l10n/fr-FR/bc'
-      path: '/bc'
+      path: '/l10n/fr-FR/bc'
       fullPath: '/l10n/fr-FR/bc'
       preLoaderRoute: typeof L10nFrFRBcImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/cc': {
       id: '/l10n/fr-FR/cc'
-      path: '/cc'
+      path: '/l10n/fr-FR/cc'
       fullPath: '/l10n/fr-FR/cc'
       preLoaderRoute: typeof L10nFrFRCcImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/ce-am': {
       id: '/l10n/fr-FR/ce-am'
-      path: '/ce-am'
+      path: '/l10n/fr-FR/ce-am'
       fullPath: '/l10n/fr-FR/ce-am'
       preLoaderRoute: typeof L10nFrFRCeAmImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/ce-claims': {
       id: '/l10n/fr-FR/ce-claims'
-      path: '/ce-claims'
+      path: '/l10n/fr-FR/ce-claims'
       fullPath: '/l10n/fr-FR/ce-claims'
       preLoaderRoute: typeof L10nFrFRCeClaimsImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/ce-qb': {
       id: '/l10n/fr-FR/ce-qb'
-      path: '/ce-qb'
+      path: '/l10n/fr-FR/ce-qb'
       fullPath: '/l10n/fr-FR/ce-qb'
       preLoaderRoute: typeof L10nFrFRCeQbImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/cm': {
       id: '/l10n/fr-FR/cm'
-      path: '/cm'
+      path: '/l10n/fr-FR/cm'
       fullPath: '/l10n/fr-FR/cm'
       preLoaderRoute: typeof L10nFrFRCmImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/cp': {
       id: '/l10n/fr-FR/cp'
-      path: '/cp'
+      path: '/l10n/fr-FR/cp'
       fullPath: '/l10n/fr-FR/cp'
       preLoaderRoute: typeof L10nFrFRCpImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/is-configupgradetools': {
       id: '/l10n/fr-FR/is-configupgradetools'
-      path: '/is-configupgradetools'
+      path: '/l10n/fr-FR/is-configupgradetools'
       fullPath: '/l10n/fr-FR/is-configupgradetools'
       preLoaderRoute: typeof L10nFrFRIsConfigupgradetoolsImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/pc': {
       id: '/l10n/fr-FR/pc'
-      path: '/pc'
+      path: '/l10n/fr-FR/pc'
       fullPath: '/l10n/fr-FR/pc'
       preLoaderRoute: typeof L10nFrFRPcImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/pe': {
       id: '/l10n/fr-FR/pe'
-      path: '/pe'
+      path: '/l10n/fr-FR/pe'
       fullPath: '/l10n/fr-FR/pe'
       preLoaderRoute: typeof L10nFrFRPeImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/pe-claims': {
       id: '/l10n/fr-FR/pe-claims'
-      path: '/pe-claims'
+      path: '/l10n/fr-FR/pe-claims'
       fullPath: '/l10n/fr-FR/pe-claims'
       preLoaderRoute: typeof L10nFrFRPeClaimsImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/sre': {
       id: '/l10n/fr-FR/sre'
-      path: '/sre'
+      path: '/l10n/fr-FR/sre'
       fullPath: '/l10n/fr-FR/sre'
       preLoaderRoute: typeof L10nFrFRSreImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/fr-FR/ve': {
       id: '/l10n/fr-FR/ve'
-      path: '/ve'
+      path: '/l10n/fr-FR/ve'
       fullPath: '/l10n/fr-FR/ve'
       preLoaderRoute: typeof L10nFrFRVeImport
-      parentRoute: typeof L10nFrFRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/analytics': {
       id: '/l10n/it-IT/analytics'
-      path: '/analytics'
+      path: '/l10n/it-IT/analytics'
       fullPath: '/l10n/it-IT/analytics'
       preLoaderRoute: typeof L10nItITAnalyticsImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/bc': {
       id: '/l10n/it-IT/bc'
-      path: '/bc'
+      path: '/l10n/it-IT/bc'
       fullPath: '/l10n/it-IT/bc'
       preLoaderRoute: typeof L10nItITBcImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/cc': {
       id: '/l10n/it-IT/cc'
-      path: '/cc'
+      path: '/l10n/it-IT/cc'
       fullPath: '/l10n/it-IT/cc'
       preLoaderRoute: typeof L10nItITCcImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/cda': {
       id: '/l10n/it-IT/cda'
-      path: '/cda'
+      path: '/l10n/it-IT/cda'
       fullPath: '/l10n/it-IT/cda'
       preLoaderRoute: typeof L10nItITCdaImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/ce-am': {
       id: '/l10n/it-IT/ce-am'
-      path: '/ce-am'
+      path: '/l10n/it-IT/ce-am'
       fullPath: '/l10n/it-IT/ce-am'
       preLoaderRoute: typeof L10nItITCeAmImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/ce-claims': {
       id: '/l10n/it-IT/ce-claims'
-      path: '/ce-claims'
+      path: '/l10n/it-IT/ce-claims'
       fullPath: '/l10n/it-IT/ce-claims'
       preLoaderRoute: typeof L10nItITCeClaimsImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/ce-qb': {
       id: '/l10n/it-IT/ce-qb'
-      path: '/ce-qb'
+      path: '/l10n/it-IT/ce-qb'
       fullPath: '/l10n/it-IT/ce-qb'
       preLoaderRoute: typeof L10nItITCeQbImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/gcc': {
       id: '/l10n/it-IT/gcc'
-      path: '/gcc'
+      path: '/l10n/it-IT/gcc'
       fullPath: '/l10n/it-IT/gcc'
       preLoaderRoute: typeof L10nItITGccImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/gwid': {
       id: '/l10n/it-IT/gwid'
-      path: '/gwid'
+      path: '/l10n/it-IT/gwid'
       fullPath: '/l10n/it-IT/gwid'
       preLoaderRoute: typeof L10nItITGwidImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/pc': {
       id: '/l10n/it-IT/pc'
-      path: '/pc'
+      path: '/l10n/it-IT/pc'
       fullPath: '/l10n/it-IT/pc'
       preLoaderRoute: typeof L10nItITPcImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/pe': {
       id: '/l10n/it-IT/pe'
-      path: '/pe'
+      path: '/l10n/it-IT/pe'
       fullPath: '/l10n/it-IT/pe'
       preLoaderRoute: typeof L10nItITPeImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/pe-claims': {
       id: '/l10n/it-IT/pe-claims'
-      path: '/pe-claims'
+      path: '/l10n/it-IT/pe-claims'
       fullPath: '/l10n/it-IT/pe-claims'
       preLoaderRoute: typeof L10nItITPeClaimsImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/sre': {
       id: '/l10n/it-IT/sre'
-      path: '/sre'
+      path: '/l10n/it-IT/sre'
       fullPath: '/l10n/it-IT/sre'
       preLoaderRoute: typeof L10nItITSreImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/it-IT/ve': {
       id: '/l10n/it-IT/ve'
-      path: '/ve'
+      path: '/l10n/it-IT/ve'
       fullPath: '/l10n/it-IT/ve'
       preLoaderRoute: typeof L10nItITVeImport
-      parentRoute: typeof L10nItITImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/202302garmischwhatsnew': {
       id: '/l10n/ja-JP/202302garmischwhatsnew'
-      path: '/202302garmischwhatsnew'
+      path: '/l10n/ja-JP/202302garmischwhatsnew'
       fullPath: '/l10n/ja-JP/202302garmischwhatsnew'
       preLoaderRoute: typeof L10nJaJP202302garmischwhatsnewImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/202306hakubawhatsnew': {
       id: '/l10n/ja-JP/202306hakubawhatsnew'
-      path: '/202306hakubawhatsnew'
+      path: '/l10n/ja-JP/202306hakubawhatsnew'
       fullPath: '/l10n/ja-JP/202306hakubawhatsnew'
       preLoaderRoute: typeof L10nJaJP202306hakubawhatsnewImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/analytics': {
       id: '/l10n/ja-JP/analytics'
-      path: '/analytics'
+      path: '/l10n/ja-JP/analytics'
       fullPath: '/l10n/ja-JP/analytics'
       preLoaderRoute: typeof L10nJaJPAnalyticsImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/apd': {
       id: '/l10n/ja-JP/apd'
-      path: '/apd'
+      path: '/l10n/ja-JP/apd'
       fullPath: '/l10n/ja-JP/apd'
       preLoaderRoute: typeof L10nJaJPApdImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/bc': {
       id: '/l10n/ja-JP/bc'
-      path: '/bc'
+      path: '/l10n/ja-JP/bc'
       fullPath: '/l10n/ja-JP/bc'
       preLoaderRoute: typeof L10nJaJPBcImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/cc': {
       id: '/l10n/ja-JP/cc'
-      path: '/cc'
+      path: '/l10n/ja-JP/cc'
       fullPath: '/l10n/ja-JP/cc'
       preLoaderRoute: typeof L10nJaJPCcImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/ce-am': {
       id: '/l10n/ja-JP/ce-am'
-      path: '/ce-am'
+      path: '/l10n/ja-JP/ce-am'
       fullPath: '/l10n/ja-JP/ce-am'
       preLoaderRoute: typeof L10nJaJPCeAmImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/ce-claims': {
       id: '/l10n/ja-JP/ce-claims'
-      path: '/ce-claims'
+      path: '/l10n/ja-JP/ce-claims'
       fullPath: '/l10n/ja-JP/ce-claims'
       preLoaderRoute: typeof L10nJaJPCeClaimsImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/ce-qb': {
       id: '/l10n/ja-JP/ce-qb'
-      path: '/ce-qb'
+      path: '/l10n/ja-JP/ce-qb'
       fullPath: '/l10n/ja-JP/ce-qb'
       preLoaderRoute: typeof L10nJaJPCeQbImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/cm': {
       id: '/l10n/ja-JP/cm'
-      path: '/cm'
+      path: '/l10n/ja-JP/cm'
       fullPath: '/l10n/ja-JP/cm'
       preLoaderRoute: typeof L10nJaJPCmImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/cp': {
       id: '/l10n/ja-JP/cp'
-      path: '/cp'
+      path: '/l10n/ja-JP/cp'
       fullPath: '/l10n/ja-JP/cp'
       preLoaderRoute: typeof L10nJaJPCpImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/gtest': {
       id: '/l10n/ja-JP/gtest'
-      path: '/gtest'
+      path: '/l10n/ja-JP/gtest'
       fullPath: '/l10n/ja-JP/gtest'
       preLoaderRoute: typeof L10nJaJPGtestImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/gwid': {
       id: '/l10n/ja-JP/gwid'
-      path: '/gwid'
+      path: '/l10n/ja-JP/gwid'
       fullPath: '/l10n/ja-JP/gwid'
       preLoaderRoute: typeof L10nJaJPGwidImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/gwsf': {
       id: '/l10n/ja-JP/gwsf'
-      path: '/gwsf'
+      path: '/l10n/ja-JP/gwsf'
       fullPath: '/l10n/ja-JP/gwsf'
       preLoaderRoute: typeof L10nJaJPGwsfImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/is-configupgradetools': {
       id: '/l10n/ja-JP/is-configupgradetools'
-      path: '/is-configupgradetools'
+      path: '/l10n/ja-JP/is-configupgradetools'
       fullPath: '/l10n/ja-JP/is-configupgradetools'
       preLoaderRoute: typeof L10nJaJPIsConfigupgradetoolsImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/pc': {
       id: '/l10n/ja-JP/pc'
-      path: '/pc'
+      path: '/l10n/ja-JP/pc'
       fullPath: '/l10n/ja-JP/pc'
       preLoaderRoute: typeof L10nJaJPPcImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/pe': {
       id: '/l10n/ja-JP/pe'
-      path: '/pe'
+      path: '/l10n/ja-JP/pe'
       fullPath: '/l10n/ja-JP/pe'
       preLoaderRoute: typeof L10nJaJPPeImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/pe-claims': {
       id: '/l10n/ja-JP/pe-claims'
-      path: '/pe-claims'
+      path: '/l10n/ja-JP/pe-claims'
       fullPath: '/l10n/ja-JP/pe-claims'
       preLoaderRoute: typeof L10nJaJPPeClaimsImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/sre': {
       id: '/l10n/ja-JP/sre'
-      path: '/sre'
+      path: '/l10n/ja-JP/sre'
       fullPath: '/l10n/ja-JP/sre'
       preLoaderRoute: typeof L10nJaJPSreImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/ja-JP/ve': {
       id: '/l10n/ja-JP/ve'
-      path: '/ve'
+      path: '/l10n/ja-JP/ve'
       fullPath: '/l10n/ja-JP/ve'
       preLoaderRoute: typeof L10nJaJPVeImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/nl-NL/cc': {
       id: '/l10n/nl-NL/cc'
-      path: '/cc'
+      path: '/l10n/nl-NL/cc'
       fullPath: '/l10n/nl-NL/cc'
       preLoaderRoute: typeof L10nNlNLCcImport
-      parentRoute: typeof L10nNlNLImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/analytics': {
       id: '/l10n/pt-BR/analytics'
-      path: '/analytics'
+      path: '/l10n/pt-BR/analytics'
       fullPath: '/l10n/pt-BR/analytics'
       preLoaderRoute: typeof L10nPtBRAnalyticsImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/bc': {
       id: '/l10n/pt-BR/bc'
-      path: '/bc'
+      path: '/l10n/pt-BR/bc'
       fullPath: '/l10n/pt-BR/bc'
       preLoaderRoute: typeof L10nPtBRBcImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/cc': {
       id: '/l10n/pt-BR/cc'
-      path: '/cc'
+      path: '/l10n/pt-BR/cc'
       fullPath: '/l10n/pt-BR/cc'
       preLoaderRoute: typeof L10nPtBRCcImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/cda': {
       id: '/l10n/pt-BR/cda'
-      path: '/cda'
+      path: '/l10n/pt-BR/cda'
       fullPath: '/l10n/pt-BR/cda'
       preLoaderRoute: typeof L10nPtBRCdaImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/ce-am': {
       id: '/l10n/pt-BR/ce-am'
-      path: '/ce-am'
+      path: '/l10n/pt-BR/ce-am'
       fullPath: '/l10n/pt-BR/ce-am'
       preLoaderRoute: typeof L10nPtBRCeAmImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/ce-claims': {
       id: '/l10n/pt-BR/ce-claims'
-      path: '/ce-claims'
+      path: '/l10n/pt-BR/ce-claims'
       fullPath: '/l10n/pt-BR/ce-claims'
       preLoaderRoute: typeof L10nPtBRCeClaimsImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/ce-qb': {
       id: '/l10n/pt-BR/ce-qb'
-      path: '/ce-qb'
+      path: '/l10n/pt-BR/ce-qb'
       fullPath: '/l10n/pt-BR/ce-qb'
       preLoaderRoute: typeof L10nPtBRCeQbImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/cm': {
       id: '/l10n/pt-BR/cm'
-      path: '/cm'
+      path: '/l10n/pt-BR/cm'
       fullPath: '/l10n/pt-BR/cm'
       preLoaderRoute: typeof L10nPtBRCmImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/cp': {
       id: '/l10n/pt-BR/cp'
-      path: '/cp'
+      path: '/l10n/pt-BR/cp'
       fullPath: '/l10n/pt-BR/cp'
       preLoaderRoute: typeof L10nPtBRCpImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/gcc': {
       id: '/l10n/pt-BR/gcc'
-      path: '/gcc'
+      path: '/l10n/pt-BR/gcc'
       fullPath: '/l10n/pt-BR/gcc'
       preLoaderRoute: typeof L10nPtBRGccImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/is-configupgradetools': {
       id: '/l10n/pt-BR/is-configupgradetools'
-      path: '/is-configupgradetools'
+      path: '/l10n/pt-BR/is-configupgradetools'
       fullPath: '/l10n/pt-BR/is-configupgradetools'
       preLoaderRoute: typeof L10nPtBRIsConfigupgradetoolsImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/pc': {
       id: '/l10n/pt-BR/pc'
-      path: '/pc'
+      path: '/l10n/pt-BR/pc'
       fullPath: '/l10n/pt-BR/pc'
       preLoaderRoute: typeof L10nPtBRPcImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/pe': {
       id: '/l10n/pt-BR/pe'
-      path: '/pe'
+      path: '/l10n/pt-BR/pe'
       fullPath: '/l10n/pt-BR/pe'
       preLoaderRoute: typeof L10nPtBRPeImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/pe-claims': {
       id: '/l10n/pt-BR/pe-claims'
-      path: '/pe-claims'
+      path: '/l10n/pt-BR/pe-claims'
       fullPath: '/l10n/pt-BR/pe-claims'
       preLoaderRoute: typeof L10nPtBRPeClaimsImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/sre': {
       id: '/l10n/pt-BR/sre'
-      path: '/sre'
+      path: '/l10n/pt-BR/sre'
       fullPath: '/l10n/pt-BR/sre'
       preLoaderRoute: typeof L10nPtBRSreImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/l10n/pt-BR/ve': {
       id: '/l10n/pt-BR/ve'
-      path: '/ve'
+      path: '/l10n/pt-BR/ve'
       fullPath: '/l10n/pt-BR/ve'
       preLoaderRoute: typeof L10nPtBRVeImport
-      parentRoute: typeof L10nPtBRImport
+      parentRoute: typeof rootRoute
     }
     '/selfManagedProducts/bc/$version': {
       id: '/selfManagedProducts/bc/$version'
@@ -3177,6 +3128,55 @@ declare module '@tanstack/react-router' {
       path: '/cloudProducts/laslenas'
       fullPath: '/cloudProducts/laslenas'
       preLoaderRoute: typeof CloudProductsLaslenasIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/l10n/es-419/': {
+      id: '/l10n/es-419/'
+      path: '/l10n/es-419'
+      fullPath: '/l10n/es-419'
+      preLoaderRoute: typeof L10nEs419IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/l10n/es-ES/': {
+      id: '/l10n/es-ES/'
+      path: '/l10n/es-ES'
+      fullPath: '/l10n/es-ES'
+      preLoaderRoute: typeof L10nEsESIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/l10n/fr-FR/': {
+      id: '/l10n/fr-FR/'
+      path: '/l10n/fr-FR'
+      fullPath: '/l10n/fr-FR'
+      preLoaderRoute: typeof L10nFrFRIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/l10n/it-IT/': {
+      id: '/l10n/it-IT/'
+      path: '/l10n/it-IT'
+      fullPath: '/l10n/it-IT'
+      preLoaderRoute: typeof L10nItITIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/l10n/ja-JP/': {
+      id: '/l10n/ja-JP/'
+      path: '/l10n/ja-JP'
+      fullPath: '/l10n/ja-JP'
+      preLoaderRoute: typeof L10nJaJPIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/l10n/nl-NL/': {
+      id: '/l10n/nl-NL/'
+      path: '/l10n/nl-NL'
+      fullPath: '/l10n/nl-NL'
+      preLoaderRoute: typeof L10nNlNLIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/l10n/pt-BR/': {
+      id: '/l10n/pt-BR/'
+      path: '/l10n/pt-BR'
+      fullPath: '/l10n/pt-BR'
+      preLoaderRoute: typeof L10nPtBRIndexImport
       parentRoute: typeof rootRoute
     }
     '/cloudProducts/aspen/insuranceNow/$version': {
@@ -3384,10 +3384,10 @@ declare module '@tanstack/react-router' {
     }
     '/l10n/ja-JP/cloudProducts/autopilotworkflowservice': {
       id: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
-      path: '/cloudProducts/autopilotworkflowservice'
+      path: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
       fullPath: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
       preLoaderRoute: typeof L10nJaJPCloudProductsAutopilotworkflowserviceImport
-      parentRoute: typeof L10nJaJPImport
+      parentRoute: typeof rootRoute
     }
     '/selfManagedProducts/gwsf/di/$version': {
       id: '/selfManagedProducts/gwsf/di/$version'
@@ -3452,128 +3452,6 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsMigrationToolsRoute,
   GlobalContentSbtRoute,
   JutroDesignSystemVersionRoute,
-  L10nDeDERoute: L10nDeDERoute.addChildren({
-    L10nDeDEAnalyticsRoute,
-    L10nDeDEBcRoute,
-    L10nDeDECcRoute,
-    L10nDeDECeAmRoute,
-    L10nDeDECeClaimsRoute,
-    L10nDeDECeQbRoute,
-    L10nDeDECmRoute,
-    L10nDeDECpRoute,
-    L10nDeDEIsConfigupgradetoolsRoute,
-    L10nDeDEPcRoute,
-    L10nDeDEPeRoute,
-    L10nDeDEPeClaimsRoute,
-    L10nDeDESreRoute,
-    L10nDeDEVeRoute,
-  }),
-  L10nEs419Route: L10nEs419Route.addChildren({
-    L10nEs419AnalyticsRoute,
-    L10nEs419ApdRoute,
-    L10nEs419BcRoute,
-    L10nEs419CcRoute,
-    L10nEs419CdaRoute,
-    L10nEs419CeAmRoute,
-    L10nEs419CeClaimsRoute,
-    L10nEs419CeQbRoute,
-    L10nEs419CmRoute,
-    L10nEs419CpRoute,
-    L10nEs419GccRoute,
-    L10nEs419IsConfigupgradetoolsRoute,
-    L10nEs419PcRoute,
-    L10nEs419PeRoute,
-    L10nEs419PeClaimsRoute,
-    L10nEs419SreRoute,
-    L10nEs419VeRoute,
-  }),
-  L10nEsESRoute: L10nEsESRoute.addChildren({
-    L10nEsESBcRoute,
-    L10nEsESCcRoute,
-    L10nEsESCeAmRoute,
-    L10nEsESCeClaimsRoute,
-    L10nEsESCeQbRoute,
-    L10nEsESCmRoute,
-    L10nEsESPcRoute,
-    L10nEsESPeRoute,
-    L10nEsESPeClaimsRoute,
-    L10nEsESSreRoute,
-    L10nEsESVeRoute,
-  }),
-  L10nFrFRRoute: L10nFrFRRoute.addChildren({
-    L10nFrFRAnalyticsRoute,
-    L10nFrFRBcRoute,
-    L10nFrFRCcRoute,
-    L10nFrFRCeAmRoute,
-    L10nFrFRCeClaimsRoute,
-    L10nFrFRCeQbRoute,
-    L10nFrFRCmRoute,
-    L10nFrFRCpRoute,
-    L10nFrFRIsConfigupgradetoolsRoute,
-    L10nFrFRPcRoute,
-    L10nFrFRPeRoute,
-    L10nFrFRPeClaimsRoute,
-    L10nFrFRSreRoute,
-    L10nFrFRVeRoute,
-  }),
-  L10nItITRoute: L10nItITRoute.addChildren({
-    L10nItITAnalyticsRoute,
-    L10nItITBcRoute,
-    L10nItITCcRoute,
-    L10nItITCdaRoute,
-    L10nItITCeAmRoute,
-    L10nItITCeClaimsRoute,
-    L10nItITCeQbRoute,
-    L10nItITGccRoute,
-    L10nItITGwidRoute,
-    L10nItITPcRoute,
-    L10nItITPeRoute,
-    L10nItITPeClaimsRoute,
-    L10nItITSreRoute,
-    L10nItITVeRoute,
-  }),
-  L10nJaJPRoute: L10nJaJPRoute.addChildren({
-    L10nJaJP202302garmischwhatsnewRoute,
-    L10nJaJP202306hakubawhatsnewRoute,
-    L10nJaJPAnalyticsRoute,
-    L10nJaJPApdRoute,
-    L10nJaJPBcRoute,
-    L10nJaJPCcRoute,
-    L10nJaJPCeAmRoute,
-    L10nJaJPCeClaimsRoute,
-    L10nJaJPCeQbRoute,
-    L10nJaJPCmRoute,
-    L10nJaJPCpRoute,
-    L10nJaJPGtestRoute,
-    L10nJaJPGwidRoute,
-    L10nJaJPGwsfRoute,
-    L10nJaJPIsConfigupgradetoolsRoute,
-    L10nJaJPPcRoute,
-    L10nJaJPPeRoute,
-    L10nJaJPPeClaimsRoute,
-    L10nJaJPSreRoute,
-    L10nJaJPVeRoute,
-    L10nJaJPCloudProductsAutopilotworkflowserviceRoute,
-  }),
-  L10nNlNLRoute: L10nNlNLRoute.addChildren({ L10nNlNLCcRoute }),
-  L10nPtBRRoute: L10nPtBRRoute.addChildren({
-    L10nPtBRAnalyticsRoute,
-    L10nPtBRBcRoute,
-    L10nPtBRCcRoute,
-    L10nPtBRCdaRoute,
-    L10nPtBRCeAmRoute,
-    L10nPtBRCeClaimsRoute,
-    L10nPtBRCeQbRoute,
-    L10nPtBRCmRoute,
-    L10nPtBRCpRoute,
-    L10nPtBRGccRoute,
-    L10nPtBRIsConfigupgradetoolsRoute,
-    L10nPtBRPcRoute,
-    L10nPtBRPeRoute,
-    L10nPtBRPeClaimsRoute,
-    L10nPtBRSreRoute,
-    L10nPtBRVeRoute,
-  }),
   TestingFrameworkElysianRoute,
   TestingFrameworkFlaineRoute,
   TestingFrameworkGarmischRoute,
@@ -3627,6 +3505,114 @@ export const routeTree = rootRoute.addChildren({
   GlobalContentLookupGeneratorVersionRoute,
   GlobalContentLossEstCalcVersionRoute,
   GlobalContentMessageStoreVersionRoute,
+  L10nDeDEAnalyticsRoute,
+  L10nDeDEBcRoute,
+  L10nDeDECcRoute,
+  L10nDeDECeAmRoute,
+  L10nDeDECeClaimsRoute,
+  L10nDeDECeQbRoute,
+  L10nDeDECmRoute,
+  L10nDeDECpRoute,
+  L10nDeDEIndeRoute,
+  L10nDeDEIsConfigupgradetoolsRoute,
+  L10nDeDEPcRoute,
+  L10nDeDEPeRoute,
+  L10nDeDEPeClaimsRoute,
+  L10nDeDESreRoute,
+  L10nDeDEVeRoute,
+  L10nEs419AnalyticsRoute,
+  L10nEs419ApdRoute,
+  L10nEs419BcRoute,
+  L10nEs419CcRoute,
+  L10nEs419CdaRoute,
+  L10nEs419CeAmRoute,
+  L10nEs419CeClaimsRoute,
+  L10nEs419CeQbRoute,
+  L10nEs419CmRoute,
+  L10nEs419CpRoute,
+  L10nEs419GccRoute,
+  L10nEs419IsConfigupgradetoolsRoute,
+  L10nEs419PcRoute,
+  L10nEs419PeRoute,
+  L10nEs419PeClaimsRoute,
+  L10nEs419SreRoute,
+  L10nEs419VeRoute,
+  L10nEsESBcRoute,
+  L10nEsESCcRoute,
+  L10nEsESCeAmRoute,
+  L10nEsESCeClaimsRoute,
+  L10nEsESCeQbRoute,
+  L10nEsESCmRoute,
+  L10nEsESPcRoute,
+  L10nEsESPeRoute,
+  L10nEsESPeClaimsRoute,
+  L10nEsESSreRoute,
+  L10nEsESVeRoute,
+  L10nFrFRAnalyticsRoute,
+  L10nFrFRBcRoute,
+  L10nFrFRCcRoute,
+  L10nFrFRCeAmRoute,
+  L10nFrFRCeClaimsRoute,
+  L10nFrFRCeQbRoute,
+  L10nFrFRCmRoute,
+  L10nFrFRCpRoute,
+  L10nFrFRIsConfigupgradetoolsRoute,
+  L10nFrFRPcRoute,
+  L10nFrFRPeRoute,
+  L10nFrFRPeClaimsRoute,
+  L10nFrFRSreRoute,
+  L10nFrFRVeRoute,
+  L10nItITAnalyticsRoute,
+  L10nItITBcRoute,
+  L10nItITCcRoute,
+  L10nItITCdaRoute,
+  L10nItITCeAmRoute,
+  L10nItITCeClaimsRoute,
+  L10nItITCeQbRoute,
+  L10nItITGccRoute,
+  L10nItITGwidRoute,
+  L10nItITPcRoute,
+  L10nItITPeRoute,
+  L10nItITPeClaimsRoute,
+  L10nItITSreRoute,
+  L10nItITVeRoute,
+  L10nJaJP202302garmischwhatsnewRoute,
+  L10nJaJP202306hakubawhatsnewRoute,
+  L10nJaJPAnalyticsRoute,
+  L10nJaJPApdRoute,
+  L10nJaJPBcRoute,
+  L10nJaJPCcRoute,
+  L10nJaJPCeAmRoute,
+  L10nJaJPCeClaimsRoute,
+  L10nJaJPCeQbRoute,
+  L10nJaJPCmRoute,
+  L10nJaJPCpRoute,
+  L10nJaJPGtestRoute,
+  L10nJaJPGwidRoute,
+  L10nJaJPGwsfRoute,
+  L10nJaJPIsConfigupgradetoolsRoute,
+  L10nJaJPPcRoute,
+  L10nJaJPPeRoute,
+  L10nJaJPPeClaimsRoute,
+  L10nJaJPSreRoute,
+  L10nJaJPVeRoute,
+  L10nNlNLCcRoute,
+  L10nPtBRAnalyticsRoute,
+  L10nPtBRBcRoute,
+  L10nPtBRCcRoute,
+  L10nPtBRCdaRoute,
+  L10nPtBRCeAmRoute,
+  L10nPtBRCeClaimsRoute,
+  L10nPtBRCeQbRoute,
+  L10nPtBRCmRoute,
+  L10nPtBRCpRoute,
+  L10nPtBRGccRoute,
+  L10nPtBRIsConfigupgradetoolsRoute,
+  L10nPtBRPcRoute,
+  L10nPtBRPeRoute,
+  L10nPtBRPeClaimsRoute,
+  L10nPtBRSreRoute,
+  L10nPtBRVeRoute,
   SelfManagedProductsBcVersionRoute,
   SelfManagedProductsCcVersionRoute,
   SelfManagedProductsCeAccountMgmtVersionRoute,
@@ -3646,6 +3632,13 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsJasperIndexRoute,
   CloudProductsKufriIndexRoute,
   CloudProductsLaslenasIndexRoute,
+  L10nEs419IndexRoute,
+  L10nEsESIndexRoute,
+  L10nFrFRIndexRoute,
+  L10nItITIndexRoute,
+  L10nJaJPIndexRoute,
+  L10nNlNLIndexRoute,
+  L10nPtBRIndexRoute,
   CloudProductsAspenInsuranceNowVersionRoute,
   CloudProductsBanffInsuranceNowVersionRoute,
   CloudProductsCortinaInsuranceNowVersionRoute,
@@ -3675,6 +3668,7 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsInnsbruckIcGwCloudVersionRoute,
   CloudProductsInnsbruckInsuranceNowVersionRoute,
   CloudProductsInnsbruckPcGwCloudVersionRoute,
+  L10nJaJPCloudProductsAutopilotworkflowserviceRoute,
   SelfManagedProductsGwsfDiVersionRoute,
   SelfManagedProductsGwsfEdVersionRoute,
   SelfManagedProductsGwsfVodVersionRoute,
@@ -3713,14 +3707,6 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/migrationTools",
         "/globalContent/sbt",
         "/jutroDesignSystem/$version",
-        "/l10n/de-DE",
-        "/l10n/es-419",
-        "/l10n/es-ES",
-        "/l10n/fr-FR",
-        "/l10n/it-IT",
-        "/l10n/ja-JP",
-        "/l10n/nl-NL",
-        "/l10n/pt-BR",
         "/testingFramework/elysian",
         "/testingFramework/flaine",
         "/testingFramework/garmisch",
@@ -3774,6 +3760,114 @@ export const routeTree = rootRoute.addChildren({
         "/globalContent/lookupGenerator/$version",
         "/globalContent/lossEstCalc/$version",
         "/globalContent/messageStore/$version",
+        "/l10n/de-DE/analytics",
+        "/l10n/de-DE/bc",
+        "/l10n/de-DE/cc",
+        "/l10n/de-DE/ce-am",
+        "/l10n/de-DE/ce-claims",
+        "/l10n/de-DE/ce-qb",
+        "/l10n/de-DE/cm",
+        "/l10n/de-DE/cp",
+        "/l10n/de-DE/inde",
+        "/l10n/de-DE/is-configupgradetools",
+        "/l10n/de-DE/pc",
+        "/l10n/de-DE/pe",
+        "/l10n/de-DE/pe-claims",
+        "/l10n/de-DE/sre",
+        "/l10n/de-DE/ve",
+        "/l10n/es-419/analytics",
+        "/l10n/es-419/apd",
+        "/l10n/es-419/bc",
+        "/l10n/es-419/cc",
+        "/l10n/es-419/cda",
+        "/l10n/es-419/ce-am",
+        "/l10n/es-419/ce-claims",
+        "/l10n/es-419/ce-qb",
+        "/l10n/es-419/cm",
+        "/l10n/es-419/cp",
+        "/l10n/es-419/gcc",
+        "/l10n/es-419/is-configupgradetools",
+        "/l10n/es-419/pc",
+        "/l10n/es-419/pe",
+        "/l10n/es-419/pe-claims",
+        "/l10n/es-419/sre",
+        "/l10n/es-419/ve",
+        "/l10n/es-ES/bc",
+        "/l10n/es-ES/cc",
+        "/l10n/es-ES/ce-am",
+        "/l10n/es-ES/ce-claims",
+        "/l10n/es-ES/ce-qb",
+        "/l10n/es-ES/cm",
+        "/l10n/es-ES/pc",
+        "/l10n/es-ES/pe",
+        "/l10n/es-ES/pe-claims",
+        "/l10n/es-ES/sre",
+        "/l10n/es-ES/ve",
+        "/l10n/fr-FR/analytics",
+        "/l10n/fr-FR/bc",
+        "/l10n/fr-FR/cc",
+        "/l10n/fr-FR/ce-am",
+        "/l10n/fr-FR/ce-claims",
+        "/l10n/fr-FR/ce-qb",
+        "/l10n/fr-FR/cm",
+        "/l10n/fr-FR/cp",
+        "/l10n/fr-FR/is-configupgradetools",
+        "/l10n/fr-FR/pc",
+        "/l10n/fr-FR/pe",
+        "/l10n/fr-FR/pe-claims",
+        "/l10n/fr-FR/sre",
+        "/l10n/fr-FR/ve",
+        "/l10n/it-IT/analytics",
+        "/l10n/it-IT/bc",
+        "/l10n/it-IT/cc",
+        "/l10n/it-IT/cda",
+        "/l10n/it-IT/ce-am",
+        "/l10n/it-IT/ce-claims",
+        "/l10n/it-IT/ce-qb",
+        "/l10n/it-IT/gcc",
+        "/l10n/it-IT/gwid",
+        "/l10n/it-IT/pc",
+        "/l10n/it-IT/pe",
+        "/l10n/it-IT/pe-claims",
+        "/l10n/it-IT/sre",
+        "/l10n/it-IT/ve",
+        "/l10n/ja-JP/202302garmischwhatsnew",
+        "/l10n/ja-JP/202306hakubawhatsnew",
+        "/l10n/ja-JP/analytics",
+        "/l10n/ja-JP/apd",
+        "/l10n/ja-JP/bc",
+        "/l10n/ja-JP/cc",
+        "/l10n/ja-JP/ce-am",
+        "/l10n/ja-JP/ce-claims",
+        "/l10n/ja-JP/ce-qb",
+        "/l10n/ja-JP/cm",
+        "/l10n/ja-JP/cp",
+        "/l10n/ja-JP/gtest",
+        "/l10n/ja-JP/gwid",
+        "/l10n/ja-JP/gwsf",
+        "/l10n/ja-JP/is-configupgradetools",
+        "/l10n/ja-JP/pc",
+        "/l10n/ja-JP/pe",
+        "/l10n/ja-JP/pe-claims",
+        "/l10n/ja-JP/sre",
+        "/l10n/ja-JP/ve",
+        "/l10n/nl-NL/cc",
+        "/l10n/pt-BR/analytics",
+        "/l10n/pt-BR/bc",
+        "/l10n/pt-BR/cc",
+        "/l10n/pt-BR/cda",
+        "/l10n/pt-BR/ce-am",
+        "/l10n/pt-BR/ce-claims",
+        "/l10n/pt-BR/ce-qb",
+        "/l10n/pt-BR/cm",
+        "/l10n/pt-BR/cp",
+        "/l10n/pt-BR/gcc",
+        "/l10n/pt-BR/is-configupgradetools",
+        "/l10n/pt-BR/pc",
+        "/l10n/pt-BR/pe",
+        "/l10n/pt-BR/pe-claims",
+        "/l10n/pt-BR/sre",
+        "/l10n/pt-BR/ve",
         "/selfManagedProducts/bc/$version",
         "/selfManagedProducts/cc/$version",
         "/selfManagedProducts/ceAccountMgmt/$version",
@@ -3793,6 +3887,13 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/jasper/",
         "/cloudProducts/kufri/",
         "/cloudProducts/laslenas/",
+        "/l10n/es-419/",
+        "/l10n/es-ES/",
+        "/l10n/fr-FR/",
+        "/l10n/it-IT/",
+        "/l10n/ja-JP/",
+        "/l10n/nl-NL/",
+        "/l10n/pt-BR/",
         "/cloudProducts/aspen/insuranceNow/$version",
         "/cloudProducts/banff/insuranceNow/$version",
         "/cloudProducts/cortina/insuranceNow/$version",
@@ -3822,6 +3923,7 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/innsbruck/icGwCloud/$version",
         "/cloudProducts/innsbruck/insuranceNow/$version",
         "/cloudProducts/innsbruck/pcGwCloud/$version",
+        "/l10n/ja-JP/cloudProducts/autopilotworkflowservice",
         "/selfManagedProducts/gwsf/di/$version",
         "/selfManagedProducts/gwsf/ed/$version",
         "/selfManagedProducts/gwsf/vod/$version"
@@ -3953,154 +4055,6 @@ export const routeTree = rootRoute.addChildren({
     },
     "/jutroDesignSystem/$version": {
       "filePath": "jutroDesignSystem/$version.tsx"
-    },
-    "/l10n/de-DE": {
-      "filePath": "l10n/de-DE.tsx",
-      "children": [
-        "/l10n/de-DE/analytics",
-        "/l10n/de-DE/bc",
-        "/l10n/de-DE/cc",
-        "/l10n/de-DE/ce-am",
-        "/l10n/de-DE/ce-claims",
-        "/l10n/de-DE/ce-qb",
-        "/l10n/de-DE/cm",
-        "/l10n/de-DE/cp",
-        "/l10n/de-DE/is-configupgradetools",
-        "/l10n/de-DE/pc",
-        "/l10n/de-DE/pe",
-        "/l10n/de-DE/pe-claims",
-        "/l10n/de-DE/sre",
-        "/l10n/de-DE/ve"
-      ]
-    },
-    "/l10n/es-419": {
-      "filePath": "l10n/es-419.tsx",
-      "children": [
-        "/l10n/es-419/analytics",
-        "/l10n/es-419/apd",
-        "/l10n/es-419/bc",
-        "/l10n/es-419/cc",
-        "/l10n/es-419/cda",
-        "/l10n/es-419/ce-am",
-        "/l10n/es-419/ce-claims",
-        "/l10n/es-419/ce-qb",
-        "/l10n/es-419/cm",
-        "/l10n/es-419/cp",
-        "/l10n/es-419/gcc",
-        "/l10n/es-419/is-configupgradetools",
-        "/l10n/es-419/pc",
-        "/l10n/es-419/pe",
-        "/l10n/es-419/pe-claims",
-        "/l10n/es-419/sre",
-        "/l10n/es-419/ve"
-      ]
-    },
-    "/l10n/es-ES": {
-      "filePath": "l10n/es-ES.tsx",
-      "children": [
-        "/l10n/es-ES/bc",
-        "/l10n/es-ES/cc",
-        "/l10n/es-ES/ce-am",
-        "/l10n/es-ES/ce-claims",
-        "/l10n/es-ES/ce-qb",
-        "/l10n/es-ES/cm",
-        "/l10n/es-ES/pc",
-        "/l10n/es-ES/pe",
-        "/l10n/es-ES/pe-claims",
-        "/l10n/es-ES/sre",
-        "/l10n/es-ES/ve"
-      ]
-    },
-    "/l10n/fr-FR": {
-      "filePath": "l10n/fr-FR.tsx",
-      "children": [
-        "/l10n/fr-FR/analytics",
-        "/l10n/fr-FR/bc",
-        "/l10n/fr-FR/cc",
-        "/l10n/fr-FR/ce-am",
-        "/l10n/fr-FR/ce-claims",
-        "/l10n/fr-FR/ce-qb",
-        "/l10n/fr-FR/cm",
-        "/l10n/fr-FR/cp",
-        "/l10n/fr-FR/is-configupgradetools",
-        "/l10n/fr-FR/pc",
-        "/l10n/fr-FR/pe",
-        "/l10n/fr-FR/pe-claims",
-        "/l10n/fr-FR/sre",
-        "/l10n/fr-FR/ve"
-      ]
-    },
-    "/l10n/it-IT": {
-      "filePath": "l10n/it-IT.tsx",
-      "children": [
-        "/l10n/it-IT/analytics",
-        "/l10n/it-IT/bc",
-        "/l10n/it-IT/cc",
-        "/l10n/it-IT/cda",
-        "/l10n/it-IT/ce-am",
-        "/l10n/it-IT/ce-claims",
-        "/l10n/it-IT/ce-qb",
-        "/l10n/it-IT/gcc",
-        "/l10n/it-IT/gwid",
-        "/l10n/it-IT/pc",
-        "/l10n/it-IT/pe",
-        "/l10n/it-IT/pe-claims",
-        "/l10n/it-IT/sre",
-        "/l10n/it-IT/ve"
-      ]
-    },
-    "/l10n/ja-JP": {
-      "filePath": "l10n/ja-JP.tsx",
-      "children": [
-        "/l10n/ja-JP/202302garmischwhatsnew",
-        "/l10n/ja-JP/202306hakubawhatsnew",
-        "/l10n/ja-JP/analytics",
-        "/l10n/ja-JP/apd",
-        "/l10n/ja-JP/bc",
-        "/l10n/ja-JP/cc",
-        "/l10n/ja-JP/ce-am",
-        "/l10n/ja-JP/ce-claims",
-        "/l10n/ja-JP/ce-qb",
-        "/l10n/ja-JP/cm",
-        "/l10n/ja-JP/cp",
-        "/l10n/ja-JP/gtest",
-        "/l10n/ja-JP/gwid",
-        "/l10n/ja-JP/gwsf",
-        "/l10n/ja-JP/is-configupgradetools",
-        "/l10n/ja-JP/pc",
-        "/l10n/ja-JP/pe",
-        "/l10n/ja-JP/pe-claims",
-        "/l10n/ja-JP/sre",
-        "/l10n/ja-JP/ve",
-        "/l10n/ja-JP/cloudProducts/autopilotworkflowservice"
-      ]
-    },
-    "/l10n/nl-NL": {
-      "filePath": "l10n/nl-NL.tsx",
-      "children": [
-        "/l10n/nl-NL/cc"
-      ]
-    },
-    "/l10n/pt-BR": {
-      "filePath": "l10n/pt-BR.tsx",
-      "children": [
-        "/l10n/pt-BR/analytics",
-        "/l10n/pt-BR/bc",
-        "/l10n/pt-BR/cc",
-        "/l10n/pt-BR/cda",
-        "/l10n/pt-BR/ce-am",
-        "/l10n/pt-BR/ce-claims",
-        "/l10n/pt-BR/ce-qb",
-        "/l10n/pt-BR/cm",
-        "/l10n/pt-BR/cp",
-        "/l10n/pt-BR/gcc",
-        "/l10n/pt-BR/is-configupgradetools",
-        "/l10n/pt-BR/pc",
-        "/l10n/pt-BR/pe",
-        "/l10n/pt-BR/pe-claims",
-        "/l10n/pt-BR/sre",
-        "/l10n/pt-BR/ve"
-      ]
     },
     "/testingFramework/elysian": {
       "filePath": "testingFramework/elysian.tsx"
@@ -4262,432 +4216,328 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "globalContent/messageStore/$version.tsx"
     },
     "/l10n/de-DE/analytics": {
-      "filePath": "l10n/de-DE/analytics.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/analytics.tsx"
     },
     "/l10n/de-DE/bc": {
-      "filePath": "l10n/de-DE/bc.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/bc.tsx"
     },
     "/l10n/de-DE/cc": {
-      "filePath": "l10n/de-DE/cc.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/cc.tsx"
     },
     "/l10n/de-DE/ce-am": {
-      "filePath": "l10n/de-DE/ce-am.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/ce-am.tsx"
     },
     "/l10n/de-DE/ce-claims": {
-      "filePath": "l10n/de-DE/ce-claims.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/ce-claims.tsx"
     },
     "/l10n/de-DE/ce-qb": {
-      "filePath": "l10n/de-DE/ce-qb.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/ce-qb.tsx"
     },
     "/l10n/de-DE/cm": {
-      "filePath": "l10n/de-DE/cm.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/cm.tsx"
     },
     "/l10n/de-DE/cp": {
-      "filePath": "l10n/de-DE/cp.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/cp.tsx"
+    },
+    "/l10n/de-DE/inde": {
+      "filePath": "l10n/de-DE/inde.tsx"
     },
     "/l10n/de-DE/is-configupgradetools": {
-      "filePath": "l10n/de-DE/is-configupgradetools.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/is-configupgradetools.tsx"
     },
     "/l10n/de-DE/pc": {
-      "filePath": "l10n/de-DE/pc.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/pc.tsx"
     },
     "/l10n/de-DE/pe": {
-      "filePath": "l10n/de-DE/pe.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/pe.tsx"
     },
     "/l10n/de-DE/pe-claims": {
-      "filePath": "l10n/de-DE/pe-claims.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/pe-claims.tsx"
     },
     "/l10n/de-DE/sre": {
-      "filePath": "l10n/de-DE/sre.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/sre.tsx"
     },
     "/l10n/de-DE/ve": {
-      "filePath": "l10n/de-DE/ve.tsx",
-      "parent": "/l10n/de-DE"
+      "filePath": "l10n/de-DE/ve.tsx"
     },
     "/l10n/es-419/analytics": {
-      "filePath": "l10n/es-419/analytics.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/analytics.tsx"
     },
     "/l10n/es-419/apd": {
-      "filePath": "l10n/es-419/apd.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/apd.tsx"
     },
     "/l10n/es-419/bc": {
-      "filePath": "l10n/es-419/bc.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/bc.tsx"
     },
     "/l10n/es-419/cc": {
-      "filePath": "l10n/es-419/cc.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/cc.tsx"
     },
     "/l10n/es-419/cda": {
-      "filePath": "l10n/es-419/cda.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/cda.tsx"
     },
     "/l10n/es-419/ce-am": {
-      "filePath": "l10n/es-419/ce-am.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/ce-am.tsx"
     },
     "/l10n/es-419/ce-claims": {
-      "filePath": "l10n/es-419/ce-claims.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/ce-claims.tsx"
     },
     "/l10n/es-419/ce-qb": {
-      "filePath": "l10n/es-419/ce-qb.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/ce-qb.tsx"
     },
     "/l10n/es-419/cm": {
-      "filePath": "l10n/es-419/cm.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/cm.tsx"
     },
     "/l10n/es-419/cp": {
-      "filePath": "l10n/es-419/cp.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/cp.tsx"
     },
     "/l10n/es-419/gcc": {
-      "filePath": "l10n/es-419/gcc.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/gcc.tsx"
     },
     "/l10n/es-419/is-configupgradetools": {
-      "filePath": "l10n/es-419/is-configupgradetools.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/is-configupgradetools.tsx"
     },
     "/l10n/es-419/pc": {
-      "filePath": "l10n/es-419/pc.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/pc.tsx"
     },
     "/l10n/es-419/pe": {
-      "filePath": "l10n/es-419/pe.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/pe.tsx"
     },
     "/l10n/es-419/pe-claims": {
-      "filePath": "l10n/es-419/pe-claims.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/pe-claims.tsx"
     },
     "/l10n/es-419/sre": {
-      "filePath": "l10n/es-419/sre.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/sre.tsx"
     },
     "/l10n/es-419/ve": {
-      "filePath": "l10n/es-419/ve.tsx",
-      "parent": "/l10n/es-419"
+      "filePath": "l10n/es-419/ve.tsx"
     },
     "/l10n/es-ES/bc": {
-      "filePath": "l10n/es-ES/bc.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/bc.tsx"
     },
     "/l10n/es-ES/cc": {
-      "filePath": "l10n/es-ES/cc.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/cc.tsx"
     },
     "/l10n/es-ES/ce-am": {
-      "filePath": "l10n/es-ES/ce-am.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/ce-am.tsx"
     },
     "/l10n/es-ES/ce-claims": {
-      "filePath": "l10n/es-ES/ce-claims.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/ce-claims.tsx"
     },
     "/l10n/es-ES/ce-qb": {
-      "filePath": "l10n/es-ES/ce-qb.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/ce-qb.tsx"
     },
     "/l10n/es-ES/cm": {
-      "filePath": "l10n/es-ES/cm.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/cm.tsx"
     },
     "/l10n/es-ES/pc": {
-      "filePath": "l10n/es-ES/pc.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/pc.tsx"
     },
     "/l10n/es-ES/pe": {
-      "filePath": "l10n/es-ES/pe.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/pe.tsx"
     },
     "/l10n/es-ES/pe-claims": {
-      "filePath": "l10n/es-ES/pe-claims.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/pe-claims.tsx"
     },
     "/l10n/es-ES/sre": {
-      "filePath": "l10n/es-ES/sre.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/sre.tsx"
     },
     "/l10n/es-ES/ve": {
-      "filePath": "l10n/es-ES/ve.tsx",
-      "parent": "/l10n/es-ES"
+      "filePath": "l10n/es-ES/ve.tsx"
     },
     "/l10n/fr-FR/analytics": {
-      "filePath": "l10n/fr-FR/analytics.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/analytics.tsx"
     },
     "/l10n/fr-FR/bc": {
-      "filePath": "l10n/fr-FR/bc.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/bc.tsx"
     },
     "/l10n/fr-FR/cc": {
-      "filePath": "l10n/fr-FR/cc.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/cc.tsx"
     },
     "/l10n/fr-FR/ce-am": {
-      "filePath": "l10n/fr-FR/ce-am.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/ce-am.tsx"
     },
     "/l10n/fr-FR/ce-claims": {
-      "filePath": "l10n/fr-FR/ce-claims.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/ce-claims.tsx"
     },
     "/l10n/fr-FR/ce-qb": {
-      "filePath": "l10n/fr-FR/ce-qb.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/ce-qb.tsx"
     },
     "/l10n/fr-FR/cm": {
-      "filePath": "l10n/fr-FR/cm.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/cm.tsx"
     },
     "/l10n/fr-FR/cp": {
-      "filePath": "l10n/fr-FR/cp.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/cp.tsx"
     },
     "/l10n/fr-FR/is-configupgradetools": {
-      "filePath": "l10n/fr-FR/is-configupgradetools.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/is-configupgradetools.tsx"
     },
     "/l10n/fr-FR/pc": {
-      "filePath": "l10n/fr-FR/pc.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/pc.tsx"
     },
     "/l10n/fr-FR/pe": {
-      "filePath": "l10n/fr-FR/pe.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/pe.tsx"
     },
     "/l10n/fr-FR/pe-claims": {
-      "filePath": "l10n/fr-FR/pe-claims.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/pe-claims.tsx"
     },
     "/l10n/fr-FR/sre": {
-      "filePath": "l10n/fr-FR/sre.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/sre.tsx"
     },
     "/l10n/fr-FR/ve": {
-      "filePath": "l10n/fr-FR/ve.tsx",
-      "parent": "/l10n/fr-FR"
+      "filePath": "l10n/fr-FR/ve.tsx"
     },
     "/l10n/it-IT/analytics": {
-      "filePath": "l10n/it-IT/analytics.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/analytics.tsx"
     },
     "/l10n/it-IT/bc": {
-      "filePath": "l10n/it-IT/bc.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/bc.tsx"
     },
     "/l10n/it-IT/cc": {
-      "filePath": "l10n/it-IT/cc.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/cc.tsx"
     },
     "/l10n/it-IT/cda": {
-      "filePath": "l10n/it-IT/cda.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/cda.tsx"
     },
     "/l10n/it-IT/ce-am": {
-      "filePath": "l10n/it-IT/ce-am.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/ce-am.tsx"
     },
     "/l10n/it-IT/ce-claims": {
-      "filePath": "l10n/it-IT/ce-claims.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/ce-claims.tsx"
     },
     "/l10n/it-IT/ce-qb": {
-      "filePath": "l10n/it-IT/ce-qb.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/ce-qb.tsx"
     },
     "/l10n/it-IT/gcc": {
-      "filePath": "l10n/it-IT/gcc.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/gcc.tsx"
     },
     "/l10n/it-IT/gwid": {
-      "filePath": "l10n/it-IT/gwid.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/gwid.tsx"
     },
     "/l10n/it-IT/pc": {
-      "filePath": "l10n/it-IT/pc.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/pc.tsx"
     },
     "/l10n/it-IT/pe": {
-      "filePath": "l10n/it-IT/pe.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/pe.tsx"
     },
     "/l10n/it-IT/pe-claims": {
-      "filePath": "l10n/it-IT/pe-claims.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/pe-claims.tsx"
     },
     "/l10n/it-IT/sre": {
-      "filePath": "l10n/it-IT/sre.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/sre.tsx"
     },
     "/l10n/it-IT/ve": {
-      "filePath": "l10n/it-IT/ve.tsx",
-      "parent": "/l10n/it-IT"
+      "filePath": "l10n/it-IT/ve.tsx"
     },
     "/l10n/ja-JP/202302garmischwhatsnew": {
-      "filePath": "l10n/ja-JP/202302garmischwhatsnew.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/202302garmischwhatsnew.tsx"
     },
     "/l10n/ja-JP/202306hakubawhatsnew": {
-      "filePath": "l10n/ja-JP/202306hakubawhatsnew.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/202306hakubawhatsnew.tsx"
     },
     "/l10n/ja-JP/analytics": {
-      "filePath": "l10n/ja-JP/analytics.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/analytics.tsx"
     },
     "/l10n/ja-JP/apd": {
-      "filePath": "l10n/ja-JP/apd.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/apd.tsx"
     },
     "/l10n/ja-JP/bc": {
-      "filePath": "l10n/ja-JP/bc.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/bc.tsx"
     },
     "/l10n/ja-JP/cc": {
-      "filePath": "l10n/ja-JP/cc.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/cc.tsx"
     },
     "/l10n/ja-JP/ce-am": {
-      "filePath": "l10n/ja-JP/ce-am.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/ce-am.tsx"
     },
     "/l10n/ja-JP/ce-claims": {
-      "filePath": "l10n/ja-JP/ce-claims.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/ce-claims.tsx"
     },
     "/l10n/ja-JP/ce-qb": {
-      "filePath": "l10n/ja-JP/ce-qb.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/ce-qb.tsx"
     },
     "/l10n/ja-JP/cm": {
-      "filePath": "l10n/ja-JP/cm.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/cm.tsx"
     },
     "/l10n/ja-JP/cp": {
-      "filePath": "l10n/ja-JP/cp.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/cp.tsx"
     },
     "/l10n/ja-JP/gtest": {
-      "filePath": "l10n/ja-JP/gtest.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/gtest.tsx"
     },
     "/l10n/ja-JP/gwid": {
-      "filePath": "l10n/ja-JP/gwid.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/gwid.tsx"
     },
     "/l10n/ja-JP/gwsf": {
-      "filePath": "l10n/ja-JP/gwsf.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/gwsf.tsx"
     },
     "/l10n/ja-JP/is-configupgradetools": {
-      "filePath": "l10n/ja-JP/is-configupgradetools.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/is-configupgradetools.tsx"
     },
     "/l10n/ja-JP/pc": {
-      "filePath": "l10n/ja-JP/pc.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/pc.tsx"
     },
     "/l10n/ja-JP/pe": {
-      "filePath": "l10n/ja-JP/pe.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/pe.tsx"
     },
     "/l10n/ja-JP/pe-claims": {
-      "filePath": "l10n/ja-JP/pe-claims.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/pe-claims.tsx"
     },
     "/l10n/ja-JP/sre": {
-      "filePath": "l10n/ja-JP/sre.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/sre.tsx"
     },
     "/l10n/ja-JP/ve": {
-      "filePath": "l10n/ja-JP/ve.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/ve.tsx"
     },
     "/l10n/nl-NL/cc": {
-      "filePath": "l10n/nl-NL/cc.tsx",
-      "parent": "/l10n/nl-NL"
+      "filePath": "l10n/nl-NL/cc.tsx"
     },
     "/l10n/pt-BR/analytics": {
-      "filePath": "l10n/pt-BR/analytics.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/analytics.tsx"
     },
     "/l10n/pt-BR/bc": {
-      "filePath": "l10n/pt-BR/bc.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/bc.tsx"
     },
     "/l10n/pt-BR/cc": {
-      "filePath": "l10n/pt-BR/cc.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/cc.tsx"
     },
     "/l10n/pt-BR/cda": {
-      "filePath": "l10n/pt-BR/cda.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/cda.tsx"
     },
     "/l10n/pt-BR/ce-am": {
-      "filePath": "l10n/pt-BR/ce-am.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/ce-am.tsx"
     },
     "/l10n/pt-BR/ce-claims": {
-      "filePath": "l10n/pt-BR/ce-claims.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/ce-claims.tsx"
     },
     "/l10n/pt-BR/ce-qb": {
-      "filePath": "l10n/pt-BR/ce-qb.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/ce-qb.tsx"
     },
     "/l10n/pt-BR/cm": {
-      "filePath": "l10n/pt-BR/cm.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/cm.tsx"
     },
     "/l10n/pt-BR/cp": {
-      "filePath": "l10n/pt-BR/cp.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/cp.tsx"
     },
     "/l10n/pt-BR/gcc": {
-      "filePath": "l10n/pt-BR/gcc.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/gcc.tsx"
     },
     "/l10n/pt-BR/is-configupgradetools": {
-      "filePath": "l10n/pt-BR/is-configupgradetools.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/is-configupgradetools.tsx"
     },
     "/l10n/pt-BR/pc": {
-      "filePath": "l10n/pt-BR/pc.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/pc.tsx"
     },
     "/l10n/pt-BR/pe": {
-      "filePath": "l10n/pt-BR/pe.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/pe.tsx"
     },
     "/l10n/pt-BR/pe-claims": {
-      "filePath": "l10n/pt-BR/pe-claims.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/pe-claims.tsx"
     },
     "/l10n/pt-BR/sre": {
-      "filePath": "l10n/pt-BR/sre.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/sre.tsx"
     },
     "/l10n/pt-BR/ve": {
-      "filePath": "l10n/pt-BR/ve.tsx",
-      "parent": "/l10n/pt-BR"
+      "filePath": "l10n/pt-BR/ve.tsx"
     },
     "/selfManagedProducts/bc/$version": {
       "filePath": "selfManagedProducts/bc/$version.tsx"
@@ -4745,6 +4595,27 @@ export const routeTree = rootRoute.addChildren({
     },
     "/cloudProducts/laslenas/": {
       "filePath": "cloudProducts/laslenas/index.tsx"
+    },
+    "/l10n/es-419/": {
+      "filePath": "l10n/es-419/index.tsx"
+    },
+    "/l10n/es-ES/": {
+      "filePath": "l10n/es-ES/index.tsx"
+    },
+    "/l10n/fr-FR/": {
+      "filePath": "l10n/fr-FR/index.tsx"
+    },
+    "/l10n/it-IT/": {
+      "filePath": "l10n/it-IT/index.tsx"
+    },
+    "/l10n/ja-JP/": {
+      "filePath": "l10n/ja-JP/index.tsx"
+    },
+    "/l10n/nl-NL/": {
+      "filePath": "l10n/nl-NL/index.tsx"
+    },
+    "/l10n/pt-BR/": {
+      "filePath": "l10n/pt-BR/index.tsx"
     },
     "/cloudProducts/aspen/insuranceNow/$version": {
       "filePath": "cloudProducts/aspen/insuranceNow/$version.tsx"
@@ -4834,8 +4705,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "cloudProducts/innsbruck/pcGwCloud/$version.tsx"
     },
     "/l10n/ja-JP/cloudProducts/autopilotworkflowservice": {
-      "filePath": "l10n/ja-JP/cloudProducts/autopilotworkflowservice.tsx",
-      "parent": "/l10n/ja-JP"
+      "filePath": "l10n/ja-JP/cloudProducts/autopilotworkflowservice.tsx"
     },
     "/selfManagedProducts/gwsf/di/$version": {
       "filePath": "selfManagedProducts/gwsf/di/$version.tsx"

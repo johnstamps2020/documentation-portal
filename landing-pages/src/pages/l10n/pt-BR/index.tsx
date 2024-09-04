@@ -105,7 +105,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/l10n/pt-BR')({
+export const Route = createFileRoute('/l10n/pt-BR/')({
   component: PtBR,
 });
 

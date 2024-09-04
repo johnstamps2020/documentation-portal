@@ -114,7 +114,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/l10n/es-419')({
+export const Route = createFileRoute('/l10n/es-419/')({
   component: Es419,
 });
 
