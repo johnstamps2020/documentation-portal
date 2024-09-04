@@ -1,9 +1,7 @@
 import Alert from '@mui/material/Alert';
-import Skeleton from '@mui/material/Skeleton';
-import { mainHeight } from 'components/Layout/Layout';
 import { usePageData } from 'hooks/usePageData';
 import { useLayoutContext } from 'LayoutContext';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 
 type LandingPageLayoutProps = {
   children: React.ReactNode;
@@ -55,18 +53,7 @@ export default function LandingPageLayout({
           {isError.message}
         </Alert>
       )}
-      <Suspense
-        fallback={
-          <Skeleton
-            variant="rounded"
-            width="100%"
-            height={mainHeight}
-            sx={{ bgcolor: 'white' }}
-          />
-        }
-      >
-        {children}
-      </Suspense>
+      {children}
     </>
   );
 }

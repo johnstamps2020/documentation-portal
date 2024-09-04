@@ -138,3 +138,18 @@ use the terminal, run this command in the root folder of the project:
    ```
 
 1. When prompted for password, enter `testtesttest`.
+
+## Landing pages preview built output
+
+There are sometimes differences between the live preview of landing pages and
+the built output. If you want ot look at the build output, you can run build
+watch mode and then run preview to serve the built site on localhost.
+
+1. In one terminal run:
+   ```
+   yarn workspace @doctools/landing-pages build-watch
+   ```
+1. In another terminal, run:
+   ```
+   yarn workspace @doctools/landing-pages preview
+   ```

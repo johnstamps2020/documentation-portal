@@ -8,7 +8,7 @@ import { baseBackgroundProps } from 'components/LandingPage/LandingPageTypes';
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundImage: `url(${gradientBackgroundImage})`,
+    backgroundImage: `url("${gradientBackgroundImage}")`,
   },
 
   cards: [

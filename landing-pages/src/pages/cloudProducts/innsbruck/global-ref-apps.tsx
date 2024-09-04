@@ -9,7 +9,7 @@ import { allSelectors } from 'components/allSelectors';
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundImage: `url(${gradientBackgroundImage})`,
+    backgroundImage: `url("${gradientBackgroundImage}")`,
   },
   selector: {
     label: 'Select cloud release',
