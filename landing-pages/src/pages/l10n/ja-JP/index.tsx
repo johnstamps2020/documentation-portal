@@ -130,7 +130,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/l10n/ja-JP')({
+export const Route = createFileRoute('/l10n/ja-JP/')({
   component: JaJP,
 });
 

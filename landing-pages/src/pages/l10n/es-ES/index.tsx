@@ -11,76 +11,64 @@ const pageConfig: ProductFamilyLayoutProps = {
     backgroundColor: `hsl(0, 0%, 98%)`,
   },
   selector: {
-    label: 'Seleziona la lingua',
-    selectedItemLabel: 'Italiano',
+    label: 'Seleccione el idioma',
+    selectedItemLabel: 'Español (España)',
     items: allSelectors.sfa48f3b641ce1ec0fe00a60fefbb4192,
     labelColor: 'white',
   },
 
   items: [
     {
-      label: 'Analytics',
-      pagePath: 'l10n/it-IT/analytics',
-    },
-    {
       label: 'BillingCenter',
-      pagePath: 'l10n/it-IT/bc',
+      pagePath: 'l10n/es-ES/bc',
     },
     {
       label: 'ClaimCenter',
-      pagePath: 'l10n/it-IT/cc',
-    },
-    {
-      label: 'Cloud Data Access',
-      pagePath: 'l10n/it-IT/cda',
+      pagePath: 'l10n/es-ES/cc',
     },
     {
       label: 'CustomerEngage Account Management',
-      pagePath: 'l10n/it-IT/ce-am',
+      pagePath: 'l10n/es-ES/ce-am',
     },
     {
       label: 'CustomerEngage Account Management for ClaimCenter',
-      pagePath: 'l10n/it-IT/ce-claims',
+      pagePath: 'l10n/es-ES/ce-claims',
     },
     {
       label: 'CustomerEngage Quote and Buy',
-      pagePath: 'l10n/it-IT/ce-qb',
+      pagePath: 'l10n/es-ES/ce-qb',
     },
     {
-      label: 'Guidewire Cloud Console',
-      pagePath: 'l10n/it-IT/gcc',
-    },
-    {
-      label: 'Guidewire Identity Federation Hub',
-      pagePath: 'l10n/it-IT/gwid',
+      label: 'InsuranceSuite Contact Management',
+      pagePath: 'l10n/es-ES/cm',
     },
     {
       label: 'PolicyCenter',
-      pagePath: 'l10n/it-IT/pc',
+      pagePath: 'l10n/es-ES/pc',
     },
     {
       label: 'ProducerEngage',
-      pagePath: 'l10n/it-IT/pe',
+      pagePath: 'l10n/es-ES/pe',
     },
     {
       label: 'ProducerEngage for ClaimCenter',
-      pagePath: 'l10n/it-IT/pe-claims',
+      pagePath: 'l10n/es-ES/pe-claims',
     },
     {
       label: 'ServiceRepEngage',
-      pagePath: 'l10n/it-IT/sre',
+      pagePath: 'l10n/es-ES/sre',
     },
     {
       label: 'VendorEngage',
-      pagePath: 'l10n/it-IT/ve',
+      pagePath: 'l10n/es-ES/ve',
     },
   ],
 };
 
-export const Route = createFileRoute('/l10n/it-IT')({
-  component: ItIT,
+export const Route = createFileRoute('/l10n/es-ES/')({
+  component: EsES,
 });
 
-function ItIT() {
+function EsES() {
   return <ProductFamilyLayout {...pageConfig} />;
 }

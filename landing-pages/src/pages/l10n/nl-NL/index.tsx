@@ -25,7 +25,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/l10n/nl-NL')({
+export const Route = createFileRoute('/l10n/nl-NL/')({
   component: NlNL,
 });
 
