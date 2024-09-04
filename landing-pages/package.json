@@ -55,9 +55,10 @@
   },
   "scripts": {
     "build": "echo \"📚 Building landing pages\" && tsc && yarn generate-routes && vite build",
+    "build-watch": "echo \"📚 Building landing pages\" && tsc && yarn generate-routes && vite build --watch",
     "generate-routes": "tsr generate",
     "lint": "eslint --max-warnings=0 src",
-    "preview": "vite preview",
+    "preview": "vite preview --port 6006",
     "start": "yarn generate-routes && vite",
     "test": "vitest",
     "watch-routes": "tsr watch"
