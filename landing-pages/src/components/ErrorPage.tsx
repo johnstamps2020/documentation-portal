@@ -37,7 +37,7 @@ export default function ErrorPage({ error }: FallbackProps) {
     <ServerMessagePage
       title="Error"
       informationToDisplay={informationToDisplay}
-      backgroundImage={`url(${ErrorImage})`}
+      backgroundImage={`url("${ErrorImage}")`}
     />
   );
 }
