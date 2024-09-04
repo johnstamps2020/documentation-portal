@@ -227,7 +227,7 @@ export const allSelectors = {
     },
     {
       label: 'Las Leñas (2024.11)',
-      pagePath: 'cloudProducts/laslenas/global-ref-apps',
+      pagePath: 'cloudProducts/laslenas/globalRefApps',
     },
   ],
   s06dcd02c361b9539495548fd0bfb3ad2: [
