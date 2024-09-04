@@ -61,6 +61,7 @@ import { Route as L10nItITIndexImport } from './pages/l10n/it-IT/index'
 import { Route as L10nFrFRIndexImport } from './pages/l10n/fr-FR/index'
 import { Route as L10nEsESIndexImport } from './pages/l10n/es-ES/index'
 import { Route as L10nEs419IndexImport } from './pages/l10n/es-419/index'
+import { Route as L10nDeDEIndexImport } from './pages/l10n/de-DE/index'
 import { Route as CloudProductsLaslenasIndexImport } from './pages/cloudProducts/laslenas/index'
 import { Route as CloudProductsKufriIndexImport } from './pages/cloudProducts/kufri/index'
 import { Route as CloudProductsJasperIndexImport } from './pages/cloudProducts/jasper/index'
@@ -179,7 +180,6 @@ import { Route as L10nDeDEPeClaimsImport } from './pages/l10n/de-DE/pe-claims'
 import { Route as L10nDeDEPeImport } from './pages/l10n/de-DE/pe'
 import { Route as L10nDeDEPcImport } from './pages/l10n/de-DE/pc'
 import { Route as L10nDeDEIsConfigupgradetoolsImport } from './pages/l10n/de-DE/is-configupgradetools'
-import { Route as L10nDeDEIndeImport } from './pages/l10n/de-DE/inde'
 import { Route as L10nDeDECpImport } from './pages/l10n/de-DE/cp'
 import { Route as L10nDeDECmImport } from './pages/l10n/de-DE/cm'
 import { Route as L10nDeDECeQbImport } from './pages/l10n/de-DE/ce-qb'
@@ -527,6 +527,11 @@ const L10nEsESIndexRoute = L10nEsESIndexImport.update({
 
 const L10nEs419IndexRoute = L10nEs419IndexImport.update({
   path: '/l10n/es-419/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const L10nDeDEIndexRoute = L10nDeDEIndexImport.update({
+  path: '/l10n/de-DE/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -1143,11 +1148,6 @@ const L10nDeDEIsConfigupgradetoolsRoute =
     path: '/l10n/de-DE/is-configupgradetools',
     getParentRoute: () => rootRoute,
   } as any)
-
-const L10nDeDEIndeRoute = L10nDeDEIndeImport.update({
-  path: '/l10n/de-DE/inde',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const L10nDeDECpRoute = L10nDeDECpImport.update({
   path: '/l10n/de-DE/cp',
@@ -2297,13 +2297,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof L10nDeDECpImport
       parentRoute: typeof rootRoute
     }
-    '/l10n/de-DE/inde': {
-      id: '/l10n/de-DE/inde'
-      path: '/l10n/de-DE/inde'
-      fullPath: '/l10n/de-DE/inde'
-      preLoaderRoute: typeof L10nDeDEIndeImport
-      parentRoute: typeof rootRoute
-    }
     '/l10n/de-DE/is-configupgradetools': {
       id: '/l10n/de-DE/is-configupgradetools'
       path: '/l10n/de-DE/is-configupgradetools'
@@ -3130,6 +3123,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CloudProductsLaslenasIndexImport
       parentRoute: typeof rootRoute
     }
+    '/l10n/de-DE/': {
+      id: '/l10n/de-DE/'
+      path: '/l10n/de-DE'
+      fullPath: '/l10n/de-DE'
+      preLoaderRoute: typeof L10nDeDEIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/l10n/es-419/': {
       id: '/l10n/es-419/'
       path: '/l10n/es-419'
@@ -3513,7 +3513,6 @@ export const routeTree = rootRoute.addChildren({
   L10nDeDECeQbRoute,
   L10nDeDECmRoute,
   L10nDeDECpRoute,
-  L10nDeDEIndeRoute,
   L10nDeDEIsConfigupgradetoolsRoute,
   L10nDeDEPcRoute,
   L10nDeDEPeRoute,
@@ -3632,6 +3631,7 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsJasperIndexRoute,
   CloudProductsKufriIndexRoute,
   CloudProductsLaslenasIndexRoute,
+  L10nDeDEIndexRoute,
   L10nEs419IndexRoute,
   L10nEsESIndexRoute,
   L10nFrFRIndexRoute,
@@ -3768,7 +3768,6 @@ export const routeTree = rootRoute.addChildren({
         "/l10n/de-DE/ce-qb",
         "/l10n/de-DE/cm",
         "/l10n/de-DE/cp",
-        "/l10n/de-DE/inde",
         "/l10n/de-DE/is-configupgradetools",
         "/l10n/de-DE/pc",
         "/l10n/de-DE/pe",
@@ -3887,6 +3886,7 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/jasper/",
         "/cloudProducts/kufri/",
         "/cloudProducts/laslenas/",
+        "/l10n/de-DE/",
         "/l10n/es-419/",
         "/l10n/es-ES/",
         "/l10n/fr-FR/",
@@ -4238,9 +4238,6 @@ export const routeTree = rootRoute.addChildren({
     },
     "/l10n/de-DE/cp": {
       "filePath": "l10n/de-DE/cp.tsx"
-    },
-    "/l10n/de-DE/inde": {
-      "filePath": "l10n/de-DE/inde.tsx"
     },
     "/l10n/de-DE/is-configupgradetools": {
       "filePath": "l10n/de-DE/is-configupgradetools.tsx"
@@ -4595,6 +4592,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/cloudProducts/laslenas/": {
       "filePath": "cloudProducts/laslenas/index.tsx"
+    },
+    "/l10n/de-DE/": {
+      "filePath": "l10n/de-DE/index.tsx"
     },
     "/l10n/es-419/": {
       "filePath": "l10n/es-419/index.tsx"
