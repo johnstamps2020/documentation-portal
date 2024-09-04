@@ -196,7 +196,7 @@ import { Route as GlobalContentIpgVersionImport } from './pages/globalContent/ip
 import { Route as GlobalContentIpfVersionImport } from './pages/globalContent/ipf/$version'
 import { Route as GlobalContentIpaVersionImport } from './pages/globalContent/ipa/$version'
 import { Route as CloudProductsLaslenasInImport } from './pages/cloudProducts/laslenas/in'
-import { Route as CloudProductsLaslenasGlobalRefAppsImport } from './pages/cloudProducts/laslenas/global-ref-apps'
+import { Route as CloudProductsLaslenasGlobalRefAppsImport } from './pages/cloudProducts/laslenas/globalRefApps'
 import { Route as CloudProductsKufriPcImport } from './pages/cloudProducts/kufri/pc'
 import { Route as CloudProductsKufriInImport } from './pages/cloudProducts/kufri/in'
 import { Route as CloudProductsKufriIcImport } from './pages/cloudProducts/kufri/ic'
@@ -235,6 +235,7 @@ import { Route as SelfManagedProductsGwsfVodVersionImport } from './pages/selfMa
 import { Route as SelfManagedProductsGwsfEdVersionImport } from './pages/selfManagedProducts/gwsf/ed/$version'
 import { Route as SelfManagedProductsGwsfDiVersionImport } from './pages/selfManagedProducts/gwsf/di/$version'
 import { Route as L10nJaJPCloudProductsAutopilotworkflowserviceImport } from './pages/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
+import { Route as CloudProductsInnsbruckPcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/pcGwCloud/$version'
 import { Route as CloudProductsInnsbruckInsuranceNowVersionImport } from './pages/cloudProducts/innsbruck/insuranceNow/$version'
 import { Route as CloudProductsInnsbruckIcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/icGwCloud/$version'
 import { Route as CloudProductsInnsbruckDhGwCloudVersionImport } from './pages/cloudProducts/innsbruck/dhGwCloud/$version'
@@ -1233,7 +1234,7 @@ const CloudProductsLaslenasInRoute = CloudProductsLaslenasInImport.update({
 
 const CloudProductsLaslenasGlobalRefAppsRoute =
   CloudProductsLaslenasGlobalRefAppsImport.update({
-    path: '/cloudProducts/laslenas/global-ref-apps',
+    path: '/cloudProducts/laslenas/globalRefApps',
     getParentRoute: () => rootRoute,
   } as any)
 
@@ -1444,6 +1445,12 @@ const L10nJaJPCloudProductsAutopilotworkflowserviceRoute =
   L10nJaJPCloudProductsAutopilotworkflowserviceImport.update({
     path: '/cloudProducts/autopilotworkflowservice',
     getParentRoute: () => L10nJaJPRoute,
+  } as any)
+
+const CloudProductsInnsbruckPcGwCloudVersionRoute =
+  CloudProductsInnsbruckPcGwCloudVersionImport.update({
+    path: '/cloudProducts/innsbruck/pcGwCloud/$version',
+    getParentRoute: () => rootRoute,
   } as any)
 
 const CloudProductsInnsbruckInsuranceNowVersionRoute =
@@ -2227,10 +2234,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CloudProductsKufriPcImport
       parentRoute: typeof rootRoute
     }
-    '/cloudProducts/laslenas/global-ref-apps': {
-      id: '/cloudProducts/laslenas/global-ref-apps'
-      path: '/cloudProducts/laslenas/global-ref-apps'
-      fullPath: '/cloudProducts/laslenas/global-ref-apps'
+    '/cloudProducts/laslenas/globalRefApps': {
+      id: '/cloudProducts/laslenas/globalRefApps'
+      path: '/cloudProducts/laslenas/globalRefApps'
+      fullPath: '/cloudProducts/laslenas/globalRefApps'
       preLoaderRoute: typeof CloudProductsLaslenasGlobalRefAppsImport
       parentRoute: typeof rootRoute
     }
@@ -3368,6 +3375,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CloudProductsInnsbruckInsuranceNowVersionImport
       parentRoute: typeof rootRoute
     }
+    '/cloudProducts/innsbruck/pcGwCloud/$version': {
+      id: '/cloudProducts/innsbruck/pcGwCloud/$version'
+      path: '/cloudProducts/innsbruck/pcGwCloud/$version'
+      fullPath: '/cloudProducts/innsbruck/pcGwCloud/$version'
+      preLoaderRoute: typeof CloudProductsInnsbruckPcGwCloudVersionImport
+      parentRoute: typeof rootRoute
+    }
     '/l10n/ja-JP/cloudProducts/autopilotworkflowservice': {
       id: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
       path: '/cloudProducts/autopilotworkflowservice'
@@ -3661,6 +3675,7 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsInnsbruckDhGwCloudVersionRoute,
   CloudProductsInnsbruckIcGwCloudVersionRoute,
   CloudProductsInnsbruckInsuranceNowVersionRoute,
+  CloudProductsInnsbruckPcGwCloudVersionRoute,
   SelfManagedProductsGwsfDiVersionRoute,
   SelfManagedProductsGwsfEdVersionRoute,
   SelfManagedProductsGwsfVodVersionRoute,
@@ -3743,7 +3758,7 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/kufri/ic",
         "/cloudProducts/kufri/in",
         "/cloudProducts/kufri/pc",
-        "/cloudProducts/laslenas/global-ref-apps",
+        "/cloudProducts/laslenas/globalRefApps",
         "/cloudProducts/laslenas/in",
         "/globalContent/ipa/$version",
         "/globalContent/ipf/$version",
@@ -3799,6 +3814,7 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/innsbruck/dhGwCloud/$version",
         "/cloudProducts/innsbruck/icGwCloud/$version",
         "/cloudProducts/innsbruck/insuranceNow/$version",
+        "/cloudProducts/innsbruck/pcGwCloud/$version",
         "/selfManagedProducts/gwsf/di/$version",
         "/selfManagedProducts/gwsf/ed/$version",
         "/selfManagedProducts/gwsf/vod/$version"
@@ -4229,8 +4245,8 @@ export const routeTree = rootRoute.addChildren({
     "/cloudProducts/kufri/pc": {
       "filePath": "cloudProducts/kufri/pc.tsx"
     },
-    "/cloudProducts/laslenas/global-ref-apps": {
-      "filePath": "cloudProducts/laslenas/global-ref-apps.tsx"
+    "/cloudProducts/laslenas/globalRefApps": {
+      "filePath": "cloudProducts/laslenas/globalRefApps.tsx"
     },
     "/cloudProducts/laslenas/in": {
       "filePath": "cloudProducts/laslenas/in.tsx"
@@ -4824,6 +4840,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/cloudProducts/innsbruck/insuranceNow/$version": {
       "filePath": "cloudProducts/innsbruck/insuranceNow/$version.tsx"
+    },
+    "/cloudProducts/innsbruck/pcGwCloud/$version": {
+      "filePath": "cloudProducts/innsbruck/pcGwCloud/$version.tsx"
     },
     "/l10n/ja-JP/cloudProducts/autopilotworkflowservice": {
       "filePath": "l10n/ja-JP/cloudProducts/autopilotworkflowservice.tsx",
