@@ -11,7 +11,6 @@ import { useLandingPageItemsContext } from '../LandingPageItemsContext';
 
 export default function ProductFamilySidebar({ label, items }: SidebarProps) {
   const { allAvailableItems } = useLandingPageItemsContext();
-  console.log(allAvailableItems);
   if (!allAvailableItems) {
     return null;
   }
