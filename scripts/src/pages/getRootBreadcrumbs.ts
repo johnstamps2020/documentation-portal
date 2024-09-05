@@ -1,6 +1,6 @@
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, parse, relative, resolve } from 'path';
 import { getAllFilesRecursively } from '../modules/file';
-import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 
 type DocRootPages = {
   docId: string;
@@ -32,10 +32,7 @@ for (const file of allFiles) {
     encoding: 'utf-8',
   });
   const filePath = getFilePath(file);
-  const filePathWithoutDirPrefix = filePath.slice(
-    '/landing'.length,
-    filePath.length
-  );
+  const filePathWithoutDirPrefix = filePath.replace(/^\/pages\//, '');
   const regex = /docId:\s*'([^']*)'/g;
   const matches = [...fileContents.matchAll(regex)].map((match) => match[1]);
   if (matches.length > 0 && filePathWithoutDirPrefix) {
