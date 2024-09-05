@@ -40,9 +40,11 @@ const pageConfig: SectionLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/cloudProducts/autopilotworkflowservice')({
-  component: Autopilotworkflowservice,
-});
+export const Route = createFileRoute('/cloudProducts/autopilotworkflowservice')(
+  {
+    component: Autopilotworkflowservice,
+  }
+);
 
 function Autopilotworkflowservice() {
   return <SectionLayout {...pageConfig} />;

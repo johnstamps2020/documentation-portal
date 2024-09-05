@@ -71,7 +71,9 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/cloudProducts/flaine/jutroDigitalPlatform')({
+export const Route = createFileRoute(
+  '/cloudProducts/flaine/jutroDigitalPlatform'
+)({
   component: JutroDigitalPlatform,
 });
 

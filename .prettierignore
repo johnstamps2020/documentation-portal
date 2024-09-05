@@ -21,3 +21,4 @@ logs
 generated
 stats.json
 openapi
+package.json

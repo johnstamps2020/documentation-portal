@@ -11,8 +11,6 @@ function LandingPageComponent() {
   }
 }
 
-export const Route = createFileRoute('/globalContent/lossEstCalc/$version')(
-  {
-    component: LandingPageComponent,
-  }
-);
+export const Route = createFileRoute('/globalContent/lossEstCalc/$version')({
+  component: LandingPageComponent,
+});

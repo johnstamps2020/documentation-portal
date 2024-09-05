@@ -53,7 +53,9 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/cloudProducts/garmisch/jutroDigitalPlatform')({
+export const Route = createFileRoute(
+  '/cloudProducts/garmisch/jutroDigitalPlatform'
+)({
   component: JutroDigitalPlatform,
 });
 
