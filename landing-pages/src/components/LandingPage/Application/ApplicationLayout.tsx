@@ -17,6 +17,7 @@ import { ApplicationTabItemProps } from './ApplicationTabs';
 import ApplicationVideoSection, {
   ApplicationVideoSectionProps,
 } from './ApplicationVideoSection';
+import LandingPageLayout from '../LandingPageLayout';
 
 export type ApplicationLayoutProps = ApplicationHeroProps & {
   tabs?: ApplicationTabItemProps[];
@@ -55,28 +56,30 @@ export default function ApplicationLayout({
   const { landingPageItems } = useLandingPageItemsImmutable(allItems);
 
   return (
-    <LandingPageItemsProvider allAvailableItems={landingPageItems}>
-      <ApplicationSelectorSetter selector={selector} />
-      <Stack>
-        <ApplicationHero
-          buttonProps={buttonProps}
-          title={title}
-          heroDescription={heroDescription}
-        />
-        {introFeatureSectionProps && (
-          <ApplicationFeatureSection {...introFeatureSectionProps} />
-        )}
-        {videoSectionProps && (
-          <ApplicationVideoSection {...videoSectionProps} />
-        )}
-        {tabs && <ApplicationTabWrapper tabs={tabs} />}
-        {cards && <ApplicationCardSection items={cards} />}
-        {featureSections &&
-          featureSections.map((featureSection, idx) => (
-            <ApplicationFeatureSection key={idx} {...featureSection} />
-          ))}
-        {resources && <ApplicationResources {...resources} />}
-      </Stack>
-    </LandingPageItemsProvider>
+    <LandingPageLayout>
+      <LandingPageItemsProvider allAvailableItems={landingPageItems}>
+        <ApplicationSelectorSetter selector={selector} />
+        <Stack>
+          <ApplicationHero
+            buttonProps={buttonProps}
+            title={title}
+            heroDescription={heroDescription}
+          />
+          {introFeatureSectionProps && (
+            <ApplicationFeatureSection {...introFeatureSectionProps} />
+          )}
+          {videoSectionProps && (
+            <ApplicationVideoSection {...videoSectionProps} />
+          )}
+          {tabs && <ApplicationTabWrapper tabs={tabs} />}
+          {cards && <ApplicationCardSection items={cards} />}
+          {featureSections &&
+            featureSections.map((featureSection, idx) => (
+              <ApplicationFeatureSection key={idx} {...featureSection} />
+            ))}
+          {resources && <ApplicationResources {...resources} />}
+        </Stack>
+      </LandingPageItemsProvider>
+    </LandingPageLayout>
   );
 }
