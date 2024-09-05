@@ -1,11 +1,11 @@
 {
-    "routesDirectory": "./src/pages",
-    "generatedRouteTree": "./src/routeTree.gen.ts",
-    "routeFileIgnorePrefix": "-",
-    "quoteStyle": "single",
-    "routeTreeFileHeader": [
-        "/* prettier-ignore-start */",
-        "// @ts-nocheck",
-        "// noinspection JSUnusedGlobalSymbols"
-    ]
+  "routesDirectory": "./src/pages",
+  "generatedRouteTree": "./src/routeTree.gen.ts",
+  "routeFileIgnorePrefix": "-",
+  "quoteStyle": "single",
+  "routeTreeFileHeader": [
+    "/* prettier-ignore-start */",
+    "// @ts-nocheck",
+    "// noinspection JSUnusedGlobalSymbols"
+  ]
 }

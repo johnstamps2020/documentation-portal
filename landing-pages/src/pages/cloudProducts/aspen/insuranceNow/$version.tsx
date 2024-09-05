@@ -11,8 +11,8 @@ function LandingPageComponent() {
   }
 }
 
-export const Route = createFileRoute('/cloudProducts/aspen/insuranceNow/$version')(
-  {
-    component: LandingPageComponent,
-  }
-);
+export const Route = createFileRoute(
+  '/cloudProducts/aspen/insuranceNow/$version'
+)({
+  component: LandingPageComponent,
+});

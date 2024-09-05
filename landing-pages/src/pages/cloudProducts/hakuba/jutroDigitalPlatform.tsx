@@ -57,7 +57,9 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/cloudProducts/hakuba/jutroDigitalPlatform')({
+export const Route = createFileRoute(
+  '/cloudProducts/hakuba/jutroDigitalPlatform'
+)({
   component: JutroDigitalPlatform,
 });
 

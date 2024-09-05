@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { allSelectors } from 'components/allSelectors';
-import CategoryLayout, { CategoryLayoutProps } from 'components/LandingPage/Category/CategoryLayout';
+import CategoryLayout, {
+  CategoryLayoutProps,
+} from 'components/LandingPage/Category/CategoryLayout';
 import { baseBackgroundProps } from 'components/LandingPage/LandingPageTypes';
 
 const pageConfig: CategoryLayoutProps = {

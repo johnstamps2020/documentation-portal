@@ -1,4 +1,8 @@
-import { Filters, SearchHeaderLayoutContextProvider, SearchHeadWrapper } from '@doctools/components';
+import {
+  Filters,
+  SearchHeaderLayoutContextProvider,
+  SearchHeadWrapper,
+} from '@doctools/components';
 import { StackProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
