@@ -22,11 +22,19 @@ export default function ChatSources({ sources }: ChatSourcesProps) {
       <Typography variant="h3">
         <Translate id="chat.sources">Sources</Translate>
       </Typography>
-      {sources?.map(({ title, url }, key) => (
-        <Link key={key} href={url} target="_blank" underline="always">
-          {title}
-        </Link>
-      ))}
+      {sources?.map(({ title, url }, key) => {
+        const relativeLink = new URL(url).pathname;
+        return (
+          <Link
+            key={key}
+            href={relativeLink}
+            target="_blank"
+            underline="always"
+          >
+            {title}
+          </Link>
+        );
+      })}
     </Box>
   );
 }
