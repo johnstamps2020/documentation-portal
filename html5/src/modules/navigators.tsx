@@ -146,7 +146,7 @@ async function getTopBreadcrumb() {
     // on session data, the crumb will not be found if the session data does
     // not exist, such as if a user goes directly to a doc without hitting a
     // landing page first.
-    if (rootPageObjects.length === 1) {
+    if (rootPageObjects.length === 1 && rootPageObjects[0]) {
       return {
         text: rootPageObjects[0].label,
         href: rootPageObjects[0].path,
