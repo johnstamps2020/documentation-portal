@@ -52,18 +52,18 @@ const pageConfig: Category2LayoutProps = {
     {
       label: 'Applications',
       items: [
-        // {
-        //   label: 'PolicyCenter',
-        //   pagePath: 'cloudProducts/kufri/pc',
-        // },
-        // {
-        //   label: 'ClaimCenter',
-        //   pagePath: 'cloudProducts/kufri/cc',
-        // },
-        // {
-        //   label: 'BillingCenter',
-        //   pagePath: 'cloudProducts/kufri/bc',
-        // },
+        {
+          label: 'PolicyCenter',
+          pagePath: 'cloudProducts/laslenas/pc',
+        },
+        {
+          label: 'ClaimCenter',
+          pagePath: 'cloudProducts/laslenas/cc',
+        },
+        {
+          label: 'BillingCenter',
+          pagePath: 'cloudProducts/laslenas/bc',
+        },
         {
           label: 'InsuranceNow',
           pagePath: 'cloudProducts/laslenas/in',

@@ -58,6 +58,10 @@ export const allSelectors = {
       label: 'Kufri (2024.07)',
       pagePath: 'cloudProducts/kufri/bc',
     },
+    {
+      label: 'Las Leñas (2024.11)',
+      pagePath: 'cloudProducts/laslenas/bc',
+    },
   ],
   seab31eee2944c2607a774b9dd9cda0ad: [
     {
@@ -83,6 +87,10 @@ export const allSelectors = {
     {
       label: 'Kufri (2024.07)',
       pagePath: 'cloudProducts/kufri/cc',
+    },
+    {
+      label: 'Las Leñas (2024.11)',
+      pagePath: 'cloudProducts/laslenas/cc',
     },
   ],
   sb372c5e3c1cec5d40289c85a78eaef30: [
@@ -168,6 +176,10 @@ export const allSelectors = {
     {
       label: 'Kufri (2024.07)',
       pagePath: 'cloudProducts/kufri/pc',
+    },
+    {
+      label: 'Las Leñas (2024.11)',
+      pagePath: 'cloudProducts/laslenas/pc',
     },
   ],
   sfed7994657143200653022090cd6c022: [
