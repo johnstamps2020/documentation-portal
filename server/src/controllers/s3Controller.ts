@@ -1,10 +1,11 @@
-import { S3 } from '@aws-sdk/client-s3';
+import { HeadObjectCommand, S3, S3Client } from '@aws-sdk/client-s3';
 import { Upload } from '@aws-sdk/lib-storage';
 import 'dotenv/config';
 import { FileArray, UploadedFile } from 'express-fileupload';
 import fs from 'fs';
 import path from 'path';
 import { Readable } from 'stream';
+import { winstonLogger } from './loggerController';
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
 const bucketParams = {
@@ -93,5 +94,72 @@ export async function deleteItems(keysCommaSeparated: string) {
     return deleteResults;
   } catch (err) {
     throw new Error(JSON.stringify(err));
+  }
+}
+
+function getFileExtension(str: string): string {
+  const lastDotIndex = str.lastIndexOf('.');
+  if (lastDotIndex === -1) {
+    return '';
+  }
+
+  const extension = str.slice(lastDotIndex + 1);
+  return extension;
+}
+
+// Return an S3 key from the URL passed
+// 1. If the URL is to a page, return the key
+// 2. If the URL is to a file, like .css, .js, .png, etc., return `undefined`
+export function getS3KeyFromPathIfIsPage(path: string): string | undefined {
+  const trimmedPath = path.replace(/^[\/]+|[\/]+$/g, '');
+
+  if (trimmedPath.endsWith('.html') || trimmedPath.endsWith('.htm')) {
+    return trimmedPath;
+  }
+
+  // is likely a file
+  const extension = getFileExtension(trimmedPath);
+  if (extension.length > 0 && extension.match(/[a-zA-Z]/)) {
+    return undefined;
+  }
+
+  // Looking for a directory or a non-file path
+  // So, add /index.html at the end
+  return `${trimmedPath}/index.html`;
+}
+
+// This function only checks if pages exist
+// If the requested URL is for a file, like .css, .js, .png, etc.
+// Just optimistically assume it will be there
+export async function pageExistsOnS3(url: string): Promise<boolean> {
+  const keyToCheck = getS3KeyFromPathIfIsPage(url);
+
+  // Path doesn't lead to a page, return `true`
+  if (keyToCheck === undefined) {
+    return true;
+  }
+
+  const bucketName = keyToCheck.startsWith('portal/secure')
+    ? 'tenant-doctools-portal2-omega2-andromeda-builds'
+    : bucketParams.Bucket;
+
+  const command = new HeadObjectCommand({
+    Bucket: bucketName,
+    Key: keyToCheck,
+  });
+
+  const s3Client = new S3Client();
+
+  try {
+    const result = await s3Client.send(command);
+    if (result['$metadata'].httpStatusCode === 200) {
+      return true;
+    }
+    return false;
+  } catch (err: any) {
+    winstonLogger.error(
+      `[S3 CLIENT] Error checking if S3 bucket URL exists at ${keyToCheck}: ${err}`
+    );
+    return false;
   }
 }

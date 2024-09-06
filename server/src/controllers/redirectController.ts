@@ -8,7 +8,6 @@ import { RedirectResponse } from '../types/apiResponse';
 import { isUserAllowedToAccessResource } from './authController';
 import { findEntity, getDocByUrl } from './configController';
 import { getEnvInfo } from './envController';
-import { winstonLogger } from './loggerController';
 
 const isProd = getEnvInfo()?.name === 'omega2-andromeda';
 const permanentRedirectUrls = [
@@ -250,24 +249,6 @@ export function isHtmlRequest(url: string) {
 
 export function addPrecedingSlashToPath(path: string) {
   return path.startsWith('/') ? path : `/${path}`;
-}
-
-export async function s3BucketUrlExists(url: string): Promise<boolean> {
-  const urlToCheck = addPrecedingSlashToPath(url);
-  try {
-    const s3BucketUrl = urlToCheck.startsWith('/portal')
-      ? process.env.PORTAL2_S3_URL
-      : process.env.DOC_S3_URL;
-    const fullUrl = s3BucketUrl + urlToCheck;
-    const response = await fetch(fullUrl, { method: 'HEAD' });
-
-    return response.ok || response.redirected;
-  } catch (err) {
-    winstonLogger.error(
-      `Error checking if S3 bucket URL exists at ${urlToCheck}: ${err}`
-    );
-    return false;
-  }
 }
 
 async function findMatchingDocs(res: Response, urls: string[]) {

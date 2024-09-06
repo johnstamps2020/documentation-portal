@@ -1,6 +1,4 @@
-import { Config } from '@jest/types';
-
-const config: Config.InitialOptions = {
+module.exports = {
   verbose: true,
   testTimeout: 13006,
   testEnvironment: 'node',
@@ -19,5 +17,3 @@ const config: Config.InitialOptions = {
     typeorm: require.resolve('typeorm'),
   },
 };
-
-export default config;
