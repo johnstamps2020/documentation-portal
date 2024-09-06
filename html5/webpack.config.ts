@@ -8,12 +8,15 @@ import CompressionPlugin from 'compression-webpack-plugin';
 
 const isOffline = process.env.BUILD_MODE === 'offline';
 
+const offlineBuildPath = resolve(__dirname, 'build');
+const onlineBuildPath = resolve(__dirname, 'static', 'html5', 'scripts');
+
 function getBuildPath() {
   if (isOffline) {
-    return resolve(__dirname, 'build');
+    return offlineBuildPath;
   }
 
-  return resolve(__dirname, 'static', 'html5', 'scripts');
+  return onlineBuildPath;
 }
 
 const postCss = {
@@ -66,6 +69,9 @@ const config: Configuration = {
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
   },
   devtool: 'eval-source-map',
+  watchOptions: {
+    ignored: ['**/dist/**', `${offlineBuildPath}/**`, `${onlineBuildPath}/**`],
+  },
   plugins: [
     new CompressionPlugin(),
     new CleanWebpackPlugin({
