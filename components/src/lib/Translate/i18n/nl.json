@@ -1,245 +1,251 @@
 {
-  "logo.label": {
-    "message": "Startpagina"
+  "logo.label" : {
+    "message" : "Startpagina"
   },
-  "docHighlighter.tooltip": {
-    "message": "Schakel markeren in/uit voor zoektermen"
+  "docHighlighter.tooltip" : {
+    "message" : "Schakel markeren in/uit voor zoektermen"
   },
-  "docHighlighter.label": {
-    "message": "markeren inschakelen"
+  "docHighlighter.label" : {
+    "message" : "markeren inschakelen"
   },
-  "anonymous.positive": {
-    "message": "U bent anoniem,"
+  "anonymous.positive" : {
+    "message" : "U bent anoniem,"
   },
-  "anonymous.shareEmail": {
-    "message": "klik hier om uw e-mail met ons te delen"
+  "anonymous.shareEmail" : {
+    "message" : "klik hier om uw e-mail met ons te delen"
   },
-  "anonymous.enterEmail": {
-    "message": "Voer uw e-mailadres in,"
+  "anonymous.enterEmail" : {
+    "message" : "Voer uw e-mailadres in,"
   },
-  "anonymous.becomeAnonymous": {
-    "message": "klik hier om anoniem te zijn"
+  "anonymous.becomeAnonymous" : {
+    "message" : "klik hier om anoniem te zijn"
   },
-  "privacy.warning": {
-    "message": "Door uw e-mailadres op te geven, stemt u ermee in dat Guidewire contact met u opneemt."
+  "privacy.warning" : {
+    "message" : "Door uw e-mailadres op te geven, stemt u ermee in dat Guidewire contact met u opneemt."
   },
-  "privacy.link": {
-    "message": "Hier vindt u het privacybeleid van Guidewire."
+  "privacy.link" : {
+    "message" : "Hier vindt u het privacybeleid van Guidewire."
   },
-  "rightWrong.positiveTitle": {
-    "message": "Doen"
+  "rightWrong.positiveTitle" : {
+    "message" : "Doen"
   },
-  "theme.rightWrong.negativeTitle": {
-    "message": "Niet doen"
+  "theme.rightWrong.negativeTitle" : {
+    "message" : "Niet doen"
   },
-  "anonymous.youAreSharing": {
-    "message": "U deelt uw e-mail met ons,"
+  "anonymous.youAreSharing" : {
+    "message" : "U deelt uw e-mail met ons,"
   },
-  "feedback.helpful": {
-    "message": "Was deze pagina nuttig?"
+  "feedback.helpful" : {
+    "message" : "Was deze pagina nuttig?"
   },
-  "feedback.thumbsUp": {
-    "message": "Deze pagina was nuttig"
+  "feedback.thumbsUp" : {
+    "message" : "Deze pagina was nuttig"
   },
-  "feedback.thumbsDown": {
-    "message": "Deze pagina moet worden verbeterd"
+  "feedback.thumbsDown" : {
+    "message" : "Deze pagina moet worden verbeterd"
   },
-  "feedbackDialog.thanks": {
-    "message": "Bedankt!"
+  "feedbackDialog.thanks" : {
+    "message" : "Bedankt!"
   },
-  "feedbackDialog.followUp": {
-    "message": "Een lid van ons documentatieteam zal uw feedback bekijken. Als u uw e-mailadres hebt opgegeven, nemen we mogelijk contact met u op als we meer informatie nodig hebben."
+  "feedbackDialog.followUp" : {
+    "message" : "Een lid van ons documentatieteam zal uw feedback bekijken. Als u uw e-mailadres hebt opgegeven, nemen we mogelijk contact met u op als we meer informatie nodig hebben."
   },
-  "feedbackDialog.anythingElse": {
-    "message": "Bedankt, we hebben uw stem geregistreerd. Hebt u nog andere opmerkingen voor ons?"
+  "feedbackDialog.anythingElse" : {
+    "message" : "Bedankt, we hebben uw stem geregistreerd. Hebt u nog andere opmerkingen voor ons?"
   },
-  "feedbackDialog.comment": {
-    "message": "Uw opmerking"
+  "feedbackDialog.comment" : {
+    "message" : "Uw opmerking"
   },
-  "feedbackDialog.email": {
-    "message": "Uw e-mail"
+  "feedbackDialog.email" : {
+    "message" : "Uw e-mail"
   },
-  "feedbackDialog.clearEmail": {
-    "message": "E-mail wissen"
+  "feedbackDialog.clearEmail" : {
+    "message" : "E-mail wissen"
   },
-  "feedbackDialog.validEmail": {
-    "message": "Geef een geldig e-mailadres op"
+  "feedbackDialog.validEmail" : {
+    "message" : "Geef een geldig e-mailadres op"
   },
-  "feedbackDialog.cancel": {
-    "message": "Annuleren"
+  "feedbackDialog.cancel" : {
+    "message" : "Annuleren"
   },
-  "feedbackDialog.submit": {
-    "message": "Indienen"
+  "feedbackDialog.submit" : {
+    "message" : "Indienen"
   },
-  "internal.employeesOnly": {
-    "message": "Deze inhoud is alleen beschikbaar voor werknemers van Guidewire"
+  "internal.item.tooltip" : {
+    "message" : "Guidewire interne content"
   },
-  "internal.info.toView": {
-    "message": "Als u deze pagina wilt bekijken, meld u zich aan met uw werknemersaccount van Guidewire. Neem voor meer ondersteuning contact op met uw Guidewire-vertegenwoordiger."
+  "internal.page.badge.tooltip" : {
+    "message" : "Deze pagina is toegankelijk alleen voor mensen met een Guidewire e-mail. Deel de link niet met externe belanghebbenden. Zij kunnen de inhoud niet zien."
   },
-  "internal.label": {
-    "message": "Deze inhoud is alleen intern beschikbaar voor werknemers van Guidewire."
+  "internal.employeesOnly" : {
+    "message" : "Deze inhoud is alleen beschikbaar voor werknemers van Guidewire"
   },
-  "loginButton.out": {
-    "message": "Afmelden"
+  "internal.info.toView" : {
+    "message" : "Als u deze pagina wilt bekijken, meld u zich aan met uw werknemersaccount van Guidewire. Neem voor meer ondersteuning contact op met uw Guidewire-vertegenwoordiger."
   },
-  "loginButton.in": {
-    "message": "Aanmelden"
+  "internal.label" : {
+    "message" : "Deze inhoud is alleen intern beschikbaar voor werknemers van Guidewire."
   },
-  "loginDrawer.go": {
-    "message": "Ga naar de inlogpagina"
+  "loginButton.out" : {
+    "message" : "Afmelden"
   },
-  "transcriptDownloadLink.label": {
-    "message": "Transcript downloaden"
+  "loginButton.in" : {
+    "message" : "Aanmelden"
   },
-  "theme.common.skipToMainContent": {
-    "message": "Doorgaan naar hoofdinhoud"
+  "loginDrawer.go" : {
+    "message" : "Ga naar de inlogpagina"
   },
-  "theme.tags.tagsPageTitle": {
-    "message": "Tags"
+  "transcriptDownloadLink.label" : {
+    "message" : "Transcript downloaden"
   },
-  "gwSearchForm.placeholder": {
-    "message": "Zoeken"
+  "theme.common.skipToMainContent" : {
+    "message" : "Doorgaan naar hoofdinhoud"
   },
-  "miniToc.heading": {
-    "message": "Op deze pagina"
+  "theme.tags.tagsPageTitle" : {
+    "message" : "Tags"
   },
-  "collapsible.title": {
-    "message": "Uitvouwen"
+  "gwSearchForm.placeholder" : {
+    "message" : "Zoeken"
   },
-  "footer.legal.linktext": {
-    "message": "Juridische en ondersteuningsinformatie (alleen in het Engels beschikbaar)"
+  "miniToc.heading" : {
+    "message" : "Op deze pagina"
   },
-  "footer.published": {
-    "message": "Gepubliceerd:"
+  "collapsible.title" : {
+    "message" : "Uitvouwen"
   },
-  "nav.scrollToTop": {
-    "message": "Omhoog scrollen"
+  "footer.legal.linktext" : {
+    "message" : "Juridische en ondersteuningsinformatie (alleen in het Engels beschikbaar)"
   },
-  "navbar.nextTopic": {
-    "message": "Volgende onderwerp"
+  "footer.published" : {
+    "message" : "Gepubliceerd:"
   },
-  "navbar.prevTopic": {
-    "message": "Vorige onderwerp"
+  "nav.scrollToTop" : {
+    "message" : "Omhoog scrollen"
   },
-  "navbar.noNextOrPrevTopic": {
-    "message": "Geen"
+  "navbar.nextTopic" : {
+    "message" : "Volgende onderwerp"
   },
-  "navbar.printThisPage": {
-    "message": "Deze pagina afdrukken"
+  "navbar.prevTopic" : {
+    "message" : "Vorige onderwerp"
   },
-  "chat.default-title": {
-    "message": "Chat met ons"
+  "navbar.noNextOrPrevTopic" : {
+    "message" : "Geen"
   },
-  "chat.send": {
-    "message": "Versturen"
+  "navbar.printThisPage" : {
+    "message" : "Deze pagina afdrukken"
   },
-  "chat.answer": {
-    "message": "Antwoord"
+  "chat.default-title" : {
+    "message" : "Chat met ons"
   },
-  "chat.sources": {
-    "message": "Bronnen"
+  "chat.send" : {
+    "message" : "Versturen"
   },
-  "chat.filters": {
-    "message": "Filters"
+  "chat.answer" : {
+    "message" : "Antwoord"
   },
-  "chat.saveAndClose": {
-    "message": "Opslaan en afsluiten"
+  "chat.sources" : {
+    "message" : "Bronnen"
   },
-  "chat.notOptedIn": {
-    "message": "U heeft gekozen om geen berichten van de chatbot te ontvangen."
+  "chat.filters" : {
+    "message" : "Filters"
   },
-  "chat.allow": {
-    "message": "Toestaan dat de AI chatbot vragen beantwoordt"
+  "chat.saveAndClose" : {
+    "message" : "Opslaan en afsluiten"
   },
-  "chat.allow.learnMore": {
-    "message": "Lees de Algemene voorwaarden"
+  "chat.notOptedIn" : {
+    "message" : "U heeft gekozen om geen berichten van de chatbot te ontvangen."
   },
-  "chat.termsAndConditions.title": {
-    "message": "Algemene voorwaarden bij gebruik van de chat"
+  "chat.allow" : {
+    "message" : "Toestaan dat de AI chatbot vragen beantwoordt"
   },
-  "chat.termsAndConditions.close": {
-    "message": "Algemene voorwaarden sluiten"
+  "chat.allow.learnMore" : {
+    "message" : "Lees de Algemene voorwaarden"
   },
-  "chatbot.feedback.thumbsUp": {
-    "message": "Dit antwoord van de chatbot is naar wens"
+  "chat.termsAndConditions.title" : {
+    "message" : "Algemene voorwaarden bij gebruik van de chat"
   },
-  "chatbot.feedback.thumbsDown": {
-    "message": "Dit antwoord van de chatbot moet worden verbeterd"
+  "chat.termsAndConditions.close" : {
+    "message" : "Algemene voorwaarden sluiten"
   },
-  "chatbot.feedback.dialog.title": {
-    "message": "Wilt u een reactie achterlaten?"
+  "chatbot.feedback.thumbsUp" : {
+    "message" : "Dit antwoord van de chatbot is naar wens"
   },
-  "chatbot.feedback.dialog.send": {
-    "message": "Versturen"
+  "chatbot.feedback.thumbsDown" : {
+    "message" : "Dit antwoord van de chatbot moet worden verbeterd"
   },
-  "chatbot.feedback.dialog.cancel": {
-    "message": "Annuleren"
+  "chatbot.feedback.dialog.title" : {
+    "message" : "Wilt u een reactie achterlaten?"
   },
-  "login.gwEmployeeHint": {
-    "message": "Medewerker van Guidewire? Gebruik bij het inloggen de Guidewire Cloud-optie hierboven."
+  "chatbot.feedback.dialog.send" : {
+    "message" : "Versturen"
   },
-  "consent.ai": {
-    "message": "AI toestaan"
+  "chatbot.feedback.dialog.cancel" : {
+    "message" : "Annuleren"
   },
-  "avatar.iconButton": {
-    "message": "Gebruikersmenu uitvouwen"
+  "login.gwEmployeeHint" : {
+    "message" : "Medewerker van Guidewire? Gebruik bij het inloggen de Guidewire Cloud-optie hierboven."
   },
-  "search.filter.menu.entiresite.tooltip": {
-    "message": "Volledige site doorzoeken zonder filters"
+  "consent.ai" : {
+    "message" : "AI toestaan"
   },
-  "search.filter.menu.entiresite.label": {
-    "message": "Volledige site"
+  "avatar.iconButton" : {
+    "message" : "Gebruikersmenu uitvouwen"
   },
-  "search.filter.menu.product.tooltip": {
-    "message": "Zoeken binnen producten op deze pagina:"
+  "search.filter.menu.entiresite.tooltip" : {
+    "message" : "Volledige site doorzoeken zonder filters"
   },
-  "search.filter.menu.product.label": {
-    "message": "Dit product"
+  "search.filter.menu.entiresite.label" : {
+    "message" : "Volledige site"
   },
-  "search.filter.menu.release.tooltip": {
-    "message": "Zoeken binnen alle producten in deze vrijgave:"
+  "search.filter.menu.product.tooltip" : {
+    "message" : "Zoeken binnen producten op deze pagina:"
   },
-  "search.filter.menu.release.label": {
-    "message": "Deze vrijgave"
+  "search.filter.menu.product.label" : {
+    "message" : "Dit product"
   },
-  "search.filter.menu.showfilters.label.closed": {
-    "message": "Filters weergeven"
+  "search.filter.menu.release.tooltip" : {
+    "message" : "Zoeken binnen alle producten in deze vrijgave:"
   },
-  "search.filter.menu.showfilters.label.expanded": {
-    "message": "Filters verbergen"
+  "search.filter.menu.release.label" : {
+    "message" : "Deze vrijgave"
   },
-  "search.filter.menu.showfilters.tooltip.closed": {
-    "message": "Geselecteerde filters weergeven en meer filters toevoegen of verwijderen"
+  "search.filter.menu.showfilters.label.closed" : {
+    "message" : "Filters weergeven"
   },
-  "search.filter.menu.showfilters.tooltip.expanded": {
-    "message": "Uw geselecteerde filters worden toegepast bij het invoeren van een zoekterm"
+  "search.filter.menu.showfilters.label.expanded" : {
+    "message" : "Filters verbergen"
   },
-  "search.filter.menu.thisdoc.tooltip": {
-    "message": "Binnen dit document zoeken:"
+  "search.filter.menu.showfilters.tooltip.closed" : {
+    "message" : "Geselecteerde filters weergeven en meer filters toevoegen of verwijderen"
   },
-  "search.filter.menu.thisdoc.label": {
-    "message": "Dit document"
+  "search.filter.menu.showfilters.tooltip.expanded" : {
+    "message" : "Uw geselecteerde filters worden toegepast bij het invoeren van een zoekterm"
   },
-  "search.filter.menu.button": {
-    "message": "Filter"
+  "search.filter.menu.thisdoc.tooltip" : {
+    "message" : "Binnen dit document zoeken:"
   },
-  "search.filter.menu.language": {
-    "message": "Taal"
+  "search.filter.menu.thisdoc.label" : {
+    "message" : "Dit document"
   },
-  "search.filter.menu.product": {
-    "message": "Product"
+  "search.filter.menu.button" : {
+    "message" : "Filter"
   },
-  "search.filter.menu.release": {
-    "message": "Vrijgave"
+  "search.filter.menu.language" : {
+    "message" : "Taal"
   },
-  "search.filter.menu.subject": {
-    "message": "Onderwerp"
+  "search.filter.menu.product" : {
+    "message" : "Product"
   },
-  "restricted.page.info": {
-    "message": "U moet ingelogd zijn om deze pagina te bekijken."
+  "search.filter.menu.release" : {
+    "message" : "Vrijgave"
   },
-  "restricted.page.action": {
-    "message": "Klik hier om in te loggen."
+  "search.filter.menu.subject" : {
+    "message" : "Onderwerp"
+  },
+  "restricted.page.info" : {
+    "message" : "U moet ingelogd zijn om deze pagina te bekijken."
+  },
+  "restricted.page.action" : {
+    "message" : "Klik hier om in te loggen."
   }
 }
