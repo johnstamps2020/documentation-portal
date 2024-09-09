@@ -28,23 +28,6 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2024.02 (Jasper)',
-      items: [
-        {
-          label: 'Anwendungshandbuch',
-          docId: 'isbc202402deDEapp',
-        },
-        {
-          label: 'Versionshinweise für BillingCenter',
-          docId: 'isbc202402deDEreleasenotes',
-        },
-        {
-          label: 'BillingCenter - Update-Handbuch',
-          docId: 'isbc202402deDEupdate',
-        },
-      ],
-    },
-    {
       label: '2023.10 (Innsbruck)',
       items: [
         {
