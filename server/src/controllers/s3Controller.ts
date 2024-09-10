@@ -139,12 +139,12 @@ export async function pageExistsOnS3(url: string): Promise<boolean> {
     return true;
   }
 
-  const bucketName = keyToCheck.startsWith('portal/secure')
-    ? 'tenant-doctools-portal2-omega2-andromeda-builds'
-    : bucketParams.Bucket;
+  if (keyToCheck.startsWith('portal/secure')) {
+    return true;
+  }
 
   const command = new HeadObjectCommand({
-    Bucket: bucketName,
+    Bucket: bucketParams.Bucket,
     Key: keyToCheck,
   });
 
