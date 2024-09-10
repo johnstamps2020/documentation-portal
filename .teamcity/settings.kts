@@ -2708,6 +2708,7 @@ object Server {
                     export CUSTOMERS_LOGIN_CERT=mock
                     
                     yarn
+                    yarn build
                     yarn test:server
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
