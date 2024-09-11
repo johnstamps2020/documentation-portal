@@ -34,7 +34,6 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Anwendungshandbuch',
           docId: 'isbc202402deDEapp',
         },
-      ],
         {
           label: 'BillingCenter - Update-Handbuch',
           docId: 'isbc202402deDEupdate',
