@@ -1,13 +1,33 @@
 import EntityCardValidationWarning from 'components/AdminPage/EntityCardValidationWarning';
 import { Entity } from 'components/AdminPage/EntityListWithFilters';
+import { routeTree } from './../../../routeTree.gen';
+
+function extractPaths(tree: typeof routeTree.children): string[] {
+  if (!tree) return [];
+  const paths: string[] = [];
+
+  Object.values(tree).forEach((route) => {
+    if (route && route.path) {
+      paths.push(route.path);
+    }
+  });
+  return paths;
+}
 
 export function checkIfFileExists(entity: Entity) {
-  try {
-    require(`../../../pages/${entity.path}.tsx`);
-    return true;
-  } catch (err) {
-    return false;
-  }
+  const paths = extractPaths(routeTree.children);
+  return paths.some((path) => {
+    if (path === entity.path) return true;
+    else if (path.endsWith('/') && path.slice(0, -1) === entity.path)
+      return true;
+    else if (
+      path.includes('/$version') &&
+      path.replace('/$version', '') ===
+        entity.path.slice(0, path.lastIndexOf('/'))
+    ) {
+      return true;
+    } else return false;
+  });
 }
 
 export default function PageValidationWarning(entity: Entity) {
