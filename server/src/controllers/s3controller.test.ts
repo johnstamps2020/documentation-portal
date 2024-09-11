@@ -40,6 +40,24 @@ describe('getS3KeyFromPathIfIsPage', () => {
       undefined
     );
   });
+
+  it('should replace every %20 with a space character', () => {
+    expect(
+      getS3KeyFromPathIfIsPage(
+        '/docs/Getting%20started%20with%20gardening%20tools.html'
+      )
+    ).toBe('docs/Getting started with gardening tools.html');
+    expect(
+      getS3KeyFromPathIfIsPage(
+        '/docs/Getting%20started%20with%20gardening%20tools'
+      )
+    ).toBe('docs/Getting started with gardening tools/index.html');
+    expect(
+      getS3KeyFromPathIfIsPage(
+        '/docs/Getting%20started%20with%20gardening%20tools.png'
+      )
+    ).toBe(undefined);
+  });
 });
 
 describe('pageExistsOnS3', () => {

@@ -112,20 +112,21 @@ function getFileExtension(str: string): string {
 // 2. If the URL is to a file, like .css, .js, .png, etc., return `undefined`
 export function getS3KeyFromPathIfIsPage(path: string): string | undefined {
   const trimmedPath = path.replace(/^[\/]+|[\/]+$/g, '');
+  const normalizedPath = trimmedPath.replaceAll('%20', ' ');
 
-  if (trimmedPath.endsWith('.html') || trimmedPath.endsWith('.htm')) {
-    return trimmedPath;
+  if (normalizedPath.endsWith('.html') || normalizedPath.endsWith('.htm')) {
+    return normalizedPath;
   }
 
   // is likely a file
-  const extension = getFileExtension(trimmedPath);
+  const extension = getFileExtension(normalizedPath);
   if (extension.length > 0 && extension.match(/[a-zA-Z]/)) {
     return undefined;
   }
 
   // Looking for a directory or a non-file path
   // So, add /index.html at the end
-  return `${trimmedPath}/index.html`;
+  return `${normalizedPath}/index.html`;
 }
 
 // This function only checks if pages exist
