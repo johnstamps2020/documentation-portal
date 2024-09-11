@@ -24,8 +24,17 @@ function getJiraDescription(descriptionText) {
       content: [
         value.match(/^http[s]*:\/\//)
           ? {
-              type: 'inlineCard',
-              attrs: { url: value },
+              type: 'text',
+              text: value,
+              marks: [
+                {
+                  type: 'link',
+                  attrs: {
+                    href: value,
+                    title: value,
+                  },
+                },
+              ],
             }
           : {
               type: 'text',
