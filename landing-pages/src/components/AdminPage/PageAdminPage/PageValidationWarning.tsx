@@ -7,9 +7,7 @@ function extractPaths(tree: typeof routeTree.children): string[] {
   const paths: string[] = [];
 
   Object.values(tree).forEach((route) => {
-    if (route && route.path) {
-      paths.push(route.path);
-    }
+    paths.push(route.path);
   });
   return paths;
 }
