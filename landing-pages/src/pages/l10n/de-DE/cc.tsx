@@ -22,6 +22,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
+          label: 'Anwendungshandbuch',
+          docId: 'iscc202407deDEapp',
+        },
+        {
           label: 'ClaimCenter - Update-Handbuch',
           docId: 'iscc202407deDEupdate',
         },

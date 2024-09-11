@@ -40,6 +40,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
+          label: 'ClaimCenter アプリケーションガイド',
+          docId: 'iscc202407jaJPapp',
+        },
+        {
           label: 'ClaimCenter アップデート',
           docId: 'iscc202407jaJPupdate',
         },

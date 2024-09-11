@@ -22,8 +22,16 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
+          label: 'Anwendungshandbuch',
+          docId: 'ispc202407deDEapp',
+        },
+        {
           label: 'PolicyCenter - Update-Handbuch',
           docId: 'ispc202407deDEupdate',
+        },
+        {
+          label: 'Product-Designer-Handbuch',
+          docId: 'ispc202407deDEpd',
         },
       ],
     },
