@@ -2,30 +2,30 @@ import EntityCardValidationWarning from 'components/AdminPage/EntityCardValidati
 import { Entity } from 'components/AdminPage/EntityListWithFilters';
 import { routeTree } from './../../../routeTree.gen';
 
-function extractPaths(tree: typeof routeTree.children): string[] {
-  if (!tree) return [];
-  const paths: string[] = [];
-
-  Object.values(tree).forEach((route) => {
-    paths.push(route.path);
+function findRouteByPath(
+  tree: typeof routeTree.children,
+  path: string
+): boolean {
+  if (!tree) return false;
+  return Object.values(tree).some((route) => {
+    const normalizedRoutePath = route.path.endsWith('/')
+      ? route.path.slice(0, -1)
+      : route.path;
+    const normalizedEntityPath = path.endsWith('/') ? path.slice(0, -1) : path;
+    if (normalizedRoutePath === normalizedEntityPath) return true;
+    if (
+      normalizedRoutePath.includes('/$version') &&
+      normalizedRoutePath.replace('/$version', '') ===
+        normalizedEntityPath.slice(0, normalizedRoutePath.lastIndexOf('/'))
+    ) {
+      return true;
+    }
+    return false;
   });
-  return paths;
 }
 
 export function checkIfFileExists(entity: Entity) {
-  const paths = extractPaths(routeTree.children);
-  return paths.some((path) => {
-    if (path === entity.path) return true;
-    else if (path.endsWith('/') && path.slice(0, -1) === entity.path)
-      return true;
-    else if (
-      path.includes('/$version') &&
-      path.replace('/$version', '') ===
-        entity.path.slice(0, path.lastIndexOf('/'))
-    ) {
-      return true;
-    } else return false;
-  });
+  return findRouteByPath(routeTree.children, entity.path);
 }
 
 export default function PageValidationWarning(entity: Entity) {
