@@ -11,7 +11,7 @@ import { winstonLogger } from './loggerController';
 
 const httpAgent = new https.Agent({
   keepAlive: true,
-  // maxSockets: a lower number means less memory used, bu requests have to wait. default is "infinity"
+  // maxSockets: a lower number means less memory used, but requests have to wait. default is "infinity"
   maxSockets: 1000, // We don't have access to StorageLens to check what rate limits apply, so I'm guessing this number
   rejectUnauthorized: true,
 });
