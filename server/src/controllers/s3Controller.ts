@@ -13,13 +13,7 @@ const bucketParams = {
   Bucket: `tenant-doctools-${process.env.DEPLOY_ENV}-builds`,
 };
 
-const s3Client = new S3Client({
-  maxAttempts: 3,
-  requestHandler: new NodeHttpHandler({
-    connectionTimeout: 5000,
-    requestTimeout: 5000,
-  }),
-});
+const s3Client = new S3Client();
 
 export async function getConfigFile(
   localDir: string,
