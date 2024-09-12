@@ -158,6 +158,10 @@ export async function pageExistsOnS3(url: string): Promise<boolean> {
     }
     return false;
   } catch (err: any) {
+    if (err.name === 'NotFound') {
+      return false;
+    }
+
     winstonLogger.error(
       `[S3 CLIENT] Error checking if S3 bucket URL exists at ${keyToCheck}: ${err}`
     );
