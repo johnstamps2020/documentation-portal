@@ -4,17 +4,9 @@ import { NodeHttpHandler } from '@aws-sdk/node-http-handler';
 import 'dotenv/config';
 import { FileArray, UploadedFile } from 'express-fileupload';
 import fs from 'fs';
-import https from 'https';
 import path from 'path';
 import { Readable } from 'stream';
 import { winstonLogger } from './loggerController';
-
-const httpAgent = new https.Agent({
-  keepAlive: true,
-  // maxSockets: a lower number means less memory used, but requests have to wait. default is "infinity"
-  maxSockets: 5000, // We don't have access to StorageLens to check what rate limits apply, so I'm guessing this number
-  rejectUnauthorized: true,
-});
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
 const bucketParams = {
@@ -26,7 +18,6 @@ const s3Client = new S3Client({
   requestHandler: new NodeHttpHandler({
     connectionTimeout: 5000,
     requestTimeout: 5000,
-    httpAgent,
   }),
 });
 
