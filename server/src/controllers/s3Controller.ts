@@ -1,16 +1,34 @@
-import { HeadObjectCommand, S3, S3Client } from '@aws-sdk/client-s3';
+import { HeadObjectCommand, NotFound, S3, S3Client } from '@aws-sdk/client-s3';
 import { Upload } from '@aws-sdk/lib-storage';
+import { NodeHttpHandler } from '@aws-sdk/node-http-handler';
 import 'dotenv/config';
 import { FileArray, UploadedFile } from 'express-fileupload';
 import fs from 'fs';
+import https from 'https';
 import path from 'path';
 import { Readable } from 'stream';
 import { winstonLogger } from './loggerController';
+
+const httpAgent = new https.Agent({
+  keepAlive: true,
+  // maxSockets: a lower number means less memory used, but requests have to wait. default is "infinity"
+  maxSockets: 1000, // We don't have access to StorageLens to check what rate limits apply, so I'm guessing this number
+  rejectUnauthorized: true,
+});
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
 const bucketParams = {
   Bucket: `tenant-doctools-${process.env.DEPLOY_ENV}-builds`,
 };
+
+const s3Client = new S3Client({
+  maxAttempts: 3,
+  requestHandler: new NodeHttpHandler({
+    connectionTimeout: 5000,
+    requestTimeout: 5000,
+    httpAgent,
+  }),
+});
 
 export async function getConfigFile(
   localDir: string,
@@ -149,8 +167,6 @@ export async function pageExistsOnS3(url: string): Promise<boolean> {
     Key: keyToCheck,
   });
 
-  const s3Client = new S3Client();
-
   try {
     const result = await s3Client.send(command);
     if (result['$metadata'].httpStatusCode === 200) {
@@ -158,6 +174,10 @@ export async function pageExistsOnS3(url: string): Promise<boolean> {
     }
     return false;
   } catch (err: any) {
+    if (err instanceof NotFound) {
+      return false;
+    }
+
     winstonLogger.error(
       `[S3 CLIENT] Error checking if S3 bucket URL exists at ${keyToCheck}: ${err}`
     );
