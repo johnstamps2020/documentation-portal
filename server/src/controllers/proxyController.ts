@@ -12,8 +12,10 @@ import {
 } from './authController';
 import { getDocByUrl, getExternalLinkByUrl } from './configController';
 import { winstonLogger } from './loggerController';
-import { addPrecedingSlashToPath } from './redirectController';
-import { pageExistsOnS3 } from './s3Controller';
+import {
+  addPrecedingSlashToPath,
+  s3BucketUrlExists,
+} from './redirectController';
 
 const proxy = new HttpProxy();
 winstonLogger.notice('Proxy created');
@@ -94,10 +96,12 @@ async function getResourceStatusForEntityWithVariants(
     `${dbEntityUrl}${publicSubPath}`
   );
 
-  const restrictedDocExists = await pageExistsOnS3(
+  const restrictedDocExists = await s3BucketUrlExists(
     requestedPathWithRestrictedSubPath
   );
-  const publicDocExists = await pageExistsOnS3(requestedPathWithPublicSubPath);
+  const publicDocExists = await s3BucketUrlExists(
+    requestedPathWithPublicSubPath
+  );
 
   if (hasAccessToRestrictedDoc !== 200 && !publicDocExists) {
     return [404, undefined];
@@ -119,9 +123,9 @@ async function getResourceStatusForEntity(
   res: Response
 ): Promise<ResourceStatusWithRedirectLink> {
   const dbEntityUrl = dbEntity.url;
-  const requestedPathExists = await pageExistsOnS3(requestedPath);
+  const requestedPathExists = await s3BucketUrlExists(requestedPath);
   if (!requestedPathExists) {
-    const requestedEntityUrlExists = await pageExistsOnS3(dbEntityUrl);
+    const requestedEntityUrlExists = await s3BucketUrlExists(dbEntityUrl);
     if (!requestedEntityUrlExists) {
       return [100, undefined];
     }

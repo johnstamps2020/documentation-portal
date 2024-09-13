@@ -1,19 +1,15 @@
-import { HeadObjectCommand, NotFound, S3, S3Client } from '@aws-sdk/client-s3';
+import { S3 } from '@aws-sdk/client-s3';
 import { Upload } from '@aws-sdk/lib-storage';
-import { NodeHttpHandler } from '@aws-sdk/node-http-handler';
 import 'dotenv/config';
 import { FileArray, UploadedFile } from 'express-fileupload';
 import fs from 'fs';
 import path from 'path';
 import { Readable } from 'stream';
-import { winstonLogger } from './loggerController';
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
 const bucketParams = {
   Bucket: `tenant-doctools-${process.env.DEPLOY_ENV}-builds`,
 };
-
-const s3Client = new S3Client();
 
 export async function getConfigFile(
   localDir: string,
@@ -97,75 +93,5 @@ export async function deleteItems(keysCommaSeparated: string) {
     return deleteResults;
   } catch (err) {
     throw new Error(JSON.stringify(err));
-  }
-}
-
-function getFileExtension(str: string): string {
-  const lastDotIndex = str.lastIndexOf('.');
-  if (lastDotIndex === -1) {
-    return '';
-  }
-
-  const extension = str.slice(lastDotIndex + 1);
-  return extension;
-}
-
-// Return an S3 key from the URL passed
-// 1. If the URL is to a page, return the key
-// 2. If the URL is to a file, like .css, .js, .png, etc., return `undefined`
-export function getS3KeyFromPathIfIsPage(path: string): string | undefined {
-  const trimmedPath = path.replace(/^[\/]+|[\/]+$/g, '');
-  const normalizedPath = trimmedPath.replaceAll('%20', ' ');
-
-  if (normalizedPath.endsWith('.html') || normalizedPath.endsWith('.htm')) {
-    return normalizedPath;
-  }
-
-  // is likely a file
-  const extension = getFileExtension(normalizedPath);
-  if (extension.length > 0 && extension.match(/[a-zA-Z]/)) {
-    return undefined;
-  }
-
-  // Looking for a directory or a non-file path
-  // So, add /index.html at the end
-  return `${normalizedPath}/index.html`;
-}
-
-// This function only checks if pages exist
-// If the requested URL is for a file, like .css, .js, .png, etc.
-// Just optimistically assume it will be there
-export async function pageExistsOnS3(url: string): Promise<boolean> {
-  const keyToCheck = getS3KeyFromPathIfIsPage(url);
-
-  // Path doesn't lead to a page, return `true`
-  if (keyToCheck === undefined) {
-    return true;
-  }
-
-  if (keyToCheck.startsWith('portal/secure')) {
-    return true;
-  }
-
-  const command = new HeadObjectCommand({
-    Bucket: bucketParams.Bucket,
-    Key: keyToCheck,
-  });
-
-  try {
-    const result = await s3Client.send(command);
-    if (result['$metadata'].httpStatusCode === 200) {
-      return true;
-    }
-    return false;
-  } catch (err: any) {
-    if (err instanceof NotFound) {
-      return false;
-    }
-
-    winstonLogger.error(
-      `[S3 CLIENT] Error checking if S3 bucket URL exists at ${keyToCheck}: ${err}`
-    );
-    return false;
   }
 }
