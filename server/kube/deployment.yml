@@ -262,7 +262,9 @@ spec:
             - name: DD_TRACE_STARTUP_LOGS
               value: 'true'
             - name: DD_TRACE_SAMPLE_RATE
-              value: 0.1
+              value: "0.1"
+            - name: DD_TRACE_RATE_LIMIT
+              value: 10
             - name: DD_USE_DOGSTATSD
               value: 'true'
             - name: DD_DOGSTATSD_NON_LOCAL_TRAFFIC
