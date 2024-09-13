@@ -252,7 +252,7 @@ spec:
             - name: DD_SERVICE_MAPPING
               value: 'nodejs:atmos-${DEPLOY_ENV}-${APP_NAME}'
             - name: DD_LOGS_INJECTION
-              value: 'true'
+              value: 'false'
             - name: DD_PROFILING_ENABLED
               value: 'true'
             - name: DD_TAGS
