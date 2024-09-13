@@ -245,8 +245,6 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.labels['tags.datadoghq.com/version']
-            - name: DD_LOG_LEVEL
-              value: warn
             - name: DD_HTTP_CLIENT_TAG_QUERY_STRING
               value: 'true'
             - name: DD_HTTP_SERVER_TAG_QUERY_STRING
@@ -259,10 +257,12 @@ spec:
               value: 'true'
             - name: DD_TAGS
               value: layer:webapp, team:${POD_NAME}
+            - name: DD_TRACE_ENABLED
+              value: 'false'
             - name: DD_TRACE_ANALYTICS_ENABLED
-              value: 'true'
+              value: 'false'
             - name: DD_TRACE_STARTUP_LOGS
-              value: 'true'
+              value: 'false'
             - name: DD_USE_DOGSTATSD
               value: 'true'
             - name: DD_DOGSTATSD_NON_LOCAL_TRAFFIC
