@@ -1,7 +1,6 @@
-import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import 'dotenv/config';
-import { Router } from 'express';
+import express, { Router } from 'express';
 import { Issuer, Strategy, TokenSet, UserinfoResponse } from 'openid-client';
 import passport from 'passport';
 import {
@@ -106,8 +105,8 @@ async function createOktaStrategies() {
 createOktaStrategies()
   .then((oktaStrategies) => {
     router.use(cookieParser());
-    router.use(bodyParser.urlencoded({ extended: false }));
-    router.use(bodyParser.json());
+    router.use(express.urlencoded({ extended: false }));
+    router.use(express.json());
 
     passport.serializeUser(function (user, done) {
       done(null, user);

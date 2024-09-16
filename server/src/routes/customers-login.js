@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const saml = require('passport-saml');
@@ -11,8 +10,8 @@ const {
 } = require('../controllers/authController');
 
 router.use(cookieParser());
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
+router.use(express.urlencoded({ extended: false }));
+router.use(express.json());
 
 const customersSamlStrategy = new saml.Strategy(
   {
