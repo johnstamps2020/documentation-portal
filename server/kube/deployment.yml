@@ -283,6 +283,8 @@ spec:
                   fieldPath: metadata.uid
             - name: DD_PROPAGATION_STYLE_INJECT
               value: 'Datadog,B3'
+            - name: DD_TRACE_DISABLED_INSTRUMENTATIONS
+              value: 'fetch'
             - name: CONFIG_DB_HOST
               value: ${CONFIG_DB_HOST}
             - name: CONFIG_DB_NAME
