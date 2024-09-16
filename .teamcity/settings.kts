@@ -676,10 +676,12 @@ object GwBuildSteps {
 
     fun createCheckPodsStatusStep(envVars: String, deployEnv: String, appName: String): ScriptBuildStep {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val numberOfPods = when (deployEnv) {
-            GwDeployEnvs.PROD.name -> 4
-            else -> 2
-        }
+        val numberOfPods =
+            if (appName == GwConfigParams.DOC_PORTAL_APP_NAME.paramValue && deployEnv == GwDeployEnvs.OMEGA2_ANDROMEDA.envName) {
+                4
+            } else {
+                2
+            }
 
         return ScriptBuildStep {
             name = "Check pods status"
