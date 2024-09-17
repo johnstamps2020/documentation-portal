@@ -8,13 +8,13 @@ ARG DEPT_CODE
 ARG POD_NAME
 
 COPY .yarn .yarn
-COPY components components
+COPY core core
 COPY .yarnrc.yml .yarnrc.yml
 COPY package.json package.json
 COPY yarn.lock yarn.lock
 COPY server server
 COPY landing-pages landing-pages
-COPY components components
+COPY core core
 COPY shims shims
 COPY scripts scripts
 
