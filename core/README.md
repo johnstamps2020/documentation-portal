@@ -8,7 +8,7 @@ apps in this repo.
 From the root of the repo, run the following command:
 
 ```sh
-yarn dev:components
+yarn dev:core
 ```
 
 ## Creating a component
