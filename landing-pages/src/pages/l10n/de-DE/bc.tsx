@@ -35,10 +35,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'isbc202402deDEapp',
         },
         {
-          label: 'Versionshinweise für BillingCenter',
-          docId: 'isbc202402deDEreleasenotes',
-        },
-        {
           label: 'BillingCenter - Update-Handbuch',
           docId: 'isbc202402deDEupdate',
         },
