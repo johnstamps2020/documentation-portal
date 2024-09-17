@@ -736,8 +736,8 @@ object GwBuildSteps {
                 
                 yarn install
                 
-                yarn build:components
-                yarn publish:components
+                yarn build:core
+                yarn publish:core
                 
                 yarn build:$packageHandle
                 yarn publish:$packageHandle

@@ -1,4 +1,4 @@
-import { navigateWithUpdatedParams } from '@doctools/components';
+import { navigateWithUpdatedParams } from '@doctools/core';
 import { SearchType } from '@doctools/server';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';

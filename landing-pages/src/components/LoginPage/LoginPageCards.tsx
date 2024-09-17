@@ -3,7 +3,7 @@ import {
   loginOptions,
   loginOptionsProd,
   useEnvStore,
-} from '@doctools/components';
+} from '@doctools/core';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import LoginPageCard from './LoginPageCard';

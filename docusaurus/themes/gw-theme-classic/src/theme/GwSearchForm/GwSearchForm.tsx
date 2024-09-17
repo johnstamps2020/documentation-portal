@@ -1,4 +1,4 @@
-import { translate } from '@doctools/components';
+import { translate } from '@doctools/core';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';

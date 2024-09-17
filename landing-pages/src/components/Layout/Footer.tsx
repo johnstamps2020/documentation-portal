@@ -1,4 +1,4 @@
-import { translate } from '@doctools/components';
+import { translate } from '@doctools/core';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';

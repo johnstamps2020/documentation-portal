@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { translate } from '@doctools/components';
+import { translate } from '@doctools/core';
 import { BrowserRouter } from 'react-router-dom';
 import {
   SearchHeaderLayoutContextProvider,
   SearchHeadWrapper,
   Filters,
-} from '@doctools/components';
+} from '@doctools/core';
 
 export default function OnlineSearch() {
   const docId = document

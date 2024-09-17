@@ -1,14 +1,14 @@
 {
-  "name": "@doctools/components",
+  "name": "@doctools/core",
   "version": "1.0.21",
-  "description": "A collection of React components for Doctools",
+  "description": "A collection of things used across the monorepo",
   "license": "UNLICENSED",
   "main": "dist/index.js",
   "publishConfig": {
     "registry": "https://artifactory.guidewire.com/api/npm/doctools-npm-dev/"
   },
   "scripts": {
-    "build": "echo \"🧩 Building components\" && rimraf dist && tsc --build --verbose && copy-non-tx-files",
+    "build": "echo \"🍎 Building core\" && rimraf dist && tsc --build --verbose && copy-non-tx-files",
     "dev": "yarn build && tsc --watch"
   },
   "devDependencies": {

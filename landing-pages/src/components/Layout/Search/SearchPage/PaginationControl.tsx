@@ -1,4 +1,4 @@
-import { navigateWithUpdatedParams } from '@doctools/components';
+import { navigateWithUpdatedParams } from '@doctools/core';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useSearchData } from 'hooks/useApi';

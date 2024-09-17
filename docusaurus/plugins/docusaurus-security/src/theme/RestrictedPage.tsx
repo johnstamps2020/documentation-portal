@@ -1,4 +1,4 @@
-import { Translate } from '@doctools/components';
+import { Translate } from '@doctools/core';
 import React, { useEffect, useState } from 'react';
 
 const RestrictedPage = () => {

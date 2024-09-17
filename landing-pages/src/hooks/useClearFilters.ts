@@ -1,4 +1,4 @@
-import { navigateWithUpdatedParams } from '@doctools/components';
+import { navigateWithUpdatedParams } from '@doctools/core';
 import { useEffect, useState } from 'react';
 import { useSearchData } from './useApi';
 
