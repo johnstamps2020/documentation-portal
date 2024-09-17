@@ -1,4 +1,4 @@
-import { ChatbotComment } from '@doctools/components';
+import { ChatbotComment } from '@doctools/core';
 import { Client } from '@elastic/elasticsearch';
 import { ApiResponse } from '../types';
 import { winstonLogger } from './loggerController';

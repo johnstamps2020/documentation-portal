@@ -1,4 +1,4 @@
-import { translate } from '@doctools/components';
+import { translate } from '@doctools/core';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';

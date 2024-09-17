@@ -5,7 +5,7 @@ import {
   internalMockUserData,
 } from './utils/mockUserData';
 
-import { UserInfo } from '@doctools/components';
+import { UserInfo } from '@doctools/core';
 import { JwtPayload, decode } from 'jsonwebtoken';
 import {
   createOktaJwtVerifier,

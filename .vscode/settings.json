@@ -145,7 +145,7 @@
     ".vscode-insiders",
     "docusaurus/themes/gw-theme-classic/src/i18n",
     "webpack.config.ts",
-    "components/src/lib/Translate/i18n/*.json",
+    "core/src/lib/Translate/i18n/*.json",
     "routeTree.gen.ts"
   ],
   "cSpell.ignoreRegExpList": [

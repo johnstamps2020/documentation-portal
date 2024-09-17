@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import { StyledAdvancedHelpSectionTitle } from './StyledSearchComponents';
 import { useTheme } from '@mui/material/styles';
 import { useSearchLayoutContext } from './SearchLayoutContext';
-import { translate } from '@doctools/components';
+import { translate } from '@doctools/core';
 
 export default function AdvancedSearchHelpContents() {
   const theme = useTheme();

@@ -1,4 +1,4 @@
-import { ChatbotRequest, ChatbotResponse } from '@doctools/components';
+import { ChatbotRequest, ChatbotResponse } from '@doctools/core';
 import 'dotenv/config';
 import { winstonLogger } from './loggerController';
 

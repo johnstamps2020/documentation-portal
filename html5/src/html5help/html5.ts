@@ -14,7 +14,7 @@ import { addInternalBadge } from '../modules/internal';
 import { addLightbox } from '../modules/lightbox';
 import { addEarlyAccessMark } from '../modules/earlyAccess';
 import '../stylesheets/html5template.css';
-import { UserInformation } from '@doctools/components';
+import { UserInformation } from '@doctools/core';
 import { addBookLinks } from '../modules/xbook-ref';
 
 declare global {

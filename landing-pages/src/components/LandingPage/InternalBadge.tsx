@@ -2,7 +2,7 @@ import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { usePageData } from '../../hooks/usePageData';
-import { translate } from '@doctools/components';
+import { translate } from '@doctools/core';
 
 export default function InternalBadge() {
   const { pageData, isLoading, isError } = usePageData();

@@ -1,4 +1,4 @@
-import { Avatar, useEnvStore } from '@doctools/components';
+import { Avatar, useEnvStore } from '@doctools/core';
 import { Link as RouterLink } from '@tanstack/react-router';
 import { useUserInfo } from 'hooks/useApi';
 

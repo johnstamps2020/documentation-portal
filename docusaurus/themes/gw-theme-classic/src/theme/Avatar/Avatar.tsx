@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDocContext } from '@theme/DocContext';
-import { Avatar as DoctoolsAvatar } from '@doctools/components';
+import { Avatar as DoctoolsAvatar } from '@doctools/core';
 
 export default function Avatar() {
   const docContext = useDocContext();

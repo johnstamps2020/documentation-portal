@@ -41,7 +41,7 @@ export default defineConfig({
           '@emotion/react': ['@emotion/react'],
           '@emotion/styled': ['@emotion/styled'],
           '@mui/material': ['@mui/material'],
-          '@doctools/components': ['@doctools/components'],
+          '@doctools/core': ['@doctools/core'],
           '@tanstack/react-router': ['@tanstack/react-router'],
           swr: ['swr'],
           tinycolor2: ['tinycolor2'],

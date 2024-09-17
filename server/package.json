@@ -52,7 +52,7 @@
     "winston": "^3.7.2"
   },
   "devDependencies": {
-    "@doctools/components": "workspace:*",
+    "@doctools/core": "workspace:*",
     "@doctools/scripts": "workspace:*",
     "@types/jest": "^29.5.12",
     "@types/jsdom": "^20.0.0",

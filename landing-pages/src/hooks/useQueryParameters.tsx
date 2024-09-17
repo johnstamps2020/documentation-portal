@@ -1,4 +1,4 @@
-import { navigateWithUpdatedParams } from '@doctools/components';
+import { navigateWithUpdatedParams } from '@doctools/core';
 
 export function useQueryParameters() {
   const query = new URLSearchParams(window.location.search);

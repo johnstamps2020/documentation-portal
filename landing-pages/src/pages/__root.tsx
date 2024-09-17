@@ -1,4 +1,4 @@
-import { GwThemeProvider, Init } from '@doctools/components';
+import { GwThemeProvider, Init } from '@doctools/core';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import FourOhFourPage from 'components/FourOhFourPage';

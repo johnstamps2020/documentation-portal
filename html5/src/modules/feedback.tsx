@@ -1,7 +1,7 @@
 import '../stylesheets/modules/feedback.css';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { SearchMeta, Feedback } from '@doctools/components';
+import { SearchMeta, Feedback } from '@doctools/core';
 
 function getPossibleContacts() {
   const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");

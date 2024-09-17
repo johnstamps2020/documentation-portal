@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "dependencies": {
-    "@doctools/components": "workspace:*",
+    "@doctools/core": "workspace:*",
     "@doctools/server": "workspace:*",
     "@emotion/babel-plugin": "^11.12.0",
     "@emotion/react": "^11.11.4",

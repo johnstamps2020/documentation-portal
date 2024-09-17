@@ -1,4 +1,4 @@
-import { UserInfo } from '@doctools/components';
+import { UserInfo } from '@doctools/core';
 import {
   Doc,
   ExternalLink,

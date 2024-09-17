@@ -1,4 +1,4 @@
-import { EnvInfo, EnvName } from '@doctools/components';
+import { EnvInfo, EnvName } from '@doctools/core';
 import 'dotenv/config';
 
 export function getEnvInfo(): EnvInfo {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InitialDocItem from '@theme-init/DocItem';
 import EarlyAccess from '@theme/EarlyAccess';
 import Internal from '@theme/Internal';
-import { guidewireMetaPrefix } from '@doctools/components';
+import { guidewireMetaPrefix } from '@doctools/core';
 import Head from '@docusaurus/Head';
 
 interface DocItemContextProps {

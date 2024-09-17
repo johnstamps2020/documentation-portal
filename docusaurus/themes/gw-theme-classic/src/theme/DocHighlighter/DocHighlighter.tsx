@@ -1,4 +1,4 @@
-import { HighlightButton } from '@doctools/components';
+import { HighlightButton } from '@doctools/core';
 import { useHistory } from '@docusaurus/router';
 import React, { useEffect, useState } from 'react';
 import './DocHighlighter.css';

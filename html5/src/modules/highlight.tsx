@@ -1,4 +1,4 @@
-import { HighlightButton } from '@doctools/components';
+import { HighlightButton } from '@doctools/core';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
