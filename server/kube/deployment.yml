@@ -284,7 +284,7 @@ spec:
             - name: DD_PROPAGATION_STYLE_INJECT
               value: 'datadog'
             - name: DD_TRACE_DISABLED_INSTRUMENTATIONS
-              value: 'fetch'
+              value: 'http'
             - name: CONFIG_DB_HOST
               value: ${CONFIG_DB_HOST}
             - name: CONFIG_DB_NAME
