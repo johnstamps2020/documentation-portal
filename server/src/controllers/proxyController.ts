@@ -21,6 +21,9 @@ const proxy = new HttpProxy();
 winstonLogger.notice('Proxy created');
 
 proxy.on('econnreset', (err: any, req, res, target) => {
+  if (`${err}`.match('socket hang up')) {
+    return res.end();
+  }
   winstonLogger.error(`Proxy ECONNRESET error: ${err}`);
   res.end();
 });
