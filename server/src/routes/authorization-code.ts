@@ -9,8 +9,7 @@ import {
 } from '../controllers/authController';
 import { winstonLogger } from '../controllers/loggerController';
 import { OktaInstance, OktaStrategy } from '../types/auth';
-
-const router = Router();
+import { ReqUser } from '../controllers/userController';
 
 const oktaInstanceAmer: OktaInstance = {
   region: 'amer',
@@ -18,7 +17,7 @@ const oktaInstanceAmer: OktaInstance = {
   clientId: process.env.OKTA_CLIENT_ID!,
   clientSecret: process.env.OKTA_CLIENT_SECRET!,
 };
-const oktaIntanceApac: OktaInstance = {
+const oktaInstanceApac: OktaInstance = {
   region: 'apac',
   url: process.env.OKTA_ISSUER_APAC!,
   clientId: process.env.OKTA_CLIENT_ID_APAC!,
@@ -56,7 +55,7 @@ async function createOktaStrategies() {
 
   const oktaInstances: OktaInstance[] =
     process.env.DEPLOY_ENV === 'omega2-andromeda'
-      ? [oktaInstanceAmer, oktaIntanceApac, oktaInstanceEmea]
+      ? [oktaInstanceAmer, oktaInstanceApac, oktaInstanceEmea]
       : [oktaInstanceAmer];
 
   const oktaStrategies: OktaStrategy[] = [];
@@ -102,46 +101,54 @@ async function createOktaStrategies() {
   return oktaStrategies;
 }
 
-createOktaStrategies()
-  .then((oktaStrategies) => {
-    router.use(cookieParser());
-    router.use(express.urlencoded({ extended: false }));
-    router.use(express.json());
+export async function getOidcLoginRouter() {
+  const router = Router();
 
-    passport.serializeUser(function (user, done) {
-      done(null, user);
-    });
-    passport.deserializeUser(function (user: UserinfoResponse, done) {
-      done(null, user);
-    });
-    router.use(passport.initialize());
-    router.use(passport.session());
-    for (const oktaStrategy of oktaStrategies) {
-      passport.use(oktaStrategy.region, oktaStrategy.oidcStrategy);
-    }
+  const oktaStrategies = await createOktaStrategies();
 
-    router.get('/', function (req, res, next) {
+  router.use(cookieParser());
+  router.use(express.urlencoded({ extended: false }));
+  router.use(express.json());
+
+  passport.serializeUser(function (user, done) {
+    done(null, user);
+  });
+  passport.deserializeUser(function (user: UserinfoResponse, done) {
+    done(null, user as ReqUser);
+  });
+  router.use(passport.initialize());
+  router.use(passport.session());
+  for (const oktaStrategy of oktaStrategies) {
+    passport.use(oktaStrategy.region, oktaStrategy.oidcStrategy);
+  }
+
+  router.get('/', function (req, res, next) {
+    try {
       const { region } = req.query;
       saveRedirectUrlToSession(req);
       const oidcStrategyName = region as string;
       req.session!.oidcStrategyName = oidcStrategyName;
       passport.authenticate(oidcStrategyName)(req, res, next);
-    });
+    } catch (err) {
+      winstonLogger.error(`Root authentication error: ${err}`);
+    }
+  });
 
-    router.use(
-      '/callback',
-      function (req, res, next) {
+  router.use(
+    '/callback',
+    function (req, res, next) {
+      try {
         const oidcStrategyName = req.session!.oidcStrategyName;
         delete req.session!.oidcStrategyName;
         passport.authenticate(oidcStrategyName)(req, res, next);
-      },
-      function (req, res) {
-        res.redirect(resolveRequestedUrl(req));
+      } catch (err) {
+        winstonLogger.error(`Callback authentication error: ${err}`);
       }
-    );
-  })
-  .catch((err) => {
-    winstonLogger.error(`Authentication error: ${err}`);
-  });
+    },
+    function (req, res) {
+      res.redirect(resolveRequestedUrl(req));
+    }
+  );
 
-module.exports = router;
+  return router;
+}

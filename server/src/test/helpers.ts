@@ -1,8 +1,6 @@
 import { JSDOM } from 'jsdom';
 import request from 'supertest';
-import app from '../app';
-
-export { app };
+import { getApp } from '../app';
 
 export function getVirtualDocument(htmlString: string) {
   const dom = new JSDOM(htmlString);
@@ -15,6 +13,7 @@ export async function querySelectorFromEndpoint(
   url: string,
   querySelector: string
 ) {
+  const app = await getApp();
   const response = await request(app).get(url);
   const htmlString = await response.text;
   const document = getVirtualDocument(htmlString);
