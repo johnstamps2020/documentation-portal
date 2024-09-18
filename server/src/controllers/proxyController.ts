@@ -17,7 +17,10 @@ import {
   s3BucketUrlExists,
 } from './redirectController';
 
-const proxy = new HttpProxy();
+const proxy = new HttpProxy({
+  timeout: 85000,
+  proxyTimeout: 85000,
+});
 winstonLogger.notice('Proxy created');
 
 proxy.on('econnreset', (err: any, req, res, target) => {
