@@ -35,10 +35,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'iscc202402frFRapp',
         },
         {
-          label: 'ClaimCenter - Notes de version',
-          docId: 'iscc202402frFRreleasenotes',
-        },
-        {
           label: 'ClaimCenter - Guide de mise à jour',
           docId: 'iscc202402frFRupdate',
         },

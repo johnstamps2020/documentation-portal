@@ -35,10 +35,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'ispc202402deDEapp',
         },
         {
-          label: 'Versionshinweise für PolicyCenter',
-          docId: 'ispc202402deDEreleasenotes',
-        },
-        {
           label: 'PolicyCenter - Update-Handbuch',
           docId: 'ispc202402deDEupdate',
         },
