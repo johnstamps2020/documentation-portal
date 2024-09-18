@@ -38,5 +38,3 @@ export const languageLabels = [
     label: 'Português',
   },
 ];
-
-export const searchTypeQueryParameterName = 'searchType';

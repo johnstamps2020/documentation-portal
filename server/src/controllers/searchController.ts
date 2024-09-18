@@ -12,15 +12,12 @@ import { Version } from '../model/entity/Version';
 import {
   SearchData,
   SearchResultSource,
-  SearchType,
   ServerSearchFilter,
   ServerSearchFilterValue,
 } from '../types/serverSearch';
 import { ApiResponse } from '../types/apiResponse';
 import { getAllEntities } from './configController';
 import { winstonLogger } from './loggerController';
-
-import { createVectorFromText } from './machineLearningController';
 
 type UrlFilters = {
   [x: string]: string[];
@@ -918,7 +915,6 @@ type SearchReqDictionary = {};
 type SearchReqBody = {};
 type SearchReqQuery = {
   q?: string;
-  searchType?: SearchType;
   pagination?: string;
   resultsPerPage?: string;
   page?: string;
@@ -943,8 +939,6 @@ type SearchControllerResponse = {
   status: number;
   body: SearchData['searchResults'] | SearchData;
 };
-
-const searchTypeQueryParameterName = 'searchType';
 
 export default async function searchController(
   req: SearchRequestExpress,
@@ -972,8 +966,6 @@ export default async function searchController(
     },
   };
   try {
-    const searchType =
-      urlQueryParameters[searchTypeQueryParameterName] || 'keyword';
     const rawJson = urlQueryParameters.rawJSON === 'true';
     const resultsPerPage = parseInt(urlQueryParameters.pagination || '10');
     const currentPage = parseInt(urlQueryParameters.page || '1');
@@ -1005,184 +997,56 @@ export default async function searchController(
       elasticsearchQueryFilters
     );
 
-    if (searchType === 'keyword') {
-      const keywordSearchFilters = await createSearchFilters(
-        keywordFields,
-        filtersFromUrl,
-        requestIsAuthenticated,
-        hasGuidewireEmail,
-        elasticsearchQueryBody,
-        undefined
-      );
-
-      const keywordSearchFiltersValidatedAgainstDb =
-        await validateSearchFiltersAgainstDb(req, res, keywordSearchFilters);
-
-      const keywordSearchResults = await runKeywordSearch(
-        elasticsearchQueryWithFilters,
-        startIndex,
-        resultsPerPage
-      );
-
-      const keywordSearchResultsToDisplay = prepareResultsToDisplay(
-        requestIsAuthenticated,
-        keywordSearchResults
-      );
-
-      return rawJson
-        ? {
-            status: 200,
-            body: keywordSearchResultsToDisplay,
-          }
-        : {
-            status: 200,
-            body: {
-              searchPhrase: searchPhrase,
-              currentPage: currentPage,
-              resultsPerPage: resultsPerPage,
-              filtersFromUrl: filtersFromUrl,
-              requestIsAuthenticated: requestIsAuthenticated,
-              searchResults: keywordSearchResultsToDisplay,
-              totalNumOfResults: keywordSearchResults?.numberOfHits || 0,
-              totalNumOfCollapsedResults:
-                keywordSearchResults?.numberOfCollapsedHits || 0,
-              // We limited the number of pages because the search results page crashes when there are over 10000 hits
-              // and you try to display a page for results from 10000 upward
-              pages: Math.ceil(
-                (keywordSearchResults?.numberOfCollapsedHits <= 10000
-                  ? keywordSearchResults?.numberOfCollapsedHits
-                  : 10000) / resultsPerPage
-              ),
-              filters: keywordSearchFiltersValidatedAgainstDb,
-            },
-          };
-    }
-
-    const vectorizedSearchPhrase = await createVectorFromText(searchPhrase);
-    if (!vectorizedSearchPhrase) {
-      return errorResponse;
-    }
-    const numberOfCandidates = 50;
-    const k = 10;
-    const elasticsearchKnnQueryBody = [
-      {
-        field: 'title_vector',
-        query_vector: vectorizedSearchPhrase,
-        num_candidates: numberOfCandidates,
-        k: k,
-      },
-      {
-        field: 'body_vector',
-        query_vector: vectorizedSearchPhrase,
-        num_candidates: numberOfCandidates,
-        k: k,
-        boost: 12,
-      },
-    ];
-    const elasticsearchKnnQueryWithFilters = addFiltersToElasticsearchKnnQuery(
-      elasticsearchKnnQueryBody,
-      elasticsearchQueryFilters
+    const keywordSearchFilters = await createSearchFilters(
+      keywordFields,
+      filtersFromUrl,
+      requestIsAuthenticated,
+      hasGuidewireEmail,
+      elasticsearchQueryBody,
+      undefined
     );
 
-    if (searchType === 'semantic') {
-      const semanticSearchFilters = await createSearchFilters(
-        keywordFields,
-        filtersFromUrl,
-        requestIsAuthenticated,
-        hasGuidewireEmail,
-        undefined,
-        elasticsearchKnnQueryBody
-      );
+    const keywordSearchFiltersValidatedAgainstDb =
+      await validateSearchFiltersAgainstDb(req, res, keywordSearchFilters);
 
-      const semanticSearchFiltersValidatedAgainstDb =
-        await validateSearchFiltersAgainstDb(req, res, semanticSearchFilters);
-      const semanticSearchResults = await runSemanticSearch(
-        elasticsearchKnnQueryWithFilters,
-        startIndex,
-        resultsPerPage
-      );
-      const semanticSearchResultsToDisplay = prepareVectorizedResultsToDisplay(
-        semanticSearchResults
-      );
-      return rawJson
-        ? {
-            status: 200,
-            body: semanticSearchResultsToDisplay,
-          }
-        : {
-            status: 200,
-            body: {
-              searchPhrase: searchPhrase,
-              currentPage: currentPage,
-              resultsPerPage: resultsPerPage,
-              filtersFromUrl: filtersFromUrl,
-              requestIsAuthenticated: requestIsAuthenticated,
-              searchResults: semanticSearchResultsToDisplay,
-              totalNumOfResults: semanticSearchResults?.numberOfHits || 0,
-              totalNumOfCollapsedResults:
-                semanticSearchResults?.numberOfCollapsedHits || 0,
-              // We limited the number of pages because the search results page crashes when there are over 10000 hits
-              // and you try to display a page for results from 10000 upward
-              pages: Math.ceil(
-                (semanticSearchResults?.numberOfCollapsedHits <= 10000
-                  ? semanticSearchResults?.numberOfCollapsedHits
-                  : 10000) / resultsPerPage
-              ),
-              filters: semanticSearchFiltersValidatedAgainstDb,
-            },
-          };
-    }
+    const keywordSearchResults = await runKeywordSearch(
+      elasticsearchQueryWithFilters,
+      startIndex,
+      resultsPerPage
+    );
 
-    if (searchType === 'hybrid') {
-      const hybridSearchFilters = await createSearchFilters(
-        keywordFields,
-        filtersFromUrl,
-        requestIsAuthenticated,
-        hasGuidewireEmail,
-        elasticsearchQueryBody,
-        elasticsearchKnnQueryBody
-      );
+    const keywordSearchResultsToDisplay = prepareResultsToDisplay(
+      requestIsAuthenticated,
+      keywordSearchResults
+    );
 
-      const hybridSearchFiltersValidatedAgainstDb =
-        await validateSearchFiltersAgainstDb(req, res, hybridSearchFilters);
-
-      const hybridSearchResults = await runHybridSearch(
-        elasticsearchQueryWithFilters,
-        elasticsearchKnnQueryWithFilters,
-        startIndex,
-        resultsPerPage
-      );
-      const hybridSearchResultsToDisplay =
-        prepareVectorizedResultsToDisplay(hybridSearchResults);
-
-      return rawJson
-        ? {
-            status: 200,
-            body: hybridSearchResultsToDisplay,
-          }
-        : {
-            status: 200,
-            body: {
-              searchPhrase: searchPhrase,
-              currentPage: currentPage,
-              resultsPerPage: resultsPerPage,
-              filtersFromUrl: filtersFromUrl,
-              requestIsAuthenticated: requestIsAuthenticated,
-              searchResults: hybridSearchResultsToDisplay,
-              totalNumOfResults: hybridSearchResults?.numberOfHits || 0,
-              totalNumOfCollapsedResults:
-                hybridSearchResults?.numberOfCollapsedHits || 0,
-              // We limited the number of pages because the search results page crashes when there are over 10000 hits
-              // and you try to display a page for results from 10000 upward
-              pages: Math.ceil(
-                (hybridSearchResults?.numberOfCollapsedHits <= 10000
-                  ? hybridSearchResults?.numberOfCollapsedHits
-                  : 10000) / resultsPerPage
-              ),
-              filters: hybridSearchFiltersValidatedAgainstDb,
-            },
-          };
-    }
+    return rawJson
+      ? {
+          status: 200,
+          body: keywordSearchResultsToDisplay,
+        }
+      : {
+          status: 200,
+          body: {
+            searchPhrase: searchPhrase,
+            currentPage: currentPage,
+            resultsPerPage: resultsPerPage,
+            filtersFromUrl: filtersFromUrl,
+            requestIsAuthenticated: requestIsAuthenticated,
+            searchResults: keywordSearchResultsToDisplay,
+            totalNumOfResults: keywordSearchResults?.numberOfHits || 0,
+            totalNumOfCollapsedResults:
+              keywordSearchResults?.numberOfCollapsedHits || 0,
+            // We limited the number of pages because the search results page crashes when there are over 10000 hits
+            // and you try to display a page for results from 10000 upward
+            pages: Math.ceil(
+              (keywordSearchResults?.numberOfCollapsedHits <= 10000
+                ? keywordSearchResults?.numberOfCollapsedHits
+                : 10000) / resultsPerPage
+            ),
+            filters: keywordSearchFiltersValidatedAgainstDb,
+          },
+        };
 
     return errorResponse;
   } catch (err) {

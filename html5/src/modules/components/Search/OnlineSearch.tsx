@@ -57,7 +57,6 @@ export default function OnlineSearch() {
         <SearchHeadWrapper
           isMobile={false}
           placeholder={placeholder}
-          searchTypeQueryParameterName="searchType"
           docTitle={window.docTitle}
         />
       </BrowserRouter>
