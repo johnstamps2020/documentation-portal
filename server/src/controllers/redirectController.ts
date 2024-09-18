@@ -254,6 +254,7 @@ export function addPrecedingSlashToPath(path: string) {
 }
 
 export async function s3BucketUrlExists(url: string): Promise<boolean> {
+  const timeStart = new Date().getTime();
   const urlToCheck = addPrecedingSlashToPath(url);
   try {
     const s3BucketUrl = urlToCheck.startsWith('/portal')
@@ -268,10 +269,18 @@ export async function s3BucketUrlExists(url: string): Promise<boolean> {
     const response = await fetch(fullUrl, { method: 'HEAD' });
 
     return response.ok || response.redirected;
-  } catch (err) {
-    winstonLogger.error(
-      `Error checking if S3 bucket URL exists at ${urlToCheck}: ${err}`
-    );
+  } catch (err: any) {
+    const elapsedSeconds = `${(new Date().getTime() - timeStart) / 1000}s`;
+
+    if (err.name === 'AbortError') {
+      winstonLogger.error(
+        `Error checking if S3 bucket URL exists at ${urlToCheck}; REQUEST TIMED OUT after ${elapsedSeconds}: ${err}`
+      );
+    } else {
+      winstonLogger.error(
+        `Error checking if S3 bucket URL exists at ${urlToCheck}: ${err}`
+      );
+    }
     return false;
   }
 }
