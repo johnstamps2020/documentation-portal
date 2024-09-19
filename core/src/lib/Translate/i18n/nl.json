@@ -158,9 +158,6 @@
   "chat.allow" : {
     "message" : "Toestaan dat de AI chatbot vragen beantwoordt"
   },
-  "chat.allow.learnMore" : {
-    "message" : "Lees de Algemene voorwaarden"
-  },
   "chat.termsAndConditions.title" : {
     "message" : "Algemene voorwaarden bij gebruik van de chat"
   },
