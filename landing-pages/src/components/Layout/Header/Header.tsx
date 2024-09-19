@@ -12,7 +12,6 @@ import { useLocaleParams } from 'hooks/useLocale';
 import { useMobile } from 'hooks/useMobile';
 import { usePageData } from 'hooks/usePageData';
 import { useCallback, useMemo } from 'react';
-import { searchTypeQueryParameterName } from 'vars';
 import HeaderDesktop from './Desktop/HeaderDesktop';
 import HeaderMenuItems from './HeaderMenuItems';
 import HeaderMobile from './Mobile/HeaderMobile';
@@ -74,7 +73,6 @@ export default function Header() {
                 <SearchHeadWrapper
                   placeholder={placeholder}
                   isMobile={isMobile}
-                  searchTypeQueryParameterName={searchTypeQueryParameterName}
                 />
               )}
               <HeaderMenuItems />
@@ -97,7 +95,6 @@ export default function Header() {
               <SearchHeadWrapper
                 placeholder={placeholder}
                 isMobile={isMobile}
-                searchTypeQueryParameterName={searchTypeQueryParameterName}
               />
             </>
           )
