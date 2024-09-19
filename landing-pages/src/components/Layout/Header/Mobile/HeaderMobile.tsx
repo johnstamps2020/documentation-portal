@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
-import { headerHeight, headerStyles } from '../Header';
+import { headerHeight, headerStyles } from '../headerVars';
 import Logo from '../Logo/Logo';
 import UserProfile from '../UserProfile';
 

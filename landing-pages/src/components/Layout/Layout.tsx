@@ -1,13 +1,14 @@
 import Box from '@mui/material/Box';
 import { useLocation } from '@tanstack/react-router';
+import ErrorPage from 'components/ErrorPage';
 import { HeaderContextProvider } from 'components/Layout/Header/HeaderContext';
 import { useLayoutContext } from 'LayoutContext';
 import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import Footer from './Footer';
-import Header, { headerHeight } from './Header/Header';
+import Header from './Header/Header';
+import { headerHeight } from './Header/headerVars';
 import { NotificationProvider } from './NotificationContext';
-import ErrorPage from 'components/ErrorPage';
 
 export const mainHeight = `calc(100vh - ${headerHeight})`;
 

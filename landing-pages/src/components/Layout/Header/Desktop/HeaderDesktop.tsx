@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
-import { headerHeight, headerStyles } from '../Header';
+import { headerHeight, headerStyles } from '../headerVars';
 import Logo from '../Logo/Logo';
 import UserProfile from '../UserProfile';
 import Box from '@mui/material/Box';

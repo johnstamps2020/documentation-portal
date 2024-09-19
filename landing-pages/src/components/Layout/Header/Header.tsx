@@ -3,7 +3,6 @@ import {
   SearchHeaderLayoutContextProvider,
   SearchHeadWrapper,
 } from '@doctools/core';
-import { StackProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useLocation } from '@tanstack/react-router';
@@ -16,18 +15,6 @@ import { searchTypeQueryParameterName } from 'vars';
 import HeaderDesktop from './Desktop/HeaderDesktop';
 import HeaderMenuItems from './HeaderMenuItems';
 import HeaderMobile from './Mobile/HeaderMobile';
-
-export const headerHeight = '68px';
-
-export const headerStyles: StackProps['sx'] = {
-  position: 'relative', // for zIndex to work
-  backgroundColor: 'hsl(216, 42%, 13%)',
-  px: '16px',
-};
-
-export type HeaderOptions = {
-  searchFilters?: Filters;
-};
 
 export default function Header() {
   const theme = useTheme();
