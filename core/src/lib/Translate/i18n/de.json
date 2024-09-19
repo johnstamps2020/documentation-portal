@@ -158,9 +158,6 @@
   "chat.allow" : {
     "message" : "KI-Chatbot erlauben, Fragen zu beantworten"
   },
-  "chat.allow.learnMore" : {
-    "message" : "Geschäftsbedingungen lesen"
-  },
   "chat.termsAndConditions.title" : {
     "message" : "Geschäftsbedingungen für die Nutzung des Chats"
   },

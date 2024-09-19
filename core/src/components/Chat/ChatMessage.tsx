@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useRef } from 'react';
-import { translate } from '../../lib';
+import { Translate, translate } from '../../lib';
 import { useConsentStore } from '../../stores/consentStore';
 import { ChatItem } from './ChatContext';
 import { ChatFeedbackProvider } from './ChatFeedback/Widget/ChatFeedbackContext';
@@ -81,14 +81,28 @@ export function ChatMessage({
       {sources && <ChatSources sources={sources} />}
       {message && aiConsented && <Answer answer={message} />}
       {message && chatComment && (
-        <>
+        <Stack sx={{ alignItems: 'end' }}>
           <ChatFeedbackProvider chatComment={chatComment}>
             <ChatMessageFeedbackButtons />
           </ChatFeedbackProvider>
-          <Box sx={{ textAlign: 'right' }}>
-            Response received after {millisecondsItTook / 1000}s
+          <Box
+            sx={{
+              textAlign: 'right',
+              fontStyle: 'italic',
+              fontSize: 12,
+              maxWidth: '60ch',
+            }}
+          >
+            <Typography sx={{ fontSize: 14 }}>
+              Response received after {millisecondsItTook / 1000}s
+            </Typography>
+            <Typography sx={{ fontSize: 14 }}>
+              <Translate id="chatbot.disclosure">
+                disclaimer goes here
+              </Translate>
+            </Typography>
           </Box>
-        </>
+        </Stack>
       )}
       <NotOptedIn />
     </Box>

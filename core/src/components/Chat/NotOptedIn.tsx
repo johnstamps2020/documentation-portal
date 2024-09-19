@@ -1,5 +1,5 @@
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { Translate } from '../../lib';
@@ -8,7 +8,7 @@ import { TermsAndConditionsDialogBox } from './TermsAndConditionsDialogBox';
 
 export function NotOptedIn() {
   const [open, setOpen] = useState(false);
-  const setAIConsented = useConsentStore((state) => state.setAIConsented);
+  
   const aiConsented = useConsentStore((state) => state.aiConsented);
 
   if (aiConsented) {
@@ -16,29 +16,20 @@ export function NotOptedIn() {
   }
 
   return (
-    <Box>
+    <Stack>
       <Typography sx={{ my: 2 }}>
         <Translate id="chat.notOptedIn">
-          You did not opt in to receive messages from the chatbot.
+          Click below to opt-in to answers from the Guidewire Docs AI chatbot.
         </Translate>
       </Typography>
       <Button
         variant="contained"
         onClick={() => {
-          setAIConsented(true);
+          setOpen(true);
         }}
       >
         <Translate id="chat.allow">
           Allow AI chatbot to answer questions
-        </Translate>
-      </Button>
-      <Button
-        onClick={() => {
-          setOpen(true);
-        }}
-      >
-        <Translate id="chat.allow.learnMore">
-          Read the terms and conditions
         </Translate>
       </Button>
       <TermsAndConditionsDialogBox
@@ -47,6 +38,6 @@ export function NotOptedIn() {
           setOpen(false);
         }}
       />
-    </Box>
+    </Stack>
   );
 }

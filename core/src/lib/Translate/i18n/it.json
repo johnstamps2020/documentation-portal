@@ -158,9 +158,6 @@
   "chat.allow" : {
     "message" : "Consenti al chatbot di IA di rispondere alle domande"
   },
-  "chat.allow.learnMore" : {
-    "message" : "Leggere i termini e le condizioni"
-  },
   "chat.termsAndConditions.title" : {
     "message" : "Termini e condizioni sull'uso della chat"
   },
