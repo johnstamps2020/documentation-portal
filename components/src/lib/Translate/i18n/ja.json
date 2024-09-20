@@ -152,8 +152,20 @@
   "chat.saveAndClose" : {
     "message" : "保存して閉じる"
   },
+  "chat.notOptedIn" : {
+    "message" : "チャットボットからメッセージを受け取るオプションを選択しませんでした。"
+  },
   "chat.allow" : {
     "message" : "AI チャットボットから質問の答えを受け取ることを許可する"
+  },
+  "chat.allow.learnMore" : {
+    "message" : "利用規約を読む"
+  },
+  "chat.termsAndConditions.title" : {
+    "message" : "チャットで使用される利用規約"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "利用規約を閉じる"
   },
   "chatbot.feedback.thumbsUp" : {
     "message" : "このチャットボットの対応は良いです"

@@ -152,8 +152,20 @@
   "chat.saveAndClose" : {
     "message" : "Opslaan en afsluiten"
   },
+  "chat.notOptedIn" : {
+    "message" : "U heeft gekozen om geen berichten van de chatbot te ontvangen."
+  },
   "chat.allow" : {
     "message" : "Toestaan dat de AI chatbot vragen beantwoordt"
+  },
+  "chat.allow.learnMore" : {
+    "message" : "Lees de Algemene voorwaarden"
+  },
+  "chat.termsAndConditions.title" : {
+    "message" : "Algemene voorwaarden bij gebruik van de chat"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "Algemene voorwaarden sluiten"
   },
   "chatbot.feedback.thumbsUp" : {
     "message" : "Dit antwoord van de chatbot is naar wens"

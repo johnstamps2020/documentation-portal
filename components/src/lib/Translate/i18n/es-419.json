@@ -3,13 +3,13 @@
     "message" : "Inicio"
   },
   "docHighlighter.tooltip" : {
-    "message" : "Alternar resaltado para frases de búsqueda"
+    "message" : "Alternar resaltado de frases de búsqueda"
   },
   "docHighlighter.label" : {
-    "message" : "activar y desactivar destacados"
+    "message" : "alternar destacados"
   },
   "anonymous.positive" : {
-    "message" : "Es un usuario anónimo,"
+    "message" : "Usted es anónimo,"
   },
   "anonymous.shareEmail" : {
     "message" : "haga clic aquí para compartir su correo electrónico con nosotros"
@@ -18,28 +18,28 @@
     "message" : "Introduzca su dirección de correo electrónico,"
   },
   "anonymous.becomeAnonymous" : {
-    "message" : "haga clic aquí para ser un usuario anónimo"
+    "message" : "haga clic aquí para ser anónimo"
   },
   "privacy.warning" : {
-    "message" : "Al proporcionar su dirección de correo electrónico, acepta que Guidewire se ponga en contacto con usted."
+    "message" : "Al proporcionar su dirección de correo electrónico, acepta que Guidewire se comunique con usted."
   },
   "privacy.link" : {
-    "message" : "Podrá encontrar la Política de privacidad de Guidewire aquí."
+    "message" : "Puede consultar la Política de confidencialidad de Guidewire aquí."
   },
   "rightWrong.positiveTitle" : {
-    "message" : "Sí"
+    "message" : "Aceptar"
   },
   "theme.rightWrong.negativeTitle" : {
-    "message" : "No"
+    "message" : "Rechazar"
   },
   "anonymous.youAreSharing" : {
     "message" : "Está compartiendo su correo electrónico con nosotros,"
   },
   "feedback.helpful" : {
-    "message" : "¿Le ha resultado útil esta página?"
+    "message" : "¿Le resultó útil esta página?"
   },
   "feedback.thumbsUp" : {
-    "message" : "Esta página me ha resultado útil"
+    "message" : "Esta página fue útil"
   },
   "feedback.thumbsDown" : {
     "message" : "Esta página necesita mejoras"
@@ -48,10 +48,10 @@
     "message" : "¡Gracias!"
   },
   "feedbackDialog.followUp" : {
-    "message" : "Un miembro del equipo de documentación revisará su feedback. Si ha facilitado su dirección de correo electrónico, nos podríamos poner en contacto con usted en caso de que necesitemos más información."
+    "message" : "Un miembro de nuestro equipo de documentación revisará sus comentarios. Si incluyó su dirección de correo electrónico, es posible que nos comuniquemos con usted si necesitamos más información."
   },
   "feedbackDialog.anythingElse" : {
-    "message" : "Gracias, hemos registrado su voto. ¿Quiere contarnos algo más?"
+    "message" : "Gracias, hemos registrado su voto. ¿Tiene algo más que decirnos?"
   },
   "feedbackDialog.comment" : {
     "message" : "Su comentario"
@@ -72,19 +72,19 @@
     "message" : "Enviar"
   },
   "internal.item.tooltip" : {
-    "message" : "Contenido interno de Guidewire"
+    "message" : "Guidewire contenido interno"
   },
   "internal.page.badge.tooltip" : {
-    "message" : "Esta página solo está disponible para el personal con un correo electrónico de Guidewire. No comparta el enlace con partes interesadas externas porque no podrán ver el contenido."
+    "message" : "Esta página solo está disponible para personas con un correo electrónico Guidewire. No comparta el vínculo con interesados externos porque no podrán ver el contenido."
   },
   "internal.employeesOnly" : {
-    "message" : "Este contenido solo está disponible para empleados de Guidewire"
+    "message" : "Este contenido solo está disponible para los empleados de Guidewire"
   },
   "internal.info.toView" : {
-    "message" : "Para ver esta página, tiene que iniciar sesión con su cuenta de empleado de Guidewire. Si necesita más ayuda, póngase en contacto con su representante de Guidewire."
+    "message" : "Para ver esta página, debe iniciar sesión con su cuenta de empleado de Guidewire. Si necesita más ayuda, póngase en contacto con su representante de Guidewire."
   },
   "internal.label" : {
-    "message" : "Este contenido es interno y solo está disponible para empleados de Guidewire."
+    "message" : "Este contenido es interno y sólo está disponible para los empleados de Guidewire"
   },
   "loginButton.out" : {
     "message" : "Cerrar sesión"
@@ -114,28 +114,28 @@
     "message" : "Expandir"
   },
   "footer.legal.linktext" : {
-    "message" : "Información legal y de soporte (solo disponible en inglés)"
+    "message" : "Información legal y de apoyo"
   },
   "footer.published" : {
-    "message" : "Publicado:"
+    "message" : "Fecha de publicación:"
   },
   "nav.scrollToTop" : {
-    "message" : "Desplazarse hacia arriba"
+    "message" : "Desplazarse al principio"
   },
   "navbar.nextTopic" : {
-    "message" : "Siguiente tema"
+    "message" : "Tema siguiente"
   },
   "navbar.prevTopic" : {
     "message" : "Tema anterior"
   },
   "navbar.noNextOrPrevTopic" : {
-    "message" : "Ninguno"
+    "message" : "Ninguna"
   },
   "navbar.printThisPage" : {
     "message" : "Imprimir esta página"
   },
   "chat.default-title" : {
-    "message" : "Hablemos"
+    "message" : "Conversemos"
   },
   "chat.send" : {
     "message" : "Enviar"
@@ -152,17 +152,29 @@
   "chat.saveAndClose" : {
     "message" : "Guardar y cerrar"
   },
+  "chat.notOptedIn" : {
+    "message" : "No ha optado por recibir mensajes del chatbot."
+  },
   "chat.allow" : {
     "message" : "Permitir que el chatbot de IA responda a las preguntas"
   },
+  "chat.allow.learnMore" : {
+    "message" : "Lea los términos y condiciones"
+  },
+  "chat.termsAndConditions.title" : {
+    "message" : "Términos y condiciones de uso del chat"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "Cierre los términos y condiciones"
+  },
   "chatbot.feedback.thumbsUp" : {
-    "message" : "La respuesta de este chatbot está muy bien"
+    "message" : "La respuesta de este chatbot es genial"
   },
   "chatbot.feedback.thumbsDown" : {
-    "message" : "La respuesta de este chatbot necesita mejorar"
+    "message" : "La respuesta de este chatbot necesita mejoras"
   },
   "chatbot.feedback.dialog.title" : {
-    "message" : "¿Le gustaría dejar un comentario?"
+    "message" : "¿Desea dejar un comentario?"
   },
   "chatbot.feedback.dialog.send" : {
     "message" : "Enviar"
@@ -171,13 +183,13 @@
     "message" : "Cancelar"
   },
   "login.gwEmployeeHint" : {
-    "message" : "¿Empleado Guidewire? Inicie sesión utilizando la opción Guidewire Cloud más arriba."
+    "message" : "Guidewire ¿Empleado? Inicie la sesión utilizando la opción Guidewire Cloud anterior."
   },
   "consent.ai" : {
     "message" : "Permitir IA"
   },
   "avatar.iconButton" : {
-    "message" : "Expandir el menú de usuario"
+    "message" : "Ampliar el menú de usuario"
   },
   "search.filter.menu.entiresite.tooltip" : {
     "message" : "Buscar en todo el sitio sin filtros"
@@ -186,7 +198,7 @@
     "message" : "Todo el sitio"
   },
   "search.filter.menu.product.tooltip" : {
-    "message" : "Buscar en los productos de esta página:"
+    "message" : "Buscar dentro de los productos de esta página:"
   },
   "search.filter.menu.product.label" : {
     "message" : "Este producto"
@@ -204,10 +216,10 @@
     "message" : "Ocultar filtros"
   },
   "search.filter.menu.showfilters.tooltip.closed" : {
-    "message" : "Mostrar filtros seleccionados y añadir o eliminar más filtros"
+    "message" : "Mostrar los filtros seleccionados y agregar o eliminar más filtros"
   },
   "search.filter.menu.showfilters.tooltip.expanded" : {
-    "message" : "Sus selecciones de filtro se aplicarán cuando introduzca una consulta de búsqueda"
+    "message" : "Sus selecciones de filtro se aplicarán cuando ingrese una consulta de búsqueda"
   },
   "search.filter.menu.thisdoc.tooltip" : {
     "message" : "Buscar en este documento:"
@@ -225,7 +237,7 @@
     "message" : "Producto"
   },
   "search.filter.menu.release" : {
-    "message" : "Versión"
+    "message" : "Liberar"
   },
   "search.filter.menu.subject" : {
     "message" : "Asunto"
