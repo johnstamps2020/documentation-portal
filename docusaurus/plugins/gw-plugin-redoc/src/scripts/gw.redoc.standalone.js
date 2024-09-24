@@ -1,3 +1,55 @@
+import de from './i18n/de.json';
+import en from './i18n/en.json';
+import es419 from './i18n/es-419.json';
+import esES from './i18n/es-ES.json';
+import fr from './i18n/fr.json';
+import it from './i18n/it.json';
+import ja from './i18n/ja.json';
+import pl from './i18n/pl.json';
+import pt from './i18n/pt.json';
+
+function interpolate(label, variables) {
+  if (!variables) {
+    return label;
+  }
+
+  let interpolated = label;
+  Object.entries(variables).forEach(([key, value]) => {
+    interpolated.replace(`{${key}}`, value);
+  });
+
+  return interpolated;
+}
+
+function getTranslation(key, variables) {
+  const htmlLanguage = document.documentElement.getAttribute('lang');
+  const localeMappings = {
+    de,
+    'de-de': de,
+    en,
+    'en-us': en,
+    'en-gb': en,
+    es419,
+    'es-419': es419,
+    esES,
+    'es-es': esES,
+    fr,
+    'fr-fr': fr,
+    'fr-ca': fr,
+    it,
+    'it-it': it,
+    ja,
+    'ja-jp': ja,
+    pl,
+    'pl-pl': pl,
+    pt,
+    'pt-br': pt,
+    'pt-pt': pt,
+  };
+  const translations = localeMappings[htmlLanguage];
+
+  return interpolate(translations[key], variables);
+}
 /*!
  * ReDoc - OpenAPI/Swagger-generated API Reference Documentation
  * -------------------------------------------------------------
@@ -8294,7 +8346,7 @@ PERFORMANCE OF THIS SOFTWARE.
                   if (o.matches(n)) {
                     (r.code = ''), o.setAttribute('data-src-status', 'loading');
                     var a = o.appendChild(document.createElement('CODE'));
-                    a.textContent = 'Loading…';
+                    a.textContent = getTranslation('redoc.ui.loader.label');
                     var s = o.getAttribute('data-src'),
                       l = r.language;
                     if ('none' === l) {
@@ -20745,7 +20797,10 @@ object-assign
                           if (0 !== r.href.indexOf(n)) throw new Error(r.href);
                         } catch (e) {
                           throw new Error(
-                            'URL unable to set base ' + n + ' due to ' + e
+                            getTranslation('redoc.ui.unable.to.set.base', {
+                              base: n,
+                              reason: e,
+                            })
                           );
                         }
                       }
@@ -36573,7 +36628,11 @@ object-assign
                 ? i.createElement(
                     Ne,
                     null,
-                    i.createElement('h1', null, 'Something went wrong...'),
+                    i.createElement(
+                      'h1',
+                      null,
+                      getTranslation('redoc.ui.something.went.wrong')
+                    ),
                     i.createElement(
                       'small',
                       null,
@@ -36697,7 +36756,11 @@ object-assign
               return i.createElement(
                 'div',
                 { style: { textAlign: 'center' } },
-                i.createElement(Fe, { color: this.props.color }, 'Loading ...'),
+                i.createElement(
+                  Fe,
+                  { color: this.props.color },
+                  getTranslation('redoc.ui.loader.label')
+                ),
                 i.createElement(De, { color: this.props.color })
               );
             }),
@@ -38729,7 +38792,7 @@ object-assign
                     [
                       {
                         lang: 'payload',
-                        label: 'Payload',
+                        label: getTranslation('redoc.ui.payload'),
                         source: '',
                         requestBodyContent: t,
                       },
@@ -40107,7 +40170,7 @@ object-assign
             'div',
             { className: 'dropdown-selector-content--empty' },
             Object(i.createElement)(yo, null),
-            'No data'
+            getTranslation('redoc.ui.no.data')
           );
         var s = a
             ? function (e, t) {
@@ -43725,11 +43788,11 @@ object-assign
                     Ca,
                     {
                       title: Pa.isSupported()
-                        ? 'Copied'
-                        : 'Not supported in your browser',
+                        ? getTranslation('redoc.ui.copied')
+                        : getTranslation('redoc.ui.copy.not.supported'),
                       open: n.state.tooltipShown,
                     },
-                    'Copy'
+                    getTranslation('redoc.ui.copy')
                   )
                 );
               }),
@@ -43933,12 +43996,12 @@ object-assign
                       i.createElement(
                         'button',
                         { onClick: t.expandAll },
-                        ' Expand all '
+                        getTranslation('redoc.ui.expand.all')
                       ),
                       i.createElement(
                         'button',
                         { onClick: t.collapseAll },
-                        ' Collapse all '
+                        getTranslation('redoc.ui.collapse.all')
                       )
                     ),
                     i.createElement(Ue.Consumer, null, function (e) {
@@ -44138,12 +44201,16 @@ object-assign
             );
           })(t, n);
         return void 0 === r
-          ? i.createElement('span', null, 'Loading...')
+          ? i.createElement(
+              'span',
+              null,
+              getTranslation('redoc.ui.loader.label')
+            )
           : r instanceof Error
           ? i.createElement(
               gi,
               null,
-              'Error loading external example: ',
+              getTranslation('redoc.ui.error.loading.external.example'),
               i.createElement('br', null),
               i.createElement(
                 'a',
@@ -44287,7 +44354,11 @@ object-assign
               var e = this.state.activeIdx,
                 t = this.props.mediaType.examples || {},
                 n = this.props.mediaType.name,
-                r = i.createElement(ls, null, 'No sample'),
+                r = i.createElement(
+                  ls,
+                  null,
+                  getTranslation('redoc.ui.no.sample')
+                ),
                 o = Object.keys(t);
               if (0 === o.length) return r;
               if (o.length > 1) {
@@ -44301,12 +44372,16 @@ object-assign
                   i.createElement(
                     as,
                     null,
-                    i.createElement(is, null, 'Example'),
+                    i.createElement(
+                      is,
+                      null,
+                      getTranslation('redoc.ui.example')
+                    ),
                     this.props.renderDropdown({
                       value: a[e].value,
                       options: a,
                       onChange: this.switchMedia,
-                      ariaLabel: 'Example',
+                      ariaLabel: getTranslation('redoc.ui.example'),
                     })
                   ),
                   i.createElement(
@@ -45425,7 +45500,9 @@ object-assign
                         i.createElement(
                           Il,
                           { onClick: this.togglePattern },
-                          a ? 'Hide pattern' : 'Show pattern'
+                          a
+                            ? getTranslation('redoc.ui.pattern.hide')
+                            : getTranslation('redoc.ui.pattern.show')
                         )
                     ),
                   p.isCircular &&
@@ -45693,7 +45770,7 @@ object-assign
                   value: o,
                   options: r,
                   onChange: this.changeActiveChild,
-                  ariaLabel: 'Example',
+                  ariaLabel: getTranslation('redoc.ui.example'),
                 })
               );
             }),
@@ -45842,7 +45919,11 @@ object-assign
               var e,
                 t = this.props.schema;
               if (!t)
-                return i.createElement('em', null, ' Schema not provided ');
+                return i.createElement(
+                  'em',
+                  null,
+                  getTranslation('redoc.ui.schema.not.provided')
+                );
               var n = t.type,
                 r = t.oneOf,
                 a = t.discriminatorProp;
@@ -46034,7 +46115,13 @@ object-assign
               return i.createElement(
                 'tr',
                 null,
-                i.createElement('th', null, ' ', t, ' OAuth Flow '),
+                i.createElement(
+                  'th',
+                  null,
+                  ' ',
+                  t,
+                  getTranslation('redoc.ui.oauth.flow')
+                ),
                 i.createElement(
                   'td',
                   null,
@@ -46042,7 +46129,11 @@ object-assign
                     ? i.createElement(
                         'div',
                         null,
-                        i.createElement('strong', null, ' Authorization URL: '),
+                        i.createElement(
+                          'strong',
+                          null,
+                          getTranslation('redoc.ui.authorization.url')
+                        ),
                         n.authorizationUrl
                       )
                     : null,
@@ -46052,7 +46143,11 @@ object-assign
                     ? i.createElement(
                         'div',
                         null,
-                        i.createElement('strong', null, ' Token URL: '),
+                        i.createElement(
+                          'strong',
+                          null,
+                          getTranslation('redoc.ui.token.url')
+                        ),
                         n.tokenUrl
                       )
                     : null,
@@ -46060,13 +46155,21 @@ object-assign
                     i.createElement(
                       'div',
                       null,
-                      i.createElement('strong', null, ' Refresh URL: '),
+                      i.createElement(
+                        'strong',
+                        null,
+                        getTranslation('redoc.ui.refresh.url')
+                      ),
                       n.refreshUrl
                     ),
                   i.createElement(
                     'div',
                     null,
-                    i.createElement('strong', null, ' Scopes: ')
+                    i.createElement(
+                      'strong',
+                      null,
+                      getTranslation('redoc.ui.scopes')
+                    )
                   ),
                   i.createElement(
                     'ul',
@@ -46129,7 +46232,7 @@ object-assign
                               i.createElement(
                                 'th',
                                 null,
-                                ' Security Scheme Type '
+                                getTranslation('redoc.ui.security.scheme.type')
                               ),
                               i.createElement(
                                 'td',
@@ -46150,7 +46253,7 @@ object-assign
                                     (t = e.apiKey.in || '')
                                       .charAt(0)
                                       .toUpperCase() + t.slice(1),
-                                    ' parameter name:'
+                                    getTranslation('redoc.ui.parameter.name')
                                   ),
                                   i.createElement(
                                     'td',
@@ -46168,7 +46271,7 @@ object-assign
                                     i.createElement(
                                       'th',
                                       null,
-                                      ' HTTP Authorization Scheme '
+                                      getTranslation('redoc.ui.http.auth.sheme')
                                     ),
                                     i.createElement(
                                       'td',
@@ -46186,7 +46289,7 @@ object-assign
                                       i.createElement(
                                         'th',
                                         null,
-                                        ' Bearer format '
+                                        getTranslation('redoc.ui.bearer.format')
                                       ),
                                       i.createElement(
                                         'td',
@@ -46201,7 +46304,11 @@ object-assign
                               ? i.createElement(
                                   'tr',
                                   null,
-                                  i.createElement('th', null, ' Connect URL '),
+                                  i.createElement(
+                                    'th',
+                                    null,
+                                    getTranslation('redoc.ui.connect.url')
+                                  ),
                                   i.createElement(
                                     'td',
                                     null,
@@ -46457,7 +46564,7 @@ object-assign
                     i.createElement(
                       bc,
                       null,
-                      'License: ',
+                      getTranslation('redoc.ui.license'),
                       i.createElement(
                         'a',
                         { href: n.license.url },
@@ -46471,7 +46578,7 @@ object-assign
                     i.createElement(
                       bc,
                       null,
-                      'URL: ',
+                      getTranslation('redoc.ui.url'),
                       i.createElement(
                         'a',
                         { href: n.contact.url },
@@ -46485,7 +46592,7 @@ object-assign
                     i.createElement(
                       bc,
                       null,
-                      n.contact.name || 'E-mail',
+                      n.contact.name || getTranslation('redoc.ui.email'),
                       ':',
                       ' ',
                       i.createElement(
@@ -46503,7 +46610,7 @@ object-assign
                       i.createElement(
                         'a',
                         { href: n.termsOfService },
-                        'Terms of Service'
+                        getTranslation('redoc.ui.terms.of.service')
                       )
                     )) ||
                   null,
@@ -46525,7 +46632,7 @@ object-assign
                       i.createElement(
                         'p',
                         null,
-                        'Download OpenAPI specification:',
+                        getTranslation('redoc.ui.download.spec'),
                         i.createElement(
                           yc,
                           {
@@ -46534,7 +46641,7 @@ object-assign
                             href: s,
                             onClick: this.handleDownloadClick,
                           },
-                          'Download'
+                          getTranslation('redoc.ui.download')
                         )
                       ),
                     i.createElement(
@@ -47415,7 +47522,12 @@ object-assign
                 ? i.createElement(
                     'div',
                     { key: t },
-                    i.createElement(Vn, null, t, ' Parameters'),
+                    i.createElement(
+                      Vn,
+                      null,
+                      t,
+                      getTranslation('redoc.ui.parameters')
+                    ),
                     i.createElement(
                       Dr,
                       null,
@@ -47469,7 +47581,11 @@ object-assign
                       ? i.createElement(
                           as,
                           null,
-                          i.createElement(is, null, 'Content type'),
+                          i.createElement(
+                            is,
+                            null,
+                            getTranslation('redoc.ui.content.type')
+                          ),
                           n
                         )
                       : n;
@@ -47479,7 +47595,7 @@ object-assign
                     value: r[n].value,
                     options: r,
                     onChange: this.switchMedia,
-                    ariaLabel: 'Content type',
+                    ariaLabel: getTranslation('redoc.ui.content.type'),
                   })
                 ),
                 this.props.children(t.active)
@@ -47539,7 +47655,7 @@ object-assign
         return i.createElement(
           Vn,
           { key: 'header' },
-          'Request Body schema: ',
+          getTranslation('redoc.ui.request.body.schema'),
           i.createElement(pa, Object(o.__assign)({}, e))
         );
       }
@@ -47695,7 +47811,11 @@ object-assign
                 : i.createElement(
                     Dr,
                     null,
-                    i.createElement(Qu, null, ' Response Headers '),
+                    i.createElement(
+                      Qu,
+                      null,
+                      getTranslation('redoc.ui.response.headers')
+                    ),
                     i.createElement(
                       'tbody',
                       null,
@@ -47721,7 +47841,7 @@ object-assign
                 return i.createElement(
                   Vn,
                   { key: 'header' },
-                  'Response Schema: ',
+                  getTranslation('redoc.ui.response.schema'),
                   i.createElement(pa, Object(o.__assign)({}, e))
                 );
               }),
@@ -47841,7 +47961,9 @@ object-assign
                     i.createElement(
                       ep,
                       null,
-                      n ? 'Callback responses' : 'Responses'
+                      n
+                        ? getTranslation('redoc.ui.callback.responses')
+                        : getTranslation('redoc.ui.responses')
                     ),
                     t.map(function (e) {
                       return i.createElement(Zu, { key: e.code, response: e });
@@ -48000,7 +48122,11 @@ object-assign
                     i.createElement(
                       ap,
                       null,
-                      i.createElement(lp, null, 'Authorizations: ')
+                      i.createElement(
+                        lp,
+                        null,
+                        getTranslation('redoc.ui.authorizations')
+                      )
                     ),
                     i.createElement(
                       sp,
@@ -48115,7 +48241,11 @@ object-assign
                 ? i.createElement(
                     'div',
                     null,
-                    i.createElement(mp, null, ' Callbacks '),
+                    i.createElement(
+                      mp,
+                      null,
+                      getTranslation('redoc.ui.callbacks')
+                    ),
                     e.map(function (e) {
                       return e.operations.map(function (t, n) {
                         return i.createElement(dp, {
@@ -48303,7 +48433,11 @@ object-assign
               return i.createElement(
                 'div',
                 null,
-                i.createElement(Hn, null, ' Callback payload samples '),
+                i.createElement(
+                  Hn,
+                  null,
+                  getTranslation('redoc.ui.callback.payload.samples')
+                ),
                 i.createElement(
                   wp,
                   null,
@@ -48312,7 +48446,7 @@ object-assign
                     {
                       items: n,
                       renderDropdown: this.renderDropdown,
-                      label: 'Callback',
+                      label: getTranslation('redoc.ui.callback'),
                       options: r,
                     },
                     function (t) {
@@ -48358,7 +48492,11 @@ object-assign
                   i.createElement(
                     'div',
                     null,
-                    i.createElement(Hn, null, ' Request samples '),
+                    i.createElement(
+                      Hn,
+                      null,
+                      getTranslation('redoc.ui.request.samples')
+                    ),
                     i.createElement(
                       fi,
                       { defaultIndex: 0 },
@@ -48415,7 +48553,11 @@ object-assign
                   i.createElement(
                     'div',
                     null,
-                    i.createElement(Hn, null, ' Response samples '),
+                    i.createElement(
+                      Hn,
+                      null,
+                      getTranslation('redoc.ui.response.samples')
+                    ),
                     i.createElement(
                       fi,
                       { defaultIndex: 0 },
@@ -48501,9 +48643,14 @@ object-assign
                         i.createElement(
                           jr,
                           { type: 'warning' },
-                          ' Deprecated '
+                          getTranslation('redoc.ui.deprecated')
                         ),
-                      a && i.createElement(jr, { type: 'primary' }, ' Webhook ')
+                      a &&
+                        i.createElement(
+                          jr,
+                          { type: 'primary' },
+                          getTranslation('redoc.ui.webhook')
+                        )
                     ),
                     l.pathInMiddlePanel &&
                       !a &&
@@ -49388,8 +49535,8 @@ object-assign
                   i.createElement(lf, {
                     value: this.state.term,
                     onKeyDown: this.handleKeyDown,
-                    placeholder: 'Search...',
-                    'aria-label': 'Search',
+                    placeholder: getTranslation('redoc.ui.search.placeholder'),
+                    'aria-label': getTranslation('redoc.ui.search.label'),
                     type: 'text',
                     onChange: this.search,
                   }),
@@ -49588,7 +49735,7 @@ object-assign
                 specUrl: a,
                 options: Object(o.__assign)(Object(o.__assign)({}, t), vf(n)),
               },
-              ['Loading...']
+              [getTranslation('redoc.ui.loader.label')]
             ),
             n
           );
