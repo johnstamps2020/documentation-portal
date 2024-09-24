@@ -152,17 +152,8 @@
   "chat.saveAndClose" : {
     "message" : "Salvar e fechar"
   },
-  "chat.notOptedIn" : {
-    "message" : "Você não optou por receber mensagens do chatbot."
-  },
   "chat.allow" : {
     "message" : "Permitir que o chatbot de IA responda a perguntas"
-  },
-  "chat.termsAndConditions.title" : {
-    "message" : "Termos e condições de uso do chat"
-  },
-  "chat.termsAndConditions.close" : {
-    "message" : "Fechar os termos e condições"
   },
   "chatbot.feedback.thumbsUp" : {
     "message" : "Essa resposta do chatbot é ótima"
