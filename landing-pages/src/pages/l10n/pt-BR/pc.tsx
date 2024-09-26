@@ -35,10 +35,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'ispc202402ptBRapp',
         },
         {
-          label: 'Notas de versão',
-          docId: 'ispc202402ptBRreleasenotes',
-        },
-        {
           label: 'Guia de atualização',
           docId: 'ispc202402ptBRupdate',
         },
