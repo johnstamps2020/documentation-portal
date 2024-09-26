@@ -19,11 +19,6 @@ export function TermsAndConditionsDialogBox({
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>
-        <Translate id="chat.termsAndConditions.title">
-          title goes here
-        </Translate>
-      </DialogTitle>
       <DialogContent>
         <Translate id="chat.termsAndConditions.body">body goes here</Translate>
       </DialogContent>

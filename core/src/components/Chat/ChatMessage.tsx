@@ -90,7 +90,7 @@ export function ChatMessage({
               textAlign: 'right',
               fontStyle: 'italic',
               fontSize: 12,
-              maxWidth: '60ch',
+              maxWidth: '100ch',
             }}
           >
             <Typography sx={{ fontSize: 14 }}>
