@@ -267,11 +267,11 @@ export async function s3BucketUrlExists(url: string): Promise<boolean> {
     const elapsedSeconds = `${(new Date().getTime() - timeStart) / 1000}s`;
 
     if (err.name === 'AbortError') {
-      winstonLogger.error(
+      winstonLogger.info(
         `Error checking if S3 bucket URL exists at ${urlToCheck}; REQUEST TIMED OUT after ${elapsedSeconds}: ${err}`
       );
     } else {
-      winstonLogger.error(
+      winstonLogger.info(
         `Error checking if S3 bucket URL exists at ${urlToCheck}: ${err}`
       );
     }
