@@ -41,7 +41,7 @@ can install it from [Node.js official website](https://nodejs.org/en/download/).
 
 ### Yarn 3
 
-Builds for docs.guidewire.com use Yarn 3. Follow the steps below to set up Yarn
+Using Yarn version 3 or above is required. Follow the steps below to set up Yarn
 on your machine.
 
 1. If you don't have Yarn, install it by following instructions in the
@@ -82,6 +82,15 @@ on your machine.
 5. If you have a `yarn.lock` generated with a previous version of Yarn, **delete
    it**.
 6. Run `yarn` to install dependencies and update `yarn.lock`.
+
+### React 18
+
+Using React 18 or above is advised. Using React 17 is possible, but we have a
+history of errors using React 17. If you come across errors regarding
+`jsx-runtime` during build time, the solution might be updating to React 18.
+
+To upgrade to React 18, please follow
+[React 18 upgrade guide](https://react.dev/blog/2022/03/08/react-18-upgrade-guide) from their documentation.
 
 ## Set up access to the @doctools scope in Artifactory (first time only)
 
