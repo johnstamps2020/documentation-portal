@@ -97,18 +97,6 @@ declare module '@theme/DocContext' {
   export default function DocContext(props): JSX.Element;
 }
 
-declare module '@theme/VersionSelector' {
-  export type VersionSelectorProps = {
-    versions: string[];
-    releases: string[];
-    url: string;
-    label: string;
-    currentlySelected?: boolean;
-  };
-
-  export default function VersionSelector(): JSX.Element;
-}
-
 declare module '@theme/Collapsible' {
   export type CollapsibleProps = {
     title?: string;

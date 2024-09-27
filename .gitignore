@@ -140,3 +140,5 @@ venv/
 *.log
 
 node_modules
+
+coverage/
