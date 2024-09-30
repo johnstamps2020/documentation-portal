@@ -5,7 +5,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { translate } from '@doctools/components';
+import { translate } from '@doctools/core';
 
 export default function Collapsible({ title, children }: CollapsibleProps) {
   return (

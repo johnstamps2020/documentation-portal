@@ -57,10 +57,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'iscc202402jaJPapp',
         },
         {
-          label: 'ClaimCenter リリースノート',
-          docId: 'iscc202402jaJPreleasenotes',
-        },
-        {
           label: 'ClaimCenter アップデート',
           docId: 'iscc202402jaJPupdate',
         },

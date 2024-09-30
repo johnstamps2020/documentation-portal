@@ -1,4 +1,4 @@
-import { SearchMeta } from '@doctools/components';
+import { SearchMeta } from '@doctools/core';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import { useDocContext } from '@theme/DocContext';

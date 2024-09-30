@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { ChatProvider, ChatWrapper, translate } from '@doctools/components';
+import { ChatProvider, ChatWrapper, translate } from '@doctools/core';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';

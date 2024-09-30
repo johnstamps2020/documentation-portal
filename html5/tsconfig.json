@@ -17,7 +17,7 @@
     "esModuleInterop": true,
     "downlevelIteration": true
   },
-  "exclude": ["node_modules"],
+  "exclude": ["build", "dist", "node_modules"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

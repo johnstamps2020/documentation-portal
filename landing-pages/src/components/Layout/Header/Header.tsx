@@ -2,7 +2,7 @@ import {
   Filters,
   SearchHeaderLayoutContextProvider,
   SearchHeadWrapper,
-} from '@doctools/components';
+} from '@doctools/core';
 import { StackProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';

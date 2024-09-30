@@ -1,4 +1,4 @@
-import { Avatar, GwThemeProvider } from '@doctools/components';
+import { Avatar, GwThemeProvider } from '@doctools/core';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 

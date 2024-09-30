@@ -2,7 +2,7 @@ import React from 'react';
 import BigLogo from './guidewire-doc-logo.svg';
 import SmallLogo from './g-bug.svg';
 import useIsMobile from '../../hooks/useIsMobile';
-import { Init } from '@doctools/components';
+import { Init } from '@doctools/core';
 
 export default function Logo() {
   const isMobile = useIsMobile();

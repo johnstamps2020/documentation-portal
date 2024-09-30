@@ -1,4 +1,4 @@
-import { UserInfo } from '@doctools/components';
+import { UserInfo } from '@doctools/core';
 
 export const internalMockUserData: UserInfo = {
   isLoggedIn: true,

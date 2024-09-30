@@ -1,4 +1,4 @@
-import { ChatbotComment } from '@doctools/components';
+import { ChatbotComment } from '@doctools/core';
 import express, { Request, Response } from 'express';
 import {
   deleteAllChatbotComments,

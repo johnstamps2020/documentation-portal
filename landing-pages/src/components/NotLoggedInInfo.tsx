@@ -1,4 +1,4 @@
-import { getRedirectToPath } from '@doctools/components';
+import { getRedirectToPath } from '@doctools/core';
 import Box, { BoxProps } from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';

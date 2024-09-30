@@ -1,4 +1,4 @@
-import { translate } from '@doctools/components';
+import { translate } from '@doctools/core';
 import React from 'react';
 
 type SearchInputProps = {

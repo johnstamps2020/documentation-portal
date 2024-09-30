@@ -1,4 +1,4 @@
-import { Init, translate } from '@doctools/components';
+import { Init, translate } from '@doctools/core';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 

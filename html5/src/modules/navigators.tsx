@@ -1,4 +1,4 @@
-import { translate } from '@doctools/components';
+import { translate } from '@doctools/core';
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import '../stylesheets/modules/minitoc.css';

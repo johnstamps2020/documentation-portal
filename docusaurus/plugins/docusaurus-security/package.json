@@ -6,7 +6,7 @@
   "author": "doctools@gudiewire.com",
   "license": "UNLICENSED",
   "dependencies": {
-    "@doctools/components": "workspace:*",
+    "@doctools/core": "workspace:*",
     "gray-matter": "^4.0.3",
     "jsdom": "^24.0.0"
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Translate } from '@doctools/components';
+import { Translate } from '@doctools/core';
 import Button from '@mui/material/Button';
 import DownloadIcon from '@mui/icons-material/Download';
 

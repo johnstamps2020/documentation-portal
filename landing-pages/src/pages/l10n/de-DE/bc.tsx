@@ -32,7 +32,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2024.02 (jasper)',
+      label: '2024.02 (Jasper)',
       items: [
         {
           label: 'Anwendungshandbuch',

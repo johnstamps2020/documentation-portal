@@ -1,4 +1,4 @@
-import { Translate } from '@doctools/components';
+import { Translate } from '@doctools/core';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import { useDocContext } from '@theme/DocContext';
 import LogInButton from '@theme/LogInButton';

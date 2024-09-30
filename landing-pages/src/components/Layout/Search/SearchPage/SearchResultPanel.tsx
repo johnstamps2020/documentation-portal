@@ -1,4 +1,4 @@
-import { Filters, SearchBox, useEnvStore } from '@doctools/components';
+import { Filters, SearchBox, useEnvStore } from '@doctools/core';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';

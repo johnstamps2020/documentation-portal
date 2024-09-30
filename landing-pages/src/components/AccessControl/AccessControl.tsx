@@ -1,4 +1,4 @@
-import { EnvName, useEnvStore, UserInfo } from '@doctools/components';
+import { EnvName, useEnvStore, UserInfo } from '@doctools/core';
 import { useUserInfo } from 'hooks/useApi';
 import { useEffect, useState } from 'react';
 

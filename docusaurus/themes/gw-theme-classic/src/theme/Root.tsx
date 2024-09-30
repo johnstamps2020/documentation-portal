@@ -1,4 +1,4 @@
-import { GwThemeProvider } from '@doctools/components';
+import { GwThemeProvider } from '@doctools/core';
 import Head from '@docusaurus/Head';
 import '@fontsource/source-sans-pro';
 import CssBaseline from '@mui/material/CssBaseline';

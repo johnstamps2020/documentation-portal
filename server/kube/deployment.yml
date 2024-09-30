@@ -252,7 +252,7 @@ spec:
             - name: DD_SERVICE_MAPPING
               value: 'nodejs:atmos-${DEPLOY_ENV}-${APP_NAME}'
             - name: DD_LOGS_INJECTION
-              value: 'true'
+              value: 'false'
             - name: DD_PROFILING_ENABLED
               value: 'true'
             - name: DD_TAGS
@@ -261,6 +261,10 @@ spec:
               value: 'true'
             - name: DD_TRACE_STARTUP_LOGS
               value: 'true'
+            - name: DD_TRACE_SAMPLE_RATE
+              value: '0.1'
+            - name: DD_TRACE_RATE_LIMIT
+              value: '10'
             - name: DD_USE_DOGSTATSD
               value: 'true'
             - name: DD_DOGSTATSD_NON_LOCAL_TRAFFIC
@@ -278,7 +282,9 @@ spec:
                 fieldRef:
                   fieldPath: metadata.uid
             - name: DD_PROPAGATION_STYLE_INJECT
-              value: 'Datadog,B3'
+              value: 'datadog'
+            - name: DD_TRACE_DISABLED_INSTRUMENTATIONS
+              value: 'http'
             - name: CONFIG_DB_HOST
               value: ${CONFIG_DB_HOST}
             - name: CONFIG_DB_NAME
