@@ -147,6 +147,9 @@ async function getTopBreadcrumb() {
     // not exist, such as if a user goes directly to a doc without hitting a
     // landing page first.
     if (rootPageObjects.length === 1 && rootPageObjects[0]) {
+      if (rootPageObjects[0].path.charAt(0) !== '/') {
+        rootPageObjects[0].path = '/' + rootPageObjects[0].path;
+      }
       return {
         text: rootPageObjects[0].label,
         href: rootPageObjects[0].path,
