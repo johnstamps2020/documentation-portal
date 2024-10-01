@@ -102,9 +102,7 @@ function LoginPage() {
           }}
         >
           Browse through the{' '}
-          <Link component={RouterLink} to="/apiReferences">
-            latest API References
-          </Link>
+          <Link href="/apiReferences">latest API References</Link>
         </Typography>
         <Typography
           sx={{
