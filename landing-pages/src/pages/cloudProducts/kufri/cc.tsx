@@ -44,11 +44,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Developer setup',
-          docId: 'iscc202407devsetup',
-          description: <>Set up your local development environment.</>,
-        },
-        {
           label: 'Upgrade tools',
           docId: 'isconfigupgradetools530',
           description: (
@@ -67,6 +62,11 @@ const pageConfig: ApplicationLayoutProps = {
               for each release of ClaimCenter.
             </>
           ),
+        },
+        {
+          label: 'Developer setup',
+          docId: 'iscc202407devsetup',
+          description: <>Set up your local development environment.</>,
         },
         {
           label: 'Claim Migration Tool',

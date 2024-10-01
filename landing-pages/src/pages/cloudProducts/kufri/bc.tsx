@@ -46,11 +46,6 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Developer setup',
-          docId: 'isbc202407devsetup',
-          description: <>Set up your local development environment.</>,
-        },
-        {
           label: 'Upgrade tools',
           docId: 'isconfigupgradetools530',
           description: (
@@ -69,6 +64,11 @@ const pageConfig: ApplicationLayoutProps = {
               for each release of BillingCenter.
             </>
           ),
+        },
+        {
+          label: 'Developer setup',
+          docId: 'isbc202407devsetup',
+          description: <>Set up your local development environment.</>,
         },
         {
           label: 'Billing Migration Tool',
