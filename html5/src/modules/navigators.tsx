@@ -160,10 +160,13 @@ async function getTopBreadcrumb() {
     if (!latestLandingPage) return null;
 
     const matchingRootPage = rootPageObjects.filter((rpo: RootPageObject) => {
-      return rpo && rpo.path === '/' + latestLandingPage;
+      return rpo && rpo.path === latestLandingPage;
     });
 
     if (matchingRootPage.length === 1) {
+      if (matchingRootPage[0].path.charAt(0) !== '/') {
+        matchingRootPage[0].path = '/' + matchingRootPage[0].path;
+      }
       return {
         text: matchingRootPage[0].label,
         href: matchingRootPage[0].path,
