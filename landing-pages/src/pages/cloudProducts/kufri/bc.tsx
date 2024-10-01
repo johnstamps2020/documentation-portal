@@ -46,6 +46,17 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Release names and numbers',
+          docId: 'isrnlatest',
+          pathInDoc: '?contextid=is-release-name-mappings',
+          description: (
+            <>
+              View a mapping between InsuranceSuite release names
+              and release numbers.
+            </>
+          ),
+        },
+        {
           label: 'Upgrade tools',
           docId: 'isconfigupgradetools530',
           description: (
