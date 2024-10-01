@@ -140,10 +140,10 @@ const pageConfig: Category2LayoutProps = {
         //   label: 'Advanced Product Designer App',
         //   pagePath: 'cloudProducts/kufri/apd',
         // },
-        // {
-        //   label: 'API References',
-        //   pagePath: 'apiReferences/kufri',
-        // },
+        {
+          label: 'API References',
+          pagePath: 'apiReferences/laslenas',
+        },
         {
           label: 'Developing Integration Gateway Apps',
           docId: 'integgatewayfwnext',
