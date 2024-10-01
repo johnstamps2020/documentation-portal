@@ -35,10 +35,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'ispc202402es419app',
         },
         {
-          label: 'PolicyCenter Notas de la versión',
-          docId: 'ispc202402es419releasenotes',
-        },
-        {
           label: 'PolicyCenter Guía de renovación',
           docId: 'ispc202402es419update',
         },

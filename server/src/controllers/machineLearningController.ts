@@ -7,35 +7,6 @@ const gwChatbotDomain = 'https://gwgptapi.guidewire.com';
 const chatbotUrl = `${gwChatbotDomain}/doc_search/`;
 const chatbotTokenUrl = `${gwChatbotDomain}/generate_token/`;
 
-export async function createVectorFromText(
-  text: string
-): Promise<number[] | null> {
-  try {
-    const response = await fetch(`${process.env.ML_TRANSFORMER_URL}/encode`, {
-      method: 'POST',
-      body: JSON.stringify({
-        text: text,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    });
-
-    if (response.ok) {
-      return await response.json();
-    } else {
-      winstonLogger.error(
-        `CANNOT FETCH FROM gwgptapi ${response}, ${JSON.stringify(response)}`
-      );
-    }
-    return null;
-  } catch (err) {
-    winstonLogger.error(`Error while trying to fetch from gwgptapi ${err}`);
-    return null;
-  }
-}
-
 async function getChatbotToken() {
   try {
     const clientId = process.env.GW_GPT_CLIENT_ID || '';

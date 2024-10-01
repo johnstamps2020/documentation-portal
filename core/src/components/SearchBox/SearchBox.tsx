@@ -9,7 +9,6 @@ type SearchBoxProps = {
   searchFilters: { [key: string]: string[] };
   placeholder: string;
   isMobile: boolean;
-  searchTypeQueryParameterName: string;
 } & InputBaseProps;
 
 const commonProps = {
@@ -38,13 +37,7 @@ const regularSizeProps = {
 
 export const SearchBox = forwardRef(
   (
-    {
-      big = true,
-      searchFilters,
-      placeholder,
-      isMobile,
-      searchTypeQueryParameterName,
-    }: SearchBoxProps,
+    { big = true, searchFilters, placeholder, isMobile }: SearchBoxProps,
     ref
   ) => {
     const query = new URLSearchParams(window.location.search);
@@ -98,14 +91,6 @@ export const SearchBox = forwardRef(
               />
             );
           })}
-        {query.get(searchTypeQueryParameterName) && (
-          <InputBase
-            id={searchTypeQueryParameterName}
-            type="hidden"
-            name={searchTypeQueryParameterName}
-            value={query.get(searchTypeQueryParameterName)}
-          />
-        )}
         <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
           <SearchIcon />
         </IconButton>

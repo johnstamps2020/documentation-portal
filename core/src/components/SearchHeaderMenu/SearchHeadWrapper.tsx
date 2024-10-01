@@ -8,13 +8,11 @@ import { useSearchHeaderLayoutContext } from './SearchHeaderLayoutContext';
 type SearchHeadWrapperProps = {
   placeholder: string;
   isMobile: boolean;
-  searchTypeQueryParameterName: string;
   docTitle?: string;
 };
 export function SearchHeadWrapper({
   placeholder,
   isMobile,
-  searchTypeQueryParameterName,
   docTitle,
 }: SearchHeadWrapperProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -55,7 +53,6 @@ export function SearchHeadWrapper({
         searchFilters={state.searchFilters}
         placeholder={placeholder}
         isMobile={isMobile}
-        searchTypeQueryParameterName={searchTypeQueryParameterName}
       />
     </>
   );

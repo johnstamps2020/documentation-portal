@@ -43,10 +43,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'ispc202402frFRapp',
         },
         {
-          label: 'PolicyCenter - Notes de version',
-          docId: 'ispc202402frFRreleasenotes',
-        },
-        {
           label: 'PolicyCenter - Guide de mise à jour',
           docId: 'ispc202402frFRupdate',
         },

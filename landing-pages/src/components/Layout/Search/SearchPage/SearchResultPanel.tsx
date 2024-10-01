@@ -1,4 +1,4 @@
-import { Filters, SearchBox, useEnvStore } from '@doctools/core';
+import { Filters, SearchBox } from '@doctools/core';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
@@ -6,7 +6,6 @@ import { mainHeight } from 'components/Layout/Layout';
 import { useSearchData } from 'hooks/useApi';
 import { useLocaleParams } from 'hooks/useLocale';
 import { useMobile } from 'hooks/useMobile';
-import { searchTypeQueryParameterName } from 'vars';
 import AdvancedSearchHelpButton from './AdvancedSearchHelpButton';
 import AdvancedSearchHelpSection from './AdvancedSearchHelpSection';
 import ExactMatchHint from './ExactMatchHint';
@@ -15,10 +14,8 @@ import NotLoggedInAlert from './NotLoggedInAlert';
 import PaginationControl from './PaginationControl';
 import { useSearchLayoutContext } from './SearchLayoutContext';
 import SearchResultSection from './SearchResultSection';
-import SearchTypeSelector from './SearchTypeSelector';
 
 export default function SearchResultPanel() {
-  const envName = useEnvStore((state) => state.envName);
   const { helpWidth, isHelpExpanded } = useSearchLayoutContext();
   const theme = useTheme();
   const { searchData } = useSearchData();
@@ -61,12 +58,10 @@ export default function SearchResultPanel() {
       >
         <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
           <NotLoggedInAlert />
-          {envName === 'dev' && <SearchTypeSelector />}
           <SearchBox
             searchFilters={searchFilters}
             placeholder={placeholder}
             isMobile={isMobile}
-            searchTypeQueryParameterName={searchTypeQueryParameterName}
           />
           <ExactMatchHint />
           <AdvancedSearchHelpButton />

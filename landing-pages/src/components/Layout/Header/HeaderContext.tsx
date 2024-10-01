@@ -1,4 +1,4 @@
-import { HeaderOptions } from 'components/Layout/Header/Header';
+import { HeaderOptions } from 'components/Layout/Header/headerVars';
 import { createContext, useState, useContext, useEffect } from 'react';
 import { usePageData } from 'hooks/usePageData';
 

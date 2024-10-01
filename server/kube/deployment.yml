@@ -262,9 +262,9 @@ spec:
             - name: DD_TRACE_STARTUP_LOGS
               value: 'true'
             - name: DD_TRACE_SAMPLE_RATE
-              value: '0.1'
+              value: '0.01'
             - name: DD_TRACE_RATE_LIMIT
-              value: '10'
+              value: '5'
             - name: DD_USE_DOGSTATSD
               value: 'true'
             - name: DD_DOGSTATSD_NON_LOCAL_TRAFFIC
@@ -304,8 +304,6 @@ spec:
                   key: config_db_password
             - name: AWS_REGION
               value: ${AWS_REGION}
-            - name: ML_TRANSFORMER_URL
-              value: ${ML_TRANSFORMER_URL}
             - name: GW_GPT_CLIENT_ID
               valueFrom:
                 secretKeyRef:

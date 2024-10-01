@@ -39,10 +39,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'iscc202402deDEapp',
         },
         {
-          label: 'Versionshinweise für ClaimCenter',
-          docId: 'iscc202402deDEreleasenotes',
-        },
-        {
           label: 'ClaimCenter - Update-Handbuch',
           docId: 'iscc202402deDEupdate',
         },

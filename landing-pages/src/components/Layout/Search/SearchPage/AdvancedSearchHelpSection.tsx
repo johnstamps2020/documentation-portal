@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useMobile } from 'hooks/useMobile';
 import Divider from '@mui/material/Divider';
-import { headerHeight } from 'components/Layout/Header/Header';
+import { headerHeight } from 'components/Layout/Header/headerVars';
 import { footerHeight } from 'components/Layout/Footer';
 
 function DrawerHeader(props: StackProps) {

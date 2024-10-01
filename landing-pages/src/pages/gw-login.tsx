@@ -1,12 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import Link from '@mui/material/Link';
-import { Link as RouterLink } from '@tanstack/react-router';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { createFileRoute } from '@tanstack/react-router';
 import { useLayoutContext } from 'LayoutContext';
 import { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
 import LoginPageCards from '../components/LoginPage/LoginPageCards';
 
 export const Route = createFileRoute('/gw-login')({
@@ -102,9 +101,7 @@ function LoginPage() {
           }}
         >
           Browse through the{' '}
-          <Link component={RouterLink} to="/apiReferences">
-            latest API References
-          </Link>
+          <Link href="/apiReferences">latest API References</Link>
         </Typography>
         <Typography
           sx={{
