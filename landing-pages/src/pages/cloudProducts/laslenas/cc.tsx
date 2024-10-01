@@ -44,9 +44,15 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Developer setup',
-          docId: 'iscc202411devsetup',
-          description: <>Set up your local development environment.</>,
+          label: 'Release names and numbers',
+          docId: 'isrnlatest',
+          pathInDoc: '?contextid=is-release-name-mappings',
+          description: (
+            <>
+              View a mapping between InsuranceSuite release names
+              and release numbers.
+            </>
+          ),
         },
         {
           label: 'Upgrade tools',
@@ -67,6 +73,11 @@ const pageConfig: ApplicationLayoutProps = {
               for each release of ClaimCenter.
             </>
           ),
+        },
+        {
+          label: 'Developer setup',
+          docId: 'iscc202411devsetup',
+          description: <>Set up your local development environment.</>,
         },
         {
           label: 'Claim Migration Tool',
