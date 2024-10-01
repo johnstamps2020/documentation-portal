@@ -38,6 +38,7 @@ import { Route as CloudProductsDataPlatformImport } from './pages/cloudProducts/
 import { Route as CloudProductsCyenceImport } from './pages/cloudProducts/cyence'
 import { Route as CloudProductsAutopilotworkflowserviceImport } from './pages/cloudProducts/autopilotworkflowservice'
 import { Route as CloudProductsAppEventsImport } from './pages/cloudProducts/appEvents'
+import { Route as ApiReferencesLaslenasImport } from './pages/apiReferences/laslenas'
 import { Route as ApiReferencesKufriImport } from './pages/apiReferences/kufri'
 import { Route as ApiReferencesJasperImport } from './pages/apiReferences/jasper'
 import { Route as ApiReferencesInnsbruckImport } from './pages/apiReferences/innsbruck'
@@ -415,6 +416,11 @@ const CloudProductsAutopilotworkflowserviceRoute =
 
 const CloudProductsAppEventsRoute = CloudProductsAppEventsImport.update({
   path: '/cloudProducts/appEvents',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ApiReferencesLaslenasRoute = ApiReferencesLaslenasImport.update({
+  path: '/apiReferences/laslenas',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -1830,6 +1836,13 @@ declare module '@tanstack/react-router' {
       path: '/apiReferences/kufri'
       fullPath: '/apiReferences/kufri'
       preLoaderRoute: typeof ApiReferencesKufriImport
+      parentRoute: typeof rootRoute
+    }
+    '/apiReferences/laslenas': {
+      id: '/apiReferences/laslenas'
+      path: '/apiReferences/laslenas'
+      fullPath: '/apiReferences/laslenas'
+      preLoaderRoute: typeof ApiReferencesLaslenasImport
       parentRoute: typeof rootRoute
     }
     '/cloudProducts/appEvents': {
@@ -3483,6 +3496,7 @@ export const routeTree = rootRoute.addChildren({
   ApiReferencesInnsbruckRoute,
   ApiReferencesJasperRoute,
   ApiReferencesKufriRoute,
+  ApiReferencesLaslenasRoute,
   CloudProductsAppEventsRoute,
   CloudProductsAutopilotworkflowserviceRoute,
   CloudProductsCyenceRoute,
@@ -3741,6 +3755,7 @@ export const routeTree = rootRoute.addChildren({
         "/apiReferences/innsbruck",
         "/apiReferences/jasper",
         "/apiReferences/kufri",
+        "/apiReferences/laslenas",
         "/cloudProducts/appEvents",
         "/cloudProducts/autopilotworkflowservice",
         "/cloudProducts/cyence",
@@ -4076,6 +4091,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/apiReferences/kufri": {
       "filePath": "apiReferences/kufri.tsx"
+    },
+    "/apiReferences/laslenas": {
+      "filePath": "apiReferences/laslenas.tsx"
     },
     "/cloudProducts/appEvents": {
       "filePath": "cloudProducts/appEvents.tsx"
