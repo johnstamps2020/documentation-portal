@@ -70,7 +70,9 @@ export default function LandingPageLink({
       ) : (
         <Link
           href={resolveUrl(landingPageItem?.url)}
-          target={showExternalIcon ? '_blank' : undefined}
+          target={
+            showExternalIcon || landingPageItem.videoIcon ? '_blank' : undefined
+          }
           sx={sx}
         >
           <Stack direction="row" alignItems="center" spacing={1}>
