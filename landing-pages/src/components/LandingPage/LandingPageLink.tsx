@@ -56,6 +56,8 @@ export default function LandingPageLink({
   sx,
   showExternalIcon,
 }: LandingPageLinkProps) {
+  const externalVideoLink =
+    landingPageItem.videoIcon && landingPageItem.url?.startsWith('http');
   return (
     <Stack
       spacing={1}
@@ -70,9 +72,7 @@ export default function LandingPageLink({
       ) : (
         <Link
           href={resolveUrl(landingPageItem?.url)}
-          target={
-            showExternalIcon || landingPageItem.videoIcon ? '_blank' : undefined
-          }
+          target={showExternalIcon || externalVideoLink ? '_blank' : undefined}
           sx={sx}
         >
           <Stack direction="row" alignItems="center" spacing={1}>
