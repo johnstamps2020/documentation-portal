@@ -11,7 +11,6 @@ import VideoIcon from './VideoIcon';
 export type LandingPageLinkProps = {
   landingPageItem: LandingPageItemData;
   sx?: LinkProps['sx'];
-  showExternalIcon?: boolean;
 };
 
 function resolveUrl(srcUrl: string | undefined) {
@@ -54,10 +53,9 @@ export function LandingPageButton({
 export default function LandingPageLink({
   landingPageItem,
   sx,
-  showExternalIcon,
 }: LandingPageLinkProps) {
-  const externalVideoLink =
-    landingPageItem.videoIcon && landingPageItem.url?.startsWith('http');
+  const showExternalIcon = landingPageItem.url?.startsWith('http');
+
   return (
     <Stack
       spacing={1}
@@ -72,12 +70,12 @@ export default function LandingPageLink({
       ) : (
         <Link
           href={resolveUrl(landingPageItem?.url)}
-          target={showExternalIcon || externalVideoLink ? '_blank' : undefined}
+          target={showExternalIcon ? '_blank' : undefined}
           sx={sx}
         >
           <Stack direction="row" alignItems="center" spacing={1}>
             <Box>{landingPageItem?.label}</Box>
-            {showExternalIcon && (
+            {showExternalIcon && !landingPageItem.videoIcon && (
               <Box
                 sx={{
                   display: 'flex',

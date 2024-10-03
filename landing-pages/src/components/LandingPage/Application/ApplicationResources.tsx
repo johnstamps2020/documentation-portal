@@ -90,7 +90,6 @@ export default function ApplicationResources({
                     fontWeight: 700,
                     lineHeight: '21px',
                   }}
-                  showExternalIcon={item?.url?.startsWith('http')}
                   key={idx}
                 />
               ))}
