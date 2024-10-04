@@ -3,9 +3,11 @@ export function getRedirectToPath() {
     return '/';
   }
 
-  return window.location.href
-    ?.replace(window.location.origin, '')
-    ?.replace(/&/g, '%26');
+  return (
+    window.location.href
+      ?.replace(window.location.origin, '')
+      ?.replace(/&/g, '%26') + window.location.hash
+  );
 }
 
 export function navigateWithUpdatedParams(updatedParams: URLSearchParams) {
