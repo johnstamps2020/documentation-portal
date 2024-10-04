@@ -45,12 +45,12 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'Learn about APD',
-          docId: 'apdcreatingproductslaslenas',
+          docId: 'apdapplaslenascreatingproducts',
           pathInDoc: 'topics/c_intro.html',
         },
         {
           label: 'Request to enable APD',
-          docId: 'apdfinalizingproductslaslenas',
+          docId: 'apdapplaslenasfinalizingproducts',
           pathInDoc: 'topics/c_request-enable-apd-app.html',
         },
         {
@@ -60,12 +60,12 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Add Guidewire markers',
-          docId: 'apdcreatingproductslaslenas',
+          docId: 'apdapplaslenascreatingproducts',
           pathInDoc: 'working-with-xmind.html',
         },
         {
           label: 'Glossary',
-          docId: 'apdcreatingproductslaslenas',
+          docId: 'apdapplaslenascreatingproducts',
           pathInDoc: 'topics/c_glossary.html',
         },
       ],
@@ -76,27 +76,27 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'Conceptualize products',
-          docId: 'apdcreatingproductslaslenas',
+          docId: 'apdapplaslenascreatingproducts',
           pathInDoc: 'topics/c_visualize.html',
         },
         {
           label: 'Localize products',
-          docId: 'apdcreatingproductslaslenas',
+          docId: 'apdapplaslenascreatingproducts',
           pathInDoc: 'view-localize-product.html',
         },
         {
           label: 'Create multi-line products',
-          docId: 'apdcreatingproductslaslenas',
+          docId: 'apdapplaslenascreatingproducts',
           pathInDoc: 'multilineproducts.html',
         },
         {
           label: 'Visualize products',
-          docId: 'apdfinalizingproductslaslenas',
+          docId: 'apdapplaslenasfinalizingproducts',
           pathInDoc: 'topics/c_apd_visualize.html',
         },
         {
           label: 'Finalize products',
-          docId: 'apdfinalizingproductslaslenas',
+          docId: 'apdapplaslenasfinalizingproducts',
           pathInDoc: 'topics/t_finalizing.html',
         },
       ],
@@ -107,12 +107,12 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'Vary insurance products over-time',
-          docId: 'apdcreatingproductslaslenas',
+          docId: 'apdapplaslenascreatingproducts',
           pathInDoc: 'topics/c_editions.html',
         },
         {
           label: 'Create customer segments',
-          docId: 'apdcreatingproductslaslenas',
+          docId: 'apdapplaslenascreatingproducts',
           pathInDoc: 'product-seg.html',
         },
         {
@@ -133,12 +133,12 @@ const pageConfig: ApplicationLayoutProps = {
     items: [
       {
         label: 'Creating products with APD',
-        docId: 'apdcreatingproductslaslenas',
+        docId: 'apdapplaslenascreatingproducts',
         pathInDoc: 'topics/c_landing-page.html',
       },
       {
         label: 'Integrating products with PolicyCenter',
-        docId: 'apdfinalizingproductslaslenas',
+        docId: 'apdapplaslenasfinalizingproducts',
         pathInDoc: 'topics/c_finalizing-products-landing-page.html',
       },
       {
