@@ -1,6 +1,6 @@
 import { DitaBuild, Doc, Source, YarnBuild } from '@doctools/server';
 
-async function getEntityByAttribute(
+export async function getEntityByAttribute(
   entityName: string,
   attributeName: string,
   attributeValue: string,
@@ -17,6 +17,45 @@ async function getEntityByAttribute(
     `https://${docPortalUrl}/safeConfig/entity/${entityName}${
       getRelations ? `/relations` : ''
     }?${attributeName}=${attributeValue}`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+  if (!configResponse.ok) {
+    throw new Error(
+      `Failed to fetch item from database!\n\n${JSON.stringify(
+        configResponse,
+        null,
+        2
+      )}`
+    );
+  }
+
+  const responseJson = await configResponse.json();
+  console.log('Retrieved database entity information.');
+
+  return responseJson;
+}
+
+export async function getEntitiesByAttribute(
+  entityName: string,
+  attributeName: string,
+  attributeValue: string,
+  env: string,
+  accessToken: string,
+  getRelations: boolean = false
+): Promise<any> {
+  console.log(
+    `Retrieving information for ${attributeName}: "${attributeValue}"`
+  );
+  let docPortalUrl =
+    env == 'prod' ? 'docs.guidewire.com' : 'docs.staging.ccs.guidewire.net';
+  const configResponse = await fetch(
+    `https://${docPortalUrl}/safeConfig/entity/${entityName}/many/relations?${attributeName}=${attributeValue}`,
     {
       method: 'GET',
       headers: {
