@@ -42,8 +42,9 @@ export async function copyFilesBasedOnBuildData(
 
   const buildData: BuildData = await response.json();
   buildData.resources.forEach((resource) => {
-    const sourcePath = `${cloneDir}/${resource}`;
-    const targetPath = `${targetDir}/${resource}`;
+    const decodedResource = decodeURIComponent(resource);
+    const sourcePath = `${cloneDir}/${decodedResource}`;
+    const targetPath = `${targetDir}/${decodedResource}`;
     console.log(`Copying ${sourcePath} to ${targetPath}`);
 
     const dirToCreate = dirname(targetPath);
