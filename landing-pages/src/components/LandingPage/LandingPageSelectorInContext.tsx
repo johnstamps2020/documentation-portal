@@ -1,14 +1,13 @@
 import { PageItemsResponse } from '@doctools/server';
 import FormControl from '@mui/material/FormControl';
-import InputBase from '@mui/material/InputBase';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem/MenuItem';
 import Select, { SelectChangeEvent, SelectProps } from '@mui/material/Select';
-import { styled } from '@mui/material/styles';
 import { LandingPageItemProps } from 'components/LandingPage/LandingPageTypes';
 import { findMatchingPageItemData } from 'helpers/landingPageHelpers';
 import { useEffect, useState } from 'react';
 import { useLandingPageItemsContext } from './LandingPageItemsContext';
+import { SelectorInput } from '@doctools/core';
 
 export type PageSelectorItem = {
   label: string;
@@ -39,27 +38,6 @@ export function sortPageSelectorItems(
     })
     .reverse();
 }
-
-const PageSelectorInput = styled(InputBase)(({ theme }) => ({
-  'label + &': {
-    marginTop: theme.spacing(3),
-  },
-  '& .MuiInputBase-input': {
-    borderRadius: 4,
-    position: 'relative',
-    border: '1px solid #ced4da',
-    fontSize: '0.875rem',
-    padding: '4px 12px',
-    textAlign: 'left',
-    marginLeft: 0,
-    marginRight: 'auto',
-    backgroundColor: 'white',
-    '&:focus': {
-      borderRadius: 4,
-      backgroundColor: 'white',
-    },
-  },
-}));
 
 function LandingPageSelectorPredefined({
   items,
@@ -159,7 +137,7 @@ function LandingPageSelectorPredefined({
         }}
         value={items.length > 0 ? selectedItemLabel : ''}
         onChange={handleChange}
-        input={<PageSelectorInput />}
+        input={<SelectorInput />}
         renderValue={(value) => {
           return value;
         }}

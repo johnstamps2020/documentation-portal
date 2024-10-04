@@ -10,3 +10,6 @@ export * from './LoaderBackdrop';
 export * from './Notification';
 export * from './SearchBox';
 export * from './SearchHeaderMenu';
+export * from './SelectorInput';
+export * from './VersionSelector';
+

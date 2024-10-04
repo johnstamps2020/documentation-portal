@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Dialog from './Dialog';
 import styles from './Lightbox.module.css';
 
