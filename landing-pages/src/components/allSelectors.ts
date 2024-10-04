@@ -15,6 +15,10 @@ export const allSelectors = {
       label: 'Kufri (2024.07)',
       pagePath: 'cloudProducts/kufri/apd',
     },
+    {
+      label: 'Las Leñas (2024.11)',
+      pagePath: 'cloudProducts/laslenas/apd',
+    },
   ],
   testingFrameworkSelector: [
     { label: 'Flaine (2022.09)', pagePath: 'testingFramework/flaine' },

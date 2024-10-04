@@ -201,6 +201,7 @@ import { Route as CloudProductsLaslenasInImport } from './pages/cloudProducts/la
 import { Route as CloudProductsLaslenasGlobalRefAppsImport } from './pages/cloudProducts/laslenas/globalRefApps'
 import { Route as CloudProductsLaslenasCcImport } from './pages/cloudProducts/laslenas/cc'
 import { Route as CloudProductsLaslenasBcImport } from './pages/cloudProducts/laslenas/bc'
+import { Route as CloudProductsLaslenasApdImport } from './pages/cloudProducts/laslenas/apd'
 import { Route as CloudProductsKufriPcImport } from './pages/cloudProducts/kufri/pc'
 import { Route as CloudProductsKufriInImport } from './pages/cloudProducts/kufri/in'
 import { Route as CloudProductsKufriIcImport } from './pages/cloudProducts/kufri/ic'
@@ -1262,6 +1263,11 @@ const CloudProductsLaslenasBcRoute = CloudProductsLaslenasBcImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const CloudProductsLaslenasApdRoute = CloudProductsLaslenasApdImport.update({
+  path: '/cloudProducts/laslenas/apd',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const CloudProductsKufriPcRoute = CloudProductsKufriPcImport.update({
   path: '/cloudProducts/kufri/pc',
   getParentRoute: () => rootRoute,
@@ -2207,6 +2213,13 @@ declare module '@tanstack/react-router' {
       path: '/cloudProducts/kufri/pc'
       fullPath: '/cloudProducts/kufri/pc'
       preLoaderRoute: typeof CloudProductsKufriPcImport
+      parentRoute: typeof rootRoute
+    }
+    '/cloudProducts/laslenas/apd': {
+      id: '/cloudProducts/laslenas/apd'
+      path: '/cloudProducts/laslenas/apd'
+      fullPath: '/cloudProducts/laslenas/apd'
+      preLoaderRoute: typeof CloudProductsLaslenasApdImport
       parentRoute: typeof rootRoute
     }
     '/cloudProducts/laslenas/bc': {
@@ -3549,6 +3562,7 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsKufriIcRoute,
   CloudProductsKufriInRoute,
   CloudProductsKufriPcRoute,
+  CloudProductsLaslenasApdRoute,
   CloudProductsLaslenasBcRoute,
   CloudProductsLaslenasCcRoute,
   CloudProductsLaslenasGlobalRefAppsRoute,
@@ -3808,6 +3822,7 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/kufri/ic",
         "/cloudProducts/kufri/in",
         "/cloudProducts/kufri/pc",
+        "/cloudProducts/laslenas/apd",
         "/cloudProducts/laslenas/bc",
         "/cloudProducts/laslenas/cc",
         "/cloudProducts/laslenas/globalRefApps",
@@ -4250,6 +4265,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/cloudProducts/kufri/pc": {
       "filePath": "cloudProducts/kufri/pc.tsx"
+    },
+    "/cloudProducts/laslenas/apd": {
+      "filePath": "cloudProducts/laslenas/apd.tsx"
     },
     "/cloudProducts/laslenas/bc": {
       "filePath": "cloudProducts/laslenas/bc.tsx"
