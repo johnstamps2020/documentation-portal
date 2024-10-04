@@ -70,7 +70,7 @@ const pageConfig: Category2LayoutProps = {
         },
         // {
         //   label: 'Digital Reference Applications',
-        //   pagePath: 'cloudProducts/kufri/dx-ref-apps',
+        //   pagePath: 'cloudProducts/laslenas/dx-ref-apps',
         // },
         {
           label: 'Global Content Reference Applications',
@@ -87,11 +87,11 @@ const pageConfig: Category2LayoutProps = {
       items: [
         // {
         //   label: 'DataHub',
-        //   pagePath: 'cloudProducts/kufri/dh',
+        //   pagePath: 'cloudProducts/laslenas/dh',
         // },
         // {
         //   label: 'InfoCenter',
-        //   pagePath: 'cloudProducts/kufri/ic',
+        //   pagePath: 'cloudProducts/laslenas/ic',
         // },
         {
           label: 'Analytics Manager',
@@ -136,10 +136,10 @@ const pageConfig: Category2LayoutProps = {
     {
       label: 'Developer Resources',
       items: [
-        // {
-        //   label: 'Advanced Product Designer App',
-        //   pagePath: 'cloudProducts/kufri/apd',
-        // },
+        {
+          label: 'Advanced Product Designer App',
+          pagePath: 'cloudProducts/laslenas/apd',
+        },
         {
           label: 'API References',
           pagePath: 'apiReferences/laslenas',
