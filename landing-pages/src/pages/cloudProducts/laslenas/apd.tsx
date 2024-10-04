@@ -10,7 +10,7 @@ import { allSelectors } from 'components/allSelectors';
 
 const apdReleaseNotes: LandingPageItemProps = {
   label: 'Release notes',
-  docId: 'apdapprnlaslenas',
+  docId: 'apdapplaslenasrn',
 };
 
 const pageConfig: ApplicationLayoutProps = {
