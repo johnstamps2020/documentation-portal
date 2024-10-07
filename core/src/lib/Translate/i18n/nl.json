@@ -152,8 +152,17 @@
   "chat.saveAndClose" : {
     "message" : "Opslaan en afsluiten"
   },
+  "chat.notOptedIn" : {
+    "message" : "Klink hieronder om antwoorden van de Guidewire Al-documentenchatbot te kunnen krijgen."
+  },
   "chat.allow" : {
     "message" : "Toestaan dat de AI chatbot vragen beantwoordt"
+  },
+  "chat.termsAndConditions.body" : {
+    "message" : "Antwoorden van de Guidewire Al-documentenchatbot worden automatisch gegenereerd door een Al-systeem en mogen alleen worden gebruikt voor informatiedoeleinden. De nauwkeurigheid, volledigheid of tijdigheid van de verstrekte informatie is niet gegarandeerd en we aanvaarden geen enkele verantwoordelijkheid of aanspraakkelijkheid voor het gebruik of de interpretatie van deze inhoud."
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "Begrepen"
   },
   "chatbot.feedback.thumbsUp" : {
     "message" : "Dit antwoord van de chatbot is naar wens"
@@ -166,6 +175,9 @@
   },
   "chatbot.feedback.dialog.send" : {
     "message" : "Versturen"
+  },
+  "chatbot.disclosure" : {
+    "message" : "*De bovenstaande reactie is gegenereerd door een Al-systeem en geeft mogelijk geen compleet en nauwkeurig antwoord. Raadpleeg de verstrekte bronnen voor meer gedetailleerde informatie met betrekking tot uw vragen. "
   },
   "chatbot.feedback.dialog.cancel" : {
     "message" : "Annuleren"
