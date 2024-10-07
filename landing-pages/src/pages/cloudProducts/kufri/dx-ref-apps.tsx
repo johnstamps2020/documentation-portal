@@ -29,7 +29,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: 'Jutro Design System 10.3.3',
+      label: 'Jutro Design System 10.3.5',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
