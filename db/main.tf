@@ -58,7 +58,7 @@ module "aurora_db" {
   enable_datadog_subscription_filter = false
   skip_final_snapshot = true
   engine_version = "13.12"
-  auto_minor_version_upgrade = false
+  auto_minor_version_upgrade = true
   allow_major_version_upgrade = true
   apply_immediately = true
   deletion_protection = true
