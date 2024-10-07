@@ -37,7 +37,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybook1033',
+          docId: 'storybook1035',
         },
       ],
     },
