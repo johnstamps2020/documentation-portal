@@ -5,10 +5,8 @@ import {
   getEntityByAttribute,
 } from '../modules/database';
 import { promises as fs } from 'fs';
-import { dirname } from 'path';
-import { create } from 'domain';
 import { execSync } from 'child_process';
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
 const yargs = require('yargs/yargs');
@@ -44,9 +42,7 @@ async function updateSubmoduleUrls() {
       return;
     }
 
-    //createDir(argv.workingDir);
     const repoDir = join(argv.workingDir, getRepoNameFromUrl(argv.gitUrl));
-
     if (!existsSync(repoDir)) {
       console.log(`Cloning ${argv.gitUrl} into ${repoDir}`);
       try {
@@ -59,95 +55,186 @@ async function updateSubmoduleUrls() {
     } else {
       console.log(`Repository ${repoDir} already exists. Skipping creation.`);
     }
-
     process.chdir(repoDir);
 
     for (const src of ditaBuildSources) {
       // Checkout the branch
       if (src.gitBranch) {
         try {
-          console.log(`Checking out source branch ${src.gitBranch}.`);
-          execSync(`git checkout ${src.gitBranch}`, { stdio: 'inherit' });
+          try {
+            console.log('');
+            console.log(`Checking out source branch ${src.gitBranch}.`);
+            execSync(`git checkout ${src.gitBranch}`, { stdio: 'inherit' });
+          } catch (error: unknown) {
+            if (error instanceof Error) {
+              console.error(
+                `Failed to checkout branch ${src.gitBranch}: ${error.message}`
+              );
+            } else
+              console.error(
+                `Unknown error checking out branch ${src.gitBranch}`
+              );
+          }
+          // Check if there are any submodules by reading the .gitmodules file
+          const gitmodulesPath = join(repoDir, '.gitmodules');
+          if (existsSync(gitmodulesPath)) {
+            console.log(
+              'Submodules found. Checking and updating submodule URLs...'
+            );
+
+            // Read the .gitmodules file
+            const gitmodulesContent = readFileSync(gitmodulesPath, 'utf-8');
+
+            // Extract submodule paths and URLs
+            const submoduleRegex =
+              /\[submodule "([^"]+)"\]\s*path = ([^\s]+)\s*url = ([^\s]+)/g;
+            let match;
+            let updateMade = false;
+            while ((match = submoduleRegex.exec(gitmodulesContent)) !== null) {
+              const submoduleName = match[1];
+              const submodulePath = match[2];
+              const submoduleUrl = match[3];
+
+              // Check if the current URL contains 'github.com'
+              if (submoduleUrl.includes('github.com')) {
+                console.log(
+                  `Skipping update for submodule ${submoduleName} as it already contains 'github.com'`
+                );
+                continue;
+              }
+
+              const newUrl = `https://github.com/gwre-pdo/docsources-${submodulePath}.git`;
+
+              console.log(
+                `Setting new URL for submodule ${submoduleName} (${submodulePath}) to ${newUrl}`
+              );
+              execSync(`git submodule set-url ${submodulePath} ${newUrl}`, {
+                stdio: 'inherit',
+              });
+              updateMade = true;
+            }
+            if (updateMade) {
+              execSync('git add -A', { stdio: 'inherit' });
+              try {
+                // Check for changes before committing
+                const changes = execSync('git status --porcelain')
+                  .toString()
+                  .trim();
+                if (changes) {
+                  execSync('git commit -m "Update submodule URLs"', {
+                    stdio: 'inherit',
+                  });
+                } else {
+                  console.log('No changes to commit.');
+                }
+              } catch (error: unknown) {
+                if (error instanceof Error) {
+                  console.error(`Failed to commit changes: ${error.message}`);
+                }
+              }
+
+              // Uncomment this if you actually want to push the changes
+              // execSync('git push', { stdio: 'inherit' });
+            } else {
+              console.log('No updates were made to submodule URLs.');
+            }
+          } else {
+            console.log('No submodules found in this repository branch.');
+          }
         } catch (error: unknown) {
           if (error instanceof Error) {
             console.error(
-              `Failed to checkout branch ${src.gitBranch}: ${error.message}`
+              `Failed to update submodule URLs or push changes: ${error.message}`
             );
-          } else
-            console.error(`Unknown error checking out branch ${src.gitBranch}`);
-        }
-
-        // update submodule urls
-        if (existsSync(join(repoDir, '.gitmodules'))) {
-          console.log('Submodules found. Updating submodule URLs...');
-
-          const submodulesOutput = execSync(
-            'git config --file .gitmodules --name-only --get-regexp path',
-            { encoding: 'utf-8' }
-          );
-          const submodules = submodulesOutput.split('\n').filter(Boolean);
-
-          for (const submodule of submodules) {
-            // Extract the submodule path from the configuration (submodule.<name>.path)
-            const submodulePath = execSync(
-              `git config --file .gitmodules --get ${submodule}`
-            )
-              .toString()
-              .trim();
-            const newUrl = `https://github.com/gwre-pdo/docsources-${submodulePath}.git`;
-
-            console.log(`Setting new URL for submodule ${submodulePath}.`);
-            execSync(`git submodule set-url ${submodulePath} ${newUrl}`, {
-              stdio: 'inherit',
-            });
-          }
-          if (submodules.length > 0) {
-            console.log('Adding updated .gitmodules.');
-            execSync(`git add .gitmodules`, {
-              stdio: 'inherit',
-            });
-
-            console.log('Committing .gitmodules.');
-            execSync(
-              `git commit -m 'update submodule url(s) for migration to GitHub'`,
-              {
-                stdio: 'inherit',
-              }
+          } else {
+            console.error(
+              'Unknown error occurred during git submodule operations'
             );
-
-            // console.log(`Pushing commit to ${src.gitBranch}.`);
-            // execSync(`git push`, {
-            //   stdio: 'inherit',
-            // });
           }
-          // try {
-          //   console.log(`Updating common-gw submodule url.`);
-          //   execSync(`git submodule set-url common-gw ${src.gitBranch}`, {
-          //     stdio: 'inherit',
-          //   });
-          // } catch (error: unknown) {
-          //   if (error instanceof Error) {
-          //     console.error(
-          //       `Failed to checkout branch ${src.gitBranch}: ${error.message}`
-          //     );
-          //   } else
-          //     console.error(
-          //       `Unknown error checking out branch ${src.gitBranch}`
-          //     );
-          // }
         }
       }
-
-      // run git submodule set-url
-      // git add -A
-      // git commit
-      // git push
-      //console.log(src.id);
     }
-  } catch (err) {
-    console.log(err);
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.error(`An error occurred: ${err.message}`);
+    } else {
+      console.error('Unknown error occurred');
+    }
   }
+  //waitForActiveHandlesAndExit();
 }
+
+// // update submodule urls
+// if (existsSync(join(repoDir, '.gitmodules'))) {
+//   console.log('Submodules found. Updating submodule URLs...');
+
+//   const submodulesOutput = execSync(
+//     'git config --file .gitmodules --name-only --get-regexp path',
+//     { encoding: 'utf-8' }
+//   );
+//   const submodules = submodulesOutput.split('\n').filter(Boolean);
+
+//   let updateMade = false;
+//   if (submodules.length > 0) {
+//     for (const submodule of submodules) {
+//       // TODO: check current URL and only run if it doesn't match github.com already.
+//       // Extract the submodule path from the configuration (submodule.<name>.path)
+//       const submodulePath = execSync(
+//         `git config --file .gitmodules --get ${submodule}`
+//       )
+//         .toString()
+//         .trim();
+
+//       let currentUrl = '';
+//       try {
+//         // Get the current URL of the submodule, handle missing URL gracefully
+//         currentUrl = execSync(
+//           `git config --get submodule.${submodulePath}.url`
+//         )
+//           .toString()
+//           .trim();
+//       } catch (error: unknown) {
+//         console.warn(
+//           `Could not find URL for submodule ${submodulePath}, skipping...`
+//         );
+//         continue; // Skip this submodule if we can't find its URL
+//       }
+
+//       const newUrl = `https://github.com/gwre-pdo/docsources-${submodulePath}.git`;
+
+//       if (currentUrl.includes('github.com')) {
+//         console.log(
+//           `Skipping update for submodule ${submodulePath} as it already contains 'github.com'.`
+//         );
+//         continue;
+//       }
+//       console.log(`Setting new URL for submodule ${submodulePath}.`);
+//       execSync(`git submodule set-url ${submodulePath} ${newUrl}`, {
+//         stdio: 'inherit',
+//       });
+
+//       updateMade = true;
+//     }
+
+//     if (updateMade) {
+//       console.log('Adding updated .gitmodules.');
+//       execSync(`git add .gitmodules`, {
+//         stdio: 'inherit',
+//       });
+
+//       console.log('Committing .gitmodules.');
+//       execSync(
+//         `git commit -m 'update submodule url(s) for migration to GitHub'`,
+//         {
+//           stdio: 'inherit',
+//         }
+//       );
+
+// console.log(`Pushing commit to ${src.gitBranch}.`);
+// execSync(`git push`, {
+//   stdio: 'inherit',
+// });
+
 // Get list of all sources for the url
 async function getDitaBuildSources(
   gitUrl: string,
