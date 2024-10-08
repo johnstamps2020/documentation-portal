@@ -1,6 +1,6 @@
 {
   "name": "@doctools/core",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "A collection of things used across the monorepo",
   "license": "UNLICENSED",
   "main": "dist/index.js",
