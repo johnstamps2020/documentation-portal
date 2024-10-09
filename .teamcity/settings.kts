@@ -1926,6 +1926,8 @@ object Database {
     }
 
     private object DumpDbDataFromStaging : BuildType({
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
         name = "Dump database data from staging"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
         maxRunningBuilds = 1
@@ -1979,6 +1981,21 @@ object Database {
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
+            }
+            script {
+                name = "Upload database dump to the S3 bucket"
+                id = Helpers.createIdStringFromName(this.name)
+                scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                $awsEnvVars
+                
+                aws s3 cp "${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue}" s3://tenant-doctools-${atmosDeployEnv}-builds/zip/
+            """.trimIndent()
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
             }
         }
