@@ -63,7 +63,10 @@ export async function getApp() {
     }
   });
 
-  if (process.env.NODE_ENV === 'development') {
+  if (
+    process.env.NODE_ENV === 'development' ||
+    process.env.DEPLOY_ENV === 'dev'
+  ) {
     const cors = require('cors');
     app.use(cors());
   }
