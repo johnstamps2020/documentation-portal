@@ -18,10 +18,10 @@ spec:
       response_transformer:
         add:
           headers:
-            - Content-Security-Policy:frame-ancestors https://*.guidewire.net https://*.guidewire.com
+            - Content-Security-Policy:frame-ancestors https://*.guidewire.net https://*.guidewire.com http://localhost*
             - X-Frame-Options:SAMEORIGIN
             - Access-Control-Allow-Origin:*
-            - Access-Control-Allow-Methods:GET, HEAD, OPTIONS
+            - Access-Control-Allow-Methods:GET, POST, PUT, DELETE, HEAD, OPTIONS
             - Access-Control-Allow-Headers:*
   path_configs:
     - name: Default
