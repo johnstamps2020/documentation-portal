@@ -184,6 +184,10 @@ const pageConfig: Category2LayoutProps = {
           label: 'Business Functions (Early Access)',
           docId: 'businessfunctionsnext',
         },
+        {
+          label: 'Decision Platform (Early Access)',
+          docId: 'decisionplatformrelease',
+        },
       ],
     },
   ],
