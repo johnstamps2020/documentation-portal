@@ -51,8 +51,8 @@ const pageConfig: ApplicationLayoutProps = {
           pathInDoc: '?contextid=is-release-name-mappings',
           description: (
             <>
-              View a mapping between InsuranceSuite release names
-              and release numbers.
+              View a mapping between InsuranceSuite release names and release
+              numbers.
             </>
           ),
         },
@@ -240,21 +240,6 @@ const pageConfig: ApplicationLayoutProps = {
               validation, preupdate actions, and assignment.
             </>
           ),
-        },
-        {
-          label: 'Guidewire Rules for PolicyCenter (Early Access)',
-          docId: 'gwrulespc',
-          description: (
-            <>
-              Create and manage business rules that trigger when specific
-              business conditions occur in PolicyCenter.
-            </>
-          ),
-        },
-        {
-          label: 'Guidewire Rules Type Manager (Early Access)',
-          docId: 'gwrulestypemgr',
-          description: <>Create and manage new rule types.</>,
         },
         {
           label: 'Plugins',

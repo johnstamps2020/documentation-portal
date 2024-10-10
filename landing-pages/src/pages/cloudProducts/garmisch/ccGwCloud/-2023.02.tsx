@@ -82,10 +82,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'iscc202302rules',
         },
         {
-          label: 'Guidewire Rules for ClaimCenter (Early Access)',
-          docId: 'gwrulescc',
-        },
-        {
           label: 'Claims Intake FNOL Template (Early Access)',
           docId: 'is202302fnoltemplate',
         },
