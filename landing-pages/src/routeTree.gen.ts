@@ -2257,13 +2257,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CloudProductsKufriDxRefAppsImport
       parentRoute: typeof rootRoute
     }
-    '/cloudProducts/laslenas/globalRefApps': {
-      id: '/cloudProducts/laslenas/globalRefApps'
-      path: '/cloudProducts/laslenas/globalRefApps'
-      fullPath: '/cloudProducts/laslenas/globalRefApps'
-      preLoaderRoute: typeof CloudProductsLaslenasGlobalRefAppsImport
-      parentRoute: typeof rootRoute
-    }
     '/cloudProducts/laslenas/in': {
       id: '/cloudProducts/laslenas/in'
       path: '/cloudProducts/laslenas/in'
