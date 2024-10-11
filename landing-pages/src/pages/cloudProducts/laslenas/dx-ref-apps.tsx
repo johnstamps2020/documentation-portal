@@ -228,7 +228,7 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export const Route = createFileRoute('/cloudProducts/kufri/dx-ref-apps')({
+export const Route = createFileRoute('/cloudProducts/laslenas/dx-ref-apps')({
   component: Dxrefapps,
 });
 
