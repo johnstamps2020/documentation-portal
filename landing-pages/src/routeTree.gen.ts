@@ -199,6 +199,7 @@ import { Route as GlobalContentIpaVersionImport } from './pages/globalContent/ip
 import { Route as CloudProductsLaslenasPcImport } from './pages/cloudProducts/laslenas/pc'
 import { Route as CloudProductsLaslenasInImport } from './pages/cloudProducts/laslenas/in'
 import { Route as CloudProductsLaslenasGlobalRefAppsImport } from './pages/cloudProducts/laslenas/globalRefApps'
+import { Route as CloudProductsLaslenasDxRefAppsImport } from './pages/cloudProducts/laslenas/dx-ref-apps'
 import { Route as CloudProductsLaslenasCcImport } from './pages/cloudProducts/laslenas/cc'
 import { Route as CloudProductsLaslenasBcImport } from './pages/cloudProducts/laslenas/bc'
 import { Route as CloudProductsLaslenasApdImport } from './pages/cloudProducts/laslenas/apd'
@@ -1253,6 +1254,12 @@ const CloudProductsLaslenasGlobalRefAppsRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const CloudProductsLaslenasDxRefAppsRoute =
+CloudProductsLDxRefAppsImport.update({
+  path: '/cloudProducts/laslenas/dx-ref-apps',
+  getParentRoute: () => rootRoute,
+  } as any)
+
 const CloudProductsLaslenasCcRoute = CloudProductsLaslenasCcImport.update({
   path: '/cloudProducts/laslenas/cc',
   getParentRoute: () => rootRoute,
@@ -2241,6 +2248,13 @@ declare module '@tanstack/react-router' {
       path: '/cloudProducts/laslenas/globalRefApps'
       fullPath: '/cloudProducts/laslenas/globalRefApps'
       preLoaderRoute: typeof CloudProductsLaslenasGlobalRefAppsImport
+      parentRoute: typeof rootRoute
+    }
+    '/cloudProducts/laslenas/dx-ref-apps': {
+      id: '/cloudProducts/laslenas/dx-ref-apps'
+      path: '/cloudProducts/laslenas/dx-ref-apps'
+      fullPath: '/cloudProducts/laslenas/dx-ref-apps'
+      preLoaderRoute: typeof CloudProductsKufriDxRefAppsImport
       parentRoute: typeof rootRoute
     }
     '/cloudProducts/laslenas/in': {
@@ -3826,6 +3840,7 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/laslenas/bc",
         "/cloudProducts/laslenas/cc",
         "/cloudProducts/laslenas/globalRefApps",
+        "/cloudProducts/laslenas/dx-ref-apps",
         "/cloudProducts/laslenas/in",
         "/cloudProducts/laslenas/pc",
         "/globalContent/ipa/$version",
@@ -4277,6 +4292,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/cloudProducts/laslenas/globalRefApps": {
       "filePath": "cloudProducts/laslenas/globalRefApps.tsx"
+    },
+    "/cloudProducts/laslenas/dx-ref-apps": {
+      "filePath": "cloudProducts/laslenas/dx-ref-apps.tsx"
     },
     "/cloudProducts/laslenas/in": {
       "filePath": "cloudProducts/laslenas/in.tsx"
