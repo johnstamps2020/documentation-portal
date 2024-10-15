@@ -21,7 +21,6 @@ project {
     subProject(DocPortal.rootProject)
     subProject(Frontend.rootProject)
     subProject(Server.rootProject)
-    subProject(Core.rootProject)
     subProject(Content.rootProject)
     buildType(TestDocPortalEverything)
     buildType(AuditNpmPackages)
@@ -875,50 +874,6 @@ object GwBuildSteps {
         }
     }
 
-    fun createTestDoctoolsCoreStep(): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Test Doctools Core"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export EXIT_CODE=0
-                
-                yarn
-                yarn test:core || EXIT_CODE=${'$'}?
-                
-                exit ${'$'}EXIT_CODE
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--user 1000:1000"
-
-        }
-    }
-
-    fun createBuildDoctoolsCoreStep(): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Build Doctools Core"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export EXIT_CODE=0
-                
-                yarn
-                yarn build:core || EXIT_CODE=${'$'}?
-                
-                exit ${'$'}EXIT_CODE
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--user 1000:1000"
-
-        }
-    }
-
     fun createBuildHtml5DependenciesStep(): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build HTML5 dependencies"
@@ -1269,6 +1224,50 @@ object TestEverythingHelpers {
             contains(CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
         }
     })
+
+    object TestDoctoolsCore : ScriptBuildStep({
+        name = "Test Doctools Core"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.CORE.pathValue)
+        }
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+            
+            export EXIT_CODE=0
+            
+            yarn
+            yarn test:core || EXIT_CODE=${'$'}?
+            
+            exit ${'$'}EXIT_CODE
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
+    })
+
+    object BuildDoctoolsCore : ScriptBuildStep({
+        name = "Build Doctools Core"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.CORE.pathValue)
+        }
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+            
+            export EXIT_CODE=0
+            
+            yarn
+            yarn build:core || EXIT_CODE=${'$'}?
+            
+            exit ${'$'}EXIT_CODE
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
+    })
 }
 
 private object TestDocPortalEverything : BuildType({
@@ -1284,6 +1283,8 @@ private object TestDocPortalEverything : BuildType({
         step(TestEverythingHelpers.ExportListOfChangedFilesIntoAnEnvVarStep)
         step(TestEverythingHelpers.TestCodeFormat)
         step(TestEverythingHelpers.TestSettingsKts)
+        step(TestEverythingHelpers.BuildDoctoolsCore)
+        step(TestEverythingHelpers.TestDoctoolsCore)
     }
 
     triggers {
@@ -2896,47 +2897,5 @@ object Server {
 
         return deployServerBuildType
     }
-}
-
-object Core {
-    private object TestDoctoolsCore : BuildType({
-        name = "Test Doctools core"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            step(GwBuildSteps.createBuildDoctoolsCoreStep())
-            step(GwBuildSteps.createTestDoctoolsCoreStep())
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createGitVcsTrigger(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot,
-                    listOf(GwTriggerPaths.CORE.pathValue)
-                )
-            )
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-    })
-
-    private fun createRootProjectForCore(): Project {
-        return Project {
-            name = "Core"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            buildType(TestDoctoolsCore)
-        }
-    }
-
-    val rootProject = createRootProjectForCore()
 }
 
