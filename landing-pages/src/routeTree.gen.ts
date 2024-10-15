@@ -1255,7 +1255,7 @@ const CloudProductsLaslenasGlobalRefAppsRoute =
   } as any)
 
 const CloudProductsLaslenasDxRefAppsRoute =
-CloudProductsLDxRefAppsImport.update({
+CloudProductsLaslenasDxRefAppsImport.update({
   path: '/cloudProducts/laslenas/dx-ref-apps',
   getParentRoute: () => rootRoute,
   } as any)
@@ -2254,7 +2254,7 @@ declare module '@tanstack/react-router' {
       id: '/cloudProducts/laslenas/dx-ref-apps'
       path: '/cloudProducts/laslenas/dx-ref-apps'
       fullPath: '/cloudProducts/laslenas/dx-ref-apps'
-      preLoaderRoute: typeof CloudProductsKufriDxRefAppsImport
+      preLoaderRoute: typeof CloudProductsLaslenasDxRefAppsImport
       parentRoute: typeof rootRoute
     }
     '/cloudProducts/laslenas/in': {
