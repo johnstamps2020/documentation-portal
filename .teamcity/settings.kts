@@ -1173,7 +1173,7 @@ object TestEverythingHelpers {
             echo TEAMCITY_BUILD_TIGGEREDBY ${'$'}TEAMCITY_BUILD_TIGGEREDBY
             echo ALL_TRIGGER_PATHS ${'$'}ALL_TRIGGER_PATHS
             
-            node ci/buildConditions/evaluateBuildConditions.mjs
+            node ci/buildConditions/evaluateBuildConditions.mjs "$CHANGED_FILES_ENV_VAR_NAME"
             
             echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value ${'$'}CHANGED_FILES"
         """.trimIndent()
