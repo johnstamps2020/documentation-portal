@@ -23,10 +23,6 @@ interface ParsedArguments {
 
 async function updateSubmoduleUrls() {
   const argv: ParsedArguments = parseArgs();
-
-  console.log(argv.workingDir);
-  console.log(argv.gitUrl);
-
   const accessToken = await getAccessToken(env);
 
   createDir(argv.workingDir);
@@ -134,7 +130,7 @@ async function updateSubmoduleUrls() {
               }
 
               // Uncomment this if you actually want to push the changes
-              // execSync('git push', { stdio: 'inherit' });
+              execSync('git push', { stdio: 'inherit' });
             } else {
               console.log('No updates were made to submodule URLs.');
             }
@@ -161,79 +157,7 @@ async function updateSubmoduleUrls() {
       console.error('Unknown error occurred');
     }
   }
-  //waitForActiveHandlesAndExit();
 }
-
-// // update submodule urls
-// if (existsSync(join(repoDir, '.gitmodules'))) {
-//   console.log('Submodules found. Updating submodule URLs...');
-
-//   const submodulesOutput = execSync(
-//     'git config --file .gitmodules --name-only --get-regexp path',
-//     { encoding: 'utf-8' }
-//   );
-//   const submodules = submodulesOutput.split('\n').filter(Boolean);
-
-//   let updateMade = false;
-//   if (submodules.length > 0) {
-//     for (const submodule of submodules) {
-//       // TODO: check current URL and only run if it doesn't match github.com already.
-//       // Extract the submodule path from the configuration (submodule.<name>.path)
-//       const submodulePath = execSync(
-//         `git config --file .gitmodules --get ${submodule}`
-//       )
-//         .toString()
-//         .trim();
-
-//       let currentUrl = '';
-//       try {
-//         // Get the current URL of the submodule, handle missing URL gracefully
-//         currentUrl = execSync(
-//           `git config --get submodule.${submodulePath}.url`
-//         )
-//           .toString()
-//           .trim();
-//       } catch (error: unknown) {
-//         console.warn(
-//           `Could not find URL for submodule ${submodulePath}, skipping...`
-//         );
-//         continue; // Skip this submodule if we can't find its URL
-//       }
-
-//       const newUrl = `https://github.com/gwre-pdo/docsources-${submodulePath}.git`;
-
-//       if (currentUrl.includes('github.com')) {
-//         console.log(
-//           `Skipping update for submodule ${submodulePath} as it already contains 'github.com'.`
-//         );
-//         continue;
-//       }
-//       console.log(`Setting new URL for submodule ${submodulePath}.`);
-//       execSync(`git submodule set-url ${submodulePath} ${newUrl}`, {
-//         stdio: 'inherit',
-//       });
-
-//       updateMade = true;
-//     }
-
-//     if (updateMade) {
-//       console.log('Adding updated .gitmodules.');
-//       execSync(`git add .gitmodules`, {
-//         stdio: 'inherit',
-//       });
-
-//       console.log('Committing .gitmodules.');
-//       execSync(
-//         `git commit -m 'update submodule url(s) for migration to GitHub'`,
-//         {
-//           stdio: 'inherit',
-//         }
-//       );
-
-// console.log(`Pushing commit to ${src.gitBranch}.`);
-// execSync(`git push`, {
-//   stdio: 'inherit',
-// });
 
 // Get list of all sources for the url
 async function getDitaBuildSources(
