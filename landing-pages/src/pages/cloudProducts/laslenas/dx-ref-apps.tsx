@@ -13,7 +13,7 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Jasper (2024.02)',
+    selectedItemLabel: 'Las Leñas (2024.11)',
     items: allSelectors.se7a828d04c0ebb25f464db6df66dcc54,
     labelColor: 'white',
   },
@@ -24,20 +24,20 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Update Guide',
-          docId: 'ee202402update',
+          docId: 'ee202411update',
         },
       ],
     },
     {
-      label: 'Jutro Design System 10.0.9',
+      label: 'Jutro Design System 10.9.0',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutro1000',
+          docId: 'jutro1090',
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybook1009',
+          docId: 'storybook1090',
         },
       ],
     },
@@ -46,23 +46,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202402ceamrelnotes',
+          docId: 'dx202411ceamrelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202402ceaminstall',
+          docId: 'dx202411ceaminstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202402ceamapp',
+          docId: 'dx202411ceamapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202402ceamdev',
+          docId: 'dx202411ceamdev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202402ceamrefguides',
+          docId: 'dx202411ceamrefguides',
         },
       ],
     },
@@ -71,23 +71,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202402ceclaimsrelnotes',
+          docId: 'dx202411ceclaimsrelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202402ceclaimsinstall',
+          docId: 'dx202411ceclaimsinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202402ceclaimsapp',
+          docId: 'dx202411ceclaimsapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202402ceclaimsdev',
+          docId: 'dx202411ceclaimsdev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202402ceclaimsrefguides',
+          docId: 'dx202411ceclaimsrefguides',
         },
       ],
     },
@@ -96,23 +96,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202402ceqbrelnotes',
+          docId: 'dx202411ceqbrelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202402ceqbinstall',
+          docId: 'dx202411ceqbinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202402ceqbapp',
+          docId: 'dx202411ceqbapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202402ceqbdev',
+          docId: 'dx202411ceqbdev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202402ceqbrefguides',
+          docId: 'dx202411ceqbrefguides',
         },
       ],
     },
@@ -121,23 +121,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202402perelnotes',
+          docId: 'dx202411perelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202402peinstall',
+          docId: 'dx202411peinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202402peapp',
+          docId: 'dx202411peapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202402pedev',
+          docId: 'dx202411pedev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202402perefguides',
+          docId: 'dx202411perefguides',
         },
       ],
     },
@@ -146,23 +146,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202402peclaimsrelnotes',
+          docId: 'dx202411peclaimsrelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202402peclaimsinstall',
+          docId: 'dx202411peclaimsinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202402peclaimsapp',
+          docId: 'dx202411peclaimsapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202402peclaimsdev',
+          docId: 'dx202411peclaimsdev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202402peclaimsrefguides',
+          docId: 'dx202411peclaimsrefguides',
         },
       ],
     },
@@ -171,23 +171,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202402srerelnotes',
+          docId: 'dx202411srerelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202402sreinstall',
+          docId: 'dx202411sreinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202402sreapp',
+          docId: 'dx202411sreapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202402sredev',
+          docId: 'dx202411sredev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202402srerefguides',
+          docId: 'dx202411srerefguides',
         },
       ],
     },
@@ -196,23 +196,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202402verelnotes',
+          docId: 'dx202411verelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202402veinstall',
+          docId: 'dx202411veinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202402veapp',
+          docId: 'dx202411veapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202402vedev',
+          docId: 'dx202411vedev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202402verefguides',
+          docId: 'dx202411verefguides',
         },
       ],
     },
@@ -221,14 +221,14 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Digital Frontend API Documentation',
-          docId: 'dxjsdocs202402',
+          docId: 'dxjsdocs202411',
         },
       ],
     },
   ],
 };
 
-export const Route = createFileRoute('/cloudProducts/jasper/dx-ref-apps')({
+export const Route = createFileRoute('/cloudProducts/laslenas/dx-ref-apps')({
   component: Dxrefapps,
 });
 

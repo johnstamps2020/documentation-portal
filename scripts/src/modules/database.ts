@@ -199,7 +199,7 @@ async function getBuildInfoByDocUuid(
   return build;
 }
 
-async function getAllEntities(
+export async function getAllEntities(
   entityName: string,
   env: string,
   accessToken: string,

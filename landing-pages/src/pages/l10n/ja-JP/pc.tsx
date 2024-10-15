@@ -31,8 +31,16 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
+          label: 'PolicyCenter アプリケーションガイド',
+          docId: 'ispc202407jaJPapp',
+        },
+        {
           label: 'PolicyCenter アップデート',
           docId: 'ispc202407jaJPupdate',
+        },
+        {
+          label: 'PolicyCenter Product Designer ガイド',
+          docId: 'ispc202407jaJPpd',
         },
       ],
     },

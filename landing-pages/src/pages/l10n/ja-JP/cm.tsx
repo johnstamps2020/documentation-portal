@@ -19,6 +19,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07 Kufri',
+      items: [
+        {
+          label: 'Guidewire 連絡先管理ガイド',
+          docId: 'is202407jaJPcontact',
+        },
+      ],
+    },
+    {
       label: '2022.05 Elysian',
       items: [
         {

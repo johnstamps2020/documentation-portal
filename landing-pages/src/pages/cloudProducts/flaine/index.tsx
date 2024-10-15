@@ -155,6 +155,10 @@ const pageConfig: Category2LayoutProps = {
           label: 'Workset Manager',
           docId: 'worksetmgr',
         },
+        {
+          label: 'Decision Platform (Early Access)',
+          docId: 'decisionplatformrelease',
+        },
       ],
     },
   ],

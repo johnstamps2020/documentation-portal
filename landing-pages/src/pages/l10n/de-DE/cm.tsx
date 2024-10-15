@@ -19,6 +19,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07',
+      items: [
+        {
+          label: 'Guidewire-Kontaktmanagementhandbuch',
+          docId: 'is202407contactdeDE',
+        },
+      ],
+    },
+    {
       label: '2022.05',
       items: [
         {

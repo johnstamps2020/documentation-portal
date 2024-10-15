@@ -22,6 +22,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
+          label: 'Anwendungshandbuch',
+          docId: 'isbc202407deDEapp',
+        },
+        {
           label: 'BillingCenter - Update-Handbuch',
           docId: 'isbc202407deDEupdate',
         },

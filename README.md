@@ -123,6 +123,10 @@ use the terminal, run this command in the root folder of the project:
 
 ## Step 5: Import a database dump
 
+**NOTE**: If you are using Docker compose to run your local environment, you
+don't need to perform this step. The compose script already downloads the latest
+database from staging.
+
 1. From Teamcity, download the latest database dump from the
    [Dump database data from staging](https://gwre-devexp-ci-production-devci.gwre-devops.net/buildConfiguration/DocumentationTools_DocPortal_e3afed0047b08059d0fada10f400c1e5_1678b85abfaa4085ab3305d599569c26#all-projects)
    build. It's in the **Artifacts** tab.

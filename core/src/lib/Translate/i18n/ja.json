@@ -152,8 +152,17 @@
   "chat.saveAndClose" : {
     "message" : "保存して閉じる"
   },
+  "chat.notOptedIn" : {
+    "message" : "Guidewire Docs AI チャットボットから回答を受け取るには、下をクリックしてオプトインしてください。"
+  },
   "chat.allow" : {
     "message" : "AI チャットボットから質問の答えを受け取ることを許可する"
+  },
+  "chat.termsAndConditions.body" : {
+    "message" : "Guidewire Docs AI チャットボットからの回答は AI システムにより生成されています。情報取得の目的でのみ使用してください。提供される情報の正確性、完全性、適時性は保証されていません。このコンテンツの使用または解釈に関しては、当社は一切の責任や義務を負いません。"
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "理解しました"
   },
   "chatbot.feedback.thumbsUp" : {
     "message" : "このチャットボットの対応は良いです"
@@ -166,6 +175,9 @@
   },
   "chatbot.feedback.dialog.send" : {
     "message" : "送信"
+  },
+  "chatbot.disclosure" : {
+    "message" : "* 上記の回答は AI システムにより生成されているため、完全かつ正確な回答を提供していない可能性があります。あなたの質問に関連する更に詳しい情報については、提供されているソースを参照してください。 "
   },
   "chatbot.feedback.dialog.cancel" : {
     "message" : "キャンセル"

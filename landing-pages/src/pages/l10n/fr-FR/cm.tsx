@@ -19,6 +19,16 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2024.07',
+      items: [
+        {
+          label: 'Guide des personnes-ressources de Guidewire',
+          docId: 'is202407frFRcontact',
+          videoIcon: false,
+        },
+      ],
+    },
+    {
       label: '2021.11',
       items: [
         {

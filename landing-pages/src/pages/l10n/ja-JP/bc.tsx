@@ -31,6 +31,10 @@ const pageConfig: CategoryLayoutProps = {
       label: '2024.07 (Kufri)',
       items: [
         {
+          label: 'BillingCenter アプリケーションガイド',
+          docId: 'isbc202407jaJPapp',
+        },
+        {
           label: 'BillingCenter アップデート',
           docId: 'isbc202407jaJPupdate',
         },
