@@ -1266,7 +1266,7 @@ object TestEverythingHelpers {
         //  GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
         //  GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue, <-- this is already captured
         conditions {
-            contains(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
         }
     })
 }
