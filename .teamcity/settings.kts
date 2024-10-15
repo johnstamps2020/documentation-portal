@@ -1164,11 +1164,18 @@ object TestEverythingHelpers {
             
             export TEAMCITY_BUILD_CHANGEDFILES_FILE="%system.teamcity.build.changedFiles.file%"
             export TEAMCITY_BUILD_TIGGEREDBY="%teamcity.build.triggeredBy%"
-            export ALL_TRIGGER_PATHS=${GwTestTriggerPaths.entries.joinToString(",")}
+            export ALL_TRIGGER_PATHS=${
+            GwTestTriggerPaths.entries.joinToString(",") {
+                it.pathValue
+                }
+            }
+            echo TEAMCITY_BUILD_CHANGEDFILES_FILE ${'$'}TEAMCITY_BUILD_CHANGEDFILES_FILE
+            echo TEAMCITY_BUILD_TIGGEREDBY ${'$'}TEAMCITY_BUILD_TIGGEREDBY
+            echo ALL_TRIGGER_PATHS ${'$'}ALL_TRIGGER_PATHS
             
             node ci/buildConditions/evaluateBuildConditions.mjs
             
-            echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value ${'$'}file_paths"
+            echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value %env.CHANGED_FILES%"
         """.trimIndent()
         dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
