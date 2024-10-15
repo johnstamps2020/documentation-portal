@@ -135,10 +135,13 @@ enum class GwTriggerPaths(val pathValue: String) {
     SUBDIRS_PACKAGE_JSON("**/package.json"),
     SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS("scripts/src/pages/getRootBreadcrumbs.ts"),
     SHIMS("shims/**"),
-    TEAMCITY_POM_XML(".teamcity/pom.xml"),
-    TEAMCITY_SETTINGS_KTS(".teamcity/settings.kts"),
     TEAMCITY_CONFIG(".teamcity/config/**"),
     YARN_LOCK("yarn.lock"),
+}
+
+enum class GwTestTriggerPaths(val pathValue: String) {
+    TEAMCITY_SETTINGS_KTS(".teamcity/"),
+    CORE("core/"),
 }
 
 enum class GwDocCrawlerOperationModes(val modeValue: String) {
@@ -1157,33 +1160,19 @@ object TestEverythingHelpers {
         name = "Export list of changed files to $CHANGED_FILES_ENV_VAR_NAME"
         id = Helpers.md5(Helpers.createIdStringFromName(this.name))
         scriptContent = """
-                #!/bin/bash
-                
-                # Path to the file containing changed files
-                changed_files_path="%system.teamcity.build.changedFiles.file%"
-                
-                # Function to set TeamCity parameter
-                set_teamcity_parameter() {
-                    local name=${'$'}1
-                    local value=${'$'}2
-                    echo "##teamcity[setParameter name='${'$'}name' value='${'$'}value']"
-                }
-                
-                # Check if the file exists
-                if [ ! -f "${'$'}changed_files_path" ]; then
-                    echo "Info: List of changed files list not found at ${'$'}changed_files_path"
-                    set_teamcity_parameter "$CHANGED_FILES_ENV_VAR_NAME" ""
-                    exit 1
-                fi
-                
-                # Read the file and store paths in a comma-separated list
-                file_paths=${'$'}(sed -e ':a' -e 'N' -e '${'$'}!ba' -e 's/\n/,/g' "${'$'}changed_files_path")
-                
-                # Save the comma-separate list into the enironment variable
-                set_teamcity_parameter "$CHANGED_FILES_ENV_VAR_NAME" "${'$'}file_paths"
-                
-                echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value ${'$'}file_paths"
-            """.trimIndent()
+            #!/bin/bash
+            
+            export TEAMCITY_BUILD_CHANGEDFILES_FILE="%system.teamcity.build.changedFiles.file%"
+            export TEAMCITY_BUILD_TIGGEREDBY="%teamcity.build.triggeredBy%"
+            export ALL_TRIGGER_PATHS=${GwTestTriggerPaths.entries.joinToString(",")}
+            
+            node ci/buildConditions/evaluateBuildConditions.mjs
+            
+            echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value ${'$'}file_paths"
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
     })
 
     object TestCodeFormat : ScriptBuildStep({
@@ -1217,11 +1206,8 @@ object TestEverythingHelpers {
         workingDir = ""
         runnerArgs = "-X"
 
-        // TODO Capture TWO trigger paths instead of one
-        //  GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
-        //  GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue, <-- this is already captured
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
         }
     })
 
@@ -1229,7 +1215,7 @@ object TestEverythingHelpers {
         name = "Test Doctools Core"
         id = Helpers.createIdStringFromName(this.name)
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.CORE.pathValue)
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.CORE.pathValue)
         }
         scriptContent = """
             #!/bin/bash
@@ -1281,8 +1267,11 @@ private object TestDocPortalEverything : BuildType({
 
     steps {
         step(TestEverythingHelpers.ExportListOfChangedFilesIntoAnEnvVarStep)
+        // **
         step(TestEverythingHelpers.TestCodeFormat)
+        // .teamcity
         step(TestEverythingHelpers.TestSettingsKts)
+        // core
         step(TestEverythingHelpers.BuildDoctoolsCore)
         step(TestEverythingHelpers.TestDoctoolsCore)
     }
