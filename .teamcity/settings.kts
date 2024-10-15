@@ -1195,12 +1195,12 @@ object AuditNpmPackages : BuildType({
     }
 })
 
-object TestHelpers {
+object TestEverythingHelpers {
     const val CHANGED_FILES_ENV_VAR_NAME = "env.CHANGED_FILES"
 
     object ExportListOfChangedFilesIntoAnEnvVarStep : ScriptBuildStep({
-        name = "Check if matching files were changed"
-        id = "Check_if_matching_files_were_changed"
+        name = "Export list of changed files to $CHANGED_FILES_ENV_VAR_NAME"
+        id = Helpers.md5(Helpers.createIdStringFromName(this.name))
         scriptContent = """
                 #!/bin/bash
                 
@@ -1230,42 +1230,12 @@ object TestHelpers {
                 echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value ${'$'}file_paths"
             """.trimIndent()
     })
-}
 
-private object TestDocPortalEverything : BuildType({
-    name = "Test Doc Portal Everything"
-    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+    object TestCodeFormat : ScriptBuildStep({
+        name = "Run prettier and fail if it makes changes"
+        id = Helpers.createIdStringFromName(this.name)
 
-    vcs {
-        root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-        cleanCheckout = true
-    }
-
-    steps {
-        step(TestHelpers.ExportListOfChangedFilesIntoAnEnvVarStep)
-        step(TestCodeFormat)
-        step(TestSettingsKts)
-    }
-
-    triggers {
-        trigger(
-            GwVcsTriggers.createGitVcsTrigger(
-                GwVcsRoots.DocumentationPortalGitVcsRoot
-            )
-        )
-    }
-
-    features {
-        feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-        feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-    }
-})
-
-object TestCodeFormat : ScriptBuildStep({
-    name = "Run prettier and fail if it makes changes"
-    id = Helpers.createIdStringFromName(this.name)
-
-    scriptContent = """
+        scriptContent = """
         #!/bin/bash 
         set -e
         
@@ -1280,23 +1250,53 @@ object TestCodeFormat : ScriptBuildStep({
             exit 0
         fi
     """.trimIndent()
-    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-})
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+    })
 
-object TestSettingsKts : MavenBuildStep({
-    name = "Test settings.kts"
-    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name)).toString()
+    object TestSettingsKts : MavenBuildStep({
+        name = "Test settings.kts"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name)).toString()
 
-    goals = "teamcity-configs:generate"
-    pomLocation = ".teamcity/pom.xml"
-    workingDir = ""
-    runnerArgs = "-X"
+        goals = "teamcity-configs:generate"
+        pomLocation = ".teamcity/pom.xml"
+        workingDir = ""
+        runnerArgs = "-X"
 
-    // TODO Capture TWO trigger paths instead of one
-    //  GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
-    //  GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue, <-- this is already captured
-    conditions {
-        contains(TestHelpers.CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
+        // TODO Capture TWO trigger paths instead of one
+        //  GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
+        //  GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue, <-- this is already captured
+        conditions {
+            contains(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
+        }
+    })
+}
+
+private object TestDocPortalEverything : BuildType({
+    name = "Test Doc Portal Everything"
+    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+    vcs {
+        root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+        cleanCheckout = true
+    }
+
+    steps {
+        step(TestEverythingHelpers.ExportListOfChangedFilesIntoAnEnvVarStep)
+        step(TestEverythingHelpers.TestCodeFormat)
+        step(TestEverythingHelpers.TestSettingsKts)
+    }
+
+    triggers {
+        trigger(
+            GwVcsTriggers.createGitVcsTrigger(
+                GwVcsRoots.DocumentationPortalGitVcsRoot
+            )
+        )
+    }
+
+    features {
+        feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+        feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
     }
 })
 
