@@ -1227,7 +1227,7 @@ object TestHelpers {
                 # Save the comma-separate list into the enironment variable
                 set_teamcity_parameter "$CHANGED_FILES_ENV_VAR_NAME" "${'$'}file_paths"
                 
-                echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME as `${'$'}file_paths`"
+                echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value ${'$'}file_paths"
             """.trimIndent()
     })
 }
