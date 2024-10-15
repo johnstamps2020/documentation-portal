@@ -7,8 +7,6 @@ import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import styles from './index.module.css';
 
-// Adding a comment here. I wonder if anyone will ever read it.
-
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
