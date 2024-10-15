@@ -125,7 +125,6 @@ enum class GwTriggerPaths(val pathValue: String) {
     DOCUSAURUS_THEMES("docusaurus/themes/**"),
     PACKAGE_JSON("package.json"),
     HTML5("html5/**"),
-    CORE("core/**"),
     LANDING_PAGES("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/**"),
     LANDING_PAGES_KUBE("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/**"),
     SERVER("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/**"),
@@ -1244,7 +1243,7 @@ object TestEverythingHelpers {
         name = "Build Doctools Core"
         id = Helpers.createIdStringFromName(this.name)
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.CORE.pathValue)
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.CORE.pathValue)
         }
         scriptContent = """
             #!/bin/bash
