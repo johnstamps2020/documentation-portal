@@ -3,10 +3,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.buildFeatures.SshAgent
-import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.buildSteps.maven
-import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
@@ -26,8 +23,7 @@ project {
     subProject(Server.rootProject)
     subProject(Core.rootProject)
     subProject(Content.rootProject)
-    buildType(TestCodeFormat)
-    buildType(TestSettingsKts)
+    buildType(TestDocPortalEverything)
     buildType(AuditNpmPackages)
 }
 
@@ -1199,9 +1195,46 @@ object AuditNpmPackages : BuildType({
     }
 })
 
-object TestCodeFormat : BuildType({
-    name = "Test code format"
-    id = Helpers.resolveRelativeIdFromIdString(this.name)
+object TestHelpers {
+    const val CHANGED_FILES_ENV_VAR_NAME = "env.CHANGED_FILES"
+
+    object ExportListOfChangedFilesIntoAnEnvVarStep : ScriptBuildStep({
+        name = "Check if matching files were changed"
+        id = "Check_if_matching_files_were_changed"
+        scriptContent = """
+                #!/bin/bash
+                
+                # Path to the file containing changed files
+                changed_files_path="%system.teamcity.build.changedFiles.file%"
+                
+                # Function to set TeamCity parameter
+                set_teamcity_parameter() {
+                    local name=${'$'}1
+                    local value=${'$'}2
+                    echo "##teamcity[setParameter name='${'$'}name' value='${'$'}value']"
+                }
+                
+                # Check if the file exists
+                if [ ! -f "${'$'}changed_files_path" ]; then
+                    echo "Info: List of changed files list not found at ${'$'}changed_files_path"
+                    set_teamcity_parameter "$CHANGED_FILES_ENV_VAR_NAME" ""
+                    exit 1
+                fi
+                
+                # Read the file and store paths in a comma-separated list
+                file_paths=${'$'}(sed -e ':a' -e 'N' -e '${'$'}!ba' -e 's/\n/,/g' "${'$'}changed_files_path")
+                
+                # Save the comma-separate list into the enironment variable
+                set_teamcity_parameter "$CHANGED_FILES_ENV_VAR_NAME" "${'$'}file_paths"
+                
+                echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME as `${'$'}file_paths`"
+            """.trimIndent()
+    })
+}
+
+private object TestDocPortalEverything : BuildType({
+    name = "Test Doc Portal Everything"
+    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
     vcs {
         root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -1209,31 +1242,9 @@ object TestCodeFormat : BuildType({
     }
 
     steps {
-        script {
-            name = "Run prettier and fail if it makes changes"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash 
-                set -e
-                
-                yarn
-                yarn prettier
-                
-                if [[ -n "${'$'}(git status --porcelain)" ]]; then
-                    echo "Running Prettier would have updated your code. Run `yarn prettier` locally and commit your changes."
-                    exit 1
-                else
-                    echo "Test successful! Running Prettier does not change the code."
-                    exit 0
-                fi
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-        }
-    }
-
-    features {
-        feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-        feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        step(TestHelpers.ExportListOfChangedFilesIntoAnEnvVarStep)
+        step(TestCodeFormat)
+        step(TestSettingsKts)
     }
 
     triggers {
@@ -1243,47 +1254,49 @@ object TestCodeFormat : BuildType({
             )
         )
     }
-})
-
-object TestSettingsKts : BuildType({
-    name = "Test settings.kts"
-    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-    vcs {
-        root(
-            GwVcsRoots.DocumentationPortalGitVcsRoot
-        )
-        cleanCheckout = true
-    }
-
-    steps {
-        maven {
-            goals = "teamcity-configs:generate"
-            pomLocation = ".teamcity/pom.xml"
-            workingDir = ""
-            runnerArgs = "-X"
-        }
-    }
 
     features {
         feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
         feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
     }
+})
 
-    // The general rule is to trigger test builds only for pull requests branches and to trigger deploy builds
-    // for the default branch, which then trigger test builds as snapshot dependencies.
-    // This test build doesn't have an associated deployment build,
-    // therefore we want to run it on changes in the default branch as well.
-    triggers {
-        trigger(
-            GwVcsTriggers.createGitVcsTrigger(
-                GwVcsRoots.DocumentationPortalGitVcsRoot,
-                listOf(
-                    GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
-                    GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue,
-                )
-            )
-        )
+object TestCodeFormat : ScriptBuildStep({
+    name = "Run prettier and fail if it makes changes"
+    id = Helpers.createIdStringFromName(this.name)
+
+    scriptContent = """
+        #!/bin/bash 
+        set -e
+        
+        yarn
+        yarn prettier
+        
+        if [[ -n "${'$'}(git status --porcelain)" ]]; then
+            echo "Running Prettier would have updated your code. Run `yarn prettier` locally and commit your changes."
+            exit 1
+        else
+            echo "Test successful! Running Prettier does not change the code."
+            exit 0
+        fi
+    """.trimIndent()
+    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+})
+
+object TestSettingsKts : MavenBuildStep({
+    name = "Test settings.kts"
+    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name)).toString()
+
+    goals = "teamcity-configs:generate"
+    pomLocation = ".teamcity/pom.xml"
+    workingDir = ""
+    runnerArgs = "-X"
+
+    // TODO Capture TWO trigger paths instead of one
+    //  GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
+    //  GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue, <-- this is already captured
+    conditions {
+        contains(TestHelpers.CHANGED_FILES_ENV_VAR_NAME, GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
     }
 })
 
@@ -2886,7 +2899,7 @@ object Server {
 }
 
 object Core {
-    private object TestDoctoolsCore: BuildType({
+    private object TestDoctoolsCore : BuildType({
         name = "Test Doctools core"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
