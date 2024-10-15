@@ -22,5 +22,5 @@ function getChangedFilesEnvValue() {
 }
 
 console.log(
-  `##teamcity[setParameter name='${changedFilesEnvName}' value='${getChangedFilesEnvValue()}'`
+  `##teamcity[setParameter name='${changedFilesEnvName}' value='${getChangedFilesEnvValue()}']`
 );
