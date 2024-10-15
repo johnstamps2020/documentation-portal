@@ -1255,7 +1255,7 @@ const CloudProductsLaslenasGlobalRefAppsRoute =
   } as any)
 
 const CloudProductsLaslenasDxRefAppsRoute =
-CloudProductsLDxRefAppsImport.update({
+CloudProductsLaslenasDxRefAppsImport.update({
   path: '/cloudProducts/laslenas/dx-ref-apps',
   getParentRoute: () => rootRoute,
   } as any)
