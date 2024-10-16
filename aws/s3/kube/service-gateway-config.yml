@@ -16,9 +16,9 @@ spec:
   type: ExternalName
   externalName: ${SERVICE_EXTERNAL_NAME}
   ports:
-    - port: 81
+    - port: 80
       protocol: TCP
-      targetPort: 81
+      targetPort: 80
 ---
 apiVersion: oort.ccs.guidewire.com/v1alpha1
 kind: GatewayConfig
