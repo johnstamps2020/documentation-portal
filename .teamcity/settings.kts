@@ -898,7 +898,8 @@ object GwBuildSteps {
 
     fun createBuildReactLandingPagesBuildStep(): NodeJSBuildStep {
         return NodeJSBuildStep {
-            id = "Build landing pages"
+            name = "Build langin pages"
+            id = Helpers.createIdStringFromName(this.name)
             shellScript = """
                     yarn
                     CI=true yarn test:landing-pages
