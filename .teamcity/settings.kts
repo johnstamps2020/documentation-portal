@@ -898,7 +898,7 @@ object GwBuildSteps {
 
     fun createBuildReactLandingPagesBuildStep(): NodeJSBuildStep {
         return NodeJSBuildStep {
-            name = "Build langin pages"
+            name = "Build landing pages"
             id = Helpers.createIdStringFromName(this.name)
             shellScript = """
                     yarn
@@ -911,7 +911,7 @@ object GwBuildSteps {
 
     fun createBuildDocPortalServerAppBuildStep(): ScriptBuildStep {
         return ScriptBuildStep {
-            name = "Test the doc site server"
+            name = "Test the doc portal server"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                     #!/bin/sh

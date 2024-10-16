@@ -1,4 +1,3 @@
-// Paweł was here
 import cookieParser from 'cookie-parser';
 import session from 'cookie-session';
 import 'dotenv/config';
