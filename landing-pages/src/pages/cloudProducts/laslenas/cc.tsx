@@ -44,9 +44,15 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
-          label: 'Developer setup',
-          docId: 'iscc202411devsetup',
-          description: <>Set up your local development environment.</>,
+          label: 'Release names and numbers',
+          docId: 'isrnlatest',
+          pathInDoc: '?contextid=is-release-name-mappings',
+          description: (
+            <>
+              View a mapping between InsuranceSuite release names and release
+              numbers.
+            </>
+          ),
         },
         {
           label: 'Upgrade tools',
@@ -67,6 +73,11 @@ const pageConfig: ApplicationLayoutProps = {
               for each release of ClaimCenter.
             </>
           ),
+        },
+        {
+          label: 'Developer setup',
+          docId: 'iscc202411devsetup',
+          description: <>Set up your local development environment.</>,
         },
         {
           label: 'Claim Migration Tool',
@@ -204,21 +215,6 @@ const pageConfig: ApplicationLayoutProps = {
               validation, preupdate actions, and assignment.
             </>
           ),
-        },
-        {
-          label: 'Guidewire Rules for ClaimCenter (Early Access)',
-          docId: 'gwrulescc',
-          description: (
-            <>
-              Create and manage business rules that trigger when specific
-              business conditions occur in ClaimCenter.
-            </>
-          ),
-        },
-        {
-          label: 'Guidewire Rules Type Manager (Early Access)',
-          docId: 'gwrulestypemgr',
-          description: <>Create and manage new rule types.</>,
         },
         {
           label: 'Plugins',

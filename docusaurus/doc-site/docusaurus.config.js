@@ -45,6 +45,9 @@ const config = {
       navbar: {
         title: 'Docusaurus Guidewire',
       },
+      colorMode: {
+        disableSwitch: true,
+      },
       prism: {
         theme: require('prism-react-renderer').themes.vsDark,
         draculaTheme: require('prism-react-renderer').themes.dracula,

@@ -106,10 +106,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'ispc202306rules',
         },
         {
-          label: 'Guidewire Rules for PolicyCenter (Early Access)',
-          docId: 'gwrulespc',
-        },
-        {
           label: 'Product Designer',
           docId: 'ispc202306pd',
         },

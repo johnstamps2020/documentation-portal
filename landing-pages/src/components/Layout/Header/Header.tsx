@@ -78,12 +78,7 @@ export default function Header() {
       <HeaderDesktop
         centerItems={
           !hideSearchBox && (
-            <>
-              <SearchHeadWrapper
-                placeholder={placeholder}
-                isMobile={isMobile}
-              />
-            </>
+            <SearchHeadWrapper placeholder={placeholder} isMobile={isMobile} />
           )
         }
         rightItems={<HeaderMenuItems />}

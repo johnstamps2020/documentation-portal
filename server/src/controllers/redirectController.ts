@@ -232,15 +232,15 @@ const permanentRedirectUrls = [
 const temporaryRedirectUrls = [
   {
     from: '',
-    to: isProd ? 'cloudProducts/kufri' : 'cloudProducts/kufri',
+    to: isProd ? 'cloudProducts/kufri' : 'cloudProducts/laslenas',
   },
   {
     from: 'cloudProducts',
-    to: isProd ? 'cloudProducts/kufri' : 'cloudProducts/kufri',
+    to: isProd ? 'cloudProducts/kufri' : 'cloudProducts/laslenas',
   },
   {
     from: 'apiReferences',
-    to: isProd ? 'apiReferences/kufri' : 'apiReferences/kufri',
+    to: isProd ? 'apiReferences/kufri' : 'apiReferences/laslenas',
   },
 ];
 

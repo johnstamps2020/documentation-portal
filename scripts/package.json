@@ -9,7 +9,9 @@
     "create-translation-kit": "ts-node src/translations/createTranslationKit.ts",
     "set-downloadable-build-params": "ts-node src/downloadable/setDownloadableBuildParams.ts",
     "collect-pdfs": "ts-node src/escrow/collectPdfs.ts",
-    "delete-doc": "ts-node src/docs/deleteDoc.ts"
+    "delete-doc": "ts-node src/docs/deleteDoc.ts",
+    "update-src-configs": "ts-node src/sources/reorgSourcesFiles.ts",
+    "update-submodule-urls": "ts-node src/repos/updateSubmoduleUrls.ts"
   },
   "bin": {
     "copy-non-tx-files": "src/filesystem/copyNonTxFiles.mjs"

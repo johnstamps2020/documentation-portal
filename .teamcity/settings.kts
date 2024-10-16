@@ -24,6 +24,7 @@ project {
     subProject(DocPortal.rootProject)
     subProject(Frontend.rootProject)
     subProject(Server.rootProject)
+    subProject(Core.rootProject)
     subProject(Content.rootProject)
     buildType(TestCodeFormat)
     buildType(TestSettingsKts)
@@ -129,6 +130,7 @@ enum class GwTriggerPaths(val pathValue: String) {
     DOCUSAURUS_THEMES("docusaurus/themes/**"),
     PACKAGE_JSON("package.json"),
     HTML5("html5/**"),
+    CORE("core/**"),
     LANDING_PAGES("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/**"),
     LANDING_PAGES_KUBE("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/**"),
     SERVER("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/**"),
@@ -874,6 +876,50 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.DOC_CRAWLER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    fun createTestDoctoolsCoreStep(): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Test Doctools Core"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export EXIT_CODE=0
+                
+                yarn
+                yarn test:core || EXIT_CODE=${'$'}?
+                
+                exit ${'$'}EXIT_CODE
+            """.trimIndent()
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "--user 1000:1000"
+
+        }
+    }
+
+    fun createBuildDoctoolsCoreStep(): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Build Doctools Core"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export EXIT_CODE=0
+                
+                yarn
+                yarn build:core || EXIT_CODE=${'$'}?
+                
+                exit ${'$'}EXIT_CODE
+            """.trimIndent()
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "--user 1000:1000"
+
         }
     }
 
@@ -1880,6 +1926,8 @@ object Database {
     }
 
     private object DumpDbDataFromStaging : BuildType({
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
         name = "Dump database data from staging"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
         maxRunningBuilds = 1
@@ -1933,6 +1981,21 @@ object Database {
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
+            }
+            script {
+                name = "Upload database dump to the S3 bucket"
+                id = Helpers.createIdStringFromName(this.name)
+                scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                $awsEnvVars
+                
+                aws s3 cp "${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue}" s3://tenant-doctools-${atmosDeployEnv}-builds/zip/
+            """.trimIndent()
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
             }
         }
@@ -2820,5 +2883,47 @@ object Server {
 
         return deployServerBuildType
     }
+}
+
+object Core {
+    private object TestDoctoolsCore: BuildType({
+        name = "Test Doctools core"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            step(GwBuildSteps.createBuildDoctoolsCoreStep())
+            step(GwBuildSteps.createTestDoctoolsCoreStep())
+        }
+
+        triggers {
+            trigger(
+                GwVcsTriggers.createGitVcsTrigger(
+                    GwVcsRoots.DocumentationPortalGitVcsRoot,
+                    listOf(GwTriggerPaths.CORE.pathValue)
+                )
+            )
+        }
+
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
+    })
+
+    private fun createRootProjectForCore(): Project {
+        return Project {
+            name = "Core"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            buildType(TestDoctoolsCore)
+        }
+    }
+
+    val rootProject = createRootProjectForCore()
 }
 

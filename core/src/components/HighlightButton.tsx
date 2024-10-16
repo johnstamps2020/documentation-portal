@@ -29,9 +29,9 @@ export function HighlightButton({
   inactiveColor,
 }: HighlightButtonProps) {
   const [wordsToHighlight, setWordsToHighlight] = useState<string[]>(words);
+  const bodyElement = getBodyElement();
 
   useEffect(() => {
-    const bodyElement = getBodyElement();
     if (!bodyElement) {
       return;
     }
@@ -43,7 +43,7 @@ export function HighlightButton({
         markInstance.mark(word);
       }
     }
-  }, [wordsToHighlight]);
+  }, [wordsToHighlight, bodyElement]);
 
   function toggleHighlights() {
     setWordsToHighlight((prevWords) => {

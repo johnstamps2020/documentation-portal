@@ -35,19 +35,6 @@ export default defineConfig({
   },
   build: {
     outDir: 'build',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          '@emotion/react': ['@emotion/react'],
-          '@emotion/styled': ['@emotion/styled'],
-          '@mui/material': ['@mui/material'],
-          '@doctools/core': ['@doctools/core'],
-          '@tanstack/react-router': ['@tanstack/react-router'],
-          swr: ['swr'],
-          tinycolor2: ['tinycolor2'],
-        },
-      },
-    },
-    chunkSizeWarningLimit: 850,
+    chunkSizeWarningLimit: 2000,
   },
 });

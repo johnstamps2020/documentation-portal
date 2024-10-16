@@ -8,10 +8,8 @@ export default function GwRedoc({ specRelativeUrl }) {
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.setAttribute('type', 'text/javascript');
     script.src = gwJs;
     script.async = true;
-    script.type = 'text/javascript';
     document.body.appendChild(script);
     return () => {
       script.parentNode.removeChild(script);

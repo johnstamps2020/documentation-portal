@@ -152,8 +152,17 @@
   "chat.saveAndClose" : {
     "message" : "Speichern und schließen"
   },
+  "chat.notOptedIn" : {
+    "message" : "Klicken Sie unten, um sich für die Antworten des Guidewire Docs AI-Chatbots anzumelden."
+  },
   "chat.allow" : {
     "message" : "KI-Chatbot erlauben, Fragen zu beantworten"
+  },
+  "chat.termsAndConditions.body" : {
+    "message" : "Die Antworten des Guidewire Docs AI-Chatbots werden von einem KI-System automatisch generiert und sollten nur zu Informationszwecken verwendet werden. Für die Richtigkeit, Vollständigkeit oder Aktualität der bereitgestellten Informationen wird keine Gewähr übernommen, und wir übernehmen keine Verantwortung oder Haftung für die Verwendung oder Interpretation dieser Inhalte."
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "Verstanden"
   },
   "chatbot.feedback.thumbsUp" : {
     "message" : "Diese Chatbot-Antwort ist sehr gut"
@@ -166,6 +175,9 @@
   },
   "chatbot.feedback.dialog.send" : {
     "message" : "Senden"
+  },
+  "chatbot.disclosure" : {
+    "message" : "*Die oben genannte Antwort wurde von einem KI-System generiert und ist möglicherweise nicht vollständig und nicht genau. Bitte lesen Sie die bereitgestellten Quellen, um detailliertere Informationen zu Ihrer Frage zu erhalten. "
   },
   "chatbot.feedback.dialog.cancel" : {
     "message" : "Abbrechen"

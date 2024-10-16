@@ -152,8 +152,17 @@
   "chat.saveAndClose" : {
     "message" : "Enregistrer et fermer"
   },
+  "chat.notOptedIn" : {
+    "message" : "Cliquez ci-dessous pour accepter les réponses du chatbot IA Documents Guidewire."
+  },
   "chat.allow" : {
     "message" : "Autoriser le chatbot IA de répondre aux questions"
+  },
+  "chat.termsAndConditions.body" : {
+    "message" : "Les réponses du chatbot IA Documents Guidewire ont été générées automatiquement par un système d'IA et ne doivent être utilisées qu'à titre d'information. La précision, l'exhaustivité ou l'exactitude des informations fournies ne sont pas garanties, et nous déclinons toute responsabilité quant à l'utilisation ou l'interprétation de ces informations."
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "J'ai compris"
   },
   "chatbot.feedback.thumbsUp" : {
     "message" : "La réponse de ce chatbot est très bien"
@@ -166,6 +175,9 @@
   },
   "chatbot.feedback.dialog.send" : {
     "message" : "Envoyer"
+  },
+  "chatbot.disclosure" : {
+    "message" : "*La réponse ci-dessus a été générée par un système d'IA et peut ne pas représenter une réponse complète et précise. Reportez-vous aux sources mentionnées pour obtenir de plus amples informations relatives à la question que vous avez posée. "
   },
   "chatbot.feedback.dialog.cancel" : {
     "message" : "Annuler"

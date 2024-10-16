@@ -1,6 +1,6 @@
 {
   "name": "@doctools/core",
-  "version": "1.0.22",
+  "version": "1.0.25",
   "description": "A collection of things used across the monorepo",
   "license": "UNLICENSED",
   "main": "dist/index.js",
@@ -9,12 +9,20 @@
   },
   "scripts": {
     "build": "echo \"🍎 Building core\" && rimraf dist && tsc --build --verbose && copy-non-tx-files",
-    "dev": "yarn build && tsc --watch"
+    "dev": "echo \"🍎 Welcome, core developer!\" && tsc --watch",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@doctools/scripts": "workspace:*",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@vitest/coverage-c8": "^0.33.0",
+    "jsdom": "^25.0.1",
     "rimraf": "^5.0.5",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "vitest": "^2.1.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",

@@ -7,7 +7,7 @@ const pageConfig: ApplicationLayoutProps = {
   title: 'PolicyCenter for Guidewire Cloud 2023.10',
   buttonProps: {
     label: 'Release notes',
-    docId: 'ispc202310releasenotes',
+    docId: 'isrnlatest',
   },
   heroDescription:
     'Guidewire PolicyCenter provides underwriting and policy administration for personal and commercial line insurers in the property and casualty industry.',
@@ -19,7 +19,7 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'PolicyCenter Release Notes',
-          docId: 'ispc202310releasenotes',
+          docId: 'isrnlatest',
           description: (
             <>Learn about changes in this release of PolicyCenter.</>
           ),
@@ -184,21 +184,6 @@ const pageConfig: ApplicationLayoutProps = {
               validation, preupdate actions, and assignment.
             </>
           ),
-        },
-        {
-          label: 'Guidewire Rules for PolicyCenter (Early Access)',
-          docId: 'gwrulespc',
-          description: (
-            <>
-              Create and manage business rules that trigger when specific
-              business conditions occur in PolicyCenter.
-            </>
-          ),
-        },
-        {
-          label: 'Guidewire Rules Type Manager (Early Access)',
-          docId: 'gwrulestypemgr',
-          description: <>Create and manage new rule types.</>,
         },
         {
           label: 'Plugins',

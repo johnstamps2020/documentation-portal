@@ -38,6 +38,7 @@ import { Route as CloudProductsDataPlatformImport } from './pages/cloudProducts/
 import { Route as CloudProductsCyenceImport } from './pages/cloudProducts/cyence'
 import { Route as CloudProductsAutopilotworkflowserviceImport } from './pages/cloudProducts/autopilotworkflowservice'
 import { Route as CloudProductsAppEventsImport } from './pages/cloudProducts/appEvents'
+import { Route as ApiReferencesLaslenasImport } from './pages/apiReferences/laslenas'
 import { Route as ApiReferencesKufriImport } from './pages/apiReferences/kufri'
 import { Route as ApiReferencesJasperImport } from './pages/apiReferences/jasper'
 import { Route as ApiReferencesInnsbruckImport } from './pages/apiReferences/innsbruck'
@@ -198,8 +199,10 @@ import { Route as GlobalContentIpaVersionImport } from './pages/globalContent/ip
 import { Route as CloudProductsLaslenasPcImport } from './pages/cloudProducts/laslenas/pc'
 import { Route as CloudProductsLaslenasInImport } from './pages/cloudProducts/laslenas/in'
 import { Route as CloudProductsLaslenasGlobalRefAppsImport } from './pages/cloudProducts/laslenas/globalRefApps'
+import { Route as CloudProductsLaslenasDxRefAppsImport } from './pages/cloudProducts/laslenas/dx-ref-apps'
 import { Route as CloudProductsLaslenasCcImport } from './pages/cloudProducts/laslenas/cc'
 import { Route as CloudProductsLaslenasBcImport } from './pages/cloudProducts/laslenas/bc'
+import { Route as CloudProductsLaslenasApdImport } from './pages/cloudProducts/laslenas/apd'
 import { Route as CloudProductsKufriPcImport } from './pages/cloudProducts/kufri/pc'
 import { Route as CloudProductsKufriInImport } from './pages/cloudProducts/kufri/in'
 import { Route as CloudProductsKufriIcImport } from './pages/cloudProducts/kufri/ic'
@@ -415,6 +418,11 @@ const CloudProductsAutopilotworkflowserviceRoute =
 
 const CloudProductsAppEventsRoute = CloudProductsAppEventsImport.update({
   path: '/cloudProducts/appEvents',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ApiReferencesLaslenasRoute = ApiReferencesLaslenasImport.update({
+  path: '/apiReferences/laslenas',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -1246,6 +1254,12 @@ const CloudProductsLaslenasGlobalRefAppsRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const CloudProductsLaslenasDxRefAppsRoute =
+  CloudProductsLaslenasDxRefAppsImport.update({
+    path: '/cloudProducts/laslenas/dx-ref-apps',
+    getParentRoute: () => rootRoute,
+  } as any)
+
 const CloudProductsLaslenasCcRoute = CloudProductsLaslenasCcImport.update({
   path: '/cloudProducts/laslenas/cc',
   getParentRoute: () => rootRoute,
@@ -1253,6 +1267,11 @@ const CloudProductsLaslenasCcRoute = CloudProductsLaslenasCcImport.update({
 
 const CloudProductsLaslenasBcRoute = CloudProductsLaslenasBcImport.update({
   path: '/cloudProducts/laslenas/bc',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CloudProductsLaslenasApdRoute = CloudProductsLaslenasApdImport.update({
+  path: '/cloudProducts/laslenas/apd',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -1832,6 +1851,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiReferencesKufriImport
       parentRoute: typeof rootRoute
     }
+    '/apiReferences/laslenas': {
+      id: '/apiReferences/laslenas'
+      path: '/apiReferences/laslenas'
+      fullPath: '/apiReferences/laslenas'
+      preLoaderRoute: typeof ApiReferencesLaslenasImport
+      parentRoute: typeof rootRoute
+    }
     '/cloudProducts/appEvents': {
       id: '/cloudProducts/appEvents'
       path: '/cloudProducts/appEvents'
@@ -2196,6 +2222,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CloudProductsKufriPcImport
       parentRoute: typeof rootRoute
     }
+    '/cloudProducts/laslenas/apd': {
+      id: '/cloudProducts/laslenas/apd'
+      path: '/cloudProducts/laslenas/apd'
+      fullPath: '/cloudProducts/laslenas/apd'
+      preLoaderRoute: typeof CloudProductsLaslenasApdImport
+      parentRoute: typeof rootRoute
+    }
     '/cloudProducts/laslenas/bc': {
       id: '/cloudProducts/laslenas/bc'
       path: '/cloudProducts/laslenas/bc'
@@ -2208,6 +2241,13 @@ declare module '@tanstack/react-router' {
       path: '/cloudProducts/laslenas/cc'
       fullPath: '/cloudProducts/laslenas/cc'
       preLoaderRoute: typeof CloudProductsLaslenasCcImport
+      parentRoute: typeof rootRoute
+    }
+    '/cloudProducts/laslenas/dx-ref-apps': {
+      id: '/cloudProducts/laslenas/dx-ref-apps'
+      path: '/cloudProducts/laslenas/dx-ref-apps'
+      fullPath: '/cloudProducts/laslenas/dx-ref-apps'
+      preLoaderRoute: typeof CloudProductsLaslenasDxRefAppsImport
       parentRoute: typeof rootRoute
     }
     '/cloudProducts/laslenas/globalRefApps': {
@@ -3483,6 +3523,7 @@ export const routeTree = rootRoute.addChildren({
   ApiReferencesInnsbruckRoute,
   ApiReferencesJasperRoute,
   ApiReferencesKufriRoute,
+  ApiReferencesLaslenasRoute,
   CloudProductsAppEventsRoute,
   CloudProductsAutopilotworkflowserviceRoute,
   CloudProductsCyenceRoute,
@@ -3535,8 +3576,10 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsKufriIcRoute,
   CloudProductsKufriInRoute,
   CloudProductsKufriPcRoute,
+  CloudProductsLaslenasApdRoute,
   CloudProductsLaslenasBcRoute,
   CloudProductsLaslenasCcRoute,
+  CloudProductsLaslenasDxRefAppsRoute,
   CloudProductsLaslenasGlobalRefAppsRoute,
   CloudProductsLaslenasInRoute,
   CloudProductsLaslenasPcRoute,
@@ -3741,6 +3784,7 @@ export const routeTree = rootRoute.addChildren({
         "/apiReferences/innsbruck",
         "/apiReferences/jasper",
         "/apiReferences/kufri",
+        "/apiReferences/laslenas",
         "/cloudProducts/appEvents",
         "/cloudProducts/autopilotworkflowservice",
         "/cloudProducts/cyence",
@@ -3793,8 +3837,10 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/kufri/ic",
         "/cloudProducts/kufri/in",
         "/cloudProducts/kufri/pc",
+        "/cloudProducts/laslenas/apd",
         "/cloudProducts/laslenas/bc",
         "/cloudProducts/laslenas/cc",
+        "/cloudProducts/laslenas/dx-ref-apps",
         "/cloudProducts/laslenas/globalRefApps",
         "/cloudProducts/laslenas/in",
         "/cloudProducts/laslenas/pc",
@@ -4077,6 +4123,9 @@ export const routeTree = rootRoute.addChildren({
     "/apiReferences/kufri": {
       "filePath": "apiReferences/kufri.tsx"
     },
+    "/apiReferences/laslenas": {
+      "filePath": "apiReferences/laslenas.tsx"
+    },
     "/cloudProducts/appEvents": {
       "filePath": "cloudProducts/appEvents.tsx"
     },
@@ -4233,11 +4282,17 @@ export const routeTree = rootRoute.addChildren({
     "/cloudProducts/kufri/pc": {
       "filePath": "cloudProducts/kufri/pc.tsx"
     },
+    "/cloudProducts/laslenas/apd": {
+      "filePath": "cloudProducts/laslenas/apd.tsx"
+    },
     "/cloudProducts/laslenas/bc": {
       "filePath": "cloudProducts/laslenas/bc.tsx"
     },
     "/cloudProducts/laslenas/cc": {
       "filePath": "cloudProducts/laslenas/cc.tsx"
+    },
+    "/cloudProducts/laslenas/dx-ref-apps": {
+      "filePath": "cloudProducts/laslenas/dx-ref-apps.tsx"
     },
     "/cloudProducts/laslenas/globalRefApps": {
       "filePath": "cloudProducts/laslenas/globalRefApps.tsx"

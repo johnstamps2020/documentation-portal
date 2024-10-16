@@ -152,8 +152,17 @@
   "chat.saveAndClose" : {
     "message" : "Salva e chiudi"
   },
+  "chat.notOptedIn" : {
+    "message" : "Fare clic di seguito per selezionare le risposte dal chatbot di Docs AI Guidewire."
+  },
   "chat.allow" : {
     "message" : "Consenti al chatbot di IA di rispondere alle domande"
+  },
+  "chat.termsAndConditions.body" : {
+    "message" : "Le risposte dal chatbot di Docs AI Guidewire sono generate automaticamente da un sistema di IA e devono essere utilizzate solo per scopi internazionali. La precisione, completezza o tempestività delle informazioni fornite non sono garantite e l'azienda non si assume alcuna responsabilità per l'uso o l'interpretazione di questo contenuto."
+  },
+  "chat.termsAndConditions.close" : {
+    "message" : "OK"
   },
   "chatbot.feedback.thumbsUp" : {
     "message" : "Questa risposta del chatbot è ottima"
@@ -166,6 +175,9 @@
   },
   "chatbot.feedback.dialog.send" : {
     "message" : "Invia"
+  },
+  "chatbot.disclosure" : {
+    "message" : "*La risposta indicata sopra è stata generata da un sistema di IA e non può fornire una risposta completa e accurata. Consultare le fonti disponibili per informazioni più dettagliate relative alle domande. "
   },
   "chatbot.feedback.dialog.cancel" : {
     "message" : "Annulla"
