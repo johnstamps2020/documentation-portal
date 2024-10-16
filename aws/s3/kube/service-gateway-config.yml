@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: \"${APP_NAME} Paweł was here\"
+  name: ${APP_NAME}
   namespace: ${POD_NAME}
   labels:
     app: ${APP_NAME}
@@ -16,9 +16,9 @@ spec:
   type: ExternalName
   externalName: ${SERVICE_EXTERNAL_NAME}
   ports:
-    - port: 80
+    - port: 81
       protocol: TCP
-      targetPort: 80
+      targetPort: 81
 ---
 apiVersion: oort.ccs.guidewire.com/v1alpha1
 kind: GatewayConfig
