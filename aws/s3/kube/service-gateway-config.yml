@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ${APP_NAME} Paweł was here
+  name: "${APP_NAME} Paweł was here"
   namespace: ${POD_NAME}
   labels:
     app: ${APP_NAME}
