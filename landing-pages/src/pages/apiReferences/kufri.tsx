@@ -103,8 +103,20 @@ const pageConfig: CategoryLayoutProps = {
       label: 'Cloud Console',
       items: [
         {
+          label: 'Build Promoter API',
+          docId: 'buildpromoterapidocs',
+        },
+        {
           label: 'CI/CD Manager API',
           docId: 'cicdmanagerapiref',
+        },
+        {
+          label: 'Database API',
+          docId: 'dbserviceapi',
+        },
+        {
+          label: 'EnterpriseEngage Deployments API',
+          docId: 'eedeploymentsapi',
         },
         {
           label: 'IS Deployments API',
@@ -117,14 +129,6 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Runtime Properties API',
           docId: 'runtimepropertiesapi',
-        },
-        {
-          label: 'Database API',
-          docId: 'dbserviceapi',
-        },
-        {
-          label: 'EnterpriseEngage Deployments API',
-          docId: 'eedeploymentsapi',
         },
       ],
     },
