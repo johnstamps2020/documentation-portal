@@ -143,6 +143,7 @@ enum class GwTestTriggerPaths(val pathValue: String) {
     CORE("core/"),
     LANDING_PAGES(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue),
     SERVER(GwConfigParams.DOC_PORTAL_DIR.paramValue),
+    HTML5("html5/")
 }
 
 enum class GwDocCrawlerOperationModes(val modeValue: String) {
@@ -878,7 +879,73 @@ object GwBuildSteps {
         }
     }
 
-    fun createBuildHtml5DependenciesStep(): ScriptBuildStep {
+    fun createBuildReactLandingPagesBuildStep(triggerPath: String = ""): NodeJSBuildStep {
+        return NodeJSBuildStep {
+            id = "Build landing pages"
+            shellScript = """
+                    yarn
+                    CI=true yarn test:landing-pages
+                    yarn build
+                """.trimIndent()
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        }.apply {
+            if (triggerPath.isNotEmpty()) {
+                conditions {
+                    equals(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)
+                }
+            }
+        }
+    }
+
+    fun createBuildDocPortalServerAppBuildStep(triggerPath: String = ""): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Test the doc site server"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                    #!/bin/sh
+                    set -e
+                    export NODE_ENV="production"
+                    export OKTA_CLIENT_ID=mock
+                    export OKTA_CLIENT_SECRET=mock
+                    export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
+                    export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
+                    export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+                    export OKTA_ISSUER_APAC="issuerNotConfigured"
+                    export OKTA_ISSUER_EMEA="issuerNotConfigured"
+                    export OKTA_SCOPES=mock
+                    export OKTA_ADMIN_GROUPS=mock
+                    export OKTA_AUDIENCE=mock
+                    export POWER_USERS=mock
+                    export APP_BASE_URL=http://localhost:8081
+                    export SESSION_KEY=mock
+                    export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
+                    export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+                    export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
+                    export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
+                    export ENABLE_AUTH=no
+                    export PRETEND_TO_BE_EXTERNAL=no
+                    export ALLOW_PUBLIC_DOCS=yes
+                    export LOCALHOST_SESSION_SETTINGS=yes
+                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
+                    export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+                    export PARTNERS_LOGIN_CERT=mock
+                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
+                    export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+                    export CUSTOMERS_LOGIN_CERT=mock
+                    
+                    yarn
+                    yarn build
+                    yarn test:server
+                """.trimIndent()
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        }.apply {
+            if (triggerPath.isNotEmpty()) {
+                conditions { equals(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)}
+            }
+        }
+    }
+
+    fun createBuildHtml5DependenciesStep(triggerPath: String = ""): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build HTML5 dependencies"
             id = Helpers.createIdStringFromName(this.name)
@@ -896,10 +963,14 @@ object GwBuildSteps {
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
+        }.apply {
+            if (triggerPath.isNotEmpty()) {
+                conditions { equals(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)}
+            }
         }
     }
 
-    fun createBuildHtml5OfflineDependenciesStep(): ScriptBuildStep {
+    fun createBuildHtml5OfflineDependenciesStep(triggerPath: String = ""): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build HTML5 offline dependencies"
             id = Helpers.createIdStringFromName(this.name)
@@ -917,6 +988,10 @@ object GwBuildSteps {
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
+        }.apply {
+            if (triggerPath.isNotEmpty()) {
+                conditions { equals(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)}
+            }
         }
     }
 
@@ -1261,69 +1336,6 @@ object TestEverythingHelpers {
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         dockerRunParameters = "--user 1000:1000"
     })
-
-    val TestReactLandingPagesShellScript = """
-        yarn
-        CI=true yarn test:landing-pages
-        yarn build
-    """.trimIndent()
-
-    object TestReactLandingPages : NodeJSBuildStep({
-        name = "Test React landing pages"
-        id = "Build landing pages"
-        conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.LANDING_PAGES.pathValue)
-        }
-        shellScript = TestReactLandingPagesShellScript
-        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-    })
-
-    val TestDocSiteServerAppShellScript = """
-        #!/bin/sh
-        set -e
-        export NODE_ENV="production"
-        export OKTA_CLIENT_ID=mock
-        export OKTA_CLIENT_SECRET=mock
-        export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
-        export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
-        export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
-        export OKTA_ISSUER_APAC="issuerNotConfigured"
-        export OKTA_ISSUER_EMEA="issuerNotConfigured"
-        export OKTA_SCOPES=mock
-        export OKTA_ADMIN_GROUPS=mock
-        export OKTA_AUDIENCE=mock
-        export POWER_USERS=mock
-        export APP_BASE_URL=http://localhost:8081
-        export SESSION_KEY=mock
-        export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
-        export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
-        export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
-        export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
-        export ENABLE_AUTH=no
-        export PRETEND_TO_BE_EXTERNAL=no
-        export ALLOW_PUBLIC_DOCS=yes
-        export LOCALHOST_SESSION_SETTINGS=yes
-        export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
-        export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-        export PARTNERS_LOGIN_CERT=mock
-        export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
-        export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
-        export CUSTOMERS_LOGIN_CERT=mock
-        
-        yarn
-        yarn build
-        yarn test:server
-    """.trimIndent()
-
-    object TestDocSiteServerApp: ScriptBuildStep({
-        name = "Test the doc site server"
-        id = Helpers.createIdStringFromName(this.name)
-        conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.SERVER.pathValue)
-        }
-        scriptContent = TestDocSiteServerAppShellScript
-        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-    })
 }
 
 private object TestDocPortalEverything : BuildType({
@@ -1341,8 +1353,10 @@ private object TestDocPortalEverything : BuildType({
         step(TestEverythingHelpers.TestSettingsKts)
         step(TestEverythingHelpers.BuildDoctoolsCore)
         step(TestEverythingHelpers.TestDoctoolsCore)
-        step(TestEverythingHelpers.TestReactLandingPages)
-        step(TestEverythingHelpers.TestDocSiteServerApp)
+        step(GwBuildSteps.createBuildReactLandingPagesBuildStep(triggerPath = GwTestTriggerPaths.LANDING_PAGES.pathValue))
+        step(GwBuildSteps.createBuildDocPortalServerAppBuildStep(triggerPath = GwTestTriggerPaths.SERVER.pathValue))
+        step(GwBuildSteps.createBuildHtml5DependenciesStep(triggerPath = GwTestTriggerPaths.HTML5.pathValue))
+        step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep(triggerPath = GwTestTriggerPaths.HTML5.pathValue))
     }
 
     triggers {
@@ -2561,11 +2575,7 @@ object Frontend {
         }
 
         steps {
-            nodeJS {
-                id = "Build landing pages"
-                shellScript = TestEverythingHelpers.TestReactLandingPagesShellScript
-                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            }
+            GwBuildSteps.createBuildReactLandingPagesBuildStep()
         }
 
         features {
@@ -2741,8 +2751,6 @@ object Server {
             buildType(deployServerBuildTypeStaging)
             buildType(deployServerBuildTypeProd)
             buildType(runCheckmarxScan)
-            buildType(TestDocSiteServerApp)
-            buildType(TestHtml5Dependencies)
             buildType(testKubernetesConfigFilesDev)
             buildType(testKubernetesConfigFilesStaging)
             buildType(testKubernetesConfigFilesProd)
@@ -2750,38 +2758,6 @@ object Server {
             buildType(publishDockerImageToProdEcrBuildType)
         }
     }
-
-    private object TestHtml5Dependencies : BuildType({
-        name = "Test HTML5 dependencies"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            step(GwBuildSteps.createBuildHtml5DependenciesStep())
-            step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createGitVcsTrigger(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot,
-                    listOf(
-                        GwTriggerPaths.HTML5.pathValue,
-                        GwTriggerPaths.DOCUSAURUS_THEMES.pathValue
-                    )
-                )
-            )
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-    })
 
     private object TestDocSiteServerApp : BuildType({
         name = "Test doc site server app"
@@ -2793,12 +2769,7 @@ object Server {
         }
 
         steps {
-            script {
-                name = "Test the doc site server"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = TestEverythingHelpers.TestDocSiteServerAppShellScript
-                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            }
+            step(GwBuildSteps.createBuildDocPortalServerAppBuildStep())
         }
 
         features {
