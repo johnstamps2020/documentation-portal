@@ -1,4 +1,3 @@
-// Paweł was here
 import { PageItemsResponse } from '@doctools/server';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
