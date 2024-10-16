@@ -140,8 +140,8 @@ enum class GwTriggerPaths(val pathValue: String) {
 enum class GwTestTriggerPaths(val pathValue: String) {
     TEAMCITY_SETTINGS_KTS(".teamcity/"),
     CORE("core/"),
-    LANDING_PAGES(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue),
-    SERVER(GwConfigParams.DOC_PORTAL_DIR.paramValue),
+    LANDING_PAGES("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/"),
+    SERVER("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/"),
     HTML5("html5/"),
     AWS_S3_KUBE("aws/s3/kube/"),
     LANDING_PAGES_KUBE("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/"),
