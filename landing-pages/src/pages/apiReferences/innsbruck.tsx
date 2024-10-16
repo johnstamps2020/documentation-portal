@@ -106,6 +106,10 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'cicdmanagerapiref',
         },
         {
+          label: 'Database API',
+          docId: 'dbserviceapi',
+        },
+        {
           label: 'IS Deployments API',
           docId: 'cloudconsoleapi',
         },
@@ -116,10 +120,6 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Runtime Properties API',
           docId: 'runtimepropertiesapi',
-        },
-        {
-          label: 'Database API',
-          docId: 'dbserviceapi',
         },
       ],
     },
