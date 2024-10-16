@@ -141,6 +141,7 @@ enum class GwTriggerPaths(val pathValue: String) {
 enum class GwTestTriggerPaths(val pathValue: String) {
     TEAMCITY_SETTINGS_KTS(".teamcity/"),
     CORE("core/"),
+    LANDING_PAGES(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
 }
 
 enum class GwDocCrawlerOperationModes(val modeValue: String) {
@@ -1206,15 +1207,14 @@ object TestEverythingHelpers {
     object TestSettingsKts : MavenBuildStep({
         name = "Test settings.kts"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name)).toString()
+        conditions {
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
+        }
 
         goals = "teamcity-configs:generate"
         pomLocation = ".teamcity/pom.xml"
         workingDir = ""
         runnerArgs = "-X"
-
-        conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
-        }
     })
 
     object TestDoctoolsCore : ScriptBuildStep({
@@ -1260,6 +1260,22 @@ object TestEverythingHelpers {
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         dockerRunParameters = "--user 1000:1000"
     })
+
+    val TestReactLandingPagesShellScript = """
+        yarn
+        CI=true yarn test:landing-pages
+        yarn build
+    """.trimIndent()
+
+    object TestReactLandingPages : NodeJSBuildStep({
+        name = "Test React landing pages"
+        id = "Build landing pages"
+        conditions {
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.LANDING_PAGES.pathValue)
+        }
+        shellScript = TestReactLandingPagesShellScript
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+    })
 }
 
 private object TestDocPortalEverything : BuildType({
@@ -1273,13 +1289,11 @@ private object TestDocPortalEverything : BuildType({
 
     steps {
         step(TestEverythingHelpers.ExportListOfChangedFilesIntoAnEnvVarStep)
-        // **
         step(TestEverythingHelpers.TestCodeFormat)
-        // .teamcity
         step(TestEverythingHelpers.TestSettingsKts)
-        // core
         step(TestEverythingHelpers.BuildDoctoolsCore)
         step(TestEverythingHelpers.TestDoctoolsCore)
+        step(TestEverythingHelpers.TestReactLandingPages)
     }
 
     triggers {
@@ -2500,11 +2514,7 @@ object Frontend {
         steps {
             nodeJS {
                 id = "Build landing pages"
-                shellScript = """
-                    yarn
-                    CI=true yarn test:landing-pages
-                    yarn build
-                """.trimIndent()
+                shellScript = TestEverythingHelpers.TestReactLandingPagesShellScript
                 dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             }
         }
