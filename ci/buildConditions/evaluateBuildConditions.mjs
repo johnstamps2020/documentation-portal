@@ -32,6 +32,7 @@ function getChangedFilesEnvValue() {
   }
 }
 
+// This console log actually set a Teamcity parameter to make it available to other steps
 console.log(
   `##teamcity[setParameter name='${changedFilesEnvName}' value='${getChangedFilesEnvValue()}']`
 );
