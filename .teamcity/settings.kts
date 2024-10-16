@@ -879,7 +879,7 @@ object GwBuildSteps {
         }
     }
 
-    fun createBuildReactLandingPagesBuildStep(triggerPath: String = ""): NodeJSBuildStep {
+    fun createBuildReactLandingPagesBuildStep(): NodeJSBuildStep {
         return NodeJSBuildStep {
             id = "Build landing pages"
             shellScript = """
@@ -888,16 +888,10 @@ object GwBuildSteps {
                     yarn build
                 """.trimIndent()
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-        }.apply {
-            if (triggerPath.isNotEmpty()) {
-                conditions {
-                    equals(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)
-                }
-            }
         }
     }
 
-    fun createBuildDocPortalServerAppBuildStep(triggerPath: String = ""): ScriptBuildStep {
+    fun createBuildDocPortalServerAppBuildStep(): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Test the doc site server"
             id = Helpers.createIdStringFromName(this.name)
@@ -938,14 +932,10 @@ object GwBuildSteps {
                     yarn test:server
                 """.trimIndent()
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-        }.apply {
-            if (triggerPath.isNotEmpty()) {
-                conditions { equals(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)}
-            }
         }
     }
 
-    fun createBuildHtml5DependenciesStep(triggerPath: String = ""): ScriptBuildStep {
+    fun createBuildHtml5DependenciesStep(): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build HTML5 dependencies"
             id = Helpers.createIdStringFromName(this.name)
@@ -963,14 +953,10 @@ object GwBuildSteps {
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
-        }.apply {
-            if (triggerPath.isNotEmpty()) {
-                conditions { equals(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)}
-            }
         }
     }
 
-    fun createBuildHtml5OfflineDependenciesStep(triggerPath: String = ""): ScriptBuildStep {
+    fun createBuildHtml5OfflineDependenciesStep(): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build HTML5 offline dependencies"
             id = Helpers.createIdStringFromName(this.name)
@@ -988,10 +974,6 @@ object GwBuildSteps {
             dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
-        }.apply {
-            if (triggerPath.isNotEmpty()) {
-                conditions { equals(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)}
-            }
         }
     }
 
@@ -1336,6 +1318,14 @@ object TestEverythingHelpers {
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         dockerRunParameters = "--user 1000:1000"
     })
+
+    fun addTriggerConditionToStep(stepWithoutCondition: BuildStep, triggerPath: String): BuildStep {
+        return stepWithoutCondition.apply {
+            conditions {
+                contains(CHANGED_FILES_ENV_VAR_NAME, triggerPath)
+            }
+        }
+    }
 }
 
 private object TestDocPortalEverything : BuildType({
@@ -1353,10 +1343,22 @@ private object TestDocPortalEverything : BuildType({
         step(TestEverythingHelpers.TestSettingsKts)
         step(TestEverythingHelpers.BuildDoctoolsCore)
         step(TestEverythingHelpers.TestDoctoolsCore)
-        step(GwBuildSteps.createBuildReactLandingPagesBuildStep(triggerPath = GwTestTriggerPaths.LANDING_PAGES.pathValue))
-        step(GwBuildSteps.createBuildDocPortalServerAppBuildStep(triggerPath = GwTestTriggerPaths.SERVER.pathValue))
-        step(GwBuildSteps.createBuildHtml5DependenciesStep(triggerPath = GwTestTriggerPaths.HTML5.pathValue))
-        step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep(triggerPath = GwTestTriggerPaths.HTML5.pathValue))
+        step(TestEverythingHelpers.addTriggerConditionToStep(
+            stepWithoutCondition = GwBuildSteps.createBuildReactLandingPagesBuildStep(),
+            triggerPath = GwTestTriggerPaths.LANDING_PAGES.pathValue
+        ))
+        step(TestEverythingHelpers.addTriggerConditionToStep(
+            stepWithoutCondition = GwBuildSteps.createBuildDocPortalServerAppBuildStep(),
+            triggerPath = GwTestTriggerPaths.SERVER.pathValue
+        ))
+        step(TestEverythingHelpers.addTriggerConditionToStep(
+            stepWithoutCondition = GwBuildSteps.createBuildHtml5DependenciesStep(),
+            triggerPath = GwTestTriggerPaths.HTML5.pathValue
+        ))
+        step(TestEverythingHelpers.addTriggerConditionToStep(
+            stepWithoutCondition = GwBuildSteps.createBuildHtml5OfflineDependenciesStep(),
+            triggerPath = GwTestTriggerPaths.HTML5.pathValue
+        ))
     }
 
     triggers {
