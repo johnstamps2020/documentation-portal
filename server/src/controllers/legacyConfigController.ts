@@ -91,6 +91,7 @@ async function getLegacyDocConfigs(): Promise<LegacyDocConfig[]> {
       public: doc.public,
       internal: doc.internal,
       earlyAccess: doc.earlyAccess,
+      updatePreview: doc.updatePreview || undefined,
       metadata: {
         language: doc.language.code,
         product: doc.platformProductVersions.map((ppv) => ppv.product.name),
@@ -876,6 +877,7 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
           doc.ignorePublicPropertyAndUseVariants || null;
         dbDoc.internal = doc.internal;
         dbDoc.earlyAccess = doc.earlyAccess;
+        dbDoc.updatePreview = doc.updatePreview || null;
         dbDoc.displayOnLandingPages = doc.displayOnLandingPages;
         dbDoc.indexForSearch = doc.indexForSearch;
         dbDoc.isInProduction = doc.environments.includes('prod');
