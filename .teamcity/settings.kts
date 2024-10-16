@@ -141,7 +141,8 @@ enum class GwTriggerPaths(val pathValue: String) {
 enum class GwTestTriggerPaths(val pathValue: String) {
     TEAMCITY_SETTINGS_KTS(".teamcity/"),
     CORE("core/"),
-    LANDING_PAGES(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
+    LANDING_PAGES(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue),
+    SERVER(GwConfigParams.DOC_PORTAL_DIR.paramValue),
 }
 
 enum class GwDocCrawlerOperationModes(val modeValue: String) {
@@ -1276,6 +1277,53 @@ object TestEverythingHelpers {
         shellScript = TestReactLandingPagesShellScript
         dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
     })
+
+    val TestDocSiteServerAppShellScript = """
+        #!/bin/sh
+        set -e
+        export NODE_ENV="production"
+        export OKTA_CLIENT_ID=mock
+        export OKTA_CLIENT_SECRET=mock
+        export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
+        export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
+        export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+        export OKTA_ISSUER_APAC="issuerNotConfigured"
+        export OKTA_ISSUER_EMEA="issuerNotConfigured"
+        export OKTA_SCOPES=mock
+        export OKTA_ADMIN_GROUPS=mock
+        export OKTA_AUDIENCE=mock
+        export POWER_USERS=mock
+        export APP_BASE_URL=http://localhost:8081
+        export SESSION_KEY=mock
+        export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
+        export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+        export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
+        export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
+        export ENABLE_AUTH=no
+        export PRETEND_TO_BE_EXTERNAL=no
+        export ALLOW_PUBLIC_DOCS=yes
+        export LOCALHOST_SESSION_SETTINGS=yes
+        export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
+        export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+        export PARTNERS_LOGIN_CERT=mock
+        export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
+        export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+        export CUSTOMERS_LOGIN_CERT=mock
+        
+        yarn
+        yarn build
+        yarn test:server
+    """.trimIndent()
+
+    object TestDocSiteServerApp: ScriptBuildStep({
+        name = "Test the doc site server"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.SERVER.pathValue)
+        }
+        scriptContent = TestDocSiteServerAppShellScript
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+    })
 }
 
 private object TestDocPortalEverything : BuildType({
@@ -1294,6 +1342,7 @@ private object TestDocPortalEverything : BuildType({
         step(TestEverythingHelpers.BuildDoctoolsCore)
         step(TestEverythingHelpers.TestDoctoolsCore)
         step(TestEverythingHelpers.TestReactLandingPages)
+        step(TestEverythingHelpers.TestDocSiteServerApp)
     }
 
     triggers {
@@ -2747,42 +2796,7 @@ object Server {
             script {
                 name = "Test the doc site server"
                 id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/sh
-                    set -e
-                    export NODE_ENV="production"
-                    export OKTA_CLIENT_ID=mock
-                    export OKTA_CLIENT_SECRET=mock
-                    export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
-                    export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
-                    export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
-                    export OKTA_ISSUER_APAC="issuerNotConfigured"
-                    export OKTA_ISSUER_EMEA="issuerNotConfigured"
-                    export OKTA_SCOPES=mock
-                    export OKTA_ADMIN_GROUPS=mock
-                    export OKTA_AUDIENCE=mock
-                    export POWER_USERS=mock
-                    export APP_BASE_URL=http://localhost:8081
-                    export SESSION_KEY=mock
-                    export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
-                    export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
-                    export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
-                    export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
-                    export ENABLE_AUTH=no
-                    export PRETEND_TO_BE_EXTERNAL=no
-                    export ALLOW_PUBLIC_DOCS=yes
-                    export LOCALHOST_SESSION_SETTINGS=yes
-                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
-                    export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-                    export PARTNERS_LOGIN_CERT=mock
-                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
-                    export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
-                    export CUSTOMERS_LOGIN_CERT=mock
-                    
-                    yarn
-                    yarn build
-                    yarn test:server
-                """.trimIndent()
+                scriptContent = TestEverythingHelpers.TestDocSiteServerAppShellScript
                 dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
             }
         }
