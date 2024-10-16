@@ -1,4 +1,3 @@
-// Paweł was here
 import { addAvatar } from '../modules/avatar';
 import { highlightCode, normalizeCode } from '../modules/code';
 import { addEarlyAccessMark } from '../modules/earlyAccess';
