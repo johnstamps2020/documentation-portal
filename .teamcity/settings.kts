@@ -122,7 +122,6 @@ enum class GwDockerImageTags(val tagValue: String) {
 enum class GwTriggerPaths(val pathValue: String) {
     AWS_S3_KUBE("aws/s3/kube/**"),
     DB("db/**"),
-    DOCUSAURUS_THEMES("docusaurus/themes/**"),
     PACKAGE_JSON("package.json"),
     HTML5("html5/**"),
     LANDING_PAGES("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/**"),
@@ -143,7 +142,10 @@ enum class GwTestTriggerPaths(val pathValue: String) {
     CORE("core/"),
     LANDING_PAGES(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue),
     SERVER(GwConfigParams.DOC_PORTAL_DIR.paramValue),
-    HTML5("html5/")
+    HTML5("html5/"),
+    AWS_S3_KUBE("aws/s3/kube/"),
+    LANDING_PAGES_KUBE("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/"),
+    SERVER_KUBE("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/kube/"),
 }
 
 enum class GwDocCrawlerOperationModes(val modeValue: String) {
@@ -559,52 +561,38 @@ object GwBuildTypes {
         }
     }
 
-    fun createTestKubernetesConfigFilesBuildType(deployEnv: String, triggerPath: String): BuildType {
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+    fun createTestKubernetesConfigFilesScriptBuildStep(deployEnv: String, triggerPath: String): ScriptBuildStep {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         var deployEnvVars = ""
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         var deploymentFile = ""
         var testGatewayConfigScript = ""
-        var buildName = ""
+
         when (triggerPath) {
-            GwTriggerPaths.AWS_S3_KUBE.pathValue -> {
+            GwTriggerPaths.AWS_S3_KUBE.pathValue, GwTestTriggerPaths.AWS_S3_KUBE.pathValue -> {
                 deployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
                 deploymentFile = GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue
-                buildName = "Test Kubernetes config files for content storage on $deployEnv"
             }
-
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
+            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue, GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
                 deployEnvVars =
                     Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
                 deploymentFile = GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue
-                buildName = "Test Kubernetes config files for React landing pages on $deployEnv"
             }
-
-            GwTriggerPaths.SERVER_KUBE.pathValue -> {
+            GwTriggerPaths.SERVER_KUBE.pathValue, GwTestTriggerPaths.SERVER_KUBE.pathValue -> {
                 deployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
                 deploymentFile = GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue
-                buildName = "Test Kubernetes config files for server on $deployEnv"
                 testGatewayConfigScript = """
-                    export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
-                    eval "echo \"${'$'}(cat ${Helpers.getServerGatewayConfigFile(deployEnv)})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
-                    kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
-                """.trimIndent()
+                        export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
+                        eval "echo \"${'$'}(cat ${Helpers.getServerGatewayConfigFile(deployEnv)})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
+                        kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
+                    """.trimIndent()
             }
         }
-        return BuildType {
-            name = buildName
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Create Kubernetes resources in dry run "
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
+        return ScriptBuildStep {
+            name = "Create Kubernetes resources in dry run $deployEnv $triggerPath"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
                         #!/bin/bash 
                         set -e
                         
@@ -623,10 +611,39 @@ object GwBuildTypes {
                         
                         $testGatewayConfigScript
                     """.trimIndent()
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
-                }
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
+        }
+    }
+
+    fun createTestKubernetesConfigFilesBuildType(deployEnv: String, triggerPath: String): BuildType {
+        var buildName = ""
+
+        when (triggerPath) {
+            GwTriggerPaths.AWS_S3_KUBE.pathValue -> {
+                buildName = "Test Kubernetes config files for content storage on $deployEnv"
+            }
+
+            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
+                buildName = "Test Kubernetes config files for React landing pages on $deployEnv"
+            }
+
+            GwTriggerPaths.SERVER_KUBE.pathValue -> {
+                buildName = "Test Kubernetes config files for server on $deployEnv"
+            }
+        }
+        return BuildType {
+            name = buildName
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                step(createTestKubernetesConfigFilesScriptBuildStep(deployEnv, triggerPath))
             }
 
             features {
@@ -1225,8 +1242,8 @@ object TestEverythingHelpers {
             export ALL_TRIGGER_PATHS=${
             GwTestTriggerPaths.entries.joinToString(",") {
                 it.pathValue
-                }
             }
+        }
             echo TEAMCITY_BUILD_CHANGEDFILES_FILE ${'$'}TEAMCITY_BUILD_CHANGEDFILES_FILE
             echo TEAMCITY_BUILD_TIGGEREDBY ${'$'}TEAMCITY_BUILD_TIGGEREDBY
             echo ALL_TRIGGER_PATHS ${'$'}ALL_TRIGGER_PATHS
@@ -1326,6 +1343,56 @@ object TestEverythingHelpers {
             }
         }
     }
+
+    private val kubernetesTestConfigs: List<Pair<String, String>> = listOf(
+        Pair(
+            GwDeployEnvs.DEV.envName,
+            GwTestTriggerPaths.AWS_S3_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.STAGING.envName,
+            GwTestTriggerPaths.AWS_S3_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.PROD.envName,
+            GwTestTriggerPaths.AWS_S3_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.PORTAL2.envName,
+            GwTestTriggerPaths.AWS_S3_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.DEV.envName,
+            GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.STAGING.envName,
+            GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.PROD.envName,
+            GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.DEV.envName,
+            GwTestTriggerPaths.SERVER_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.STAGING.envName,
+            GwTestTriggerPaths.SERVER_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.PROD.envName,
+            GwTestTriggerPaths.SERVER_KUBE.pathValue
+        )
+    )
+
+    val KubernetesTests: List<BuildStep> = kubernetesTestConfigs.map {
+        addTriggerConditionToStep(
+            GwBuildTypes.createTestKubernetesConfigFilesScriptBuildStep(it.first, it.second),
+            it.second
+        )
+    }
 }
 
 private object TestDocPortalEverything : BuildType({
@@ -1343,22 +1410,33 @@ private object TestDocPortalEverything : BuildType({
         step(TestEverythingHelpers.TestSettingsKts)
         step(TestEverythingHelpers.BuildDoctoolsCore)
         step(TestEverythingHelpers.TestDoctoolsCore)
-        step(TestEverythingHelpers.addTriggerConditionToStep(
-            stepWithoutCondition = GwBuildSteps.createBuildReactLandingPagesBuildStep(),
-            triggerPath = GwTestTriggerPaths.LANDING_PAGES.pathValue
-        ))
-        step(TestEverythingHelpers.addTriggerConditionToStep(
-            stepWithoutCondition = GwBuildSteps.createBuildDocPortalServerAppBuildStep(),
-            triggerPath = GwTestTriggerPaths.SERVER.pathValue
-        ))
-        step(TestEverythingHelpers.addTriggerConditionToStep(
-            stepWithoutCondition = GwBuildSteps.createBuildHtml5DependenciesStep(),
-            triggerPath = GwTestTriggerPaths.HTML5.pathValue
-        ))
-        step(TestEverythingHelpers.addTriggerConditionToStep(
-            stepWithoutCondition = GwBuildSteps.createBuildHtml5OfflineDependenciesStep(),
-            triggerPath = GwTestTriggerPaths.HTML5.pathValue
-        ))
+        step(
+            TestEverythingHelpers.addTriggerConditionToStep(
+                stepWithoutCondition = GwBuildSteps.createBuildReactLandingPagesBuildStep(),
+                triggerPath = GwTestTriggerPaths.LANDING_PAGES.pathValue
+            )
+        )
+        step(
+            TestEverythingHelpers.addTriggerConditionToStep(
+                stepWithoutCondition = GwBuildSteps.createBuildDocPortalServerAppBuildStep(),
+                triggerPath = GwTestTriggerPaths.SERVER.pathValue
+            )
+        )
+        step(
+            TestEverythingHelpers.addTriggerConditionToStep(
+                stepWithoutCondition = GwBuildSteps.createBuildHtml5DependenciesStep(),
+                triggerPath = GwTestTriggerPaths.HTML5.pathValue
+            )
+        )
+        step(
+            TestEverythingHelpers.addTriggerConditionToStep(
+                stepWithoutCondition = GwBuildSteps.createBuildHtml5OfflineDependenciesStep(),
+                triggerPath = GwTestTriggerPaths.HTML5.pathValue
+            )
+        )
+        TestEverythingHelpers.KubernetesTests.map {
+            step(it)
+        }
     }
 
     triggers {
