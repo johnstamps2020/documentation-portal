@@ -560,55 +560,6 @@ object GwBuildTypes {
             }
         }
     }
-
-    fun createTestKubernetesConfigFilesBuildType(deployEnv: String, triggerPath: String): BuildType {
-        var buildName = ""
-
-        when (triggerPath) {
-            GwTriggerPaths.AWS_S3_KUBE.pathValue -> {
-                buildName = "Test Kubernetes config files for content storage on $deployEnv"
-            }
-
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
-                buildName = "Test Kubernetes config files for React landing pages on $deployEnv"
-            }
-
-            GwTriggerPaths.SERVER_KUBE.pathValue -> {
-                buildName = "Test Kubernetes config files for server on $deployEnv"
-            }
-        }
-        return BuildType {
-            name = buildName
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                step(GwBuildSteps.createTestKubernetesConfigFilesScriptBuildStep(deployEnv, triggerPath))
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-            }
-
-            when (deployEnv) {
-                GwDeployEnvs.DEV.envName -> {
-                    triggers.trigger(
-                        GwVcsTriggers.createGitVcsTrigger(
-                            GwVcsRoots.DocumentationPortalGitVcsRoot,
-                            listOf(triggerPath)
-                        )
-                    )
-                }
-            }
-        }
-
-    }
 }
 
 object GwBuildSteps {
@@ -2520,7 +2471,7 @@ object Frontend {
             params {
                 text(
                     "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
-                    GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue
+                    "${GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue},${GwTestTriggerPaths.CORE.pathValue}"
                 )
             }
 
@@ -2751,21 +2702,6 @@ object Frontend {
 }
 
 object Server {
-    private val testKubernetesConfigFilesDev =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.DEV.envName,
-            GwTriggerPaths.SERVER_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesStaging =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.STAGING.envName,
-            GwTriggerPaths.SERVER_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesProd =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PROD.envName,
-            GwTriggerPaths.SERVER_KUBE.pathValue
-        )
     private val runCheckmarxScan =
         GwBuildTypes.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_DIR.paramValue)
     private val buildAndPublishDockerImageToDevEcrBuildType =
@@ -2794,9 +2730,6 @@ object Server {
             buildType(deployServerBuildTypeStaging)
             buildType(deployServerBuildTypeProd)
             buildType(runCheckmarxScan)
-            buildType(testKubernetesConfigFilesDev)
-            buildType(testKubernetesConfigFilesStaging)
-            buildType(testKubernetesConfigFilesProd)
             buildType(buildAndPublishDockerImageToDevEcrBuildType)
             buildType(publishDockerImageToProdEcrBuildType)
         }
@@ -2848,6 +2781,13 @@ object Server {
                 cleanCheckout = true
             }
 
+            params {
+                text(
+                    "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
+                    "${GwTestTriggerPaths.SERVER_KUBE.pathValue},${GwTestTriggerPaths.CORE.pathValue}"
+                )
+            }
+
             steps {
                 script {
                     name = "Deploy to Kubernetes"
@@ -2891,14 +2831,17 @@ object Server {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies.snapshot(TestDocPortalEverything) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+                reuseBuilds = ReuseBuilds.NO
+                synchronizeRevisions = true
+            }
         }
 
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
                 deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 deployServerBuildType.triggers.trigger(
@@ -2913,16 +2856,10 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
             }
 
             GwDeployEnvs.PROD.envName -> {
                 deployServerBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
