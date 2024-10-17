@@ -573,11 +573,13 @@ object GwBuildTypes {
                 deployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
                 deploymentFile = GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue
             }
+
             GwTriggerPaths.LANDING_PAGES_KUBE.pathValue, GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
                 deployEnvVars =
                     Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
                 deploymentFile = GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue
             }
+
             GwTriggerPaths.SERVER_KUBE.pathValue, GwTestTriggerPaths.SERVER_KUBE.pathValue -> {
                 deployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
                 deploymentFile = GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue
@@ -1399,6 +1401,15 @@ object TestEverythingHelpers {
 private object TestDocPortalEverything : BuildType({
     name = "Test Doc Portal Everything"
     id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+    params {
+        text(
+            TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.NORMAL
+        )
+    }
 
     vcs {
         root(GwVcsRoots.DocumentationPortalGitVcsRoot)

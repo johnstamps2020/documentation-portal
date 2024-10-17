@@ -11,6 +11,11 @@ console.log({
 
 function getChangedFilesEnvValue() {
   try {
+    const changedFilesEnvValue = process.env[changedFilesEnvName];
+    if (changedFilesEnvValue && changedFilesEnvValue.length > 0) {
+      return changedFilesEnvValue;
+    }
+
     if (teamcityTriggeredBy.includes('Git')) {
       const result = readFileSync(teamcityChangedFilesPath, {
         encoding: 'utf8',
