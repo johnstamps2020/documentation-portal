@@ -1463,26 +1463,6 @@ private object TestDocPortalEverything : BuildType({
 })
 
 object Content {
-    private val testKubernetesConfigFilesDev =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.DEV.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesStaging =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.STAGING.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesProd =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PROD.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesPortal2 =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PORTAL2.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
     val rootProject = createRootProjectForContent()
 
     private fun createRootProjectForContent(): Project {
@@ -1669,10 +1649,6 @@ object Content {
             ).forEach {
                 buildType(createDeployContentStorageBuildType(it.envName))
             }
-            buildType(testKubernetesConfigFilesDev)
-            buildType(testKubernetesConfigFilesStaging)
-            buildType(testKubernetesConfigFilesProd)
-            buildType(testKubernetesConfigFilesPortal2)
         }
     }
 
