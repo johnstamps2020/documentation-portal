@@ -27,21 +27,24 @@ function UpdatePreviewWarning() {
 }
 
 export async function addWarningBanners() {
-  if (window.docEarlyAccess || window.docUpdatePreview) {
-    const warningContainer = document.createElement('div');
-    warningContainer.classList.add('warningContainer');
-    const article = document.querySelector('article');
-    if (article) {
-      article.prepend(warningContainer);
-
-      const { createRoot } = await import('react-dom/client');
-      const root = createRoot(warningContainer);
-      root.render(
-        <>
-          {window.docEarlyAccess && <EarlyAccessWarning />}
-          {window.docUpdatePreview && <UpdatePreviewWarning />}
-        </>
-      );
-    }
+  if (!window.docEarlyAccess && !window.docUpdatePreview) {
+    return;
   }
+
+  const article = document.querySelector('article');
+  if (!article) {
+    return;
+  }
+  const warningContainer = document.createElement('div');
+  warningContainer.classList.add('warningContainer');
+  article.prepend(warningContainer);
+
+  const { createRoot } = await import('react-dom/client');
+  const root = createRoot(warningContainer);
+  root.render(
+    <>
+      {window.docEarlyAccess && <EarlyAccessWarning />}
+      {window.docUpdatePreview && <UpdatePreviewWarning />}
+    </>
+  );
 }
