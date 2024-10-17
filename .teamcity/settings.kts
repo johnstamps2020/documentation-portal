@@ -146,6 +146,7 @@ enum class GwTestTriggerPaths(val pathValue: String) {
     AWS_S3_KUBE("aws/s3/kube/"),
     LANDING_PAGES_KUBE("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/"),
     SERVER_KUBE("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/kube/"),
+    DB("db/")
 }
 
 enum class GwDocCrawlerOperationModes(val modeValue: String) {
@@ -622,6 +623,11 @@ object GwBuildSteps {
         return ScriptBuildStep {
             name = "Create Kubernetes resources in dry run $deployEnv $triggerPath"
             id = Helpers.createIdStringFromName(this.name)
+
+            conditions {
+                contains(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)
+            }
+
             scriptContent = """
                         #!/bin/bash 
                         set -e
@@ -857,48 +863,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.DOC_CRAWLER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createBuildHtml5DependenciesStep(): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Build HTML5 dependencies"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export EXIT_CODE=0
-                
-                yarn
-                yarn build:html5 || EXIT_CODE=${'$'}?
-                
-                exit ${'$'}EXIT_CODE
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--user 1000:1000"
-        }
-    }
-
-    fun createBuildHtml5OfflineDependenciesStep(): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Build HTML5 offline dependencies"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export EXIT_CODE=0
-                
-                yarn
-                yarn build:html5-offline || EXIT_CODE=${'$'}?
-                
-                exit ${'$'}EXIT_CODE
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--user 1000:1000"
         }
     }
 
@@ -1245,8 +1209,11 @@ object TestEverythingHelpers {
     })
 
     object TestReactLandingPages : NodeJSBuildStep({
-        name = "Build landing pages"
+        name = "Test landing pages"
         id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.LANDING_PAGES.pathValue)
+        }
         shellScript = """
                     yarn
                     CI=true yarn test:landing-pages
@@ -1258,6 +1225,9 @@ object TestEverythingHelpers {
     object TestServer : ScriptBuildStep({
         name = "Test the doc portal server"
         id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.SERVER.pathValue)
+        }
         scriptContent = """
                     #!/bin/sh
                     set -e
@@ -1297,13 +1267,87 @@ object TestEverythingHelpers {
         dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
     })
 
-    fun addTriggerConditionToStep(stepWithoutCondition: BuildStep, triggerPath: String): BuildStep {
-        return stepWithoutCondition.apply {
+    fun createTestDbDeploymentBuildType(deployEnv: String): ScriptBuildStep {
+        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+        val tfstateKey = "docportal/db/terraform.tfstate"
+        val s3Bucket = when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> "tenant-doctools-${GwDeployEnvs.DEV.envName}-terraform"
+            GwDeployEnvs.STAGING.envName -> "tenant-doctools-${GwDeployEnvs.STAGING.envName}-terraform"
+            GwDeployEnvs.PROD.envName -> "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
+            else -> ""
+        }
+
+        return ScriptBuildStep {
+            name = "Test Terraform config for DB $deployEnv"
+            id = Helpers.createIdStringFromName(this.name)
             conditions {
-                contains(CHANGED_FILES_ENV_VAR_NAME, triggerPath)
+                contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.DB.pathValue)
             }
+            scriptContent = """
+                #!/bin/bash
+                set -eux
+                
+                $awsEnvVars
+
+                cd db
+
+                terraform init \
+                    -backend-config="bucket=$s3Bucket" \
+                    -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
+                    -backend-config="key=$tfstateKey" \
+                    -input=false
+                terraform validate
+                """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_4_3_0.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
+
         }
     }
+
+    object TestHtml5DependenciesStep: ScriptBuildStep ({
+        name = "Build HTML5 dependencies"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.HTML5.pathValue)
+        }
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+            
+            export EXIT_CODE=0
+            
+            yarn
+            yarn build:html5 || EXIT_CODE=${'$'}?
+            
+            exit ${'$'}EXIT_CODE
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
+    })
+
+    object TestHtml5OfflineDependenciesStep: ScriptBuildStep ({
+        name = "Build HTML5 offline dependencies"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.HTML5.pathValue)
+        }
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+            
+            export EXIT_CODE=0
+            
+            yarn
+            yarn build:html5-offline || EXIT_CODE=${'$'}?
+            
+            exit ${'$'}EXIT_CODE
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
+    })
 
     private val kubernetesTestConfigs: List<Pair<String, String>> = listOf(
         Pair(
@@ -1349,10 +1393,7 @@ object TestEverythingHelpers {
     )
 
     val KubernetesTests: List<BuildStep> = kubernetesTestConfigs.map {
-        addTriggerConditionToStep(
-            GwBuildSteps.createTestKubernetesConfigFilesScriptBuildStep(it.first, it.second),
-            it.second
-        )
+        GwBuildSteps.createTestKubernetesConfigFilesScriptBuildStep(it.first, it.second)
     }
 }
 
@@ -1380,32 +1421,15 @@ private object TestDocPortalEverything : BuildType({
         step(TestEverythingHelpers.TestSettingsKts)
         step(TestEverythingHelpers.BuildDoctoolsCore)
         step(TestEverythingHelpers.TestDoctoolsCore)
-        step(
-            TestEverythingHelpers.addTriggerConditionToStep(
-                stepWithoutCondition = TestEverythingHelpers.TestReactLandingPages,
-                triggerPath = GwTestTriggerPaths.LANDING_PAGES.pathValue
-            )
-        )
-        step(
-            TestEverythingHelpers.addTriggerConditionToStep(
-                stepWithoutCondition = TestEverythingHelpers.TestServer,
-                triggerPath = GwTestTriggerPaths.SERVER.pathValue
-            )
-        )
-        step(
-            TestEverythingHelpers.addTriggerConditionToStep(
-                stepWithoutCondition = GwBuildSteps.createBuildHtml5DependenciesStep(),
-                triggerPath = GwTestTriggerPaths.HTML5.pathValue
-            )
-        )
-        step(
-            TestEverythingHelpers.addTriggerConditionToStep(
-                stepWithoutCondition = GwBuildSteps.createBuildHtml5OfflineDependenciesStep(),
-                triggerPath = GwTestTriggerPaths.HTML5.pathValue
-            )
-        )
+        step(TestEverythingHelpers.TestReactLandingPages)
+        step(TestEverythingHelpers.TestServer)
+        step(TestEverythingHelpers.TestHtml5DependenciesStep)
+        step(TestEverythingHelpers.TestHtml5OfflineDependenciesStep)
         TestEverythingHelpers.KubernetesTests.map {
             step(it)
+        }
+        listOf(GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD).map {
+            TestEverythingHelpers.createTestDbDeploymentBuildType(it.envName)
         }
     }
 
@@ -1814,10 +1838,6 @@ object Database {
         AbsoluteId(ABSOLUTE_ID_PREFIX + Helpers.md5("Test ${GwConfigTypes.SOURCES.typeName} config files"))
     private val testConfigBuildsBuildType =
         AbsoluteId(ABSOLUTE_ID_PREFIX + Helpers.md5("Test ${GwConfigTypes.BUILDS.typeName} config files"))
-    private val validateDbDeploymentBuildTypeDev = createValidateDbDeploymentBuildType(GwDeployEnvs.DEV.envName)
-    private val validateDbDeploymentBuildTypeStaging =
-        createValidateDbDeploymentBuildType(GwDeployEnvs.STAGING.envName)
-    private val validateDbDeploymentBuildTypeProd = createValidateDbDeploymentBuildType(GwDeployEnvs.PROD.envName)
     val deployDbBuildTypeDev = createDeployDbBuildType(GwDeployEnvs.DEV.envName)
     val deployDbBuildTypeStaging = createDeployDbBuildType(GwDeployEnvs.STAGING.envName)
     val deployDbBuildTypeProd = createDeployDbBuildType(GwDeployEnvs.PROD.envName)
@@ -1836,78 +1856,7 @@ object Database {
             listOf(GwDeployEnvs.DEV, GwDeployEnvs.PROD).forEach {
                 buildType(createRestoreDbDataBuildType(it.envName))
             }
-            buildType(validateDbDeploymentBuildTypeDev)
-            buildType(validateDbDeploymentBuildTypeStaging)
-            buildType(validateDbDeploymentBuildTypeProd)
         }
-    }
-
-    private fun createValidateDbDeploymentBuildType(deployEnv: String): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val tfstateKey = "docportal/db/terraform.tfstate"
-        val s3Bucket = when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> "tenant-doctools-${GwDeployEnvs.DEV.envName}-terraform"
-            GwDeployEnvs.STAGING.envName -> "tenant-doctools-${GwDeployEnvs.STAGING.envName}-terraform"
-            GwDeployEnvs.PROD.envName -> "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
-            else -> ""
-        }
-        val validateDbDeploymentBuildType = BuildType {
-            name = "Validate database deployment to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Validate Terraform config for db"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                    #!/bin/bash
-                    set -eux
-                    
-                    $awsEnvVars
-
-                    cd db
-
-                    terraform init \
-                        -backend-config="bucket=$s3Bucket" \
-                        -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -backend-config="key=$tfstateKey" \
-                        -input=false
-                    terraform validate
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_4_3_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
-
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.GwSshAgentBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-            }
-        }
-
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                validateDbDeploymentBuildType.triggers.trigger(
-                    GwVcsTriggers.createGitVcsTrigger(
-                        GwVcsRoots.DocumentationPortalGitVcsRoot,
-                        listOf(
-                            GwTriggerPaths.DB.pathValue
-                        )
-                    )
-                )
-            }
-        }
-
-        return validateDbDeploymentBuildType
     }
 
     private fun createDeployDbBuildType(deployEnv: String): BuildType {
@@ -1957,6 +1906,13 @@ object Database {
                 cleanCheckout = true
             }
 
+            params {
+                text(
+                    "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
+                    GwTestTriggerPaths.DB.pathValue
+                )
+            }
+
             steps {
                 script {
                     name = "Deploy db with Terraform"
@@ -1995,13 +1951,16 @@ object Database {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.GwSshAgentBuildFeature)
             }
+
+            dependencies.snapshot(TestDocPortalEverything) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+                reuseBuilds = ReuseBuilds.NO
+                synchronizeRevisions = true
+            }
         }
 
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
                 deployDatabaseBuildType.triggers.trigger(
                     GwVcsTriggers.createGitVcsTrigger(
                         GwVcsRoots.DocumentationPortalGitVcsRoot,
@@ -2010,20 +1969,6 @@ object Database {
                         )
                     )
                 )
-            }
-
-            GwDeployEnvs.STAGING.envName -> {
-                deployDatabaseBuildType.dependencies.snapshot(
-                    validateDbDeploymentBuildTypeStaging
-                ) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeProd) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
             }
         }
 
@@ -2602,7 +2547,24 @@ object Frontend {
             val outputDir = "%teamcity.build.checkoutDir%/html5/static/html5"
 
             steps {
-                step(GwBuildSteps.createBuildHtml5DependenciesStep())
+                script {
+                    name = "Build HTML5 dependencies"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        export EXIT_CODE=0
+                        
+                        yarn
+                        yarn build:html5 || EXIT_CODE=${'$'}?
+                        
+                        exit ${'$'}EXIT_CODE
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "--user 1000:1000"
+                }
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
                         deployEnv, GwStaticFilesModes.HTML5.modeName, outputDir
@@ -2638,7 +2600,24 @@ object Frontend {
             }
 
             steps {
-                step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
+                script {
+                    name = "Build HTML5 offline dependencies"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        export EXIT_CODE=0
+                        
+                        yarn
+                        yarn build:html5-offline || EXIT_CODE=${'$'}?
+                        
+                        exit ${'$'}EXIT_CODE
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "--user 1000:1000"
+                }
                 step(GwBuildSteps.createDeployHtml5OfflineDependenciesStep("%teamcity.build.checkoutDir%/$ditaOutPluginsCheckoutDir"))
             }
 
