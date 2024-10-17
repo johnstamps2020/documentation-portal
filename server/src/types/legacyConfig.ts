@@ -67,6 +67,7 @@ export type LegacyDocConfig = {
   ignorePublicPropertyAndUseVariants?: boolean;
   internal: boolean;
   earlyAccess: boolean;
+  updatePreview?: boolean;
 };
 
 export type LegacyBuildResource = {

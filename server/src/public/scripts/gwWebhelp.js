@@ -12,6 +12,7 @@ let docTitle = undefined;
 let docSubject = undefined;
 let docInternal = undefined;
 let docEarlyAccess = undefined;
+let docUpdatePreview = undefined;
 let docRelease = undefined;
 let docLanguage = 'en';
 
@@ -31,6 +32,7 @@ async function fetchMetadata() {
         docTitle = docInfo.docTitle;
         docInternal = docInfo.docInternal;
         docEarlyAccess = docInfo.docEarlyAccess;
+        docUpdatePreview = docInfo.docUpdatePreview;
         docProduct = docInfo.docProducts || docProduct;
         docVersion = docInfo.docVersions || docVersion;
         docPlatform = docInfo.docPlatforms || docPlatform;
@@ -102,16 +104,32 @@ function addInternalBadge() {
   }
 }
 
-function addEarlyAccessMark() {
+function addWarningBanners() {
+  if (!docEarlyAccess && !docUpdatePreview) {
+    return;
+  }
+  const article = document.querySelector('article');
+  if (!article) {
+    return;
+  }
+  const warningContainer = document.createElement('div');
+  warningContainer.classList.add('warningContainer');
+  article.prepend(warningContainer);
+
   if (docEarlyAccess) {
-    const warningContainer = document.createElement('div');
-    const article = document.querySelector('article');
     const earlyAccessWarning = document.createElement('div');
     earlyAccessWarning.classList.add('earlyAccessWarning');
     earlyAccessWarning.innerHTML =
       'This functionality is available only to customers who have signed up for our Early Access (EA) program. Talk to your Guidewire representative to learn more about our eligibility criteria for EA programs. Note that EA capabilities may or may not become part of our future offerings.';
     warningContainer.append(earlyAccessWarning);
-    article.prepend(warningContainer);
+  }
+
+  if (docUpdatePreview) {
+    const updatePreviewWarning = document.createElement('div');
+    updatePreviewWarning.classList.add('updatePreviewWarning');
+    updatePreviewWarning.innerHTML =
+      'These release notes are being shared as part of our Update Preview program, which helps you start planning updates before GA. The Update Preview is not a binding commitment to deliver any specific functionality, and note that Guidewire might make functional updates, resolve issues, or adjust the contents of the release through the GA date. Please review the latest release notes and Documentation at GA to make sure you have the latest product functionality.';
+    warningContainer.append(updatePreviewWarning);
   }
 }
 
@@ -340,7 +358,7 @@ async function addCustomElements() {
   const customHeaderElements = document.getElementById('customHeaderElements');
   if (customHeaderElements != null) {
     addInternalBadge();
-    addEarlyAccessMark();
+    addWarningBanners();
     await createVersionSelector();
     await addAvatar();
     customHeaderElements.classList.remove('invisible');

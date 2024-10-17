@@ -10,6 +10,8 @@ declare global {
     docTitle: string;
     docDisplayTitle: string;
     docLanguage: string;
+    docEarlyAccess: boolean;
+    docUpdatePreview: boolean;
     userInformation: UserInformation;
     matchingVersionSelector: VersionSelectorObject;
   }
