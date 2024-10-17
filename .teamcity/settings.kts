@@ -409,7 +409,8 @@ object GwBuildTypes {
         tagVersion: String,
         devDockerImageUrl: String,
         dockerfileName: String,
-        snapshotDependencies: List<BuildType>,
+        checkmarxScanBuildType: BuildType,
+        testBuildTriggerPaths: String
     ): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         return BuildType {
@@ -420,6 +421,13 @@ object GwBuildTypes {
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
+            }
+
+            params {
+                text(
+                    "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
+                    testBuildTriggerPaths
+                )
             }
 
             steps {
@@ -458,10 +466,13 @@ object GwBuildTypes {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
             dependencies {
-                snapshotDependencies.forEach {
-                    snapshot(it) {
-                        onDependencyFailure = FailureAction.FAIL_TO_START
-                    }
+                snapshot(checkmarxScanBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(TestDocPortalEverything) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                    reuseBuilds = ReuseBuilds.NO
+                    synchronizeRevisions = true
                 }
             }
         }
@@ -2380,7 +2391,8 @@ object Frontend {
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
             GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
             "Dockerfile",
-            listOf(runCheckmarxScan, TestReactLandingPagesBuildType)
+            runCheckmarxScan,
+            "${GwTestTriggerPaths.LANDING_PAGES.pathValue},${GwTestTriggerPaths.CORE.pathValue}"
         )
     private val publishDockerImageToProdEcrBuildType = GwBuildTypes.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -2445,7 +2457,6 @@ object Frontend {
             buildType(deployReactLandingPagesBuildTypeStaging)
             buildType(deployReactLandingPagesBuildTypeProd)
             buildType(runCheckmarxScan)
-            buildType(TestReactLandingPagesBuildType)
             buildType(buildAndPublishDockerImageToDevEcrBuildType)
             buildType(publishDockerImageToProdEcrBuildType)
         }
@@ -2466,13 +2477,6 @@ object Frontend {
                     GwVcsRoots.DocumentationPortalGitVcsRoot,
                 )
                 cleanCheckout = true
-            }
-
-            params {
-                text(
-                    "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
-                    "${GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue},${GwTestTriggerPaths.CORE.pathValue}"
-                )
             }
 
             steps {
@@ -2515,12 +2519,6 @@ object Frontend {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            dependencies.snapshot(TestDocPortalEverything) {
-                onDependencyFailure = FailureAction.FAIL_TO_START
-                reuseBuilds = ReuseBuilds.NO
-                synchronizeRevisions = true
-            }
         }
 
         when (deployEnv) {
@@ -2556,46 +2554,6 @@ object Frontend {
 
         return deployReactLandingPagesBuildType
     }
-
-    private object TestReactLandingPagesBuildType : BuildType({
-        name = "Test React landing pages"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(
-                GwVcsRoots.DocumentationPortalGitVcsRoot
-            )
-            cleanCheckout = true
-        }
-
-        steps {
-            TestEverythingHelpers.TestReactLandingPages
-        }
-
-        features {
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createGitVcsTrigger(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot,
-                    listOf(
-                        GwTriggerPaths.LANDING_PAGES.pathValue,
-                        GwTriggerPaths.SHIMS.pathValue,
-                        GwTriggerPaths.SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
-                        GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
-                        GwTriggerPaths.SERVER_SRC_TYPES.pathValue
-                    ),
-                    listOf(
-                        GwTriggerPaths.LANDING_PAGES_KUBE.pathValue,
-                    )
-                )
-            )
-        }
-    })
 
     private fun createPublishNpmPackageBuildType(packageHandle: String, packagePath: String): BuildType {
         return BuildType {
@@ -2709,7 +2667,8 @@ object Server {
             GwDockerImageTags.DOC_PORTAL.tagValue,
             GwDockerImages.DOC_PORTAL.imageUrl,
             "Dockerfile.server",
-            listOf(runCheckmarxScan, TestDocSiteServerApp)
+            runCheckmarxScan,
+            "${GwTestTriggerPaths.SERVER.pathValue},${GwTestTriggerPaths.CORE.pathValue}"
         )
     private val publishDockerImageToProdEcrBuildType = GwBuildTypes.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL.tagValue,
@@ -2735,36 +2694,6 @@ object Server {
         }
     }
 
-    private object TestDocSiteServerApp : BuildType({
-        name = "Test doc site server app"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            TestEverythingHelpers.TestServer
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createGitVcsTrigger(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot,
-                    listOf(GwTriggerPaths.SERVER.pathValue),
-                    listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
-                )
-            )
-        }
-    })
-
     private fun createDeployServerBuildType(deployEnv: String): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         val gatewayConfigFile = Helpers.getServerGatewayConfigFile(deployEnv)
@@ -2779,13 +2708,6 @@ object Server {
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
-            }
-
-            params {
-                text(
-                    "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
-                    "${GwTestTriggerPaths.SERVER_KUBE.pathValue},${GwTestTriggerPaths.CORE.pathValue}"
-                )
             }
 
             steps {
@@ -2831,12 +2753,6 @@ object Server {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            dependencies.snapshot(TestDocPortalEverything) {
-                onDependencyFailure = FailureAction.FAIL_TO_START
-                reuseBuilds = ReuseBuilds.NO
-                synchronizeRevisions = true
-            }
         }
 
         when (deployEnv) {
