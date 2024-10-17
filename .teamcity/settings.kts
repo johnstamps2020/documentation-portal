@@ -561,6 +561,72 @@ object GwBuildTypes {
         }
     }
 
+    fun createTestKubernetesConfigFilesBuildType(deployEnv: String, triggerPath: String): BuildType {
+        var buildName = ""
+
+        when (triggerPath) {
+            GwTriggerPaths.AWS_S3_KUBE.pathValue -> {
+                buildName = "Test Kubernetes config files for content storage on $deployEnv"
+            }
+
+            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
+                buildName = "Test Kubernetes config files for React landing pages on $deployEnv"
+            }
+
+            GwTriggerPaths.SERVER_KUBE.pathValue -> {
+                buildName = "Test Kubernetes config files for server on $deployEnv"
+            }
+        }
+        return BuildType {
+            name = buildName
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                step(GwBuildSteps.createTestKubernetesConfigFilesScriptBuildStep(deployEnv, triggerPath))
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+            }
+
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    triggers.trigger(
+                        GwVcsTriggers.createGitVcsTrigger(
+                            GwVcsRoots.DocumentationPortalGitVcsRoot,
+                            listOf(triggerPath)
+                        )
+                    )
+                }
+            }
+        }
+
+    }
+}
+
+object GwBuildSteps {
+    object MergeAllLegacyConfigsStep : ScriptBuildStep({
+        name = "Merge all config files"
+        id = Helpers.createIdStringFromName(this.name)
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+
+            config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
+            config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
+            config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
+        """.trimIndent()
+        dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
+        dockerImagePlatform = ImagePlatform.Linux
+    })
+
     fun createTestKubernetesConfigFilesScriptBuildStep(deployEnv: String, triggerPath: String): ScriptBuildStep {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         var deployEnvVars = ""
@@ -618,72 +684,6 @@ object GwBuildTypes {
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
         }
     }
-
-    fun createTestKubernetesConfigFilesBuildType(deployEnv: String, triggerPath: String): BuildType {
-        var buildName = ""
-
-        when (triggerPath) {
-            GwTriggerPaths.AWS_S3_KUBE.pathValue -> {
-                buildName = "Test Kubernetes config files for content storage on $deployEnv"
-            }
-
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
-                buildName = "Test Kubernetes config files for React landing pages on $deployEnv"
-            }
-
-            GwTriggerPaths.SERVER_KUBE.pathValue -> {
-                buildName = "Test Kubernetes config files for server on $deployEnv"
-            }
-        }
-        return BuildType {
-            name = buildName
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                step(createTestKubernetesConfigFilesScriptBuildStep(deployEnv, triggerPath))
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-            }
-
-            when (deployEnv) {
-                GwDeployEnvs.DEV.envName -> {
-                    triggers.trigger(
-                        GwVcsTriggers.createGitVcsTrigger(
-                            GwVcsRoots.DocumentationPortalGitVcsRoot,
-                            listOf(triggerPath)
-                        )
-                    )
-                }
-            }
-        }
-
-    }
-}
-
-object GwBuildSteps {
-    object MergeAllLegacyConfigsStep : ScriptBuildStep({
-        name = "Merge all config files"
-        id = Helpers.createIdStringFromName(this.name)
-        scriptContent = """
-            #!/bin/bash
-            set -xe
-
-            config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
-            config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
-            config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
-        """.trimIndent()
-        dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
-        dockerImagePlatform = ImagePlatform.Linux
-    })
 
     fun createCheckPodsStatusStep(envVars: String, deployEnv: String, appName: String): ScriptBuildStep {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
@@ -1392,7 +1392,7 @@ object TestEverythingHelpers {
 
     val KubernetesTests: List<BuildStep> = kubernetesTestConfigs.map {
         addTriggerConditionToStep(
-            GwBuildTypes.createTestKubernetesConfigFilesScriptBuildStep(it.first, it.second),
+            GwBuildSteps.createTestKubernetesConfigFilesScriptBuildStep(it.first, it.second),
             it.second
         )
     }
