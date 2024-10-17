@@ -11,7 +11,10 @@ console.log({
 
 function getChangedFilesEnvValue() {
   try {
-    const changedFilesEnvValue = process.env[changedFilesEnvName];
+    const changedFilesEnvValue = process.env[changedFilesEnvName.split('.')[1]];
+    console.log(
+      `In this build, ${changedFilesEnvName}: ${changedFilesEnvValue}`
+    );
     if (changedFilesEnvValue && changedFilesEnvValue.length > 0) {
       return changedFilesEnvValue;
     }
