@@ -1253,7 +1253,7 @@ object TestEverythingHelpers {
             
             node ci/buildConditions/evaluateBuildConditions.mjs "$CHANGED_FILES_ENV_VAR_NAME"
             
-            echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value ${'$'}CHANGED_FILES"
+            echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value %$CHANGED_FILES_ENV_VAR_NAME%"
         """.trimIndent()
         dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
