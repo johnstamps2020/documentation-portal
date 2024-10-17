@@ -16,7 +16,7 @@ spec:
   type: ExternalName
   externalName: ${SERVICE_EXTERNAL_NAME}
   ports:
-    - port: 80
+    - port: 81
       protocol: TCP
       targetPort: 80
 ---
