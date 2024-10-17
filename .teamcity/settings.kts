@@ -1690,6 +1690,13 @@ object Content {
                 cleanCheckout = true
             }
 
+            params {
+                text(
+                    "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
+                    "aws/s3/kube/"
+                )
+            }
+
             steps {
                 script {
                     name = "Deploy to Kubernetes"
@@ -1724,36 +1731,21 @@ object Content {
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             }
+
+            dependencies.snapshot(TestDocPortalEverything) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+                reuseBuilds = ReuseBuilds.NO
+                synchronizeRevisions = true
+            }
         }
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
                 deployContentStorageBuildType.triggers.trigger(
                     GwVcsTriggers.createGitVcsTrigger(
                         GwVcsRoots.DocumentationPortalGitVcsRoot,
                         listOf(GwTriggerPaths.AWS_S3_KUBE.pathValue)
                     )
                 )
-            }
-
-            GwDeployEnvs.STAGING.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PORTAL2.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesPortal2) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
             }
         }
 
