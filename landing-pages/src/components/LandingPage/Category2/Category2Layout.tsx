@@ -4,9 +4,13 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
 import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
-import { LandingPageLayoutProps } from 'components/LandingPage/LandingPageTypes';
+import {
+  LandingPageItemProps,
+  LandingPageLayoutProps,
+} from 'components/LandingPage/LandingPageTypes';
 import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import WhatsNew, { WhatsNewProps } from 'components/LandingPage/WhatsNew';
+import WhatsNext, { WhatsNextProps } from 'components/LandingPage/WhatsNext';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
 import { useLandingPageItemsImmutable } from 'hooks/useLandingPageItemsImmutable';
 import { usePageData } from 'hooks/usePageData';
@@ -21,28 +25,41 @@ import Category2Sidebar from './Category2Sidebar';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
   cards: Category2CardProps[];
+  headerText?: string;
+  subHeaderText?: string;
   selector?: LandingPageSelectorInContextProps;
-  whatsNew: WhatsNewProps;
+  whatsNext?: WhatsNextProps;
+  whatsNew?: WhatsNewProps;
   isRelease?: boolean;
 };
 
 export default function Category2Layout({
   backgroundProps,
+  headerText,
+  subHeaderText,
   sidebar,
   cards,
   selector,
+  whatsNext,
   whatsNew,
   isRelease,
 }: Category2LayoutProps) {
+  const headText = headerText || 'Welcome to Guidewire Documentation';
+  const subHeadText =
+    subHeaderText ||
+    'Find guides, API references, tutorials, and more to help you implement, adopt, and use Guidewire applications and services.';
+
   const selectorItems = selector?.items || [];
   const sidebarItems = sidebar?.items || [];
   const cardItems = cards.map((card) => card.items).flat();
   const allPageItems = [
     ...cardItems,
-    whatsNew.item,
+    whatsNext?.item,
+    whatsNew?.item,
     ...selectorItems,
     ...sidebarItems,
-  ];
+  ].filter((item): item is LandingPageItemProps => item !== undefined);
+
   const { pageData } = usePageData();
   const { landingPageItems } = useLandingPageItemsImmutable(allPageItems);
 
@@ -65,6 +82,7 @@ export default function Category2Layout({
   const leftSizing = {
     width: { xs: '100%', sm: leftWidth },
     minWidth: { xs: '100%', sm: leftWidth },
+    gap: 16,
   };
 
   return (
@@ -111,14 +129,18 @@ export default function Category2Layout({
                   variant="h1"
                   sx={{ ...variableColor, fontWeight: 600, fontSize: '2em' }}
                 >
-                  Welcome to Guidewire Documentation
+                  {headText}
                 </Typography>
                 <Typography
                   variant="h2"
-                  sx={{ ...variableColor, fontSize: '14px', marginTop: '8px' }}
+                  sx={{
+                    ...variableColor,
+                    fontSize: '14px',
+                    marginTop: '8px',
+                    maxWidth: '105ch',
+                  }}
                 >
-                  Find guides, API references, tutorials, and more to help you
-                  implement, adopt, and use Guidewire applications and services.
+                  {subHeadText}
                 </Typography>
                 <NotLoggedInInfo
                   styles={{
@@ -131,8 +153,9 @@ export default function Category2Layout({
               </Grid>
             </Grid>
             <Grid {...rowContainerProps}>
-              <Grid sx={leftSizing}>
-                <WhatsNew {...whatsNew} />
+              <Grid container sx={{ ...leftSizing, gap: '32px' }}>
+                {whatsNext && <WhatsNext {...whatsNext} />}
+                {whatsNew && <WhatsNew {...whatsNew} />}
               </Grid>
               <Stack marginRight="auto" gap="2rem" flexWrap="wrap">
                 <Grid container direction="row" gap="56px">

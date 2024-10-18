@@ -33,8 +33,8 @@ export function LandingPageButton({
   if (landingPageItem?.path) {
     return (
       <Button
-        LinkComponent={RouterLink}
-        href={`/${landingPageItem.path}`}
+        component={RouterLink}
+        to={`/${landingPageItem.path}`}
         variant={variant}
         sx={sx}
       >
