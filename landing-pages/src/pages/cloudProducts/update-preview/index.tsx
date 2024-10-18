@@ -29,17 +29,12 @@ const pageConfig: Category2LayoutProps = {
 
   cards: [
     {
-      label: 'InsuranceSuite',
+      label: 'Prerelease Release Notes',
       items: [
         {
-          label: 'Prerelease Release Notes',
+          label: 'InsuranceSuite',
           docId: 'isrnlatestpreview',
         },
-      ],
-    },
-    {
-      label: 'Digital Reference Applications',
-      items: [
         {
           label: 'CustomerEngage Account Management',
           docId: 'dx202411ceamrelnotes',
