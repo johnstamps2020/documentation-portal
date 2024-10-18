@@ -63,6 +63,7 @@ import { Route as L10nFrFRIndexImport } from './pages/l10n/fr-FR/index'
 import { Route as L10nEsESIndexImport } from './pages/l10n/es-ES/index'
 import { Route as L10nEs419IndexImport } from './pages/l10n/es-419/index'
 import { Route as L10nDeDEIndexImport } from './pages/l10n/de-DE/index'
+import { Route as CloudProductsUpdatePreviewIndexImport } from './pages/cloudProducts/update-preview/index'
 import { Route as CloudProductsLaslenasIndexImport } from './pages/cloudProducts/laslenas/index'
 import { Route as CloudProductsKufriIndexImport } from './pages/cloudProducts/kufri/index'
 import { Route as CloudProductsJasperIndexImport } from './pages/cloudProducts/jasper/index'
@@ -545,6 +546,12 @@ const L10nDeDEIndexRoute = L10nDeDEIndexImport.update({
   path: '/l10n/de-DE/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const CloudProductsUpdatePreviewIndexRoute =
+  CloudProductsUpdatePreviewIndexImport.update({
+    path: '/cloudProducts/update-preview/',
+    getParentRoute: () => rootRoute,
+  } as any)
 
 const CloudProductsLaslenasIndexRoute = CloudProductsLaslenasIndexImport.update(
   {
@@ -3202,6 +3209,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CloudProductsLaslenasIndexImport
       parentRoute: typeof rootRoute
     }
+    '/cloudProducts/update-preview/': {
+      id: '/cloudProducts/update-preview/'
+      path: '/cloudProducts/update-preview'
+      fullPath: '/cloudProducts/update-preview'
+      preLoaderRoute: typeof CloudProductsUpdatePreviewIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/l10n/de-DE/': {
       id: '/l10n/de-DE/'
       path: '/l10n/de-DE'
@@ -3716,6 +3730,7 @@ export const routeTree = rootRoute.addChildren({
   CloudProductsJasperIndexRoute,
   CloudProductsKufriIndexRoute,
   CloudProductsLaslenasIndexRoute,
+  CloudProductsUpdatePreviewIndexRoute,
   L10nDeDEIndexRoute,
   L10nEs419IndexRoute,
   L10nEsESIndexRoute,
@@ -3977,6 +3992,7 @@ export const routeTree = rootRoute.addChildren({
         "/cloudProducts/jasper/",
         "/cloudProducts/kufri/",
         "/cloudProducts/laslenas/",
+        "/cloudProducts/update-preview/",
         "/l10n/de-DE/",
         "/l10n/es-419/",
         "/l10n/es-ES/",
@@ -4701,6 +4717,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/cloudProducts/laslenas/": {
       "filePath": "cloudProducts/laslenas/index.tsx"
+    },
+    "/cloudProducts/update-preview/": {
+      "filePath": "cloudProducts/update-preview/index.tsx"
     },
     "/l10n/de-DE/": {
       "filePath": "l10n/de-DE/index.tsx"

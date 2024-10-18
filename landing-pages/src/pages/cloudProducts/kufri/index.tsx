@@ -191,6 +191,13 @@ const pageConfig: Category2LayoutProps = {
       ],
     },
   ],
+  whatsNext: {
+    label: 'Las Leñas',
+    item: {
+      label: 'Learn more',
+      pagePath: 'cloudProducts/update-preview',
+    },
+  },
   whatsNew: {
     label: 'Kufri',
     badge: skiReleaseBadge,
