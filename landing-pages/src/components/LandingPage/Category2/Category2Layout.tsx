@@ -82,7 +82,6 @@ export default function Category2Layout({
   const leftSizing = {
     width: { xs: '100%', sm: leftWidth },
     minWidth: { xs: '100%', sm: leftWidth },
-    gap: 16,
   };
 
   return (
