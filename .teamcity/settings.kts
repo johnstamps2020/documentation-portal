@@ -132,7 +132,6 @@ enum class GwTriggerPaths(val pathValue: String) {
     SERVER_SRC_TYPES("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/src/types/**"),
     SUBDIRS_PACKAGE_JSON("**/package.json"),
     SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS("scripts/src/pages/getRootBreadcrumbs.ts"),
-    SHIMS("shims/**"),
     TEAMCITY_CONFIG(".teamcity/config/**"),
     YARN_LOCK("yarn.lock"),
 }

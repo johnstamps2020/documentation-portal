@@ -4900,7 +4900,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-error-boundary: "npm:^4.0.10"
-    react-native-sqlite-storage: "file:../shims/react-native-sqlite-storage"
+    react-native-sqlite-storage: "file:./shims/react-native-sqlite-storage"
     swr: "npm:^2.0.3"
     tinycolor2: "npm:^1.6.0"
     typescript: "npm:^5.5.3"
@@ -22826,9 +22826,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-sqlite-storage@file:../shims/react-native-sqlite-storage::locator=%40doctools%2Flanding-pages%40workspace%3Alanding-pages":
+"react-native-sqlite-storage@file:./shims/react-native-sqlite-storage::locator=%40doctools%2Flanding-pages%40workspace%3Alanding-pages":
   version: 0.0.0
-  resolution: "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage#../shims/react-native-sqlite-storage::hash=14ef99&locator=%40doctools%2Flanding-pages%40workspace%3Alanding-pages"
+  resolution: "react-native-sqlite-storage@file:./shims/react-native-sqlite-storage#./shims/react-native-sqlite-storage::hash=14ef99&locator=%40doctools%2Flanding-pages%40workspace%3Alanding-pages"
   checksum: 10/ad1117bf779237f70331987a15467f34c31e4d9c844ddc6e717a3a71b787f51cc4b00462b1841c2536d15c3b07b0f92c7a81be3f0064b7be8d30b23ee90729ae
   languageName: node
   linkType: hard
