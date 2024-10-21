@@ -1139,8 +1139,10 @@ object TestEverythingHelpers {
         yarn
         yarn prettier
         
-        if [[ -n "${'$'}(git status --porcelain)" ]]; then
-            echo "Running Prettier would have updated your code. Run `yarn prettier` locally and commit your changes."
+        status_output="${'$'}(git status --porcelain)"
+
+        if [[ -n "${'$'}status_output" ]]; then
+            echo "Running Prettier would have updated your code. Run yarn prettier locally and commit your changes."
             exit 1
         else
             echo "Test successful! Running Prettier does not change the code."
