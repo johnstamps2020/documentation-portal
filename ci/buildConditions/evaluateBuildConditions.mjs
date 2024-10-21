@@ -13,7 +13,9 @@ function getChangedFilesEnvValue() {
   try {
     const changedFilesEnvValue = process.env[changedFilesEnvName.split('.')[1]];
     console.log(
-      `In this build, ${changedFilesEnvName}: ${changedFilesEnvValue}`
+      `In this build, ${changedFilesEnvName}: ${
+        changedFilesEnvValue || 'THIS VALUE IS INTENTIONALLY LEFT EMPTY'
+      }`
     );
     if (changedFilesEnvValue && changedFilesEnvValue.length > 0) {
       return changedFilesEnvValue;
