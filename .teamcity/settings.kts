@@ -1134,7 +1134,7 @@ object TestEverythingHelpers {
 
         scriptContent = """
         #!/bin/bash 
-        set -e
+        set -xe
         
         yarn
         yarn prettier
