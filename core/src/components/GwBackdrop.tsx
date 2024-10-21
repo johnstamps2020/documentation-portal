@@ -12,7 +12,7 @@ export default function GwBackdrop({ open }: GwBackdropProps) {
       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
       open={open}
     >
-      <CircularProgress color="inherit" />
+<CircularProgress color="inherit" />
     </Backdrop>
   );
 }
