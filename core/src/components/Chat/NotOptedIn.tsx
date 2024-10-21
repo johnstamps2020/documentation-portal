@@ -8,7 +8,7 @@ import { TermsAndConditionsDialogBox } from './TermsAndConditionsDialogBox';
 
 export function NotOptedIn() {
   const [open, setOpen] = useState(false);
-  
+
   const aiConsented = useConsentStore((state) => state.aiConsented);
 
   if (aiConsented) {

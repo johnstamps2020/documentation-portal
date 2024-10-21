@@ -8,3487 +8,3487 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './pages/__root'
-import { Route as SupportImport } from './pages/support'
-import { Route as SearchResultsImport } from './pages/search-results'
-import { Route as LobsImport } from './pages/lobs'
-import { Route as InternalImport } from './pages/internal'
-import { Route as GwLoginImport } from './pages/gw-login'
-import { Route as ForbiddenImport } from './pages/forbidden'
-import { Route as DeltaDocImport } from './pages/delta-doc'
-import { Route as ChatbotFeedbackImport } from './pages/chatbot-feedback'
-import { Route as ChatImport } from './pages/chat'
-import { Route as AdminPanelImport } from './pages/admin-panel'
-import { Route as IndexImport } from './pages/index'
-import { Route as SelfManagedProductsIndexImport } from './pages/selfManagedProducts/index'
-import { Route as L10nIndexImport } from './pages/l10n/index'
-import { Route as TestingFrameworkLaslenasImport } from './pages/testingFramework/laslenas'
-import { Route as TestingFrameworkKufriImport } from './pages/testingFramework/kufri'
-import { Route as TestingFrameworkJasperImport } from './pages/testingFramework/jasper'
-import { Route as TestingFrameworkInnsbruckImport } from './pages/testingFramework/innsbruck'
-import { Route as TestingFrameworkHakubaImport } from './pages/testingFramework/hakuba'
-import { Route as TestingFrameworkGarmischImport } from './pages/testingFramework/garmisch'
-import { Route as TestingFrameworkFlaineImport } from './pages/testingFramework/flaine'
-import { Route as TestingFrameworkElysianImport } from './pages/testingFramework/elysian'
-import { Route as JutroDesignSystemVersionImport } from './pages/jutroDesignSystem/$version'
-import { Route as GlobalContentSbtImport } from './pages/globalContent/sbt'
-import { Route as CloudProductsMigrationToolsImport } from './pages/cloudProducts/migrationTools'
-import { Route as CloudProductsGuidewireCloudPlatformImport } from './pages/cloudProducts/guidewireCloudPlatform'
-import { Route as CloudProductsDataPlatformImport } from './pages/cloudProducts/dataPlatform'
-import { Route as CloudProductsCyenceImport } from './pages/cloudProducts/cyence'
-import { Route as CloudProductsAutopilotworkflowserviceImport } from './pages/cloudProducts/autopilotworkflowservice'
-import { Route as CloudProductsAppEventsImport } from './pages/cloudProducts/appEvents'
-import { Route as ApiReferencesLaslenasImport } from './pages/apiReferences/laslenas'
-import { Route as ApiReferencesKufriImport } from './pages/apiReferences/kufri'
-import { Route as ApiReferencesJasperImport } from './pages/apiReferences/jasper'
-import { Route as ApiReferencesInnsbruckImport } from './pages/apiReferences/innsbruck'
-import { Route as ApiReferencesHakubaImport } from './pages/apiReferences/hakuba'
-import { Route as ApiReferencesGarmischImport } from './pages/apiReferences/garmisch'
-import { Route as ApiReferencesFlaineImport } from './pages/apiReferences/flaine'
-import { Route as AdminPanelVersionImport } from './pages/admin-panel/version'
-import { Route as AdminPanelSubjectImport } from './pages/admin-panel/subject'
-import { Route as AdminPanelSourceImport } from './pages/admin-panel/source'
-import { Route as AdminPanelResourceImport } from './pages/admin-panel/resource'
-import { Route as AdminPanelReleaseImport } from './pages/admin-panel/release'
-import { Route as AdminPanelProductImport } from './pages/admin-panel/product'
-import { Route as AdminPanelPlatformImport } from './pages/admin-panel/platform'
-import { Route as AdminPanelPageImport } from './pages/admin-panel/page'
-import { Route as AdminPanelLanguageImport } from './pages/admin-panel/language'
-import { Route as AdminPanelExternalLinkImport } from './pages/admin-panel/external-link'
-import { Route as L10nPtBRIndexImport } from './pages/l10n/pt-BR/index'
-import { Route as L10nNlNLIndexImport } from './pages/l10n/nl-NL/index'
-import { Route as L10nJaJPIndexImport } from './pages/l10n/ja-JP/index'
-import { Route as L10nItITIndexImport } from './pages/l10n/it-IT/index'
-import { Route as L10nFrFRIndexImport } from './pages/l10n/fr-FR/index'
-import { Route as L10nEsESIndexImport } from './pages/l10n/es-ES/index'
-import { Route as L10nEs419IndexImport } from './pages/l10n/es-419/index'
-import { Route as L10nDeDEIndexImport } from './pages/l10n/de-DE/index'
-import { Route as CloudProductsLaslenasIndexImport } from './pages/cloudProducts/laslenas/index'
-import { Route as CloudProductsKufriIndexImport } from './pages/cloudProducts/kufri/index'
-import { Route as CloudProductsJasperIndexImport } from './pages/cloudProducts/jasper/index'
-import { Route as CloudProductsInnsbruckIndexImport } from './pages/cloudProducts/innsbruck/index'
-import { Route as CloudProductsHakubaIndexImport } from './pages/cloudProducts/hakuba/index'
-import { Route as CloudProductsGarmischIndexImport } from './pages/cloudProducts/garmisch/index'
-import { Route as CloudProductsFlaineIndexImport } from './pages/cloudProducts/flaine/index'
-import { Route as SelfManagedProductsVendorEngageVersionImport } from './pages/selfManagedProducts/vendorEngage/$version'
-import { Route as SelfManagedProductsServiceRepEngageVersionImport } from './pages/selfManagedProducts/serviceRepEngage/$version'
-import { Route as SelfManagedProductsProducerEngageCcVersionImport } from './pages/selfManagedProducts/producerEngageCc/$version'
-import { Route as SelfManagedProductsProducerEngageVersionImport } from './pages/selfManagedProducts/producerEngage/$version'
-import { Route as SelfManagedProductsPcVersionImport } from './pages/selfManagedProducts/pc/$version'
-import { Route as SelfManagedProductsIcVersionImport } from './pages/selfManagedProducts/ic/$version'
-import { Route as SelfManagedProductsDhVersionImport } from './pages/selfManagedProducts/dh/$version'
-import { Route as SelfManagedProductsCeQuoteAndBuyVersionImport } from './pages/selfManagedProducts/ceQuoteAndBuy/$version'
-import { Route as SelfManagedProductsCeAccountMgmtCcVersionImport } from './pages/selfManagedProducts/ceAccountMgmtCc/$version'
-import { Route as SelfManagedProductsCeAccountMgmtVersionImport } from './pages/selfManagedProducts/ceAccountMgmt/$version'
-import { Route as SelfManagedProductsCcVersionImport } from './pages/selfManagedProducts/cc/$version'
-import { Route as SelfManagedProductsBcVersionImport } from './pages/selfManagedProducts/bc/$version'
-import { Route as L10nPtBRVeImport } from './pages/l10n/pt-BR/ve'
-import { Route as L10nPtBRSreImport } from './pages/l10n/pt-BR/sre'
-import { Route as L10nPtBRPeClaimsImport } from './pages/l10n/pt-BR/pe-claims'
-import { Route as L10nPtBRPeImport } from './pages/l10n/pt-BR/pe'
-import { Route as L10nPtBRPcImport } from './pages/l10n/pt-BR/pc'
-import { Route as L10nPtBRIsConfigupgradetoolsImport } from './pages/l10n/pt-BR/is-configupgradetools'
-import { Route as L10nPtBRGccImport } from './pages/l10n/pt-BR/gcc'
-import { Route as L10nPtBRCpImport } from './pages/l10n/pt-BR/cp'
-import { Route as L10nPtBRCmImport } from './pages/l10n/pt-BR/cm'
-import { Route as L10nPtBRCeQbImport } from './pages/l10n/pt-BR/ce-qb'
-import { Route as L10nPtBRCeClaimsImport } from './pages/l10n/pt-BR/ce-claims'
-import { Route as L10nPtBRCeAmImport } from './pages/l10n/pt-BR/ce-am'
-import { Route as L10nPtBRCdaImport } from './pages/l10n/pt-BR/cda'
-import { Route as L10nPtBRCcImport } from './pages/l10n/pt-BR/cc'
-import { Route as L10nPtBRBcImport } from './pages/l10n/pt-BR/bc'
-import { Route as L10nPtBRAnalyticsImport } from './pages/l10n/pt-BR/analytics'
-import { Route as L10nNlNLCcImport } from './pages/l10n/nl-NL/cc'
-import { Route as L10nJaJPVeImport } from './pages/l10n/ja-JP/ve'
-import { Route as L10nJaJPSreImport } from './pages/l10n/ja-JP/sre'
-import { Route as L10nJaJPPeClaimsImport } from './pages/l10n/ja-JP/pe-claims'
-import { Route as L10nJaJPPeImport } from './pages/l10n/ja-JP/pe'
-import { Route as L10nJaJPPcImport } from './pages/l10n/ja-JP/pc'
-import { Route as L10nJaJPIsConfigupgradetoolsImport } from './pages/l10n/ja-JP/is-configupgradetools'
-import { Route as L10nJaJPGwsfImport } from './pages/l10n/ja-JP/gwsf'
-import { Route as L10nJaJPGwidImport } from './pages/l10n/ja-JP/gwid'
-import { Route as L10nJaJPGtestImport } from './pages/l10n/ja-JP/gtest'
-import { Route as L10nJaJPCpImport } from './pages/l10n/ja-JP/cp'
-import { Route as L10nJaJPCmImport } from './pages/l10n/ja-JP/cm'
-import { Route as L10nJaJPCeQbImport } from './pages/l10n/ja-JP/ce-qb'
-import { Route as L10nJaJPCeClaimsImport } from './pages/l10n/ja-JP/ce-claims'
-import { Route as L10nJaJPCeAmImport } from './pages/l10n/ja-JP/ce-am'
-import { Route as L10nJaJPCcImport } from './pages/l10n/ja-JP/cc'
-import { Route as L10nJaJPBcImport } from './pages/l10n/ja-JP/bc'
-import { Route as L10nJaJPApdImport } from './pages/l10n/ja-JP/apd'
-import { Route as L10nJaJPAnalyticsImport } from './pages/l10n/ja-JP/analytics'
-import { Route as L10nJaJP202306hakubawhatsnewImport } from './pages/l10n/ja-JP/202306hakubawhatsnew'
-import { Route as L10nJaJP202302garmischwhatsnewImport } from './pages/l10n/ja-JP/202302garmischwhatsnew'
-import { Route as L10nItITVeImport } from './pages/l10n/it-IT/ve'
-import { Route as L10nItITSreImport } from './pages/l10n/it-IT/sre'
-import { Route as L10nItITPeClaimsImport } from './pages/l10n/it-IT/pe-claims'
-import { Route as L10nItITPeImport } from './pages/l10n/it-IT/pe'
-import { Route as L10nItITPcImport } from './pages/l10n/it-IT/pc'
-import { Route as L10nItITGwidImport } from './pages/l10n/it-IT/gwid'
-import { Route as L10nItITGccImport } from './pages/l10n/it-IT/gcc'
-import { Route as L10nItITCeQbImport } from './pages/l10n/it-IT/ce-qb'
-import { Route as L10nItITCeClaimsImport } from './pages/l10n/it-IT/ce-claims'
-import { Route as L10nItITCeAmImport } from './pages/l10n/it-IT/ce-am'
-import { Route as L10nItITCdaImport } from './pages/l10n/it-IT/cda'
-import { Route as L10nItITCcImport } from './pages/l10n/it-IT/cc'
-import { Route as L10nItITBcImport } from './pages/l10n/it-IT/bc'
-import { Route as L10nItITAnalyticsImport } from './pages/l10n/it-IT/analytics'
-import { Route as L10nFrFRVeImport } from './pages/l10n/fr-FR/ve'
-import { Route as L10nFrFRSreImport } from './pages/l10n/fr-FR/sre'
-import { Route as L10nFrFRPeClaimsImport } from './pages/l10n/fr-FR/pe-claims'
-import { Route as L10nFrFRPeImport } from './pages/l10n/fr-FR/pe'
-import { Route as L10nFrFRPcImport } from './pages/l10n/fr-FR/pc'
-import { Route as L10nFrFRIsConfigupgradetoolsImport } from './pages/l10n/fr-FR/is-configupgradetools'
-import { Route as L10nFrFRCpImport } from './pages/l10n/fr-FR/cp'
-import { Route as L10nFrFRCmImport } from './pages/l10n/fr-FR/cm'
-import { Route as L10nFrFRCeQbImport } from './pages/l10n/fr-FR/ce-qb'
-import { Route as L10nFrFRCeClaimsImport } from './pages/l10n/fr-FR/ce-claims'
-import { Route as L10nFrFRCeAmImport } from './pages/l10n/fr-FR/ce-am'
-import { Route as L10nFrFRCcImport } from './pages/l10n/fr-FR/cc'
-import { Route as L10nFrFRBcImport } from './pages/l10n/fr-FR/bc'
-import { Route as L10nFrFRAnalyticsImport } from './pages/l10n/fr-FR/analytics'
-import { Route as L10nEsESVeImport } from './pages/l10n/es-ES/ve'
-import { Route as L10nEsESSreImport } from './pages/l10n/es-ES/sre'
-import { Route as L10nEsESPeClaimsImport } from './pages/l10n/es-ES/pe-claims'
-import { Route as L10nEsESPeImport } from './pages/l10n/es-ES/pe'
-import { Route as L10nEsESPcImport } from './pages/l10n/es-ES/pc'
-import { Route as L10nEsESCmImport } from './pages/l10n/es-ES/cm'
-import { Route as L10nEsESCeQbImport } from './pages/l10n/es-ES/ce-qb'
-import { Route as L10nEsESCeClaimsImport } from './pages/l10n/es-ES/ce-claims'
-import { Route as L10nEsESCeAmImport } from './pages/l10n/es-ES/ce-am'
-import { Route as L10nEsESCcImport } from './pages/l10n/es-ES/cc'
-import { Route as L10nEsESBcImport } from './pages/l10n/es-ES/bc'
-import { Route as L10nEs419VeImport } from './pages/l10n/es-419/ve'
-import { Route as L10nEs419SreImport } from './pages/l10n/es-419/sre'
-import { Route as L10nEs419PeClaimsImport } from './pages/l10n/es-419/pe-claims'
-import { Route as L10nEs419PeImport } from './pages/l10n/es-419/pe'
-import { Route as L10nEs419PcImport } from './pages/l10n/es-419/pc'
-import { Route as L10nEs419IsConfigupgradetoolsImport } from './pages/l10n/es-419/is-configupgradetools'
-import { Route as L10nEs419GccImport } from './pages/l10n/es-419/gcc'
-import { Route as L10nEs419CpImport } from './pages/l10n/es-419/cp'
-import { Route as L10nEs419CmImport } from './pages/l10n/es-419/cm'
-import { Route as L10nEs419CeQbImport } from './pages/l10n/es-419/ce-qb'
-import { Route as L10nEs419CeClaimsImport } from './pages/l10n/es-419/ce-claims'
-import { Route as L10nEs419CeAmImport } from './pages/l10n/es-419/ce-am'
-import { Route as L10nEs419CdaImport } from './pages/l10n/es-419/cda'
-import { Route as L10nEs419CcImport } from './pages/l10n/es-419/cc'
-import { Route as L10nEs419BcImport } from './pages/l10n/es-419/bc'
-import { Route as L10nEs419ApdImport } from './pages/l10n/es-419/apd'
-import { Route as L10nEs419AnalyticsImport } from './pages/l10n/es-419/analytics'
-import { Route as L10nDeDEVeImport } from './pages/l10n/de-DE/ve'
-import { Route as L10nDeDESreImport } from './pages/l10n/de-DE/sre'
-import { Route as L10nDeDEPeClaimsImport } from './pages/l10n/de-DE/pe-claims'
-import { Route as L10nDeDEPeImport } from './pages/l10n/de-DE/pe'
-import { Route as L10nDeDEPcImport } from './pages/l10n/de-DE/pc'
-import { Route as L10nDeDEIsConfigupgradetoolsImport } from './pages/l10n/de-DE/is-configupgradetools'
-import { Route as L10nDeDECpImport } from './pages/l10n/de-DE/cp'
-import { Route as L10nDeDECmImport } from './pages/l10n/de-DE/cm'
-import { Route as L10nDeDECeQbImport } from './pages/l10n/de-DE/ce-qb'
-import { Route as L10nDeDECeClaimsImport } from './pages/l10n/de-DE/ce-claims'
-import { Route as L10nDeDECeAmImport } from './pages/l10n/de-DE/ce-am'
-import { Route as L10nDeDECcImport } from './pages/l10n/de-DE/cc'
-import { Route as L10nDeDEBcImport } from './pages/l10n/de-DE/bc'
-import { Route as L10nDeDEAnalyticsImport } from './pages/l10n/de-DE/analytics'
-import { Route as GlobalContentMessageStoreVersionImport } from './pages/globalContent/messageStore/$version'
-import { Route as GlobalContentLossEstCalcVersionImport } from './pages/globalContent/lossEstCalc/$version'
-import { Route as GlobalContentLookupGeneratorVersionImport } from './pages/globalContent/lookupGenerator/$version'
-import { Route as GlobalContentIplmVersionImport } from './pages/globalContent/iplm/$version'
-import { Route as GlobalContentIpgVersionImport } from './pages/globalContent/ipg/$version'
-import { Route as GlobalContentIpfVersionImport } from './pages/globalContent/ipf/$version'
-import { Route as GlobalContentIpaVersionImport } from './pages/globalContent/ipa/$version'
-import { Route as CloudProductsLaslenasPcImport } from './pages/cloudProducts/laslenas/pc'
-import { Route as CloudProductsLaslenasInImport } from './pages/cloudProducts/laslenas/in'
-import { Route as CloudProductsLaslenasGlobalRefAppsImport } from './pages/cloudProducts/laslenas/globalRefApps'
-import { Route as CloudProductsLaslenasDxRefAppsImport } from './pages/cloudProducts/laslenas/dx-ref-apps'
-import { Route as CloudProductsLaslenasCcImport } from './pages/cloudProducts/laslenas/cc'
-import { Route as CloudProductsLaslenasBcImport } from './pages/cloudProducts/laslenas/bc'
-import { Route as CloudProductsLaslenasApdImport } from './pages/cloudProducts/laslenas/apd'
-import { Route as CloudProductsKufriPcImport } from './pages/cloudProducts/kufri/pc'
-import { Route as CloudProductsKufriInImport } from './pages/cloudProducts/kufri/in'
-import { Route as CloudProductsKufriIcImport } from './pages/cloudProducts/kufri/ic'
-import { Route as CloudProductsKufriGlobalRefAppsImport } from './pages/cloudProducts/kufri/global-ref-apps'
-import { Route as CloudProductsKufriDxRefAppsImport } from './pages/cloudProducts/kufri/dx-ref-apps'
-import { Route as CloudProductsKufriDhImport } from './pages/cloudProducts/kufri/dh'
-import { Route as CloudProductsKufriCcImport } from './pages/cloudProducts/kufri/cc'
-import { Route as CloudProductsKufriBcImport } from './pages/cloudProducts/kufri/bc'
-import { Route as CloudProductsKufriApdImport } from './pages/cloudProducts/kufri/apd'
-import { Route as CloudProductsJasperPcImport } from './pages/cloudProducts/jasper/pc'
-import { Route as CloudProductsJasperInImport } from './pages/cloudProducts/jasper/in'
-import { Route as CloudProductsJasperIcImport } from './pages/cloudProducts/jasper/ic'
-import { Route as CloudProductsJasperGlobalRefAppsImport } from './pages/cloudProducts/jasper/global-ref-apps'
-import { Route as CloudProductsJasperDxRefAppsImport } from './pages/cloudProducts/jasper/dx-ref-apps'
-import { Route as CloudProductsJasperDhImport } from './pages/cloudProducts/jasper/dh'
-import { Route as CloudProductsJasperCcImport } from './pages/cloudProducts/jasper/cc'
-import { Route as CloudProductsJasperBcImport } from './pages/cloudProducts/jasper/bc'
-import { Route as CloudProductsJasperApdImport } from './pages/cloudProducts/jasper/apd'
-import { Route as CloudProductsInnsbruckGlobalRefAppsImport } from './pages/cloudProducts/innsbruck/global-ref-apps'
-import { Route as CloudProductsInnsbruckDxRefAppsImport } from './pages/cloudProducts/innsbruck/dx-ref-apps'
-import { Route as CloudProductsInnsbruckApdImport } from './pages/cloudProducts/innsbruck/apd'
-import { Route as CloudProductsHakubaJutroDigitalPlatformImport } from './pages/cloudProducts/hakuba/jutroDigitalPlatform'
-import { Route as CloudProductsHakubaGlobalRefAppsImport } from './pages/cloudProducts/hakuba/global-ref-apps'
-import { Route as CloudProductsHakubaDxRefAppsImport } from './pages/cloudProducts/hakuba/dx-ref-apps'
-import { Route as CloudProductsHakubaApdImport } from './pages/cloudProducts/hakuba/apd'
-import { Route as CloudProductsGarmischJutroDigitalPlatformImport } from './pages/cloudProducts/garmisch/jutroDigitalPlatform'
-import { Route as CloudProductsGarmischGlobalRefAppsImport } from './pages/cloudProducts/garmisch/global-ref-apps'
-import { Route as CloudProductsGarmischDxRefAppsImport } from './pages/cloudProducts/garmisch/dx-ref-apps'
-import { Route as CloudProductsGarmischApdImport } from './pages/cloudProducts/garmisch/apd'
-import { Route as CloudProductsFlaineJutroDigitalPlatformImport } from './pages/cloudProducts/flaine/jutroDigitalPlatform'
-import { Route as CloudProductsFlaineGlobalRefAppsImport } from './pages/cloudProducts/flaine/global-ref-apps'
-import { Route as CloudProductsFlaineDxRefAppsImport } from './pages/cloudProducts/flaine/dx-ref-apps'
-import { Route as CloudProductsFlaineApdImport } from './pages/cloudProducts/flaine/apd'
-import { Route as CloudProductsExploreEs419Import } from './pages/cloudProducts/explore/es-419'
-import { Route as SelfManagedProductsGwsfVodVersionImport } from './pages/selfManagedProducts/gwsf/vod/$version'
-import { Route as SelfManagedProductsGwsfEdVersionImport } from './pages/selfManagedProducts/gwsf/ed/$version'
-import { Route as SelfManagedProductsGwsfDiVersionImport } from './pages/selfManagedProducts/gwsf/di/$version'
-import { Route as L10nJaJPCloudProductsAutopilotworkflowserviceImport } from './pages/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
-import { Route as CloudProductsInnsbruckPcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/pcGwCloud/$version'
-import { Route as CloudProductsInnsbruckInsuranceNowVersionImport } from './pages/cloudProducts/innsbruck/insuranceNow/$version'
-import { Route as CloudProductsInnsbruckIcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/icGwCloud/$version'
-import { Route as CloudProductsInnsbruckDhGwCloudVersionImport } from './pages/cloudProducts/innsbruck/dhGwCloud/$version'
-import { Route as CloudProductsInnsbruckCcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/ccGwCloud/$version'
-import { Route as CloudProductsInnsbruckBcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/bcGwCloud/$version'
-import { Route as CloudProductsHakubaPcGwCloudVersionImport } from './pages/cloudProducts/hakuba/pcGwCloud/$version'
-import { Route as CloudProductsHakubaInsuranceNowVersionImport } from './pages/cloudProducts/hakuba/insuranceNow/$version'
-import { Route as CloudProductsHakubaIcGwCloudVersionImport } from './pages/cloudProducts/hakuba/icGwCloud/$version'
-import { Route as CloudProductsHakubaDhGwCloudVersionImport } from './pages/cloudProducts/hakuba/dhGwCloud/$version'
-import { Route as CloudProductsHakubaCcGwCloudVersionImport } from './pages/cloudProducts/hakuba/ccGwCloud/$version'
-import { Route as CloudProductsHakubaBcGwCloudVersionImport } from './pages/cloudProducts/hakuba/bcGwCloud/$version'
-import { Route as CloudProductsGarmischPcGwCloudVersionImport } from './pages/cloudProducts/garmisch/pcGwCloud/$version'
-import { Route as CloudProductsGarmischInsuranceNowVersionImport } from './pages/cloudProducts/garmisch/insuranceNow/$version'
-import { Route as CloudProductsGarmischIcGwCloudVersionImport } from './pages/cloudProducts/garmisch/icGwCloud/$version'
-import { Route as CloudProductsGarmischDhGwCloudVersionImport } from './pages/cloudProducts/garmisch/dhGwCloud/$version'
-import { Route as CloudProductsGarmischCcGwCloudVersionImport } from './pages/cloudProducts/garmisch/ccGwCloud/$version'
-import { Route as CloudProductsGarmischBcGwCloudVersionImport } from './pages/cloudProducts/garmisch/bcGwCloud/$version'
-import { Route as CloudProductsFlainePcGwCloudVersionImport } from './pages/cloudProducts/flaine/pcGwCloud/$version'
-import { Route as CloudProductsFlaineInsuranceNowVersionImport } from './pages/cloudProducts/flaine/insuranceNow/$version'
-import { Route as CloudProductsFlaineIcGwCloudVersionImport } from './pages/cloudProducts/flaine/icGwCloud/$version'
-import { Route as CloudProductsFlaineDhGwCloudVersionImport } from './pages/cloudProducts/flaine/dhGwCloud/$version'
-import { Route as CloudProductsFlaineCcGwCloudVersionImport } from './pages/cloudProducts/flaine/ccGwCloud/$version'
-import { Route as CloudProductsFlaineBcGwCloudVersionImport } from './pages/cloudProducts/flaine/bcGwCloud/$version'
-import { Route as CloudProductsElysianInsuranceNowVersionImport } from './pages/cloudProducts/elysian/insuranceNow/$version'
-import { Route as CloudProductsDobsonInsuranceNowVersionImport } from './pages/cloudProducts/dobson/insuranceNow/$version'
-import { Route as CloudProductsCortinaInsuranceNowVersionImport } from './pages/cloudProducts/cortina/insuranceNow/$version'
-import { Route as CloudProductsBanffInsuranceNowVersionImport } from './pages/cloudProducts/banff/insuranceNow/$version'
-import { Route as CloudProductsAspenInsuranceNowVersionImport } from './pages/cloudProducts/aspen/insuranceNow/$version'
+import { Route as rootRoute } from './pages/__root';
+import { Route as SupportImport } from './pages/support';
+import { Route as SearchResultsImport } from './pages/search-results';
+import { Route as LobsImport } from './pages/lobs';
+import { Route as InternalImport } from './pages/internal';
+import { Route as GwLoginImport } from './pages/gw-login';
+import { Route as ForbiddenImport } from './pages/forbidden';
+import { Route as DeltaDocImport } from './pages/delta-doc';
+import { Route as ChatbotFeedbackImport } from './pages/chatbot-feedback';
+import { Route as ChatImport } from './pages/chat';
+import { Route as AdminPanelImport } from './pages/admin-panel';
+import { Route as IndexImport } from './pages/index';
+import { Route as SelfManagedProductsIndexImport } from './pages/selfManagedProducts/index';
+import { Route as L10nIndexImport } from './pages/l10n/index';
+import { Route as TestingFrameworkLaslenasImport } from './pages/testingFramework/laslenas';
+import { Route as TestingFrameworkKufriImport } from './pages/testingFramework/kufri';
+import { Route as TestingFrameworkJasperImport } from './pages/testingFramework/jasper';
+import { Route as TestingFrameworkInnsbruckImport } from './pages/testingFramework/innsbruck';
+import { Route as TestingFrameworkHakubaImport } from './pages/testingFramework/hakuba';
+import { Route as TestingFrameworkGarmischImport } from './pages/testingFramework/garmisch';
+import { Route as TestingFrameworkFlaineImport } from './pages/testingFramework/flaine';
+import { Route as TestingFrameworkElysianImport } from './pages/testingFramework/elysian';
+import { Route as JutroDesignSystemVersionImport } from './pages/jutroDesignSystem/$version';
+import { Route as GlobalContentSbtImport } from './pages/globalContent/sbt';
+import { Route as CloudProductsMigrationToolsImport } from './pages/cloudProducts/migrationTools';
+import { Route as CloudProductsGuidewireCloudPlatformImport } from './pages/cloudProducts/guidewireCloudPlatform';
+import { Route as CloudProductsDataPlatformImport } from './pages/cloudProducts/dataPlatform';
+import { Route as CloudProductsCyenceImport } from './pages/cloudProducts/cyence';
+import { Route as CloudProductsAutopilotworkflowserviceImport } from './pages/cloudProducts/autopilotworkflowservice';
+import { Route as CloudProductsAppEventsImport } from './pages/cloudProducts/appEvents';
+import { Route as ApiReferencesLaslenasImport } from './pages/apiReferences/laslenas';
+import { Route as ApiReferencesKufriImport } from './pages/apiReferences/kufri';
+import { Route as ApiReferencesJasperImport } from './pages/apiReferences/jasper';
+import { Route as ApiReferencesInnsbruckImport } from './pages/apiReferences/innsbruck';
+import { Route as ApiReferencesHakubaImport } from './pages/apiReferences/hakuba';
+import { Route as ApiReferencesGarmischImport } from './pages/apiReferences/garmisch';
+import { Route as ApiReferencesFlaineImport } from './pages/apiReferences/flaine';
+import { Route as AdminPanelVersionImport } from './pages/admin-panel/version';
+import { Route as AdminPanelSubjectImport } from './pages/admin-panel/subject';
+import { Route as AdminPanelSourceImport } from './pages/admin-panel/source';
+import { Route as AdminPanelResourceImport } from './pages/admin-panel/resource';
+import { Route as AdminPanelReleaseImport } from './pages/admin-panel/release';
+import { Route as AdminPanelProductImport } from './pages/admin-panel/product';
+import { Route as AdminPanelPlatformImport } from './pages/admin-panel/platform';
+import { Route as AdminPanelPageImport } from './pages/admin-panel/page';
+import { Route as AdminPanelLanguageImport } from './pages/admin-panel/language';
+import { Route as AdminPanelExternalLinkImport } from './pages/admin-panel/external-link';
+import { Route as L10nPtBRIndexImport } from './pages/l10n/pt-BR/index';
+import { Route as L10nNlNLIndexImport } from './pages/l10n/nl-NL/index';
+import { Route as L10nJaJPIndexImport } from './pages/l10n/ja-JP/index';
+import { Route as L10nItITIndexImport } from './pages/l10n/it-IT/index';
+import { Route as L10nFrFRIndexImport } from './pages/l10n/fr-FR/index';
+import { Route as L10nEsESIndexImport } from './pages/l10n/es-ES/index';
+import { Route as L10nEs419IndexImport } from './pages/l10n/es-419/index';
+import { Route as L10nDeDEIndexImport } from './pages/l10n/de-DE/index';
+import { Route as CloudProductsLaslenasIndexImport } from './pages/cloudProducts/laslenas/index';
+import { Route as CloudProductsKufriIndexImport } from './pages/cloudProducts/kufri/index';
+import { Route as CloudProductsJasperIndexImport } from './pages/cloudProducts/jasper/index';
+import { Route as CloudProductsInnsbruckIndexImport } from './pages/cloudProducts/innsbruck/index';
+import { Route as CloudProductsHakubaIndexImport } from './pages/cloudProducts/hakuba/index';
+import { Route as CloudProductsGarmischIndexImport } from './pages/cloudProducts/garmisch/index';
+import { Route as CloudProductsFlaineIndexImport } from './pages/cloudProducts/flaine/index';
+import { Route as SelfManagedProductsVendorEngageVersionImport } from './pages/selfManagedProducts/vendorEngage/$version';
+import { Route as SelfManagedProductsServiceRepEngageVersionImport } from './pages/selfManagedProducts/serviceRepEngage/$version';
+import { Route as SelfManagedProductsProducerEngageCcVersionImport } from './pages/selfManagedProducts/producerEngageCc/$version';
+import { Route as SelfManagedProductsProducerEngageVersionImport } from './pages/selfManagedProducts/producerEngage/$version';
+import { Route as SelfManagedProductsPcVersionImport } from './pages/selfManagedProducts/pc/$version';
+import { Route as SelfManagedProductsIcVersionImport } from './pages/selfManagedProducts/ic/$version';
+import { Route as SelfManagedProductsDhVersionImport } from './pages/selfManagedProducts/dh/$version';
+import { Route as SelfManagedProductsCeQuoteAndBuyVersionImport } from './pages/selfManagedProducts/ceQuoteAndBuy/$version';
+import { Route as SelfManagedProductsCeAccountMgmtCcVersionImport } from './pages/selfManagedProducts/ceAccountMgmtCc/$version';
+import { Route as SelfManagedProductsCeAccountMgmtVersionImport } from './pages/selfManagedProducts/ceAccountMgmt/$version';
+import { Route as SelfManagedProductsCcVersionImport } from './pages/selfManagedProducts/cc/$version';
+import { Route as SelfManagedProductsBcVersionImport } from './pages/selfManagedProducts/bc/$version';
+import { Route as L10nPtBRVeImport } from './pages/l10n/pt-BR/ve';
+import { Route as L10nPtBRSreImport } from './pages/l10n/pt-BR/sre';
+import { Route as L10nPtBRPeClaimsImport } from './pages/l10n/pt-BR/pe-claims';
+import { Route as L10nPtBRPeImport } from './pages/l10n/pt-BR/pe';
+import { Route as L10nPtBRPcImport } from './pages/l10n/pt-BR/pc';
+import { Route as L10nPtBRIsConfigupgradetoolsImport } from './pages/l10n/pt-BR/is-configupgradetools';
+import { Route as L10nPtBRGccImport } from './pages/l10n/pt-BR/gcc';
+import { Route as L10nPtBRCpImport } from './pages/l10n/pt-BR/cp';
+import { Route as L10nPtBRCmImport } from './pages/l10n/pt-BR/cm';
+import { Route as L10nPtBRCeQbImport } from './pages/l10n/pt-BR/ce-qb';
+import { Route as L10nPtBRCeClaimsImport } from './pages/l10n/pt-BR/ce-claims';
+import { Route as L10nPtBRCeAmImport } from './pages/l10n/pt-BR/ce-am';
+import { Route as L10nPtBRCdaImport } from './pages/l10n/pt-BR/cda';
+import { Route as L10nPtBRCcImport } from './pages/l10n/pt-BR/cc';
+import { Route as L10nPtBRBcImport } from './pages/l10n/pt-BR/bc';
+import { Route as L10nPtBRAnalyticsImport } from './pages/l10n/pt-BR/analytics';
+import { Route as L10nNlNLCcImport } from './pages/l10n/nl-NL/cc';
+import { Route as L10nJaJPVeImport } from './pages/l10n/ja-JP/ve';
+import { Route as L10nJaJPSreImport } from './pages/l10n/ja-JP/sre';
+import { Route as L10nJaJPPeClaimsImport } from './pages/l10n/ja-JP/pe-claims';
+import { Route as L10nJaJPPeImport } from './pages/l10n/ja-JP/pe';
+import { Route as L10nJaJPPcImport } from './pages/l10n/ja-JP/pc';
+import { Route as L10nJaJPIsConfigupgradetoolsImport } from './pages/l10n/ja-JP/is-configupgradetools';
+import { Route as L10nJaJPGwsfImport } from './pages/l10n/ja-JP/gwsf';
+import { Route as L10nJaJPGwidImport } from './pages/l10n/ja-JP/gwid';
+import { Route as L10nJaJPGtestImport } from './pages/l10n/ja-JP/gtest';
+import { Route as L10nJaJPCpImport } from './pages/l10n/ja-JP/cp';
+import { Route as L10nJaJPCmImport } from './pages/l10n/ja-JP/cm';
+import { Route as L10nJaJPCeQbImport } from './pages/l10n/ja-JP/ce-qb';
+import { Route as L10nJaJPCeClaimsImport } from './pages/l10n/ja-JP/ce-claims';
+import { Route as L10nJaJPCeAmImport } from './pages/l10n/ja-JP/ce-am';
+import { Route as L10nJaJPCcImport } from './pages/l10n/ja-JP/cc';
+import { Route as L10nJaJPBcImport } from './pages/l10n/ja-JP/bc';
+import { Route as L10nJaJPApdImport } from './pages/l10n/ja-JP/apd';
+import { Route as L10nJaJPAnalyticsImport } from './pages/l10n/ja-JP/analytics';
+import { Route as L10nJaJP202306hakubawhatsnewImport } from './pages/l10n/ja-JP/202306hakubawhatsnew';
+import { Route as L10nJaJP202302garmischwhatsnewImport } from './pages/l10n/ja-JP/202302garmischwhatsnew';
+import { Route as L10nItITVeImport } from './pages/l10n/it-IT/ve';
+import { Route as L10nItITSreImport } from './pages/l10n/it-IT/sre';
+import { Route as L10nItITPeClaimsImport } from './pages/l10n/it-IT/pe-claims';
+import { Route as L10nItITPeImport } from './pages/l10n/it-IT/pe';
+import { Route as L10nItITPcImport } from './pages/l10n/it-IT/pc';
+import { Route as L10nItITGwidImport } from './pages/l10n/it-IT/gwid';
+import { Route as L10nItITGccImport } from './pages/l10n/it-IT/gcc';
+import { Route as L10nItITCeQbImport } from './pages/l10n/it-IT/ce-qb';
+import { Route as L10nItITCeClaimsImport } from './pages/l10n/it-IT/ce-claims';
+import { Route as L10nItITCeAmImport } from './pages/l10n/it-IT/ce-am';
+import { Route as L10nItITCdaImport } from './pages/l10n/it-IT/cda';
+import { Route as L10nItITCcImport } from './pages/l10n/it-IT/cc';
+import { Route as L10nItITBcImport } from './pages/l10n/it-IT/bc';
+import { Route as L10nItITAnalyticsImport } from './pages/l10n/it-IT/analytics';
+import { Route as L10nFrFRVeImport } from './pages/l10n/fr-FR/ve';
+import { Route as L10nFrFRSreImport } from './pages/l10n/fr-FR/sre';
+import { Route as L10nFrFRPeClaimsImport } from './pages/l10n/fr-FR/pe-claims';
+import { Route as L10nFrFRPeImport } from './pages/l10n/fr-FR/pe';
+import { Route as L10nFrFRPcImport } from './pages/l10n/fr-FR/pc';
+import { Route as L10nFrFRIsConfigupgradetoolsImport } from './pages/l10n/fr-FR/is-configupgradetools';
+import { Route as L10nFrFRCpImport } from './pages/l10n/fr-FR/cp';
+import { Route as L10nFrFRCmImport } from './pages/l10n/fr-FR/cm';
+import { Route as L10nFrFRCeQbImport } from './pages/l10n/fr-FR/ce-qb';
+import { Route as L10nFrFRCeClaimsImport } from './pages/l10n/fr-FR/ce-claims';
+import { Route as L10nFrFRCeAmImport } from './pages/l10n/fr-FR/ce-am';
+import { Route as L10nFrFRCcImport } from './pages/l10n/fr-FR/cc';
+import { Route as L10nFrFRBcImport } from './pages/l10n/fr-FR/bc';
+import { Route as L10nFrFRAnalyticsImport } from './pages/l10n/fr-FR/analytics';
+import { Route as L10nEsESVeImport } from './pages/l10n/es-ES/ve';
+import { Route as L10nEsESSreImport } from './pages/l10n/es-ES/sre';
+import { Route as L10nEsESPeClaimsImport } from './pages/l10n/es-ES/pe-claims';
+import { Route as L10nEsESPeImport } from './pages/l10n/es-ES/pe';
+import { Route as L10nEsESPcImport } from './pages/l10n/es-ES/pc';
+import { Route as L10nEsESCmImport } from './pages/l10n/es-ES/cm';
+import { Route as L10nEsESCeQbImport } from './pages/l10n/es-ES/ce-qb';
+import { Route as L10nEsESCeClaimsImport } from './pages/l10n/es-ES/ce-claims';
+import { Route as L10nEsESCeAmImport } from './pages/l10n/es-ES/ce-am';
+import { Route as L10nEsESCcImport } from './pages/l10n/es-ES/cc';
+import { Route as L10nEsESBcImport } from './pages/l10n/es-ES/bc';
+import { Route as L10nEs419VeImport } from './pages/l10n/es-419/ve';
+import { Route as L10nEs419SreImport } from './pages/l10n/es-419/sre';
+import { Route as L10nEs419PeClaimsImport } from './pages/l10n/es-419/pe-claims';
+import { Route as L10nEs419PeImport } from './pages/l10n/es-419/pe';
+import { Route as L10nEs419PcImport } from './pages/l10n/es-419/pc';
+import { Route as L10nEs419IsConfigupgradetoolsImport } from './pages/l10n/es-419/is-configupgradetools';
+import { Route as L10nEs419GccImport } from './pages/l10n/es-419/gcc';
+import { Route as L10nEs419CpImport } from './pages/l10n/es-419/cp';
+import { Route as L10nEs419CmImport } from './pages/l10n/es-419/cm';
+import { Route as L10nEs419CeQbImport } from './pages/l10n/es-419/ce-qb';
+import { Route as L10nEs419CeClaimsImport } from './pages/l10n/es-419/ce-claims';
+import { Route as L10nEs419CeAmImport } from './pages/l10n/es-419/ce-am';
+import { Route as L10nEs419CdaImport } from './pages/l10n/es-419/cda';
+import { Route as L10nEs419CcImport } from './pages/l10n/es-419/cc';
+import { Route as L10nEs419BcImport } from './pages/l10n/es-419/bc';
+import { Route as L10nEs419ApdImport } from './pages/l10n/es-419/apd';
+import { Route as L10nEs419AnalyticsImport } from './pages/l10n/es-419/analytics';
+import { Route as L10nDeDEVeImport } from './pages/l10n/de-DE/ve';
+import { Route as L10nDeDESreImport } from './pages/l10n/de-DE/sre';
+import { Route as L10nDeDEPeClaimsImport } from './pages/l10n/de-DE/pe-claims';
+import { Route as L10nDeDEPeImport } from './pages/l10n/de-DE/pe';
+import { Route as L10nDeDEPcImport } from './pages/l10n/de-DE/pc';
+import { Route as L10nDeDEIsConfigupgradetoolsImport } from './pages/l10n/de-DE/is-configupgradetools';
+import { Route as L10nDeDECpImport } from './pages/l10n/de-DE/cp';
+import { Route as L10nDeDECmImport } from './pages/l10n/de-DE/cm';
+import { Route as L10nDeDECeQbImport } from './pages/l10n/de-DE/ce-qb';
+import { Route as L10nDeDECeClaimsImport } from './pages/l10n/de-DE/ce-claims';
+import { Route as L10nDeDECeAmImport } from './pages/l10n/de-DE/ce-am';
+import { Route as L10nDeDECcImport } from './pages/l10n/de-DE/cc';
+import { Route as L10nDeDEBcImport } from './pages/l10n/de-DE/bc';
+import { Route as L10nDeDEAnalyticsImport } from './pages/l10n/de-DE/analytics';
+import { Route as GlobalContentMessageStoreVersionImport } from './pages/globalContent/messageStore/$version';
+import { Route as GlobalContentLossEstCalcVersionImport } from './pages/globalContent/lossEstCalc/$version';
+import { Route as GlobalContentLookupGeneratorVersionImport } from './pages/globalContent/lookupGenerator/$version';
+import { Route as GlobalContentIplmVersionImport } from './pages/globalContent/iplm/$version';
+import { Route as GlobalContentIpgVersionImport } from './pages/globalContent/ipg/$version';
+import { Route as GlobalContentIpfVersionImport } from './pages/globalContent/ipf/$version';
+import { Route as GlobalContentIpaVersionImport } from './pages/globalContent/ipa/$version';
+import { Route as CloudProductsLaslenasPcImport } from './pages/cloudProducts/laslenas/pc';
+import { Route as CloudProductsLaslenasInImport } from './pages/cloudProducts/laslenas/in';
+import { Route as CloudProductsLaslenasGlobalRefAppsImport } from './pages/cloudProducts/laslenas/globalRefApps';
+import { Route as CloudProductsLaslenasDxRefAppsImport } from './pages/cloudProducts/laslenas/dx-ref-apps';
+import { Route as CloudProductsLaslenasCcImport } from './pages/cloudProducts/laslenas/cc';
+import { Route as CloudProductsLaslenasBcImport } from './pages/cloudProducts/laslenas/bc';
+import { Route as CloudProductsLaslenasApdImport } from './pages/cloudProducts/laslenas/apd';
+import { Route as CloudProductsKufriPcImport } from './pages/cloudProducts/kufri/pc';
+import { Route as CloudProductsKufriInImport } from './pages/cloudProducts/kufri/in';
+import { Route as CloudProductsKufriIcImport } from './pages/cloudProducts/kufri/ic';
+import { Route as CloudProductsKufriGlobalRefAppsImport } from './pages/cloudProducts/kufri/global-ref-apps';
+import { Route as CloudProductsKufriDxRefAppsImport } from './pages/cloudProducts/kufri/dx-ref-apps';
+import { Route as CloudProductsKufriDhImport } from './pages/cloudProducts/kufri/dh';
+import { Route as CloudProductsKufriCcImport } from './pages/cloudProducts/kufri/cc';
+import { Route as CloudProductsKufriBcImport } from './pages/cloudProducts/kufri/bc';
+import { Route as CloudProductsKufriApdImport } from './pages/cloudProducts/kufri/apd';
+import { Route as CloudProductsJasperPcImport } from './pages/cloudProducts/jasper/pc';
+import { Route as CloudProductsJasperInImport } from './pages/cloudProducts/jasper/in';
+import { Route as CloudProductsJasperIcImport } from './pages/cloudProducts/jasper/ic';
+import { Route as CloudProductsJasperGlobalRefAppsImport } from './pages/cloudProducts/jasper/global-ref-apps';
+import { Route as CloudProductsJasperDxRefAppsImport } from './pages/cloudProducts/jasper/dx-ref-apps';
+import { Route as CloudProductsJasperDhImport } from './pages/cloudProducts/jasper/dh';
+import { Route as CloudProductsJasperCcImport } from './pages/cloudProducts/jasper/cc';
+import { Route as CloudProductsJasperBcImport } from './pages/cloudProducts/jasper/bc';
+import { Route as CloudProductsJasperApdImport } from './pages/cloudProducts/jasper/apd';
+import { Route as CloudProductsInnsbruckGlobalRefAppsImport } from './pages/cloudProducts/innsbruck/global-ref-apps';
+import { Route as CloudProductsInnsbruckDxRefAppsImport } from './pages/cloudProducts/innsbruck/dx-ref-apps';
+import { Route as CloudProductsInnsbruckApdImport } from './pages/cloudProducts/innsbruck/apd';
+import { Route as CloudProductsHakubaJutroDigitalPlatformImport } from './pages/cloudProducts/hakuba/jutroDigitalPlatform';
+import { Route as CloudProductsHakubaGlobalRefAppsImport } from './pages/cloudProducts/hakuba/global-ref-apps';
+import { Route as CloudProductsHakubaDxRefAppsImport } from './pages/cloudProducts/hakuba/dx-ref-apps';
+import { Route as CloudProductsHakubaApdImport } from './pages/cloudProducts/hakuba/apd';
+import { Route as CloudProductsGarmischJutroDigitalPlatformImport } from './pages/cloudProducts/garmisch/jutroDigitalPlatform';
+import { Route as CloudProductsGarmischGlobalRefAppsImport } from './pages/cloudProducts/garmisch/global-ref-apps';
+import { Route as CloudProductsGarmischDxRefAppsImport } from './pages/cloudProducts/garmisch/dx-ref-apps';
+import { Route as CloudProductsGarmischApdImport } from './pages/cloudProducts/garmisch/apd';
+import { Route as CloudProductsFlaineJutroDigitalPlatformImport } from './pages/cloudProducts/flaine/jutroDigitalPlatform';
+import { Route as CloudProductsFlaineGlobalRefAppsImport } from './pages/cloudProducts/flaine/global-ref-apps';
+import { Route as CloudProductsFlaineDxRefAppsImport } from './pages/cloudProducts/flaine/dx-ref-apps';
+import { Route as CloudProductsFlaineApdImport } from './pages/cloudProducts/flaine/apd';
+import { Route as CloudProductsExploreEs419Import } from './pages/cloudProducts/explore/es-419';
+import { Route as SelfManagedProductsGwsfVodVersionImport } from './pages/selfManagedProducts/gwsf/vod/$version';
+import { Route as SelfManagedProductsGwsfEdVersionImport } from './pages/selfManagedProducts/gwsf/ed/$version';
+import { Route as SelfManagedProductsGwsfDiVersionImport } from './pages/selfManagedProducts/gwsf/di/$version';
+import { Route as L10nJaJPCloudProductsAutopilotworkflowserviceImport } from './pages/l10n/ja-JP/cloudProducts/autopilotworkflowservice';
+import { Route as CloudProductsInnsbruckPcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/pcGwCloud/$version';
+import { Route as CloudProductsInnsbruckInsuranceNowVersionImport } from './pages/cloudProducts/innsbruck/insuranceNow/$version';
+import { Route as CloudProductsInnsbruckIcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/icGwCloud/$version';
+import { Route as CloudProductsInnsbruckDhGwCloudVersionImport } from './pages/cloudProducts/innsbruck/dhGwCloud/$version';
+import { Route as CloudProductsInnsbruckCcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/ccGwCloud/$version';
+import { Route as CloudProductsInnsbruckBcGwCloudVersionImport } from './pages/cloudProducts/innsbruck/bcGwCloud/$version';
+import { Route as CloudProductsHakubaPcGwCloudVersionImport } from './pages/cloudProducts/hakuba/pcGwCloud/$version';
+import { Route as CloudProductsHakubaInsuranceNowVersionImport } from './pages/cloudProducts/hakuba/insuranceNow/$version';
+import { Route as CloudProductsHakubaIcGwCloudVersionImport } from './pages/cloudProducts/hakuba/icGwCloud/$version';
+import { Route as CloudProductsHakubaDhGwCloudVersionImport } from './pages/cloudProducts/hakuba/dhGwCloud/$version';
+import { Route as CloudProductsHakubaCcGwCloudVersionImport } from './pages/cloudProducts/hakuba/ccGwCloud/$version';
+import { Route as CloudProductsHakubaBcGwCloudVersionImport } from './pages/cloudProducts/hakuba/bcGwCloud/$version';
+import { Route as CloudProductsGarmischPcGwCloudVersionImport } from './pages/cloudProducts/garmisch/pcGwCloud/$version';
+import { Route as CloudProductsGarmischInsuranceNowVersionImport } from './pages/cloudProducts/garmisch/insuranceNow/$version';
+import { Route as CloudProductsGarmischIcGwCloudVersionImport } from './pages/cloudProducts/garmisch/icGwCloud/$version';
+import { Route as CloudProductsGarmischDhGwCloudVersionImport } from './pages/cloudProducts/garmisch/dhGwCloud/$version';
+import { Route as CloudProductsGarmischCcGwCloudVersionImport } from './pages/cloudProducts/garmisch/ccGwCloud/$version';
+import { Route as CloudProductsGarmischBcGwCloudVersionImport } from './pages/cloudProducts/garmisch/bcGwCloud/$version';
+import { Route as CloudProductsFlainePcGwCloudVersionImport } from './pages/cloudProducts/flaine/pcGwCloud/$version';
+import { Route as CloudProductsFlaineInsuranceNowVersionImport } from './pages/cloudProducts/flaine/insuranceNow/$version';
+import { Route as CloudProductsFlaineIcGwCloudVersionImport } from './pages/cloudProducts/flaine/icGwCloud/$version';
+import { Route as CloudProductsFlaineDhGwCloudVersionImport } from './pages/cloudProducts/flaine/dhGwCloud/$version';
+import { Route as CloudProductsFlaineCcGwCloudVersionImport } from './pages/cloudProducts/flaine/ccGwCloud/$version';
+import { Route as CloudProductsFlaineBcGwCloudVersionImport } from './pages/cloudProducts/flaine/bcGwCloud/$version';
+import { Route as CloudProductsElysianInsuranceNowVersionImport } from './pages/cloudProducts/elysian/insuranceNow/$version';
+import { Route as CloudProductsDobsonInsuranceNowVersionImport } from './pages/cloudProducts/dobson/insuranceNow/$version';
+import { Route as CloudProductsCortinaInsuranceNowVersionImport } from './pages/cloudProducts/cortina/insuranceNow/$version';
+import { Route as CloudProductsBanffInsuranceNowVersionImport } from './pages/cloudProducts/banff/insuranceNow/$version';
+import { Route as CloudProductsAspenInsuranceNowVersionImport } from './pages/cloudProducts/aspen/insuranceNow/$version';
 
 // Create/Update Routes
 
 const SupportRoute = SupportImport.update({
   path: '/support',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const SearchResultsRoute = SearchResultsImport.update({
   path: '/search-results',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const LobsRoute = LobsImport.update({
   path: '/lobs',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const InternalRoute = InternalImport.update({
   path: '/internal',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const GwLoginRoute = GwLoginImport.update({
   path: '/gw-login',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ForbiddenRoute = ForbiddenImport.update({
   path: '/forbidden',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const DeltaDocRoute = DeltaDocImport.update({
   path: '/delta-doc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ChatbotFeedbackRoute = ChatbotFeedbackImport.update({
   path: '/chatbot-feedback',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ChatRoute = ChatImport.update({
   path: '/chat',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const AdminPanelRoute = AdminPanelImport.update({
   path: '/admin-panel',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const SelfManagedProductsIndexRoute = SelfManagedProductsIndexImport.update({
   path: '/selfManagedProducts/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nIndexRoute = L10nIndexImport.update({
   path: '/l10n/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const TestingFrameworkLaslenasRoute = TestingFrameworkLaslenasImport.update({
   path: '/testingFramework/laslenas',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const TestingFrameworkKufriRoute = TestingFrameworkKufriImport.update({
   path: '/testingFramework/kufri',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const TestingFrameworkJasperRoute = TestingFrameworkJasperImport.update({
   path: '/testingFramework/jasper',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const TestingFrameworkInnsbruckRoute = TestingFrameworkInnsbruckImport.update({
   path: '/testingFramework/innsbruck',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const TestingFrameworkHakubaRoute = TestingFrameworkHakubaImport.update({
   path: '/testingFramework/hakuba',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const TestingFrameworkGarmischRoute = TestingFrameworkGarmischImport.update({
   path: '/testingFramework/garmisch',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const TestingFrameworkFlaineRoute = TestingFrameworkFlaineImport.update({
   path: '/testingFramework/flaine',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const TestingFrameworkElysianRoute = TestingFrameworkElysianImport.update({
   path: '/testingFramework/elysian',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const JutroDesignSystemVersionRoute = JutroDesignSystemVersionImport.update({
   path: '/jutroDesignSystem/$version',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const GlobalContentSbtRoute = GlobalContentSbtImport.update({
   path: '/globalContent/sbt',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsMigrationToolsRoute =
   CloudProductsMigrationToolsImport.update({
     path: '/cloudProducts/migrationTools',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGuidewireCloudPlatformRoute =
   CloudProductsGuidewireCloudPlatformImport.update({
     path: '/cloudProducts/guidewireCloudPlatform',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsDataPlatformRoute = CloudProductsDataPlatformImport.update({
   path: '/cloudProducts/dataPlatform',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsCyenceRoute = CloudProductsCyenceImport.update({
   path: '/cloudProducts/cyence',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsAutopilotworkflowserviceRoute =
   CloudProductsAutopilotworkflowserviceImport.update({
     path: '/cloudProducts/autopilotworkflowservice',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsAppEventsRoute = CloudProductsAppEventsImport.update({
   path: '/cloudProducts/appEvents',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ApiReferencesLaslenasRoute = ApiReferencesLaslenasImport.update({
   path: '/apiReferences/laslenas',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ApiReferencesKufriRoute = ApiReferencesKufriImport.update({
   path: '/apiReferences/kufri',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ApiReferencesJasperRoute = ApiReferencesJasperImport.update({
   path: '/apiReferences/jasper',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ApiReferencesInnsbruckRoute = ApiReferencesInnsbruckImport.update({
   path: '/apiReferences/innsbruck',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ApiReferencesHakubaRoute = ApiReferencesHakubaImport.update({
   path: '/apiReferences/hakuba',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ApiReferencesGarmischRoute = ApiReferencesGarmischImport.update({
   path: '/apiReferences/garmisch',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ApiReferencesFlaineRoute = ApiReferencesFlaineImport.update({
   path: '/apiReferences/flaine',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const AdminPanelVersionRoute = AdminPanelVersionImport.update({
   path: '/version',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const AdminPanelSubjectRoute = AdminPanelSubjectImport.update({
   path: '/subject',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const AdminPanelSourceRoute = AdminPanelSourceImport.update({
   path: '/source',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const AdminPanelResourceRoute = AdminPanelResourceImport.update({
   path: '/resource',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const AdminPanelReleaseRoute = AdminPanelReleaseImport.update({
   path: '/release',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const AdminPanelProductRoute = AdminPanelProductImport.update({
   path: '/product',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const AdminPanelPlatformRoute = AdminPanelPlatformImport.update({
   path: '/platform',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const AdminPanelPageRoute = AdminPanelPageImport.update({
   path: '/page',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const AdminPanelLanguageRoute = AdminPanelLanguageImport.update({
   path: '/language',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const AdminPanelExternalLinkRoute = AdminPanelExternalLinkImport.update({
   path: '/external-link',
   getParentRoute: () => AdminPanelRoute,
-} as any)
+} as any);
 
 const L10nPtBRIndexRoute = L10nPtBRIndexImport.update({
   path: '/l10n/pt-BR/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nNlNLIndexRoute = L10nNlNLIndexImport.update({
   path: '/l10n/nl-NL/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPIndexRoute = L10nJaJPIndexImport.update({
   path: '/l10n/ja-JP/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITIndexRoute = L10nItITIndexImport.update({
   path: '/l10n/it-IT/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRIndexRoute = L10nFrFRIndexImport.update({
   path: '/l10n/fr-FR/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESIndexRoute = L10nEsESIndexImport.update({
   path: '/l10n/es-ES/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419IndexRoute = L10nEs419IndexImport.update({
   path: '/l10n/es-419/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDEIndexRoute = L10nDeDEIndexImport.update({
   path: '/l10n/de-DE/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsLaslenasIndexRoute = CloudProductsLaslenasIndexImport.update(
   {
     path: '/cloudProducts/laslenas/',
     getParentRoute: () => rootRoute,
-  } as any,
-)
+  } as any
+);
 
 const CloudProductsKufriIndexRoute = CloudProductsKufriIndexImport.update({
   path: '/cloudProducts/kufri/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsJasperIndexRoute = CloudProductsJasperIndexImport.update({
   path: '/cloudProducts/jasper/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsInnsbruckIndexRoute =
   CloudProductsInnsbruckIndexImport.update({
     path: '/cloudProducts/innsbruck/',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaIndexRoute = CloudProductsHakubaIndexImport.update({
   path: '/cloudProducts/hakuba/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsGarmischIndexRoute = CloudProductsGarmischIndexImport.update(
   {
     path: '/cloudProducts/garmisch/',
     getParentRoute: () => rootRoute,
-  } as any,
-)
+  } as any
+);
 
 const CloudProductsFlaineIndexRoute = CloudProductsFlaineIndexImport.update({
   path: '/cloudProducts/flaine/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const SelfManagedProductsVendorEngageVersionRoute =
   SelfManagedProductsVendorEngageVersionImport.update({
     path: '/selfManagedProducts/vendorEngage/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsServiceRepEngageVersionRoute =
   SelfManagedProductsServiceRepEngageVersionImport.update({
     path: '/selfManagedProducts/serviceRepEngage/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsProducerEngageCcVersionRoute =
   SelfManagedProductsProducerEngageCcVersionImport.update({
     path: '/selfManagedProducts/producerEngageCc/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsProducerEngageVersionRoute =
   SelfManagedProductsProducerEngageVersionImport.update({
     path: '/selfManagedProducts/producerEngage/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsPcVersionRoute =
   SelfManagedProductsPcVersionImport.update({
     path: '/selfManagedProducts/pc/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsIcVersionRoute =
   SelfManagedProductsIcVersionImport.update({
     path: '/selfManagedProducts/ic/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsDhVersionRoute =
   SelfManagedProductsDhVersionImport.update({
     path: '/selfManagedProducts/dh/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsCeQuoteAndBuyVersionRoute =
   SelfManagedProductsCeQuoteAndBuyVersionImport.update({
     path: '/selfManagedProducts/ceQuoteAndBuy/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsCeAccountMgmtCcVersionRoute =
   SelfManagedProductsCeAccountMgmtCcVersionImport.update({
     path: '/selfManagedProducts/ceAccountMgmtCc/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsCeAccountMgmtVersionRoute =
   SelfManagedProductsCeAccountMgmtVersionImport.update({
     path: '/selfManagedProducts/ceAccountMgmt/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsCcVersionRoute =
   SelfManagedProductsCcVersionImport.update({
     path: '/selfManagedProducts/cc/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsBcVersionRoute =
   SelfManagedProductsBcVersionImport.update({
     path: '/selfManagedProducts/bc/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const L10nPtBRVeRoute = L10nPtBRVeImport.update({
   path: '/l10n/pt-BR/ve',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRSreRoute = L10nPtBRSreImport.update({
   path: '/l10n/pt-BR/sre',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRPeClaimsRoute = L10nPtBRPeClaimsImport.update({
   path: '/l10n/pt-BR/pe-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRPeRoute = L10nPtBRPeImport.update({
   path: '/l10n/pt-BR/pe',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRPcRoute = L10nPtBRPcImport.update({
   path: '/l10n/pt-BR/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRIsConfigupgradetoolsRoute =
   L10nPtBRIsConfigupgradetoolsImport.update({
     path: '/l10n/pt-BR/is-configupgradetools',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const L10nPtBRGccRoute = L10nPtBRGccImport.update({
   path: '/l10n/pt-BR/gcc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRCpRoute = L10nPtBRCpImport.update({
   path: '/l10n/pt-BR/cp',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRCmRoute = L10nPtBRCmImport.update({
   path: '/l10n/pt-BR/cm',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRCeQbRoute = L10nPtBRCeQbImport.update({
   path: '/l10n/pt-BR/ce-qb',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRCeClaimsRoute = L10nPtBRCeClaimsImport.update({
   path: '/l10n/pt-BR/ce-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRCeAmRoute = L10nPtBRCeAmImport.update({
   path: '/l10n/pt-BR/ce-am',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRCdaRoute = L10nPtBRCdaImport.update({
   path: '/l10n/pt-BR/cda',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRCcRoute = L10nPtBRCcImport.update({
   path: '/l10n/pt-BR/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRBcRoute = L10nPtBRBcImport.update({
   path: '/l10n/pt-BR/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nPtBRAnalyticsRoute = L10nPtBRAnalyticsImport.update({
   path: '/l10n/pt-BR/analytics',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nNlNLCcRoute = L10nNlNLCcImport.update({
   path: '/l10n/nl-NL/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPVeRoute = L10nJaJPVeImport.update({
   path: '/l10n/ja-JP/ve',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPSreRoute = L10nJaJPSreImport.update({
   path: '/l10n/ja-JP/sre',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPPeClaimsRoute = L10nJaJPPeClaimsImport.update({
   path: '/l10n/ja-JP/pe-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPPeRoute = L10nJaJPPeImport.update({
   path: '/l10n/ja-JP/pe',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPPcRoute = L10nJaJPPcImport.update({
   path: '/l10n/ja-JP/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPIsConfigupgradetoolsRoute =
   L10nJaJPIsConfigupgradetoolsImport.update({
     path: '/l10n/ja-JP/is-configupgradetools',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const L10nJaJPGwsfRoute = L10nJaJPGwsfImport.update({
   path: '/l10n/ja-JP/gwsf',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPGwidRoute = L10nJaJPGwidImport.update({
   path: '/l10n/ja-JP/gwid',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPGtestRoute = L10nJaJPGtestImport.update({
   path: '/l10n/ja-JP/gtest',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPCpRoute = L10nJaJPCpImport.update({
   path: '/l10n/ja-JP/cp',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPCmRoute = L10nJaJPCmImport.update({
   path: '/l10n/ja-JP/cm',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPCeQbRoute = L10nJaJPCeQbImport.update({
   path: '/l10n/ja-JP/ce-qb',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPCeClaimsRoute = L10nJaJPCeClaimsImport.update({
   path: '/l10n/ja-JP/ce-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPCeAmRoute = L10nJaJPCeAmImport.update({
   path: '/l10n/ja-JP/ce-am',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPCcRoute = L10nJaJPCcImport.update({
   path: '/l10n/ja-JP/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPBcRoute = L10nJaJPBcImport.update({
   path: '/l10n/ja-JP/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPApdRoute = L10nJaJPApdImport.update({
   path: '/l10n/ja-JP/apd',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJPAnalyticsRoute = L10nJaJPAnalyticsImport.update({
   path: '/l10n/ja-JP/analytics',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nJaJP202306hakubawhatsnewRoute =
   L10nJaJP202306hakubawhatsnewImport.update({
     path: '/l10n/ja-JP/202306hakubawhatsnew',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const L10nJaJP202302garmischwhatsnewRoute =
   L10nJaJP202302garmischwhatsnewImport.update({
     path: '/l10n/ja-JP/202302garmischwhatsnew',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const L10nItITVeRoute = L10nItITVeImport.update({
   path: '/l10n/it-IT/ve',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITSreRoute = L10nItITSreImport.update({
   path: '/l10n/it-IT/sre',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITPeClaimsRoute = L10nItITPeClaimsImport.update({
   path: '/l10n/it-IT/pe-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITPeRoute = L10nItITPeImport.update({
   path: '/l10n/it-IT/pe',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITPcRoute = L10nItITPcImport.update({
   path: '/l10n/it-IT/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITGwidRoute = L10nItITGwidImport.update({
   path: '/l10n/it-IT/gwid',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITGccRoute = L10nItITGccImport.update({
   path: '/l10n/it-IT/gcc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITCeQbRoute = L10nItITCeQbImport.update({
   path: '/l10n/it-IT/ce-qb',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITCeClaimsRoute = L10nItITCeClaimsImport.update({
   path: '/l10n/it-IT/ce-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITCeAmRoute = L10nItITCeAmImport.update({
   path: '/l10n/it-IT/ce-am',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITCdaRoute = L10nItITCdaImport.update({
   path: '/l10n/it-IT/cda',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITCcRoute = L10nItITCcImport.update({
   path: '/l10n/it-IT/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITBcRoute = L10nItITBcImport.update({
   path: '/l10n/it-IT/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nItITAnalyticsRoute = L10nItITAnalyticsImport.update({
   path: '/l10n/it-IT/analytics',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRVeRoute = L10nFrFRVeImport.update({
   path: '/l10n/fr-FR/ve',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRSreRoute = L10nFrFRSreImport.update({
   path: '/l10n/fr-FR/sre',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRPeClaimsRoute = L10nFrFRPeClaimsImport.update({
   path: '/l10n/fr-FR/pe-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRPeRoute = L10nFrFRPeImport.update({
   path: '/l10n/fr-FR/pe',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRPcRoute = L10nFrFRPcImport.update({
   path: '/l10n/fr-FR/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRIsConfigupgradetoolsRoute =
   L10nFrFRIsConfigupgradetoolsImport.update({
     path: '/l10n/fr-FR/is-configupgradetools',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const L10nFrFRCpRoute = L10nFrFRCpImport.update({
   path: '/l10n/fr-FR/cp',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRCmRoute = L10nFrFRCmImport.update({
   path: '/l10n/fr-FR/cm',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRCeQbRoute = L10nFrFRCeQbImport.update({
   path: '/l10n/fr-FR/ce-qb',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRCeClaimsRoute = L10nFrFRCeClaimsImport.update({
   path: '/l10n/fr-FR/ce-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRCeAmRoute = L10nFrFRCeAmImport.update({
   path: '/l10n/fr-FR/ce-am',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRCcRoute = L10nFrFRCcImport.update({
   path: '/l10n/fr-FR/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRBcRoute = L10nFrFRBcImport.update({
   path: '/l10n/fr-FR/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nFrFRAnalyticsRoute = L10nFrFRAnalyticsImport.update({
   path: '/l10n/fr-FR/analytics',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESVeRoute = L10nEsESVeImport.update({
   path: '/l10n/es-ES/ve',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESSreRoute = L10nEsESSreImport.update({
   path: '/l10n/es-ES/sre',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESPeClaimsRoute = L10nEsESPeClaimsImport.update({
   path: '/l10n/es-ES/pe-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESPeRoute = L10nEsESPeImport.update({
   path: '/l10n/es-ES/pe',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESPcRoute = L10nEsESPcImport.update({
   path: '/l10n/es-ES/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESCmRoute = L10nEsESCmImport.update({
   path: '/l10n/es-ES/cm',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESCeQbRoute = L10nEsESCeQbImport.update({
   path: '/l10n/es-ES/ce-qb',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESCeClaimsRoute = L10nEsESCeClaimsImport.update({
   path: '/l10n/es-ES/ce-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESCeAmRoute = L10nEsESCeAmImport.update({
   path: '/l10n/es-ES/ce-am',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESCcRoute = L10nEsESCcImport.update({
   path: '/l10n/es-ES/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEsESBcRoute = L10nEsESBcImport.update({
   path: '/l10n/es-ES/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419VeRoute = L10nEs419VeImport.update({
   path: '/l10n/es-419/ve',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419SreRoute = L10nEs419SreImport.update({
   path: '/l10n/es-419/sre',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419PeClaimsRoute = L10nEs419PeClaimsImport.update({
   path: '/l10n/es-419/pe-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419PeRoute = L10nEs419PeImport.update({
   path: '/l10n/es-419/pe',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419PcRoute = L10nEs419PcImport.update({
   path: '/l10n/es-419/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419IsConfigupgradetoolsRoute =
   L10nEs419IsConfigupgradetoolsImport.update({
     path: '/l10n/es-419/is-configupgradetools',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const L10nEs419GccRoute = L10nEs419GccImport.update({
   path: '/l10n/es-419/gcc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419CpRoute = L10nEs419CpImport.update({
   path: '/l10n/es-419/cp',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419CmRoute = L10nEs419CmImport.update({
   path: '/l10n/es-419/cm',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419CeQbRoute = L10nEs419CeQbImport.update({
   path: '/l10n/es-419/ce-qb',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419CeClaimsRoute = L10nEs419CeClaimsImport.update({
   path: '/l10n/es-419/ce-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419CeAmRoute = L10nEs419CeAmImport.update({
   path: '/l10n/es-419/ce-am',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419CdaRoute = L10nEs419CdaImport.update({
   path: '/l10n/es-419/cda',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419CcRoute = L10nEs419CcImport.update({
   path: '/l10n/es-419/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419BcRoute = L10nEs419BcImport.update({
   path: '/l10n/es-419/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419ApdRoute = L10nEs419ApdImport.update({
   path: '/l10n/es-419/apd',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nEs419AnalyticsRoute = L10nEs419AnalyticsImport.update({
   path: '/l10n/es-419/analytics',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDEVeRoute = L10nDeDEVeImport.update({
   path: '/l10n/de-DE/ve',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDESreRoute = L10nDeDESreImport.update({
   path: '/l10n/de-DE/sre',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDEPeClaimsRoute = L10nDeDEPeClaimsImport.update({
   path: '/l10n/de-DE/pe-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDEPeRoute = L10nDeDEPeImport.update({
   path: '/l10n/de-DE/pe',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDEPcRoute = L10nDeDEPcImport.update({
   path: '/l10n/de-DE/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDEIsConfigupgradetoolsRoute =
   L10nDeDEIsConfigupgradetoolsImport.update({
     path: '/l10n/de-DE/is-configupgradetools',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const L10nDeDECpRoute = L10nDeDECpImport.update({
   path: '/l10n/de-DE/cp',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDECmRoute = L10nDeDECmImport.update({
   path: '/l10n/de-DE/cm',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDECeQbRoute = L10nDeDECeQbImport.update({
   path: '/l10n/de-DE/ce-qb',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDECeClaimsRoute = L10nDeDECeClaimsImport.update({
   path: '/l10n/de-DE/ce-claims',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDECeAmRoute = L10nDeDECeAmImport.update({
   path: '/l10n/de-DE/ce-am',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDECcRoute = L10nDeDECcImport.update({
   path: '/l10n/de-DE/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDEBcRoute = L10nDeDEBcImport.update({
   path: '/l10n/de-DE/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const L10nDeDEAnalyticsRoute = L10nDeDEAnalyticsImport.update({
   path: '/l10n/de-DE/analytics',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const GlobalContentMessageStoreVersionRoute =
   GlobalContentMessageStoreVersionImport.update({
     path: '/globalContent/messageStore/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const GlobalContentLossEstCalcVersionRoute =
   GlobalContentLossEstCalcVersionImport.update({
     path: '/globalContent/lossEstCalc/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const GlobalContentLookupGeneratorVersionRoute =
   GlobalContentLookupGeneratorVersionImport.update({
     path: '/globalContent/lookupGenerator/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const GlobalContentIplmVersionRoute = GlobalContentIplmVersionImport.update({
   path: '/globalContent/iplm/$version',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const GlobalContentIpgVersionRoute = GlobalContentIpgVersionImport.update({
   path: '/globalContent/ipg/$version',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const GlobalContentIpfVersionRoute = GlobalContentIpfVersionImport.update({
   path: '/globalContent/ipf/$version',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const GlobalContentIpaVersionRoute = GlobalContentIpaVersionImport.update({
   path: '/globalContent/ipa/$version',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsLaslenasPcRoute = CloudProductsLaslenasPcImport.update({
   path: '/cloudProducts/laslenas/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsLaslenasInRoute = CloudProductsLaslenasInImport.update({
   path: '/cloudProducts/laslenas/in',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsLaslenasGlobalRefAppsRoute =
   CloudProductsLaslenasGlobalRefAppsImport.update({
     path: '/cloudProducts/laslenas/globalRefApps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsLaslenasDxRefAppsRoute =
-CloudProductsLDxRefAppsImport.update({
-  path: '/cloudProducts/laslenas/dx-ref-apps',
-  getParentRoute: () => rootRoute,
-  } as any)
+  CloudProductsLDxRefAppsImport.update({
+    path: '/cloudProducts/laslenas/dx-ref-apps',
+    getParentRoute: () => rootRoute,
+  } as any);
 
 const CloudProductsLaslenasCcRoute = CloudProductsLaslenasCcImport.update({
   path: '/cloudProducts/laslenas/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsLaslenasBcRoute = CloudProductsLaslenasBcImport.update({
   path: '/cloudProducts/laslenas/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsLaslenasApdRoute = CloudProductsLaslenasApdImport.update({
   path: '/cloudProducts/laslenas/apd',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsKufriPcRoute = CloudProductsKufriPcImport.update({
   path: '/cloudProducts/kufri/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsKufriInRoute = CloudProductsKufriInImport.update({
   path: '/cloudProducts/kufri/in',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsKufriIcRoute = CloudProductsKufriIcImport.update({
   path: '/cloudProducts/kufri/ic',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsKufriGlobalRefAppsRoute =
   CloudProductsKufriGlobalRefAppsImport.update({
     path: '/cloudProducts/kufri/global-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsKufriDxRefAppsRoute =
   CloudProductsKufriDxRefAppsImport.update({
     path: '/cloudProducts/kufri/dx-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsKufriDhRoute = CloudProductsKufriDhImport.update({
   path: '/cloudProducts/kufri/dh',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsKufriCcRoute = CloudProductsKufriCcImport.update({
   path: '/cloudProducts/kufri/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsKufriBcRoute = CloudProductsKufriBcImport.update({
   path: '/cloudProducts/kufri/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsKufriApdRoute = CloudProductsKufriApdImport.update({
   path: '/cloudProducts/kufri/apd',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsJasperPcRoute = CloudProductsJasperPcImport.update({
   path: '/cloudProducts/jasper/pc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsJasperInRoute = CloudProductsJasperInImport.update({
   path: '/cloudProducts/jasper/in',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsJasperIcRoute = CloudProductsJasperIcImport.update({
   path: '/cloudProducts/jasper/ic',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsJasperGlobalRefAppsRoute =
   CloudProductsJasperGlobalRefAppsImport.update({
     path: '/cloudProducts/jasper/global-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsJasperDxRefAppsRoute =
   CloudProductsJasperDxRefAppsImport.update({
     path: '/cloudProducts/jasper/dx-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsJasperDhRoute = CloudProductsJasperDhImport.update({
   path: '/cloudProducts/jasper/dh',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsJasperCcRoute = CloudProductsJasperCcImport.update({
   path: '/cloudProducts/jasper/cc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsJasperBcRoute = CloudProductsJasperBcImport.update({
   path: '/cloudProducts/jasper/bc',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsJasperApdRoute = CloudProductsJasperApdImport.update({
   path: '/cloudProducts/jasper/apd',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsInnsbruckGlobalRefAppsRoute =
   CloudProductsInnsbruckGlobalRefAppsImport.update({
     path: '/cloudProducts/innsbruck/global-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsInnsbruckDxRefAppsRoute =
   CloudProductsInnsbruckDxRefAppsImport.update({
     path: '/cloudProducts/innsbruck/dx-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsInnsbruckApdRoute = CloudProductsInnsbruckApdImport.update({
   path: '/cloudProducts/innsbruck/apd',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsHakubaJutroDigitalPlatformRoute =
   CloudProductsHakubaJutroDigitalPlatformImport.update({
     path: '/cloudProducts/hakuba/jutroDigitalPlatform',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaGlobalRefAppsRoute =
   CloudProductsHakubaGlobalRefAppsImport.update({
     path: '/cloudProducts/hakuba/global-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaDxRefAppsRoute =
   CloudProductsHakubaDxRefAppsImport.update({
     path: '/cloudProducts/hakuba/dx-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaApdRoute = CloudProductsHakubaApdImport.update({
   path: '/cloudProducts/hakuba/apd',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsGarmischJutroDigitalPlatformRoute =
   CloudProductsGarmischJutroDigitalPlatformImport.update({
     path: '/cloudProducts/garmisch/jutroDigitalPlatform',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGarmischGlobalRefAppsRoute =
   CloudProductsGarmischGlobalRefAppsImport.update({
     path: '/cloudProducts/garmisch/global-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGarmischDxRefAppsRoute =
   CloudProductsGarmischDxRefAppsImport.update({
     path: '/cloudProducts/garmisch/dx-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGarmischApdRoute = CloudProductsGarmischApdImport.update({
   path: '/cloudProducts/garmisch/apd',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsFlaineJutroDigitalPlatformRoute =
   CloudProductsFlaineJutroDigitalPlatformImport.update({
     path: '/cloudProducts/flaine/jutroDigitalPlatform',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsFlaineGlobalRefAppsRoute =
   CloudProductsFlaineGlobalRefAppsImport.update({
     path: '/cloudProducts/flaine/global-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsFlaineDxRefAppsRoute =
   CloudProductsFlaineDxRefAppsImport.update({
     path: '/cloudProducts/flaine/dx-ref-apps',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsFlaineApdRoute = CloudProductsFlaineApdImport.update({
   path: '/cloudProducts/flaine/apd',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const CloudProductsExploreEs419Route = CloudProductsExploreEs419Import.update({
   path: '/cloudProducts/explore/es-419',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const SelfManagedProductsGwsfVodVersionRoute =
   SelfManagedProductsGwsfVodVersionImport.update({
     path: '/selfManagedProducts/gwsf/vod/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsGwsfEdVersionRoute =
   SelfManagedProductsGwsfEdVersionImport.update({
     path: '/selfManagedProducts/gwsf/ed/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const SelfManagedProductsGwsfDiVersionRoute =
   SelfManagedProductsGwsfDiVersionImport.update({
     path: '/selfManagedProducts/gwsf/di/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const L10nJaJPCloudProductsAutopilotworkflowserviceRoute =
   L10nJaJPCloudProductsAutopilotworkflowserviceImport.update({
     path: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsInnsbruckPcGwCloudVersionRoute =
   CloudProductsInnsbruckPcGwCloudVersionImport.update({
     path: '/cloudProducts/innsbruck/pcGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsInnsbruckInsuranceNowVersionRoute =
   CloudProductsInnsbruckInsuranceNowVersionImport.update({
     path: '/cloudProducts/innsbruck/insuranceNow/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsInnsbruckIcGwCloudVersionRoute =
   CloudProductsInnsbruckIcGwCloudVersionImport.update({
     path: '/cloudProducts/innsbruck/icGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsInnsbruckDhGwCloudVersionRoute =
   CloudProductsInnsbruckDhGwCloudVersionImport.update({
     path: '/cloudProducts/innsbruck/dhGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsInnsbruckCcGwCloudVersionRoute =
   CloudProductsInnsbruckCcGwCloudVersionImport.update({
     path: '/cloudProducts/innsbruck/ccGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsInnsbruckBcGwCloudVersionRoute =
   CloudProductsInnsbruckBcGwCloudVersionImport.update({
     path: '/cloudProducts/innsbruck/bcGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaPcGwCloudVersionRoute =
   CloudProductsHakubaPcGwCloudVersionImport.update({
     path: '/cloudProducts/hakuba/pcGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaInsuranceNowVersionRoute =
   CloudProductsHakubaInsuranceNowVersionImport.update({
     path: '/cloudProducts/hakuba/insuranceNow/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaIcGwCloudVersionRoute =
   CloudProductsHakubaIcGwCloudVersionImport.update({
     path: '/cloudProducts/hakuba/icGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaDhGwCloudVersionRoute =
   CloudProductsHakubaDhGwCloudVersionImport.update({
     path: '/cloudProducts/hakuba/dhGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaCcGwCloudVersionRoute =
   CloudProductsHakubaCcGwCloudVersionImport.update({
     path: '/cloudProducts/hakuba/ccGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsHakubaBcGwCloudVersionRoute =
   CloudProductsHakubaBcGwCloudVersionImport.update({
     path: '/cloudProducts/hakuba/bcGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGarmischPcGwCloudVersionRoute =
   CloudProductsGarmischPcGwCloudVersionImport.update({
     path: '/cloudProducts/garmisch/pcGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGarmischInsuranceNowVersionRoute =
   CloudProductsGarmischInsuranceNowVersionImport.update({
     path: '/cloudProducts/garmisch/insuranceNow/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGarmischIcGwCloudVersionRoute =
   CloudProductsGarmischIcGwCloudVersionImport.update({
     path: '/cloudProducts/garmisch/icGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGarmischDhGwCloudVersionRoute =
   CloudProductsGarmischDhGwCloudVersionImport.update({
     path: '/cloudProducts/garmisch/dhGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGarmischCcGwCloudVersionRoute =
   CloudProductsGarmischCcGwCloudVersionImport.update({
     path: '/cloudProducts/garmisch/ccGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsGarmischBcGwCloudVersionRoute =
   CloudProductsGarmischBcGwCloudVersionImport.update({
     path: '/cloudProducts/garmisch/bcGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsFlainePcGwCloudVersionRoute =
   CloudProductsFlainePcGwCloudVersionImport.update({
     path: '/cloudProducts/flaine/pcGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsFlaineInsuranceNowVersionRoute =
   CloudProductsFlaineInsuranceNowVersionImport.update({
     path: '/cloudProducts/flaine/insuranceNow/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsFlaineIcGwCloudVersionRoute =
   CloudProductsFlaineIcGwCloudVersionImport.update({
     path: '/cloudProducts/flaine/icGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsFlaineDhGwCloudVersionRoute =
   CloudProductsFlaineDhGwCloudVersionImport.update({
     path: '/cloudProducts/flaine/dhGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsFlaineCcGwCloudVersionRoute =
   CloudProductsFlaineCcGwCloudVersionImport.update({
     path: '/cloudProducts/flaine/ccGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsFlaineBcGwCloudVersionRoute =
   CloudProductsFlaineBcGwCloudVersionImport.update({
     path: '/cloudProducts/flaine/bcGwCloud/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsElysianInsuranceNowVersionRoute =
   CloudProductsElysianInsuranceNowVersionImport.update({
     path: '/cloudProducts/elysian/insuranceNow/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsDobsonInsuranceNowVersionRoute =
   CloudProductsDobsonInsuranceNowVersionImport.update({
     path: '/cloudProducts/dobson/insuranceNow/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsCortinaInsuranceNowVersionRoute =
   CloudProductsCortinaInsuranceNowVersionImport.update({
     path: '/cloudProducts/cortina/insuranceNow/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsBanffInsuranceNowVersionRoute =
   CloudProductsBanffInsuranceNowVersionImport.update({
     path: '/cloudProducts/banff/insuranceNow/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 const CloudProductsAspenInsuranceNowVersionRoute =
   CloudProductsAspenInsuranceNowVersionImport.update({
     path: '/cloudProducts/aspen/insuranceNow/$version',
     getParentRoute: () => rootRoute,
-  } as any)
+  } as any);
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof IndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/admin-panel': {
-      id: '/admin-panel'
-      path: '/admin-panel'
-      fullPath: '/admin-panel'
-      preLoaderRoute: typeof AdminPanelImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/admin-panel';
+      path: '/admin-panel';
+      fullPath: '/admin-panel';
+      preLoaderRoute: typeof AdminPanelImport;
+      parentRoute: typeof rootRoute;
+    };
     '/chat': {
-      id: '/chat'
-      path: '/chat'
-      fullPath: '/chat'
-      preLoaderRoute: typeof ChatImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/chat';
+      path: '/chat';
+      fullPath: '/chat';
+      preLoaderRoute: typeof ChatImport;
+      parentRoute: typeof rootRoute;
+    };
     '/chatbot-feedback': {
-      id: '/chatbot-feedback'
-      path: '/chatbot-feedback'
-      fullPath: '/chatbot-feedback'
-      preLoaderRoute: typeof ChatbotFeedbackImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/chatbot-feedback';
+      path: '/chatbot-feedback';
+      fullPath: '/chatbot-feedback';
+      preLoaderRoute: typeof ChatbotFeedbackImport;
+      parentRoute: typeof rootRoute;
+    };
     '/delta-doc': {
-      id: '/delta-doc'
-      path: '/delta-doc'
-      fullPath: '/delta-doc'
-      preLoaderRoute: typeof DeltaDocImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/delta-doc';
+      path: '/delta-doc';
+      fullPath: '/delta-doc';
+      preLoaderRoute: typeof DeltaDocImport;
+      parentRoute: typeof rootRoute;
+    };
     '/forbidden': {
-      id: '/forbidden'
-      path: '/forbidden'
-      fullPath: '/forbidden'
-      preLoaderRoute: typeof ForbiddenImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/forbidden';
+      path: '/forbidden';
+      fullPath: '/forbidden';
+      preLoaderRoute: typeof ForbiddenImport;
+      parentRoute: typeof rootRoute;
+    };
     '/gw-login': {
-      id: '/gw-login'
-      path: '/gw-login'
-      fullPath: '/gw-login'
-      preLoaderRoute: typeof GwLoginImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/gw-login';
+      path: '/gw-login';
+      fullPath: '/gw-login';
+      preLoaderRoute: typeof GwLoginImport;
+      parentRoute: typeof rootRoute;
+    };
     '/internal': {
-      id: '/internal'
-      path: '/internal'
-      fullPath: '/internal'
-      preLoaderRoute: typeof InternalImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/internal';
+      path: '/internal';
+      fullPath: '/internal';
+      preLoaderRoute: typeof InternalImport;
+      parentRoute: typeof rootRoute;
+    };
     '/lobs': {
-      id: '/lobs'
-      path: '/lobs'
-      fullPath: '/lobs'
-      preLoaderRoute: typeof LobsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/lobs';
+      path: '/lobs';
+      fullPath: '/lobs';
+      preLoaderRoute: typeof LobsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/search-results': {
-      id: '/search-results'
-      path: '/search-results'
-      fullPath: '/search-results'
-      preLoaderRoute: typeof SearchResultsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/search-results';
+      path: '/search-results';
+      fullPath: '/search-results';
+      preLoaderRoute: typeof SearchResultsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/support': {
-      id: '/support'
-      path: '/support'
-      fullPath: '/support'
-      preLoaderRoute: typeof SupportImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/support';
+      path: '/support';
+      fullPath: '/support';
+      preLoaderRoute: typeof SupportImport;
+      parentRoute: typeof rootRoute;
+    };
     '/admin-panel/external-link': {
-      id: '/admin-panel/external-link'
-      path: '/external-link'
-      fullPath: '/admin-panel/external-link'
-      preLoaderRoute: typeof AdminPanelExternalLinkImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/external-link';
+      path: '/external-link';
+      fullPath: '/admin-panel/external-link';
+      preLoaderRoute: typeof AdminPanelExternalLinkImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/admin-panel/language': {
-      id: '/admin-panel/language'
-      path: '/language'
-      fullPath: '/admin-panel/language'
-      preLoaderRoute: typeof AdminPanelLanguageImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/language';
+      path: '/language';
+      fullPath: '/admin-panel/language';
+      preLoaderRoute: typeof AdminPanelLanguageImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/admin-panel/page': {
-      id: '/admin-panel/page'
-      path: '/page'
-      fullPath: '/admin-panel/page'
-      preLoaderRoute: typeof AdminPanelPageImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/page';
+      path: '/page';
+      fullPath: '/admin-panel/page';
+      preLoaderRoute: typeof AdminPanelPageImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/admin-panel/platform': {
-      id: '/admin-panel/platform'
-      path: '/platform'
-      fullPath: '/admin-panel/platform'
-      preLoaderRoute: typeof AdminPanelPlatformImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/platform';
+      path: '/platform';
+      fullPath: '/admin-panel/platform';
+      preLoaderRoute: typeof AdminPanelPlatformImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/admin-panel/product': {
-      id: '/admin-panel/product'
-      path: '/product'
-      fullPath: '/admin-panel/product'
-      preLoaderRoute: typeof AdminPanelProductImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/product';
+      path: '/product';
+      fullPath: '/admin-panel/product';
+      preLoaderRoute: typeof AdminPanelProductImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/admin-panel/release': {
-      id: '/admin-panel/release'
-      path: '/release'
-      fullPath: '/admin-panel/release'
-      preLoaderRoute: typeof AdminPanelReleaseImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/release';
+      path: '/release';
+      fullPath: '/admin-panel/release';
+      preLoaderRoute: typeof AdminPanelReleaseImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/admin-panel/resource': {
-      id: '/admin-panel/resource'
-      path: '/resource'
-      fullPath: '/admin-panel/resource'
-      preLoaderRoute: typeof AdminPanelResourceImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/resource';
+      path: '/resource';
+      fullPath: '/admin-panel/resource';
+      preLoaderRoute: typeof AdminPanelResourceImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/admin-panel/source': {
-      id: '/admin-panel/source'
-      path: '/source'
-      fullPath: '/admin-panel/source'
-      preLoaderRoute: typeof AdminPanelSourceImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/source';
+      path: '/source';
+      fullPath: '/admin-panel/source';
+      preLoaderRoute: typeof AdminPanelSourceImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/admin-panel/subject': {
-      id: '/admin-panel/subject'
-      path: '/subject'
-      fullPath: '/admin-panel/subject'
-      preLoaderRoute: typeof AdminPanelSubjectImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/subject';
+      path: '/subject';
+      fullPath: '/admin-panel/subject';
+      preLoaderRoute: typeof AdminPanelSubjectImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/admin-panel/version': {
-      id: '/admin-panel/version'
-      path: '/version'
-      fullPath: '/admin-panel/version'
-      preLoaderRoute: typeof AdminPanelVersionImport
-      parentRoute: typeof AdminPanelImport
-    }
+      id: '/admin-panel/version';
+      path: '/version';
+      fullPath: '/admin-panel/version';
+      preLoaderRoute: typeof AdminPanelVersionImport;
+      parentRoute: typeof AdminPanelImport;
+    };
     '/apiReferences/flaine': {
-      id: '/apiReferences/flaine'
-      path: '/apiReferences/flaine'
-      fullPath: '/apiReferences/flaine'
-      preLoaderRoute: typeof ApiReferencesFlaineImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/apiReferences/flaine';
+      path: '/apiReferences/flaine';
+      fullPath: '/apiReferences/flaine';
+      preLoaderRoute: typeof ApiReferencesFlaineImport;
+      parentRoute: typeof rootRoute;
+    };
     '/apiReferences/garmisch': {
-      id: '/apiReferences/garmisch'
-      path: '/apiReferences/garmisch'
-      fullPath: '/apiReferences/garmisch'
-      preLoaderRoute: typeof ApiReferencesGarmischImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/apiReferences/garmisch';
+      path: '/apiReferences/garmisch';
+      fullPath: '/apiReferences/garmisch';
+      preLoaderRoute: typeof ApiReferencesGarmischImport;
+      parentRoute: typeof rootRoute;
+    };
     '/apiReferences/hakuba': {
-      id: '/apiReferences/hakuba'
-      path: '/apiReferences/hakuba'
-      fullPath: '/apiReferences/hakuba'
-      preLoaderRoute: typeof ApiReferencesHakubaImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/apiReferences/hakuba';
+      path: '/apiReferences/hakuba';
+      fullPath: '/apiReferences/hakuba';
+      preLoaderRoute: typeof ApiReferencesHakubaImport;
+      parentRoute: typeof rootRoute;
+    };
     '/apiReferences/innsbruck': {
-      id: '/apiReferences/innsbruck'
-      path: '/apiReferences/innsbruck'
-      fullPath: '/apiReferences/innsbruck'
-      preLoaderRoute: typeof ApiReferencesInnsbruckImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/apiReferences/innsbruck';
+      path: '/apiReferences/innsbruck';
+      fullPath: '/apiReferences/innsbruck';
+      preLoaderRoute: typeof ApiReferencesInnsbruckImport;
+      parentRoute: typeof rootRoute;
+    };
     '/apiReferences/jasper': {
-      id: '/apiReferences/jasper'
-      path: '/apiReferences/jasper'
-      fullPath: '/apiReferences/jasper'
-      preLoaderRoute: typeof ApiReferencesJasperImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/apiReferences/jasper';
+      path: '/apiReferences/jasper';
+      fullPath: '/apiReferences/jasper';
+      preLoaderRoute: typeof ApiReferencesJasperImport;
+      parentRoute: typeof rootRoute;
+    };
     '/apiReferences/kufri': {
-      id: '/apiReferences/kufri'
-      path: '/apiReferences/kufri'
-      fullPath: '/apiReferences/kufri'
-      preLoaderRoute: typeof ApiReferencesKufriImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/apiReferences/kufri';
+      path: '/apiReferences/kufri';
+      fullPath: '/apiReferences/kufri';
+      preLoaderRoute: typeof ApiReferencesKufriImport;
+      parentRoute: typeof rootRoute;
+    };
     '/apiReferences/laslenas': {
-      id: '/apiReferences/laslenas'
-      path: '/apiReferences/laslenas'
-      fullPath: '/apiReferences/laslenas'
-      preLoaderRoute: typeof ApiReferencesLaslenasImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/apiReferences/laslenas';
+      path: '/apiReferences/laslenas';
+      fullPath: '/apiReferences/laslenas';
+      preLoaderRoute: typeof ApiReferencesLaslenasImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/appEvents': {
-      id: '/cloudProducts/appEvents'
-      path: '/cloudProducts/appEvents'
-      fullPath: '/cloudProducts/appEvents'
-      preLoaderRoute: typeof CloudProductsAppEventsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/appEvents';
+      path: '/cloudProducts/appEvents';
+      fullPath: '/cloudProducts/appEvents';
+      preLoaderRoute: typeof CloudProductsAppEventsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/autopilotworkflowservice': {
-      id: '/cloudProducts/autopilotworkflowservice'
-      path: '/cloudProducts/autopilotworkflowservice'
-      fullPath: '/cloudProducts/autopilotworkflowservice'
-      preLoaderRoute: typeof CloudProductsAutopilotworkflowserviceImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/autopilotworkflowservice';
+      path: '/cloudProducts/autopilotworkflowservice';
+      fullPath: '/cloudProducts/autopilotworkflowservice';
+      preLoaderRoute: typeof CloudProductsAutopilotworkflowserviceImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/cyence': {
-      id: '/cloudProducts/cyence'
-      path: '/cloudProducts/cyence'
-      fullPath: '/cloudProducts/cyence'
-      preLoaderRoute: typeof CloudProductsCyenceImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/cyence';
+      path: '/cloudProducts/cyence';
+      fullPath: '/cloudProducts/cyence';
+      preLoaderRoute: typeof CloudProductsCyenceImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/dataPlatform': {
-      id: '/cloudProducts/dataPlatform'
-      path: '/cloudProducts/dataPlatform'
-      fullPath: '/cloudProducts/dataPlatform'
-      preLoaderRoute: typeof CloudProductsDataPlatformImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/dataPlatform';
+      path: '/cloudProducts/dataPlatform';
+      fullPath: '/cloudProducts/dataPlatform';
+      preLoaderRoute: typeof CloudProductsDataPlatformImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/guidewireCloudPlatform': {
-      id: '/cloudProducts/guidewireCloudPlatform'
-      path: '/cloudProducts/guidewireCloudPlatform'
-      fullPath: '/cloudProducts/guidewireCloudPlatform'
-      preLoaderRoute: typeof CloudProductsGuidewireCloudPlatformImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/guidewireCloudPlatform';
+      path: '/cloudProducts/guidewireCloudPlatform';
+      fullPath: '/cloudProducts/guidewireCloudPlatform';
+      preLoaderRoute: typeof CloudProductsGuidewireCloudPlatformImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/migrationTools': {
-      id: '/cloudProducts/migrationTools'
-      path: '/cloudProducts/migrationTools'
-      fullPath: '/cloudProducts/migrationTools'
-      preLoaderRoute: typeof CloudProductsMigrationToolsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/migrationTools';
+      path: '/cloudProducts/migrationTools';
+      fullPath: '/cloudProducts/migrationTools';
+      preLoaderRoute: typeof CloudProductsMigrationToolsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/globalContent/sbt': {
-      id: '/globalContent/sbt'
-      path: '/globalContent/sbt'
-      fullPath: '/globalContent/sbt'
-      preLoaderRoute: typeof GlobalContentSbtImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/globalContent/sbt';
+      path: '/globalContent/sbt';
+      fullPath: '/globalContent/sbt';
+      preLoaderRoute: typeof GlobalContentSbtImport;
+      parentRoute: typeof rootRoute;
+    };
     '/jutroDesignSystem/$version': {
-      id: '/jutroDesignSystem/$version'
-      path: '/jutroDesignSystem/$version'
-      fullPath: '/jutroDesignSystem/$version'
-      preLoaderRoute: typeof JutroDesignSystemVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/jutroDesignSystem/$version';
+      path: '/jutroDesignSystem/$version';
+      fullPath: '/jutroDesignSystem/$version';
+      preLoaderRoute: typeof JutroDesignSystemVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/testingFramework/elysian': {
-      id: '/testingFramework/elysian'
-      path: '/testingFramework/elysian'
-      fullPath: '/testingFramework/elysian'
-      preLoaderRoute: typeof TestingFrameworkElysianImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/testingFramework/elysian';
+      path: '/testingFramework/elysian';
+      fullPath: '/testingFramework/elysian';
+      preLoaderRoute: typeof TestingFrameworkElysianImport;
+      parentRoute: typeof rootRoute;
+    };
     '/testingFramework/flaine': {
-      id: '/testingFramework/flaine'
-      path: '/testingFramework/flaine'
-      fullPath: '/testingFramework/flaine'
-      preLoaderRoute: typeof TestingFrameworkFlaineImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/testingFramework/flaine';
+      path: '/testingFramework/flaine';
+      fullPath: '/testingFramework/flaine';
+      preLoaderRoute: typeof TestingFrameworkFlaineImport;
+      parentRoute: typeof rootRoute;
+    };
     '/testingFramework/garmisch': {
-      id: '/testingFramework/garmisch'
-      path: '/testingFramework/garmisch'
-      fullPath: '/testingFramework/garmisch'
-      preLoaderRoute: typeof TestingFrameworkGarmischImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/testingFramework/garmisch';
+      path: '/testingFramework/garmisch';
+      fullPath: '/testingFramework/garmisch';
+      preLoaderRoute: typeof TestingFrameworkGarmischImport;
+      parentRoute: typeof rootRoute;
+    };
     '/testingFramework/hakuba': {
-      id: '/testingFramework/hakuba'
-      path: '/testingFramework/hakuba'
-      fullPath: '/testingFramework/hakuba'
-      preLoaderRoute: typeof TestingFrameworkHakubaImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/testingFramework/hakuba';
+      path: '/testingFramework/hakuba';
+      fullPath: '/testingFramework/hakuba';
+      preLoaderRoute: typeof TestingFrameworkHakubaImport;
+      parentRoute: typeof rootRoute;
+    };
     '/testingFramework/innsbruck': {
-      id: '/testingFramework/innsbruck'
-      path: '/testingFramework/innsbruck'
-      fullPath: '/testingFramework/innsbruck'
-      preLoaderRoute: typeof TestingFrameworkInnsbruckImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/testingFramework/innsbruck';
+      path: '/testingFramework/innsbruck';
+      fullPath: '/testingFramework/innsbruck';
+      preLoaderRoute: typeof TestingFrameworkInnsbruckImport;
+      parentRoute: typeof rootRoute;
+    };
     '/testingFramework/jasper': {
-      id: '/testingFramework/jasper'
-      path: '/testingFramework/jasper'
-      fullPath: '/testingFramework/jasper'
-      preLoaderRoute: typeof TestingFrameworkJasperImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/testingFramework/jasper';
+      path: '/testingFramework/jasper';
+      fullPath: '/testingFramework/jasper';
+      preLoaderRoute: typeof TestingFrameworkJasperImport;
+      parentRoute: typeof rootRoute;
+    };
     '/testingFramework/kufri': {
-      id: '/testingFramework/kufri'
-      path: '/testingFramework/kufri'
-      fullPath: '/testingFramework/kufri'
-      preLoaderRoute: typeof TestingFrameworkKufriImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/testingFramework/kufri';
+      path: '/testingFramework/kufri';
+      fullPath: '/testingFramework/kufri';
+      preLoaderRoute: typeof TestingFrameworkKufriImport;
+      parentRoute: typeof rootRoute;
+    };
     '/testingFramework/laslenas': {
-      id: '/testingFramework/laslenas'
-      path: '/testingFramework/laslenas'
-      fullPath: '/testingFramework/laslenas'
-      preLoaderRoute: typeof TestingFrameworkLaslenasImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/testingFramework/laslenas';
+      path: '/testingFramework/laslenas';
+      fullPath: '/testingFramework/laslenas';
+      preLoaderRoute: typeof TestingFrameworkLaslenasImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/': {
-      id: '/l10n/'
-      path: '/l10n'
-      fullPath: '/l10n'
-      preLoaderRoute: typeof L10nIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/';
+      path: '/l10n';
+      fullPath: '/l10n';
+      preLoaderRoute: typeof L10nIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/': {
-      id: '/selfManagedProducts/'
-      path: '/selfManagedProducts'
-      fullPath: '/selfManagedProducts'
-      preLoaderRoute: typeof SelfManagedProductsIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/';
+      path: '/selfManagedProducts';
+      fullPath: '/selfManagedProducts';
+      preLoaderRoute: typeof SelfManagedProductsIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/explore/es-419': {
-      id: '/cloudProducts/explore/es-419'
-      path: '/cloudProducts/explore/es-419'
-      fullPath: '/cloudProducts/explore/es-419'
-      preLoaderRoute: typeof CloudProductsExploreEs419Import
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/explore/es-419';
+      path: '/cloudProducts/explore/es-419';
+      fullPath: '/cloudProducts/explore/es-419';
+      preLoaderRoute: typeof CloudProductsExploreEs419Import;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/apd': {
-      id: '/cloudProducts/flaine/apd'
-      path: '/cloudProducts/flaine/apd'
-      fullPath: '/cloudProducts/flaine/apd'
-      preLoaderRoute: typeof CloudProductsFlaineApdImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/apd';
+      path: '/cloudProducts/flaine/apd';
+      fullPath: '/cloudProducts/flaine/apd';
+      preLoaderRoute: typeof CloudProductsFlaineApdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/dx-ref-apps': {
-      id: '/cloudProducts/flaine/dx-ref-apps'
-      path: '/cloudProducts/flaine/dx-ref-apps'
-      fullPath: '/cloudProducts/flaine/dx-ref-apps'
-      preLoaderRoute: typeof CloudProductsFlaineDxRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/dx-ref-apps';
+      path: '/cloudProducts/flaine/dx-ref-apps';
+      fullPath: '/cloudProducts/flaine/dx-ref-apps';
+      preLoaderRoute: typeof CloudProductsFlaineDxRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/global-ref-apps': {
-      id: '/cloudProducts/flaine/global-ref-apps'
-      path: '/cloudProducts/flaine/global-ref-apps'
-      fullPath: '/cloudProducts/flaine/global-ref-apps'
-      preLoaderRoute: typeof CloudProductsFlaineGlobalRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/global-ref-apps';
+      path: '/cloudProducts/flaine/global-ref-apps';
+      fullPath: '/cloudProducts/flaine/global-ref-apps';
+      preLoaderRoute: typeof CloudProductsFlaineGlobalRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/jutroDigitalPlatform': {
-      id: '/cloudProducts/flaine/jutroDigitalPlatform'
-      path: '/cloudProducts/flaine/jutroDigitalPlatform'
-      fullPath: '/cloudProducts/flaine/jutroDigitalPlatform'
-      preLoaderRoute: typeof CloudProductsFlaineJutroDigitalPlatformImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/jutroDigitalPlatform';
+      path: '/cloudProducts/flaine/jutroDigitalPlatform';
+      fullPath: '/cloudProducts/flaine/jutroDigitalPlatform';
+      preLoaderRoute: typeof CloudProductsFlaineJutroDigitalPlatformImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/apd': {
-      id: '/cloudProducts/garmisch/apd'
-      path: '/cloudProducts/garmisch/apd'
-      fullPath: '/cloudProducts/garmisch/apd'
-      preLoaderRoute: typeof CloudProductsGarmischApdImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/apd';
+      path: '/cloudProducts/garmisch/apd';
+      fullPath: '/cloudProducts/garmisch/apd';
+      preLoaderRoute: typeof CloudProductsGarmischApdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/dx-ref-apps': {
-      id: '/cloudProducts/garmisch/dx-ref-apps'
-      path: '/cloudProducts/garmisch/dx-ref-apps'
-      fullPath: '/cloudProducts/garmisch/dx-ref-apps'
-      preLoaderRoute: typeof CloudProductsGarmischDxRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/dx-ref-apps';
+      path: '/cloudProducts/garmisch/dx-ref-apps';
+      fullPath: '/cloudProducts/garmisch/dx-ref-apps';
+      preLoaderRoute: typeof CloudProductsGarmischDxRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/global-ref-apps': {
-      id: '/cloudProducts/garmisch/global-ref-apps'
-      path: '/cloudProducts/garmisch/global-ref-apps'
-      fullPath: '/cloudProducts/garmisch/global-ref-apps'
-      preLoaderRoute: typeof CloudProductsGarmischGlobalRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/global-ref-apps';
+      path: '/cloudProducts/garmisch/global-ref-apps';
+      fullPath: '/cloudProducts/garmisch/global-ref-apps';
+      preLoaderRoute: typeof CloudProductsGarmischGlobalRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/jutroDigitalPlatform': {
-      id: '/cloudProducts/garmisch/jutroDigitalPlatform'
-      path: '/cloudProducts/garmisch/jutroDigitalPlatform'
-      fullPath: '/cloudProducts/garmisch/jutroDigitalPlatform'
-      preLoaderRoute: typeof CloudProductsGarmischJutroDigitalPlatformImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/jutroDigitalPlatform';
+      path: '/cloudProducts/garmisch/jutroDigitalPlatform';
+      fullPath: '/cloudProducts/garmisch/jutroDigitalPlatform';
+      preLoaderRoute: typeof CloudProductsGarmischJutroDigitalPlatformImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/apd': {
-      id: '/cloudProducts/hakuba/apd'
-      path: '/cloudProducts/hakuba/apd'
-      fullPath: '/cloudProducts/hakuba/apd'
-      preLoaderRoute: typeof CloudProductsHakubaApdImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/apd';
+      path: '/cloudProducts/hakuba/apd';
+      fullPath: '/cloudProducts/hakuba/apd';
+      preLoaderRoute: typeof CloudProductsHakubaApdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/dx-ref-apps': {
-      id: '/cloudProducts/hakuba/dx-ref-apps'
-      path: '/cloudProducts/hakuba/dx-ref-apps'
-      fullPath: '/cloudProducts/hakuba/dx-ref-apps'
-      preLoaderRoute: typeof CloudProductsHakubaDxRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/dx-ref-apps';
+      path: '/cloudProducts/hakuba/dx-ref-apps';
+      fullPath: '/cloudProducts/hakuba/dx-ref-apps';
+      preLoaderRoute: typeof CloudProductsHakubaDxRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/global-ref-apps': {
-      id: '/cloudProducts/hakuba/global-ref-apps'
-      path: '/cloudProducts/hakuba/global-ref-apps'
-      fullPath: '/cloudProducts/hakuba/global-ref-apps'
-      preLoaderRoute: typeof CloudProductsHakubaGlobalRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/global-ref-apps';
+      path: '/cloudProducts/hakuba/global-ref-apps';
+      fullPath: '/cloudProducts/hakuba/global-ref-apps';
+      preLoaderRoute: typeof CloudProductsHakubaGlobalRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/jutroDigitalPlatform': {
-      id: '/cloudProducts/hakuba/jutroDigitalPlatform'
-      path: '/cloudProducts/hakuba/jutroDigitalPlatform'
-      fullPath: '/cloudProducts/hakuba/jutroDigitalPlatform'
-      preLoaderRoute: typeof CloudProductsHakubaJutroDigitalPlatformImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/jutroDigitalPlatform';
+      path: '/cloudProducts/hakuba/jutroDigitalPlatform';
+      fullPath: '/cloudProducts/hakuba/jutroDigitalPlatform';
+      preLoaderRoute: typeof CloudProductsHakubaJutroDigitalPlatformImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/apd': {
-      id: '/cloudProducts/innsbruck/apd'
-      path: '/cloudProducts/innsbruck/apd'
-      fullPath: '/cloudProducts/innsbruck/apd'
-      preLoaderRoute: typeof CloudProductsInnsbruckApdImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/apd';
+      path: '/cloudProducts/innsbruck/apd';
+      fullPath: '/cloudProducts/innsbruck/apd';
+      preLoaderRoute: typeof CloudProductsInnsbruckApdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/dx-ref-apps': {
-      id: '/cloudProducts/innsbruck/dx-ref-apps'
-      path: '/cloudProducts/innsbruck/dx-ref-apps'
-      fullPath: '/cloudProducts/innsbruck/dx-ref-apps'
-      preLoaderRoute: typeof CloudProductsInnsbruckDxRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/dx-ref-apps';
+      path: '/cloudProducts/innsbruck/dx-ref-apps';
+      fullPath: '/cloudProducts/innsbruck/dx-ref-apps';
+      preLoaderRoute: typeof CloudProductsInnsbruckDxRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/global-ref-apps': {
-      id: '/cloudProducts/innsbruck/global-ref-apps'
-      path: '/cloudProducts/innsbruck/global-ref-apps'
-      fullPath: '/cloudProducts/innsbruck/global-ref-apps'
-      preLoaderRoute: typeof CloudProductsInnsbruckGlobalRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/global-ref-apps';
+      path: '/cloudProducts/innsbruck/global-ref-apps';
+      fullPath: '/cloudProducts/innsbruck/global-ref-apps';
+      preLoaderRoute: typeof CloudProductsInnsbruckGlobalRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/apd': {
-      id: '/cloudProducts/jasper/apd'
-      path: '/cloudProducts/jasper/apd'
-      fullPath: '/cloudProducts/jasper/apd'
-      preLoaderRoute: typeof CloudProductsJasperApdImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/apd';
+      path: '/cloudProducts/jasper/apd';
+      fullPath: '/cloudProducts/jasper/apd';
+      preLoaderRoute: typeof CloudProductsJasperApdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/bc': {
-      id: '/cloudProducts/jasper/bc'
-      path: '/cloudProducts/jasper/bc'
-      fullPath: '/cloudProducts/jasper/bc'
-      preLoaderRoute: typeof CloudProductsJasperBcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/bc';
+      path: '/cloudProducts/jasper/bc';
+      fullPath: '/cloudProducts/jasper/bc';
+      preLoaderRoute: typeof CloudProductsJasperBcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/cc': {
-      id: '/cloudProducts/jasper/cc'
-      path: '/cloudProducts/jasper/cc'
-      fullPath: '/cloudProducts/jasper/cc'
-      preLoaderRoute: typeof CloudProductsJasperCcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/cc';
+      path: '/cloudProducts/jasper/cc';
+      fullPath: '/cloudProducts/jasper/cc';
+      preLoaderRoute: typeof CloudProductsJasperCcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/dh': {
-      id: '/cloudProducts/jasper/dh'
-      path: '/cloudProducts/jasper/dh'
-      fullPath: '/cloudProducts/jasper/dh'
-      preLoaderRoute: typeof CloudProductsJasperDhImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/dh';
+      path: '/cloudProducts/jasper/dh';
+      fullPath: '/cloudProducts/jasper/dh';
+      preLoaderRoute: typeof CloudProductsJasperDhImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/dx-ref-apps': {
-      id: '/cloudProducts/jasper/dx-ref-apps'
-      path: '/cloudProducts/jasper/dx-ref-apps'
-      fullPath: '/cloudProducts/jasper/dx-ref-apps'
-      preLoaderRoute: typeof CloudProductsJasperDxRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/dx-ref-apps';
+      path: '/cloudProducts/jasper/dx-ref-apps';
+      fullPath: '/cloudProducts/jasper/dx-ref-apps';
+      preLoaderRoute: typeof CloudProductsJasperDxRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/global-ref-apps': {
-      id: '/cloudProducts/jasper/global-ref-apps'
-      path: '/cloudProducts/jasper/global-ref-apps'
-      fullPath: '/cloudProducts/jasper/global-ref-apps'
-      preLoaderRoute: typeof CloudProductsJasperGlobalRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/global-ref-apps';
+      path: '/cloudProducts/jasper/global-ref-apps';
+      fullPath: '/cloudProducts/jasper/global-ref-apps';
+      preLoaderRoute: typeof CloudProductsJasperGlobalRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/ic': {
-      id: '/cloudProducts/jasper/ic'
-      path: '/cloudProducts/jasper/ic'
-      fullPath: '/cloudProducts/jasper/ic'
-      preLoaderRoute: typeof CloudProductsJasperIcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/ic';
+      path: '/cloudProducts/jasper/ic';
+      fullPath: '/cloudProducts/jasper/ic';
+      preLoaderRoute: typeof CloudProductsJasperIcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/in': {
-      id: '/cloudProducts/jasper/in'
-      path: '/cloudProducts/jasper/in'
-      fullPath: '/cloudProducts/jasper/in'
-      preLoaderRoute: typeof CloudProductsJasperInImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/in';
+      path: '/cloudProducts/jasper/in';
+      fullPath: '/cloudProducts/jasper/in';
+      preLoaderRoute: typeof CloudProductsJasperInImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/pc': {
-      id: '/cloudProducts/jasper/pc'
-      path: '/cloudProducts/jasper/pc'
-      fullPath: '/cloudProducts/jasper/pc'
-      preLoaderRoute: typeof CloudProductsJasperPcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/pc';
+      path: '/cloudProducts/jasper/pc';
+      fullPath: '/cloudProducts/jasper/pc';
+      preLoaderRoute: typeof CloudProductsJasperPcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/apd': {
-      id: '/cloudProducts/kufri/apd'
-      path: '/cloudProducts/kufri/apd'
-      fullPath: '/cloudProducts/kufri/apd'
-      preLoaderRoute: typeof CloudProductsKufriApdImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/apd';
+      path: '/cloudProducts/kufri/apd';
+      fullPath: '/cloudProducts/kufri/apd';
+      preLoaderRoute: typeof CloudProductsKufriApdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/bc': {
-      id: '/cloudProducts/kufri/bc'
-      path: '/cloudProducts/kufri/bc'
-      fullPath: '/cloudProducts/kufri/bc'
-      preLoaderRoute: typeof CloudProductsKufriBcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/bc';
+      path: '/cloudProducts/kufri/bc';
+      fullPath: '/cloudProducts/kufri/bc';
+      preLoaderRoute: typeof CloudProductsKufriBcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/cc': {
-      id: '/cloudProducts/kufri/cc'
-      path: '/cloudProducts/kufri/cc'
-      fullPath: '/cloudProducts/kufri/cc'
-      preLoaderRoute: typeof CloudProductsKufriCcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/cc';
+      path: '/cloudProducts/kufri/cc';
+      fullPath: '/cloudProducts/kufri/cc';
+      preLoaderRoute: typeof CloudProductsKufriCcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/dh': {
-      id: '/cloudProducts/kufri/dh'
-      path: '/cloudProducts/kufri/dh'
-      fullPath: '/cloudProducts/kufri/dh'
-      preLoaderRoute: typeof CloudProductsKufriDhImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/dh';
+      path: '/cloudProducts/kufri/dh';
+      fullPath: '/cloudProducts/kufri/dh';
+      preLoaderRoute: typeof CloudProductsKufriDhImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/dx-ref-apps': {
-      id: '/cloudProducts/kufri/dx-ref-apps'
-      path: '/cloudProducts/kufri/dx-ref-apps'
-      fullPath: '/cloudProducts/kufri/dx-ref-apps'
-      preLoaderRoute: typeof CloudProductsKufriDxRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/dx-ref-apps';
+      path: '/cloudProducts/kufri/dx-ref-apps';
+      fullPath: '/cloudProducts/kufri/dx-ref-apps';
+      preLoaderRoute: typeof CloudProductsKufriDxRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/global-ref-apps': {
-      id: '/cloudProducts/kufri/global-ref-apps'
-      path: '/cloudProducts/kufri/global-ref-apps'
-      fullPath: '/cloudProducts/kufri/global-ref-apps'
-      preLoaderRoute: typeof CloudProductsKufriGlobalRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/global-ref-apps';
+      path: '/cloudProducts/kufri/global-ref-apps';
+      fullPath: '/cloudProducts/kufri/global-ref-apps';
+      preLoaderRoute: typeof CloudProductsKufriGlobalRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/ic': {
-      id: '/cloudProducts/kufri/ic'
-      path: '/cloudProducts/kufri/ic'
-      fullPath: '/cloudProducts/kufri/ic'
-      preLoaderRoute: typeof CloudProductsKufriIcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/ic';
+      path: '/cloudProducts/kufri/ic';
+      fullPath: '/cloudProducts/kufri/ic';
+      preLoaderRoute: typeof CloudProductsKufriIcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/in': {
-      id: '/cloudProducts/kufri/in'
-      path: '/cloudProducts/kufri/in'
-      fullPath: '/cloudProducts/kufri/in'
-      preLoaderRoute: typeof CloudProductsKufriInImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/in';
+      path: '/cloudProducts/kufri/in';
+      fullPath: '/cloudProducts/kufri/in';
+      preLoaderRoute: typeof CloudProductsKufriInImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/pc': {
-      id: '/cloudProducts/kufri/pc'
-      path: '/cloudProducts/kufri/pc'
-      fullPath: '/cloudProducts/kufri/pc'
-      preLoaderRoute: typeof CloudProductsKufriPcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/pc';
+      path: '/cloudProducts/kufri/pc';
+      fullPath: '/cloudProducts/kufri/pc';
+      preLoaderRoute: typeof CloudProductsKufriPcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/laslenas/apd': {
-      id: '/cloudProducts/laslenas/apd'
-      path: '/cloudProducts/laslenas/apd'
-      fullPath: '/cloudProducts/laslenas/apd'
-      preLoaderRoute: typeof CloudProductsLaslenasApdImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/laslenas/apd';
+      path: '/cloudProducts/laslenas/apd';
+      fullPath: '/cloudProducts/laslenas/apd';
+      preLoaderRoute: typeof CloudProductsLaslenasApdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/laslenas/bc': {
-      id: '/cloudProducts/laslenas/bc'
-      path: '/cloudProducts/laslenas/bc'
-      fullPath: '/cloudProducts/laslenas/bc'
-      preLoaderRoute: typeof CloudProductsLaslenasBcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/laslenas/bc';
+      path: '/cloudProducts/laslenas/bc';
+      fullPath: '/cloudProducts/laslenas/bc';
+      preLoaderRoute: typeof CloudProductsLaslenasBcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/laslenas/cc': {
-      id: '/cloudProducts/laslenas/cc'
-      path: '/cloudProducts/laslenas/cc'
-      fullPath: '/cloudProducts/laslenas/cc'
-      preLoaderRoute: typeof CloudProductsLaslenasCcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/laslenas/cc';
+      path: '/cloudProducts/laslenas/cc';
+      fullPath: '/cloudProducts/laslenas/cc';
+      preLoaderRoute: typeof CloudProductsLaslenasCcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/laslenas/globalRefApps': {
-      id: '/cloudProducts/laslenas/globalRefApps'
-      path: '/cloudProducts/laslenas/globalRefApps'
-      fullPath: '/cloudProducts/laslenas/globalRefApps'
-      preLoaderRoute: typeof CloudProductsLaslenasGlobalRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/laslenas/globalRefApps';
+      path: '/cloudProducts/laslenas/globalRefApps';
+      fullPath: '/cloudProducts/laslenas/globalRefApps';
+      preLoaderRoute: typeof CloudProductsLaslenasGlobalRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/laslenas/dx-ref-apps': {
-      id: '/cloudProducts/laslenas/dx-ref-apps'
-      path: '/cloudProducts/laslenas/dx-ref-apps'
-      fullPath: '/cloudProducts/laslenas/dx-ref-apps'
-      preLoaderRoute: typeof CloudProductsKufriDxRefAppsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/laslenas/dx-ref-apps';
+      path: '/cloudProducts/laslenas/dx-ref-apps';
+      fullPath: '/cloudProducts/laslenas/dx-ref-apps';
+      preLoaderRoute: typeof CloudProductsKufriDxRefAppsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/laslenas/in': {
-      id: '/cloudProducts/laslenas/in'
-      path: '/cloudProducts/laslenas/in'
-      fullPath: '/cloudProducts/laslenas/in'
-      preLoaderRoute: typeof CloudProductsLaslenasInImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/laslenas/in';
+      path: '/cloudProducts/laslenas/in';
+      fullPath: '/cloudProducts/laslenas/in';
+      preLoaderRoute: typeof CloudProductsLaslenasInImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/laslenas/pc': {
-      id: '/cloudProducts/laslenas/pc'
-      path: '/cloudProducts/laslenas/pc'
-      fullPath: '/cloudProducts/laslenas/pc'
-      preLoaderRoute: typeof CloudProductsLaslenasPcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/laslenas/pc';
+      path: '/cloudProducts/laslenas/pc';
+      fullPath: '/cloudProducts/laslenas/pc';
+      preLoaderRoute: typeof CloudProductsLaslenasPcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/globalContent/ipa/$version': {
-      id: '/globalContent/ipa/$version'
-      path: '/globalContent/ipa/$version'
-      fullPath: '/globalContent/ipa/$version'
-      preLoaderRoute: typeof GlobalContentIpaVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/globalContent/ipa/$version';
+      path: '/globalContent/ipa/$version';
+      fullPath: '/globalContent/ipa/$version';
+      preLoaderRoute: typeof GlobalContentIpaVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/globalContent/ipf/$version': {
-      id: '/globalContent/ipf/$version'
-      path: '/globalContent/ipf/$version'
-      fullPath: '/globalContent/ipf/$version'
-      preLoaderRoute: typeof GlobalContentIpfVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/globalContent/ipf/$version';
+      path: '/globalContent/ipf/$version';
+      fullPath: '/globalContent/ipf/$version';
+      preLoaderRoute: typeof GlobalContentIpfVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/globalContent/ipg/$version': {
-      id: '/globalContent/ipg/$version'
-      path: '/globalContent/ipg/$version'
-      fullPath: '/globalContent/ipg/$version'
-      preLoaderRoute: typeof GlobalContentIpgVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/globalContent/ipg/$version';
+      path: '/globalContent/ipg/$version';
+      fullPath: '/globalContent/ipg/$version';
+      preLoaderRoute: typeof GlobalContentIpgVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/globalContent/iplm/$version': {
-      id: '/globalContent/iplm/$version'
-      path: '/globalContent/iplm/$version'
-      fullPath: '/globalContent/iplm/$version'
-      preLoaderRoute: typeof GlobalContentIplmVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/globalContent/iplm/$version';
+      path: '/globalContent/iplm/$version';
+      fullPath: '/globalContent/iplm/$version';
+      preLoaderRoute: typeof GlobalContentIplmVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/globalContent/lookupGenerator/$version': {
-      id: '/globalContent/lookupGenerator/$version'
-      path: '/globalContent/lookupGenerator/$version'
-      fullPath: '/globalContent/lookupGenerator/$version'
-      preLoaderRoute: typeof GlobalContentLookupGeneratorVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/globalContent/lookupGenerator/$version';
+      path: '/globalContent/lookupGenerator/$version';
+      fullPath: '/globalContent/lookupGenerator/$version';
+      preLoaderRoute: typeof GlobalContentLookupGeneratorVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/globalContent/lossEstCalc/$version': {
-      id: '/globalContent/lossEstCalc/$version'
-      path: '/globalContent/lossEstCalc/$version'
-      fullPath: '/globalContent/lossEstCalc/$version'
-      preLoaderRoute: typeof GlobalContentLossEstCalcVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/globalContent/lossEstCalc/$version';
+      path: '/globalContent/lossEstCalc/$version';
+      fullPath: '/globalContent/lossEstCalc/$version';
+      preLoaderRoute: typeof GlobalContentLossEstCalcVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/globalContent/messageStore/$version': {
-      id: '/globalContent/messageStore/$version'
-      path: '/globalContent/messageStore/$version'
-      fullPath: '/globalContent/messageStore/$version'
-      preLoaderRoute: typeof GlobalContentMessageStoreVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/globalContent/messageStore/$version';
+      path: '/globalContent/messageStore/$version';
+      fullPath: '/globalContent/messageStore/$version';
+      preLoaderRoute: typeof GlobalContentMessageStoreVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/analytics': {
-      id: '/l10n/de-DE/analytics'
-      path: '/l10n/de-DE/analytics'
-      fullPath: '/l10n/de-DE/analytics'
-      preLoaderRoute: typeof L10nDeDEAnalyticsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/analytics';
+      path: '/l10n/de-DE/analytics';
+      fullPath: '/l10n/de-DE/analytics';
+      preLoaderRoute: typeof L10nDeDEAnalyticsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/bc': {
-      id: '/l10n/de-DE/bc'
-      path: '/l10n/de-DE/bc'
-      fullPath: '/l10n/de-DE/bc'
-      preLoaderRoute: typeof L10nDeDEBcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/bc';
+      path: '/l10n/de-DE/bc';
+      fullPath: '/l10n/de-DE/bc';
+      preLoaderRoute: typeof L10nDeDEBcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/cc': {
-      id: '/l10n/de-DE/cc'
-      path: '/l10n/de-DE/cc'
-      fullPath: '/l10n/de-DE/cc'
-      preLoaderRoute: typeof L10nDeDECcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/cc';
+      path: '/l10n/de-DE/cc';
+      fullPath: '/l10n/de-DE/cc';
+      preLoaderRoute: typeof L10nDeDECcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/ce-am': {
-      id: '/l10n/de-DE/ce-am'
-      path: '/l10n/de-DE/ce-am'
-      fullPath: '/l10n/de-DE/ce-am'
-      preLoaderRoute: typeof L10nDeDECeAmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/ce-am';
+      path: '/l10n/de-DE/ce-am';
+      fullPath: '/l10n/de-DE/ce-am';
+      preLoaderRoute: typeof L10nDeDECeAmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/ce-claims': {
-      id: '/l10n/de-DE/ce-claims'
-      path: '/l10n/de-DE/ce-claims'
-      fullPath: '/l10n/de-DE/ce-claims'
-      preLoaderRoute: typeof L10nDeDECeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/ce-claims';
+      path: '/l10n/de-DE/ce-claims';
+      fullPath: '/l10n/de-DE/ce-claims';
+      preLoaderRoute: typeof L10nDeDECeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/ce-qb': {
-      id: '/l10n/de-DE/ce-qb'
-      path: '/l10n/de-DE/ce-qb'
-      fullPath: '/l10n/de-DE/ce-qb'
-      preLoaderRoute: typeof L10nDeDECeQbImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/ce-qb';
+      path: '/l10n/de-DE/ce-qb';
+      fullPath: '/l10n/de-DE/ce-qb';
+      preLoaderRoute: typeof L10nDeDECeQbImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/cm': {
-      id: '/l10n/de-DE/cm'
-      path: '/l10n/de-DE/cm'
-      fullPath: '/l10n/de-DE/cm'
-      preLoaderRoute: typeof L10nDeDECmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/cm';
+      path: '/l10n/de-DE/cm';
+      fullPath: '/l10n/de-DE/cm';
+      preLoaderRoute: typeof L10nDeDECmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/cp': {
-      id: '/l10n/de-DE/cp'
-      path: '/l10n/de-DE/cp'
-      fullPath: '/l10n/de-DE/cp'
-      preLoaderRoute: typeof L10nDeDECpImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/cp';
+      path: '/l10n/de-DE/cp';
+      fullPath: '/l10n/de-DE/cp';
+      preLoaderRoute: typeof L10nDeDECpImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/is-configupgradetools': {
-      id: '/l10n/de-DE/is-configupgradetools'
-      path: '/l10n/de-DE/is-configupgradetools'
-      fullPath: '/l10n/de-DE/is-configupgradetools'
-      preLoaderRoute: typeof L10nDeDEIsConfigupgradetoolsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/is-configupgradetools';
+      path: '/l10n/de-DE/is-configupgradetools';
+      fullPath: '/l10n/de-DE/is-configupgradetools';
+      preLoaderRoute: typeof L10nDeDEIsConfigupgradetoolsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/pc': {
-      id: '/l10n/de-DE/pc'
-      path: '/l10n/de-DE/pc'
-      fullPath: '/l10n/de-DE/pc'
-      preLoaderRoute: typeof L10nDeDEPcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/pc';
+      path: '/l10n/de-DE/pc';
+      fullPath: '/l10n/de-DE/pc';
+      preLoaderRoute: typeof L10nDeDEPcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/pe': {
-      id: '/l10n/de-DE/pe'
-      path: '/l10n/de-DE/pe'
-      fullPath: '/l10n/de-DE/pe'
-      preLoaderRoute: typeof L10nDeDEPeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/pe';
+      path: '/l10n/de-DE/pe';
+      fullPath: '/l10n/de-DE/pe';
+      preLoaderRoute: typeof L10nDeDEPeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/pe-claims': {
-      id: '/l10n/de-DE/pe-claims'
-      path: '/l10n/de-DE/pe-claims'
-      fullPath: '/l10n/de-DE/pe-claims'
-      preLoaderRoute: typeof L10nDeDEPeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/pe-claims';
+      path: '/l10n/de-DE/pe-claims';
+      fullPath: '/l10n/de-DE/pe-claims';
+      preLoaderRoute: typeof L10nDeDEPeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/sre': {
-      id: '/l10n/de-DE/sre'
-      path: '/l10n/de-DE/sre'
-      fullPath: '/l10n/de-DE/sre'
-      preLoaderRoute: typeof L10nDeDESreImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/sre';
+      path: '/l10n/de-DE/sre';
+      fullPath: '/l10n/de-DE/sre';
+      preLoaderRoute: typeof L10nDeDESreImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/ve': {
-      id: '/l10n/de-DE/ve'
-      path: '/l10n/de-DE/ve'
-      fullPath: '/l10n/de-DE/ve'
-      preLoaderRoute: typeof L10nDeDEVeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/ve';
+      path: '/l10n/de-DE/ve';
+      fullPath: '/l10n/de-DE/ve';
+      preLoaderRoute: typeof L10nDeDEVeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/analytics': {
-      id: '/l10n/es-419/analytics'
-      path: '/l10n/es-419/analytics'
-      fullPath: '/l10n/es-419/analytics'
-      preLoaderRoute: typeof L10nEs419AnalyticsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/analytics';
+      path: '/l10n/es-419/analytics';
+      fullPath: '/l10n/es-419/analytics';
+      preLoaderRoute: typeof L10nEs419AnalyticsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/apd': {
-      id: '/l10n/es-419/apd'
-      path: '/l10n/es-419/apd'
-      fullPath: '/l10n/es-419/apd'
-      preLoaderRoute: typeof L10nEs419ApdImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/apd';
+      path: '/l10n/es-419/apd';
+      fullPath: '/l10n/es-419/apd';
+      preLoaderRoute: typeof L10nEs419ApdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/bc': {
-      id: '/l10n/es-419/bc'
-      path: '/l10n/es-419/bc'
-      fullPath: '/l10n/es-419/bc'
-      preLoaderRoute: typeof L10nEs419BcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/bc';
+      path: '/l10n/es-419/bc';
+      fullPath: '/l10n/es-419/bc';
+      preLoaderRoute: typeof L10nEs419BcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/cc': {
-      id: '/l10n/es-419/cc'
-      path: '/l10n/es-419/cc'
-      fullPath: '/l10n/es-419/cc'
-      preLoaderRoute: typeof L10nEs419CcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/cc';
+      path: '/l10n/es-419/cc';
+      fullPath: '/l10n/es-419/cc';
+      preLoaderRoute: typeof L10nEs419CcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/cda': {
-      id: '/l10n/es-419/cda'
-      path: '/l10n/es-419/cda'
-      fullPath: '/l10n/es-419/cda'
-      preLoaderRoute: typeof L10nEs419CdaImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/cda';
+      path: '/l10n/es-419/cda';
+      fullPath: '/l10n/es-419/cda';
+      preLoaderRoute: typeof L10nEs419CdaImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/ce-am': {
-      id: '/l10n/es-419/ce-am'
-      path: '/l10n/es-419/ce-am'
-      fullPath: '/l10n/es-419/ce-am'
-      preLoaderRoute: typeof L10nEs419CeAmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/ce-am';
+      path: '/l10n/es-419/ce-am';
+      fullPath: '/l10n/es-419/ce-am';
+      preLoaderRoute: typeof L10nEs419CeAmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/ce-claims': {
-      id: '/l10n/es-419/ce-claims'
-      path: '/l10n/es-419/ce-claims'
-      fullPath: '/l10n/es-419/ce-claims'
-      preLoaderRoute: typeof L10nEs419CeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/ce-claims';
+      path: '/l10n/es-419/ce-claims';
+      fullPath: '/l10n/es-419/ce-claims';
+      preLoaderRoute: typeof L10nEs419CeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/ce-qb': {
-      id: '/l10n/es-419/ce-qb'
-      path: '/l10n/es-419/ce-qb'
-      fullPath: '/l10n/es-419/ce-qb'
-      preLoaderRoute: typeof L10nEs419CeQbImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/ce-qb';
+      path: '/l10n/es-419/ce-qb';
+      fullPath: '/l10n/es-419/ce-qb';
+      preLoaderRoute: typeof L10nEs419CeQbImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/cm': {
-      id: '/l10n/es-419/cm'
-      path: '/l10n/es-419/cm'
-      fullPath: '/l10n/es-419/cm'
-      preLoaderRoute: typeof L10nEs419CmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/cm';
+      path: '/l10n/es-419/cm';
+      fullPath: '/l10n/es-419/cm';
+      preLoaderRoute: typeof L10nEs419CmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/cp': {
-      id: '/l10n/es-419/cp'
-      path: '/l10n/es-419/cp'
-      fullPath: '/l10n/es-419/cp'
-      preLoaderRoute: typeof L10nEs419CpImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/cp';
+      path: '/l10n/es-419/cp';
+      fullPath: '/l10n/es-419/cp';
+      preLoaderRoute: typeof L10nEs419CpImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/gcc': {
-      id: '/l10n/es-419/gcc'
-      path: '/l10n/es-419/gcc'
-      fullPath: '/l10n/es-419/gcc'
-      preLoaderRoute: typeof L10nEs419GccImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/gcc';
+      path: '/l10n/es-419/gcc';
+      fullPath: '/l10n/es-419/gcc';
+      preLoaderRoute: typeof L10nEs419GccImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/is-configupgradetools': {
-      id: '/l10n/es-419/is-configupgradetools'
-      path: '/l10n/es-419/is-configupgradetools'
-      fullPath: '/l10n/es-419/is-configupgradetools'
-      preLoaderRoute: typeof L10nEs419IsConfigupgradetoolsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/is-configupgradetools';
+      path: '/l10n/es-419/is-configupgradetools';
+      fullPath: '/l10n/es-419/is-configupgradetools';
+      preLoaderRoute: typeof L10nEs419IsConfigupgradetoolsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/pc': {
-      id: '/l10n/es-419/pc'
-      path: '/l10n/es-419/pc'
-      fullPath: '/l10n/es-419/pc'
-      preLoaderRoute: typeof L10nEs419PcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/pc';
+      path: '/l10n/es-419/pc';
+      fullPath: '/l10n/es-419/pc';
+      preLoaderRoute: typeof L10nEs419PcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/pe': {
-      id: '/l10n/es-419/pe'
-      path: '/l10n/es-419/pe'
-      fullPath: '/l10n/es-419/pe'
-      preLoaderRoute: typeof L10nEs419PeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/pe';
+      path: '/l10n/es-419/pe';
+      fullPath: '/l10n/es-419/pe';
+      preLoaderRoute: typeof L10nEs419PeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/pe-claims': {
-      id: '/l10n/es-419/pe-claims'
-      path: '/l10n/es-419/pe-claims'
-      fullPath: '/l10n/es-419/pe-claims'
-      preLoaderRoute: typeof L10nEs419PeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/pe-claims';
+      path: '/l10n/es-419/pe-claims';
+      fullPath: '/l10n/es-419/pe-claims';
+      preLoaderRoute: typeof L10nEs419PeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/sre': {
-      id: '/l10n/es-419/sre'
-      path: '/l10n/es-419/sre'
-      fullPath: '/l10n/es-419/sre'
-      preLoaderRoute: typeof L10nEs419SreImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/sre';
+      path: '/l10n/es-419/sre';
+      fullPath: '/l10n/es-419/sre';
+      preLoaderRoute: typeof L10nEs419SreImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/ve': {
-      id: '/l10n/es-419/ve'
-      path: '/l10n/es-419/ve'
-      fullPath: '/l10n/es-419/ve'
-      preLoaderRoute: typeof L10nEs419VeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/ve';
+      path: '/l10n/es-419/ve';
+      fullPath: '/l10n/es-419/ve';
+      preLoaderRoute: typeof L10nEs419VeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/bc': {
-      id: '/l10n/es-ES/bc'
-      path: '/l10n/es-ES/bc'
-      fullPath: '/l10n/es-ES/bc'
-      preLoaderRoute: typeof L10nEsESBcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/bc';
+      path: '/l10n/es-ES/bc';
+      fullPath: '/l10n/es-ES/bc';
+      preLoaderRoute: typeof L10nEsESBcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/cc': {
-      id: '/l10n/es-ES/cc'
-      path: '/l10n/es-ES/cc'
-      fullPath: '/l10n/es-ES/cc'
-      preLoaderRoute: typeof L10nEsESCcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/cc';
+      path: '/l10n/es-ES/cc';
+      fullPath: '/l10n/es-ES/cc';
+      preLoaderRoute: typeof L10nEsESCcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/ce-am': {
-      id: '/l10n/es-ES/ce-am'
-      path: '/l10n/es-ES/ce-am'
-      fullPath: '/l10n/es-ES/ce-am'
-      preLoaderRoute: typeof L10nEsESCeAmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/ce-am';
+      path: '/l10n/es-ES/ce-am';
+      fullPath: '/l10n/es-ES/ce-am';
+      preLoaderRoute: typeof L10nEsESCeAmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/ce-claims': {
-      id: '/l10n/es-ES/ce-claims'
-      path: '/l10n/es-ES/ce-claims'
-      fullPath: '/l10n/es-ES/ce-claims'
-      preLoaderRoute: typeof L10nEsESCeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/ce-claims';
+      path: '/l10n/es-ES/ce-claims';
+      fullPath: '/l10n/es-ES/ce-claims';
+      preLoaderRoute: typeof L10nEsESCeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/ce-qb': {
-      id: '/l10n/es-ES/ce-qb'
-      path: '/l10n/es-ES/ce-qb'
-      fullPath: '/l10n/es-ES/ce-qb'
-      preLoaderRoute: typeof L10nEsESCeQbImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/ce-qb';
+      path: '/l10n/es-ES/ce-qb';
+      fullPath: '/l10n/es-ES/ce-qb';
+      preLoaderRoute: typeof L10nEsESCeQbImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/cm': {
-      id: '/l10n/es-ES/cm'
-      path: '/l10n/es-ES/cm'
-      fullPath: '/l10n/es-ES/cm'
-      preLoaderRoute: typeof L10nEsESCmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/cm';
+      path: '/l10n/es-ES/cm';
+      fullPath: '/l10n/es-ES/cm';
+      preLoaderRoute: typeof L10nEsESCmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/pc': {
-      id: '/l10n/es-ES/pc'
-      path: '/l10n/es-ES/pc'
-      fullPath: '/l10n/es-ES/pc'
-      preLoaderRoute: typeof L10nEsESPcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/pc';
+      path: '/l10n/es-ES/pc';
+      fullPath: '/l10n/es-ES/pc';
+      preLoaderRoute: typeof L10nEsESPcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/pe': {
-      id: '/l10n/es-ES/pe'
-      path: '/l10n/es-ES/pe'
-      fullPath: '/l10n/es-ES/pe'
-      preLoaderRoute: typeof L10nEsESPeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/pe';
+      path: '/l10n/es-ES/pe';
+      fullPath: '/l10n/es-ES/pe';
+      preLoaderRoute: typeof L10nEsESPeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/pe-claims': {
-      id: '/l10n/es-ES/pe-claims'
-      path: '/l10n/es-ES/pe-claims'
-      fullPath: '/l10n/es-ES/pe-claims'
-      preLoaderRoute: typeof L10nEsESPeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/pe-claims';
+      path: '/l10n/es-ES/pe-claims';
+      fullPath: '/l10n/es-ES/pe-claims';
+      preLoaderRoute: typeof L10nEsESPeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/sre': {
-      id: '/l10n/es-ES/sre'
-      path: '/l10n/es-ES/sre'
-      fullPath: '/l10n/es-ES/sre'
-      preLoaderRoute: typeof L10nEsESSreImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/sre';
+      path: '/l10n/es-ES/sre';
+      fullPath: '/l10n/es-ES/sre';
+      preLoaderRoute: typeof L10nEsESSreImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/ve': {
-      id: '/l10n/es-ES/ve'
-      path: '/l10n/es-ES/ve'
-      fullPath: '/l10n/es-ES/ve'
-      preLoaderRoute: typeof L10nEsESVeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/ve';
+      path: '/l10n/es-ES/ve';
+      fullPath: '/l10n/es-ES/ve';
+      preLoaderRoute: typeof L10nEsESVeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/analytics': {
-      id: '/l10n/fr-FR/analytics'
-      path: '/l10n/fr-FR/analytics'
-      fullPath: '/l10n/fr-FR/analytics'
-      preLoaderRoute: typeof L10nFrFRAnalyticsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/analytics';
+      path: '/l10n/fr-FR/analytics';
+      fullPath: '/l10n/fr-FR/analytics';
+      preLoaderRoute: typeof L10nFrFRAnalyticsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/bc': {
-      id: '/l10n/fr-FR/bc'
-      path: '/l10n/fr-FR/bc'
-      fullPath: '/l10n/fr-FR/bc'
-      preLoaderRoute: typeof L10nFrFRBcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/bc';
+      path: '/l10n/fr-FR/bc';
+      fullPath: '/l10n/fr-FR/bc';
+      preLoaderRoute: typeof L10nFrFRBcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/cc': {
-      id: '/l10n/fr-FR/cc'
-      path: '/l10n/fr-FR/cc'
-      fullPath: '/l10n/fr-FR/cc'
-      preLoaderRoute: typeof L10nFrFRCcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/cc';
+      path: '/l10n/fr-FR/cc';
+      fullPath: '/l10n/fr-FR/cc';
+      preLoaderRoute: typeof L10nFrFRCcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/ce-am': {
-      id: '/l10n/fr-FR/ce-am'
-      path: '/l10n/fr-FR/ce-am'
-      fullPath: '/l10n/fr-FR/ce-am'
-      preLoaderRoute: typeof L10nFrFRCeAmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/ce-am';
+      path: '/l10n/fr-FR/ce-am';
+      fullPath: '/l10n/fr-FR/ce-am';
+      preLoaderRoute: typeof L10nFrFRCeAmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/ce-claims': {
-      id: '/l10n/fr-FR/ce-claims'
-      path: '/l10n/fr-FR/ce-claims'
-      fullPath: '/l10n/fr-FR/ce-claims'
-      preLoaderRoute: typeof L10nFrFRCeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/ce-claims';
+      path: '/l10n/fr-FR/ce-claims';
+      fullPath: '/l10n/fr-FR/ce-claims';
+      preLoaderRoute: typeof L10nFrFRCeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/ce-qb': {
-      id: '/l10n/fr-FR/ce-qb'
-      path: '/l10n/fr-FR/ce-qb'
-      fullPath: '/l10n/fr-FR/ce-qb'
-      preLoaderRoute: typeof L10nFrFRCeQbImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/ce-qb';
+      path: '/l10n/fr-FR/ce-qb';
+      fullPath: '/l10n/fr-FR/ce-qb';
+      preLoaderRoute: typeof L10nFrFRCeQbImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/cm': {
-      id: '/l10n/fr-FR/cm'
-      path: '/l10n/fr-FR/cm'
-      fullPath: '/l10n/fr-FR/cm'
-      preLoaderRoute: typeof L10nFrFRCmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/cm';
+      path: '/l10n/fr-FR/cm';
+      fullPath: '/l10n/fr-FR/cm';
+      preLoaderRoute: typeof L10nFrFRCmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/cp': {
-      id: '/l10n/fr-FR/cp'
-      path: '/l10n/fr-FR/cp'
-      fullPath: '/l10n/fr-FR/cp'
-      preLoaderRoute: typeof L10nFrFRCpImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/cp';
+      path: '/l10n/fr-FR/cp';
+      fullPath: '/l10n/fr-FR/cp';
+      preLoaderRoute: typeof L10nFrFRCpImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/is-configupgradetools': {
-      id: '/l10n/fr-FR/is-configupgradetools'
-      path: '/l10n/fr-FR/is-configupgradetools'
-      fullPath: '/l10n/fr-FR/is-configupgradetools'
-      preLoaderRoute: typeof L10nFrFRIsConfigupgradetoolsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/is-configupgradetools';
+      path: '/l10n/fr-FR/is-configupgradetools';
+      fullPath: '/l10n/fr-FR/is-configupgradetools';
+      preLoaderRoute: typeof L10nFrFRIsConfigupgradetoolsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/pc': {
-      id: '/l10n/fr-FR/pc'
-      path: '/l10n/fr-FR/pc'
-      fullPath: '/l10n/fr-FR/pc'
-      preLoaderRoute: typeof L10nFrFRPcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/pc';
+      path: '/l10n/fr-FR/pc';
+      fullPath: '/l10n/fr-FR/pc';
+      preLoaderRoute: typeof L10nFrFRPcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/pe': {
-      id: '/l10n/fr-FR/pe'
-      path: '/l10n/fr-FR/pe'
-      fullPath: '/l10n/fr-FR/pe'
-      preLoaderRoute: typeof L10nFrFRPeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/pe';
+      path: '/l10n/fr-FR/pe';
+      fullPath: '/l10n/fr-FR/pe';
+      preLoaderRoute: typeof L10nFrFRPeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/pe-claims': {
-      id: '/l10n/fr-FR/pe-claims'
-      path: '/l10n/fr-FR/pe-claims'
-      fullPath: '/l10n/fr-FR/pe-claims'
-      preLoaderRoute: typeof L10nFrFRPeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/pe-claims';
+      path: '/l10n/fr-FR/pe-claims';
+      fullPath: '/l10n/fr-FR/pe-claims';
+      preLoaderRoute: typeof L10nFrFRPeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/sre': {
-      id: '/l10n/fr-FR/sre'
-      path: '/l10n/fr-FR/sre'
-      fullPath: '/l10n/fr-FR/sre'
-      preLoaderRoute: typeof L10nFrFRSreImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/sre';
+      path: '/l10n/fr-FR/sre';
+      fullPath: '/l10n/fr-FR/sre';
+      preLoaderRoute: typeof L10nFrFRSreImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/ve': {
-      id: '/l10n/fr-FR/ve'
-      path: '/l10n/fr-FR/ve'
-      fullPath: '/l10n/fr-FR/ve'
-      preLoaderRoute: typeof L10nFrFRVeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/ve';
+      path: '/l10n/fr-FR/ve';
+      fullPath: '/l10n/fr-FR/ve';
+      preLoaderRoute: typeof L10nFrFRVeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/analytics': {
-      id: '/l10n/it-IT/analytics'
-      path: '/l10n/it-IT/analytics'
-      fullPath: '/l10n/it-IT/analytics'
-      preLoaderRoute: typeof L10nItITAnalyticsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/analytics';
+      path: '/l10n/it-IT/analytics';
+      fullPath: '/l10n/it-IT/analytics';
+      preLoaderRoute: typeof L10nItITAnalyticsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/bc': {
-      id: '/l10n/it-IT/bc'
-      path: '/l10n/it-IT/bc'
-      fullPath: '/l10n/it-IT/bc'
-      preLoaderRoute: typeof L10nItITBcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/bc';
+      path: '/l10n/it-IT/bc';
+      fullPath: '/l10n/it-IT/bc';
+      preLoaderRoute: typeof L10nItITBcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/cc': {
-      id: '/l10n/it-IT/cc'
-      path: '/l10n/it-IT/cc'
-      fullPath: '/l10n/it-IT/cc'
-      preLoaderRoute: typeof L10nItITCcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/cc';
+      path: '/l10n/it-IT/cc';
+      fullPath: '/l10n/it-IT/cc';
+      preLoaderRoute: typeof L10nItITCcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/cda': {
-      id: '/l10n/it-IT/cda'
-      path: '/l10n/it-IT/cda'
-      fullPath: '/l10n/it-IT/cda'
-      preLoaderRoute: typeof L10nItITCdaImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/cda';
+      path: '/l10n/it-IT/cda';
+      fullPath: '/l10n/it-IT/cda';
+      preLoaderRoute: typeof L10nItITCdaImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/ce-am': {
-      id: '/l10n/it-IT/ce-am'
-      path: '/l10n/it-IT/ce-am'
-      fullPath: '/l10n/it-IT/ce-am'
-      preLoaderRoute: typeof L10nItITCeAmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/ce-am';
+      path: '/l10n/it-IT/ce-am';
+      fullPath: '/l10n/it-IT/ce-am';
+      preLoaderRoute: typeof L10nItITCeAmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/ce-claims': {
-      id: '/l10n/it-IT/ce-claims'
-      path: '/l10n/it-IT/ce-claims'
-      fullPath: '/l10n/it-IT/ce-claims'
-      preLoaderRoute: typeof L10nItITCeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/ce-claims';
+      path: '/l10n/it-IT/ce-claims';
+      fullPath: '/l10n/it-IT/ce-claims';
+      preLoaderRoute: typeof L10nItITCeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/ce-qb': {
-      id: '/l10n/it-IT/ce-qb'
-      path: '/l10n/it-IT/ce-qb'
-      fullPath: '/l10n/it-IT/ce-qb'
-      preLoaderRoute: typeof L10nItITCeQbImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/ce-qb';
+      path: '/l10n/it-IT/ce-qb';
+      fullPath: '/l10n/it-IT/ce-qb';
+      preLoaderRoute: typeof L10nItITCeQbImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/gcc': {
-      id: '/l10n/it-IT/gcc'
-      path: '/l10n/it-IT/gcc'
-      fullPath: '/l10n/it-IT/gcc'
-      preLoaderRoute: typeof L10nItITGccImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/gcc';
+      path: '/l10n/it-IT/gcc';
+      fullPath: '/l10n/it-IT/gcc';
+      preLoaderRoute: typeof L10nItITGccImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/gwid': {
-      id: '/l10n/it-IT/gwid'
-      path: '/l10n/it-IT/gwid'
-      fullPath: '/l10n/it-IT/gwid'
-      preLoaderRoute: typeof L10nItITGwidImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/gwid';
+      path: '/l10n/it-IT/gwid';
+      fullPath: '/l10n/it-IT/gwid';
+      preLoaderRoute: typeof L10nItITGwidImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/pc': {
-      id: '/l10n/it-IT/pc'
-      path: '/l10n/it-IT/pc'
-      fullPath: '/l10n/it-IT/pc'
-      preLoaderRoute: typeof L10nItITPcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/pc';
+      path: '/l10n/it-IT/pc';
+      fullPath: '/l10n/it-IT/pc';
+      preLoaderRoute: typeof L10nItITPcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/pe': {
-      id: '/l10n/it-IT/pe'
-      path: '/l10n/it-IT/pe'
-      fullPath: '/l10n/it-IT/pe'
-      preLoaderRoute: typeof L10nItITPeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/pe';
+      path: '/l10n/it-IT/pe';
+      fullPath: '/l10n/it-IT/pe';
+      preLoaderRoute: typeof L10nItITPeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/pe-claims': {
-      id: '/l10n/it-IT/pe-claims'
-      path: '/l10n/it-IT/pe-claims'
-      fullPath: '/l10n/it-IT/pe-claims'
-      preLoaderRoute: typeof L10nItITPeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/pe-claims';
+      path: '/l10n/it-IT/pe-claims';
+      fullPath: '/l10n/it-IT/pe-claims';
+      preLoaderRoute: typeof L10nItITPeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/sre': {
-      id: '/l10n/it-IT/sre'
-      path: '/l10n/it-IT/sre'
-      fullPath: '/l10n/it-IT/sre'
-      preLoaderRoute: typeof L10nItITSreImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/sre';
+      path: '/l10n/it-IT/sre';
+      fullPath: '/l10n/it-IT/sre';
+      preLoaderRoute: typeof L10nItITSreImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/ve': {
-      id: '/l10n/it-IT/ve'
-      path: '/l10n/it-IT/ve'
-      fullPath: '/l10n/it-IT/ve'
-      preLoaderRoute: typeof L10nItITVeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/ve';
+      path: '/l10n/it-IT/ve';
+      fullPath: '/l10n/it-IT/ve';
+      preLoaderRoute: typeof L10nItITVeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/202302garmischwhatsnew': {
-      id: '/l10n/ja-JP/202302garmischwhatsnew'
-      path: '/l10n/ja-JP/202302garmischwhatsnew'
-      fullPath: '/l10n/ja-JP/202302garmischwhatsnew'
-      preLoaderRoute: typeof L10nJaJP202302garmischwhatsnewImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/202302garmischwhatsnew';
+      path: '/l10n/ja-JP/202302garmischwhatsnew';
+      fullPath: '/l10n/ja-JP/202302garmischwhatsnew';
+      preLoaderRoute: typeof L10nJaJP202302garmischwhatsnewImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/202306hakubawhatsnew': {
-      id: '/l10n/ja-JP/202306hakubawhatsnew'
-      path: '/l10n/ja-JP/202306hakubawhatsnew'
-      fullPath: '/l10n/ja-JP/202306hakubawhatsnew'
-      preLoaderRoute: typeof L10nJaJP202306hakubawhatsnewImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/202306hakubawhatsnew';
+      path: '/l10n/ja-JP/202306hakubawhatsnew';
+      fullPath: '/l10n/ja-JP/202306hakubawhatsnew';
+      preLoaderRoute: typeof L10nJaJP202306hakubawhatsnewImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/analytics': {
-      id: '/l10n/ja-JP/analytics'
-      path: '/l10n/ja-JP/analytics'
-      fullPath: '/l10n/ja-JP/analytics'
-      preLoaderRoute: typeof L10nJaJPAnalyticsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/analytics';
+      path: '/l10n/ja-JP/analytics';
+      fullPath: '/l10n/ja-JP/analytics';
+      preLoaderRoute: typeof L10nJaJPAnalyticsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/apd': {
-      id: '/l10n/ja-JP/apd'
-      path: '/l10n/ja-JP/apd'
-      fullPath: '/l10n/ja-JP/apd'
-      preLoaderRoute: typeof L10nJaJPApdImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/apd';
+      path: '/l10n/ja-JP/apd';
+      fullPath: '/l10n/ja-JP/apd';
+      preLoaderRoute: typeof L10nJaJPApdImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/bc': {
-      id: '/l10n/ja-JP/bc'
-      path: '/l10n/ja-JP/bc'
-      fullPath: '/l10n/ja-JP/bc'
-      preLoaderRoute: typeof L10nJaJPBcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/bc';
+      path: '/l10n/ja-JP/bc';
+      fullPath: '/l10n/ja-JP/bc';
+      preLoaderRoute: typeof L10nJaJPBcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/cc': {
-      id: '/l10n/ja-JP/cc'
-      path: '/l10n/ja-JP/cc'
-      fullPath: '/l10n/ja-JP/cc'
-      preLoaderRoute: typeof L10nJaJPCcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/cc';
+      path: '/l10n/ja-JP/cc';
+      fullPath: '/l10n/ja-JP/cc';
+      preLoaderRoute: typeof L10nJaJPCcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/ce-am': {
-      id: '/l10n/ja-JP/ce-am'
-      path: '/l10n/ja-JP/ce-am'
-      fullPath: '/l10n/ja-JP/ce-am'
-      preLoaderRoute: typeof L10nJaJPCeAmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/ce-am';
+      path: '/l10n/ja-JP/ce-am';
+      fullPath: '/l10n/ja-JP/ce-am';
+      preLoaderRoute: typeof L10nJaJPCeAmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/ce-claims': {
-      id: '/l10n/ja-JP/ce-claims'
-      path: '/l10n/ja-JP/ce-claims'
-      fullPath: '/l10n/ja-JP/ce-claims'
-      preLoaderRoute: typeof L10nJaJPCeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/ce-claims';
+      path: '/l10n/ja-JP/ce-claims';
+      fullPath: '/l10n/ja-JP/ce-claims';
+      preLoaderRoute: typeof L10nJaJPCeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/ce-qb': {
-      id: '/l10n/ja-JP/ce-qb'
-      path: '/l10n/ja-JP/ce-qb'
-      fullPath: '/l10n/ja-JP/ce-qb'
-      preLoaderRoute: typeof L10nJaJPCeQbImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/ce-qb';
+      path: '/l10n/ja-JP/ce-qb';
+      fullPath: '/l10n/ja-JP/ce-qb';
+      preLoaderRoute: typeof L10nJaJPCeQbImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/cm': {
-      id: '/l10n/ja-JP/cm'
-      path: '/l10n/ja-JP/cm'
-      fullPath: '/l10n/ja-JP/cm'
-      preLoaderRoute: typeof L10nJaJPCmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/cm';
+      path: '/l10n/ja-JP/cm';
+      fullPath: '/l10n/ja-JP/cm';
+      preLoaderRoute: typeof L10nJaJPCmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/cp': {
-      id: '/l10n/ja-JP/cp'
-      path: '/l10n/ja-JP/cp'
-      fullPath: '/l10n/ja-JP/cp'
-      preLoaderRoute: typeof L10nJaJPCpImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/cp';
+      path: '/l10n/ja-JP/cp';
+      fullPath: '/l10n/ja-JP/cp';
+      preLoaderRoute: typeof L10nJaJPCpImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/gtest': {
-      id: '/l10n/ja-JP/gtest'
-      path: '/l10n/ja-JP/gtest'
-      fullPath: '/l10n/ja-JP/gtest'
-      preLoaderRoute: typeof L10nJaJPGtestImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/gtest';
+      path: '/l10n/ja-JP/gtest';
+      fullPath: '/l10n/ja-JP/gtest';
+      preLoaderRoute: typeof L10nJaJPGtestImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/gwid': {
-      id: '/l10n/ja-JP/gwid'
-      path: '/l10n/ja-JP/gwid'
-      fullPath: '/l10n/ja-JP/gwid'
-      preLoaderRoute: typeof L10nJaJPGwidImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/gwid';
+      path: '/l10n/ja-JP/gwid';
+      fullPath: '/l10n/ja-JP/gwid';
+      preLoaderRoute: typeof L10nJaJPGwidImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/gwsf': {
-      id: '/l10n/ja-JP/gwsf'
-      path: '/l10n/ja-JP/gwsf'
-      fullPath: '/l10n/ja-JP/gwsf'
-      preLoaderRoute: typeof L10nJaJPGwsfImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/gwsf';
+      path: '/l10n/ja-JP/gwsf';
+      fullPath: '/l10n/ja-JP/gwsf';
+      preLoaderRoute: typeof L10nJaJPGwsfImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/is-configupgradetools': {
-      id: '/l10n/ja-JP/is-configupgradetools'
-      path: '/l10n/ja-JP/is-configupgradetools'
-      fullPath: '/l10n/ja-JP/is-configupgradetools'
-      preLoaderRoute: typeof L10nJaJPIsConfigupgradetoolsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/is-configupgradetools';
+      path: '/l10n/ja-JP/is-configupgradetools';
+      fullPath: '/l10n/ja-JP/is-configupgradetools';
+      preLoaderRoute: typeof L10nJaJPIsConfigupgradetoolsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/pc': {
-      id: '/l10n/ja-JP/pc'
-      path: '/l10n/ja-JP/pc'
-      fullPath: '/l10n/ja-JP/pc'
-      preLoaderRoute: typeof L10nJaJPPcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/pc';
+      path: '/l10n/ja-JP/pc';
+      fullPath: '/l10n/ja-JP/pc';
+      preLoaderRoute: typeof L10nJaJPPcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/pe': {
-      id: '/l10n/ja-JP/pe'
-      path: '/l10n/ja-JP/pe'
-      fullPath: '/l10n/ja-JP/pe'
-      preLoaderRoute: typeof L10nJaJPPeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/pe';
+      path: '/l10n/ja-JP/pe';
+      fullPath: '/l10n/ja-JP/pe';
+      preLoaderRoute: typeof L10nJaJPPeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/pe-claims': {
-      id: '/l10n/ja-JP/pe-claims'
-      path: '/l10n/ja-JP/pe-claims'
-      fullPath: '/l10n/ja-JP/pe-claims'
-      preLoaderRoute: typeof L10nJaJPPeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/pe-claims';
+      path: '/l10n/ja-JP/pe-claims';
+      fullPath: '/l10n/ja-JP/pe-claims';
+      preLoaderRoute: typeof L10nJaJPPeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/sre': {
-      id: '/l10n/ja-JP/sre'
-      path: '/l10n/ja-JP/sre'
-      fullPath: '/l10n/ja-JP/sre'
-      preLoaderRoute: typeof L10nJaJPSreImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/sre';
+      path: '/l10n/ja-JP/sre';
+      fullPath: '/l10n/ja-JP/sre';
+      preLoaderRoute: typeof L10nJaJPSreImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/ve': {
-      id: '/l10n/ja-JP/ve'
-      path: '/l10n/ja-JP/ve'
-      fullPath: '/l10n/ja-JP/ve'
-      preLoaderRoute: typeof L10nJaJPVeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/ve';
+      path: '/l10n/ja-JP/ve';
+      fullPath: '/l10n/ja-JP/ve';
+      preLoaderRoute: typeof L10nJaJPVeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/nl-NL/cc': {
-      id: '/l10n/nl-NL/cc'
-      path: '/l10n/nl-NL/cc'
-      fullPath: '/l10n/nl-NL/cc'
-      preLoaderRoute: typeof L10nNlNLCcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/nl-NL/cc';
+      path: '/l10n/nl-NL/cc';
+      fullPath: '/l10n/nl-NL/cc';
+      preLoaderRoute: typeof L10nNlNLCcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/analytics': {
-      id: '/l10n/pt-BR/analytics'
-      path: '/l10n/pt-BR/analytics'
-      fullPath: '/l10n/pt-BR/analytics'
-      preLoaderRoute: typeof L10nPtBRAnalyticsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/analytics';
+      path: '/l10n/pt-BR/analytics';
+      fullPath: '/l10n/pt-BR/analytics';
+      preLoaderRoute: typeof L10nPtBRAnalyticsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/bc': {
-      id: '/l10n/pt-BR/bc'
-      path: '/l10n/pt-BR/bc'
-      fullPath: '/l10n/pt-BR/bc'
-      preLoaderRoute: typeof L10nPtBRBcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/bc';
+      path: '/l10n/pt-BR/bc';
+      fullPath: '/l10n/pt-BR/bc';
+      preLoaderRoute: typeof L10nPtBRBcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/cc': {
-      id: '/l10n/pt-BR/cc'
-      path: '/l10n/pt-BR/cc'
-      fullPath: '/l10n/pt-BR/cc'
-      preLoaderRoute: typeof L10nPtBRCcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/cc';
+      path: '/l10n/pt-BR/cc';
+      fullPath: '/l10n/pt-BR/cc';
+      preLoaderRoute: typeof L10nPtBRCcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/cda': {
-      id: '/l10n/pt-BR/cda'
-      path: '/l10n/pt-BR/cda'
-      fullPath: '/l10n/pt-BR/cda'
-      preLoaderRoute: typeof L10nPtBRCdaImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/cda';
+      path: '/l10n/pt-BR/cda';
+      fullPath: '/l10n/pt-BR/cda';
+      preLoaderRoute: typeof L10nPtBRCdaImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/ce-am': {
-      id: '/l10n/pt-BR/ce-am'
-      path: '/l10n/pt-BR/ce-am'
-      fullPath: '/l10n/pt-BR/ce-am'
-      preLoaderRoute: typeof L10nPtBRCeAmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/ce-am';
+      path: '/l10n/pt-BR/ce-am';
+      fullPath: '/l10n/pt-BR/ce-am';
+      preLoaderRoute: typeof L10nPtBRCeAmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/ce-claims': {
-      id: '/l10n/pt-BR/ce-claims'
-      path: '/l10n/pt-BR/ce-claims'
-      fullPath: '/l10n/pt-BR/ce-claims'
-      preLoaderRoute: typeof L10nPtBRCeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/ce-claims';
+      path: '/l10n/pt-BR/ce-claims';
+      fullPath: '/l10n/pt-BR/ce-claims';
+      preLoaderRoute: typeof L10nPtBRCeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/ce-qb': {
-      id: '/l10n/pt-BR/ce-qb'
-      path: '/l10n/pt-BR/ce-qb'
-      fullPath: '/l10n/pt-BR/ce-qb'
-      preLoaderRoute: typeof L10nPtBRCeQbImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/ce-qb';
+      path: '/l10n/pt-BR/ce-qb';
+      fullPath: '/l10n/pt-BR/ce-qb';
+      preLoaderRoute: typeof L10nPtBRCeQbImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/cm': {
-      id: '/l10n/pt-BR/cm'
-      path: '/l10n/pt-BR/cm'
-      fullPath: '/l10n/pt-BR/cm'
-      preLoaderRoute: typeof L10nPtBRCmImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/cm';
+      path: '/l10n/pt-BR/cm';
+      fullPath: '/l10n/pt-BR/cm';
+      preLoaderRoute: typeof L10nPtBRCmImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/cp': {
-      id: '/l10n/pt-BR/cp'
-      path: '/l10n/pt-BR/cp'
-      fullPath: '/l10n/pt-BR/cp'
-      preLoaderRoute: typeof L10nPtBRCpImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/cp';
+      path: '/l10n/pt-BR/cp';
+      fullPath: '/l10n/pt-BR/cp';
+      preLoaderRoute: typeof L10nPtBRCpImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/gcc': {
-      id: '/l10n/pt-BR/gcc'
-      path: '/l10n/pt-BR/gcc'
-      fullPath: '/l10n/pt-BR/gcc'
-      preLoaderRoute: typeof L10nPtBRGccImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/gcc';
+      path: '/l10n/pt-BR/gcc';
+      fullPath: '/l10n/pt-BR/gcc';
+      preLoaderRoute: typeof L10nPtBRGccImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/is-configupgradetools': {
-      id: '/l10n/pt-BR/is-configupgradetools'
-      path: '/l10n/pt-BR/is-configupgradetools'
-      fullPath: '/l10n/pt-BR/is-configupgradetools'
-      preLoaderRoute: typeof L10nPtBRIsConfigupgradetoolsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/is-configupgradetools';
+      path: '/l10n/pt-BR/is-configupgradetools';
+      fullPath: '/l10n/pt-BR/is-configupgradetools';
+      preLoaderRoute: typeof L10nPtBRIsConfigupgradetoolsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/pc': {
-      id: '/l10n/pt-BR/pc'
-      path: '/l10n/pt-BR/pc'
-      fullPath: '/l10n/pt-BR/pc'
-      preLoaderRoute: typeof L10nPtBRPcImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/pc';
+      path: '/l10n/pt-BR/pc';
+      fullPath: '/l10n/pt-BR/pc';
+      preLoaderRoute: typeof L10nPtBRPcImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/pe': {
-      id: '/l10n/pt-BR/pe'
-      path: '/l10n/pt-BR/pe'
-      fullPath: '/l10n/pt-BR/pe'
-      preLoaderRoute: typeof L10nPtBRPeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/pe';
+      path: '/l10n/pt-BR/pe';
+      fullPath: '/l10n/pt-BR/pe';
+      preLoaderRoute: typeof L10nPtBRPeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/pe-claims': {
-      id: '/l10n/pt-BR/pe-claims'
-      path: '/l10n/pt-BR/pe-claims'
-      fullPath: '/l10n/pt-BR/pe-claims'
-      preLoaderRoute: typeof L10nPtBRPeClaimsImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/pe-claims';
+      path: '/l10n/pt-BR/pe-claims';
+      fullPath: '/l10n/pt-BR/pe-claims';
+      preLoaderRoute: typeof L10nPtBRPeClaimsImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/sre': {
-      id: '/l10n/pt-BR/sre'
-      path: '/l10n/pt-BR/sre'
-      fullPath: '/l10n/pt-BR/sre'
-      preLoaderRoute: typeof L10nPtBRSreImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/sre';
+      path: '/l10n/pt-BR/sre';
+      fullPath: '/l10n/pt-BR/sre';
+      preLoaderRoute: typeof L10nPtBRSreImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/ve': {
-      id: '/l10n/pt-BR/ve'
-      path: '/l10n/pt-BR/ve'
-      fullPath: '/l10n/pt-BR/ve'
-      preLoaderRoute: typeof L10nPtBRVeImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/ve';
+      path: '/l10n/pt-BR/ve';
+      fullPath: '/l10n/pt-BR/ve';
+      preLoaderRoute: typeof L10nPtBRVeImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/bc/$version': {
-      id: '/selfManagedProducts/bc/$version'
-      path: '/selfManagedProducts/bc/$version'
-      fullPath: '/selfManagedProducts/bc/$version'
-      preLoaderRoute: typeof SelfManagedProductsBcVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/bc/$version';
+      path: '/selfManagedProducts/bc/$version';
+      fullPath: '/selfManagedProducts/bc/$version';
+      preLoaderRoute: typeof SelfManagedProductsBcVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/cc/$version': {
-      id: '/selfManagedProducts/cc/$version'
-      path: '/selfManagedProducts/cc/$version'
-      fullPath: '/selfManagedProducts/cc/$version'
-      preLoaderRoute: typeof SelfManagedProductsCcVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/cc/$version';
+      path: '/selfManagedProducts/cc/$version';
+      fullPath: '/selfManagedProducts/cc/$version';
+      preLoaderRoute: typeof SelfManagedProductsCcVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/ceAccountMgmt/$version': {
-      id: '/selfManagedProducts/ceAccountMgmt/$version'
-      path: '/selfManagedProducts/ceAccountMgmt/$version'
-      fullPath: '/selfManagedProducts/ceAccountMgmt/$version'
-      preLoaderRoute: typeof SelfManagedProductsCeAccountMgmtVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/ceAccountMgmt/$version';
+      path: '/selfManagedProducts/ceAccountMgmt/$version';
+      fullPath: '/selfManagedProducts/ceAccountMgmt/$version';
+      preLoaderRoute: typeof SelfManagedProductsCeAccountMgmtVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/ceAccountMgmtCc/$version': {
-      id: '/selfManagedProducts/ceAccountMgmtCc/$version'
-      path: '/selfManagedProducts/ceAccountMgmtCc/$version'
-      fullPath: '/selfManagedProducts/ceAccountMgmtCc/$version'
-      preLoaderRoute: typeof SelfManagedProductsCeAccountMgmtCcVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/ceAccountMgmtCc/$version';
+      path: '/selfManagedProducts/ceAccountMgmtCc/$version';
+      fullPath: '/selfManagedProducts/ceAccountMgmtCc/$version';
+      preLoaderRoute: typeof SelfManagedProductsCeAccountMgmtCcVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/ceQuoteAndBuy/$version': {
-      id: '/selfManagedProducts/ceQuoteAndBuy/$version'
-      path: '/selfManagedProducts/ceQuoteAndBuy/$version'
-      fullPath: '/selfManagedProducts/ceQuoteAndBuy/$version'
-      preLoaderRoute: typeof SelfManagedProductsCeQuoteAndBuyVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/ceQuoteAndBuy/$version';
+      path: '/selfManagedProducts/ceQuoteAndBuy/$version';
+      fullPath: '/selfManagedProducts/ceQuoteAndBuy/$version';
+      preLoaderRoute: typeof SelfManagedProductsCeQuoteAndBuyVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/dh/$version': {
-      id: '/selfManagedProducts/dh/$version'
-      path: '/selfManagedProducts/dh/$version'
-      fullPath: '/selfManagedProducts/dh/$version'
-      preLoaderRoute: typeof SelfManagedProductsDhVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/dh/$version';
+      path: '/selfManagedProducts/dh/$version';
+      fullPath: '/selfManagedProducts/dh/$version';
+      preLoaderRoute: typeof SelfManagedProductsDhVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/ic/$version': {
-      id: '/selfManagedProducts/ic/$version'
-      path: '/selfManagedProducts/ic/$version'
-      fullPath: '/selfManagedProducts/ic/$version'
-      preLoaderRoute: typeof SelfManagedProductsIcVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/ic/$version';
+      path: '/selfManagedProducts/ic/$version';
+      fullPath: '/selfManagedProducts/ic/$version';
+      preLoaderRoute: typeof SelfManagedProductsIcVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/pc/$version': {
-      id: '/selfManagedProducts/pc/$version'
-      path: '/selfManagedProducts/pc/$version'
-      fullPath: '/selfManagedProducts/pc/$version'
-      preLoaderRoute: typeof SelfManagedProductsPcVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/pc/$version';
+      path: '/selfManagedProducts/pc/$version';
+      fullPath: '/selfManagedProducts/pc/$version';
+      preLoaderRoute: typeof SelfManagedProductsPcVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/producerEngage/$version': {
-      id: '/selfManagedProducts/producerEngage/$version'
-      path: '/selfManagedProducts/producerEngage/$version'
-      fullPath: '/selfManagedProducts/producerEngage/$version'
-      preLoaderRoute: typeof SelfManagedProductsProducerEngageVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/producerEngage/$version';
+      path: '/selfManagedProducts/producerEngage/$version';
+      fullPath: '/selfManagedProducts/producerEngage/$version';
+      preLoaderRoute: typeof SelfManagedProductsProducerEngageVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/producerEngageCc/$version': {
-      id: '/selfManagedProducts/producerEngageCc/$version'
-      path: '/selfManagedProducts/producerEngageCc/$version'
-      fullPath: '/selfManagedProducts/producerEngageCc/$version'
-      preLoaderRoute: typeof SelfManagedProductsProducerEngageCcVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/producerEngageCc/$version';
+      path: '/selfManagedProducts/producerEngageCc/$version';
+      fullPath: '/selfManagedProducts/producerEngageCc/$version';
+      preLoaderRoute: typeof SelfManagedProductsProducerEngageCcVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/serviceRepEngage/$version': {
-      id: '/selfManagedProducts/serviceRepEngage/$version'
-      path: '/selfManagedProducts/serviceRepEngage/$version'
-      fullPath: '/selfManagedProducts/serviceRepEngage/$version'
-      preLoaderRoute: typeof SelfManagedProductsServiceRepEngageVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/serviceRepEngage/$version';
+      path: '/selfManagedProducts/serviceRepEngage/$version';
+      fullPath: '/selfManagedProducts/serviceRepEngage/$version';
+      preLoaderRoute: typeof SelfManagedProductsServiceRepEngageVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/vendorEngage/$version': {
-      id: '/selfManagedProducts/vendorEngage/$version'
-      path: '/selfManagedProducts/vendorEngage/$version'
-      fullPath: '/selfManagedProducts/vendorEngage/$version'
-      preLoaderRoute: typeof SelfManagedProductsVendorEngageVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/vendorEngage/$version';
+      path: '/selfManagedProducts/vendorEngage/$version';
+      fullPath: '/selfManagedProducts/vendorEngage/$version';
+      preLoaderRoute: typeof SelfManagedProductsVendorEngageVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/': {
-      id: '/cloudProducts/flaine/'
-      path: '/cloudProducts/flaine'
-      fullPath: '/cloudProducts/flaine'
-      preLoaderRoute: typeof CloudProductsFlaineIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/';
+      path: '/cloudProducts/flaine';
+      fullPath: '/cloudProducts/flaine';
+      preLoaderRoute: typeof CloudProductsFlaineIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/': {
-      id: '/cloudProducts/garmisch/'
-      path: '/cloudProducts/garmisch'
-      fullPath: '/cloudProducts/garmisch'
-      preLoaderRoute: typeof CloudProductsGarmischIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/';
+      path: '/cloudProducts/garmisch';
+      fullPath: '/cloudProducts/garmisch';
+      preLoaderRoute: typeof CloudProductsGarmischIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/': {
-      id: '/cloudProducts/hakuba/'
-      path: '/cloudProducts/hakuba'
-      fullPath: '/cloudProducts/hakuba'
-      preLoaderRoute: typeof CloudProductsHakubaIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/';
+      path: '/cloudProducts/hakuba';
+      fullPath: '/cloudProducts/hakuba';
+      preLoaderRoute: typeof CloudProductsHakubaIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/': {
-      id: '/cloudProducts/innsbruck/'
-      path: '/cloudProducts/innsbruck'
-      fullPath: '/cloudProducts/innsbruck'
-      preLoaderRoute: typeof CloudProductsInnsbruckIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/';
+      path: '/cloudProducts/innsbruck';
+      fullPath: '/cloudProducts/innsbruck';
+      preLoaderRoute: typeof CloudProductsInnsbruckIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/jasper/': {
-      id: '/cloudProducts/jasper/'
-      path: '/cloudProducts/jasper'
-      fullPath: '/cloudProducts/jasper'
-      preLoaderRoute: typeof CloudProductsJasperIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/jasper/';
+      path: '/cloudProducts/jasper';
+      fullPath: '/cloudProducts/jasper';
+      preLoaderRoute: typeof CloudProductsJasperIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/kufri/': {
-      id: '/cloudProducts/kufri/'
-      path: '/cloudProducts/kufri'
-      fullPath: '/cloudProducts/kufri'
-      preLoaderRoute: typeof CloudProductsKufriIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/kufri/';
+      path: '/cloudProducts/kufri';
+      fullPath: '/cloudProducts/kufri';
+      preLoaderRoute: typeof CloudProductsKufriIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/laslenas/': {
-      id: '/cloudProducts/laslenas/'
-      path: '/cloudProducts/laslenas'
-      fullPath: '/cloudProducts/laslenas'
-      preLoaderRoute: typeof CloudProductsLaslenasIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/laslenas/';
+      path: '/cloudProducts/laslenas';
+      fullPath: '/cloudProducts/laslenas';
+      preLoaderRoute: typeof CloudProductsLaslenasIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/de-DE/': {
-      id: '/l10n/de-DE/'
-      path: '/l10n/de-DE'
-      fullPath: '/l10n/de-DE'
-      preLoaderRoute: typeof L10nDeDEIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/de-DE/';
+      path: '/l10n/de-DE';
+      fullPath: '/l10n/de-DE';
+      preLoaderRoute: typeof L10nDeDEIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-419/': {
-      id: '/l10n/es-419/'
-      path: '/l10n/es-419'
-      fullPath: '/l10n/es-419'
-      preLoaderRoute: typeof L10nEs419IndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-419/';
+      path: '/l10n/es-419';
+      fullPath: '/l10n/es-419';
+      preLoaderRoute: typeof L10nEs419IndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/es-ES/': {
-      id: '/l10n/es-ES/'
-      path: '/l10n/es-ES'
-      fullPath: '/l10n/es-ES'
-      preLoaderRoute: typeof L10nEsESIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/es-ES/';
+      path: '/l10n/es-ES';
+      fullPath: '/l10n/es-ES';
+      preLoaderRoute: typeof L10nEsESIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/fr-FR/': {
-      id: '/l10n/fr-FR/'
-      path: '/l10n/fr-FR'
-      fullPath: '/l10n/fr-FR'
-      preLoaderRoute: typeof L10nFrFRIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/fr-FR/';
+      path: '/l10n/fr-FR';
+      fullPath: '/l10n/fr-FR';
+      preLoaderRoute: typeof L10nFrFRIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/it-IT/': {
-      id: '/l10n/it-IT/'
-      path: '/l10n/it-IT'
-      fullPath: '/l10n/it-IT'
-      preLoaderRoute: typeof L10nItITIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/it-IT/';
+      path: '/l10n/it-IT';
+      fullPath: '/l10n/it-IT';
+      preLoaderRoute: typeof L10nItITIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/': {
-      id: '/l10n/ja-JP/'
-      path: '/l10n/ja-JP'
-      fullPath: '/l10n/ja-JP'
-      preLoaderRoute: typeof L10nJaJPIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/';
+      path: '/l10n/ja-JP';
+      fullPath: '/l10n/ja-JP';
+      preLoaderRoute: typeof L10nJaJPIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/nl-NL/': {
-      id: '/l10n/nl-NL/'
-      path: '/l10n/nl-NL'
-      fullPath: '/l10n/nl-NL'
-      preLoaderRoute: typeof L10nNlNLIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/nl-NL/';
+      path: '/l10n/nl-NL';
+      fullPath: '/l10n/nl-NL';
+      preLoaderRoute: typeof L10nNlNLIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/pt-BR/': {
-      id: '/l10n/pt-BR/'
-      path: '/l10n/pt-BR'
-      fullPath: '/l10n/pt-BR'
-      preLoaderRoute: typeof L10nPtBRIndexImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/pt-BR/';
+      path: '/l10n/pt-BR';
+      fullPath: '/l10n/pt-BR';
+      preLoaderRoute: typeof L10nPtBRIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/aspen/insuranceNow/$version': {
-      id: '/cloudProducts/aspen/insuranceNow/$version'
-      path: '/cloudProducts/aspen/insuranceNow/$version'
-      fullPath: '/cloudProducts/aspen/insuranceNow/$version'
-      preLoaderRoute: typeof CloudProductsAspenInsuranceNowVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/aspen/insuranceNow/$version';
+      path: '/cloudProducts/aspen/insuranceNow/$version';
+      fullPath: '/cloudProducts/aspen/insuranceNow/$version';
+      preLoaderRoute: typeof CloudProductsAspenInsuranceNowVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/banff/insuranceNow/$version': {
-      id: '/cloudProducts/banff/insuranceNow/$version'
-      path: '/cloudProducts/banff/insuranceNow/$version'
-      fullPath: '/cloudProducts/banff/insuranceNow/$version'
-      preLoaderRoute: typeof CloudProductsBanffInsuranceNowVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/banff/insuranceNow/$version';
+      path: '/cloudProducts/banff/insuranceNow/$version';
+      fullPath: '/cloudProducts/banff/insuranceNow/$version';
+      preLoaderRoute: typeof CloudProductsBanffInsuranceNowVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/cortina/insuranceNow/$version': {
-      id: '/cloudProducts/cortina/insuranceNow/$version'
-      path: '/cloudProducts/cortina/insuranceNow/$version'
-      fullPath: '/cloudProducts/cortina/insuranceNow/$version'
-      preLoaderRoute: typeof CloudProductsCortinaInsuranceNowVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/cortina/insuranceNow/$version';
+      path: '/cloudProducts/cortina/insuranceNow/$version';
+      fullPath: '/cloudProducts/cortina/insuranceNow/$version';
+      preLoaderRoute: typeof CloudProductsCortinaInsuranceNowVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/dobson/insuranceNow/$version': {
-      id: '/cloudProducts/dobson/insuranceNow/$version'
-      path: '/cloudProducts/dobson/insuranceNow/$version'
-      fullPath: '/cloudProducts/dobson/insuranceNow/$version'
-      preLoaderRoute: typeof CloudProductsDobsonInsuranceNowVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/dobson/insuranceNow/$version';
+      path: '/cloudProducts/dobson/insuranceNow/$version';
+      fullPath: '/cloudProducts/dobson/insuranceNow/$version';
+      preLoaderRoute: typeof CloudProductsDobsonInsuranceNowVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/elysian/insuranceNow/$version': {
-      id: '/cloudProducts/elysian/insuranceNow/$version'
-      path: '/cloudProducts/elysian/insuranceNow/$version'
-      fullPath: '/cloudProducts/elysian/insuranceNow/$version'
-      preLoaderRoute: typeof CloudProductsElysianInsuranceNowVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/elysian/insuranceNow/$version';
+      path: '/cloudProducts/elysian/insuranceNow/$version';
+      fullPath: '/cloudProducts/elysian/insuranceNow/$version';
+      preLoaderRoute: typeof CloudProductsElysianInsuranceNowVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/bcGwCloud/$version': {
-      id: '/cloudProducts/flaine/bcGwCloud/$version'
-      path: '/cloudProducts/flaine/bcGwCloud/$version'
-      fullPath: '/cloudProducts/flaine/bcGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsFlaineBcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/bcGwCloud/$version';
+      path: '/cloudProducts/flaine/bcGwCloud/$version';
+      fullPath: '/cloudProducts/flaine/bcGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsFlaineBcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/ccGwCloud/$version': {
-      id: '/cloudProducts/flaine/ccGwCloud/$version'
-      path: '/cloudProducts/flaine/ccGwCloud/$version'
-      fullPath: '/cloudProducts/flaine/ccGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsFlaineCcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/ccGwCloud/$version';
+      path: '/cloudProducts/flaine/ccGwCloud/$version';
+      fullPath: '/cloudProducts/flaine/ccGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsFlaineCcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/dhGwCloud/$version': {
-      id: '/cloudProducts/flaine/dhGwCloud/$version'
-      path: '/cloudProducts/flaine/dhGwCloud/$version'
-      fullPath: '/cloudProducts/flaine/dhGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsFlaineDhGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/dhGwCloud/$version';
+      path: '/cloudProducts/flaine/dhGwCloud/$version';
+      fullPath: '/cloudProducts/flaine/dhGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsFlaineDhGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/icGwCloud/$version': {
-      id: '/cloudProducts/flaine/icGwCloud/$version'
-      path: '/cloudProducts/flaine/icGwCloud/$version'
-      fullPath: '/cloudProducts/flaine/icGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsFlaineIcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/icGwCloud/$version';
+      path: '/cloudProducts/flaine/icGwCloud/$version';
+      fullPath: '/cloudProducts/flaine/icGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsFlaineIcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/insuranceNow/$version': {
-      id: '/cloudProducts/flaine/insuranceNow/$version'
-      path: '/cloudProducts/flaine/insuranceNow/$version'
-      fullPath: '/cloudProducts/flaine/insuranceNow/$version'
-      preLoaderRoute: typeof CloudProductsFlaineInsuranceNowVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/insuranceNow/$version';
+      path: '/cloudProducts/flaine/insuranceNow/$version';
+      fullPath: '/cloudProducts/flaine/insuranceNow/$version';
+      preLoaderRoute: typeof CloudProductsFlaineInsuranceNowVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/flaine/pcGwCloud/$version': {
-      id: '/cloudProducts/flaine/pcGwCloud/$version'
-      path: '/cloudProducts/flaine/pcGwCloud/$version'
-      fullPath: '/cloudProducts/flaine/pcGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsFlainePcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/flaine/pcGwCloud/$version';
+      path: '/cloudProducts/flaine/pcGwCloud/$version';
+      fullPath: '/cloudProducts/flaine/pcGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsFlainePcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/bcGwCloud/$version': {
-      id: '/cloudProducts/garmisch/bcGwCloud/$version'
-      path: '/cloudProducts/garmisch/bcGwCloud/$version'
-      fullPath: '/cloudProducts/garmisch/bcGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsGarmischBcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/bcGwCloud/$version';
+      path: '/cloudProducts/garmisch/bcGwCloud/$version';
+      fullPath: '/cloudProducts/garmisch/bcGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsGarmischBcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/ccGwCloud/$version': {
-      id: '/cloudProducts/garmisch/ccGwCloud/$version'
-      path: '/cloudProducts/garmisch/ccGwCloud/$version'
-      fullPath: '/cloudProducts/garmisch/ccGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsGarmischCcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/ccGwCloud/$version';
+      path: '/cloudProducts/garmisch/ccGwCloud/$version';
+      fullPath: '/cloudProducts/garmisch/ccGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsGarmischCcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/dhGwCloud/$version': {
-      id: '/cloudProducts/garmisch/dhGwCloud/$version'
-      path: '/cloudProducts/garmisch/dhGwCloud/$version'
-      fullPath: '/cloudProducts/garmisch/dhGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsGarmischDhGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/dhGwCloud/$version';
+      path: '/cloudProducts/garmisch/dhGwCloud/$version';
+      fullPath: '/cloudProducts/garmisch/dhGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsGarmischDhGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/icGwCloud/$version': {
-      id: '/cloudProducts/garmisch/icGwCloud/$version'
-      path: '/cloudProducts/garmisch/icGwCloud/$version'
-      fullPath: '/cloudProducts/garmisch/icGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsGarmischIcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/icGwCloud/$version';
+      path: '/cloudProducts/garmisch/icGwCloud/$version';
+      fullPath: '/cloudProducts/garmisch/icGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsGarmischIcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/insuranceNow/$version': {
-      id: '/cloudProducts/garmisch/insuranceNow/$version'
-      path: '/cloudProducts/garmisch/insuranceNow/$version'
-      fullPath: '/cloudProducts/garmisch/insuranceNow/$version'
-      preLoaderRoute: typeof CloudProductsGarmischInsuranceNowVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/insuranceNow/$version';
+      path: '/cloudProducts/garmisch/insuranceNow/$version';
+      fullPath: '/cloudProducts/garmisch/insuranceNow/$version';
+      preLoaderRoute: typeof CloudProductsGarmischInsuranceNowVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/garmisch/pcGwCloud/$version': {
-      id: '/cloudProducts/garmisch/pcGwCloud/$version'
-      path: '/cloudProducts/garmisch/pcGwCloud/$version'
-      fullPath: '/cloudProducts/garmisch/pcGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsGarmischPcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/garmisch/pcGwCloud/$version';
+      path: '/cloudProducts/garmisch/pcGwCloud/$version';
+      fullPath: '/cloudProducts/garmisch/pcGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsGarmischPcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/bcGwCloud/$version': {
-      id: '/cloudProducts/hakuba/bcGwCloud/$version'
-      path: '/cloudProducts/hakuba/bcGwCloud/$version'
-      fullPath: '/cloudProducts/hakuba/bcGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsHakubaBcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/bcGwCloud/$version';
+      path: '/cloudProducts/hakuba/bcGwCloud/$version';
+      fullPath: '/cloudProducts/hakuba/bcGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsHakubaBcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/ccGwCloud/$version': {
-      id: '/cloudProducts/hakuba/ccGwCloud/$version'
-      path: '/cloudProducts/hakuba/ccGwCloud/$version'
-      fullPath: '/cloudProducts/hakuba/ccGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsHakubaCcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/ccGwCloud/$version';
+      path: '/cloudProducts/hakuba/ccGwCloud/$version';
+      fullPath: '/cloudProducts/hakuba/ccGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsHakubaCcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/dhGwCloud/$version': {
-      id: '/cloudProducts/hakuba/dhGwCloud/$version'
-      path: '/cloudProducts/hakuba/dhGwCloud/$version'
-      fullPath: '/cloudProducts/hakuba/dhGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsHakubaDhGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/dhGwCloud/$version';
+      path: '/cloudProducts/hakuba/dhGwCloud/$version';
+      fullPath: '/cloudProducts/hakuba/dhGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsHakubaDhGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/icGwCloud/$version': {
-      id: '/cloudProducts/hakuba/icGwCloud/$version'
-      path: '/cloudProducts/hakuba/icGwCloud/$version'
-      fullPath: '/cloudProducts/hakuba/icGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsHakubaIcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/icGwCloud/$version';
+      path: '/cloudProducts/hakuba/icGwCloud/$version';
+      fullPath: '/cloudProducts/hakuba/icGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsHakubaIcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/insuranceNow/$version': {
-      id: '/cloudProducts/hakuba/insuranceNow/$version'
-      path: '/cloudProducts/hakuba/insuranceNow/$version'
-      fullPath: '/cloudProducts/hakuba/insuranceNow/$version'
-      preLoaderRoute: typeof CloudProductsHakubaInsuranceNowVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/insuranceNow/$version';
+      path: '/cloudProducts/hakuba/insuranceNow/$version';
+      fullPath: '/cloudProducts/hakuba/insuranceNow/$version';
+      preLoaderRoute: typeof CloudProductsHakubaInsuranceNowVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/hakuba/pcGwCloud/$version': {
-      id: '/cloudProducts/hakuba/pcGwCloud/$version'
-      path: '/cloudProducts/hakuba/pcGwCloud/$version'
-      fullPath: '/cloudProducts/hakuba/pcGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsHakubaPcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/hakuba/pcGwCloud/$version';
+      path: '/cloudProducts/hakuba/pcGwCloud/$version';
+      fullPath: '/cloudProducts/hakuba/pcGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsHakubaPcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/bcGwCloud/$version': {
-      id: '/cloudProducts/innsbruck/bcGwCloud/$version'
-      path: '/cloudProducts/innsbruck/bcGwCloud/$version'
-      fullPath: '/cloudProducts/innsbruck/bcGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsInnsbruckBcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/bcGwCloud/$version';
+      path: '/cloudProducts/innsbruck/bcGwCloud/$version';
+      fullPath: '/cloudProducts/innsbruck/bcGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsInnsbruckBcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/ccGwCloud/$version': {
-      id: '/cloudProducts/innsbruck/ccGwCloud/$version'
-      path: '/cloudProducts/innsbruck/ccGwCloud/$version'
-      fullPath: '/cloudProducts/innsbruck/ccGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsInnsbruckCcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/ccGwCloud/$version';
+      path: '/cloudProducts/innsbruck/ccGwCloud/$version';
+      fullPath: '/cloudProducts/innsbruck/ccGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsInnsbruckCcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/dhGwCloud/$version': {
-      id: '/cloudProducts/innsbruck/dhGwCloud/$version'
-      path: '/cloudProducts/innsbruck/dhGwCloud/$version'
-      fullPath: '/cloudProducts/innsbruck/dhGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsInnsbruckDhGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/dhGwCloud/$version';
+      path: '/cloudProducts/innsbruck/dhGwCloud/$version';
+      fullPath: '/cloudProducts/innsbruck/dhGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsInnsbruckDhGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/icGwCloud/$version': {
-      id: '/cloudProducts/innsbruck/icGwCloud/$version'
-      path: '/cloudProducts/innsbruck/icGwCloud/$version'
-      fullPath: '/cloudProducts/innsbruck/icGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsInnsbruckIcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/icGwCloud/$version';
+      path: '/cloudProducts/innsbruck/icGwCloud/$version';
+      fullPath: '/cloudProducts/innsbruck/icGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsInnsbruckIcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/insuranceNow/$version': {
-      id: '/cloudProducts/innsbruck/insuranceNow/$version'
-      path: '/cloudProducts/innsbruck/insuranceNow/$version'
-      fullPath: '/cloudProducts/innsbruck/insuranceNow/$version'
-      preLoaderRoute: typeof CloudProductsInnsbruckInsuranceNowVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/insuranceNow/$version';
+      path: '/cloudProducts/innsbruck/insuranceNow/$version';
+      fullPath: '/cloudProducts/innsbruck/insuranceNow/$version';
+      preLoaderRoute: typeof CloudProductsInnsbruckInsuranceNowVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/cloudProducts/innsbruck/pcGwCloud/$version': {
-      id: '/cloudProducts/innsbruck/pcGwCloud/$version'
-      path: '/cloudProducts/innsbruck/pcGwCloud/$version'
-      fullPath: '/cloudProducts/innsbruck/pcGwCloud/$version'
-      preLoaderRoute: typeof CloudProductsInnsbruckPcGwCloudVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/cloudProducts/innsbruck/pcGwCloud/$version';
+      path: '/cloudProducts/innsbruck/pcGwCloud/$version';
+      fullPath: '/cloudProducts/innsbruck/pcGwCloud/$version';
+      preLoaderRoute: typeof CloudProductsInnsbruckPcGwCloudVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/l10n/ja-JP/cloudProducts/autopilotworkflowservice': {
-      id: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
-      path: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
-      fullPath: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice'
-      preLoaderRoute: typeof L10nJaJPCloudProductsAutopilotworkflowserviceImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice';
+      path: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice';
+      fullPath: '/l10n/ja-JP/cloudProducts/autopilotworkflowservice';
+      preLoaderRoute: typeof L10nJaJPCloudProductsAutopilotworkflowserviceImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/gwsf/di/$version': {
-      id: '/selfManagedProducts/gwsf/di/$version'
-      path: '/selfManagedProducts/gwsf/di/$version'
-      fullPath: '/selfManagedProducts/gwsf/di/$version'
-      preLoaderRoute: typeof SelfManagedProductsGwsfDiVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/gwsf/di/$version';
+      path: '/selfManagedProducts/gwsf/di/$version';
+      fullPath: '/selfManagedProducts/gwsf/di/$version';
+      preLoaderRoute: typeof SelfManagedProductsGwsfDiVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/gwsf/ed/$version': {
-      id: '/selfManagedProducts/gwsf/ed/$version'
-      path: '/selfManagedProducts/gwsf/ed/$version'
-      fullPath: '/selfManagedProducts/gwsf/ed/$version'
-      preLoaderRoute: typeof SelfManagedProductsGwsfEdVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/gwsf/ed/$version';
+      path: '/selfManagedProducts/gwsf/ed/$version';
+      fullPath: '/selfManagedProducts/gwsf/ed/$version';
+      preLoaderRoute: typeof SelfManagedProductsGwsfEdVersionImport;
+      parentRoute: typeof rootRoute;
+    };
     '/selfManagedProducts/gwsf/vod/$version': {
-      id: '/selfManagedProducts/gwsf/vod/$version'
-      path: '/selfManagedProducts/gwsf/vod/$version'
-      fullPath: '/selfManagedProducts/gwsf/vod/$version'
-      preLoaderRoute: typeof SelfManagedProductsGwsfVodVersionImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/selfManagedProducts/gwsf/vod/$version';
+      path: '/selfManagedProducts/gwsf/vod/$version';
+      fullPath: '/selfManagedProducts/gwsf/vod/$version';
+      preLoaderRoute: typeof SelfManagedProductsGwsfVodVersionImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
@@ -3756,7 +3756,7 @@ export const routeTree = rootRoute.addChildren({
   SelfManagedProductsGwsfDiVersionRoute,
   SelfManagedProductsGwsfEdVersionRoute,
   SelfManagedProductsGwsfVodVersionRoute,
-})
+});
 
 /* prettier-ignore-end */
 
