@@ -103,10 +103,6 @@ const pageConfig: CategoryLayoutProps = {
       label: 'Cloud Console',
       items: [
         {
-          label: 'Build Promoter API',
-          docId: 'buildpromoterapidocs',
-        },
-        {
           label: 'CI/CD Manager API',
           docId: 'cicdmanagerapiref',
         },
