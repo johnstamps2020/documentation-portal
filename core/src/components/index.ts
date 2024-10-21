@@ -12,4 +12,3 @@ export * from './SearchBox';
 export * from './SearchHeaderMenu';
 export * from './SelectorInput';
 export * from './VersionSelector';
-

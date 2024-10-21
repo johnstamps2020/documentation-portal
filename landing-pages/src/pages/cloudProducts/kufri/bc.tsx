@@ -51,8 +51,8 @@ const pageConfig: ApplicationLayoutProps = {
           pathInDoc: '?contextid=is-release-name-mappings',
           description: (
             <>
-              View a mapping between InsuranceSuite release names
-              and release numbers.
+              View a mapping between InsuranceSuite release names and release
+              numbers.
             </>
           ),
         },
