@@ -1448,6 +1448,7 @@ private object TestDocPortalEverything : BuildType({
         feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
         feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        feature(GwBuildFeatures.GwSshAgentBuildFeature)
     }
 })
 
