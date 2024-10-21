@@ -1150,6 +1150,8 @@ object TestEverythingHelpers {
         fi
     """.trimIndent()
         dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
     })
 
     object TestSettingsKts : MavenBuildStep({
