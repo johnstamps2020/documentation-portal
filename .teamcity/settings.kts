@@ -1272,7 +1272,7 @@ object TestEverythingHelpers {
         dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
     })
 
-    fun createTestDbDeploymentBuildType(deployEnv: String): ScriptBuildStep {
+    fun createTestDbDeploymentBuildStep(deployEnv: String): ScriptBuildStep {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         val tfstateKey = "docportal/db/terraform.tfstate"
         val s3Bucket = when (deployEnv) {
@@ -1434,7 +1434,7 @@ private object TestDocPortalEverything : BuildType({
             step(it)
         }
         listOf(GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD).map {
-            TestEverythingHelpers.createTestDbDeploymentBuildType(it.envName)
+            step(TestEverythingHelpers.createTestDbDeploymentBuildStep(it.envName))
         }
     }
 
