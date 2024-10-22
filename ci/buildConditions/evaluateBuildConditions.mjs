@@ -36,13 +36,16 @@ function getChangedFilesEnvValue() {
     );
 
     if (changedFilesEnvValue && changedFilesEnvValue.length > 0) {
+      console.log(
+        `Setting paths from Teamcity parameter ${changedFilesEnvName}: ${changedFilesEnvValue}`
+      );
       return changedFilesEnvValue;
     }
 
     const otherListOfChangedFiles = getOtherListsOfChangedFiles();
     if (otherListOfChangedFiles) {
       console.log(
-        `Setting list of files from upstream builds: "${otherListOfChangedFiles}"`
+        `Setting paths from upstream builds: "${otherListOfChangedFiles}"`
       );
       return otherListOfChangedFiles;
     }
@@ -54,11 +57,11 @@ function getChangedFilesEnvValue() {
         .split('\n')
         .map((line) => line.trim().split(':')[0])
         .join(',');
-      console.log('Setting value for Git, listing changed files', result);
+      console.log('Setting paths from Teamcity change list file:', result);
       return result;
     }
     console.log(
-      'Setting value from pre-configured triggers',
+      'Setting paths from the list of all pre-configured triggers:',
       process.env.ALL_TRIGGER_PATHS
     );
     return process.env.ALL_TRIGGER_PATHS;

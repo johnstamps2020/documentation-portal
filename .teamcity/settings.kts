@@ -1130,8 +1130,6 @@ object TestEverythingHelpers {
             echo ALL_TRIGGER_PATHS ${'$'}ALL_TRIGGER_PATHS
             
             node ci/buildConditions/evaluateBuildConditions.mjs "${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue}"
-            
-            echo "Saved files paths to ${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue} with the value %${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue}%"
         """.trimIndent()
         dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
