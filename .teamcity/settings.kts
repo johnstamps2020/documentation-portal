@@ -7,6 +7,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 import java.math.BigInteger
 import java.security.MessageDigest
@@ -1442,11 +1443,11 @@ private object TestDocPortalEverything : BuildType({
     }
 
     triggers {
-        trigger(
-            GwVcsTriggers.createGitVcsTrigger(
-                GwVcsRoots.DocumentationPortalGitVcsRoot
-            )
-        )
+        vcs {
+            // We disable trigger optimization because that causes conflicts when multiple builds try to trigger this build as a dependency
+            enableQueueOptimization = false
+            triggerRules = "+:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}"
+        }
     }
 
     features {
