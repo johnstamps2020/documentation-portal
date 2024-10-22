@@ -1295,6 +1295,9 @@ object TestEverythingHelpers {
                 $awsEnvVars
 
                 cd db
+                
+                rm -rf .terraform
+                rm -f .terraform.lock.hcl 
 
                 terraform init \
                     -backend-config="bucket=$s3Bucket" \
