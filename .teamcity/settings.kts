@@ -1137,7 +1137,7 @@ object TestEverythingHelpers {
             set -xe
             
             yarn
-            yarn prettier
+            yarn prettier --log-level silent
             
             # revert changes to every package.json file which is not in a node_modules folder
             find . -name "package.json" -type f -not -path "*/node_modules/*" -exec git checkout {} \;
