@@ -1136,9 +1136,11 @@ object TestEverythingHelpers {
         #!/bin/bash 
         set -xe
         
-        yarn install --immutable
+        yarn
         yarn prettier
         
+        # revert changes to every package.json file which is not in a node_modules folder
+        find . -name "package.json" -type f -not -path "*/node_modules/*" -exec git checkout {} \;
         status_output="${'$'}(git status --porcelain)"
 
         if [[ -n "${'$'}status_output" ]]; then
