@@ -7,5 +7,5 @@ export type VersionSelectorItem = {
 };
 
 export type VersionSelectorObject = {
-    allVersions: VersionSelectorItem[]
-}
+  allVersions: VersionSelectorItem[];
+};
