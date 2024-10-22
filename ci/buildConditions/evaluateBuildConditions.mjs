@@ -9,6 +9,22 @@ console.log({
   teamcityTriggeredBy,
 });
 
+function getOtherListsOfChangedFiles() {
+  const otherPathSetInEnv = new Set();
+
+  Object.entries(process.env).forEach(([key, value]) => {
+    if (key.startsWith(changedFilesEnvName.split('.')[1]) && value.length > 0) {
+      value.split(',').forEach((path) => otherPathSetInEnv.add(path));
+    }
+  });
+
+  if (otherPathSetInEnv.size > 0) {
+    return Array.from(otherPathSetInEnv).join(',');
+  }
+
+  return undefined;
+}
+
 function getChangedFilesEnvValue() {
   try {
     const changedFilesEnvValue = process.env[changedFilesEnvName.split('.')[1]];
@@ -17,8 +33,17 @@ function getChangedFilesEnvValue() {
         changedFilesEnvValue || 'THIS VALUE IS INTENTIONALLY LEFT EMPTY'
       }`
     );
+
     if (changedFilesEnvValue && changedFilesEnvValue.length > 0) {
       return changedFilesEnvValue;
+    }
+
+    const otherListOfChangedFiles = getOtherListsOfChangedFiles();
+    if (otherListOfChangedFiles) {
+      console.log(
+        `Setting list of files from upstream builds: "${otherListOfChangedFiles}"`
+      );
+      return otherListOfChangedFiles;
     }
 
     if (teamcityTriggeredBy.includes('Git')) {

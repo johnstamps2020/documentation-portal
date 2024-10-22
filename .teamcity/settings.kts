@@ -28,7 +28,11 @@ project {
 }
 
 enum class GwDeployEnvs(val envName: String) {
-    DEV("dev"), STAGING("staging"), PROD("prod"), OMEGA2_ANDROMEDA("omega2-andromeda"), PORTAL2("portal2")
+    DEV("dev"),
+    STAGING("staging"),
+    PROD("prod"),
+    OMEGA2_ANDROMEDA("omega2-andromeda"),
+    PORTAL2("portal2")
 }
 
 enum class GwConfigParams(val paramValue: String) {
@@ -74,7 +78,13 @@ enum class GwConfigParams(val paramValue: String) {
     DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config.yml"),
     DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config-prod.yml"),
     DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE("${DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/deployment.yml"),
-    S3_KUBE_DEPLOYMENT_FILE("aws/s3/kube/service-gateway-config.yml")
+    S3_KUBE_DEPLOYMENT_FILE("aws/s3/kube/service-gateway-config.yml"),
+
+    CHANGED_FILES_ENV_VAR_NAME("env.CHANGED_FILES"),
+    CHANGED_FILES_ENV_VAR_NAME_AWS_S3_KUBE("${CHANGED_FILES_ENV_VAR_NAME}_AWS_S3_KUBE"),
+    CHANGED_FILES_ENV_VAR_NAME_DB("${CHANGED_FILES_ENV_VAR_NAME}_DB"),
+    CHANGED_FILES_ENV_VAR_NAME_LANDING_PAGES("${CHANGED_FILES_ENV_VAR_NAME}_LANDING_PAGES"),
+    CHANGED_FILES_ENV_VAR_NAME_SERVER("${CHANGED_FILES_ENV_VAR_NAME}_SERVER"),
 }
 
 enum class GwDockerImages(val imageUrl: String) {
@@ -411,7 +421,8 @@ object GwBuildTypes {
         devDockerImageUrl: String,
         dockerfileName: String,
         checkmarxScanBuildType: BuildType,
-        testBuildTriggerPaths: String
+        testBuildTriggerPaths: String,
+        reverseDepParamName: String
     ): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         return BuildType {
@@ -426,7 +437,7 @@ object GwBuildTypes {
 
             params {
                 text(
-                    "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
+                    "reverse.dep.${TestDocPortalEverything.id}.${reverseDepParamName}",
                     testBuildTriggerPaths
                 )
             }
@@ -625,7 +636,7 @@ object GwBuildSteps {
             id = Helpers.createIdStringFromName(this.name)
 
             conditions {
-                contains(TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME, triggerPath)
+                contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, triggerPath)
             }
 
             scriptContent = """
@@ -1101,10 +1112,8 @@ object AuditNpmPackages : BuildType({
 })
 
 object TestEverythingHelpers {
-    const val CHANGED_FILES_ENV_VAR_NAME = "env.CHANGED_FILES"
-
     object ExportListOfChangedFilesIntoAnEnvVarStep : ScriptBuildStep({
-        name = "Export list of changed files to $CHANGED_FILES_ENV_VAR_NAME"
+        name = "Export list of changed files to ${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue}"
         id = Helpers.md5(Helpers.createIdStringFromName(this.name))
         scriptContent = """
             #!/bin/bash
@@ -1120,9 +1129,9 @@ object TestEverythingHelpers {
             echo TEAMCITY_BUILD_TIGGEREDBY ${'$'}TEAMCITY_BUILD_TIGGEREDBY
             echo ALL_TRIGGER_PATHS ${'$'}ALL_TRIGGER_PATHS
             
-            node ci/buildConditions/evaluateBuildConditions.mjs "$CHANGED_FILES_ENV_VAR_NAME"
+            node ci/buildConditions/evaluateBuildConditions.mjs "${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue}"
             
-            echo "Saved files paths to $CHANGED_FILES_ENV_VAR_NAME with the value %$CHANGED_FILES_ENV_VAR_NAME%"
+            echo "Saved files paths to ${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue} with the value %${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue}%"
         """.trimIndent()
         dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1161,7 +1170,7 @@ object TestEverythingHelpers {
         name = "Test settings.kts"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name)).toString()
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
         }
 
         goals = "teamcity-configs:generate"
@@ -1174,7 +1183,7 @@ object TestEverythingHelpers {
         name = "Test Doctools Core"
         id = Helpers.createIdStringFromName(this.name)
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.CORE.pathValue)
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.CORE.pathValue)
         }
         scriptContent = """
             #!/bin/bash
@@ -1196,7 +1205,7 @@ object TestEverythingHelpers {
         name = "Build Doctools Core"
         id = Helpers.createIdStringFromName(this.name)
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.CORE.pathValue)
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.CORE.pathValue)
         }
         scriptContent = """
             #!/bin/bash
@@ -1218,7 +1227,7 @@ object TestEverythingHelpers {
         name = "Test landing pages"
         id = Helpers.createIdStringFromName(this.name)
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.LANDING_PAGES.pathValue)
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.LANDING_PAGES.pathValue)
         }
         shellScript = """
                     yarn
@@ -1232,7 +1241,7 @@ object TestEverythingHelpers {
         name = "Test the doc portal server"
         id = Helpers.createIdStringFromName(this.name)
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.SERVER.pathValue)
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.SERVER.pathValue)
         }
         scriptContent = """
                     #!/bin/sh
@@ -1287,7 +1296,7 @@ object TestEverythingHelpers {
             name = "Test Terraform config for DB $deployEnv"
             id = Helpers.createIdStringFromName(this.name)
             conditions {
-                contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.DB.pathValue)
+                contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.DB.pathValue)
             }
             scriptContent = """
                 #!/bin/bash
@@ -1318,7 +1327,7 @@ object TestEverythingHelpers {
         name = "Build HTML5 dependencies"
         id = Helpers.createIdStringFromName(this.name)
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.HTML5.pathValue)
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.HTML5.pathValue)
         }
         scriptContent = """
             #!/bin/bash
@@ -1340,7 +1349,7 @@ object TestEverythingHelpers {
         name = "Build HTML5 offline dependencies"
         id = Helpers.createIdStringFromName(this.name)
         conditions {
-            contains(CHANGED_FILES_ENV_VAR_NAME, GwTestTriggerPaths.HTML5.pathValue)
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.HTML5.pathValue)
         }
         scriptContent = """
             #!/bin/bash
@@ -1412,10 +1421,34 @@ private object TestDocPortalEverything : BuildType({
 
     params {
         text(
-            TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME,
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue,
             "",
             allowEmpty = true,
             display = ParameterDisplay.NORMAL
+        )
+        text(
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_AWS_S3_KUBE.paramValue,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_DB.paramValue,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_LANDING_PAGES.paramValue,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_SERVER.paramValue,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.HIDDEN
         )
     }
 
@@ -1664,7 +1697,7 @@ object Content {
 
             params {
                 text(
-                    "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
+                    "reverse.dep.${TestDocPortalEverything.id}.${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_AWS_S3_KUBE.paramValue}",
                     GwTestTriggerPaths.AWS_S3_KUBE.pathValue
                 )
             }
@@ -1918,7 +1951,7 @@ object Database {
 
             params {
                 text(
-                    "reverse.dep.${TestDocPortalEverything.id}.${TestEverythingHelpers.CHANGED_FILES_ENV_VAR_NAME}",
+                    "reverse.dep.${TestDocPortalEverything.id}.${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_DB.paramValue}",
                     GwTestTriggerPaths.DB.pathValue
                 )
             }
@@ -2347,7 +2380,8 @@ object Frontend {
             GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
             "Dockerfile",
             runCheckmarxScan,
-            "${GwTestTriggerPaths.LANDING_PAGES.pathValue},${GwTestTriggerPaths.CORE.pathValue}"
+            "${GwTestTriggerPaths.LANDING_PAGES.pathValue},${GwTestTriggerPaths.CORE.pathValue}",
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_LANDING_PAGES.paramValue
         )
     private val publishDockerImageToProdEcrBuildType = GwBuildTypes.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -2657,7 +2691,8 @@ object Server {
             GwDockerImages.DOC_PORTAL.imageUrl,
             "Dockerfile.server",
             runCheckmarxScan,
-            "${GwTestTriggerPaths.SERVER.pathValue},${GwTestTriggerPaths.CORE.pathValue}"
+            "${GwTestTriggerPaths.SERVER.pathValue},${GwTestTriggerPaths.CORE.pathValue}",
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_SERVER.paramValue
         )
     private val publishDockerImageToProdEcrBuildType = GwBuildTypes.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL.tagValue,
