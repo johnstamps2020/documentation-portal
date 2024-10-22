@@ -20,7 +20,6 @@ const pageConfig: Category2LayoutProps = {
   isRelease: false,
   headerText: 'Las Leñas Update Preview',
   subHeaderText: `These documents are provided as part of the Guidewire Update Preview program to help you start planning updates before a release is generally available. The Update Preview program is not a binding commitment to deliver any specific functionality. Guidewire might make functional updates, resolve issues, or adjust the contents of the release before the general availability date. Please review the latest release notes and Documentation when the release is generally available.`,
-
   cards: [
     {
       label: 'Prerelease Release Notes',
