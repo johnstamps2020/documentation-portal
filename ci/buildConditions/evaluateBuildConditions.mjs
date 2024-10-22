@@ -13,7 +13,6 @@ function getOtherListsOfChangedFiles() {
   const otherPathSetInEnv = new Set();
 
   Object.entries(process.env).forEach(([key, value]) => {
-    console.log('Looking at environment variable', key, value);
     if (key.startsWith(changedFilesEnvName.split('.')[1]) && value.length > 0) {
       value.split(',').forEach((path) => otherPathSetInEnv.add(path));
     }
