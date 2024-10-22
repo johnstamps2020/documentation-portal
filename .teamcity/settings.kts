@@ -1136,7 +1136,7 @@ object TestEverythingHelpers {
         #!/bin/bash 
         set -xe
         
-        yarn
+        yarn install --immutable
         yarn prettier
         
         status_output="${'$'}(git status --porcelain)"
