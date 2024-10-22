@@ -126,6 +126,10 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Runtime Properties API',
           docId: 'runtimepropertiesapi',
         },
+        {
+          label: 'Storage Access API',
+          docId: 'storageserviceapi',
+        },
       ],
     },
     {
