@@ -13,7 +13,7 @@ function getOtherListsOfChangedFiles() {
   const otherPathSetInEnv = new Set();
 
   Object.entries(process.env).forEach(([key, value]) => {
-    if (key.startsWith(changedFilesEnvName.split('.')[1]) && value.length > 0) {
+    if (key.includes(changedFilesEnvName.split('.')[1]) && value.length > 0) {
       value.split(',').forEach((path) => otherPathSetInEnv.add(path));
     }
   });
@@ -22,6 +22,7 @@ function getOtherListsOfChangedFiles() {
     return Array.from(otherPathSetInEnv).join(',');
   }
 
+  console.log('No OTHER paths set in the environment');
   return undefined;
 }
 
