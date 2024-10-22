@@ -1133,28 +1133,28 @@ object TestEverythingHelpers {
         id = Helpers.createIdStringFromName(this.name)
 
         scriptContent = """
-        #!/bin/bash 
-        set -xe
-        
-        yarn
-        yarn prettier
-        
-        # revert changes to every package.json file which is not in a node_modules folder
-        find . -name "package.json" -type f -not -path "*/node_modules/*" -exec git checkout {} \;
-        status_output="${'$'}(git status --porcelain)"
-
-        if [[ -n "${'$'}status_output" ]]; then
-            echo "Running Prettier would have updated your code. Run yarn prettier locally and commit your changes."
-            exit 1
-        else
-            echo "Test successful! Running Prettier does not change the code."
-            exit 0
-        fi
-    """.trimIndent()
-        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        dockerRunParameters = "--user 1000:1000"
-    })
+            #!/bin/bash 
+            set -xe
+            
+            yarn
+            yarn prettier
+            
+            # revert changes to every package.json file which is not in a node_modules folder
+            find . -name "package.json" -type f -not -path "*/node_modules/*" -exec git checkout {} \;
+            status_output="${'$'}(git status --porcelain)"
+    
+            if [[ -n "${'$'}status_output" ]]; then
+                echo "Running Prettier would have updated your code. Run yarn prettier locally and commit your changes."
+                exit 1
+            else
+                echo "Test successful! Running Prettier does not change the code."
+                exit 0
+            fi
+        """.trimIndent()
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "--user 1000:1000"
+        })
 
     object TestSettingsKts : MavenBuildStep({
         name = "Test settings.kts"
