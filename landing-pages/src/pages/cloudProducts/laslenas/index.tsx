@@ -68,10 +68,10 @@ const pageConfig: Category2LayoutProps = {
           label: 'InsuranceNow',
           pagePath: 'cloudProducts/laslenas/in',
         },
-        // {
-        //   label: 'Digital Reference Applications',
-        //   pagePath: 'cloudProducts/laslenas/dx-ref-apps',
-        // },
+        {
+          label: 'Digital Reference Applications',
+          pagePath: 'cloudProducts/laslenas/dx-ref-apps',
+        },
         {
           label: 'Global Content Reference Applications',
           pagePath: 'cloudProducts/laslenas/globalRefApps',
@@ -166,7 +166,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Jutro Digital Platform',
-          docId: 'jutro1070',
+          docId: 'jutro1090',
         },
         {
           label: 'Guidewire Testing',

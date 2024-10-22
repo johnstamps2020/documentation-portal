@@ -688,6 +688,7 @@ export async function getDocumentMetadataById(
             docDisplayTitle: wrapInQuotes(docInfo.displayTitle),
             docInternal: docInfo.internal,
             docEarlyAccess: docInfo.earlyAccess,
+            docUpdatePreview: docInfo.updatePreview,
             docProducts: wrapInQuotes(
               docInfo.platformProductVersions.map(
                 (ppv: PlatformProductVersion) => ppv.product.name

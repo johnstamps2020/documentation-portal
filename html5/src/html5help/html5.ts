@@ -1,6 +1,6 @@
 import { addAvatar } from '../modules/avatar';
 import { highlightCode, normalizeCode } from '../modules/code';
-import { addEarlyAccessMark } from '../modules/earlyAccess';
+import { addWarningBanners } from '../modules/warningBanners';
 import { addFeedbackElements } from '../modules/feedback';
 import { addFooterContents } from '../modules/footer';
 import { docReady } from '../modules/helpers';
@@ -32,7 +32,7 @@ docReady(async function () {
         addVersionSelector();
         addAvatar();
         addInternalBadge();
-        addEarlyAccessMark();
+        addWarningBanners();
         addSearchBox(isOffline);
         addPageNavigators(isOffline);
         addFeedbackElements();

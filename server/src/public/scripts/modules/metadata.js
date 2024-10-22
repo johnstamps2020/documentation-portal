@@ -41,6 +41,7 @@ export async function setMetadata() {
         window.docTitle = docInfo.docTitle;
         window.docInternal = docInfo.docInternal;
         window.docEarlyAccess = docInfo.docEarlyAccess;
+        window.docUpdatePreview = docInfo.docUpdatePreview;
         window.docProduct = docInfo.docProducts;
         window.docVersion = docInfo.docVersions;
         window.docPlatform = docInfo.docPlatforms;

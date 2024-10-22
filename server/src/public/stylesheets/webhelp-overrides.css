@@ -2,7 +2,7 @@
 @import 'modules/common.css';
 @import 'modules/avatar.css';
 @import 'modules/feedback.css';
-@import 'modules/earlyAccess.module.css';
+@import 'modules/warningBanners.module.css';
 @import 'modules/versionSelector.css';
 
 @media only screen and (max-width: 580px) {

@@ -1,6 +1,6 @@
 {
   "name": "@doctools/gw-plugin-redoc",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Guidewire plugin which generates static assets for Redoc sites",
   "main": "lib/index.js",
   "author": "doctools@gudiewire.com",

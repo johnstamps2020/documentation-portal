@@ -118,12 +118,14 @@ const pageConfig: ApplicationLayoutProps = {
         {
           label: 'Frequently Asked Questions',
           docId: 'surepathmethodologymain',
-          pathInDoc: 'general-guidance/lob',
+          pathInDoc:
+            'platform/advanced-product-designer/adoption-guide#frequently-asked-questions-for-using-advanced-product-designer ',
         },
         {
           label: 'Guidebook',
           docId: 'surepathmethodologymain',
-          pathInDoc: 'general-guidance/lob',
+          pathInDoc:
+            'platform/advanced-product-designer/adoption-guide/#advanced-product-designer-guidebook',
         },
       ],
     },
