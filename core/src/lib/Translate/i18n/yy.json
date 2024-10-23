@@ -71,12 +71,6 @@
   "feedbackDialog.submit": {
     "message": "[3ofo9u_Submit]"
   },
-  "internal.item.tooltip": {
-    "message": "[12m9aL_Guidewire internal content]"
-  },
-  "internal.page.badge.tooltip": {
-    "message": "[4DcGAH_This page is available only to people with a Guidewire email. Do not share the link with external stakeholders because they will not be able to see the contents.]"
-  },
   "internal.employeesOnly": {
     "message": "[18urtr_This content is available to Guidewire employees only]"
   },
@@ -113,9 +107,6 @@
   "collapsible.title": {
     "message": "[3YZ9CJ_Expand]"
   },
-  "footer.legal.linktext": {
-    "message": "[3J0CPM_Legal and support information]"
-  },
   "footer.published": {
     "message": "[4kq2Io_Published:]"
   },
@@ -133,9 +124,6 @@
   },
   "navbar.printThisPage": {
     "message": "[LFJp9_Print this page]"
-  },
-  "chat.default-title": {
-    "message": "[2rY6tA_Let's chat]"
   },
   "chat.send": {
     "message": "[4nnqx0_Send]"

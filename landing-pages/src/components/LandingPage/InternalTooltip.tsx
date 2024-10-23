@@ -1,16 +1,18 @@
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import internalLogo from 'images/internal_document_icon.svg';
-import { translate } from '@doctools/core';
+import { useIntl } from 'react-intl';
 
 export default function InternalTooltip() {
+  const intl = useIntl();
+
   return (
     <Tooltip
       title={
         <Typography>
-          {translate({
+          {intl.formatMessage({
             id: 'internal.item.tooltip',
-            message: 'Guidewire internal content',
+            defaultMessage: 'Guidewire internal content',
           })}
         </Typography>
       }

@@ -1,0 +1,26 @@
+{
+  "chat.default-title": [
+    {
+      "type": 0,
+      "value": "Poczatujmy"
+    }
+  ],
+  "footer.legal.linktext": [
+    {
+      "type": 0,
+      "value": "Informacje prawne i na temat wsparcia"
+    }
+  ],
+  "internal.item.tooltip": [
+    {
+      "type": 0,
+      "value": "Informacje wewnętrzne Guidewire"
+    }
+  ],
+  "internal.page.badge.tooltip": [
+    {
+      "type": 0,
+      "value": "Ta strona jest dostępna tylko dla osób które posiadają email Guidewire. Nie udostępniaj osobom z zewnątrz, bo nie będą miały do niej dostępu."
+    }
+  ]
+}

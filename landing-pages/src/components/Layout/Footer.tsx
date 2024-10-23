@@ -1,8 +1,8 @@
-import { translate } from '@doctools/core';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
 import { Link as RouterLink } from '@tanstack/react-router';
+import { useIntl } from 'react-intl';
 import { FooterText } from './StyledLayoutComponents';
 
 export const footerHeight = '55px';
@@ -12,6 +12,7 @@ type FooterProps = {
 };
 export default function Footer({ path }: FooterProps) {
   const theme = useTheme();
+  const intl = useIntl();
 
   return (
     <Stack
@@ -41,9 +42,9 @@ export default function Footer({ path }: FooterProps) {
         }}
       >
         <FooterText sx={{ display: 'contents' }}>
-          {translate({
+          {intl.formatMessage({
             id: 'footer.legal.linktext',
-            message: 'Legal and support information',
+            defaultMessage: 'Legal and support information',
           })}
         </FooterText>
       </Link>

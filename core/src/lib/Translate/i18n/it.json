@@ -71,12 +71,6 @@
   "feedbackDialog.submit": {
     "message": "Invia"
   },
-  "internal.item.tooltip": {
-    "message": "Commento interno Guidewire"
-  },
-  "internal.page.badge.tooltip": {
-    "message": "Questa pagina è disponibile solo per chi dispone di un'e-mail Guidewire. Non condividere il link con parti esterne, perché non potranno vedere i contenuti."
-  },
   "internal.employeesOnly": {
     "message": "Questo contenuto è disponibile solo per i dipendenti di Guidewire"
   },
@@ -113,9 +107,6 @@
   "collapsible.title": {
     "message": "Espandi"
   },
-  "footer.legal.linktext": {
-    "message": "Informazioni legali e di supporto"
-  },
   "footer.published": {
     "message": "Pubblicato:"
   },
@@ -133,9 +124,6 @@
   },
   "navbar.printThisPage": {
     "message": "Stampa questa pagina"
-  },
-  "chat.default-title": {
-    "message": "Facciamo due chiacchiere"
   },
   "chat.send": {
     "message": "Invia"
