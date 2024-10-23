@@ -71,17 +71,14 @@ async function updateSubmoduleUrls() {
                 `Unknown error checking out branch ${src.gitBranch}`
               );
           }
-          // Check if there are any submodules by reading the .gitmodules file
+
           const gitmodulesPath = join(repoDir, '.gitmodules');
           if (existsSync(gitmodulesPath)) {
             console.log(
               'Submodules found. Checking and updating submodule URLs...'
             );
 
-            // Read the .gitmodules file
             const gitmodulesContent = readFileSync(gitmodulesPath, 'utf-8');
-
-            // Extract submodule paths and URLs
             const submoduleRegex =
               /\[submodule "([^"]+)"\]\s*path = ([^\s]+)\s*url = ([^\s]+)/g;
             let match;
@@ -91,7 +88,6 @@ async function updateSubmoduleUrls() {
               const submodulePath = match[2];
               const submoduleUrl = match[3];
 
-              // Check if the current URL contains 'github.com'
               if (submoduleUrl.includes('github.com')) {
                 console.log(
                   `Skipping update for submodule ${submoduleName} as it already contains 'github.com'`
@@ -112,7 +108,6 @@ async function updateSubmoduleUrls() {
             if (updateMade) {
               execSync('git add -A', { stdio: 'inherit' });
               try {
-                // Check for changes before committing
                 const changes = execSync('git status --porcelain')
                   .toString()
                   .trim();
@@ -129,7 +124,6 @@ async function updateSubmoduleUrls() {
                 }
               }
 
-              // Uncomment this if you actually want to push the changes
               execSync('git push', { stdio: 'inherit' });
             } else {
               console.log('No updates were made to submodule URLs.');
@@ -159,23 +153,35 @@ async function updateSubmoduleUrls() {
   }
 }
 
-// Get list of all sources for the url
 async function getDitaBuildSources(
   gitUrl: string,
   accessToken: string
 ): Promise<Source[] | undefined> {
   try {
     const sources: Source[] = [];
-    const allSourcesForUrl: Source[] = await getEntitiesByAttribute(
+    let allSourcesForUrl: Source[] = await getEntitiesByAttribute(
       'Source',
       'gitUrl',
       gitUrl,
       env,
-      accessToken
+      accessToken,
+      true
     );
 
+    if (!allSourcesForUrl) {
+      console.log(`No exact source matches for ${gitUrl}.`);
+      const stashUrl = convertGitHubUrlToStash(gitUrl);
+      console.log(`Trying to find matches for Stash equivalent ${stashUrl}.`);
+      allSourcesForUrl = await getEntitiesByAttribute(
+        'Source',
+        'gitUrl',
+        stashUrl,
+        env,
+        accessToken
+      );
+    }
+
     if (allSourcesForUrl.length > 0) {
-      // Map to sources that have one or more DitaBuild associated
       for (const src of allSourcesForUrl) {
         try {
           const buildResponse: DitaBuild[] | undefined =
@@ -194,7 +200,6 @@ async function getDitaBuildSources(
 
             if (!exists) {
               sources.push(src);
-              console.log(src.id);
             }
           }
         } catch (err) {}
@@ -225,13 +230,28 @@ function parseArgs(): ParsedArguments {
     .help().argv as ParsedArguments;
 }
 
+function convertGitHubUrlToStash(url: string): string {
+  const match = url.match(/https:\/\/github\.com\/[^/]+\/([^/]+)\.git$/);
+
+  if (!match) {
+    throw new Error(
+      'Invalid GitHub URL format. Expected format: https://github.com/gwre-pdo/project-reponame.git'
+    );
+  }
+
+  const fullName = match[1];
+  const [project, ...reponameParts] = fullName.split('-');
+  const reponame = reponameParts.join('-'); // Join the rest back as the reponame
+  const sshUrl = `ssh://git@stash.guidewire.com/${project}/${reponame}.git`;
+
+  return sshUrl;
+}
+
 async function createDir(dirPath: string): Promise<void> {
   try {
-    // Check if the directory already exists
     await fs.access(dirPath);
     console.log(`Directory already exists: ${dirPath}`);
   } catch (error) {
-    // If the directory doesn't exist, create it
     try {
       await fs.mkdir(dirPath, { recursive: true });
       console.log(`Directory created: ${dirPath}`);
