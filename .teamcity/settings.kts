@@ -3,13 +3,11 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.buildFeatures.SshAgent
-import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.buildSteps.maven
-import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 import java.math.BigInteger
 import java.security.MessageDigest
@@ -24,15 +22,17 @@ project {
     subProject(DocPortal.rootProject)
     subProject(Frontend.rootProject)
     subProject(Server.rootProject)
-    subProject(Core.rootProject)
     subProject(Content.rootProject)
-    buildType(TestCodeFormat)
-    buildType(TestSettingsKts)
+    buildType(TestDocPortalEverything)
     buildType(AuditNpmPackages)
 }
 
 enum class GwDeployEnvs(val envName: String) {
-    DEV("dev"), STAGING("staging"), PROD("prod"), OMEGA2_ANDROMEDA("omega2-andromeda"), PORTAL2("portal2")
+    DEV("dev"),
+    STAGING("staging"),
+    PROD("prod"),
+    OMEGA2_ANDROMEDA("omega2-andromeda"),
+    PORTAL2("portal2")
 }
 
 enum class GwConfigParams(val paramValue: String) {
@@ -78,7 +78,13 @@ enum class GwConfigParams(val paramValue: String) {
     DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config.yml"),
     DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config-prod.yml"),
     DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE("${DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/deployment.yml"),
-    S3_KUBE_DEPLOYMENT_FILE("aws/s3/kube/service-gateway-config.yml")
+    S3_KUBE_DEPLOYMENT_FILE("aws/s3/kube/service-gateway-config.yml"),
+
+    CHANGED_FILES_ENV_VAR_NAME("env.CHANGED_FILES"),
+    CHANGED_FILES_ENV_VAR_NAME_AWS_S3_KUBE("${CHANGED_FILES_ENV_VAR_NAME.paramValue}_AWS_S3_KUBE"),
+    CHANGED_FILES_ENV_VAR_NAME_DB("${CHANGED_FILES_ENV_VAR_NAME.paramValue}_DB"),
+    CHANGED_FILES_ENV_VAR_NAME_LANDING_PAGES("${CHANGED_FILES_ENV_VAR_NAME.paramValue}_LANDING_PAGES"),
+    CHANGED_FILES_ENV_VAR_NAME_SERVER("${CHANGED_FILES_ENV_VAR_NAME.paramValue}_SERVER"),
 }
 
 enum class GwDockerImages(val imageUrl: String) {
@@ -127,10 +133,8 @@ enum class GwDockerImageTags(val tagValue: String) {
 enum class GwTriggerPaths(val pathValue: String) {
     AWS_S3_KUBE("aws/s3/kube/**"),
     DB("db/**"),
-    DOCUSAURUS_THEMES("docusaurus/themes/**"),
     PACKAGE_JSON("package.json"),
     HTML5("html5/**"),
-    CORE("core/**"),
     LANDING_PAGES("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/**"),
     LANDING_PAGES_KUBE("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/**"),
     SERVER("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/**"),
@@ -139,11 +143,20 @@ enum class GwTriggerPaths(val pathValue: String) {
     SERVER_SRC_TYPES("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/src/types/**"),
     SUBDIRS_PACKAGE_JSON("**/package.json"),
     SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS("scripts/src/pages/getRootBreadcrumbs.ts"),
-    SHIMS("shims/**"),
-    TEAMCITY_POM_XML(".teamcity/pom.xml"),
-    TEAMCITY_SETTINGS_KTS(".teamcity/settings.kts"),
     TEAMCITY_CONFIG(".teamcity/config/**"),
     YARN_LOCK("yarn.lock"),
+}
+
+enum class GwTestTriggerPaths(val pathValue: String) {
+    TEAMCITY_SETTINGS_KTS(".teamcity/"),
+    CORE("core/"),
+    LANDING_PAGES("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/"),
+    SERVER("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/"),
+    HTML5("html5/"),
+    AWS_S3_KUBE("aws/s3/kube/"),
+    LANDING_PAGES_KUBE("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/"),
+    SERVER_KUBE("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/kube/"),
+    DB("db/")
 }
 
 enum class GwDocCrawlerOperationModes(val modeValue: String) {
@@ -407,7 +420,9 @@ object GwBuildTypes {
         tagVersion: String,
         devDockerImageUrl: String,
         dockerfileName: String,
-        snapshotDependencies: List<BuildType>,
+        checkmarxScanBuildType: BuildType,
+        testBuildTriggerPaths: String,
+        reverseDepParamName: String
     ): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         return BuildType {
@@ -418,6 +433,13 @@ object GwBuildTypes {
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
+            }
+
+            params {
+                text(
+                    "reverse.dep.${TestDocPortalEverything.id}.${reverseDepParamName}",
+                    testBuildTriggerPaths
+                )
             }
 
             steps {
@@ -456,10 +478,13 @@ object GwBuildTypes {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
             dependencies {
-                snapshotDependencies.forEach {
-                    snapshot(it) {
-                        onDependencyFailure = FailureAction.FAIL_TO_START
-                    }
+                snapshot(checkmarxScanBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(TestDocPortalEverything) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                    reuseBuilds = ReuseBuilds.NO
+                    synchronizeRevisions = true
                 }
             }
         }
@@ -558,53 +583,63 @@ object GwBuildTypes {
             }
         }
     }
+}
 
-    fun createTestKubernetesConfigFilesBuildType(deployEnv: String, triggerPath: String): BuildType {
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+object GwBuildSteps {
+    object MergeAllLegacyConfigsStep : ScriptBuildStep({
+        name = "Merge all config files"
+        id = Helpers.createIdStringFromName(this.name)
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+
+            config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
+            config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
+            config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
+        """.trimIndent()
+        dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
+        dockerImagePlatform = ImagePlatform.Linux
+    })
+
+    fun createTestKubernetesConfigFilesScriptBuildStep(deployEnv: String, triggerPath: String): ScriptBuildStep {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         var deployEnvVars = ""
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         var deploymentFile = ""
         var testGatewayConfigScript = ""
-        var buildName = ""
+
         when (triggerPath) {
-            GwTriggerPaths.AWS_S3_KUBE.pathValue -> {
+            GwTriggerPaths.AWS_S3_KUBE.pathValue, GwTestTriggerPaths.AWS_S3_KUBE.pathValue -> {
                 deployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
                 deploymentFile = GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue
-                buildName = "Test Kubernetes config files for content storage on $deployEnv"
             }
 
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
+            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue, GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
                 deployEnvVars =
                     Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
                 deploymentFile = GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue
-                buildName = "Test Kubernetes config files for React landing pages on $deployEnv"
             }
 
-            GwTriggerPaths.SERVER_KUBE.pathValue -> {
+            GwTriggerPaths.SERVER_KUBE.pathValue, GwTestTriggerPaths.SERVER_KUBE.pathValue -> {
                 deployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
                 deploymentFile = GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue
-                buildName = "Test Kubernetes config files for server on $deployEnv"
                 testGatewayConfigScript = """
-                    export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
-                    eval "echo \"${'$'}(cat ${Helpers.getServerGatewayConfigFile(deployEnv)})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
-                    kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
-                """.trimIndent()
+                        export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
+                        eval "echo \"${'$'}(cat ${Helpers.getServerGatewayConfigFile(deployEnv)})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
+                        kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
+                    """.trimIndent()
             }
         }
-        return BuildType {
-            name = buildName
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
+        return ScriptBuildStep {
+            name = "Create Kubernetes resources in dry run $deployEnv $triggerPath"
+            id = Helpers.createIdStringFromName(this.name)
+
+            conditions {
+                contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, triggerPath)
             }
 
-            steps {
-                script {
-                    name = "Create Kubernetes resources in dry run "
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
+            scriptContent = """
                         #!/bin/bash 
                         set -e
                         
@@ -623,48 +658,11 @@ object GwBuildTypes {
                         
                         $testGatewayConfigScript
                     """.trimIndent()
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-            }
-
-            when (deployEnv) {
-                GwDeployEnvs.DEV.envName -> {
-                    triggers.trigger(
-                        GwVcsTriggers.createGitVcsTrigger(
-                            GwVcsRoots.DocumentationPortalGitVcsRoot,
-                            listOf(triggerPath)
-                        )
-                    )
-                }
-            }
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
         }
-
     }
-}
-
-object GwBuildSteps {
-    object MergeAllLegacyConfigsStep : ScriptBuildStep({
-        name = "Merge all config files"
-        id = Helpers.createIdStringFromName(this.name)
-        scriptContent = """
-            #!/bin/bash
-            set -xe
-
-            config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
-            config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
-            config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
-        """.trimIndent()
-        dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
-        dockerImagePlatform = ImagePlatform.Linux
-    })
 
     fun createCheckPodsStatusStep(envVars: String, deployEnv: String, appName: String): ScriptBuildStep {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
@@ -876,92 +874,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.DOC_CRAWLER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createTestDoctoolsCoreStep(): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Test Doctools Core"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export EXIT_CODE=0
-                
-                yarn
-                yarn test:core || EXIT_CODE=${'$'}?
-                
-                exit ${'$'}EXIT_CODE
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--user 1000:1000"
-
-        }
-    }
-
-    fun createBuildDoctoolsCoreStep(): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Build Doctools Core"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export EXIT_CODE=0
-                
-                yarn
-                yarn build:core || EXIT_CODE=${'$'}?
-                
-                exit ${'$'}EXIT_CODE
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--user 1000:1000"
-
-        }
-    }
-
-    fun createBuildHtml5DependenciesStep(): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Build HTML5 dependencies"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export EXIT_CODE=0
-                
-                yarn
-                yarn build:html5 || EXIT_CODE=${'$'}?
-                
-                exit ${'$'}EXIT_CODE
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--user 1000:1000"
-        }
-    }
-
-    fun createBuildHtml5OfflineDependenciesStep(): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Build HTML5 offline dependencies"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export EXIT_CODE=0
-                
-                yarn
-                yarn build:html5-offline || EXIT_CODE=${'$'}?
-                
-                exit ${'$'}EXIT_CODE
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--user 1000:1000"
         }
     }
 
@@ -1199,9 +1111,344 @@ object AuditNpmPackages : BuildType({
     }
 })
 
-object TestCodeFormat : BuildType({
-    name = "Test code format"
-    id = Helpers.resolveRelativeIdFromIdString(this.name)
+object TestEverythingHelpers {
+    object ExportListOfChangedFilesIntoAnEnvVarStep : ScriptBuildStep({
+        name = "Export list of changed files to ${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue}"
+        id = Helpers.md5(Helpers.createIdStringFromName(this.name))
+        scriptContent = """
+            #!/bin/bash
+            
+            export TEAMCITY_BUILD_CHANGEDFILES_FILE="%system.teamcity.build.changedFiles.file%"
+            export TEAMCITY_BUILD_TIGGEREDBY="%teamcity.build.triggeredBy%"
+            export ALL_TRIGGER_PATHS=${
+            GwTestTriggerPaths.entries.joinToString(",") {
+                it.pathValue
+            }
+        }
+            echo TEAMCITY_BUILD_CHANGEDFILES_FILE ${'$'}TEAMCITY_BUILD_CHANGEDFILES_FILE
+            echo TEAMCITY_BUILD_TIGGEREDBY ${'$'}TEAMCITY_BUILD_TIGGEREDBY
+            echo ALL_TRIGGER_PATHS ${'$'}ALL_TRIGGER_PATHS
+            
+            node ci/buildConditions/evaluateBuildConditions.mjs "${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue}"
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
+    })
+
+    object TestCodeFormat : ScriptBuildStep({
+        name = "Run prettier and fail if it makes changes"
+        id = Helpers.createIdStringFromName(this.name)
+
+        scriptContent = """
+            #!/bin/bash 
+            set -xe
+            
+            yarn
+            yarn prettier --loglevel silent
+            
+            # revert changes to every package.json file which is not in a node_modules folder
+            find . -name "package.json" -type f -not -path "*/node_modules/*" -exec git checkout {} \;
+            status_output="${'$'}(git status --porcelain)"
+    
+            if [[ -n "${'$'}status_output" ]]; then
+                echo "Running Prettier would have updated your code. Run yarn prettier locally and commit your changes."
+                exit 1
+            else
+                echo "Test successful! Running Prettier does not change the code."
+                exit 0
+            fi
+        """.trimIndent()
+            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "--user 1000:1000"
+        })
+
+    object TestSettingsKts : MavenBuildStep({
+        name = "Test settings.kts"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name)).toString()
+        conditions {
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue)
+        }
+
+        goals = "teamcity-configs:generate"
+        pomLocation = ".teamcity/pom.xml"
+        workingDir = ""
+        runnerArgs = "-X"
+    })
+
+    object TestDoctoolsCore : ScriptBuildStep({
+        name = "Test Doctools Core"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.CORE.pathValue)
+        }
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+            
+            export EXIT_CODE=0
+            
+            yarn
+            yarn test:core || EXIT_CODE=${'$'}?
+            
+            exit ${'$'}EXIT_CODE
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
+    })
+
+    object BuildDoctoolsCore : ScriptBuildStep({
+        name = "Build Doctools Core"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.CORE.pathValue)
+        }
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+            
+            export EXIT_CODE=0
+            
+            yarn
+            yarn build:core || EXIT_CODE=${'$'}?
+            
+            exit ${'$'}EXIT_CODE
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
+    })
+
+    object TestReactLandingPages : NodeJSBuildStep({
+        name = "Test landing pages"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.LANDING_PAGES.pathValue)
+        }
+        shellScript = """
+                    yarn
+                    CI=true yarn test:landing-pages
+                    yarn build
+                """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+    })
+
+    object TestServer : ScriptBuildStep({
+        name = "Test the doc portal server"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.SERVER.pathValue)
+        }
+        scriptContent = """
+                    #!/bin/sh
+                    set -e
+                    export NODE_ENV="production"
+                    export OKTA_CLIENT_ID=mock
+                    export OKTA_CLIENT_SECRET=mock
+                    export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
+                    export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
+                    export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+                    export OKTA_ISSUER_APAC="issuerNotConfigured"
+                    export OKTA_ISSUER_EMEA="issuerNotConfigured"
+                    export OKTA_SCOPES=mock
+                    export OKTA_ADMIN_GROUPS=mock
+                    export OKTA_AUDIENCE=mock
+                    export POWER_USERS=mock
+                    export APP_BASE_URL=http://localhost:8081
+                    export SESSION_KEY=mock
+                    export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
+                    export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+                    export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
+                    export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
+                    export ENABLE_AUTH=no
+                    export PRETEND_TO_BE_EXTERNAL=no
+                    export ALLOW_PUBLIC_DOCS=yes
+                    export LOCALHOST_SESSION_SETTINGS=yes
+                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
+                    export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+                    export PARTNERS_LOGIN_CERT=mock
+                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
+                    export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+                    export CUSTOMERS_LOGIN_CERT=mock
+                    
+                    yarn
+                    yarn build
+                    yarn test:server
+                """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+    })
+
+    fun createTestDbDeploymentBuildStep(deployEnv: String): ScriptBuildStep {
+        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+        val tfstateKey = "docportal/db/terraform.tfstate"
+        val s3Bucket = when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> "tenant-doctools-${GwDeployEnvs.DEV.envName}-terraform"
+            GwDeployEnvs.STAGING.envName -> "tenant-doctools-${GwDeployEnvs.STAGING.envName}-terraform"
+            GwDeployEnvs.PROD.envName -> "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
+            else -> ""
+        }
+
+        return ScriptBuildStep {
+            name = "Test Terraform config for DB $deployEnv"
+            id = Helpers.createIdStringFromName(this.name)
+            conditions {
+                contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.DB.pathValue)
+            }
+            scriptContent = """
+                #!/bin/bash
+                set -eux
+                
+                $awsEnvVars
+
+                cd db
+                
+                rm -rf .terraform
+                rm -f .terraform.lock.hcl 
+
+                terraform init \
+                    -backend-config="bucket=$s3Bucket" \
+                    -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
+                    -backend-config="key=$tfstateKey" \
+                    -input=false
+                terraform validate
+                """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_4_3_0.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
+
+        }
+    }
+
+    object TestHtml5DependenciesStep: ScriptBuildStep ({
+        name = "Build HTML5 dependencies"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.HTML5.pathValue)
+        }
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+            
+            export EXIT_CODE=0
+            
+            yarn
+            yarn build:html5 || EXIT_CODE=${'$'}?
+            
+            exit ${'$'}EXIT_CODE
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
+    })
+
+    object TestHtml5OfflineDependenciesStep: ScriptBuildStep ({
+        name = "Build HTML5 offline dependencies"
+        id = Helpers.createIdStringFromName(this.name)
+        conditions {
+            contains(GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue, GwTestTriggerPaths.HTML5.pathValue)
+        }
+        scriptContent = """
+            #!/bin/bash
+            set -xe
+            
+            export EXIT_CODE=0
+            
+            yarn
+            yarn build:html5-offline || EXIT_CODE=${'$'}?
+            
+            exit ${'$'}EXIT_CODE
+        """.trimIndent()
+        dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerRunParameters = "--user 1000:1000"
+    })
+
+    private val kubernetesTestConfigs: List<Pair<String, String>> = listOf(
+        Pair(
+            GwDeployEnvs.DEV.envName,
+            GwTestTriggerPaths.AWS_S3_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.STAGING.envName,
+            GwTestTriggerPaths.AWS_S3_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.PROD.envName,
+            GwTestTriggerPaths.AWS_S3_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.PORTAL2.envName,
+            GwTestTriggerPaths.AWS_S3_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.DEV.envName,
+            GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.STAGING.envName,
+            GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.PROD.envName,
+            GwTestTriggerPaths.LANDING_PAGES_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.DEV.envName,
+            GwTestTriggerPaths.SERVER_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.STAGING.envName,
+            GwTestTriggerPaths.SERVER_KUBE.pathValue
+        ),
+        Pair(
+            GwDeployEnvs.PROD.envName,
+            GwTestTriggerPaths.SERVER_KUBE.pathValue
+        )
+    )
+
+    val KubernetesTests: List<BuildStep> = kubernetesTestConfigs.map {
+        GwBuildSteps.createTestKubernetesConfigFilesScriptBuildStep(it.first, it.second)
+    }
+}
+
+private object TestDocPortalEverything : BuildType({
+    name = "Test Doc Portal Everything"
+    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+    params {
+        text(
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME.paramValue,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.NORMAL
+        )
+        text(
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_AWS_S3_KUBE.paramValue,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_DB.paramValue,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_LANDING_PAGES.paramValue,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_SERVER.paramValue,
+            "",
+            allowEmpty = true,
+            display = ParameterDisplay.HIDDEN
+        )
+    }
 
     vcs {
         root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -1209,105 +1456,40 @@ object TestCodeFormat : BuildType({
     }
 
     steps {
-        script {
-            name = "Run prettier and fail if it makes changes"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash 
-                set -e
-                
-                yarn
-                yarn prettier
-                
-                if [[ -n "${'$'}(git status --porcelain)" ]]; then
-                    echo "Running Prettier would have updated your code. Run `yarn prettier` locally and commit your changes."
-                    exit 1
-                else
-                    echo "Test successful! Running Prettier does not change the code."
-                    exit 0
-                fi
-            """.trimIndent()
-            dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+        step(TestEverythingHelpers.ExportListOfChangedFilesIntoAnEnvVarStep)
+        step(TestEverythingHelpers.TestCodeFormat)
+        step(TestEverythingHelpers.TestSettingsKts)
+        step(TestEverythingHelpers.BuildDoctoolsCore)
+        step(TestEverythingHelpers.TestDoctoolsCore)
+        step(TestEverythingHelpers.TestReactLandingPages)
+        step(TestEverythingHelpers.TestServer)
+        step(TestEverythingHelpers.TestHtml5DependenciesStep)
+        step(TestEverythingHelpers.TestHtml5OfflineDependenciesStep)
+        TestEverythingHelpers.KubernetesTests.map {
+            step(it)
+        }
+        listOf(GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD).map {
+            step(TestEverythingHelpers.createTestDbDeploymentBuildStep(it.envName))
+        }
+    }
+
+    triggers {
+        vcs {
+            // We disable trigger optimization because that causes conflicts when multiple builds try to trigger this build as a dependency
+            enableQueueOptimization = false
+            triggerRules = "+:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:**"
         }
     }
 
     features {
         feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+        feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-    }
-
-    triggers {
-        trigger(
-            GwVcsTriggers.createGitVcsTrigger(
-                GwVcsRoots.DocumentationPortalGitVcsRoot
-            )
-        )
-    }
-})
-
-object TestSettingsKts : BuildType({
-    name = "Test settings.kts"
-    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-    vcs {
-        root(
-            GwVcsRoots.DocumentationPortalGitVcsRoot
-        )
-        cleanCheckout = true
-    }
-
-    steps {
-        maven {
-            goals = "teamcity-configs:generate"
-            pomLocation = ".teamcity/pom.xml"
-            workingDir = ""
-            runnerArgs = "-X"
-        }
-    }
-
-    features {
-        feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-        feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-    }
-
-    // The general rule is to trigger test builds only for pull requests branches and to trigger deploy builds
-    // for the default branch, which then trigger test builds as snapshot dependencies.
-    // This test build doesn't have an associated deployment build,
-    // therefore we want to run it on changes in the default branch as well.
-    triggers {
-        trigger(
-            GwVcsTriggers.createGitVcsTrigger(
-                GwVcsRoots.DocumentationPortalGitVcsRoot,
-                listOf(
-                    GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
-                    GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue,
-                )
-            )
-        )
+        feature(GwBuildFeatures.GwSshAgentBuildFeature)
     }
 })
 
 object Content {
-    private val testKubernetesConfigFilesDev =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.DEV.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesStaging =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.STAGING.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesProd =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PROD.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesPortal2 =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PORTAL2.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
     val rootProject = createRootProjectForContent()
 
     private fun createRootProjectForContent(): Project {
@@ -1494,10 +1676,6 @@ object Content {
             ).forEach {
                 buildType(createDeployContentStorageBuildType(it.envName))
             }
-            buildType(testKubernetesConfigFilesDev)
-            buildType(testKubernetesConfigFilesStaging)
-            buildType(testKubernetesConfigFilesProd)
-            buildType(testKubernetesConfigFilesPortal2)
         }
     }
 
@@ -1513,6 +1691,13 @@ object Content {
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
+            }
+
+            params {
+                text(
+                    "reverse.dep.${TestDocPortalEverything.id}.${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_AWS_S3_KUBE.paramValue}",
+                    GwTestTriggerPaths.AWS_S3_KUBE.pathValue
+                )
             }
 
             steps {
@@ -1549,36 +1734,21 @@ object Content {
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             }
+
+            dependencies.snapshot(TestDocPortalEverything) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+                reuseBuilds = ReuseBuilds.NO
+                synchronizeRevisions = true
+            }
         }
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
                 deployContentStorageBuildType.triggers.trigger(
                     GwVcsTriggers.createGitVcsTrigger(
                         GwVcsRoots.DocumentationPortalGitVcsRoot,
                         listOf(GwTriggerPaths.AWS_S3_KUBE.pathValue)
                     )
                 )
-            }
-
-            GwDeployEnvs.STAGING.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PORTAL2.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesPortal2) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
             }
         }
 
@@ -1709,10 +1879,6 @@ object Database {
         AbsoluteId(ABSOLUTE_ID_PREFIX + Helpers.md5("Test ${GwConfigTypes.SOURCES.typeName} config files"))
     private val testConfigBuildsBuildType =
         AbsoluteId(ABSOLUTE_ID_PREFIX + Helpers.md5("Test ${GwConfigTypes.BUILDS.typeName} config files"))
-    private val validateDbDeploymentBuildTypeDev = createValidateDbDeploymentBuildType(GwDeployEnvs.DEV.envName)
-    private val validateDbDeploymentBuildTypeStaging =
-        createValidateDbDeploymentBuildType(GwDeployEnvs.STAGING.envName)
-    private val validateDbDeploymentBuildTypeProd = createValidateDbDeploymentBuildType(GwDeployEnvs.PROD.envName)
     val deployDbBuildTypeDev = createDeployDbBuildType(GwDeployEnvs.DEV.envName)
     val deployDbBuildTypeStaging = createDeployDbBuildType(GwDeployEnvs.STAGING.envName)
     val deployDbBuildTypeProd = createDeployDbBuildType(GwDeployEnvs.PROD.envName)
@@ -1731,78 +1897,7 @@ object Database {
             listOf(GwDeployEnvs.DEV, GwDeployEnvs.PROD).forEach {
                 buildType(createRestoreDbDataBuildType(it.envName))
             }
-            buildType(validateDbDeploymentBuildTypeDev)
-            buildType(validateDbDeploymentBuildTypeStaging)
-            buildType(validateDbDeploymentBuildTypeProd)
         }
-    }
-
-    private fun createValidateDbDeploymentBuildType(deployEnv: String): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val tfstateKey = "docportal/db/terraform.tfstate"
-        val s3Bucket = when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> "tenant-doctools-${GwDeployEnvs.DEV.envName}-terraform"
-            GwDeployEnvs.STAGING.envName -> "tenant-doctools-${GwDeployEnvs.STAGING.envName}-terraform"
-            GwDeployEnvs.PROD.envName -> "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
-            else -> ""
-        }
-        val validateDbDeploymentBuildType = BuildType {
-            name = "Validate database deployment to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Validate Terraform config for db"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                    #!/bin/bash
-                    set -eux
-                    
-                    $awsEnvVars
-
-                    cd db
-
-                    terraform init \
-                        -backend-config="bucket=$s3Bucket" \
-                        -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -backend-config="key=$tfstateKey" \
-                        -input=false
-                    terraform validate
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_4_3_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}(pwd):/app:ro"
-
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.GwSshAgentBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-            }
-        }
-
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                validateDbDeploymentBuildType.triggers.trigger(
-                    GwVcsTriggers.createGitVcsTrigger(
-                        GwVcsRoots.DocumentationPortalGitVcsRoot,
-                        listOf(
-                            GwTriggerPaths.DB.pathValue
-                        )
-                    )
-                )
-            }
-        }
-
-        return validateDbDeploymentBuildType
     }
 
     private fun createDeployDbBuildType(deployEnv: String): BuildType {
@@ -1852,6 +1947,13 @@ object Database {
                 cleanCheckout = true
             }
 
+            params {
+                text(
+                    "reverse.dep.${TestDocPortalEverything.id}.${GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_DB.paramValue}",
+                    GwTestTriggerPaths.DB.pathValue
+                )
+            }
+
             steps {
                 script {
                     name = "Deploy db with Terraform"
@@ -1890,13 +1992,16 @@ object Database {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.GwSshAgentBuildFeature)
             }
+
+            dependencies.snapshot(TestDocPortalEverything) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+                reuseBuilds = ReuseBuilds.NO
+                synchronizeRevisions = true
+            }
         }
 
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
                 deployDatabaseBuildType.triggers.trigger(
                     GwVcsTriggers.createGitVcsTrigger(
                         GwVcsRoots.DocumentationPortalGitVcsRoot,
@@ -1905,20 +2010,6 @@ object Database {
                         )
                     )
                 )
-            }
-
-            GwDeployEnvs.STAGING.envName -> {
-                deployDatabaseBuildType.dependencies.snapshot(
-                    validateDbDeploymentBuildTypeStaging
-                ) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeProd) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
             }
         }
 
@@ -2279,21 +2370,6 @@ object DocPortal {
 }
 
 object Frontend {
-    private val testKubernetesConfigFilesDev =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.DEV.envName,
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesStaging =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.STAGING.envName,
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesProd =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PROD.envName,
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
-        )
     private val runCheckmarxScan =
         GwBuildTypes.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
     private val buildAndPublishDockerImageToDevEcrBuildType =
@@ -2301,7 +2377,9 @@ object Frontend {
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
             GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
             "Dockerfile",
-            listOf(runCheckmarxScan, TestReactLandingPagesBuildType)
+            runCheckmarxScan,
+            "${GwTestTriggerPaths.LANDING_PAGES.pathValue},${GwTestTriggerPaths.CORE.pathValue}",
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_LANDING_PAGES.paramValue
         )
     private val publishDockerImageToProdEcrBuildType = GwBuildTypes.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -2366,10 +2444,6 @@ object Frontend {
             buildType(deployReactLandingPagesBuildTypeStaging)
             buildType(deployReactLandingPagesBuildTypeProd)
             buildType(runCheckmarxScan)
-            buildType(TestReactLandingPagesBuildType)
-            buildType(testKubernetesConfigFilesDev)
-            buildType(testKubernetesConfigFilesStaging)
-            buildType(testKubernetesConfigFilesProd)
             buildType(buildAndPublishDockerImageToDevEcrBuildType)
             buildType(publishDockerImageToProdEcrBuildType)
         }
@@ -2439,9 +2513,6 @@ object Frontend {
                 deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
                 deployReactLandingPagesBuildType.triggers.trigger(
                     GwVcsTriggers.createGitVcsTrigger(
                         GwVcsRoots.DocumentationPortalGitVcsRoot,
@@ -2459,16 +2530,10 @@ object Frontend {
                 deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
             }
 
             GwDeployEnvs.PROD.envName -> {
                 deployReactLandingPagesBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
@@ -2476,54 +2541,6 @@ object Frontend {
 
         return deployReactLandingPagesBuildType
     }
-
-    private object TestReactLandingPagesBuildType : BuildType({
-        name = "Test React landing pages"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(
-                GwVcsRoots.DocumentationPortalGitVcsRoot
-            )
-            cleanCheckout = true
-        }
-
-        steps {
-            nodeJS {
-                id = "Build landing pages"
-                shellScript = """
-                    yarn
-                    CI=true yarn test:landing-pages
-                    yarn build
-                """.trimIndent()
-                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createGitVcsTrigger(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot,
-                    listOf(
-                        GwTriggerPaths.LANDING_PAGES.pathValue,
-                        GwTriggerPaths.SHIMS.pathValue,
-                        GwTriggerPaths.SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
-                        GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
-                        GwTriggerPaths.SERVER_SRC_TYPES.pathValue
-                    ),
-                    listOf(
-                        GwTriggerPaths.LANDING_PAGES_KUBE.pathValue,
-                    )
-                )
-            )
-        }
-    })
 
     private fun createPublishNpmPackageBuildType(packageHandle: String, packagePath: String): BuildType {
         return BuildType {
@@ -2572,7 +2589,24 @@ object Frontend {
             val outputDir = "%teamcity.build.checkoutDir%/html5/static/html5"
 
             steps {
-                step(GwBuildSteps.createBuildHtml5DependenciesStep())
+                script {
+                    name = "Build HTML5 dependencies"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        export EXIT_CODE=0
+                        
+                        yarn
+                        yarn build:html5 || EXIT_CODE=${'$'}?
+                        
+                        exit ${'$'}EXIT_CODE
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "--user 1000:1000"
+                }
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
                         deployEnv, GwStaticFilesModes.HTML5.modeName, outputDir
@@ -2608,7 +2642,24 @@ object Frontend {
             }
 
             steps {
-                step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
+                script {
+                    name = "Build HTML5 offline dependencies"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        export EXIT_CODE=0
+                        
+                        yarn
+                        yarn build:html5-offline || EXIT_CODE=${'$'}?
+                        
+                        exit ${'$'}EXIT_CODE
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "--user 1000:1000"
+                }
                 step(GwBuildSteps.createDeployHtml5OfflineDependenciesStep("%teamcity.build.checkoutDir%/$ditaOutPluginsCheckoutDir"))
             }
 
@@ -2630,21 +2681,6 @@ object Frontend {
 }
 
 object Server {
-    private val testKubernetesConfigFilesDev =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.DEV.envName,
-            GwTriggerPaths.SERVER_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesStaging =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.STAGING.envName,
-            GwTriggerPaths.SERVER_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesProd =
-        GwBuildTypes.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PROD.envName,
-            GwTriggerPaths.SERVER_KUBE.pathValue
-        )
     private val runCheckmarxScan =
         GwBuildTypes.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_DIR.paramValue)
     private val buildAndPublishDockerImageToDevEcrBuildType =
@@ -2652,7 +2688,9 @@ object Server {
             GwDockerImageTags.DOC_PORTAL.tagValue,
             GwDockerImages.DOC_PORTAL.imageUrl,
             "Dockerfile.server",
-            listOf(runCheckmarxScan, TestDocSiteServerApp)
+            runCheckmarxScan,
+            "${GwTestTriggerPaths.SERVER.pathValue},${GwTestTriggerPaths.CORE.pathValue}",
+            GwConfigParams.CHANGED_FILES_ENV_VAR_NAME_SERVER.paramValue
         )
     private val publishDockerImageToProdEcrBuildType = GwBuildTypes.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL.tagValue,
@@ -2673,117 +2711,10 @@ object Server {
             buildType(deployServerBuildTypeStaging)
             buildType(deployServerBuildTypeProd)
             buildType(runCheckmarxScan)
-            buildType(TestDocSiteServerApp)
-            buildType(TestHtml5Dependencies)
-            buildType(testKubernetesConfigFilesDev)
-            buildType(testKubernetesConfigFilesStaging)
-            buildType(testKubernetesConfigFilesProd)
             buildType(buildAndPublishDockerImageToDevEcrBuildType)
             buildType(publishDockerImageToProdEcrBuildType)
         }
     }
-
-    private object TestHtml5Dependencies : BuildType({
-        name = "Test HTML5 dependencies"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            step(GwBuildSteps.createBuildHtml5DependenciesStep())
-            step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createGitVcsTrigger(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot,
-                    listOf(
-                        GwTriggerPaths.HTML5.pathValue,
-                        GwTriggerPaths.DOCUSAURUS_THEMES.pathValue
-                    )
-                )
-            )
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-    })
-
-    private object TestDocSiteServerApp : BuildType({
-        name = "Test doc site server app"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            script {
-                name = "Test the doc site server"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/sh
-                    set -e
-                    export NODE_ENV="production"
-                    export OKTA_CLIENT_ID=mock
-                    export OKTA_CLIENT_SECRET=mock
-                    export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
-                    export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
-                    export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
-                    export OKTA_ISSUER_APAC="issuerNotConfigured"
-                    export OKTA_ISSUER_EMEA="issuerNotConfigured"
-                    export OKTA_SCOPES=mock
-                    export OKTA_ADMIN_GROUPS=mock
-                    export OKTA_AUDIENCE=mock
-                    export POWER_USERS=mock
-                    export APP_BASE_URL=http://localhost:8081
-                    export SESSION_KEY=mock
-                    export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
-                    export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
-                    export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
-                    export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
-                    export ENABLE_AUTH=no
-                    export PRETEND_TO_BE_EXTERNAL=no
-                    export ALLOW_PUBLIC_DOCS=yes
-                    export LOCALHOST_SESSION_SETTINGS=yes
-                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
-                    export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-                    export PARTNERS_LOGIN_CERT=mock
-                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
-                    export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
-                    export CUSTOMERS_LOGIN_CERT=mock
-                    
-                    yarn
-                    yarn build
-                    yarn test:server
-                """.trimIndent()
-                dockerImage = GwDockerImages.NODE_18_18_2.imageUrl
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createGitVcsTrigger(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot,
-                    listOf(GwTriggerPaths.SERVER.pathValue),
-                    listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
-                )
-            )
-        }
-    })
 
     private fun createDeployServerBuildType(deployEnv: String): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
@@ -2851,9 +2782,6 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
                 deployServerBuildType.triggers.trigger(
                     GwVcsTriggers.createGitVcsTrigger(
                         GwVcsRoots.DocumentationPortalGitVcsRoot,
@@ -2866,16 +2794,10 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
             }
 
             GwDeployEnvs.PROD.envName -> {
                 deployServerBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
@@ -2883,47 +2805,5 @@ object Server {
 
         return deployServerBuildType
     }
-}
-
-object Core {
-    private object TestDoctoolsCore: BuildType({
-        name = "Test Doctools core"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            step(GwBuildSteps.createBuildDoctoolsCoreStep())
-            step(GwBuildSteps.createTestDoctoolsCoreStep())
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createGitVcsTrigger(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot,
-                    listOf(GwTriggerPaths.CORE.pathValue)
-                )
-            )
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-    })
-
-    private fun createRootProjectForCore(): Project {
-        return Project {
-            name = "Core"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            buildType(TestDoctoolsCore)
-        }
-    }
-
-    val rootProject = createRootProjectForCore()
 }
 

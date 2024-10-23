@@ -23,7 +23,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guidewire-Kontaktmanagementhandbuch',
-          docId: 'is202407contactdeDE',
+          docId: 'is202407deDEcontact',
         },
       ],
     },

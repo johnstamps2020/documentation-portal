@@ -5941,19 +5941,12 @@
           "issueSeverity": {
             "type": "string",
             "description": "The severity level that this attribute will be in if any of the constraints are violated",
-            "enum": [
-              "Warning",
-              "Issue",
-              "Error"
-            ]
+            "enum": ["Warning", "Issue", "Error"]
           },
           "issueType": {
             "type": "string",
             "description": "The severity level that this attribute will be in if any of the constraints are violated",
-            "enum": [
-              "Validation",
-              "Underwriting"
-            ]
+            "enum": ["Validation", "Underwriting"]
           },
           "label": {
             "type": "string",
@@ -5974,10 +5967,7 @@
           "onConstraintViolation": {
             "type": "string",
             "description": "The response action if a constraint has been violated",
-            "enum": [
-              "Issue",
-              "Error"
-            ]
+            "enum": ["Issue", "Error"]
           },
           "param": {
             "type": "array",
@@ -6120,19 +6110,12 @@
           "issueSeverity": {
             "type": "string",
             "description": "The severity level that this attribute will be in if any of the constraints are violated",
-            "enum": [
-              "Warning",
-              "Issue",
-              "Error"
-            ]
+            "enum": ["Warning", "Issue", "Error"]
           },
           "issueType": {
             "type": "string",
             "description": "The severity level that this attribute will be in if any of the constraints are violated",
-            "enum": [
-              "Validation",
-              "Underwriting"
-            ]
+            "enum": ["Validation", "Underwriting"]
           },
           "maxValue": {
             "type": "string",
@@ -6145,10 +6128,7 @@
           "onConstraintViolation": {
             "type": "string",
             "description": "The response action if a constraint has been violated",
-            "enum": [
-              "Issue",
-              "Error"
-            ]
+            "enum": ["Issue", "Error"]
           },
           "productListConstraint": {
             "type": "string",
@@ -6330,19 +6310,12 @@
           "issueSeverity": {
             "type": "string",
             "description": "The severity level that this attribute will be in if any of the constraints are violated",
-            "enum": [
-              "Warning",
-              "Issue",
-              "Error"
-            ]
+            "enum": ["Warning", "Issue", "Error"]
           },
           "issueType": {
             "type": "string",
             "description": "The severity level that this attribute will be in if any of the constraints are violated",
-            "enum": [
-              "Validation",
-              "Underwriting"
-            ]
+            "enum": ["Validation", "Underwriting"]
           },
           "label": {
             "type": "string",
@@ -6363,10 +6336,7 @@
           "onConstraintViolation": {
             "type": "string",
             "description": "The response action if a constraint has been violated",
-            "enum": [
-              "Issue",
-              "Error"
-            ]
+            "enum": ["Issue", "Error"]
           },
           "param": {
             "type": "array",
@@ -6475,19 +6445,12 @@
           "issueSeverity": {
             "type": "string",
             "description": "The severity level that this attribute will be in if any of the constraints are violated",
-            "enum": [
-              "Warning",
-              "Issue",
-              "Error"
-            ]
+            "enum": ["Warning", "Issue", "Error"]
           },
           "issueType": {
             "type": "string",
             "description": "The severity level that this attribute will be in if any of the constraints are violated",
-            "enum": [
-              "Validation",
-              "Underwriting"
-            ]
+            "enum": ["Validation", "Underwriting"]
           },
           "label": {
             "type": "string",
@@ -6508,10 +6471,7 @@
           "onConstraintViolation": {
             "type": "string",
             "description": "The response action if a constraint has been violated",
-            "enum": [
-              "Issue",
-              "Error"
-            ]
+            "enum": ["Issue", "Error"]
           },
           "param": {
             "type": "array",
@@ -18597,10 +18557,7 @@
         "additionalProperties": false
       },
       "CodeRef": {
-        "required": [
-          "keys",
-          "name"
-        ],
+        "required": ["keys", "name"],
         "type": "object",
         "properties": {
           "keys": {
@@ -18616,10 +18573,7 @@
         }
       },
       "CodeRefKey": {
-        "required": [
-          "name",
-          "options"
-        ],
+        "required": ["name", "options"],
         "type": "object",
         "properties": {
           "name": {
@@ -27729,10 +27683,7 @@
         "additionalProperties": false
       },
       "Error": {
-        "required": [
-          "code",
-          "message"
-        ],
+        "required": ["code", "message"],
         "type": "object",
         "properties": {
           "code": {
@@ -32668,10 +32619,7 @@
           "businessPursuits": {
             "type": "string",
             "description": "Business Pursuits",
-            "enum": [
-              "Yes",
-              "No"
-            ]
+            "enum": ["Yes", "No"]
           },
           "cPLName32": {
             "type": "string",
@@ -33622,12 +33570,7 @@
           "prefixCd": {
             "type": "string",
             "description": "Prefix (i.e. Mr, Mrs, Ms)",
-            "enum": [
-              "Ms",
-              "Mr",
-              "Mrs",
-              "Dr"
-            ]
+            "enum": ["Ms", "Mr", "Mrs", "Dr"]
           },
           "shortName": {
             "type": "string",
@@ -33803,11 +33746,7 @@
           "priorityCd": {
             "type": "string",
             "description": "Low, High, Urgent",
-            "enum": [
-              "1",
-              "2",
-              "3"
-            ]
+            "enum": ["1", "2", "3"]
           },
           "purgeInfo": {
             "$ref": "#/components/schemas/PurgeInfo"
@@ -33855,10 +33794,7 @@
         "additionalProperties": false
       },
       "Option": {
-        "required": [
-          "name",
-          "value"
-        ],
+        "required": ["name", "value"],
         "type": "object",
         "properties": {
           "name": {
@@ -34292,9 +34228,7 @@
         "additionalProperties": false
       },
       "PaymentDetails_1": {
-        "required": [
-          "receiptAmt"
-        ],
+        "required": ["receiptAmt"],
         "type": "object",
         "properties": {
           "checkAmt": {
@@ -34318,9 +34252,7 @@
         }
       },
       "PaymentDetails_2": {
-        "required": [
-          "receiptAmt"
-        ],
+        "required": ["receiptAmt"],
         "type": "object",
         "properties": {
           "checkAmt": {
@@ -45889,10 +45821,7 @@
           "taxIdTypeCd": {
             "type": "string",
             "description": "Tax Type of FEIN or SSN",
-            "enum": [
-              "FEIN",
-              "SSN"
-            ]
+            "enum": ["FEIN", "SSN"]
           },
           "taxTypeCd": {
             "type": "string",

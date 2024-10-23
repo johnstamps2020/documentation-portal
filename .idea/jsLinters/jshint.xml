@@ -16,9 +16,10 @@
     <option enforceall="true" />
     <option eqeqeq="true" />
     <option eqnull="false" />
-    <option es3="true" />
-    <option es5="true" />
+    <option es3="false" />
+    <option es5="false" />
     <option esnext="false" />
+    <option esversion="6" />
     <option evil="false" />
     <option expr="false" />
     <option forin="true" />
@@ -38,7 +39,7 @@
     <option loopfunc="false" />
     <option maxerr="50" />
     <option mocha="false" />
-    <option module="false" />
+    <option module="true" />
     <option mootools="false" />
     <option moz="false" />
     <option multistr="false" />
