@@ -123,6 +123,10 @@ const pageConfig: CategoryLayoutProps = {
       label: 'US Standards-based Template Framework',
       items: [
         {
+          label: 'Product Content Analyzer User Guide',
+          docId: 'lobpcausercloud',
+        },
+        {
           label: 'Standards-based Template Framework Guide',
           docId: 'sbtfwguide',
         },
