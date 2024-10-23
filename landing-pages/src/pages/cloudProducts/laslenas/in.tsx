@@ -83,8 +83,8 @@ const pageConfig: ApplicationLayoutProps = {
           docId: 'installassistreleasenotes',
           description: (
             <>
-              Lists recent improvements, updates, and resolved issues in
-              Install Assist.
+              Lists recent improvements, updates, and resolved issues in Install
+              Assist.
             </>
           ),
         },
