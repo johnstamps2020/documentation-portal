@@ -79,6 +79,16 @@ const pageConfig: ApplicationLayoutProps = {
           ),
         },
         {
+          label: 'Install Assist Release Notes',
+          docId: 'installassistreleasenotes',
+          description: (
+            <>
+              Lists recent improvements, updates, and resolved issues in
+              Install Assist.
+            </>
+          ),
+        },
+        {
           label: 'Upgrade InsuranceNow core',
           docId: 'in20243rn',
           pathInDoc: '?contextid=c_2024_1_x_jasper_upgrade_steps',
