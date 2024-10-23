@@ -3,7 +3,7 @@ import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import backgroundImage from 'images/background-kufri.png';
+import backgroundImage from 'images/background-laslenas.png';
 
 import { baseBackgroundProps } from 'components/LandingPage/LandingPageTypes';
 import { allSelectors } from 'components/allSelectors';

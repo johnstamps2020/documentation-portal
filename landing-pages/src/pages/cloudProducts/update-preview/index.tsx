@@ -4,7 +4,7 @@ import Category2Layout, {
 } from 'components/LandingPage/Category2/Category2Layout';
 import { baseBackgroundProps } from 'components/LandingPage/LandingPageTypes';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import backgroundImage from 'images/background-kufri.png';
+import backgroundImage from 'images/background-laslenas.png';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {

@@ -6,7 +6,7 @@ import Category2Layout, {
 import { baseBackgroundProps } from 'components/LandingPage/LandingPageTypes';
 import { implementationResourcesSidebar } from 'components/sidebars';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import backgroundImage from 'images/background-kufri.png';
+import backgroundImage from 'images/background-laslenas.png';
 import skiReleaseBadge from 'images/badge-laslenas.svg';
 
 const pageConfig: Category2LayoutProps = {
