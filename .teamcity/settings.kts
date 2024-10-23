@@ -1477,7 +1477,7 @@ private object TestDocPortalEverything : BuildType({
         vcs {
             // We disable trigger optimization because that causes conflicts when multiple builds try to trigger this build as a dependency
             enableQueueOptimization = false
-            triggerRules = "+:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}"
+            triggerRules = "+:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:**"
         }
     }
 

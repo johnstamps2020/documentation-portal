@@ -19,12 +19,8 @@
       "put": {
         "summary": "Update Environment Config Parameters",
         "operationId": "Update Environment Config Parameters",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "*/*"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
         "parameters": [
           {
             "name": "configParametersId",
@@ -65,14 +61,10 @@
         },
         "security": [
           {
-            "spring_oauth": [
-              "groups"
-            ]
+            "spring_oauth": ["groups"]
           },
           {
-            "oAuthSample": [
-              "openid"
-            ]
+            "oAuthSample": ["openid"]
           }
         ],
         "deprecated": true
@@ -93,10 +85,7 @@
   "definitions": {
     "ApiTestBenchDTO": {
       "type": "object",
-      "required": [
-        "apiTestsBuildEnabled",
-        "finishBuildTriggerEnabled"
-      ],
+      "required": ["apiTestsBuildEnabled", "finishBuildTriggerEnabled"],
       "properties": {
         "apiTestsBuildEnabled": {
           "type": "boolean",
@@ -113,10 +102,7 @@
     },
     "ApiTestBenchV2DTO": {
       "type": "object",
-      "required": [
-        "apiTestsBuildEnabled",
-        "finishBuildTriggerEnabled"
-      ],
+      "required": ["apiTestsBuildEnabled", "finishBuildTriggerEnabled"],
       "properties": {
         "apiTestsBuildEnabled": {
           "type": "boolean",
@@ -133,10 +119,7 @@
     },
     "BaseProjectDTO": {
       "type": "object",
-      "required": [
-        "name",
-        "version"
-      ],
+      "required": ["name", "version"],
       "properties": {
         "name": {
           "type": "string",
@@ -153,9 +136,7 @@
     },
     "BehaviorTestDTO": {
       "type": "object",
-      "required": [
-        "suites"
-      ],
+      "required": ["suites"],
       "properties": {
         "buildEnabled": {
           "type": "boolean",
@@ -191,9 +172,7 @@
     },
     "BehaviorTestV2DTO": {
       "type": "object",
-      "required": [
-        "suites"
-      ],
+      "required": ["suites"],
       "properties": {
         "buildEnabled": {
           "type": "boolean",
@@ -229,10 +208,7 @@
     },
     "BitBucketDTO": {
       "type": "object",
-      "required": [
-        "buildNotification",
-        "internalUrl"
-      ],
+      "required": ["buildNotification", "internalUrl"],
       "properties": {
         "buildNotification": {
           "example": "null",
@@ -248,10 +224,7 @@
     },
     "BitBucketV2DTO": {
       "type": "object",
-      "required": [
-        "buildNotification",
-        "internalUrl"
-      ],
+      "required": ["buildNotification", "internalUrl"],
       "properties": {
         "buildNotification": {
           "example": "null",
@@ -267,9 +240,7 @@
     },
     "BuildDTO": {
       "type": "object",
-      "required": [
-        "buildType"
-      ],
+      "required": ["buildType"],
       "properties": {
         "buildType": {
           "type": "string",
@@ -294,10 +265,7 @@
     },
     "BuildNotificationDTO": {
       "type": "object",
-      "required": [
-        "token",
-        "user"
-      ],
+      "required": ["token", "user"],
       "properties": {
         "token": {
           "type": "string",
@@ -314,10 +282,7 @@
     },
     "BuildNotificationV2DTO": {
       "type": "object",
-      "required": [
-        "token",
-        "user"
-      ],
+      "required": ["token", "user"],
       "properties": {
         "token": {
           "type": "string",
@@ -334,9 +299,7 @@
     },
     "BuildScheduleDTO": {
       "type": "object",
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "properties": {
         "branchFilter": {
           "type": "string",
@@ -379,9 +342,7 @@
     },
     "BuildScheduleViewDTO": {
       "type": "object",
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "properties": {
         "applicationId": {
           "type": "string",
@@ -442,10 +403,7 @@
     },
     "CiCdApplicationDTO": {
       "type": "object",
-      "required": [
-        "applicationId",
-        "ciCdConfigType"
-      ],
+      "required": ["applicationId", "ciCdConfigType"],
       "properties": {
         "applicationId": {
           "type": "string",
@@ -519,11 +477,7 @@
     },
     "CiCdConfigurationRequestDTO": {
       "type": "object",
-      "required": [
-        "ciCdConfigType",
-        "insurerConfig",
-        "internalConfig"
-      ],
+      "required": ["ciCdConfigType", "insurerConfig", "internalConfig"],
       "properties": {
         "applicationId": {
           "type": "string",
@@ -579,11 +533,7 @@
         },
         "jacocoScanBasePackages": {
           "type": "array",
-          "example": [
-            "com.example",
-            "mytenant",
-            "com.custom.base"
-          ],
+          "example": ["com.example", "mytenant", "com.custom.base"],
           "description": "List of base packages for Jacoco code coverage scan. Code coverage will be perormed for specified and all nested packages.",
           "items": {
             "type": "string"
@@ -616,12 +566,7 @@
     },
     "ConfigParametersDTO": {
       "type": "object",
-      "required": [
-        "cicdConfig",
-        "environmentConfig",
-        "gccProject",
-        "tenant"
-      ],
+      "required": ["cicdConfig", "environmentConfig", "gccProject", "tenant"],
       "properties": {
         "applicationId": {
           "type": "string",
@@ -728,10 +673,7 @@
       "properties": {
         "accessControlExposeHeaders": {
           "type": "array",
-          "example": [
-            "X-Custom-Header",
-            "X-Another-Custom-Header"
-          ],
+          "example": ["X-Custom-Header", "X-Another-Custom-Header"],
           "description": "List of safelisted response headers to be exposed via CORS",
           "items": {
             "type": "string"
@@ -746,17 +688,11 @@
           "type": "string",
           "example": "APIGW",
           "description": "Type of the digital application deployment.",
-          "enum": [
-            "APIGW",
-            "CDN"
-          ]
+          "enum": ["APIGW", "CDN"]
         },
         "digitalApplications": {
           "type": "array",
-          "example": [
-            "producer-engage",
-            "quote-and-buy"
-          ],
+          "example": ["producer-engage", "quote-and-buy"],
           "description": "List of digital applications.",
           "items": {
             "type": "string"
@@ -779,10 +715,7 @@
       "properties": {
         "accessControlExposeHeaders": {
           "type": "array",
-          "example": [
-            "X-Custom-Header",
-            "X-Another-Custom-Header"
-          ],
+          "example": ["X-Custom-Header", "X-Another-Custom-Header"],
           "description": "List of safelisted response headers to be exposed via CORS",
           "items": {
             "type": "string"
@@ -797,17 +730,11 @@
           "type": "string",
           "example": "APIGW",
           "description": "Type of the digital application deployment.",
-          "enum": [
-            "APIGW",
-            "CDN"
-          ]
+          "enum": ["APIGW", "CDN"]
         },
         "digitalApplications": {
           "type": "array",
-          "example": [
-            "producer-engage",
-            "quote-and-buy"
-          ],
+          "example": ["producer-engage", "quote-and-buy"],
           "description": "List of digital applications.",
           "items": {
             "type": "string"
@@ -827,9 +754,7 @@
     },
     "EcrDTO": {
       "type": "object",
-      "required": [
-        "appImageRepo"
-      ],
+      "required": ["appImageRepo"],
       "properties": {
         "appImageRepo": {
           "type": "string",
@@ -841,9 +766,7 @@
     },
     "EcrV2DTO": {
       "type": "object",
-      "required": [
-        "appImageRepo"
-      ],
+      "required": ["appImageRepo"],
       "properties": {
         "appImageRepo": {
           "type": "string",
@@ -855,12 +778,7 @@
     },
     "EnvironmentConfigDTO": {
       "type": "object",
-      "required": [
-        "bitBucket",
-        "ecr",
-        "git",
-        "projectId"
-      ],
+      "required": ["bitBucket", "ecr", "git", "projectId"],
       "properties": {
         "assuranceToolsImage": {
           "type": "string",
@@ -911,11 +829,7 @@
         },
         "insuranceSuiteBuildTasks": {
           "type": "array",
-          "example": [
-            "webResources",
-            "warTomcatDbcp",
-            "genDataDictionary"
-          ],
+          "example": ["webResources", "warTomcatDbcp", "genDataDictionary"],
           "description": "List of gwb tasks used during Build Application pipelines for Insurance Suite applications. List requires to contain 'warTomcatDbcp' and 'genDataDictionary' tasks for building process",
           "items": {
             "type": "string"
@@ -966,10 +880,7 @@
     },
     "GitDTO": {
       "type": "object",
-      "required": [
-        "appSrcUrl",
-        "sshKeyName"
-      ],
+      "required": ["appSrcUrl", "sshKeyName"],
       "properties": {
         "appSrcUrl": {
           "type": "string",
@@ -986,10 +897,7 @@
     },
     "GitV2DTO": {
       "type": "object",
-      "required": [
-        "appSrcUrl",
-        "sshKeyName"
-      ],
+      "required": ["appSrcUrl", "sshKeyName"],
       "properties": {
         "appSrcUrl": {
           "type": "string",
@@ -1094,9 +1002,7 @@
     },
     "GunitSmokeTestDTO": {
       "type": "object",
-      "required": [
-        "suites"
-      ],
+      "required": ["suites"],
       "properties": {
         "buildEnabled": {
           "type": "boolean",
@@ -1143,9 +1049,7 @@
     },
     "GunitSmokeTestV2DTO": {
       "type": "object",
-      "required": [
-        "suites"
-      ],
+      "required": ["suites"],
       "properties": {
         "buildEnabled": {
           "type": "boolean",
@@ -1186,9 +1090,7 @@
     },
     "GunitTestDTO": {
       "type": "object",
-      "required": [
-        "suites"
-      ],
+      "required": ["suites"],
       "properties": {
         "enableCodeCoverage": {
           "type": "boolean",
@@ -1225,11 +1127,7 @@
     },
     "GunitTestSuiteDTO": {
       "type": "object",
-      "required": [
-        "postMerge",
-        "preMerge",
-        "suiteName"
-      ],
+      "required": ["postMerge", "preMerge", "suiteName"],
       "properties": {
         "postMerge": {
           "type": "boolean",
@@ -1251,9 +1149,7 @@
     },
     "GunitTestV2DTO": {
       "type": "object",
-      "required": [
-        "suites"
-      ],
+      "required": ["suites"],
       "properties": {
         "enableCodeCoverage": {
           "type": "boolean",
@@ -1307,11 +1203,7 @@
         },
         "jacocoScanBasePackages": {
           "type": "array",
-          "example": [
-            "com.example",
-            "mytenant",
-            "com.custom.base"
-          ],
+          "example": ["com.example", "mytenant", "com.custom.base"],
           "description": "List of base packages for the Jacoco code coverage scan. Code coverage will be performed for the specified packages as well as all the nested packages.",
           "items": {
             "type": "string"
@@ -1331,13 +1223,7 @@
     },
     "InternalConfigDTO": {
       "type": "object",
-      "required": [
-        "baseDockerImage",
-        "bitBucket",
-        "ecr",
-        "git",
-        "projectId"
-      ],
+      "required": ["baseDockerImage", "bitBucket", "ecr", "git", "projectId"],
       "properties": {
         "baseDockerImage": {
           "type": "string",
@@ -1379,11 +1265,7 @@
         },
         "insuranceSuiteBuildTasks": {
           "type": "array",
-          "example": [
-            "webResources",
-            "warTomcatDbcp",
-            "genDataDictionary"
-          ],
+          "example": ["webResources", "warTomcatDbcp", "genDataDictionary"],
           "description": "List of gwb tasks used during Build Application pipelines for Insurance Suite applications. List requires to contain 'warTomcatDbcp' and 'genDataDictionary' tasks for building process",
           "items": {
             "type": "string"
@@ -1430,23 +1312,13 @@
     },
     "JsonPatchExample": {
       "type": "object",
-      "required": [
-        "op",
-        "path"
-      ],
+      "required": ["op", "path"],
       "properties": {
         "op": {
           "type": "string",
           "example": "replace",
           "description": "The operation to be performed",
-          "enum": [
-            "add",
-            "remove",
-            "replace",
-            "move",
-            "copy",
-            "test"
-          ]
+          "enum": ["add", "remove", "replace", "move", "copy", "test"]
         },
         "path": {
           "type": "string",
@@ -1463,12 +1335,7 @@
     },
     "SlackNotificationDTO": {
       "type": "object",
-      "required": [
-        "botToken",
-        "channel",
-        "clientId",
-        "clientSecret"
-      ],
+      "required": ["botToken", "channel", "clientId", "clientSecret"],
       "properties": {
         "botToken": {
           "type": "string",
@@ -1495,12 +1362,7 @@
     },
     "SlackNotificationV2DTO": {
       "type": "object",
-      "required": [
-        "botToken",
-        "channel",
-        "clientId",
-        "clientSecret"
-      ],
+      "required": ["botToken", "channel", "clientId", "clientSecret"],
       "properties": {
         "botToken": {
           "type": "string",
@@ -1530,11 +1392,7 @@
       "properties": {
         "branchesToBlockPR": {
           "type": "array",
-          "example": [
-            "develop",
-            "master",
-            "gw-releases"
-          ],
+          "example": ["develop", "master", "gw-releases"],
           "description": "List of target branches against which PR will be blocked",
           "items": {
             "type": "string"
@@ -1574,11 +1432,7 @@
       "properties": {
         "branchesToBlockPR": {
           "type": "array",
-          "example": [
-            "develop",
-            "master",
-            "gw-releases"
-          ],
+          "example": ["develop", "master", "gw-releases"],
           "description": "List of target branches against which PR will be blocked",
           "items": {
             "type": "string"
@@ -1615,9 +1469,7 @@
     },
     "SolrSupportDTO": {
       "type": "object",
-      "required": [
-        "enabled"
-      ],
+      "required": ["enabled"],
       "properties": {
         "enabled": {
           "type": "boolean",
@@ -1629,9 +1481,7 @@
     },
     "SolrSupportV2DTO": {
       "type": "object",
-      "required": [
-        "enabled"
-      ],
+      "required": ["enabled"],
       "properties": {
         "enabled": {
           "type": "boolean",
@@ -1643,9 +1493,7 @@
     },
     "SqsDTO": {
       "type": "object",
-      "required": [
-        "portalsSqsUrl"
-      ],
+      "required": ["portalsSqsUrl"],
       "properties": {
         "portalsSqsUrl": {
           "type": "string",
@@ -1657,10 +1505,7 @@
     },
     "StaticAnalysisBuildDTO": {
       "type": "object",
-      "required": [
-        "enabled",
-        "inspectionProfile"
-      ],
+      "required": ["enabled", "inspectionProfile"],
       "properties": {
         "enabled": {
           "type": "boolean",
@@ -1677,10 +1522,7 @@
     },
     "StaticAnalysisBuildV2DTO": {
       "type": "object",
-      "required": [
-        "enabled",
-        "inspectionProfile"
-      ],
+      "required": ["enabled", "inspectionProfile"],
       "properties": {
         "enabled": {
           "type": "boolean",
@@ -1697,11 +1539,7 @@
     },
     "TestSuiteDTO": {
       "type": "object",
-      "required": [
-        "postMerge",
-        "preMerge",
-        "suiteName"
-      ],
+      "required": ["postMerge", "preMerge", "suiteName"],
       "properties": {
         "postMerge": {
           "type": "boolean",
@@ -1723,10 +1561,7 @@
     },
     "TestSuitesDTO": {
       "type": "object",
-      "required": [
-        "ciCdConfigType",
-        "suites"
-      ],
+      "required": ["ciCdConfigType", "suites"],
       "properties": {
         "ciCdConfigType": {
           "type": "string",
@@ -1764,9 +1599,7 @@
     },
     "UpdateBuildDTO": {
       "type": "object",
-      "required": [
-        "enabled"
-      ],
+      "required": ["enabled"],
       "properties": {
         "enabled": {
           "type": "boolean",
@@ -1778,9 +1611,7 @@
     },
     "UpdateBuildV2DTO": {
       "type": "object",
-      "required": [
-        "enabled"
-      ],
+      "required": ["enabled"],
       "properties": {
         "enabled": {
           "type": "boolean",
@@ -1792,9 +1623,7 @@
     },
     "VerifyBlueGreenBuildDTO": {
       "type": "object",
-      "required": [
-        "enabled"
-      ],
+      "required": ["enabled"],
       "properties": {
         "enabled": {
           "type": "boolean",
@@ -1806,9 +1635,7 @@
     },
     "VerifyBlueGreenBuildV2DTO": {
       "type": "object",
-      "required": [
-        "enabled"
-      ],
+      "required": ["enabled"],
       "properties": {
         "enabled": {
           "type": "boolean",
