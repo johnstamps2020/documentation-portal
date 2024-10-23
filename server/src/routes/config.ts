@@ -91,6 +91,7 @@ router.get('/docMetadata/:docId', async function (req, res) {
     docDisplayTitle: body.docDisplayTitle,
     docInternal: body.docInternal,
     docEarlyAccess: body.docEarlyAccess,
+    docUpdatePreview: body.docUpdatePreview,
     platform: splitLegacyValueByCommaAndReturnUnique(body.docPlatforms),
     product: splitLegacyValueByCommaAndReturnUnique(body.docProducts),
     version: splitLegacyValueByCommaAndReturnUnique(body.docVersions),

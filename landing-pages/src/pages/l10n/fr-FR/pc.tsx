@@ -30,7 +30,7 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'ispc202407frFRupdate',
         },
         {
-          label: "Product Designer",
+          label: 'Product Designer',
           docId: 'ispc202407frFRpd',
         },
       ],

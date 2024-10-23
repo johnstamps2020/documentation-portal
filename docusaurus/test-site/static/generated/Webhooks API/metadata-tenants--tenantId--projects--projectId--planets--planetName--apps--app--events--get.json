@@ -75,9 +75,7 @@
             "description": "Internal exception encountered"
           }
         },
-        "tags": [
-          "Metadata"
-        ]
+        "tags": ["Metadata"]
       }
     }
   },
@@ -235,36 +233,19 @@
       },
       "OauthStatus": {
         "type": "string",
-        "enum": [
-          "VALID",
-          "INVALID"
-        ]
+        "enum": ["VALID", "INVALID"]
       },
       "Status": {
         "type": "string",
-        "enum": [
-          "ACTIVE",
-          "PAUSED",
-          "INACTIVE",
-          "ERROR"
-        ]
+        "enum": ["ACTIVE", "PAUSED", "INACTIVE", "ERROR"]
       },
       "QuadrantType": {
         "type": "string",
-        "enum": [
-          "DEV",
-          "PROD"
-        ]
+        "enum": ["DEV", "PROD"]
       },
       "Subscription": {
         "type": "object",
-        "required": [
-          "name",
-          "events",
-          "tenantId",
-          "app",
-          "planetGrns"
-        ],
+        "required": ["name", "events", "tenantId", "app", "planetGrns"],
         "properties": {
           "id": {
             "type": "string",
@@ -323,10 +304,7 @@
       },
       "SubscriptionEndpointRequestDTO": {
         "type": "object",
-        "required": [
-          "endpointId",
-          "enabled"
-        ],
+        "required": ["endpointId", "enabled"],
         "properties": {
           "endpointId": {
             "type": "string",
@@ -349,13 +327,7 @@
         }
       },
       "SubscriptionRequestDTO": {
-        "required": [
-          "name",
-          "events",
-          "app",
-          "planetGrns",
-          "includeDrafts"
-        ],
+        "required": ["name", "events", "app", "planetGrns", "includeDrafts"],
         "type": "object",
         "properties": {
           "id": {
@@ -397,12 +369,7 @@
       },
       "EndpointRequestDTO": {
         "type": "object",
-        "required": [
-          "name",
-          "quadrantType",
-          "value",
-          "status"
-        ],
+        "required": ["name", "quadrantType", "value", "status"],
         "properties": {
           "id": {
             "type": "string",
@@ -431,12 +398,7 @@
       },
       "SubscriptionEndpoint": {
         "type": "object",
-        "required": [
-          "endpointId",
-          "subscriptionId",
-          "partitionId",
-          "enabled"
-        ],
+        "required": ["endpointId", "subscriptionId", "partitionId", "enabled"],
         "properties": {
           "id": {
             "type": "integer",
@@ -470,9 +432,7 @@
       },
       "EndpointPatchDTO": {
         "type": "object",
-        "required": [
-          "status"
-        ],
+        "required": ["status"],
         "properties": {
           "status": {
             "$ref": "#/components/schemas/Status"
@@ -484,12 +444,7 @@
       },
       "EndpointDomain": {
         "type": "object",
-        "required": [
-          "pattern",
-          "enabledForDev",
-          "enabledForProd",
-          "tenantId"
-        ],
+        "required": ["pattern", "enabledForDev", "enabledForProd", "tenantId"],
         "properties": {
           "id": {
             "type": "string",
@@ -519,11 +474,7 @@
       },
       "EndpointDomainRequestDTO": {
         "type": "object",
-        "required": [
-          "pattern",
-          "enabledForDev",
-          "enabledForProd"
-        ],
+        "required": ["pattern", "enabledForDev", "enabledForProd"],
         "properties": {
           "id": {
             "type": "string",
@@ -542,13 +493,7 @@
       },
       "Endpoint": {
         "type": "object",
-        "required": [
-          "name",
-          "quadrantType",
-          "value",
-          "tenantId",
-          "status"
-        ],
+        "required": ["name", "quadrantType", "value", "tenantId", "status"],
         "properties": {
           "id": {
             "type": "string",
@@ -638,12 +583,7 @@
       },
       "OauthSecurityUpdateRequestDTO": {
         "type": "object",
-        "required": [
-          "name",
-          "scopes",
-          "authorizationUrl",
-          "quadrantType"
-        ],
+        "required": ["name", "scopes", "authorizationUrl", "quadrantType"],
         "properties": {
           "id": {
             "type": "string",
@@ -719,10 +659,7 @@
       },
       "OauthToken": {
         "type": "object",
-        "required": [
-          "token",
-          "expirationTime"
-        ],
+        "required": ["token", "expirationTime"],
         "properties": {
           "token": {
             "type": "string"
@@ -743,10 +680,7 @@
       },
       "EventTypeDTO": {
         "type": "object",
-        "required": [
-          "recommendation",
-          "name"
-        ],
+        "required": ["recommendation", "name"],
         "properties": {
           "name": {
             "type": "string"
@@ -756,27 +690,17 @@
           },
           "recommendation": {
             "type": "string",
-            "enum": [
-              "RECOMMENDED",
-              "NOT_RECOMMENDED"
-            ]
+            "enum": ["RECOMMENDED", "NOT_RECOMMENDED"]
           }
         }
       },
       "AlertDTO": {
         "type": "object",
-        "required": [
-          "severity",
-          "alert"
-        ],
+        "required": ["severity", "alert"],
         "properties": {
           "severity": {
             "type": "string",
-            "enum": [
-              "ERROR",
-              "WARN",
-              "INFO"
-            ]
+            "enum": ["ERROR", "WARN", "INFO"]
           },
           "alert": {
             "type": "object"

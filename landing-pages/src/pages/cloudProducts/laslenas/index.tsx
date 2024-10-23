@@ -7,7 +7,7 @@ import { baseBackgroundProps } from 'components/LandingPage/LandingPageTypes';
 import { implementationResourcesSidebar } from 'components/sidebars';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import backgroundImage from 'images/background-kufri.png';
-import skiReleaseBadge from 'images/badge-kufri.svg';
+import skiReleaseBadge from 'images/badge-laslenas.svg';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
@@ -166,7 +166,7 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Jutro Digital Platform',
-          docId: 'jutro1070',
+          docId: 'jutro1090',
         },
         {
           label: 'Guidewire Testing',

@@ -41,9 +41,7 @@
           }
         },
         "summary": "Returns the edition JSON schema (STABLE, PUBLIC)",
-        "tags": [
-          "Schema V5"
-        ]
+        "tags": ["Schema V5"]
       }
     }
   },
@@ -163,9 +161,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "jsonSchema"
-        ]
+        "required": ["jsonSchema"]
       },
       "JsonLogicRule": {
         "description": "A JsonLogic validation rule",
@@ -183,11 +179,7 @@
             "type": "object"
           }
         },
-        "required": [
-          "anchor",
-          "expression",
-          "name"
-        ]
+        "required": ["anchor", "expression", "name"]
       },
       "Jurisdiction": {
         "description": "Jurisdiction details",
@@ -197,9 +189,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "Segment": {
         "allOf": [
@@ -214,10 +204,7 @@
           }
         ],
         "description": "Segment information",
-        "required": [
-          "code",
-          "values"
-        ]
+        "required": ["code", "values"]
       },
       "SegmentValue": {
         "allOf": [
@@ -420,11 +407,7 @@
         "discriminator": {
           "propertyName": "subtype"
         },
-        "required": [
-          "name",
-          "riskLocationType",
-          "riskObjectType"
-        ]
+        "required": ["name", "riskLocationType", "riskObjectType"]
       },
       "APDRiskObjectTypeEnum": {
         "enum": [
@@ -452,12 +435,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "name",
-          "sequence",
-          "splitByRatingPeriods",
-          "type"
-        ]
+        "required": ["name", "sequence", "splitByRatingPeriods", "type"]
       },
       "APDAttributeDTO": {
         "allOf": [
@@ -495,11 +473,7 @@
         "type": "string"
       },
       "APDDropdownTypeEnum": {
-        "enum": [
-          "typelist",
-          "option",
-          "package"
-        ],
+        "enum": ["typelist", "option", "package"],
         "type": "string"
       },
       "APDDropdownColumnDTO": {
@@ -511,9 +485,7 @@
             "$ref": "#/components/schemas/APDDropdownColumnDTO_allOf"
           }
         ],
-        "required": [
-          "sequence"
-        ]
+        "required": ["sequence"]
       },
       "APDDropdownColumnValueTypeEnum": {
         "enum": [
@@ -542,9 +514,7 @@
             "$ref": "#/components/schemas/APDDropdownOptionDTO_allOf"
           }
         ],
-        "required": [
-          "name"
-        ]
+        "required": ["name"]
       },
       "APDDropdownValueDTO": {
         "properties": {
@@ -559,9 +529,7 @@
             "type": "integer"
           }
         },
-        "required": [
-          "dropdownColumn"
-        ]
+        "required": ["dropdownColumn"]
       },
       "APDExposureDTO": {
         "allOf": [
@@ -587,19 +555,11 @@
         ]
       },
       "APDExposureTypeEnum": {
-        "enum": [
-          "prop",
-          "liab",
-          "contact",
-          "other"
-        ],
+        "enum": ["prop", "liab", "contact", "other"],
         "type": "string"
       },
       "APDRiskLocationTypeEnum": {
-        "enum": [
-          "refLocation",
-          "useParent"
-        ],
+        "enum": ["refLocation", "useParent"],
         "type": "string"
       },
       "APDExposureFieldDTO": {
@@ -631,11 +591,7 @@
             "$ref": "#/components/schemas/APDAttributeDTO"
           }
         ],
-        "required": [
-          "name",
-          "sequence",
-          "type"
-        ]
+        "required": ["name", "sequence", "type"]
       },
       "APDClauseCategoryDTO": {
         "allOf": [
@@ -652,11 +608,7 @@
             "$ref": "#/components/schemas/APDClauseCategoryDTO_allOf"
           }
         ],
-        "required": [
-          "hidden",
-          "itemized",
-          "name"
-        ]
+        "required": ["hidden", "itemized", "name"]
       },
       "APDCoverageDTO": {
         "allOf": [
@@ -667,11 +619,7 @@
             "$ref": "#/components/schemas/APDCoverageDTO_allOf"
           }
         ],
-        "required": [
-          "pricingOrder",
-          "separateBilling",
-          "separateCollection"
-        ]
+        "required": ["pricingOrder", "separateBilling", "separateCollection"]
       },
       "APDClauseDTO": {
         "allOf": [
@@ -696,10 +644,7 @@
           },
           "propertyName": "clauseType"
         },
-        "required": [
-          "clauseType",
-          "name"
-        ]
+        "required": ["clauseType", "name"]
       },
       "APDTermDTO": {
         "allOf": [
@@ -742,10 +687,7 @@
         ]
       },
       "APDLossPartyTypeEnum": {
-        "enum": [
-          "FirstParty",
-          "ThirdParty"
-        ],
+        "enum": ["FirstParty", "ThirdParty"],
         "type": "string"
       },
       "APDExposureTypesDTO": {
@@ -754,9 +696,7 @@
             "$ref": "#/components/schemas/APDExposureTypesEnum"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDExposureTypesEnum": {
         "enum": [
@@ -821,10 +761,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "costCode",
-          "pricingOrder"
-        ]
+        "required": ["costCode", "pricingOrder"]
       },
       "APDCostCodeEnum": {
         "enum": [
@@ -886,9 +823,7 @@
             "$ref": "#/components/schemas/APDTypelistOptionDTO_allOf"
           }
         ],
-        "required": [
-          "name"
-        ]
+        "required": ["name"]
       },
       "APDDefinitionsDTO": {
         "properties": {
@@ -940,9 +875,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "name"
-        ]
+        "required": ["name"]
       },
       "APDIncidentDTO": {
         "allOf": [
@@ -972,10 +905,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "exposureTypes",
-          "name"
-        ]
+        "required": ["exposureTypes", "name"]
       },
       "APDClaimCategoryDTO": {
         "allOf": [
@@ -989,11 +919,7 @@
             "$ref": "#/components/schemas/APDClaimCategoryDTO_allOf"
           }
         ],
-        "required": [
-          "hidden",
-          "itemized",
-          "name"
-        ]
+        "required": ["hidden", "itemized", "name"]
       },
       "APDTagDTO": {
         "allOf": [
@@ -1004,10 +930,7 @@
             "$ref": "#/components/schemas/localizedName"
           }
         ],
-        "required": [
-          "code",
-          "name"
-        ]
+        "required": ["code", "name"]
       },
       "LockSummary": {
         "description": "Summary data for locked/unlocked product and editions",
@@ -1022,9 +945,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "product"
-        ]
+        "required": ["product"]
       },
       "EditionSummary": {
         "description": "Summary information for a product edition",
@@ -1102,11 +1023,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "code",
-          "description",
-          "name"
-        ]
+        "required": ["code", "description", "name"]
       },
       "SegmentAssignment": {
         "allOf": [
@@ -1118,10 +1035,7 @@
           }
         ],
         "description": "Segment assignment information",
-        "required": [
-          "code",
-          "values"
-        ]
+        "required": ["code", "values"]
       },
       "ValidationIssue": {
         "description": "A validation issue",
@@ -1154,11 +1068,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "elementPath",
-          "issueType",
-          "message"
-        ]
+        "required": ["elementPath", "issueType", "message"]
       },
       "APDEditionDTO": {
         "allOf": [
@@ -1192,10 +1102,7 @@
             "$ref": "#/components/schemas/APDSegmentDTO_allOf"
           }
         ],
-        "required": [
-          "code",
-          "values"
-        ]
+        "required": ["code", "values"]
       },
       "APDEditionProductDTO": {
         "properties": {
@@ -1213,9 +1120,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDEditionDefinitionsDTO": {
         "properties": {
@@ -1247,9 +1152,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDEditionAttributeDTO": {
         "properties": {
@@ -1272,9 +1175,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDEditionDropdownOptionDTO": {
         "properties": {
@@ -1289,9 +1190,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDEditionIncidentDTO": {
         "properties": {
@@ -1307,9 +1206,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDEditionRiskObjectDTO": {
         "properties": {
@@ -1356,9 +1253,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDEditionExposureDTO": {
         "properties": {
@@ -1375,9 +1270,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDEditionClauseDTO": {
         "properties": {
@@ -1402,9 +1295,7 @@
             "$ref": "#/components/schemas/APDEditionScheduledItemDTO"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDEditionScheduledItemDTO": {
         "properties": {
@@ -1420,9 +1311,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDProductCloneParamsDTO": {
         "allOf": [
@@ -1439,11 +1328,7 @@
             "$ref": "#/components/schemas/APDProductCloneParamsDTO_allOf"
           }
         ],
-        "required": [
-          "abbreviation",
-          "code",
-          "schemaVersion"
-        ]
+        "required": ["abbreviation", "code", "schemaVersion"]
       },
       "APDProductLineCloneParamsDTO": {
         "allOf": [
@@ -1468,10 +1353,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "originalCode",
-          "originalPrefix"
-        ]
+        "required": ["originalCode", "originalPrefix"]
       },
       "segmentCode": {
         "properties": {
@@ -1479,9 +1361,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "localizedName": {
         "properties": {
@@ -1517,28 +1397,18 @@
             "type": "string"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDProductCategoryEnum": {
         "default": "Any",
-        "enum": [
-          "Person",
-          "Company",
-          "Any"
-        ],
+        "enum": ["Person", "Company", "Any"],
         "type": "string"
       },
       "APDProductTypeEnum": {
         "default": "unknown",
         "deprecated": true,
         "description": "Product type is deprecated for removal.  Determination of mono/multiline type should use `line_link` rules\ninstead.\n",
-        "enum": [
-          "unknown",
-          "monoline",
-          "multiline"
-        ],
+        "enum": ["unknown", "monoline", "multiline"],
         "type": "string"
       },
       "code": {
@@ -1549,9 +1419,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "localizedDescription": {
         "properties": {
@@ -1580,12 +1448,7 @@
       },
       "APDCurrencyHandlingTypeEnum": {
         "default": "domestic",
-        "enum": [
-          "domestic",
-          "single",
-          "basicmulti",
-          "fullmulti"
-        ],
+        "enum": ["domestic", "single", "basicmulti", "fullmulti"],
         "type": "string"
       },
       "optionCode": {
@@ -1596,9 +1459,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "codeMax22": {
         "properties": {
@@ -1608,9 +1469,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "lowercaseCode": {
         "properties": {
@@ -1620,9 +1479,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "typelistOptionCode": {
         "properties": {
@@ -1632,9 +1489,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "code"
-        ]
+        "required": ["code"]
       },
       "APDJsonLogicRuleDTO": {
         "description": "A JsonLogic validation rule",
@@ -1655,20 +1510,10 @@
             "type": "object"
           }
         },
-        "required": [
-          "anchor",
-          "expression",
-          "type"
-        ]
+        "required": ["anchor", "expression", "type"]
       },
       "APDRuleTypeEnum": {
-        "enum": [
-          "existence",
-          "default",
-          "min",
-          "max",
-          "tag"
-        ],
+        "enum": ["existence", "default", "min", "max", "tag"],
         "type": "string"
       },
       "APDRuleDTO": {
@@ -1695,9 +1540,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "type"
-        ]
+        "required": ["type"]
       },
       "APDRuleFunctionDTO": {
         "properties": {
@@ -1711,17 +1554,10 @@
             "type": "array"
           }
         },
-        "required": [
-          "function"
-        ]
+        "required": ["function"]
       },
       "APDRuleFunctionEnum": {
-        "enum": [
-          "min",
-          "max",
-          "sum",
-          "ref"
-        ],
+        "enum": ["min", "max", "sum", "ref"],
         "type": "string"
       },
       "APDRuleElementDTO": {
@@ -1743,10 +1579,7 @@
             "type": "array"
           }
         },
-        "required": [
-          "conditions",
-          "sequence"
-        ]
+        "required": ["conditions", "sequence"]
       },
       "APDRuleConditionDTO": {
         "properties": {
@@ -1764,10 +1597,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "operator",
-          "target"
-        ]
+        "required": ["operator", "target"]
       },
       "APDRuleConditionOperatorEnum": {
         "enum": [
@@ -1789,9 +1619,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "prefix"
-        ]
+        "required": ["prefix"]
       },
       "Segment_allOf": {
         "properties": {
@@ -2062,15 +1890,7 @@
             "type": "integer"
           },
           "currency": {
-            "enum": [
-              "usd",
-              "eur",
-              "gbp",
-              "cad",
-              "aud",
-              "rub",
-              "jpy"
-            ],
+            "enum": ["usd", "eur", "gbp", "cad", "aud", "rub", "jpy"],
             "type": "string"
           },
           "values": {
@@ -2185,11 +2005,7 @@
       "APDClauseDTO_allOf": {
         "properties": {
           "clauseType": {
-            "enum": [
-              "coverage",
-              "exclusion",
-              "condition"
-            ],
+            "enum": ["coverage", "exclusion", "condition"],
             "type": "string"
           },
           "sequence": {

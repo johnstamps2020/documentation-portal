@@ -63,6 +63,8 @@ export async function setMetadata() {
     window.docDisplayTitle = sessionStorage.getItem('docDisplayTitle');
     window.docInternal = sessionStorage.getItem('docInternal') === 'true';
     window.docEarlyAccess = sessionStorage.getItem('docEarlyAccess') === 'true';
+    window.docUpdatePreview =
+      sessionStorage.getItem('docUpdatePreview') === 'true';
   } else {
     //console.log('Fetching metadata from endpoint');
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
@@ -121,6 +123,9 @@ export async function setMetadata() {
 
           window.docEarlyAccess = docInfo.docEarlyAccess;
           sessionStorage.setItem('docEarlyAccess', window.docEarlyAccess);
+
+          window.docUpdatePreview = docInfo.docUpdatePreview;
+          sessionStorage.setItem('docUpdatePreview', window.docUpdatePreview);
         }
       } catch (err) {
         console.error(err);

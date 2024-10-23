@@ -42,6 +42,9 @@ export class Doc extends GwEntity {
   @Column({ type: 'boolean', nullable: true })
   ignorePublicPropertyAndUseVariants: boolean | null;
 
+  @Column({ type: 'boolean', nullable: true })
+  updatePreview: boolean | null;
+
   @ManyToMany(
     () => PlatformProductVersion,
     (platform_product_version) => platform_product_version.uuid,
