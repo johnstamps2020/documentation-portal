@@ -31,7 +31,7 @@ export default function Layout({ children }: LayoutProps) {
           }}
           key={location.pathname}
         >
-            {children}
+          {children}
         </Box>
       </main>
       <Footer path={path} />
