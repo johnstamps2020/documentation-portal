@@ -47,7 +47,7 @@ export async function getEntitiesByAttribute(
   attributeValue: string,
   env: string,
   accessToken: string,
-  getRelations: boolean = false
+  skipError: boolean = false
 ): Promise<any> {
   console.log(
     `Retrieving information for ${attributeName}: "${attributeValue}"`
@@ -64,7 +64,7 @@ export async function getEntitiesByAttribute(
     }
   );
 
-  if (!configResponse.ok) {
+  if (!configResponse.ok && !skipError) {
     throw new Error(
       `Failed to fetch item from database!\n\n${JSON.stringify(
         configResponse,
@@ -72,6 +72,9 @@ export async function getEntitiesByAttribute(
         2
       )}`
     );
+  }
+  if (!configResponse.ok && skipError) {
+    return;
   }
 
   const responseJson = await configResponse.json();
