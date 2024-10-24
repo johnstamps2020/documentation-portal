@@ -71,12 +71,6 @@
   "feedbackDialog.submit": {
     "message": "Indienen"
   },
-  "internal.item.tooltip": {
-    "message": "Guidewire interne content"
-  },
-  "internal.page.badge.tooltip": {
-    "message": "Deze pagina is toegankelijk alleen voor mensen met een Guidewire e-mail. Deel de link niet met externe belanghebbenden. Zij kunnen de inhoud niet zien."
-  },
   "internal.employeesOnly": {
     "message": "Deze inhoud is alleen beschikbaar voor werknemers van Guidewire"
   },
@@ -113,9 +107,6 @@
   "collapsible.title": {
     "message": "Uitvouwen"
   },
-  "footer.legal.linktext": {
-    "message": "Juridische en ondersteuningsinformatie (alleen in het Engels beschikbaar)"
-  },
   "footer.published": {
     "message": "Gepubliceerd:"
   },
@@ -133,9 +124,6 @@
   },
   "navbar.printThisPage": {
     "message": "Deze pagina afdrukken"
-  },
-  "chat.default-title": {
-    "message": "Chat met ons"
   },
   "chat.send": {
     "message": "Versturen"

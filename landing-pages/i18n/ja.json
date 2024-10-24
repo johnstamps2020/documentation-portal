@@ -1,0 +1,14 @@
+{
+  "chat.default-title": {
+    "defaultMessage": "チャットを始めましょう"
+  },
+  "footer.legal.linktext": {
+    "defaultMessage": "法関連およびサポート情報"
+  },
+  "internal.item.tooltip": {
+    "defaultMessage": "Guidewire 内部コンテンツ"
+  },
+  "internal.page.badge.tooltip": {
+    "defaultMessage": "このページは、Guidewire 電子メールを持つ人にのみ利用可能です。外部のステークホルダーにはこのコンテンツは表示されないため、このリンクを共有しないでください。"
+  }
+}

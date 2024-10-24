@@ -1,0 +1,14 @@
+{
+  "chat.default-title": {
+    "defaultMessage": "Chat met ons"
+  },
+  "footer.legal.linktext": {
+    "defaultMessage": "Juridische en ondersteuningsinformatie (alleen in het Engels beschikbaar)"
+  },
+  "internal.item.tooltip": {
+    "defaultMessage": "Guidewire interne content"
+  },
+  "internal.page.badge.tooltip": {
+    "defaultMessage": "Deze pagina is toegankelijk alleen voor mensen met een Guidewire e-mail. Deel de link niet met externe belanghebbenden. Zij kunnen de inhoud niet zien."
+  }
+}

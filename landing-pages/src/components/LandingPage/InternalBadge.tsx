@@ -1,11 +1,12 @@
 import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import { useIntl } from 'react-intl';
 import { usePageData } from '../../hooks/usePageData';
-import { translate } from '@doctools/core';
 
 export default function InternalBadge() {
   const { pageData, isLoading, isError } = usePageData();
+  const intl = useIntl();
 
   if (isError || isLoading || !pageData?.internal) {
     return null;
@@ -14,9 +15,9 @@ export default function InternalBadge() {
     <Tooltip
       title={
         <Typography>
-          {translate({
+          {intl.formatMessage({
             id: 'internal.page.badge.tooltip',
-            message:
+            defaultMessage:
               'This page is available only to people with a Guidewire email. Do not share the link with external stakeholders because they will not be able to see the contents.',
           })}
         </Typography>

@@ -1,8 +1,7 @@
 import Box from '@mui/material/Box';
-import { StyledAdvancedHelpSectionTitle } from './StyledSearchComponents';
 import { useTheme } from '@mui/material/styles';
 import { useSearchLayoutContext } from './SearchLayoutContext';
-import { translate } from '@doctools/core';
+import { StyledAdvancedHelpSectionTitle } from './StyledSearchComponents';
 
 export default function AdvancedSearchHelpContents() {
   const theme = useTheme();
@@ -19,10 +18,7 @@ export default function AdvancedSearchHelpContents() {
       }}
     >
       <StyledAdvancedHelpSectionTitle id="special_characters">
-        {translate({
-          id: 'search.help.specialchars.title',
-          message: 'Special characters are special',
-        })}
+        Special characters are special
       </StyledAdvancedHelpSectionTitle>
       <ul>
         <li>

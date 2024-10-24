@@ -1,10 +1,8 @@
 import Box from '@mui/material/Box';
 import { useLocation } from '@tanstack/react-router';
-import ErrorPage from 'components/ErrorPage';
 import { HeaderContextProvider } from 'components/Layout/Header/HeaderContext';
 import { useLayoutContext } from 'LayoutContext';
 import React from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import Footer from './Footer';
 import Header from './Header/Header';
 import { headerHeight } from './Header/headerVars';
@@ -33,13 +31,7 @@ export default function Layout({ children }: LayoutProps) {
           }}
           key={location.pathname}
         >
-          <ErrorBoundary
-            FallbackComponent={ErrorPage}
-            onError={() => console.error()}
-            key={location.pathname}
-          >
-            {children}
-          </ErrorBoundary>
+          {children}
         </Box>
       </main>
       <Footer path={path} />

@@ -1,0 +1,14 @@
+{
+  "chat.default-title": {
+    "defaultMessage": "Let's chat!"
+  },
+  "footer.legal.linktext": {
+    "defaultMessage": "Legal and support information"
+  },
+  "internal.item.tooltip": {
+    "defaultMessage": "Guidewire internal content"
+  },
+  "internal.page.badge.tooltip": {
+    "defaultMessage": "This page is available only to people with a Guidewire email. Do not share the link with external stakeholders because they will not be able to see the contents."
+  }
+}

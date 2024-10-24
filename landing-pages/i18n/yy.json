@@ -1,0 +1,14 @@
+{
+  "chat.default-title": {
+    "defaultMessage": "[2rY6tA_Let's chat]"
+  },
+  "footer.legal.linktext": {
+    "defaultMessage": "[3J0CPM_Legal and support information]"
+  },
+  "internal.item.tooltip": {
+    "defaultMessage": "[12m9aL_Guidewire internal content]"
+  },
+  "internal.page.badge.tooltip": {
+    "defaultMessage": "[4DcGAH_This page is available only to people with a Guidewire email. Do not share the link with external stakeholders because they will not be able to see the contents.]"
+  }
+}
