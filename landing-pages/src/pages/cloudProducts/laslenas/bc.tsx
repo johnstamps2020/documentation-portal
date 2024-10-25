@@ -8,7 +8,7 @@ const pageConfig: ApplicationLayoutProps = {
   title: 'BillingCenter for Guidewire Cloud 2024.11',
   buttonProps: {
     label: 'Release notes',
-    docId: 'isrnlatest',
+    docId: 'isrnlatestpreview',
   },
   heroDescription:
     'Guidewire BillingCenter manages billing, payment, and delinquency operations for policies.',
@@ -20,7 +20,7 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'BillingCenter Release Notes',
-          docId: 'isrnlatest',
+          docId: 'isrnlatestpreview',
           description: (
             <>Learn about changes in this release of BillingCenter.</>
           ),
