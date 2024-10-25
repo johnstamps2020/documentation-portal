@@ -8,7 +8,7 @@ const pageConfig: ApplicationLayoutProps = {
   title: 'PolicyCenter for Guidewire Cloud 2024.11',
   buttonProps: {
     label: 'Release notes',
-    docId: 'isrnlatest',
+    docId: 'isrnlatestpreview',
   },
   heroDescription:
     'Guidewire PolicyCenter provides underwriting and policy administration for personal and commercial line insurers in the property and casualty industry.',
@@ -20,7 +20,7 @@ const pageConfig: ApplicationLayoutProps = {
       items: [
         {
           label: 'PolicyCenter Release Notes',
-          docId: 'isrnlatest',
+          docId: 'isrnlatestpreview',
           description: (
             <>Learn about changes in this release of PolicyCenter.</>
           ),
