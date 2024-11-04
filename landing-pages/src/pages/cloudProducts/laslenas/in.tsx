@@ -107,7 +107,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Developer Setup',
-          docId: 'indevguidejava11ext',
+          docId: 'indevguidejava21ext',
           description: (
             <>Set up a local InsuranceNow development environment.</>
           ),
@@ -131,7 +131,7 @@ const pageConfig: ApplicationLayoutProps = {
         },
         {
           label: 'Developer Setup (Internal)',
-          docId: 'indevguidejava11draft',
+          docId: 'indevguidejava21draft',
           description: (
             <>
               Set up a local InsuranceNow development environment, with specific
